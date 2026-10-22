@@ -1,0 +1,439 @@
+From leandromarino em leandromarino.com.br  Fri Apr 19 18:21:40 2013
+From: leandromarino em leandromarino.com.br (Leandro Marino)
+Date: Fri, 19 Apr 2013 18:21:40 -0300
+Subject: [R-br] mudar de decimal para inteiro
+In-Reply-To: <CAJzNC0t1N2T0quZfD0DeNZuHvswQ2vDTCAUsaCB=9Jisnjx9SA@mail.gmail.com>
+References: <CAJzNC0t1N2T0quZfD0DeNZuHvswQ2vDTCAUsaCB=9Jisnjx9SA@mail.gmail.com>
+Message-ID: <CAKSaaFk_U=hbrJZW0Q6f5-zTYxSp48fth=z5T5n51Zy9=ki1NQ@mail.gmail.com>
+
+Em um número deste tamanho consideraria transformar para character.
+Fatalmente é um código de município.
+
+Já tive problemas em números inteiros largos na hora de fazer o merge uma
+vez que eles são interpretados como pontos flutuantes....
+
+Tive dois números que apesar de serem diferentes na hora do merge eram
+juntados....
+Em 19/04/2013 17:24, "Fátima Lima Paula" <fatima.lima.paula em gmail.com>
+escreveu:
+
+> Prezados meus números estão aparecendo dessa forma:
+> 3.31000e+12
+> Como faço para que fique
+> 3310008457687
+> Alguém pode me ajudar, por favor?
+> Obrigada
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20130419/c1e271c9/attachment.html>
+
+From tito.conte em gmail.com  Thu May 16 15:31:28 2013
+From: tito.conte em gmail.com (Tito Conte)
+Date: Thu, 16 May 2013 15:31:28 -0300
+Subject: [R-br] =?iso-8859-1?q?D=FAvida_sobre_Krigagem?=
+Message-ID: <CACqq46xwCJK5XodLSEWirkWmXRY-oo0f2Hx6gP2q1VpKCdAvYg@mail.gmail.com>
+
+Caros,
+
+Estou tentando a algum tempo krigar o arquivo em anexo, porém
+(provavelmente por pouco conhecimento no assunto), as tentativas estão
+frustradas.
+Testei pelos pacotes fields e kriging e não obtive resultados positivos,
+abaixo segue a lista dos comandos utilizados e os erros para cada uma das
+tentativas, alguém poderia me ajudar com isso?
+
+require(fields)
+require(kriging)
+require(gstat)
+
+xyz = read.table('xyz.xyz',h=F)
+xy = xyz[,c(1,2)]
+z = xyz[,c(3)]
+K=Krig(xy,z)
+
+Warning message:In n1 * n2 : NAs produced by integer overflowError in
+t(out$W2 %d*% do.call(out$cov.function.name, c(out$args, list(x1 =
+out$knots,  :
+  erro na avaliação do argumento 'x' na seleção do método para a
+função 't': 'Error in out$W2 %d*% do.call(out$cov.function.name,
+c(out$args, list(x1 = out$knots,  :
+  erro na avaliação do argumento 'y' na seleção do método para a
+função '%d*%': 'Error in rep(0, n1 * n2) : invalid 'times' argument
+'
+'
+
+kriging(xy[,1],xy[,2],z,model='gaussian')
+
+Error in rep(0, n * n) : invalid 'times' argumentIn addition: Warning
+message:In n * n : NAs produced by integer overflow
+
+
+
+
+
+Tito Conte
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20130516/65e05a66/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: xyz.xyz
+Tipo: chemical/x-pdb
+Tamanho: 556214 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20130516/65e05a66/attachment-0001.pdb>
+
+From rcoster em gmail.com  Fri Oct  2 14:17:19 2015
+From: rcoster em gmail.com (Rodrigo Coster)
+Date: Fri, 2 Oct 2015 14:17:19 -0300
+Subject: [R-br] =?utf-8?b?cXVlbSDDqSBvIGF1dG9yIGRlIHRhbmtzLlIgPz8/?=
+In-Reply-To: <CAKLUGQ8qfmNs-xMQ6Q-938ZVAq+K9sQ1to61cfjpV=UZ7eXGQg@mail.gmail.com>
+References: <CAKLUGQ8qfmNs-xMQ6Q-938ZVAq+K9sQ1to61cfjpV=UZ7eXGQg@mail.gmail.com>
+Message-ID: <CAKU4wouVVH14Do++pJnVOvD_BOngJtUq7tR3j4DV0yyY8MQgyw@mail.gmail.com>
+
+Cleber,
+
+Eu tinha pensado em publicar ele em outros locais, mas nunca consegui
+finalizar ele 100% (tem um bug que não arrumei na hora de calcular o dano)
+e a ideia acabou ficando de lado... ainda esses dias estava pensando em
+fazer um código novo, mas me falta tempo :(
+
+Marcos,
+
+Tem também o pacote sudoku (
+https://cran.r-project.org/web/packages/sudoku/index.html), que foi o
+pacote que me motivou a fazer os meus. Coloquei meus outros códigos
+parecidos (da época em que eu tinha tempo livre) no meu git, da uma olhada
+lá depois: https://github.com/rcoster/Rfun (e sinta-se a vontade de postar
+no seu blog)
+
+
+[]'s
+
+2015-10-02 12:09 GMT-03:00 Marcos Vital <marcosvital em gmail.com>:
+
+> Caramba, gente, que legal! Adorei conhecer a função (e adoro esses
+> joguinhos, hehehe).
+>
+> Vocês conhecem outros joguinhos pro R? Já vou ali conferir o pacote fun,
+> que alguém mencionou, mas queria saber se existem outros.
+> Pode parecer besteira, mas acho que essas coisas descontraídas ajudam a
+> atrair pessoas para o R. Fora que usuários mais avançados podem se
+> interessar em entender como foi feito, o que acaba sendo positivo também.
+>
+> Rodrigo, tudo bem divulgar por aí o seu código? Para dar crédito,
+> colocamos apenas o seu nome ou você tem algum link (site pessoal, lattes,
+> sei lá) que gostaria que acompanhasse? Eu tenho um blog onde divulgo coisas
+> de R, e penso em fazer uma postagem sobre o seu "tanks" por lá, pode ser?
+>
+> Abraços!
+>
+> Marcos
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151002/53f2560d/attachment.html>
+-------------- Próxima Parte ----------
+jv <- function() {
+ tecla <- function(a,b) { return() }
+ clica <- function(a,b,c) { 
+  checa <- function() {
+   jo <- cbind(matrix(1:9,ncol=3),matrix(1:9,ncol=3,byrow=T),c(1,5,9),c(7,5,3))
+   for (j in 1:8) {
+    if (sum(jogo[jo[,j]]) %in% c(3,12)) {
+     m <- jo[c(1,3),j]
+     x <- as.integer((m-1)/3)+.5
+     y <- 2.5 - ((m-1) %% 3)
+     lines(x,y,col='red',lwd=4)
+     return(TRUE)
+    }
+   }
+   return(FALSE)
+  }
+  m <- sum((as.integer(c(b,1-c)*3)+c(0,1))*c(3,1))
+  if (jogo[m] == 0) {
+   jogo[m] <<- 4
+   x <- as.integer((m-1)/3)+.5
+   y <- 2.5 - ((m-1) %% 3)
+   points(x,y,pch='X')
+   if ((any(jogo == 0)) && (checa() == FALSE)) { 
+    m <- joga(jogo) 
+    jogo[m] <<- 1 
+    x <- as.integer((m-1)/3)+.5
+    y <- 2.5 - ((m-1) %% 3)
+    points(x,y,pch='O')
+    checa()
+   }
+   if ((checa() == TRUE) || (all(jogo != 0))) { return('ok') }
+  }
+ }
+ joga <- function(jogo) {
+  jo <- cbind(matrix(1:9,ncol=3),matrix(1:9,ncol=3,byrow=T),c(1,5,9),c(7,5,3))
+  pontos <- rbind(c(8,2),c(4,1),c(0,0))
+  marca <- c(rep(3,4),1,rep(3,4))/2
+  for (i in 1:3) {
+   for (j in 1:8) {
+    if (sum(jogo[jo[,j]]) %in% pontos[i,]) {
+     marca[jo[,j]] <- marca[jo[,j]] * (8 - 2 * i) * ifelse(sum(jogo[jo[,j]]) == 8,10,1) * ifelse(sum(jogo[jo[,j]]) == 2,20,1)
+    }
+   } 
+  }
+  marca[jogo != 0] <- 0
+  print(matrix(marca,3))
+  out <- which.max(marca)
+  if (sum(marca == max(marca)) > 1) { out <- sample((1:9)[marca == max(marca)],1) }
+  return(out)
+ }
+ par(mar=c(0,0,0,0),cex=5)
+ plot(1,xlim=c(0,3),ylim=c(0,3),type='n',xlab='',ylab='')
+ lines(c(2,2),c(0,3))
+ lines(c(1,1),c(0,3))
+ lines(c(0,3),c(1,1))
+ lines(c(0,3),c(2,2))
+ jogo <- matrix(0,3,3)
+ if (runif(1) < .5) {
+#  m <- sample(c(1,3,7,9),1)
+  m <- joga(jogo)
+  jogo[m] <- 1 
+  x <- as.integer((m-1)/3)+.5
+  y <- 2.5 - ((m-1) %% 3)
+  points(x,y,pch='O')
+ }
+ a <- getGraphicsEvent("Tic-Tac-Toe :)", onMouseUp = clica, onKeybd = tecla) 
+ return(invisible())
+}
+
+jv()
+-------------- Próxima Parte ----------
+###
+# cm(c(casas horizontais,casa verticais,minas)) ou cm(l), onde l pode 1, 2 ou 3
+# cm(c(15,15,20))
+###
+cm <- function(l=2) {
+ joga <- function(b, x, y) {
+ if ((!exists('m') || !exists('jo') || !exists('c')) || (all(jo == c))) { return(' ') }
+  p <- (ceiling((x)*l[1])-1)*l[2]+ceiling((y)*l[2])
+  n <- pi
+  a <- 0
+  if (b == 0) {
+   while (length(p) > 0) {
+    a <- a+1
+    pa <- p[1]
+    p <- p[-1]
+    if ((pa > 0) && (pa <= length(m))) {
+     if ((jo[pa] == 10) || ((jo[pa] == 11) && (a == 1))) { 
+      n <- c[pa]
+      if (n == 0) { 
+       pt <- c(ceiling(pa/l[2]),(pa -1) %% l[2] +1) + cbind(c(-1,-1),c(-1,0),c(-1,1),c(0,-1),c(0,1),c(1,-1),c(1,0),c(1,1))
+       v <- !(pt[1,] < 1 | pt[1,] > l[1] | pt[2,] < 1 | pt[2,] > l[2])
+       pos <- 1:8
+       if (!any(v)) { pos <- -((1:8)[v]) }
+       pt <- pt[,v]
+       p <- c(p,(pt[1,] -1) * l[2] + pt[2,])
+      }
+      if (n == 9) {
+       jo <<- c
+      }
+      jo[pa] <<- n
+     }
+    }
+   }
+  }
+  else if ((b == 2) && (jo[p] > 9)) {
+   jo[p] <<- ifelse(jo[p] == 10,11,10)
+  }
+  p1 <- which(jo == 10,arr.ind=T)
+  rect(p1[,2]-1,p1[,1]-1,p1[,2],p1[,1],col='white') 
+  p2 <- which(jo == 11 | jo == 9,arr.ind=T)
+  rect(p2[,2]-1,p2[,1]-1,p2[,2],p2[,1],col='red') 
+  p3 <- which(jo < 9,arr.ind=T)
+  rect(p3[,2]-1,p3[,1]-1,p3[,2],p3[,1],col='gray') 
+  p4 <- which(jo < 9 & jo > 0,arr.ind=T)
+  text(p4[,2]-.5,p4[,1]-.5,jo[which(jo < 9 & jo > 0)],col=rainbow(8)[jo[which(jo < 9 & jo > 0)]],cex=2)
+  if (n == 9) { cat('Voce perdeu! :(\n') ; jo <<- c ; return() }
+  jot <- jo
+  jot[jo == 11] <- 9
+  if (all(jot == c)) { cat('Voce ganhou! \\o/\n') ; jo <<- c }
+  return()
+ }
+ l <- floor(l)
+ if (length(l) == 1) {
+  if (l == 1) { l <- c(9,9,10) }
+  else if (l == 2) { l <- c(16,16,40) }
+  else if (l == 3) { l <- c(30,16,90) }
+  else { stop('l deve ser um vetor de comprimento 3, ou igual � 1, 2 ou 3') }
+ }
+ if (l[1] * l[2] < l[3]) { stop('Problema no tamanho do tabuleiro: Muito pequeno para o n�mero de minas desejado') }
+ par(mar=rep(0,4),xaxs='i',yaxs='i')
+ plot(pi,pi,xlim=c(0,l[1]),ylim=c(0,l[2]),type='n')
+ text(l[1]/2,l[2]/2,'Pressione espa�o sempre que quiser come�ar um jogo novo, \nou clique no tabuleiro ap�s perder para recome�ar.\n\n\nPatrocinado por:\n CEEE')
+ while (getGraphicsEvent("Campo Minado",onMouseDown = joga,onKeybd = function(a) return(a)) == " ") {
+  plot(pi,pi,xlim=c(0,l[1]),ylim=c(0,l[2]),type='n')
+  abline(h = 2:l[2] -1)
+  abline(v = 2:l[1] -1)
+  m <- matrix(0,l[2],l[1])
+  jo <- matrix(10,l[2],l[1])
+  m[sample(1:(l[1]*l[2]),l[3])] <- 1
+  c <- rbind(m[-1,],0) + rbind(0,m[-l[2],]) + cbind(m[,-1],0) + cbind(0,m[,-l[1]]) + cbind(rbind(m[-1,],0)[,-1],0) + cbind(0,rbind(m[-1,],0)[,-l[1]]) + cbind(rbind(0,m[-l[2],])[,-1],0) + cbind(0,rbind(0,m[-l[2],])[,-l[1]])
+  c[m == 1] <- 9
+ }
+}
+cm(2)
+-------------- Próxima Parte ----------
+##
+# jogo(l), onde l é 1 ou 2 (dificuldade)
+# jogo(2)
+##
+
+jogo <- function(lvl=1) {
+ ## Rotinas de apoio
+ # Checa se o movimento é valido
+ pode <- function(tabul,x,y,jo) {
+  p <- FALSE
+  for (i in 1:3-2) {
+   for (j in 1:3-2) {
+    if ((x+i < 11) && (x+i > 0) && (y+j < 11) && (y+j > 0)) {
+     if (tabul[x+i,y+j] %in% 1:2) { p <- TRUE }
+    }
+   }
+  }
+  if (tabul[x,y] %in% 1:2) { p <- FALSE }
+  if (p == T) {
+   p <- sum(move(x,y,jo) == jo) - 1 > sum(tabul == jo)
+  }
+  return(p)
+ }
+ # IA
+ joga <- function() {
+  mv <- 1
+  r <- 0
+  if (lvl == 1) {
+   for (i in 1:10) {
+    for (j in 1:10) {
+     if (pode(m,i,j,1)) {
+      t <- move(i,j,1)
+      if (sum(t == 1) > r) {
+       mv <- c(i,j)
+       r <- sum(t == 1)
+      }
+     }
+    }
+   }
+  }
+  if (lvl == 2) {
+   for (i in 1:10) {
+    for (j in 1:10) {
+     if (pode(m,i,j,1)) {
+      r1 <- 0
+      t <- move(i,j,1,m)
+      for (k in 1:10) {
+       for (l in 1:10) {
+        if (pode(t,k,l,2)) {
+         n <- move(k,l,2,t)
+         if (sum(n == 2) > r1) {
+          r1 <- sum(n == 2)
+         }
+        }
+       }
+      }
+      if ((sum(t == 1) - r1 > r) || (length(mv) == 1)) {
+       mv <- c(i,j)
+       r <- sum(t == 1) - r1
+      }
+     }
+    }
+   }
+  }
+  m <<- move(mv[1],mv[2],1)
+ }
+ # Evento do mouse
+ clica <- function(b, x, y) {
+  x <- as.integer(x*10)+1
+  y <- as.integer((1-y)*10+1)
+  f <- 0
+  if (pode(m,y,x,2) == TRUE) { 
+   m <<- move(y,x,2) 
+   f <- plot(m)
+   joga <- 1
+   while (((poss(1)) && (joga == 1)) || ((!poss(2)) && (poss(1)))) { joga() ; f <- plot(m) ; joga <- 2 }
+  }
+  if ((f == 1) || (!poss(2))) { return('dtm') }
+  return()
+ }
+ # Plota
+ plot.tabul <- function(tabul) {
+  plot(0:10,type='n')
+  for (i in 1:10) {
+   for (j in 1:10) {
+    rect(j,10-i,j+1,11-i,col=c('white','blue','red')[tabul[i,j] + 1])
+   }
+  }
+  if (!any(tabul == 0)) { return(1) }
+ return(0)
+ }
+ # Movimento
+ move <- function(x,y,p,tabul=m) {
+  out <- tabul
+  pt2 <- matrix(c(x,y),ncol=2)
+  for (i in c(1,0,-1)) { 
+   for (j in c(1,0,-1)) {
+    pt <- c(x,y)
+    pt1 <- vector()
+    cont <- 1
+    while ((max(pt) <= 10) && (min(pt) >= 1) && (cont == 1)) {
+     pt <- pt + c(i,j)
+     pt1 <- rbind(pt1,pt)
+     if (((i == 0) && (j == 0)) || ((any(pt > 10)) || (any(pt < 1)))) { cont <- 2 } 
+     else if (tabul[pt[1],pt[2]] == p) { pt2 <- rbind(pt2,pt1) ; cont <- 2 }
+     else if (tabul[pt[1],pt[2]] == 0) { cont <- 2 }
+    }
+   } 
+  }
+  for (k in 1:nrow(pt2)) { 
+   out[pt2[k,1],pt2[k,2]] <- p
+  }
+  return(out)
+ }
+ # Confere se há jogadas possiveis
+ poss <- function(jo,tabul=m) {
+  for (i in 1:10) {
+   for (j in 1:10) {
+    if (pode(tabul,i,j,jo) == TRUE) { return(T) }
+   }
+  }
+  return(F)
+ }
+ ## Jogo
+ par(mar=rep(0,4),xaxs='i',yaxs='i')
+ m <- matrix(0,10,10)
+ class(m) <- 'tabul'
+ for (i in 5:6) {
+  for (j in 5:6) {
+   m[i,j] <- ((i + j -1) %% 2 + 1)
+  }
+ }
+ plot(m)
+ if (runif(1) > .5) { Sys.sleep(.5) ; joga() ; plot(m) }
+ getGraphicsEvent('Reversi',onMouseDown=clica)
+ cat('Fim de jogo! Resultado:\n Azul (PC):',sum(m == 1),'\n Vermelho (você):',sum(m == 2),'\n') ; if (any(m == 0)) { cat(' Branco:',sum(m==0),'\n') } ;
+ return(invisible())
+}
+jogo(2)
+

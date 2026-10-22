@@ -1,9 +1,44 @@
-From walmeszeviani em gmail.com  Wed Mar  1 09:54:52 2017
-From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Wed, 1 Mar 2017 09:54:52 -0300
+From adrielegbiase em gmail.com  Wed Mar  1 02:43:46 2017
+From: adrielegbiase em gmail.com (Adriele Giaretta Biase)
+Date: Wed, 01 Mar 2017 02:43:46 +0000
 Subject: [R-br] alterar character para numeric, dentro de uma matriz
+Message-ID: <CANjWqYy48NZfJ1m9aLh=eCDR_rHmQGzSy=Ph8H_sACMOOaxd_g@mail.gmail.com>
+
+Olá amigos,
+
+sabem com posso transformar uma matriz de caracteres, em uma matriz
+numérica ?
+
+Queria usar o apply, num determinado conjunto (já removi as colunas que são
+de caracteres), porém, o erro é que a matriz toda seja de caracteres,
+preciso transforma-la parte de suas colunas em numérica (dentro de um
+loop), sem perder as informações de suas dimensões a cada vez que rodar.
+
+> head(data[, 1:3])
+     DMI_OBS            MARGINAL_VALUE     MARGINAL_COST
+[1,] "6.96854098333583" "6.65221200159797" "5.27352744344053"
+[2,] "6.98339853826561" "6.7072041317201"  "5.28263898757677"
+[3,] "6.99836013545516" "6.75898075373724" "5.29181433666923"
+[4,] "7.01341956926359" "6.80804464548042" "5.30104968504659"
+[5,] "7.02856890831318" "6.85360715009623" "5.31034016871214"
+[6,] "7.04380198056193" "6.89645505407463" "5.31968200259941"
+> dim(data data[, 1:3])
+[1] 90 3
+> class(data[, 1:3])
+[1] "matrix"
+> mode(data[, 1:3])
+[1] "character"
+> soma_acumulada = t(as.matrix( apply(data[, 1:3], 2, sum)))
+Error in FUN(newX[, i], ...) : invalid 'type' (character) of argument
+
+-- 
+Adriele.
+
+From walmeszeviani em gmail.com  Wed Mar  1 12:54:52 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 01 Mar 2017 12:54:52 +0000
+Subject: Re: [R-br] alterar character para numeric, dentro de uma matriz
 In-Reply-To: <CANjWqYy48NZfJ1m9aLh=eCDR_rHmQGzSy=Ph8H_sACMOOaxd_g@mail.gmail.com>
-References: <CANjWqYy48NZfJ1m9aLh=eCDR_rHmQGzSy=Ph8H_sACMOOaxd_g@mail.gmail.com>
 Message-ID: <CAFU=EkbdUV3s2FHEHt5oFX11M4qaB9JJq+3pkLnJAmMN5A-o9g@mail.gmail.com>
 
 x <- matrix(as.character(rnorm(100)), ncol = 10)
@@ -18,17 +53,12 @@ apply(x,
 À disposição.
 Walmes.
 ​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170301/60640290/attachment.html>
 
-From karina.rebuli em gmail.com  Thu Mar  2 11:19:15 2017
+From karina.rebuli em gmail.com  Thu Mar  2 14:19:15 2017
 From: karina.rebuli em gmail.com (Karina Rebuli)
 Date: Thu, 02 Mar 2017 14:19:15 +0000
-Subject: [R-br] alterar character para numeric, dentro de uma matriz
+Subject: Re: [R-br] alterar character para numeric, dentro de uma matriz
 In-Reply-To: <CAFU=EkbdUV3s2FHEHt5oFX11M4qaB9JJq+3pkLnJAmMN5A-o9g@mail.gmail.com>
-References: <CANjWqYy48NZfJ1m9aLh=eCDR_rHmQGzSy=Ph8H_sACMOOaxd_g@mail.gmail.com>
- <CAFU=EkbdUV3s2FHEHt5oFX11M4qaB9JJq+3pkLnJAmMN5A-o9g@mail.gmail.com>
 Message-ID: <CALfxEuUMpsRii2=RUE9rzKAvGy+8n6tD3W=oEx1DNdxSAPATLg@mail.gmail.com>
 
 Oi, Adriele.
@@ -78,13 +108,10 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
 mínimo reproduzível.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170302/b3947514/attachment.html>
 
-From ms_sangiogo em hotmail.com  Sun Mar  5 23:06:15 2017
-From: ms_sangiogo em hotmail.com (=?iso-8859-1?Q?Maur=EDcio_Sangiogo?=)
-Date: Mon, 6 Mar 2017 02:06:15 +0000
+From ms_sangiogo em hotmail.com  Mon Mar  6 02:06:15 2017
+From: ms_sangiogo em hotmail.com (=?utf-8?q?Maur=C3=ADcio_Sangiogo?=)
+Date: Mon, 06 Mar 2017 02:06:15 +0000
 Subject: [R-br] Desdobramento de um experimento em faixas
 Message-ID: <MWHPR03MB2606A89AB6D6B0B03784DFBB9B2C0@MWHPR03MB2606.namprd03.prod.outlook.com>
 
@@ -158,18 +185,11 @@ groups
 Me. Eng. Agr. Maurício Sangiogo
 TEL:(55) 96822030
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170306/834ad260/attachment.html>
-
-From ribas.aca em gmail.com  Mon Mar  6 15:51:40 2017
+From ribas.aca em gmail.com  Mon Mar  6 18:51:40 2017
 From: ribas.aca em gmail.com (Augusto Ribas)
-Date: Mon, 6 Mar 2017 14:51:40 -0400
-Subject: [R-br] Emacs
+Date: Mon, 06 Mar 2017 18:51:40 +0000
+Subject: Re: [R-br] Emacs
 In-Reply-To: <8cd2bf83-7973-7c54-2628-b0e22585eea0@ymail.com>
-References: <b0f7d7e7-4cda-e42b-7a20-b921a5bc961e@ymail.com>
- <CAN55XP7b8OTGRmWOQ2U6bKK99YBBYG1cCERLdBiQXY8tJ2mrEw@mail.gmail.com>
- <8cd2bf83-7973-7c54-2628-b0e22585eea0@ymail.com>
 Message-ID: <CACMkfRwBN_cKppK3pqNNLmkTd6BOAqC2uMoJcpoYe6AddzZHsg@mail.gmail.com>
 
 Olha, o que me ajudou muito no emacs foi o Melpa.
@@ -259,29 +279,24 @@ Augusto C. A. Ribas
 Site Pessoal: http://recologia.com.br/ <http://augustoribas.heliohost.org>
 Github: https://github.com/Squiercg
 Lattes: http://lattes.cnpq.br/7355685961127056
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170306/c50af896/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: iD icon.gif
-Tipo: image/gif
-Tamanho: 1221 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170306/c50af896/attachment.gif>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: não disponível
-Tipo: image/gif
-Tamanho: 1221 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170306/c50af896/attachment-0001.gif>
 
-From andreolsouza em yahoo.com.br  Tue Mar  7 17:53:32 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: iDicon.gif
+Type: image/gif
+Size: 1221 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: attachment.gif
+Type: image/gif
+Size: 1221 bytes
+
+From andreolsouza em yahoo.com.br  Tue Mar  7 20:53:32 2017
 From: andreolsouza em yahoo.com.br (Andre Oliveira)
-Date: Tue, 7 Mar 2017 20:53:32 +0000 (UTC)
+Date: Tue, 07 Mar 2017 20:53:32 +0000
 Subject: [R-br] Silenciar os warnings
-References: <1127299348.900780.1488920012901.ref@mail.yahoo.com>
+In-Reply-To: <1127299348.900780.1488920012901.ref@mail.yahoo.com>
 Message-ID: <1127299348.900780.1488920012901@mail.yahoo.com>
 
 Boa tarde,sempre em um relatório cito os pacotes que usei nas referências, no entanto require(biotools) deixa a aviso solto no meio de meu relatório de um .rnw. Estou usando:
@@ -292,13 +307,10 @@ opts_chunk$set(echo = F, comment="", message=F, warnings = F) suppressPackageSt
 ```Alguém sabe como posso excluir tal aviso?
 
  André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito Santo.  IFES
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170307/5bff129a/attachment.html>
 
-From pollyalvesb em gmail.com  Wed Mar  8 13:27:12 2017
+From pollyalvesb em gmail.com  Wed Mar  8 16:27:12 2017
 From: pollyalvesb em gmail.com (Pollyanna Alves)
-Date: Wed, 8 Mar 2017 13:27:12 -0300
+Date: Wed, 08 Mar 2017 16:27:12 +0000
 Subject: [R-br] Teste de Normalidade Multivariada
 Message-ID: <CAF=U39wbR=k0JOn55Jxy2rbgE5Zy47xD9gVQHA9TjQJgTFjyBg@mail.gmail.com>
 
@@ -328,17 +340,12 @@ Graduada em Ciências Biológicas
 Graduação Sanduíche na "University of Western Australia"
 Museu de Zoologia João Moojen
 Universidade Federal de Viçosa
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170308/e82ec181/attachment.html>
 
-From walmeszeviani em gmail.com  Wed Mar  8 15:23:52 2017
+From walmeszeviani em gmail.com  Wed Mar  8 18:23:52 2017
 From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Wed, 8 Mar 2017 15:23:52 -0300
-Subject: [R-br] Silenciar os warnings
+Date: Wed, 08 Mar 2017 18:23:52 +0000
+Subject: Re: [R-br] Silenciar os warnings
 In-Reply-To: <1127299348.900780.1488920012901@mail.yahoo.com>
-References: <1127299348.900780.1488920012901.ref@mail.yahoo.com>
- <1127299348.900780.1488920012901@mail.yahoo.com>
 Message-ID: <CAFU=EkbpAnnhFuumvLY3Hjd6DyK1usYd_wj-LHOtnNiSEA3-Dg@mail.gmail.com>
 
 Eu uso suppressMessages(pacote).
@@ -346,16 +353,12 @@ Eu uso suppressMessages(pacote).
 À disposição.
 Walmes.
 ​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170308/4e438a47/attachment.html>
 
-From nandodesouza em gmail.com  Wed Mar  8 15:31:12 2017
+From nandodesouza em gmail.com  Wed Mar  8 18:31:12 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
-Date: Wed, 8 Mar 2017 15:31:12 -0300
-Subject: [R-br] Teste de Normalidade Multivariada
+Date: Wed, 08 Mar 2017 18:31:12 +0000
+Subject: Re: [R-br] Teste de Normalidade Multivariada
 In-Reply-To: <CAF=U39wbR=k0JOn55Jxy2rbgE5Zy47xD9gVQHA9TjQJgTFjyBg@mail.gmail.com>
-References: <CAF=U39wbR=k0JOn55Jxy2rbgE5Zy47xD9gVQHA9TjQJgTFjyBg@mail.gmail.com>
 Message-ID: <CAFrWFsmco4gzc18zP0-C4wtgPf3KfYSHvDoLFbEFtwDF58s-7w@mail.gmail.com>
 
 Pelo que entendi castorianb não é uma matriz
@@ -405,19 +408,12 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
 mínimo reproduzível.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170308/b1ade006/attachment.html>
 
-From nandodesouza em gmail.com  Wed Mar  8 15:38:36 2017
+From nandodesouza em gmail.com  Wed Mar  8 18:38:36 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
-Date: Wed, 8 Mar 2017 15:38:36 -0300
-Subject: [R-br] Silenciar os warnings
+Date: Wed, 08 Mar 2017 18:38:36 +0000
+Subject: Re: [R-br] Silenciar os warnings
 In-Reply-To: <CAFrWFs=aqvecJtd7EUe85wj0J1C-upw4SVMUVZgfBcn41nxxhw@mail.gmail.com>
-References: <1127299348.900780.1488920012901.ref@mail.yahoo.com>
- <1127299348.900780.1488920012901@mail.yahoo.com>
- <CAFU=EkbpAnnhFuumvLY3Hjd6DyK1usYd_wj-LHOtnNiSEA3-Dg@mail.gmail.com>
- <CAFrWFs=aqvecJtd7EUe85wj0J1C-upw4SVMUVZgfBcn41nxxhw@mail.gmail.com>
 Message-ID: <CAFrWFsnNvecEKCrrFYgkx58pVz4FSYtq0ZuoMnY=fi60XTCCWQ@mail.gmail.com>
 
 Acho que isso deve funcionar
@@ -445,17 +441,12 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
 mínimo reproduzível.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170308/c61ec0c6/attachment.html>
 
-From jdtatsch em gmail.com  Wed Mar  8 16:45:39 2017
-From: jdtatsch em gmail.com (=?UTF-8?B?SsO0bmF0YW4=?=)
-Date: Wed, 8 Mar 2017 16:45:39 -0300
-Subject: [R-br] Silenciar os warnings
+From jdtatsch em gmail.com  Wed Mar  8 19:45:39 2017
+From: jdtatsch em gmail.com (=?utf-8?q?J=C3=B4natan?=)
+Date: Wed, 08 Mar 2017 19:45:39 +0000
+Subject: Re: [R-br] Silenciar os warnings
 In-Reply-To: <1127299348.900780.1488920012901@mail.yahoo.com>
-References: <1127299348.900780.1488920012901.ref@mail.yahoo.com>
- <1127299348.900780.1488920012901@mail.yahoo.com>
 Message-ID: <CAEiHnvO_RR5qYcO4FppE2oGcQ93v736EBA33kHi6u+Mm6bQqHw@mail.gmail.com>
 
 ---
@@ -566,18 +557,12 @@ require(biotools)
 ##  Telefone: +55(55)33012083
 ##  www.ufsm.br/meteorologia
 ###############################################################
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170308/d0b3591a/attachment.html>
 
-From andreolsouza em yahoo.com.br  Wed Mar  8 23:38:47 2017
+From andreolsouza em yahoo.com.br  Thu Mar  9 02:38:47 2017
 From: andreolsouza em yahoo.com.br (Andre Oliveira)
-Date: Thu, 9 Mar 2017 02:38:47 +0000 (UTC)
-Subject: [R-br] Silenciar os warnings
+Date: Thu, 09 Mar 2017 02:38:47 +0000
+Subject: Re: [R-br] Silenciar os warnings
 In-Reply-To: <CAEiHnvO_RR5qYcO4FppE2oGcQ93v736EBA33kHi6u+Mm6bQqHw@mail.gmail.com>
-References: <1127299348.900780.1488920012901.ref@mail.yahoo.com>
- <1127299348.900780.1488920012901@mail.yahoo.com>
- <CAEiHnvO_RR5qYcO4FppE2oGcQ93v736EBA33kHi6u+Mm6bQqHw@mail.gmail.com>
 Message-ID: <682821135.2192335.1489027127741@mail.yahoo.com>
 
 Obrigado pessoal! 
@@ -637,18 +622,11 @@ Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forneça código m
 ##  Telefone: +55(55)33012083
 ##  www.ufsm.br/meteorologia###############################################################
 
-   
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170309/12d1619d/attachment.html>
-
-From pollyalvesb em gmail.com  Thu Mar  9 07:58:26 2017
+From pollyalvesb em gmail.com  Thu Mar  9 10:58:26 2017
 From: pollyalvesb em gmail.com (Pollyanna Alves)
-Date: Thu, 9 Mar 2017 07:58:26 -0300
-Subject: [R-br] Teste de Normalidade Multivariada
+Date: Thu, 09 Mar 2017 10:58:26 +0000
+Subject: Re: [R-br] Teste de Normalidade Multivariada
 In-Reply-To: <CAFrWFsmco4gzc18zP0-C4wtgPf3KfYSHvDoLFbEFtwDF58s-7w@mail.gmail.com>
-References: <CAF=U39wbR=k0JOn55Jxy2rbgE5Zy47xD9gVQHA9TjQJgTFjyBg@mail.gmail.com>
- <CAFrWFsmco4gzc18zP0-C4wtgPf3KfYSHvDoLFbEFtwDF58s-7w@mail.gmail.com>
 Message-ID: <CAF=U39zLmK+4myZj5+jafy6gLxub45480K--Hr=n7+-Fq4ezYQ@mail.gmail.com>
 
 Obrigado pelo conselho Fernando, mas infelizmente não funcionou.
@@ -726,13 +704,10 @@ nandodesouza em gmail.com> escreveu:
 >
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170309/dc700852/attachment.html>
 
-From gustavo.a.agudelo em gmail.com  Thu Mar  9 12:33:47 2017
+From gustavo.a.agudelo em gmail.com  Thu Mar  9 15:33:47 2017
 From: gustavo.a.agudelo em gmail.com (Gustavo Agudelo)
-Date: Thu, 9 Mar 2017 12:33:47 -0300
+Date: Thu, 09 Mar 2017 15:33:47 +0000
 Subject: [R-br]  Teste de Normalidade Multivariada
 Message-ID: <CAC1c6PrZc6O=aFwcK44UtHJygwcDSPBALANc=FNd1i+j4yyvjg@mail.gmail.com>
 
@@ -761,18 +736,12 @@ CEP 05508-090
 São Paulo - SP
 Brazil
 ====================================
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170309/eaed5b67/attachment.html>
 
-From nandodesouza em gmail.com  Thu Mar  9 13:45:45 2017
+From nandodesouza em gmail.com  Thu Mar  9 16:45:45 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
-Date: Thu, 9 Mar 2017 13:45:45 -0300
-Subject: [R-br] Teste de Normalidade Multivariada
+Date: Thu, 09 Mar 2017 16:45:45 +0000
+Subject: Re: [R-br] Teste de Normalidade Multivariada
 In-Reply-To: <CAF=U39zLmK+4myZj5+jafy6gLxub45480K--Hr=n7+-Fq4ezYQ@mail.gmail.com>
-References: <CAF=U39wbR=k0JOn55Jxy2rbgE5Zy47xD9gVQHA9TjQJgTFjyBg@mail.gmail.com>
- <CAFrWFsmco4gzc18zP0-C4wtgPf3KfYSHvDoLFbEFtwDF58s-7w@mail.gmail.com>
- <CAF=U39zLmK+4myZj5+jafy6gLxub45480K--Hr=n7+-Fq4ezYQ@mail.gmail.com>
 Message-ID: <CAFrWFsmNMGE8uCBc5i2S5fVx7c-unCfnqtJM2NXZKpd2Gy79Vw@mail.gmail.com>
 
 Compartilhe seus dados ( ou parte dele que mostre o problema) para que
@@ -856,16 +825,12 @@ Em 09/03/2017 7:58 AM, "Pollyanna Alves" <pollyalvesb em gmail.com> escreveu:
 >>
 >>
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170309/0af7065e/attachment.html>
 
-From cesar.rabak em gmail.com  Thu Mar  9 17:54:20 2017
+From cesar.rabak em gmail.com  Thu Mar  9 20:54:20 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Thu, 9 Mar 2017 17:54:20 -0300
-Subject: [R-br] Teste de Normalidade Multivariada
+Date: Thu, 09 Mar 2017 20:54:20 +0000
+Subject: Re: [R-br] Teste de Normalidade Multivariada
 In-Reply-To: <CAF=U39wbR=k0JOn55Jxy2rbgE5Zy47xD9gVQHA9TjQJgTFjyBg@mail.gmail.com>
-References: <CAF=U39wbR=k0JOn55Jxy2rbgE5Zy47xD9gVQHA9TjQJgTFjyBg@mail.gmail.com>
 Message-ID: <CAKrF98mRdV6zah4nDL68VDv8e2ihi6LuYw4vaSx+_8Y3-aZPCQ@mail.gmail.com>
 
 Pollyanna,
@@ -922,17 +887,12 @@ r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170309/1a930aef/attachment.html>
 
-From emmanuel.brasil em gmail.com  Fri Mar 10 10:18:02 2017
+From emmanuel.brasil em gmail.com  Fri Mar 10 13:18:02 2017
 From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
-Date: Fri, 10 Mar 2017 10:18:02 -0300
+Date: Fri, 10 Mar 2017 13:18:02 +0000
 Subject: [R-br] Erro em fazendo pacote. .Random.seed e caracteres ASCII
 In-Reply-To: <CAFfGvyLh0vXbgCYt_kiBCnxwfG1QQjiywDj78tefvaBxzPDw_g@mail.gmail.com>
-References: <CAFfGvy+fLi+pQKO_M0Dvf2=aN_mk20E-mqMU169zUHYoKvR_iw@mail.gmail.com>
- <CAFfGvyLh0vXbgCYt_kiBCnxwfG1QQjiywDj78tefvaBxzPDw_g@mail.gmail.com>
 Message-ID: <CAFfGvyKOUTffqKTYbt6hgwXimX_zFjyo_xU=dYh8-QGapjBd8g@mail.gmail.com>
 
 Amigos de R,
@@ -962,16 +922,12 @@ Abraço forte,
 
 Pedro Brasil
 (:)=
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170310/cee35a9f/attachment.html>
 
-From walmeszeviani em gmail.com  Sat Mar 11 17:44:03 2017
+From walmeszeviani em gmail.com  Sat Mar 11 20:44:03 2017
 From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Sat, 11 Mar 2017 17:44:03 -0300
-Subject: [R-br] Desdobramento de um experimento em faixas
+Date: Sat, 11 Mar 2017 20:44:03 +0000
+Subject: Re: [R-br] Desdobramento de um experimento em faixas
 In-Reply-To: <MWHPR03MB2606A89AB6D6B0B03784DFBB9B2C0@MWHPR03MB2606.namprd03.prod.outlook.com>
-References: <MWHPR03MB2606A89AB6D6B0B03784DFBB9B2C0@MWHPR03MB2606.namprd03.prod.outlook.com>
 Message-ID: <CAFU=EkYuWZnFRExk8eNhcLSq3u1=OG0Yg=ZQUNeGoxQQc8obzQ@mail.gmail.com>
 
 Verifique se essa postagem do histórico da lista serve:
@@ -983,17 +939,12 @@ disponibilizar acesso aos dados usados no corpo da mensagem (use dput()).
 À disposição.
 Walmes.
 ​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170311/02ec2ff1/attachment.html>
 
-From pollyalvesb em gmail.com  Sun Mar 12 17:29:44 2017
+From pollyalvesb em gmail.com  Sun Mar 12 20:29:44 2017
 From: pollyalvesb em gmail.com (Pollyanna Alves)
-Date: Sun, 12 Mar 2017 17:29:44 -0300
-Subject: [R-br] Teste de Normalidade Multivariada
+Date: Sun, 12 Mar 2017 20:29:44 +0000
+Subject: Re: [R-br] Teste de Normalidade Multivariada
 In-Reply-To: <CAKrF98mRdV6zah4nDL68VDv8e2ihi6LuYw4vaSx+_8Y3-aZPCQ@mail.gmail.com>
-References: <CAF=U39wbR=k0JOn55Jxy2rbgE5Zy47xD9gVQHA9TjQJgTFjyBg@mail.gmail.com>
- <CAKrF98mRdV6zah4nDL68VDv8e2ihi6LuYw4vaSx+_8Y3-aZPCQ@mail.gmail.com>
 Message-ID: <CAF=U39xtQEyW_915vx2hvR3+7oo3fxYSbwwvCXTFEeTS7hVYaA@mail.gmail.com>
 
 Olá Cesar,
@@ -1072,18 +1023,12 @@ Em 9 de março de 2017 17:54, Cesar Rabak <cesar.rabak em gmail.com> escreveu:
 >>
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170312/611f878d/attachment.html>
 
-From marcelolaia em gmail.com  Sun Mar 12 17:44:12 2017
-From: marcelolaia em gmail.com (marcelolaia em gmail.com)
-Date: Sun, 12 Mar 2017 17:44:12 -0300
+From marcelolaia em gmail.com  Sun Mar 12 20:44:12 2017
+From: marcelolaia em gmail.com
+Date: Sun, 12 Mar 2017 20:44:12 +0000
 Subject: [R-br] RES:  Teste de Normalidade Multivariada
 In-Reply-To: <CAF=U39xtQEyW_915vx2hvR3+7oo3fxYSbwwvCXTFEeTS7hVYaA@mail.gmail.com>
-References: <CAF=U39wbR=k0JOn55Jxy2rbgE5Zy47xD9gVQHA9TjQJgTFjyBg@mail.gmail.com>
- <CAKrF98mRdV6zah4nDL68VDv8e2ihi6LuYw4vaSx+_8Y3-aZPCQ@mail.gmail.com>
- <CAF=U39xtQEyW_915vx2hvR3+7oo3fxYSbwwvCXTFEeTS7hVYaA@mail.gmail.com>
 Message-ID: <58c5b31e.08a1370a.f74df.1bb1@mx.google.com>
 
 Sei que se trata de uma multivariada, mas, Pimentel Gomes afirma: o teste F é extremamente robusto à não normalidade dos dados sob análise.
@@ -1159,18 +1104,11 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
 
-
-
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170312/64158db5/attachment.html>
-
-From ms_sangiogo em hotmail.com  Sun Mar 12 20:13:37 2017
-From: ms_sangiogo em hotmail.com (=?iso-8859-1?Q?Maur=EDcio_Sangiogo?=)
+From ms_sangiogo em hotmail.com  Sun Mar 12 23:13:37 2017
+From: ms_sangiogo em hotmail.com (=?utf-8?q?Maur=C3=ADcio_Sangiogo?=)
 Date: Sun, 12 Mar 2017 23:13:37 +0000
-Subject: [R-br] Digest R-br, volume 75, assunto 8
+Subject: Re: [R-br] Digest R-br, volume 75, assunto 8
 In-Reply-To: <mailman.5.1489330802.777.r-br@listas.c3sl.ufpr.br>
-References: <mailman.5.1489330802.777.r-br@listas.c3sl.ufpr.br>
 Message-ID: <MWHPR03MB260654A71F40897A01966C309B220@MWHPR03MB2606.namprd03.prod.outlook.com>
 
 Obrigado Walmes,
@@ -1362,31 +1300,21 @@ A [R-br] é a lista Brasileira oficial de discussão do programa R e tem o prop�
 
 Fim da Digest R-br, volume 75, assunto 8
 ****************************************
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170312/f17a8af0/attachment.html>
 
-From sznelwar em uol.com.br  Sun Mar 12 20:26:06 2017
-From: sznelwar em uol.com.br (sznelwar em uol.com.br)
-Date: Sun, 12 Mar 2017 20:26:06 -0300
-Subject: [R-br] Digest R-br, volume 75, assunto 8
-In-Reply-To: ["MWHPR03MB260654A71F40897A01966C309B220@MWHPR03MB2606.namprd03.prod.outlook.com"]
-References: ["mailman.5.1489330802.777.r-br@listas.c3sl.ufpr.br",
- "MWHPR03MB260654A71F40897A01966C309B220@MWHPR03MB2606.namprd03.prod.outlook.com"]
+From sznelwar em uol.com.br  Sun Mar 12 23:26:06 2017
+From: sznelwar em uol.com.br
+Date: Sun, 12 Mar 2017 23:26:06 +0000
+Subject: Re: [R-br] Digest R-br, volume 75, assunto 8
+In-Reply-To: < ["MWHPR03MB260654A71F40897A01966C309B220@MWHP R03MB2606.namprd03.prod.outlook.com"]>
 Message-ID: <58c5d90e86281_719a157d593953dc73935@a4-weasel14.mail>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170312/ea6f23f2/attachment.html>
 
-From cesar.rabak em gmail.com  Sun Mar 12 21:24:19 2017
+
+From cesar.rabak em gmail.com  Mon Mar 13 00:24:19 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Sun, 12 Mar 2017 21:24:19 -0300
-Subject: [R-br] Teste de Normalidade Multivariada
+Date: Mon, 13 Mar 2017 00:24:19 +0000
+Subject: Re: [R-br] Teste de Normalidade Multivariada
 In-Reply-To: <58c5b31e.08a1370a.f74df.1bb1@mx.google.com>
-References: <CAF=U39wbR=k0JOn55Jxy2rbgE5Zy47xD9gVQHA9TjQJgTFjyBg@mail.gmail.com>
- <CAKrF98mRdV6zah4nDL68VDv8e2ihi6LuYw4vaSx+_8Y3-aZPCQ@mail.gmail.com>
- <CAF=U39xtQEyW_915vx2hvR3+7oo3fxYSbwwvCXTFEeTS7hVYaA@mail.gmail.com>
- <58c5b31e.08a1370a.f74df.1bb1@mx.google.com>
 Message-ID: <CAKrF98kGTprQQbcppr057a+3HhLcDDV0536h65Ehc+EW9HgFZw@mail.gmail.com>
 
 Marcelo Laia,
@@ -1560,15 +1488,11 @@ Cesar Rabak
 >
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170312/a2f692aa/attachment.html>
 
-From otnetobr em gmail.com  Mon Mar 13 15:17:32 2017
+From otnetobr em gmail.com  Mon Mar 13 18:17:32 2017
 From: otnetobr em gmail.com (Olympio Neto)
-Date: Mon, 13 Mar 2017 15:17:32 -0300
-Subject: [R-br] =?utf-8?q?D=C3=BAvida_de_como_usar_o_split_com_o_Anova_do_?=
-	=?utf-8?q?pacote_Car?=
+Date: Mon, 13 Mar 2017 18:17:32 +0000
+Subject: =?utf-8?q?=5BR-br=5D_D=C3=BAvida_de_como_usar_o_split_com_o_Anova_do_pacote_Car?=
 Message-ID: <CA+8s2wSTD7d01FAm-wsJrFgTzmKeqKUq2UnSKEcyuprK8X8Pcg@mail.gmail.com>
 
 Prezados,
@@ -1585,18 +1509,12 @@ função "Anova" do CAR?
 Muito obrigado
 
 Olympio
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170313/f5a906ec/attachment.html>
 
-From cesar.rabak em gmail.com  Mon Mar 13 16:43:32 2017
+From cesar.rabak em gmail.com  Mon Mar 13 19:43:32 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Mon, 13 Mar 2017 16:43:32 -0300
-Subject: [R-br]
-	=?utf-8?q?D=C3=BAvida_de_como_usar_o_split_com_o_Anova_do_?=
-	=?utf-8?q?pacote_Car?=
+Date: Mon, 13 Mar 2017 19:43:32 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09D=C3=BAvida_de_como_usar_o_split_com_o_Anova_do_pacote_Car?=
 In-Reply-To: <CA+8s2wSTD7d01FAm-wsJrFgTzmKeqKUq2UnSKEcyuprK8X8Pcg@mail.gmail.com>
-References: <CA+8s2wSTD7d01FAm-wsJrFgTzmKeqKUq2UnSKEcyuprK8X8Pcg@mail.gmail.com>
 Message-ID: <CAKrF98=56QDKUyRrKaGWgJy3_hiRN2a5y4-Xr8+TJFcH81qP+g@mail.gmail.com>
 
 Olympio,
@@ -1629,13 +1547,10 @@ O que diz a documentação da função car::Anova()?
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170313/446d9bd2/attachment.html>
 
-From nguiotoku2017 em gmail.com  Thu Mar 16 14:49:06 2017
+From nguiotoku2017 em gmail.com  Thu Mar 16 17:49:06 2017
 From: nguiotoku2017 em gmail.com (Nilson Guiotoku)
-Date: Thu, 16 Mar 2017 14:49:06 -0300
+Date: Thu, 16 Mar 2017 17:49:06 +0000
 Subject: [R-br] grafico de distribuicao acumulada de uma variavel continua
 Message-ID: <CAKZWzEG5egfG32Vuoo-_fEJp_DwRfL9kkBkOYduMAc0ZHtdSyQ@mail.gmail.com>
 
@@ -1727,27 +1642,22 @@ O ideal é que apareça na ordem crescente no eixo x, como na Figura em anexo
 
 
 Nilson Silva.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170316/5cd549ad/attachment-0001.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: Figura 1.png
-Tipo: image/png
-Tamanho: 7921 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170316/5cd549ad/attachment-0002.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: Figura 2.png
-Tipo: image/png
-Tamanho: 153051 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170316/5cd549ad/attachment-0003.png>
 
-From pollyalvesb em gmail.com  Fri Mar 17 16:54:38 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Figura1.png
+Type: image/png
+Size: 7921 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Figura2.png
+Type: image/png
+Size: 153051 bytes
+
+From pollyalvesb em gmail.com  Fri Mar 17 19:54:38 2017
 From: pollyalvesb em gmail.com (Pollyanna Alves)
-Date: Fri, 17 Mar 2017 16:54:38 -0300
+Date: Fri, 17 Mar 2017 19:54:38 +0000
 Subject: [R-br] Box's M Test
 Message-ID: <CAF=U39wgQ5m=A22L-_yfJqS4KRv+Gk=6w8SMttvHe-OxcApCiw@mail.gmail.com>
 
@@ -1793,19 +1703,12 @@ Graduada em Ciências Biológicas
 Graduação Sanduíche na "University of Western Australia"
 Museu de Zoologia João Moojen
 Universidade Federal de Viçosa
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170317/f3284740/attachment.html>
 
-From nandodesouza em gmail.com  Fri Mar 17 19:07:03 2017
+From nandodesouza em gmail.com  Fri Mar 17 22:07:03 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
-Date: Fri, 17 Mar 2017 19:07:03 -0300
-Subject: [R-br]
-	=?utf-8?q?D=C3=BAvida_de_como_usar_o_split_com_o_Anova_do_?=
-	=?utf-8?q?pacote_Car?=
+Date: Fri, 17 Mar 2017 22:07:03 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09D=C3=BAvida_de_como_usar_o_split_com_o_Anova_do_pacote_Car?=
 In-Reply-To: <CAKrF98=56QDKUyRrKaGWgJy3_hiRN2a5y4-Xr8+TJFcH81qP+g@mail.gmail.com>
-References: <CA+8s2wSTD7d01FAm-wsJrFgTzmKeqKUq2UnSKEcyuprK8X8Pcg@mail.gmail.com>
- <CAKrF98=56QDKUyRrKaGWgJy3_hiRN2a5y4-Xr8+TJFcH81qP+g@mail.gmail.com>
 Message-ID: <CAFrWFs=nNtO1xcZyi=Wb3WUsgS9_vwD1FwpogvaW29J6+5HAiQ@mail.gmail.com>
 
 Veja o pacote phia ele oferece um meio mais fácil de desdobrar interações.
@@ -1854,17 +1757,12 @@ escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170317/41a07cd9/attachment.html>
 
-From cesar.rabak em gmail.com  Sat Mar 18 01:51:51 2017
+From cesar.rabak em gmail.com  Sat Mar 18 04:51:51 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Sat, 18 Mar 2017 01:51:51 -0300
-Subject: [R-br] grafico de distribuicao acumulada de uma variavel
-	continua
+Date: Sat, 18 Mar 2017 04:51:51 +0000
+Subject: Re: [R-br] grafico de distribuicao acumulada de uma variavel	continua
 In-Reply-To: <CAKZWzEG5egfG32Vuoo-_fEJp_DwRfL9kkBkOYduMAc0ZHtdSyQ@mail.gmail.com>
-References: <CAKZWzEG5egfG32Vuoo-_fEJp_DwRfL9kkBkOYduMAc0ZHtdSyQ@mail.gmail.com>
 Message-ID: <CAKrF98nFbZY=_EmUA7yXLX6edTc5bCbCsdywYOwyY7tPhyYT4g@mail.gmail.com>
 
 http://bfy.tw/Ahi3
@@ -1968,15 +1866,12 @@ r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170318/ae93d34b/attachment.html>
 
-From edmar_caldas em yahoo.com.br  Sat Mar 18 10:44:23 2017
+From edmar_caldas em yahoo.com.br  Sat Mar 18 13:44:23 2017
 From: edmar_caldas em yahoo.com.br (Edmar Caldas)
-Date: Sat, 18 Mar 2017 13:44:23 +0000 (UTC)
-Subject: [R-br] =?utf-8?q?Ajuda_comando_restrutura=C3=A7=C3=A3o?=
-References: <189887133.2734358.1489844663180.ref@mail.yahoo.com>
+Date: Sat, 18 Mar 2017 13:44:23 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Ajuda_comando_restrutura=C3=A7=C3=A3o?=
+In-Reply-To: <189887133.2734358.1489844663180.ref@mail.yahoo.com>
 Message-ID: <189887133.2734358.1489844663180@mail.yahoo.com>
 
  
@@ -1988,23 +1883,18 @@ tenho uma arquivo que está na coluna e quero que ele fique na linha. segue exem
 
 
 Edmar
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170318/b251304d/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: datauri-file.png
-Tipo: image/png
-Tamanho: 20423 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170318/b251304d/attachment.png>
 
-From ms_sangiogo em hotmail.com  Sat Mar 18 13:48:40 2017
-From: ms_sangiogo em hotmail.com (=?iso-8859-1?Q?Maur=EDcio_Sangiogo?=)
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: datauri-file.png
+Type: image/png
+Size: 20423 bytes
+
+From ms_sangiogo em hotmail.com  Sat Mar 18 16:48:40 2017
+From: ms_sangiogo em hotmail.com (=?utf-8?q?Maur=C3=ADcio_Sangiogo?=)
 Date: Sat, 18 Mar 2017 16:48:40 +0000
-Subject: [R-br] Box's M Test (Pollyanna Alves)
+Subject: Re: [R-br] Box's M Test (Pollyanna Alves)
 In-Reply-To: <mailman.5.1489849202.8331.r-br@listas.c3sl.ufpr.br>
-References: <mailman.5.1489849202.8331.r-br@listas.c3sl.ufpr.br>
 Message-ID: <MWHPR03MB26067194E7A59366F2CD14799B380@MWHPR03MB2606.namprd03.prod.outlook.com>
 
 Olá Poliana
@@ -2388,17 +2278,12 @@ Fim da Digest R-br, volume 75, assunto 12
 *****************************************
 
 [http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170318/b251304d/attachment-0001.png]
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170318/517f0050/attachment.html>
 
-From cesar.rabak em gmail.com  Sat Mar 18 18:43:17 2017
+From cesar.rabak em gmail.com  Sat Mar 18 21:43:17 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Sat, 18 Mar 2017 18:43:17 -0300
-Subject: [R-br] =?utf-8?q?Ajuda_comando_restrutura=C3=A7=C3=A3o?=
+Date: Sat, 18 Mar 2017 21:43:17 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Ajuda_comando_restrutura=C3=A7=C3=A3o?=
 In-Reply-To: <189887133.2734358.1489844663180@mail.yahoo.com>
-References: <189887133.2734358.1489844663180.ref@mail.yahoo.com>
- <189887133.2734358.1489844663180@mail.yahoo.com>
 Message-ID: <CAKrF98kQJjZDZPqOXpfda4P-YNGUT3dqLdX036Qp=foZc9bRhA@mail.gmail.com>
 
 Procure pela documentação do pacote *reshape* do R.
@@ -2433,24 +2318,18 @@ Cesar Rabak
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170318/dd141506/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: datauri-file.png
-Tipo: image/png
-Tamanho: 20423 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170318/dd141506/attachment.png>
 
-From pollyalvesb em gmail.com  Mon Mar 20 09:16:22 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: datauri-file.png
+Type: image/png
+Size: 20423 bytes
+
+From pollyalvesb em gmail.com  Mon Mar 20 12:16:22 2017
 From: pollyalvesb em gmail.com (Pollyanna Alves)
-Date: Mon, 20 Mar 2017 09:16:22 -0300
-Subject: [R-br] Box's M Test (Pollyanna Alves)
+Date: Mon, 20 Mar 2017 12:16:22 +0000
+Subject: Re: [R-br] Box's M Test (Pollyanna Alves)
 In-Reply-To: <MWHPR03MB26067194E7A59366F2CD14799B380@MWHPR03MB2606.namprd03.prod.outlook.com>
-References: <mailman.5.1489849202.8331.r-br@listas.c3sl.ufpr.br>
- <MWHPR03MB26067194E7A59366F2CD14799B380@MWHPR03MB2606.namprd03.prod.outlook.com>
 Message-ID: <CAF=U39x5Xx_AYT51B7aR-4UipY_wDf2=ZoOdgeDHMFgDD3W8AA@mail.gmail.com>
 
 Olá Maurício,
@@ -2560,7 +2439,7 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 >         <r-br em listas.c3sl.ufpr.br>
 > Subject: [R-br] Box's M Test
 > Message-ID:
->         <CAF=U39wgQ5m=A22L-_yfJqS4KRv+Gk=6w8SMttvHe-OxcApCiw em mail.
+>         <CAF=U39wgQ5m=A22L-_yfJqS4KRv+Gk=6w8SMttvHe-OxcApCiw@mail.
 > gmail.com>
 > Content-Type: text/plain; charset="utf-8"
 >
@@ -2620,7 +2499,7 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Subject: Re: [R-br] Dúvida de como usar o split com o Anova do pacote
 >         Car
 > Message-ID:
->         <CAFrWFs=nNtO1xcZyi=Wb3WUsgS9_vwD1FwpogvaW29J6+5HAiQ em mail.
+>         <CAFrWFs=nNtO1xcZyi=Wb3WUsgS9_vwD1FwpogvaW29J6+5HAiQ@mail.
 > gmail.com>
 > Content-Type: text/plain; charset="utf-8"
 >
@@ -2703,7 +2582,7 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Subject: Re: [R-br] grafico de distribuicao acumulada de uma variavel
 >         continua
 > Message-ID:
->         <CAKrF98nFbZY=_EmUA7yXLX6edTc5bCbCsdywYOwyY7tPhyYT4g em mail.
+>         <CAKrF98nFbZY=_EmUA7yXLX6edTc5bCbCsdywYOwyY7tPhyYT4g@mail.
 > gmail.com>
 > Content-Type: text/plain; charset="utf-8"
 >
@@ -2892,23 +2771,204 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170320/6c08195e/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: Castoria Dados Estimados 170317.csv
-Tipo: text/csv
-Tamanho: 24765 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170320/6c08195e/attachment.csv>
 
-From ms_sangiogo em hotmail.com  Mon Mar 20 14:24:51 2017
-From: ms_sangiogo em hotmail.com (=?iso-8859-1?Q?Maur=EDcio_Sangiogo?=)
+-------------- next part --------------
+CM;CN;LAZ;LCI;CF;CP;CI;LI;CMB;SMS;LAE;CFI;LFI;DIA;LMC;AMC;LR;CR;CCI;CPP;LPZ;CMM;AMM;SMI
+CM_1148;12.55;15.39;5.87;8.97;6.94;1.86;7.36;6.21;5.06;6.20;6.74;2.45;8.33;13.19;9.71;3.80;12.71;28.39;4.19;3.38;14.70;6.55;5.18
+CM_1150;11.86;14.68;5.79;9.30;5.26;2.19;6.87;6.27;5.29;5.78;6.56;2.49;7.72;12.96;9.06;3.74;12.19;27.36;4.23;2.94;13.60;6.18;5.33
+CM_1151;11.32;14.60;5.65;8.49;6.09;2.02;7.41;6.34;5.01;5.72;6.06;2.38;7.38;12.64;9.16;3.63;11.44;26.16;4.21;2.81;13.96;6.69;5.06
+CM_1153;11.41;14.60;5.63;9.38;6.51;2.47;8.13;6.35;5.07;6.00;6.53;2.22;7.76;12.73;9.82;3.68;11.69;27.02;4.04;2.78;13.81;6.29;5.18
+CM_1154;11.53;14.41;5.44;8.87;5.96;2.48;8.09;5.85;4.91;5.73;6.29;2.42;7.68;12.72;9.68;4.02;12.02;26.72;4.15;2.74;13.89;6.55;4.90
+CM_1155;11.11;14.60;5.91;8.13;6.20;1.96;7.50;5.90;5.05;5.53;6.02;2.21;7.29;12.73;9.44;3.63;11.45;26.03;4.10;2.71;13.77;6.44;5.09
+CM_1172;11.69;15.33;5.61;9.82;6.27;2.34;7.38;6.53;5.51;6.51;6.39;2.34;8.04;12.73;9.24;3.75;12.61;27.62;4.26;3.23;14.77;6.93;5.62
+CM_1213;11.91;15.11;5.69;8.31;6.31;2.27;7.41;6.10;5.22;6.00;6.38;2.47;7.94;13.05;9.85;3.95;11.95;27.08;4.47;2.74;14.00;6.58;5.38
+CM_1215;12.07;14.91;5.79;8.46;6.35;1.83;7.18;6.43;4.97;6.00;5.99;2.44;8.06;12.92;9.53;4.03;11.89;26.75;4.18;2.86;14.12;6.44;5.37
+CM_1218;11.08;13.95;5.39;9.15;5.53;2.76;7.69;6.09;5.16;5.51;6.07;2.37;7.36;12.55;9.25;3.56;11.42;26.37;4.45;2.51;13.72;6.02;5.24
+CM_1231;12.07;15.48;5.77;8.72;6.25;1.51;8.01;5.56;4.90;6.15;6.51;2.34;8.22;13.15;9.68;3.80;11.71;26.27;4.19;2.95;14.80;6.89;5.01
+CM_1249;11.59;13.52;5.30;7.92;6.68;2.03;7.01;6.26;5.21;5.61;5.90;2.26;7.51;12.39;9.37;3.52;11.59;26.19;4.17;2.44;13.53;6.10;5.28
+CM_1251;10.55;14.18;5.57;8.50;5.70;2.92;7.89;6.01;4.82;5.55;5.51;2.19;7.31;12.23;9.55;3.68;10.80;25.50;4.05;2.74;13.28;6.05;4.92
+CM_1252;12.41;15.25;5.90;8.45;5.92;2.40;7.37;6.31;5.34;6.20;6.07;2.50;8.18;13.06;9.71;4.05;12.58;28.13;4.40;2.83;14.66;7.08;5.45
+CM_1254;11.24;14.73;5.78;9.30;5.47;2.20;7.42;6.24;5.17;6.04;6.39;2.42;7.80;12.82;9.61;3.80;12.23;28.60;4.10;2.58;14.03;6.31;5.21
+CM_1266;11.50;14.30;5.47;8.79;5.96;2.00;6.85;5.49;4.94;5.71;6.18;2.37;7.59;12.65;9.13;3.68;11.73;25.32;4.20;2.78;14.10;6.93;5.17
+CM_1267;12.18;14.97;5.33;8.93;5.94;2.67;8.80;6.52;4.98;6.11;6.60;2.56;8.20;13.10;10.09;3.58;12.13;27.54;3.99;3.01;14.44;6.94;5.34
+CM_1278;11.28;14.48;5.55;9.02;5.73;1.97;7.89;6.12;5.28;5.55;5.89;2.26;7.23;12.79;9.51;3.82;11.49;26.16;4.69;2.75;13.48;6.21;5.27
+CM_1279;10.54;14.30;5.57;9.42;5.18;2.20;7.06;6.04;5.07;5.62;5.85;2.44;7.18;12.86;9.23;3.73;11.22;25.66;4.20;2.48;13.58;6.28;5.33
+CM_1280;11.35;14.82;5.55;8.88;5.65;1.94;7.20;6.33;5.49;6.08;6.37;2.42;7.77;12.76;9.28;3.84;11.78;27.01;4.32;2.82;14.52;7.30;5.50
+CM_1281;10.39;13.57;5.54;8.60;5.71;2.09;6.70;5.53;5.02;5.25;5.76;2.16;7.01;12.45;9.05;3.58;10.66;25.25;4.10;2.68;12.79;6.16;5.08
+CM_1286;10.76;14.59;5.27;8.79;5.84;2.49;7.89;6.17;5.02;5.65;6.17;2.27;7.38;13.01;9.87;3.81;11.25;26.30;4.19;2.73;13.98;6.62;5.26
+CM_1287;11.93;14.82;5.86;9.05;6.92;2.01;7.25;6.59;5.25;5.91;6.82;2.37;7.85;12.86;9.54;3.87;12.37;27.50;4.23;3.05;14.48;6.55;5.40
+CM_1293;11.00;14.82;5.58;9.65;5.83;1.96;8.67;6.39;5.09;5.81;5.87;2.41;7.46;13.19;9.76;3.91;11.53;26.79;4.22;2.80;14.10;6.16;5.08
+CM_1294;10.67;14.67;5.63;9.72;5.30;2.03;7.58;6.22;5.25;5.80;5.79;2.42;7.31;12.72;9.40;3.80;11.60;26.32;4.37;2.63;13.69;6.41;5.31
+CM_1295;11.26;15.39;5.64;8.86;5.95;2.89;8.58;6.38;5.05;5.88;6.10;2.37;7.50;13.17;9.84;3.80;11.36;26.76;4.15;3.01;14.07;6.76;5.22
+CM_1296;12.41;14.98;5.55;8.77;5.30;2.06;8.03;6.26;5.12;5.69;6.08;2.26;7.71;13.02;9.39;3.58;12.55;27.19;4.42;2.94;14.06;6.34;5.20
+CM_1297;10.58;14.38;5.75;8.79;5.55;2.17;7.98;6.25;4.86;5.49;5.70;2.32;7.18;13.03;9.76;3.67;10.67;25.16;3.86;2.77;13.53;6.32;4.98
+CM_1298;10.30;14.26;5.25;8.72;4.98;2.58;8.08;5.16;4.85;5.69;5.69;2.33;6.99;12.66;9.25;4.02;11.07;24.77;4.21;2.52;13.74;6.62;4.98
+CM_1299;12.11;15.00;5.78;9.39;5.60;2.13;7.72;6.33;5.33;5.93;6.20;2.41;7.96;13.07;9.74;3.79;12.82;27.64;4.65;3.10;14.43;6.18;5.43
+CM_1300;11.65;15.42;5.72;9.22;5.59;1.90;7.37;5.96;5.07;5.92;6.39;2.27;8.02;13.02;8.88;3.70;12.33;27.44;4.12;2.73;14.67;5.91;5.25
+CM_1626;11.34;14.26;5.42;8.39;5.51;1.42;7.46;6.33;4.93;5.82;6.06;2.26;7.57;12.27;9.00;3.68;11.56;26.29;4.22;2.62;13.30;6.15;4.93
+CM_1627;10.87;14.72;5.53;8.86;5.51;1.75;7.22;6.02;5.27;5.77;5.27;2.18;7.10;13.28;9.69;3.67;11.30;25.70;4.37;2.73;13.35;6.17;5.31
+CM_1628;11.82;14.56;5.61;9.27;5.66;2.03;7.29;5.93;5.28;5.91;6.48;2.34;7.87;12.28;9.11;3.97;12.02;27.17;4.29;2.89;13.76;6.72;5.40
+CM_1631;10.93;14.34;5.39;9.04;6.08;2.23;8.08;6.23;5.05;5.90;5.91;2.36;7.61;13.10;9.22;3.64;11.23;26.63;4.32;2.92;13.86;6.24;4.99
+CM_1633;11.76;14.35;5.49;7.97;6.01;1.67;6.18;6.06;4.88;5.60;5.90;2.40;7.67;12.22;9.17;3.59;11.54;26.10;3.91;2.79;13.50;6.12;4.91
+CM_1634;11.22;14.57;5.84;8.57;5.24;2.35;8.42;6.31;5.00;5.88;5.93;2.52;7.23;12.63;9.25;3.84;11.51;26.13;4.34;2.59;13.34;5.95;5.08
+CM_1637;11.44;14.84;5.65;9.58;6.37;2.49;8.56;6.39;5.22;6.01;5.66;2.39;7.68;13.06;9.82;3.53;12.13;27.34;4.75;2.77;14.53;6.64;5.28
+CM_1639;11.60;13.94;5.53;8.23;6.25;2.37;7.60;6.16;5.33;5.57;6.10;2.09;7.42;12.56;9.17;3.52;11.56;26.15;4.22;3.06;13.83;6.00;5.28
+CM_1640;12.11;15.06;5.53;8.88;6.28;1.56;7.94;6.59;5.54;6.23;5.62;2.38;7.73;12.83;9.66;3.63;12.22;27.26;4.79;2.97;14.57;6.45;5.55
+CM_1641;12.14;14.60;5.57;8.61;6.14;1.94;8.28;6.35;5.12;5.64;6.21;2.28;7.56;12.56;9.51;3.67;12.33;27.17;4.46;2.90;13.86;6.50;5.08
+CM_1642;11.57;14.18;5.66;8.84;5.95;2.55;7.51;6.38;5.20;5.81;6.30;2.25;7.81;13.04;9.19;3.72;11.74;27.61;4.16;2.83;13.49;6.50;5.27
+CM_1643;11.50;15.13;5.50;8.92;5.44;1.90;8.10;6.15;5.03;5.85;6.46;2.32;7.76;13.50;8.75;3.37;11.51;27.03;4.01;3.10;14.18;6.11;5.14
+CM_1644;11.84;14.98;5.63;9.44;5.88;1.81;7.81;6.38;5.39;6.23;6.51;2.38;8.28;13.00;8.75;4.09;11.99;27.66;4.18;3.17;14.77;6.96;5.67
+CM_1645;11.34;14.79;5.65;9.49;5.61;1.62;8.15;6.50;4.92;6.05;6.04;2.25;7.85;12.66;9.22;3.60;11.67;26.76;4.00;2.67;13.98;6.49;4.90
+CM_1646;11.31;14.26;5.52;8.50;5.96;2.32;8.27;6.41;5.03;5.49;6.28;2.32;7.63;12.75;9.31;3.66;11.35;26.54;4.16;2.71;13.66;6.80;5.18
+CM_1648;12.15;14.83;5.78;9.15;5.97;2.45;8.04;6.36;5.10;5.78;6.70;2.41;7.88;13.12;9.91;3.80;12.22;27.62;4.30;3.03;14.23;6.78;5.12
+CM_1650;11.33;14.63;5.50;8.03;5.75;1.45;6.45;5.66;4.96;5.62;5.93;2.48;7.64;12.64;9.01;3.66;11.71;26.34;4.00;2.70;13.88;6.52;5.14
+CM_1651;12.01;14.70;5.13;8.73;5.62;2.51;7.85;6.39;5.32;5.65;6.50;2.39;7.87;12.82;9.08;3.67;11.49;27.15;4.11;3.04;14.10;6.37;5.32
+CM_1654;11.54;15.03;5.55;8.58;5.71;1.59;8.02;6.00;5.25;6.08;5.93;2.51;7.58;13.37;9.41;4.01;11.99;27.09;4.14;2.79;13.65;6.36;5.37
+CM_1656;11.73;14.87;5.68;9.22;5.45;1.60;7.98;6.71;4.97;6.14;6.19;2.34;8.03;12.67;9.66;4.03;11.81;27.10;4.09;2.69;13.81;6.58;5.14
+CM_1984;12.67;15.39;5.80;9.20;6.09;1.88;7.85;5.67;5.48;6.11;6.48;2.16;8.20;13.02;9.80;3.75;12.97;28.12;4.54;3.09;14.95;7.18;5.25
+CM_1985;11.47;15.10;5.62;9.03;5.29;2.29;7.48;5.74;5.07;6.33;6.30;2.23;7.90;12.91;9.57;4.41;11.90;26.13;3.97;2.67;14.48;6.97;4.93
+CM_1986;11.48;14.96;5.74;8.96;6.06;2.06;6.51;6.22;5.12;5.98;5.54;2.19;7.66;13.11;9.67;3.62;11.75;26.63;4.76;2.55;13.63;6.24;5.29
+CM_1987;12.09;14.87;5.81;9.26;5.48;2.09;7.41;6.45;5.17;5.94;6.40;2.38;7.94;12.59;9.19;3.81;12.04;27.31;4.62;3.09;14.43;6.23;5.25
+CM_1988;12.35;14.69;5.62;8.70;5.60;2.39;6.82;6.20;4.98;5.83;6.59;2.29;8.23;12.81;9.42;3.64;12.15;27.30;4.33;2.75;14.44;6.23;5.20
+CM_2043;12.04;14.81;5.58;8.40;6.02;2.65;6.95;6.52;5.12;5.97;6.39;2.36;7.93;12.79;9.45;3.70;12.14;27.08;4.14;3.23;14.34;6.35;5.08
+CM_2055;11.58;14.45;5.63;8.83;6.02;2.23;7.06;5.97;4.99;5.80;6.51;2.28;7.96;12.63;9.17;3.96;11.54;25.79;4.19;2.87;14.21;6.33;5.21
+CM_2057;12.38;15.20;5.90;8.88;5.86;3.03;7.59;5.90;5.20;6.41;6.10;2.36;8.27;12.90;9.81;3.97;12.58;27.95;4.58;2.93;15.07;6.27;5.06
+CM_2058;11.06;14.56;5.32;8.77;5.89;2.04;8.66;6.42;5.07;5.64;5.79;2.29;7.05;13.06;9.64;3.63;11.20;25.87;4.34;2.72;13.46;6.26;5.31
+CM_2059;11.88;13.92;5.40;8.38;5.82;2.13;7.45;6.17;5.10;5.62;6.00;2.23;7.68;11.98;9.21;3.36;11.91;26.48;4.33;2.72;13.45;6.06;5.42
+CM_2060;11.67;14.28;5.67;9.16;5.68;2.37;7.63;6.44;4.88;5.69;5.89;2.23;7.68;12.52;9.46;3.74;12.03;26.62;4.20;2.46;13.55;6.20;4.90
+CM_2062;11.45;14.54;5.49;9.14;5.91;1.64;6.45;6.22;5.12;5.73;5.81;2.24;7.67;12.78;9.19;3.75;11.89;26.88;4.70;2.78;14.01;6.25;5.27
+CM_2063;12.12;15.31;5.77;8.89;5.87;2.67;7.58;5.81;5.10;5.86;6.72;2.40;8.06;13.12;9.79;3.74;12.74;27.03;4.16;2.84;14.78;6.91;5.19
+CM_2064;11.84;14.59;5.63;8.87;5.95;2.14;6.76;6.30;5.12;5.77;6.36;2.39;7.96;12.40;9.89;3.58;12.19;27.03;4.44;2.82;13.88;6.56;5.20
+CM_2070;12.00;14.42;5.47;8.67;5.99;2.58;8.35;6.55;5.01;5.51;6.07;2.54;7.64;12.88;9.90;3.45;11.73;27.38;4.33;2.77;14.26;6.54;5.03
+CM_2082;11.55;14.52;5.34;8.98;6.00;2.01;8.34;6.54;5.22;5.63;6.02;2.29;7.63;12.73;9.59;3.57;11.78;26.43;4.47;2.78;13.95;6.42;5.34
+CM_2375;12.90;15.09;5.71;9.15;5.61;2.24;7.67;6.49;5.01;6.14;6.41;2.20;8.12;12.56;9.23;3.68;12.60;27.71;4.61;3.27;14.60;6.84;4.99
+CM_2409;12.53;15.45;5.92;9.22;5.55;1.54;5.92;6.01;5.15;6.29;6.73;2.36;8.60;12.61;9.21;3.86;12.53;28.09;4.23;2.98;14.58;6.56;5.34
+CM_2451;12.38;14.36;5.55;8.64;6.31;1.93;6.70;5.90;5.17;5.98;6.03;2.28;8.36;12.62;9.50;4.04;12.27;27.89;4.80;2.85;14.38;6.62;5.25
+CM_2454;11.76;14.91;5.63;9.62;5.79;2.12;6.63;6.16;5.25;6.04;6.56;2.35;8.08;12.45;9.48;3.92;12.39;27.28;3.98;3.17;14.28;6.66;5.12
+CM_2461;11.92;15.10;5.96;10.05;5.66;1.76;8.04;6.75;5.21;6.29;6.17;2.43;7.88;13.01;9.86;4.00;12.04;27.63;4.46;2.84;13.98;6.55;5.24
+CM_2462;11.39;14.48;5.52;9.31;5.77;1.93;7.35;5.98;5.02;5.87;5.86;2.32;7.42;12.77;9.52;3.43;11.44;26.00;4.15;2.97;13.38;6.20;5.12
+CM_2463;11.95;14.26;5.64;8.72;5.21;2.18;7.21;6.44;5.07;5.79;5.91;2.58;7.57;12.83;9.23;3.70;11.65;26.48;3.93;3.02;13.91;6.26;5.15
+CM_2552;11.10;13.97;5.64;8.29;6.03;1.63;6.42;6.62;5.14;5.45;5.71;2.24;7.05;12.55;9.15;3.74;10.97;25.33;4.29;2.75;13.17;5.68;5.24
+CM_2553;10.81;13.83;5.76;8.27;6.14;2.16;6.48;5.52;5.06;5.26;5.63;2.21;6.78;12.89;9.21;3.68;10.56;23.66;4.12;2.38;13.16;5.72;4.95
+CM_2554;12.52;14.85;5.40;8.38;6.04;1.55;6.77;6.66;5.14;6.16;6.58;2.31;8.43;12.45;9.67;3.92;12.25;27.53;4.24;2.98;14.66;7.07;5.14
+CM_2556;9.83;12.87;5.47;7.85;5.89;2.20;6.60;5.45;5.17;5.14;5.21;2.17;6.45;12.18;8.61;3.88;10.01;22.38;3.73;2.48;12.47;5.01;5.35
+CM_2565;12.44;14.98;5.81;8.88;5.99;1.75;5.79;6.66;5.00;6.22;6.97;2.30;8.25;12.55;9.99;3.88;12.34;27.69;4.00;2.88;14.61;6.59;5.00
+CM_2567;11.15;14.57;5.75;8.46;5.95;1.17;7.21;6.34;5.19;5.55;5.87;2.40;7.37;12.87;9.10;3.72;11.33;26.11;4.15;3.09;13.90;6.09;5.33
+CM_2568;11.45;14.31;5.54;8.27;5.55;2.06;8.57;5.49;5.46;5.55;6.10;2.40;7.20;12.66;9.01;3.70;11.03;24.94;4.08;2.74;13.94;6.08;5.54
+CM_2570;11.60;15.21;5.57;9.05;4.90;2.04;7.64;5.48;4.93;5.85;6.17;2.23;8.09;12.65;9.16;3.65;11.64;25.48;4.41;2.90;14.65;6.47;5.12
+CM_2571;11.02;14.39;5.60;9.08;5.76;1.99;7.90;6.39;5.07;5.38;6.14;2.18;7.30;12.83;9.21;3.45;11.26;25.84;4.34;2.81;13.67;6.31;5.18
+CM_510;10.62;13.18;5.21;8.14;5.34;2.43;7.12;6.14;5.12;5.41;5.38;2.19;6.88;11.98;9.01;3.73;10.29;24.60;4.22;2.48;13.13;5.77;5.12
+CM_541;12.32;14.99;5.48;9.14;4.86;2.01;6.19;6.33;5.06;6.01;6.37;2.41;8.16;12.63;8.87;4.01;12.22;27.20;4.17;2.74;14.21;6.50;5.37
+CM_551;11.20;14.30;5.73;8.45;5.42;2.50;8.34;6.04;5.05;5.56;5.64;2.17;7.37;12.69;9.75;3.73;11.28;25.95;4.43;2.63;13.47;6.41;5.20
+CM_616;12.12;14.75;5.76;8.54;5.26;2.18;8.01;6.01;4.93;5.66;6.47;2.49;8.23;12.94;9.45;4.14;12.07;26.19;4.51;2.78;14.26;6.60;4.96
+CM_638;12.17;15.16;5.72;8.23;6.40;2.56;6.60;6.27;5.32;6.25;6.23;2.32;7.70;13.03;9.76;3.95;12.00;27.26;4.38;2.98;14.75;6.84;5.41
+CM_704;11.40;14.47;5.24;8.78;5.65;2.23;6.80;5.86;5.20;5.72;6.20;2.37;7.77;12.52;8.67;3.74;11.91;27.13;4.24;2.81;14.10;6.05;5.48
+UFES 1123;12.07;14.83;5.45;8.81;6.65;2.21;7.16;6.66;5.35;6.08;6.32;2.27;7.68;12.88;9.51;3.71;12.03;27.75;4.30;2.91;14.35;6.50;5.28
+UFES 1118;11.39;14.18;5.54;9.06;6.08;1.67;7.69;5.94;5.00;5.64;6.05;2.11;7.45;12.18;9.37;3.73;11.65;26.05;4.22;2.71;13.74;6.74;5.02
+UFES 1117;11.81;14.70;5.30;9.26;6.11;1.75;8.58;6.35;5.29;6.33;6.79;2.45;8.30;12.69;9.50;3.86;12.54;27.23;4.33;2.92;14.74;6.79;5.30
+UFES 1116;11.46;14.43;5.37;7.79;5.91;1.96;7.23;6.15;5.07;6.07;5.92;2.19;7.25;12.32;8.86;3.76;11.08;25.93;3.72;2.53;13.83;6.39;5.22
+UFES 1070;12.54;15.15;5.83;8.67;5.97;1.63;7.21;6.46;5.26;6.32;6.49;2.53;8.01;12.89;9.15;3.81;;28.02;4.42;2.75;14.95;6.78;5.33
+UFES 1069;11.36;14.63;5.62;8.53;6.15;2.19;8.45;6.48;4.99;5.48;5.89;1.90;7.29;12.94;8.92;3.64;11.52;26.46;3.95;2.46;13.65;6.53;5.14
+UFES 1067;10.84;14.45;5.40;8.73;6.28;1.95;6.96;6.36;5.05;5.48;5.81;1.94;6.93;12.66;8.83;3.39;11.27;25.91;4.00;2.79;13.52;6.06;5.13
+UFES 1042;9.81;13.07;5.54;8.96;6.07;1.92;8.09;5.31;4.64;5.33;5.74;1.94;7.07;12.36;9.15;3.56;10.56;24.04;3.81;2.29;12.73;5.76;4.74
+UFES 1041;12.09;14.61;5.40;8.47;6.05;1.87;6.27;6.30;4.95;6.01;6.51;2.41;8.19;12.47;9.47;4.19;11.40;27.98;4.10;2.84;14.05;6.79;5.07
+UFES 1040;11.82;14.14;5.26;8.24;6.02;1.72;8.28;6.09;5.09;5.69;6.21;2.16;7.65;12.26;9.05;3.52;11.69;26.48;4.25;2.69;14.08;6.41;5.16
+UFES 1039;11.25;13.91;5.36;8.59;5.95;1.74;7.45;6.02;4.89;5.93;5.78;2.21;7.37;12.06;8.81;3.74;11.70;26.15;4.00;2.59;13.55;6.35;5.01
+UFES 1071;11.57;14.64;5.55;9.04;5.70;2.33;7.07;6.24;4.94;5.76;5.89;2.09;7.78;12.55;9.16;4.08;11.90;26.50;4.20;2.72;14.15;6.67;5.03
+UFES 1080;10.88;13.96;5.55;8.01;5.88;2.00;8.25;6.07;5.19;5.51;5.37;2.14;6.95;12.79;9.12;3.76;10.83;25.55;4.19;2.61;13.74;5.98;5.20
+UFES 1085;11.91;14.50;5.40;8.53;6.05;2.25;8.63;6.50;5.30;5.83;6.14;2.16;7.32;12.91;9.19;3.73;12.06;27.14;4.03;2.81;14.26;6.49;5.31
+UFES 1090;11.17;14.36;5.52;8.63;5.71;2.86;8.23;6.41;5.27;6.11;5.74;2.14;7.64;12.64;9.51;3.93;11.29;26.88;4.55;2.71;14.13;6.43;5.30
+UFES 1092;10.92;13.74;5.18;7.71;5.44;1.94;8.68;5.98;5.15;6.05;6.16;2.33;7.18;11.97;9.04;3.51;10.88;25.64;4.14;2.49;13.52;6.52;5.23
+UFES 1095;11.32;14.33;5.69;9.07;5.65;2.61;8.10;6.31;5.22;6.04;6.03;2.14;7.33;12.64;9.36;3.64;11.60;27.05;4.09;2.90;13.16;6.20;5.24
+MN 63113;11.03;13.97;5.21;8.04;5.62;1.92;7.51;6.46;4.87;5.33;5.81;2.12;7.07;12.33;8.97;3.47;11.13;25.47;3.89;2.80;13.42;6.21;5.08
+MN 63114;11.80;14.50;5.34;8.59;5.74;2.51;9.07;6.18;4.73;5.99;6.20;2.35;8.02;12.31;9.59;3.92;11.84;26.96;4.25;2.98;13.83;6.42;5.00
+MN 63115;10.71;13.98;5.19;8.55;5.07;1.62;8.97;6.41;4.83;5.66;6.29;1.92;7.56;11.99;8.77;3.52;11.50;23.94;3.94;2.96;13.65;6.32;5.07
+MN 48027;11.59;14.63;5.46;8.06;5.53;1.27;7.47;6.30;4.91;5.52;6.12;2.17;7.54;12.07;8.92;3.44;11.67;26.28;4.12;2.85;13.93;6.67;5.03
+MN 48028;11.02;14.55;5.54;8.14;6.35;2.14;8.81;6.26;5.11;5.24;5.88;2.13;6.97;12.72;9.29;3.49;11.60;26.21;4.12;2.86;13.62;6.39;5.24
+MN 48030;11.14;14.49;5.01;7.99;5.54;2.04;9.61;5.98;4.76;5.62;5.25;2.16;7.22;12.90;8.68;3.57;10.98;25.35;4.18;2.71;13.17;6.30;5.04
+MN 32631;10.51;14.05;5.47;8.80;6.31;2.16;8.12;6.92;4.73;5.76;5.70;2.32;6.57;12.76;9.19;4.00;10.88;25.75;3.79;2.44;13.09;5.90;4.87
+MN 32637;9.81;13.79;5.35;8.81;6.10;1.79;7.62;6.19;4.55;5.56;5.96;2.31;7.04;12.47;9.46;4.07;10.37;25.29;3.37;2.52;13.44;5.91;4.77
+MN 55734;11.93;15.50;5.21;9.46;5.80;1.51;6.80;6.45;4.91;6.19;6.38;2.07;7.76;12.70;9.10;3.48;12.51;27.41;4.28;3.22;14.89;6.69;4.98
+MN 75783;11.56;14.42;5.06;9.21;5.59;2.06;6.85;6.19;4.35;5.77;6.13;2.23;7.57;12.51;9.27;3.68;11.39;26.65;3.39;2.66;13.97;5.96;4.51
+MN 69584;11.38;14.14;5.36;8.55;6.26;1.85;7.21;6.37;5.24;5.63;5.75;2.21;7.34;12.71;9.64;3.56;11.24;26.26;3.94;2.73;14.06;6.10;5.30
+MN 69597;11.29;14.28;5.29;9.22;5.88;2.10;8.77;6.24;4.98;5.30;6.57;2.28;7.59;12.70;9.07;3.65;11.71;26.87;4.00;2.82;13.83;6.10;5.14
+MN 69621;12.34;15.30;5.58;7.66;6.45;2.76;8.60;6.98;5.22;5.80;7.01;2.59;8.08;13.24;9.45;3.98;12.93;28.37;4.28;3.29;15.27;7.18;5.40
+MN 69640;12.12;15.03;5.71;8.33;5.91;2.42;8.80;6.62;5.20;5.87;6.47;2.47;8.57;12.80;9.95;4.28;12.35;28.18;4.58;3.08;14.77;7.14;5.39
+MN 69654;12.72;14.79;5.32;7.35;5.63;2.80;6.94;6.24;5.24;5.98;6.33;2.38;7.70;12.57;9.83;3.53;11.62;27.54;4.66;2.79;14.56;7.04;5.25
+MN 69655;11.39;14.32;5.03;7.96;5.74;2.02;7.39;6.40;5.02;5.25;5.94;2.20;7.12;12.66;9.32;3.53;11.28;25.77;4.10;2.31;13.50;6.41;5.12
+MN 69657;11.35;14.77;5.94;9.09;6.12;1.62;6.64;6.55;5.28;5.16;5.91;2.26;7.61;12.82;10.02;3.94;11.87;27.54;4.45;3.10;14.46;6.59;5.26
+MN 69666;10.41;14.91;5.43;9.53;6.60;2.51;7.70;6.39;5.43;5.42;5.83;2.18;7.52;12.93;10.19;3.57;12.04;27.25;4.66;2.60;14.25;6.45;5.34
+MN 69667;11.03;14.15;5.57;9.19;5.44;2.21;7.69;6.13;4.95;5.96;5.99;2.38;7.50;12.40;9.69;3.84;11.59;26.34;3.92;2.55;13.63;6.66;4.90
+MN 69669;11.37;14.62;5.25;7.87;6.51;2.25;8.05;6.54;4.98;5.55;6.34;2.20;7.50;12.42;9.46;3.76;11.72;26.58;3.80;2.69;13.89;6.53;5.00
+MN 69673;11.70;14.21;5.75;7.89;6.42;1.45;6.54;6.28;5.27;5.29;5.87;2.30;7.02;12.93;10.06;3.99;11.46;25.84;3.97;2.59;13.74;6.59;5.12
+MN 77791;12.26;15.03;5.38;9.53;5.53;2.19;8.70;6.52;5.12;6.19;6.53;2.28;8.47;12.41;9.98;3.79;12.14;27.61;4.54;3.07;14.70;7.00;5.21
+MN 48065;10.89;14.55;5.64;8.62;6.44;1.95;5.27;6.24;4.83;5.89;6.14;2.16;7.70;12.32;9.15;3.60;11.55;26.70;3.96;2.62;14.00;6.62;4.99
+MN 71903;11.13;14.05;5.36;8.62;5.63;1.79;9.04;6.56;4.46;5.72;5.71;2.07;7.08;12.48;9.51;4.06;10.59;25.84;3.78;2.77;13.69;6.21;4.66
+MN 71942;11.78;15.48;5.40;10.50;6.08;2.32;7.66;6.41;4.60;5.99;6.62;2.39;8.48;13.30;9.64;4.02;13.02;28.92;4.01;3.20;15.33;6.69;4.81
+MN 51664;10.60;14.07;4.57;9.25;5.74;2.52;7.64;6.68;4.17;6.32;5.80;2.11;6.35;13.16;8.64;3.69;10.72;25.08;4.07;3.16;13.13;6.26;4.50
+MN 42002;11.50;15.84;5.44;9.85;6.02;1.96;7.35;6.63;4.55;6.44;6.50;2.47;8.19;13.28;9.86;4.40;11.63;28.22;3.38;2.61;15.16;6.93;4.94
+MN 54491;11.89;14.96;5.75;8.53;6.75;2.70;9.58;6.46;4.51;5.87;6.62;2.46;8.18;13.44;9.57;4.16;11.85;26.58;3.39;2.94;14.21;6.23;4.89
+MN 55735;9.89;13.74;5.52;8.64;5.94;2.86;7.39;6.34;4.82;5.68;4.89;1.74;6.55;12.32;9.76;3.80;10.82;24.63;4.01;2.81;12.80;6.16;4.94
+MN 55736;10.09;13.93;5.22;9.50;5.11;2.45;8.60;6.05;4.71;5.55;5.30;2.01;6.88;12.19;8.74;3.53;10.97;25.39;4.21;2.68;12.92;6.29;4.92
+MN 55737;10.74;13.35;5.33;8.63;5.92;2.05;7.35;6.00;4.61;5.30;5.32;1.87;7.13;12.25;9.19;3.31;11.00;24.95;3.78;2.74;12.81;5.92;4.81
+MN 35910;11.37;14.25;5.32;7.90;6.00;2.29;7.26;5.85;5.42;5.87;6.10;2.39;7.38;12.32;9.02;3.73;11.57;26.57;4.09;2.57;13.77;6.66;5.48
+MN 35912;11.55;14.94;5.50;9.20;6.11;2.10;7.98;6.46;4.82;5.69;6.13;2.02;7.86;12.55;9.03;3.44;12.16;26.79;3.87;2.95;13.90;6.50;4.97
+MN 35919;11.11;14.03;5.14;9.34;5.08;2.18;8.92;5.91;4.75;5.71;5.81;1.85;7.55;11.87;9.03;3.41;11.64;26.37;4.11;2.93;13.52;6.37;4.96
+MN 35921;10.98;14.12;5.09;8.87;5.31;2.05;8.14;6.06;4.82;5.54;5.88;2.08;7.15;12.46;8.93;3.48;10.77;26.23;3.81;2.56;13.44;6.32;4.97
+MN 35922;11.61;14.69;5.38;9.04;5.90;1.90;8.46;6.46;4.73;5.89;5.96;2.28;7.35;12.36;9.05;3.51;11.78;27.31;4.03;2.76;13.75;6.33;4.97
+MN 35923;10.26;14.04;5.40;8.64;6.35;2.65;8.88;6.30;4.69;5.41;5.40;2.02;7.14;12.35;9.55;3.37;10.64;25.25;3.93;2.81;13.59;6.43;4.83
+MN 35924;10.48;14.47;5.38;8.70;6.49;2.04;8.98;6.34;4.85;5.71;5.61;2.14;7.06;12.36;9.05;3.17;11.11;25.82;3.76;2.74;13.65;6.35;5.02
+MN 35926;10.96;14.05;5.17;9.34;5.77;2.30;8.03;6.17;4.78;5.77;5.45;2.23;7.24;12.05;8.83;3.28;11.42;26.40;4.08;2.73;13.62;6.75;4.94
+MN 35927;11.69;14.33;5.33;9.23;5.27;2.09;7.24;5.96;4.62;5.84;5.87;2.03;7.79;11.60;8.63;3.54;11.98;26.36;4.09;2.96;14.23;6.93;4.73
+MN 62819;10.88;14.55;5.42;9.29;5.23;1.81;6.24;6.21;4.78;5.97;6.12;2.21;7.72;12.08;8.95;3.64;11.69;26.21;3.93;2.93;14.05;6.64;4.92
+MN 69680;11.46;15.10;5.14;9.00;6.86;2.18;6.56;6.64;4.77;5.97;6.74;2.21;8.27;12.76;9.78;3.98;11.95;27.92;3.55;2.78;14.48;6.49;4.98
+MN 69711;11.75;14.98;5.25;9.48;5.72;2.60;8.21;6.42;5.04;5.51;6.03;2.09;7.63;12.67;9.75;3.45;12.14;26.83;4.42;2.66;13.94;6.50;5.15
+MN 74059;10.95;13.71;5.43;8.08;6.57;2.32;8.44;5.30;4.72;5.15;6.00;2.14;7.01;12.41;9.27;3.93;11.54;25.89;3.83;2.76;13.65;5.83;4.76
+MN 78571;10.40;13.49;5.34;8.72;6.03;1.88;7.48;5.67;4.93;5.18;6.03;2.27;7.16;11.86;8.91;3.67;10.80;25.51;3.68;2.62;14.04;6.24;5.18
+MN 78611;10.60;14.06;5.61;8.78;5.30;2.55;7.36;5.43;4.88;5.53;6.19;2.18;7.55;12.67;9.33;4.15;11.51;26.00;3.88;2.69;13.25;5.72;5.01
+MN 78685;11.07;15.23;5.59;8.87;5.50;2.15;8.68;5.21;4.81;5.68;6.01;1.97;7.47;12.91;9.55;3.68;11.45;26.74;4.47;3.08;14.31;6.56;5.09
+MN 78693;11.62;14.12;5.56;8.89;5.45;1.38;7.91;5.00;4.56;5.68;5.87;1.66;8.01;12.14;9.22;3.51;11.75;26.75;4.38;2.61;13.70;6.61;4.75
+MN 78694;11.36;14.54;5.83;8.81;5.67;2.42;8.04;5.43;5.18;5.66;5.65;2.16;7.78;12.70;9.96;3.92;11.66;27.09;4.26;2.88;14.42;6.21;5.37
+MN 78697;9.88;13.43;5.17;7.66;5.86;1.87;7.64;4.89;4.90;5.05;5.44;1.67;6.49;12.12;8.61;3.44;10.39;24.13;3.81;2.23;12.63;5.83;4.86
+MN 78702;10.38;13.62;5.62;8.46;5.94;1.61;7.20;5.31;4.75;5.02;5.59;1.97;6.90;12.51;9.32;3.72;10.67;24.91;4.14;2.45;13.32;5.73;4.79
+MN 77123;11.87;14.23;5.36;8.59;6.00;2.18;7.37;5.72;5.34;5.58;6.33;2.17;8.14;12.08;8.87;3.44;11.85;26.93;4.73;2.89;14.54;6.71;5.19
+MN 77113;10.50;14.87;5.49;9.00;5.73;2.40;7.77;5.50;5.02;5.76;6.30;2.16;7.72;12.80;8.98;3.37;11.58;26.45;4.19;2.85;13.64;6.55;5.05
+MN 77102;12.15;14.76;5.55;8.17;5.91;2.40;7.59;5.21;4.96;5.70;6.19;1.98;8.00;12.58;9.19;3.33;12.16;27.02;4.22;2.75;14.28;6.71;4.94
+MN 77121;11.45;13.83;5.35;8.41;5.64;1.64;7.99;5.09;4.84;5.55;5.95;1.98;7.62;12.46;9.12;3.56;11.78;25.87;4.16;2.71;13.53;6.66;5.09
+MN 77116;10.95;15.06;5.49;9.52;5.43;1.62;8.20;5.72;4.96;5.86;6.11;2.25;7.71;12.96;8.76;3.42;11.80;26.79;4.36;2.71;13.98;6.64;5.09
+MN 77108;10.80;14.12;5.27;8.82;5.44;1.69;7.89;5.30;4.79;5.39;5.95;1.65;7.33;12.09;8.29;3.23;11.02;25.61;3.97;2.67;13.40;6.11;5.05
+MN 77105;11.14;13.63;5.49;8.54;6.11;1.80;6.19;5.39;4.97;5.13;6.19;2.20;7.25;12.32;9.62;3.62;11.20;25.82;3.84;2.56;14.58;6.59;4.71
+MN 77119;10.56;14.43;5.53;9.05;5.48;2.37;8.04;5.76;5.06;5.38;6.08;2.30;7.62;12.69;9.57;3.37;11.33;26.59;4.34;2.64;14.05;6.51;5.08
+MN 77122;10.85;14.27;5.31;8.68;5.48;2.26;7.48;5.33;4.99;5.53;6.10;1.95;7.31;12.64;8.72;3.33;11.24;25.73;3.99;2.89;13.35;6.27;5.03
+MN 77112;11.16;13.91;5.19;8.76;5.79;1.78;6.93;5.22;4.87;5.50;5.83;2.23;6.99;12.47;9.20;3.20;11.32;25.43;4.27;2.54;13.08;6.32;5.09
+MN 77117;12.32;14.73;5.43;8.69;5.68;1.40;6.85;5.35;4.85;5.38;6.45;2.20;8.02;12.38;8.63;3.39;12.50;27.14;3.93;3.08;14.51;6.74;5.09
+MN 77101;11.07;14.87;5.32;8.67;6.13;2.39;8.35;5.49;5.04;5.64;6.01;2.10;7.58;13.28;9.49;3.45;11.53;26.45;4.30;2.59;14.34;6.98;5.10
+MN 77104;10.37;12.49;4.94;8.22;5.40;2.31;7.40;4.99;4.84;5.43;5.85;2.06;6.95;12.45;8.81;3.34;10.51;24.49;3.92;2.40;13.34;5.71;5.06
+MN 77111;11.54;14.15;5.46;9.00;5.08;2.02;8.01;5.45;5.38;5.67;6.08;2.30;7.73;12.12;8.94;3.51;12.13;26.77;4.54;2.80;14.49;6.31;5.06
+MN 70134;12.22;14.90;5.62;9.23;5.24;1.72;7.93;5.54;5.18;5.72;6.74;2.24;8.00;12.59;8.91;3.56;12.72;27.25;4.28;2.93;14.69;6.72;5.21
+MN 77084;11.40;14.52;5.44;8.82;5.17;2.35;8.07;5.25;5.13;6.03;6.36;2.25;8.33;12.29;8.78;3.66;11.73;27.34;4.77;2.93;14.23;6.66;5.10
+MN 77085;11.08;14.05;5.49;9.24;5.75;2.23;7.40;5.60;5.09;5.48;6.17;2.03;7.77;12.29;9.26;3.17;11.58;26.55;4.25;2.59;13.65;6.46;5.08
+MN 77091;11.60;14.94;5.39;9.28;5.46;1.95;7.94;5.61;4.81;5.42;6.54;2.17;8.35;12.99;9.02;3.58;12.04;27.13;4.09;2.79;14.19;6.58;5.14
+MN 77082;11.61;14.19;5.50;9.48;5.51;1.93;7.99;5.40;4.92;5.75;6.54;2.18;7.93;12.57;9.26;3.49;12.05;26.65;3.82;2.83;13.67;6.21;5.03
+MN 77079;12.04;15.20;5.70;9.28;5.50;2.20;7.87;5.29;5.12;5.98;6.41;2.12;8.10;12.62;8.90;3.74;12.46;27.13;4.03;3.01;14.96;6.53;5.21
+MN 77099;10.43;14.29;4.97;7.86;5.33;2.49;7.51;5.55;4.90;5.22;5.90;1.93;7.25;11.89;8.85;3.49;10.52;25.59;4.17;2.68;13.99;6.72;5.00
+MN 77081;11.27;14.60;5.60;8.62;5.51;1.93;7.28;5.60;5.04;5.69;5.99;2.18;7.58;12.72;8.66;3.61;11.53;26.63;4.28;2.89;13.48;6.37;5.13
+MN 77096;12.00;14.63;5.42;9.30;5.18;2.04;7.24;5.56;4.91;5.98;6.33;2.24;8.21;12.64;8.79;3.38;12.46;27.23;4.50;3.10;14.13;6.42;4.79
+MN 77087;10.56;13.80;5.50;9.14;5.33;2.60;7.93;5.57;5.16;5.50;5.68;2.01;7.21;12.22;8.90;3.24;11.05;25.74;4.15;2.57;13.51;5.98;5.17
+MN 77078;11.28;13.93;5.27;8.72;5.72;1.86;7.72;5.41;5.25;5.65;6.45;2.40;7.98;12.29;8.99;3.62;12.16;26.93;4.33;3.07;13.83;6.23;5.38
+MN 77090;10.43;14.37;5.36;8.45;5.51;1.34;8.37;5.34;4.92;5.03;6.19;1.92;7.18;12.50;8.54;3.31;11.11;25.30;4.01;2.44;13.20;6.41;5.05
+MN 77100;10.79;14.75;5.18;9.22;5.25;1.82;6.71;5.55;4.76;5.67;6.44;2.01;8.01;12.25;9.10;3.61;11.62;26.62;4.09;2.95;13.68;6.39;4.80
+MN 77086;11.81;15.00;5.79;9.09;5.60;2.26;7.84;5.35;4.82;6.13;6.41;1.96;8.30;12.63;9.52;3.87;12.22;27.18;4.34;3.07;13.73;6.94;4.97
+MN 77097;10.94;14.63;5.59;9.01;5.39;1.89;7.57;5.68;5.03;5.63;6.31;2.14;7.85;12.17;8.52;3.54;11.76;27.24;4.42;2.58;14.23;6.69;5.14
+MN 77088;11.55;14.90;5.64;8.83;5.84;2.00;7.04;5.83;5.00;5.57;5.98;2.12;7.81;12.90;9.40;3.60;12.03;26.89;4.35;2.59;14.35;6.78;5.07
+MN 42007;11.55;14.97;5.30;8.42;6.75;1.15;5.79;5.96;4.81;5.86;6.68;2.24;7.76;12.75;9.28;3.67;11.59;27.67;3.65;2.79;14.57;6.17;4.81
+MN 2513;11.13;13.88;5.25;8.63;5.46;1.93;7.11;6.05;4.65;5.25;5.76;1.95;7.39;11.86;8.87;3.43;11.13;25.58;4.28;2.73;13.47;6.16;4.93
+
+From ms_sangiogo em hotmail.com  Mon Mar 20 17:24:51 2017
+From: ms_sangiogo em hotmail.com (=?utf-8?q?Maur=C3=ADcio_Sangiogo?=)
 Date: Mon, 20 Mar 2017 17:24:51 +0000
-Subject: [R-br] Box's M Test (Pollyanna Alves) (Pollyanna Alves)
+Subject: Re: [R-br] Box's M Test (Pollyanna Alves) (Pollyanna Alves)
 In-Reply-To: <mailman.7.1490022003.21583.r-br@listas.c3sl.ufpr.br>
-References: <mailman.7.1490022003.21583.r-br@listas.c3sl.ufpr.br>
 Message-ID: <MWHPR03MB26066DED0D10C4F9A41D1D6A9B3A0@MWHPR03MB2606.namprd03.prod.outlook.com>
 
 Boa tarde Pollyana,
@@ -3108,7 +3168,7 @@ A [R-br] é a lista Brasileira oficial de discussão do programa R e tem o prop�
 >         <r-br em listas.c3sl.ufpr.br>
 > Subject: [R-br] Box's M Test
 > Message-ID:
->         <CAF=U39wgQ5m=A22L-_yfJqS4KRv+Gk=6w8SMttvHe-OxcApCiw em mail.
+>         <CAF=U39wgQ5m=A22L-_yfJqS4KRv+Gk=6w8SMttvHe-OxcApCiw@mail.
 > gmail.com>
 > Content-Type: text/plain; charset="utf-8"
 >
@@ -3168,7 +3228,7 @@ A [R-br] é a lista Brasileira oficial de discussão do programa R e tem o prop�
 > Subject: Re: [R-br] Dúvida de como usar o split com o Anova do pacote
 >         Car
 > Message-ID:
->         <CAFrWFs=nNtO1xcZyi=Wb3WUsgS9_vwD1FwpogvaW29J6+5HAiQ em mail.
+>         <CAFrWFs=nNtO1xcZyi=Wb3WUsgS9_vwD1FwpogvaW29J6+5HAiQ@mail.
 > gmail.com>
 > Content-Type: text/plain; charset="utf-8"
 >
@@ -3251,7 +3311,7 @@ A [R-br] é a lista Brasileira oficial de discussão do programa R e tem o prop�
 > Subject: Re: [R-br] grafico de distribuicao acumulada de uma variavel
 >         continua
 > Message-ID:
->         <CAKrF98nFbZY=_EmUA7yXLX6edTc5bCbCsdywYOwyY7tPhyYT4g em mail.
+>         <CAKrF98nFbZY=_EmUA7yXLX6edTc5bCbCsdywYOwyY7tPhyYT4g@mail.
 > gmail.com>
 > Content-Type: text/plain; charset="utf-8"
 >
@@ -3465,34 +3525,23 @@ https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 
 Fim da Digest R-br, volume 75, assunto 14
 *****************************************
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170320/3912e337/attachment.html>
 
-From fulcris em yahoo.com.br  Tue Mar 21 13:31:26 2017
-From: fulcris em yahoo.com.br (=?UTF-8?Q?f=C3=BAlvia_cristina_oliveira?=)
-Date: Tue, 21 Mar 2017 16:31:26 +0000 (UTC)
+From fulcris em yahoo.com.br  Tue Mar 21 16:31:26 2017
+From: fulcris em yahoo.com.br (=?utf-8?q?f=C3=BAlvia_cristina_oliveira?=)
+Date: Tue, 21 Mar 2017 16:31:26 +0000
 Subject: [R-br] duvida sobre experimento fatorial
-References: <636028349.357727.1490113886705.ref@mail.yahoo.com>
+In-Reply-To: <636028349.357727.1490113886705.ref@mail.yahoo.com>
 Message-ID: <636028349.357727.1490113886705@mail.yahoo.com>
 
 Boa tarde Eu estou tentando rodar os dados de um experimento com dois fatores, os dados estão desbalanceadosEu preciso fazer o desdobramentos desses dados?Outra duvida é sobre os teste de comparação de médias para DIC com dados desbalanceados, no teste de Tukey não houve diferenças para p<0.05, mas no teste de Duncan eu obtive diferença significativa. Qual teste eu devo levar em conta? Posso ser questionada se usar o Duncan?  
 
 Fúlvia Cristina Oliveira Bióloga - UFMS  Mestranda no Programa de Pós-Graduação em ZootecniaProdução animal no Cerrado-Pantanal Universidade Estadual de Mato Grosso do Sul - UEMS Unidade Universitária de Aquidauana - UUA(67) 99610-2812(11) 99538-4088fulcris em yahoo.com.br
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170321/1a0832d3/attachment.html>
 
-From otnetobr em gmail.com  Tue Mar 21 14:14:43 2017
+From otnetobr em gmail.com  Tue Mar 21 17:14:43 2017
 From: otnetobr em gmail.com (Olympio Neto)
-Date: Tue, 21 Mar 2017 14:14:43 -0300
-Subject: [R-br]
-	=?utf-8?q?D=C3=BAvida_de_como_usar_o_split_com_o_Anova_do_?=
-	=?utf-8?q?pacote_Car?=
+Date: Tue, 21 Mar 2017 17:14:43 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09D=C3=BAvida_de_como_usar_o_split_com_o_Anova_do_pacote_Car?=
 In-Reply-To: <CAFrWFs=nNtO1xcZyi=Wb3WUsgS9_vwD1FwpogvaW29J6+5HAiQ@mail.gmail.com>
-References: <CA+8s2wSTD7d01FAm-wsJrFgTzmKeqKUq2UnSKEcyuprK8X8Pcg@mail.gmail.com>
- <CAKrF98=56QDKUyRrKaGWgJy3_hiRN2a5y4-Xr8+TJFcH81qP+g@mail.gmail.com>
- <CAFrWFs=nNtO1xcZyi=Wb3WUsgS9_vwD1FwpogvaW29J6+5HAiQ@mail.gmail.com>
 Message-ID: <CA+8s2wTBzUmHwOBGgSL90A-eZhK8hCdCg+kfPW5eAFRxX6iBLw@mail.gmail.com>
 
 Muito obrigado! Vou ver isso sim!
@@ -3551,17 +3600,12 @@ nandodesouza em gmail.com> escreveu:
 >> código mínimo reproduzível.
 >>
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170321/7cae0897/attachment.html>
 
-From nandodesouza em gmail.com  Tue Mar 21 15:09:39 2017
+From nandodesouza em gmail.com  Tue Mar 21 18:09:39 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
-Date: Tue, 21 Mar 2017 15:09:39 -0300
-Subject: [R-br] duvida sobre experimento fatorial
+Date: Tue, 21 Mar 2017 18:09:39 +0000
+Subject: Re: [R-br] duvida sobre experimento fatorial
 In-Reply-To: <636028349.357727.1490113886705@mail.yahoo.com>
-References: <636028349.357727.1490113886705.ref@mail.yahoo.com>
- <636028349.357727.1490113886705@mail.yahoo.com>
 Message-ID: <CAFrWFsmGNrkBt6GCTas5AmcZHE4za+-uQ-hBzA-GpSCOpxajAg@mail.gmail.com>
 
 Seu desbalanço é por diferentes números de repetições? se for o caso você
@@ -3646,13 +3690,10 @@ E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
 Lattes: http://lattes.cnpq.br/6519538815038307
 Blog: https://producaoanimalcomr.wordpress.com/
 ==========================================
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170321/6613ccce/attachment.html>
 
-From ecacarva em gmail.com  Wed Mar 22 22:29:00 2017
+From ecacarva em gmail.com  Thu Mar 23 01:29:00 2017
 From: ecacarva em gmail.com (Elias Carvalho)
-Date: Wed, 22 Mar 2017 22:29:00 -0300
+Date: Thu, 23 Mar 2017 01:29:00 +0000
 Subject: [R-br] Verificar multicolinearidade
 Message-ID: <CAH8E6UuXRu_AbaXuisbY38N+9mdojODALgZw625p8sDYyoyp_g@mail.gmail.com>
 
@@ -3673,13 +3714,10 @@ Pelo que pesquisei no forum a maioria das informações parece ser antigas
 
 *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
 who has been able to understand the cause of things"*
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170322/5e387c5d/attachment.html>
 
-From elviradebastianii em gmail.com  Thu Mar 23 08:51:42 2017
+From elviradebastianii em gmail.com  Thu Mar 23 11:51:42 2017
 From: elviradebastianii em gmail.com (Elvira De Bastiani)
-Date: Thu, 23 Mar 2017 08:51:42 -0300
+Date: Thu, 23 Mar 2017 11:51:42 +0000
 Subject: [R-br]  Hel in R: Erro (Permission denied)
 Message-ID: <CAExVY4H4quzd71tSW2EY-E-NwjNWXNCCou4au-oSo+44QMr_qg@mail.gmail.com>
 
@@ -3737,13 +3775,10 @@ Mestranda em Ecologia e Conservação
 Laboratório de Ecologia e Evolução de Interações (Leei)
 Universidade Federal do Paraná - UFPR
 Curitiba, Paraná, Brasil
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170323/16225913/attachment.html>
 
-From adrielegbiase em gmail.com  Thu Mar 23 08:56:34 2017
+From adrielegbiase em gmail.com  Thu Mar 23 11:56:34 2017
 From: adrielegbiase em gmail.com (Adriele Giaretta Biase)
-Date: Thu, 23 Mar 2017 08:56:34 -0300
+Date: Thu, 23 Mar 2017 11:56:34 +0000
 Subject: [R-br] Salvar e ler de bando de dados
 Message-ID: <CANjWqYz1wv7c5DSaGhnmiHJE3yXXR4tDRna9_0X7mOUqpAOVOA@mail.gmail.com>
 
@@ -3863,16 +3898,12 @@ Adriele Giaretta Biase.
 Mestre em  Estatística e Experimentação Agropecuária - UFLA.
 Doutora em Estatística e Experimentação Agronômica - ESALQ/ USP
 Contato: (19) 98861-0619.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170323/909022bf/attachment.html>
 
-From felipe.e.barletta em gmail.com  Thu Mar 23 09:59:30 2017
+From felipe.e.barletta em gmail.com  Thu Mar 23 12:59:30 2017
 From: felipe.e.barletta em gmail.com (Felipe)
-Date: Thu, 23 Mar 2017 09:59:30 -0300
-Subject: [R-br] Verificar multicolinearidade
+Date: Thu, 23 Mar 2017 12:59:30 +0000
+Subject: Re: [R-br] Verificar multicolinearidade
 In-Reply-To: <CAH8E6UuXRu_AbaXuisbY38N+9mdojODALgZw625p8sDYyoyp_g@mail.gmail.com>
-References: <CAH8E6UuXRu_AbaXuisbY38N+9mdojODALgZw625p8sDYyoyp_g@mail.gmail.com>
 Message-ID: <9fb910bb-1fd2-6222-16f4-4b177d168f74@gmail.com>
 
 Você pode analisar via matriz de correlação e análise dos autovalores 
@@ -3964,16 +3995,11 @@ Mestrando em Bioestatística(UEM)
 +55 (41)-33287216
 ===================================
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170323/a5e77368/attachment.html>
-
-From fernandohtoledo em gmail.com  Thu Mar 23 12:18:04 2017
+From fernandohtoledo em gmail.com  Thu Mar 23 15:18:04 2017
 From: fernandohtoledo em gmail.com (FHRB Toledo)
-Date: Thu, 23 Mar 2017 09:18:04 -0600
-Subject: [R-br] Salvar e ler de bando de dados
+Date: Thu, 23 Mar 2017 15:18:04 +0000
+Subject: Re: [R-br] Salvar e ler de bando de dados
 In-Reply-To: <CANjWqYz1wv7c5DSaGhnmiHJE3yXXR4tDRna9_0X7mOUqpAOVOA@mail.gmail.com>
-References: <CANjWqYz1wv7c5DSaGhnmiHJE3yXXR4tDRna9_0X7mOUqpAOVOA@mail.gmail.com>
 Message-ID: <CAN55XP55-NtSOu-wv4=c4JW3eF+RLYtB1e4ZAm8vW8tJDBkTGw@mail.gmail.com>
 
 Use tanto no write.table() quanto no read.table() a função paste0() para
@@ -4118,15 +4144,12 @@ r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170323/6a16ba9a/attachment.html>
 
-From edmar_caldas em yahoo.com.br  Thu Mar 23 15:35:14 2017
+From edmar_caldas em yahoo.com.br  Thu Mar 23 18:35:14 2017
 From: edmar_caldas em yahoo.com.br (Edmar Caldas)
-Date: Thu, 23 Mar 2017 18:35:14 +0000 (UTC)
+Date: Thu, 23 Mar 2017 18:35:14 +0000
 Subject: [R-br] Ajuda no calculo entre duas datas
-References: <622578082.1477388.1490294114690.ref@mail.yahoo.com>
+In-Reply-To: <622578082.1477388.1490294114690.ref@mail.yahoo.com>
 Message-ID: <622578082.1477388.1490294114690@mail.yahoo.com>
 
 Pessoal, 
@@ -4157,17 +4180,12 @@ Preciso de uma ajuda em um calculo entre 02 datas. Preciso que o resultado seja 
 Time difference of 38.8 days
 
  Edmar
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170323/fe259198/attachment.html>
 
-From felipe.e.barletta em gmail.com  Thu Mar 23 15:50:56 2017
+From felipe.e.barletta em gmail.com  Thu Mar 23 18:50:56 2017
 From: felipe.e.barletta em gmail.com (Felipe)
-Date: Thu, 23 Mar 2017 15:50:56 -0300
-Subject: [R-br] Ajuda no calculo entre duas datas
+Date: Thu, 23 Mar 2017 18:50:56 +0000
+Subject: Re: [R-br] Ajuda no calculo entre duas datas
 In-Reply-To: <622578082.1477388.1490294114690@mail.yahoo.com>
-References: <622578082.1477388.1490294114690.ref@mail.yahoo.com>
- <622578082.1477388.1490294114690@mail.yahoo.com>
 Message-ID: <131c8c65-6bf3-018b-7eac-2156d00a3343@gmail.com>
 
 Pode usar a função as.integer()
@@ -4188,14 +4206,11 @@ Mestrando em Bioestatística(UEM)
 +55 (41)-33287216
 ===================================
 
-
-From rafareds em gmail.com  Thu Mar 23 15:52:53 2017
+From rafareds em gmail.com  Thu Mar 23 18:52:53 2017
 From: rafareds em gmail.com (Rafael Garcia Cunha)
-Date: Thu, 23 Mar 2017 15:52:53 -0300
-Subject: [R-br] Ajuda no calculo entre duas datas
+Date: Thu, 23 Mar 2017 18:52:53 +0000
+Subject: Re: [R-br] Ajuda no calculo entre duas datas
 In-Reply-To: <622578082.1477388.1490294114690@mail.yahoo.com>
-References: <622578082.1477388.1490294114690.ref@mail.yahoo.com>
- <622578082.1477388.1490294114690@mail.yahoo.com>
 Message-ID: <CAGFfgXLKdctTmCBsjzwC+C9s2W7rQRu9FtE0m5wHrqtfU1yYfg@mail.gmail.com>
 
 floor(idade)
@@ -4248,15 +4263,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 Rafael Garcia Cunha
 
 YNWA
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170323/ae40d9d2/attachment.html>
 
-From edmar_caldas em yahoo.com.br  Fri Mar 24 10:29:47 2017
+From edmar_caldas em yahoo.com.br  Fri Mar 24 13:29:47 2017
 From: edmar_caldas em yahoo.com.br (Edmar Caldas)
-Date: Fri, 24 Mar 2017 13:29:47 +0000 (UTC)
+Date: Fri, 24 Mar 2017 13:29:47 +0000
 Subject: [R-br] Selecionar linhas e colunas
-References: <1189885926.2924989.1490362187384.ref@mail.yahoo.com>
+In-Reply-To: <1189885926.2924989.1490362187384.ref@mail.yahoo.com>
 Message-ID: <1189885926.2924989.1490362187384@mail.yahoo.com>
 
 Bom Dia!
@@ -4265,17 +4277,12 @@ raiox[c(raiox$Fratura=="Ausente","id >= 50",]
 
 
 Edmar
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/2822391a/attachment.html>
 
-From nandodesouza em gmail.com  Fri Mar 24 10:49:52 2017
+From nandodesouza em gmail.com  Fri Mar 24 13:49:52 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
-Date: Fri, 24 Mar 2017 10:49:52 -0300
-Subject: [R-br] Selecionar linhas e colunas
+Date: Fri, 24 Mar 2017 13:49:52 +0000
+Subject: Re: [R-br] Selecionar linhas e colunas
 In-Reply-To: <1189885926.2924989.1490362187384@mail.yahoo.com>
-References: <1189885926.2924989.1490362187384.ref@mail.yahoo.com>
- <1189885926.2924989.1490362187384@mail.yahoo.com>
 Message-ID: <CAFrWFs=sOUnmwRvdmvktb=LZEmb-EQDCf+zVNuS5LsjxZQjqEw@mail.gmail.com>
 
 Acredito que
@@ -4319,15 +4326,12 @@ E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
 Lattes: http://lattes.cnpq.br/6519538815038307
 Blog: https://producaoanimalcomr.wordpress.com/
 ==========================================
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/3a84b7a2/attachment.html>
 
-From edmar_caldas em yahoo.com.br  Fri Mar 24 13:36:46 2017
+From edmar_caldas em yahoo.com.br  Fri Mar 24 16:36:46 2017
 From: edmar_caldas em yahoo.com.br (Edmar Caldas)
-Date: Fri, 24 Mar 2017 16:36:46 +0000 (UTC)
-Subject: [R-br] =?utf-8?b?RnVuw6fDo28gYWdncmVnYXRlLg==?=
-References: <1664930955.3098013.1490373407134.ref@mail.yahoo.com>
+Date: Fri, 24 Mar 2017 16:36:46 +0000
+Subject: =?utf-8?b?W1ItYnJdIEZ1bsOnw6NvIGFnZ3JlZ2F0ZS4=?=
+In-Reply-To: <1664930955.3098013.1490373407134.ref@mail.yahoo.com>
 Message-ID: <1664930955.3098013.1490373407134@mail.yahoo.com>
 
 
@@ -4354,45 +4358,36 @@ agora estou tentando colocar as datas.
 
 
  Edmar
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/ac5ea0df/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 8557 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/ac5ea0df/attachment.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 22535 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/ac5ea0df/attachment-0001.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 12423 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/ac5ea0df/attachment-0002.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 10269 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/ac5ea0df/attachment-0003.png>
 
-From fernandohtoledo em gmail.com  Fri Mar 24 16:04:31 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 8557 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 22535 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 12423 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 10269 bytes
+
+From fernandohtoledo em gmail.com  Fri Mar 24 19:04:31 2017
 From: fernandohtoledo em gmail.com (FHRB Toledo)
-Date: Fri, 24 Mar 2017 13:04:31 -0600
-Subject: [R-br] =?utf-8?b?RnVuw6fDo28gYWdncmVnYXRlLg==?=
+Date: Fri, 24 Mar 2017 19:04:31 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBGdW7Dp8OjbyBhZ2dyZWdhdGUu?=
 In-Reply-To: <1664930955.3098013.1490373407134@mail.yahoo.com>
-References: <1664930955.3098013.1490373407134.ref@mail.yahoo.com>
- <1664930955.3098013.1490373407134@mail.yahoo.com>
 Message-ID: <CAN55XP7tXXsuXgPHzs6SH_N1QqkrmzveEXQbwKihPwNnHPvHNg@mail.gmail.com>
 
 Edmar,
@@ -4451,45 +4446,36 @@ FH
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/93ec49ab/attachment-0001.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 8557 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/93ec49ab/attachment-0004.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 10269 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/93ec49ab/attachment-0005.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 12423 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/93ec49ab/attachment-0006.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 22535 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/93ec49ab/attachment-0007.png>
 
-From cesar.rabak em gmail.com  Fri Mar 24 21:08:41 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 8557 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 10269 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 12423 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 22535 bytes
+
+From cesar.rabak em gmail.com  Sat Mar 25 00:08:41 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Fri, 24 Mar 2017 21:08:41 -0300
-Subject: [R-br] Ajuda no calculo entre duas datas
+Date: Sat, 25 Mar 2017 00:08:41 +0000
+Subject: Re: [R-br] Ajuda no calculo entre duas datas
 In-Reply-To: <622578082.1477388.1490294114690@mail.yahoo.com>
-References: <622578082.1477388.1490294114690.ref@mail.yahoo.com>
- <622578082.1477388.1490294114690@mail.yahoo.com>
 Message-ID: <CAKrF98nOd=f3n8vwBbkqevsU_cpeU49NQiXdLrwXs+Zo11OEcQ@mail.gmail.com>
 
 Edmar,
@@ -4549,18 +4535,12 @@ Cesar Rabak
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/ee80fe69/attachment.html>
 
-From cesar.rabak em gmail.com  Fri Mar 24 21:12:53 2017
+From cesar.rabak em gmail.com  Sat Mar 25 00:12:53 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Fri, 24 Mar 2017 21:12:53 -0300
-Subject: [R-br] Selecionar linhas e colunas
+Date: Sat, 25 Mar 2017 00:12:53 +0000
+Subject: Re: [R-br] Selecionar linhas e colunas
 In-Reply-To: <CAFrWFs=sOUnmwRvdmvktb=LZEmb-EQDCf+zVNuS5LsjxZQjqEw@mail.gmail.com>
-References: <1189885926.2924989.1490362187384.ref@mail.yahoo.com>
- <1189885926.2924989.1490362187384@mail.yahoo.com>
- <CAFrWFs=sOUnmwRvdmvktb=LZEmb-EQDCf+zVNuS5LsjxZQjqEw@mail.gmail.com>
 Message-ID: <CAKrF98m1NqLuaocv0jFZ=gNmokE0-utoxT-MnQQd=yb9ExB4sA@mail.gmail.com>
 
 Na verdade, é melhor:
@@ -4621,17 +4601,12 @@ r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/cdc7c758/attachment.html>
 
-From cesar.rabak em gmail.com  Fri Mar 24 21:19:16 2017
+From cesar.rabak em gmail.com  Sat Mar 25 00:19:16 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Fri, 24 Mar 2017 21:19:16 -0300
-Subject: [R-br] =?utf-8?b?RnVuw6fDo28gYWdncmVnYXRlLg==?=
+Date: Sat, 25 Mar 2017 00:19:16 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBGdW7Dp8OjbyBhZ2dyZWdhdGUu?=
 In-Reply-To: <1664930955.3098013.1490373407134@mail.yahoo.com>
-References: <1664930955.3098013.1490373407134.ref@mail.yahoo.com>
- <1664930955.3098013.1490373407134@mail.yahoo.com>
 Message-ID: <CAKrF98=JHYQ4MSJj9s0veUrE76i6DAeAMPJwzyN+vtZ1DCCirQ@mail.gmail.com>
 
 o parâmetro FUN só pode aparecer uma vez em aggregate, se você precisa de
@@ -4682,70 +4657,46 @@ ex. no s/caso, ...function(data_int, valor_int).
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/a1f20746/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 22535 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/a1f20746/attachment.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 12423 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/a1f20746/attachment-0001.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 10269 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/a1f20746/attachment-0002.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 8557 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170324/a1f20746/attachment-0003.png>
 
-From julimarsp.r em gmail.com  Sat Mar 25 00:00:12 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 22535 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 12423 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 10269 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 8557 bytes
+
+From julimarsp.r em gmail.com  Sat Mar 25 03:00:12 2017
 From: julimarsp.r em gmail.com (Julimar Pinto)
 Date: Sat, 25 Mar 2017 03:00:12 +0000
 Subject: [R-br] [OFF-TOPIC]
 In-Reply-To: <CAM=r93wSJhM1aa1hBHKc_vZNwmB7DbHDtc10sWkur+2iG_aG9Q@mail.gmail.com>
-References: <CAM=r93zHB2xfUkeo=mWhTvf=u1asVer7VGR6=Ks8zPLQUXLzEQ@mail.gmail.com>
- <CAM=r93z0Om0YaRyoVHFy9svfpJHvTuxMVcxo0G7Pd5Vj1kXzjQ@mail.gmail.com>
- <CAM=r93w_4cwSMFs9pV=hO30EUXc_DFf4n-EfiWBDr-J1trQFEQ@mail.gmail.com>
- <CAM=r93w8Ri3O33nJG=w-Mtz2nDDA9KJd+PzGtnTy8gHOiT3PTA@mail.gmail.com>
- <CAM=r93yFqnngNr_JiDfCnu5sXX0COTvr93eaK0ojJ_GNBJzN4A@mail.gmail.com>
- <CAM=r93zxWDsVRZnbA8EQYpKkUvFg5aV_n5RKmYtPhS_s0esmtQ@mail.gmail.com>
- <CAM=r93x5BWxCoAyKuqdUhvLv=TWThaggbNeK9KKzrzrTc0EbPw@mail.gmail.com>
- <CAM=r93zg8GesQi6i_P3vuw07GYfUZmoq5cNyZGLSCqHRYFBW0A@mail.gmail.com>
- <CAM=r93yGGA37RN9K+S8ESFoXFGfyyt6f2j12mNHFPtiUF9fi7g@mail.gmail.com>
- <CAM=r93xni=dj9AWQQdQumKG_Tc6TJk+F5GoKiK2TfU=vkM1m0Q@mail.gmail.com>
- <CAM=r93zAeJVfTY488e-GsBfVzxyfHSywy1jFkzHTz6qYu59NuQ@mail.gmail.com>
- <CAM=r93x4udYdTmQMw8wvqu2i3fb87x5BAK=bL6vTPhakmh-emA@mail.gmail.com>
- <CAM=r93yMJfUyu+eeUaaNkMqWpnYcfWiF-wNfDiWMZrcBZcg41w@mail.gmail.com>
- <CAM=r93wSJhM1aa1hBHKc_vZNwmB7DbHDtc10sWkur+2iG_aG9Q@mail.gmail.com>
 Message-ID: <CAM=r93w8u8pM8KnO+QXcEGqVs+miUPF_tBmOrFFEdQQ51nG2OQ@mail.gmail.com>
 
 Agradeço a oportunidade por esse tempo de learning-by-doing com a lista
 R-br.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170325/493dbea5/attachment.html>
 
-From fulcris em yahoo.com.br  Sat Mar 25 14:23:57 2017
-From: fulcris em yahoo.com.br (=?UTF-8?Q?f=C3=BAlvia_cristina_oliveira?=)
-Date: Sat, 25 Mar 2017 17:23:57 +0000 (UTC)
-Subject: [R-br] =?utf-8?b?dGFiZWxhIGRlIGludGVyYcOnw6Nv?=
-References: <1385684314.2863110.1490462637851.ref@mail.yahoo.com>
+From fulcris em yahoo.com.br  Sat Mar 25 17:23:57 2017
+From: fulcris em yahoo.com.br (=?utf-8?q?f=C3=BAlvia_cristina_oliveira?=)
+Date: Sat, 25 Mar 2017 17:23:57 +0000
+Subject: =?utf-8?q?=5BR-br=5D_tabela_de_intera=C3=A7=C3=A3o?=
+In-Reply-To: <1385684314.2863110.1490462637851.ref@mail.yahoo.com>
 Message-ID: <1385684314.2863110.1490462637851@mail.yahoo.com>
 
 
@@ -4924,15 +4875,11 @@ T4:6-T3:6 -0.021000000 -0.23607410  0.19407410 1.0000000
 
 
  Fúlvia Cristina Oliveira Bióloga - UFMS  Mestranda no Programa de Pós-Graduação em ZootecniaProdução animal no Cerrado-Pantanal Universidade Estadual de Mato Grosso do Sul - UEMS Unidade Universitária de Aquidauana - UUA(67) 99610-2812(11) 99538-4088fulcris em yahoo.com.br
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170325/2be5c471/attachment.html>
 
-From fabiolasantos em udipesquisa.com  Sun Mar 26 09:58:00 2017
+From fabiolasantos em udipesquisa.com  Sun Mar 26 12:58:00 2017
 From: fabiolasantos em udipesquisa.com (Fabiola Santos)
-Date: Sun, 26 Mar 2017 09:58:00 -0300
-Subject: [R-br] Parcela dividida - coletas de amostras dentro da parcela e
-	no tempo
+Date: Sun, 26 Mar 2017 12:58:00 +0000
+Subject: [R-br] Parcela dividida - coletas de amostras dentro da parcela e	no tempo
 Message-ID: <!&!AAAAAAAAAAAYAAAAAAAAABCe/hWSnMNPr7rPxTKYHPnCgAAAEAAAAMaZoCNsC8ZPoh4EJOOqlb0BAAAAAA==@udipesquisa.com>
 
 Boa tarde
@@ -5086,31 +5033,24 @@ Thank you for your cooperation.
 ---
 Este email foi escaneado pelo Avast antivírus.
 https://www.avast.com/antivirus
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170326/efc31b8f/attachment-0001.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: image001.png
-Tipo: image/png
-Tamanho: 62050 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170326/efc31b8f/attachment-0002.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: image002.png
-Tipo: image/png
-Tamanho: 38146 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170326/efc31b8f/attachment-0003.png>
 
-From wwolff em usp.br  Sun Mar 26 18:02:11 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image001.png
+Type: image/png
+Size: 62050 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: image002.png
+Type: image/png
+Size: 38146 bytes
+
+From wwolff em usp.br  Sun Mar 26 21:02:11 2017
 From: wwolff em usp.br (Wagner Wolff)
-Date: Sun, 26 Mar 2017 18:02:11 -0300
-Subject: [R-br] =?utf-8?q?Fwd=3A_Predi=C3=A7=C3=A3o_espacial_de_dado_tipo_?=
-	=?utf-8?q?=22linha=22?=
+Date: Sun, 26 Mar 2017 21:02:11 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Fwd=3A_Predi=C3=A7=C3=A3o_espacial_de_dado_tipo_=22linha=22?=
 In-Reply-To: <CAFJ348_mfSYh2KoVv0h3mBxbFJZt3x1E3hob+M8DCsme7gk-fQ@mail.gmail.com>
-References: <CAFJ348_mfSYh2KoVv0h3mBxbFJZt3x1E3hob+M8DCsme7gk-fQ@mail.gmail.com>
 Message-ID: <CAFJ348-sH+GxUrfgy=q130-ud+dmHeG8fpx6t5ezhb76t=pKpw@mail.gmail.com>
 
 Olá pessoal da lista!
@@ -5135,13 +5075,10 @@ Phone:  +55 19 982385582 <+55%2019%2098238-5582>
 http://orcid.org/0000-0003-3426-308X
 https://github.com/wwolff7
 http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4463141A1
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170326/f224a8bc/attachment.html>
 
-From elviradebastianii em gmail.com  Sun Mar 26 19:58:20 2017
+From elviradebastianii em gmail.com  Sun Mar 26 22:58:20 2017
 From: elviradebastianii em gmail.com (Elvira De Bastiani)
-Date: Sun, 26 Mar 2017 19:58:20 -0300
+Date: Sun, 26 Mar 2017 22:58:20 +0000
 Subject: [R-br]  - Pacote bipartite
 Message-ID: <CAExVY4E1LYGrphaUGe9p4dj=kwPj-+sq9f624L+cX3JGFRzqCQ@mail.gmail.com>
 
@@ -5199,15 +5136,12 @@ Laboratório de Ecologia e Evolução de Interações (Leei)
 Universidade Federal do Paraná - UFPR
 Curitiba, Paraná, Brasil
 (41) 9 9653-2860
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170326/a8c0f752/attachment.html>
 
-From edmar_caldas em yahoo.com.br  Mon Mar 27 11:51:26 2017
+From edmar_caldas em yahoo.com.br  Mon Mar 27 14:51:26 2017
 From: edmar_caldas em yahoo.com.br (Edmar Caldas)
-Date: Mon, 27 Mar 2017 14:51:26 +0000 (UTC)
-Subject: [R-br] =?utf-8?q?Ajuda_na_Fun=C3=A7=C3=A3o_Append?=
-References: <757280348.4520488.1490626286095.ref@mail.yahoo.com>
+Date: Mon, 27 Mar 2017 14:51:26 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Ajuda_na_Fun=C3=A7=C3=A3o_Append?=
+In-Reply-To: <757280348.4520488.1490626286095.ref@mail.yahoo.com>
 Message-ID: <757280348.4520488.1490626286095@mail.yahoo.com>
 
  Bom Dia!
@@ -5247,17 +5181,12 @@ Agradeço pela ajuda.
 
 
 Edmar
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170327/03308d39/attachment.html>
 
-From ronaldca em outlook.com  Mon Mar 27 12:05:45 2017
-From: ronaldca em outlook.com (=?iso-8859-1?Q?Ronaldo_C=E2mara_de_Ara=FAjo?=)
+From ronaldca em outlook.com  Mon Mar 27 15:05:45 2017
+From: ronaldca em outlook.com (=?utf-8?q?Ronaldo_C=C3=A2mara_de_Ara=C3=BAjo?=)
 Date: Mon, 27 Mar 2017 15:05:45 +0000
-Subject: [R-br] =?iso-8859-1?q?Ajuda_na_Fun=E7=E3o_Append?=
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBBanVkYSBuYSBGdW7Dp8OjbyBBcHBlbmQ=?=
 In-Reply-To: <757280348.4520488.1490626286095@mail.yahoo.com>
-References: <757280348.4520488.1490626286095.ref@mail.yahoo.com>,
- <757280348.4520488.1490626286095@mail.yahoo.com>
 Message-ID: <BLUPR15MB04523411BD613E176F4DCD3CC4330@BLUPR15MB0452.namprd15.prod.outlook.com>
 
 Usa a função smartbind do pacote gtools.
@@ -5337,15 +5266,12 @@ Agradeço pela ajuda.
 
 
 Edmar
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170327/011d601b/attachment.html>
 
-From edmar_caldas em yahoo.com.br  Mon Mar 27 13:58:23 2017
+From edmar_caldas em yahoo.com.br  Mon Mar 27 16:58:23 2017
 From: edmar_caldas em yahoo.com.br (Edmar Caldas)
-Date: Mon, 27 Mar 2017 16:58:23 +0000 (UTC)
+Date: Mon, 27 Mar 2017 16:58:23 +0000
 Subject: [R-br] estrutura do arquivo
-References: <162091915.4689818.1490633903340.ref@mail.yahoo.com>
+In-Reply-To: <162091915.4689818.1490633903340.ref@mail.yahoo.com>
 Message-ID: <162091915.4689818.1490633903340@mail.yahoo.com>
 
  Como faço para visualizar o arquivo por inteiro. Quero visualizar as 31 linhas e 17 colunas. Estou usando Rstudio.
@@ -5356,24 +5282,18 @@ head(append1, n=10)tail(append1, n=10)str(append1)
 
 
 Edmar
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170327/1211863e/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 87892 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170327/1211863e/attachment.png>
 
-From marcus.nunes em gmail.com  Mon Mar 27 14:06:33 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 87892 bytes
+
+From marcus.nunes em gmail.com  Mon Mar 27 17:06:33 2017
 From: marcus.nunes em gmail.com (Marcus Nunes)
-Date: Mon, 27 Mar 2017 14:06:33 -0300
-Subject: [R-br] estrutura do arquivo
+Date: Mon, 27 Mar 2017 17:06:33 +0000
+Subject: Re: [R-br] estrutura do arquivo
 In-Reply-To: <162091915.4689818.1490633903340@mail.yahoo.com>
-References: <162091915.4689818.1490633903340.ref@mail.yahoo.com>
- <162091915.4689818.1490633903340@mail.yahoo.com>
 Message-ID: <CA+QGQvsf2pv1BBgvg6UGyeBaoGfWxioSgHu5jdSSQ4+L8MtPAg@mail.gmail.com>
 
 View(append1) vai abrir este tibble como se fosse uma planilha do Excel,
@@ -5415,24 +5335,18 @@ http://marcusnunes.me/
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170327/be8fa069/attachment-0001.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 87892 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170327/be8fa069/attachment-0001.png>
 
-From walmeszeviani em gmail.com  Mon Mar 27 16:32:13 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 87892 bytes
+
+From walmeszeviani em gmail.com  Mon Mar 27 19:32:13 2017
 From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Mon, 27 Mar 2017 16:32:13 -0300
-Subject: [R-br] =?utf-8?b?dGFiZWxhIGRlIGludGVyYcOnw6Nv?=
+Date: Mon, 27 Mar 2017 19:32:13 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSB0YWJlbGEgZGUgaW50ZXJhw6fDo28=?=
 In-Reply-To: <1385684314.2863110.1490462637851@mail.yahoo.com>
-References: <1385684314.2863110.1490462637851.ref@mail.yahoo.com>
- <1385684314.2863110.1490462637851@mail.yahoo.com>
 Message-ID: <CAFU=EkaCHRJjmKsMaR4XZTVmoPAh-5yCKsZYBbAyUjpRh2E0AQ@mail.gmail.com>
 
 Essa matéria pode ser útil.
@@ -5442,15 +5356,11 @@ https://ridiculas.wordpress.com/2011/05/21/fatorial-com-desdobramento-da-interac
 À disposição.
 Walmes.
 ​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170327/c0fb810f/attachment.html>
 
-From wwolff em usp.br  Mon Mar 27 18:47:02 2017
+From wwolff em usp.br  Mon Mar 27 21:47:02 2017
 From: wwolff em usp.br (Wagner Wolff)
-Date: Mon, 27 Mar 2017 18:47:02 -0300
-Subject: [R-br] =?utf-8?q?Predi=C3=A7=C3=A3o_espacial_de_dado_tipo_=22linh?=
-	=?utf-8?q?a=22?=
+Date: Mon, 27 Mar 2017 21:47:02 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Predi=C3=A7=C3=A3o_espacial_de_dado_tipo_=22linha=22?=
 Message-ID: <CAFJ348_aRKme=wdnUtneNs+6RCo0Gvt7pbpbFOkncFWjq17UBA@mail.gmail.com>
 
 Olá pessoal da lista!
@@ -5473,15 +5383,12 @@ Phone:  +55 19 982385582
 http://orcid.org/0000-0003-3426-308X
 https://github.com/wwolff7
 http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4463141A1
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170327/adb574c3/attachment.html>
 
-From edmar_caldas em yahoo.com.br  Tue Mar 28 11:00:35 2017
+From edmar_caldas em yahoo.com.br  Tue Mar 28 14:00:35 2017
 From: edmar_caldas em yahoo.com.br (Edmar Caldas)
-Date: Tue, 28 Mar 2017 14:00:35 +0000 (UTC)
-Subject: [R-br] =?utf-8?b?RnVuw6fDo28gY3V0?=
-References: <604432760.5429148.1490709635069.ref@mail.yahoo.com>
+Date: Tue, 28 Mar 2017 14:00:35 +0000
+Subject: =?utf-8?b?W1ItYnJdIEZ1bsOnw6NvIGN1dA==?=
+In-Reply-To: <604432760.5429148.1490709635069.ref@mail.yahoo.com>
 Message-ID: <604432760.5429148.1490709635069@mail.yahoo.com>
 
 Bom Dia!
@@ -5491,17 +5398,12 @@ Error: unexpected ')' in "cut(lazer1$idade, breaks = c(25,35,45), labels=c("A","
 outra forma 
 
 > cut(idade, breaks = c(25,35,45), labels=c("Jovem","Meia Idade","Experiente"), right= FALSE))Error: unexpected ')' in "cut(idade, breaks = c(25,35,45), labels=c("Jovem","Meia Idade","Experiente"), right= FALSE))" Edmar
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170328/9b1f2682/attachment.html>
 
-From pjobenil em gmail.com  Tue Mar 28 12:20:10 2017
+From pjobenil em gmail.com  Tue Mar 28 15:20:10 2017
 From: pjobenil em gmail.com (Jobenil - Gmail)
-Date: Tue, 28 Mar 2017 12:20:10 -0300
-Subject: [R-br] =?utf-8?b?RnVuw6fDo28gY3V0?=
+Date: Tue, 28 Mar 2017 15:20:10 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBGdW7Dp8OjbyBjdXQ=?=
 In-Reply-To: <604432760.5429148.1490709635069@mail.yahoo.com>
-References: <604432760.5429148.1490709635069.ref@mail.yahoo.com>
- <604432760.5429148.1490709635069@mail.yahoo.com>
 Message-ID: <452E7E4A-9478-483C-A2E5-ACDD72A12B93@gmail.com>
 
 Edmar de um help na função. Acho que são gerados 4 intervalos e você está usando 3 labels.
@@ -5530,18 +5432,12 @@ Enviado do meu iPhone
 > R-br em listas.c3sl.ufpr.br
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170328/4b2b69f8/attachment.html>
 
-From nandodesouza em gmail.com  Tue Mar 28 12:24:39 2017
+From nandodesouza em gmail.com  Tue Mar 28 15:24:39 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
-Date: Tue, 28 Mar 2017 12:24:39 -0300
-Subject: [R-br] =?utf-8?b?RnVuw6fDo28gY3V0?=
+Date: Tue, 28 Mar 2017 15:24:39 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBGdW7Dp8OjbyBjdXQ=?=
 In-Reply-To: <452E7E4A-9478-483C-A2E5-ACDD72A12B93@gmail.com>
-References: <604432760.5429148.1490709635069.ref@mail.yahoo.com>
- <604432760.5429148.1490709635069@mail.yahoo.com>
- <452E7E4A-9478-483C-A2E5-ACDD72A12B93@gmail.com>
 Message-ID: <CAFrWFsk6i+hov7_=AubS7WQ4AE4_+VDVuB9793x6kpLGA2t8xQ@mail.gmail.com>
 
 Acho que o último parêntese não é necessário. O erro diz isso
@@ -5593,18 +5489,12 @@ escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170328/fb0fa7ef/attachment.html>
 
-From rafareds em gmail.com  Tue Mar 28 12:24:57 2017
+From rafareds em gmail.com  Tue Mar 28 15:24:57 2017
 From: rafareds em gmail.com (Rafael Garcia Cunha)
-Date: Tue, 28 Mar 2017 12:24:57 -0300
-Subject: [R-br] =?utf-8?b?RnVuw6fDo28gY3V0?=
+Date: Tue, 28 Mar 2017 15:24:57 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBGdW7Dp8OjbyBjdXQ=?=
 In-Reply-To: <452E7E4A-9478-483C-A2E5-ACDD72A12B93@gmail.com>
-References: <604432760.5429148.1490709635069.ref@mail.yahoo.com>
- <604432760.5429148.1490709635069@mail.yahoo.com>
- <452E7E4A-9478-483C-A2E5-ACDD72A12B93@gmail.com>
 Message-ID: <CAGFfgXLD9Rjg-zFugPmoMq7_8SjO8vZH0GPJQGpSrdOnZSBUDw@mail.gmail.com>
 
 tá "sobrando" um parêntesis ao lado do FALSE
@@ -5663,18 +5553,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 Rafael Garcia Cunha
 
 YNWA
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170328/ab48d59f/attachment.html>
 
-From eliaskrainski em yahoo.com.br  Tue Mar 28 13:22:25 2017
+From eliaskrainski em yahoo.com.br  Tue Mar 28 16:22:25 2017
 From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
-Date: Tue, 28 Mar 2017 13:22:25 -0300
-Subject: [R-br]
- =?utf-8?q?Predi=C3=A7=C3=A3o_espacial_de_dado_tipo_=22linh?=
- =?utf-8?q?a=22?=
+Date: Tue, 28 Mar 2017 16:22:25 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBQcmVkacOnw6NvIGVzcGFjaWFsIGRlIGRhZG8gdGlwbyAibGluaGEi?=
 In-Reply-To: <CAFJ348_aRKme=wdnUtneNs+6RCo0Gvt7pbpbFOkncFWjq17UBA@mail.gmail.com>
-References: <CAFJ348_aRKme=wdnUtneNs+6RCo0Gvt7pbpbFOkncFWjq17UBA@mail.gmail.com>
 Message-ID: <3c04475c-c39d-e385-5cf2-dea6f2685cbd@yahoo.com.br>
 
 Olá Wagner,
@@ -5714,32 +5598,21 @@ On 27/03/2017 18:47, Wagner Wolff via R-br wrote:
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170328/2da70ebc/attachment.html>
-
-From eliaskrainski em yahoo.com.br  Tue Mar 28 14:15:45 2017
+From eliaskrainski em yahoo.com.br  Tue Mar 28 17:15:45 2017
 From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
-Date: Tue, 28 Mar 2017 14:15:45 -0300
-Subject: [R-br]
- =?utf-8?q?Predi=C3=A7=C3=A3o_espacial_de_dado_tipo_=22linh?=
- =?utf-8?q?a=22?=
+Date: Tue, 28 Mar 2017 17:15:45 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBQcmVkacOnw6NvIGVzcGFjaWFsIGRlIGRhZG8gdGlwbyAibGluaGEi?=
 In-Reply-To: <CAFJ348-2FWYqwJpR6KoQjACTJN+51BQ=Y81AsbvaasL1noQZUA@mail.gmail.com>
-References: <CAFJ348_aRKme=wdnUtneNs+6RCo0Gvt7pbpbFOkncFWjq17UBA@mail.gmail.com>
- <3c04475c-c39d-e385-5cf2-dea6f2685cbd@yahoo.com.br>
- <CAFJ348-2FWYqwJpR6KoQjACTJN+51BQ=Y81AsbvaasL1noQZUA@mail.gmail.com>
 Message-ID: <53891a0b-2d89-3139-d7b4-3edfe875bdd9@yahoo.com.br>
 
 Você quer 'espacializar' a atenuação do sinal? Essa atenuação no sinal 
 seria inversamente proporcional à distância à torre emitente?
 
-
-From ribas.aca em gmail.com  Tue Mar 28 15:40:37 2017
+From ribas.aca em gmail.com  Tue Mar 28 18:40:37 2017
 From: ribas.aca em gmail.com (Augusto Ribas)
-Date: Tue, 28 Mar 2017 14:40:37 -0400
-Subject: [R-br] - Pacote bipartite
+Date: Tue, 28 Mar 2017 18:40:37 +0000
+Subject: Re: [R-br] - Pacote bipartite
 In-Reply-To: <CAExVY4E1LYGrphaUGe9p4dj=kwPj-+sq9f624L+cX3JGFRzqCQ@mail.gmail.com>
-References: <CAExVY4E1LYGrphaUGe9p4dj=kwPj-+sq9f624L+cX3JGFRzqCQ@mail.gmail.com>
 Message-ID: <CACMkfRxFSTi2igjRkjhn5Kp4yHiG2H-dk98YFRaoNS6iDKhEeg@mail.gmail.com>
 
 Você está usando windows ou linux?
@@ -5827,11 +5700,8 @@ Augusto C. A. Ribas
 Site Pessoal: http://recologia.com.br/ <http://augustoribas.heliohost.org>
 Github: https://github.com/Squiercg
 Lattes: http://lattes.cnpq.br/7355685961127056
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170328/98034555/attachment.html>
 
-From apcmadeira em hotmail.com  Wed Mar 29 09:44:39 2017
+From apcmadeira em hotmail.com  Wed Mar 29 12:44:39 2017
 From: apcmadeira em hotmail.com (ana paula coelho madeira)
 Date: Wed, 29 Mar 2017 12:44:39 +0000
 Subject: [R-br] GLM
@@ -5846,16 +5716,12 @@ Desde já agradeço.
 
 
 Ana Paula
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170329/7bcec3f7/attachment.html>
 
-From walmeszeviani em gmail.com  Wed Mar 29 09:57:10 2017
+From walmeszeviani em gmail.com  Wed Mar 29 12:57:10 2017
 From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Wed, 29 Mar 2017 09:57:10 -0300
-Subject: [R-br] GLM
+Date: Wed, 29 Mar 2017 12:57:10 +0000
+Subject: Re: [R-br] GLM
 In-Reply-To: <DM5PR02MB22684D8296F24C4197B69252CA350@DM5PR02MB2268.namprd02.prod.outlook.com>
-References: <DM5PR02MB22684D8296F24C4197B69252CA350@DM5PR02MB2268.namprd02.prod.outlook.com>
 Message-ID: <CAFU=EkZ_ZKONOrQDV9HiObfAXUsGawrZCRuUkOgoV20JAy1V4A@mail.gmail.com>
 
 Ana Paula,
@@ -5865,16 +5731,12 @@ Forneça CMR para que possamos agilizar alguma ajuda.
 À disposição.
 Walmes.
 ​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170329/5baa5b76/attachment.html>
 
-From cesar.rabak em gmail.com  Wed Mar 29 18:36:48 2017
+From cesar.rabak em gmail.com  Wed Mar 29 21:36:48 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Wed, 29 Mar 2017 18:36:48 -0300
-Subject: [R-br] GLM
+Date: Wed, 29 Mar 2017 21:36:48 +0000
+Subject: Re: [R-br] GLM
 In-Reply-To: <DM5PR02MB22684D8296F24C4197B69252CA350@DM5PR02MB2268.namprd02.prod.outlook.com>
-References: <DM5PR02MB22684D8296F24C4197B69252CA350@DM5PR02MB2268.namprd02.prod.outlook.com>
 Message-ID: <CAKrF98miowE7-Dvm2ZwURhLrorujZx8uXtm3h8gTcSf0FyqJ_Q@mail.gmail.com>
 
 Ana Paula,
@@ -5915,17 +5777,12 @@ r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170329/e9d71dad/attachment.html>
 
-From walmeszeviani em gmail.com  Wed Mar 29 19:09:14 2017
+From walmeszeviani em gmail.com  Wed Mar 29 22:09:14 2017
 From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Wed, 29 Mar 2017 19:09:14 -0300
-Subject: [R-br] GLM
+Date: Wed, 29 Mar 2017 22:09:14 +0000
+Subject: Re: [R-br] GLM
 In-Reply-To: <CAKrF98miowE7-Dvm2ZwURhLrorujZx8uXtm3h8gTcSf0FyqJ_Q@mail.gmail.com>
-References: <DM5PR02MB22684D8296F24C4197B69252CA350@DM5PR02MB2268.namprd02.prod.outlook.com>
- <CAKrF98miowE7-Dvm2ZwURhLrorujZx8uXtm3h8gTcSf0FyqJ_Q@mail.gmail.com>
 Message-ID: <CAFU=EkYcxLBEgUbg8kZo=jsJDHPp=_ObgZCmPzgQc58iKzAXRA@mail.gmail.com>
 
 Ana Paula,
@@ -5951,16 +5808,11 @@ summary(m0)$dispersion
 ​À
 ​ disposição.
 Walmes.​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170329/f4852dfa/attachment.html>
 
-From vsvasconcelos em gmail.com  Thu Mar 30 18:04:53 2017
+From vsvasconcelos em gmail.com  Thu Mar 30 21:04:53 2017
 From: vsvasconcelos em gmail.com (Vagner Sanches Vasconcelos)
-Date: Thu, 30 Mar 2017 18:04:53 -0300
-Subject: [R-br] =?utf-8?q?An=C3=A1lise_Explorat=C3=B3ria_dos_Dados_da_Pesq?=
-	=?utf-8?q?uisa_Origem_e_Destino_2007_na_Regi=C3=A3o_Metropolitana_?=
-	=?utf-8?q?de_S=C3=A3o_Paulo_utilizando_a_Linguagem_R?=
+Date: Thu, 30 Mar 2017 21:04:53 +0000
+Subject: =?utf-8?q?=5BR-br=5D_An=C3=A1lise_Explorat=C3=B3ria_dos_Dados_da_Pesquisa_Origem_e_Destino_2007_na_Regi=C3=A3o_Metropolitana_de_S=C3=A3o_Paulo_utilizando_a_Linguagem_R?=
 Message-ID: <CAHQt+UUdb-ccf2fgqwEUEzhok8yPu_tpRpGvoB5-KnKj6vorsQ@mail.gmail.com>
 
 Projeto realizado para a curso Analista de dados da Udacity
@@ -5968,17 +5820,12 @@ Projeto realizado para a curso Analista de dados da Udacity
 https://www.linkedin.com/pulse/an%C3%A1lise-explorat%C3%B3ria-dos-dados-da-pesquisa-origem-e-r-vagner-sanches
 
 Abraços,
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170330/7045b71d/attachment.html>
 
-From mvdiogoce em gmail.com  Thu Mar 30 18:40:06 2017
+From mvdiogoce em gmail.com  Thu Mar 30 21:40:06 2017
 From: mvdiogoce em gmail.com (Marcus Diogo)
-Date: Thu, 30 Mar 2017 18:40:06 -0300
-Subject: [R-br] =?utf-8?q?Dist=C3=A2ncia_euclidiana=2C_centroide?=
+Date: Thu, 30 Mar 2017 21:40:06 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Dist=C3=A2ncia_euclidiana=2C_centroide?=
 In-Reply-To: <CAHRtWKCPq7YX_-jLnhJRhutOZUgZb8V37rtNHou=t7zyOfJoUQ@mail.gmail.com>
-References: <CAHRtWKAtaap4SXDxPE9fK7-nufs2XaX3RfhR=QooYAMRFTRV0A@mail.gmail.com>
- <CAHRtWKCPq7YX_-jLnhJRhutOZUgZb8V37rtNHou=t7zyOfJoUQ@mail.gmail.com>
 Message-ID: <CAHRtWKCnA2YdZJv0XAB5gXiC46=TDo9u0WTnRRXsbLJHM=cbrw@mail.gmail.com>
 
 Boa noite,
@@ -5990,32 +5837,26 @@ repositório.300x7
 Agradeço
 
 Marcus
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170330/3fecc77a/attachment.html>
 
-From aryserpa em terra.com.br  Thu Mar 30 19:09:11 2017
-From: aryserpa em terra.com.br (=?UTF-8?B?QXJ5IFNlcnBhIE5ldG8=?=)
-Date: Thu, 30 Mar 17 22:09:11 +0000
-Subject: [R-br] =?utf-8?q?Calibratio_Plot?=
+From aryserpa em terra.com.br  Thu Mar 30 22:09:11 2017
+From: aryserpa em terra.com.br (Ary Serpa Neto)
+Date: Thu, 30 Mar 2017 22:09:11 +0000
+Subject: [R-br] Calibratio Plot
 Message-ID: <OID_1490911645363719_0aryserpa@terra.com.br>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170330/0633eb6e/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: Plot.jpg
-Tipo: image/jpeg
-Tamanho: 36802 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170330/0633eb6e/attachment.jpg>
 
-From cesar.rabak em gmail.com  Thu Mar 30 19:31:27 2017
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: Plot.jpg
+Type: image/jpeg
+Size: 36802 bytes
+
+From cesar.rabak em gmail.com  Thu Mar 30 22:31:27 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Thu, 30 Mar 2017 19:31:27 -0300
-Subject: [R-br] Calibratio Plot
+Date: Thu, 30 Mar 2017 22:31:27 +0000
+Subject: Re: [R-br] Calibratio Plot
 In-Reply-To: <OID_1490911645363719_0aryserpa@terra.com.br>
-References: <OID_1490911645363719_0aryserpa@terra.com.br>
 Message-ID: <CAKrF98=75LBHMnnwyEWz=Ye9b-fpUe94eWP4mqzZfFPkNm7=kg@mail.gmail.com>
 
 Ary,
@@ -6066,15 +5907,12 @@ Cesar Rabak
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170330/7011b281/attachment.html>
 
-From edmar_caldas em yahoo.com.br  Fri Mar 31 13:22:06 2017
+From edmar_caldas em yahoo.com.br  Fri Mar 31 16:22:06 2017
 From: edmar_caldas em yahoo.com.br (Edmar Caldas)
-Date: Fri, 31 Mar 2017 16:22:06 +0000 (UTC)
+Date: Fri, 31 Mar 2017 16:22:06 +0000
 Subject: [R-br] Agregate
-References: <276456170.1276396.1490977326139.ref@mail.yahoo.com>
+In-Reply-To: <276456170.1276396.1490977326139.ref@mail.yahoo.com>
 Message-ID: <276456170.1276396.1490977326139@mail.yahoo.com>
 
 Pessoal ainda não consegui. Preciso colocar nas colunas a primeira e ultima data no data.frame. só funciona com o valor_int. 
@@ -6082,24 +5920,18 @@ Pessoal ainda não consegui. Preciso colocar nas colunas a primeira e ultima dat
 
 
  Edmar
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/4a378af5/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 21989 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/4a378af5/attachment.png>
 
-From rafareds em gmail.com  Fri Mar 31 13:34:11 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 21989 bytes
+
+From rafareds em gmail.com  Fri Mar 31 16:34:11 2017
 From: rafareds em gmail.com (Rafael Garcia Cunha)
-Date: Fri, 31 Mar 2017 13:34:11 -0300
-Subject: [R-br] Agregate
+Date: Fri, 31 Mar 2017 16:34:11 +0000
+Subject: Re: [R-br] Agregate
 In-Reply-To: <276456170.1276396.1490977326139@mail.yahoo.com>
-References: <276456170.1276396.1490977326139.ref@mail.yahoo.com>
- <276456170.1276396.1490977326139@mail.yahoo.com>
 Message-ID: <CAGFfgXLBmHSQTuJXfmw4gbN8NXms0NXw3FoDhw1ERoMqfuU40w@mail.gmail.com>
 
 Veja se é isso que você deseja
@@ -6137,22 +5969,18 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 Rafael Garcia Cunha
 
 YNWA
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/57a61ffe/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 21989 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/57a61ffe/attachment.png>
 
-From edmar_caldas em yahoo.com.br  Fri Mar 31 14:47:30 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 21989 bytes
+
+From edmar_caldas em yahoo.com.br  Fri Mar 31 17:47:30 2017
 From: edmar_caldas em yahoo.com.br (Edmar Caldas)
-Date: Fri, 31 Mar 2017 17:47:30 +0000 (UTC)
-Subject: [R-br] =?utf-8?q?Data_frame_n=C3=A3o_reconhece_uma_variavel?=
-References: <1709207899.1365651.1490982450193.ref@mail.yahoo.com>
+Date: Fri, 31 Mar 2017 17:47:30 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Data_frame_n=C3=A3o_reconhece_uma_variavel?=
+In-Reply-To: <1709207899.1365651.1490982450193.ref@mail.yahoo.com>
 Message-ID: <1709207899.1365651.1490982450193@mail.yahoo.com>
 
 Pessoal outra duvida.
@@ -6168,31 +5996,24 @@ está com esse erro. data_hoje not found ????????????
 
 
  Edmar
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/4d5dc296/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 20173 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/4d5dc296/attachment.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 3555 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/4d5dc296/attachment-0001.png>
 
-From leoaguirre32 em gmail.com  Fri Mar 31 14:52:16 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 20173 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 3555 bytes
+
+From leoaguirre32 em gmail.com  Fri Mar 31 17:52:16 2017
 From: leoaguirre32 em gmail.com (Leonardo Aguirre)
-Date: Fri, 31 Mar 2017 14:52:16 -0300
-Subject: [R-br] =?utf-8?q?Data_frame_n=C3=A3o_reconhece_uma_variavel?=
+Date: Fri, 31 Mar 2017 17:52:16 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Data_frame_n=C3=A3o_reconhece_uma_variavel?=
 In-Reply-To: <1709207899.1365651.1490982450193@mail.yahoo.com>
-References: <1709207899.1365651.1490982450193.ref@mail.yahoo.com>
- <1709207899.1365651.1490982450193@mail.yahoo.com>
 Message-ID: <CAAdDf_P5cbPMCdg_VdUKoMEB=EHp44gY-GiQzsPQ-v6VR6Anjg@mail.gmail.com>
 
 Vc executou attach(Banco)?
@@ -6239,32 +6060,24 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 leoaguirre32 em gmail.com
 [image: Facebook] <https://facebook.com/leoaguirre32> [image: LinkedIn]
 <https://linkedin.com/in/leonardo-aguirre-1965a660>
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/4b9cded4/attachment-0001.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 3555 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/4b9cded4/attachment-0002.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 20173 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/4b9cded4/attachment-0003.png>
 
-From nandodesouza em gmail.com  Fri Mar 31 15:10:24 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 3555 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 20173 bytes
+
+From nandodesouza em gmail.com  Fri Mar 31 18:10:24 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
-Date: Fri, 31 Mar 2017 15:10:24 -0300
-Subject: [R-br] =?utf-8?q?Data_frame_n=C3=A3o_reconhece_uma_variavel?=
+Date: Fri, 31 Mar 2017 18:10:24 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Data_frame_n=C3=A3o_reconhece_uma_variavel?=
 In-Reply-To: <CAAdDf_P5cbPMCdg_VdUKoMEB=EHp44gY-GiQzsPQ-v6VR6Anjg@mail.gmail.com>
-References: <1709207899.1365651.1490982450193.ref@mail.yahoo.com>
- <1709207899.1365651.1490982450193@mail.yahoo.com>
- <CAAdDf_P5cbPMCdg_VdUKoMEB=EHp44gY-GiQzsPQ-v6VR6Anjg@mail.gmail.com>
 Message-ID: <CAFrWFs=OYPPQE0y1UHvGVUPGNBHoomnrEroFqtXTitxiLprJSg@mail.gmail.com>
 
 Deve funcionar
@@ -6325,33 +6138,24 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
 mínimo reproduzível.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/52244d88/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 3555 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/52244d88/attachment.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 20173 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/52244d88/attachment-0001.png>
 
-From edmar_caldas em yahoo.com.br  Fri Mar 31 15:50:41 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 3555 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 20173 bytes
+
+From edmar_caldas em yahoo.com.br  Fri Mar 31 18:50:41 2017
 From: edmar_caldas em yahoo.com.br (Edmar Caldas)
-Date: Fri, 31 Mar 2017 18:50:41 +0000 (UTC)
-Subject: [R-br] =?utf-8?q?Data_frame_n=C3=A3o_reconhece_uma_variavel?=
+Date: Fri, 31 Mar 2017 18:50:41 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Data_frame_n=C3=A3o_reconhece_uma_variavel?=
 In-Reply-To: <CAFrWFs=OYPPQE0y1UHvGVUPGNBHoomnrEroFqtXTitxiLprJSg@mail.gmail.com>
-References: <1709207899.1365651.1490982450193.ref@mail.yahoo.com>
- <1709207899.1365651.1490982450193@mail.yahoo.com>
- <CAAdDf_P5cbPMCdg_VdUKoMEB=EHp44gY-GiQzsPQ-v6VR6Anjg@mail.gmail.com>
- <CAFrWFs=OYPPQE0y1UHvGVUPGNBHoomnrEroFqtXTitxiLprJSg@mail.gmail.com>
 Message-ID: <1300623540.1374431.1490986242174@mail.yahoo.com>
 
 Alguém sabe responder porque as variáveis data estão com simbolos com cores diferentes ???? será que o erro está aí???a variável que criei através do sys.date está em amarelo e a data que venho do excel em rosa???  Aparentemente funcionou.
@@ -6415,59 +6219,41 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forneça código mínimo reproduzível.
 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 3555 bytes
 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 20173 bytes
 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 6567 bytes
 
-   
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/3c283565/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 3555 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/3c283565/attachment.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 20173 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/3c283565/attachment-0001.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 6567 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/3c283565/attachment-0002.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 27472 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/3c283565/attachment-0003.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 1305 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/3c283565/attachment-0004.png>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 27472 bytes
 
-From nandodesouza em gmail.com  Fri Mar 31 15:56:58 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 1305 bytes
+
+From nandodesouza em gmail.com  Fri Mar 31 18:56:58 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
-Date: Fri, 31 Mar 2017 15:56:58 -0300
-Subject: [R-br] =?utf-8?q?Data_frame_n=C3=A3o_reconhece_uma_variavel?=
+Date: Fri, 31 Mar 2017 18:56:58 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Data_frame_n=C3=A3o_reconhece_uma_variavel?=
 In-Reply-To: <1300623540.1374431.1490986242174@mail.yahoo.com>
-References: <1709207899.1365651.1490982450193.ref@mail.yahoo.com>
- <1709207899.1365651.1490982450193@mail.yahoo.com>
- <CAAdDf_P5cbPMCdg_VdUKoMEB=EHp44gY-GiQzsPQ-v6VR6Anjg@mail.gmail.com>
- <CAFrWFs=OYPPQE0y1UHvGVUPGNBHoomnrEroFqtXTitxiLprJSg@mail.gmail.com>
- <1300623540.1374431.1490986242174@mail.yahoo.com>
 Message-ID: <CAFrWFsn5EdPTGOSuyodjPSLJ=8qQY+s_KbxKUEFGJJc-nsEkOw@mail.gmail.com>
 
 Coloque um código mínimo reproduzível (CMR) para podermos lhe ajudar
@@ -6588,56 +6374,42 @@ E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
 Lattes: http://lattes.cnpq.br/6519538815038307
 Blog: https://producaoanimalcomr.wordpress.com/
 ==========================================
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/88d24de0/attachment-0001.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 6567 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/88d24de0/attachment-0005.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 1305 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/88d24de0/attachment-0006.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 3555 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/88d24de0/attachment-0007.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 20173 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/88d24de0/attachment-0008.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 27472 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/88d24de0/attachment-0009.png>
 
-From leoaguirre32 em gmail.com  Fri Mar 31 16:02:38 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 6567 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 1305 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 3555 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 20173 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 27472 bytes
+
+From leoaguirre32 em gmail.com  Fri Mar 31 19:02:38 2017
 From: leoaguirre32 em gmail.com (Leonardo Aguirre)
-Date: Fri, 31 Mar 2017 16:02:38 -0300
-Subject: [R-br] =?utf-8?q?Data_frame_n=C3=A3o_reconhece_uma_variavel?=
+Date: Fri, 31 Mar 2017 19:02:38 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Data_frame_n=C3=A3o_reconhece_uma_variavel?=
 In-Reply-To: <CAFrWFsn5EdPTGOSuyodjPSLJ=8qQY+s_KbxKUEFGJJc-nsEkOw@mail.gmail.com>
-References: <1709207899.1365651.1490982450193.ref@mail.yahoo.com>
- <1709207899.1365651.1490982450193@mail.yahoo.com>
- <CAAdDf_P5cbPMCdg_VdUKoMEB=EHp44gY-GiQzsPQ-v6VR6Anjg@mail.gmail.com>
- <CAFrWFs=OYPPQE0y1UHvGVUPGNBHoomnrEroFqtXTitxiLprJSg@mail.gmail.com>
- <1300623540.1374431.1490986242174@mail.yahoo.com>
- <CAFrWFsn5EdPTGOSuyodjPSLJ=8qQY+s_KbxKUEFGJJc-nsEkOw@mail.gmail.com>
 Message-ID: <CAAdDf_O-6r0SMTh-W7YKcO6raWmV_mdjs3V9TS5en1V60uO6JA@mail.gmail.com>
 
 datanasc é numérica. Transforme para data antes de aplicar a função
@@ -6786,51 +6558,42 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 leoaguirre32 em gmail.com
 [image: Facebook] <https://facebook.com/leoaguirre32> [image: LinkedIn]
 <https://linkedin.com/in/leonardo-aguirre-1965a660>
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/64e58292/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 1305 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/64e58292/attachment.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 20173 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/64e58292/attachment-0001.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 6567 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/64e58292/attachment-0002.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 27472 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/64e58292/attachment-0003.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 3555 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/64e58292/attachment-0004.png>
 
-From emmanuel.brasil em gmail.com  Fri Mar 31 16:58:59 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 1305 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 20173 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 6567 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 27472 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 3555 bytes
+
+From emmanuel.brasil em gmail.com  Fri Mar 31 19:58:59 2017
 From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
-Date: Fri, 31 Mar 2017 16:58:59 -0300
-Subject: [R-br] Calibratio Plot
+Date: Fri, 31 Mar 2017 19:58:59 +0000
+Subject: Re: [R-br] Calibratio Plot
 In-Reply-To: <OID_1490911645363719_0aryserpa@terra.com.br>
-References: <OID_1490911645363719_0aryserpa@terra.com.br>
 Message-ID: <CAFfGvyJfqUteV-GMPPM0w4wBKRPjdBCo_k959NYaMC5TouD4Wg@mail.gmail.com>
 
 Recomendo dois
@@ -6874,20 +6637,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/4aecec0c/attachment.html>
 
-From cesar.rabak em gmail.com  Fri Mar 31 20:56:32 2017
+From cesar.rabak em gmail.com  Fri Mar 31 23:56:32 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Fri, 31 Mar 2017 20:56:32 -0300
-Subject: [R-br] =?utf-8?q?Data_frame_n=C3=A3o_reconhece_uma_variavel?=
+Date: Fri, 31 Mar 2017 23:56:32 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Data_frame_n=C3=A3o_reconhece_uma_variavel?=
 In-Reply-To: <1300623540.1374431.1490986242174@mail.yahoo.com>
-References: <1709207899.1365651.1490982450193.ref@mail.yahoo.com>
- <1709207899.1365651.1490982450193@mail.yahoo.com>
- <CAAdDf_P5cbPMCdg_VdUKoMEB=EHp44gY-GiQzsPQ-v6VR6Anjg@mail.gmail.com>
- <CAFrWFs=OYPPQE0y1UHvGVUPGNBHoomnrEroFqtXTitxiLprJSg@mail.gmail.com>
- <1300623540.1374431.1490986242174@mail.yahoo.com>
 Message-ID: <CAKrF98mGk2JKAihL3n68=CCXYWwyZsPqk4e3b-ZU7do8TBi8SA@mail.gmail.com>
 
 Uma ou mais das idades gerou um NA, tente
@@ -7015,42 +6770,34 @@ HTH
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/982cb278/attachment-0001.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 6567 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/982cb278/attachment-0005.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 3555 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/982cb278/attachment-0006.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 20173 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/982cb278/attachment-0007.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 27472 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/982cb278/attachment-0008.png>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: blob.jpg
-Tipo: image/png
-Tamanho: 1305 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170331/982cb278/attachment-0009.png>
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 6567 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 3555 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 20173 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 27472 bytes
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: blob.jpg
+Type: image/png
+Size: 1305 bytes
 

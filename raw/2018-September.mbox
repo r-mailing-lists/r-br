@@ -1,8 +1,8 @@
-From alex_brito em yahoo.com  Sun Sep  2 22:53:10 2018
+From alex_brito em yahoo.com  Mon Sep  3 01:53:10 2018
 From: alex_brito em yahoo.com (Alex Brito)
-Date: Mon, 3 Sep 2018 01:53:10 +0000 (UTC)
+Date: Mon, 03 Sep 2018 01:53:10 +0000
 Subject: [R-br] erro: funcao autoplot (ggplot2)
-References: <246009513.119565.1535939590719.ref@mail.yahoo.com>
+In-Reply-To: <246009513.119565.1535939590719.ref@mail.yahoo.com>
 Message-ID: <246009513.119565.1535939590719@mail.yahoo.com>
 
 Prezados, 
@@ -30,24 +30,18 @@ library("ggplot2")autoplot(pib_sa[,4])
 
 Alex BritoDepartamento de Economia - UFMAGrupo de Estudos e Pesquisa em Macroeconomia - GRAMMACidade Universitária Dom Delgado,
 Av. dos Portugueses, 1966, Bacanga,São Luís - MA, 65065-545
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180903/61461abc/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: meuescript.R
-Tipo: application/octet-stream
-Tamanho: 1308 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180903/61461abc/attachment.obj>
 
-From jasmine.moreira.2013 em gmail.com  Mon Sep  3 00:09:48 2018
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: meuescript.R
+Type: application/octet-stream
+Size: 1308 bytes
+
+From jasmine.moreira.2013 em gmail.com  Mon Sep  3 03:09:48 2018
 From: jasmine.moreira.2013 em gmail.com (Jasmine Moreira)
-Date: Mon, 3 Sep 2018 00:09:48 -0300
-Subject: [R-br] erro: funcao autoplot (ggplot2)
+Date: Mon, 03 Sep 2018 03:09:48 +0000
+Subject: Re: [R-br] erro: funcao autoplot (ggplot2)
 In-Reply-To: <246009513.119565.1535939590719@mail.yahoo.com>
-References: <246009513.119565.1535939590719.ref@mail.yahoo.com>
- <246009513.119565.1535939590719@mail.yahoo.com>
 Message-ID: <8288DEB7-2B10-449A-ABF3-00AC8009A70F@gmail.com>
 
 Oi Alex,
@@ -125,14 +119,10 @@ Jasmine
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180903/d7228d33/attachment.html>
-
-From yurynepomuceno em gmail.com  Mon Sep  3 14:20:27 2018
+From yurynepomuceno em gmail.com  Mon Sep  3 17:20:27 2018
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Mon, 3 Sep 2018 14:20:27 -0300
-Subject: [R-br] =?utf-8?q?D=C3=BAvidas_de_SIG_no_R?=
+Date: Mon, 03 Sep 2018 17:20:27 +0000
+Subject: =?utf-8?q?=5BR-br=5D_D=C3=BAvidas_de_SIG_no_R?=
 Message-ID: <CADFS6E73MwmRT8JPJdgdavNdtc2HfdTjZtbLh3oGDQr49v_EDg@mail.gmail.com>
 
 Boa tarde colegas listeiros, como vão?
@@ -189,9 +179,9 @@ shapefile_contorno_do_talhao = readOGR(paste0('diretorio', 'contorno.shp'))
 
 #------Clusterizacao------#
 shapefile_dados_padronizados =
-scale(shapefile_dados_das_camadas_utilizadas em data)
+scale(shapefile_dados_das_camadas_utilizadas@data)
 shapefile_dados_geolocalizacao =
-shapefile_dados_das_camadas_utilizadas em coords
+shapefile_dados_das_camadas_utilizadas@coords
 wss =
 (nrow(shapefile_dados_padronizados)-1)*sum(apply(shapefile_dados_padronizados,2,var))
 cluster_maximo = 30
@@ -211,10 +201,10 @@ lista_clusteres = data.frame((kmeans(shapefile_dados_padronizados, centers
 = escolher_num_cluster)$cluster),shapefile_dados_geolocalizacao)
 
 #------Transformando em poligono------#
-x = shapefile_dados_das_camadas_utilizadas em coords[,1]
-y = shapefile_dados_das_camadas_utilizadas em coords[,2]
-df_xy = data.frame(shapefile_dados_das_camadas_utilizadas em coords
-[,1],shapefile_dados_das_camadas_utilizadas em coords[,2])
+x = shapefile_dados_das_camadas_utilizadas@coords[,1]
+y = shapefile_dados_das_camadas_utilizadas@coords[,2]
+df_xy = data.frame(shapefile_dados_das_camadas_utilizadas@coords
+[,1],shapefile_dados_das_camadas_utilizadas@coords[,2])
 #coordinates(df_xy) <- ~x+y
 z = deldir(x,y,plot=TRUE,wl='triang',wp="none")
 w = tile.list(z)
@@ -241,7 +231,7 @@ colnames(confirmando_pontos_dentro_da_area) = c('Long', 'Latitude')
 round(confirmando_pontos_dentro_da_area$Long, 5)
 #lista_clusteres$Long = round(lista_clusteres$Long, 5)
 #teste = merge(confirmando_pontos_dentro_da_area, lista_final, all.x = TRUE)
-#celulas_dentro_do_talhao em data$Cluster = '???'
+#celulas_dentro_do_talhao@data$Cluster = '???'
 plot(celulas_dentro_do_talhao)
 writeOGR(celulas_dentro_do_talhao,
 'C:\\Users\\Yury\\Desktop\\InCeres\\UGD', layer = 'sss', driver = 'ESRI
@@ -249,16 +239,12 @@ Shapefile')
 
 Yury Duarte
 Engenheiro Agrônomo - ESALQ/USP
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180903/b8ea62d6/attachment.html>
 
-From yurynepomuceno em gmail.com  Thu Sep  6 14:27:37 2018
+From yurynepomuceno em gmail.com  Thu Sep  6 17:27:37 2018
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Thu, 6 Sep 2018 14:27:37 -0300
-Subject: [R-br] =?utf-8?q?D=C3=BAvidas_de_SIG_no_R?=
+Date: Thu, 06 Sep 2018 17:27:37 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_D=C3=BAvidas_de_SIG_no_R?=
 In-Reply-To: <CADFS6E73MwmRT8JPJdgdavNdtc2HfdTjZtbLh3oGDQr49v_EDg@mail.gmail.com>
-References: <CADFS6E73MwmRT8JPJdgdavNdtc2HfdTjZtbLh3oGDQr49v_EDg@mail.gmail.com>
 Message-ID: <CADFS6E6PkSz451+iWOaJ8ArQhdbvy=7y-GJ5V7h+f1EGsxzJyA@mail.gmail.com>
 
 Boa tarde colegas listeiros, como vão?
@@ -269,7 +255,7 @@ de compartilha-la com vocês.
 Logo após fazer a clusterização e gerar uma lista com valores de cluster,
 adicionei essa camada de informação diretamente ao meu shapefile de pontos
 original:
- > shapefile_dados_das_camadas_utilizadas em dados$Cluster = lista_clusteres
+ > shapefile_dados_das_camadas_utilizadas@dados$Cluster = lista_clusteres
 
 Em seguida, gerei um arquivo raster com as informações de cluster e de
 dimensões 20x20 m:
@@ -365,9 +351,9 @@ escreveu:
 >
 > #------Clusterizacao------#
 > shapefile_dados_padronizados =
-> scale(shapefile_dados_das_camadas_utilizadas em data)
+> scale(shapefile_dados_das_camadas_utilizadas@data)
 > shapefile_dados_geolocalizacao =
-> shapefile_dados_das_camadas_utilizadas em coords
+> shapefile_dados_das_camadas_utilizadas@coords
 > wss =
 > (nrow(shapefile_dados_padronizados)-1)*sum(apply(shapefile_dados_padronizados,2,var))
 > cluster_maximo = 30
@@ -387,10 +373,10 @@ escreveu:
 > = escolher_num_cluster)$cluster),shapefile_dados_geolocalizacao)
 >
 > #------Transformando em poligono------#
-> x = shapefile_dados_das_camadas_utilizadas em coords[,1]
-> y = shapefile_dados_das_camadas_utilizadas em coords[,2]
-> df_xy = data.frame(shapefile_dados_das_camadas_utilizadas em coords
-> [,1],shapefile_dados_das_camadas_utilizadas em coords[,2])
+> x = shapefile_dados_das_camadas_utilizadas@coords[,1]
+> y = shapefile_dados_das_camadas_utilizadas@coords[,2]
+> df_xy = data.frame(shapefile_dados_das_camadas_utilizadas@coords
+> [,1],shapefile_dados_das_camadas_utilizadas@coords[,2])
 > #coordinates(df_xy) <- ~x+y
 > z = deldir(x,y,plot=TRUE,wl='triang',wp="none")
 > w = tile.list(z)
@@ -418,7 +404,7 @@ escreveu:
 > #lista_clusteres$Long = round(lista_clusteres$Long, 5)
 > #teste = merge(confirmando_pontos_dentro_da_area, lista_final, all.x =
 > TRUE)
-> #celulas_dentro_do_talhao em data$Cluster = '???'
+> #celulas_dentro_do_talhao@data$Cluster = '???'
 > plot(celulas_dentro_do_talhao)
 > writeOGR(celulas_dentro_do_talhao,
 > 'C:\\Users\\Yury\\Desktop\\InCeres\\UGD', layer = 'sss', driver = 'ESRI
@@ -427,25 +413,19 @@ escreveu:
 > Yury Duarte
 > Engenheiro Agrônomo - ESALQ/USP
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180906/228cec0c/attachment.html>
 
-From richfield1974 em yahoo.com  Tue Sep 11 10:25:21 2018
+From richfield1974 em yahoo.com  Tue Sep 11 13:25:21 2018
 From: richfield1974 em yahoo.com (Luiz Leal)
-Date: Tue, 11 Sep 2018 13:25:21 +0000 (UTC)
+Date: Tue, 11 Sep 2018 13:25:21 +0000
 Subject: [R-br] Generelized least squares - Random effects model
-References: <555132931.843024.1536672321043.ref@mail.yahoo.com>
+In-Reply-To: <555132931.843024.1536672321043.ref@mail.yahoo.com>
 Message-ID: <555132931.843024.1536672321043@mail.yahoo.com>
 
 PrezadosEstou usando o pacote nlme e estimando o modelo utilizando a função gls().O modelo é de efeitos aleatórios e preciso estimar as componentes de variância (variance between treatments e variance within treatments), mas não sei como.Alguém poderia me ajudar?Desde já agradeçoLuiz
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180911/9cffada3/attachment.html>
 
-From jacksonmrodrigues em gmail.com  Mon Sep 17 09:08:50 2018
+From jacksonmrodrigues em gmail.com  Mon Sep 17 12:08:50 2018
 From: jacksonmrodrigues em gmail.com (Jackson Rodrigues)
-Date: Mon, 17 Sep 2018 09:08:50 -0300
+Date: Mon, 17 Sep 2018 12:08:50 +0000
 Subject: [R-br] Aplicar msm intervalos para 2 rasters
 Message-ID: <CAPL76w_VYDxTmA9xz+wU41YEMXiukEn52ojPL-CjqTTf7L2iHA@mail.gmail.com>
 
@@ -474,16 +454,12 @@ Error in as.double(x) :
 Obrigado
 
 Jackson
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180917/83a310ef/attachment.html>
 
-From jdtatsch em gmail.com  Mon Sep 17 10:50:33 2018
-From: jdtatsch em gmail.com (=?UTF-8?B?SsO0bmF0YW4=?=)
-Date: Mon, 17 Sep 2018 10:50:33 -0300
-Subject: [R-br] Aplicar msm intervalos para 2 rasters
+From jdtatsch em gmail.com  Mon Sep 17 13:50:33 2018
+From: jdtatsch em gmail.com (=?utf-8?q?J=C3=B4natan?=)
+Date: Mon, 17 Sep 2018 13:50:33 +0000
+Subject: Re: [R-br] Aplicar msm intervalos para 2 rasters
 In-Reply-To: <CAPL76w_VYDxTmA9xz+wU41YEMXiukEn52ojPL-CjqTTf7L2iHA@mail.gmail.com>
-References: <CAPL76w_VYDxTmA9xz+wU41YEMXiukEn52ojPL-CjqTTf7L2iHA@mail.gmail.com>
 Message-ID: <CAEiHnvOAgpLWYLsDVWiqdq1bmbj7Oo=pzOG-wqYugE720eNRLg@mail.gmail.com>
 
 ?findInterval
@@ -544,16 +520,12 @@ r-br em listas.c3sl.ufpr.br> wrote:
 ##  Telefone: +55(55)33012083
 ##  www.ufsm.br/meteorologia
 ###############################################################
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180917/89639514/attachment.html>
 
-From thi_veloso em yahoo.com.br  Mon Sep 17 10:59:30 2018
+From thi_veloso em yahoo.com.br  Mon Sep 17 13:59:30 2018
 From: thi_veloso em yahoo.com.br (Thiago V. dos Santos)
-Date: Mon, 17 Sep 2018 13:59:30 +0000 (UTC)
-Subject: [R-br] Aplicar msm intervalos para 2 rasters
+Date: Mon, 17 Sep 2018 13:59:30 +0000
+Subject: Re: [R-br] Aplicar msm intervalos para 2 rasters
 In-Reply-To: <CAPL76w_VYDxTmA9xz+wU41YEMXiukEn52ojPL-CjqTTf7L2iHA@mail.gmail.com>
-References: <CAPL76w_VYDxTmA9xz+wU41YEMXiukEn52ojPL-CjqTTf7L2iHA@mail.gmail.com>
 Message-ID: <1309757680.3784028.1537192770093@mail.yahoo.com>
 
 Você pode resgatar o intervalo de valores de um raster usando o "cellStats", que já desconsidera os NA's:
@@ -579,14 +551,11 @@ Jackson_______________________________________________
 R-br mailing list
 R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
-Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180917/7d06a54b/attachment.html>
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
 
-From luizroberto.uesc em gmail.com  Tue Sep 18 10:45:39 2018
+From luizroberto.uesc em gmail.com  Tue Sep 18 13:45:39 2018
 From: luizroberto.uesc em gmail.com (Luiz Roberto Martins Pinto)
-Date: Tue, 18 Sep 2018 10:45:39 -0300
+Date: Tue, 18 Sep 2018 13:45:39 +0000
 Subject: [R-br] Perdoem-me. Preciso do e-mail de Benilton Carvalho
 Message-ID: <CAK4=-FBfkjZto2C4Y_iNsMszPHe5QdJqre2Wy3HrYQfAx-ikxA@mail.gmail.com>
 
@@ -611,25 +580,19 @@ http://lattes.cnpq.br/2732314327604831
 "*The s**cience exists because there are patterns. *
 * The patterns exist because God created them*.
 * The statistic exists to research the patterns that God created.*"
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180918/13745c12/attachment.html>
 
-From richfield1974 em yahoo.com  Tue Sep 18 14:35:55 2018
+From richfield1974 em yahoo.com  Tue Sep 18 17:35:55 2018
 From: richfield1974 em yahoo.com (Luiz Leal)
-Date: Tue, 18 Sep 2018 17:35:55 +0000 (UTC)
+Date: Tue, 18 Sep 2018 17:35:55 +0000
 Subject: [R-br] "variance function coefficient" pacote nlme
-References: <466463064.7019852.1537292155437.ref@mail.yahoo.com>
+In-Reply-To: <466463064.7019852.1537292155437.ref@mail.yahoo.com>
 Message-ID: <466463064.7019852.1537292155437@mail.yahoo.com>
 
 Prezados, boa tardeAlguém sabe como se estima o "variance function coefficient" no pacote nlme?Desde já agradeçoLuiz
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180918/c1de8db5/attachment.html>
 
-From yurynepomuceno em gmail.com  Fri Sep 21 16:47:58 2018
+From yurynepomuceno em gmail.com  Fri Sep 21 19:47:58 2018
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Fri, 21 Sep 2018 16:47:58 -0300
+Date: Fri, 21 Sep 2018 19:47:58 +0000
 Subject: [R-br] Unir Shapefiles
 Message-ID: <CADFS6E7r8vqubUkrizUro2QsUehYu4LA-wudng9GBi9oWR_XwQ@mail.gmail.com>
 
@@ -646,16 +609,12 @@ Obrigado!
 
 Yury Duarte
 Engenheiro Agrônomo - ESALQ/USP
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180921/05ea531b/attachment.html>
 
-From thi_veloso em yahoo.com.br  Sat Sep 22 23:24:57 2018
+From thi_veloso em yahoo.com.br  Sun Sep 23 02:24:57 2018
 From: thi_veloso em yahoo.com.br (Thiago V. dos Santos)
-Date: Sun, 23 Sep 2018 02:24:57 +0000 (UTC)
-Subject: [R-br] Unir Shapefiles
+Date: Sun, 23 Sep 2018 02:24:57 +0000
+Subject: Re: [R-br] Unir Shapefiles
 In-Reply-To: <CADFS6E7r8vqubUkrizUro2QsUehYu4LA-wudng9GBi9oWR_XwQ@mail.gmail.com>
-References: <CADFS6E7r8vqubUkrizUro2QsUehYu4LA-wudng9GBi9oWR_XwQ@mail.gmail.com>
 Message-ID: <799943471.930222.1537669497251@mail.yahoo.com>
 
 Existem vários caminhos, mas a maneira mais simples que eu conheço é usando a função raster::bind:
@@ -678,16 +637,13 @@ _______________________________________________
 R-br mailing list
 R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
-Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180923/073a5234/attachment.html>
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
 
-From edinhoestat em yahoo.com.br  Wed Sep 26 12:52:21 2018
+From edinhoestat em yahoo.com.br  Wed Sep 26 15:52:21 2018
 From: edinhoestat em yahoo.com.br (Edson Lira)
-Date: Wed, 26 Sep 2018 15:52:21 +0000 (UTC)
+Date: Wed, 26 Sep 2018 15:52:21 +0000
 Subject: [R-br] SOMA DE LINHAS
-References: <512530284.331931.1537977141351.ref@mail.yahoo.com>
+In-Reply-To: <512530284.331931.1537977141351.ref@mail.yahoo.com>
 Message-ID: <512530284.331931.1537977141351@mail.yahoo.com>
 
 Bom dia a todos!  Tenho um banco aonde da coluna 19 a coluna 29 tenho respostas do tipo: Concordância, Indiferente e Discordância, com um banco de  29 linhas.
@@ -702,17 +658,12 @@ Abaixo as respostas de um indivíduo (uma linha).
 [  ]'sProf. Edson Lira, Me 
 Estatístico
 Manaus-Amazonas
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180926/aeeb3e38/attachment.html>
 
-From nandodesouza em gmail.com  Wed Sep 26 17:54:25 2018
+From nandodesouza em gmail.com  Wed Sep 26 20:54:25 2018
 From: nandodesouza em gmail.com (Fernando Souza)
-Date: Wed, 26 Sep 2018 17:54:25 -0300
-Subject: [R-br] SOMA DE LINHAS
+Date: Wed, 26 Sep 2018 20:54:25 +0000
+Subject: Re: [R-br] SOMA DE LINHAS
 In-Reply-To: <512530284.331931.1537977141351@mail.yahoo.com>
-References: <512530284.331931.1537977141351.ref@mail.yahoo.com>
- <512530284.331931.1537977141351@mail.yahoo.com>
 Message-ID: <CAFrWFsmrcpAqbC-f9qkTRLsLU-9bXhe8U9-cTQyKyvn4osSQ9A@mail.gmail.com>
 
 Mande um CMR porque montar uma tabela baseada em sua descrição ou criar
@@ -753,17 +704,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180926/03108685/attachment.html>
 
-From rddsouzaoliveira em gmail.com  Wed Sep 26 18:47:15 2018
+From rddsouzaoliveira em gmail.com  Wed Sep 26 21:47:15 2018
 From: rddsouzaoliveira em gmail.com (Rodrigo de Souza Oliveira)
-Date: Wed, 26 Sep 2018 17:47:15 -0400
-Subject: [R-br] SOMA DE LINHAS
+Date: Wed, 26 Sep 2018 21:47:15 +0000
+Subject: Re: [R-br] SOMA DE LINHAS
 In-Reply-To: <512530284.331931.1537977141351@mail.yahoo.com>
-References: <512530284.331931.1537977141351.ref@mail.yahoo.com>
- <512530284.331931.1537977141351@mail.yahoo.com>
 Message-ID: <CABbTeZN476HFKsu0Ty0mdj=WgeMUtf2rdTPn4mFAhtFT+hRnuA@mail.gmail.com>
 
 Olá Edson,
@@ -824,18 +770,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 
 
 Rodrigo Oliveira
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180926/5851d287/attachment.html>
 
-From edinhoestat em yahoo.com.br  Thu Sep 27 11:37:07 2018
+From edinhoestat em yahoo.com.br  Thu Sep 27 14:37:07 2018
 From: edinhoestat em yahoo.com.br (Edson Lira)
-Date: Thu, 27 Sep 2018 14:37:07 +0000 (UTC)
-Subject: [R-br] SOMA DE LINHAS
+Date: Thu, 27 Sep 2018 14:37:07 +0000
+Subject: Re: [R-br] SOMA DE LINHAS
 In-Reply-To: <CAFrWFsmrcpAqbC-f9qkTRLsLU-9bXhe8U9-cTQyKyvn4osSQ9A@mail.gmail.com>
-References: <512530284.331931.1537977141351.ref@mail.yahoo.com>
- <512530284.331931.1537977141351@mail.yahoo.com>
- <CAFrWFsmrcpAqbC-f9qkTRLsLU-9bXhe8U9-cTQyKyvn4osSQ9A@mail.gmail.com>
 Message-ID: <605178529.932015.1538059027384@mail.yahoo.com>
 
 Fernando Souza, abaixo o link de um banco para vc avaliar. 
@@ -866,17 +806,12 @@ R-br mailing list
 R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
-  
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180927/5565014a/attachment.html>
 
-From nandodesouza em gmail.com  Thu Sep 27 15:55:49 2018
+From nandodesouza em gmail.com  Thu Sep 27 18:55:49 2018
 From: nandodesouza em gmail.com (Fernando Souza)
-Date: Thu, 27 Sep 2018 15:55:49 -0300
-Subject: [R-br] SOMA DE LINHAS
+Date: Thu, 27 Sep 2018 18:55:49 +0000
+Subject: Re: [R-br] SOMA DE LINHAS
 In-Reply-To: <605178529.932015.1538059027384@mail.yahoo.com>
-References: <605178529.932015.1538059027384@mail.yahoo.com>
 Message-ID: <1538074215.local-fffc2a2c-44f5-v1.4.2-f587b7b7@getmailspring.com>
 
 Edson,
@@ -1034,15 +969,10 @@ On Sep 27 2018, at 11:37 am, Edson Lira <edinhoestat em yahoo.com.br> wrote:
 >
 >
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180927/4182f351/attachment.html>
-
-From patriota.alexandre em gmail.com  Thu Sep 27 15:58:49 2018
-From: patriota.alexandre em gmail.com (=?UTF-8?Q?Alexandre_Galv=C3=A3o_Patriota?=)
-Date: Thu, 27 Sep 2018 15:58:49 -0300
-Subject: [R-br] =?utf-8?q?Inscri=C3=A7=C3=B5es_abertas_para_mestrado_e_dou?=
-	=?utf-8?q?torado_em_Estat=C3=ADstica_na_USP?=
+From patriota.alexandre em gmail.com  Thu Sep 27 18:58:49 2018
+From: patriota.alexandre em gmail.com (=?utf-8?q?Alexandre_Galv=C3=A3o_Patriota?=)
+Date: Thu, 27 Sep 2018 18:58:49 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Inscri=C3=A7=C3=B5es_abertas_para_mestrado_e_doutorado_em_Estat=C3=ADstica_na_USP?=
 Message-ID: <CAB6kaCHE2i+f1mB-Yn8GaZXtX-DhFf8reLmrU-gT=26+ctgJjg@mail.gmail.com>
 
 Prezados,
@@ -1058,15 +988,12 @@ Prof. Dr. Alexandre G. Patriota,
 Department of Statistics,
 Institute of Mathematics and Statistics,
 University of São Paulo, Brazil.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180927/1869347f/attachment.html>
 
-From economatistica em yahoo.com.br  Thu Sep 27 18:45:21 2018
+From economatistica em yahoo.com.br  Thu Sep 27 21:45:21 2018
 From: economatistica em yahoo.com.br (Edimeire Alexandra Pinto)
-Date: Thu, 27 Sep 2018 21:45:21 +0000 (UTC)
+Date: Thu, 27 Sep 2018 21:45:21 +0000
 Subject: [R-br] Rmarkdown
-References: <852252633.614103.1538084721158.ref@mail.yahoo.com>
+In-Reply-To: <852252633.614103.1538084721158.ref@mail.yahoo.com>
 Message-ID: <852252633.614103.1538084721158@mail.yahoo.com>
 
 Oi gente.
@@ -1074,17 +1001,12 @@ Para aqueles que usam o rmarkdown:
  Existe algum alguma função que leia um arquivo em word? O que eu quero é o seguinte: a pessoa com um click consiga baixar um doc ( que não está na rede e sim no computador) para leitura, por exemplo, coloco um link ou crio um botão (como no shiny) e quando a pessoa da o click se consegue baixar um arquivo em word, sem desformatá-lo, que está numa pasta local no computador.  Quero como se fosse uma função read.table que importa arquivos em csv, mas no meu caso é docx.
 
 Valeu gente!!!
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180927/d8793d81/attachment.html>
 
-From yurynepomuceno em gmail.com  Fri Sep 28 08:28:41 2018
+From yurynepomuceno em gmail.com  Fri Sep 28 11:28:41 2018
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Fri, 28 Sep 2018 08:28:41 -0300
-Subject: [R-br] Unir Shapefiles
+Date: Fri, 28 Sep 2018 11:28:41 +0000
+Subject: Re: [R-br] Unir Shapefiles
 In-Reply-To: <799943471.930222.1537669497251@mail.yahoo.com>
-References: <CADFS6E7r8vqubUkrizUro2QsUehYu4LA-wudng9GBi9oWR_XwQ@mail.gmail.com>
- <799943471.930222.1537669497251@mail.yahoo.com>
 Message-ID: <CADFS6E62oZTEjYqEn4inB+jZm5gZ0acciy8hrqnFFxA_YaLiZg@mail.gmail.com>
 
 Bom dia Thiago!
@@ -1147,17 +1069,12 @@ thi_veloso em yahoo.com.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
 > c�digo m�nimo reproduz�vel.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180928/a298f496/attachment.html>
 
-From tomas.barcellos em gmail.com  Fri Sep 28 09:24:22 2018
-From: tomas.barcellos em gmail.com (=?UTF-8?Q?Tom=C3=A1s_Barcellos?=)
-Date: Fri, 28 Sep 2018 09:24:22 -0300
-Subject: [R-br] Rmarkdown
+From tomas.barcellos em gmail.com  Fri Sep 28 12:24:22 2018
+From: tomas.barcellos em gmail.com (=?utf-8?q?Tom=C3=A1s_Barcellos?=)
+Date: Fri, 28 Sep 2018 12:24:22 +0000
+Subject: Re: [R-br] Rmarkdown
 In-Reply-To: <852252633.614103.1538084721158@mail.yahoo.com>
-References: <852252633.614103.1538084721158.ref@mail.yahoo.com>
- <852252633.614103.1538084721158@mail.yahoo.com>
 Message-ID: <CAMr-yZi7vv09sd_CaJASre8zsH2cUpvcY4Agp7X23j0NJhQGCg@mail.gmail.com>
 
 É só para baixar o word ou importar ele para dentro do R e fazer uso de
@@ -1206,14 +1123,11 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180928/885b1c08/attachment.html>
 
-From diegovieir4 em gmail.com  Sat Sep 29 13:49:59 2018
+From diegovieir4 em gmail.com  Sat Sep 29 16:49:59 2018
 From: diegovieir4 em gmail.com (Diego Vieira)
-Date: Sat, 29 Sep 2018 13:49:59 -0300
-Subject: [R-br] =?utf-8?q?COMPARANDO_CURVAS_=5BD=C3=9AVIDA=5D?=
+Date: Sat, 29 Sep 2018 16:49:59 +0000
+Subject: =?utf-8?q?=5BR-br=5D_COMPARANDO_CURVAS_=5BD=C3=9AVIDA=5D?=
 Message-ID: <CAKnQR80att9eyh7bp8=BbRHgzCZg5LFGwfo=a=kYh6z_G_vhqg@mail.gmail.com>
 
 Boa tarde pessoal,
@@ -1262,7 +1176,4 @@ Diego dos Santos Vieira
 Engenheiro Florestal - UFRA
 Mestre em Ciência Florestal - UFVJM
 Doutorando em Ciência Florestal - UFVJM
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180929/72b8a803/attachment.html>
 

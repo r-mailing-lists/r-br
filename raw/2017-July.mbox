@@ -1,7 +1,849 @@
-From f.fabiogama88 em gmail.com  Mon Jul  3 12:03:03 2017
+From cesar.rabak em gmail.com  Sat Jul  1 00:28:41 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 01 Jul 2017 00:28:41 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_RES=3A_D=C3=BAvida_sobre_pesos_amostrais?=
+In-Reply-To: <CA+_U+Lz2cdf=KwVO+Y=PQG_CXL6KxBYQO3-ej3mrtXDT59yuDg@mail.gmail.com>
+Message-ID: <CAKrF98ng5OXpmrhQRpx3s95+xThg=+riFS9DCn6JX1s6YobY-w@mail.gmail.com>
+
+Carlos,
+
+Essa dúvida não exatamente pertinente ao R, mas sim uma dúvida de
+Estatística Básica.
+
+No seu caso você obteve uma proporção da preferência por uma variedade de
+serviço.
+
+Não existe o conceito de "extrapolação" em amostragem, mas sim a questão do
+intervalo de confiança -- IC dessa estimativa vis a vis com a proporção
+"real" da população sob estudo¹.
+
+Como a sua amostra é relativamente grande com relação à população, o IC
+(95%) é relativamente estreito (12,0; 19,8). A forma de calcular esse IC
+não é única, razão pela qual pode haver ainda outros ICs dependendo dos
+costumes no domínio do problema da ciência que você está praticando.
+
+No caso das suas questões recolocadas, a sua maneira de dizer que 962 com
+IC 95% (727 a 1199) da população têm essa opinião.
+
+A interpretação do significado desse intervalo e demais questões são
+extremamente fora de tópico aqui, por isso se você tiver dúvidas recomendo
+que consulte um estatístico na sua instituição, ou encete o resto desta
+discução via e-mail em privado².
+
+Quanto à questão dos pesos ela só entraria em discussão caso a amostragem
+não for totalmente aleatória em toda a população, tópico esse que
+demandaria também consulta a material mais avançado em Amostragem, ou uma
+consultoria com um estatístico aí na sua instituição.
+
+HTH
+--
+Cesar Rabak
+
+
+[1] Quando ela é calculada e apresentada seguindo certo formalismos ela é
+denominada "margem de erro" (sim a famosa dos levantamentos de intenção de
+votos!).
+
+[2] Você pode também colocar a sua questão no SE de estatística onde a
+questão seria mais bem vinda.
+
+
+
+2017-06-30 13:15 GMT-03:00 Carlos Andrade via R-br <r-br em listas.c3sl.ufpr.br
+>:
+
+> Agradeço a Rodrigo Campos e pjobenil pela colaboração.
+> Então, considerando as premissas levantadas por vocês, posso
+> seguramente aplicar o percentual da amostra na população.
+> Desta forma, 16% (os 51 respondentes) podem ser aplicados aos 6055, e
+> dizer que são 962 os que têm aquela opinião?
+>
+> Em 30 de junho de 2017 11:35, pjobenil--- via R-br
+> <r-br em listas.c3sl.ufpr.br> escreveu:
+> > Carlos,
+> >
+> >
+> >
+> > Para os dados apresentados cabe no máximo calcular a margem de erro se
+> usou
+> > alguma técnica probabilística para a seleção da amostra.
+> >
+> > Extrapolar os dados para a população ocorreria em dois casos:
+> >
+> > Existem segmentos nesta população que você não considerou quando
+> selecionou
+> > os 361;
+> > Os 6055 indivíduos formam um segmento de uma população maior.
+> >
+> > Nos dois casos sim você deve aplicar os pesos destes segmentos para o
+> > calculo final do estimador.
+> >
+> >
+> >
+> > Atenciosamente
+> >
+> > Jobenil Júnior
+> >
+> >
+> >
+> >
+> >
+> > Enviado do Email para Windows 10
+> >
+> >
+> >
+> > De: Carlos Andrade via R-br
+> > Enviado:quinta-feira, 29 de junho de 2017 18:42
+> > Para: R-br em listas.c3sl.ufpr.br
+> > Assunto: [R-br] Dúvida sobre pesos amostrais
+> >
+> >
+> >
+> > Prezados amigos da lista.
+> >
+> >
+> >
+> > Desejo obter o esclarecimento de uma dúvida.
+> >
+> > De uma população de 6055 indivíduos foi obtida uma amostra de 321
+> >
+> > respondentes de um questionário.
+> >
+> > Na tabulação de uma das variáveis encontro que 51(15,9%) dos
+> >
+> > entrevistados prefere uma variedade de serviço.
+> >
+> > Dúvida: como faço para extrapolar este valor amostral para o
+> >
+> > correspondente do universo?
+> >
+> > É necessário usar pesos amostrais?
+> >
+> >
+> >
+> > Agradeço antecipadamente qualquer ajuda.
+> >
+> > --
+> >
+> > Atenciosamente,
+> >
+> >
+> >
+> > Prof. Carlos A. S. de Andrade
+> >
+> > LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de
+> > Produção
+> >
+> > Universidade Federal de Campina Grande.
+> >
+> > Centro de Humanidades
+> >
+> > Unidade Acadêmica de Economia
+> >
+> > _______________________________________________
+> >
+> > R-br mailing list
+> >
+> > R-br em listas.c3sl.ufpr.br
+> >
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+> cdigo
+> > mnimo reproduzvel.
+> >
+> >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código
+> > mínimo reproduzível.
+>
+>
+>
+> --
+> Atenciosamente,
+>
+> Prof. Carlos A. S. de Andrade
+> LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de
+> Produção
+> Universidade Federal de Campina Grande.
+> Centro de Humanidades
+> Unidade Acadêmica de Economia
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+>
+
+From prf.cantonio em gmail.com  Sat Jul  1 01:20:54 2017
+From: prf.cantonio em gmail.com (Carlos Andrade)
+Date: Sat, 01 Jul 2017 01:20:54 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09RES=3A_D=C3=BAvida_sobre_pesos_amostrais=5BResolvido=5D?=
+Message-ID: <CA+_U+Lzkn8XtD7WZz736C3jRgRwBgZS69q4EGrG++9W-T6u1dw@mail.gmail.com>
+
+Cesar,
+
+Obrigado pelo esclarecimento. A minha dúvida está resolvida.
+
+Em 30 de junho de 2017 21:28, Cesar Rabak via R-br
+<r-br em listas.c3sl.ufpr.br> escreveu:
+> Carlos,
+>
+> Essa dúvida não exatamente pertinente ao R, mas sim uma dúvida de
+> Estatística Básica.
+>
+> No seu caso você obteve uma proporção da preferência por uma variedade de
+> serviço.
+>
+> Não existe o conceito de "extrapolação" em amostragem, mas sim a questão do
+> intervalo de confiança -- IC dessa estimativa vis a vis com a proporção
+> "real" da população sob estudo¹.
+>
+> Como a sua amostra é relativamente grande com relação à população, o IC
+> (95%) é relativamente estreito (12,0; 19,8). A forma de calcular esse IC não
+> é única, razão pela qual pode haver ainda outros ICs dependendo dos costumes
+> no domínio do problema da ciência que você está praticando.
+>
+> No caso das suas questões recolocadas, a sua maneira de dizer que 962 com IC
+> 95% (727 a 1199) da população têm essa opinião.
+>
+> A interpretação do significado desse intervalo e demais questões são
+> extremamente fora de tópico aqui, por isso se você tiver dúvidas recomendo
+> que consulte um estatístico na sua instituição, ou encete o resto desta
+> discução via e-mail em privado².
+>
+> Quanto à questão dos pesos ela só entraria em discussão caso a amostragem
+> não for totalmente aleatória em toda a população, tópico esse que demandaria
+> também consulta a material mais avançado em Amostragem, ou uma consultoria
+> com um estatístico aí na sua instituição.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> [1] Quando ela é calculada e apresentada seguindo certo formalismos ela é
+> denominada "margem de erro" (sim a famosa dos levantamentos de intenção de
+> votos!).
+>
+> [2] Você pode também colocar a sua questão no SE de estatística onde a
+> questão seria mais bem vinda.
+>
+>
+>
+> 2017-06-30 13:15 GMT-03:00 Carlos Andrade via R-br
+> <r-br em listas.c3sl.ufpr.br>:
+>>
+>> Agradeço a Rodrigo Campos e pjobenil pela colaboração.
+>> Então, considerando as premissas levantadas por vocês, posso
+>> seguramente aplicar o percentual da amostra na população.
+>> Desta forma, 16% (os 51 respondentes) podem ser aplicados aos 6055, e
+>> dizer que são 962 os que têm aquela opinião?
+>>
+>> Em 30 de junho de 2017 11:35, pjobenil--- via R-br
+>> <r-br em listas.c3sl.ufpr.br> escreveu:
+>> > Carlos,
+>> >
+>> >
+>> >
+>> > Para os dados apresentados cabe no máximo calcular a margem de erro se
+>> > usou
+>> > alguma técnica probabilística para a seleção da amostra.
+>> >
+>> > Extrapolar os dados para a população ocorreria em dois casos:
+>> >
+>> > Existem segmentos nesta população que você não considerou quando
+>> > selecionou
+>> > os 361;
+>> > Os 6055 indivíduos formam um segmento de uma população maior.
+>> >
+>> > Nos dois casos sim você deve aplicar os pesos destes segmentos para o
+>> > calculo final do estimador.
+>> >
+>> >
+>> >
+>> > Atenciosamente
+>> >
+>> > Jobenil Júnior
+>> >
+>> >
+>> >
+>> >
+>> >
+>> > Enviado do Email para Windows 10
+>> >
+>> >
+>> >
+>> > De: Carlos Andrade via R-br
+>> > Enviado:quinta-feira, 29 de junho de 2017 18:42
+>> > Para: R-br em listas.c3sl.ufpr.br
+>> > Assunto: [R-br] Dúvida sobre pesos amostrais
+>> >
+>> >
+>> >
+>> > Prezados amigos da lista.
+>> >
+>> >
+>> >
+>> > Desejo obter o esclarecimento de uma dúvida.
+>> >
+>> > De uma população de 6055 indivíduos foi obtida uma amostra de 321
+>> >
+>> > respondentes de um questionário.
+>> >
+>> > Na tabulação de uma das variáveis encontro que 51(15,9%) dos
+>> >
+>> > entrevistados prefere uma variedade de serviço.
+>> >
+>> > Dúvida: como faço para extrapolar este valor amostral para o
+>> >
+>> > correspondente do universo?
+>> >
+>> > É necessário usar pesos amostrais?
+>> >
+>> >
+>> >
+>> > Agradeço antecipadamente qualquer ajuda.
+>> >
+>> > --
+>> >
+>> > Atenciosamente,
+>> >
+>> >
+>> >
+>> > Prof. Carlos A. S. de Andrade
+>> >
+>> > LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de
+>> > Produção
+>> >
+>> > Universidade Federal de Campina Grande.
+>> >
+>> > Centro de Humanidades
+>> >
+>> > Unidade Acadêmica de Economia
+>> >
+>> > _______________________________________________
+>> >
+>> > R-br mailing list
+>> >
+>> > R-br em listas.c3sl.ufpr.br
+>> >
+>> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> >
+>> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+>> > cdigo
+>> > mnimo reproduzvel.
+>> >
+>> >
+>> >
+>> >
+>> > _______________________________________________
+>> > R-br mailing list
+>> > R-br em listas.c3sl.ufpr.br
+>> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> > código
+>> > mínimo reproduzível.
+>>
+>>
+>>
+>> --
+>> Atenciosamente,
+>>
+>> Prof. Carlos A. S. de Andrade
+>> LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de
+>> Produção
+>> Universidade Federal de Campina Grande.
+>> Centro de Humanidades
+>> Unidade Acadêmica de Economia
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+>> mnimo reproduzvel.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
+> mínimo reproduzível.
+
+
+
+-- 
+Atenciosamente,
+
+Prof. Carlos A. S. de Andrade
+LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de Produção
+Universidade Federal de Campina Grande.
+Centro de Humanidades
+Unidade Acadêmica de Economia
+
+From prf.cantonio em gmail.com  Sat Jul  1 01:23:12 2017
+From: prf.cantonio em gmail.com (Carlos Andrade)
+Date: Sat, 01 Jul 2017 01:23:12 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09RES=3A_D=C3=BAvida_sobre_pesos_amostrais=5BResolvido=5D?=
+Message-ID: <CA+_U+LzX0Zc=1EHUD59FU=boWm=fWR1w+M0YBTOMazjV9+244g@mail.gmail.com>
+
+Cesar,
+
+Obrigado pelo esclarecimento. Minha dúvida está resolvida.
+
+Em 30 de junho de 2017 21:28, Cesar Rabak via R-br
+<r-br em listas.c3sl.ufpr.br> escreveu:
+> Carlos,
+>
+> Essa dúvida não exatamente pertinente ao R, mas sim uma dúvida de
+> Estatística Básica.
+>
+> No seu caso você obteve uma proporção da preferência por uma variedade de
+> serviço.
+>
+> Não existe o conceito de "extrapolação" em amostragem, mas sim a questão do
+> intervalo de confiança -- IC dessa estimativa vis a vis com a proporção
+> "real" da população sob estudo¹.
+>
+> Como a sua amostra é relativamente grande com relação à população, o IC
+> (95%) é relativamente estreito (12,0; 19,8). A forma de calcular esse IC não
+> é única, razão pela qual pode haver ainda outros ICs dependendo dos costumes
+> no domínio do problema da ciência que você está praticando.
+>
+> No caso das suas questões recolocadas, a sua maneira de dizer que 962 com IC
+> 95% (727 a 1199) da população têm essa opinião.
+>
+> A interpretação do significado desse intervalo e demais questões são
+> extremamente fora de tópico aqui, por isso se você tiver dúvidas recomendo
+> que consulte um estatístico na sua instituição, ou encete o resto desta
+> discução via e-mail em privado².
+>
+> Quanto à questão dos pesos ela só entraria em discussão caso a amostragem
+> não for totalmente aleatória em toda a população, tópico esse que demandaria
+> também consulta a material mais avançado em Amostragem, ou uma consultoria
+> com um estatístico aí na sua instituição.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> [1] Quando ela é calculada e apresentada seguindo certo formalismos ela é
+> denominada "margem de erro" (sim a famosa dos levantamentos de intenção de
+> votos!).
+>
+> [2] Você pode também colocar a sua questão no SE de estatística onde a
+> questão seria mais bem vinda.
+>
+>
+>
+> 2017-06-30 13:15 GMT-03:00 Carlos Andrade via R-br
+> <r-br em listas.c3sl.ufpr.br>:
+>>
+>> Agradeço a Rodrigo Campos e pjobenil pela colaboração.
+>> Então, considerando as premissas levantadas por vocês, posso
+>> seguramente aplicar o percentual da amostra na população.
+>> Desta forma, 16% (os 51 respondentes) podem ser aplicados aos 6055, e
+>> dizer que são 962 os que têm aquela opinião?
+>>
+>> Em 30 de junho de 2017 11:35, pjobenil--- via R-br
+>> <r-br em listas.c3sl.ufpr.br> escreveu:
+>> > Carlos,
+>> >
+>> >
+>> >
+>> > Para os dados apresentados cabe no máximo calcular a margem de erro se
+>> > usou
+>> > alguma técnica probabilística para a seleção da amostra.
+>> >
+>> > Extrapolar os dados para a população ocorreria em dois casos:
+>> >
+>> > Existem segmentos nesta população que você não considerou quando
+>> > selecionou
+>> > os 361;
+>> > Os 6055 indivíduos formam um segmento de uma população maior.
+>> >
+>> > Nos dois casos sim você deve aplicar os pesos destes segmentos para o
+>> > calculo final do estimador.
+>> >
+>> >
+>> >
+>> > Atenciosamente
+>> >
+>> > Jobenil Júnior
+>> >
+>> >
+>> >
+>> >
+>> >
+>> > Enviado do Email para Windows 10
+>> >
+>> >
+>> >
+>> > De: Carlos Andrade via R-br
+>> > Enviado:quinta-feira, 29 de junho de 2017 18:42
+>> > Para: R-br em listas.c3sl.ufpr.br
+>> > Assunto: [R-br] Dúvida sobre pesos amostrais
+>> >
+>> >
+>> >
+>> > Prezados amigos da lista.
+>> >
+>> >
+>> >
+>> > Desejo obter o esclarecimento de uma dúvida.
+>> >
+>> > De uma população de 6055 indivíduos foi obtida uma amostra de 321
+>> >
+>> > respondentes de um questionário.
+>> >
+>> > Na tabulação de uma das variáveis encontro que 51(15,9%) dos
+>> >
+>> > entrevistados prefere uma variedade de serviço.
+>> >
+>> > Dúvida: como faço para extrapolar este valor amostral para o
+>> >
+>> > correspondente do universo?
+>> >
+>> > É necessário usar pesos amostrais?
+>> >
+>> >
+>> >
+>> > Agradeço antecipadamente qualquer ajuda.
+>> >
+>> > --
+>> >
+>> > Atenciosamente,
+>> >
+>> >
+>> >
+>> > Prof. Carlos A. S. de Andrade
+>> >
+>> > LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de
+>> > Produção
+>> >
+>> > Universidade Federal de Campina Grande.
+>> >
+>> > Centro de Humanidades
+>> >
+>> > Unidade Acadêmica de Economia
+>> >
+>> > _______________________________________________
+>> >
+>> > R-br mailing list
+>> >
+>> > R-br em listas.c3sl.ufpr.br
+>> >
+>> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> >
+>> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+>> > cdigo
+>> > mnimo reproduzvel.
+>> >
+>> >
+>> >
+>> >
+>> > _______________________________________________
+>> > R-br mailing list
+>> > R-br em listas.c3sl.ufpr.br
+>> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> > código
+>> > mínimo reproduzível.
+>>
+>>
+>>
+>> --
+>> Atenciosamente,
+>>
+>> Prof. Carlos A. S. de Andrade
+>> LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de
+>> Produção
+>> Universidade Federal de Campina Grande.
+>> Centro de Humanidades
+>> Unidade Acadêmica de Economia
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+>> mnimo reproduzvel.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
+> mínimo reproduzível.
+
+
+
+-- 
+Atenciosamente,
+
+Prof. Carlos A. S. de Andrade
+LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de Produção
+Universidade Federal de Campina Grande.
+Centro de Humanidades
+Unidade Acadêmica de Economia
+
+From assis.leonard em gmail.com  Sat Jul  1 01:39:08 2017
+From: assis.leonard em gmail.com (Leonard Assis)
+Date: Sat, 01 Jul 2017 01:39:08 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09RES=3A_D=C3=BAvida_sobre_pesos_amostrais=5BResolvido=5D?=
+In-Reply-To: <CA+_U+Lzkn8XtD7WZz736C3jRgRwBgZS69q4EGrG++9W-T6u1dw@mail.gmail.com>
+Message-ID: <CAEG0FK8_kTFCfQYefr0wW46b_h7MXN1+-J-B2-45GmKAsdDkzw@mail.gmail.com>
+
+Complementando meus colegas:
+
+Uma boa forma de você "extrapolar", dado que todas as recomendações foram
+seguidas, seria utilizar o pacote survey e replicar o desenho amostral.
+
+Lembrando que o conceito de desenho amostral é bem similar ao conceito de
+"desenho de experimentos". Para se "extrapolar", precisa conhecer bem como
+foi todo o processo amostral, assim como conhecer as probabilidades de
+inclusão na amostra de cada uma das observações.
+Sabendo isto, nada que um as.svydesign é um svytotal não resolvam
+
+Leonard
+
+Em 30 de jun de 2017 10:21 PM, "Carlos Andrade via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Cesar,
+>
+> Obrigado pelo esclarecimento. A minha dúvida está resolvida.
+>
+> Em 30 de junho de 2017 21:28, Cesar Rabak via R-br
+> <r-br em listas.c3sl.ufpr.br> escreveu:
+> > Carlos,
+> >
+> > Essa dúvida não exatamente pertinente ao R, mas sim uma dúvida de
+> > Estatística Básica.
+> >
+> > No seu caso você obteve uma proporção da preferência por uma variedade de
+> > serviço.
+> >
+> > Não existe o conceito de "extrapolação" em amostragem, mas sim a questão
+> do
+> > intervalo de confiança -- IC dessa estimativa vis a vis com a proporção
+> > "real" da população sob estudo¹.
+> >
+> > Como a sua amostra é relativamente grande com relação à população, o IC
+> > (95%) é relativamente estreito (12,0; 19,8). A forma de calcular esse IC
+> não
+> > é única, razão pela qual pode haver ainda outros ICs dependendo dos
+> costumes
+> > no domínio do problema da ciência que você está praticando.
+> >
+> > No caso das suas questões recolocadas, a sua maneira de dizer que 962
+> com IC
+> > 95% (727 a 1199) da população têm essa opinião.
+> >
+> > A interpretação do significado desse intervalo e demais questões são
+> > extremamente fora de tópico aqui, por isso se você tiver dúvidas
+> recomendo
+> > que consulte um estatístico na sua instituição, ou encete o resto desta
+> > discução via e-mail em privado².
+> >
+> > Quanto à questão dos pesos ela só entraria em discussão caso a amostragem
+> > não for totalmente aleatória em toda a população, tópico esse que
+> demandaria
+> > também consulta a material mais avançado em Amostragem, ou uma
+> consultoria
+> > com um estatístico aí na sua instituição.
+> >
+> > HTH
+> > --
+> > Cesar Rabak
+> >
+> >
+> > [1] Quando ela é calculada e apresentada seguindo certo formalismos ela é
+> > denominada "margem de erro" (sim a famosa dos levantamentos de intenção
+> de
+> > votos!).
+> >
+> > [2] Você pode também colocar a sua questão no SE de estatística onde a
+> > questão seria mais bem vinda.
+> >
+> >
+> >
+> > 2017-06-30 13:15 GMT-03:00 Carlos Andrade via R-br
+> > <r-br em listas.c3sl.ufpr.br>:
+> >>
+> >> Agradeço a Rodrigo Campos e pjobenil pela colaboração.
+> >> Então, considerando as premissas levantadas por vocês, posso
+> >> seguramente aplicar o percentual da amostra na população.
+> >> Desta forma, 16% (os 51 respondentes) podem ser aplicados aos 6055, e
+> >> dizer que são 962 os que têm aquela opinião?
+> >>
+> >> Em 30 de junho de 2017 11:35, pjobenil--- via R-br
+> >> <r-br em listas.c3sl.ufpr.br> escreveu:
+> >> > Carlos,
+> >> >
+> >> >
+> >> >
+> >> > Para os dados apresentados cabe no máximo calcular a margem de erro se
+> >> > usou
+> >> > alguma técnica probabilística para a seleção da amostra.
+> >> >
+> >> > Extrapolar os dados para a população ocorreria em dois casos:
+> >> >
+> >> > Existem segmentos nesta população que você não considerou quando
+> >> > selecionou
+> >> > os 361;
+> >> > Os 6055 indivíduos formam um segmento de uma população maior.
+> >> >
+> >> > Nos dois casos sim você deve aplicar os pesos destes segmentos para o
+> >> > calculo final do estimador.
+> >> >
+> >> >
+> >> >
+> >> > Atenciosamente
+> >> >
+> >> > Jobenil Júnior
+> >> >
+> >> >
+> >> >
+> >> >
+> >> >
+> >> > Enviado do Email para Windows 10
+> >> >
+> >> >
+> >> >
+> >> > De: Carlos Andrade via R-br
+> >> > Enviado:quinta-feira, 29 de junho de 2017 18:42
+> >> > Para: R-br em listas.c3sl.ufpr.br
+> >> > Assunto: [R-br] Dúvida sobre pesos amostrais
+> >> >
+> >> >
+> >> >
+> >> > Prezados amigos da lista.
+> >> >
+> >> >
+> >> >
+> >> > Desejo obter o esclarecimento de uma dúvida.
+> >> >
+> >> > De uma população de 6055 indivíduos foi obtida uma amostra de 321
+> >> >
+> >> > respondentes de um questionário.
+> >> >
+> >> > Na tabulação de uma das variáveis encontro que 51(15,9%) dos
+> >> >
+> >> > entrevistados prefere uma variedade de serviço.
+> >> >
+> >> > Dúvida: como faço para extrapolar este valor amostral para o
+> >> >
+> >> > correspondente do universo?
+> >> >
+> >> > É necessário usar pesos amostrais?
+> >> >
+> >> >
+> >> >
+> >> > Agradeço antecipadamente qualquer ajuda.
+> >> >
+> >> > --
+> >> >
+> >> > Atenciosamente,
+> >> >
+> >> >
+> >> >
+> >> > Prof. Carlos A. S. de Andrade
+> >> >
+> >> > LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de
+> >> > Produção
+> >> >
+> >> > Universidade Federal de Campina Grande.
+> >> >
+> >> > Centro de Humanidades
+> >> >
+> >> > Unidade Acadêmica de Economia
+> >> >
+> >> > _______________________________________________
+> >> >
+> >> > R-br mailing list
+> >> >
+> >> > R-br em listas.c3sl.ufpr.br
+> >> >
+> >> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >> >
+> >> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+> >> > cdigo
+> >> > mnimo reproduzvel.
+> >> >
+> >> >
+> >> >
+> >> >
+> >> > _______________________________________________
+> >> > R-br mailing list
+> >> > R-br em listas.c3sl.ufpr.br
+> >> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> >> > código
+> >> > mínimo reproduzível.
+> >>
+> >>
+> >>
+> >> --
+> >> Atenciosamente,
+> >>
+> >> Prof. Carlos A. S. de Andrade
+> >> LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de
+> >> Produção
+> >> Universidade Federal de Campina Grande.
+> >> Centro de Humanidades
+> >> Unidade Acadêmica de Economia
+> >> _______________________________________________
+> >> R-br mailing list
+> >> R-br em listas.c3sl.ufpr.br
+> >> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+> cdigo
+> >> mnimo reproduzvel.
+> >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código
+> > mínimo reproduzível.
+>
+>
+>
+> --
+> Atenciosamente,
+>
+> Prof. Carlos A. S. de Andrade
+> LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de
+> Produção
+> Universidade Federal de Campina Grande.
+> Centro de Humanidades
+> Unidade Acadêmica de Economia
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+
+From f.fabiogama88 em gmail.com  Mon Jul  3 15:03:03 2017
 From: f.fabiogama88 em gmail.com (Fernando Gama)
-Date: Mon, 3 Jul 2017 12:03:03 -0300
-Subject: [R-br] =?utf-8?q?Duvida_estat=C3=ADstica_com_R?=
+Date: Mon, 03 Jul 2017 15:03:03 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Duvida_estat=C3=ADstica_com_R?=
 Message-ID: <CAOwqRyv6M9DS9bx0hp-efuh7StuU0Z1sEuWYFpQGxS0eDKSPOg@mail.gmail.com>
 
 Pessoal estou com uma duvida, estou com dificuldades de recordar, tenho
@@ -36,16 +878,12 @@ Att,
 | Database Specialist | Master's Degree UFPA |
 
 | Contacts: +55 91 99150 0365 | f.fabiogama88 em gmail.com |
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170703/e2b744d6/attachment.html>
 
-From assis.leonard em gmail.com  Mon Jul  3 22:09:05 2017
+From assis.leonard em gmail.com  Tue Jul  4 01:09:05 2017
 From: assis.leonard em gmail.com (Leonard Assis)
-Date: Mon, 3 Jul 2017 22:09:05 -0300
-Subject: [R-br] =?utf-8?q?Duvida_estat=C3=ADstica_com_R?=
+Date: Tue, 04 Jul 2017 01:09:05 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Duvida_estat=C3=ADstica_com_R?=
 In-Reply-To: <CAOwqRyv6M9DS9bx0hp-efuh7StuU0Z1sEuWYFpQGxS0eDKSPOg@mail.gmail.com>
-References: <CAOwqRyv6M9DS9bx0hp-efuh7StuU0Z1sEuWYFpQGxS0eDKSPOg@mail.gmail.com>
 Message-ID: <CAEG0FK_1smScVO=08OKAWGjkyAYqTb4zcpKikHQT3KF8uP+6Tg@mail.gmail.com>
 
 Não entendi o que você quer fazer.
@@ -96,40 +934,23 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170703/70d610ec/attachment.html>
 
-From fabibarbos em gmail.com  Mon Jul  3 23:20:28 2017
+From fabibarbos em gmail.com  Tue Jul  4 02:20:28 2017
 From: fabibarbos em gmail.com (Fabiana Goncalves Barbosa)
-Date: Mon, 3 Jul 2017 23:20:28 -0300
+Date: Tue, 04 Jul 2017 02:20:28 +0000
 Subject: [R-br] Anova para amostras de tamanhos diferentes
 In-Reply-To: <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
-References: <CAFLo1XpseRCLnBzpRqc30XCMutOGv=c7AK2-tdxXCYu3uRz5Tg@mail.gmail.com>
- <CAFLo1XqCv3uSfO6P=BH+Nc7TdSpgeWYqbupwBTT4KrnwU_b0kg@mail.gmail.com>
- <CAFLo1XqvCVZRDpE72gRvChY+-ssXfzH3o88EWNn5SvXH0wT3wQ@mail.gmail.com>
- <CAFLo1XqGshPvXCD8=Z90wm0Ym01uQ29pR1htF9ZacdXkkgXu_w@mail.gmail.com>
- <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
 Message-ID: <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
 
 Olá Pessoal
 
 Como faço uma ANOVA para amostras de tamanhos diferentes?
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170703/5d5d34f3/attachment.html>
 
-From nandodesouza em gmail.com  Tue Jul  4 07:52:21 2017
+From nandodesouza em gmail.com  Tue Jul  4 10:52:21 2017
 From: nandodesouza em gmail.com (Fernando Souza)
-Date: Tue, 4 Jul 2017 07:52:21 -0300
-Subject: [R-br] Anova para amostras de tamanhos diferentes
+Date: Tue, 04 Jul 2017 10:52:21 +0000
+Subject: Re: [R-br] Anova para amostras de tamanhos diferentes
 In-Reply-To: <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
-References: <CAFLo1XpseRCLnBzpRqc30XCMutOGv=c7AK2-tdxXCYu3uRz5Tg@mail.gmail.com>
- <CAFLo1XqCv3uSfO6P=BH+Nc7TdSpgeWYqbupwBTT4KrnwU_b0kg@mail.gmail.com>
- <CAFLo1XqvCVZRDpE72gRvChY+-ssXfzH3o88EWNn5SvXH0wT3wQ@mail.gmail.com>
- <CAFLo1XqGshPvXCD8=Z90wm0Ym01uQ29pR1htF9ZacdXkkgXu_w@mail.gmail.com>
- <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
- <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
 Message-ID: <CAFrWFskWNEM0Ox0-tuR3ydRpQdk-GJVYSTBJj6Zuhropw+o05Q@mail.gmail.com>
 
 install.packages(car)
@@ -152,22 +973,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/368f332f/attachment.html>
 
-From edinhoestat em yahoo.com.br  Tue Jul  4 10:23:48 2017
+From edinhoestat em yahoo.com.br  Tue Jul  4 13:23:48 2017
 From: edinhoestat em yahoo.com.br (Edson Lira)
-Date: Tue, 4 Jul 2017 13:23:48 +0000 (UTC)
-Subject: [R-br] Anova para amostras de tamanhos diferentes
+Date: Tue, 04 Jul 2017 13:23:48 +0000
+Subject: Re: [R-br] Anova para amostras de tamanhos diferentes
 In-Reply-To: <CAFrWFskWNEM0Ox0-tuR3ydRpQdk-GJVYSTBJj6Zuhropw+o05Q@mail.gmail.com>
-References: <CAFLo1XpseRCLnBzpRqc30XCMutOGv=c7AK2-tdxXCYu3uRz5Tg@mail.gmail.com>
- <CAFLo1XqCv3uSfO6P=BH+Nc7TdSpgeWYqbupwBTT4KrnwU_b0kg@mail.gmail.com>
- <CAFLo1XqvCVZRDpE72gRvChY+-ssXfzH3o88EWNn5SvXH0wT3wQ@mail.gmail.com>
- <CAFLo1XqGshPvXCD8=Z90wm0Ym01uQ29pR1htF9ZacdXkkgXu_w@mail.gmail.com>
- <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
- <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
- <CAFrWFskWNEM0Ox0-tuR3ydRpQdk-GJVYSTBJj6Zuhropw+o05Q@mail.gmail.com>
 Message-ID: <801611493.5027898.1499174628826@mail.yahoo.com>
 
 Dá uma olha nesse material
@@ -210,81 +1021,11 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
 
-   
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/e8dc8bf3/attachment.html>
-
-From edinhoestat em yahoo.com.br  Tue Jul  4 10:23:48 2017
-From: edinhoestat em yahoo.com.br (Edson Lira)
-Date: Tue, 4 Jul 2017 13:23:48 +0000 (UTC)
-Subject: [R-br] Anova para amostras de tamanhos diferentes
-In-Reply-To: <CAFrWFskWNEM0Ox0-tuR3ydRpQdk-GJVYSTBJj6Zuhropw+o05Q@mail.gmail.com>
-References: <CAFLo1XpseRCLnBzpRqc30XCMutOGv=c7AK2-tdxXCYu3uRz5Tg@mail.gmail.com>
- <CAFLo1XqCv3uSfO6P=BH+Nc7TdSpgeWYqbupwBTT4KrnwU_b0kg@mail.gmail.com>
- <CAFLo1XqvCVZRDpE72gRvChY+-ssXfzH3o88EWNn5SvXH0wT3wQ@mail.gmail.com>
- <CAFLo1XqGshPvXCD8=Z90wm0Ym01uQ29pR1htF9ZacdXkkgXu_w@mail.gmail.com>
- <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
- <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
- <CAFrWFskWNEM0Ox0-tuR3ydRpQdk-GJVYSTBJj6Zuhropw+o05Q@mail.gmail.com>
-Message-ID: <801611493.5027898.1499174628826@mail.yahoo.com>
-
-Dá uma olha nesse material
-Posts sobre desbalanceado em Ridículas
-
-  
-|  
-|   |  
-Posts sobre desbalanceado em Ridículas
- Posts sobre desbalanceado escritos por Walmes Zeviani  |  |
-
-  |
-
- 
-
- Bom dia a todos!
-Prof. Edson Lira, Me 
-Estatístico
-Manaus-Amazonas 
-
-    Em Terça-feira, 4 de Julho de 2017 6:52, Fernando Souza via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
- 
-
- install.packages(car)library(car)Anova(modelo, type="lll")
-Em 03/07/2017 23:20, "Fabiana Goncalves Barbosa via R-br" <r-br em listas.c3sl.ufpr.br> escreveu:
-
-Olá Pessoal
-Como faço uma ANOVA para amostras de tamanhos diferentes?
-
-
-______________________________ _________________
-R-br mailing list
-R-br em listas.c3sl.ufpr.br
-https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
-Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forneça código mínimo reproduzível.
-
-_______________________________________________
-R-br mailing list
-R-br em listas.c3sl.ufpr.br
-https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
-Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
-
-   
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/e8dc8bf3/attachment-0001.html>
-
-From walmeszeviani em gmail.com  Tue Jul  4 11:27:55 2017
+From walmeszeviani em gmail.com  Tue Jul  4 14:27:55 2017
 From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Tue, 4 Jul 2017 11:27:55 -0300
-Subject: [R-br] Anova para amostras de tamanhos diferentes
+Date: Tue, 04 Jul 2017 14:27:55 +0000
+Subject: Re: [R-br] Anova para amostras de tamanhos diferentes
 In-Reply-To: <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
-References: <CAFLo1XpseRCLnBzpRqc30XCMutOGv=c7AK2-tdxXCYu3uRz5Tg@mail.gmail.com>
- <CAFLo1XqCv3uSfO6P=BH+Nc7TdSpgeWYqbupwBTT4KrnwU_b0kg@mail.gmail.com>
- <CAFLo1XqvCVZRDpE72gRvChY+-ssXfzH3o88EWNn5SvXH0wT3wQ@mail.gmail.com>
- <CAFLo1XqGshPvXCD8=Z90wm0Ym01uQ29pR1htF9ZacdXkkgXu_w@mail.gmail.com>
- <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
- <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
 Message-ID: <CAFU=EkYO+vSt6++khxcfdcXURT_hPRo5Ep0QWsV+9DR1agjvTQ@mail.gmail.com>
 
 Fabiana,
@@ -295,17 +1036,12 @@ http://leg.ufpr.br/~walmes/cursoR/geneticaEsalq/script10.html
 
 Walmes.
 ​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/df44c8c2/attachment.html>
 
-From cesar.rabak em gmail.com  Tue Jul  4 18:13:18 2017
+From cesar.rabak em gmail.com  Tue Jul  4 21:13:18 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Tue, 4 Jul 2017 18:13:18 -0300
-Subject: [R-br] =?utf-8?q?Duvida_estat=C3=ADstica_com_R?=
+Date: Tue, 04 Jul 2017 21:13:18 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Duvida_estat=C3=ADstica_com_R?=
 In-Reply-To: <CAEG0FK_1smScVO=08OKAWGjkyAYqTb4zcpKikHQT3KF8uP+6Tg@mail.gmail.com>
-References: <CAOwqRyv6M9DS9bx0hp-efuh7StuU0Z1sEuWYFpQGxS0eDKSPOg@mail.gmail.com>
- <CAEG0FK_1smScVO=08OKAWGjkyAYqTb4zcpKikHQT3KF8uP+6Tg@mail.gmail.com>
 Message-ID: <CAKrF98=jUkcL4YdUYqxEwyUMB47tFuWqTynXMCZ1VWQnUkECQQ@mail.gmail.com>
 
 De fato, Fernando,
@@ -385,18 +1121,12 @@ HTH
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/e4ea3442/attachment.html>
 
-From f.fabiogama88 em gmail.com  Tue Jul  4 19:26:32 2017
+From f.fabiogama88 em gmail.com  Tue Jul  4 22:26:32 2017
 From: f.fabiogama88 em gmail.com (Fernando Gama)
-Date: Tue, 4 Jul 2017 19:26:32 -0300
-Subject: [R-br] =?utf-8?q?Duvida_estat=C3=ADstica_com_R?=
+Date: Tue, 04 Jul 2017 22:26:32 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Duvida_estat=C3=ADstica_com_R?=
 In-Reply-To: <CAKrF98=jUkcL4YdUYqxEwyUMB47tFuWqTynXMCZ1VWQnUkECQQ@mail.gmail.com>
-References: <CAOwqRyv6M9DS9bx0hp-efuh7StuU0Z1sEuWYFpQGxS0eDKSPOg@mail.gmail.com>
- <CAEG0FK_1smScVO=08OKAWGjkyAYqTb4zcpKikHQT3KF8uP+6Tg@mail.gmail.com>
- <CAKrF98=jUkcL4YdUYqxEwyUMB47tFuWqTynXMCZ1VWQnUkECQQ@mail.gmail.com>
 Message-ID: <CAOwqRyt8A4sE0zLEqCeaXZoMfeaW+aYq-yHb+QTk328ABCmRtQ@mail.gmail.com>
 
 Perdão por não ter sido tão claro, mas já consegui resolver o problema.
@@ -505,24 +1235,20 @@ Att,
 | Database Specialist | Master's Degree UFPA |
 
 | Contacts: +55 91 99150 0365 | f.fabiogama88 em gmail.com |
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/8d32e309/attachment.html>
 
-From aryserpa em terra.com.br  Tue Jul  4 22:41:59 2017
-From: aryserpa em terra.com.br (=?UTF-8?B?QXJ5IFNlcnBhIE5ldG8=?=)
-Date: Wed, 05 Jul 17 01:41:59 +0000
-Subject: [R-br] =?utf-8?q?Random_Forest?=
+From aryserpa em terra.com.br  Wed Jul  5 01:41:59 2017
+From: aryserpa em terra.com.br (Ary Serpa Neto)
+Date: Wed, 05 Jul 2017 01:41:59 +0000
+Subject: [R-br] Random Forest
 Message-ID: <OID_149921887783291_0aryserpa@terra.com.br>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/27d83fbf/attachment.html>
 
-From andreolsouza em yahoo.com.br  Wed Jul  5 01:51:58 2017
+
+From andreolsouza em yahoo.com.br  Wed Jul  5 04:51:58 2017
 From: andreolsouza em yahoo.com.br (Andre Oliveira)
-Date: Wed, 5 Jul 2017 04:51:58 +0000 (UTC)
-Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
-References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
+Date: Wed, 05 Jul 2017 04:51:58 +0000
+Subject: =?utf-8?b?W1ItYnJdIEluc3RhbGHDp8OjbyBkYSBsbWU0?=
+In-Reply-To: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
 Message-ID: <2029065061.4413736.1499230318857@mail.yahoo.com>
 
  Bom dia, 
@@ -542,17 +1268,12 @@ Error in library(lme4) : there is no package called ‘lme4’
 
 Grato
 André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito Santo.  IFES
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/801a14e4/attachment.html>
 
-From karina.rebuli em gmail.com  Wed Jul  5 08:29:12 2017
+From karina.rebuli em gmail.com  Wed Jul  5 11:29:12 2017
 From: karina.rebuli em gmail.com (Karina Rebuli)
 Date: Wed, 05 Jul 2017 11:29:12 +0000
-Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBJbnN0YWxhw6fDo28gZGEgbG1lNA==?=
 In-Reply-To: <2029065061.4413736.1499230318857@mail.yahoo.com>
-References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
- <2029065061.4413736.1499230318857@mail.yahoo.com>
 Message-ID: <CALfxEuVyOBZpO2nzfit53DT3fv2tHvbYSOCNbnS5kk3z-pYGLg@mail.gmail.com>
 
 Oi, André.
@@ -595,16 +1316,12 @@ r-br em listas.c3sl.ufpr.br> wrote:
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/a107073d/attachment.html>
 
-From jecogeo em gmail.com  Wed Jul  5 12:26:15 2017
+From jecogeo em gmail.com  Wed Jul  5 15:26:15 2017
 From: jecogeo em gmail.com (Jefferson Ferreira-Ferreira)
-Date: Wed, 5 Jul 2017 11:26:15 -0400
-Subject: [R-br] Random Forest
+Date: Wed, 05 Jul 2017 15:26:15 +0000
+Subject: Re: [R-br] Random Forest
 In-Reply-To: <OID_149921887783291_0aryserpa@terra.com.br>
-References: <OID_149921887783291_0aryserpa@terra.com.br>
 Message-ID: <CAFFT+Y5Cz=MJ4R2diR3BnsKnaVBJek5ZHy+w5ik37_rtyEFYGg@mail.gmail.com>
 
 Olá Ary. Eu trabalhei bastane com o randomForest e talvez pudesse ajudar
@@ -668,17 +1385,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/5d82e818/attachment.html>
 
-From vinynegrelli em gmail.com  Wed Jul  5 17:48:19 2017
-From: vinynegrelli em gmail.com (=?UTF-8?Q?Vin=c3=adcius_Lionel_Mateus?=)
-Date: Wed, 5 Jul 2017 17:48:19 -0300
-Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+From vinynegrelli em gmail.com  Wed Jul  5 20:48:19 2017
+From: vinynegrelli em gmail.com (=?utf-8?q?Vin=C3=ADcius_Lionel_Mateus?=)
+Date: Wed, 05 Jul 2017 20:48:19 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBJbnN0YWxhw6fDo28gZGEgbG1lNA==?=
 In-Reply-To: <2029065061.4413736.1499230318857@mail.yahoo.com>
-References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
- <2029065061.4413736.1499230318857@mail.yahoo.com>
 Message-ID: <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
 
 André,
@@ -733,18 +1445,11 @@ Phone:   (+55) (21) 982 - 889 - 221
 Skype: vinicius.lionel
 http://www.qui.puc-rio.br/index.html
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/29204a65/attachment.html>
-
-From andreolsouza em yahoo.com.br  Wed Jul  5 19:45:50 2017
+From andreolsouza em yahoo.com.br  Wed Jul  5 22:45:50 2017
 From: andreolsouza em yahoo.com.br (Andre Oliveira)
-Date: Wed, 5 Jul 2017 22:45:50 +0000 (UTC)
-Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+Date: Wed, 05 Jul 2017 22:45:50 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBJbnN0YWxhw6fDo28gZGEgbG1lNA==?=
 In-Reply-To: <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
-References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
- <2029065061.4413736.1499230318857@mail.yahoo.com>
- <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
 Message-ID: <664009366.5017347.1499294750613@mail.yahoo.com>
 
 Boa noite, estou usando o terminal Karina.Vinícius os avisos são estes! 
@@ -831,24 +1536,11 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
 
-   
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/266e9eea/attachment.html>
-
-From nandodesouza em gmail.com  Wed Jul  5 20:23:23 2017
+From nandodesouza em gmail.com  Wed Jul  5 23:23:23 2017
 From: nandodesouza em gmail.com (Fernando Souza)
-Date: Wed, 5 Jul 2017 20:23:23 -0300
+Date: Wed, 05 Jul 2017 23:23:23 +0000
 Subject: [R-br] Bug R in Debian 8,
 In-Reply-To: <CAFrWFsnCidWo8adyhgakFM0V7VgiWsy8C3J6Tuh0HCO4aHjmuQ@mail.gmail.com>
-References: <CAFrWFsnemEmuLkn5wyYvsxyq1gK4bS-NQUGV+w8v9ik35e9tow@mail.gmail.com>
- <CAFrWFsm6V=GLVAnDUy--NdDErMVGdCjTDKS7_1tpQBj50CkBNQ@mail.gmail.com>
- <CAFrWFs=fKxVvCSvQT2Zzvf=tVpcdB3k-qQBcXd-q0uo1L4vAeA@mail.gmail.com>
- <CAFrWFs=o+L57VuNWODOLJTW9OR-KR6RBikScvmiLnjq3nyAbbg@mail.gmail.com>
- <CAFrWFs=sUSAOQsQ7YEwEcz74487em7OKqOvUz0ZTC9gj4Cfx9A@mail.gmail.com>
- <CAFrWFsmEGu2ZSG8L5Wp_kfdE++uQe66RS9=s3C32Ka0W6xmKgA@mail.gmail.com>
- <CAFrWFskLWqs8g8rn9_Nsqz-p1h99VfMtqO2vFoP07VNO1xNkVQ@mail.gmail.com>
- <CAFrWFsnCidWo8adyhgakFM0V7VgiWsy8C3J6Tuh0HCO4aHjmuQ@mail.gmail.com>
 Message-ID: <CAFrWFskHAkxiT8yr2VhO3uTR7VyQO0_vmQ8vRtwDvgT43AMG5g@mail.gmail.com>
 
 Caros colegas
@@ -865,19 +1557,12 @@ Minha dúvida é. Como resolver isso? Consegui corrigir o nlme(não sei como)
 após reinstalar o r e após o nlme. Mas como saber quais são os pacotes
 problemáticos e como corrigir? As dicas do link acima não funcionaram para
 mim.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/949abf76/attachment.html>
 
-From fernandohtoledo em gmail.com  Thu Jul  6 11:09:48 2017
+From fernandohtoledo em gmail.com  Thu Jul  6 14:09:48 2017
 From: fernandohtoledo em gmail.com (FHRB Toledo)
-Date: Thu, 6 Jul 2017 09:09:48 -0500
-Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+Date: Thu, 06 Jul 2017 14:09:48 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBJbnN0YWxhw6fDo28gZGEgbG1lNA==?=
 In-Reply-To: <664009366.5017347.1499294750613@mail.yahoo.com>
-References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
- <2029065061.4413736.1499230318857@mail.yahoo.com>
- <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
- <664009366.5017347.1499294750613@mail.yahoo.com>
 Message-ID: <CAN55XP4RG7UsZJMPub4=UCZAWV1HAFuVGqxQBYi8ucRj4qGwEA@mail.gmail.com>
 
 Não sei sua distribuição qual é, mas se for alguma baseada em Debian (com
@@ -1006,24 +1691,12 @@ FH
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170706/dacd92cb/attachment.html>
 
-From fernandohtoledo em gmail.com  Thu Jul  6 11:12:27 2017
+From fernandohtoledo em gmail.com  Thu Jul  6 14:12:27 2017
 From: fernandohtoledo em gmail.com (FHRB Toledo)
-Date: Thu, 6 Jul 2017 09:12:27 -0500
-Subject: [R-br] Bug R in Debian 8,
+Date: Thu, 06 Jul 2017 14:12:27 +0000
+Subject: Re: [R-br] Bug R in Debian 8,
 In-Reply-To: <CAFrWFskHAkxiT8yr2VhO3uTR7VyQO0_vmQ8vRtwDvgT43AMG5g@mail.gmail.com>
-References: <CAFrWFsnemEmuLkn5wyYvsxyq1gK4bS-NQUGV+w8v9ik35e9tow@mail.gmail.com>
- <CAFrWFsm6V=GLVAnDUy--NdDErMVGdCjTDKS7_1tpQBj50CkBNQ@mail.gmail.com>
- <CAFrWFs=fKxVvCSvQT2Zzvf=tVpcdB3k-qQBcXd-q0uo1L4vAeA@mail.gmail.com>
- <CAFrWFs=o+L57VuNWODOLJTW9OR-KR6RBikScvmiLnjq3nyAbbg@mail.gmail.com>
- <CAFrWFs=sUSAOQsQ7YEwEcz74487em7OKqOvUz0ZTC9gj4Cfx9A@mail.gmail.com>
- <CAFrWFsmEGu2ZSG8L5Wp_kfdE++uQe66RS9=s3C32Ka0W6xmKgA@mail.gmail.com>
- <CAFrWFskLWqs8g8rn9_Nsqz-p1h99VfMtqO2vFoP07VNO1xNkVQ@mail.gmail.com>
- <CAFrWFsnCidWo8adyhgakFM0V7VgiWsy8C3J6Tuh0HCO4aHjmuQ@mail.gmail.com>
- <CAFrWFskHAkxiT8yr2VhO3uTR7VyQO0_vmQ8vRtwDvgT43AMG5g@mail.gmail.com>
 Message-ID: <CAN55XP6yrGd95TA80C_R5acheVGEgXnn7z7vSwF0HB7RhPHaNA@mail.gmail.com>
 
 Conforme o post relacionado "Instalação da lme4", e dependendo do pacote
@@ -1062,14 +1735,11 @@ FH
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170706/a4b03734/attachment.html>
 
-From brucekellys em hotmail.com  Thu Jul  6 15:30:48 2017
+From brucekellys em hotmail.com  Thu Jul  6 18:30:48 2017
 From: brucekellys em hotmail.com (Bruce Kelly)
-Date: Thu, 6 Jul 2017 18:30:48 +0000
-Subject: [R-br] =?iso-8859-1?q?Equa=E7=E3o_do_modelo?=
+Date: Thu, 06 Jul 2017 18:30:48 +0000
+Subject: =?utf-8?b?W1ItYnJdIEVxdWHDp8OjbyBkbyBtb2RlbG8=?=
 Message-ID: <CY4PR2001MB110934D041C970661305135BA8D50@CY4PR2001MB1109.namprd20.prod.outlook.com>
 
 Boa tarde listeiros (@s),
@@ -1135,20 +1805,11 @@ Quick-R: Factor Analysis - Quick-R: Home Page<http://www.statmethods.net/advstat
 www.statmethods.net
 Learn principal components and factor analysis in R. Factor analysis includes both exploratory and confirmatory methods.
 
-
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170706/9c15ad1b/attachment.html>
-
-From vinynegrelli em gmail.com  Thu Jul  6 20:19:35 2017
-From: vinynegrelli em gmail.com (=?UTF-8?Q?Vin=C3=ADcius_Lionel_Mateus?=)
-Date: Thu, 6 Jul 2017 20:19:35 -0300
-Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+From vinynegrelli em gmail.com  Thu Jul  6 23:19:35 2017
+From: vinynegrelli em gmail.com (=?utf-8?q?Vin=C3=ADcius_Lionel_Mateus?=)
+Date: Thu, 06 Jul 2017 23:19:35 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBJbnN0YWxhw6fDo28gZGEgbG1lNA==?=
 In-Reply-To: <664009366.5017347.1499294750613@mail.yahoo.com>
-References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
- <2029065061.4413736.1499230318857@mail.yahoo.com>
- <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
- <664009366.5017347.1499294750613@mail.yahoo.com>
 Message-ID: <CAMJ4BpA4mfU5d8frsxZ5mpHLrx6yiMd5fo23PqVEORcUkbqEEg@mail.gmail.com>
 
 Andre,
@@ -1279,20 +1940,12 @@ http://www.qui.puc-rio.br/index.html
 >
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170706/5ed46ece/attachment.html>
 
-From andreolsouza em yahoo.com.br  Thu Jul  6 21:04:58 2017
+From andreolsouza em yahoo.com.br  Fri Jul  7 00:04:58 2017
 From: andreolsouza em yahoo.com.br (Andre Oliveira)
-Date: Fri, 7 Jul 2017 00:04:58 +0000 (UTC)
-Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+Date: Fri, 07 Jul 2017 00:04:58 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBJbnN0YWxhw6fDo28gZGEgbG1lNA==?=
 In-Reply-To: <CAMJ4BpA4mfU5d8frsxZ5mpHLrx6yiMd5fo23PqVEORcUkbqEEg@mail.gmail.com>
-References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
- <2029065061.4413736.1499230318857@mail.yahoo.com>
- <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
- <664009366.5017347.1499294750613@mail.yahoo.com>
- <CAMJ4BpA4mfU5d8frsxZ5mpHLrx6yiMd5fo23PqVEORcUkbqEEg@mail.gmail.com>
 Message-ID: <1289527576.195261.1499385898590@mail.yahoo.com>
 
 Resolvido. Obrigado!
@@ -1408,20 +2061,11 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forne�a c�digo m�nimo reproduz�vel.
 
-   
-
-
-
-   
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170707/8daa508b/attachment.html>
-
-From rafaeltieppo em yahoo.com.br  Mon Jul 10 07:33:33 2017
+From rafaeltieppo em yahoo.com.br  Mon Jul 10 10:33:33 2017
 From: rafaeltieppo em yahoo.com.br (Rafael Tieppo)
-Date: Mon, 10 Jul 2017 10:33:33 +0000 (UTC)
-Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
-References: <1049780917.2376704.1499682813015.ref@mail.yahoo.com>
+Date: Mon, 10 Jul 2017 10:33:33 +0000
+Subject: =?utf-8?q?=5BR-br=5D_delineamento_vs_repeti=C3=A7=C3=A3o?=
+In-Reply-To: <1049780917.2376704.1499682813015.ref@mail.yahoo.com>
 Message-ID: <1049780917.2376704.1499682813015@mail.yahoo.com>
 
 
@@ -1465,17 +2109,12 @@ Há outro delineamento que se enquadre melhor à situação?
 
 Obrigado.
  Rafael Tieppo
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/9f55f1e4/attachment.html>
 
-From giseleemaia07 em gmail.com  Mon Jul 10 09:53:16 2017
+From giseleemaia07 em gmail.com  Mon Jul 10 12:53:16 2017
 From: giseleemaia07 em gmail.com (Gisele de Oliveira Maia)
-Date: Mon, 10 Jul 2017 09:53:16 -0300
-Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
+Date: Mon, 10 Jul 2017 12:53:16 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_delineamento_vs_repeti=C3=A7=C3=A3o?=
 In-Reply-To: <1049780917.2376704.1499682813015@mail.yahoo.com>
-References: <1049780917.2376704.1499682813015.ref@mail.yahoo.com>
- <1049780917.2376704.1499682813015@mail.yahoo.com>
 Message-ID: <6B09F1CE-60D3-4389-A36F-349B6AD755EA@gmail.com>
 
 Rafael, tem o Delineamento Fatorial, em que você estuda a relação, no seu caso, do espaçamento e a dosagem. E se o terreno for heterogêneo usaria Fatorial em Blocos Casualizados, usando controle local no terreno. 
@@ -1532,13 +2171,10 @@ Gisele Maia
 > R-br em listas.c3sl.ufpr.br
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/08edc6f1/attachment.html>
 
-From yurynepomuceno em gmail.com  Mon Jul 10 09:58:37 2017
+From yurynepomuceno em gmail.com  Mon Jul 10 12:58:37 2017
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Mon, 10 Jul 2017 09:58:37 -0300
+Date: Mon, 10 Jul 2017 12:58:37 +0000
 Subject: [R-br] Ajuda com BoxPlot
 Message-ID: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
 
@@ -1580,17 +2216,12 @@ title('Variação de Ya de acordo com a data de semeadura')
 
 Yury Duarte
 Engenheiro Agrônomo - ESALQ/USP
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/d8dd1f9a/attachment.html>
 
-From jhcaviglione em gmail.com  Mon Jul 10 10:15:35 2017
-From: jhcaviglione em gmail.com (=?UTF-8?Q?Jo=C3=A3o_Henrique_Caviglione?=)
-Date: Mon, 10 Jul 2017 10:15:35 -0300
-Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
+From jhcaviglione em gmail.com  Mon Jul 10 13:15:35 2017
+From: jhcaviglione em gmail.com (=?utf-8?q?Jo=C3=A3o_Henrique_Caviglione?=)
+Date: Mon, 10 Jul 2017 13:15:35 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_delineamento_vs_repeti=C3=A7=C3=A3o?=
 In-Reply-To: <1049780917.2376704.1499682813015@mail.yahoo.com>
-References: <1049780917.2376704.1499682813015.ref@mail.yahoo.com>
- <1049780917.2376704.1499682813015@mail.yahoo.com>
 Message-ID: <CAJ-oJz_GY7OS0srLkFh-hHOStvRjK8GaJ9q5dfpSVPSQSHPL+w@mail.gmail.com>
 
 Bom dia Rafael e lista,
@@ -1675,18 +2306,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/195bb9a0/attachment.html>
 
-From walmeszeviani em gmail.com  Mon Jul 10 10:51:36 2017
+From walmeszeviani em gmail.com  Mon Jul 10 13:51:36 2017
 From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Mon, 10 Jul 2017 10:51:36 -0300
-Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
+Date: Mon, 10 Jul 2017 13:51:36 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_delineamento_vs_repeti=C3=A7=C3=A3o?=
 In-Reply-To: <CAJ-oJz_GY7OS0srLkFh-hHOStvRjK8GaJ9q5dfpSVPSQSHPL+w@mail.gmail.com>
-References: <1049780917.2376704.1499682813015.ref@mail.yahoo.com>
- <1049780917.2376704.1499682813015@mail.yahoo.com>
- <CAJ-oJz_GY7OS0srLkFh-hHOStvRjK8GaJ9q5dfpSVPSQSHPL+w@mail.gmail.com>
 Message-ID: <CAFU=EkYLq5MncCQjYx2H_Ds7hxO9NTVhVRzctdEkZXeDH3qyRw@mail.gmail.com>
 
 Rafael, se entendi corretamente, você fará um experimento em DBC com
@@ -1755,16 +2380,12 @@ http://leg.ufpr.br/~walmes/cursoR/geneticaEsalq/script07.html.
 À diposição.
 Walmes.
 ​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/a00826b1/attachment.html>
 
-From walmeszeviani em gmail.com  Mon Jul 10 10:57:00 2017
+From walmeszeviani em gmail.com  Mon Jul 10 13:57:00 2017
 From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Mon, 10 Jul 2017 10:57:00 -0300
-Subject: [R-br] Ajuda com BoxPlot
+Date: Mon, 10 Jul 2017 13:57:00 +0000
+Subject: Re: [R-br] Ajuda com BoxPlot
 In-Reply-To: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
-References: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
 Message-ID: <CAFU=EkZgptuyUjD-q0=9z1y2+U=jfBD5eTPUuGfscou6PGsRxQ@mail.gmail.com>
 
 Prezado,
@@ -1787,17 +2408,12 @@ dev.off()
 À disposição.
 Walmes.
 ​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/68eaf389/attachment.html>
 
-From yurynepomuceno em gmail.com  Mon Jul 10 11:17:33 2017
+From yurynepomuceno em gmail.com  Mon Jul 10 14:17:33 2017
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Mon, 10 Jul 2017 11:17:33 -0300
-Subject: [R-br] Ajuda com BoxPlot
+Date: Mon, 10 Jul 2017 14:17:33 +0000
+Subject: Re: [R-br] Ajuda com BoxPlot
 In-Reply-To: <CAFU=EkZgptuyUjD-q0=9z1y2+U=jfBD5eTPUuGfscou6PGsRxQ@mail.gmail.com>
-References: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
- <CAFU=EkZgptuyUjD-q0=9z1y2+U=jfBD5eTPUuGfscou6PGsRxQ@mail.gmail.com>
 Message-ID: <CADFS6E7cixtmpLBQkH2X0Ggdurb+V01X2NCHu5rrH9X0Uyg4Fg@mail.gmail.com>
 
 Obrigado Walmes.
@@ -1867,10 +2483,8 @@ escreveu:
 > Walmes.
 > ​
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/3159a8fc/attachment.html>
--------------- Próxima Parte ----------
+
+-------------- next part --------------
 "V1"	"V2"	"V3"	"V4"	"V5"	"V6"	"V7"	"V8"	"V9"	"V10"	"V11"	"V12"	"V13"	"V14"	"V15"	"V16"	"V17"	"V18"	"V19"	"V20"	"V21"	"V22"	"V23"	"V24"	"V25"	"V26"	"V27"	"V28"	"V29"	"V30"	"V31"	"V32"	"V33"
 "1"	6198.8436197955	8073.61122720246	6972.2508096672	8189.26033372327	8417.2124376584	8670.04061853638	8503.35652043223	8053.51063235264	8270.82872435917	5609.59060528938	7071.46279579921	5432.80082263902	6134.44482149809	8269.33770383196	8803.69955817816	7616.15129486408	8129.44614505016	5356.24014301692	5801.82944758706	8303.91659635507	6102.67821610176	4999.18805646998	8381.68232994641	7730.45507875981	7292.39328478172	9024.53405237347	4946.38298266779	9185.48859990146	8241.10438345339	7692.33385789058	8688.05	6312.15	4911.05
 "2"	5647.11389777669	7751.4684910414	5818.56998550818	7472.29512452834	8186.07906720589	7767.97836583694	7238.93745645807	7194.18807419935	7031.3672677957	4615.91058521405	6735.98564428089	5776.5360268311	6145.71057282239	7881.13745589544	8372.84682361976	6868.3588078519	7350.21621133483	4466.16589877457	5276.30317638337	7922.44708884259	6131.90010480599	5040.1577056257	8036.56978094552	7698.25283587616	7280.22795004337	9203.23978972327	3873.50036853327	8831.13130564223	7902.55284020912	7032.05621734717	8288.1	5740.1	7503.8
@@ -1909,15 +2523,15 @@ URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/3159a8fc/att
 "35"	7577.46098783894	8215.29887654863	8598.53756514495	9212.28427439013	9586.9696741146	8358.00631061864	9379.44810988923	9436.566297113	6568.40766762007	7943.37670954683	6796.05859805157	6957.91352009444	9208.73242690467	8638.28158981222	6882.72070572643	8920.27059104157	7077.59278102573	7315.48621368611	9401.54566630897	7720.90539076555	6798.80442688358	8934.48763604354	8733.63224819493	8450.86498978931	9198.07918997341	7385.65413245873	9811.90779603442	8638.03263879086	7321.10745897426	8579.43921222775	8381.15	6358.65	0
 "36"	7509.36505554264	7449.2327549848	8740.48376405162	8688.7291769115	8825.69577297735	8316.86501976388	8825.19550131347	8806.33321104908	6599.24104412815	7428.84834240439	6602.88037841754	6774.42019050786	8319.05747429849	8883.27320316593	7360.46387051363	8463.0472041843	6662.06505889869	5929.65223590118	8800.18359504924	7369.00773779312	5873.88775351135	9180.88199983187	9145.34148072844	8048.41521828244	9514.91868752477	6456.98813169512	9428.34084729152	8491.0952372646	7250.98634433257	8473.1219544843	8173.5	6195.4	NA
 
-From rafaeltieppo em yahoo.com.br  Mon Jul 10 11:19:25 2017
+From rafaeltieppo em yahoo.com.br  Mon Jul 10 14:19:25 2017
 From: rafaeltieppo em yahoo.com.br (Rafael Tieppo)
-Date: Mon, 10 Jul 2017 14:19:25 +0000 (UTC)
-Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
-References: <1272293183.2510811.1499696365464.ref@mail.yahoo.com>
+Date: Mon, 10 Jul 2017 14:19:25 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_delineamento_vs_repeti=C3=A7=C3=A3o?=
+In-Reply-To: <1272293183.2510811.1499696365464.ref@mail.yahoo.com>
 Message-ID: <1272293183.2510811.1499696365464@mail.yahoo.com>
 
 
-Prezad em s (Gisele, João Henrique e Walmes),
+Prezad@s (Gisele, João Henrique e Walmes),
 Muito obrigado pelas considerações.
 Gisele, Sobre o Arranjo fatorial, é interessante, vamos ver a possibilidade da execução.
 João Henrique, o conceito "a média das amostras simples é o resultado da parcela", ajudou a elucidar a dúvida maior sobre a repetição.
@@ -1926,18 +2540,12 @@ Walmes, te respondendo, vc entendeu corretamente. Obrigado pela aula, sua dispos
 Grato pelo tempo despendido.
 
 Boa semana à todos. Rafael Tieppo
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/1524872c/attachment.html>
 
-From assis.leonard em gmail.com  Mon Jul 10 11:59:50 2017
+From assis.leonard em gmail.com  Mon Jul 10 14:59:50 2017
 From: assis.leonard em gmail.com (Leonard Assis)
-Date: Mon, 10 Jul 2017 11:59:50 -0300
-Subject: [R-br] Ajuda com BoxPlot
+Date: Mon, 10 Jul 2017 14:59:50 +0000
+Subject: Re: [R-br] Ajuda com BoxPlot
 In-Reply-To: <CADFS6E7cixtmpLBQkH2X0Ggdurb+V01X2NCHu5rrH9X0Uyg4Fg@mail.gmail.com>
-References: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
- <CAFU=EkZgptuyUjD-q0=9z1y2+U=jfBD5eTPUuGfscou6PGsRxQ@mail.gmail.com>
- <CADFS6E7cixtmpLBQkH2X0Ggdurb+V01X2NCHu5rrH9X0Uyg4Fg@mail.gmail.com>
 Message-ID: <CAEG0FK8xOg6YLPVAw7Zp2okPURfXDbf9DtH4+3nwuRG_oeD5RQ@mail.gmail.com>
 
 Execute normalmente, sem o png(...) É sem o dev.off()
@@ -2027,17 +2635,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/81e4d64f/attachment.html>
 
-From assis.leonard em gmail.com  Mon Jul 10 12:05:06 2017
+From assis.leonard em gmail.com  Mon Jul 10 15:05:06 2017
 From: assis.leonard em gmail.com (Leonard Assis)
-Date: Mon, 10 Jul 2017 12:05:06 -0300
-Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
+Date: Mon, 10 Jul 2017 15:05:06 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_delineamento_vs_repeti=C3=A7=C3=A3o?=
 In-Reply-To: <1049780917.2376704.1499682813015@mail.yahoo.com>
-References: <1049780917.2376704.1499682813015.ref@mail.yahoo.com>
- <1049780917.2376704.1499682813015@mail.yahoo.com>
 Message-ID: <CAEG0FK-1jOYTmxwdm4HqWidm5BJrd0QYhWGA=uxZ6Ayh6XyHhQ@mail.gmail.com>
 
 As mensuracose são repetições da mesma medida ou métricas diferentes?
@@ -2117,15 +2720,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/81ac8e5e/attachment.html>
 
-From economatistica em yahoo.com.br  Mon Jul 10 15:06:33 2017
+From economatistica em yahoo.com.br  Mon Jul 10 18:06:33 2017
 From: economatistica em yahoo.com.br (Edimeire Alexandra Pinto)
-Date: Mon, 10 Jul 2017 18:06:33 +0000 (UTC)
+Date: Mon, 10 Jul 2017 18:06:33 +0000
 Subject: [R-br] incompatibilidade entre Geoda e R
-References: <361094833.2411091.1499709993846.ref@mail.yahoo.com>
+In-Reply-To: <361094833.2411091.1499709993846.ref@mail.yahoo.com>
 Message-ID: <361094833.2411091.1499709993846@mail.yahoo.com>
 
 Boa tarde.
@@ -2140,18 +2740,11 @@ No entanto o R me retorna a mensagem abaixo, sendo que no Geoda eu consigo essa 
 Error in print.listw(x) : 
   regions with no neighbours found, use zero.policy=TRUE
 
-
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/b285eeff/attachment.html>
-
-From eliaskrainski em yahoo.com.br  Mon Jul 10 15:20:57 2017
+From eliaskrainski em yahoo.com.br  Mon Jul 10 18:20:57 2017
 From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
-Date: Mon, 10 Jul 2017 15:20:57 -0300
-Subject: [R-br] incompatibilidade entre Geoda e R
+Date: Mon, 10 Jul 2017 18:20:57 +0000
+Subject: Re: [R-br] incompatibilidade entre Geoda e R
 In-Reply-To: <361094833.2411091.1499709993846@mail.yahoo.com>
-References: <361094833.2411091.1499709993846.ref@mail.yahoo.com>
- <361094833.2411091.1499709993846@mail.yahoo.com>
 Message-ID: <7bd9946f-11d4-33dc-cc98-75a116964858@yahoo.com.br>
 
 Oi Edimeire,
@@ -2163,15 +2756,11 @@ nbw <- nb2listw(este.nb,style="W", zero.policy=TRUE)
 
 Elias
 
-
-From eliaskrainski em yahoo.com.br  Mon Jul 10 15:22:32 2017
+From eliaskrainski em yahoo.com.br  Mon Jul 10 18:22:32 2017
 From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
-Date: Mon, 10 Jul 2017 15:22:32 -0300
-Subject: [R-br] incompatibilidade entre Geoda e R
+Date: Mon, 10 Jul 2017 18:22:32 +0000
+Subject: Re: [R-br] incompatibilidade entre Geoda e R
 In-Reply-To: <7bd9946f-11d4-33dc-cc98-75a116964858@yahoo.com.br>
-References: <361094833.2411091.1499709993846.ref@mail.yahoo.com>
- <361094833.2411091.1499709993846@mail.yahoo.com>
- <7bd9946f-11d4-33dc-cc98-75a116964858@yahoo.com.br>
 Message-ID: <76a7ad8f-866a-530a-1439-9fca23558168@yahoo.com.br>
 
 Complementando:
@@ -2182,12 +2771,11 @@ print(nbw, zero.policy=TRUE)
 
 Elias
 
-
-From economatistica em yahoo.com.br  Mon Jul 10 15:32:10 2017
+From economatistica em yahoo.com.br  Mon Jul 10 18:32:10 2017
 From: economatistica em yahoo.com.br (Edimeire Alexandra Pinto)
-Date: Mon, 10 Jul 2017 18:32:10 +0000 (UTC)
-Subject: [R-br] incompatibilidade entre Geoda e R
-References: <913781826.2438200.1499711530813.ref@mail.yahoo.com>
+Date: Mon, 10 Jul 2017 18:32:10 +0000
+Subject: Re: [R-br] incompatibilidade entre Geoda e R
+In-Reply-To: <913781826.2438200.1499711530813.ref@mail.yahoo.com>
 Message-ID: <913781826.2438200.1499711530813@mail.yahoo.com>
 
  
@@ -2289,129 +2877,11 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
 
-   
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/7d720aab/attachment.html>
-
-From economatistica em yahoo.com.br  Mon Jul 10 15:32:10 2017
-From: economatistica em yahoo.com.br (Edimeire Alexandra Pinto)
-Date: Mon, 10 Jul 2017 18:32:10 +0000 (UTC)
-Subject: [R-br] incompatibilidade entre Geoda e R
-References: <913781826.2438200.1499711530813.ref@mail.yahoo.com>
-Message-ID: <913781826.2438200.1499711530813@mail.yahoo.com>
-
- 
-Oi Elias. 
-
-Pois é, olha só o que aparece:
-
-
-este.nb= read.gal("municipios.gal" ,     override.id=TRUE)
- print(este.nb)
-> print(este.nb)
-Neighbour list object:
-Number of regions: 5564 
-Number of nonzero links: 32228 
-Percentage nonzero weights: 0.104102 
-Average number of links: 5.792236 
-3 regions with no links:
-
-#########
-
-
-w.nb<-nb2listw(este.nb,style="W", zero.policy=TRUE)
-
-
-| > print(w.nb, zero.policy=TRUE)
-Characteristics of weights list object:
-Neighbour list object:
-Number of regions: 5564 
-Number of nonzero links: 32228 
-Percentage nonzero weights: 0.104102 
-Average number of links: 5.792236 
-3 regions with no links:
-3520400 5300108 2605459
-
-Weights style: W 
-Weights constants summary:
-     n       nn   S0       S1       S2
-W 5561 30924721 5561 2044.729 23174.73
- |
-| 
- |
-| 
-| >w.nb ###se peço para aparecer o executado da erro como se vê abaixo
-Error in print.listw(x) : 
-  regions with no neighbours found, use zero.policy=TRUE
-
-
-
-
-
-Preciso desses pesos para calcular o indice de Moran da variavel Y, que nada mais do que o Renda municipal, usando matriz de pesos w.nb
-
-
-dados<-read.table("res.csv",sep=";",dec=",",header = TRUE)
-
-head(dados)
-
-
-|     MUNICIPIO         Y     PIBa       PIB     cod
-1   MANCIO LIMA  591239.9 33426.61 150136.08 1200336
-2 MANOEL URBANO   58934.4 18044.54  80018.27 1200344
-3  ASSIS BRASIL 1978559.5 17371.21  64601.58 1200054
-4         FEIJO  285000.0 45966.75 267202.96 1200302
-5        XAPURI  355711.4 55298.02 168708.32 1200708
-6      TARAUACA 2852586.8 65297.63 335519.90 1200609
- |
-| 
- |
-| 
-| >  |
-
- |
-
-summary(dados)
-
-
-moran.test(dados$Y, listw=w.nb, randomisation=FALSE, alternative="greater",zero.policy=TRUE) 
-
-
-Error in na.fail.default(x) : missing values in object
- |
-
- |
-
-    Em Segunda-feira, 10 de Julho de 2017 15:22, Elias T. Krainski via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
- 
-
- Complementando:
-
-On 10/07/2017 15:20, Elias T. Krainski wrote:
-> nbw <- nb2listw(este.nb,style="W", zero.policy=TRUE)
-print(nbw, zero.policy=TRUE)
-
-Elias
-
-_______________________________________________
-R-br mailing list
-R-br em listas.c3sl.ufpr.br
-https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
-Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
-
-   
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/7d720aab/attachment-0001.html>
-
-From eliaskrainski em yahoo.com.br  Mon Jul 10 15:48:05 2017
+From eliaskrainski em yahoo.com.br  Mon Jul 10 18:48:05 2017
 From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
-Date: Mon, 10 Jul 2017 15:48:05 -0300
-Subject: [R-br] incompatibilidade entre Geoda e R
+Date: Mon, 10 Jul 2017 18:48:05 +0000
+Subject: Re: [R-br] incompatibilidade entre Geoda e R
 In-Reply-To: <913781826.2438200.1499711530813@mail.yahoo.com>
-References: <913781826.2438200.1499711530813.ref@mail.yahoo.com>
- <913781826.2438200.1499711530813@mail.yahoo.com>
 Message-ID: <e551bc2c-e6df-c47f-d289-9adfb0170cbd@yahoo.com.br>
 
 On 10/07/2017 15:32, Edimeire Alexandra Pinto wrote:
@@ -2420,19 +2890,12 @@ por isso que precisa usar
 print(w.nb, zero.policy=TRUE)
 
 Elias
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/4a113701/attachment.html>
 
-From yurynepomuceno em gmail.com  Tue Jul 11 09:09:05 2017
+From yurynepomuceno em gmail.com  Tue Jul 11 12:09:05 2017
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Tue, 11 Jul 2017 09:09:05 -0300
-Subject: [R-br] Ajuda com BoxPlot
+Date: Tue, 11 Jul 2017 12:09:05 +0000
+Subject: Re: [R-br] Ajuda com BoxPlot
 In-Reply-To: <CAEG0FK8xOg6YLPVAw7Zp2okPURfXDbf9DtH4+3nwuRG_oeD5RQ@mail.gmail.com>
-References: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
- <CAFU=EkZgptuyUjD-q0=9z1y2+U=jfBD5eTPUuGfscou6PGsRxQ@mail.gmail.com>
- <CADFS6E7cixtmpLBQkH2X0Ggdurb+V01X2NCHu5rrH9X0Uyg4Fg@mail.gmail.com>
- <CAEG0FK8xOg6YLPVAw7Zp2okPURfXDbf9DtH4+3nwuRG_oeD5RQ@mail.gmail.com>
 Message-ID: <CADFS6E4g7Ztv9tKuHc_hwJNdr994iYO57FQYAC-Jmv8vr+uLNg@mail.gmail.com>
 
 Obrigado Leonard e Walmes!
@@ -2543,11 +3006,8 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170711/1c3c2dfb/attachment.html>
 
-From apcmadeira em hotmail.com  Tue Jul 11 09:21:19 2017
+From apcmadeira em hotmail.com  Tue Jul 11 12:21:19 2017
 From: apcmadeira em hotmail.com (ana paula coelho madeira)
 Date: Tue, 11 Jul 2017 12:21:19 +0000
 Subject: [R-br] GLM multivariado
@@ -2562,16 +3022,12 @@ Desde já agradeço
 
 
 Ana Paula
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170711/e2b2a634/attachment.html>
 
-From wbonat em gmail.com  Tue Jul 11 09:41:45 2017
+From wbonat em gmail.com  Tue Jul 11 12:41:45 2017
 From: wbonat em gmail.com (Wagner Bonat)
-Date: Tue, 11 Jul 2017 09:41:45 -0300
-Subject: [R-br] GLM multivariado
+Date: Tue, 11 Jul 2017 12:41:45 +0000
+Subject: Re: [R-br] GLM multivariado
 In-Reply-To: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
-References: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
 Message-ID: <CANt=4MhmLE7G-=Cg8dHwoYstGQ=XjDk0XXNMjWtOTYCqkH0G_A@mail.gmail.com>
 
 Bom dia Ana,
@@ -2623,16 +3079,12 @@ Department of Mathematics and Computer Science (IMADA)
 University of Southern Denmark (SDU) and
 Laboratório de Estatística e Geoinformação (LEG)
 Universidade Federal do Paraná (UFPR)
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170711/e52d7fd0/attachment.html>
 
-From coroasolaris em gmail.com  Tue Jul 11 14:21:51 2017
+From coroasolaris em gmail.com  Tue Jul 11 17:21:51 2017
 From: coroasolaris em gmail.com (Elielson P Barbosa)
-Date: Tue, 11 Jul 2017 14:21:51 -0300
-Subject: [R-br] GLM multivariado
+Date: Tue, 11 Jul 2017 17:21:51 +0000
+Subject: Re: [R-br] GLM multivariado
 In-Reply-To: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
-References: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
 Message-ID: <CAL6xZMr=iGhgqaH6zvuT6jWLp1YkiTLRTkOhfSeZ6VWo+0MVfA@mail.gmail.com>
 
 Ana, sugiro Multivariate GLM, Haase, Richard F., SAGE Publication/Amazon
@@ -2658,16 +3110,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170711/b05474dc/attachment.html>
 
-From eucilene.alvessantana em gmail.com  Wed Jul 12 13:06:52 2017
+From eucilene.alvessantana em gmail.com  Wed Jul 12 16:06:52 2017
 From: eucilene.alvessantana em gmail.com (Eucilene Alves Santana)
-Date: Wed, 12 Jul 2017 13:06:52 -0300
-Subject: [R-br] GLM multivariado
+Date: Wed, 12 Jul 2017 16:06:52 +0000
+Subject: Re: [R-br] GLM multivariado
 In-Reply-To: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
-References: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
 Message-ID: <CANuApLsrk-r4fFs3xzZvtPMDUyLif6y3P56Ow8Lzg+4MYvEqtQ@mail.gmail.com>
 
 Também gostaria
@@ -2695,17 +3143,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170712/027a3b2d/attachment.html>
 
-From diogojose21 em yahoo.com.br  Wed Jul 12 13:53:42 2017
-From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
-Date: Wed, 12 Jul 2017 16:53:42 +0000 (UTC)
-Subject: [R-br] =?utf-8?b?T3DDp8O1ZXMgZG8gbGF0dGljZSAoaGlzdG9ncmFtYSku?=
+From diogojose21 em yahoo.com.br  Wed Jul 12 16:53:42 2017
+From: diogojose21 em yahoo.com.br (=?utf-8?q?Diogo_Jer=C3=B4nimo?=)
+Date: Wed, 12 Jul 2017 16:53:42 +0000
+Subject: =?utf-8?b?W1ItYnJdIE9ww6fDtWVzIGRvIGxhdHRpY2UgKGhpc3RvZ3JhbWEpLg==?=
 In-Reply-To: <790463125.1275871.1490977964378@mail.yahoo.com>
-References: <790463125.1275871.1490977964378.ref@mail.yahoo.com>
- <790463125.1275871.1490977964378@mail.yahoo.com>
 Message-ID: <1427389292.518123.1499878422656@mail.yahoo.com>
 
 Prezados, boa tarde!!! 
@@ -2723,21 +3166,11 @@ histogram(~res|fac,xlab="Resultado",ylab="Freqüência",type=c("count"),layout=c
 Alguém sabe como fazer para inserir a curva normal no gráfico do histograma, quando se tem no eixo y a frequência ("count") em vez da densidade ("density")?
 Obrigado, Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE ACel:(21)99680-8535Email: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520
 
-   
-
-   
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170712/edf35e2e/attachment.html>
-
-From walmeszeviani em gmail.com  Wed Jul 12 17:42:25 2017
+From walmeszeviani em gmail.com  Wed Jul 12 20:42:25 2017
 From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Wed, 12 Jul 2017 17:42:25 -0300
-Subject: [R-br] =?utf-8?b?T3DDp8O1ZXMgZG8gbGF0dGljZSAoaGlzdG9ncmFtYSku?=
+Date: Wed, 12 Jul 2017 20:42:25 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBPcMOnw7VlcyBkbyBsYXR0aWNlIChoaXN0b2dyYW1hKS4=?=
 In-Reply-To: <1427389292.518123.1499878422656@mail.yahoo.com>
-References: <790463125.1275871.1490977964378.ref@mail.yahoo.com>
- <790463125.1275871.1490977964378@mail.yahoo.com>
- <1427389292.518123.1499878422656@mail.yahoo.com>
 Message-ID: <CAFU=EkYdmx-y=mOD_rTo=z3rpbb4yzoanKQdKvt9dyVOT48o1Q@mail.gmail.com>
 
 Diogo,
@@ -2792,16 +3225,12 @@ curve(a * dnorm(x, mean(y), sd(y)),
 Walmes.
 
 ​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170712/fc6ad81b/attachment.html>
 
-From cesar.rabak em gmail.com  Wed Jul 12 21:33:43 2017
+From cesar.rabak em gmail.com  Thu Jul 13 00:33:43 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Wed, 12 Jul 2017 21:33:43 -0300
-Subject: [R-br] GLM multivariado
+Date: Thu, 13 Jul 2017 00:33:43 +0000
+Subject: Re: [R-br] GLM multivariado
 In-Reply-To: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
-References: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
 Message-ID: <CAKrF98=N-THOV6kwCyZVUFcMgB=L+iN=ckxt6h5v4zfZ-aPmCg@mail.gmail.com>
 
 Ana Paula,
@@ -2830,13 +3259,10 @@ r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170712/fea93ad1/attachment.html>
 
-From diogojose21 em yahoo.com.br  Thu Jul 13 08:54:40 2017
-From: diogojose21 em yahoo.com.br (diogojose21 em yahoo.com.br)
-Date: Thu, 13 Jul 2017 11:54:40 -0000
+From diogojose21 em yahoo.com.br  Thu Jul 13 11:54:40 2017
+From: diogojose21 em yahoo.com.br
+Date: Thu, 13 Jul 2017 11:54:40 +0000
 Subject: [R-br]  Maximizar plot window no RStudio
 Message-ID: <1156667304.98720.1499945730059.JavaMail.administrator@mjoe.nabble.com>
 
@@ -2853,10 +3279,9 @@ In corde Jesu semper!!!
 _____________________________________
 Sent from http://r-br.2285057.n4.nabble.com
 
-
-From adrielegbiase em gmail.com  Thu Jul 20 16:42:59 2017
+From adrielegbiase em gmail.com  Thu Jul 20 19:42:59 2017
 From: adrielegbiase em gmail.com (Adriele Giaretta Biase)
-Date: Thu, 20 Jul 2017 16:42:59 -0300
+Date: Thu, 20 Jul 2017 19:42:59 +0000
 Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
 Message-ID: <CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com>
 
@@ -2996,26 +3421,20 @@ Adriele Giaretta Biase.
 Mestre em  Estatística e Experimentação Agropecuária - UFLA.
 Doutora em Estatística e Experimentação Agronômica - ESALQ/ USP
 Contato: (19) 98861-0619.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170720/d9a94728/attachment.html>
 
-From sznelwar em uol.com.br  Thu Jul 20 18:17:26 2017
-From: sznelwar em uol.com.br (sznelwar em uol.com.br)
-Date: Thu, 20 Jul 2017 18:17:26 -0300
-Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
-In-Reply-To: ["CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com"]
-References: ["CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com"]
+From sznelwar em uol.com.br  Thu Jul 20 21:17:26 2017
+From: sznelwar em uol.com.br
+Date: Thu, 20 Jul 2017 21:17:26 +0000
+Subject: Re: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
+In-Reply-To: < ["CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com"]>
 Message-ID: <59711de65b88_3b34156abb6bf3ec31816@a4-weasel18.mail>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170720/5eb77a04/attachment.html>
 
-From jorgeluiscavalcanti em gmail.com  Thu Jul 20 19:04:48 2017
+
+From jorgeluiscavalcanti em gmail.com  Thu Jul 20 22:04:48 2017
 From: jorgeluiscavalcanti em gmail.com (Jorge Cavalcanti)
-Date: Thu, 20 Jul 2017 19:04:48 -0300
-Subject: [R-br] =?utf-8?q?CFP_-_IV_WORKSHOP_DE_CI=C3=8ANCIA_DE_DADOS_EDUCA?=
-	=?utf-8?b?Q0lPTkFJUyAoV0NEReKAmTIwMTcp?=
+Date: Thu, 20 Jul 2017 22:04:48 +0000
+Subject: =?utf-8?q?=5BR-br=5D_CFP_-_IV_WORKSHOP_DE_CI=C3=8ANCIA_DE_DADOS_EDUCACIONAIS_=28WCDE=E2=80=992017=29?=
 Message-ID: <CACftuwzM26NzSretKBtBtS-b5=HU6A8MOahrVYaN=6RHMHH-_g@mail.gmail.com>
 
 ------------------------------------------------------------
@@ -3106,16 +3525,12 @@ sociais, mineração de opinião para o domínio educativo;
 • Entrega da versão final dos artigos (com copyright): *15/09/2017*
 • Data limite para inscrição de pelo menos um autor por trabalho:
 * 15/09/2017*
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170720/90fed5fa/attachment.html>
 
-From cesar.rabak em gmail.com  Thu Jul 20 22:05:56 2017
+From cesar.rabak em gmail.com  Fri Jul 21 01:05:56 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Thu, 20 Jul 2017 22:05:56 -0300
-Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
+Date: Fri, 21 Jul 2017 01:05:56 +0000
+Subject: Re: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
 In-Reply-To: <59711de65b88_3b34156abb6bf3ec31816@a4-weasel18.mail>
-References: <59711de65b88_3b34156abb6bf3ec31816@a4-weasel18.mail>
 Message-ID: <CAKrF98k6-TT7kXu8qyHYp=qc8o+dcUSsSggar2mm-0Lo4aXtXQ@mail.gmail.com>
 
 Prezada Adriele,
@@ -3312,13 +3727,10 @@ Cesar Rabak
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170720/08367212/attachment.html>
 
-From fabianidenise em gmail.com  Fri Jul 21 08:36:35 2017
-From: fabianidenise em gmail.com (fabianidenise em gmail.com)
-Date: Fri, 21 Jul 2017 11:36:35 -0000
+From fabianidenise em gmail.com  Fri Jul 21 11:36:35 2017
+From: fabianidenise em gmail.com
+Date: Fri, 21 Jul 2017 11:36:35 +0000
 Subject: [R-br] geom_boxplot
 Message-ID: <1826656629.54373.1500635795562.JavaMail.administrator@mjoe.nabble.com>
 
@@ -3356,13 +3768,11 @@ Fabiani
 _____________________________________
 Sent from http://r-br.2285057.n4.nabble.com
 
-
-From cesar.rabak em gmail.com  Fri Jul 21 13:19:36 2017
+From cesar.rabak em gmail.com  Fri Jul 21 16:19:36 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Fri, 21 Jul 2017 13:19:36 -0300
-Subject: [R-br] geom_boxplot
+Date: Fri, 21 Jul 2017 16:19:36 +0000
+Subject: Re: [R-br] geom_boxplot
 In-Reply-To: <1826656629.54373.1500635795562.JavaMail.administrator@mjoe.nabble.com>
-References: <1826656629.54373.1500635795562.JavaMail.administrator@mjoe.nabble.com>
 Message-ID: <CAKrF98nN3cFdo17h=FB5dnyM396vNmoOqT3v3gqs4RxNdhf1Cw@mail.gmail.com>
 
 http://bfy.tw/CxnM
@@ -3419,16 +3829,12 @@ Cesar Rabak
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
 > mnimo reproduzvel.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170721/3c57231c/attachment.html>
 
-From lpbraga em geologia.ufrj.br  Sat Jul 22 17:03:35 2017
+From lpbraga em geologia.ufrj.br  Sat Jul 22 20:03:35 2017
 From: lpbraga em geologia.ufrj.br (Luis Paulo Braga)
-Date: Sat, 22 Jul 2017 17:03:35 -0300
-Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
+Date: Sat, 22 Jul 2017 20:03:35 +0000
+Subject: Re: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
 In-Reply-To: <CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com>
-References: <CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com>
 Message-ID: <CAMqMvQV+7zV0zPnOQRn6uzFRyPM4UEOtcuXPioPdwWL52Zwc3A@mail.gmail.com>
 
 Especificamente nesse problema, alguns autores tem utilizado com sucesso
@@ -3583,28 +3989,21 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170722/5b4719a6/attachment.html>
 
-From sznelwar em uol.com.br  Sun Jul 23 18:03:01 2017
-From: sznelwar em uol.com.br (sznelwar em uol.com.br)
-Date: Sun, 23 Jul 2017 18:03:01 -0300
-Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
-In-Reply-To: ["CAMqMvQV+7zV0zPnOQRn6uzFRyPM4UEOtcuXPioPdwWL52Zwc3A@mail.gmail.com"]
-References: ["CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com", 
- "CAMqMvQV+7zV0zPnOQRn6uzFRyPM4UEOtcuXPioPdwWL52Zwc3A@mail.gmail.com"]
+From sznelwar em uol.com.br  Sun Jul 23 21:03:01 2017
+From: sznelwar em uol.com.br
+Date: Sun, 23 Jul 2017 21:03:01 +0000
+Subject: Re: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
+In-Reply-To: < ["CAMqMvQV+7zV0zPnOQRn6uzFRyPM4UEOtcuXPioPdwWL52Zwc3A@mail.gmail.com"]>
 Message-ID: <59750f05a821a_5f715a85bd7f3d42357f@a4-weasel17.mail>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170723/0134399c/attachment.html>
 
-From assis.leonard em gmail.com  Sun Jul 23 22:15:15 2017
+
+From assis.leonard em gmail.com  Mon Jul 24 01:15:15 2017
 From: assis.leonard em gmail.com (Leonard Assis)
-Date: Sun, 23 Jul 2017 22:15:15 -0300
-Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
+Date: Mon, 24 Jul 2017 01:15:15 +0000
+Subject: Re: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
 In-Reply-To: <CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com>
-References: <CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com>
 Message-ID: <CAEG0FK-DXxwHtzq=qYruJowJnnkVSsa3YNM+rJEMzrA2D+LKnA@mail.gmail.com>
 
 Leia sobre medidas repetidas e modelos de efeitos mistos
@@ -3757,14 +4156,11 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170723/9f3566ef/attachment.html>
 
-From brucekellys em hotmail.com  Tue Jul 25 10:41:03 2017
+From brucekellys em hotmail.com  Tue Jul 25 13:41:03 2017
 From: brucekellys em hotmail.com (Bruce Kelly)
 Date: Tue, 25 Jul 2017 13:41:03 +0000
-Subject: [R-br] =?iso-8859-1?q?Altera=E7=F5es_no_Plot_=27extRemes=27?=
+Subject: =?utf-8?b?W1ItYnJdIEFsdGVyYcOnw7VlcyBubyBQbG90ICdleHRSZW1lcyc=?=
 Message-ID: <CY4PR2001MB1109935C696910C7519CB2B0A8B80@CY4PR2001MB1109.namprd20.prod.outlook.com>
 
 Bom dia listeiros(@)
@@ -3794,23 +4190,16 @@ Dr. em Ciências Climáticas - UFRN
 Pesquisador - PPGCC/UFRN
 Lattes: http://lattes.cnpq.br/4323502426271751
 
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: exemplo.png
+Type: image/png
+Size: 23446 bytes
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170725/aac05aad/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: exemplo.png
-Tipo: image/png
-Tamanho: 23446 bytes
-Descrição: exemplo.png
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170725/aac05aad/attachment.png>
-
-From marcelokmacho em gmail.com  Wed Jul 26 13:53:50 2017
+From marcelokmacho em gmail.com  Wed Jul 26 16:53:50 2017
 From: marcelokmacho em gmail.com (Marcelo Santana Camacho)
-Date: Wed, 26 Jul 2017 13:53:50 -0300
-Subject: [R-br] =?utf-8?q?Aggregate_com_fun=C3=A7=C3=A3o_de_dois_argumento?=
-	=?utf-8?q?s?=
+Date: Wed, 26 Jul 2017 16:53:50 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Aggregate_com_fun=C3=A7=C3=A3o_de_dois_argumentos?=
 Message-ID: <CAO=fnV6=8TfYCW9VSxPC1btvucGv-2=T62aTCZ19qYUKJYDjLg@mail.gmail.com>
 
 Bom dia,
@@ -3836,25 +4225,42 @@ aggregate(c(qtd,renda)~cod_setor,data=ineq_df,gini)
 
 
 *__________________________________Marcelo Santana Camacho*UNIFESSPA
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170726/b5cc8522/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: amostra_input.csv
-Tipo: text/csv
-Tamanho: 2131 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170726/b5cc8522/attachment.csv>
 
-From assis.leonard em gmail.com  Wed Jul 26 20:26:31 2017
+-------------- next part --------------
+cod_setor,ck,dk,qtd,renda
+110001505000001,1,Rendimento nominal ate 1/2 salario minimo,279,5482
+110001505000001,2,Rendimento nominal de mais de 1/2 a 1 salario minimo,236,115302
+110001505000001,3,Rendimento nominal de mais de 1 a 2 salarios minimos,177,143848
+110001505000001,4,Rendimento nominal de mais de 2 a 3 salarios minimos,51,67461
+110001505000001,5,Rendimento nominal de mais de 3 a 5 salarios minimos,48,97643
+110001505000001,6,Rendimento nominal de mais de 5 a 10 salarios minimos,24,86395
+110001505000001,7,Rendimento nominal de mais de 10 a 15 salarios minimos,1,7000
+110001505000001,8,Rendimento nominal de mais de 15 a 20 salarios minimos,0,0
+110001505000001,9,Rendimento nominal de mais de 20 salarios minimos,0,0
+110001505000002,1,Rendimento nominal ate 1/2 salario minimo,315,7137
+110001505000002,2,Rendimento nominal de mais de 1/2 a 1 salario minimo,163,77705
+110001505000002,3,Rendimento nominal de mais de 1 a 2 salarios minimos,149,122633
+110001505000002,4,Rendimento nominal de mais de 2 a 3 salarios minimos,47,62586
+110001505000002,5,Rendimento nominal de mais de 3 a 5 salarios minimos,43,84850
+110001505000002,6,Rendimento nominal de mais de 5 a 10 salarios minimos,13,38900
+110001505000002,7,Rendimento nominal de mais de 10 a 15 salarios minimos,2,12780
+110001505000002,8,Rendimento nominal de mais de 15 a 20 salarios minimos,0,0
+110001505000002,9,Rendimento nominal de mais de 20 salarios minimos,0,0
+110001505000003,1,Rendimento nominal ate 1/2 salario minimo,225,6323
+110001505000003,2,Rendimento nominal de mais de 1/2 a 1 salario minimo,195,90917
+110001505000003,3,Rendimento nominal de mais de 1 a 2 salarios minimos,107,86597
+110001505000003,4,Rendimento nominal de mais de 2 a 3 salarios minimos,15,19160
+110001505000003,5,Rendimento nominal de mais de 3 a 5 salarios minimos,9,17390
+110001505000003,6,Rendimento nominal de mais de 5 a 10 salarios minimos,4,15000
+110001505000003,7,Rendimento nominal de mais de 10 a 15 salarios minimos,1,6500
+110001505000003,8,Rendimento nominal de mais de 15 a 20 salarios minimos,0,0
+110001505000003,9,Rendimento nominal de mais de 20 salarios minimos,0,0
+
+From assis.leonard em gmail.com  Wed Jul 26 23:26:31 2017
 From: assis.leonard em gmail.com (Leonard Assis)
-Date: Wed, 26 Jul 2017 20:26:31 -0300
-Subject: [R-br]
-	=?utf-8?q?Aggregate_com_fun=C3=A7=C3=A3o_de_dois_argumento?=
-	=?utf-8?q?s?=
+Date: Wed, 26 Jul 2017 23:26:31 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Aggregate_com_fun=C3=A7=C3=A3o_de_dois_argumentos?=
 In-Reply-To: <CAO=fnV6=8TfYCW9VSxPC1btvucGv-2=T62aTCZ19qYUKJYDjLg@mail.gmail.com>
-References: <CAO=fnV6=8TfYCW9VSxPC1btvucGv-2=T62aTCZ19qYUKJYDjLg@mail.gmail.com>
 Message-ID: <CAEG0FK_ya7vUNZvFyX9MEsMOksCBzNKMTp3X5-6qcpYTFYFOiw@mail.gmail.com>
 
 Cara, é embaçado resolver isto. Tive um problema uma vez com média
@@ -3893,19 +4299,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170726/8dd47b85/attachment.html>
 
-From marcelokmacho em gmail.com  Wed Jul 26 21:47:05 2017
+From marcelokmacho em gmail.com  Thu Jul 27 00:47:05 2017
 From: marcelokmacho em gmail.com (Marcelo Santana Camacho)
-Date: Wed, 26 Jul 2017 21:47:05 -0300
-Subject: [R-br]
-	=?utf-8?q?Aggregate_com_fun=C3=A7=C3=A3o_de_dois_argumento?=
-	=?utf-8?q?s?=
+Date: Thu, 27 Jul 2017 00:47:05 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Aggregate_com_fun=C3=A7=C3=A3o_de_dois_argumentos?=
 In-Reply-To: <CAEG0FK_ya7vUNZvFyX9MEsMOksCBzNKMTp3X5-6qcpYTFYFOiw@mail.gmail.com>
-References: <CAO=fnV6=8TfYCW9VSxPC1btvucGv-2=T62aTCZ19qYUKJYDjLg@mail.gmail.com>
- <CAEG0FK_ya7vUNZvFyX9MEsMOksCBzNKMTp3X5-6qcpYTFYFOiw@mail.gmail.com>
 Message-ID: <CAO=fnV4BovW87VWkn1yiqfgwgcdwXtpg+WdGCwZ_jLaeMptqrg@mail.gmail.com>
 
 Leonardo, muito obrigado.
@@ -3965,15 +4364,11 @@ escreveu:
 
 *__________________________________Marcelo Santana CamachoEngenharia
 Elétrica - UFPA*
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170726/ed45092a/attachment.html>
 
-From emmanuel.brasil em gmail.com  Fri Jul 28 09:42:01 2017
+From emmanuel.brasil em gmail.com  Fri Jul 28 12:42:01 2017
 From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
-Date: Fri, 28 Jul 2017 09:42:01 -0300
-Subject: [R-br] =?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Date: Fri, 28 Jul 2017 12:42:01 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 Message-ID: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
 
 Amigos de R,
@@ -4011,7 +4406,7 @@ objeto pequeno e que não deveria ser um problema de memória do R.
 
 # o EXEC PersistModel faz
 # insert into [tempo_permanencia_models] (model, [description]) values
-(convert(varbinary(max), em m,2), @description)
+(convert(varbinary(max),@m,2), @description)
 # insere o modelo e uma descricao
 
 > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description =
@@ -4036,18 +4431,12 @@ por onde começar.
 Que a força esteja sempre com vocês e abraço forte.
 
 Pedro Brasil
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170728/d0e5db01/attachment.html>
 
-From cesar.rabak em gmail.com  Fri Jul 28 16:59:39 2017
+From cesar.rabak em gmail.com  Fri Jul 28 19:59:39 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Fri, 28 Jul 2017 16:59:39 -0300
-Subject: [R-br]
-	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Date: Fri, 28 Jul 2017 19:59:39 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
 Message-ID: <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
 
 Pedro,
@@ -4099,7 +4488,7 @@ R-br <r-br em listas.c3sl.ufpr.br>:
 >
 > # o EXEC PersistModel faz
 > # insert into [tempo_permanencia_models] (model, [description]) values
-> (convert(varbinary(max), em m,2), @description)
+> (convert(varbinary(max),@m,2), @description)
 > # insere o modelo e uma descricao
 >
 > > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description =
@@ -4132,19 +4521,12 @@ R-br <r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170728/c0d0a25e/attachment.html>
 
-From emmanuel.brasil em gmail.com  Fri Jul 28 17:12:09 2017
+From emmanuel.brasil em gmail.com  Fri Jul 28 20:12:09 2017
 From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
-Date: Fri, 28 Jul 2017 17:12:09 -0300
-Subject: [R-br]
-	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Date: Fri, 28 Jul 2017 20:12:09 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
 Message-ID: <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
 
 Ei Cesar,
@@ -4209,7 +4591,7 @@ Em 28 de julho de 2017 16:59, Cesar Rabak <cesar.rabak em gmail.com> escreveu:
 >>
 >> # o EXEC PersistModel faz
 >> # insert into [tempo_permanencia_models] (model, [description]) values
->> (convert(varbinary(max), em m,2), @description)
+>> (convert(varbinary(max),@m,2), @description)
 >> # insere o modelo e uma descricao
 >>
 >> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description =
@@ -4245,20 +4627,12 @@ Em 28 de julho de 2017 16:59, Cesar Rabak <cesar.rabak em gmail.com> escreveu:
 >>
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170728/931a8fab/attachment.html>
 
-From cesar.rabak em gmail.com  Sat Jul 29 20:45:44 2017
+From cesar.rabak em gmail.com  Sat Jul 29 23:45:44 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Sat, 29 Jul 2017 20:45:44 -0300
-Subject: [R-br]
-	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Date: Sat, 29 Jul 2017 23:45:44 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
 Message-ID: <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
 
 Pedro,
@@ -4351,7 +4725,7 @@ emmanuel.brasil em gmail.com>:
 >>>
 >>> # o EXEC PersistModel faz
 >>> # insert into [tempo_permanencia_models] (model, [description]) values
->>> (convert(varbinary(max), em m,2), @description)
+>>> (convert(varbinary(max),@m,2), @description)
 >>> # insere o modelo e uma descricao
 >>>
 >>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description =
@@ -4388,21 +4762,12 @@ emmanuel.brasil em gmail.com>:
 >>
 >>
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170729/0c2075dc/attachment.html>
 
-From emmanuel.brasil em gmail.com  Mon Jul 31 10:32:18 2017
+From emmanuel.brasil em gmail.com  Mon Jul 31 13:32:18 2017
 From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
-Date: Mon, 31 Jul 2017 10:32:18 -0300
-Subject: [R-br]
-	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Date: Mon, 31 Jul 2017 13:32:18 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
- <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
 Message-ID: <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
 
 Cesar,
@@ -4507,7 +4872,7 @@ Em 29 de julho de 2017 20:45, Cesar Rabak <cesar.rabak em gmail.com> escreveu:
 >>>>
 >>>> # o EXEC PersistModel faz
 >>>> # insert into [tempo_permanencia_models] (model, [description]) values
->>>> (convert(varbinary(max), em m,2), @description)
+>>>> (convert(varbinary(max),@m,2), @description)
 >>>> # insere o modelo e uma descricao
 >>>>
 >>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description =
@@ -4545,22 +4910,12 @@ Em 29 de julho de 2017 20:45, Cesar Rabak <cesar.rabak em gmail.com> escreveu:
 >>>
 >>
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170731/26c14eeb/attachment.html>
 
-From cesar.rabak em gmail.com  Mon Jul 31 14:53:52 2017
+From cesar.rabak em gmail.com  Mon Jul 31 17:53:52 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Mon, 31 Jul 2017 14:53:52 -0300
-Subject: [R-br]
-	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Date: Mon, 31 Jul 2017 17:53:52 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
- <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
- <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
 Message-ID: <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
 
 Correto Pedro!
@@ -4685,7 +5040,7 @@ emmanuel.brasil em gmail.com>:
 >>>>>
 >>>>> # o EXEC PersistModel faz
 >>>>> # insert into [tempo_permanencia_models] (model, [description]) values
->>>>> (convert(varbinary(max), em m,2), @description)
+>>>>> (convert(varbinary(max),@m,2), @description)
 >>>>> # insere o modelo e uma descricao
 >>>>>
 >>>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description
@@ -4724,23 +5079,12 @@ emmanuel.brasil em gmail.com>:
 >>>
 >>
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170731/c7d2d33b/attachment.html>
 
-From zhushazang em gmail.com  Mon Jul 31 19:52:05 2017
+From zhushazang em gmail.com  Mon Jul 31 22:52:05 2017
 From: zhushazang em gmail.com (Zhu Sha Zang)
-Date: Mon, 31 Jul 2017 18:52:05 -0400
-Subject: [R-br]
- =?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
- =?utf-8?q?e_SQL?=
+Date: Mon, 31 Jul 2017 22:52:05 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
- <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
- <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
- <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
 Message-ID: <d3017e13-ee97-42cc-40d8-49a666d2d211@gmail.com>
 
 Parece que RODBC está "deprecated", tente usar o pacote RSQLServer.
@@ -4888,7 +5232,7 @@ On 07/31/2017 01:53 PM, Cesar Rabak via R-br wrote:
 >                     # o EXEC PersistModel faz
 >                     # insert into [tempo_permanencia_models] (model,
 >                     [description]) values
->                     (convert(varbinary(max), em m,2), @description)
+>                     (convert(varbinary(max),@m,2), @description)
 >                     # insere o modelo e uma descricao
 >
 >                     > p <- paste("EXEC PersistModel @m='",
@@ -4941,8 +5285,4 @@ On 07/31/2017 01:53 PM, Cesar Rabak via R-br wrote:
 > R-br em listas.c3sl.ufpr.br
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
-
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170731/677cb4bf/attachment.html>
 

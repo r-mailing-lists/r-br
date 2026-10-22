@@ -1,9 +1,8 @@
-From sotojcr em gmail.com  Tue Aug  1 12:56:38 2017
+From sotojcr em gmail.com  Tue Aug  1 15:56:38 2017
 From: sotojcr em gmail.com (Juan C. R. Soto Sotelo)
-Date: Tue, 1 Aug 2017 12:56:38 -0300
-Subject: [R-br] Digest R-br, volume 80, assunto 1
+Date: Tue, 01 Aug 2017 15:56:38 +0000
+Subject: Re: [R-br] Digest R-br, volume 80, assunto 1
 In-Reply-To: <mailman.6.1501599606.3252.r-br@listas.c3sl.ufpr.br>
-References: <mailman.6.1501599606.3252.r-br@listas.c3sl.ufpr.br>
 Message-ID: <CAAwkqbzNzM24T392z4GK9Tvs69uOVL9p0-tSaZA397ZyeUQGfQ@mail.gmail.com>
 
 Concordo que a chamada da query é muito grande,
@@ -178,7 +177,7 @@ Em 1 de agosto de 2017 12:00, <r-br-request em listas.c3sl.ufpr.br> escreveu:
 >>>>>>
 >>>>>> # o EXEC PersistModel faz
 >>>>>> # insert into [tempo_permanencia_models] (model, [description])
->>>>>> values (convert(varbinary(max), em m,2), @description)
+>>>>>> values (convert(varbinary(max),@m,2), @description)
 >>>>>> # insere o modelo e uma descricao
 >>>>>>
 >>>>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description
@@ -356,7 +355,7 @@ Em 1 de agosto de 2017 12:00, <r-br-request em listas.c3sl.ufpr.br> escreveu:
 >>>>>>
 >>>>>> # o EXEC PersistModel faz
 >>>>>> # insert into [tempo_permanencia_models] (model, [description])
->>>>>> values (convert(varbinary(max), em m,2), @description)
+>>>>>> values (convert(varbinary(max),@m,2), @description)
 >>>>>> # insere o modelo e uma descricao
 >>>>>>
 >>>>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description
@@ -409,24 +408,12 @@ Em 1 de agosto de 2017 12:00, <r-br-request em listas.c3sl.ufpr.br> escreveu:
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170801/f72dd70c/attachment.html>
 
-From assis.leonard em gmail.com  Wed Aug  2 15:20:50 2017
+From assis.leonard em gmail.com  Wed Aug  2 18:20:50 2017
 From: assis.leonard em gmail.com (Leonard Assis)
-Date: Wed, 2 Aug 2017 15:20:50 -0300
-Subject: [R-br]
-	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Date: Wed, 02 Aug 2017 18:20:50 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <d3017e13-ee97-42cc-40d8-49a666d2d211@gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
- <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
- <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
- <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
- <d3017e13-ee97-42cc-40d8-49a666d2d211@gmail.com>
 Message-ID: <CAEG0FK_=v91wMTkOR+A4iSgH58+79OzvKvaExBHix6_PKNjyRg@mail.gmail.com>
 
 RSQLServer não é boa alternativa, não sofre manutenção a tempos e depende
@@ -567,7 +554,7 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 >>>>>>
 >>>>>> # o EXEC PersistModel faz
 >>>>>> # insert into [tempo_permanencia_models] (model, [description])
->>>>>> values (convert(varbinary(max), em m,2), @description)
+>>>>>> values (convert(varbinary(max),@m,2), @description)
 >>>>>> # insere o modelo e uma descricao
 >>>>>>
 >>>>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description
@@ -621,14 +608,11 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170802/8927d8ac/attachment.html>
 
-From oliveiramacedocleber em gmail.com  Tue Aug  8 09:50:45 2017
+From oliveiramacedocleber em gmail.com  Tue Aug  8 12:50:45 2017
 From: oliveiramacedocleber em gmail.com (Cleber Oliveira)
-Date: Tue, 8 Aug 2017 09:50:45 -0300
-Subject: [R-br] =?utf-8?q?An=C3=A1lise_de_dados_antes_e_depois?=
+Date: Tue, 08 Aug 2017 12:50:45 +0000
+Subject: =?utf-8?q?=5BR-br=5D_An=C3=A1lise_de_dados_antes_e_depois?=
 Message-ID: <CA+JgFfs+RUfejeuaLavg-bypfCrYZJP5QM6c_CD9=EjkKxGNUw@mail.gmail.com>
 
 Bom dia listeiros (@)
@@ -641,15 +625,11 @@ relação aos tratamentos e tempo. Estou com muitas dúvidas de como iniciar.
 Alguém que já tenha realizado este tipo de análise poderia me ajudar.
 Obrigado.
 --
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170808/0b6260c3/attachment.html>
 
-From delcio.bortolanza em outlook.com  Tue Aug  8 11:50:31 2017
+From delcio.bortolanza em outlook.com  Tue Aug  8 14:50:31 2017
 From: delcio.bortolanza em outlook.com (Delcio Rudinei Bortolanza)
-Date: Tue, 8 Aug 2017 14:50:31 +0000
-Subject: [R-br] =?iso-8859-1?q?Adicionar_restri=E7=F5es_a_par=E2metros_em_?=
- =?iso-8859-1?q?regress=E3o_n=E3o_linear_no_R?=
+Date: Tue, 08 Aug 2017 14:50:31 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Adicionar_restri=C3=A7=C3=B5es_a_par=C3=A2metros_em_regress=C3=A3o_n=C3=A3o_linear_no_R?=
 Message-ID: <BN6PR18MB152446AC698A5E5E5CF1095AE68A0@BN6PR18MB1524.namprd18.prod.outlook.com>
 
 Vejam o seguinte script:
@@ -727,18 +707,12 @@ Alguém tem sabe como poderia fazer isso?
 Att., Delcio Bortolanza
 
 Doutorando em Agronomia-UPF
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170808/631e1522/attachment.html>
 
-From walmeszeviani em gmail.com  Tue Aug  8 12:02:29 2017
+From walmeszeviani em gmail.com  Tue Aug  8 15:02:29 2017
 From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Tue, 8 Aug 2017 12:02:29 -0300
-Subject: [R-br]
-	=?utf-8?q?Adicionar_restri=C3=A7=C3=B5es_a_par=C3=A2metros?=
-	=?utf-8?q?_em_regress=C3=A3o_n=C3=A3o_linear_no_R?=
+Date: Tue, 08 Aug 2017 15:02:29 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXQlBZGljaW9uYXIgcmVzdHJpw6fDtWVzIGEgcGFyw6JtZXRyb3MgZW0gcmVncmVzc8OjbyBuw6NvIGxpbmVhciBubyBS?=
 In-Reply-To: <BN6PR18MB152446AC698A5E5E5CF1095AE68A0@BN6PR18MB1524.namprd18.prod.outlook.com>
-References: <BN6PR18MB152446AC698A5E5E5CF1095AE68A0@BN6PR18MB1524.namprd18.prod.outlook.com>
 Message-ID: <CAFU=EkYt-YJiO-3gcyRYfW_4uJ+9qyZFr4O5zO+DbAoVhhcjbQ@mail.gmail.com>
 
 Delcio,
@@ -769,16 +743,12 @@ summary(dur)
 Walmes.
 
 ​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170808/737511e5/attachment.html>
 
-From cesar.rabak em gmail.com  Tue Aug  8 14:35:29 2017
+From cesar.rabak em gmail.com  Tue Aug  8 17:35:29 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Tue, 8 Aug 2017 14:35:29 -0300
-Subject: [R-br] =?utf-8?q?An=C3=A1lise_de_dados_antes_e_depois?=
+Date: Tue, 08 Aug 2017 17:35:29 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_An=C3=A1lise_de_dados_antes_e_depois?=
 In-Reply-To: <CA+JgFfs+RUfejeuaLavg-bypfCrYZJP5QM6c_CD9=EjkKxGNUw@mail.gmail.com>
-References: <CA+JgFfs+RUfejeuaLavg-bypfCrYZJP5QM6c_CD9=EjkKxGNUw@mail.gmail.com>
 Message-ID: <CAKrF98=P-xCSjHHV8_qiCVtAprJryOfQs8kNL+HoutQdX0cwiA@mail.gmail.com>
 
 Cleber,
@@ -819,43 +789,29 @@ Cesar Rabak
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170808/00668a09/attachment.html>
 
-From sznelwar em uol.com.br  Tue Aug  8 19:17:55 2017
-From: sznelwar em uol.com.br (sznelwar em uol.com.br)
-Date: Tue, 08 Aug 2017 19:17:55 -0300
-Subject: [R-br]
- =?utf-8?q?Adicionar_restri=C3=A7=C3=B5es_a_par=C3=A2metros?=
- =?utf-8?q?_em_regress=C3=A3o_n=C3=A3o_linear_no_R?=
-In-Reply-To: ["CAFU=EkYt-YJiO-3gcyRYfW_4uJ+9qyZFr4O5zO+DbAoVhhcjbQ@mail.gmail.com"]
-References: ["BN6PR18MB152446AC698A5E5E5CF1095AE68A0@BN6PR18MB1524.namprd18.prod.outlook.com",
- "CAFU=EkYt-YJiO-3gcyRYfW_4uJ+9qyZFr4O5zO+DbAoVhhcjbQ@mail.gmail.com"]
+From sznelwar em uol.com.br  Tue Aug  8 22:17:55 2017
+From: sznelwar em uol.com.br
+Date: Tue, 08 Aug 2017 22:17:55 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Adicionar_restri=C3=A7=C3=B5es_a_par=C3=A2metros_em_regress=C3=A3o_n=C3=A3o_linear_no_R?=
+In-Reply-To: < ["CAFU=EkYt-YJiO-3gcyRYfW_4uJ+9qyZFr4O5zO+DbAoVhhcjbQ@mail.gmail.com"]>
 Message-ID: <598a38938f354_38515c87c2813d89477e@a4-weasel17.mail>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170808/703b580c/attachment.html>
 
-From sznelwar em uol.com.br  Tue Aug  8 19:21:33 2017
-From: sznelwar em uol.com.br (sznelwar em uol.com.br)
-Date: Tue, 08 Aug 2017 19:21:33 -0300
-Subject: [R-br] =?utf-8?b?RndkOiAgQWRpY2lvbmFyIHJlc3RyacOnw7VlcyBhIHBhcsOi?=
- =?utf-8?q?metros_em_regress=C3=A3o_n=C3=A3o_linear_no_R?=
+
+From sznelwar em uol.com.br  Tue Aug  8 22:21:33 2017
+From: sznelwar em uol.com.br
+Date: Tue, 08 Aug 2017 22:21:33 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Fwd=3A__Adicionar_restri=C3=A7=C3=B5es_a_par=C3=A2metros_em_regress=C3=A3o_n=C3=A3o_linear_no_R?=
 In-Reply-To: <598a38938f354_38515c87c2813d89477e@a4-weasel17.mail>
-References: <BN6PR18MB152446AC698A5E5E5CF1095AE68A0@BN6PR18MB1524.namprd18.prod.outlook.com>
- <DbAoVhhcjbQ@mail.gmail.com>
- <598a38938f354_38515c87c2813d89477e@a4-weasel17.mail>
 Message-ID: <598a396da05ef_57cd155cbcdd73e448736@a4-weasel12.mail>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170808/a6bfb3b1/attachment.html>
 
-From wgt007 em gmail.com  Wed Aug  9 15:56:42 2017
+
+From wgt007 em gmail.com  Wed Aug  9 18:56:42 2017
 From: wgt007 em gmail.com (Wenceslau Teixeira)
-Date: Wed, 9 Aug 2017 15:56:42 -0300
-Subject: [R-br] =?utf-8?b?4oCLQWRpY2lvbmFyIHJlc3RyacOnw7VlcyBhIHBhcsOibWV0?=
-	=?utf-8?q?ros_em_regress=C3=A3o_n=C3=A3o?=
+Date: Wed, 09 Aug 2017 18:56:42 +0000
+Subject: =?utf-8?b?W1ItYnJdIOKAi0FkaWNpb25hciByZXN0cmnDp8O1ZXMgYSBwYXLDom1ldHJvcyBlbSByZWdyZXNzw6NvIG7Do28=?=
 Message-ID: <CACqRERkG3Xi-Xyktov_C6sxj32-HazAOXg76QLCLVTUV-KxPGg@mail.gmail.com>
 
 >
@@ -882,7 +838,7 @@ minpack.lm
 > Subject: Re: [R-br] Adicionar restrições a parâmetros em regressão
 >         não linear no R
 > Message-ID:
->         <CAFU=EkYt-YJiO-3gcyRYfW_4uJ+9qyZFr4O5zO+DbAoVhhcjbQ em mail.
+>         <CAFU=EkYt-YJiO-3gcyRYfW_4uJ+9qyZFr4O5zO+DbAoVhhcjbQ@mail.
 > gmail.com>
 > Content-Type: text/plain; charset="utf-8"
 >
@@ -1034,14 +990,75 @@ Wenceslau Teixeira
 
 wgt007 em gmail.com
 skype: wgt007
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/305ede5f/attachment.html>
 
-From yurynepomuceno em gmail.com  Wed Aug  9 16:48:43 2017
+From yurynepomuceno em gmail.com  Wed Aug  9 19:44:23 2017
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Wed, 9 Aug 2017 16:48:43 -0300
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
+Date: Wed, 09 Aug 2017 19:44:23 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
+Message-ID: <CADFS6E6kvXiatGmYo0COF1kJQFivPKbw65ag5xoPy-sbbKeing@mail.gmail.com>
+
+Boa tarde colegas listeiros!
+
+Estou tendo um pequeno problema para salvar as saídas de um loop que fiz
+para preencher uma matriz com dados de diferentes arquivos. Meus arquivos
+base possuem informações anuais de produtividade de 15 locais para um
+determinado mês. Construí o loop com intenção de gerar um arquivo por
+local, contemplando as produtividades de cada mês (nas linhas) e de cada
+ano (nas colunas). Conferi o output do único arquivo salvo pelo script e os
+valores correspondem ao desejado, então acredito que a lógica para o
+preenchimento da matriz em branco esteja correta. Os arquivos para executar
+a simulação estão em anexo e o script está no corpo do email.
+
+Desde já, agradeço pela colaboração de todos!
+
+rm(list = ls())
+
+raiz =
+'C:\\Users\\Yury\\Desktop\\Mestrado\\1_TESE\\Model_Data\\Maize\\PREVISAO\\PA\\'
+
+estrategia = c('E1', 'E2', 'E3', 'E4', 'E5')
+meses = c('setembro', 'outubro', 'novembro', 'dezembro', 'janeiro',
+'fevereiro', 'marco', 'abril')
+cidade = c("abelardoluz", "altamira", "brasilia", "caarapo", "catalao",
+"lagarto", "machado", "mateiros",
+           "muitoscapoes", "piracicaba", "pontagrossa", "primaveradoleste",
+"srmangab", "sdesiderio", "urucui")
+anos = c(1980:2012)
+previsao = matrix(NA, nrow = length(meses), ncol = length(1980:2012))
+colnames(previsao) = 1980:2012
+
+#for(e in 1:length(estrategias)){
+
+  for(m in 1:length(meses)){
+
+    a = read.table(paste0(raiz, 'E1\\', meses[m],'\\', 'final.txt'), header
+= T, sep = '\t')
+    for(city in 1:length(cidade)){
+
+      for(i in 1:length(anos)){
+
+        previsao[m,i] = a[city,i]
+      }
+    }
+    write.table(previsao, paste0(raiz, 'E1\\', cidade[city],'.txt'),
+row.names = F, col.names = T, sep = '\t')
+  }
+#}
+
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: E1.rar
+Type: application/rar
+Size: 1332927 bytes
+
+From yurynepomuceno em gmail.com  Wed Aug  9 19:48:43 2017
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Wed, 09 Aug 2017 19:48:43 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
 Message-ID: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
 
 Boa tarde colegas listeiros!
@@ -1094,44 +1111,35 @@ row.names = F, col.names = T, sep = '\t')
 
 Yury Duarte
 Engenheiro Agrônomo - ESALQ/USP
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/962885b2/attachment.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: E1.rar
-Tipo: application/rar
-Tamanho: 39342 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/962885b2/attachment.rar>
 
-From nandodesouza em gmail.com  Wed Aug  9 16:55:19 2017
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: E1.rar
+Type: application/rar
+Size: 39342 bytes
+
+From nandodesouza em gmail.com  Wed Aug  9 19:55:19 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
 Date: Wed, 09 Aug 2017 19:55:19 +0000
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
 In-Reply-To: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
-References: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
 Message-ID: <local-2b53369b-18e5@nylas-mail.nylas.com>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/761004ef/attachment.html>
 
-From nandodesouza em gmail.com  Wed Aug  9 16:57:10 2017
+
+From nandodesouza em gmail.com  Wed Aug  9 19:57:10 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
 Date: Wed, 09 Aug 2017 19:57:10 +0000
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
 In-Reply-To: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
-References: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
 Message-ID: <local-95849275-ef7f@nylas-mail.nylas.com>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/b26c3b34/attachment.html>
 
-From jecogeo em gmail.com  Wed Aug  9 17:07:53 2017
+
+From jecogeo em gmail.com  Wed Aug  9 20:07:53 2017
 From: jecogeo em gmail.com (Jefferson Ferreira-Ferreira)
-Date: Wed, 9 Aug 2017 16:07:53 -0400
-Subject: [R-br] =?utf-8?q?Modelo_de_regress=C3=A3o_envolvendo_rasters_e_ve?=
-	=?utf-8?q?tores_num=C3=A9ricos?=
+Date: Wed, 09 Aug 2017 20:07:53 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Modelo_de_regress=C3=A3o_envolvendo_rasters_e_vetores_num=C3=A9ricos?=
 Message-ID: <CAFFT+Y6W-bpT4C0dXgf0z3tB+pjjYCySQpGgDockM8yVvyk8cQ@mail.gmail.com>
 
 Pessoal,
@@ -1205,17 +1213,12 @@ EcoDyn/UNESP*
 *Institute of Geosciences and Exact Sciences** (IGCE)*
 *São Paulo State University (UNESP)*
 *Rio Claro, SP - Brazil*
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/eb688952/attachment.html>
 
-From yurynepomuceno em gmail.com  Wed Aug  9 17:10:58 2017
+From yurynepomuceno em gmail.com  Wed Aug  9 20:10:58 2017
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Wed, 9 Aug 2017 17:10:58 -0300
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
+Date: Wed, 09 Aug 2017 20:10:58 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
 In-Reply-To: <local-95849275-ef7f@nylas-mail.nylas.com>
-References: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
- <local-95849275-ef7f@nylas-mail.nylas.com>
 Message-ID: <CADFS6E6mSqdQP82YbPPn+CSpQRXg+Ae+DXiU0MFcm=RgeL3qyw@mail.gmail.com>
 
 Obrigado Fernando!
@@ -1304,18 +1307,12 @@ nandodesouza em gmail.com> escreveu:
 >> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
 >>
 >>
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/1624b913/attachment.html>
 
-From jecogeo em gmail.com  Wed Aug  9 18:02:01 2017
+From jecogeo em gmail.com  Wed Aug  9 21:02:01 2017
 From: jecogeo em gmail.com (Jefferson Ferreira-Ferreira)
-Date: Wed, 9 Aug 2017 17:02:01 -0400
-Subject: [R-br]
-	=?utf-8?q?Modelo_de_regress=C3=A3o_envolvendo_rasters_e_ve?=
-	=?utf-8?q?tores_num=C3=A9ricos?=
+Date: Wed, 09 Aug 2017 21:02:01 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Modelo_de_regress=C3=A3o_envolvendo_rasters_e_vetores_num=C3=A9ricos?=
 In-Reply-To: <CAFFT+Y6W-bpT4C0dXgf0z3tB+pjjYCySQpGgDockM8yVvyk8cQ@mail.gmail.com>
-References: <CAFFT+Y6W-bpT4C0dXgf0z3tB+pjjYCySQpGgDockM8yVvyk8cQ@mail.gmail.com>
 Message-ID: <CAFFT+Y4Dz65REZOGd0CQeUpaakBkqfPmVCzBcAunRwBeVaCfiA@mail.gmail.com>
 
 Pessoal, acho que não formulaei bem o problema. Por favor, considerem a
@@ -1462,31 +1459,21 @@ Em 9 de agosto de 2017 16:07, Jefferson Ferreira-Ferreira <jecogeo em gmail.com
 > *Rio Claro, SP - Brazil*
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/6b919f5b/attachment.html>
 
-From nandodesouza em gmail.com  Wed Aug  9 18:19:27 2017
+From nandodesouza em gmail.com  Wed Aug  9 21:19:27 2017
 From: nandodesouza em gmail.com (Fernando Antonio de souza)
 Date: Wed, 09 Aug 2017 21:19:27 +0000
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
 In-Reply-To: <CADFS6E6mSqdQP82YbPPn+CSpQRXg+Ae+DXiU0MFcm=RgeL3qyw@mail.gmail.com>
-References: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
- <local-95849275-ef7f@nylas-mail.nylas.com>
- <CADFS6E6mSqdQP82YbPPn+CSpQRXg+Ae+DXiU0MFcm=RgeL3qyw@mail.gmail.com>
 Message-ID: <local-529765d0-df9c@nylas-mail.nylas.com>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/1c68120b/attachment-0001.html>
 
-From fernandohtoledo em gmail.com  Wed Aug  9 18:38:57 2017
+
+From fernandohtoledo em gmail.com  Wed Aug  9 21:38:57 2017
 From: fernandohtoledo em gmail.com (FHRB Toledo)
-Date: Wed, 9 Aug 2017 16:38:57 -0500
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
+Date: Wed, 09 Aug 2017 21:38:57 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
 In-Reply-To: <CADFS6E6mSqdQP82YbPPn+CSpQRXg+Ae+DXiU0MFcm=RgeL3qyw@mail.gmail.com>
-References: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
- <local-95849275-ef7f@nylas-mail.nylas.com>
- <CADFS6E6mSqdQP82YbPPn+CSpQRXg+Ae+DXiU0MFcm=RgeL3qyw@mail.gmail.com>
 Message-ID: <CAN55XP7U7Bcaotv6+gEp_tkTt8CBCTEA4bpYv6RagC16oN8nRQ@mail.gmail.com>
 
 Yuri,
@@ -1614,44 +1601,30 @@ Quanto a salvar cada cidade fica como desafio para você :)
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/c07fa35d/attachment.html>
 
-From sznelwar em uol.com.br  Wed Aug  9 18:43:33 2017
-From: sznelwar em uol.com.br (sznelwar em uol.com.br)
-Date: Wed, 09 Aug 2017 18:43:33 -0300
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
-In-Reply-To: ["local-529765d0-df9c@nylas-mail.nylas.com"]
-References: ["CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com", 
- "local-95849275-ef7f@nylas-mail.nylas.com",
- "CADFS6E6mSqdQP82YbPPn+CSpQRXg+Ae+DXiU0MFcm=RgeL3qyw@mail.gmail.com",
- "local-529765d0-df9c@nylas-mail.nylas.com"]
+From sznelwar em uol.com.br  Wed Aug  9 21:43:33 2017
+From: sznelwar em uol.com.br
+Date: Wed, 09 Aug 2017 21:43:33 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
+In-Reply-To: <["local-529765d0-df9c@nylas-mail.nylas.com"]>
 Message-ID: <598b8205dc19e_2eac15b961fcf3d41058@a4-weasel18.mail>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/9516b63b/attachment.html>
 
-From sznelwar em uol.com.br  Wed Aug  9 21:10:28 2017
-From: sznelwar em uol.com.br (sznelwar em uol.com.br)
-Date: Wed, 09 Aug 2017 21:10:28 -0300
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
-In-Reply-To: ["CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com"]
-References: ["CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com"]
+
+From sznelwar em uol.com.br  Thu Aug 10 00:10:28 2017
+From: sznelwar em uol.com.br
+Date: Thu, 10 Aug 2017 00:10:28 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
+In-Reply-To: < ["CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com"]>
 Message-ID: <598ba4747ec04_3d5159210a9d3e8528d7@a4-weasel10.mail>
 
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/9ebc8aaa/attachment.html>
 
-From yurynepomuceno em gmail.com  Thu Aug 10 09:31:50 2017
+
+From yurynepomuceno em gmail.com  Thu Aug 10 12:31:50 2017
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Thu, 10 Aug 2017 09:31:50 -0300
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
+Date: Thu, 10 Aug 2017 12:31:50 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
 In-Reply-To: <CAN55XP7U7Bcaotv6+gEp_tkTt8CBCTEA4bpYv6RagC16oN8nRQ@mail.gmail.com>
-References: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
- <local-95849275-ef7f@nylas-mail.nylas.com>
- <CADFS6E6mSqdQP82YbPPn+CSpQRXg+Ae+DXiU0MFcm=RgeL3qyw@mail.gmail.com>
- <CAN55XP7U7Bcaotv6+gEp_tkTt8CBCTEA4bpYv6RagC16oN8nRQ@mail.gmail.com>
 Message-ID: <CADFS6E409+VEOq0wc-+8RtcLRxzojbMxigvG_9S0KC-KveZqHg@mail.gmail.com>
 
 Obrigado pela solução, Fernando Toledo!
@@ -1802,19 +1775,12 @@ escreveu:
 >>
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170810/92a24144/attachment.html>
 
-From yurynepomuceno em gmail.com  Thu Aug 10 14:34:55 2017
+From yurynepomuceno em gmail.com  Thu Aug 10 17:34:55 2017
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Thu, 10 Aug 2017 14:34:55 -0300
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
+Date: Thu, 10 Aug 2017 17:34:55 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
 In-Reply-To: <CAN55XP7U7Bcaotv6+gEp_tkTt8CBCTEA4bpYv6RagC16oN8nRQ@mail.gmail.com>
-References: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
- <local-95849275-ef7f@nylas-mail.nylas.com>
- <CADFS6E6mSqdQP82YbPPn+CSpQRXg+Ae+DXiU0MFcm=RgeL3qyw@mail.gmail.com>
- <CAN55XP7U7Bcaotv6+gEp_tkTt8CBCTEA4bpYv6RagC16oN8nRQ@mail.gmail.com>
 Message-ID: <CADFS6E71+r=5qP_MaxuLJpLPkJOj7w4XSZUZXkusfP1vbbrC=g@mail.gmail.com>
 
 Fernando,
@@ -1966,20 +1932,12 @@ escreveu:
 >>
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170810/88ff2624/attachment.html>
 
-From yurynepomuceno em gmail.com  Thu Aug 10 15:10:33 2017
+From yurynepomuceno em gmail.com  Thu Aug 10 18:10:33 2017
 From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Thu, 10 Aug 2017 15:10:33 -0300
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
+Date: Thu, 10 Aug 2017 18:10:33 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
 In-Reply-To: <CADFS6E71+r=5qP_MaxuLJpLPkJOj7w4XSZUZXkusfP1vbbrC=g@mail.gmail.com>
-References: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
- <local-95849275-ef7f@nylas-mail.nylas.com>
- <CADFS6E6mSqdQP82YbPPn+CSpQRXg+Ae+DXiU0MFcm=RgeL3qyw@mail.gmail.com>
- <CAN55XP7U7Bcaotv6+gEp_tkTt8CBCTEA4bpYv6RagC16oN8nRQ@mail.gmail.com>
- <CADFS6E71+r=5qP_MaxuLJpLPkJOj7w4XSZUZXkusfP1vbbrC=g@mail.gmail.com>
 Message-ID: <CADFS6E4nS6E=v40oBobq4Ws8KDXNnWaCrzdWz+Ydma9UcrdxxQ@mail.gmail.com>
 
 Aos interessados, segue solução do problema utilizando a função for().
@@ -2178,21 +2136,12 @@ escreveu:
 >>
 >>
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170810/5bc52249/attachment.html>
 
-From nandodesouza em gmail.com  Thu Aug 10 17:58:34 2017
+From nandodesouza em gmail.com  Thu Aug 10 20:58:34 2017
 From: nandodesouza em gmail.com (Fernando Souza)
-Date: Thu, 10 Aug 2017 17:58:34 -0300
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
+Date: Thu, 10 Aug 2017 20:58:34 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Salvar_sa=C3=ADdas_de_um_loop?=
 In-Reply-To: <CADFS6E4nS6E=v40oBobq4Ws8KDXNnWaCrzdWz+Ydma9UcrdxxQ@mail.gmail.com>
-References: <CADFS6E6WMpO3X2FW4sxTKiYRMy4OHUk7Qd9VyocZT_3nm92OsA@mail.gmail.com>
- <local-95849275-ef7f@nylas-mail.nylas.com>
- <CADFS6E6mSqdQP82YbPPn+CSpQRXg+Ae+DXiU0MFcm=RgeL3qyw@mail.gmail.com>
- <CAN55XP7U7Bcaotv6+gEp_tkTt8CBCTEA4bpYv6RagC16oN8nRQ@mail.gmail.com>
- <CADFS6E71+r=5qP_MaxuLJpLPkJOj7w4XSZUZXkusfP1vbbrC=g@mail.gmail.com>
- <CADFS6E4nS6E=v40oBobq4Ws8KDXNnWaCrzdWz+Ydma9UcrdxxQ@mail.gmail.com>
 Message-ID: <CAFrWFsm4abzb_2u-mk6Mg+BHjM76NeWGTHsQPY5Le_UQSkZrZw@mail.gmail.com>
 
 Os comando so Fernando Toledos estão corretos, porém necessitava de algumas
@@ -2456,15 +2405,12 @@ E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
 Lattes: http://lattes.cnpq.br/6519538815038307
 Blog: https://producaoanimalcomr.wordpress.com/
 ==========================================
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170810/838ef4a0/attachment.html>
 
-From awmoita em yahoo.com.br  Wed Aug 16 14:11:53 2017
+From awmoita em yahoo.com.br  Wed Aug 16 17:11:53 2017
 From: awmoita em yahoo.com.br (Antonio Moita)
-Date: Wed, 16 Aug 2017 17:11:53 +0000 (UTC)
+Date: Wed, 16 Aug 2017 17:11:53 +0000
 Subject: [R-br] reshape
-References: <1964560431.3030326.1502903513335.ref@mail.yahoo.com>
+In-Reply-To: <1964560431.3030326.1502903513335.ref@mail.yahoo.com>
 Message-ID: <1964560431.3030326.1502903513335@mail.yahoo.com>
 
 # Suponha o sequinte experimento em blocos ao acaso
@@ -2508,17 +2454,12 @@ df.c0
 
  
 AttAntonio W MoitaEmbrapa Hortaliças
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170816/74b1c99a/attachment.html>
 
-From fernandohtoledo em gmail.com  Wed Aug 16 19:34:15 2017
+From fernandohtoledo em gmail.com  Wed Aug 16 22:34:15 2017
 From: fernandohtoledo em gmail.com (FHRB Toledo)
-Date: Wed, 16 Aug 2017 17:34:15 -0500
-Subject: [R-br] reshape
+Date: Wed, 16 Aug 2017 22:34:15 +0000
+Subject: Re: [R-br] reshape
 In-Reply-To: <1964560431.3030326.1502903513335@mail.yahoo.com>
-References: <1964560431.3030326.1502903513335.ref@mail.yahoo.com>
- <1964560431.3030326.1502903513335@mail.yahoo.com>
 Message-ID: <CAN55XP40mug6NwvjcQSqYUa2Z4NMPvQD0aiP59k9DgPb_1umnQ@mail.gmail.com>
 
 Antonio,
@@ -2587,17 +2528,12 @@ FH
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170816/e6b8ce83/attachment.html>
 
-From assis.leonard em gmail.com  Thu Aug 17 07:14:05 2017
+From assis.leonard em gmail.com  Thu Aug 17 10:14:05 2017
 From: assis.leonard em gmail.com (Leonard Assis)
-Date: Thu, 17 Aug 2017 07:14:05 -0300
-Subject: [R-br] reshape
+Date: Thu, 17 Aug 2017 10:14:05 +0000
+Subject: Re: [R-br] reshape
 In-Reply-To: <1964560431.3030326.1502903513335@mail.yahoo.com>
-References: <1964560431.3030326.1502903513335.ref@mail.yahoo.com>
- <1964560431.3030326.1502903513335@mail.yahoo.com>
 Message-ID: <CAEG0FK_sr9FK1QGSQnn04KzwTGrFifh9-yVA-U=bSc6u=DiY-g@mail.gmail.com>
 
 Antônio,
@@ -2675,16 +2611,12 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
 mínimo reproduzível.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170817/37afb183/attachment.html>
 
-From awmoita em yahoo.com.br  Thu Aug 17 13:09:39 2017
+From awmoita em yahoo.com.br  Thu Aug 17 16:09:39 2017
 From: awmoita em yahoo.com.br (Antonio Moita)
-Date: Thu, 17 Aug 2017 16:09:39 +0000 (UTC)
-Subject: [R-br] Digest R-br, volume 80, assunto 9
+Date: Thu, 17 Aug 2017 16:09:39 +0000
+Subject: Re: [R-br] Digest R-br, volume 80, assunto 9
 In-Reply-To: <mailman.3.1502982003.21923.r-br@listas.c3sl.ufpr.br>
-References: <mailman.3.1502982003.21923.r-br@listas.c3sl.ufpr.br>
 Message-ID: <104772847.3802755.1502986179499@mail.yahoo.com>
 
 Caro Colegas, em especial ao FERNANDO E  LEONANDO  o meu muito obrigado.
@@ -2978,13 +2910,7 @@ https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Fim da Digest R-br, volume 80, assunto 9
 ****************************************
 
-
-   
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170817/a9eb90cd/attachment.html>
-
-From apcmadeira em hotmail.com  Tue Aug 22 14:02:18 2017
+From apcmadeira em hotmail.com  Tue Aug 22 17:02:18 2017
 From: apcmadeira em hotmail.com (ana paula coelho madeira)
 Date: Tue, 22 Aug 2017 17:02:18 +0000
 Subject: [R-br] Teste t para amostras independentes
@@ -3001,16 +2927,11 @@ Desde já agradeço
 
 Ana Paula
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170822/bc0fab8b/attachment.html>
-
-From diogojose21 em yahoo.com.br  Tue Aug 22 14:20:42 2017
-From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
-Date: Tue, 22 Aug 2017 17:20:42 +0000 (UTC)
-Subject: [R-br] Teste t para amostras independentes
+From diogojose21 em yahoo.com.br  Tue Aug 22 17:20:42 2017
+From: diogojose21 em yahoo.com.br (=?utf-8?q?Diogo_Jer=C3=B4nimo?=)
+Date: Tue, 22 Aug 2017 17:20:42 +0000
+Subject: Re: [R-br] Teste t para amostras independentes
 In-Reply-To: <RO1P152MB1067404933B4BCBAF34B18C1CA840@RO1P152MB1067.LAMP152.PROD.OUTLOOK.COM>
-References: <RO1P152MB1067404933B4BCBAF34B18C1CA840@RO1P152MB1067.LAMP152.PROD.OUTLOOK.COM>
 Message-ID: <113400994.2948571.1503422442414@mail.yahoo.com>
 
 Boa tarde a todos!!!
@@ -3030,17 +2951,11 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
 
-   
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170822/966e548d/attachment.html>
-
-From assis.leonard em gmail.com  Tue Aug 22 16:18:16 2017
+From assis.leonard em gmail.com  Tue Aug 22 19:18:16 2017
 From: assis.leonard em gmail.com (Leonard Assis)
-Date: Tue, 22 Aug 2017 16:18:16 -0300
-Subject: [R-br] Teste t para amostras independentes
+Date: Tue, 22 Aug 2017 19:18:16 +0000
+Subject: Re: [R-br] Teste t para amostras independentes
 In-Reply-To: <RO1P152MB1067404933B4BCBAF34B18C1CA840@RO1P152MB1067.LAMP152.PROD.OUTLOOK.COM>
-References: <RO1P152MB1067404933B4BCBAF34B18C1CA840@RO1P152MB1067.LAMP152.PROD.OUTLOOK.COM>
 Message-ID: <CAEG0FK-4Xu1kG9cXm-ed4NR+d+YpGF5NKhrf+X4aAdxsTE4RAA@mail.gmail.com>
 
 Acredito não ser o escopo desta lista, mas:
@@ -3075,14 +2990,11 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170822/cec6124a/attachment.html>
 
-From rsmviana21 em gmail.com  Tue Aug 22 20:03:24 2017
+From rsmviana21 em gmail.com  Tue Aug 22 23:03:24 2017
 From: rsmviana21 em gmail.com (Rosane Viana)
-Date: Tue, 22 Aug 2017 20:03:24 -0300
-Subject: [R-br] =?utf-8?q?D=C3=BAvidas?=
+Date: Tue, 22 Aug 2017 23:03:24 +0000
+Subject: =?utf-8?b?W1ItYnJdIETDunZpZGFz?=
 Message-ID: <599cb83a.b535ed0a.c04a.099e@mx.google.com>
 
 Prezados Colegas,
@@ -3097,16 +3009,11 @@ Rosane Viana
 
 Enviado do Email para Windows 10
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170822/33e6a7c7/attachment.html>
-
-From assis.leonard em gmail.com  Wed Aug 23 12:02:19 2017
+From assis.leonard em gmail.com  Wed Aug 23 15:02:19 2017
 From: assis.leonard em gmail.com (Leonard Assis)
-Date: Wed, 23 Aug 2017 12:02:19 -0300
-Subject: [R-br] =?utf-8?q?D=C3=BAvidas?=
+Date: Wed, 23 Aug 2017 15:02:19 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBEw7p2aWRhcw==?=
 In-Reply-To: <599cb83a.b535ed0a.c04a.099e@mx.google.com>
-References: <599cb83a.b535ed0a.c04a.099e@mx.google.com>
 Message-ID: <CAEG0FK8mmLS48OYDyjDcBe0CKJdDFLmeB6qrbJywGnYEuEDr1A@mail.gmail.com>
 
 O que voce entende por "ler no R"?
@@ -3147,17 +3054,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170823/bcfafd0a/attachment.html>
 
-From J__P em hotmail.com  Wed Aug 23 12:31:51 2017
-From: J__P em hotmail.com (=?utf-8?B?Sm/Do28gUGVkcm8gRG9taW5ndWVz?=)
+From J__P em hotmail.com  Wed Aug 23 15:31:51 2017
+From: J__P em hotmail.com (=?utf-8?q?Jo=C3=A3o_Pedro_Domingues?=)
 Date: Wed, 23 Aug 2017 15:31:51 +0000
-Subject: [R-br] =?utf-8?q?RES=3A__D=C3=BAvidas?=
+Subject: =?utf-8?b?W1ItYnJdIFJFUzogIETDunZpZGFz?=
 In-Reply-To: <CAEG0FK8mmLS48OYDyjDcBe0CKJdDFLmeB6qrbJywGnYEuEDr1A@mail.gmail.com>
-References: <599cb83a.b535ed0a.c04a.099e@mx.google.com>
- <CAEG0FK8mmLS48OYDyjDcBe0CKJdDFLmeB6qrbJywGnYEuEDr1A@mail.gmail.com>
 Message-ID: <DM5PR2001MB1674D01D3A3B62FFA4E26D34D5850@DM5PR2001MB1674.namprd20.prod.outlook.com>
 
 Prezados,
@@ -3170,18 +3072,11 @@ Obrigado pela ajuda.
 João Pedro Araujo Domingues
 C +55 27 99232-9582<tel:%2B55%2027%2099232-9582>
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170823/8148bfa2/attachment.html>
-
-From delcio.bortolanza em outlook.com  Wed Aug 23 21:11:37 2017
+From delcio.bortolanza em outlook.com  Thu Aug 24 00:11:37 2017
 From: delcio.bortolanza em outlook.com (Delcio Rudinei Bortolanza)
 Date: Thu, 24 Aug 2017 00:11:37 +0000
-Subject: [R-br] =?iso-8859-1?q?RES=3A__D=FAvidas?=
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBSRVM6ICBEw7p2aWRhcw==?=
 In-Reply-To: <DM5PR2001MB1674D01D3A3B62FFA4E26D34D5850@DM5PR2001MB1674.namprd20.prod.outlook.com>
-References: <599cb83a.b535ed0a.c04a.099e@mx.google.com>
- <CAEG0FK8mmLS48OYDyjDcBe0CKJdDFLmeB6qrbJywGnYEuEDr1A@mail.gmail.com>,
- <DM5PR2001MB1674D01D3A3B62FFA4E26D34D5850@DM5PR2001MB1674.namprd20.prod.outlook.com>
 Message-ID: <BN6PR18MB1524DE58628C999824C10EAEE69A0@BN6PR18MB1524.namprd18.prod.outlook.com>
 
 
@@ -3263,18 +3158,11 @@ João Pedro Araujo Domingues
 
 C +55 27 99232-9582<tel:%2B55%2027%2099232-9582>
 
-
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170824/501d6fe5/attachment.html>
-
-From rsmviana21 em gmail.com  Wed Aug 23 22:46:27 2017
+From rsmviana21 em gmail.com  Thu Aug 24 01:46:27 2017
 From: rsmviana21 em gmail.com (Rosane Viana)
-Date: Wed, 23 Aug 2017 22:46:27 -0300
-Subject: [R-br] =?utf-8?q?RES=3A__D=C3=BAvidas?=
+Date: Thu, 24 Aug 2017 01:46:27 +0000
+Subject: =?utf-8?b?W1ItYnJdIFJFUzogIETDunZpZGFz?=
 In-Reply-To: <CAEG0FK8mmLS48OYDyjDcBe0CKJdDFLmeB6qrbJywGnYEuEDr1A@mail.gmail.com>
-References: <599cb83a.b535ed0a.c04a.099e@mx.google.com>
- <CAEG0FK8mmLS48OYDyjDcBe0CKJdDFLmeB6qrbJywGnYEuEDr1A@mail.gmail.com>
 Message-ID: <599e2ff2.4171370a.f7e5a.d315@mx.google.com>
 
 Prezados,
@@ -3317,18 +3205,11 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170823/603ee8d1/attachment.html>
-
-From cesar.rabak em gmail.com  Thu Aug 24 09:18:52 2017
+From cesar.rabak em gmail.com  Thu Aug 24 12:18:52 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Thu, 24 Aug 2017 09:18:52 -0300
-Subject: [R-br] =?utf-8?q?RES=3A_D=C3=BAvidas?=
+Date: Thu, 24 Aug 2017 12:18:52 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBSRVM6IETDunZpZGFz?=
 In-Reply-To: <599e2ff2.4171370a.f7e5a.d315@mx.google.com>
-References: <599cb83a.b535ed0a.c04a.099e@mx.google.com>
- <CAEG0FK8mmLS48OYDyjDcBe0CKJdDFLmeB6qrbJywGnYEuEDr1A@mail.gmail.com>
- <599e2ff2.4171370a.f7e5a.d315@mx.google.com>
 Message-ID: <CAKrF98=EyEaFXiFGakd7L7vkcDk5T70cfGxe9UXKk_VjPM5MGg@mail.gmail.com>
 
 Rosana:
@@ -3436,19 +3317,12 @@ Cesar Rabak
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170824/b8787f3a/attachment.html>
 
-From eliaskrainski em yahoo.com.br  Thu Aug 24 10:12:34 2017
+From eliaskrainski em yahoo.com.br  Thu Aug 24 13:12:34 2017
 From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
-Date: Thu, 24 Aug 2017 10:12:34 -0300
-Subject: [R-br] =?utf-8?q?RES=3A_D=C3=BAvidas?=
+Date: Thu, 24 Aug 2017 13:12:34 +0000
+Subject: =?utf-8?b?UmU6IFtSLWJyXSBSRVM6IETDunZpZGFz?=
 In-Reply-To: <CAKrF98=EyEaFXiFGakd7L7vkcDk5T70cfGxe9UXKk_VjPM5MGg@mail.gmail.com>
-References: <599cb83a.b535ed0a.c04a.099e@mx.google.com>
- <CAEG0FK8mmLS48OYDyjDcBe0CKJdDFLmeB6qrbJywGnYEuEDr1A@mail.gmail.com>
- <599e2ff2.4171370a.f7e5a.d315@mx.google.com>
- <CAKrF98=EyEaFXiFGakd7L7vkcDk5T70cfGxe9UXKk_VjPM5MGg@mail.gmail.com>
 Message-ID: <eed5427c-5e38-a4b4-9911-604dcee5cd78@yahoo.com.br>
 
 Oi Rosane,
@@ -3549,14 +3423,10 @@ On 24/08/2017 09:18, Cesar Rabak via R-br wrote:
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170824/ee3c9da2/attachment.html>
-
-From paulopcdick em gmail.com  Thu Aug 24 18:43:38 2017
+From paulopcdick em gmail.com  Thu Aug 24 21:43:38 2017
 From: paulopcdick em gmail.com (Paulo Dick)
-Date: Thu, 24 Aug 2017 18:43:38 -0300
-Subject: [R-br] =?utf-8?q?Identificando_diverg=C3=AAncias_entre_nomes?=
+Date: Thu, 24 Aug 2017 21:43:38 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Identificando_diverg=C3=AAncias_entre_nomes?=
 Message-ID: <CAFZajV35eXs11w558tOR06NhHwP6zhyaQtU0_95EGkkmeMQmSw@mail.gmail.com>
 
 Prezados,
@@ -3609,17 +3479,14 @@ Obrigado e abraços
 *Paulo Dick*
 Estatístico / Epidemiologia em Saúde Pública
 Tel.: (55 21) 99591-2716
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170824/b3c054ad/attachment.html>
 
-From chrisgrupioni em gmail.com  Fri Aug 25 09:30:38 2017
+From chrisgrupioni em gmail.com  Fri Aug 25 12:30:38 2017
 From: chrisgrupioni em gmail.com (Christina Grupioni)
-Date: Fri, 25 Aug 2017 09:30:38 -0300
-Subject: [R-br] =?utf-8?q?n=C3=A3o_parametrica_-_kruskal_e_dunn?=
+Date: Fri, 25 Aug 2017 12:30:38 +0000
+Subject: =?utf-8?q?=5BR-br=5D_n=C3=A3o_parametrica_-_kruskal_e_dunn?=
 Message-ID: <CALk9M7F=SUybM=OOsZOh06LO0yTJLYmo_vGOSjWD+Y4uEoxpnw@mail.gmail.com>
 
-Bom dia, listeir em s!
+Bom dia, listeir@s!
 
 Estou com um conjunto de dados cujos resíduos não tem distribuição normal.
 Sendo assim, necessito fazer analise não-paramétrica. Kruskal-wallis,
@@ -3636,16 +3503,12 @@ Engenheira Agrícola e Ambiental- CREA BA: 84142
 *Tecnologias Ecológicas e Sociais*
 (31) 8863-0005, (31) 3892-2236
 *skype:chrisgrupioni em gmail.com <chrisgrupioni em gmail.com>*
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/ba736372/attachment.html>
 
-From bizguilherme em gmail.com  Fri Aug 25 09:35:32 2017
+From bizguilherme em gmail.com  Fri Aug 25 12:35:32 2017
 From: bizguilherme em gmail.com (Guilherme Biz)
-Date: Fri, 25 Aug 2017 09:35:32 -0300
-Subject: [R-br] =?utf-8?q?n=C3=A3o_parametrica_-_kruskal_e_dunn?=
+Date: Fri, 25 Aug 2017 12:35:32 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_n=C3=A3o_parametrica_-_kruskal_e_dunn?=
 In-Reply-To: <CALk9M7F=SUybM=OOsZOh06LO0yTJLYmo_vGOSjWD+Y4uEoxpnw@mail.gmail.com>
-References: <CALk9M7F=SUybM=OOsZOh06LO0yTJLYmo_vGOSjWD+Y4uEoxpnw@mail.gmail.com>
 Message-ID: <CALRcFbn1-MYQng+Z+=6n32RwFax=ON23WZTbmf80Ovwg3vk_iQ@mail.gmail.com>
 
 Bom dia Christina. Pacote agricolae, com a função Kruskal.
@@ -3657,7 +3520,7 @@ Em 25 de agosto de 2017 09:30, Christina Grupioni via R-br <
 r-br em listas.c3sl.ufpr.br> escreveu:
 
 >
-> Bom dia, listeir em s!
+> Bom dia, listeir@s!
 >
 > Estou com um conjunto de dados cujos resíduos não tem distribuição normal.
 > Sendo assim, necessito fazer analise não-paramétrica. Kruskal-wallis,
@@ -3694,17 +3557,12 @@ Sala 17 - Fone: (43) 3371-4934
 Centro de Ciências Exatas - CCE
 Universidade Estadual de Londrina
 Londrina - Paraná - Brasil
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/49dfa250/attachment.html>
 
-From chrisgrupioni em gmail.com  Fri Aug 25 09:43:56 2017
+From chrisgrupioni em gmail.com  Fri Aug 25 12:43:56 2017
 From: chrisgrupioni em gmail.com (Christina Grupioni)
-Date: Fri, 25 Aug 2017 09:43:56 -0300
-Subject: [R-br] =?utf-8?q?n=C3=A3o_parametrica_-_kruskal_e_dunn?=
+Date: Fri, 25 Aug 2017 12:43:56 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_n=C3=A3o_parametrica_-_kruskal_e_dunn?=
 In-Reply-To: <CALRcFbn1-MYQng+Z+=6n32RwFax=ON23WZTbmf80Ovwg3vk_iQ@mail.gmail.com>
-References: <CALk9M7F=SUybM=OOsZOh06LO0yTJLYmo_vGOSjWD+Y4uEoxpnw@mail.gmail.com>
- <CALRcFbn1-MYQng+Z+=6n32RwFax=ON23WZTbmf80Ovwg3vk_iQ@mail.gmail.com>
 Message-ID: <CALk9M7G0wgF+_2NFgxwuj9YkTayQD7aWY=90qGFFHGTvCPpT0w@mail.gmail.com>
 
 Gratidão, Guilherme!
@@ -3726,7 +3584,7 @@ escreveu:
 > r-br em listas.c3sl.ufpr.br> escreveu:
 >
 >>
->> Bom dia, listeir em s!
+>> Bom dia, listeir@s!
 >>
 >> Estou com um conjunto de dados cujos resíduos não tem distribuição
 >> normal.
@@ -3777,25 +3635,12 @@ Engenheira Agrícola e Ambiental- CREA BA: 84142
 *Tecnologias Ecológicas e Sociais*
 (31) 8863-0005, (31) 3892-2236
 *skype:chrisgrupioni em gmail.com <chrisgrupioni em gmail.com>*
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/d8e3e68d/attachment.html>
 
-From emmanuel.brasil em gmail.com  Fri Aug 25 10:33:41 2017
+From emmanuel.brasil em gmail.com  Fri Aug 25 13:33:41 2017
 From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
-Date: Fri, 25 Aug 2017 10:33:41 -0300
-Subject: [R-br]
-	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Date: Fri, 25 Aug 2017 13:33:41 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAEG0FK_=v91wMTkOR+A4iSgH58+79OzvKvaExBHix6_PKNjyRg@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
- <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
- <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
- <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
- <d3017e13-ee97-42cc-40d8-49a666d2d211@gmail.com>
- <CAEG0FK_=v91wMTkOR+A4iSgH58+79OzvKvaExBHix6_PKNjyRg@mail.gmail.com>
 Message-ID: <CAFfGvyKtyxtUB+JRv4WUi74EwqjRzF3Ay6NySnqnbZr2hT80SQ@mail.gmail.com>
 
 Ei pessoal,
@@ -3969,7 +3814,7 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 >>>>>>>
 >>>>>>> # o EXEC PersistModel faz
 >>>>>>> # insert into [tempo_permanencia_models] (model, [description])
->>>>>>> values (convert(varbinary(max), em m,2), @description)
+>>>>>>> values (convert(varbinary(max),@m,2), @description)
 >>>>>>> # insere o modelo e uma descricao
 >>>>>>>
 >>>>>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"',
@@ -4031,26 +3876,12 @@ r-br em listas.c3sl.ufpr.br> escreveu:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/c30942a0/attachment.html>
 
-From assis.leonard em gmail.com  Fri Aug 25 10:38:13 2017
+From assis.leonard em gmail.com  Fri Aug 25 13:38:13 2017
 From: assis.leonard em gmail.com (Leonard Assis)
 Date: Fri, 25 Aug 2017 13:38:13 +0000
-Subject: [R-br]
-	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAFfGvyKtyxtUB+JRv4WUi74EwqjRzF3Ay6NySnqnbZr2hT80SQ@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
- <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
- <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
- <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
- <d3017e13-ee97-42cc-40d8-49a666d2d211@gmail.com>
- <CAEG0FK_=v91wMTkOR+A4iSgH58+79OzvKvaExBHix6_PKNjyRg@mail.gmail.com>
- <CAFfGvyKtyxtUB+JRv4WUi74EwqjRzF3Ay6NySnqnbZr2hT80SQ@mail.gmail.com>
 Message-ID: <CAEG0FK-dcmi9ERejPurYE6qBuMQzLNBEYGxuqnfPqs4QvmwQzA@mail.gmail.com>
 
 O RODBC está sendo substituído pelo pacote odbc
@@ -4230,7 +4061,7 @@ Brasil <emmanuel.brasil em gmail.com> wrote:
 >>>>>>>>
 >>>>>>>> # o EXEC PersistModel faz
 >>>>>>>> # insert into [tempo_permanencia_models] (model, [description])
->>>>>>>> values (convert(varbinary(max), em m,2), @description)
+>>>>>>>> values (convert(varbinary(max),@m,2), @description)
 >>>>>>>> # insere o modelo e uma descricao
 >>>>>>>>
 >>>>>>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"',
@@ -4294,27 +4125,12 @@ Brasil <emmanuel.brasil em gmail.com> wrote:
 >>
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/13e8eb8e/attachment.html>
 
-From assis.leonard em gmail.com  Fri Aug 25 10:42:24 2017
+From assis.leonard em gmail.com  Fri Aug 25 13:42:24 2017
 From: assis.leonard em gmail.com (Leonard Assis)
-Date: Fri, 25 Aug 2017 10:42:24 -0300
-Subject: [R-br]
-	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Date: Fri, 25 Aug 2017 13:42:24 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAEG0FK-dcmi9ERejPurYE6qBuMQzLNBEYGxuqnfPqs4QvmwQzA@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
- <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
- <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
- <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
- <d3017e13-ee97-42cc-40d8-49a666d2d211@gmail.com>
- <CAEG0FK_=v91wMTkOR+A4iSgH58+79OzvKvaExBHix6_PKNjyRg@mail.gmail.com>
- <CAFfGvyKtyxtUB+JRv4WUi74EwqjRzF3Ay6NySnqnbZr2hT80SQ@mail.gmail.com>
- <CAEG0FK-dcmi9ERejPurYE6qBuMQzLNBEYGxuqnfPqs4QvmwQzA@mail.gmail.com>
 Message-ID: <CAEG0FK96BVhLCpiqp8vyLxxU0yNO_X0Abkv7qqAjggVSHQNJSQ@mail.gmail.com>
 
 https://github.com/rstats-db/odbc
@@ -4500,7 +4316,7 @@ escreveu:
 >>>>>>>>>
 >>>>>>>>> # o EXEC PersistModel faz
 >>>>>>>>> # insert into [tempo_permanencia_models] (model, [description])
->>>>>>>>> values (convert(varbinary(max), em m,2), @description)
+>>>>>>>>> values (convert(varbinary(max),@m,2), @description)
 >>>>>>>>> # insere o modelo e uma descricao
 >>>>>>>>>
 >>>>>>>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"',
@@ -4566,26 +4382,12 @@ escreveu:
 >>>
 >>
 >>
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/99d6708a/attachment-0001.html>
 
-From eliaskrainski em yahoo.com.br  Fri Aug 25 10:59:32 2017
+From eliaskrainski em yahoo.com.br  Fri Aug 25 13:59:32 2017
 From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
-Date: Fri, 25 Aug 2017 10:59:32 -0300
-Subject: [R-br]
- =?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
- =?utf-8?q?e_SQL?=
+Date: Fri, 25 Aug 2017 13:59:32 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAFfGvyKtyxtUB+JRv4WUi74EwqjRzF3Ay6NySnqnbZr2hT80SQ@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
- <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
- <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
- <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
- <d3017e13-ee97-42cc-40d8-49a666d2d211@gmail.com>
- <CAEG0FK_=v91wMTkOR+A4iSgH58+79OzvKvaExBHix6_PKNjyRg@mail.gmail.com>
- <CAFfGvyKtyxtUB+JRv4WUi74EwqjRzF3Ay6NySnqnbZr2hT80SQ@mail.gmail.com>
 Message-ID: <6787cbee-a159-6e5e-d47a-e738b9030990@yahoo.com.br>
 
 On 25/08/2017 10:33, Pedro Emmanuel Alvarenga Americano do Brasil via 
@@ -4594,27 +4396,12 @@ R-br wrote:
 Parece estar ativo e teve mudanças este ano:
 https://cran.r-project.org/web/packages/RODBC/ChangeLog
 Elias
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/78615c34/attachment.html>
 
-From eliaskrainski em yahoo.com.br  Fri Aug 25 11:06:57 2017
+From eliaskrainski em yahoo.com.br  Fri Aug 25 14:06:57 2017
 From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
-Date: Fri, 25 Aug 2017 11:06:57 -0300
-Subject: [R-br]
- =?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
- =?utf-8?q?e_SQL?=
+Date: Fri, 25 Aug 2017 14:06:57 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAEG0FK-dcmi9ERejPurYE6qBuMQzLNBEYGxuqnfPqs4QvmwQzA@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
- <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
- <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
- <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
- <d3017e13-ee97-42cc-40d8-49a666d2d211@gmail.com>
- <CAEG0FK_=v91wMTkOR+A4iSgH58+79OzvKvaExBHix6_PKNjyRg@mail.gmail.com>
- <CAFfGvyKtyxtUB+JRv4WUi74EwqjRzF3Ay6NySnqnbZr2hT80SQ@mail.gmail.com>
- <CAEG0FK-dcmi9ERejPurYE6qBuMQzLNBEYGxuqnfPqs4QvmwQzA@mail.gmail.com>
 Message-ID: <1c023ed0-b134-26cc-62ac-6986b91f38bb@yahoo.com.br>
 
 On 25/08/2017 10:38, Leonard Assis via R-br wrote:
@@ -4629,14 +4416,11 @@ http://www.burns-stat.com/r-database-interfaces/
 
 Elias
 
-From cesar.rabak em gmail.com  Fri Aug 25 11:51:55 2017
+From cesar.rabak em gmail.com  Fri Aug 25 14:51:55 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Fri, 25 Aug 2017 11:51:55 -0300
-Subject: [R-br] =?utf-8?q?n=C3=A3o_parametrica_-_kruskal_e_dunn?=
+Date: Fri, 25 Aug 2017 14:51:55 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_n=C3=A3o_parametrica_-_kruskal_e_dunn?=
 In-Reply-To: <CALk9M7G0wgF+_2NFgxwuj9YkTayQD7aWY=90qGFFHGTvCPpT0w@mail.gmail.com>
-References: <CALk9M7F=SUybM=OOsZOh06LO0yTJLYmo_vGOSjWD+Y4uEoxpnw@mail.gmail.com>
- <CALRcFbn1-MYQng+Z+=6n32RwFax=ON23WZTbmf80Ovwg3vk_iQ@mail.gmail.com>
- <CALk9M7G0wgF+_2NFgxwuj9YkTayQD7aWY=90qGFFHGTvCPpT0w@mail.gmail.com>
 Message-ID: <CAKrF98kPK7XrJ2f0dRs_-KTq56csKkXL4oHCReRY+gt2VsdRZw@mail.gmail.com>
 
 Christina,
@@ -4682,7 +4466,7 @@ r-br em listas.c3sl.ufpr.br>:
 >> r-br em listas.c3sl.ufpr.br> escreveu:
 >>
 >>>
->>> Bom dia, listeir em s!
+>>> Bom dia, listeir@s!
 >>>
 >>> Estou com um conjunto de dados cujos resíduos não tem distribuição
 >>> normal.
@@ -4743,26 +4527,12 @@ r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/0fe227a0/attachment.html>
 
-From cesar.rabak em gmail.com  Fri Aug 25 11:55:45 2017
+From cesar.rabak em gmail.com  Fri Aug 25 14:55:45 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Fri, 25 Aug 2017 11:55:45 -0300
-Subject: [R-br]
-	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Date: Fri, 25 Aug 2017 14:55:45 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAFfGvyKtyxtUB+JRv4WUi74EwqjRzF3Ay6NySnqnbZr2hT80SQ@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
- <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
- <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
- <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
- <d3017e13-ee97-42cc-40d8-49a666d2d211@gmail.com>
- <CAEG0FK_=v91wMTkOR+A4iSgH58+79OzvKvaExBHix6_PKNjyRg@mail.gmail.com>
- <CAFfGvyKtyxtUB+JRv4WUi74EwqjRzF3Ay6NySnqnbZr2hT80SQ@mail.gmail.com>
 Message-ID: <CAKrF98m+t51wRnqQnTnX-3Ytjox23s8eUYar3T2-pzqJQhYugw@mail.gmail.com>
 
 Ah. . . a ditadura dos SW proprietários...
@@ -4947,7 +4717,7 @@ R-br <r-br em listas.c3sl.ufpr.br>:
 >>>>>>>>
 >>>>>>>> # o EXEC PersistModel faz
 >>>>>>>> # insert into [tempo_permanencia_models] (model, [description])
->>>>>>>> values (convert(varbinary(max), em m,2), @description)
+>>>>>>>> values (convert(varbinary(max),@m,2), @description)
 >>>>>>>> # insere o modelo e uma descricao
 >>>>>>>>
 >>>>>>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"',
@@ -5018,27 +4788,12 @@ R-br <r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/0139d42d/attachment.html>
 
-From assis.leonard em gmail.com  Fri Aug 25 12:03:04 2017
+From assis.leonard em gmail.com  Fri Aug 25 15:03:04 2017
 From: assis.leonard em gmail.com (Leonard Assis)
 Date: Fri, 25 Aug 2017 15:03:04 +0000
-Subject: [R-br]
-	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
-	=?utf-8?q?e_SQL?=
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D=09Erro_de_mem=C3=B3ria_importando_objeto_pequeno_de_SQL?=
 In-Reply-To: <CAKrF98m+t51wRnqQnTnX-3Ytjox23s8eUYar3T2-pzqJQhYugw@mail.gmail.com>
-References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
- <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
- <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
- <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
- <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
- <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
- <d3017e13-ee97-42cc-40d8-49a666d2d211@gmail.com>
- <CAEG0FK_=v91wMTkOR+A4iSgH58+79OzvKvaExBHix6_PKNjyRg@mail.gmail.com>
- <CAFfGvyKtyxtUB+JRv4WUi74EwqjRzF3Ay6NySnqnbZr2hT80SQ@mail.gmail.com>
- <CAKrF98m+t51wRnqQnTnX-3Ytjox23s8eUYar3T2-pzqJQhYugw@mail.gmail.com>
 Message-ID: <CAEG0FK_agdGSF5OvBuVzaeHncdkB-R1_hPYr=J6EPdWzOnkLLg@mail.gmail.com>
 
 O grupo rstats-db hoje desenvolve o DBI,  responsável pelas ligações de
@@ -5230,7 +4985,7 @@ On sex, 25 de ago de 2017 11:55 Cesar Rabak <cesar.rabak em gmail.com> wrote:
 >>>>>>>>>
 >>>>>>>>> # o EXEC PersistModel faz
 >>>>>>>>> # insert into [tempo_permanencia_models] (model, [description])
->>>>>>>>> values (convert(varbinary(max), em m,2), @description)
+>>>>>>>>> values (convert(varbinary(max),@m,2), @description)
 >>>>>>>>> # insere o modelo e uma descricao
 >>>>>>>>>
 >>>>>>>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"',
@@ -5305,14 +5060,11 @@ On sex, 25 de ago de 2017 11:55 Cesar Rabak <cesar.rabak em gmail.com> wrote:
 >>
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/8a611307/attachment.html>
 
-From emmanuel.brasil em gmail.com  Fri Aug 25 13:21:56 2017
+From emmanuel.brasil em gmail.com  Fri Aug 25 16:21:56 2017
 From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
-Date: Fri, 25 Aug 2017 13:21:56 -0300
-Subject: [R-br] =?utf-8?q?Como_ver_o_que_uma_fun=C3=A7=C3=A3o_faz?=
+Date: Fri, 25 Aug 2017 16:21:56 +0000
+Subject: =?utf-8?q?=5BR-br=5D_Como_ver_o_que_uma_fun=C3=A7=C3=A3o_faz?=
 Message-ID: <CAFfGvyKJT-b+Y6RhN7HiFznnFPmBfwMERibcHieoGgKoKhB01Q@mail.gmail.com>
 
 Amigos de R,
@@ -5348,16 +5100,12 @@ Alguma dica pra conseguir enxergar as operações dessa função?
 Abraço forte,
 
 Pedro Brasil
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/f1c42895/attachment.html>
 
-From marcus.nunes em gmail.com  Fri Aug 25 13:37:58 2017
+From marcus.nunes em gmail.com  Fri Aug 25 16:37:58 2017
 From: marcus.nunes em gmail.com (Marcus Nunes)
-Date: Fri, 25 Aug 2017 13:37:58 -0300
-Subject: [R-br] =?utf-8?q?Como_ver_o_que_uma_fun=C3=A7=C3=A3o_faz?=
+Date: Fri, 25 Aug 2017 16:37:58 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Como_ver_o_que_uma_fun=C3=A7=C3=A3o_faz?=
 In-Reply-To: <CAFfGvyKJT-b+Y6RhN7HiFznnFPmBfwMERibcHieoGgKoKhB01Q@mail.gmail.com>
-References: <CAFfGvyKJT-b+Y6RhN7HiFznnFPmBfwMERibcHieoGgKoKhB01Q@mail.gmail.com>
 Message-ID: <CA+QGQvsSJe-g1D9iFaXQu+NRzkWRh-j2bg7EJyAV3oY=n0XV5A@mail.gmail.com>
 
 Use `methods` para encontrar os métodos da função desejada:
@@ -5486,17 +5234,12 @@ R-br <r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/f2bdb6d3/attachment.html>
 
-From emmanuel.brasil em gmail.com  Fri Aug 25 14:10:48 2017
+From emmanuel.brasil em gmail.com  Fri Aug 25 17:10:48 2017
 From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
-Date: Fri, 25 Aug 2017 14:10:48 -0300
-Subject: [R-br] =?utf-8?q?Como_ver_o_que_uma_fun=C3=A7=C3=A3o_faz?=
+Date: Fri, 25 Aug 2017 17:10:48 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Como_ver_o_que_uma_fun=C3=A7=C3=A3o_faz?=
 In-Reply-To: <CA+QGQvsSJe-g1D9iFaXQu+NRzkWRh-j2bg7EJyAV3oY=n0XV5A@mail.gmail.com>
-References: <CAFfGvyKJT-b+Y6RhN7HiFznnFPmBfwMERibcHieoGgKoKhB01Q@mail.gmail.com>
- <CA+QGQvsSJe-g1D9iFaXQu+NRzkWRh-j2bg7EJyAV3oY=n0XV5A@mail.gmail.com>
 Message-ID: <CAFfGvyLT8sTWeOMMVVmyeaGcbKgWW+7HgvCk5RC8OKp-pmxjFQ@mail.gmail.com>
 
 Ei Marcus,
@@ -5644,16 +5387,12 @@ escreveu:
 >>
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/92fd0a6d/attachment.html>
 
-From walmeszeviani em gmail.com  Fri Aug 25 14:47:21 2017
+From walmeszeviani em gmail.com  Fri Aug 25 17:47:21 2017
 From: walmeszeviani em gmail.com (Walmes Zeviani)
-Date: Fri, 25 Aug 2017 14:47:21 -0300
-Subject: [R-br] =?utf-8?q?Identificando_diverg=C3=AAncias_entre_nomes?=
+Date: Fri, 25 Aug 2017 17:47:21 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Identificando_diverg=C3=AAncias_entre_nomes?=
 In-Reply-To: <CAFZajV35eXs11w558tOR06NhHwP6zhyaQtU0_95EGkkmeMQmSw@mail.gmail.com>
-References: <CAFZajV35eXs11w558tOR06NhHwP6zhyaQtU0_95EGkkmeMQmSw@mail.gmail.com>
 Message-ID: <CAFU=EkZMEjcVsV4J-RXiR+JKj+R34LoJKmGHdEMN+GxE0pFt6Q@mail.gmail.com>
 
 Pelo visto você terá com fazer um misto de soluções para cada situação.
@@ -5666,18 +5405,12 @@ situações de inversão de nome como a que ocorre para o ID 100, por exemplo.
 À disposição.
 Walmes.
 ​
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/90098ecb/attachment.html>
 
-From fragoso2718 em gmail.com  Fri Aug 25 14:53:55 2017
+From fragoso2718 em gmail.com  Fri Aug 25 17:53:55 2017
 From: fragoso2718 em gmail.com (Tiago Fragoso)
-Date: Fri, 25 Aug 2017 14:53:55 -0300
-Subject: [R-br] =?utf-8?q?Como_ver_o_que_uma_fun=C3=A7=C3=A3o_faz?=
+Date: Fri, 25 Aug 2017 17:53:55 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Como_ver_o_que_uma_fun=C3=A7=C3=A3o_faz?=
 In-Reply-To: <CAFfGvyLT8sTWeOMMVVmyeaGcbKgWW+7HgvCk5RC8OKp-pmxjFQ@mail.gmail.com>
-References: <CAFfGvyKJT-b+Y6RhN7HiFznnFPmBfwMERibcHieoGgKoKhB01Q@mail.gmail.com>
- <CA+QGQvsSJe-g1D9iFaXQu+NRzkWRh-j2bg7EJyAV3oY=n0XV5A@mail.gmail.com>
- <CAFfGvyLT8sTWeOMMVVmyeaGcbKgWW+7HgvCk5RC8OKp-pmxjFQ@mail.gmail.com>
 Message-ID: <CAAkfs-sQzoh8kroO42t8iAFSCo7VMR7Wc5Wn2guoAQ1LkAEMCg@mail.gmail.com>
 
 Olá,
@@ -5845,19 +5578,12 @@ R-br <r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/0356de0f/attachment.html>
 
-From emmanuel.brasil em gmail.com  Fri Aug 25 15:49:07 2017
+From emmanuel.brasil em gmail.com  Fri Aug 25 18:49:07 2017
 From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
-Date: Fri, 25 Aug 2017 15:49:07 -0300
-Subject: [R-br] =?utf-8?q?Como_ver_o_que_uma_fun=C3=A7=C3=A3o_faz?=
+Date: Fri, 25 Aug 2017 18:49:07 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_Como_ver_o_que_uma_fun=C3=A7=C3=A3o_faz?=
 In-Reply-To: <CAAkfs-sQzoh8kroO42t8iAFSCo7VMR7Wc5Wn2guoAQ1LkAEMCg@mail.gmail.com>
-References: <CAFfGvyKJT-b+Y6RhN7HiFznnFPmBfwMERibcHieoGgKoKhB01Q@mail.gmail.com>
- <CA+QGQvsSJe-g1D9iFaXQu+NRzkWRh-j2bg7EJyAV3oY=n0XV5A@mail.gmail.com>
- <CAFfGvyLT8sTWeOMMVVmyeaGcbKgWW+7HgvCk5RC8OKp-pmxjFQ@mail.gmail.com>
- <CAAkfs-sQzoh8kroO42t8iAFSCo7VMR7Wc5Wn2guoAQ1LkAEMCg@mail.gmail.com>
 Message-ID: <CAFfGvyJWziqVfDSrXe0i2qvzaeRTec3CTPS-dH6jeup1cywFZg@mail.gmail.com>
 
 > Hmisc:::Function.cph
@@ -6054,16 +5780,12 @@ escreveu:
 >>
 >
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/9aa86b31/attachment-0001.html>
 
-From ggaldino em gmail.com  Fri Aug 25 23:10:24 2017
+From ggaldino em gmail.com  Sat Aug 26 02:10:24 2017
 From: ggaldino em gmail.com (Graciliano Galdino)
-Date: Fri, 25 Aug 2017 23:10:24 -0300
-Subject: [R-br] =?utf-8?q?n=C3=A3o_parametrica_-_kruskal_e_dunn?=
+Date: Sat, 26 Aug 2017 02:10:24 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_n=C3=A3o_parametrica_-_kruskal_e_dunn?=
 In-Reply-To: <CALk9M7F=SUybM=OOsZOh06LO0yTJLYmo_vGOSjWD+Y4uEoxpnw@mail.gmail.com>
-References: <CALk9M7F=SUybM=OOsZOh06LO0yTJLYmo_vGOSjWD+Y4uEoxpnw@mail.gmail.com>
 Message-ID: <CANgk37PLK2mtMQhbemYuC_+2hxwiMXToaaAgRgWEA7-3q1ZsgA@mail.gmail.com>
 
 Olá Cristina,
@@ -6078,7 +5800,7 @@ tem um output bem mais agradável de ver que o "listão" do TukeyHSD da ANOVA.
 r-br em listas.c3sl.ufpr.br>:
 
 >
-> Bom dia, listeir em s!
+> Bom dia, listeir@s!
 >
 > Estou com um conjunto de dados cujos resíduos não tem distribuição normal.
 > Sendo assim, necessito fazer analise não-paramétrica. Kruskal-wallis,
@@ -6113,19 +5835,12 @@ Graciliano Galdino A. dos Santos
 Biólogo
 Doutorando em Ciências Florestais - PPGCF
 Universidade Federal Rural da Amazônia - UFRA
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170825/7115d854/attachment.html>
 
-From bodevan.ec em gmail.com  Sat Aug 26 06:33:34 2017
+From bodevan.ec em gmail.com  Sat Aug 26 09:33:34 2017
 From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
-Date: Sat, 26 Aug 2017 06:33:34 -0300
-Subject: [R-br] =?utf-8?q?n=C3=A3o_parametrica_-_kruskal_e_dunn?=
+Date: Sat, 26 Aug 2017 09:33:34 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_n=C3=A3o_parametrica_-_kruskal_e_dunn?=
 In-Reply-To: <CAP5i-szOMJ9nrH5KboWZD4Y8JS032XP0Mvyty+oCJ_RQ_gAU6A@mail.gmail.com>
-References: <CALk9M7F=SUybM=OOsZOh06LO0yTJLYmo_vGOSjWD+Y4uEoxpnw@mail.gmail.com>
- <CANgk37PLK2mtMQhbemYuC_+2hxwiMXToaaAgRgWEA7-3q1ZsgA@mail.gmail.com>
- <CAP5i-sw6BEq6bo+NpGLbCUz0sT6=jycO6JUxaCRuTX4VXWHThw@mail.gmail.com>
- <CAP5i-szOMJ9nrH5KboWZD4Y8JS032XP0Mvyty+oCJ_RQ_gAU6A@mail.gmail.com>
 Message-ID: <CAP5i-syERaH3dwmZnqoYc-OPFaqa2T9XeAULqWmizS8DXbOPYw@mail.gmail.com>
 
 Prezados,
@@ -6155,7 +5870,7 @@ tem um output bem mais agradável de ver que o "listão" do TukeyHSD da ANOVA.
 r-br em listas.c3sl.ufpr.br>:
 
 >
-> Bom dia, listeir em s!
+> Bom dia, listeir@s!
 >
 > Estou com um conjunto de dados cujos resíduos não tem distribuição normal.
 > Sendo assim, necessito fazer analise não-paramétrica. Kruskal-wallis,
@@ -6197,14 +5912,11 @@ R-br em listas.c3sl.ufpr.br
 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
 mínimo reproduzível.
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170826/4c81f699/attachment.html>
 
-From amnievas em gmail.com  Sun Aug 27 18:30:04 2017
+From amnievas em gmail.com  Sun Aug 27 21:30:04 2017
 From: amnievas em gmail.com (Ana Maria Nievas)
-Date: Sun, 27 Aug 2017 18:30:04 -0300
-Subject: [R-br] =?utf-8?q?n=C3=A3o_param=C3=A9trica_-_anova_de_friedman?=
+Date: Sun, 27 Aug 2017 21:30:04 +0000
+Subject: =?utf-8?q?=5BR-br=5D_n=C3=A3o_param=C3=A9trica_-_anova_de_friedman?=
 Message-ID: <CAJ4k4ZwtgrW3mUqudA+nxzV-wOSv2bOeRaJFUYEd2YM1QDO_GQ@mail.gmail.com>
 
 Olá pessoal!
@@ -6212,16 +5924,12 @@ Preciso fazer a anova de friedman, porém estou com dificuldade em como deve
 ser a estrutura do dataframe. Podem me ajudar?
 
 Obrigada!
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170827/a352a56b/attachment.html>
 
-From cesar.rabak em gmail.com  Mon Aug 28 11:39:09 2017
+From cesar.rabak em gmail.com  Mon Aug 28 14:39:09 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Mon, 28 Aug 2017 11:39:09 -0300
-Subject: [R-br] =?utf-8?q?n=C3=A3o_param=C3=A9trica_-_anova_de_friedman?=
+Date: Mon, 28 Aug 2017 14:39:09 +0000
+Subject: =?utf-8?q?Re=3A_=5BR-br=5D_n=C3=A3o_param=C3=A9trica_-_anova_de_friedman?=
 In-Reply-To: <CAJ4k4ZwtgrW3mUqudA+nxzV-wOSv2bOeRaJFUYEd2YM1QDO_GQ@mail.gmail.com>
-References: <CAJ4k4ZwtgrW3mUqudA+nxzV-wOSv2bOeRaJFUYEd2YM1QDO_GQ@mail.gmail.com>
 Message-ID: <CAKrF98=U4NEgvy8PBNvyGK42y0mZ7+W-6j3vTcSdhzGXSCQv1g@mail.gmail.com>
 
 Ana,
@@ -6256,13 +5964,10 @@ r-br em listas.c3sl.ufpr.br>:
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170828/2133772d/attachment.html>
 
-From carolinasend em gmail.com  Wed Aug 30 10:15:14 2017
+From carolinasend em gmail.com  Wed Aug 30 13:15:14 2017
 From: carolinasend em gmail.com (Carolina Pena)
-Date: Wed, 30 Aug 2017 10:15:14 -0300
+Date: Wed, 30 Aug 2017 13:15:14 +0000
 Subject: [R-br] R Markdown - uso de acento no caption do kable
 Message-ID: <CANwSsyBguzrhi4HJHXEoSP4g9p_gnTF2yrTAwH7NQyZjgiyavw@mail.gmail.com>
 
@@ -6306,16 +6011,12 @@ header-includes:
 Muito obrigada,
 
 Carolina Pena
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170830/b2a9153e/attachment.html>
 
-From eliaskrainski em yahoo.com.br  Wed Aug 30 10:33:12 2017
+From eliaskrainski em yahoo.com.br  Wed Aug 30 13:33:12 2017
 From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
-Date: Wed, 30 Aug 2017 10:33:12 -0300
-Subject: [R-br] R Markdown - uso de acento no caption do kable
+Date: Wed, 30 Aug 2017 13:33:12 +0000
+Subject: Re: [R-br] R Markdown - uso de acento no caption do kable
 In-Reply-To: <CANwSsyBguzrhi4HJHXEoSP4g9p_gnTF2yrTAwH7NQyZjgiyavw@mail.gmail.com>
-References: <CANwSsyBguzrhi4HJHXEoSP4g9p_gnTF2yrTAwH7NQyZjgiyavw@mail.gmail.com>
 Message-ID: <308aa375-a3d5-9a75-9e5e-756a218b474f@yahoo.com.br>
 
 Quando vc coloca
@@ -6376,16 +6077,11 @@ On 30/08/2017 10:15, Carolina Pena via R-br wrote:
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170830/9c234a9e/attachment.html>
-
-From carolinasend em gmail.com  Wed Aug 30 14:43:54 2017
+From carolinasend em gmail.com  Wed Aug 30 17:43:54 2017
 From: carolinasend em gmail.com (Carolina Pena)
-Date: Wed, 30 Aug 2017 14:43:54 -0300
-Subject: [R-br] Digest R-br, volume 80, assunto 18
+Date: Wed, 30 Aug 2017 17:43:54 +0000
+Subject: Re: [R-br] Digest R-br, volume 80, assunto 18
 In-Reply-To: <mailman.1.1504105201.18911.r-br@listas.c3sl.ufpr.br>
-References: <mailman.1.1504105201.18911.r-br@listas.c3sl.ufpr.br>
 Message-ID: <CANwSsyAVq+4To+-MkwF3mT3DLkY77T6DoOHTrtNj5vRuPPOLOw@mail.gmail.com>
 
 Quando eu peço para compilar no R-Studio (knit) eu sempre seleciono "UTF8".
@@ -6435,7 +6131,7 @@ Em 30 de agosto de 2017 12:00, <r-br-request em listas.c3sl.ufpr.br> escreveu:
 > To: r-br em listas.c3sl.ufpr.br
 > Subject: [R-br] R Markdown - uso de acento no caption do kable
 > Message-ID:
->         <CANwSsyBguzrhi4HJHXEoSP4g9p_gnTF2yrTAwH7NQyZjgiyavw em mail.
+>         <CANwSsyBguzrhi4HJHXEoSP4g9p_gnTF2yrTAwH7NQyZjgiyavw@mail.
 > gmail.com>
 > Content-Type: text/plain; charset="utf-8"
 >
@@ -6583,17 +6279,12 @@ Pró-Reitoria de Graduação
 Setor de Estatística
 Contato: (31) 3409-4543
 Contato Cel: (31) 8456-7052
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170830/243c2b24/attachment.html>
 
-From lgsilvaesilva em gmail.com  Wed Aug 30 14:46:40 2017
+From lgsilvaesilva em gmail.com  Wed Aug 30 17:46:40 2017
 From: lgsilvaesilva em gmail.com (Luis G. S. e Silva)
 Date: Wed, 30 Aug 2017 17:46:40 +0000
-Subject: [R-br] Digest R-br, volume 80, assunto 18
+Subject: Re: [R-br] Digest R-br, volume 80, assunto 18
 In-Reply-To: <CANwSsyAVq+4To+-MkwF3mT3DLkY77T6DoOHTrtNj5vRuPPOLOw@mail.gmail.com>
-References: <mailman.1.1504105201.18911.r-br@listas.c3sl.ufpr.br>
- <CANwSsyAVq+4To+-MkwF3mT3DLkY77T6DoOHTrtNj5vRuPPOLOw@mail.gmail.com>
 Message-ID: <CALruoAFZUeMjyJ5C+9uDSQB+g3_0he1vn=fwUXHT9GzGXfDrGg@mail.gmail.com>
 
 Carolina, tudo bem?
@@ -6813,15 +6504,12 @@ r-br em listas.c3sl.ufpr.br> wrote:
 -- 
 
 Luís G. Silva e Silva
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170830/fd695ae3/attachment.html>
 
-From diogojose21 em yahoo.com.br  Thu Aug 31 11:13:49 2017
-From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
-Date: Thu, 31 Aug 2017 14:13:49 +0000 (UTC)
+From diogojose21 em yahoo.com.br  Thu Aug 31 14:13:49 2017
+From: diogojose21 em yahoo.com.br (=?utf-8?q?Diogo_Jer=C3=B4nimo?=)
+Date: Thu, 31 Aug 2017 14:13:49 +0000
 Subject: [R-br] Barplot com dois eixos
-References: <1069896648.422335.1504188829911.ref@mail.yahoo.com>
+In-Reply-To: <1069896648.422335.1504188829911.ref@mail.yahoo.com>
 Message-ID: <1069896648.422335.1504188829911@mail.yahoo.com>
 
 Prezados, bom dia!!!
@@ -6838,17 +6526,12 @@ Eu gostaria de criar um novo eixo (à direita), com os valores correspondentes a
 Alguém teria sugestão de como se fazer isso? Eu empreguei a função par(new=T), mas no meu teste, o novo gráfico ficou muito desproporcional.
 
 Se alguém souber e puder ajudar... agradecido desde já!!! Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE ACel:(21)99680-8535Email: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170831/7ab3f019/attachment.html>
 
-From eliaskrainski em yahoo.com.br  Thu Aug 31 11:18:41 2017
+From eliaskrainski em yahoo.com.br  Thu Aug 31 14:18:41 2017
 From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
-Date: Thu, 31 Aug 2017 11:18:41 -0300
-Subject: [R-br] Barplot com dois eixos
+Date: Thu, 31 Aug 2017 14:18:41 +0000
+Subject: Re: [R-br] Barplot com dois eixos
 In-Reply-To: <1069896648.422335.1504188829911@mail.yahoo.com>
-References: <1069896648.422335.1504188829911.ref@mail.yahoo.com>
- <1069896648.422335.1504188829911@mail.yahoo.com>
 Message-ID: <19311874-69d2-f599-d6ca-9fffc7b3742e@yahoo.com.br>
 
 Poderia colocar os valores acima das barras:
@@ -6895,17 +6578,11 @@ On 31/08/2017 11:13, Diogo Jerônimo via R-br wrote:
 > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
 
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170831/6c1fec6e/attachment.html>
-
-From cesar.rabak em gmail.com  Thu Aug 31 15:49:37 2017
+From cesar.rabak em gmail.com  Thu Aug 31 18:49:37 2017
 From: cesar.rabak em gmail.com (Cesar Rabak)
-Date: Thu, 31 Aug 2017 15:49:37 -0300
-Subject: [R-br] Barplot com dois eixos
+Date: Thu, 31 Aug 2017 18:49:37 +0000
+Subject: Re: [R-br] Barplot com dois eixos
 In-Reply-To: <1069896648.422335.1504188829911@mail.yahoo.com>
-References: <1069896648.422335.1504188829911.ref@mail.yahoo.com>
- <1069896648.422335.1504188829911@mail.yahoo.com>
 Message-ID: <CAKrF98=6QS-MxfZ3LtGKXaFupmEf-Zw5bqwoWyu5_PFWQ1qz4g@mail.gmail.com>
 
 Usando seu exemplo:
@@ -6975,75 +6652,4 @@ direito, a resposta seria outra. . .
 > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
 > código mínimo reproduzível.
 >
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170831/d6abb411/attachment.html>
-
-From yurynepomuceno em gmail.com  Wed Aug  9 16:44:23 2017
-From: yurynepomuceno em gmail.com (Yury Duarte)
-Date: Wed, 09 Aug 2017 19:44:23 -0000
-Subject: [R-br] =?utf-8?q?Salvar_sa=C3=ADdas_de_um_loop?=
-Message-ID: <CADFS6E6kvXiatGmYo0COF1kJQFivPKbw65ag5xoPy-sbbKeing@mail.gmail.com>
-
-Boa tarde colegas listeiros!
-
-Estou tendo um pequeno problema para salvar as saídas de um loop que fiz
-para preencher uma matriz com dados de diferentes arquivos. Meus arquivos
-base possuem informações anuais de produtividade de 15 locais para um
-determinado mês. Construí o loop com intenção de gerar um arquivo por
-local, contemplando as produtividades de cada mês (nas linhas) e de cada
-ano (nas colunas). Conferi o output do único arquivo salvo pelo script e os
-valores correspondem ao desejado, então acredito que a lógica para o
-preenchimento da matriz em branco esteja correta. Os arquivos para executar
-a simulação estão em anexo e o script está no corpo do email.
-
-Desde já, agradeço pela colaboração de todos!
-
-rm(list = ls())
-
-raiz =
-'C:\\Users\\Yury\\Desktop\\Mestrado\\1_TESE\\Model_Data\\Maize\\PREVISAO\\PA\\'
-
-estrategia = c('E1', 'E2', 'E3', 'E4', 'E5')
-meses = c('setembro', 'outubro', 'novembro', 'dezembro', 'janeiro',
-'fevereiro', 'marco', 'abril')
-cidade = c("abelardoluz", "altamira", "brasilia", "caarapo", "catalao",
-"lagarto", "machado", "mateiros",
-           "muitoscapoes", "piracicaba", "pontagrossa", "primaveradoleste",
-"srmangab", "sdesiderio", "urucui")
-anos = c(1980:2012)
-previsao = matrix(NA, nrow = length(meses), ncol = length(1980:2012))
-colnames(previsao) = 1980:2012
-
-#for(e in 1:length(estrategias)){
-
-  for(m in 1:length(meses)){
-
-    a = read.table(paste0(raiz, 'E1\\', meses[m],'\\', 'final.txt'), header
-= T, sep = '\t')
-    for(city in 1:length(cidade)){
-
-      for(i in 1:length(anos)){
-
-        previsao[m,i] = a[city,i]
-      }
-    }
-    write.table(previsao, paste0(raiz, 'E1\\', cidade[city],'.txt'),
-row.names = F, col.names = T, sep = '\t')
-  }
-#}
-
-
-Yury Duarte
-Engenheiro Agrônomo - ESALQ/USP
--------------- Próxima Parte ----------
-Um anexo em HTML foi limpo...
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/92dd4971/attachment-0001.html>
--------------- Próxima Parte ----------
-Um anexo não-texto foi limpo...
-Nome: E1.rar
-Tipo: application/rar
-Tamanho: 1332927 bytes
-Descrição: não disponível
-URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170809/92dd4971/attachment-0001.rar>
 

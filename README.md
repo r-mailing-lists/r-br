@@ -1,23 +1,26 @@
 # r-br
 
-Brazil's R discussion list, in Portuguese: R-br, "a lista Brasileira oficial de discussão do programa R", started by LEG/UFPR on 15 March 2011.
+Brazil's R discussion list, in Portuguese: R-br, "a lista Brasileira oficial de discussão do programa R", started by LEG/UFPR on 15 March 2011. In 2025 UFPR moved it to Mailman 3, where it keeps [its archive](https://listas.inf.ufpr.br/hyperkitty/list/r-br@listas.inf.ufpr.br/) and [its page](https://listas.inf.ufpr.br/postorius/lists/r-br.listas.inf.ufpr.br/).
 
-The list was hosted at listas.inf.ufpr.br, which no longer answers. This archive was rebuilt in October 2026 from the monthly text files that the Internet Archive's Wayback Machine captured from the list's pipermail archive: every month from March 2011 to June 2025, 20,630 messages. June 2025 was captured on its third day, and nothing later was captured. The archive is not updated.
+Automated mbox archive. Updated daily via GitHub Actions from the list's Mailman 3 archive.
 
 ## Structure
 
-- `raw/` - Monthly .mbox files, from the Wayback Machine's copies of [http://listas.inf.ufpr.br/pipermail/r-br/](https://web.archive.org/web/2025/http://listas.inf.ufpr.br/pipermail/r-br/) (each capture is listed in `tools/wayback-captures.tsv`)
+- `raw/` - Monthly .mbox files, made from the Mailman 3 archive's monthly exports by `tools/update.sh`
 - `processed/` - Structured JSON output from rmail-parser
 - `meta.json` - List statistics
 
-Addresses appear as the list's archive showed them, in Mailman's Portuguese form ("nome em dominio").
+## How the files are made
 
-## Changes from the captured files
+`tools/hyperkitty-to-mbox.py` writes each exported month the way the list's Mailman 2 archive wrote its text files: the headers that archive kept (From, Date, Subject, Message-ID, In-Reply-To, References), the text in UTF-8, any attachment named after Mailman's "next part" line, and every address in the form that archive used, "nome em dominio". The Mailman 3 archive shows no addresses on its pages. Its export holds them in full, and they are not copied here.
 
-The scripts in `tools/` made two changes to the captured files, and nothing else.
+The history was repaired once, in October 2026:
 
-- `to-utf8.py` writes each file as UTF-8. UFPR's files kept each message in the bytes it arrived in, so one file mixes UTF-8 messages with Latin-1 ones. A line that is valid UTF-8 is kept as it is, and any other line is read as Windows-1252.
-- `fix-2149.py` dates 29 messages of May 2013 again. The list's server stamped them with dates in June 2149 while its clock ran 2^32 seconds ahead. Replies that quote three of them agree with that offset to within a minute, and they now fall between 4 and 7 May 2013 (UTC), after the messages they answer and before their replies.
+- 29 messages of May 2013 carry dates in June 2149, stamped while the list's server clock ran 2^32 seconds ahead. The converter moves any date past 2100 back by that much, which puts them between 4 and 7 May 2013; replies that quote three of them agree to within a minute.
+- The move to Mailman 3 damaged the text of some older messages, writing letters as replacement characters or as two letters for one. `tools/repair-from-wayback.py` put back the text of 524 of them from the list's Mailman 2 archive as the Wayback Machine kept it, which is this repository's first commit.
+- `raw/from-wayback.mbox` holds three messages, from 2013 and 2015, that the Mailman 3 archive lost, from the same copy.
+
+Fetching a month of that history again (`tools/update.sh 2013-05`) would bring the damage back; run the repair again after it.
 
 ## Viewer
 
