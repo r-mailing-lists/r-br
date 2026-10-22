@@ -1,0 +1,2188 @@
+From emmanuel.brasil em gmail.com  Thu Feb  3 10:03:50 2022
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Thu, 3 Feb 2022 10:03:50 -0300
+Subject: [R-br] Texto na margem do ggplot
+Message-ID: <CAFfGvy+teNvNQDWQn6kW77Qvmhns_DN6wZhJZxbgazJbC4zjVg@mail.gmail.com>
+
+Amigos de R,
+
+Saudações a todos. Gostaria de colocar um texto nas margens superior e
+direita do gráfico de tal forma que eu consiga diferenciar duas variáveis
+que têm as mesmas categorias. No graphics seria equivalente a função
+mtext(). Por exemplo...
+plot(bla bla bla)
+mtext("Esquema inicial", side = 3)
+mtext("Reforço", side = 4)
+
+Mas no ggplot não estou sabendo fazer. Alguma luz?
+# Simulando os dados
+x <- rbind(
+data.frame(id = 1:20,
+           Visita = "Visita 1",
+           Inicial = "Vacina 1",
+           Reforço = "Vacina 1",
+           Titulos =  rnorm(20, 20, 5)),
+data.frame(id = 1:20,
+           Visita = "Visita 2",
+           Inicial = "Vacina 1",
+           Reforço = "Vacina 1",
+           Titulos =  rnorm(20, 30, 5)),
+#
+data.frame(id = 21:40,
+           Visita = "Visita 1",
+           Inicial = "Vacina 2",
+           Reforço = "Vacina 1",
+           Titulos =  rnorm(20, 40, 5)),
+data.frame(id = 21:40,
+           Visita = "Visita 2",
+           Inicial = "Vacina 2",
+           Reforço = "Vacina 1",
+           Titulos =  rnorm(20, 50, 5)),
+#
+data.frame(id = 41:60,
+           Visita = "Visita 1",
+           Inicial = "Vacina 1",
+           Reforço = "Vacina 2",
+           Titulos =  rnorm(20, 15, 5)),
+data.frame(id = 41:60,
+           Visita = "Visita 2",
+           Inicial = "Vacina 1",
+           Reforço = "Vacina 2",
+           Titulos =  rnorm(20, 30, 5)),
+#
+data.frame(id = 61:80,
+           Visita = "Visita 1",
+           Inicial = "Vacina 2",
+           Reforço = "Vacina 2",
+           Titulos =  rnorm(20, 15, 5)),
+data.frame(id = 61:80,
+           Visita = "Visita 2",
+           Inicial = "Vacina 2",
+           Reforço = "Vacina 2",
+           Titulos =  rnorm(60, 30, 5)))
+head(x)
+# Fazendo o grafico...
+ggplot(x,
+       aes(x = Visita,
+           y = Titulos,
+           group = id)) +
+  geom_line(colour = "lightgreen",
+            show.legend = FALSE) +
+  geom_smooth(aes(group = 1),
+              method = lm,
+              colour = "red",
+              na.rm = TRUE) +
+  facet_grid(rows = vars(Inicial),
+             cols = vars(Reforço))+
+  theme_light() +
+  ylab("Titulos de anticorpos") +
+  xlab("Visitas de seguimento")
+
+Abraços fraternos,
+
+Pedro Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220203/9e751865/attachment.htm>
+
+From cesar.rabak em gmail.com  Thu Feb  3 10:12:54 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 3 Feb 2022 10:12:54 -0300
+Subject: [R-br] Texto na margem do ggplot
+In-Reply-To: <CAFfGvy+teNvNQDWQn6kW77Qvmhns_DN6wZhJZxbgazJbC4zjVg@mail.gmail.com>
+References: <CAFfGvy+teNvNQDWQn6kW77Qvmhns_DN6wZhJZxbgazJbC4zjVg@mail.gmail.com>
+Message-ID: <CAKrF98=XBHSB-oMH1UD+2O2gzoeJsDMr7CcoFrOS56rzs9NtAw@mail.gmail.com>
+
+Sem consultar a doc pois estou sem computador agora, o seu caso parece ser
+um que o geom_text deve resolver.
+
+Dica: salve o objeto retornado pela sua elaborada chamada a ggplot e teste
+com + geom_text com as várias opções dessa função.
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Thu, Feb 3, 2022 at 10:04 AM Pedro Emmanuel Alvarenga Americano do
+Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+> Amigos de R,
+>
+> Saudações a todos. Gostaria de colocar um texto nas margens superior e
+> direita do gráfico de tal forma que eu consiga diferenciar duas variáveis
+> que têm as mesmas categorias. No graphics seria equivalente a função
+> mtext(). Por exemplo...
+> plot(bla bla bla)
+> mtext("Esquema inicial", side = 3)
+> mtext("Reforço", side = 4)
+>
+> Mas no ggplot não estou sabendo fazer. Alguma luz?
+> # Simulando os dados
+> x <- rbind(
+> data.frame(id = 1:20,
+>            Visita = "Visita 1",
+>            Inicial = "Vacina 1",
+>            Reforço = "Vacina 1",
+>            Titulos =  rnorm(20, 20, 5)),
+> data.frame(id = 1:20,
+>            Visita = "Visita 2",
+>            Inicial = "Vacina 1",
+>            Reforço = "Vacina 1",
+>            Titulos =  rnorm(20, 30, 5)),
+> #
+> data.frame(id = 21:40,
+>            Visita = "Visita 1",
+>            Inicial = "Vacina 2",
+>            Reforço = "Vacina 1",
+>            Titulos =  rnorm(20, 40, 5)),
+> data.frame(id = 21:40,
+>            Visita = "Visita 2",
+>            Inicial = "Vacina 2",
+>            Reforço = "Vacina 1",
+>            Titulos =  rnorm(20, 50, 5)),
+> #
+> data.frame(id = 41:60,
+>            Visita = "Visita 1",
+>            Inicial = "Vacina 1",
+>            Reforço = "Vacina 2",
+>            Titulos =  rnorm(20, 15, 5)),
+> data.frame(id = 41:60,
+>            Visita = "Visita 2",
+>            Inicial = "Vacina 1",
+>            Reforço = "Vacina 2",
+>            Titulos =  rnorm(20, 30, 5)),
+> #
+> data.frame(id = 61:80,
+>            Visita = "Visita 1",
+>            Inicial = "Vacina 2",
+>            Reforço = "Vacina 2",
+>            Titulos =  rnorm(20, 15, 5)),
+> data.frame(id = 61:80,
+>            Visita = "Visita 2",
+>            Inicial = "Vacina 2",
+>            Reforço = "Vacina 2",
+>            Titulos =  rnorm(60, 30, 5)))
+> head(x)
+> # Fazendo o grafico...
+> ggplot(x,
+>        aes(x = Visita,
+>            y = Titulos,
+>            group = id)) +
+>   geom_line(colour = "lightgreen",
+>             show.legend = FALSE) +
+>   geom_smooth(aes(group = 1),
+>               method = lm,
+>               colour = "red",
+>               na.rm = TRUE) +
+>   facet_grid(rows = vars(Inicial),
+>              cols = vars(Reforço))+
+>   theme_light() +
+>   ylab("Titulos de anticorpos") +
+>   xlab("Visitas de seguimento")
+>
+> Abraços fraternos,
+>
+> Pedro Brasil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220203/666ae287/attachment.htm>
+
+From deisygysi em gmail.com  Thu Feb  3 12:59:36 2022
+From: deisygysi em gmail.com (Deisy Gysi)
+Date: Thu, 3 Feb 2022 10:59:36 -0500
+Subject: [R-br] Texto na margem do ggplot
+In-Reply-To: <CAFfGvy+teNvNQDWQn6kW77Qvmhns_DN6wZhJZxbgazJbC4zjVg@mail.gmail.com>
+References: <CAFfGvy+teNvNQDWQn6kW77Qvmhns_DN6wZhJZxbgazJbC4zjVg@mail.gmail.com>
+Message-ID: <CAAf2ifahdDSLw0B-k9vwM-5=R8KMxfyZNd+K8vbQXvVjeP=M5g@mail.gmail.com>
+
+Nao tenho certeza se entendi exatamente o que vc quer fazer...
+Mas para colocar os titulos nas margens vc pode criar novos eixos (x e y).
+
+att,
+d
+
+require(ggplot2)
+require(magrittr)
+require(dplyr)
+
+x <- rbind(
+  data.frame(id = 1:20,
+             Visita = "Visita 1",
+             Inicial = "Vacina 1",
+             Reforço = "Vacina 1",
+             Titulos =  rnorm(20, 20, 5)),
+  data.frame(id = 1:20,
+             Visita = "Visita 2",
+             Inicial = "Vacina 1",
+             Reforço = "Vacina 1",
+             Titulos =  rnorm(20, 30, 5)),
+  #
+  data.frame(id = 21:40,
+             Visita = "Visita 1",
+             Inicial = "Vacina 2",
+             Reforço = "Vacina 1",
+             Titulos =  rnorm(20, 40, 5)),
+  data.frame(id = 21:40,
+             Visita = "Visita 2",
+             Inicial = "Vacina 2",
+             Reforço = "Vacina 1",
+             Titulos =  rnorm(20, 50, 5)),
+  #
+  data.frame(id = 41:60,
+             Visita = "Visita 1",
+             Inicial = "Vacina 1",
+             Reforço = "Vacina 2",
+             Titulos =  rnorm(20, 15, 5)),
+  data.frame(id = 41:60,
+             Visita = "Visita 2",
+             Inicial = "Vacina 1",
+             Reforço = "Vacina 2",
+             Titulos =  rnorm(20, 30, 5)),
+  #
+  data.frame(id = 61:80,
+             Visita = "Visita 1",
+             Inicial = "Vacina 2",
+             Reforço = "Vacina 2",
+             Titulos =  rnorm(20, 15, 5)),
+  data.frame(id = 61:80,
+             Visita = "Visita 2",
+             Inicial = "Vacina 2",
+             Reforço = "Vacina 2",
+             Titulos =  rnorm(60, 30, 5)))
+head(x)
+# Fazendo o grafico...
+x %<>%
+  mutate(Visita_cat = as.numeric(as.factor(Visita)))
+x %>%
+  ggplot() +
+  aes(x = Visita_cat,
+      y = Titulos,
+      group = id)+
+  geom_line(colour = "lightgreen",
+            show.legend = FALSE) +
+  geom_smooth(aes(group = 1),
+              method = lm,
+              colour = "red",
+              na.rm = TRUE) +
+  facet_grid(rows = vars(Inicial),
+             cols = vars(Reforço))+
+  scale_y_continuous(sec.axis = dup_axis(name = "Reforço")) +
+  scale_x_continuous(sec.axis = dup_axis(name = "Esquema inicial")) +
+  theme_light() +
+  theme(axis.title.x.top = element_text())+
+  labs(y = "Titulos de anticorpos",
+       x = "Visitas de seguimento")
+
+
+plot(as.numeric(x$Visita_cat), x$Titulos, type = "l")
+mtext("Esquema inicial", side = 3)
+mtext("Reforço", side = 4)
+
+
+Deisy Morselli Gysi, PhD
+
+Associate Research Scientist
+Center for Complex Networks Research - BarabasiLab
+<https://www.barabasilab.com/>
+Northeastern University, Boston, Massachusetts
+Pronouns: She/Her/Hers
+deisy.ccnr em gmail.com
+https://deisygysi.github.io/
+
+The flower that blooms in adversity is the most rare and beautiful of all.
+Mulan (Disney)
+
+Email Etiquette: Just because I e-mail at odd hours does not mean I expect
+you to.
+
+
+On Thu, 3 Feb 2022 at 08:04, Pedro Emmanuel Alvarenga Americano do Brasil
+por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+> Amigos de R,
+>
+> Saudações a todos. Gostaria de colocar um texto nas margens superior e
+> direita do gráfico de tal forma que eu consiga diferenciar duas variáveis
+> que têm as mesmas categorias. No graphics seria equivalente a função
+> mtext(). Por exemplo...
+> plot(bla bla bla)
+> mtext("Esquema inicial", side = 3)
+> mtext("Reforço", side = 4)
+>
+> Mas no ggplot não estou sabendo fazer. Alguma luz?
+> # Simulando os dados
+> x <- rbind(
+> data.frame(id = 1:20,
+>            Visita = "Visita 1",
+>            Inicial = "Vacina 1",
+>            Reforço = "Vacina 1",
+>            Titulos =  rnorm(20, 20, 5)),
+> data.frame(id = 1:20,
+>            Visita = "Visita 2",
+>            Inicial = "Vacina 1",
+>            Reforço = "Vacina 1",
+>            Titulos =  rnorm(20, 30, 5)),
+> #
+> data.frame(id = 21:40,
+>            Visita = "Visita 1",
+>            Inicial = "Vacina 2",
+>            Reforço = "Vacina 1",
+>            Titulos =  rnorm(20, 40, 5)),
+> data.frame(id = 21:40,
+>            Visita = "Visita 2",
+>            Inicial = "Vacina 2",
+>            Reforço = "Vacina 1",
+>            Titulos =  rnorm(20, 50, 5)),
+> #
+> data.frame(id = 41:60,
+>            Visita = "Visita 1",
+>            Inicial = "Vacina 1",
+>            Reforço = "Vacina 2",
+>            Titulos =  rnorm(20, 15, 5)),
+> data.frame(id = 41:60,
+>            Visita = "Visita 2",
+>            Inicial = "Vacina 1",
+>            Reforço = "Vacina 2",
+>            Titulos =  rnorm(20, 30, 5)),
+> #
+> data.frame(id = 61:80,
+>            Visita = "Visita 1",
+>            Inicial = "Vacina 2",
+>            Reforço = "Vacina 2",
+>            Titulos =  rnorm(20, 15, 5)),
+> data.frame(id = 61:80,
+>            Visita = "Visita 2",
+>            Inicial = "Vacina 2",
+>            Reforço = "Vacina 2",
+>            Titulos =  rnorm(60, 30, 5)))
+> head(x)
+> # Fazendo o grafico...
+> ggplot(x,
+>        aes(x = Visita,
+>            y = Titulos,
+>            group = id)) +
+>   geom_line(colour = "lightgreen",
+>             show.legend = FALSE) +
+>   geom_smooth(aes(group = 1),
+>               method = lm,
+>               colour = "red",
+>               na.rm = TRUE) +
+>   facet_grid(rows = vars(Inicial),
+>              cols = vars(Reforço))+
+>   theme_light() +
+>   ylab("Titulos de anticorpos") +
+>   xlab("Visitas de seguimento")
+>
+> Abraços fraternos,
+>
+> Pedro Brasil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220203/f672f6e2/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Thu Feb  3 14:41:56 2022
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Thu, 3 Feb 2022 14:41:56 -0300
+Subject: [R-br] Texto na margem do ggplot
+In-Reply-To: <CAAf2ifahdDSLw0B-k9vwM-5=R8KMxfyZNd+K8vbQXvVjeP=M5g@mail.gmail.com>
+References: <CAFfGvy+teNvNQDWQn6kW77Qvmhns_DN6wZhJZxbgazJbC4zjVg@mail.gmail.com>
+ <CAAf2ifahdDSLw0B-k9vwM-5=R8KMxfyZNd+K8vbQXvVjeP=M5g@mail.gmail.com>
+Message-ID: <CAFfGvyKwAWM34Rgyfcv8HaiQ=c4e8MMqGGgkccxdJ5YLvB8RBw@mail.gmail.com>
+
+Ei Deisy,
+
+Quase isso. Bem perto. A questão agora com o que voce mandou e com o que eu
+tentei é que os ticks e os valores do eixo nao estão na posição original.
+
+y <- x %>%
+  ggplot() +
+  aes(x = Visita,
+      y = Titulos,
+      group = id)+
+  geom_line(colour = "lightgreen",
+            show.legend = FALSE) +
+  geom_smooth(aes(group = 1),
+              method = lm,
+              colour = "red",
+              na.rm = TRUE) +
+  facet_grid(rows = vars(Inicial),
+             cols = vars(Reforço))+
+  theme_light() +
+  labs(y = "Titulos de anticorpos",
+       x = "Visitas de seguimento")
+
+y + scale_y_discrete(, position = "right") +
+    scale_x_discrete("Esquema inicial", position = "top")
+# Talvez se conseguisse duplicar o eixo aqui,  funcionaria mas não estou
+sabendo como.
+
+Pedro Brasil
+
+
+Em qui., 3 de fev. de 2022 às 13:00, Deisy Gysi por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Nao tenho certeza se entendi exatamente o que vc quer fazer...
+> Mas para colocar os titulos nas margens vc pode criar novos eixos (x e y).
+>
+> att,
+> d
+>
+> require(ggplot2)
+> require(magrittr)
+> require(dplyr)
+>
+> x <- rbind(
+>   data.frame(id = 1:20,
+>              Visita = "Visita 1",
+>              Inicial = "Vacina 1",
+>              Reforço = "Vacina 1",
+>              Titulos =  rnorm(20, 20, 5)),
+>   data.frame(id = 1:20,
+>              Visita = "Visita 2",
+>              Inicial = "Vacina 1",
+>              Reforço = "Vacina 1",
+>              Titulos =  rnorm(20, 30, 5)),
+>   #
+>   data.frame(id = 21:40,
+>              Visita = "Visita 1",
+>              Inicial = "Vacina 2",
+>              Reforço = "Vacina 1",
+>              Titulos =  rnorm(20, 40, 5)),
+>   data.frame(id = 21:40,
+>              Visita = "Visita 2",
+>              Inicial = "Vacina 2",
+>              Reforço = "Vacina 1",
+>              Titulos =  rnorm(20, 50, 5)),
+>   #
+>   data.frame(id = 41:60,
+>              Visita = "Visita 1",
+>              Inicial = "Vacina 1",
+>              Reforço = "Vacina 2",
+>              Titulos =  rnorm(20, 15, 5)),
+>   data.frame(id = 41:60,
+>              Visita = "Visita 2",
+>              Inicial = "Vacina 1",
+>              Reforço = "Vacina 2",
+>              Titulos =  rnorm(20, 30, 5)),
+>   #
+>   data.frame(id = 61:80,
+>              Visita = "Visita 1",
+>              Inicial = "Vacina 2",
+>              Reforço = "Vacina 2",
+>              Titulos =  rnorm(20, 15, 5)),
+>   data.frame(id = 61:80,
+>              Visita = "Visita 2",
+>              Inicial = "Vacina 2",
+>              Reforço = "Vacina 2",
+>              Titulos =  rnorm(60, 30, 5)))
+> head(x)
+> # Fazendo o grafico...
+> x %<>%
+>   mutate(Visita_cat = as.numeric(as.factor(Visita)))
+> x %>%
+>   ggplot() +
+>   aes(x = Visita_cat,
+>       y = Titulos,
+>       group = id)+
+>   geom_line(colour = "lightgreen",
+>             show.legend = FALSE) +
+>   geom_smooth(aes(group = 1),
+>               method = lm,
+>               colour = "red",
+>               na.rm = TRUE) +
+>   facet_grid(rows = vars(Inicial),
+>              cols = vars(Reforço))+
+>   scale_y_continuous(sec.axis = dup_axis(name = "Reforço")) +
+>   scale_x_continuous(sec.axis = dup_axis(name = "Esquema inicial")) +
+>   theme_light() +
+>   theme(axis.title.x.top = element_text())+
+>   labs(y = "Titulos de anticorpos",
+>        x = "Visitas de seguimento")
+>
+>
+> plot(as.numeric(x$Visita_cat), x$Titulos, type = "l")
+> mtext("Esquema inicial", side = 3)
+> mtext("Reforço", side = 4)
+>
+>
+> Deisy Morselli Gysi, PhD
+>
+> Associate Research Scientist
+> Center for Complex Networks Research - BarabasiLab
+> <https://www.barabasilab.com/>
+> Northeastern University, Boston, Massachusetts
+> Pronouns: She/Her/Hers
+> deisy.ccnr em gmail.com
+> https://deisygysi.github.io/
+>
+> The flower that blooms in adversity is the most rare and beautiful of all.
+> Mulan (Disney)
+>
+> Email Etiquette: Just because I e-mail at odd hours does not mean I expect
+> you to.
+>
+>
+> On Thu, 3 Feb 2022 at 08:04, Pedro Emmanuel Alvarenga Americano do Brasil
+> por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Amigos de R,
+>>
+>> Saudações a todos. Gostaria de colocar um texto nas margens superior e
+>> direita do gráfico de tal forma que eu consiga diferenciar duas variáveis
+>> que têm as mesmas categorias. No graphics seria equivalente a função
+>> mtext(). Por exemplo...
+>> plot(bla bla bla)
+>> mtext("Esquema inicial", side = 3)
+>> mtext("Reforço", side = 4)
+>>
+>> Mas no ggplot não estou sabendo fazer. Alguma luz?
+>> # Simulando os dados
+>> x <- rbind(
+>> data.frame(id = 1:20,
+>>            Visita = "Visita 1",
+>>            Inicial = "Vacina 1",
+>>            Reforço = "Vacina 1",
+>>            Titulos =  rnorm(20, 20, 5)),
+>> data.frame(id = 1:20,
+>>            Visita = "Visita 2",
+>>            Inicial = "Vacina 1",
+>>            Reforço = "Vacina 1",
+>>            Titulos =  rnorm(20, 30, 5)),
+>> #
+>> data.frame(id = 21:40,
+>>            Visita = "Visita 1",
+>>            Inicial = "Vacina 2",
+>>            Reforço = "Vacina 1",
+>>            Titulos =  rnorm(20, 40, 5)),
+>> data.frame(id = 21:40,
+>>            Visita = "Visita 2",
+>>            Inicial = "Vacina 2",
+>>            Reforço = "Vacina 1",
+>>            Titulos =  rnorm(20, 50, 5)),
+>> #
+>> data.frame(id = 41:60,
+>>            Visita = "Visita 1",
+>>            Inicial = "Vacina 1",
+>>            Reforço = "Vacina 2",
+>>            Titulos =  rnorm(20, 15, 5)),
+>> data.frame(id = 41:60,
+>>            Visita = "Visita 2",
+>>            Inicial = "Vacina 1",
+>>            Reforço = "Vacina 2",
+>>            Titulos =  rnorm(20, 30, 5)),
+>> #
+>> data.frame(id = 61:80,
+>>            Visita = "Visita 1",
+>>            Inicial = "Vacina 2",
+>>            Reforço = "Vacina 2",
+>>            Titulos =  rnorm(20, 15, 5)),
+>> data.frame(id = 61:80,
+>>            Visita = "Visita 2",
+>>            Inicial = "Vacina 2",
+>>            Reforço = "Vacina 2",
+>>            Titulos =  rnorm(60, 30, 5)))
+>> head(x)
+>> # Fazendo o grafico...
+>> ggplot(x,
+>>        aes(x = Visita,
+>>            y = Titulos,
+>>            group = id)) +
+>>   geom_line(colour = "lightgreen",
+>>             show.legend = FALSE) +
+>>   geom_smooth(aes(group = 1),
+>>               method = lm,
+>>               colour = "red",
+>>               na.rm = TRUE) +
+>>   facet_grid(rows = vars(Inicial),
+>>              cols = vars(Reforço))+
+>>   theme_light() +
+>>   ylab("Titulos de anticorpos") +
+>>   xlab("Visitas de seguimento")
+>>
+>> Abraços fraternos,
+>>
+>> Pedro Brasil
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220203/683e19a4/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Thu Feb  3 15:19:03 2022
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Thu, 3 Feb 2022 15:19:03 -0300
+Subject: [R-br] Texto na margem do ggplot
+In-Reply-To: <CAFfGvyKwAWM34Rgyfcv8HaiQ=c4e8MMqGGgkccxdJ5YLvB8RBw@mail.gmail.com>
+References: <CAFfGvy+teNvNQDWQn6kW77Qvmhns_DN6wZhJZxbgazJbC4zjVg@mail.gmail.com>
+ <CAAf2ifahdDSLw0B-k9vwM-5=R8KMxfyZNd+K8vbQXvVjeP=M5g@mail.gmail.com>
+ <CAFfGvyKwAWM34Rgyfcv8HaiQ=c4e8MMqGGgkccxdJ5YLvB8RBw@mail.gmail.com>
+Message-ID: <CAFfGvy+snt9n73UxerbnU5MryrX+u44SgWQ=uO1q3N4pVg_0jw@mail.gmail.com>
+
+Deisy,
+
+COnsegui... ficou assim...
+
+x %<>%
+  mutate(Visita_num = as.numeric(as.factor(Visita)))
+y <- x %>%
+  ggplot() +
+  aes(x = Visita_num,
+      y = Titulos,
+      group = id)+
+  geom_line(colour = "lightgreen",
+            show.legend = FALSE) +
+  geom_smooth(aes(group = 1),
+              method = lm,
+              colour = "red",
+              na.rm = TRUE) +
+  facet_grid(rows = vars(Inicial),
+             cols = vars(Reforço))+
+  theme_light() +
+  labs(y = "Titulos de anticorpos",
+       x = "Visitas de seguimento")
+y + scale_y_continuous(sec.axis = dup_axis(
+  name = "Reforço",
+  labels = NULL,
+  breaks = NULL)) +
+  scale_x_continuous(breaks = seq(1,max(y$data$Visita_num,1)),
+                     labels = paste0("Visita ",unique(y$data$Visita_num)),
+                     sec.axis = dup_axis(
+    name = "Esquema Inicial",
+    labels = NULL,
+    breaks = NULL))
+
+Pedro Brasil
+
+
+Em qui., 3 de fev. de 2022 às 14:41, Pedro Emmanuel Alvarenga Americano do
+Brasil <emmanuel.brasil em gmail.com> escreveu:
+
+> Ei Deisy,
+>
+> Quase isso. Bem perto. A questão agora com o que voce mandou e com o que
+> eu tentei é que os ticks e os valores do eixo nao estão na posição
+> original.
+>
+> y <- x %>%
+>   ggplot() +
+>   aes(x = Visita,
+>       y = Titulos,
+>       group = id)+
+>   geom_line(colour = "lightgreen",
+>             show.legend = FALSE) +
+>   geom_smooth(aes(group = 1),
+>               method = lm,
+>               colour = "red",
+>               na.rm = TRUE) +
+>   facet_grid(rows = vars(Inicial),
+>              cols = vars(Reforço))+
+>   theme_light() +
+>   labs(y = "Titulos de anticorpos",
+>        x = "Visitas de seguimento")
+>
+> y + scale_y_discrete(, position = "right") +
+>     scale_x_discrete("Esquema inicial", position = "top")
+> # Talvez se conseguisse duplicar o eixo aqui,  funcionaria mas não estou
+> sabendo como.
+>
+> Pedro Brasil
+>
+>
+> Em qui., 3 de fev. de 2022 às 13:00, Deisy Gysi por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Nao tenho certeza se entendi exatamente o que vc quer fazer...
+>> Mas para colocar os titulos nas margens vc pode criar novos eixos (x e
+>> y).
+>>
+>> att,
+>> d
+>>
+>> require(ggplot2)
+>> require(magrittr)
+>> require(dplyr)
+>>
+>> x <- rbind(
+>>   data.frame(id = 1:20,
+>>              Visita = "Visita 1",
+>>              Inicial = "Vacina 1",
+>>              Reforço = "Vacina 1",
+>>              Titulos =  rnorm(20, 20, 5)),
+>>   data.frame(id = 1:20,
+>>              Visita = "Visita 2",
+>>              Inicial = "Vacina 1",
+>>              Reforço = "Vacina 1",
+>>              Titulos =  rnorm(20, 30, 5)),
+>>   #
+>>   data.frame(id = 21:40,
+>>              Visita = "Visita 1",
+>>              Inicial = "Vacina 2",
+>>              Reforço = "Vacina 1",
+>>              Titulos =  rnorm(20, 40, 5)),
+>>   data.frame(id = 21:40,
+>>              Visita = "Visita 2",
+>>              Inicial = "Vacina 2",
+>>              Reforço = "Vacina 1",
+>>              Titulos =  rnorm(20, 50, 5)),
+>>   #
+>>   data.frame(id = 41:60,
+>>              Visita = "Visita 1",
+>>              Inicial = "Vacina 1",
+>>              Reforço = "Vacina 2",
+>>              Titulos =  rnorm(20, 15, 5)),
+>>   data.frame(id = 41:60,
+>>              Visita = "Visita 2",
+>>              Inicial = "Vacina 1",
+>>              Reforço = "Vacina 2",
+>>              Titulos =  rnorm(20, 30, 5)),
+>>   #
+>>   data.frame(id = 61:80,
+>>              Visita = "Visita 1",
+>>              Inicial = "Vacina 2",
+>>              Reforço = "Vacina 2",
+>>              Titulos =  rnorm(20, 15, 5)),
+>>   data.frame(id = 61:80,
+>>              Visita = "Visita 2",
+>>              Inicial = "Vacina 2",
+>>              Reforço = "Vacina 2",
+>>              Titulos =  rnorm(60, 30, 5)))
+>> head(x)
+>> # Fazendo o grafico...
+>> x %<>%
+>>   mutate(Visita_cat = as.numeric(as.factor(Visita)))
+>> x %>%
+>>   ggplot() +
+>>   aes(x = Visita_cat,
+>>       y = Titulos,
+>>       group = id)+
+>>   geom_line(colour = "lightgreen",
+>>             show.legend = FALSE) +
+>>   geom_smooth(aes(group = 1),
+>>               method = lm,
+>>               colour = "red",
+>>               na.rm = TRUE) +
+>>   facet_grid(rows = vars(Inicial),
+>>              cols = vars(Reforço))+
+>>   scale_y_continuous(sec.axis = dup_axis(name = "Reforço")) +
+>>   scale_x_continuous(sec.axis = dup_axis(name = "Esquema inicial")) +
+>>   theme_light() +
+>>   theme(axis.title.x.top = element_text())+
+>>   labs(y = "Titulos de anticorpos",
+>>        x = "Visitas de seguimento")
+>>
+>>
+>> plot(as.numeric(x$Visita_cat), x$Titulos, type = "l")
+>> mtext("Esquema inicial", side = 3)
+>> mtext("Reforço", side = 4)
+>>
+>>
+>> Deisy Morselli Gysi, PhD
+>>
+>> Associate Research Scientist
+>> Center for Complex Networks Research - BarabasiLab
+>> <https://www.barabasilab.com/>
+>> Northeastern University, Boston, Massachusetts
+>> Pronouns: She/Her/Hers
+>> deisy.ccnr em gmail.com
+>> https://deisygysi.github.io/
+>>
+>> The flower that blooms in adversity is the most rare and beautiful of
+>> all. Mulan (Disney)
+>>
+>> Email Etiquette: Just because I e-mail at odd hours does not mean I
+>> expect you to.
+>>
+>>
+>> On Thu, 3 Feb 2022 at 08:04, Pedro Emmanuel Alvarenga Americano do Brasil
+>> por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Amigos de R,
+>>>
+>>> Saudações a todos. Gostaria de colocar um texto nas margens superior e
+>>> direita do gráfico de tal forma que eu consiga diferenciar duas variáveis
+>>> que têm as mesmas categorias. No graphics seria equivalente a função
+>>> mtext(). Por exemplo...
+>>> plot(bla bla bla)
+>>> mtext("Esquema inicial", side = 3)
+>>> mtext("Reforço", side = 4)
+>>>
+>>> Mas no ggplot não estou sabendo fazer. Alguma luz?
+>>> # Simulando os dados
+>>> x <- rbind(
+>>> data.frame(id = 1:20,
+>>>            Visita = "Visita 1",
+>>>            Inicial = "Vacina 1",
+>>>            Reforço = "Vacina 1",
+>>>            Titulos =  rnorm(20, 20, 5)),
+>>> data.frame(id = 1:20,
+>>>            Visita = "Visita 2",
+>>>            Inicial = "Vacina 1",
+>>>            Reforço = "Vacina 1",
+>>>            Titulos =  rnorm(20, 30, 5)),
+>>> #
+>>> data.frame(id = 21:40,
+>>>            Visita = "Visita 1",
+>>>            Inicial = "Vacina 2",
+>>>            Reforço = "Vacina 1",
+>>>            Titulos =  rnorm(20, 40, 5)),
+>>> data.frame(id = 21:40,
+>>>            Visita = "Visita 2",
+>>>            Inicial = "Vacina 2",
+>>>            Reforço = "Vacina 1",
+>>>            Titulos =  rnorm(20, 50, 5)),
+>>> #
+>>> data.frame(id = 41:60,
+>>>            Visita = "Visita 1",
+>>>            Inicial = "Vacina 1",
+>>>            Reforço = "Vacina 2",
+>>>            Titulos =  rnorm(20, 15, 5)),
+>>> data.frame(id = 41:60,
+>>>            Visita = "Visita 2",
+>>>            Inicial = "Vacina 1",
+>>>            Reforço = "Vacina 2",
+>>>            Titulos =  rnorm(20, 30, 5)),
+>>> #
+>>> data.frame(id = 61:80,
+>>>            Visita = "Visita 1",
+>>>            Inicial = "Vacina 2",
+>>>            Reforço = "Vacina 2",
+>>>            Titulos =  rnorm(20, 15, 5)),
+>>> data.frame(id = 61:80,
+>>>            Visita = "Visita 2",
+>>>            Inicial = "Vacina 2",
+>>>            Reforço = "Vacina 2",
+>>>            Titulos =  rnorm(60, 30, 5)))
+>>> head(x)
+>>> # Fazendo o grafico...
+>>> ggplot(x,
+>>>        aes(x = Visita,
+>>>            y = Titulos,
+>>>            group = id)) +
+>>>   geom_line(colour = "lightgreen",
+>>>             show.legend = FALSE) +
+>>>   geom_smooth(aes(group = 1),
+>>>               method = lm,
+>>>               colour = "red",
+>>>               na.rm = TRUE) +
+>>>   facet_grid(rows = vars(Inicial),
+>>>              cols = vars(Reforço))+
+>>>   theme_light() +
+>>>   ylab("Titulos de anticorpos") +
+>>>   xlab("Visitas de seguimento")
+>>>
+>>> Abraços fraternos,
+>>>
+>>> Pedro Brasil
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220203/207cf429/attachment.htm>
+
+From agrohelder em gmail.com  Wed Feb  9 15:06:58 2022
+From: agrohelder em gmail.com (Helder Gramacho)
+Date: Wed, 9 Feb 2022 15:06:58 -0300
+Subject: [R-br] =?utf-8?q?Problema_de_reconhecimento_de_proje=C3=A7=C3=B5?=
+ =?utf-8?q?es_no_RGDAL?=
+Message-ID: <CAM0Q+6hD4-gOyEWY9GOvLYuXzt7+MAD1riUokBFKF5gKy8vGBg@mail.gmail.com>
+
+Boa tarde pessoal,
+
+Estou tendo problemas em reconhecer o sistema de coordenadas de imagens de
+satélite no R, provavelmente devido a algum problema com o rgdal, quando
+executo o comando crs aparece o seguinte erro:
+
+crs(imagem_de_satelite)
+
+Coordinate Reference System:
+Deprecated Proj.4 representation: NA
+Warning message:
+In wkt(x) : CRS object has no comment
+
+Alguém já teve este problema e conseguiu resolver?
+
+Desde já agradeço,
+
+*Hélder G. dos Santos*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220209/474ca7f1/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Mon Feb 14 13:49:57 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Mon, 14 Feb 2022 16:49:57 +0000 (UTC)
+Subject: [R-br] =?utf-8?b?RMO6dmlkYSBsw7NnaWNhIGRvIGPDs2RpZ28gUi4=?=
+References: <680147435.862852.1644857397047.ref@mail.yahoo.com>
+Message-ID: <680147435.862852.1644857397047@mail.yahoo.com>
+
+Boa tarde a todos!!! Dúvida boba, mas tenho de explicar antes: estou fazendo uma análise de cluster, para poder identificar resultados iguais de laboratórios analíticos. O resultado foi um banco parecido com esse reproduzível:
+library(dplyr)
+x01<-c(8.49,8.62,8.63,8.49,8.44,2)
+x02<-c(9.18,9.21,9.15,8.86,9.36,3)x03<-c(8.49,8.62,8.63,8.49,8.44,2)x04<-c(9.74,9.69,9.81,9.25,9.98,3)x05<-c(9.74,9.69,9.81,9.25,9.98,3)x06<-c(8.15,9.52,9.89,9.95,8.33,2)x07<-c(8.32,8.73,9.60,9.04,9.97,3)x08<-c(7.42,7.01,7.31,7.20,7.61,1)x09<-c(9.79,8.76,9.68,8.31,9.37,3)x10<-c(7.42,7.01,7.31,7.20,7.61,1)
+dados<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09,x10))
+names(dados)<-c("v1","v2","v3","v4","v5","Cluster")
+Para facilitar essa identificação, ordenei os resultados por cluster, pelos dados das variáveis, e então calculei a média em cada linha:
+dados<-dados %>% arrange(Cluster, v1,v2,v3,v4,v5) 
+for (i in (1:nrow(dados))){dados$Média[i]<-mean(dados$v1[i],dados$v2[i],dados$v3[i],dados$v4[i],dados$v5[i],na.rm = TRUE)}
+MEU PROBLEMA: para finalmente identificar os resultados iguais, eu apliquei esse código abaixo, onde em resumo, se o cluster for igual e a média do resultado do laboratório da linha i for igual a média do resultado do laboratório da linha i+1, então ambos os laboratórios responderam resultados iguais. Apliquei o código abaixo, e ele está resultando em erro: 
+i=1for (i in (1:nrow(dados))){if ((dados$Cluster[i]==dados$Cluster[i+1]) & (dados$Média[i]==dados$Média[i+1])){dados$sit[i] == "Resultado Igual"dados$sit[i+1] == "Resultado Igual"}else {}i=i+1}
+Alguém poderia dizer qual o meu erro? Ou se faltou algo no código?
+Muito agradecido pela atenção, e desculpa a extensão!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220214/1593455d/attachment.htm>
+
+From marcus.nunes em gmail.com  Mon Feb 14 14:11:59 2022
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Mon, 14 Feb 2022 14:11:59 -0300
+Subject: [R-br] =?utf-8?b?RMO6dmlkYSBsw7NnaWNhIGRvIGPDs2RpZ28gUi4=?=
+In-Reply-To: <680147435.862852.1644857397047@mail.yahoo.com>
+References: <680147435.862852.1644857397047.ref@mail.yahoo.com>
+ <680147435.862852.1644857397047@mail.yahoo.com>
+Message-ID: <CA+QGQvsE55QnmUR1whDB01po4+dqfDrw0r+GV5Qi+iNtURsreg@mail.gmail.com>
+
+O código a seguir tem comentários sobre o que está incorreto. Ao final, eu
+posto o código que funciona.
+
+# Código antigo
+
+  i=1 # o laço `for` atualiza automaticamente o contador `i`, criando cada
+um dos seus valores. portanto, essa linha é redundante.
+for (i in (1:nrow(dados))){ # o ideal é fazer `i` variar até
+`nrow(dados)-1`, pois `i+1`quando `i=10` extrapola o tamanho do data frame
+  if ((dados$Cluster[i]==dados$Cluster[i+1]) &
+(dados$Média[i]==dados$Média[i+1])){
+    dados$sit[i] == "Resultado Igual"
+    dados$sit[i+1] == "Resultado Igual"} # em nenhum local se define onde
+entra o "Resultado Diferente"
+  else { # desnecessário
+  }
+  i=i+1 # linha redundante
+}
+
+# Código que funciona
+
+dados$sit <- "Resultado Diferente" # inicializa a coluna `sit` inteira como
+`Resultado Diferente`
+
+for (i in (1:(nrow(dados)-1))){
+  if ((dados$Cluster[i]==dados$Cluster[i+1]) &
+(dados$Média[i]==dados$Média[i+1])){
+    dados$sit[i] <- "Resultado Igual" # substitui apenas as posições de
+`sit` nas quais há resultado igual, de acordo com a condicional acima
+    dados$sit[i+1] <- "Resultado Igual"
+    }
+}
+
+Não cheguei a testar minha sugestão em casos com 3 ou mais laboratórios
+iguais, então não saberia te dizer se a minha solução é universal.
+--
+Marcus Nunes
+Professor Adjunto
+https://marcusnunes.me/
+Universidade Federal do Rio Grande do Norte
+Departamento de Estatística
+Laboratório de Estatística Aplicada - http://lea.estatistica.ccet.ufrn.br
+Curso de Big Data - https://introbigdata.org
+Aplicações em Shiny - http://shiny.estatistica.ccet.ufrn.br
+
+
+On Mon, Feb 14, 2022 at 1:50 PM Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde a todos!!! Dúvida boba, mas tenho de explicar antes: estou
+> fazendo uma análise de cluster, para poder identificar resultados iguais de
+> laboratórios analíticos. O resultado foi um banco parecido com esse
+> reproduzível:
+>
+> library(dplyr)
+>
+> x01<-c(8.49,8.62,8.63,8.49,8.44,2)
+> x02<-c(9.18,9.21,9.15,8.86,9.36,3)
+> x03<-c(8.49,8.62,8.63,8.49,8.44,2)
+> x04<-c(9.74,9.69,9.81,9.25,9.98,3)
+> x05<-c(9.74,9.69,9.81,9.25,9.98,3)
+> x06<-c(8.15,9.52,9.89,9.95,8.33,2)
+> x07<-c(8.32,8.73,9.60,9.04,9.97,3)
+> x08<-c(7.42,7.01,7.31,7.20,7.61,1)
+> x09<-c(9.79,8.76,9.68,8.31,9.37,3)
+> x10<-c(7.42,7.01,7.31,7.20,7.61,1)
+>
+> dados<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09,x10))
+> names(dados)<-c("v1","v2","v3","v4","v5","Cluster")
+>
+> Para facilitar essa identificação, ordenei os resultados por cluster,
+> pelos dados das variáveis, e então calculei a média em cada linha:
+>
+> dados<-dados %>%
+> arrange(Cluster, v1,v2,v3,v4,v5)
+>
+> for (i in (1:nrow(dados))){
+> dados$Média[i]<-mean(dados$v1[i],dados$v2[i],dados$v3[i],dados$v4[i],dados$v5[i],na.rm
+> = TRUE)
+> }
+>
+> *MEU PROBLEMA:* para finalmente identificar os resultados iguais, eu
+> apliquei esse código abaixo, onde em resumo, se o cluster for igual e a
+> média do resultado do laboratório da *linha i* for igual a média do
+> resultado do laboratório da *linha i+1*, então ambos os laboratórios
+> responderam resultados iguais. Apliquei o código abaixo, e ele está
+> resultando em erro:
+>
+> i=1
+> for (i in (1:nrow(dados))){
+> if ((dados$Cluster[i]==dados$Cluster[i+1]) &
+> (dados$Média[i]==dados$Média[i+1])){
+> dados$sit[i] == "Resultado Igual"
+> dados$sit[i+1] == "Resultado Igual"}
+> else {
+> }
+> i=i+1
+> }
+>
+> Alguém poderia dizer qual o meu erro? Ou se faltou algo no código?
+>
+> Muito agradecido pela atenção, e desculpa a extensão!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220214/7cdee87f/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Mon Feb 14 14:26:43 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Mon, 14 Feb 2022 17:26:43 +0000 (UTC)
+Subject: [R-br] =?utf-8?b?RMO6dmlkYSBsw7NnaWNhIGRvIGPDs2RpZ28gUi4=?=
+In-Reply-To: <CA+QGQvsE55QnmUR1whDB01po4+dqfDrw0r+GV5Qi+iNtURsreg@mail.gmail.com>
+References: <680147435.862852.1644857397047.ref@mail.yahoo.com>
+ <680147435.862852.1644857397047@mail.yahoo.com>
+ <CA+QGQvsE55QnmUR1whDB01po4+dqfDrw0r+GV5Qi+iNtURsreg@mail.gmail.com>
+Message-ID: <1812167616.872132.1644859603091@mail.yahoo.com>
+
+Prezado professor Marcus, obrigado!!!
+
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520 
+    Em segunda-feira, 14 de fevereiro de 2022 14:12:13 BRT, Marcus Nunes <marcus.nunes em gmail.com> escreveu:  
+ 
+ O código a seguir tem comentários sobre o que está incorreto. Ao final, eu posto o código que funciona.
+
+# Código antigo
+
+  i=1 # o laço `for` atualiza automaticamente o contador `i`, criando cada um dos seus valores. portanto, essa linha é redundante.
+for (i in (1:nrow(dados))){ # o ideal é fazer `i` variar até `nrow(dados)-1`, pois `i+1`quando `i=10` extrapola o tamanho do data frame
+  if ((dados$Cluster[i]==dados$Cluster[i+1]) & (dados$Média[i]==dados$Média[i+1])){
+    dados$sit[i] == "Resultado Igual"
+    dados$sit[i+1] == "Resultado Igual"} # em nenhum local se define onde entra o "Resultado Diferente"
+  else { # desnecessário
+  }
+  i=i+1 # linha redundante
+}
+# Código que funciona
+dados$sit <- "Resultado Diferente" # inicializa a coluna `sit` inteira como `Resultado Diferente`
+
+for (i in (1:(nrow(dados)-1))){
+  if ((dados$Cluster[i]==dados$Cluster[i+1]) & (dados$Média[i]==dados$Média[i+1])){
+    dados$sit[i] <- "Resultado Igual" # substitui apenas as posições de `sit` nas quais há resultado igual, de acordo com a condicional acima
+    dados$sit[i+1] <- "Resultado Igual" 
+    }
+}
+Não cheguei a testar minha sugestão em casos com 3 ou mais laboratórios iguais, então não saberia te dizer se a minha solução é universal.
+--Marcus NunesProfessor Adjuntohttps://marcusnunes.me/Universidade Federal do Rio Grande do NorteDepartamento de EstatísticaLaboratório de Estatística Aplicada - http://lea.estatistica.ccet.ufrn.brCurso de Big Data - https://introbigdata.org
+Aplicações em Shiny - http://shiny.estatistica.ccet.ufrn.br
+
+On Mon, Feb 14, 2022 at 1:50 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+Boa tarde a todos!!! Dúvida boba, mas tenho de explicar antes: estou fazendo uma análise de cluster, para poder identificar resultados iguais de laboratórios analíticos. O resultado foi um banco parecido com esse reproduzível:
+library(dplyr)
+x01<-c(8.49,8.62,8.63,8.49,8.44,2)
+x02<-c(9.18,9.21,9.15,8.86,9.36,3)x03<-c(8.49,8.62,8.63,8.49,8.44,2)x04<-c(9.74,9.69,9.81,9.25,9.98,3)x05<-c(9.74,9.69,9.81,9.25,9.98,3)x06<-c(8.15,9.52,9.89,9.95,8.33,2)x07<-c(8.32,8.73,9.60,9.04,9.97,3)x08<-c(7.42,7.01,7.31,7.20,7.61,1)x09<-c(9.79,8.76,9.68,8.31,9.37,3)x10<-c(7.42,7.01,7.31,7.20,7.61,1)
+dados<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09,x10))
+names(dados)<-c("v1","v2","v3","v4","v5","Cluster")
+Para facilitar essa identificação, ordenei os resultados por cluster, pelos dados das variáveis, e então calculei a média em cada linha:
+dados<-dados %>% arrange(Cluster, v1,v2,v3,v4,v5) 
+for (i in (1:nrow(dados))){dados$Média[i]<-mean(dados$v1[i],dados$v2[i],dados$v3[i],dados$v4[i],dados$v5[i],na.rm = TRUE)}
+MEU PROBLEMA: para finalmente identificar os resultados iguais, eu apliquei esse código abaixo, onde em resumo, se o cluster for igual e a média do resultado do laboratório da linha i for igual a média do resultado do laboratório da linha i+1, então ambos os laboratórios responderam resultados iguais. Apliquei o código abaixo, e ele está resultando em erro: 
+i=1for (i in (1:nrow(dados))){if ((dados$Cluster[i]==dados$Cluster[i+1]) & (dados$Média[i]==dados$Média[i+1])){dados$sit[i] == "Resultado Igual"dados$sit[i+1] == "Resultado Igual"}else {}i=i+1}
+Alguém poderia dizer qual o meu erro? Ou se faltou algo no código?
+Muito agradecido pela atenção, e desculpa a extensão!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520
+
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220214/d7465d01/attachment.htm>
+
+From smp10bmc em gmail.com  Mon Feb 14 16:58:40 2022
+From: smp10bmc em gmail.com (Sergio Pinto)
+Date: Mon, 14 Feb 2022 16:58:40 -0300
+Subject: [R-br] Contagem de fatores
+Message-ID: <CALkxgdwJvFXE=kaOXiQXDcrQCHQVN2xy9g5n2RsxrbUnjag5uA@mail.gmail.com>
+
+ Prezados
+Tenho um data-frame (dfp21) com duas variáveis, a primeira variável,
+chamada Deficiências, é categórica com sete níveis ('TEA', 'SCe', 'NE',
+'DV', 'DF', 'DA/S', 'AH/S') a segunda, chamada p21, também é categórica com
+dois níveis ("8" e "9").
+ Coloquei os dados em anexo. Não consegui usar o DATAFILEHOST.
+
+> dfp21
+# A tibble: 127 × 2
+   p21   DEFICIÊNCIAS
+   <fct> <fct>
+ 1 9     TEA
+ 2 9     TEA
+ 3 8     TEA
+ 4 9     TEA
+ 5 9     TEA
+ 6 9     TEA
+ 7 9     TEA
+ 8 9     TEA
+ 9 9     TEA
+10 9     TEA
+# ? with 117 more rows
+
+
+
+*A dúvida:* como criar uma nova coluna com a contagem  da segunda variável
+em cada nível da primeira?
+ex: TEA 8 20
+    TEA 9 13
+    NE  8 17
+    NE  9 15 ...
+Estou tentando usar o dplyr para isso.
+Desde já agradeço a atenção.
+
+-- 
+
+*_______________________________________*
+
+*Prof. Dr. SERGIO MEDEIROS PINTO*
+LABICOM/IEFD-UERJ
+FAMERC-RJ
+UNESA-RJ
+http://lattes.cnpq.br/5897044784217523
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220214/e5371f77/attachment.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: dfp21.xlsx
+Tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Tamanho: 6206 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220214/e5371f77/attachment.xlsx>
+
+From nandodesouza em gmail.com  Mon Feb 14 17:13:37 2022
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Mon, 14 Feb 2022 17:13:37 -0300
+Subject: [R-br] Contagem de fatores
+In-Reply-To: <CALkxgdwJvFXE=kaOXiQXDcrQCHQVN2xy9g5n2RsxrbUnjag5uA@mail.gmail.com>
+References: <CALkxgdwJvFXE=kaOXiQXDcrQCHQVN2xy9g5n2RsxrbUnjag5uA@mail.gmail.com>
+Message-ID: <5FCF0F0C-B398-482E-980B-FF4775D4BF3A@getmailspring.com>
+
+Seria isso?
+
+library(dplyr)
+dfp21?<-structure(list(p21 = structure(c(2L, 2L, 1L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+1L, 2L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L), .Label = c("8", "9"), class = "factor"),
+deficiencias = structure(c(7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L,
+7L, 7L, 7L, 7L, 7L, 7L, 7L, 6L, 5L, 5L, 5L, 5L, 5L, 5L, 5L,
+5L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+4L, 4L, 4L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L), .Label = c("AH/S",
+"DA/S", "DF", "DV", "NE", "SCe", "TEA"), class = "factor")), class = "data.frame", row.names = c(NA,
+-127L))
+
+dfp21%>%group_by(deficiencias,p21)%>%summarize(Contagem = length(p21) )
+
+On Feb 14 2022, at 4:58 pm, Sergio Pinto por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Prezados
+> Tenho um data-frame (dfp21) com duas variáveis, a primeira variável, chamada Deficiências, é categórica com sete níveis ('TEA', 'SCe', 'NE', 'DV', 'DF', 'DA/S', 'AH/S') a segunda, chamada p21, também é categórica com dois níveis ("8" e "9").
+> Coloquei os dados em anexo. Não consegui usar o DATAFILEHOST.
+>
+>
+> > dfp21
+> # A tibble: 127 × 2
+> p21 DEFICIÊNCIAS
+> <fct> <fct>
+>
+> 1 9 TEA
+>
+> 2 9 TEA
+>
+> 3 8 TEA
+>
+> 4 9 TEA
+>
+> 5 9 TEA
+>
+> 6 9 TEA
+>
+> 7 9 TEA
+>
+> 8 9 TEA
+>
+> 9 9 TEA
+>
+> 10 9 TEA
+>
+> # ? with 117 more rows
+>
+>
+>
+> A dúvida: como criar uma nova coluna com a contagem da segunda variável em cada nível da primeira?
+> ex: TEA 8 20
+> TEA 9 13
+>
+> NE 8 17
+> NE 9 15 ...
+> Estou tentando usar o dplyr para isso.
+>
+> Desde já agradeço a atenção.
+>
+>
+> --
+> _______________________________________
+>
+> Prof. Dr. SERGIO MEDEIROS PINTO
+>
+> LABICOM/IEFD-UERJ
+> FAMERC-RJ
+> UNESA-RJ
+>
+> http://lattes.cnpq.br/5897044784217523 (https://link.getmailspring.com/link/5FCF0F0C-B398-482E-980B-FF4775D4BF3A em getmailspring.com/0?redirect=http%3A%2F%2Flattes.cnpq.br%2F5897044784217523&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+>
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220214/2dc8e89a/attachment.htm>
+
+From cesar.rabak em gmail.com  Mon Feb 14 17:21:52 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 14 Feb 2022 17:21:52 -0300
+Subject: [R-br] =?utf-8?b?RMO6dmlkYSBsw7NnaWNhIGRvIGPDs2RpZ28gUi4=?=
+In-Reply-To: <1812167616.872132.1644859603091@mail.yahoo.com>
+References: <680147435.862852.1644857397047.ref@mail.yahoo.com>
+ <680147435.862852.1644857397047@mail.yahoo.com>
+ <CA+QGQvsE55QnmUR1whDB01po4+dqfDrw0r+GV5Qi+iNtURsreg@mail.gmail.com>
+ <1812167616.872132.1644859603091@mail.yahoo.com>
+Message-ID: <CAKrF98=CVwDvwj+bzo-tWGy7K=unqZG2FTUshFL_7wZgLEJ0wg@mail.gmail.com>
+
+Diogo,
+
+Como vc já resolveu o prob principal, faço apenas uma sugestãozinha:
+
+Este código parece-me estar *pedindo* para ser otimizado pelo uso da função
+rowMeans().
+
+for (i in (1:nrow(dados))){
+dados$Média[i]<-mean(dados$v1[i],dados$v2[i],dados$v3[i],dados$v4[i],dados$v5[i],na.rm
+= TRUE)
+}
+
+Não testei, mas ficaria desta forma no seu exemplo:
+
+dados$Média <- rowMeans(dados, na.rm=TRUE)
+
+HTH
+--
+Cesar Rabak
+
+
+On Mon, Feb 14, 2022 at 2:26 PM Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezado professor Marcus, obrigado!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+>
+> Em segunda-feira, 14 de fevereiro de 2022 14:12:13 BRT, Marcus Nunes <
+> marcus.nunes em gmail.com> escreveu:
+>
+>
+> O código a seguir tem comentários sobre o que está incorreto. Ao final, eu
+> posto o código que funciona.
+>
+> # Código antigo
+>
+>   i=1 # o laço `for` atualiza automaticamente o contador `i`, criando cada
+> um dos seus valores. portanto, essa linha é redundante.
+> for (i in (1:nrow(dados))){ # o ideal é fazer `i` variar até
+> `nrow(dados)-1`, pois `i+1`quando `i=10` extrapola o tamanho do data frame
+>   if ((dados$Cluster[i]==dados$Cluster[i+1]) &
+> (dados$Média[i]==dados$Média[i+1])){
+>     dados$sit[i] == "Resultado Igual"
+>     dados$sit[i+1] == "Resultado Igual"} # em nenhum local se define onde
+> entra o "Resultado Diferente"
+>   else { # desnecessário
+>   }
+>   i=i+1 # linha redundante
+> }
+>
+> # Código que funciona
+>
+> dados$sit <- "Resultado Diferente" # inicializa a coluna `sit` inteira
+> como `Resultado Diferente`
+>
+> for (i in (1:(nrow(dados)-1))){
+>   if ((dados$Cluster[i]==dados$Cluster[i+1]) &
+> (dados$Média[i]==dados$Média[i+1])){
+>     dados$sit[i] <- "Resultado Igual" # substitui apenas as posições de
+> `sit` nas quais há resultado igual, de acordo com a condicional acima
+>     dados$sit[i+1] <- "Resultado Igual"
+>     }
+> }
+>
+> Não cheguei a testar minha sugestão em casos com 3 ou mais laboratórios
+> iguais, então não saberia te dizer se a minha solução é universal.
+> --
+> Marcus Nunes
+> Professor Adjunto
+> https://marcusnunes.me/
+> Universidade Federal do Rio Grande do Norte
+> Departamento de Estatística
+> Laboratório de Estatística Aplicada - http://lea.estatistica.ccet.ufrn.br
+> Curso de Big Data - https://introbigdata.org
+> Aplicações em Shiny - http://shiny.estatistica.ccet.ufrn.br
+>
+>
+> On Mon, Feb 14, 2022 at 1:50 PM Diogo Jerônimo por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Boa tarde a todos!!! Dúvida boba, mas tenho de explicar antes: estou
+> fazendo uma análise de cluster, para poder identificar resultados iguais de
+> laboratórios analíticos. O resultado foi um banco parecido com esse
+> reproduzível:
+>
+> library(dplyr)
+>
+> x01<-c(8.49,8.62,8.63,8.49,8.44,2)
+> x02<-c(9.18,9.21,9.15,8.86,9.36,3)
+> x03<-c(8.49,8.62,8.63,8.49,8.44,2)
+> x04<-c(9.74,9.69,9.81,9.25,9.98,3)
+> x05<-c(9.74,9.69,9.81,9.25,9.98,3)
+> x06<-c(8.15,9.52,9.89,9.95,8.33,2)
+> x07<-c(8.32,8.73,9.60,9.04,9.97,3)
+> x08<-c(7.42,7.01,7.31,7.20,7.61,1)
+> x09<-c(9.79,8.76,9.68,8.31,9.37,3)
+> x10<-c(7.42,7.01,7.31,7.20,7.61,1)
+>
+> dados<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09,x10))
+> names(dados)<-c("v1","v2","v3","v4","v5","Cluster")
+>
+> Para facilitar essa identificação, ordenei os resultados por cluster,
+> pelos dados das variáveis, e então calculei a média em cada linha:
+>
+> dados<-dados %>%
+> arrange(Cluster, v1,v2,v3,v4,v5)
+>
+> for (i in (1:nrow(dados))){
+> dados$Média[i]<-mean(dados$v1[i],dados$v2[i],dados$v3[i],dados$v4[i],dados$v5[i],na.rm
+> = TRUE)
+> }
+>
+> *MEU PROBLEMA:* para finalmente identificar os resultados iguais, eu
+> apliquei esse código abaixo, onde em resumo, se o cluster for igual e a
+> média do resultado do laboratório da *linha i* for igual a média do
+> resultado do laboratório da *linha i+1*, então ambos os laboratórios
+> responderam resultados iguais. Apliquei o código abaixo, e ele está
+> resultando em erro:
+>
+> i=1
+> for (i in (1:nrow(dados))){
+> if ((dados$Cluster[i]==dados$Cluster[i+1]) &
+> (dados$Média[i]==dados$Média[i+1])){
+> dados$sit[i] == "Resultado Igual"
+> dados$sit[i+1] == "Resultado Igual"}
+> else {
+> }
+> i=i+1
+> }
+>
+> Alguém poderia dizer qual o meu erro? Ou se faltou algo no código?
+>
+> Muito agradecido pela atenção, e desculpa a extensão!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220214/7e28ea7c/attachment.htm>
+
+From dtiezzi em usp.br  Mon Feb 14 18:53:36 2022
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Mon, 14 Feb 2022 18:53:36 -0300
+Subject: [R-br] Contagem de fatores
+In-Reply-To: <CALkxgdwJvFXE=kaOXiQXDcrQCHQVN2xy9g5n2RsxrbUnjag5uA@mail.gmail.com>
+References: <CALkxgdwJvFXE=kaOXiQXDcrQCHQVN2xy9g5n2RsxrbUnjag5uA@mail.gmail.com>
+Message-ID: <CA+RL3DONEbH0QAh0nRKWW2j1np+dbHj6pjAgn6+SP7JU1Z+bbA@mail.gmail.com>
+
+A função table() faz isso
+
+On Mon, Feb 14, 2022, 4:59 PM Sergio Pinto por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+>  Prezados
+> Tenho um data-frame (dfp21) com duas variáveis, a primeira variável,
+> chamada Deficiências, é categórica com sete níveis ('TEA', 'SCe', 'NE',
+> 'DV', 'DF', 'DA/S', 'AH/S') a segunda, chamada p21, também é categórica com
+> dois níveis ("8" e "9").
+>  Coloquei os dados em anexo. Não consegui usar o DATAFILEHOST.
+>
+> > dfp21
+> # A tibble: 127 × 2
+>    p21   DEFICIÊNCIAS
+>    <fct> <fct>
+>  1 9     TEA
+>  2 9     TEA
+>  3 8     TEA
+>  4 9     TEA
+>  5 9     TEA
+>  6 9     TEA
+>  7 9     TEA
+>  8 9     TEA
+>  9 9     TEA
+> 10 9     TEA
+> # ? with 117 more rows
+>
+>
+>
+> *A dúvida:* como criar uma nova coluna com a contagem  da segunda
+> variável em cada nível da primeira?
+> ex: TEA 8 20
+>     TEA 9 13
+>     NE  8 17
+>     NE  9 15 ...
+> Estou tentando usar o dplyr para isso.
+> Desde já agradeço a atenção.
+>
+> --
+>
+> *_______________________________________*
+>
+> *Prof. Dr. SERGIO MEDEIROS PINTO*
+> LABICOM/IEFD-UERJ
+> FAMERC-RJ
+> UNESA-RJ
+> http://lattes.cnpq.br/5897044784217523
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220214/10292aaf/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Tue Feb 15 07:19:03 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Tue, 15 Feb 2022 10:19:03 +0000 (UTC)
+Subject: [R-br] =?utf-8?b?RMO6dmlkYSBsw7NnaWNhIGRvIGPDs2RpZ28gUi4=?=
+In-Reply-To: <CAKrF98=CVwDvwj+bzo-tWGy7K=unqZG2FTUshFL_7wZgLEJ0wg@mail.gmail.com>
+References: <680147435.862852.1644857397047.ref@mail.yahoo.com>
+ <680147435.862852.1644857397047@mail.yahoo.com>
+ <CA+QGQvsE55QnmUR1whDB01po4+dqfDrw0r+GV5Qi+iNtURsreg@mail.gmail.com>
+ <1812167616.872132.1644859603091@mail.yahoo.com>
+ <CAKrF98=CVwDvwj+bzo-tWGy7K=unqZG2FTUshFL_7wZgLEJ0wg@mail.gmail.com>
+Message-ID: <170470540.1024994.1644920343275@mail.yahoo.com>
+
+Professor César, igualmente obrigado!!! E você está absolutamente certo, antes de otimizar, descobri que o código precisava ser corrigido (vi que o resultado nessa sequência não era o que eu esperava!!!). Tive outra ideia para resolver, mas a sua é ainda mais funcional, vou testar!!!
+Muito obrigado!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520 
+
+    Em segunda-feira, 14 de fevereiro de 2022 17:21:57 BRT, Cesar Rabak <cesar.rabak em gmail.com> escreveu:  
+ 
+ Diogo,
+Como vc já resolveu o prob principal, faço apenas uma sugestãozinha:
+
+Este código parece-me estar pedindo para ser otimizado pelo uso da função rowMeans().
+for (i in (1:nrow(dados))){dados$Média[i]<-mean(dados$v1[i],dados$v2[i],dados$v3[i],dados$v4[i],dados$v5[i],na.rm = TRUE)}
+Não testei, mas ficaria desta forma no seu exemplo:
+
+dados$Média <- rowMeans(dados, na.rm=TRUE)
+HTH--Cesar Rabak
+
+On Mon, Feb 14, 2022 at 2:26 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+Prezado professor Marcus, obrigado!!!
+
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520 
+    Em segunda-feira, 14 de fevereiro de 2022 14:12:13 BRT, Marcus Nunes <marcus.nunes em gmail.com> escreveu:  
+ 
+ O código a seguir tem comentários sobre o que está incorreto. Ao final, eu posto o código que funciona.
+
+# Código antigo
+
+  i=1 # o laço `for` atualiza automaticamente o contador `i`, criando cada um dos seus valores. portanto, essa linha é redundante.
+for (i in (1:nrow(dados))){ # o ideal é fazer `i` variar até `nrow(dados)-1`, pois `i+1`quando `i=10` extrapola o tamanho do data frame
+  if ((dados$Cluster[i]==dados$Cluster[i+1]) & (dados$Média[i]==dados$Média[i+1])){
+    dados$sit[i] == "Resultado Igual"
+    dados$sit[i+1] == "Resultado Igual"} # em nenhum local se define onde entra o "Resultado Diferente"
+  else { # desnecessário
+  }
+  i=i+1 # linha redundante
+}
+# Código que funciona
+dados$sit <- "Resultado Diferente" # inicializa a coluna `sit` inteira como `Resultado Diferente`
+
+for (i in (1:(nrow(dados)-1))){
+  if ((dados$Cluster[i]==dados$Cluster[i+1]) & (dados$Média[i]==dados$Média[i+1])){
+    dados$sit[i] <- "Resultado Igual" # substitui apenas as posições de `sit` nas quais há resultado igual, de acordo com a condicional acima
+    dados$sit[i+1] <- "Resultado Igual" 
+    }
+}
+Não cheguei a testar minha sugestão em casos com 3 ou mais laboratórios iguais, então não saberia te dizer se a minha solução é universal.
+--Marcus NunesProfessor Adjuntohttps://marcusnunes.me/Universidade Federal do Rio Grande do NorteDepartamento de EstatísticaLaboratório de Estatística Aplicada - http://lea.estatistica.ccet.ufrn.brCurso de Big Data - https://introbigdata.org
+Aplicações em Shiny - http://shiny.estatistica.ccet.ufrn.br
+
+On Mon, Feb 14, 2022 at 1:50 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+Boa tarde a todos!!! Dúvida boba, mas tenho de explicar antes: estou fazendo uma análise de cluster, para poder identificar resultados iguais de laboratórios analíticos. O resultado foi um banco parecido com esse reproduzível:
+library(dplyr)
+x01<-c(8.49,8.62,8.63,8.49,8.44,2)
+x02<-c(9.18,9.21,9.15,8.86,9.36,3)x03<-c(8.49,8.62,8.63,8.49,8.44,2)x04<-c(9.74,9.69,9.81,9.25,9.98,3)x05<-c(9.74,9.69,9.81,9.25,9.98,3)x06<-c(8.15,9.52,9.89,9.95,8.33,2)x07<-c(8.32,8.73,9.60,9.04,9.97,3)x08<-c(7.42,7.01,7.31,7.20,7.61,1)x09<-c(9.79,8.76,9.68,8.31,9.37,3)x10<-c(7.42,7.01,7.31,7.20,7.61,1)
+dados<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09,x10))
+names(dados)<-c("v1","v2","v3","v4","v5","Cluster")
+Para facilitar essa identificação, ordenei os resultados por cluster, pelos dados das variáveis, e então calculei a média em cada linha:
+dados<-dados %>% arrange(Cluster, v1,v2,v3,v4,v5) 
+for (i in (1:nrow(dados))){dados$Média[i]<-mean(dados$v1[i],dados$v2[i],dados$v3[i],dados$v4[i],dados$v5[i],na.rm = TRUE)}
+MEU PROBLEMA: para finalmente identificar os resultados iguais, eu apliquei esse código abaixo, onde em resumo, se o cluster for igual e a média do resultado do laboratório da linha i for igual a média do resultado do laboratório da linha i+1, então ambos os laboratórios responderam resultados iguais. Apliquei o código abaixo, e ele está resultando em erro: 
+i=1for (i in (1:nrow(dados))){if ((dados$Cluster[i]==dados$Cluster[i+1]) & (dados$Média[i]==dados$Média[i+1])){dados$sit[i] == "Resultado Igual"dados$sit[i+1] == "Resultado Igual"}else {}i=i+1}
+Alguém poderia dizer qual o meu erro? Ou se faltou algo no código?
+Muito agradecido pela atenção, e desculpa a extensão!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520
+
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+  _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220215/27279dad/attachment-0001.htm>
+
+From smp10bmc em gmail.com  Tue Feb 15 11:36:17 2022
+From: smp10bmc em gmail.com (Sergio Pinto)
+Date: Tue, 15 Feb 2022 11:36:17 -0300
+Subject: [R-br] Contagem de fatores
+In-Reply-To: <CA+RL3DONEbH0QAh0nRKWW2j1np+dbHj6pjAgn6+SP7JU1Z+bbA@mail.gmail.com>
+References: <CALkxgdwJvFXE=kaOXiQXDcrQCHQVN2xy9g5n2RsxrbUnjag5uA@mail.gmail.com>
+ <CA+RL3DONEbH0QAh0nRKWW2j1np+dbHj6pjAgn6+SP7JU1Z+bbA@mail.gmail.com>
+Message-ID: <CALkxgdwMb-ve+KinKCz+pD0i74dWSA=TjRqhoQgvz3G2z7i+rg@mail.gmail.com>
+
+Daniel a sua ajuda também funcionou. Obrigado!!
+
+Em seg., 14 de fev. de 2022 18:54, Daniel Guimarães Tiezzi por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> A função table() faz isso
+>
+> On Mon, Feb 14, 2022, 4:59 PM Sergio Pinto por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>>  Prezados
+>> Tenho um data-frame (dfp21) com duas variáveis, a primeira variável,
+>> chamada Deficiências, é categórica com sete níveis ('TEA', 'SCe', 'NE',
+>> 'DV', 'DF', 'DA/S', 'AH/S') a segunda, chamada p21, também é categórica com
+>> dois níveis ("8" e "9").
+>>  Coloquei os dados em anexo. Não consegui usar o DATAFILEHOST.
+>>
+>> > dfp21
+>> # A tibble: 127 × 2
+>>    p21   DEFICIÊNCIAS
+>>    <fct> <fct>
+>>  1 9     TEA
+>>  2 9     TEA
+>>  3 8     TEA
+>>  4 9     TEA
+>>  5 9     TEA
+>>  6 9     TEA
+>>  7 9     TEA
+>>  8 9     TEA
+>>  9 9     TEA
+>> 10 9     TEA
+>> # ? with 117 more rows
+>>
+>>
+>>
+>> *A dúvida:* como criar uma nova coluna com a contagem  da segunda
+>> variável em cada nível da primeira?
+>> ex: TEA 8 20
+>>     TEA 9 13
+>>     NE  8 17
+>>     NE  9 15 ...
+>> Estou tentando usar o dplyr para isso.
+>> Desde já agradeço a atenção.
+>>
+>> --
+>>
+>> *_______________________________________*
+>>
+>> *Prof. Dr. SERGIO MEDEIROS PINTO*
+>> LABICOM/IEFD-UERJ
+>> FAMERC-RJ
+>> UNESA-RJ
+>> http://lattes.cnpq.br/5897044784217523
+>>
+>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220215/a56a668a/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Wed Feb 16 08:46:47 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Wed, 16 Feb 2022 11:46:47 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?D=C3=BAvida_reestruturar_vari=C3=A1veis=2E?=
+References: <210149092.1276366.1645012007104.ref@mail.yahoo.com>
+Message-ID: <210149092.1276366.1645012007104@mail.yahoo.com>
+
+Prezados, bom dia de novo, lá vou perturbar os amigos... Segue outro exemplo reproduzível (tem a ver com minha dúvida de ontem):
+library(dplyr)
+x01<-c(1001,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+x02<-c(2000,"Potássio",4.18,4.21,4.15,4.86,4.36,3)x03<-c(1002,"Potássio",3.49,3.62,3.63,3.49,3.44,2)x04<-c(1003,"Potássio",3.49,3.62,3.63,3.49,3.44,2)x05<-c(2001,"Potássio",4.18,4.21,4.15,4.86,4.36,3)x06<-c(2000,"Albumina",2.35,2.36,2.21,2.15,2.27,10)x07<-c(3000,"Albumina",2.69,2.78,2.88,2.91,2.84,12)x08<-c(2001,"Albumina",2.35,2.36,2.21,2.15,2.27,10)x09<-c(3001,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+exemplo<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09))names(exemplo)<-c("CodCli","Substância","v1","v2","v3","v4","v5","Cluster")row.names(exemplo)<-NULL
+exemplo<-exemplo %>%mutate(v1=as.numeric(v1),v2=as.numeric(v2),v3=as.numeric(v3),v4=as.numeric(v4),       v5=as.numeric(v5))
+exemplo$Média<-rowMeans(exemplo[,3:7],na.rm = TRUE)
+
+Como o de ontem, esse banco tem variáveis que identificam o código do cliente, a média dos dados (iguais entre laboratórios) e o Cluster, que foi obtido previamente. A substância é detalhe adicional.
+O que eu gostaria é: reestruturar esse banco, colocando como variáveis de identificação a substância, o cluster e a média, e o código do cliente indo para as colunas, como está nessa tabela abaixo:
+Subst       Cluster    Média       CodCli.1   CodCli.2   CodCli.3Albumina 10 2,2680 2000 2001 Albumina 12 2,8200    3000 3001 Potássio 2 3,5340 1001 1002 1003Potássio 3 4,3520 2000 2001 
+Eu tentei usar o comando reshape, com esse código abaixo, mas ele não funcionou comigo (tentei também o spread, do tidyr): 
+
+exemplo<-exemplo %>%
+  select(CodCli,Substância,Cluster,Média)
+exemplo_quebra<-reshape(exemplo,
+                                        direction="wide",                                        idvar=c("Substância","Cluster","Média"),                                        timevar="Cod.Cli")
+Algum amigo poderia indicar onde estou errando? Ou se teria uma rotina melhor para realizar esse procedimento?
+
+Novamente obrigado!!!
+Diogo Jerônimo
+Bacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220216/8c65d0fd/attachment.htm>
+
+From cidedson em gmail.com  Wed Feb 16 09:34:22 2022
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Wed, 16 Feb 2022 09:34:22 -0300
+Subject: [R-br] =?utf-8?q?D=C3=BAvida_reestruturar_vari=C3=A1veis=2E?=
+In-Reply-To: <210149092.1276366.1645012007104@mail.yahoo.com>
+References: <210149092.1276366.1645012007104.ref@mail.yahoo.com>
+ <210149092.1276366.1645012007104@mail.yahoo.com>
+Message-ID: <CAAmR27-sWsGNScW1WYrbwbOd80UiFyrMbx2VVqPpw_NOj-oZRA@mail.gmail.com>
+
+library(dplyr)
+x01<-c(1001,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+x02<-c(2000,"Potássio",4.18,4.21,4.15,4.86,4.36,3)
+x03<-c(1002,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+x04<-c(1003,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+x05<-c(2001,"Potássio",4.18,4.21,4.15,4.86,4.36,3)
+x06<-c(2000,"Albumina",2.35,2.36,2.21,2.15,2.27,10)
+x07<-c(3000,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+x08<-c(2001,"Albumina",2.35,2.36,2.21,2.15,2.27,10)
+x09<-c(3001,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+
+exemplo<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09))
+names(exemplo)<-c("CodCli","Substância","v1","v2","v3","v4","v5","Cluster")
+row.names(exemplo)<-NULL
+
+exemplo<-exemplo %>%
+
+mutate(v1=as.numeric(v1),v2=as.numeric(v2),v3=as.numeric(v3),v4=as.numeric(v4),
+         v5=as.numeric(v5))
+
+exemplo$Média<-rowMeans(exemplo[,3:7],na.rm = TRUE)
+
+exemplo %>% pivot_longer(cols = 3:7) %>%
+  group_by(Cluster, Substância, Média) %>%
+  select(-value) %>%
+  pivot_wider(names_from = name, values_from = CodCli) %>%
+  as.data.frame() %>% pivot_longer(cols=-c(1:3)) %>% as.data.frame() %>%
+select(-name) %>%
+  separate(value, c("x","CodCli.1","CodCli.2","CodCli.3")) %>% select(-x)
+%>%
+  unique() %>% as.data.frame() %>% arrange(Substância)
+
+
+
+Vê se isso ajuda...
+
+*Cid Edson Mendonça Póvoas*
+
+*AnovAgro <http://www.anovagro.com/>*
+*Engenheiro Agrônomo - **Data Scientist*
+*CREA : 051984991-4*
+*Técnico em Segurança do Trabalho *
+*Nº: **0012669/BA*
+*Tel: +55 73 99151-9565*
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em qua., 16 de fev. de 2022 às 08:47, Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados, bom dia de novo, lá vou perturbar os amigos... Segue outro
+> exemplo reproduzível (tem a ver com minha dúvida de ontem):
+>
+> library(dplyr)
+> x01<-c(1001,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+> x02<-c(2000,"Potássio",4.18,4.21,4.15,4.86,4.36,3)
+> x03<-c(1002,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+> x04<-c(1003,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+> x05<-c(2001,"Potássio",4.18,4.21,4.15,4.86,4.36,3)
+> x06<-c(2000,"Albumina",2.35,2.36,2.21,2.15,2.27,10)
+> x07<-c(3000,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+> x08<-c(2001,"Albumina",2.35,2.36,2.21,2.15,2.27,10)
+> x09<-c(3001,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+>
+> exemplo<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09))
+> names(exemplo)<-c("CodCli","Substância","v1","v2","v3","v4","v5","Cluster")
+> row.names(exemplo)<-NULL
+>
+> exemplo<-exemplo %>%
+>
+> mutate(v1=as.numeric(v1),v2=as.numeric(v2),v3=as.numeric(v3),v4=as.numeric(v4),
+>        v5=as.numeric(v5))
+>
+> exemplo$Média<-rowMeans(exemplo[,3:7],na.rm = TRUE)
+>
+> Como o de ontem, esse banco tem variáveis que identificam o código do
+> cliente, a média dos dados (iguais entre laboratórios) e o Cluster, que foi
+> obtido previamente. A substância é detalhe adicional.
+>
+> O que eu gostaria é: reestruturar esse banco, colocando como variáveis de
+> identificação a substância, o cluster e a média, e o código do cliente indo
+> para as colunas, como está nessa tabela abaixo:
+>
+> *Subst       Cluster    Média       CodCli.1   CodCli.2   CodCli.3*
+> Albumina 10 2,2680 2000 2001
+> Albumina 12 2,8200    3000 3001
+> Potássio 2 3,5340 1001 1002 1003
+> Potássio 3 4,3520 2000 2001
+>
+> Eu tentei usar o comando reshape, com esse código abaixo, mas ele não
+> funcionou comigo (tentei também o spread, do tidyr):
+>
+> exemplo<-exemplo %>%
+>   select(CodCli,Substância,Cluster,Média)
+>
+> exemplo_quebra<-reshape(exemplo,
+>                                         direction="wide",
+>
+> idvar=c("Substância","Cluster","Média"),
+>                                         timevar="Cod.Cli")
+>
+> Algum amigo poderia indicar onde estou errando? Ou se teria uma rotina
+> melhor para realizar esse procedimento?
+>
+> Novamente obrigado!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220216/47effae9/attachment.htm>
+
+From nandodesouza em gmail.com  Wed Feb 16 09:46:28 2022
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 16 Feb 2022 09:46:28 -0300
+Subject: [R-br] =?utf-8?b?PT91dGYtOD9RP0Q9QzM9QkF2aWRhXz89cmVlc3RydXR1?=
+ =?utf-8?b?cmFyIHZhcmnDoXZlaXMu?=
+In-Reply-To: <210149092.1276366.1645012007104@mail.yahoo.com>
+References: <210149092.1276366.1645012007104@mail.yahoo.com>
+Message-ID: <96D96848-5FA6-4B8A-9582-96FF5DCEE891@getmailspring.com>
+
+Veja se é isso
+
+library(dplyr)
+library(tidyr)
+
+x01<-c(1001,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+x02<-c(2000,"Potássio",4.18,4.21,4.15,4.86,4.36,3)
+x03<-c(1002,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+x04<-c(1003,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+x05<-c(2001,"Potássio",4.18,4.21,4.15,4.86,4.36,3)
+x06<-c(2000,"Albumina",2.35,2.36,2.21,2.15,2.27,10)
+x07<-c(3000,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+x08<-c(2001,"Albumina",2.35,2.36,2.21,2.15,2.27,10)
+x09<-c(3001,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+
+exemplo<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09))
+names(exemplo)<-c("CodCli","Substância","v1","v2","v3","v4","v5","Cluster")
+row.names(exemplo)<-NULL
+exemplo<-exemplo %>%mutate(v1=as.numeric(v1),v2=as.numeric(v2),v3=as.numeric(v3),v4=as.numeric(v4),v5=as.numeric(v5))
+exemplo$Média<-rowMeans(exemplo[,3:7],na.rm = TRUE)
+exemplo
+
+exemplo%>%gather(obs,valor, -c("CodCli","Substância","Cluster","Média"))%>%
+spread(key=CodCli,value=valor)
+
+On Feb 16 2022, at 8:46 am, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Prezados, bom dia de novo, lá vou perturbar os amigos... Segue outro exemplo reproduzível (tem a ver com minha dúvida de ontem):
+>
+> library(dplyr)
+> x01<-c(1001,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+>
+> x02<-c(2000,"Potássio",4.18,4.21,4.15,4.86,4.36,3)
+> x03<-c(1002,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+> x04<-c(1003,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+> x05<-c(2001,"Potássio",4.18,4.21,4.15,4.86,4.36,3)
+> x06<-c(2000,"Albumina",2.35,2.36,2.21,2.15,2.27,10)
+> x07<-c(3000,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+> x08<-c(2001,"Albumina",2.35,2.36,2.21,2.15,2.27,10)
+> x09<-c(3001,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+>
+> exemplo<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09))
+> names(exemplo)<-c("CodCli","Substância","v1","v2","v3","v4","v5","Cluster")
+> row.names(exemplo)<-NULL
+>
+> exemplo<-exemplo %>%
+> mutate(v1=as.numeric(v1),v2=as.numeric(v2),v3=as.numeric(v3),v4=as.numeric(v4),
+> v5=as.numeric(v5))
+>
+>
+>
+> exemplo$Média<-rowMeans(exemplo[,3:7],na.rm = TRUE)
+>
+> Como o de ontem, esse banco tem variáveis que identificam o código do cliente, a média dos dados (iguais entre laboratórios) e o Cluster, que foi obtido previamente. A substância é detalhe adicional.
+>
+> O que eu gostaria é: reestruturar esse banco, colocando como variáveis de identificação a substância, o cluster e a média, e o código do cliente indo para as colunas, como está nessa tabela abaixo:
+>
+> Subst Cluster Média CodCli.1 CodCli.2 CodCli.3
+> Albumina 10 2,2680 2000 2001
+> Albumina 12 2,8200 3000 3001
+> Potássio 2 3,5340 1001 1002 1003
+> Potássio 3 4,3520 2000 2001
+>
+>
+> Eu tentei usar o comando reshape, com esse código abaixo, mas ele não funcionou comigo (tentei também o spread, do tidyr):
+> exemplo<-exemplo %>%
+> select(CodCli,Substância,Cluster,Média)
+>
+> exemplo_quebra<-reshape(exemplo,
+> direction="wide",
+> idvar=c("Substância","Cluster","Média"),
+> timevar="Cod.Cli")
+>
+> Algum amigo poderia indicar onde estou errando? Ou se teria uma rotina melhor para realizar esse procedimento?
+>
+> Novamente obrigado!!!
+>
+> Diogo Jerônimo
+> Bacharel em Ciências Estatísticas - ENCE/IBGE
+> Mestre em Metrologia - PUC-Rio/PósMQI
+> http://lattes.cnpq.br/8996149312896520
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220216/0f1a3de7/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Wed Feb 16 10:33:45 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Wed, 16 Feb 2022 13:33:45 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?D=C3=BAvida_reestruturar_vari=C3=A1veis=2E?=
+In-Reply-To: <96D96848-5FA6-4B8A-9582-96FF5DCEE891@getmailspring.com>
+References: <210149092.1276366.1645012007104@mail.yahoo.com>
+ <96D96848-5FA6-4B8A-9582-96FF5DCEE891@getmailspring.com>
+Message-ID: <968920389.1295839.1645018425293@mail.yahoo.com>
+
+Prezado Fernando, primeiro obrigado pela atenção!!!
+Ficou mais ou menos o que eu queria, porque os códigos foram para o topo da tabela (ou seja, como nome), mas eles deveriam ser células. Vou ver se consigo adaptar!!!
+Obrigadão!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520 
+
+    Em quarta-feira, 16 de fevereiro de 2022 09:46:32 BRT, Fernando Souza <nandodesouza em gmail.com> escreveu:  
+ 
+ Veja se é isso
+library(dplyr)library(tidyr)
+x01<-c(1001,"Potássio",3.49,3.62,3.63,3.49,3.44,2)x02<-c(2000,"Potássio",4.18,4.21,4.15,4.86,4.36,3)x03<-c(1002,"Potássio",3.49,3.62,3.63,3.49,3.44,2)x04<-c(1003,"Potássio",3.49,3.62,3.63,3.49,3.44,2)x05<-c(2001,"Potássio",4.18,4.21,4.15,4.86,4.36,3)x06<-c(2000,"Albumina",2.35,2.36,2.21,2.15,2.27,10)x07<-c(3000,"Albumina",2.69,2.78,2.88,2.91,2.84,12)x08<-c(2001,"Albumina",2.35,2.36,2.21,2.15,2.27,10)x09<-c(3001,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+exemplo<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09))names(exemplo)<-c("CodCli","Substância","v1","v2","v3","v4","v5","Cluster")row.names(exemplo)<-NULLexemplo<-exemplo %>%mutate(v1=as.numeric(v1),v2=as.numeric(v2),v3=as.numeric(v3),v4=as.numeric(v4),v5=as.numeric(v5))exemplo$Média<-rowMeans(exemplo[,3:7],na.rm = TRUE)exemplo
+exemplo%>%gather(obs,valor, -c("CodCli","Substância","Cluster","Média"))%>%  spread(key=CodCli,value=valor)
+On Feb 16 2022, at 8:46 am, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+Prezados, bom dia de novo, lá vou perturbar os amigos... Segue outro exemplo reproduzível (tem a ver com minha dúvida de ontem):
+library(dplyr)x01<-c(1001,"Potássio",3.49,3.62,3.63,3.49,3.44,2)x02<-c(2000,"Potássio",4.18,4.21,4.15,4.86,4.36,3)x03<-c(1002,"Potássio",3.49,3.62,3.63,3.49,3.44,2)x04<-c(1003,"Potássio",3.49,3.62,3.63,3.49,3.44,2)x05<-c(2001,"Potássio",4.18,4.21,4.15,4.86,4.36,3)x06<-c(2000,"Albumina",2.35,2.36,2.21,2.15,2.27,10)x07<-c(3000,"Albumina",2.69,2.78,2.88,2.91,2.84,12)x08<-c(2001,"Albumina",2.35,2.36,2.21,2.15,2.27,10)x09<-c(3001,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+exemplo<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09))names(exemplo)<-c("CodCli","Substância","v1","v2","v3","v4","v5","Cluster")row.names(exemplo)<-NULL
+exemplo<-exemplo %>%mutate(v1=as.numeric(v1),v2=as.numeric(v2),v3=as.numeric(v3),v4=as.numeric(v4),       v5=as.numeric(v5))
+exemplo$Média<-rowMeans(exemplo[,3:7],na.rm = TRUE)
+Como o de ontem, esse banco tem variáveis que identificam o código do cliente, a média dos dados (iguais entre laboratórios) e o Cluster, que foi obtido previamente. A substância é detalhe adicional.
+O que eu gostaria é: reestruturar esse banco, colocando como variáveis de identificação a substância, o cluster e a média, e o código do cliente indo para as colunas, como está nessa tabela abaixo:
+Subst       Cluster    Média       CodCli.1   CodCli.2   CodCli.3Albumina 10 2,2680 2000 2001Albumina 12 2,8200    3000 3001Potássio 2 3,5340 1001 1002 1003Potássio 3 4,3520 2000 2001
+Eu tentei usar o comando reshape, com esse código abaixo, mas ele não funcionou comigo (tentei também o spread, do tidyr): 
+exemplo<-exemplo %>%  select(CodCli,Substância,Cluster,Média)
+exemplo_quebra<-reshape(exemplo,                                        direction="wide",                                        idvar=c("Substância","Cluster","Média"),                                        timevar="Cod.Cli")
+Algum amigo poderia indicar onde estou errando? Ou se teria uma rotina melhor para realizar esse procedimento?
+Novamente obrigado!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520_______________________________________________R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-brLeia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220216/7d54cfc5/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Wed Feb 16 10:37:19 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Wed, 16 Feb 2022 13:37:19 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?D=C3=BAvida_reestruturar_vari=C3=A1veis=2E?=
+In-Reply-To: <CAAmR27-sWsGNScW1WYrbwbOd80UiFyrMbx2VVqPpw_NOj-oZRA@mail.gmail.com>
+References: <210149092.1276366.1645012007104.ref@mail.yahoo.com>
+ <210149092.1276366.1645012007104@mail.yahoo.com>
+ <CAAmR27-sWsGNScW1WYrbwbOd80UiFyrMbx2VVqPpw_NOj-oZRA@mail.gmail.com>
+Message-ID: <500003257.1294118.1645018639101@mail.yahoo.com>
+
+Prezado Cid, primeiro obrigado pela atenção!!!
+Era exatamente o que eu queria, só não ficou perfeito porque você quadrou com meu exemplo exato (com três códigos), mas podem ter mais de três (não saberia dizer quantos), então terei de ver como ampliar sua solução. Mas era exatamente isso!!!
+Muitíssimo obrigado!!! 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520 
+
+    Em quarta-feira, 16 de fevereiro de 2022 09:35:30 BRT, Cid Póvoas <cidedson em gmail.com> escreveu:  
+ 
+ library(dplyr)
+x01<-c(1001,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+x02<-c(2000,"Potássio",4.18,4.21,4.15,4.86,4.36,3)
+x03<-c(1002,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+x04<-c(1003,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+x05<-c(2001,"Potássio",4.18,4.21,4.15,4.86,4.36,3)
+x06<-c(2000,"Albumina",2.35,2.36,2.21,2.15,2.27,10)
+x07<-c(3000,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+x08<-c(2001,"Albumina",2.35,2.36,2.21,2.15,2.27,10)
+x09<-c(3001,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+
+exemplo<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09))
+names(exemplo)<-c("CodCli","Substância","v1","v2","v3","v4","v5","Cluster")
+row.names(exemplo)<-NULL
+
+exemplo<-exemplo %>%
+  mutate(v1=as.numeric(v1),v2=as.numeric(v2),v3=as.numeric(v3),v4=as.numeric(v4),
+         v5=as.numeric(v5))
+
+exemplo$Média<-rowMeans(exemplo[,3:7],na.rm = TRUE)
+
+exemplo %>% pivot_longer(cols = 3:7) %>% 
+  group_by(Cluster, Substância, Média) %>% 
+  select(-value) %>% 
+  pivot_wider(names_from = name, values_from = CodCli) %>% 
+  as.data.frame() %>% pivot_longer(cols=-c(1:3)) %>% as.data.frame() %>% select(-name) %>% 
+  separate(value, c("x","CodCli.1","CodCli.2","CodCli.3")) %>% select(-x) %>% 
+  unique() %>% as.data.frame() %>% arrange(Substância)
+
+
+
+Vê se isso ajuda...
+Cid Edson Mendonça Póvoas
+AnovAgro
+Engenheiro Agrônomo - Data Scientist CREA : 051984991-4
+Técnico em Segurança do Trabalho 
+Nº: 0012669/BATel: +55 73 99151-9565Lattes : http://lattes.cnpq.br/2303498368142537
+LinkedIn : http://br.linkedin.com/in/cidedson/Whatsapp : https://wa.me/5573991519565
+
+Em qua., 16 de fev. de 2022 às 08:47, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+
+Prezados, bom dia de novo, lá vou perturbar os amigos... Segue outro exemplo reproduzível (tem a ver com minha dúvida de ontem):
+library(dplyr)
+x01<-c(1001,"Potássio",3.49,3.62,3.63,3.49,3.44,2)
+x02<-c(2000,"Potássio",4.18,4.21,4.15,4.86,4.36,3)x03<-c(1002,"Potássio",3.49,3.62,3.63,3.49,3.44,2)x04<-c(1003,"Potássio",3.49,3.62,3.63,3.49,3.44,2)x05<-c(2001,"Potássio",4.18,4.21,4.15,4.86,4.36,3)x06<-c(2000,"Albumina",2.35,2.36,2.21,2.15,2.27,10)x07<-c(3000,"Albumina",2.69,2.78,2.88,2.91,2.84,12)x08<-c(2001,"Albumina",2.35,2.36,2.21,2.15,2.27,10)x09<-c(3001,"Albumina",2.69,2.78,2.88,2.91,2.84,12)
+exemplo<-data.frame(rbind(x01,x02,x03,x04,x05,x06,x07,x08,x09))names(exemplo)<-c("CodCli","Substância","v1","v2","v3","v4","v5","Cluster")row.names(exemplo)<-NULL
+exemplo<-exemplo %>%mutate(v1=as.numeric(v1),v2=as.numeric(v2),v3=as.numeric(v3),v4=as.numeric(v4),       v5=as.numeric(v5))
+exemplo$Média<-rowMeans(exemplo[,3:7],na.rm = TRUE)
+
+Como o de ontem, esse banco tem variáveis que identificam o código do cliente, a média dos dados (iguais entre laboratórios) e o Cluster, que foi obtido previamente. A substância é detalhe adicional.
+O que eu gostaria é: reestruturar esse banco, colocando como variáveis de identificação a substância, o cluster e a média, e o código do cliente indo para as colunas, como está nessa tabela abaixo:
+Subst       Cluster    Média       CodCli.1   CodCli.2   CodCli.3Albumina 10 2,2680 2000 2001 Albumina 12 2,8200    3000 3001 Potássio 2 3,5340 1001 1002 1003Potássio 3 4,3520 2000 2001 
+Eu tentei usar o comando reshape, com esse código abaixo, mas ele não funcionou comigo (tentei também o spread, do tidyr): 
+
+exemplo<-exemplo %>%
+  select(CodCli,Substância,Cluster,Média)
+exemplo_quebra<-reshape(exemplo,
+                                        direction="wide",                                        idvar=c("Substância","Cluster","Média"),                                        timevar="Cod.Cli")
+Algum amigo poderia indicar onde estou errando? Ou se teria uma rotina melhor para realizar esse procedimento?
+
+Novamente obrigado!!!
+Diogo Jerônimo
+Bacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220216/4407df5c/attachment.htm>
+
+From oliveirajc1 em gmail.com  Wed Feb 23 08:40:48 2022
+From: oliveirajc1 em gmail.com (julio cesar oliveira)
+Date: Wed, 23 Feb 2022 08:40:48 -0300
+Subject: [R-br] Calculo do Volume a partir de imagens MDT
+Message-ID: <CAG+u5gpeJnb0ukmDy2cdyrZZ4WRzuhTJ=2ZKwckZ22mSqk=EUA@mail.gmail.com>
+
+Prezados
+
+Pretendo realizar o cálculo do volume de um MDT (no formato raster) para os
+pixels que estão acima ou abaixo de um determinado valor.
+
+Por acaso existe algum pacote / função que faça esse cálculo?
+
+Grato
+Julio
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220223/163fda65/attachment.htm>
+

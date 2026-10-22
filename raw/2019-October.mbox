@@ -1,0 +1,2580 @@
+From henrique.bdias em yahoo.com.br  Tue Oct  1 21:05:35 2019
+From: henrique.bdias em yahoo.com.br (Henrique Boriolo Dias)
+Date: Wed, 2 Oct 2019 00:05:35 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?Ajuda_com_an=C3=A1lise_conjunta_de_dois_experim?=
+ =?utf-8?q?entos_com_parcelas_subdividas?=
+In-Reply-To: <CAFU=EkYRa4on9pvEt-PXEtLLm7bZFqRLP8u3q8SPpP_Sce4WGA@mail.gmail.com>
+References: <CADni8G5Pp35B8GMaKqO5d6PcRW_mvESLZszadmQ05X0ydaD03Q@mail.gmail.com>
+ <CAFU=EkYRa4on9pvEt-PXEtLLm7bZFqRLP8u3q8SPpP_Sce4WGA@mail.gmail.com>
+Message-ID: <2000619255.1488830.1569974735635@mail.yahoo.com>
+
+ Boa noite prezados,
+Mais ou menos no contexto da dúvida do José, gostaria de ter uma luz com relação a análise dos dados experimentais que estou trabalhando.
+Experimento em dois locais, ambos em delineamento em blocos casualizados em esquema de parcela subdivididas, com quatro repetições. O manejo foi basicamente o mesmo para os dois locais.- parcela: epoca de inicio da cultura (6)- subparcela: cultivar (6)- foram realizadas algumas colheitas antes de colheita final do experimento, com cerca de 15 meses (trabalho com cana também).
+Estou utilizando os códigos em anexo para realizar uma anova, com a ajuda dos pacotes 'agricolae' e 'ExpDes'. Tambem utilizei o modelo que o Walmes sugeriu. Pelo que puder checar, os três estão chegando na mesma coisa, o que é bom e indica que talvez eu esteja no caminho certo.Estou rodando para cada local e época de colheita separados (veja os subsets).
+As dúvidas, além de saber se estou ou não num caminho lúcido em termos da estatística:1) Em alguns casos houve violação de alguma pressuposição (estou testando norm. dos residuos e homogeneidade apenas), como para a variável resposta 3, no local II colhido na idade 8.- Procedo com alguma transformação ? tipo utilizar boxcox e ver qual melhor forma de transformar os dados ?- Ou Parto para outro tipo de abordagem ? alguma sugestão ?2) Há alguma forma de análise considerando as todas as idades ?3) Ao menos duas idades e 3 dos cultivares são comuns em ambos os locais, seria muito abusado tentar realizar uma análise conjunta apenas para essas cultivares? (com abordagem similar ao proposto para o caso do José)
+Agradeço quem puder me dar um help!Até maisHenrique
+
+    Em sexta-feira, 20 de setembro de 2019 16:40:56 GMT-4, Walmes Zeviani por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Lucas,
+Que bom que forneceu os dados e croqui.O seu croqui indica que você está usando blocos incompletos balanceados, pelo menos se considerar que o bloco é o retângulo 4 x 4 parcelas. É isso mesmo? Interessante.No entanto, a tabela de dados que você mandou parece estar considerando como bloco a linha que contém 24 parcelas.No meu modo de ver, o bloco com essas dimensões (tão comprido), não deve apresentar a homogeneidade que se espera.É bem provável que a parcela 1C tenha mais semelhança em condições com as parcelas 4B e 8D, por exemplo, do que com as parcelas 33C e 41D.Talvez você possa analisar das duas formas.
+De qualquer forma, o modelo para o seu experimento fica conforme código a seguir.
+> library(lattice)
+> 
+> url <- "Dados_Conj_2ExpSub.csv"
+> tb <- read.csv2(url)
+> str(tb)
+'data.frame': 96 obs. of  6 variables:
+ $ FID       : Factor w/ 96 levels "12A","12C","13A",..: 9 43 53 87 95 1 3 5 7 11 ...
+ $ Manejo    : Factor w/ 2 levels "PC","PD": 2 2 2 2 2 2 2 2 2 2 ...
+ $ Rotacao   : Factor w/ 6 levels "A","CJ","CO",..: 2 3 5 4 3 6 2 5 1 5 ...
+ $ Nitrogenio: Factor w/ 2 levels "Com","Sem": 2 2 2 2 2 2 2 2 2 2 ...
+ $ Bloco     : int  1 2 3 4 1 2 3 4 1 2 ...
+ $ N_kg_ha   : int  209 234 209 158 101 96 46 118 130 162 ...
+> 
+> tb <- transform(tb,
++                 Bloco = factor(Bloco))
+> 
+> xtabs(~Manejo + Rotacao, data = tb)
+      Rotacao
+Manejo A CJ CO CS P S
+    PC 8  8  8  8 8 8
+    PD 8  8  8  8 8 8
+> ftable(xtabs(~Manejo + Bloco + Rotacao, data = tb))
+             Rotacao A CJ CO CS P S
+Manejo Bloco                       
+PC     1             2  2  2  2 2 2
+       2             2  2  2  2 2 2
+       3             2  2  2  2 2 2
+       4             2  2  2  2 2 2
+PD     1             2  2  2  2 2 2
+       2             2  2  2  2 2 2
+       3             2  2  2  2 2 2
+       4             2  2  2  2 2 2
+> 
+> xyplot(N_kg_ha ~ Rotacao | Manejo,
++        groups = Nitrogenio,
++        type = c("p", "a"),
++        auto.key = TRUE,
++        data = tb)
+> 
+> # Modelo para DBC em diferentes locais:
+> #  ~ Local + Error(Local/Bloco) + Trat + Local:Trat.
+> # Modelo de parcela subdividida em DBC:
+> #  ~ Bloco + Trat + Error(Bloco:Trat) + Subtrat + Trat:Subtrat
+> #
+> # Juntanto os dois termos de erro:
+> #  ~ Error(Local/Bloco) + Error(Bloco:Trat) = Error(Local/Bloco:Trat)
+> #
+> # Juntanto os termos sistemáticos.
+> #  ~ Local + Trat + Local:Trat + Subtrat + Trat:Subtrat +
+> #    Error(Local/Bloco:Trat)
+> 
+> m0 <- aov(N_kg_ha ~
++               Manejo +
++               Manejo/Bloco +
++               Rotacao +
++               Manejo:Rotacao +
++               Nitrogenio +
++               Rotacao:Nitrogenio +
++               Error(Manejo/Bloco:Rotacao),
++           data = tb)
+Warning message:
+In aov(N_kg_ha ~ Manejo + Manejo/Bloco + Rotacao + Manejo:Rotacao +  :
+  Error() model is singular
+> 
+> summary(m0)
+
+Error: Manejo
+       Df Sum Sq Mean Sq
+Manejo  1  504.2   504.2
+
+Error: Manejo:Bloco:Rotacao
+               Df Sum Sq Mean Sq F value Pr(>F)
+Rotacao         5  16367    3273   1.521  0.213
+Manejo:Bloco    6  16966    2828   1.314  0.281
+Manejo:Rotacao  5   6213    1243   0.577  0.717
+Residuals      30  64567    2152               
+
+Error: Within
+                   Df Sum Sq Mean Sq F value Pr(>F)  
+Nitrogenio          1  13728   13728   6.561 0.0141 *
+Rotacao:Nitrogenio  5   5636    1127   0.539 0.7457  
+Residuals          42  87874    2092                 
+---
+Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1
+> 
+> # NOTE: não haverá uma estatística F apropriada para testar o efeito de
+> # Manejo já que não existe repetição genuína para os níveis desse fator,
+> # assim não existe um erro de extrato para ser o denominador da
+> # estatística F.
+> 
+> # Trocando Manejo/Bloco por Manejo:Bloco no termo de Error().
+> m0 <- aov(N_kg_ha ~
++               Manejo +
++               Manejo/Bloco +
++               Rotacao +
++               Manejo:Rotacao +
++               Nitrogenio +
++               Rotacao:Nitrogenio +
++               Error(Manejo:Bloco:Rotacao),
++           data = tb)
+Warning message:
+In aov(N_kg_ha ~ Manejo + Manejo/Bloco + Rotacao + Manejo:Rotacao +  :
+  Error() model is singular
+> 
+> summary(m0)
+
+Error: Manejo:Bloco:Rotacao
+               Df Sum Sq Mean Sq F value Pr(>F)
+Manejo          1    504     504   0.234  0.632
+Rotacao         5  16367    3273   1.521  0.213
+Manejo:Bloco    6  16966    2828   1.314  0.281
+Manejo:Rotacao  5   6213    1243   0.577  0.717
+Residuals      30  64567    2152               
+
+Error: Within
+                   Df Sum Sq Mean Sq F value Pr(>F)  
+Nitrogenio          1  13728   13728   6.561 0.0141 *
+Rotacao:Nitrogenio  5   5636    1127   0.539 0.7457  
+Residuals          42  87874    2092                 
+---
+Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1
+> 
+> # NOTE: com uma mudança sutil na fórmula, muda-se para uma forma não
+> # condizente com a realidade, o delineamento que passa a indicar que as
+> # combinações Manejo x Rotação foram casualizados às parcelas dos blocos
+> # (fatorial completo na parcela) e dessa forma tem-se uma estatística F
+> # para Manejo, mas que não é condizente com a forma como o experimento
+> # foi de fato feito. Então está errada essa especificação.
+> 
+> # Declarando o primeiro modelo com a `lme4`.
+> library(lme4)
+> 
+> mm0 <- lmer(N_kg_ha ~
++                 Manejo +
++                 Manejo/Bloco +
++                 Rotacao +
++                 Manejo:Rotacao +
++                 Nitrogenio +
++                 Rotacao:Nitrogenio +
++                 (1 | Manejo/Bloco:Rotacao),
++           data = tb)
+Warning messages:
+1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
+  unable to evaluate scaled gradient
+2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
+   Hessian is numerically singular: parameters are not uniquely determined
+> 
+> anova(mm0)
+Analysis of Variance Table
+                   Df  Sum Sq Mean Sq F value
+Manejo              1   391.0   391.0  0.1869
+Rotacao             5 15911.7  3182.3  1.5210
+Nitrogenio          1 13728.2 13728.2  6.5613
+Manejo:Bloco        6 16494.0  2749.0  1.3139
+Manejo:Rotacao      5  6040.2  1208.0  0.5774
+Rotacao:Nitrogenio  5  5636.1  1127.2  0.5387
+> VarCorr(mm0)
+ Groups               Name        Std.Dev.
+ Bloco:Rotacao:Manejo (Intercept)  5.4722 
+ Manejo               (Intercept)  3.3708 
+ Residual                         45.7415 
+
+À disposição.Walmes.
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/ea4944fb/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: db_r-list.xlsx
+Tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Tamanho: 68550 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/ea4944fb/attachment.xlsx>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: anova_r-list.R
+Tipo: application/octet-stream
+Tamanho: 2533 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/ea4944fb/attachment.obj>
+
+From richfield1974 em yahoo.com  Wed Oct  2 10:58:28 2019
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Wed, 2 Oct 2019 13:58:28 +0000 (UTC)
+Subject: [R-br] fluxograma no Rmarkdown
+References: <2050117204.1632595.1570024708298.ref@mail.yahoo.com>
+Message-ID: <2050117204.1632595.1570024708298@mail.yahoo.com>
+
+Prezados, bom dia.Alguém ja utilizou o  DiagrammeR com o Rmarkdown?Há um espaço excessivo entre o fluxograma e o texto. Alguém pode me ajudar? (em anexo está o arquivo Rmd)Desde já agradeçoLuiz
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/cfd34188/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: about_teste.Rmd
+Tipo: application/octet-stream
+Tamanho: 5732 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/cfd34188/attachment-0001.obj>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: 1570024633459blob.jpg
+Tipo: image/png
+Tamanho: 92681 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/cfd34188/attachment-0001.png>
+
+From walmeszeviani em gmail.com  Wed Oct  2 11:05:23 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 2 Oct 2019 11:05:23 -0300
+Subject: [R-br] 
+	=?utf-8?q?Ajuda_com_an=C3=A1lise_conjunta_de_dois_experim?=
+	=?utf-8?q?entos_com_parcelas_subdividas?=
+In-Reply-To: <2000619255.1488830.1569974735635@mail.yahoo.com>
+References: <CADni8G5Pp35B8GMaKqO5d6PcRW_mvESLZszadmQ05X0ydaD03Q@mail.gmail.com>
+ <CAFU=EkYRa4on9pvEt-PXEtLLm7bZFqRLP8u3q8SPpP_Sce4WGA@mail.gmail.com>
+ <2000619255.1488830.1569974735635@mail.yahoo.com>
+Message-ID: <CAFU=EkbzdYRNzJ1VEOuSXUnKgAg2Ocq5oU=kUHCVVEXwHWcRJg@mail.gmail.com>
+
+Henrique,
+
+Bom que você conferiu reprodutibilidade MAS o código de conduta da lista
+pede para que não sejam enviados anexos para a lista.
+Existem outras formas de conferir acesso aos dados sem que seja por anexo,
+ok?
+
+> As dúvidas, além de saber se estou ou não num caminho lúcido em termos da
+estatística:
+> 1) Em alguns casos houve violação de alguma pressuposição (estou testando
+norm. dos residuos e homogeneidade apenas),
+> como para a variável resposta 3, no local II colhido na idade 8.
+> - Procedo com alguma transformação ? tipo utilizar boxcox e ver qual
+melhor forma de transformar os dados ?
+> - Ou Parto para outro tipo de abordagem ? alguma sugestão ?
+
+Nem uma coisa nem outra. Segue com a análise usual. Por que? Bem, para
+começar, você sabe que, se o nível de significância é de 5%, 1 em cada 20
+análises (em média) irá rejeitar a hipótese nula mesmo que ela seja
+verdadeira. É o erro tipo I. Então, o que está acontecendo com você é
+basicamente isso. De tanto fazer testes, uma hora haverá uma rejeição que
+pode ser apenas casual. Não rodei seu script para saber se de fato a
+rejeição deve-se a alguma anomalia grave. Mas de qualquer forma, fica aí o
+raciocínio. Outro ponto, eu não gosto dessa abordagem "pilha de testes de
+hipóteses". Prefiro, ainda que seja considerado subjetiva, a análise
+gráfica dos resíduos porque a leitura conjunta dos gráficos subsidia alguma
+ação em caso de necessidade, coisa que o teste não faz porque ele diz
+apenas "sim" e "não". Um último ponto, sendo a mesma variável resposta
+vista em divisões dos dados (por local, por época, etc), não seria
+desejável aplicar uma transformação diferente em cada fração. O melhor
+seria encontrar uma transformação que seja adequada para todas as frações.
+Você pode examinar isso graficamente, fazer uma boa análise exploratória e
+depois de ajustar o modelo, fazer uma boa análise dos resíduos.
+
+A `VariavelResposta1`, por exemplo, mostra um aumento de variabilidade em
+função da idade, coisa que é comum em dados de crescimento (não se é o
+caso). No início as unidades experimentais de um mesmo tratamento são mais
+parecidas, mas com o passar do tempo na exposição aos várias fatores não
+controlados, as diferenças nas variáveis resposta tendem a aumentar,
+aumentando portanto a variância do erro. Talvez uma transformação log,
+raíz, etc, resolva isso. Mas nada impede de modelar a variância
+conjuntamente com a média (sem querer complicar).
+
+> 2) Há alguma forma de análise considerando as todas as idades?
+
+Se você considerar representar efeito do fator idade (fator quantitativo)
+por alguma função, por exemplo, polinômio, então mesmo não tendo as mesmas
+idades (mesmo sendo um fatorial incompleto) nas cultivares, você vai
+analisar tudo conjuntamente com facilidade. Se assumir idade como variável
+quantitativa (o que não é recomendável pela própria natureza da variável),
+aí você terá um fatorial incompleto que é coisa complicada de analisar por
+causa das celas ausentes.
+
+> 3) Ao menos duas idades e 3 dos cultivares são comuns em ambos os locais,
+seria muito abusado tentar realizar uma análise conjunta
+> apenas para essas cultivares? (com abordagem similar ao proposto para o
+caso do José)
+
+Poderia ser feito. A idade não é preocupação se for usado regressão nela.
+Mas a análise exploratória que fiz indica que só existe uma época comum aos
+dois locais. Dessa forma não tem como declara interação local:epoca, pois
+pela ausência de mais combinações comuns, o efeito de interação não é
+estimável se época for considerado fator qualitativo. Se for quantitativo,
+assumindo uma função, então daria para estimar/representar a interação.
+
+Tudo isso vai do seu interesse e disposição em fazer a análise. Ao meu ver,
+o experimento parece não ter sido planejado para uma análise conjunta
+visando estimar interação etc. O jeito mais tranquilo é analisar os locais
+separados, até mesmo porque, não se tem como inferir sobre o efeito de
+local (não creio que essa seja a hipótese), e uma vez que  estimar a
+interação local:epoca é complicado neste caso, não sei se compensa o
+esforço. A interação local:cultivar dá para estimar, mas apenas baseando-se
+em 3 cultivares comuns aos locais, mas tendo em mente que as épocas de
+cultivo foram diferentes (apenas uma comum), o que certamente incluirá um
+complicador para gerar confundimento.
+
+Já as idades, como em cada experimento elas são as mesmas, e o padrão é bem
+linear, você pode começar com o modelo linear simples pro efeito de idade e
+ir aumentando o grau conforme necessidade.
+
+Segue código usado para explorar os dados.
+
+# Lê direto da planilha.
+da <- gdata::read.xls("db_r-list.xlsx",
+                      stringsAsFactors = FALSE)
+str(da)
+
+factor_roman <- function(x) {
+    u <- sort(as.roman(unique(x)))
+    factor(x, levels = as.character(u))
+}
+
+# Converte para fator com níveis romanos ordenados.
+da <- transform(da,
+                Epoca = factor_roman(Epoca),
+                Cultivar = factor_roman(Cultivar),
+                Local = factor_roman(Local),
+                Bloco = factor(Repeticao))
+
+# Tabelas de frequência dos pontos experimentais.
+xtabs(~Epoca + Local, data = da)
+xtabs(~Cultivar + Local, data = da)
+xtabs(~Cultivar + Epoca, data = da)
+ftable(xtabs(~Local + Idade + Cultivar, data = da))
+
+library(lattice)
+
+# Diagrama de dispersão.
+xyplot(VariavelResposta1 ~ Idade | Epoca + Local,
+       groups = Cultivar,
+       data = da,
+       type = c("p", "a"))
+
+# Separando por local.
+gridExtra::grid.arrange(
+               ncol = 1,
+               xyplot(VariavelResposta1 ~ Idade | Epoca,
+                      groups = Cultivar,
+                      data = da,
+                      subset = Local == "I",
+                      layout = c(NA, 1),
+                      type = c("p", "a")),
+               xyplot(VariavelResposta1 ~ Idade | Epoca,
+                      groups = Cultivar,
+                      data = da,
+                      subset = Local == "II",
+                      layout = c(NA, 1),
+                      type = c("p", "a")))
+
+# Cultivares comuns aos dois locais.
+u <- as.array(xtabs(~Cultivar + Local, data = da))
+i <- apply(u, 1, prod) > 0
+common <- as.data.frame(u[i, ])
+common$Freq <- NULL
+common
+
+# Pega apenas as combinações presentes.
+db <- droplevels(merge(common, da, all.x = TRUE, all.y = FALSE))
+summary(db)
+
+# Diagrama de dispersão para a seleção.
+xyplot(VariavelResposta1 ~ Idade | Epoca + Local,
+       groups = Cultivar,
+       data = db,
+       type = c("p", "a"))
+
+xyplot(VariavelResposta1 ~ Idade | Cultivar + Local,
+       groups = Epoca,
+       data = db,
+       type = c("p", "a"))
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/f13fd8a6/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Oct  2 11:14:39 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 2 Oct 2019 11:14:39 -0300
+Subject: [R-br] fluxograma no Rmarkdown
+In-Reply-To: <2050117204.1632595.1570024708298@mail.yahoo.com>
+References: <2050117204.1632595.1570024708298.ref@mail.yahoo.com>
+ <2050117204.1632595.1570024708298@mail.yahoo.com>
+Message-ID: <CAFU=EkagZtCX4ozVqsF4Ye571pXWPMZUuqMZABrpBsGL3_=NKQ@mail.gmail.com>
+
+Coloquei
+
+grVis(..., *height = "200px"*)
+
+no seu segundo diagrama e a margens ficaram apropriadas. A documentação
+indica que as dimensões podem ser passadas em `width` e `height`.
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/274a5340/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: 1570024633459blob.jpg
+Tipo: image/jpeg
+Tamanho: 92681 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/274a5340/attachment-0001.jpg>
+
+From henrique.bdias em yahoo.com.br  Wed Oct  2 12:18:40 2019
+From: henrique.bdias em yahoo.com.br (Henrique Boriolo Dias)
+Date: Wed, 2 Oct 2019 15:18:40 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?Ajuda_com_an=C3=A1lise_conjunta_de_dois_experim?=
+ =?utf-8?q?entos_com_parcelas_subdividas?=
+In-Reply-To: <CAFU=EkbzdYRNzJ1VEOuSXUnKgAg2Ocq5oU=kUHCVVEXwHWcRJg@mail.gmail.com>
+References: <CADni8G5Pp35B8GMaKqO5d6PcRW_mvESLZszadmQ05X0ydaD03Q@mail.gmail.com>
+ <CAFU=EkYRa4on9pvEt-PXEtLLm7bZFqRLP8u3q8SPpP_Sce4WGA@mail.gmail.com>
+ <2000619255.1488830.1569974735635@mail.yahoo.com>
+ <CAFU=EkbzdYRNzJ1VEOuSXUnKgAg2Ocq5oU=kUHCVVEXwHWcRJg@mail.gmail.com>
+Message-ID: <834903443.1671046.1570029520399@mail.yahoo.com>
+
+ Prezado Walmes,
+Primeiramente perdao pela falha. Faco parte da lista desde uns 3 anos atras, quando comecei a usar o R de fato.No inicio foi mais por manter antenado nas possibilidades e aprender com duvidas de colegas que usam ou usaram esse canal.O email do Jose me encorajou a enviar um pedido de ajuda.Comumente vejo emails sobre a questao de reprodutibilidade e dei muita atencao a isso e nao em uma ponto basico sobre o codigo de conduta que li la tras qdo entrei na lista, o que deveria ter percebido pq nao lembro de ter visto alguem anexando nada. Enfim, aprendido.
+Segundo, obrigado pelo compartilhamento da sua visao e do codigo. Com certeza elucidou muita coisa pra mim.
+Ate maisHenrique
+    Em quarta-feira, 2 de outubro de 2019 10:05:37 GMT-4, Walmes Zeviani <walmeszeviani em gmail.com> escreveu:  
+ 
+ Henrique,
+Bom que você conferiu reprodutibilidade MAS o código de conduta da lista pede para que não sejam enviados anexos para a lista.Existem outras formas de conferir acesso aos dados sem que seja por anexo, ok?
+> As dúvidas, além de saber se estou ou não num caminho lúcido em termos da estatística:
+> 1) Em alguns casos houve violação de alguma pressuposição (estou testando norm. dos residuos e homogeneidade apenas),> como para a variável resposta 3, no local II colhido na idade 8.
+> - Procedo com alguma transformação ? tipo utilizar boxcox e ver qual melhor forma de transformar os dados ?
+> - Ou Parto para outro tipo de abordagem ? alguma sugestão ?
+Nem uma coisa nem outra. Segue com a análise usual. Por que? Bem, para começar, você sabe que, se o nível de significância é de 5%, 1 em cada 20 análises (em média) irá rejeitar a hipótese nula mesmo que ela seja verdadeira. É o erro tipo I. Então, o que está acontecendo com você é basicamente isso. De tanto fazer testes, uma hora haverá uma rejeição que pode ser apenas casual. Não rodei seu script para saber se de fato a rejeição deve-se a alguma anomalia grave. Mas de qualquer forma, fica aí o raciocínio. Outro ponto, eu não gosto dessa abordagem "pilha de testes de hipóteses". Prefiro, ainda que seja considerado subjetiva, a análise gráfica dos resíduos porque a leitura conjunta dos gráficos subsidia alguma ação em caso de necessidade, coisa que o teste não faz porque ele diz apenas "sim" e "não". Um último ponto, sendo a mesma variável resposta vista em divisões dos dados (por local, por época, etc), não seria desejável aplicar uma transformação diferente em cada fração. O melhor seria encontrar uma transformação que seja adequada para todas as frações. Você pode examinar isso graficamente, fazer uma boa análise exploratória e depois de ajustar o modelo, fazer uma boa análise dos resíduos.
+A `VariavelResposta1`, por exemplo, mostra um aumento de variabilidade em função da idade, coisa que é comum em dados de crescimento (não se é o caso). No início as unidades experimentais de um mesmo tratamento são mais parecidas, mas com o passar do tempo na exposição aos várias fatores não controlados, as diferenças nas variáveis resposta tendem a aumentar, aumentando portanto a variância do erro. Talvez uma transformação log, raíz, etc, resolva isso. Mas nada impede de modelar a variância conjuntamente com a média (sem querer complicar).
+
+> 2) Há alguma forma de análise considerando as todas as idades?
+Se você considerar representar efeito do fator idade (fator quantitativo) por alguma função, por exemplo, polinômio, então mesmo não tendo as mesmas idades (mesmo sendo um fatorial incompleto) nas cultivares, você vai analisar tudo conjuntamente com facilidade. Se assumir idade como variável quantitativa (o que não é recomendável pela própria natureza da variável), aí você terá um fatorial incompleto que é coisa complicada de analisar por causa das celas ausentes.
+
+> 3) Ao menos duas idades e 3 dos cultivares são comuns em ambos os locais, seria muito abusado tentar realizar uma análise conjunta> apenas para essas cultivares? (com abordagem similar ao proposto para o caso do José)
+Poderia ser feito. A idade não é preocupação se for usado regressão nela. Mas a análise exploratória que fiz indica que só existe uma época comum aos dois locais. Dessa forma não tem como declara interação local:epoca, pois pela ausência de mais combinações comuns, o efeito de interação não é estimável se época for considerado fator qualitativo. Se for quantitativo, assumindo uma função, então daria para estimar/representar a interação.
+Tudo isso vai do seu interesse e disposição em fazer a análise. Ao meu ver, o experimento parece não ter sido planejado para uma análise conjunta visando estimar interação etc. O jeito mais tranquilo é analisar os locais separados, até mesmo porque, não se tem como inferir sobre o efeito de local (não creio que essa seja a hipótese), e uma vez que  estimar a interação local:epoca é complicado neste caso, não sei se compensa o esforço. A interação local:cultivar dá para estimar, mas apenas baseando-se em 3 cultivares comuns aos locais, mas tendo em mente que as épocas de cultivo foram diferentes (apenas uma comum), o que certamente incluirá um complicador para gerar confundimento.
+Já as idades, como em cada experimento elas são as mesmas, e o padrão é bem linear, você pode começar com o modelo linear simples pro efeito de idade e ir aumentando o grau conforme necessidade.
+
+Segue código usado para explorar os dados.
+# Lê direto da planilha.
+da <- gdata::read.xls("db_r-list.xlsx",
+                      stringsAsFactors = FALSE)
+str(da)
+
+factor_roman <- function(x) {
+    u <- sort(as.roman(unique(x)))
+    factor(x, levels = as.character(u))
+}
+
+# Converte para fator com níveis romanos ordenados.
+da <- transform(da,
+                Epoca = factor_roman(Epoca),
+                Cultivar = factor_roman(Cultivar),
+                Local = factor_roman(Local),
+                Bloco = factor(Repeticao))
+
+# Tabelas de frequência dos pontos experimentais.
+xtabs(~Epoca + Local, data = da)
+xtabs(~Cultivar + Local, data = da)
+xtabs(~Cultivar + Epoca, data = da)
+ftable(xtabs(~Local + Idade + Cultivar, data = da))
+
+library(lattice)
+
+# Diagrama de dispersão.
+xyplot(VariavelResposta1 ~ Idade | Epoca + Local,
+       groups = Cultivar,
+       data = da,
+       type = c("p", "a"))
+
+# Separando por local.
+gridExtra::grid.arrange(
+               ncol = 1,
+               xyplot(VariavelResposta1 ~ Idade | Epoca,
+                      groups = Cultivar,
+                      data = da,
+                      subset = Local == "I",
+                      layout = c(NA, 1),
+                      type = c("p", "a")),
+               xyplot(VariavelResposta1 ~ Idade | Epoca,
+                      groups = Cultivar,
+                      data = da,
+                      subset = Local == "II",
+                      layout = c(NA, 1),
+                      type = c("p", "a")))
+
+# Cultivares comuns aos dois locais.
+u <- as.array(xtabs(~Cultivar + Local, data = da))
+i <- apply(u, 1, prod) > 0
+common <- as.data.frame(u[i, ])
+common$Freq <- NULL
+common
+
+# Pega apenas as combinações presentes.
+db <- droplevels(merge(common, da, all.x = TRUE, all.y = FALSE))
+summary(db)
+
+# Diagrama de dispersão para a seleção.
+xyplot(VariavelResposta1 ~ Idade | Epoca + Local,
+       groups = Cultivar,
+       data = db,
+       type = c("p", "a"))
+
+xyplot(VariavelResposta1 ~ Idade | Cultivar + Local,
+       groups = Epoca,
+       data = db,
+       type = c("p", "a"))
+À disposição.Walmes.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/e3a80242/attachment.html>
+
+From richfield1974 em yahoo.com  Wed Oct  2 13:35:37 2019
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Wed, 2 Oct 2019 16:35:37 +0000 (UTC)
+Subject: [R-br] fluxograma no Rmarkdown
+In-Reply-To: <CAFU=EkagZtCX4ozVqsF4Ye571pXWPMZUuqMZABrpBsGL3_=NKQ@mail.gmail.com>
+References: <2050117204.1632595.1570024708298.ref@mail.yahoo.com>
+ <2050117204.1632595.1570024708298@mail.yahoo.com>
+ <CAFU=EkagZtCX4ozVqsF4Ye571pXWPMZUuqMZABrpBsGL3_=NKQ@mail.gmail.com>
+Message-ID: <75271799.1689743.1570034137908@mail.yahoo.com>
+
+ Muito obrigado:)    On Wednesday, October 2, 2019, 11:14:53 AM GMT-3, Walmes Zeviani <walmeszeviani em gmail.com> wrote:  
+ 
+ Coloquei
+grVis(..., height = "200px") 
+
+no seu segundo diagrama e a margens ficaram apropriadas. A documentação indica que as dimensões podem ser passadas em `width` e `height`.
+
+À disposição.Walmes.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/e3d39fc8/attachment.html>
+
+From sznelwar em uol.com.br  Wed Oct  2 23:23:12 2019
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Wed, 02 Oct 2019 23:23:12 -0300
+Subject: [R-br] 
+ =?utf-8?q?Ajuda_com_an=C3=A1lise_conjunta_de_dois_experim?=
+ =?utf-8?q?entos_com_parcelas_subdividas?=
+In-Reply-To: <kUHCVVEXwHWcRJg@mail.gmail.com>
+References: <CADni8G5Pp35B8GMaKqO5d6PcRW_mvESLZszadmQ05X0ydaD03Q@mail.gmail.com>
+ <EkYRa4on9pvEt-PXEtLLm7bZFqRLP8u3q8SPpP_Sce4WGA@mail.gmail.com>
+ <2000619255.1488830.1569974735635@mail.yahoo.com>
+ <kUHCVVEXwHWcRJg@mail.gmail.com>
+Message-ID: <5d955b9056161_26f72b001834310c852ad@ip-10-81-19-47.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191002/4a5f5776/attachment.html>
+
+From andreolsouza em yahoo.com.br  Thu Oct  3 11:35:46 2019
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Thu, 3 Oct 2019 14:35:46 +0000 (UTC)
+Subject: [R-br] MCMCglmm - Parameter Expansion
+References: <1271875820.2005483.1570113346650.ref@mail.yahoo.com>
+Message-ID: <1271875820.2005483.1570113346650@mail.yahoo.com>
+
+bom dia! Alguém da lista trabalhou com esta biblioteca? O que seria Parameter Expansion? Sei que é uma reparametrização de priori, mas, não consegui enxergar a distribuição de prob. que  se prõe ao usar a Parameter Expansion.
+att,.André 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191003/c2ea951f/attachment.html>
+
+From waldir.carvalho em embrapa.br  Mon Oct  7 16:37:20 2019
+From: waldir.carvalho em embrapa.br (Waldir De Carvalho Junior)
+Date: Mon, 7 Oct 2019 16:37:20 -0300 (BRT)
+Subject: [R-br] como exportar um raster categorico a partir do R para o
+ SAGAGIS?
+In-Reply-To: <1455612109.6878179.1570476981788.JavaMail.root@embrapa.br>
+Message-ID: <848355254.6878502.1570477040269.JavaMail.root@embrapa.br>
+
+Boa tarde a Todos 
+estou tentando exportar um raster categorico elaborado por um modelo multinom para um SIG 
+Mas os comandos sempre mostram erro por não ser um raster de números e sim de classes (classes de solos) 
+Tanto o write.raster como write.asciigrid ou writeGDAL só aceitam se o raster for numérico... 
+Se alguem puder me dar uma solução.... 
+
+
+__________ 
+Dr. Waldir de Carvalho Junior 
+Engº Agroº D.Sc. Ciência do Solo - Mapeamento Digital 
+Embrapa Solos 
+Empresa Brasileira de Pesquisa Agropecuária (Embrapa) 
+Rio de Janeiro/RJ 
+
+Waldir.Carvalho em embrapa.br 
+Telefone: +55 (21) 2179-4614 | Fax: +55 (21) 2274-5291 
+www.embrapa.br/solos | | fb.com/embrapa | twitter.com/embrapa 
+
+
+
+
+Call 
+Send SMS 
+Add to Skype 
+You'll need Skype Credit Free via Skype 
+
+____________________________________________________________________________
+Aviso de confidencialidade
+
+Esta mensagem da Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+empresa publica federal  regida pelo disposto  na Lei Federal no. 5.851,  de
+7 de dezembro de 1972,  e  enviada exclusivamente  a seu destinatario e pode
+conter informacoes  confidenciais, protegidas  por sigilo profissional.  Sua
+utilizacao desautorizada  e ilegal e  sujeita o infrator as penas da lei. Se
+voce  a recebeu indevidamente, queira, por gentileza, reenvia-la ao
+emitente, esclarecendo o equivoco.
+
+Confidentiality note
+
+This message from Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+a government company  established under  Brazilian law (5.851/72), is
+directed exclusively to  its addressee  and may contain confidential data, 
+protected under  professional secrecy  rules. Its unauthorized  use is
+illegal and  may subject the transgressor to the law's penalties. If you are
+not the addressee, please send it back, elucidating the failure.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191007/3fda1945/attachment.html>
+
+From marcelolaia em gmail.com  Wed Oct  9 12:28:26 2019
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Wed, 9 Oct 2019 12:28:26 -0300
+Subject: [R-br] =?iso-8859-1?q?Organizar_data=2Eframe_e_sumarizar_dados_e?=
+ =?iso-8859-1?q?m_transposi=E7=E3o?=
+Message-ID: <20191009152826.GC25795@localhost>
+
+Caro(a),
+
+Aqui na Universidade nós temos que sumarizar e organizar os dados dos discentes
+bolsistas por mês e valor recebido de bolsa.
+
+Os dados estão assim:
+
+CPF             Nome           Descrição         Data       Valor
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/02/2018 200,00
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/03/2018 200,00
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/04/2018 200,00
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/07/2018 400,00
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Manutenção  01/08/2018 400,00
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Emergencial 01/06/2018 200,00
+
+
+Nós precisamos da seguinte saída:
+
+CPF             Nome           Quantidade Parcelas       Valor Mês Valor Ano
+xxx.xxx.xxx-xx  Fulano de Tal  6                         266,67    1600,00
+
+Se puder ajudar, agradeço!
+
+-- 
+Marcelo
+
+From jose-wellingthon.santos em embrapa.br  Wed Oct  9 15:46:40 2019
+From: jose-wellingthon.santos em embrapa.br (Jose Wellingthon Dos Santos)
+Date: Wed, 9 Oct 2019 15:46:40 -0300 (BRT)
+Subject: [R-br] Modelos lineares generalizados multivariados -literatura
+In-Reply-To: <20191009152826.GC25795@localhost>
+Message-ID: <1889187931.11565119.1570646800406.JavaMail.root@embrapa.br>
+
+Oi pessoal, 
+Alguém conhece literatura para modelos lineares generalizados multivariados? 
+Att 
+
+-- 
+José Wellingthon dos Santos 
+Pesquisador - Métodos Quantitativos 
+Embrapa Algodão 
+Empresa Brasileira de Pesquisa Agropecuária (Embrapa) 
+Campina Grande, PB 
+
+jose-wellingthon.santos em embrapa.br 
+Telefone: +55 (83) 3182-4401 | Fax: +55 (83) 3182-4367 
+www.embrapa.br/algodao | https://twitter.com/embrapa_algodao 
+Confira também: www.facebook.com/agrosustentavel 
+
+
+----- Mensagem original -----
+
+De: "Marcelo Laia por (R-br)" <r-br em listas.c3sl.ufpr.br> 
+Para: "a lista Brasileira oficial de discussão do programa R." <r-br em listas.c3sl.ufpr.br> 
+Cc: "Marcelo Laia" <marcelolaia em gmail.com> 
+Enviadas: Quarta-feira, 9 de outubro de 2019 12:28:26 
+Assunto: [R-br] Organizar data.frame e sumarizar dados em transposição 
+
+Caro(a), 
+
+Aqui na Universidade nós temos que sumarizar e organizar os dados dos discentes 
+bolsistas por mês e valor recebido de bolsa. 
+
+Os dados estão assim: 
+
+CPF Nome Descrição Data Valor 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/02/2018 200,00 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/03/2018 200,00 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/04/2018 200,00 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/07/2018 400,00 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Manutenção 01/08/2018 400,00 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Emergencial 01/06/2018 200,00 
+
+
+Nós precisamos da seguinte saída: 
+
+CPF Nome Quantidade Parcelas Valor Mês Valor Ano 
+xxx.xxx.xxx-xx Fulano de Tal 6 266,67 1600,00 
+
+Se puder ajudar, agradeço! 
+
+-- 
+Marcelo 
+_______________________________________________ 
+R-br mailing list 
+R-br em listas.c3sl.ufpr.br 
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br 
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível. 
+
+
+____________________________________________________________________________
+Aviso de confidencialidade
+
+Esta mensagem da Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+empresa publica federal  regida pelo disposto  na Lei Federal no. 5.851,  de
+7 de dezembro de 1972,  e  enviada exclusivamente  a seu destinatario e pode
+conter informacoes  confidenciais, protegidas  por sigilo profissional.  Sua
+utilizacao desautorizada  e ilegal e  sujeita o infrator as penas da lei. Se
+voce  a recebeu indevidamente, queira, por gentileza, reenvia-la ao
+emitente, esclarecendo o equivoco.
+
+Confidentiality note
+
+This message from Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+a government company  established under  Brazilian law (5.851/72), is
+directed exclusively to  its addressee  and may contain confidential data, 
+protected under  professional secrecy  rules. Its unauthorized  use is
+illegal and  may subject the transgressor to the law's penalties. If you are
+not the addressee, please send it back, elucidating the failure.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191009/38dbdf38/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Oct  9 16:32:38 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 9 Oct 2019 16:32:38 -0300
+Subject: [R-br] 
+	=?utf-8?q?Organizar_data=2Eframe_e_sumarizar_dados_em_tra?=
+	=?utf-8?b?bnNwb3Npw6fDo28=?=
+In-Reply-To: <20191009152826.GC25795@localhost>
+References: <20191009152826.GC25795@localhost>
+Message-ID: <CAKrF98mdt6jM3Sne8+iiHxDMWEs0_HUmKehmg23Lq+ha-McyEA@mail.gmail.com>
+
+Sem um CMR é difícil ser assertivo, mas o delineamento do que você deseja
+seria obter uma lista sem repetições da coluna dos CPF (*uniq*), e usando
+os itens dessa lista como parâmetro para *which* ou *subset* fazer a soma e
+contar o número de parcelas adicionando no novo dataframe esses resultados.
+
+HTH
+--
+Cesar Rabak
+
+On Wed, Oct 9, 2019 at 12:28 PM Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Caro(a),
+>
+> Aqui na Universidade nós temos que sumarizar e organizar os dados dos
+> discentes
+> bolsistas por mês e valor recebido de bolsa.
+>
+> Os dados estão assim:
+>
+> CPF             Nome           Descrição         Data       Valor
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/02/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/03/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/04/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/07/2018 400,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Manutenção  01/08/2018 400,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Emergencial 01/06/2018 200,00
+>
+>
+> Nós precisamos da seguinte saída:
+>
+> CPF             Nome           Quantidade Parcelas       Valor Mês Valor
+> Ano
+> xxx.xxx.xxx-xx  Fulano de Tal  6                         266,67    1600,00
+>
+> Se puder ajudar, agradeço!
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191009/fa39d328/attachment.html>
+
+From marcelolaia em gmail.com  Wed Oct  9 16:53:19 2019
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Wed, 9 Oct 2019 16:53:19 -0300
+Subject: [R-br] 
+ =?iso-8859-1?q?Organizar_data=2Eframe_e_sumarizar_dados_e?=
+ =?iso-8859-1?q?m_transposi=E7=E3o?=
+In-Reply-To: <CAKrF98mdt6jM3Sne8+iiHxDMWEs0_HUmKehmg23Lq+ha-McyEA@mail.gmail.com>
+References: <20191009152826.GC25795@localhost>
+ <CAKrF98mdt6jM3Sne8+iiHxDMWEs0_HUmKehmg23Lq+ha-McyEA@mail.gmail.com>
+Message-ID: <20191009195319.GE20280@localhost>
+
+Então, Cesar. Eu tentei fazer um CMR mas não tive conhecimento para tal. Eu
+tentei com a família apply e com os pacotes dplyr, tidyr e plyr [1]. Não dei
+conta de fazer. Se puder ajudar, terá que dar mastigado. Isso não é um
+experimento. Precisamos fazer um relatório aqui na Universidade sobre bolsas
+dadas a discentes vulneráveis e preciso tratar os dados para inclui-los numa
+plataforma fixa do governo. Pra eu calcular isso na unha (calc) vai ser muito
+demorado e temos um prazo. Mas, eu sei que a lista não é pra esse tipo de coisa
+(dar mastigado).
+
+Abração
+
+Obrigado
+
+1. http://www.rpubs.com/Kassio_Ferreira/tutorialdplyr
+
+Marcelo
+
+
+On 09/10/19 at 04:32, Cesar Rabak por (R-br) wrote:
+>    Sem um CMR é difícil ser assertivo, mas o delineamento do que você
+>    deseja seria obter uma lista sem repetições da coluna dos CPF (uniq), e
+>    usando os itens dessa lista como parâmetro para which ou subset fazer a
+>    soma e contar o número de parcelas adicionando no novo dataframe esses
+>    resultados.
+>    HTH
+>    --
+>    Cesar Rabak
+> 
+>    On Wed, Oct 9, 2019 at 12:28 PM Marcelo Laia por (R-br)
+>    <[1]r-br em listas.c3sl.ufpr.br> wrote:
+> 
+>      Caro(a),
+>      Aqui na Universidade nós temos que sumarizar e organizar os dados
+>      dos discentes
+>      bolsistas por mês e valor recebido de bolsa.
+>      Os dados estão assim:
+>      CPF             Nome           Descrição         Data       Valor
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/02/2018 200,00
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/03/2018 200,00
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/04/2018 200,00
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/07/2018 400,00
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Manutenção  01/08/2018 400,00
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Emergencial 01/06/2018 200,00
+>      Nós precisamos da seguinte saída:
+>      CPF             Nome           Quantidade Parcelas       Valor Mês
+>      Valor Ano
+>      xxx.xxx.xxx-xx  Fulano de Tal  6                         266,67
+>      1600,00
+>      Se puder ajudar, agradeço!
+>      --
+>      Marcelo
+>      _______________________________________________
+>      R-br mailing list
+>      [2]R-br em listas.c3sl.ufpr.br
+>      [3]https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>      Leia o guia de postagem ([4]http://www.leg.ufpr.br/r-br-guia) e
+>      forneça código mínimo reproduzível.
+> 
+> Referências
+> 
+>    1. mailto:r-br em listas.c3sl.ufpr.br
+>    2. mailto:R-br em listas.c3sl.ufpr.br
+>    3. https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>    4. http://www.leg.ufpr.br/r-br-guia
+
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+
+
+-- 
+Marcelo
+
+From walmeszeviani em gmail.com  Wed Oct  9 18:05:14 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 9 Oct 2019 18:05:14 -0300
+Subject: [R-br] Modelos lineares generalizados multivariados -literatura
+In-Reply-To: <1889187931.11565119.1570646800406.JavaMail.root@embrapa.br>
+References: <20191009152826.GC25795@localhost>
+ <1889187931.11565119.1570646800406.JavaMail.root@embrapa.br>
+Message-ID: <CAFU=EkbNPd5EA=_RRCuVSBOiS4RF4ACSTCiFxvcc0W=q+b+YKg@mail.gmail.com>
+
+José Wellingthon
+
+O prof. Wagner e eu oferecemos um Curso da 62ª RBras que foi em Lavras
+sobre análise multivariada de dados experimentais
+http://cursos.leg.ufpr.br/mcglm4aed/
+
+Dê uma olhada no material.
+
+Você tem uma necessidade específica de orientação para uma análise ou
+procura material geral?
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191009/546c75b5/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Oct 10 13:46:35 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 10 Oct 2019 13:46:35 -0300
+Subject: [R-br] 
+	=?utf-8?q?Organizar_data=2Eframe_e_sumarizar_dados_em_tra?=
+	=?utf-8?b?bnNwb3Npw6fDo28=?=
+In-Reply-To: <20191009195319.GE20280@localhost>
+References: <20191009152826.GC25795@localhost>
+ <CAKrF98mdt6jM3Sne8+iiHxDMWEs0_HUmKehmg23Lq+ha-McyEA@mail.gmail.com>
+ <20191009195319.GE20280@localhost>
+Message-ID: <CAKrF98=34qm1SbFERSCqTUYA8nEgXwRSFSrr2S_N2dxZOYbT5g@mail.gmail.com>
+
+Marcelo,
+
+Você consegue obter o resultado de:
+
+> unique(seu_df["CPF"])
+
+Supondo que a coluna de CPF seja "CPF" senão use o número dela?
+
+Sabe como salvar esse resultado num vetor?
+
+
+
+On Wed, Oct 9, 2019 at 4:53 PM Marcelo Laia <marcelolaia em gmail.com> wrote:
+
+> Então, Cesar. Eu tentei fazer um CMR mas não tive conhecimento para tal. Eu
+> tentei com a família apply e com os pacotes dplyr, tidyr e plyr [1]. Não
+> dei
+> conta de fazer. Se puder ajudar, terá que dar mastigado. Isso não é um
+> experimento. Precisamos fazer um relatório aqui na Universidade sobre
+> bolsas
+> dadas a discentes vulneráveis e preciso tratar os dados para inclui-los
+> numa
+> plataforma fixa do governo. Pra eu calcular isso na unha (calc) vai ser
+> muito
+> demorado e temos um prazo. Mas, eu sei que a lista não é pra esse tipo de
+> coisa
+> (dar mastigado).
+>
+> Abração
+>
+> Obrigado
+>
+> 1. http://www.rpubs.com/Kassio_Ferreira/tutorialdplyr
+>
+> Marcelo
+>
+>
+> On 09/10/19 at 04:32, Cesar Rabak por (R-br) wrote:
+> >    Sem um CMR é difícil ser assertivo, mas o delineamento do que você
+> >    deseja seria obter uma lista sem repetições da coluna dos CPF (uniq),
+> e
+> >    usando os itens dessa lista como parâmetro para which ou subset fazer
+> a
+> >    soma e contar o número de parcelas adicionando no novo dataframe esses
+> >    resultados.
+> >    HTH
+> >    --
+> >    Cesar Rabak
+> >
+> >    On Wed, Oct 9, 2019 at 12:28 PM Marcelo Laia por (R-br)
+> >    <[1]r-br em listas.c3sl.ufpr.br> wrote:
+> >
+> >      Caro(a),
+> >      Aqui na Universidade nós temos que sumarizar e organizar os dados
+> >      dos discentes
+> >      bolsistas por mês e valor recebido de bolsa.
+> >      Os dados estão assim:
+> >      CPF             Nome           Descrição         Data       Valor
+> >      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/02/2018 200,00
+> >      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/03/2018 200,00
+> >      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/04/2018 200,00
+> >      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/07/2018 400,00
+> >      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Manutenção  01/08/2018 400,00
+> >      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Emergencial 01/06/2018 200,00
+> >      Nós precisamos da seguinte saída:
+> >      CPF             Nome           Quantidade Parcelas       Valor Mês
+> >      Valor Ano
+> >      xxx.xxx.xxx-xx  Fulano de Tal  6                         266,67
+> >      1600,00
+> >      Se puder ajudar, agradeço!
+> >      --
+> >      Marcelo
+> >      _______________________________________________
+> >      R-br mailing list
+> >      [2]R-br em listas.c3sl.ufpr.br
+> >      [3]https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >      Leia o guia de postagem ([4]http://www.leg.ufpr.br/r-br-guia) e
+> >      forneça código mínimo reproduzível.
+> >
+> > Referências
+> >
+> >    1. mailto:r-br em listas.c3sl.ufpr.br
+> >    2. mailto:R-br em listas.c3sl.ufpr.br
+> >    3. https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >    4. http://www.leg.ufpr.br/r-br-guia
+>
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+>
+>
+> --
+> Marcelo
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191010/1ed23136/attachment.html>
+
+From dtiezzi em usp.br  Thu Oct 10 13:53:35 2019
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Thu, 10 Oct 2019 13:53:35 -0300
+Subject: [R-br] 
+	=?utf-8?q?Organizar_data=2Eframe_e_sumarizar_dados_em_tra?=
+	=?utf-8?b?bnNwb3Npw6fDo28=?=
+In-Reply-To: <20191009152826.GC25795@localhost>
+References: <20191009152826.GC25795@localhost>
+Message-ID: <CA+RL3DPvDzaLmRP7H5_x-n92rXfYuoK5=+10JHo9+WeFR17Tuw@mail.gmail.com>
+
+Você precisa somar os valores das bolsas onde o cpf eh o mesmo e agrupar em
+Uma unica tupla. Eh isso?
+
+On Wed, 9 Oct 2019, 12:28 Marcelo Laia por (R-br), <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Caro(a),
+>
+> Aqui na Universidade nós temos que sumarizar e organizar os dados dos
+> discentes
+> bolsistas por mês e valor recebido de bolsa.
+>
+> Os dados estão assim:
+>
+> CPF             Nome           Descrição         Data       Valor
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/02/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/03/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/04/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/07/2018 400,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Manutenção  01/08/2018 400,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Emergencial 01/06/2018 200,00
+>
+>
+> Nós precisamos da seguinte saída:
+>
+> CPF             Nome           Quantidade Parcelas       Valor Mês Valor
+> Ano
+> xxx.xxx.xxx-xx  Fulano de Tal  6                         266,67    1600,00
+>
+> Se puder ajudar, agradeço!
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191010/64e11b4b/attachment.html>
+
+From dtiezzi em usp.br  Thu Oct 10 14:19:53 2019
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Thu, 10 Oct 2019 14:19:53 -0300
+Subject: [R-br] 
+ =?utf-8?q?Organizar_data=2Eframe_e_sumarizar_dados_em_tra?=
+ =?utf-8?b?bnNwb3Npw6fDo28=?=
+In-Reply-To: <20191009152826.GC25795@localhost>
+References: <20191009152826.GC25795@localhost>
+Message-ID: <6CABD552-BEFF-4E14-B827-B51C9DF16965@usp.br>
+
+Boa tarde Marcelo
+
+Acho que esse script resolve o seu problema. 
+Deixo em anexo a tabela que criei em csv.
+
+
+
+
+
+
+
+
+
+
+Daniel Tiezzi, MD, PhD
+Professor Associado
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em fmrp.usp.br
+
+
+
+> On 9 Oct 2019, at 12:28, Marcelo Laia por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> CPF             Nome           Quantidade Parcelas       Valor Mês Valor Ano
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191010/ce8665db/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: bolsas.R
+Tipo: application/octet-stream
+Tamanho: 696 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191010/ce8665db/attachment.obj>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191010/ce8665db/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: bolsas
+Tipo: application/octet-stream
+Tamanho: 621 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191010/ce8665db/attachment-0001.obj>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191010/ce8665db/attachment-0002.html>
+
+From verginio em unesc.net  Thu Oct 10 17:42:19 2019
+From: verginio em unesc.net (Max)
+Date: Thu, 10 Oct 2019 17:42:19 -0300
+Subject: [R-br] RES: Digest R-br, volume 106, assunto 6
+In-Reply-To: <mailman.1.1570719601.909.r-br@listas.c3sl.ufpr.br>
+References: <mailman.1.1570719601.909.r-br@listas.c3sl.ufpr.br>
+Message-ID: <5d9f97d9.1c69fb81.cd5ec.b400@mx.google.com>
+
+Marcelo Laia
+
+Preparei o script e tentei disponibilizar neste link: 
+https://gist.github.com/Verginio/d671ff36b852c68b6ba7b7f59114a22e
+
+Pelo que entendi, daria para realizar esta tarefa com a função ?group_by? seguidas de ?summarise?. Em que a primeira define quais variáveis serão agrupadas e a segunda executa o cálculo para os grupos.
+
+library(dplyr) 
+
+df_summ <- df_bolsa %>%
+  group_by(CPF, Nome) %>%
+  summarise(
+    `Quantidade Parcelas` = n(),
+    `Valor Mês` = mean(Valor), #média
+    `Valor Ano` = sum(Valor)   #somatório
+  )
+
+#Resultado
+head(df_summ)
+
+
+Abraços,
+Max Verginio
+
+De: r-br-request em listas.c3sl.ufpr.br
+Enviado:quinta-feira, 10 de outubro de 2019 12:00
+Para: r-br em listas.c3sl.ufpr.br
+Assunto: Digest R-br, volume 106, assunto 6
+
+Enviar submissões para a lista de discussão R-br para 
+	r-br em listas.c3sl.ufpr.br
+
+Para se cadastrar ou descadastrar via WWW, visite o endereço
+	https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+corpo da mensagem para 
+	r-br-request em listas.c3sl.ufpr.br
+
+Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+endereço
+	r-br-owner em listas.c3sl.ufpr.br
+
+Quando responder, por favor edite sua linha Assunto assim ela será
+mais específica que "Re: Contents of R-br digest..."
+
+
+Tópicos de Hoje:
+
+   1. Organizar data.frame e sumarizar dados em transposição
+      (Marcelo Laia)
+   2. Modelos lineares generalizados multivariados -literatura
+      (Jose Wellingthon Dos Santos)
+   3. Re:  Organizar data.frame e sumarizar dados em transposição
+      (Cesar Rabak)
+   4. Re:  Organizar data.frame e sumarizar dados em transposição
+      (Marcelo Laia)
+   5. Re: Modelos lineares generalizados multivariados -literatura
+      (Walmes Zeviani)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Wed, 9 Oct 2019 12:28:26 -0300
+From: Marcelo Laia <marcelolaia em gmail.com>
+To: a lista Brasileira oficial de discussão do programa R.
+	<r-br em listas.c3sl.ufpr.br>
+Subject: [R-br] Organizar data.frame e sumarizar dados em transposição
+Message-ID: <20191009152826.GC25795 em localhost>
+Content-Type: text/plain; charset=iso-8859-1
+
+Caro(a),
+
+Aqui na Universidade nós temos que sumarizar e organizar os dados dos discentes
+bolsistas por mês e valor recebido de bolsa.
+
+Os dados estão assim:
+
+CPF             Nome           Descrição         Data       Valor
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/02/2018 200,00
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/03/2018 200,00
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/04/2018 200,00
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/07/2018 400,00
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Manutenção  01/08/2018 400,00
+xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Emergencial 01/06/2018 200,00
+
+
+Nós precisamos da seguinte saída:
+
+CPF             Nome           Quantidade Parcelas       Valor Mês Valor Ano
+xxx.xxx.xxx-xx  Fulano de Tal  6                         266,67    1600,00
+
+Se puder ajudar, agradeço!
+
+-- 
+Marcelo
+
+
+------------------------------
+
+Message: 2
+Date: Wed, 9 Oct 2019 15:46:40 -0300 (BRT)
+From: Jose Wellingthon Dos Santos <jose-wellingthon.santos em embrapa.br>
+To: a lista Brasileira oficial de discussão do programa R.
+	<r-br em listas.c3sl.ufpr.br>
+Cc: "walmes " <walmes em ufpr.br>, "walmeszeviani "
+	<walmeszeviani em gmail.com>
+Subject: [R-br] Modelos lineares generalizados multivariados
+	-literatura
+Message-ID:
+	<1889187931.11565119.1570646800406.JavaMail.root em embrapa.br>
+Content-Type: text/plain; charset="iso-8859-1"
+
+Oi pessoal, 
+Alguém conhece literatura para modelos lineares generalizados multivariados? 
+Att 
+
+-- 
+José Wellingthon dos Santos 
+Pesquisador - Métodos Quantitativos 
+Embrapa Algodão 
+Empresa Brasileira de Pesquisa Agropecuária (Embrapa) 
+Campina Grande, PB 
+
+jose-wellingthon.santos em embrapa.br 
+Telefone: +55 (83) 3182-4401 | Fax: +55 (83) 3182-4367 
+www.embrapa.br/algodao | https://twitter.com/embrapa_algodao 
+Confira também: www.facebook.com/agrosustentavel 
+
+
+----- Mensagem original -----
+
+De: "Marcelo Laia por (R-br)" <r-br em listas.c3sl.ufpr.br> 
+Para: "a lista Brasileira oficial de discussão do programa R." <r-br em listas.c3sl.ufpr.br> 
+Cc: "Marcelo Laia" <marcelolaia em gmail.com> 
+Enviadas: Quarta-feira, 9 de outubro de 2019 12:28:26 
+Assunto: [R-br] Organizar data.frame e sumarizar dados em transposição 
+
+Caro(a), 
+
+Aqui na Universidade nós temos que sumarizar e organizar os dados dos discentes 
+bolsistas por mês e valor recebido de bolsa. 
+
+Os dados estão assim: 
+
+CPF Nome Descrição Data Valor 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/02/2018 200,00 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/03/2018 200,00 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/04/2018 200,00 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/07/2018 400,00 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Manutenção 01/08/2018 400,00 
+xxx.xxx.xxx-xx Fulano de Tal Bolsa Emergencial 01/06/2018 200,00 
+
+
+Nós precisamos da seguinte saída: 
+
+CPF Nome Quantidade Parcelas Valor Mês Valor Ano 
+xxx.xxx.xxx-xx Fulano de Tal 6 266,67 1600,00 
+
+Se puder ajudar, agradeço! 
+
+-- 
+Marcelo 
+_______________________________________________ 
+R-br mailing list 
+R-br em listas.c3sl.ufpr.br 
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br 
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível. 
+
+
+____________________________________________________________________________
+Aviso de confidencialidade
+
+Esta mensagem da Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+empresa publica federal  regida pelo disposto  na Lei Federal no. 5.851,  de
+7 de dezembro de 1972,  e  enviada exclusivamente  a seu destinatario e pode
+conter informacoes  confidenciais, protegidas  por sigilo profissional.  Sua
+utilizacao desautorizada  e ilegal e  sujeita o infrator as penas da lei. Se
+voce  a recebeu indevidamente, queira, por gentileza, reenvia-la ao
+emitente, esclarecendo o equivoco.
+
+Confidentiality note
+
+This message from Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+a government company  established under  Brazilian law (5.851/72), is
+directed exclusively to  its addressee  and may contain confidential data, 
+protected under  professional secrecy  rules. Its unauthorized  use is
+illegal and  may subject the transgressor to the law's penalties. If you are
+not the addressee, please send it back, elucidating the failure.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191009/38dbdf38/attachment-0001.html>
+
+------------------------------
+
+Message: 3
+Date: Wed, 9 Oct 2019 16:32:38 -0300
+From: Cesar Rabak <cesar.rabak em gmail.com>
+To: R-br <r-br em listas.c3sl.ufpr.br>
+Subject: Re: [R-br]  Organizar data.frame e sumarizar dados em
+	transposição
+Message-ID:
+	<CAKrF98mdt6jM3Sne8+iiHxDMWEs0_HUmKehmg23Lq+ha-McyEA em mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+
+Sem um CMR é difícil ser assertivo, mas o delineamento do que você deseja
+seria obter uma lista sem repetições da coluna dos CPF (*uniq*), e usando
+os itens dessa lista como parâmetro para *which* ou *subset* fazer a soma e
+contar o número de parcelas adicionando no novo dataframe esses resultados.
+
+HTH
+--
+Cesar Rabak
+
+On Wed, Oct 9, 2019 at 12:28 PM Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Caro(a),
+>
+> Aqui na Universidade nós temos que sumarizar e organizar os dados dos
+> discentes
+> bolsistas por mês e valor recebido de bolsa.
+>
+> Os dados estão assim:
+>
+> CPF             Nome           Descrição         Data       Valor
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/02/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/03/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/04/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/07/2018 400,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Manutenção  01/08/2018 400,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Emergencial 01/06/2018 200,00
+>
+>
+> Nós precisamos da seguinte saída:
+>
+> CPF             Nome           Quantidade Parcelas       Valor Mês Valor
+> Ano
+> xxx.xxx.xxx-xx  Fulano de Tal  6                         266,67    1600,00
+>
+> Se puder ajudar, agradeço!
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191009/fa39d328/attachment-0001.html>
+
+------------------------------
+
+Message: 4
+Date: Wed, 9 Oct 2019 16:53:19 -0300
+From: Marcelo Laia <marcelolaia em gmail.com>
+To: a lista Brasileira oficial de discussão do programa R.
+	<r-br em listas.c3sl.ufpr.br>
+Subject: Re: [R-br]  Organizar data.frame e sumarizar dados em
+	transposição
+Message-ID: <20191009195319.GE20280 em localhost>
+Content-Type: text/plain; charset=iso-8859-1
+
+Então, Cesar. Eu tentei fazer um CMR mas não tive conhecimento para tal. Eu
+tentei com a família apply e com os pacotes dplyr, tidyr e plyr [1]. Não dei
+conta de fazer. Se puder ajudar, terá que dar mastigado. Isso não é um
+experimento. Precisamos fazer um relatório aqui na Universidade sobre bolsas
+dadas a discentes vulneráveis e preciso tratar os dados para inclui-los numa
+plataforma fixa do governo. Pra eu calcular isso na unha (calc) vai ser muito
+demorado e temos um prazo. Mas, eu sei que a lista não é pra esse tipo de coisa
+(dar mastigado).
+
+Abração
+
+Obrigado
+
+1. http://www.rpubs.com/Kassio_Ferreira/tutorialdplyr
+
+Marcelo
+
+
+On 09/10/19 at 04:32, Cesar Rabak por (R-br) wrote:
+>    Sem um CMR é difícil ser assertivo, mas o delineamento do que você
+>    deseja seria obter uma lista sem repetições da coluna dos CPF (uniq), e
+>    usando os itens dessa lista como parâmetro para which ou subset fazer a
+>    soma e contar o número de parcelas adicionando no novo dataframe esses
+>    resultados.
+>    HTH
+>    --
+>    Cesar Rabak
+> 
+>    On Wed, Oct 9, 2019 at 12:28 PM Marcelo Laia por (R-br)
+>    <[1]r-br em listas.c3sl.ufpr.br> wrote:
+> 
+>      Caro(a),
+>      Aqui na Universidade nós temos que sumarizar e organizar os dados
+>      dos discentes
+>      bolsistas por mês e valor recebido de bolsa.
+>      Os dados estão assim:
+>      CPF             Nome           Descrição         Data       Valor
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/02/2018 200,00
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/03/2018 200,00
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/04/2018 200,00
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/07/2018 400,00
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Manutenção  01/08/2018 400,00
+>      xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Emergencial 01/06/2018 200,00
+>      Nós precisamos da seguinte saída:
+>      CPF             Nome           Quantidade Parcelas       Valor Mês
+>      Valor Ano
+>      xxx.xxx.xxx-xx  Fulano de Tal  6                         266,67
+>      1600,00
+>      Se puder ajudar, agradeço!
+>      --
+>      Marcelo
+>      _______________________________________________
+>      R-br mailing list
+>      [2]R-br em listas.c3sl.ufpr.br
+>      [3]https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>      Leia o guia de postagem ([4]http://www.leg.ufpr.br/r-br-guia) e
+>      forneça código mínimo reproduzível.
+> 
+> Referências
+> 
+>    1. mailto:r-br em listas.c3sl.ufpr.br
+>    2. mailto:R-br em listas.c3sl.ufpr.br
+>    3. https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>    4. http://www.leg.ufpr.br/r-br-guia
+
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+
+
+-- 
+Marcelo
+
+
+------------------------------
+
+Message: 5
+Date: Wed, 9 Oct 2019 18:05:14 -0300
+From: Walmes Zeviani <walmeszeviani em gmail.com>
+To: Jose Wellingthon Dos Santos <jose-wellingthon.santos em embrapa.br>
+Cc: a lista Brasileira oficial de discussão do programa R.
+	<r-br em listas.c3sl.ufpr.br>
+Subject: Re: [R-br] Modelos lineares generalizados multivariados
+	-literatura
+Message-ID:
+	<CAFU=EkbNPd5EA=_RRCuVSBOiS4RF4ACSTCiFxvcc0W=q+b+YKg em mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+
+José Wellingthon
+
+O prof. Wagner e eu oferecemos um Curso da 62ª RBras que foi em Lavras
+sobre análise multivariada de dados experimentais
+http://cursos.leg.ufpr.br/mcglm4aed/
+
+Dê uma olhada no material.
+
+Você tem uma necessidade específica de orientação para uma análise ou
+procura material geral?
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191009/546c75b5/attachment-0001.html>
+
+------------------------------
+
+Subject: Legenda do Digest
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+
+
+------------------------------
+
+Fim da Digest R-br, volume 106, assunto 6
+*****************************************
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191010/949fa48b/attachment.html>
+
+From sznelwar em uol.com.br  Thu Oct 10 21:25:15 2019
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Thu, 10 Oct 2019 21:25:15 -0300
+Subject: [R-br] RES: Digest R-br, volume 106, assunto 6
+In-Reply-To: ["5d9f97d9.1c69fb81.cd5ec.b400@mx.google.com"]
+References: ["mailman.1.1570719601.909.r-br@listas.c3sl.ufpr.br",
+ "5d9f97d9.1c69fb81.cd5ec.b400@mx.google.com"]
+Message-ID: <5d9fcbebd787a_40982ab835d3b108598b7@ip-10-81-19-14.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191010/bbc328ba/attachment.html>
+
+From dtiezzi em usp.br  Thu Oct 10 21:32:51 2019
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Thu, 10 Oct 2019 21:32:51 -0300
+Subject: [R-br] RES: Digest R-br, volume 106, assunto 6
+In-Reply-To: <5d9fcbebd787a_40982ab835d3b108598b7@ip-10-81-19-14.ec2.internal.mail>
+References: <5d9fcbebd787a_40982ab835d3b108598b7@ip-10-81-19-14.ec2.internal.mail>
+Message-ID: <CA+RL3DPg3oDj1Ff1N01cK_Mz81hBbuC4OMD+sLHyMTD8+tU+yA@mail.gmail.com>
+
+Eh o equivalents ao 'pipe'. A saída de Uma função eh passada come input
+para a outra
+
+On Thu, 10 Oct 2019, 21:25 Mauro Sznelwar por (R-br), <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Pode explicar a função deste operador %>%?
+>
+>
+> Preparei o script e tentei disponibilizar neste link:
+> https://gist.github.com/Verginio/d671ff36b852c68b6ba7b7f59114a22e
+>
+> Pelo que entendi, daria para realizar esta tarefa com a função ?group_by?
+> seguidas de ?summarise?. Em que a primeira define quais variáveis serão
+> agrupadas e a segunda executa o cálculo para os grupos.
+>
+> library(dplyr)
+>
+> df_summ <- df_bolsa %>%
+> group_by(CPF, Nome) %>%
+> summarise(
+> `Quantidade Parcelas` = n(),
+> `Valor Mês` = mean(Valor), #média
+> `Valor Ano` = sum(Valor) #somatório
+> )
+>
+> #Resultado
+> head(df_summ)
+>
+>
+> Abraços,
+> Max Verginio
+>
+> De: r-br-request em listas.c3sl.ufpr.br
+> Enviado:quinta-feira, 10 de outubro de 2019 12:00
+> Para: r-br em listas.c3sl.ufpr.br
+> Assunto: Digest R-br, volume 106, assunto 6
+>
+> Enviar submissões para a lista de discussão R-br para
+> r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+> r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+> r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+> 1. Organizar data.frame e sumarizar dados em transposição
+> (Marcelo Laia)
+> 2. Modelos lineares generalizados multivariados -literatura
+> (Jose Wellingthon Dos Santos)
+> 3. Re: Organizar data.frame e sumarizar dados em transposição
+> (Cesar Rabak)
+> 4. Re: Organizar data.frame e sumarizar dados em transposição
+> (Marcelo Laia)
+> 5. Re: Modelos lineares generalizados multivariados -literatura
+> (Walmes Zeviani)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Wed, 9 Oct 2019 12:28:26 -0300
+> From: Marcelo Laia <marcelolaia em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+> <r-br em listas.c3sl.ufpr.br>
+> Subject: [R-br] Organizar data.frame e sumarizar dados em transposição
+> Message-ID: <20191009152826.GC25795 em localhost>
+> Content-Type: text/plain; charset=iso-8859-1
+>
+> Caro(a),
+>
+> Aqui na Universidade nós temos que sumarizar e organizar os dados dos
+> discentes
+> bolsistas por mês e valor recebido de bolsa.
+>
+> Os dados estão assim:
+>
+> CPF Nome Descrição Data Valor
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/02/2018 200,00
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/03/2018 200,00
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/04/2018 200,00
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/07/2018 400,00
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Manutenção 01/08/2018 400,00
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Emergencial 01/06/2018 200,00
+>
+>
+> Nós precisamos da seguinte saída:
+>
+> CPF Nome Quantidade Parcelas Valor Mês Valor Ano
+> xxx.xxx.xxx-xx Fulano de Tal 6 266,67 1600,00
+>
+> Se puder ajudar, agradeço!
+>
+> --
+> Marcelo
+>
+>
+> ------------------------------
+>
+> Message: 2
+> Date: Wed, 9 Oct 2019 15:46:40 -0300 (BRT)
+> From: Jose Wellingthon Dos Santos <jose-wellingthon.santos em embrapa.br>
+> To: a lista Brasileira oficial de discussão do programa R.
+> <r-br em listas.c3sl.ufpr.br>
+> Cc: "walmes " <walmes em ufpr.br>, "walmeszeviani "
+> <walmeszeviani em gmail.com>
+> Subject: [R-br] Modelos lineares generalizados multivariados
+> -literatura
+> Message-ID:
+> <1889187931.11565119.1570646800406.JavaMail.root em embrapa.br>
+> Content-Type: text/plain; charset="iso-8859-1"
+>
+> Oi pessoal,
+> Alguém conhece literatura para modelos lineares generalizados
+> multivariados?
+> Att
+>
+> --
+> José Wellingthon dos Santos
+> Pesquisador - Métodos Quantitativos
+> Embrapa Algodão
+> Empresa Brasileira de Pesquisa Agropecuária (Embrapa)
+> Campina Grande, PB
+>
+> jose-wellingthon.santos em embrapa.br
+> Telefone: +55 (83) 3182-4401 | Fax: +55 (83) 3182-4367
+> www.embrapa.br/algodao | https://twitter.com/embrapa_algodao
+> Confira também: www.facebook.com/agrosustentavel
+>
+>
+> ----- Mensagem original -----
+>
+> De: "Marcelo Laia por (R-br)" <r-br em listas.c3sl.ufpr.br>
+> Para: "a lista Brasileira oficial de discussão do programa R." <
+> r-br em listas.c3sl.ufpr.br>
+> Cc: "Marcelo Laia" <marcelolaia em gmail.com>
+> Enviadas: Quarta-feira, 9 de outubro de 2019 12:28:26
+> Assunto: [R-br] Organizar data.frame e sumarizar dados em transposição
+>
+> Caro(a),
+>
+> Aqui na Universidade nós temos que sumarizar e organizar os dados dos
+> discentes
+> bolsistas por mês e valor recebido de bolsa.
+>
+> Os dados estão assim:
+>
+> CPF Nome Descrição Data Valor
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/02/2018 200,00
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/03/2018 200,00
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/04/2018 200,00
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/07/2018 400,00
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Manutenção 01/08/2018 400,00
+> xxx.xxx.xxx-xx Fulano de Tal Bolsa Emergencial 01/06/2018 200,00
+>
+>
+> Nós precisamos da seguinte saída:
+>
+> CPF Nome Quantidade Parcelas Valor Mês Valor Ano
+> xxx.xxx.xxx-xx Fulano de Tal 6 266,67 1600,00
+>
+> Se puder ajudar, agradeço!
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+>
+> ____________________________________________________________________________
+> Aviso de confidencialidade
+>
+> Esta mensagem da Empresa Brasileira de Pesquisa Agropecuaria (Embrapa),
+> empresa publica federal regida pelo disposto na Lei Federal no. 5.851, de
+> 7 de dezembro de 1972, e enviada exclusivamente a seu destinatario e pode
+> conter informacoes confidenciais, protegidas por sigilo profissional. Sua
+> utilizacao desautorizada e ilegal e sujeita o infrator as penas da lei. Se
+> voce a recebeu indevidamente, queira, por gentileza, reenvia-la ao
+> emitente, esclarecendo o equivoco.
+>
+> Confidentiality note
+>
+> This message from Empresa Brasileira de Pesquisa Agropecuaria (Embrapa),
+> a government company established under Brazilian law (5.851/72), is
+> directed exclusively to its addressee and may contain confidential data,
+> protected under professional secrecy rules. Its unauthorized use is
+> illegal and may subject the transgressor to the law's penalties. If you are
+> not the addressee, please send it back, elucidating the failure.
+>
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191009/38dbdf38/attachment-0001.html
+> >
+>
+> ------------------------------
+>
+> Message: 3
+> Date: Wed, 9 Oct 2019 16:32:38 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: R-br <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Organizar data.frame e sumarizar dados em
+> transposição
+> Message-ID:
+> <CAKrF98mdt6jM3Sne8+iiHxDMWEs0_HUmKehmg23Lq+ha-McyEA em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Sem um CMR é difícil ser assertivo, mas o delineamento do que você deseja
+> seria obter uma lista sem repetições da coluna dos CPF (*uniq*), e usando
+> os itens dessa lista como parâmetro para *which* ou *subset* fazer a soma e
+> contar o número de parcelas adicionando no novo dataframe esses resultados.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+> On Wed, Oct 9, 2019 at 12:28 PM Marcelo Laia por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> > Caro(a),
+> >
+> > Aqui na Universidade nós temos que sumarizar e organizar os dados dos
+> > discentes
+> > bolsistas por mês e valor recebido de bolsa.
+> >
+> > Os dados estão assim:
+> >
+> > CPF Nome Descrição Data Valor
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/02/2018 200,00
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/03/2018 200,00
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/04/2018 200,00
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/07/2018 400,00
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Manutenção 01/08/2018 400,00
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Emergencial 01/06/2018 200,00
+> >
+> >
+> > Nós precisamos da seguinte saída:
+> >
+> > CPF Nome Quantidade Parcelas Valor Mês Valor
+> > Ano
+> > xxx.xxx.xxx-xx Fulano de Tal 6 266,67 1600,00
+> >
+> > Se puder ajudar, agradeço!
+> >
+> > --
+> > Marcelo
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> > código mínimo reproduzível.
+> >
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191009/fa39d328/attachment-0001.html
+> >
+>
+> ------------------------------
+>
+> Message: 4
+> Date: Wed, 9 Oct 2019 16:53:19 -0300
+> From: Marcelo Laia <marcelolaia em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+> <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Organizar data.frame e sumarizar dados em
+> transposição
+> Message-ID: <20191009195319.GE20280 em localhost>
+> Content-Type: text/plain; charset=iso-8859-1
+>
+> Então, Cesar. Eu tentei fazer um CMR mas não tive conhecimento para tal. Eu
+> tentei com a família apply e com os pacotes dplyr, tidyr e plyr [1]. Não
+> dei
+> conta de fazer. Se puder ajudar, terá que dar mastigado. Isso não é um
+> experimento. Precisamos fazer um relatório aqui na Universidade sobre
+> bolsas
+> dadas a discentes vulneráveis e preciso tratar os dados para inclui-los
+> numa
+> plataforma fixa do governo. Pra eu calcular isso na unha (calc) vai ser
+> muito
+> demorado e temos um prazo. Mas, eu sei que a lista não é pra esse tipo de
+> coisa
+> (dar mastigado).
+>
+> Abração
+>
+> Obrigado
+>
+> 1. http://www.rpubs.com/Kassio_Ferreira/tutorialdplyr
+>
+> Marcelo
+>
+>
+> On 09/10/19 at 04:32, Cesar Rabak por (R-br) wrote:
+> > Sem um CMR é difícil ser assertivo, mas o delineamento do que você
+> > deseja seria obter uma lista sem repetições da coluna dos CPF (uniq), e
+> > usando os itens dessa lista como parâmetro para which ou subset fazer a
+> > soma e contar o número de parcelas adicionando no novo dataframe esses
+> > resultados.
+> > HTH
+> > --
+> > Cesar Rabak
+> >
+> > On Wed, Oct 9, 2019 at 12:28 PM Marcelo Laia por (R-br)
+> > <[1]r-br em listas.c3sl.ufpr.br> wrote:
+> >
+> > Caro(a),
+> > Aqui na Universidade nós temos que sumarizar e organizar os dados
+> > dos discentes
+> > bolsistas por mês e valor recebido de bolsa.
+> > Os dados estão assim:
+> > CPF Nome Descrição Data Valor
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/02/2018 200,00
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Permanência 01/03/2018 200,00
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/04/2018 200,00
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Integração 01/07/2018 400,00
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Manutenção 01/08/2018 400,00
+> > xxx.xxx.xxx-xx Fulano de Tal Bolsa Emergencial 01/06/2018 200,00
+> > Nós precisamos da seguinte saída:
+> > CPF Nome Quantidade Parcelas Valor Mês
+> > Valor Ano
+> > xxx.xxx.xxx-xx Fulano de Tal 6 266,67
+> > 1600,00
+> > Se puder ajudar, agradeço!
+> > --
+> > Marcelo
+> > _______________________________________________
+> > R-br mailing list
+> > [2]R-br em listas.c3sl.ufpr.br
+> > [3]https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem ([4]http://www.leg.ufpr.br/r-br-guia) e
+> > forneça código mínimo reproduzível.
+> >
+> > Referências
+> >
+> > 1. mailto:r-br em listas.c3sl.ufpr.br
+> > 2. mailto:R-br em listas.c3sl.ufpr.br
+> > 3. https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > 4. http://www.leg.ufpr.br/r-br-guia
+>
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+>
+>
+> --
+> Marcelo
+>
+>
+> ------------------------------
+>
+> Message: 5
+> Date: Wed, 9 Oct 2019 18:05:14 -0300
+> From: Walmes Zeviani <walmeszeviani em gmail.com>
+> To: Jose Wellingthon Dos Santos <jose-wellingthon.santos em embrapa.br>
+> Cc: a lista Brasileira oficial de discussão do programa R.
+> <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Modelos lineares generalizados multivariados
+> -literatura
+> Message-ID:
+> <CAFU=EkbNPd5EA=_RRCuVSBOiS4RF4ACSTCiFxvcc0W=q+b+YKg em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> José Wellingthon
+>
+> O prof. Wagner e eu oferecemos um Curso da 62ª RBras que foi em Lavras
+> sobre análise multivariada de dados experimentais
+> http://cursos.leg.ufpr.br/mcglm4aed/
+>
+> Dê uma olhada no material.
+>
+> Você tem uma necessidade específica de orientação para uma análise ou
+> procura material geral?
+>
+> À disposição.
+> Walmes.
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191009/546c75b5/attachment-0001.html
+> >
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 106, assunto 6
+> *****************************************
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191010/3e074207/attachment.html>
+
+From jose-wellingthon.santos em embrapa.br  Mon Oct 14 09:59:31 2019
+From: jose-wellingthon.santos em embrapa.br (Jose Wellingthon Dos Santos)
+Date: Mon, 14 Oct 2019 09:59:31 -0300 (BRT)
+Subject: [R-br] Modelos lineares generalizados multivariados -literatura
+In-Reply-To: <CAFU=EkbNPd5EA=_RRCuVSBOiS4RF4ACSTCiFxvcc0W=q+b+YKg@mail.gmail.com>
+Message-ID: <1044328864.216467.1571057971383.JavaMail.root@embrapa.br>
+
+Caro Prof Walmes, bom dia. 
+O que quero é fazer uma análise da variancia multivariada usando o glm do R. O delineamento experimental é inteiramente casualizado e as variaveis de interesse são: clad, asp e alt. 
+Não conheço litetatura que trate desse caso. 
+Att 
+
+
+
+
+-- 
+José Wellingthon dos Santos 
+Pesquisador - Métodos Quantitativos 
+Embrapa Algodão 
+Empresa Brasileira de Pesquisa Agropecuária (Embrapa) 
+Campina Grande, PB 
+
+jose-wellingthon.santos em embrapa.br 
+Telefone: +55 (83) 3182-4401 | Fax: +55 (83) 3182-4367 
+www.embrapa.br/algodao | https://twitter.com/embrapa_algodao 
+Confira também: www.facebook.com/agrosustentavel 
+
+
+----- Mensagem original -----
+
+De: "Walmes Zeviani" <walmeszeviani em gmail.com> 
+Para: "Jose Wellingthon Dos Santos" <jose-wellingthon.santos em embrapa.br> 
+Cc: "a lista Brasileira oficial de discussão do programa R." <r-br em listas.c3sl.ufpr.br> 
+Enviadas: Quarta-feira, 9 de outubro de 2019 18:05:14 
+Assunto: Re: Modelos lineares generalizados multivariados -literatura 
+
+
+
+José Wellingthon 
+
+
+
+O prof. Wagner e eu oferecemos um Curso da 62ª RBras que foi em Lavras sobre análise multivariada de dados experimentais 
+http://cursos.leg.ufpr.br/mcglm4aed/ 
+
+
+Dê uma olhada no material. 
+
+
+Você tem uma necessidade específica de orientação para uma análise ou procura material geral? 
+
+
+
+À disposição. 
+Walmes. 
+
+
+
+____________________________________________________________________________
+Aviso de confidencialidade
+
+Esta mensagem da Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+empresa publica federal  regida pelo disposto  na Lei Federal no. 5.851,  de
+7 de dezembro de 1972,  e  enviada exclusivamente  a seu destinatario e pode
+conter informacoes  confidenciais, protegidas  por sigilo profissional.  Sua
+utilizacao desautorizada  e ilegal e  sujeita o infrator as penas da lei. Se
+voce  a recebeu indevidamente, queira, por gentileza, reenvia-la ao
+emitente, esclarecendo o equivoco.
+
+Confidentiality note
+
+This message from Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+a government company  established under  Brazilian law (5.851/72), is
+directed exclusively to  its addressee  and may contain confidential data, 
+protected under  professional secrecy  rules. Its unauthorized  use is
+illegal and  may subject the transgressor to the law's penalties. If you are
+not the addressee, please send it back, elucidating the failure.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191014/25205f67/attachment.html>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: odilonovo.txt
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191014/25205f67/attachment.txt>
+
+From walmeszeviani em gmail.com  Tue Oct 15 21:58:56 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Tue, 15 Oct 2019 21:58:56 -0300
+Subject: [R-br] Modelos lineares generalizados multivariados -literatura
+In-Reply-To: <1044328864.216467.1571057971383.JavaMail.root@embrapa.br>
+References: <CAFU=EkbNPd5EA=_RRCuVSBOiS4RF4ACSTCiFxvcc0W=q+b+YKg@mail.gmail.com>
+ <1044328864.216467.1571057971383.JavaMail.root@embrapa.br>
+Message-ID: <CAFU=EkZ7ud9jnVhqODoV0GaBUgfbTakPOtFTtwc8pQf5HUOW-Q@mail.gmail.com>
+
+José,
+
+Dê uma olhada no exemplo
+http://cursos.leg.ufpr.br/mcglm4aed/tutorials/4-soybean.html.
+Creio que com ele você consiga escrever um modelo inicial facilmente.
+
+Nessa figura
+https://raw.githubusercontent.com/walmes/Tikz/master/src/fluxograma_modelos_multivariados.png
+as caixas com linhas contínuas pretas são de modelos que já existem na
+literatura. Em contínuo de cor azul modelos que podem ainda ser formulados
+via extensão do McGLM.
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191015/32471bc3/attachment.html>
+
+From angelica.ricarte em hotmail.com  Wed Oct 16 21:47:00 2019
+From: angelica.ricarte em hotmail.com (=?Windows-1252?Q?Ang=E9lica_Ricarte?=)
+Date: Thu, 17 Oct 2019 00:47:00 +0000
+Subject: [R-br] =?windows-1252?q?Correla=E7=E3o_de_Pearson_com_escala_Lik?=
+ =?windows-1252?q?ert?=
+Message-ID: <SC1PR80MB4496D63509F87C4EF5F6BCF5916D0@SC1PR80MB4496.lamprd80.prod.outlook.com>
+
+Prezados, boa noite.
+
+Por gentileza, poriam me ajudar?
+
+Preciso fazer uma análise de correlação de Pearson para resultados de uma pesquisa de satisfação para a qual foi utilizado um questionário e realizadas modificações em escala Likert, em que: [cid:image002.png em 01D5846B.3C568D50] Alguém sabe me informar qual o pacote do R trabalha com tal análise e como fazê-la? Utilizo o ?agricolae? para fazer correlação, mas não havia feito nada antes com escala Likert. Toda informação sobre esta escala me será útil.
+
+Grata, aguardo retorno.
+Abraços,
+Angélica.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191017/a5e32e38/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: BC31725E259C4B189D9753550B41D603.png
+Tipo: image/png
+Tamanho: 51323 bytes
+Descrição: BC31725E259C4B189D9753550B41D603.png
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191017/a5e32e38/attachment.png>
+
+From cesar.rabak em gmail.com  Thu Oct 17 11:38:52 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 17 Oct 2019 11:38:52 -0300
+Subject: [R-br] 
+ =?utf-8?q?Correla=C3=A7=C3=A3o_de_Pearson_com_escala_Like?=
+ =?utf-8?q?rt?=
+In-Reply-To: <SC1PR80MB4496D63509F87C4EF5F6BCF5916D0@SC1PR80MB4496.lamprd80.prod.outlook.com>
+References: <SC1PR80MB4496D63509F87C4EF5F6BCF5916D0@SC1PR80MB4496.lamprd80.prod.outlook.com>
+Message-ID: <CAKrF98m1FHX-Q3ogP4_66gy_KDEdU3zLZOi71JU3Fw3+5phDDw@mail.gmail.com>
+
+A análise estatística de resultados obtidos por meio de uma escala Likert
+tende a ser um assunto controverso, pois há bastante "espaço" para
+violações de quase quaisquer premissas das análises e especialmente os
+testes estatísticos.
+
+Com isso posto, e [minha] recomendação que você deve pesquisar mais o
+assunto por si mesma para formar uma opinião e poder embasar sua(s)
+decisão(ões), a forma de fazer a análise que você menciona é fazer a
+transformação como apontada no seu texto e verificar se a correlação em
+relação a outras variáveis (que imagino não sejam Likert também).
+
+Se sua ideia for examinar sob essa correlação cada item do questionário há
+uma série adicional de cuidados para que a análise embora parecendo correta
+não se transforme em um exercício de "leitura e adivinhação de folhas de
+chá".
+
+O R tem um pacote que *ajuda muito* na parte descritiva da análise de
+questionários Likert o pacote *likert*.
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Wed, Oct 16, 2019 at 9:47 PM Angélica Ricarte por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados, boa noite.
+>
+>
+>
+> Por gentileza, poriam me ajudar?
+>
+>
+>
+> Preciso fazer uma análise de correlação de Pearson para resultados de uma
+> pesquisa de satisfação para a qual foi utilizado um questionário e
+> realizadas modificações em escala Likert, em que: Alguém sabe me informar
+> qual o pacote do R trabalha com tal análise e como fazê-la? Utilizo o
+> ?agricolae? para fazer correlação, mas não havia feito nada antes com
+> escala Likert. Toda informação sobre esta escala me será útil.
+>
+>
+>
+> Grata, aguardo retorno.
+>
+> Abraços,
+>
+> Angélica.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191017/c2a040f2/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: BC31725E259C4B189D9753550B41D603.png
+Tipo: image/png
+Tamanho: 51323 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191017/c2a040f2/attachment-0001.png>
+
+From lubichchiara em gmail.com  Thu Oct 17 17:12:31 2019
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Thu, 17 Oct 2019 16:12:31 -0400
+Subject: [R-br] Como identificar colinearidade?
+Message-ID: <CAH-ZE+BY0Be0wCtEb+DPdMnORmvx042AAH6V5jX+Gq+pCdKNNQ@mail.gmail.com>
+
+Boa tarde,
+
+Pessoal fiz uma análise de GLM, porém no resultado do modelo ficava
+aparecendo a seguinte mensagem: Coefficients: (2 not defined because of
+singularities).
+Buscando na internet, vi que se trata de colinearidade dos dados, porém não
+sei como identificar. Na mesma página de internet que encontrei a sugestão
+de identificar utilizando o comando pairs(), para tentar detectar
+colinearidade. Mas não sei como fazer a interpretação do gráfico gerado:
+Segue o gráfico com a variável Y1= CM:
+CM= Comprimento médio (contínua)
+D = distância do rio  (contínua)
+R = rios (categórica - nome dos rios)
+TP = tempo de pesca (Dummy - 0= rios considerados tradicionais e 1= rios
+com pesca recente)
+NP= número de pescador por rio
+[image: image.png]
+
+Se puderem me ajuda na explicação de como identifico a colinearidade a
+partir do gráfico, agradeço.
+
+Ou até mesmo outra forma de encontrar...
+
+Abraço
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191017/0ff04676/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 26889 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191017/0ff04676/attachment.png>
+
+From cesar.rabak em gmail.com  Fri Oct 18 00:21:07 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 18 Oct 2019 00:21:07 -0300
+Subject: [R-br] Como identificar colinearidade?
+In-Reply-To: <CAH-ZE+BY0Be0wCtEb+DPdMnORmvx042AAH6V5jX+Gq+pCdKNNQ@mail.gmail.com>
+References: <CAH-ZE+BY0Be0wCtEb+DPdMnORmvx042AAH6V5jX+Gq+pCdKNNQ@mail.gmail.com>
+Message-ID: <CAKrF98kX2x3h5BXxOrAD+76g4QEnwayPEd=PSp1M2Sm26ReR7Q@mail.gmail.com>
+
+Chiara,
+Colinearidade é quando você pode expressar alguma das variáveis que você
+pensava que eram independentes (entre si) como combinação linear de outras
+duas (ou mais...).
+
+O gráfico anexo mostra uma porção de coisas que chamam a atenção: o número
+de pontos para TP parece ser único para o caso "2".
+
+Você menciona que quer fazer uma GLM: qual exatamente é a regressão que
+você busca? Qual a Variável dependente e quais são as explicativas?
+
+
+On Thu, Oct 17, 2019 at 5:12 PM Chiara Lubich por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde,
+>
+> Pessoal fiz uma análise de GLM, porém no resultado do modelo ficava
+> aparecendo a seguinte mensagem: Coefficients: (2 not defined because of
+> singularities).
+> Buscando na internet, vi que se trata de colinearidade dos dados, porém
+> não sei como identificar. Na mesma página de internet que encontrei a
+> sugestão de identificar utilizando o comando pairs(), para tentar detectar
+> colinearidade. Mas não sei como fazer a interpretação do gráfico gerado:
+> Segue o gráfico com a variável Y1= CM:
+> CM= Comprimento médio (contínua)
+> D = distância do rio  (contínua)
+> R = rios (categórica - nome dos rios)
+> TP = tempo de pesca (Dummy - 0= rios considerados tradicionais e 1= rios
+> com pesca recente)
+> NP= número de pescador por rio
+> [image: image.png]
+>
+> Se puderem me ajuda na explicação de como identifico a colinearidade a
+> partir do gráfico, agradeço.
+>
+> Ou até mesmo outra forma de encontrar...
+>
+> Abraço
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191018/91ea5460/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 26889 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191018/91ea5460/attachment.png>
+
+From jose-wellingthon.santos em embrapa.br  Fri Oct 25 07:35:42 2019
+From: jose-wellingthon.santos em embrapa.br (Jose Wellingthon Dos Santos)
+Date: Fri, 25 Oct 2019 08:35:42 -0200 (BRST)
+Subject: [R-br] Analise conjunta R
+In-Reply-To: <1493977301.2974377.1571999323483.JavaMail.root@embrapa.br>
+Message-ID: <1171903328.2975239.1571999742524.JavaMail.root@embrapa.br>
+
+Prezado prof Walmes, bom dia. 
+Em uma análise conjunta que fiz, a interação Cultivar x Local foi significativa. Precisa desdobrá-la e aplicar o teste Skott-Knott nas medias de cultivar dentro de cada Local. Como fazê-lo? 
+Att 
+
+
+-- 
+José Wellingthon dos Santos 
+Pesquisador - Métodos Quantitativos 
+Embrapa Algodão 
+Empresa Brasileira de Pesquisa Agropecuária (Embrapa) 
+Campina Grande, PB 
+
+jose-wellingthon.santos em embrapa.br 
+Telefone: +55 (83) 3182-4401 | Fax: +55 (83) 3182-4367 
+www.embrapa.br/algodao | https://twitter.com/embrapa_algodao 
+Confira também: www.facebook.com/agrosustentavel 
+
+
+
+____________________________________________________________________________
+Aviso de confidencialidade
+
+Esta mensagem da Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+empresa publica federal  regida pelo disposto  na Lei Federal no. 5.851,  de
+7 de dezembro de 1972,  e  enviada exclusivamente  a seu destinatario e pode
+conter informacoes  confidenciais, protegidas  por sigilo profissional.  Sua
+utilizacao desautorizada  e ilegal e  sujeita o infrator as penas da lei. Se
+voce  a recebeu indevidamente, queira, por gentileza, reenvia-la ao
+emitente, esclarecendo o equivoco.
+
+Confidentiality note
+
+This message from Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+a government company  established under  Brazilian law (5.851/72), is
+directed exclusively to  its addressee  and may contain confidential data, 
+protected under  professional secrecy  rules. Its unauthorized  use is
+illegal and  may subject the transgressor to the law's penalties. If you are
+not the addressee, please send it back, elucidating the failure.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191025/b690dd0a/attachment.html>
+
+From profiack em gmail.com  Fri Oct 25 11:47:34 2019
+From: profiack em gmail.com (Cleber Iack)
+Date: Fri, 25 Oct 2019 11:47:34 -0300
+Subject: [R-br] Applied Linear Statistical Models
+Message-ID: <CAM-sWA2VEmrsixH_oPBw+eirguqgY9NpCOAjvooSqPzBCDPHqQ@mail.gmail.com>
+
+Boa noite, eu estou escrevendo um artigo utilizando o R. Mas a minha
+formulação teórica para embasar a aplicação dos dados  está faltando uma
+informação que necessito. Algum dos senhores teriam o Apêndice  A do livro
+"Applied Linear Statistical Models", O pdf que eu tenho está com o
+Apêndice  incompleto. Nao apresenta o inicio da Apendice A. Passa da pagina
+1289 para a pagina 1306. Obrigado..
+
+Ceber Iack
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191025/49fd0b67/attachment.html>
+
+From walmeszeviani em gmail.com  Mon Oct 28 12:14:33 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Mon, 28 Oct 2019 12:14:33 -0300
+Subject: [R-br] =?utf-8?q?=5BOFF-TOPIC=5D_2=C2=BA_R_Day_=C2=B7_Curitiba/P?=
+ =?utf-8?q?R_=C2=B7_13/Dez/2019?=
+Message-ID: <CAFU=EkYdTBHWs7WHi7E8o3o8uMFqjuk8t3-334NK5WKGQOt6dQ@mail.gmail.com>
+
+Saudações listeiRxs,
+
+Venho por meio deste divulgar que teremos o 2º R Day dia 13/Dez aqui na
+UFPR, Curitiba/PR.
+O evento visa congregar usuários, desenvolvedores, apoiadores e entusiastas
+para discutir o uso do R em ambiente acadêmico e profissional, além de
+meios para fortalecer e crescer a comunidade no Brasil e criar rede de
+colaboração.
+Detalhes sobre o evento estão em http://rday.leg.ufpr.br/.
+A inscrição é GRATUITA mas as vagas são LIMITADAS.
+Esperamos contar com a participação de vocês dessa lista que é um
+importante marco na história da comunidade R no Brasil.
+Sintam-se livres e estimulados para repassarem essa divulgação dos círculos
+dos quais participam.
+
+Pela atenção e certo da vossa solidariedade, agradeço.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191028/b4846b76/attachment.html>
+
+From walmeszeviani em gmail.com  Thu Oct 31 20:24:00 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Thu, 31 Oct 2019 20:24:00 -0300
+Subject: [R-br] como exportar um raster categorico a partir do R para o
+ SAGAGIS?
+In-Reply-To: <848355254.6878502.1570477040269.JavaMail.root@embrapa.br>
+References: <1455612109.6878179.1570476981788.JavaMail.root@embrapa.br>
+ <848355254.6878502.1570477040269.JavaMail.root@embrapa.br>
+Message-ID: <CAFU=EkaWDaPqt_jxsDtUL+c3tqeajbGEu+pJ7Onu6oE=N8hSaQ@mail.gmail.com>
+
+Você não poderia criar um esquema de codificação? Ou seja, deixa a saída
+numérica com {1 = Solo A, 2 = Solo B, etc.}? Depois você volta com os
+rótulos textuais no lugar dos números?
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191031/0d05fccb/attachment.html>
+
+From walmeszeviani em gmail.com  Thu Oct 31 20:21:06 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Thu, 31 Oct 2019 20:21:06 -0300
+Subject: [R-br] Analise conjunta R
+In-Reply-To: <1171903328.2975239.1571999742524.JavaMail.root@embrapa.br>
+References: <1493977301.2974377.1571999323483.JavaMail.root@embrapa.br>
+ <1171903328.2975239.1571999742524.JavaMail.root@embrapa.br>
+Message-ID: <CAFU=Ekbny2+bVG1L7PS_Wzmv2Zu10NphdSw-ns-d4u5GY=creg@mail.gmail.com>
+
+José Wellingthon,
+
+Devo assumir que você declarou um modelo de efeitos aleatórios (lme4, nlme)?
+Se sim, não conheço implementação de Scott Knott para essa classe de
+modelos no R.
+
+Apesar de muito popular, no meu entendimento a aplicação do teste de Scott
+Knott é muitas vezes mal interpretada. Não é um teste de comparações
+múltiplas mas, devido ao hábito dos usu?ios é interpretado como se fosse.
+De qualquer forma, não é o cerne da sua questão.
+
+O pacote ScottKnott (que foi desenvolvido por membros dessa lista: Enio
+Jelihovschi, José Cláudio Faria e Ivan Bezerra Allaman) tem a função
+SK.nest() para ser usada em modelos de classe `aovList`, que representa
+modelos de mais de um estrato quando se usa o termo Error() na fórmula da
+aov(). Se usa muito para delineamentos em parcela subdivida e serve para
+análise conjunta de experimentos também. Mas o requisito é balanceamento.
+Aqui você tem exemplos que podem ser adaptados:
+http://leg.ufpr.br/~walmes/mpaer/analise-conjunta-de-experimentos.html.
+
+Se você declarar o modelo de efeitos mistos com a lme4 ou nlme, aí pode
+usar a combinação de pacotes `lsmeans` e `multcomp` para sair com
+comparações múltiplas, sejam por contrastes planejados, todas duas a duas,
+todos contra testemunha, etc. O uso desses pacotes com modelos de efeitos
+mistos você encontra exemplos aqui:
+http://leg.ufpr.br/~walmes/mpaer/delineamento-em-latice.html.
+
+========================================================================
+Walmes Marques Zeviani
+LEG - Laboratório de Estatística e Geoinformação [25.450418S 49.231759W]
+Departamento de Estatística - Universidade Federal do Paraná
+fone: (+55) 41 3361 3573                       linux user number: 531218
+pages & profiles:
+ http://www.leg.ufpr.br/~walmes | http://lattes.cnpq.br/4410617539281650
+ http://git.leg.ufpr.br/walmes  | https://github.com/walmes
+ https://www.mendeley.com/profiles/walmes-zeviani1/
+========================================================================
+
+
+On Fri, Oct 25, 2019 at 7:37 AM Jose Wellingthon Dos Santos <
+jose-wellingthon.santos em embrapa.br> wrote:
+
+> Prezado prof Walmes, bom dia.
+> Em uma análise conjunta que fiz, a interação Cultivar x Local foi
+> significativa. Precisa desdobrá-la e aplicar o teste Skott-Knott nas medias
+> de cultivar dentro de cada Local. Como fazê-lo?
+> Att
+>
+> --
+> *José Wellingthon dos Santos*
+> Pesquisador - Métodos Quantitativos
+> Embrapa Algodão
+> Empresa Brasileira de Pesquisa Agropecuária (Embrapa)
+> Campina Grande, PB
+>
+> jose-wellingthon.santos em embrapa.br
+> Telefone: +55 (83) 3182-4401 | Fax: +55 (83) 3182-4367
+> www.embrapa.br/algodao | https://twitter.com/embrapa_algodao
+> Confira também: www.facebook.com/agrosustentavel
+>
+>
+> ____________________________________________________________________________
+>
+> Aviso de confidencialidade
+>
+> Esta mensagem da Empresa Brasileira de Pesquisa Agropecuaria (Embrapa),
+> empresa publica federal regida pelo disposto na Lei Federal no. 5.851, de 7
+> de dezembro de 1972, e enviada exclusivamente a seu destinatario e pode
+> conter informacoes confidenciais, protegidas por sigilo profissional. Sua
+> utilizacao desautorizada e ilegal e sujeita o infrator as penas da lei. Se
+> voce a recebeu indevidamente, queira, por gentileza, reenvia-la ao
+> emitente, esclarecendo o equivoco.
+>
+> Confidentiality note
+>
+> This message from Empresa Brasileira de Pesquisa Agropecuaria (Embrapa), a
+> government company established under Brazilian law (5.851/72), is directed
+> exclusively to its addressee and may contain confidential data, protected
+> under professional secrecy rules. Its unauthorized use is illegal and may
+> subject the transgressor to the law's penalties. If you are not the
+> addressee, please send it back, elucidating the failure.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191031/e3a2c4d4/attachment.html>
+

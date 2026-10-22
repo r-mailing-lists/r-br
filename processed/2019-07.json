@@ -1,0 +1,147 @@
+{
+  "list": "r-br",
+  "description": "",
+  "month": "2019-07",
+  "messages": [
+    {
+      "id": "msg-5d4b25cd46fa",
+      "message_id": "<CAJz4ZjFOCdDL1yphkukL9H_ZnzFbA25EFeMPgWss58iph2vTtA@mail.gmail.com>",
+      "from_name": "Felipe Barletta",
+      "from_email_hash": "3b52a25ec99bd0fc058bf24a3dd20e258afff62f32f0cfb6dc200e1fdb02fe32",
+      "date": "2019-07-01T13:28:50Z",
+      "subject": "[R-br]  Modelos Mistos - Distribuição Poisson",
+      "subject_clean": "[R-br]  Modelos Mistos - Distribuição Poisson",
+      "in_reply_to": "<1168526596.1227915.1561499637628@mail.yahoo.com>",
+      "references": [
+        "<1168526596.1227915.1561499637628.ref@mail.yahoo.com>",
+        "<1168526596.1227915.1561499637628@mail.yahoo.com>"
+      ],
+      "body_plain": "glmer(Y ~ x + (bo1|b11),\n            data = amostra,family=poisson)\n\nEm ter, 25 de jun de 2019 às 18:54, Andre Oliveira por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Olá,\n> alguém saberia dizer se a lme4 tem a opção do parâmetro family = poisson?\n> Caso negativo, qual pacote teria esta opção?\n>\n> Grato\n> André\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190701/dc6a2891/attachment.html>",
+      "body_snippet": "glmer(Y ~ x + (bo1|b11),\n            data = amostra,family=poisson)\n\nEm ter, 25 de jun de 2019 às 18:54, Andre Oliveira por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Olá,\n> alguém saberia diz",
+      "thread_id": "thread-5d4b25cd46fa",
+      "thread_depth": 0,
+      "month": "2019-07"
+    },
+    {
+      "id": "msg-ec32dbbae4fc",
+      "message_id": "<CAH8E6UvLarAgutZL=7mn5fm1h5Kn5JshuTa_fnZpoBa_47mHHw@mail.gmail.com>",
+      "from_name": "Elias Carvalho",
+      "from_email_hash": "94c4d4ee5a2872549a27ba774786d6a377d6716e74d89bc81b42c01c2add89b9",
+      "date": "2019-07-01T18:21:19Z",
+      "subject": "[R-br] Processamento paralelo x pacote",
+      "subject_clean": "[R-br] Processamento paralelo x pacote",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "*Estou criando um pacote e um das funções precisa  usar processamento\nparalelo:*\n\n*Então criei  a função:*\n\n*create.cluster <-function()*\n{\n  # Calculate the number of cores\n  no_cores <-parallel::detectCores() - 1\n  # Initiate cluster\n  cl <- parallel::makeCluster(no_cores)\n  return(cl)\n} # create.cluster <-function()\n\n\n*================================================ no mei código está:*\ncl <- create.cluster()\nComando\nparallel::stopCluster(cl);\n\n*A execução vai bem, mas quando vou preparar meu pacote \" R CMD check\n--as-cran bnpa\" dá erro:*\n*  Error in .check_ncores(length(names)) : 3 simultaneous processes spawned*\n*Sei que o limite permitido de cores para pacotes por motivos de\nperformance é 2 e meu note tem 4.*\n*Alguem pode ajudar como resolver isso?*\n\n\n\n-- \n\n\n*In Jesu et Maria*\n*Obrigado*\n*Prof. Elias Carvalho*\n\n*\"Felix, qui potuit rerum cognoscere causas\" (Virgil 29 BC)\"Blessed is he\nwho has been able to understand the cause of things\"*\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190701/8355ba8e/attachment.html>",
+      "body_snippet": "*Estou criando um pacote e um das funções precisa  usar processamento\nparalelo:*\n\n*Então criei  a função:*\n\n*create.cluster <-function()*\n{\n  # Calculate the number of cores\n  no_cores <-parallel::det",
+      "thread_id": "thread-ec32dbbae4fc",
+      "thread_depth": 0,
+      "month": "2019-07"
+    },
+    {
+      "id": "msg-914b341dd3e2",
+      "message_id": "<1949d0b2-bc09-964f-5d21-e234163c2655@gmail.com>",
+      "from_name": "Elerson",
+      "from_email_hash": "469fdab61793e027624ae867dd6c0225cfd336b6b563ed2519c6bb55c7f046c0",
+      "date": "2019-07-02T17:59:42Z",
+      "subject": "[R-br] Criar colunas",
+      "subject_clean": "[R-br] Criar colunas",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Prezados:\n\nTrabalho um banco de dados com mais de 10000 linhas, representado pelo \nexemplo abaixo.\n\n*PROCESSO* \t*DATA_DISTRIBUICAO* \t*NOME_PARTE* \t*DATA_CRIME* \n*DATA_DENUNCIA* \t*ENQUADRAMENTO*\n180022121 \t02/01/2018 \tA_NONIMATO \t02/01/2018 \t02/01/2018 \tART.33 \nPAR.CAPUT - 11.343/06\n180022121 \t02/01/2018 \tB_NONIMATO \t02/01/2018 \t02/01/2018 \tART.33 \nPAR.CAPUT - 11.343/06\n180022105 \t02/01/2018 \tC_NONIMATO \t01/01/2018 \t02/01/2018 \tART.35 - \n11343/06\n180022105 \t02/01/2018 \tC_NONIMATO \t01/01/2018 \t02/01/2018 \tART.33 - \n11343/06\n180022097 \t02/01/2018 \tD_NONIMATO \t01/01/2018 \t02/01/2018 \tART.155 PAR. \n4º INC. II E IV - CPB\n180022097 \t02/01/2018 \tE_NONIMATO \t01/01/2018 \t02/01/2018 \tART.155 \nPAR.4º INC.II E IV - CPB\n180022097 \t02/01/2018 \tF_NONIMATO \t01/01/2018 \t02/01/2018 \tART.155 PAR. \n4º INC. II E IV - CPB\n180022501 \t03/01/2018 \tG_NONIMATO \t02/01/2018 \t03/01/2018 \tART.157 PAR.2 \nINC.I E II - CP\n180022501 \t03/01/2018 \tG_NONIMATO \t02/01/2018 \t03/01/2018 \tART.14 - CP\n\nHipóteses:\n\na) mesmo PROCESSO, NOME_PARTE diferentes, ENQUADRAMENTO igual (linhas 1 e 2)\n\nb) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 3 e 4)\n\nc) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 8 e 9)\n\nMinha questão se refere à hipótese c: preciso criar um coluna \n(enquadramento2) para transferir o art. 14 transformando o caso em \napenas uma linha… sem que se mexa na hipótese b. Em todo o banco sempre \nestará escrito ART.14 – CP.\n\nPara ficar assim:\n\n*PROCESSO* \t*DATA_DISTRIBUICAO* \t*NOME_PARTE* \t*DATA_CRIME* \n*DATA_DENUNCIA* \t*ENQUADRAMENTO* \t*ENQUADRAMENTO2*\n180022121 \t02/01/2018 \tA_NONIMATO \t02/01/2018 \t02/01/2018 \tART.33 \nPAR.CAPUT - 11.343/06 \t\n180022121 \t02/01/2018 \tB_NONIMATO \t02/01/2018 \t02/01/2018 \tART.33 \nPAR.CAPUT - 11.343/06 \t\n180022105 \t02/01/2018 \tC_NONIMATO \t01/01/2018 \t02/01/2018 \tART.35 - \n11343/06 \t\n180022105 \t02/01/2018 \tC_NONIMATO \t01/01/2018 \t02/01/2018 \tART.33 - \n11343/06 \t\n180022097 \t02/01/2018 \tD_NONIMATO \t01/01/2018 \t02/01/2018 \tART.155 PAR. \n4º INC. II E IV - CPB \t\n180022097 \t02/01/2018 \tE_NONIMATO \t01/01/2018 \t02/01/2018 \tART.155 \nPAR.4º INC.II E IV - CPB \t\n180022097 \t02/01/2018 \tF_NONIMATO \t01/01/2018 \t02/01/2018 \tART.155 PAR. \n4º INC. II E IV - CPB \t\n180022501 \t03/01/2018 \tG_NONIMATO \t02/01/2018 \t03/01/2018 \tART.157 PAR.2 \nINC.I E II - CP \tART.14 - CP\n\nObrigado.\n\n\n\n\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190702/e40c299a/attachment.html>",
+      "body_snippet": "Prezados:\n\nTrabalho um banco de dados com mais de 10000 linhas, representado pelo \nexemplo abaixo.\n\n*PROCESSO* \t*DATA_DISTRIBUICAO* \t*NOME_PARTE* \t*DATA_CRIME* \n*DATA_DENUNCIA* \t*ENQUADRAMENTO*\n180022",
+      "thread_id": "thread-914b341dd3e2",
+      "thread_depth": 0,
+      "month": "2019-07"
+    },
+    {
+      "id": "msg-a3aff6ebedc7",
+      "message_id": "<615451480.1011771.1562092000142.JavaMail.administrator@n4.nabble.com>",
+      "from_name": "caiocagronomo em gmail.com",
+      "from_email_hash": "aa20fd35b57589a2d12d52f5e8426ba09a3eb6dfd5f0a888ffea9221755e7e23",
+      "date": "2019-07-02T18:26:40Z",
+      "subject": "[R-br]  Processamento paralelo x pacote",
+      "subject_clean": "[R-br]  Processamento paralelo x pacote",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Muito provavelmente seu processador tem quatro processadores lógicos, mas somente dois núcleos. Acredito que deve ser por conta disso... Meu note tbm tem 4 cores, mas somete dois são usáveis...\n\n\n<quote author='R-br mailing list'>\n*Estou criando um pacote e um das funções precisa  usar processamento\nparalelo:*\n\n*Então criei  a função:*\n\n*create.cluster <-function()*\n{\n  # Calculate the number of cores\n  no_cores <-parallel::detectCores() - 1\n  # Initiate cluster\n  cl <- parallel::makeCluster(no_cores)\n  return(cl)\n} # create.cluster <-function()\n\n\n*================================================ no mei código está:*\ncl <- create.cluster()\nComando\nparallel::stopCluster(cl);\n\n*A execução vai bem, mas quando vou preparar meu pacote \" R CMD check\n--as-cran bnpa\" dá erro:*\n*  Error in .check_ncores(length(names)) : 3 simultaneous processes spawned*\n*Sei que o limite permitido de cores para pacotes por motivos de\nperformance é 2 e meu note tem 4.*\n*Alguem pode ajudar como resolver isso?*\n\n\n\n-- \n\n\n*In Jesu et Maria*\n*Obrigado*\n*Prof. Elias Carvalho*\n\n*\"Felix, qui potuit rerum cognoscere causas\" (Virgil 29 BC)\"Blessed is he\nwho has been able to understand the cause of things\"*\n\n_______________________________________________\nR-br mailing list\nR-br em listas.c3sl.ufpr.br\nhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\nLeia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo\nm�nimo reproduz�vel.\n</quote>\nQuoted from: \nhttp://r-br.2285057.n4.nabble.com/R-br-Processamento-paralelo-x-pacote-tp4668581.html\n\n\n_____________________________________\nSent from http://r-br.2285057.n4.nabble.com",
+      "body_snippet": "Muito provavelmente seu processador tem quatro processadores lógicos, mas somente dois núcleos. Acredito que deve ser por conta disso... Meu note tbm tem 4 cores, mas somete dois são usáveis...\n\n\n<quo",
+      "thread_id": "thread-a3aff6ebedc7",
+      "thread_depth": 0,
+      "month": "2019-07"
+    },
+    {
+      "id": "msg-8be6baab95b2",
+      "message_id": "<1dc84c54-8b21-67f2-8db7-10bbdc4d5f11@cas.ifmt.edu.br>",
+      "from_name": "ASANTOS",
+      "from_email_hash": "aa53562d0e00d092fcd9c2a92208024c4608197b1ff57297197e79abfd501a52",
+      "date": "2019-07-17T21:39:54Z",
+      "subject": "[R-br] Problema para criar um GeoTIFF a partir da divisão um raster RGB",
+      "subject_clean": "[R-br] Problema para criar um GeoTIFF a partir da divisão um raster RGB",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Prezados Membros,\n\nEu gostaria de dividir um raster RGB em várias partes e salvar cada \nimagem no formato GeoTiff, mas no nome do arquivo eu preciso da contagem \nde pontos (pts) dentro de cada divisão. Meu código funciona \nperfeitamente quando eu uso uma única camada do raster, mas com o objeto \nstack ou brick não funciona. Eu gostaria de ter como saída nove arquivos \nGeoTiff (eu dividi o raster original em 3 partes iguais) com os nomes: \nSplitRas1points0.tif ... SplitRas9points0.tif\n\nSegue CRM para ilustrar:\n\n*#Pacotes*\n\nlibrary(raster)\n\nlibrary(sp)\n\nlibrary(rgdal)\n\n*## Simula os rasters *\n\nr <- raster(nc=30, nr=30)\n\nr <- setValues(r, round(runif(ncell(r))* 255))\n\ng <- raster(nc=30, nr=30)\n\ng <- setValues(r, round(runif(ncell(r))* 255))\n\nb <- raster(nc=30, nr=30)\n\nb <- setValues(r, round(runif(ncell(r))* 255))\n\nrgb<-stack(r,g,b)\n\nplotRGB(rgb,r = 1, g = 2, b = 3)\n\n*##Seleciono algumas coordenadas de interesse*\n\nxd<- c(-24.99270,45.12069,99.40321,73.64419)\n\nyd<- c(-45.435267,-88.369745,-7.086949,44.174530)\n\npts <- data.frame(xd,yd)\n\npts_s<- SpatialPoints(pts)\n\npoints(pts_s, col=\"black\", pch=16)\n\n*#Particiono o raster em três partes iguais *\n\nSplitRas <- function(raster,ppside,save,plot){\n\nh<- ceiling(ncol(raster)/ppside)\n\nv<- ceiling(nrow(raster)/ppside)\n\nagg<- aggregate(raster,fact=c(h,v))\n\nagg[]<- 1:ncell(agg)\n\nagg_poly <- rasterToPolygons(agg)\n\nnames(agg_poly) <- \"polis\"\n\nr_list <- list()\n\nfor(i in 1:ncell(agg)){\n\ne1<- extent(agg_poly[agg_poly$polis==i,])\n\nr_list[[i]] <- crop(raster,e1)\n\n}\n\nif(save==T){\n\nfor(i in 1:length(r_list)){\n\nwriteRaster(r_list[[i]],filename=paste(\"SplitRas\",i,sep=\"\"),\n\nformat=\"GTiff\",datatype=\"FLT4S\",overwrite=TRUE)\n\n}\n\n}\n\nif(plot==T){\n\npar(mfrow=c(ppside,ppside))\n\nfor(i in 1:length(r_list)){\n\nplot(r_list[[i]],axes=F,legend=F,bty=\"n\",box=FALSE)\n\n}\n\n}\n\nreturn(r_list)\n\n}\n\nsplitRBG<-SplitRas(raster=rgb,ppside=3,save=FALSE,plot=FALSE)\n\n*Até aqui tudo bem eu tenho 9 rasters!!!!*\n\nsplitRBG\n\n**\n\n[[1]]\n\nclass: RasterBrick\n\ndimensions : 10, 10, 100, 3(nrow, ncol, ncell, nlayers)\n\nresolution : 12, 6(x, y)\n\nextent: -180, -60, 30, 90(xmin, xmax, ymin, ymax)\n\ncrs: +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0\n\nsource: memory\n\nnames: layer.1, layer.2, layer.3\n\nmin values :0,0,2\n\nmax values :249,253,252\n\n...\n\n[[9]]\n\nclass: RasterBrick\n\ndimensions : 10, 10, 100, 3(nrow, ncol, ncell, nlayers)\n\nresolution : 12, 6(x, y)\n\nextent: 60, 180, -90, -30(xmin, xmax, ymin, ymax)\n\ncrs: +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0\n\nsource: memory\n\nnames: layer.1, layer.2, layer.3\n\nmin values :3,3,3\n\nmax values :254,251,248\n\n*## Faço uma função para contar os pontos, onde zero também entra*\n\nres<-NULL\n\nfor(i in 1:3){\n\npointcount = function(r, pts){\n\nr2 = r\n\nr2[] = 0\n\ncounts = table(cellFromXY(r,pts))\n\nr2[as.numeric(names(counts))] = counts\n\nreturn(r2)\n\n}\n\nr2 = pointcount(splitRBG[i], pts_s)\n\nres<-rbind(res,c(r2))\n\n}\n\n#\n\n*Primeiro problema e eu tenho a seguinte saída, ou seja, não realiza a \ncontagem em rasters empilhados:*\n\nError in (function (classes, fdef, mtable):\n\nunable to find an inherited method for function ‘cellFromXY’ for \nsignature ‘\"list\"’\n\n*# Coloco o número de pontos dentro de cada raster no nome do arquivo de \nsaída (res [i])*\n\nlist2 <- list()\n\nfor(i in 1:3){\n\nrx <- raster(paste(\"splitRBG\",i,\".tif\",sep=\"\"))\n\nwriteRaster(splitRBG,filename=paste(\"SplitRas\",i,\"points\",res[i],sep=\"\"),\n\nformat=\"GTiff\",datatype=\"FLT4S\",overwrite=TRUE)\n\n}\n\n#\n\n*Segundo problema, meu objeto splitRBG não é reconhecido como RasterLayer:*\n\nError in .rasterObjectFromFile(x, band = band, objecttype = \"RasterLayer\",:\n\nCannot create a RasterLayer object from this file. (file does not exist)\n\n*Alguém poderia dar um help?*\n\n-- \n======================================================================\nAlexandre dos Santos\nProteção Florestal\nIFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso\nCampus Cáceres\nCaixa Postal 244\nAvenida dos Ramires, s/n\nBairro: Distrito Industrial\nCáceres - MT                      CEP: 78.200-000\nFone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)\ne-mails:alexandresantosbr em yahoo.com.br\n         alexandre.santos em cas.ifmt.edu.br\nLattes: http://lattes.cnpq.br/1360403201088680\nOrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016\nResearchgate: www.researchgate.net/profile/Alexandre_Santos10\nLinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635\nMendeley:www.mendeley.com/profiles/alexandre-dos-santos6/\n======================================================================\n\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190717/ace51650/attachment.html>",
+      "body_snippet": "Prezados Membros,\n\nEu gostaria de dividir um raster RGB em várias partes e salvar cada \nimagem no formato GeoTiff, mas no nome do arquivo eu preciso da contagem \nde pontos (pts) dentro de cada divisão",
+      "thread_id": "thread-8be6baab95b2",
+      "thread_depth": 0,
+      "month": "2019-07"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-5d4b25cd46fa",
+      "subject": "[R-br]  Modelos Mistos - Distribuição Poisson",
+      "message_count": 1,
+      "participants": [
+        "Felipe Barletta"
+      ],
+      "started": "2019-07-01T13:28:50Z",
+      "last_reply": "2019-07-01T13:28:50Z",
+      "root_message_id": "msg-5d4b25cd46fa"
+    },
+    {
+      "id": "thread-ec32dbbae4fc",
+      "subject": "[R-br] Processamento paralelo x pacote",
+      "message_count": 1,
+      "participants": [
+        "Elias Carvalho"
+      ],
+      "started": "2019-07-01T18:21:19Z",
+      "last_reply": "2019-07-01T18:21:19Z",
+      "root_message_id": "msg-ec32dbbae4fc"
+    },
+    {
+      "id": "thread-914b341dd3e2",
+      "subject": "[R-br] Criar colunas",
+      "message_count": 1,
+      "participants": [
+        "Elerson"
+      ],
+      "started": "2019-07-02T17:59:42Z",
+      "last_reply": "2019-07-02T17:59:42Z",
+      "root_message_id": "msg-914b341dd3e2"
+    },
+    {
+      "id": "thread-a3aff6ebedc7",
+      "subject": "[R-br]  Processamento paralelo x pacote",
+      "message_count": 1,
+      "participants": [
+        "caiocagronomo em gmail.com"
+      ],
+      "started": "2019-07-02T18:26:40Z",
+      "last_reply": "2019-07-02T18:26:40Z",
+      "root_message_id": "msg-a3aff6ebedc7"
+    },
+    {
+      "id": "thread-8be6baab95b2",
+      "subject": "[R-br] Problema para criar um GeoTIFF a partir da divisão um raster RGB",
+      "message_count": 1,
+      "participants": [
+        "ASANTOS"
+      ],
+      "started": "2019-07-17T21:39:54Z",
+      "last_reply": "2019-07-17T21:39:54Z",
+      "root_message_id": "msg-8be6baab95b2"
+    }
+  ]
+}

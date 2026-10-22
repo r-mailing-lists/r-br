@@ -1,0 +1,821 @@
+From richfield1974 em yahoo.com  Sat Jan 11 23:03:45 2020
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Sun, 12 Jan 2020 01:03:45 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?componente_da_vari=C3=A2ncia_no_modelo_de_efeit?=
+ =?utf-8?q?os_aleat=C3=B3rios?=
+In-Reply-To: <CAFU=EkbVrW-Qzq5PrVBrfaOE-T9kZfy0cJX=8Mp7tjeO7PfZmw@mail.gmail.com>
+References: <1862425820.4003365.1574880914987.ref@mail.yahoo.com>
+ <1862425820.4003365.1574880914987@mail.yahoo.com>
+ <CAFU=EkYGD1o-impZwaLdYdQT0natwm9o7xLbwCHt0CZnQTzZ7g@mail.gmail.com>
+ <454570619.4281883.1574963351411@mail.yahoo.com>
+ <CAFU=EkbVrW-Qzq5PrVBrfaOE-T9kZfy0cJX=8Mp7tjeO7PfZmw@mail.gmail.com>
+Message-ID: <567919517.6672248.1578791025482@mail.yahoo.com>
+
+ Muito obrigado Walmes.
+    On Monday, December 2, 2019, 12:40:19 PM GMT-2, Walmes Zeviani <walmeszeviani em gmail.com> wrote:  
+ 
+ Respostas dentro da mensagem.
+À disposição.Walmes.
+On Thu, Nov 28, 2019 at 2:49 PM Luiz Leal <richfield1974 em yahoo.com> wrote:
+
+ Prezado Walmes, muito obrigado.
+
+Pelo que entendi não é possível "sigma^2_b" e "sigma^2_e" utilizando a função gls().
+Não. Tem-se que usar um modelo de efeitos aleatórios. 
+
+A função VarCorr(modelo2) fornece "sigma^2_b" e "sigma^2_e", correto?
+Sim. Mas a interpretação é mais específica. "sigma^2_e" é a variância do erro ao redor do ponto médio da curva em um ponto específico do suporte da covariável que eu imagino ser o 0. A variância em outros pontos da curva será outra, obviamente, porque você declarou um modelo heterocedástico.
+# Média ajustada.
+m <- unique(fitted(modelo2))
+
+# Modelo ajustado.
+plot(y ~ as.integer(x))
+lines(m ~ seq_along(m))
+
+# Variância estimada é função da média.
+#   s2(v) = exp(2* t * v)
+var_estim <- 6041.676 * exp(2 * 0.0009743905 * m)
+var_amost <- tapply(y, x, var)
+cbind(var_amost, var_estim)
+
+# Resíduos crus e padronizados.
+plot(residuals(modelo2) ~ fitted(modelo2))
+plot(residuals(modelo2, type = "pearson") ~ fitted(modelo2))
+
+# Calculando o resíduo padronizado.
+r_my <- residuals(modelo2)/
+    sqrt(6041.676 * exp(2 * 0.0009743905 * fitted(modelo2)))
+
+# Comparação.
+cbind(r_my, residuals(modelo2, type = "pearson"))
+
+
+
+                        Variance          StdDev   
+(Intercept)   667641.149     817.09311
+Residual        6041.696       77.72834
+Tenho uma dúvida: a variância do intercepto é "sigma^2_b"?
+Sim.
+
+
+
+Muito obrigado. Sua contribuição está sendo muito válida no meu trabalho.Luiz
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200112/7da056a9/attachment.html>
+
+From lubichchiara em gmail.com  Sun Jan 19 17:22:16 2020
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Sun, 19 Jan 2020 15:22:16 -0400
+Subject: [R-br] =?utf-8?b?SlVOw4fDg08gREUgR1LDgUZJQ09TIERFIExJTkhB?=
+Message-ID: <CAH-ZE+C7RhyWZPGTu1jP7YRdhwZnfjxxtjV9RHF+323E+e7Xcg@mail.gmail.com>
+
+Oi, gente
+Estou com dificuldades para realizar a junção de gráficos de linha em
+apenas um.
+Minha tabela está da seguinte forma:
+taxadecoleta quantidade   especie
+0.000 81.873 m
+0.050 77.880 m
+0.100 74.082 m
+0.150 70.469 m
+0.200 67.032 m
+0.000 67.032 mo
+0.050 63.763 mo
+0.100 60.653 mo
+0.150 57.695 mo
+0.200 54.881 mo
+0.250 52.205 mo
+0.300 49.659 mo
+0.350 47.237 mo
+0.400 44.933 mo
+0.000 54.881 mor
+0.050 52.205 mor
+0.100 49.659 mor
+0.150 47.237 mor
+Porém quando vou gerar o gráfico no r com esse comando abaixo:
+> plot(taxadecoleta, quantidade, col=especie, ylim=c(0,100), t="l",
+xlim=c(0,4),  xlab = "Coleta", ylab = "Quantidade")
+
+O gráfico não fica da forma que eu gostaria, ele fica da seguinte forma:
+*Ele junta todas as linhas, formando uma só! :(*
+[image: image.png]
+O máximo que consegui foi esse gráfico de pontos abaixo, porém eu precisava
+que fosse em linha em diferente cores como o da figura abaixo.
+[image: image.png]
+
+Agradeço desde já
+Abraço
+
+Att.,
+Chiara Lubich
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/d8c5e046/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9073 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/d8c5e046/attachment.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9585 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/d8c5e046/attachment-0001.png>
+
+From dtiezzi em usp.br  Sun Jan 19 17:46:42 2020
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Sun, 19 Jan 2020 16:46:42 -0300
+Subject: [R-br] =?utf-8?b?SlVOw4fDg08gREUgR1LDgUZJQ09TIERFIExJTkhB?=
+In-Reply-To: <CAH-ZE+C7RhyWZPGTu1jP7YRdhwZnfjxxtjV9RHF+323E+e7Xcg@mail.gmail.com>
+References: <CAH-ZE+C7RhyWZPGTu1jP7YRdhwZnfjxxtjV9RHF+323E+e7Xcg@mail.gmail.com>
+Message-ID: <CA+RL3DPvO_+hd_ys3w=B48JN7Du-xEeKiJgLJEwNm9+L1zA8Ug@mail.gmail.com>
+
+Pode usar a função lines()
+
+tx <- read.delim('tx.txt')
+
+plot(tx$taxadecoleta[tx$especie == 'm'], tx$quantidade[tx$especie ==
+'m'], col='red', ylim=c(0,100), xlim=c(0,0.4),  xlab = "Coleta", ylab
+= "Quantidade", t='l')lines(tx$taxadecoleta[tx$especie == 'mo'],
+tx$quantidade[tx$especie == 'mo'],
+col='blue')lines(tx$taxadecoleta[tx$especie == 'mor'],
+tx$quantidade[tx$especie == 'mor'], col='green')
+
+
+Em dom., 19 de jan. de 2020 às 16:22, Chiara Lubich por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Oi, gente
+> Estou com dificuldades para realizar a junção de gráficos de linha em
+> apenas um.
+> Minha tabela está da seguinte forma:
+> taxadecoleta quantidade   especie
+> 0.000 81.873 m
+> 0.050 77.880 m
+> 0.100 74.082 m
+> 0.150 70.469 m
+> 0.200 67.032 m
+> 0.000 67.032 mo
+> 0.050 63.763 mo
+> 0.100 60.653 mo
+> 0.150 57.695 mo
+> 0.200 54.881 mo
+> 0.250 52.205 mo
+> 0.300 49.659 mo
+> 0.350 47.237 mo
+> 0.400 44.933 mo
+> 0.000 54.881 mor
+> 0.050 52.205 mor
+> 0.100 49.659 mor
+> 0.150 47.237 mor
+> Porém quando vou gerar o gráfico no r com esse comando abaixo:
+> > plot(taxadecoleta, quantidade, col=especie, ylim=c(0,100), t="l",
+> xlim=c(0,4),  xlab = "Coleta", ylab = "Quantidade")
+>
+> O gráfico não fica da forma que eu gostaria, ele fica da seguinte forma:
+> *Ele junta todas as linhas, formando uma só! :(*
+> [image: image.png]
+> O máximo que consegui foi esse gráfico de pontos abaixo, porém eu
+> precisava que fosse em linha em diferente cores como o da figura abaixo.
+> [image: image.png]
+>
+> Agradeço desde já
+> Abraço
+>
+> Att.,
+> Chiara Lubich
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+Daniel Tiezzi, MD, PhD
+Breast Disease and Gynecologic Oncology Division
+Department of Gynecology and Obstetrics
+University of São Paulo
+Brazil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/031b1756/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9073 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/031b1756/attachment.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9585 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/031b1756/attachment-0001.png>
+
+From cesar.rabak em gmail.com  Sun Jan 19 22:51:06 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 19 Jan 2020 21:51:06 -0300
+Subject: [R-br] =?utf-8?b?SlVOw4fDg08gREUgR1LDgUZJQ09TIERFIExJTkhB?=
+In-Reply-To: <CAH-ZE+C7RhyWZPGTu1jP7YRdhwZnfjxxtjV9RHF+323E+e7Xcg@mail.gmail.com>
+References: <CAH-ZE+C7RhyWZPGTu1jP7YRdhwZnfjxxtjV9RHF+323E+e7Xcg@mail.gmail.com>
+Message-ID: <CAKrF98knsthNV1wA-bPcuCSw5aYNW6wijmniepwg6rghu8toAw@mail.gmail.com>
+
+Uma forma "mais automática" de fazer usando o pacote car, supondo seus
+dados no dataframe dat.
+
+> library(car)
+> sp(quantidade ~ taxadecoleta, dat, groups=dat$especie)
+
+HTH
+--
+Cesar Rabak
+
+On Sun, Jan 19, 2020 at 4:22 PM Chiara Lubich por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Oi, gente
+> Estou com dificuldades para realizar a junção de gráficos de linha em
+> apenas um.
+> Minha tabela está da seguinte forma:
+> taxadecoleta quantidade   especie
+> 0.000 81.873 m
+> 0.050 77.880 m
+> 0.100 74.082 m
+> 0.150 70.469 m
+> 0.200 67.032 m
+> 0.000 67.032 mo
+> 0.050 63.763 mo
+> 0.100 60.653 mo
+> 0.150 57.695 mo
+> 0.200 54.881 mo
+> 0.250 52.205 mo
+> 0.300 49.659 mo
+> 0.350 47.237 mo
+> 0.400 44.933 mo
+> 0.000 54.881 mor
+> 0.050 52.205 mor
+> 0.100 49.659 mor
+> 0.150 47.237 mor
+> Porém quando vou gerar o gráfico no r com esse comando abaixo:
+> > plot(taxadecoleta, quantidade, col=especie, ylim=c(0,100), t="l",
+> xlim=c(0,4),  xlab = "Coleta", ylab = "Quantidade")
+>
+> O gráfico não fica da forma que eu gostaria, ele fica da seguinte forma:
+> *Ele junta todas as linhas, formando uma só! :(*
+> [image: image.png]
+> O máximo que consegui foi esse gráfico de pontos abaixo, porém eu
+> precisava que fosse em linha em diferente cores como o da figura abaixo.
+> [image: image.png]
+>
+> Agradeço desde já
+> Abraço
+>
+> Att.,
+> Chiara Lubich
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/8a7fce1d/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9073 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/8a7fce1d/attachment.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9585 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/8a7fce1d/attachment-0001.png>
+
+From lubichchiara em gmail.com  Mon Jan 20 12:26:13 2020
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Mon, 20 Jan 2020 10:26:13 -0400
+Subject: [R-br] Digest R-br, volume 109, assunto 2
+In-Reply-To: <mailman.1.1579528801.3822.r-br@listas.c3sl.ufpr.br>
+References: <mailman.1.1579528801.3822.r-br@listas.c3sl.ufpr.br>
+Message-ID: <CAH-ZE+DiMY1jCgYWH0FfF2+2wU-Y2QjuLx997B_MWoEM6kmimw@mail.gmail.com>
+
+Oi, pessoal
+Muito obrigada pela ajuda Daniel e Cesar, os dois modos deram certo.
+
+Abraço
+
+Em seg., 20 de jan. de 2020 às 10:00, <r-br-request em listas.c3sl.ufpr.br>
+escreveu:
+
+> Enviar submissões para a lista de discussão R-br para
+>         r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+>         r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+>         r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+>    1. JUNÇÃO DE GRÁFICOS DE LINHA (Chiara Lubich)
+>    2. Re: JUNÇÃO DE GRÁFICOS DE LINHA (Daniel Guimarães Tiezzi)
+>    3. Re: JUNÇÃO DE GRÁFICOS DE LINHA (Cesar Rabak)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Sun, 19 Jan 2020 15:22:16 -0400
+> From: Chiara Lubich <lubichchiara em gmail.com>
+> To: r-br em listas.c3sl.ufpr.br
+> Subject: [R-br] JUNÇÃO DE GRÁFICOS DE LINHA
+> Message-ID:
+>         <
+> CAH-ZE+C7RhyWZPGTu1jP7YRdhwZnfjxxtjV9RHF+323E+e7Xcg em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Oi, gente
+> Estou com dificuldades para realizar a junção de gráficos de linha em
+> apenas um.
+> Minha tabela está da seguinte forma:
+> taxadecoleta quantidade   especie
+> 0.000 81.873 m
+> 0.050 77.880 m
+> 0.100 74.082 m
+> 0.150 70.469 m
+> 0.200 67.032 m
+> 0.000 67.032 mo
+> 0.050 63.763 mo
+> 0.100 60.653 mo
+> 0.150 57.695 mo
+> 0.200 54.881 mo
+> 0.250 52.205 mo
+> 0.300 49.659 mo
+> 0.350 47.237 mo
+> 0.400 44.933 mo
+> 0.000 54.881 mor
+> 0.050 52.205 mor
+> 0.100 49.659 mor
+> 0.150 47.237 mor
+> Porém quando vou gerar o gráfico no r com esse comando abaixo:
+> > plot(taxadecoleta, quantidade, col=especie, ylim=c(0,100), t="l",
+> xlim=c(0,4),  xlab = "Coleta", ylab = "Quantidade")
+>
+> O gráfico não fica da forma que eu gostaria, ele fica da seguinte forma:
+> *Ele junta todas as linhas, formando uma só! :(*
+> [image: image.png]
+> O máximo que consegui foi esse gráfico de pontos abaixo, porém eu precisava
+> que fosse em linha em diferente cores como o da figura abaixo.
+> [image: image.png]
+>
+> Agradeço desde já
+> Abraço
+>
+> Att.,
+> Chiara Lubich
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/d8c5e046/attachment-0001.html
+> >
+> -------------- Próxima Parte ----------
+> Um anexo não-texto foi limpo...
+> Nome: image.png
+> Tipo: image/png
+> Tamanho: 9073 bytes
+> Descrição: não disponível
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/d8c5e046/attachment-0002.png
+> >
+> -------------- Próxima Parte ----------
+> Um anexo não-texto foi limpo...
+> Nome: image.png
+> Tipo: image/png
+> Tamanho: 9585 bytes
+> Descrição: não disponível
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/d8c5e046/attachment-0003.png
+> >
+>
+> ------------------------------
+>
+> Message: 2
+> Date: Sun, 19 Jan 2020 16:46:42 -0300
+> From: Daniel Guimarães Tiezzi <dtiezzi em usp.br>
+> To: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] JUNÇÃO DE GRÁFICOS DE LINHA
+> Message-ID:
+>         <CA+RL3DPvO_+hd_ys3w=
+> B48JN7Du-xEeKiJgLJEwNm9+L1zA8Ug em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Pode usar a função lines()
+>
+> tx <- read.delim('tx.txt')
+>
+> plot(tx$taxadecoleta[tx$especie == 'm'], tx$quantidade[tx$especie ==
+> 'm'], col='red', ylim=c(0,100), xlim=c(0,0.4),  xlab = "Coleta", ylab
+> = "Quantidade", t='l')lines(tx$taxadecoleta[tx$especie == 'mo'],
+> tx$quantidade[tx$especie == 'mo'],
+> col='blue')lines(tx$taxadecoleta[tx$especie == 'mor'],
+> tx$quantidade[tx$especie == 'mor'], col='green')
+>
+>
+> Em dom., 19 de jan. de 2020 às 16:22, Chiara Lubich por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+> > Oi, gente
+> > Estou com dificuldades para realizar a junção de gráficos de linha em
+> > apenas um.
+> > Minha tabela está da seguinte forma:
+> > taxadecoleta quantidade   especie
+> > 0.000 81.873 m
+> > 0.050 77.880 m
+> > 0.100 74.082 m
+> > 0.150 70.469 m
+> > 0.200 67.032 m
+> > 0.000 67.032 mo
+> > 0.050 63.763 mo
+> > 0.100 60.653 mo
+> > 0.150 57.695 mo
+> > 0.200 54.881 mo
+> > 0.250 52.205 mo
+> > 0.300 49.659 mo
+> > 0.350 47.237 mo
+> > 0.400 44.933 mo
+> > 0.000 54.881 mor
+> > 0.050 52.205 mor
+> > 0.100 49.659 mor
+> > 0.150 47.237 mor
+> > Porém quando vou gerar o gráfico no r com esse comando abaixo:
+> > > plot(taxadecoleta, quantidade, col=especie, ylim=c(0,100), t="l",
+> > xlim=c(0,4),  xlab = "Coleta", ylab = "Quantidade")
+> >
+> > O gráfico não fica da forma que eu gostaria, ele fica da seguinte forma:
+> > *Ele junta todas as linhas, formando uma só! :(*
+> > [image: image.png]
+> > O máximo que consegui foi esse gráfico de pontos abaixo, porém eu
+> > precisava que fosse em linha em diferente cores como o da figura abaixo.
+> > [image: image.png]
+> >
+> > Agradeço desde já
+> > Abraço
+> >
+> > Att.,
+> > Chiara Lubich
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> > código mínimo reproduzível.
+> >
+>
+>
+> --
+> Daniel Tiezzi, MD, PhD
+> Breast Disease and Gynecologic Oncology Division
+> Department of Gynecology and Obstetrics
+> University of São Paulo
+> Brazil
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/031b1756/attachment-0001.html
+> >
+> -------------- Próxima Parte ----------
+> Um anexo não-texto foi limpo...
+> Nome: image.png
+> Tipo: image/png
+> Tamanho: 9073 bytes
+> Descrição: não disponível
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/031b1756/attachment-0002.png
+> >
+> -------------- Próxima Parte ----------
+> Um anexo não-texto foi limpo...
+> Nome: image.png
+> Tipo: image/png
+> Tamanho: 9585 bytes
+> Descrição: não disponível
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/031b1756/attachment-0003.png
+> >
+>
+> ------------------------------
+>
+> Message: 3
+> Date: Sun, 19 Jan 2020 21:51:06 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] JUNÇÃO DE GRÁFICOS DE LINHA
+> Message-ID:
+>         <
+> CAKrF98knsthNV1wA-bPcuCSw5aYNW6wijmniepwg6rghu8toAw em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Uma forma "mais automática" de fazer usando o pacote car, supondo seus
+> dados no dataframe dat.
+>
+> > library(car)
+> > sp(quantidade ~ taxadecoleta, dat, groups=dat$especie)
+>
+> HTH
+> --
+> Cesar Rabak
+>
+> On Sun, Jan 19, 2020 at 4:22 PM Chiara Lubich por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> > Oi, gente
+> > Estou com dificuldades para realizar a junção de gráficos de linha em
+> > apenas um.
+> > Minha tabela está da seguinte forma:
+> > taxadecoleta quantidade   especie
+> > 0.000 81.873 m
+> > 0.050 77.880 m
+> > 0.100 74.082 m
+> > 0.150 70.469 m
+> > 0.200 67.032 m
+> > 0.000 67.032 mo
+> > 0.050 63.763 mo
+> > 0.100 60.653 mo
+> > 0.150 57.695 mo
+> > 0.200 54.881 mo
+> > 0.250 52.205 mo
+> > 0.300 49.659 mo
+> > 0.350 47.237 mo
+> > 0.400 44.933 mo
+> > 0.000 54.881 mor
+> > 0.050 52.205 mor
+> > 0.100 49.659 mor
+> > 0.150 47.237 mor
+> > Porém quando vou gerar o gráfico no r com esse comando abaixo:
+> > > plot(taxadecoleta, quantidade, col=especie, ylim=c(0,100), t="l",
+> > xlim=c(0,4),  xlab = "Coleta", ylab = "Quantidade")
+> >
+> > O gráfico não fica da forma que eu gostaria, ele fica da seguinte forma:
+> > *Ele junta todas as linhas, formando uma só! :(*
+> > [image: image.png]
+> > O máximo que consegui foi esse gráfico de pontos abaixo, porém eu
+> > precisava que fosse em linha em diferente cores como o da figura abaixo.
+> > [image: image.png]
+> >
+> > Agradeço desde já
+> > Abraço
+> >
+> > Att.,
+> > Chiara Lubich
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> > código mínimo reproduzível.
+> >
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/8a7fce1d/attachment-0001.html
+> >
+> -------------- Próxima Parte ----------
+> Um anexo não-texto foi limpo...
+> Nome: image.png
+> Tipo: image/png
+> Tamanho: 9073 bytes
+> Descrição: não disponível
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/8a7fce1d/attachment-0002.png
+> >
+> -------------- Próxima Parte ----------
+> Um anexo não-texto foi limpo...
+> Nome: image.png
+> Tipo: image/png
+> Tamanho: 9585 bytes
+> Descrição: não disponível
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200119/8a7fce1d/attachment-0003.png
+> >
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 109, assunto 2
+> *****************************************
+>
+
+
+-- 
+*Chiara Lubich Cardoso Furtado*
+Mestranda em Biologia de Água Doce e Pesca Interior - INPA
+Engenheira de Pesca - UFAM
+Telefone: (92) 99110-6657
+e-mail: lubichchiara em gmail.com
+Lattes: http://lattes.cnpq.br/0673892253719514
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200120/00e81a6b/attachment.html>
+
+From lubichchiara em gmail.com  Tue Jan 21 16:29:29 2020
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Tue, 21 Jan 2020 14:29:29 -0400
+Subject: [R-br] =?utf-8?q?Explica=C3=A7=C3=A3o_Valores_GLM?=
+Message-ID: <CAH-ZE+BtEaPGWBhmv3pUxgQLo_wZps9BNwfh7Lfrm=WTovQVBg@mail.gmail.com>
+
+Boa tarde,
+Pessoal, que explicações eu poderia dar dos valores gerados por um modelo
+GLM, além de dizer que variáveis deram significativas?
+Por exemplo, abaixo:
+[image: image.png]
+Consigo ver que as variáveis "d", "n" e "intercepto" deram diferentes, mas
+o que isso quer dizer?
+
+Obrigada desde já
+Abraço
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200121/c12cfbb7/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 176934 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200121/c12cfbb7/attachment-0001.png>
+
+From rodrigueslucasweb em gmail.com  Tue Jan 21 16:57:54 2020
+From: rodrigueslucasweb em gmail.com (Lucas Rodrigues)
+Date: Tue, 21 Jan 2020 15:57:54 -0300
+Subject: [R-br] =?utf-8?q?Explica=C3=A7=C3=A3o_Valores_GLM?=
+In-Reply-To: <CAH-ZE+BtEaPGWBhmv3pUxgQLo_wZps9BNwfh7Lfrm=WTovQVBg@mail.gmail.com>
+References: <CAH-ZE+BtEaPGWBhmv3pUxgQLo_wZps9BNwfh7Lfrm=WTovQVBg@mail.gmail.com>
+Message-ID: <CAN0wAuPHBbz6a_xrxG-NZmRvYovvtdxTAH2ZbVvgwzQ9cfsbCw@mail.gmail.com>
+
+Boa tarde Chiara.
+
+observando os valores de Estimate, é possível afirmar também a influência
+positiva e negativa de "d" e "n" sobre "cml", respectivamente.
+
+Abraço
+
+
+
+On Tue, Jan 21, 2020 at 3:30 PM Chiara Lubich por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde,
+> Pessoal, que explicações eu poderia dar dos valores gerados por um modelo
+> GLM, além de dizer que variáveis deram significativas?
+> Por exemplo, abaixo:
+> [image: image.png]
+> Consigo ver que as variáveis "d", "n" e "intercepto" deram diferentes, mas
+> o que isso quer dizer?
+>
+> Obrigada desde já
+> Abraço
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+*Lucas Rodrigues, M.Sc.*
+
+Laboratório de Recursos Pesqueiros Demersais e Cefalópodes
+PPG em Oceanografia Biológica
+
+Universidade Federal do Rio Grande - FURG, Av. Itália, km 8, CEP:
+96203-000, Rio Grande ? RS, Brazil.
+Lattes: http://lattes.cnpq.br/0555869630190476
+ORCID: https://orcid.org/0000-0003-2310-2619
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200121/2b987d14/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 176934 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200121/2b987d14/attachment-0001.png>
+
+From sznelwar em uol.com.br  Tue Jan 21 19:34:46 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Tue, 21 Jan 2020 19:34:46 -0200
+Subject: [R-br] =?utf-8?q?Explica=C3=A7=C3=A3o_Valores_GLM?=
+In-Reply-To: <CAN0wAuPHBbz6a_xrxG-NZmRvYovvtdxTAH2ZbVvgwzQ9cfsbCw@mail.gmail.com>
+References: <WTovQVBg@mail.gmail.com>
+ <CAN0wAuPHBbz6a_xrxG-NZmRvYovvtdxTAH2ZbVvgwzQ9cfsbCw@mail.gmail.com>
+Message-ID: <5e276e7641aa8_32382af927a5d11032654@ip-10-81-19-78.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200121/0b8aec68/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Jan 22 01:24:20 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 22 Jan 2020 00:24:20 -0300
+Subject: [R-br] =?utf-8?q?Explica=C3=A7=C3=A3o_Valores_GLM?=
+In-Reply-To: <CAH-ZE+BtEaPGWBhmv3pUxgQLo_wZps9BNwfh7Lfrm=WTovQVBg@mail.gmail.com>
+References: <CAH-ZE+BtEaPGWBhmv3pUxgQLo_wZps9BNwfh7Lfrm=WTovQVBg@mail.gmail.com>
+Message-ID: <CAKrF98nziUzLKx9Tu8V3Ota1yoWw9-iAqCaoQDAa02nfs--0Vw@mail.gmail.com>
+
+Chiara,
+
+Para começar a responder devemos entender qual a modelagem foi feita.
+
+Por exemplo: você fez uma GLM e escolheu a família gaussiana com função de
+ligação "identidade" para o ajuste. Por que?
+
+Em geral em regressões a significância do intercepto não traz muita
+informação, pois o teste que você vê é contra o valor nulo dele, e aposto
+que você já sabia que esse não era o caso...
+
+Escreva a equação modelada pela regressão e veja então que a "explicação"
+para o que elas significam será intuitiva para você no domínio do problema.
+
+Contudo, *antes* de enveredar por esse caminho, plote os gráficos de
+diagnóstico para essa regressão e veja se os quatro gráficos *default* indicam
+que os pressupostos para a regressão foram atendidos de maneira razoável.
+Dica : se você mandar a plotagem em um formato 2x2 os quatro gráficos
+aparecerão ao mesmo tempo e você poderá analisar o todo de uma vez.
+
+Uma outra coisa que seria conveniente você fazer é uma matriz de diagramas
+de dispersão para suas três variáveis e ver se apenas estão correlacionadas
+com sua variável considerada dependente cml ou as duas independentes também
+estão correlacionadas, indicando possível colinearidade nelas.
+
+HTH
+
+On Tue, Jan 21, 2020 at 3:30 PM Chiara Lubich por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde,
+> Pessoal, que explicações eu poderia dar dos valores gerados por um modelo
+> GLM, além de dizer que variáveis deram significativas?
+> Por exemplo, abaixo:
+> [image: image.png]
+> Consigo ver que as variáveis "d", "n" e "intercepto" deram diferentes, mas
+> o que isso quer dizer?
+>
+> Obrigada desde já
+> Abraço
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200122/e066b4cb/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 176934 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200122/e066b4cb/attachment-0001.png>
+

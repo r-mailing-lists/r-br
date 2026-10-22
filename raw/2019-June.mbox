@@ -1,0 +1,1544 @@
+From jasmine.moreira.2013 em gmail.com  Mon Jun  3 20:05:45 2019
+From: jasmine.moreira.2013 em gmail.com (Jasmine Moreira)
+Date: Mon, 3 Jun 2019 20:05:45 -0300
+Subject: [R-br] Alternativas ao Rfacebook
+Message-ID: <56084BEF-4AFC-4CB6-AF4B-773A2C4D7559@gmail.com>
+
+Olá pessoal,
+desenvolvi minha pesquisa de doutorado nos bons tempos do Rfacebook. Infelizmente, depois do escândalo da Cambridge Analytics, não há mais como coletar posts de páginas via API. Vi que o fb disponibiliza via parceiro um tal de CrowdTangle. Alguém já o utilizou? Poderia me dar umas dicas? Conhece alguma outra solução?
+Muito Obrigada,
+Jasmine
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190603/629fb9bc/attachment.html>
+
+From ecacarva em gmail.com  Tue Jun  4 16:10:32 2019
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Tue, 4 Jun 2019 16:10:32 -0300
+Subject: [R-br] =?utf-8?b?TcOpdG9kbyBkZSBlc3RpbWHDp8OjbyBkbyBnbG0=?=
+Message-ID: <CAH8E6UsRtf5XoP1AmNKwW4g_6f2mHmmT0q3osY+GQqdW2OnAqg@mail.gmail.com>
+
+Estou fazendo uma regressão logistica com o comando:
+modelo.rl1 <- glm(V1 ~ V2, data = data.to.work.training, family =
+binomial())
+
+Como faço para saber o método de estimação utilizado?
+O resultado foi:
+summ(modelo.rl1)
+MODEL INFO:
+Observations: 24632
+Dependent Variable: V1
+Type: Generalized linear model
+  Family: binomial
+  Link function: logit
+
+MODEL FIT:
+χ²(1) = 478.25, p = 0.00
+Pseudo-R² (Cragg-Uhler) = 0.08
+Pseudo-R² (McFadden) = 0.07
+AIC = 5954.13, BIC = 5970.35
+
+Standard errors: MLE
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190604/9ff22c74/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Jun  4 20:23:13 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 4 Jun 2019 20:23:13 -0300
+Subject: [R-br] =?utf-8?b?TcOpdG9kbyBkZSBlc3RpbWHDp8OjbyBkbyBnbG0=?=
+In-Reply-To: <CAH8E6UsRtf5XoP1AmNKwW4g_6f2mHmmT0q3osY+GQqdW2OnAqg@mail.gmail.com>
+References: <CAH8E6UsRtf5XoP1AmNKwW4g_6f2mHmmT0q3osY+GQqdW2OnAqg@mail.gmail.com>
+Message-ID: <CAKrF98=wC2sUrVmkJ98hEzpjeE1ECiH5467_b34RKXY-=PTNLw@mail.gmail.com>
+
+*Read The **Fine** Manual? **😎*?
+Especialmente a descrição da função no subitem *method*.
+
+HTH
+--
+Cesar  Rabak
+
+
+On Tue, Jun 4, 2019 at 4:11 PM Elias Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Estou fazendo uma regressão logistica com o comando:
+> modelo.rl1 <- glm(V1 ~ V2, data = data.to.work.training, family =
+> binomial())
+>
+> Como faço para saber o método de estimação utilizado?
+> O resultado foi:
+> summ(modelo.rl1)
+> MODEL INFO:
+> Observations: 24632
+> Dependent Variable: V1
+> Type: Generalized linear model
+>   Family: binomial
+>   Link function: logit
+>
+> MODEL FIT:
+> χ²(1) = 478.25, p = 0.00
+> Pseudo-R² (Cragg-Uhler) = 0.08
+> Pseudo-R² (McFadden) = 0.07
+> AIC = 5954.13, BIC = 5970.35
+>
+> Standard errors: MLE
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190604/6ec35980/attachment.html>
+
+From diogojose21 em yahoo.com.br  Fri Jun  7 17:06:44 2019
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Fri, 7 Jun 2019 20:06:44 +0000 (UTC)
+Subject: [R-br] =?utf-8?b?UHJvYmxlbWEgYXR1YWxpemHDp8Ojby4=?=
+References: <677869733.407825.1559938004431.ref@mail.yahoo.com>
+Message-ID: <677869733.407825.1559938004431@mail.yahoo.com>
+
+Prezados, boa tarde. Acredito que seja ridícula, mas não achei no manual..
+Atualizei meu R da versão 3.5.3 para a versão 3.6.0 (no "Ruindows"), e o programa está dando várias mensagens de erro em packages que antes funcionavam. Tentei retornar para a versão e o problema persiste.
+Alguém saberia o motivo, e a solução do problema? 
+Obrigado!!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190607/011e775e/attachment.html>
+
+From nandodesouza em gmail.com  Sat Jun  8 00:03:41 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sat, 8 Jun 2019 00:03:41 -0300
+Subject: [R-br] =?utf-8?b?UHJvYmxlbWEgYXR1YWxpemHDp8Ojby4=?=
+In-Reply-To: <677869733.407825.1559938004431@mail.yahoo.com>
+References: <677869733.407825.1559938004431@mail.yahoo.com>
+Message-ID: <50C7A86F-D317-47DD-8D00-83E5DC13116B@getmailspring.com>
+
+Cara
+Você tenteou atualizar os pacotes? Como você atualizou o R pode ter ocorrido dos pacotes não terem sido atualizados para a nova versão.
+e veja se resolve
+De um update.packages() e veja se resolve
+
+On Jun 7 2019, at 5:06 pm, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Prezados, boa tarde. Acredito que seja ridícula, mas não achei no manual..
+>
+> Atualizei meu R da versão 3.5.3 para a versão 3.6.0 (no "Ruindows"), e o programa está dando várias mensagens de erro em packages que antes funcionavam. Tentei retornar para a versão e o problema persiste.
+>
+> Alguém saberia o motivo, e a solução do problema?
+>
+> Obrigado!!!!
+>
+> Diogo Jerônimo
+> Bacharel em Ciências Estatísticas - ENCE/IBGE
+> Mestre em Metrologia - PUC-Rio/PósMQI
+> CONRE: 8514 - SÉRIE A
+> http://lattes.cnpq.br/8996149312896520
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190608/e8bb7972/attachment.html>
+
+From fabibarbos em gmail.com  Mon Jun 10 21:50:30 2019
+From: fabibarbos em gmail.com (Fabiana Goncalves Barbosa)
+Date: Mon, 10 Jun 2019 21:50:30 -0300
+Subject: [R-br] =?utf-8?q?=28sem_assunto=29?=
+Message-ID: <CAFLo1XrqX7dhMFxZ0kp2wJ7qL13fqs=vG3ULzn0i4RU8OE_L7g@mail.gmail.com>
+
+Olá Pessoal
+
+Como faço um teste Kruskal Wallis para amostras não balanceadas?
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190610/c0cdaac5/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Jun 12 20:03:33 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 12 Jun 2019 20:03:33 -0300
+Subject: [R-br] (sem assunto)
+In-Reply-To: <CAFLo1XrqX7dhMFxZ0kp2wJ7qL13fqs=vG3ULzn0i4RU8OE_L7g@mail.gmail.com>
+References: <CAFLo1XrqX7dhMFxZ0kp2wJ7qL13fqs=vG3ULzn0i4RU8OE_L7g@mail.gmail.com>
+Message-ID: <CAKrF98nA-SwSggM4xH8QO1eS_daH9qLF=v47Lu3fN=sO62z_9w@mail.gmail.com>
+
+Não uma restrição teórica para o teste Kruskall Wallis que as pernas da
+amostra sejam balanceadas.
+
+Obviamente, o *bom senso* pediria que o desbalanço não seja tão grande a
+ponto de ter um grupo com uma ou duas amostras e outro na casa de
+milhares...
+
+HTH
+--
+Cesar Rabak
+
+
+On Mon, Jun 10, 2019 at 9:50 PM Fabiana Goncalves Barbosa por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá Pessoal
+>
+> Como faço um teste Kruskal Wallis para amostras não balanceadas?
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190612/1b3b889a/attachment.html>
+
+From apcmadeira em hotmail.com  Fri Jun 14 16:22:13 2019
+From: apcmadeira em hotmail.com (ana paula coelho madeira)
+Date: Fri, 14 Jun 2019 19:22:13 +0000
+Subject: [R-br] Experimento em faixas
+Message-ID: <BL0PR08MB45775B20DF483916C925C371CAEE0@BL0PR08MB4577.namprd08.prod.outlook.com>
+
+Prezados colegas,
+
+Boa tarde!  Estou analisando um experimento em DBC com dois fatores arranjados no esquema de faixas. Gostaria da ajuda de vocês para testar as hipóteses de normalidade e homocedasticidade.
+
+Desde já agradeço.
+
+Ana Paula
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190614/c7e3ecad/attachment.html>
+
+From alan.panosso em unesp.br  Fri Jun 14 17:35:25 2019
+From: alan.panosso em unesp.br (Alan Rodrigo Panosso)
+Date: Fri, 14 Jun 2019 17:35:25 -0300
+Subject: [R-br] Experimento em faixas
+In-Reply-To: <BL0PR08MB45775B20DF483916C925C371CAEE0@BL0PR08MB4577.namprd08.prod.outlook.com>
+References: <BL0PR08MB45775B20DF483916C925C371CAEE0@BL0PR08MB4577.namprd08.prod.outlook.com>
+Message-ID: <CANfu3eUAewSfxgpRbA4DmEnMgFCL=us2OSchA+s8uR+vpv_6MQ@mail.gmail.com>
+
+Oi,
+Veja a função faixas ou faixa, do pacote
+ExpDes.pt
+
+https://www.google.com/url?sa=t&source=web&rct=j&url=https://cran.r-project.org/web/packages/ExpDes.pt/ExpDes.pt.pdf&ved=2ahUKEwi395Cm6eniAhUIH7kGHaBHDAIQFjAAegQIARAB&usg=AOvVaw1rDBn-NfI8xm0SwUN2Qp_K
+
+Att
+Alan
+
+Em sex, 14 de jun de 2019 16:22, ana paula coelho madeira por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados colegas,
+>
+> Boa tarde!  Estou analisando um experimento em DBC com dois fatores
+> arranjados no esquema de faixas. Gostaria da ajuda de vocês para testar as
+> hipóteses de normalidade e homocedasticidade.
+>
+> Desde já agradeço.
+>
+> Ana Paula
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190614/3dfacf32/attachment.html>
+
+From cesar.rabak em gmail.com  Sat Jun 15 15:54:28 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 15 Jun 2019 15:54:28 -0300
+Subject: [R-br] Experimento em faixas
+In-Reply-To: <BL0PR08MB45775B20DF483916C925C371CAEE0@BL0PR08MB4577.namprd08.prod.outlook.com>
+References: <BL0PR08MB45775B20DF483916C925C371CAEE0@BL0PR08MB4577.namprd08.prod.outlook.com>
+Message-ID: <CAKrF98=TkYnvVtohrsBCwRbTjWkX_5B-UvyKjDHNLmy5OpKJNA@mail.gmail.com>
+
+Ana Paula,
+
+Essa *doença* de propor testes de normalidade para "testar" a premissa de
+normalidade e homoscedasticidade *a priori* de um teste estatístico é muito
+propalada por manuais, autores eviesados por fabricantes de pacotes de SW
+estatísticos, geralmente comerciais e caros, que para justificar o custo e
+a abrangência de testes e métodos quase os transformam da religião da
+*obrigatoriadade*.
+
+As premissas devem ser testadas usando como base seu conhecimento no
+domínio do problema e não num teste que por ser baseado na lógica do teste
+de hipótese nula nunca vão resolver a questão "a favor" da normalidade mas
+apenas indicar se seus dados apresentam uma patologia que quando testados
+por um dos 'n' testes apresentam um valor-p menor que 0,05; etc.
+
+Ademais, como já está sobejamente demonstrado esses testes tendem a ser
+grosseiros e deixar escapar distribuições claramente não normais com
+conjunto pequeno de dados e serem "muito sensíveis" com conjuntos de dados
+maiores, chegando a dar "falsos positivos" mesmo em simulações onde os
+dados partem de uma amostragem de uma distribuição normal com número desses
+falsos positivos acima de 5%!!
+
+Portanto, a melhor ajuda que podemos dar é : analise o processo que gera
+seus dados, e se esse processo indica que a distribuição já pela teoria
+pode trazer heterocedasticidade, estabilize-a antes com uma transformação
+apropriada, etc. Lembrando de interpretar os resultados e eventualmente
+reconvertendo as medidas de momento usadas no testes estatísticos de volta
+para os dados não transformados.
+
+HTH
+--
+Cesar Rabak
+
+
+On Fri, Jun 14, 2019 at 4:22 PM ana paula coelho madeira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados colegas,
+>
+> Boa tarde!  Estou analisando um experimento em DBC com dois fatores
+> arranjados no esquema de faixas. Gostaria da ajuda de vocês para testar as
+> hipóteses de normalidade e homocedasticidade.
+>
+> Desde já agradeço.
+>
+> Ana Paula
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190615/a86f6e9d/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Wed Jun 19 11:45:01 2019
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Wed, 19 Jun 2019 11:45:01 -0300
+Subject: [R-br] =?utf-8?q?Problema_para_plotar_intervalo_de_confian=C3=A7a?=
+ =?utf-8?q?_no_ggplot2_para_modelo_GLM_de_Poisson_com_jun=C3=A7=C3=A3o_de_?=
+ =?utf-8?q?n=C3=ADveis?=
+Message-ID: <7a0a67b2-b840-5166-50b2-7d65bd11647e@cas.ifmt.edu.br>
+
+Prezados Membros,
+
+Estou tentando plotar sem sucesso o intervalo em um modelo GLM de 
+Poisson onde fiz a junção de níveis para a variável categórica Gender. 
+Alguém baseado no CRM abaixo poderia dar uma luz?
+
+#Pacotes
+library(ggplot2)
+library(dplyr)
+library(tidyverse)
+
+#Dados inventados com uma variável resposta (Consumption) e duas 
+explicativas, sendo uma categórica e outra quali
+Consumption <- c(501, 502, 503, 504, 26, 27, 50, 56, 63, 60, 72, 93, 78, 
+43, 59, 70, 53, 80)
+Gender <- gl(n = 3, k = 6, length = 3*6, labels = c("Male", 
+"Female","hermaphrodite"), ordered = FALSE)
+Income <- c(5010, 5020, 5030, 5040, 260, 270, 550, 560, 680, 690, 720, 
+550, 560, 680, 690, 720,500,512)
+df3 <- data.frame(Consumption, Gender, Income)
+df3
+
+# GLM de Poisson
+fm1 <- glm(Consumption~Gender+Income, data=df3, family=poisson)
+summary(fm1)
+
+# ANOVA do modelo ajustado
+anova(fm1,test="Chi")
+
+#Comparo a variável Gender
+sort(tapply(df3$Consumption,df3$Gender,mean))
+Gender2<-df3$Gender
+levels(Gender2)
+levels(Gender2)[2]<-"Fem_Her"
+levels(Gender2)[3]<-"Fem_Her"
+levels(Gender2)
+fm2<-glm(Consumption~Gender2+Income, data=df3, family=poisson)
+anova(fm1,fm2,test="Chi")
+# 0.7824 Female/Hermaphrodite são iguais então eu junto
+
+#Faço a predição sobre o modelo final e dos intervalos de confiança
+
+pred <- predict(fm2, type="response", se.fit = TRUE)
+df3 = cbind(df3, pred = pred$fit)
+df3 = cbind(df3, se = pred$se.fit)
+df3 = cbind(df3, ucl=df3$pred + 1.96*df3$se)
+df3 = cbind(df3, lcl=df3$pred - 1.96*df3$se)
+df3 = cbind(df3, Gender2)
+
+df<-df3 %>%
+   dplyr::group_by(Income, Gender2) %>%
+   dplyr::summarize(Consumption = mean(Consumption, na.rm = TRUE))
+df<-as.data.frame(df)
+
+#Faço o plot usando o ggplot2
+df3  %>%
+   tidyr::gather(type, value, Consumption) %>%
+   ggplot(mapping=aes(x=type, y=value, color = Gender2)) +
+       geom_smooth(mapping=aes(ymin = lcl, ymax = ucl), stat = 
+"identity") +
+   geom_point(df,mapping=aes(x=Income, y=Consumption, color = Gender2)) +
+   geom_line(mapping=aes(x=Income, y=pred))
+
+#
+
+Obrigado,
+
+Alexandre
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+
+From marcus.nunes em gmail.com  Wed Jun 19 12:08:53 2019
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Wed, 19 Jun 2019 12:08:53 -0300
+Subject: [R-br] 
+	=?utf-8?q?Problema_para_plotar_intervalo_de_confian=C3=A7?=
+	=?utf-8?q?a_no_ggplot2_para_modelo_GLM_de_Poisson_com_jun=C3=A7?=
+	=?utf-8?b?w6NvIGRlIG7DrXZlaXM=?=
+In-Reply-To: <7a0a67b2-b840-5166-50b2-7d65bd11647e@cas.ifmt.edu.br>
+References: <7a0a67b2-b840-5166-50b2-7d65bd11647e@cas.ifmt.edu.br>
+Message-ID: <CA+QGQvuyJFiVnbv51B7QtJWt+Zz7=fTqDjYRD-nHU9_Mv=pscQ@mail.gmail.com>
+
+O problema está na linha
+
+  ggplot(mapping=aes(x=type, y=value, color = Gender2)) +
+
+Não faz muito sentido criar um gráfico de dispersão com uma variável
+categórica de apenas um nível como variável preditora. Rode o código abaixo
+que ele deve ficar mais próximo do desejado.
+
+df3  %>%
+  tidyr::gather(type, value, Consumption) %>%
+  ggplot(mapping=aes(x=Income, y=value, color = Gender2)) +
+  geom_smooth(mapping=aes(ymin = lcl, ymax = ucl), stat = "identity",
+colour = "black") +
+  geom_point(df,mapping=aes(x=Income, y=Consumption, color = Gender2), size
+= 2) +
+  geom_line(mapping=aes(x=Income, y=pred), colour = "black")
+
+Eu achei esquisito que o nível Fem_Her está muito distante do nível Male no
+gráfico, mas como a income dos Male é em torno de 20 vezes a dos Fem_Her,
+então o plot faz sentido.
+
+Ah, troquei a cor da linha dos valores preditos porque ela estava sendo
+confundida com alguns pontos. Talvez preto não seja a melhor opção, então
+escolha uma cor que se harmonize melhor à tua paleta de cores.
+
+Atenciosamente,
+--
+Marcus Nunes
+Professor Adjunto
+Universidade Federal do Rio Grande do Norte
+Centro de Ciências Exatas e da Terra
+Departamento de Estatística
+Laboratório de Estatística Aplicada
+marcus em marcusnunes.me
+https://marcusnunes.me/
+http://shiny.estatistica.ccet.ufrn.br
+
+
+
+On Wed, Jun 19, 2019 at 11:45 AM ASANTOS por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados Membros,
+>
+> Estou tentando plotar sem sucesso o intervalo em um modelo GLM de
+> Poisson onde fiz a junção de níveis para a variável categórica Gender.
+> Alguém baseado no CRM abaixo poderia dar uma luz?
+>
+> #Pacotes
+> library(ggplot2)
+> library(dplyr)
+> library(tidyverse)
+>
+> #Dados inventados com uma variável resposta (Consumption) e duas
+> explicativas, sendo uma categórica e outra quali
+> Consumption <- c(501, 502, 503, 504, 26, 27, 50, 56, 63, 60, 72, 93, 78,
+> 43, 59, 70, 53, 80)
+> Gender <- gl(n = 3, k = 6, length = 3*6, labels = c("Male",
+> "Female","hermaphrodite"), ordered = FALSE)
+> Income <- c(5010, 5020, 5030, 5040, 260, 270, 550, 560, 680, 690, 720,
+> 550, 560, 680, 690, 720,500,512)
+> df3 <- data.frame(Consumption, Gender, Income)
+> df3
+>
+> # GLM de Poisson
+> fm1 <- glm(Consumption~Gender+Income, data=df3, family=poisson)
+> summary(fm1)
+>
+> # ANOVA do modelo ajustado
+> anova(fm1,test="Chi")
+>
+> #Comparo a variável Gender
+> sort(tapply(df3$Consumption,df3$Gender,mean))
+> Gender2<-df3$Gender
+> levels(Gender2)
+> levels(Gender2)[2]<-"Fem_Her"
+> levels(Gender2)[3]<-"Fem_Her"
+> levels(Gender2)
+> fm2<-glm(Consumption~Gender2+Income, data=df3, family=poisson)
+> anova(fm1,fm2,test="Chi")
+> # 0.7824 Female/Hermaphrodite são iguais então eu junto
+>
+> #Faço a predição sobre o modelo final e dos intervalos de confiança
+>
+> pred <- predict(fm2, type="response", se.fit = TRUE)
+> df3 = cbind(df3, pred = pred$fit)
+> df3 = cbind(df3, se = pred$se.fit)
+> df3 = cbind(df3, ucl=df3$pred + 1.96*df3$se)
+> df3 = cbind(df3, lcl=df3$pred - 1.96*df3$se)
+> df3 = cbind(df3, Gender2)
+>
+> df<-df3 %>%
+>    dplyr::group_by(Income, Gender2) %>%
+>    dplyr::summarize(Consumption = mean(Consumption, na.rm = TRUE))
+> df<-as.data.frame(df)
+>
+> #Faço o plot usando o ggplot2
+> df3  %>%
+>    tidyr::gather(type, value, Consumption) %>%
+>    ggplot(mapping=aes(x=type, y=value, color = Gender2)) +
+>        geom_smooth(mapping=aes(ymin = lcl, ymax = ucl), stat =
+> "identity") +
+>    geom_point(df,mapping=aes(x=Income, y=Consumption, color = Gender2)) +
+>    geom_line(mapping=aes(x=Income, y=pred))
+>
+> #
+>
+> Obrigado,
+>
+> Alexandre
+>
+> --
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+> e-mails:alexandresantosbr em yahoo.com.br
+>          alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+> ======================================================================
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190619/ef0e261d/attachment.html>
+
+From dtiezzi em usp.br  Wed Jun 19 12:20:37 2019
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Wed, 19 Jun 2019 12:20:37 -0300
+Subject: [R-br] 
+ =?utf-8?q?Problema_para_plotar_intervalo_de_confian=C3=A7?=
+ =?utf-8?q?a_no_ggplot2_para_modelo_GLM_de_Poisson_com_jun=C3=A7=C3=A3o_de?=
+ =?utf-8?q?_n=C3=ADveis?=
+In-Reply-To: <7a0a67b2-b840-5166-50b2-7d65bd11647e@cas.ifmt.edu.br>
+References: <7a0a67b2-b840-5166-50b2-7d65bd11647e@cas.ifmt.edu.br>
+Message-ID: <42BB97D1-9403-4CF7-93FE-0B0009FD623A@usp.br>
+
+A variância das variáveis é muito grande entre os homens.
+
+Não ficaria melhor transformar em log?
+
+daniel
+
+
+
+> On 19 Jun 2019, at 11:45, ASANTOS por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Prezados Membros,
+> 
+> Estou tentando plotar sem sucesso o intervalo em um modelo GLM de Poisson onde fiz a junção de níveis para a variável categórica Gender. Alguém baseado no CRM abaixo poderia dar uma luz?
+> 
+> #Pacotes
+> library(ggplot2)
+> library(dplyr)
+> library(tidyverse)
+> 
+> #Dados inventados com uma variável resposta (Consumption) e duas explicativas, sendo uma categórica e outra quali
+> Consumption <- c(501, 502, 503, 504, 26, 27, 50, 56, 63, 60, 72, 93, 78, 43, 59, 70, 53, 80)
+> Gender <- gl(n = 3, k = 6, length = 3*6, labels = c("Male", "Female","hermaphrodite"), ordered = FALSE)
+> Income <- c(5010, 5020, 5030, 5040, 260, 270, 550, 560, 680, 690, 720, 550, 560, 680, 690, 720,500,512)
+> df3 <- data.frame(Consumption, Gender, Income)
+> df3
+> 
+> # GLM de Poisson
+> fm1 <- glm(Consumption~Gender+Income, data=df3, family=poisson)
+> summary(fm1)
+> 
+> # ANOVA do modelo ajustado
+> anova(fm1,test="Chi")
+> 
+> #Comparo a variável Gender
+> sort(tapply(df3$Consumption,df3$Gender,mean))
+> Gender2<-df3$Gender
+> levels(Gender2)
+> levels(Gender2)[2]<-"Fem_Her"
+> levels(Gender2)[3]<-"Fem_Her"
+> levels(Gender2)
+> fm2<-glm(Consumption~Gender2+Income, data=df3, family=poisson)
+> anova(fm1,fm2,test="Chi")
+> # 0.7824 Female/Hermaphrodite são iguais então eu junto
+> 
+> #Faço a predição sobre o modelo final e dos intervalos de confiança
+> 
+> pred <- predict(fm2, type="response", se.fit = TRUE)
+> df3 = cbind(df3, pred = pred$fit)
+> df3 = cbind(df3, se = pred$se.fit)
+> df3 = cbind(df3, ucl=df3$pred + 1.96*df3$se)
+> df3 = cbind(df3, lcl=df3$pred - 1.96*df3$se)
+> df3 = cbind(df3, Gender2)
+> 
+> df<-df3 %>%
+>   dplyr::group_by(Income, Gender2) %>%
+>   dplyr::summarize(Consumption = mean(Consumption, na.rm = TRUE))
+> df<-as.data.frame(df)
+> 
+> #Faço o plot usando o ggplot2
+> df3  %>%
+>   tidyr::gather(type, value, Consumption) %>%
+>   ggplot(mapping=aes(x=type, y=value, color = Gender2)) +
+>       geom_smooth(mapping=aes(ymin = lcl, ymax = ucl), stat = "identity") +
+>   geom_point(df,mapping=aes(x=Income, y=Consumption, color = Gender2)) +
+>   geom_line(mapping=aes(x=Income, y=pred))
+> 
+> #
+> 
+> Obrigado,
+> 
+> Alexandre
+> 
+> -- 
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+> e-mails:alexandresantosbr em yahoo.com.br
+>        alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+> ======================================================================
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
+
+
+From cesar.rabak em gmail.com  Wed Jun 19 16:14:11 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 19 Jun 2019 16:14:11 -0300
+Subject: [R-br] 
+	=?utf-8?q?Problema_para_plotar_intervalo_de_confian=C3=A7?=
+	=?utf-8?q?a_no_ggplot2_para_modelo_GLM_de_Poisson_com_jun=C3=A7?=
+	=?utf-8?b?w6NvIGRlIG7DrXZlaXM=?=
+In-Reply-To: <7a0a67b2-b840-5166-50b2-7d65bd11647e@cas.ifmt.edu.br>
+References: <7a0a67b2-b840-5166-50b2-7d65bd11647e@cas.ifmt.edu.br>
+Message-ID: <CAKrF98=pL2hfWD-SsaYbRfW_ySttWoYLo_CBGCb0JsEkC1dz6Q@mail.gmail.com>
+
+Já houve boas interações, mas seu exemplo me faz questionar: você escreveu
+". . .  uma variável resposta (Consumption) e duas
+explicativas, *sendo uma categórica e outra quali* . . .  " se a variável
+Income é qualitativa, porque você deixa o programa tratá-la como numérica?
+
+HTH
+--
+Cesar Rabak
+
+
+On Wed, Jun 19, 2019 at 11:45 AM ASANTOS por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados Membros,
+>
+> Estou tentando plotar sem sucesso o intervalo em um modelo GLM de
+> Poisson onde fiz a junção de níveis para a variável categórica Gender.
+> Alguém baseado no CRM abaixo poderia dar uma luz?
+>
+> #Pacotes
+> library(ggplot2)
+> library(dplyr)
+> library(tidyverse)
+>
+> #Dados inventados com uma variável resposta (Consumption) e duas
+> explicativas, sendo uma categórica e outra quali
+> Consumption <- c(501, 502, 503, 504, 26, 27, 50, 56, 63, 60, 72, 93, 78,
+> 43, 59, 70, 53, 80)
+> Gender <- gl(n = 3, k = 6, length = 3*6, labels = c("Male",
+> "Female","hermaphrodite"), ordered = FALSE)
+> Income <- c(5010, 5020, 5030, 5040, 260, 270, 550, 560, 680, 690, 720,
+> 550, 560, 680, 690, 720,500,512)
+> df3 <- data.frame(Consumption, Gender, Income)
+> df3
+>
+> # GLM de Poisson
+> fm1 <- glm(Consumption~Gender+Income, data=df3, family=poisson)
+> summary(fm1)
+>
+> # ANOVA do modelo ajustado
+> anova(fm1,test="Chi")
+>
+> #Comparo a variável Gender
+> sort(tapply(df3$Consumption,df3$Gender,mean))
+> Gender2<-df3$Gender
+> levels(Gender2)
+> levels(Gender2)[2]<-"Fem_Her"
+> levels(Gender2)[3]<-"Fem_Her"
+> levels(Gender2)
+> fm2<-glm(Consumption~Gender2+Income, data=df3, family=poisson)
+> anova(fm1,fm2,test="Chi")
+> # 0.7824 Female/Hermaphrodite são iguais então eu junto
+>
+> #Faço a predição sobre o modelo final e dos intervalos de confiança
+>
+> pred <- predict(fm2, type="response", se.fit = TRUE)
+> df3 = cbind(df3, pred = pred$fit)
+> df3 = cbind(df3, se = pred$se.fit)
+> df3 = cbind(df3, ucl=df3$pred + 1.96*df3$se)
+> df3 = cbind(df3, lcl=df3$pred - 1.96*df3$se)
+> df3 = cbind(df3, Gender2)
+>
+> df<-df3 %>%
+>    dplyr::group_by(Income, Gender2) %>%
+>    dplyr::summarize(Consumption = mean(Consumption, na.rm = TRUE))
+> df<-as.data.frame(df)
+>
+> #Faço o plot usando o ggplot2
+> df3  %>%
+>    tidyr::gather(type, value, Consumption) %>%
+>    ggplot(mapping=aes(x=type, y=value, color = Gender2)) +
+>        geom_smooth(mapping=aes(ymin = lcl, ymax = ucl), stat =
+> "identity") +
+>    geom_point(df,mapping=aes(x=Income, y=Consumption, color = Gender2)) +
+>    geom_line(mapping=aes(x=Income, y=pred))
+>
+> #
+>
+> Obrigado,
+>
+> Alexandre
+>
+> --
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+> e-mails:alexandresantosbr em yahoo.com.br
+>          alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+> ======================================================================
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190619/8e8ddbe1/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Thu Jun 20 12:12:11 2019
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Thu, 20 Jun 2019 11:12:11 -0400
+Subject: [R-br] 
+ =?utf-8?q?Problema_para_plotar_intervalo_de_confian=C3=A7?=
+ =?utf-8?q?a_no_ggplot2_para_modelo_GLM_de_Poisson_com_jun=C3=A7=C3=A3o_de?=
+ =?utf-8?q?_n=C3=ADveis?=
+In-Reply-To: <CA+QGQvuyJFiVnbv51B7QtJWt+Zz7=fTqDjYRD-nHU9_Mv=pscQ@mail.gmail.com>
+References: <7a0a67b2-b840-5166-50b2-7d65bd11647e@cas.ifmt.edu.br>
+ <CA+QGQvuyJFiVnbv51B7QtJWt+Zz7=fTqDjYRD-nHU9_Mv=pscQ@mail.gmail.com>
+Message-ID: <dfb14a79-4b2d-dd6f-cb80-f124737e3972@cas.ifmt.edu.br>
+
+Bom dia Marcus e obrigado pela ajuda,
+
+Mas ainda tem um problema, pois agora com a inserção de 
+ggplot(mapping=aes(x=Income, y=value, color = Gender2)), as linhas para 
+o modelo predito ziguezagueiam ao invés de se comportarem como curvas. A 
+ideia de utilizar a função gather() é justamente funcionar com a função 
+order() quando eu fazia gráficos com a função plot() padrão e 
+aparentemente isto esta bem difícil de ser resolvido.
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+Em 19/06/2019 11:08, Marcus Nunes escreveu:
+> O problema está na linha
+>
+>   ggplot(mapping=aes(x=type, y=value, color = Gender2)) +
+>
+> Não faz muito sentido criar um gráfico de dispersão com uma variável 
+> categórica de apenas um nível como variável preditora. Rode o código 
+> abaixo que ele deve ficar mais próximo do desejado.
+>
+> df3  %>%
+>   tidyr::gather(type, value, Consumption) %>%
+>   ggplot(mapping=aes(x=Income, y=value, color = Gender2)) +
+>   geom_smooth(mapping=aes(ymin = lcl, ymax = ucl), stat = "identity", 
+> colour = "black") +
+>   geom_point(df,mapping=aes(x=Income, y=Consumption, color = Gender2), 
+> size = 2) +
+>   geom_line(mapping=aes(x=Income, y=pred), colour = "black")
+>
+> Eu achei esquisito que o nível Fem_Her está muito distante do nível 
+> Male no gráfico, mas como a income dos Male é em torno de 20 vezes a 
+> dos Fem_Her, então o plot faz sentido.
+>
+> Ah, troquei a cor da linha dos valores preditos porque ela estava 
+> sendo confundida com alguns pontos. Talvez preto não seja a melhor 
+> opção, então escolha uma cor que se harmonize melhor à tua paleta de 
+> cores.
+>
+> Atenciosamente,
+> --
+> Marcus Nunes
+> Professor Adjunto
+> Universidade Federal do Rio Grande do Norte
+> Centro de Ciências Exatas e da Terra
+> Departamento de Estatística
+> Laboratório de Estatística Aplicada
+> marcus em marcusnunes.me <mailto:marcus em marcusnunes.me>
+> https://marcusnunes.me/
+> http://shiny.estatistica.ccet.ufrn.br
+>
+>
+>
+> On Wed, Jun 19, 2019 at 11:45 AM ASANTOS por (R-br) 
+> <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+>
+>     Prezados Membros,
+>
+>     Estou tentando plotar sem sucesso o intervalo em um modelo GLM de
+>     Poisson onde fiz a junção de níveis para a variável categórica
+>     Gender.
+>     Alguém baseado no CRM abaixo poderia dar uma luz?
+>
+>     #Pacotes
+>     library(ggplot2)
+>     library(dplyr)
+>     library(tidyverse)
+>
+>     #Dados inventados com uma variável resposta (Consumption) e duas
+>     explicativas, sendo uma categórica e outra quali
+>     Consumption <- c(501, 502, 503, 504, 26, 27, 50, 56, 63, 60, 72,
+>     93, 78,
+>     43, 59, 70, 53, 80)
+>     Gender <- gl(n = 3, k = 6, length = 3*6, labels = c("Male",
+>     "Female","hermaphrodite"), ordered = FALSE)
+>     Income <- c(5010, 5020, 5030, 5040, 260, 270, 550, 560, 680, 690,
+>     720,
+>     550, 560, 680, 690, 720,500,512)
+>     df3 <- data.frame(Consumption, Gender, Income)
+>     df3
+>
+>     # GLM de Poisson
+>     fm1 <- glm(Consumption~Gender+Income, data=df3, family=poisson)
+>     summary(fm1)
+>
+>     # ANOVA do modelo ajustado
+>     anova(fm1,test="Chi")
+>
+>     #Comparo a variável Gender
+>     sort(tapply(df3$Consumption,df3$Gender,mean))
+>     Gender2<-df3$Gender
+>     levels(Gender2)
+>     levels(Gender2)[2]<-"Fem_Her"
+>     levels(Gender2)[3]<-"Fem_Her"
+>     levels(Gender2)
+>     fm2<-glm(Consumption~Gender2+Income, data=df3, family=poisson)
+>     anova(fm1,fm2,test="Chi")
+>     # 0.7824 Female/Hermaphrodite são iguais então eu junto
+>
+>     #Faço a predição sobre o modelo final e dos intervalos de confiança
+>
+>     pred <- predict(fm2, type="response", se.fit = TRUE)
+>     df3 = cbind(df3, pred = pred$fit)
+>     df3 = cbind(df3, se = pred$se.fit)
+>     df3 = cbind(df3, ucl=df3$pred + 1.96*df3$se)
+>     df3 = cbind(df3, lcl=df3$pred - 1.96*df3$se)
+>     df3 = cbind(df3, Gender2)
+>
+>     df<-df3 %>%
+>        dplyr::group_by(Income, Gender2) %>%
+>        dplyr::summarize(Consumption = mean(Consumption, na.rm = TRUE))
+>     df<-as.data.frame(df)
+>
+>     #Faço o plot usando o ggplot2
+>     df3  %>%
+>        tidyr::gather(type, value, Consumption) %>%
+>        ggplot(mapping=aes(x=type, y=value, color = Gender2)) +
+>            geom_smooth(mapping=aes(ymin = lcl, ymax = ucl), stat =
+>     "identity") +
+>        geom_point(df,mapping=aes(x=Income, y=Consumption, color =
+>     Gender2)) +
+>        geom_line(mapping=aes(x=Income, y=pred))
+>
+>     #
+>
+>     Obrigado,
+>
+>     Alexandre
+>
+>     -- 
+>     ======================================================================
+>     Alexandre dos Santos
+>     Proteção Florestal
+>     IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato
+>     Grosso
+>     Campus Cáceres
+>     Caixa Postal 244
+>     Avenida dos Ramires, s/n
+>     Bairro: Distrito Industrial
+>     Cáceres - MT                      CEP: 78.200-000
+>     Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+>     e-mails:alexandresantosbr em yahoo.com.br
+>     <mailto:e-mails%3Aalexandresantosbr em yahoo.com.br>
+>     alexandre.santos em cas.ifmt.edu.br
+>     <mailto:alexandre.santos em cas.ifmt.edu.br>
+>     Lattes: http://lattes.cnpq.br/1360403201088680
+>     OrcID: orcid.org/0000-0001-8232-6722
+>     <http://orcid.org/0000-0001-8232-6722>  -   ResearcherID: A-5790-2016
+>     Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+>     <http://www.researchgate.net/profile/Alexandre_Santos10>
+>     LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+>     <http://br.linkedin.com/in/alexandre-dos-santos-87961635>
+>     Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+>     <http://www.mendeley.com/profiles/alexandre-dos-santos6/>
+>     ======================================================================
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     fornea cdigo mnimo reproduzvel.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190620/0af29a96/attachment.html>
+
+From gilenio em ufba.br  Fri Jun 21 16:04:29 2019
+From: gilenio em ufba.br (Gilenio Borges Fernandes)
+Date: Fri, 21 Jun 2019 16:04:29 -0300
+Subject: [R-br] Boxplot no R
+Message-ID: <CA+7i11bfb3Z-DCqLpLVfN9EcYhgWgeGhKP5SdWBaAwwSa7GX2w@mail.gmail.com>
+
+Nos CMR seguintes esperava que a linha do limite inferior do boxplot se
+estendesse até Q1 - 1,5*(Q3 - Q1), (0.725-1.5*(0.889-0.725) = 0.479). No
+entanto ela aparece
+no gráfico acima de 0.6, próximo a 0.7. Acredito que seja alguma
+modificação do boxplot que eu não conheço. Alguém poderia me auxiliar nessa
+dificuldade?
+
+acuracia=c(0.89, 0.44, 0.83, 0.67, 0.78, 0.89, 0.89, 0.78)
+boxplot(acuracia, horizontal = TRUE, staplewex = 1)
+text(x=fivenum(acuracia), labels =fivenum(acuracia), y=1.25)
+summary(acuracia)
+
+# Limites do box-plot, acuracia
+.725-1.5*(.889-.725)
+.889+1.5*(.889-.725)
+
+Desde já agradeço
+
+Gilênio Borges Fernandes
+Professor substituto (UFBA - 03/2019)
+Professor substituto  (UEFS/DEXA, 02/2018 a 03/2019)
+Professor substituto Adjunto A (UFBA - 03/2015 a 03/2017)
+Professor Associado IV (Aposentado)
+Universidade Federal da Bahia
+Instituto de Matemática e Estatística
+Departamento de Estatística
+Av. Adhemar de Barros, s/n – Ondina.
+40.170-110 - Salvador - BA, Brasil
+Tel.: (071)3283-6340/6341/6337  Fax:  (071)3283-6336
+Skype: gilenio.fernandes
+Lattes: http://lattes.cnpq.br/6764860618464860
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190621/cde34c53/attachment.html>
+
+From jhguilhen em gmail.com  Fri Jun 21 20:52:34 2019
+From: jhguilhen em gmail.com (Ze Henrique)
+Date: Fri, 21 Jun 2019 20:52:34 -0300
+Subject: [R-br] Fatorial com 2 tratamentos adicionais
+Message-ID: <CAHi1An_eL_oA3rPGrcHhnyV4cPrrx-Y9fRx=5GE3jVOnFA0Cww@mail.gmail.com>
+
+Boa noite,
+
+gostaria de uma ajuda.
+
+To tentando fazer uma análise fatorial com tartamento adicional. Porém são
+2 tratamentos adicionais, o positvo e outro o negativo.
+
+Alguem poderia me dar uma dica onde posso conseguir mais informaçções como
+fazer as analsie no r.
+
+Desde já agradeço a ajuda.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190621/881a5370/attachment.html>
+
+From drigo.angelo em gmail.com  Fri Jun 21 22:08:31 2019
+From: drigo.angelo em gmail.com (=?UTF-8?Q?Rodrigo_=C3=82ngelo?=)
+Date: Fri, 21 Jun 2019 22:08:31 -0300
+Subject: [R-br] Boxplot no R
+In-Reply-To: <CA+7i11bfb3Z-DCqLpLVfN9EcYhgWgeGhKP5SdWBaAwwSa7GX2w@mail.gmail.com>
+References: <CA+7i11bfb3Z-DCqLpLVfN9EcYhgWgeGhKP5SdWBaAwwSa7GX2w@mail.gmail.com>
+Message-ID: <CANsnirWM_5nYyPxY2ks2fgf_vM3JvE+gOh29bqSwhybOH24sug@mail.gmail.com>
+
+Oi, Gilênio
+
+Como o único ponto entre Q1 e o limite inferior é esse com id 4, acho que o
+R já terminou a linha nele:
+
+[image: image.png]
+
+Atenciosamente,
+Rodrigo de Castro Ângelo
+
+
+Em sex, 21 de jun de 2019 às 16:04, Gilenio Borges Fernandes por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Nos CMR seguintes esperava que a linha do limite inferior do boxplot se
+> estendesse até Q1 - 1,5*(Q3 - Q1), (0.725-1.5*(0.889-0.725) = 0.479). No
+> entanto ela aparece
+> no gráfico acima de 0.6, próximo a 0.7. Acredito que seja alguma
+> modificação do boxplot que eu não conheço. Alguém poderia me auxiliar nessa
+> dificuldade?
+>
+> acuracia=c(0.89, 0.44, 0.83, 0.67, 0.78, 0.89, 0.89, 0.78)
+> boxplot(acuracia, horizontal = TRUE, staplewex = 1)
+> text(x=fivenum(acuracia), labels =fivenum(acuracia), y=1.25)
+> summary(acuracia)
+>
+> # Limites do box-plot, acuracia
+> .725-1.5*(.889-.725)
+> .889+1.5*(.889-.725)
+>
+> Desde já agradeço
+>
+> Gilênio Borges Fernandes
+> Professor substituto (UFBA - 03/2019)
+> Professor substituto  (UEFS/DEXA, 02/2018 a 03/2019)
+> Professor substituto Adjunto A (UFBA - 03/2015 a 03/2017)
+> Professor Associado IV (Aposentado)
+> Universidade Federal da Bahia
+> Instituto de Matemática e Estatística
+> Departamento de Estatística
+> Av. Adhemar de Barros, s/n – Ondina.
+> 40.170-110 - Salvador - BA, Brasil
+> Tel.: (071)3283-6340/6341/6337  Fax:  (071)3283-6336
+> Skype: gilenio.fernandes
+> Lattes: http://lattes.cnpq.br/6764860618464860
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190621/de70904f/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 28311 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190621/de70904f/attachment.png>
+
+From cesar.rabak em gmail.com  Fri Jun 21 22:49:17 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 21 Jun 2019 22:49:17 -0300
+Subject: [R-br] Boxplot no R
+In-Reply-To: <CANsnirWM_5nYyPxY2ks2fgf_vM3JvE+gOh29bqSwhybOH24sug@mail.gmail.com>
+References: <CA+7i11bfb3Z-DCqLpLVfN9EcYhgWgeGhKP5SdWBaAwwSa7GX2w@mail.gmail.com>
+ <CANsnirWM_5nYyPxY2ks2fgf_vM3JvE+gOh29bqSwhybOH24sug@mail.gmail.com>
+Message-ID: <CAKrF98n3cBt=Kvpz0PZLO6rsCCDmfXxi6f38q4GuuRWNsHtgcA@mail.gmail.com>
+
+De fato o *help* da função boxplot() diz:
+>
+> range: this determines how far the plot whiskers extend out from the box.
+> If ‘range’ is positive, the whiskers extend to the most extreme data point
+> which is no more than ‘range’ times the interquartile range from the box. A
+> value of zero causes the whiskers to extend to the data extremes.
+>
+
+Você precisa de mais pontos para seu CMR.
+
+HTH
+--
+Cesar Rabak
+
+On Fri, Jun 21, 2019 at 10:09 PM Rodrigo Ângelo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Oi, Gilênio
+>
+> Como o único ponto entre Q1 e o limite inferior é esse com id 4, acho que
+> o R já terminou a linha nele:
+>
+> [image: image.png]
+>
+> Atenciosamente,
+> Rodrigo de Castro Ângelo
+>
+>
+> Em sex, 21 de jun de 2019 às 16:04, Gilenio Borges Fernandes por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Nos CMR seguintes esperava que a linha do limite inferior do boxplot se
+>> estendesse até Q1 - 1,5*(Q3 - Q1), (0.725-1.5*(0.889-0.725) = 0.479). No
+>> entanto ela aparece
+>> no gráfico acima de 0.6, próximo a 0.7. Acredito que seja alguma
+>> modificação do boxplot que eu não conheço. Alguém poderia me auxiliar nessa
+>> dificuldade?
+>>
+>> acuracia=c(0.89, 0.44, 0.83, 0.67, 0.78, 0.89, 0.89, 0.78)
+>> boxplot(acuracia, horizontal = TRUE, staplewex = 1)
+>> text(x=fivenum(acuracia), labels =fivenum(acuracia), y=1.25)
+>> summary(acuracia)
+>>
+>> # Limites do box-plot, acuracia
+>> .725-1.5*(.889-.725)
+>> .889+1.5*(.889-.725)
+>>
+>> Desde já agradeço
+>>
+>> Gilênio Borges Fernandes
+>> Professor substituto (UFBA - 03/2019)
+>> Professor substituto  (UEFS/DEXA, 02/2018 a 03/2019)
+>> Professor substituto Adjunto A (UFBA - 03/2015 a 03/2017)
+>> Professor Associado IV (Aposentado)
+>> Universidade Federal da Bahia
+>> Instituto de Matemática e Estatística
+>> Departamento de Estatística
+>> Av. Adhemar de Barros, s/n – Ondina.
+>> 40.170-110 - Salvador - BA, Brasil
+>> Tel.: (071)3283-6340/6341/6337  Fax:  (071)3283-6336
+>> Skype: gilenio.fernandes
+>> Lattes: http://lattes.cnpq.br/6764860618464860
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190621/fe099411/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 28311 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190621/fe099411/attachment.png>
+
+From emmanuel.brasil em gmail.com  Tue Jun 25 10:56:49 2019
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 25 Jun 2019 10:56:49 -0300
+Subject: [R-br] 
+	=?utf-8?q?Aplica=C3=A7=C3=A3o_de_m=C3=A9todos_de_dados_fa?=
+	=?utf-8?q?ltantes_no_ambiente_R?=
+In-Reply-To: <943205649.514208.1559149607409.JavaMail.administrator@n4.nabble.com>
+References: <943205649.514208.1559149607409.JavaMail.administrator@n4.nabble.com>
+Message-ID: <CAFfGvyKctVL_KT0UGGgZDSU+Y0UiT8egqEm3SZ9NMdxYFWHQqw@mail.gmail.com>
+
+dá uma olhada nesse pacote pra ver se te serve.
+
+install.packages("mice")
+library("mice")
+
+Pedro Brasil
+
+
+Em qua, 29 de mai de 2019 às 14:06, Caio Correa por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> <quote author='R-br mailing list'>
+> Boa tarde Prezados.
+>
+> Estou a tratar dados experimentais em excel, sendo que alguns dados estão
+> em falta em relação a algumas variáveis e objetos (entradas em Excel).
+>
+> Vou realizar a análise multivariada com dados de uma planilha (40 objetos
+> versus 24 colunas de dados), mas antes, eu tenho que prever os dados em
+> falta de algumas células.
+>
+> Por gentileza alguém teria recomendação de script no R com a implementação
+> dos métodos?
+>
+> - Método do algoritmo E-M (Expectativa-Maximização) que pressupõe a
+> normalidade dos dados referentes às variáveis de resposta
+>
+> e
+>
+> - Modelo de regressão logística. A equação gerada permitiria estimar os
+> valores dos dados perdidos. Não assume uma distribuição normal das
+> variáveis de resposta. Ao contrário da regressão linear cujos dados variam
+> de - ∞ a + ∞, na regressão logística eles variam de 0 a 1 e, portanto, são
+> apropriados para variáveis cujos valores variam de 0 a 1.
+>
+> Em vista do exposto, alguém poderia me ajudar ou recomendar alguém que
+> saiba implementar esses métodos no R?
+>
+>
+> Grato pela atenção.
+>
+> Obrigado
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo
+> m�nimo reproduz�vel.
+> </quote>
+> Quoted from:
+>
+> http://r-br.2285057.n4.nabble.com/R-br-Aplicacao-de-metodos-de-dados-faltantes-no-ambiente-R-tp4668543.html
+>
+>
+> Dê uma olhada nesse post...
+>
+> https://towardsdatascience.com/6-different-ways-to-compensate-for-missing-values-data-imputation-with-examples-6022d9ca0779
+>
+> _____________________________________
+> Sent from http://r-br.2285057.n4.nabble.com
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190625/b857a66c/attachment.html>
+
+From andreolsouza em yahoo.com.br  Tue Jun 25 18:53:57 2019
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Tue, 25 Jun 2019 21:53:57 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Modelos_Mistos_-_Distribui=C3=A7=C3=A3o_Poisson?=
+References: <1168526596.1227915.1561499637628.ref@mail.yahoo.com>
+Message-ID: <1168526596.1227915.1561499637628@mail.yahoo.com>
+
+Olá,alguém saberia dizer se a lme4 tem a opção do parâmetro family = poisson? Caso negativo, qual pacote teria esta opção? 
+
+Grato
+André 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190625/cdb0afa1/attachment.html>
+
+From sznelwar em uol.com.br  Tue Jun 25 19:29:25 2019
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Tue, 25 Jun 2019 19:29:25 -0300
+Subject: [R-br] 
+ =?utf-8?q?Modelos_Mistos_-_Distribui=C3=A7=C3=A3o_Poisson?=
+In-Reply-To: ["1168526596.1227915.1561499637628@mail.yahoo.com"]
+References: ["1168526596.1227915.1561499637628.ref@mail.yahoo.com",
+ "1168526596.1227915.1561499637628@mail.yahoo.com"]
+Message-ID: <5d12a045a96a3_54d92b1cc2cb513879858@a4-weasel19.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190625/1953097a/attachment.html>
+
+From apcmadeira em hotmail.com  Wed Jun 26 11:12:08 2019
+From: apcmadeira em hotmail.com (ana paula coelho madeira)
+Date: Wed, 26 Jun 2019 14:12:08 +0000
+Subject: [R-br] Mensagem de erro no pacote ExpDes
+Message-ID: <BL0PR08MB4577521C6CE73DCBEA3DA3B7CAE20@BL0PR08MB4577.namprd08.prod.outlook.com>
+
+Prezados,
+
+Bom dia! Já nem sei mais o que fazer, rsrs. Estou usando o pacote ExpDes  para analisar um experimento em faixas.
+faixas(N, E, B, Y, quali = c(TRUE, TRUE), mcomp = "tukey",
+       fac.names = c("Nitrogênio", "Épocas"), sigT = 0.05, sigF = 0.05)
+
+O fato é: quando eu entro com os dois fatores qualitativos( reproduzi o exemplo do Banzatto pag 161) a análise é executada sem nenhum problema.
+
+Quando faço a mesma análise, porém com um dos fatores quantitativo, aparece a mensagem de erro:
+Legenda:
+FATOR 1 (parcela):  Cultivar ​
+FATOR 2 (subparcela):  Irrigação ​
+------------------------------------------------------------------------​
+​
+Error in unique.default(x, nmax = nmax) : ​
+  unique() pode ser aplicada somente a vetores​
+
+Já me atentei para o fato de irrigação ser quantitativo.
+
+Alguma sugestão?
+
+Desde já agradeço
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190626/74835964/attachment.html>
+
+From nandodesouza em gmail.com  Wed Jun 26 11:24:01 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 26 Jun 2019 11:24:01 -0300
+Subject: [R-br] Mensagem de erro no pacote ExpDes
+In-Reply-To: <BL0PR08MB4577521C6CE73DCBEA3DA3B7CAE20@BL0PR08MB4577.namprd08.prod.outlook.com>
+References: <BL0PR08MB4577521C6CE73DCBEA3DA3B7CAE20@BL0PR08MB4577.namprd08.prod.outlook.com>
+Message-ID: <E3A03602-AAFC-47D3-971E-96683FE60F16@getmailspring.com>
+
+
+Acredito que a definição de fatores na linguagem R, está relacionado com a identificação de grupos, assim ele não tem valor quantitativo. Ao colocar a variável como quantitativa (acredito que passando ela para numeric ou integer) a função expeDes deve tentar buscar os valores únicos ( cada tratamento é identificado por um único identificador p.ex ) porém isso não é possível com variáveis numéricas não inteiras, pois há infinitos numeros entre 1.0 e 1.1 por exemplo. Deve ser esse o motivo da função está retornado esse erro
+On Jun 26 2019, at 11:12 am, ana paula coelho madeira por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Prezados,
+>
+> Bom dia! Já nem sei mais o que fazer, rsrs. Estou usando o pacote ExpDes para analisar um experimento em faixas.
+> faixas(N, E, B, Y, quali = c(TRUE, TRUE), mcomp = "tukey",
+> fac.names = c("Nitrogênio", "Épocas"), sigT = 0.05, sigF = 0.05)
+>
+> O fato é: quando eu entro com os dois fatores qualitativos( reproduzi o exemplo do Banzatto pag 161) a análise é executada sem nenhum problema.
+>
+> Quando faço a mesma análise, porém com um dos fatores quantitativo, aparece a mensagem de erro:
+> Legenda:
+> FATOR 1 (parcela): Cultivar ​
+> FATOR 2 (subparcela): Irrigação ​
+> ------------------------------------------------------------------------​
+> ​
+> Error in unique.default(x, nmax = nmax) : ​
+> unique() pode ser aplicada somente a vetores​
+>
+> Já me atentei para o fato de irrigação ser quantitativo.
+>
+> Alguma sugestão?
+>
+> Desde já agradeço
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190626/2cf7b67c/attachment.html>
+
+From ecacarva em gmail.com  Sun Jun 30 16:02:21 2019
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Sun, 30 Jun 2019 16:02:21 -0300
+Subject: [R-br] Geolocalizacao
+Message-ID: <CAH8E6UsWJUF2vfO17_k77Fo-V-FLT6oLSFCk56kH=TnPQ3t6KA@mail.gmail.com>
+
+Tenho uma lista de endereços e gostaria de marca-los em um mapa do PR.
+
+Achei o geocode mas ele pede uma API do Google e para consegui-la eles
+pedem o número do meu cartão.
+
+Alguém poderia ajudar com uma alternativa?
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190630/bfdb2db2/attachment.html>
+
+From dtiezzi em usp.br  Sun Jun 30 16:06:47 2019
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Sun, 30 Jun 2019 16:06:47 -0300
+Subject: [R-br] Geolocalizacao
+In-Reply-To: <CAH8E6UsWJUF2vfO17_k77Fo-V-FLT6oLSFCk56kH=TnPQ3t6KA@mail.gmail.com>
+References: <CAH8E6UsWJUF2vfO17_k77Fo-V-FLT6oLSFCk56kH=TnPQ3t6KA@mail.gmail.com>
+Message-ID: <CA+RL3DMGgSUne_-22vaAqsAf2Zt2ftv1CZ3rQhVQMddQ0TGGRg@mail.gmail.com>
+
+Você tem q checar se o serviço disponibilizado pela API eh pago ou não. Se
+não for, pode colocar o seu cartão e usar. Você não será tarifado
+
+Daniel
+
+On Sun, 30 Jun 2019, 16:03 Elias Carvalho por (R-br), <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Tenho uma lista de endereços e gostaria de marca-los em um mapa do PR.
+>
+> Achei o geocode mas ele pede uma API do Google e para consegui-la eles
+> pedem o número do meu cartão.
+>
+> Alguém poderia ajudar com uma alternativa?
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190630/10a527e1/attachment.html>
+
+From bruno.pasquini em gmail.com  Sun Jun 30 22:26:11 2019
+From: bruno.pasquini em gmail.com (=?UTF-8?Q?Bruno_C=C3=A9sar_Pasquini?=)
+Date: Sun, 30 Jun 2019 22:26:11 -0300
+Subject: [R-br] Geolocalizacao
+In-Reply-To: <CA+RL3DMGgSUne_-22vaAqsAf2Zt2ftv1CZ3rQhVQMddQ0TGGRg@mail.gmail.com>
+References: <CAH8E6UsWJUF2vfO17_k77Fo-V-FLT6oLSFCk56kH=TnPQ3t6KA@mail.gmail.com>
+ <CA+RL3DMGgSUne_-22vaAqsAf2Zt2ftv1CZ3rQhVQMddQ0TGGRg@mail.gmail.com>
+Message-ID: <CAKZqVpOhirA8PpW52NaP9EKhdbOeqn84FgAE5Mj6U=XAemqbqA@mail.gmail.com>
+
+Meu caro, veja se isto ajuda:
+
+https://www.programmableweb.com/news/7-free-geocoding-apis-google-bing-yahoo-and-mapquest/2012/06/21
+
+Não fala sobre como usar no R, mas esta deve ser a parte mais fácil.
+
+Atenciosamente,
+
+Bruno César Pasquini
+Estatístico
+
+
+<https://www.avast.com/sig-email?utm_medium=email&utm_source=link&utm_campaign=sig-email&utm_content=webmail>
+Livre
+de vírus. www.avast.com
+<https://www.avast.com/sig-email?utm_medium=email&utm_source=link&utm_campaign=sig-email&utm_content=webmail>.
+<#DAB4FAD8-2DD7-40BB-A1B8-4E2AA1F9FDF2>
+
+Em dom, 30 de jun de 2019 às 16:07, Daniel Guimarães Tiezzi por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Você tem q checar se o serviço disponibilizado pela API eh pago ou não. Se
+> não for, pode colocar o seu cartão e usar. Você não será tarifado
+>
+> Daniel
+>
+> On Sun, 30 Jun 2019, 16:03 Elias Carvalho por (R-br), <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Tenho uma lista de endereços e gostaria de marca-los em um mapa do PR.
+>>
+>> Achei o geocode mas ele pede uma API do Google e para consegui-la eles
+>> pedem o número do meu cartão.
+>>
+>> Alguém poderia ajudar com uma alternativa?
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190630/181dca54/attachment.html>
+

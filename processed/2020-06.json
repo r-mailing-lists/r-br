@@ -1,0 +1,419 @@
+{
+  "list": "r-br",
+  "description": "",
+  "month": "2020-06",
+  "messages": [
+    {
+      "id": "msg-6fbef14683a9",
+      "message_id": "<CAH8E6Us3U83vLXUtX3DzmF8m97o3tL7BfCfNQO-4S1anVZVr-A@mail.gmail.com>",
+      "from_name": "Elias Carvalho",
+      "from_email_hash": "94c4d4ee5a2872549a27ba774786d6a377d6716e74d89bc81b42c01c2add89b9",
+      "date": "2020-06-03T12:09:18Z",
+      "subject": "[R-br] Variancia",
+      "subject_clean": "[R-br] Variancia",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Bom dia\n\nEstou analisando um banco de dados com variáveis dicotômicas apenas.\nEsse banco tem mais de 3.000 observações , a variável dependente tem como\nresposta 2.715 Não e 359 Sim, ou seja, 13% = Sim, porem entre as outras 42\nvariáveis independentes existem variãncias muito pequenas como por exemplo\n3.069 Não e 5 Sim.\n\nDevo considerar uma variância m?nima?\nQual a melhor literatura para basear esssa decisão?\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200603/b211ecb4/attachment.html>",
+      "body_snippet": "Bom dia\n\nEstou analisando um banco de dados com variáveis dicotômicas apenas.\nEsse banco tem mais de 3.000 observações , a variável dependente tem como\nresposta 2.715 Não e 359 Sim, ou seja, 13% = Sim",
+      "thread_id": "thread-6fbef14683a9",
+      "thread_depth": 0,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-56c2eee1d2f5",
+      "message_id": "<4EBBEEAB-BFFD-4456-9AF9-80F8165C1CBD@hxcore.ol>",
+      "from_name": "Jobenil - Gmail",
+      "from_email_hash": "53d3c9fd27029070227d2d568fd8d7c66de893d9a5da0cae2457619cb82d3846",
+      "date": "2020-06-03T13:07:57Z",
+      "subject": "[R-br] RES:  Variancia",
+      "subject_clean": "[R-br] RES:  Variancia",
+      "in_reply_to": "<CAH8E6Us3U83vLXUtX3DzmF8m97o3tL7BfCfNQO-4S1anVZVr-A@mail.gmail.com>",
+      "references": [
+        "<CAH8E6Us3U83vLXUtX3DzmF8m97o3tL7BfCfNQO-4S1anVZVr-A@mail.gmail.com>"
+      ],
+      "body_plain": "Um anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200603/62d9ebab/attachment.html>",
+      "body_snippet": "Um anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200603/62d9ebab/attachment.html>",
+      "thread_id": "thread-6fbef14683a9",
+      "thread_depth": 1,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-b29407af5dd1",
+      "message_id": "<CAKrF98kGri76UKnQ21YkhOB1Lf3AS6T2p8JS=jtVOjf3yGJuoQ@mail.gmail.com>",
+      "from_name": "Cesar Rabak",
+      "from_email_hash": "a6a76a30e7f42e9ffe22c166faa4b923f4a1dd242efac82d3ffc9e877bf9c16c",
+      "date": "2020-06-03T16:49:03Z",
+      "subject": "[R-br] Variancia",
+      "subject_clean": "[R-br] Variancia",
+      "in_reply_to": "<CAH8E6Us3U83vLXUtX3DzmF8m97o3tL7BfCfNQO-4S1anVZVr-A@mail.gmail.com>",
+      "references": [
+        "<CAH8E6Us3U83vLXUtX3DzmF8m97o3tL7BfCfNQO-4S1anVZVr-A@mail.gmail.com>"
+      ],
+      "body_plain": "Elias,\n\nO \"enunciado\" da sua questão traz vários pontos que precisariam ser melhor\nelucidados:\n\nCom um desbalanço na resposta como o indicado 42 variáveis independentes\npode levar a análise (que entimemicamente aponta para a Regressão Logística\nou uma da família log-linear) ao que se denomina sobreajuste.\n\nA discussão sobre a quantidade de casos por variável é rebartiva, com\nautores propondo uma regra (*rule of thumb*) simplificada de dez a vinte\ncasos por variável independente, enquanto outros buscam via arcanas\napresentações, geralmente via simulações, que não apresentam prova\nmatemática definitiva, que essa exigência seria exagerada.\n\nOutrossim, pensando no domínio do problema você pode considerar que no caso\nde VIs com variância muito pequena elas estão efetivamente entrando como\n\"mudas\" para a explicação do seu problema, pelo menos do ponto de vista\nmatemático, e uma interpretação delas para o que está sendo modelado pode\nfechar a questão.\n\nHTH\n--\nCesar Rabak\n\n\nOn Wed, Jun 3, 2020 at 9:10 AM Elias Carvalho por (R-br) <\nr-br em listas.c3sl.ufpr.br> wrote:\n\n> Bom dia\n>\n> Estou analisando um banco de dados com variáveis dicotômicas apenas.\n> Esse banco tem mais de 3.000 observações , a variável dependente tem como\n> resposta 2.715 Não e 359 Sim, ou seja, 13% = Sim, porem entre as outras 42\n> variáveis independentes existem variãncias muito pequenas como por exemplo\n> 3.069 Não e 5 Sim.\n>\n> Devo considerar uma variância m?nima?\n> Qual a melhor literatura para basear esssa decisão?\n>\n>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200603/8f62a789/attachment.html>",
+      "body_snippet": "Elias,\n\nO \"enunciado\" da sua questão traz vários pontos que precisariam ser melhor\nelucidados:\n\nCom um desbalanço na resposta como o indicado 42 variáveis independentes\npode levar a análise (que entim",
+      "thread_id": "thread-6fbef14683a9",
+      "thread_depth": 1,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-388f0e208b16",
+      "message_id": "<RO1P15201MB19953F41B4A0D5F56D29F31ACF880@RO1P15201MB1995.LAMP152.PROD.OUTLOOK.COM>",
+      "from_name": "Bruna Mendonça Oliveira",
+      "from_email_hash": "564530e08ed245b9c6a26de7bd7b8bf4d0fa6c4b11dccf8d813ef9b4d77d7c50",
+      "date": "2020-06-03T22:00:37Z",
+      "subject": "[R-br] Comando pgmm",
+      "subject_clean": "[R-br] Comando pgmm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Olá, preciso estimar 3 equações utilizando como método de estimação o System GMM.\n\nPretendo trabalhar com painel dinâmico e meus dados estão organizados por setores (produtos básicos, semimanufaturados e manufaturados) e foram coletados de janeiro de 2010 a dezembro de 2019.\n\nMeus dados são as exportações brasileiras por país de destino (Estados Unidos). Preciso estimar 3 equações separadas, onde só mudará a variável dependente, ou seja, preciso estimar uma equação considerando exportações de produtos básicos para os EUA como variável dependente, sendo as variáveis explicativas o índice de taxa de câmbio real bilateral e o índice de atividade econômica dos EUA. Depois preciso estimar mais duas equações, considerando as exportações de produtos semimanufaturados como variável dependente e outra considerando exportações de produtos manufaturados como variável dependente (sendo que as variáveis independentes continuam sendo as mesmas da primeira equação).\n\nAlguma dica para que eu consiga estimar essas três equações separadas utilizando o pacote \"plm\" e o comando \"pgmm\"?\n\nDesde já agradeço,\n\nBruna Mendonça de Oliveira\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200603/ad3840db/attachment.html>",
+      "body_snippet": "Olá, preciso estimar 3 equações utilizando como método de estimação o System GMM.\n\nPretendo trabalhar com painel dinâmico e meus dados estão organizados por setores (produtos básicos, semimanufaturado",
+      "thread_id": "thread-388f0e208b16",
+      "thread_depth": 0,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-738cae394ae6",
+      "message_id": "<1b4ebea9a080e1093b2dde6015e56e2a@vegagp.com.br>",
+      "from_name": "Eugenio Rosa",
+      "from_email_hash": "c5558534143533391e7a6351a07348306c142f3e6b8d8694e0641d2cb33bb070",
+      "date": "2020-06-05T22:58:06Z",
+      "subject": "[R-br] Ratio",
+      "subject_clean": "[R-br] Ratio",
+      "in_reply_to": "<432bec992640fedb27a88933b09f4c82@vegagp.com.br>",
+      "references": [
+        "<432bec992640fedb27a88933b09f4c82@vegagp.com.br>"
+      ],
+      "body_plain": "Sou inciante no R, quero calcular o Ratio entre as ações de um\ndata.frame, iniciei o código mas não consigo ir adiante: \n\nPrimeiro preciso calcular o ratio par a par das ações do data.frame,\nSegundo criar gráfico dos ratios incluindo bandas de bollinger de 20\nperíodos e 1,96 desvios, Terceiro que me retorne quais ratios estão nas\nbandas inferior e superior do Bollinger. \n\nAbaixo, até onde fui com o código: \n\nlibrary(reshape2)\nlibrary(readxl) \n\ndados <- readxl::read_excel(\"C:/Users/User/Desktop/Estudos\nCorr/!teste.xlsx\", sheet = \"Ibxx\", skip = 1)\ndados <- as.data.frame(dados) \n\nAtivos<- dados \n\n-- \nEugenio Santos da Rosa\nVega Invest\nFone: +55 53 3227-5615\nCel.:  +55 53 99964-3189 / 98108-3767 Whatsapp\nAv. Cidade de Rio Grande, 139\n96076-240 | Porto | Pelotas-RS\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200605/eb69be6b/attachment.html>",
+      "body_snippet": "Sou inciante no R, quero calcular o Ratio entre as ações de um\ndata.frame, iniciei o código mas não consigo ir adiante: \n\nPrimeiro preciso calcular o ratio par a par das ações do data.frame,\nSegundo c",
+      "thread_id": "thread-738cae394ae6",
+      "thread_depth": 0,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-b0230e353225",
+      "message_id": "<50BAC4B4-97F5-4A37-A63B-A64EF5E784C7@usp.br>",
+      "from_name": "Daniel Guimarães Tiezzi",
+      "from_email_hash": "96abb78a12030b8e1c79971799a2bcbc501b139ad57e24b6972db5c4575829d9",
+      "date": "2020-06-06T01:37:24Z",
+      "subject": "[R-br] Ratio",
+      "subject_clean": "[R-br] Ratio",
+      "in_reply_to": "<1b4ebea9a080e1093b2dde6015e56e2a@vegagp.com.br>",
+      "references": [
+        "<432bec992640fedb27a88933b09f4c82@vegagp.com.br>",
+        "<1b4ebea9a080e1093b2dde6015e56e2a@vegagp.com.br>"
+      ],
+      "body_plain": "Boa noite Eugenio\n\nParece impossível resolver o problema com as informações que você forneceu.\n\nDaniel\n\n\n\n> On 5 Jun 2020, at 19:58, Eugenio Rosa por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:\n> \n> \n> \n> Sou inciante no R, quero calcular o Ratio entre as ações de um data.frame, iniciei o código mas não consigo ir adiante:\n> \n> Primeiro preciso calcular o ratio par a par das ações do data.frame, Segundo criar gráfico dos ratios incluindo bandas de bollinger de 20 períodos e 1,96 desvios, Terceiro que me retorne quais ratios estão nas bandas inferior e superior do Bollinger.\n> \n> Abaixo, até onde fui com o código:\n> \n> \n> \n> library(reshape2)\n> library(readxl)\n> \n> dados <- readxl::read_excel(\"C:/Users/User/Desktop/Estudos Corr/!teste.xlsx\", sheet = \"Ibxx\", skip = 1)\n> dados <- as.data.frame(dados)\n> \n> Ativos<- dados\n> \n> \n> \n> \n> \n> -- \n> Eugenio Santos da Rosa\n> Vega Invest\n> Fone: +55 53 3227-5615\n> Cel.:  +55 53 99964-3189 / 98108-3767 Whatsapp\n> Av. Cidade de Rio Grande, 139\n> 96076-240 | Porto | Pelotas-RS\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.\n\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200605/8c44f459/attachment.html>",
+      "body_snippet": "Boa noite Eugenio\n\nParece impossível resolver o problema com as informações que você forneceu.\n\nDaniel\n\n\n\n> On 5 Jun 2020, at 19:58, Eugenio Rosa por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:\n> \n> \n",
+      "thread_id": "thread-738cae394ae6",
+      "thread_depth": 1,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-1fda2115f4be",
+      "message_id": "<5edb07fe89597_27392abf3c88d10c90274@ip-10-81-19-68.ec2.internal.mail>",
+      "from_name": "sznelwar em uol.com.br",
+      "from_email_hash": "6ebdecbd1d30c77a9d5061eb8d634fbc159400d859c17f20d2e90a24dc249fa6",
+      "date": "2020-06-06T03:05:34Z",
+      "subject": "[R-br] Ratio",
+      "subject_clean": "[R-br] Ratio",
+      "in_reply_to": "[\"50BAC4B4-97F5-4A37-A63B-A64EF5E784C7@usp.br\"]",
+      "references": [],
+      "body_plain": "Um anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200606/a62f4899/attachment.html>",
+      "body_snippet": "Um anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200606/a62f4899/attachment.html>",
+      "thread_id": "thread-1fda2115f4be",
+      "thread_depth": 0,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-75ab1e2bc2e5",
+      "message_id": "<CACqRERnmoUjjjHKChOt94hVtkh-G-h0Ah2Q0nkG3erpGoCOeOA@mail.gmail.com>",
+      "from_name": "Wenceslau Teixeira",
+      "from_email_hash": "ddf9ee2c4d7a7a69cfa5b07c19d36f9f13acdcf23c49b43ed5287c58cb05efef",
+      "date": "2020-06-06T16:38:32Z",
+      "subject": "[R-br] Manipulando banco de dados no R",
+      "subject_clean": "[R-br] Manipulando banco de dados no R",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Caros,\n\nBom dia. Sei que um dos usos do R e a manipulação de arquivos. Nunca tive\nmuito contato com estes comandos. Mas chegou a hora. Agradeço se puderem me\nenviar alguma dica, material para o estudo sobre este tópico no R.\n\nO problema específico que enfrento é extrair dados selecionados com algumas\nregras de banco de dados (BD). O BD com informações sobre diversos\nparâmetros dentre estes teores de Areia (A), Silte (S), Argila (Ar)  em %\nsem decimais, tem também dados da água retida na Capacidade de Campo (CC),\nno Ponto de Murcha permanente (PMP) também em % sem decimais. Eu criei um\ndataframe teórico de todas as combinações possíveis de resultados de\ngranulometria do solo. Considerando que a soma A+S+Ar = 100 e os dados são\nsem decimais, num passo de 1% isto cria 5151 combinações possíveis. O que\npretendo é buscar no BD as combinações que têm resultados no BD para uma\ndeterminada combinação (p.ex. A = 70, S=10, Ar=20 ?> PMP = 10). Eu percebi\nque algumas das combinações da granulometria existem várias informações\n(dados) da PMP. (a p.ex. A = 60, S=10, Ar=30 ?> CC = 12; CC = 11; CC = 20;\nCC=11). Para algumas nao tem informações de PMP e para algumas combinações\nhá uma informação de PMP.\n\nO que quero é criar um script que leia o BD e preencha o data frame teórico\nde todas as combinações possíveis de granulometria com os dados existentes\nno BD de PMP. Os dados que tiver repetição que as as mesmas sejam colocadas\nlado a lado,\n\nID           AREIA(A)              SILTE(S)\nARGILA                PMP\n\n1            0                           0\n100                       -ND\n\n2             0                           1\n99                         30\n\n..\n\n35          0                           20\n80                         29; 29; 27\n\n--\n\n80          10                         20\n70                         25; 25; 24\n\n5151 100                           0\n0                           ND\n\nSe alguém tem alguma dica. Eu agradeço\n\nSe cuidem.\n\nCordialmente,\nWenceslau Teixeira  (Embrapa Solos ?RJ)\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200606/4e6f9bc5/attachment.html>",
+      "body_snippet": "Caros,\n\nBom dia. Sei que um dos usos do R e a manipulação de arquivos. Nunca tive\nmuito contato com estes comandos. Mas chegou a hora. Agradeço se puderem me\nenviar alguma dica, material para o estudo",
+      "thread_id": "thread-75ab1e2bc2e5",
+      "thread_depth": 0,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-04914643f32f",
+      "message_id": "<CAKrF98mWkFUYuwEo8YwS+N0jpJE3g5hPpTXu61EMHhFrjT=6tg@mail.gmail.com>",
+      "from_name": "Cesar Rabak",
+      "from_email_hash": "a6a76a30e7f42e9ffe22c166faa4b923f4a1dd242efac82d3ffc9e877bf9c16c",
+      "date": "2020-06-06T19:31:09Z",
+      "subject": "[R-br] Ratio",
+      "subject_clean": "[R-br] Ratio",
+      "in_reply_to": "<1b4ebea9a080e1093b2dde6015e56e2a@vegagp.com.br>",
+      "references": [
+        "<432bec992640fedb27a88933b09f4c82@vegagp.com.br>",
+        "<1b4ebea9a080e1093b2dde6015e56e2a@vegagp.com.br>"
+      ],
+      "body_plain": "Eugenio,\n\nComo outros já apontaram, e o FAQ deste grupo também solicita, para se\npoder ajudar precisa-se, em geral, de um CMR (código mínimo reproduzível).\n\nAdemais, você faz uma pergunta num grupo de apoio a um SW estatístico\nusando o jargão da sua área (*Ratio* de ações) que reduz ainda mais o\nnúmero de participantes que poderiam ajudá-lo pois podemos nem entender\ndireito o que você está tentando obter.\n\nFrente ao fato que cotações soem ser públicas, faça o seguinte: poste um\nexcerto dos dados e indique exatamente qual a operação matemática é\nnecessária para o cálculo desse *ratio* que você deseja.\n\nUma informação sobre o que seriam as \"bandas de Bohlinger\" ajuda\ntambém ? ??\n\nHTH\n--\nCesar Rabak\n\n\nOn Fri, Jun 5, 2020 at 7:58 PM Eugenio Rosa por (R-br) <\nr-br em listas.c3sl.ufpr.br> wrote:\n\n>\n> Sou inciante no R, quero calcular o Ratio entre as ações de um data.frame,\n> iniciei o código mas não consigo ir adiante:\n>\n> Primeiro preciso calcular o ratio par a par das ações do data.frame,\n> Segundo criar gráfico dos ratios incluindo bandas de bollinger de 20\n> períodos e 1,96 desvios, Terceiro que me retorne quais ratios estão nas\n> bandas inferior e superior do Bollinger.\n>\n> Abaixo, até onde fui com o código:\n>\n>\n> library(reshape2)\n> library(readxl)\n>\n> dados <- readxl::read_excel(\"C:/Users/User/Desktop/Estudos\n> Corr/!teste.xlsx\", sheet = \"Ibxx\", skip = 1)\n> dados <- as.data.frame(dados)\n>\n> Ativos<- dados\n>\n>\n>\n> --\n> Eugenio Santos da Rosa\n> Vega Invest\n> Fone: +55 53 3227-5615\n> Cel.:  +55 53 99964-3189 / 98108-3767 Whatsapp\n> Av. Cidade de Rio Grande, 139\n> 96076-240 | Porto | Pelotas-RS\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200606/b83901fc/attachment.html>",
+      "body_snippet": "Eugenio,\n\nComo outros já apontaram, e o FAQ deste grupo também solicita, para se\npoder ajudar precisa-se, em geral, de um CMR (código mínimo reproduzível).\n\nAdemais, você faz uma pergunta num grupo de",
+      "thread_id": "thread-738cae394ae6",
+      "thread_depth": 1,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-8d361da944c6",
+      "message_id": "<CAKrF98m7w1e5PfGirqZzCZzRiO8gqCfMjTJWFvsk1ax1sj1U6g@mail.gmail.com>",
+      "from_name": "Cesar Rabak",
+      "from_email_hash": "a6a76a30e7f42e9ffe22c166faa4b923f4a1dd242efac82d3ffc9e877bf9c16c",
+      "date": "2020-06-06T19:42:28Z",
+      "subject": "[R-br] Manipulando banco de dados no R",
+      "subject_clean": "[R-br] Manipulando banco de dados no R",
+      "in_reply_to": "<CACqRERnmoUjjjHKChOt94hVtkh-G-h0Ah2Q0nkG3erpGoCOeOA@mail.gmail.com>",
+      "references": [
+        "<CACqRERnmoUjjjHKChOt94hVtkh-G-h0Ah2Q0nkG3erpGoCOeOA@mail.gmail.com>"
+      ],
+      "body_plain": "Wenceslau,\n\nSE um BD com as informações já existe, por que você não o consulta\ndiretamente, com, por exemplo, subset() etc..?\n\nDo contrário, você vai ter que fazer *loops* e calcular as três\nporcentagens, usando-as para gerar o comando subset, e no caso de o\nresultado ter mais de u'a linha, tratá-lo em separado.\n\nHTH\n\nOn Sat, Jun 6, 2020 at 1:39 PM Wenceslau Teixeira por (R-br) <\nr-br em listas.c3sl.ufpr.br> wrote:\n\n> Caros,\n>\n> Bom dia. Sei que um dos usos do R e a manipulação de arquivos. Nunca tive\n> muito contato com estes comandos. Mas chegou a hora. Agradeço se puderem me\n> enviar alguma dica, material para o estudo sobre este tópico no R.\n>\n> O problema específico que enfrento é extrair dados selecionados com\n> algumas regras de banco de dados (BD). O BD com informações sobre diversos\n> parâmetros dentre estes teores de Areia (A), Silte (S), Argila (Ar)  em %\n> sem decimais, tem também dados da água retida na Capacidade de Campo (CC),\n> no Ponto de Murcha permanente (PMP) também em % sem decimais. Eu criei um\n> dataframe teórico de todas as combinações possíveis de resultados de\n> granulometria do solo. Considerando que a soma A+S+Ar = 100 e os dados são\n> sem decimais, num passo de 1% isto cria 5151 combinações possíveis. O que\n> pretendo é buscar no BD as combinações que têm resultados no BD para uma\n> determinada combinação (p.ex. A = 70, S=10, Ar=20 ?> PMP = 10). Eu percebi\n> que algumas das combinações da granulometria existem várias informações\n> (dados) da PMP. (a p.ex. A = 60, S=10, Ar=30 ?> CC = 12; CC = 11; CC = 20;\n> CC=11). Para algumas nao tem informações de PMP e para algumas combinações\n> há uma informação de PMP.\n>\n> O que quero é criar um script que leia o BD e preencha o data frame\n> teórico de todas as combinações possíveis de granulometria com os dados\n> existentes no BD de PMP. Os dados que tiver repetição que as as mesmas\n> sejam colocadas lado a lado,\n>\n> ID           AREIA(A)              SILTE(S)\n> ARGILA                PMP\n>\n> 1            0                           0\n> 100                       -ND\n>\n> 2             0                           1\n> 99                         30\n>\n> ..\n>\n> 35          0                           20\n> 80                         29; 29; 27\n>\n> --\n>\n> 80          10                         20\n> 70                         25; 25; 24\n>\n> 5151 100                           0\n> 0                           ND\n>\n> Se alguém tem alguma dica. Eu agradeço\n>\n> Se cuidem.\n>\n> Cordialmente,\n> Wenceslau Teixeira  (Embrapa Solos ?RJ)\n>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200606/33afb634/attachment.html>",
+      "body_snippet": "Wenceslau,\n\nSE um BD com as informações já existe, por que você não o consulta\ndiretamente, com, por exemplo, subset() etc..?\n\nDo contrário, você vai ter que fazer *loops* e calcular as três\nporcentag",
+      "thread_id": "thread-75ab1e2bc2e5",
+      "thread_depth": 1,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-7e7cc31c7901",
+      "message_id": "<BYAPR06MB63586D172F3A225EDC4AFB8D95840@BYAPR06MB6358.namprd06.prod.outlook.com>",
+      "from_name": "Katieli Química",
+      "from_email_hash": "f148ec65dae1b83339f6a77a36367d4dc4e06c9f7da0ac2e799b1d264a77f640",
+      "date": "2020-06-07T22:31:32Z",
+      "subject": "[R-br] help Pacote rsm, superfície de resposta",
+      "subject_clean": "[R-br] help Pacote rsm, superfície de resposta",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Caros amigos usuários do RStudio\n\nPreciso gerar uma superfície de resposta pelo RStudio. Tenho as superfícies geradas pelo Design Expert (bem mais simples de mexer, mas é um software pago e tenho somente a versão de teste) e comparo as equações geradas com as obtidas pelo R.\nNão tenho experiência com o RStudio, por isso tenho insegurança se o que fiz está ou não correto.\nPoderiam me dar a opinião de vocês? Caso tenham também algum argumento que melhore/otimize meus ajustes, ficaria imensamente grata.\n\nMeu planejamento é um 2^2 com triplicata do ponto central. Anotei as dúvidas nos scripts.\n\nDados:\nx1 <- c(-1,+1,-1,+1,0,0,0)\nx2 <- c(-1,-1,+1,+1,0,0,0)\ny <- c(6.07,6.67,6.25,6.7,6.43,6.47,6.44)\n\ndados1<-data.frame(x1,x2,y)\ndados1\n\nmodelo<-lm(y~x1*x2)\nsummary(modelo)\n\nO código abaixo fornece o mesmo resultado, não entendo o porquê. Deve ser facultativo usar qualquer um dos scripts.\nmodelo1<-lm(y~x1+x2+x1*x2)\nsummary(modelo1)\n\nanova(modelo)\nlibrary(alr3)\npureErrorAnova(modelo)\nGera um R^2 ajustado de 0.987 e falta de ajuste não significativa (p>0,05) pela ANOVA.\n\nmod <- lm(y ~ x1+x2++x1*x2+I(x1^2)+I(x2^2))\nsummary(mod)\nanova(mod)\npureErrorAnova(mod)\n# EM pureErrorAnova(mod) DA ERRO E NÃO GERA OS DADOS . VOCÊS SABEM COMO CONSIGO ARRUMAR O SCRIPT? PRECISO DOS DADOS DA FALTA DE AJUSTE PARA COMPARAR, EMBORA O R2 AJUSTADO TENHA DADO 0,991 PARA ESSE AJUSTE. PARECE SER MELHOR QUE O ANTERIOR.\n\nTrabalhando com o pacote RSM para superfície de resposta\nx1 <- c(-1,+1,-1,+1,0,0,0)\nx2 <- c(-1,-1,+1,+1,0,0,0)\ny <- c(6.07,6.67,6.25,6.7,6.43,6.47,6.44)\ndados1<-data.frame(x1,x2,y)\ndados1\n\nNão consegui gerar o planejamento pelo RStudio. Se eu usar ChemReact, por exemplo, os dados são diferentes e não consigo inserir os meus. Consigo apenas da forma demonstrada acima.\n\nlibrary(rsm)\najuste <- rsm(y ~ FO(x1, x2), data = dados1)\nsummary(ajuste)\najuste2 <- rsm(y ~ FO(x1, x2)+ TWI(x1, x2), data = dados1)\nsummary(ajuste2)\n\no ajuste abaixo gera estruturas de confundimento, é isso? Fornece um erro ao tentar rodar.\najuste3 <- rsm(y~SO(x1,x2), data = dados1)\nsummary(ajuste3)\n\ngraficos:\nFiquei na dúvida porque o ajuste 2 parecia melhor (maior R2 ajustado), mas o gráfico de resíduos ficou estranho. Considerando os resíduos, o ajuste 1 parece mais adequado. O que vocês acham?\ncontour(ajuste2,~x1+x2, image=TRUE, img.col = terrain.colors(50),\n        xlabs=c(\"x1\",\"x2\"))\n\npersp(ajuste,~x1+x2, col=rainbow(50), contours = \"colors\",\n      xlabs=c(\"x2\",\"x3\"),zlab=\"Resposta\", theta = -30,\n      phi= 50)\n\nO plot de resíduos achei estranho\nplot(fitted(ajuste2),resid(ajuste2),xlab = \"Valores ajustados\",\n     ylab = \"Resíduos\", main = \"Resíduos x Valores ajustados\")\nabline(h=0,lty=2,col=2)\n\n\nObrigada pela ajuda\n\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200607/21158517/attachment.html>",
+      "body_snippet": "Caros amigos usuários do RStudio\n\nPreciso gerar uma superfície de resposta pelo RStudio. Tenho as superfícies geradas pelo Design Expert (bem mais simples de mexer, mas é um software pago e tenho some",
+      "thread_id": "thread-7e7cc31c7901",
+      "thread_depth": 0,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-e8d8c58d8e04",
+      "message_id": "<CACqRER=qQkEe9Chrq+hgquOzWK618+dj5QP5xZb=mnWutuCnUw@mail.gmail.com>",
+      "from_name": "Wenceslau Teixeira",
+      "from_email_hash": "ddf9ee2c4d7a7a69cfa5b07c19d36f9f13acdcf23c49b43ed5287c58cb05efef",
+      "date": "2020-06-08T17:09:15Z",
+      "subject": "[R-br] Manipulando banco de dados no R",
+      "subject_clean": "[R-br] Manipulando banco de dados no R",
+      "in_reply_to": "<CACqRERnmoUjjjHKChOt94hVtkh-G-h0Ah2Q0nkG3erpGoCOeOA@mail.gmail.com>",
+      "references": [
+        "<CACqRERnmoUjjjHKChOt94hVtkh-G-h0Ah2Q0nkG3erpGoCOeOA@mail.gmail.com>"
+      ],
+      "body_plain": ">\n> Caros,\n>\n> Bom dia. Sei que um dos usos do R e a manipulação de arquivos. Nunca tive\n> muito contato com estes comandos. Mas chegou a hora. Agradeço se puderem me\n> enviar alguma dica, material para o estudo sobre este tópico no R.\n>\n> O problema específico que enfrento é extrair dados selecionados com\n> algumas regras de banco de dados (BD). O BD com informações sobre diversos\n> parâmetros dentre estes teores de Areia (A), Silte (S), Argila (Ar)  em %\n> sem decimais, tem também dados da água retida na Capacidade de Campo (CC),\n> no Ponto de Murcha permanente (PMP) também em % sem decimais. Eu criei um\n> dataframe teórico de todas as combinações possíveis de resultados de\n> granulometria do solo. Considerando que a soma A+S+Ar = 100 e os dados são\n> sem decimais, num passo de 1% isto cria 5151 combinações possíveis. O que\n> pretendo é buscar no BD as combinações que têm resultados no BD para uma\n> determinada combinação (p.ex. A = 70, S=10, Ar=20 ?> PMP = 10). Eu percebi\n> que algumas das combinações da granulometria existem várias informações\n> (dados) da PMP. (a p.ex. A = 60, S=10, Ar=30 ?> CC = 12; CC = 11; CC = 20;\n> CC=11). Para algumas nao tem informações de PMP e para algumas combinações\n> há uma informação de PMP.\n>\n> O que quero é criar um script que leia o BD e preencha o data frame\n> teórico de todas as combinações possíveis de granulometria com os dados\n> existentes no BD de PMP. Os dados que tiver repetição que as as mesmas\n> sejam colocadas lado a lado,\n>\n> ID           AREIA(A)              SILTE(S)\n> ARGILA                PMP\n>\n> 1            0                           0\n> 100                       -ND\n>\n> 2             0                           1\n> 99                         30\n>\n> ..\n>\n> 35          0                           20\n> 80                         29; 29; 27\n>\n> --\n>\n> 80          10                         20\n> 70                         25; 25; 24\n>\n> 5151 100                           0\n> 0                           ND\n>\n> Se alguém tem alguma dica. Eu agradeço\n>\n> Se cuidem.\n>\n> Cordialmente,\n> Wenceslau Teixeira  (Embrapa Solos ?RJ)\n>\n>\n\n-- \n______\n\nWenceslau Teixeira\n\nwgt007 em gmail.com\nskype: wgt007\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200608/ef5bb0f6/attachment.html>",
+      "body_snippet": ">\n> Caros,\n>\n> Bom dia. Sei que um dos usos do R e a manipulação de arquivos. Nunca tive\n> muito contato com estes comandos. Mas chegou a hora. Agradeço se puderem me\n> enviar alguma dica, material pa",
+      "thread_id": "thread-75ab1e2bc2e5",
+      "thread_depth": 1,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-935a4368f371",
+      "message_id": "<CAKrF98nz1Pvs9HPM=_SQ27-3GiXXWxKtUfJge5MYBWE7q2WjrQ@mail.gmail.com>",
+      "from_name": "Cesar Rabak",
+      "from_email_hash": "a6a76a30e7f42e9ffe22c166faa4b923f4a1dd242efac82d3ffc9e877bf9c16c",
+      "date": "2020-06-08T17:32:58Z",
+      "subject": "[R-br]  help Pacote rsm, superfície de resposta",
+      "subject_clean": "[R-br]  help Pacote rsm, superfície de resposta",
+      "in_reply_to": "<BYAPR06MB63586D172F3A225EDC4AFB8D95840@BYAPR06MB6358.namprd06.prod.outlook.com>",
+      "references": [
+        "<BYAPR06MB63586D172F3A225EDC4AFB8D95840@BYAPR06MB6358.namprd06.prod.outlook.com>"
+      ],
+      "body_plain": "Você precisa estudar os manuais do R (ñ o RStudio) para entender a assim\ndenominada \"*formula interface*\" que é praticamente uma sublinguagem dentro\ndo R.\n\nDe fato:\n> modelo<-lm(y~x1*x2)\n> modelo1<-lm(y~x1*x2)\nProduzem regressões idênticas.\nComo seria idêntico:\n> modelo2<-lm(y~x1+x2+x1:x2)\nTalvez você estivesse pensando em(?):\n> modelo3<-lm(y~x1:x2)\n> modelo3\nCall:\nlm(formula = y ~ x1:x2)\n\nResiduals:\n        1         2         3         4         5         6         7\n-0.325357  0.199643 -0.220357  0.304643 -0.002857  0.037143  0.007143\n\nCoefficients:\n            Estimate Std. Error t value Pr(>|t|)\n(Intercept)  6.43286    0.09079  70.852 1.06e-08 ***\nx1:x2       -0.03750    0.12011  -0.312    0.767\n---\nSignif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1\n\nResidual standard error: 0.2402 on 5 degrees of freedom\nMultiple R-squared:  0.01912, Adjusted R-squared:  -0.1771\nF-statistic: 0.09748 on 1 and 5 DF,  p-value: 0.7675\n\nHTH\n--\nCesar Rabak\n\n\nOn Sun, Jun 7, 2020 at 7:31 PM Katieli Química por (R-br) <\nr-br em listas.c3sl.ufpr.br> wrote:\n\n> Caros amigos usuários do RStudio\n>\n> Preciso gerar uma superfície de resposta pelo RStudio. Tenho as\n> superfícies geradas pelo Design Expert (bem mais simples de mexer, mas é um\n> software pago e tenho somente a versão de teste) e comparo as equações\n> geradas com as obtidas pelo R.\n> Não tenho experiência com o RStudio, por isso tenho insegurança se o que\n> fiz está ou não correto.\n> Poderiam me dar a opinião de vocês? Caso tenham também algum argumento que\n> melhore/otimize meus ajustes, ficaria imensamente grata.\n>\n> Meu planejamento é um 2^2 com triplicata do ponto central. Anotei as\n> dúvidas nos scripts.\n>\n> Dados:\n> x1 <- c(-1,+1,-1,+1,0,0,0)\n> x2 <- c(-1,-1,+1,+1,0,0,0)\n> y <- c(6.07,6.67,6.25,6.7,6.43,6.47,6.44)\n>\n> dados1<-data.frame(x1,x2,y)\n> dados1\n>\n> modelo<-lm(y~x1*x2)\n> summary(modelo)\n>\n> *O código abaixo fornece o mesmo resultado, não entendo o porquê. Deve ser\n> facultativo usar qualquer um dos scripts.*\n> modelo1<-lm(y~x1+x2+x1*x2)\n> summary(modelo1)\n>\n> anova(modelo)\n> library(alr3)\n> pureErrorAnova(modelo)\n> Gera um R^2 ajustado de 0.987 e falta de ajuste não significativa (p>0,05)\n> pela ANOVA.\n>\n> mod <- lm(y ~ x1+x2++x1*x2+I(x1^2)+I(x2^2))\n> summary(mod)\n> anova(mod)\n> pureErrorAnova(mod)\n> *# EM pureErrorAnova(mod) DA ERRO E NÃO GERA OS DADOS . VOCÊS SABEM COMO\n> CONSIGO ARRUMAR O SCRIPT? PRECISO DOS DADOS DA FALTA DE AJUSTE PARA\n> COMPARAR, EMBORA O R2 AJUSTADO TENHA DADO 0,991 PARA ESSE AJUSTE. PARECE\n> SER MELHOR QUE O ANTERIOR. *\n>\n> Trabalhando com o pacote RSM para superfície de resposta\n> x1 <- c(-1,+1,-1,+1,0,0,0)\n> x2 <- c(-1,-1,+1,+1,0,0,0)\n> y <- c(6.07,6.67,6.25,6.7,6.43,6.47,6.44)\n> dados1<-data.frame(x1,x2,y)\n> dados1\n>\n> *Não consegui gerar o planejamento pelo RStudio. Se eu usar ChemReact, por\n> exemplo, os dados são diferentes e não consigo inserir os meus. Consigo\n> apenas da forma demonstrada acima.*\n>\n> library(rsm)\n> ajuste <- rsm(y ~ FO(x1, x2), data = dados1)\n> summary(ajuste)\n> ajuste2 <- rsm(y ~ FO(x1, x2)+ TWI(x1, x2), data = dados1)\n> summary(ajuste2)\n>\n> *o ajuste abaixo gera estruturas de confundimento, é isso? Fornece um erro\n> ao tentar rodar.*\n> ajuste3 <- rsm(y~SO(x1,x2), data = dados1)\n> summary(ajuste3)\n>\n> graficos:\n> *Fiquei na dúvida porque o ajuste 2 parecia melhor (maior R2 ajustado),\n> mas o gráfico de resíduos ficou estranho. Considerando os resíduos, o\n> ajuste 1 parece mais adequado. O que vocês acham?*\n> contour(ajuste2,~x1+x2, image=TRUE, img.col = terrain.colors(50),\n>         xlabs=c(\"x1\",\"x2\"))\n>\n> persp(ajuste,~x1+x2, col=rainbow(50), contours = \"colors\",\n>       xlabs=c(\"x2\",\"x3\"),zlab=\"Resposta\", theta = -30,\n>       phi= 50)\n>\n> *O plot de resíduos achei estranho*\n> plot(fitted(ajuste2),resid(ajuste2),xlab = \"Valores ajustados\",\n>      ylab = \"Resíduos\", main = \"Resíduos x Valores ajustados\")\n> abline(h=0,lty=2,col=2)\n>\n>\n> Obrigada pela ajuda\n>\n>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200608/a9ce2019/attachment.html>",
+      "body_snippet": "Você precisa estudar os manuais do R (ñ o RStudio) para entender a assim\ndenominada \"*formula interface*\" que é praticamente uma sublinguagem dentro\ndo R.\n\nDe fato:\n> modelo<-lm(y~x1*x2)\n> modelo1<-lm",
+      "thread_id": "thread-7e7cc31c7901",
+      "thread_depth": 1,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-46486c07437c",
+      "message_id": "<RO1P15201MB249133980E980E48A9F0E3E1DB9B0@RO1P15201MB2491.LAMP152.PROD.OUTLOOK.COM>",
+      "from_name": "Leonardo Luiz Calado",
+      "from_email_hash": "68153a65320fc0bec79d858c2e01f35aae9cb6a9d263447b63c0ce46d2516597",
+      "date": "2020-06-18T07:26:50Z",
+      "subject": "[R-br] Arguivo *.tps",
+      "subject_clean": "[R-br] Arguivo *.tps",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Caros Colegas da lista,\nvenho a procura de um arquivo do tipo *.tps denominado \"sneathd.tps\" que estava disponibilizado na versão mais antiga software gratuito tpsRelw, com a finalidade de estudo da forma. Por ser muito específico tenho perguntado a diversos grupos que trabalham com R, já que o presente arquivo faz parte das ações de estudo que tenho efetuado no livro morfometria com R, cuja questões já me foram sanadas aqui. Desde já agradeço qualquer ajuda.\n\n\n?LCalado\n\nPhD. Biotechnology in natural resources\nhttp://lattes.cnpq.br/2459740082072347\nleonardocalado em hotmail.com\n84-9 9931-1630\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200618/ca72d596/attachment.html>",
+      "body_snippet": "Caros Colegas da lista,\nvenho a procura de um arquivo do tipo *.tps denominado \"sneathd.tps\" que estava disponibilizado na versão mais antiga software gratuito tpsRelw, com a finalidade de estudo da f",
+      "thread_id": "thread-46486c07437c",
+      "thread_depth": 0,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-26d4f0e7d9ae",
+      "message_id": "<305943413.2465650.1593080169828@mail.yahoo.com>",
+      "from_name": "Andre Oliveira",
+      "from_email_hash": "1bb935dc60b1358dd7282809b50c2be108e68b6b8d7f64e23aa6d54436327603",
+      "date": "2020-06-25T10:16:09Z",
+      "subject": "[R-br] Modelo Estatístico",
+      "subject_clean": "[R-br] Modelo Estatístico",
+      "in_reply_to": null,
+      "references": [
+        "<305943413.2465650.1593080169828.ref@mail.yahoo.com>"
+      ],
+      "body_plain": "Prezad em s, bom dia!Tenho um experimento montado em  faixas (bloco, sistema de plantio e lâminas de irrigação).  Porém teve quatro ciclos de plantio. \nQual melhor modelo para análise destes dados? Como declarar este modelo no R?\nGrato. \n\n\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200625/c544c5b1/attachment.html>",
+      "body_snippet": "Prezad em s, bom dia!Tenho um experimento montado em  faixas (bloco, sistema de plantio e lâminas de irrigação).  Porém teve quatro ciclos de plantio. \nQual melhor modelo para análise destes dados? Co",
+      "thread_id": "thread-26d4f0e7d9ae",
+      "thread_depth": 0,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-93a9793a3f34",
+      "message_id": "<1AF7678C-A26D-4A83-B21C-D1E6BA0E8F5D@gmail.com>",
+      "from_name": "Alejandro C. Frery",
+      "from_email_hash": "3885531c99004a693c705b04590f5a46f9953f078607a15d4bdc854d645ec208",
+      "date": "2020-06-25T10:31:15Z",
+      "subject": "[R-br] Probleminha com Rfast",
+      "subject_clean": "[R-br] Probleminha com Rfast",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Bom dia,\n\nEu gosto muito da biblioteca Rfast, e recentemente achei um probleminha nela. Vejam o seguinte código:\n\nset.seed(1234567890)\ngammamle(rgamma(100000, shape=2, rate=3))\n\n$iters\n[1] 4\n\n$loglik\n[1] -47638.33\n\n$param\n  shape    scale \n2.013402 3.020945 \n\nClaramente, a estimação dos parâmetros da distribuição gama retorna a taxa (rate) como se fosse a escala (scale).\n\nComuniquei o problema aos desenvolvedores, que rapidamente responderam confirmando que é um erro. Eles me informaram que a versão do Rfast no Github já foi atualizada, e que ela virá na próxima versão.\n\nEu aviso aos colegas da lista para que tenham cuidado com essa função.\n\nAbraços,\n\nAlejandro",
+      "body_snippet": "Bom dia,\n\nEu gosto muito da biblioteca Rfast, e recentemente achei um probleminha nela. Vejam o seguinte código:\n\nset.seed(1234567890)\ngammamle(rgamma(100000, shape=2, rate=3))\n\n$iters\n[1] 4\n\n$loglik\n",
+      "thread_id": "thread-93a9793a3f34",
+      "thread_depth": 0,
+      "month": "2020-06"
+    },
+    {
+      "id": "msg-c911605b6646",
+      "message_id": "<1484161810.2620084.1593107802960@mail.yahoo.com>",
+      "from_name": "Luiz Leal",
+      "from_email_hash": "043ff8722cb2e4ae08237d7b212848bdb2ca5bc1fb99d9cd7109e5bf938bd44f",
+      "date": "2020-06-25T17:56:42Z",
+      "subject": "[R-br] Dúvida sobre a função gls do pacote nlme",
+      "subject_clean": "[R-br] Dúvida sobre a função gls do pacote nlme",
+      "in_reply_to": null,
+      "references": [
+        "<1484161810.2620084.1593107802960.ref@mail.yahoo.com>"
+      ],
+      "body_plain": "Prezados colegas, preciso de ajuda.Eu sei como os pesos são calculados pra o caso 'varFixed' conforme exemplo abaixo, mas não sei como os pesos são calculados em attr(modelo$modelStruct$varStruct[], which=\"weights\") para 'varExp', 'varPower' e 'varConstPower'.\nAlguém sabe como é calculado. Eu li a documentação do R, referências e procurei na internet, mas não achei nada.Desde já agradeço.Luiz# Data\n  x <- c(20,  30,  30,  30,  40,  40,  50,  50,  50,  60,  70,  70,  70,  80,  80,  80,  90,  90,  90,  90, 100, 100, 110, 110, 120)\n  y <- c(113, 121, 212, 273, 160, 244, 157, 221, 268, 224, 252, 323, 361, 342, 352, 399, 376, 377, 389, 468, 353, 420, 421, 435, 546)# Design matrix\n  X = model.matrix(~x)# Package\n  library(nlme)# varFixed\n  modelo = gls(y~x, weights = varFixed(~x))\n  h = sqrt(1/x)\n  w = 1/h^2\n  W = diag(w)\n  b = solve(t(X)%*%solve(W)%*%X)%*%t(X)%*%solve(W)%*%y\n  b ; coef(modelo) # 'b' computed by hand and 'coef(modelo)' match# varExp\n  modelo = gls(y~x, weights = varExp())\n  h = attr(modelo$modelStruct$varStruct[], which=\"weights\") # how are these values calculated?\n  w = 1/h^2\n  W = diag(w)\n  b = solve(t(X)%*%solve(W)%*%X)%*%t(X)%*%solve(W)%*%y\n\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200625/d0463ac4/attachment.html>",
+      "body_snippet": "Prezados colegas, preciso de ajuda.Eu sei como os pesos são calculados pra o caso 'varFixed' conforme exemplo abaixo, mas não sei como os pesos são calculados em attr(modelo$modelStruct$varStruct[], w",
+      "thread_id": "thread-c911605b6646",
+      "thread_depth": 0,
+      "month": "2020-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-6fbef14683a9",
+      "subject": "[R-br] Variancia",
+      "message_count": 3,
+      "participants": [
+        "Cesar Rabak",
+        "Elias Carvalho",
+        "Jobenil - Gmail"
+      ],
+      "started": "2020-06-03T12:09:18Z",
+      "last_reply": "2020-06-03T16:49:03Z",
+      "root_message_id": "msg-6fbef14683a9"
+    },
+    {
+      "id": "thread-388f0e208b16",
+      "subject": "[R-br] Comando pgmm",
+      "message_count": 1,
+      "participants": [
+        "Bruna Mendonça Oliveira"
+      ],
+      "started": "2020-06-03T22:00:37Z",
+      "last_reply": "2020-06-03T22:00:37Z",
+      "root_message_id": "msg-388f0e208b16"
+    },
+    {
+      "id": "thread-738cae394ae6",
+      "subject": "[R-br] Ratio",
+      "message_count": 3,
+      "participants": [
+        "Cesar Rabak",
+        "Daniel Guimarães Tiezzi",
+        "Eugenio Rosa"
+      ],
+      "started": "2020-06-05T22:58:06Z",
+      "last_reply": "2020-06-06T19:31:09Z",
+      "root_message_id": "msg-738cae394ae6"
+    },
+    {
+      "id": "thread-1fda2115f4be",
+      "subject": "[R-br] Ratio",
+      "message_count": 1,
+      "participants": [
+        "sznelwar em uol.com.br"
+      ],
+      "started": "2020-06-06T03:05:34Z",
+      "last_reply": "2020-06-06T03:05:34Z",
+      "root_message_id": "msg-1fda2115f4be"
+    },
+    {
+      "id": "thread-75ab1e2bc2e5",
+      "subject": "[R-br] Manipulando banco de dados no R",
+      "message_count": 3,
+      "participants": [
+        "Cesar Rabak",
+        "Wenceslau Teixeira"
+      ],
+      "started": "2020-06-06T16:38:32Z",
+      "last_reply": "2020-06-08T17:09:15Z",
+      "root_message_id": "msg-75ab1e2bc2e5"
+    },
+    {
+      "id": "thread-7e7cc31c7901",
+      "subject": "[R-br] help Pacote rsm, superfície de resposta",
+      "message_count": 2,
+      "participants": [
+        "Cesar Rabak",
+        "Katieli Química"
+      ],
+      "started": "2020-06-07T22:31:32Z",
+      "last_reply": "2020-06-08T17:32:58Z",
+      "root_message_id": "msg-7e7cc31c7901"
+    },
+    {
+      "id": "thread-46486c07437c",
+      "subject": "[R-br] Arguivo *.tps",
+      "message_count": 1,
+      "participants": [
+        "Leonardo Luiz Calado"
+      ],
+      "started": "2020-06-18T07:26:50Z",
+      "last_reply": "2020-06-18T07:26:50Z",
+      "root_message_id": "msg-46486c07437c"
+    },
+    {
+      "id": "thread-26d4f0e7d9ae",
+      "subject": "[R-br] Modelo Estatístico",
+      "message_count": 1,
+      "participants": [
+        "Andre Oliveira"
+      ],
+      "started": "2020-06-25T10:16:09Z",
+      "last_reply": "2020-06-25T10:16:09Z",
+      "root_message_id": "msg-26d4f0e7d9ae"
+    },
+    {
+      "id": "thread-93a9793a3f34",
+      "subject": "[R-br] Probleminha com Rfast",
+      "message_count": 1,
+      "participants": [
+        "Alejandro C. Frery"
+      ],
+      "started": "2020-06-25T10:31:15Z",
+      "last_reply": "2020-06-25T10:31:15Z",
+      "root_message_id": "msg-93a9793a3f34"
+    },
+    {
+      "id": "thread-c911605b6646",
+      "subject": "[R-br] Dúvida sobre a função gls do pacote nlme",
+      "message_count": 1,
+      "participants": [
+        "Luiz Leal"
+      ],
+      "started": "2020-06-25T17:56:42Z",
+      "last_reply": "2020-06-25T17:56:42Z",
+      "root_message_id": "msg-c911605b6646"
+    }
+  ]
+}

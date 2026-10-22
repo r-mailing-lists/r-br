@@ -1,0 +1,4608 @@
+From ecacarva em gmail.com  Fri Jun  1 07:47:36 2018
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Fri, 1 Jun 2018 07:47:36 -0300
+Subject: [R-br] Ajuda com amostra pequena
+Message-ID: <CAH8E6UtJcUjT0aH5te63wBztDuObGPppD8gDV3nBYR_bOFoFpg@mail.gmail.com>
+
+Bom dia
+
+Recebi um conjunto de dados (summary abaixo) para análise, porém vejo
+alguns problemas:
+
+
+​
+
+   1. Amostra muito pequena, apenas 17 registros
+   2. Algumas  variáveis com categorias ocorrendo apenas um ou duas vezes
+   como sexo (SEX) por exemplo
+   3. Variável idade (IDA) e numero de alunos na sala (NAL) com muitas
+   categoria
+   4. Variável gerenciamento (GBY) não possui variabilidade
+
+Esse é um banco de dados sobre bullying na escola, preciso analisar a
+capacidade do coordenador em definir bullying (DBY) reconhecer bullying
+(RBY) e gerenciar bullying (GBY)
+
+Alguem pode sugerir que tipo de ações eu poderia executar para conseguir
+fazer alguma análise sobre esses dados ou me dizer se é impossível fazer
+isso?
+
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180601/1e384540/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: data1.png
+Tipo: image/png
+Tamanho: 32512 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180601/1e384540/attachment.png>
+
+From roacastro87 em yahoo.com.br  Fri Jun  1 08:51:51 2018
+From: roacastro87 em yahoo.com.br (=?UTF-8?Q?Rodrigo_Ara=C3=BAjo_e_Castro?=)
+Date: Fri, 1 Jun 2018 11:51:51 +0000 (UTC)
+Subject: [R-br] Ajuda com amostra pequena
+In-Reply-To: <CAH8E6UtJcUjT0aH5te63wBztDuObGPppD8gDV3nBYR_bOFoFpg@mail.gmail.com>
+References: <CAH8E6UtJcUjT0aH5te63wBztDuObGPppD8gDV3nBYR_bOFoFpg@mail.gmail.com>
+Message-ID: <1582912776.7593005.1527853911927@mail.yahoo.com>
+
+ Bom dia,
+Primeiramente acho importante analisar os tipos de variáveis para ver que tipos de análises podem ser feitas.
+Há um problema no formato das categorias IDA, TGE, NAL e NAS, que são dados numéricos mas já foram sumarizados em categorias (dados categóricos). O resultado é que com isso temos menor poder de análise.
+Quanto à variabilidade dos dados, as variáveis SEX, FPO, EES, ESJ, IJS, DBY e GBY (última coluna) possuem variabilidade muito baixa. Assim, como você disse, isso também reduz o poder de análise.
+O ideal seria pedir os dados novamente em um novo formato, sem as sumarizações citadas nas variáveis IDA, TGE, NAL e NAS para ampliar o número de análise possíveis. Se não for viável, o que você pode fazer é cruzar variáveis como SEX, IDA, TGE, NAS e NAL com aquelas cuja resposta foi sim e não e fazer um teste qui-quadrado para verificar a independência delas para poder tirar conclusões.
+Por fim,  idealmente aquelas variáveis com baixa variabilidade (SEX, FPO, EES, ESJ, IJS, DBY e GBY) deveriam ser desconsideradas, deixando apenas REL e RBY para serem comparadas com IDA, TGE, NAL e NAS, além das comparações entre si no grupo de variáveis IDA, TGE, NAL e NAS.
+Minha posição é a seguinte: se isso for suficiente para responder sua pergunta de pesquisa , apesar das limitações apontadas, sua análise é possível, caso contrário peça um novo conjunto de dados mais adequado ou informe os problemas (provavelmente devido à formulação do questionário).
+ Espero ter dado minha contribuição, e caso a opinião profissional de vocês divergir de algum ponto que comentei, por favor se manifestem para complementar e/ou contribuir com a resposta do Professor Elias Carvalho.
+
+att,
+RodrigoDoutorando em Estudos LinguísticosUniversidade Federal de Minas Gerais
+
+
+
+    Em sexta-feira, 1 de junho de 2018 07:48:27 BRT, Elias Carvalho via R-br <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Bom dia
+Recebi um conjunto de dados (summary abaixo) para análise, porém vejo alguns problemas:
+
+​
+   
+   - Amostra muito pequena, apenas 17 registros
+   - Algumas  variáveis com categorias ocorrendo apenas um ou duas vezes como sexo (SEX) por exemplo
+   - Variável idade (IDA) e numero de alunos na sala (NAL) com muitas categoria
+   - Variável gerenciamento (GBY) não possui variabilidade
+Esse é um banco de dados sobre bullying na escola, preciso analisar a capacidade do coordenador em definir bullying (DBY) reconhecer bullying (RBY) e gerenciar bullying (GBY)
+Alguem pode sugerir que tipo de ações eu poderia executar para conseguir fazer alguma análise sobre esses dados ou me dizer se é impossível fazer isso?
+
+-- 
+In Jesu et Maria
+
+ObrigadoProf. Elias Carvalho
+"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he who has been able to understand the cause of things"_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180601/db640a61/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: data1.png
+Tipo: image/png
+Tamanho: 32512 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180601/db640a61/attachment.png>
+
+From eucilene.alvessantana em gmail.com  Fri Jun  1 13:09:37 2018
+From: eucilene.alvessantana em gmail.com (Eucilene Alves Santana)
+Date: Fri, 1 Jun 2018 13:09:37 -0300
+Subject: [R-br] INDICADORES SOCIAIS OF TOPICS
+In-Reply-To: <2063557858.2045376.1527538331422@mail.yahoo.com>
+References: <2063557858.2045376.1527538331422.ref@mail.yahoo.com>
+ <2063557858.2045376.1527538331422@mail.yahoo.com>
+Message-ID: <CANuApLvk1UmwN2-hW9VXkrbds1nNKJuNyusWJFGOXghixiRkVw@mail.gmail.com>
+
+Prezados.
+O Tratamento estatístico depende da pergunta é dos tipos de dados. Não há
+um teste estatístico  padrão..
+Por exemplo um que sempre usamos é observar o comportamento,  a tendência
+do indicador no tempo e espaço.
+Para isso usamos análise de série temporal. Esse é  primeiro passo para
+entender o comportamento do indicador ao longo do tempo. E depois daí
+começa  a diversão.
+Abs
+
+
+
+Em seg, 28 de mai de 2018 17:12, Edson Lira via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Caros amigos, boa tarde,  um amigo meu Economista me fez uma pergunta que
+> resolvi compartilhar com vocês.
+>
+> "Existe alguma técnica em Estatística, específica para tratamento de
+> Indicadores Sociais?"
+>
+> Eu diria que não, mas gostaria de saber se vocês conhecem algo do tipo.
+>
+>
+> [  ['s.
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180601/3aaf02b1/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Jun  1 14:28:40 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 1 Jun 2018 14:28:40 -0300
+Subject: [R-br] INDICADORES SOCIAIS OF TOPICS
+In-Reply-To: <CANuApLvk1UmwN2-hW9VXkrbds1nNKJuNyusWJFGOXghixiRkVw@mail.gmail.com>
+References: <2063557858.2045376.1527538331422.ref@mail.yahoo.com>
+ <2063557858.2045376.1527538331422@mail.yahoo.com>
+ <CANuApLvk1UmwN2-hW9VXkrbds1nNKJuNyusWJFGOXghixiRkVw@mail.gmail.com>
+Message-ID: <CAKrF98noS9_wFdtt6T4B-=sPuiMLmb-EVmWmVTJ=EaDUhsq_gQ@mail.gmail.com>
+
+Eucilene,
+
+Embora eu concorde *de plano* com sua colocação a respeito dos dados como
+primeiro passo para discutir um possível tratamento de dados, gostaria de
+enriquecer o debate, aproveitando a questão posta pelo OP, dizendo que em
+todas as ciências que se servem de Estatística há, em adição ao aspecto
+mais puro e teórico aspectos de atavismo, costumes e práticas correntes e
+mesmo recomendações dadas por instituições que tendem a ter voz no assuno (
+*clout* em inglês).
+
+N'alguns âmbitos a discussão se, por exemplo sem querer levar este tema ao
+assunto em tela, se uma escala Likert pode ser considerada intervalar ou
+deve ser tratada exclusivamente por meio de análise de dados categóricos.
+
+Num recente (isto é nesta década 😎) curso de Bioestatística na UniFesp, o
+instrutor indicou uma discussão (que remete à área de estudo do OP) no
+passado recente entre especialistas se a média do número de filhos de uma
+família podia ser um número fracionário ou teria que ser sempre arredondado
+para o inteiro mais próximo!
+
+E agora a cereja no bolo: esse mesmo instrutor (prof. dr. médico) que
+hodiernamente não tem dúvida da validade de uma construção teórica de u'a
+média de número de filhos escrita como um número real, *corrigiu* um
+exercício da minha filha onde um cálculo de número de batimentos cardíacos
+por minuto deu uma número com dízima periódica, e o altivo mestre declarou
+"Não existe batimento [cardíaco] incompleto". . .  🤔
+
+Haveria muitos mais "causos" para discorrer, mas espero que tenha
+conseguido sensibilizar com esses exemplos e expor meu raciocínio.
+
+HTH
+--
+Cesar Rabak
+
+
+2018-06-01 13:09 GMT-03:00 Eucilene Alves Santana via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Prezados.
+> O Tratamento estatístico depende da pergunta é dos tipos de dados. Não há
+> um teste estatístico  padrão..
+> Por exemplo um que sempre usamos é observar o comportamento,  a tendência
+> do indicador no tempo e espaço.
+> Para isso usamos análise de série temporal. Esse é  primeiro passo para
+> entender o comportamento do indicador ao longo do tempo. E depois daí
+> começa  a diversão.
+> Abs
+>
+>
+>
+> Em seg, 28 de mai de 2018 17:12, Edson Lira via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Caros amigos, boa tarde,  um amigo meu Economista me fez uma pergunta que
+>> resolvi compartilhar com vocês.
+>>
+>> "Existe alguma técnica em Estatística, específica para tratamento de
+>> Indicadores Sociais?"
+>>
+>> Eu diria que não, mas gostaria de saber se vocês conhecem algo do tipo.
+>>
+>>
+>> [  ['s.
+>> Prof. Edson Lira, Me
+>> Estatístico
+>> Manaus-Amazonas
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180601/890167b9/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Jun  1 14:38:22 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 1 Jun 2018 14:38:22 -0300
+Subject: [R-br] Ajuda com amostra pequena
+In-Reply-To: <CAH8E6UtJcUjT0aH5te63wBztDuObGPppD8gDV3nBYR_bOFoFpg@mail.gmail.com>
+References: <CAH8E6UtJcUjT0aH5te63wBztDuObGPppD8gDV3nBYR_bOFoFpg@mail.gmail.com>
+Message-ID: <CAKrF98mpKffQ25s2W1PvbFecoBQ09AvYjhsCUqZA32FN5W9rAQ@mail.gmail.com>
+
+Caro Elias,
+
+Antes de mergulhar no poço dos dados, vale a seguinte pergunta (que veja só
+você é *decorrente* da filosofia esposada por Virgílio) :
+
+« Qual foi o processo que gerou esses dados? »
+
+A amostra foi AAS?
+
+Como cada nível de cada fator foi determinado/calculado?
+
+Deixo-o com o seguinte pensamento: HTH
+
+"The quality of a survey is best judged not by its size, scope, or
+prominence, but by how much attention is given to [preventing, measuring
+and] dealing with the many important problems that can arise."
+*— "What is a Survey?",  American Statistical Association*
+
+HTH
+
+--
+Cesar Rabak
+
+
+2018-06-01 7:47 GMT-03:00 Elias Carvalho via R-br <r-br em listas.c3sl.ufpr.br>
+:
+
+> Bom dia
+>
+> Recebi um conjunto de dados (summary abaixo) para análise, porém vejo
+> alguns problemas:
+>
+>
+> ​
+>
+>    1. Amostra muito pequena, apenas 17 registros
+>    2. Algumas  variáveis com categorias ocorrendo apenas um ou duas vezes
+>    como sexo (SEX) por exemplo
+>    3. Variável idade (IDA) e numero de alunos na sala (NAL) com muitas
+>    categoria
+>    4. Variável gerenciamento (GBY) não possui variabilidade
+>
+> Esse é um banco de dados sobre bullying na escola, preciso analisar a
+> capacidade do coordenador em definir bullying (DBY) reconhecer bullying
+> (RBY) e gerenciar bullying (GBY)
+>
+> Alguem pode sugerir que tipo de ações eu poderia executar para conseguir
+> fazer alguma análise sobre esses dados ou me dizer se é impossível fazer
+> isso?
+>
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180601/b46e3b51/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: data1.png
+Tipo: image/png
+Tamanho: 32512 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180601/b46e3b51/attachment.png>
+
+From nobrega.manasses em gmail.com  Fri Jun  1 18:24:13 2018
+From: nobrega.manasses em gmail.com (=?UTF-8?Q?Manasses_N=C3=B3brega?=)
+Date: Fri, 1 Jun 2018 18:24:13 -0300
+Subject: [R-br] OpenBUGS no R
+Message-ID: <CAEVGS=JpM4g14c56e9bgdp9emu5S9LCEvpjpOvv8uP4oW-Rf9w@mail.gmail.com>
+
+Prezados,
+
+Estou iniciando meus estudos em MCMC e  uso do OpenBUGS no R. Ao tentar
+rodar um pequeno exemplo inicial (do livro do Kinas & Andrade, Introdução à
+Inferência Bayesiana com R), apareceu uma mensagem de erro que não consegui
+resolver.
+
+Abaixo segue o código que estou usando e as mensagens de erro que
+apareceram:
+
+lddados <- list(n=4,x=0)
+params <- list("teta")
+inits <- list(teta=0.5)
+sink("ru486_mcmc.txt")
+cat("model {
+teta ~ dunif(0,1)
+x ~ dbin(teta,n)
+}")
+sink()
+library(R2OpenBUGS)
+library(R2WinBUGS)
+library(BRugs)
+*Error :* .onLoad falhou em loadNamespace() para 'BRugs', detalhes:
+  chamada: if (!is.na(ob$version)) msg <- paste(msg, "version", ob$version)
+else msg <- paste(msg,
+  erro: argument is of length zero
+In addition: Warning messages:
+1: package ‘BRugs’ was built under R version 3.3.3
+2: In findOpenBUGS() : OpenBUGS 3.2.2 or greater must be installed
+(if so, this indicates missing registry keys of OpenBUGS).
+Setting the environment variable 'OpenBUGS_PATH' in advance of loading
+'BRugs' overwrites the path.
+See ?loadOpenBUGS in order to load OpenBUGS manually.
+3: In is.na(ob$version) :
+  is.na() applied to non-(list or vector) of type 'NULL'
+Error: package or namespace load failed for ‘BRugs’
+
+fit <- bugs(lddados,inits,params,model.file = "ru486_mcmc.txt",
+            n.chains = 1,n.iter = 25000,n.burnin = 20000,n.thin = 5)
+*Error in* bugs(lddados, inits, params, model.file = "ru486_mcmc.txt",
+n.chains = 1,  :
+  Cannot find the OpenBUGS program
+
+Estou usando a versão 3.5 do R, e já tentei nas formas 32 e 64 bit.
+Também tentei o loadOpenBUGS e não tive êxito!
+Agradeço a ajuda de vocês na resolução desses erros.
+
+Um abraço a todos,
+Manasses
+
+-- 
+
+*I am a brain, Watson. The rest of me is a mere appendix. *
+
+*(Sherlock Holmes)*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180601/0c24f91b/attachment.html>
+
+From henrique.bdias em yahoo.com.br  Mon Jun  4 05:50:07 2018
+From: henrique.bdias em yahoo.com.br (Henrique Boriolo Dias)
+Date: Mon, 4 Jun 2018 08:50:07 +0000 (UTC)
+Subject: [R-br] =?utf-8?b?Z2dwbG90Ml9hcHJlc2VudGFyIGVxdWHDp8OjbyBubyBncsOh?=
+	=?utf-8?q?fico?=
+References: <1597288900.8454811.1528102207591.ref@mail.yahoo.com>
+Message-ID: <1597288900.8454811.1528102207591@mail.yahoo.com>
+
+Olá pessoal,
+Sabem se é possível plotar a equação especifica (e talvez o R2) gerada pelo geom_smooth quando se usa a opção facet_wrap?Estou interessado no valor que multiplica o 'x' da equação.Alguém poderia me dar uma luz de qual o critério é usado para o ajuste dessa equação no geom_smooth?
+- Dados em anexo.- Script:
+db <- read.csv('data.csv', sep = ';', dec = '.', header = T)
+tiff(filename=paste0("graph.tiff"), width = 2000, height = 1000, res=300)ggplot(db, aes(y=y, x=x)) +  geom_point(aes(shape=type))+  facet_wrap(~type) +  geom_smooth(method = lm, formula = y ~ exp(-x), se = FALSE)dev.off()
+ObrigadoHenrique
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180604/2ee5dd9b/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: data.csv
+Tipo: application/vnd.ms-excel
+Tamanho: 5000 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180604/2ee5dd9b/attachment.xlb>
+
+From cayanportela em hotmail.com  Mon Jun  4 12:21:19 2018
+From: cayanportela em hotmail.com (cayanportela em hotmail.com)
+Date: Mon,  4 Jun 2018 08:21:19 -0700 (MST)
+Subject: [R-br]
+ =?utf-8?b?Z2dwbG90Ml9hcHJlc2VudGFyIGVxdWHDp8OjbyBubyBncsOh?=
+ =?utf-8?q?fico?=
+Message-ID: <118210587.116420.1528125679343.JavaMail.administrator@mben.nabble.com>
+
+Você pode gerar um modelo utilizando a função lm e extrair os coeficientes.
+
+De acordo com https://stackoverflow.com/questions/30144785/how-to-extract-intercept-and-slope-from-a-plot-for-large-number-of-variables ,
+no seu caso ficaria assim:
+
+db %>% 
+  group_by(type) %>% 
+  do({
+    mod = lm(y ~ exp(-x), data = .)
+    data.frame(Intercept = coef(mod)[1],
+               Slope = coef(mod)[2])
+  })
+
+Cayan
+
+_____________________________________
+Sent from http://r-br.2285057.n4.nabble.com
+
+
+From cayanportela em hotmail.com  Mon Jun  4 12:25:34 2018
+From: cayanportela em hotmail.com (Cayan Portela)
+Date: Mon, 4 Jun 2018 15:25:34 +0000
+Subject: [R-br] Digest R-br, volume 90, assunto 3
+In-Reply-To: <mailman.1.1528124401.12946.r-br@listas.c3sl.ufpr.br>
+References: <mailman.1.1528124401.12946.r-br@listas.c3sl.ufpr.br>
+Message-ID: <BN6PR20MB12179BC0EC18383D40171607CA670@BN6PR20MB1217.namprd20.prod.outlook.com>
+
+Você pode extrair os coeficientes utilizando a função lm.
+
+
+De acordo com https://stackoverflow.com/questions/30144785/how-to-extract-intercept-and-slope-from-a-plot-for-large-number-of-variables ,no seu caso ficaria:
+
+
+db %>%
+  group_by(type) %>%
+  do({
+    mod = lm(y ~ exp(-x), data = .)
+    data.frame(Intercept = coef(mod)[1],
+               Slope = coef(mod)[2])
+  })
+
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de r-br-request em listas.c3sl.ufpr.br <r-br-request em listas.c3sl.ufpr.br>
+Enviado: segunda-feira, 4 de junho de 2018 15:00
+Para: r-br em listas.c3sl.ufpr.br
+Assunto: Digest R-br, volume 90, assunto 3
+
+Enviar submissões para a lista de discussão R-br para
+        r-br em listas.c3sl.ufpr.br
+
+Para se cadastrar ou descadastrar via WWW, visite o endereço
+        https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=02%7C01%7C%7C259fa7814e0c4ab0137108d5ca2bdd0c%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636637212118722188&sdata=%2BepOCMFhqYc7l846%2FcQIqZWsDLYjB1IHgWcPZTY6EuQ%3D&reserved=0
+ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+corpo da mensagem para
+        r-br-request em listas.c3sl.ufpr.br
+
+Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+endereço
+        r-br-owner em listas.c3sl.ufpr.br
+
+Quando responder, por favor edite sua linha Assunto assim ela será
+mais específica que "Re: Contents of R-br digest..."
+
+
+Tópicos de Hoje:
+
+   1. ggplot2_apresentar equação no gráfico (Henrique Boriolo Dias)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Mon, 4 Jun 2018 08:50:07 +0000 (UTC)
+From: Henrique Boriolo Dias <henrique.bdias em yahoo.com.br>
+To: "r-br em listas.c3sl.ufpr.br" <r-br em listas.c3sl.ufpr.br>
+Subject: [R-br] ggplot2_apresentar equação no gráfico
+Message-ID: <1597288900.8454811.1528102207591 em mail.yahoo.com>
+Content-Type: text/plain; charset="utf-8"
+
+Olá pessoal,
+Sabem se é possível plotar a equação especifica (e talvez o R2) gerada pelo geom_smooth quando se usa a opção facet_wrap?Estou interessado no valor que multiplica o 'x' da equação.Alguém poderia me dar uma luz de qual o critério é usado para o ajuste dessa equação no geom_smooth?
+- Dados em anexo.- Script:
+db <- read.csv('data.csv', sep = ';', dec = '.', header = T)
+tiff(filename=paste0("graph.tiff"), width = 2000, height = 1000, res=300)ggplot(db, aes(y=y, x=x)) +  geom_point(aes(shape=type))+  facet_wrap(~type) +  geom_smooth(method = lm, formula = y ~ exp(-x), se = FALSE)dev.off()
+ObrigadoHenrique
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <https://nam04.safelinks.protection.outlook.com/?url=http%3A%2F%2Flistas.inf.ufpr.br%2Fpipermail%2Fr-br%2Fattachments%2F20180604%2F2ee5dd9b%2Fattachment-0001.html&data=02%7C01%7C%7C259fa7814e0c4ab0137108d5ca2bdd0c%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636637212118722188&sdata=mECvWSnVqNbPkQADVBzPvdocxQ0MQyOzqqPFT%2BQCWWY%3D&reserved=0>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: data.csv
+Tipo: application/vnd.ms-excel
+Tamanho: 5000 bytes
+Descrição: não disponível
+URL: <https://nam04.safelinks.protection.outlook.com/?url=http%3A%2F%2Flistas.inf.ufpr.br%2Fpipermail%2Fr-br%2Fattachments%2F20180604%2F2ee5dd9b%2Fattachment-0001.xlb&data=02%7C01%7C%7C259fa7814e0c4ab0137108d5ca2bdd0c%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636637212118722188&sdata=%2FSJfJ98yDoHU96TyIepkMXStMQCkvhFv13%2Fu15MzdAs%3D&reserved=0>
+
+------------------------------
+
+Subject: Legenda do Digest
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://nam04.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=02%7C01%7C%7C259fa7814e0c4ab0137108d5ca2bdd0c%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C636637212118722188&sdata=%2BepOCMFhqYc7l846%2FcQIqZWsDLYjB1IHgWcPZTY6EuQ%3D&reserved=0
+
+
+------------------------------
+
+Fim da Digest R-br, volume 90, assunto 3
+****************************************
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180604/0c2ac328/attachment.html>
+
+From ribas.aca em gmail.com  Mon Jun  4 18:03:09 2018
+From: ribas.aca em gmail.com (Augusto Ribas)
+Date: Mon, 4 Jun 2018 17:03:09 -0400
+Subject: [R-br] OpenBUGS no R
+In-Reply-To: <CAEVGS=JpM4g14c56e9bgdp9emu5S9LCEvpjpOvv8uP4oW-Rf9w@mail.gmail.com>
+References: <CAEVGS=JpM4g14c56e9bgdp9emu5S9LCEvpjpOvv8uP4oW-Rf9w@mail.gmail.com>
+Message-ID: <CACMkfRyawdNFCVjPzg5uvjg4tuC2N29FbF+CiwHi57ZOh7VXMw@mail.gmail.com>
+
+Opa, você está usando no windows?
+
+Veja que no erro ele fala "Cannot find the OpenBUGS program".
+
+Dependendo de onde você instalou no windows, a função bugs não encontra,
+mas para solucionar basta que você informe onde instalou no argumento
+bugs.directory
+
+bugs.directorydirectory that contains the WinBUGS executable. If the global
+option R2WinBUGS.bugs.directory is not NULL, it will be used as the default.
+Tente fazer isso, veja onde o programa esta instalado e quando rodar a
+função, informe isso no argumento.
+
+
+2018-06-01 17:24 GMT-04:00 Manasses Nóbrega via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Prezados,
+>
+> Estou iniciando meus estudos em MCMC e  uso do OpenBUGS no R. Ao tentar
+> rodar um pequeno exemplo inicial (do livro do Kinas & Andrade, Introdução à
+> Inferência Bayesiana com R), apareceu uma mensagem de erro que não consegui
+> resolver.
+>
+> Abaixo segue o código que estou usando e as mensagens de erro que
+> apareceram:
+>
+> lddados <- list(n=4,x=0)
+> params <- list("teta")
+> inits <- list(teta=0.5)
+> sink("ru486_mcmc.txt")
+> cat("model {
+> teta ~ dunif(0,1)
+> x ~ dbin(teta,n)
+> }")
+> sink()
+> library(R2OpenBUGS)
+> library(R2WinBUGS)
+> library(BRugs)
+> *Error :* .onLoad falhou em loadNamespace() para 'BRugs', detalhes:
+>   chamada: if (!is.na(ob$version)) msg <- paste(msg, "version",
+> ob$version) else msg <- paste(msg,
+>   erro: argument is of length zero
+> In addition: Warning messages:
+> 1: package ‘BRugs’ was built under R version 3.3.3
+> 2: In findOpenBUGS() : OpenBUGS 3.2.2 or greater must be installed
+> (if so, this indicates missing registry keys of OpenBUGS).
+> Setting the environment variable 'OpenBUGS_PATH' in advance of loading
+> 'BRugs' overwrites the path.
+> See ?loadOpenBUGS in order to load OpenBUGS manually.
+> 3: In is.na(ob$version) :
+>   is.na() applied to non-(list or vector) of type 'NULL'
+> Error: package or namespace load failed for ‘BRugs’
+>
+> fit <- bugs(lddados,inits,params,model.file = "ru486_mcmc.txt",
+>             n.chains = 1,n.iter = 25000,n.burnin = 20000,n.thin = 5)
+> *Error in* bugs(lddados, inits, params, model.file = "ru486_mcmc.txt",
+> n.chains = 1,  :
+>   Cannot find the OpenBUGS program
+>
+> Estou usando a versão 3.5 do R, e já tentei nas formas 32 e 64 bit.
+> Também tentei o loadOpenBUGS e não tive êxito!
+> Agradeço a ajuda de vocês na resolução desses erros.
+>
+> Um abraço a todos,
+> Manasses
+>
+> --
+>
+> *I am a brain, Watson. The rest of me is a mere appendix. *
+>
+> *(Sherlock Holmes)*
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+Grato
+Augusto C. A. Ribas
+
+Site Pessoal: http://recologia.com.br/ <http://augustoribas.heliohost.org>
+Github: https://github.com/Squiercg
+Lattes: http://lattes.cnpq.br/7355685961127056
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180604/b6b01cbb/attachment.html>
+
+From brunorezendem em hotmail.com  Mon Jun  4 18:07:12 2018
+From: brunorezendem em hotmail.com (Bruno Rezende)
+Date: Mon, 4 Jun 2018 21:07:12 +0000
+Subject: [R-br] =?iso-8859-1?q?_IBGE_-_Distor=E7=E3o_Malha_de_Setores_Cens?=
+ =?iso-8859-1?q?it=E1rios_Censo_2010?=
+In-Reply-To: <RO1P152MB11296D592EB31F5D35DA5639A1670@RO1P152MB1129.LAMP152.PROD.OUTLOOK.COM>
+References: <2A7F01D26A372145B54EF022A369A7CE6DF9B4DE@DFEXCHSC007.corp.caixa.gov.br>,
+ <RO1P152MB11296D592EB31F5D35DA5639A1670@RO1P152MB1129.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <RO1P152MB11294BAF2F0DA9BBA79F56C2A1670@RO1P152MB1129.LAMP152.PROD.OUTLOOK.COM>
+
+Prezados,
+
+1.       Estou trabalhando com a malha de setores censitários fornecida pelo IBGE (CENSO 2010).
+2.       Inicialmente, obtive a malha em formato .shp e carreguei no R. Notei que, ao projetar essa malha no Google Earth e no Leaflet, o desenho dos polígonos não coincidia com o desenho dos mapas.
+3.       Pensando que a distorção acima pudesse ser causada por algum erro meu, baixei o arquivo Google Earth .kmz dos setores censitários, fornecido diretamente pelo IBGE.
+4.       Contudo, os problemas são os mesmos: para minha cidade, algumas partes dos mapas se sobrepõem e algumas partes destoam do mapa "real".
+5.       Sabemos que um setor censitário é uma subdivisão do território com a  finalidade de delimitar o trabalho do agente censeador a cerca de 250 a 350 domicílios. Uma divisa de setor censitário que cruze o meio de uma quadra não permite clareza na definição do setor para o agente que está em campo. A lógica infere que utilizar os próprios contornos do terreno, ou equipamentos públicos, facilita a divisão e clareza in loco.
+6.       Assim, deseja-se que, na maioria das vezes, as divisas do setor censitário e dos equipamentos públicos coincidam.
+7.       O problema é que o mapa dos setores não "casa" com o mapa "real". Assim, coletar uma coordenada em campo e projetar no shape file de setor censitário apresentará erro, inviabilizando análises.
+8.       Estou analisando a cidade de Passo Fundo - RS. Em Porto Alegre, capital do estado, essas distorções aparentam não ocorrer.
+9.       Tentei algumas transformações do CRS, mas sem sucesso.
+10.   Senhores, alguém de vocês já passo por problema semelhante? Saberiam indicar como corrigí-lo?
+
+
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180604/c945c2a1/attachment.html>
+
+From angelica.ricarte em hotmail.com  Mon Jun  4 20:15:16 2018
+From: angelica.ricarte em hotmail.com (=?iso-8859-1?Q?Ang=E9lica_Ricarte?=)
+Date: Mon, 4 Jun 2018 23:15:16 +0000
+Subject: [R-br] =?iso-8859-1?q?Erro_na_an=E1lise_de_regress=E3o?=
+In-Reply-To: <242992500.122408.1528153775320.JavaMail.administrator@mben.nabble.com>
+References: <242992500.122408.1528153775320.JavaMail.administrator@mben.nabble.com>
+Message-ID: <SC1P152MB0544C9B3AB666FD1FADBA34B91670@SC1P152MB0544.LAMP152.PROD.OUTLOOK.COM>
+
+Prezados, boa noite.
+
+Estou com a seguinte dúvida, se puderem me ajudar, agradeço demais:
+
+Utilizando o pacote "ExpDes.pt", fiz a seguinte análise:
+>dados
+   Oleo      S
+1   0.0  85.71
+2   0.0  85.71
+3   0.0  85.71
+4   0.0  85.71
+5   0.0  85.71
+6   0.5  85.71
+7   0.5  85.71
+8   0.5  85.71
+9   0.5  85.71
+10  0.5  85.71
+11  1.0 100.00
+12  1.0 100.00
+13  1.0 100.00
+14  1.0 100.00
+15  1.0 100.00
+16  1.5  71.42
+17  1.5  71.42
+18  1.5  71.42
+19  1.5  71.42
+20  1.5  71.42
+> dic(dados[,1],dados[,2],quali=F,sigF=0.05)
+------------------------------------------------------------------------
+Quadro da analise de variancia
+------------------------------------------------------------------------
+           GL   SQ     QM         Fc       Pr>Fc
+Tratamento  3 2042 680.68 4.4071e+30 1.5357e-239
+Residuo    16    0   0.00
+Total      19 2042
+------------------------------------------------------------------------
+CV = 0 %
+
+------------------------------------------------------------------------
+Teste de normalidade dos residuos
+Valor-p:  5.640644e-07
+ATENCAO: a 5% de significancia, os residuos nao podem ser considerados normais!
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+Teste de homogeneidade de variancia
+valor-p:  NaN
+Error in if (pvalor.hvar < 0.05) { :
+  valor ausente onde TRUE/FALSE necessário
+> dic(dados[,1],dados[,2],quali=F,sigF=0.05)
+
+Porque não consigo obter um resultado para a análise de regressão? Seria porque o CV é igual a zero e porque não há variância? Se sim, poderiam me dar uma explicação sobre a relação entre a variância e a regressão? Também tentei fazer o mesmo considerando os tratamentos qualitativos (quali=T) para obter um teste de médias, porém aparece a mesma mensagem de erro. OBS: para outras variáveis (que possuem variância e CV diferente de zero) deu certo a análise.
+
+Grata, aguardo retorno.
+Att.,
+Angélica Batista.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180604/e9b2ed19/attachment.html>
+
+From henrique.bdias em yahoo.com.br  Mon Jun  4 20:29:46 2018
+From: henrique.bdias em yahoo.com.br (Henrique Boriolo Dias)
+Date: Mon, 4 Jun 2018 23:29:46 +0000 (UTC)
+Subject: [R-br]
+ =?utf-8?b?Z2dwbG90Ml9hcHJlc2VudGFyIGVxdWHDp8OjbyBubyBncsOh?=
+ =?utf-8?q?fico?=
+In-Reply-To: <118210587.116420.1528125679343.JavaMail.administrator@mben.nabble.com>
+References: <118210587.116420.1528125679343.JavaMail.administrator@mben.nabble.com>
+Message-ID: <956481544.57554.1528154986044@mail.yahoo.com>
+
+Obrigado Cayan.
+Todavia, acho que não me expressei direito com relação ao que procuro.
+Saberia me dizer se nessa equação y ~ exp(-x) tem algum número que multiplica o 'x' ?
+Tem como escrever essa equação, por exemplo, y ~ exp(-xz). O 'z' que gostaria de descobrir/ajustar, se for possível com essa função.
+Outra dificuldade, é plotar a equação usando o facet_wrap, ou seja, uma equação (y ~ exp(-xz)) e regressão (a, b, R²) para cada gráfico. Não sei se isso é possível ou se é melhor fazer um loop para cada gráfico.
+Perdão a falha ao explicar. Nem sei se é possível ou não, mas está ai para discussão.Obrigado mais uma vez.
+Henrique 
+
+    Em Terça-feira, 5 de Junho de 2018 1:21, Cayan Portela via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+ Você pode gerar um modelo utilizando a função lm e extrair os coeficientes.
+
+De acordo com https://stackoverflow.com/questions/30144785/how-to-extract-intercept-and-slope-from-a-plot-for-large-number-of-variables ,
+no seu caso ficaria assim:
+
+db %>% 
+  group_by(type) %>% 
+  do({
+    mod = lm(y ~ exp(-x), data = .)
+    data.frame(Intercept = coef(mod)[1],
+              Slope = coef(mod)[2])
+  })
+
+Cayan
+
+_____________________________________
+Sent from http://r-br.2285057.n4.nabble.com
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180604/b2773bca/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Jun  4 21:09:03 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 4 Jun 2018 21:09:03 -0300
+Subject: [R-br] =?utf-8?q?Erro_na_an=C3=A1lise_de_regress=C3=A3o?=
+In-Reply-To: <SC1P152MB0544C9B3AB666FD1FADBA34B91670@SC1P152MB0544.LAMP152.PROD.OUTLOOK.COM>
+References: <242992500.122408.1528153775320.JavaMail.administrator@mben.nabble.com>
+ <SC1P152MB0544C9B3AB666FD1FADBA34B91670@SC1P152MB0544.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <CAKrF98=HsvG9HaEnqAN=Ws=4QeSWebWaKZ3x7k+caRX9LZC_cw@mail.gmail.com>
+
+Angélica,
+
+O tratamento seria a variável *Oleo* e a resposta, a var. *S* ?
+
+Você já experimentou plotar esses dados?
+
+Qual é o seu pressuposto para chamar dic do pacote ExpDes.pt, dessa maneira?
+
+--
+Cesar Rabak
+
+
+2018-06-04 20:15 GMT-03:00 Angélica Ricarte via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Prezados, boa noite.
+>
+> Estou com a seguinte dúvida, se puderem me ajudar, agradeço demais:
+>
+> Utilizando o pacote "ExpDes.pt", fiz a seguinte análise:
+> >dados
+>    Oleo      S
+> 1   0.0  85.71
+> 2   0.0  85.71
+> 3   0.0  85.71
+> 4   0.0  85.71
+> 5   0.0  85.71
+> 6   0.5  85.71
+> 7   0.5  85.71
+> 8   0.5  85.71
+> 9   0.5  85.71
+> 10  0.5  85.71
+> 11  1.0 100.00
+> 12  1.0 100.00
+> 13  1.0 100.00
+> 14  1.0 100.00
+> 15  1.0 100.00
+> 16  1.5  71.42
+> 17  1.5  71.42
+> 18  1.5  71.42
+> 19  1.5  71.42
+> 20  1.5  71.42
+> > dic(dados[,1],dados[,2],quali=F,sigF=0.05)
+> ------------------------------------------------------------------------
+> Quadro da analise de variancia
+> ------------------------------------------------------------------------
+>            GL   SQ     QM         Fc       Pr>Fc
+> Tratamento  3 2042 680.68 4.4071e+30 1.5357e-239
+> Residuo    16    0   0.00
+> Total      19 2042
+> ------------------------------------------------------------------------
+> CV = 0 %
+>
+> ------------------------------------------------------------------------
+> Teste de normalidade dos residuos
+> Valor-p:  5.640644e-07
+> ATENCAO: a 5% de significancia, os residuos nao podem ser considerados
+> normais!
+> ------------------------------------------------------------------------
+>
+> ------------------------------------------------------------------------
+> Teste de homogeneidade de variancia
+> valor-p:  NaN
+> Error in if (pvalor.hvar < 0.05) { :
+>   valor ausente onde TRUE/FALSE necessário
+> > dic(dados[,1],dados[,2],quali=F,sigF=0.05)
+>
+> Porque não consigo obter um resultado para a análise de regressão? Seria
+> porque o CV é igual a zero e porque não há variância? Se sim, poderiam me
+> dar uma explicação sobre a relação entre a variância e a regressão? Também
+> tentei fazer o mesmo considerando os tratamentos qualitativos (quali=T)
+> para obter um teste de médias, porém aparece a mesma mensagem de erro. OBS:
+> para outras variáveis (que possuem variância e CV diferente de zero) deu
+> certo a análise.
+>
+> Grata, aguardo retorno.
+> Att.,
+> Angélica Batista.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180604/037b1956/attachment.html>
+
+From angelica.ricarte em hotmail.com  Mon Jun  4 21:16:55 2018
+From: angelica.ricarte em hotmail.com (=?iso-8859-1?Q?Ang=E9lica_Ricarte?=)
+Date: Tue, 5 Jun 2018 00:16:55 +0000
+Subject: [R-br] =?iso-8859-1?q?Erro_na_an=E1lise_de_regress=E3o?=
+In-Reply-To: <CAKrF98=HsvG9HaEnqAN=Ws=4QeSWebWaKZ3x7k+caRX9LZC_cw@mail.gmail.com>
+References: <242992500.122408.1528153775320.JavaMail.administrator@mben.nabble.com>
+ <SC1P152MB0544C9B3AB666FD1FADBA34B91670@SC1P152MB0544.LAMP152.PROD.OUTLOOK.COM>,
+ <CAKrF98=HsvG9HaEnqAN=Ws=4QeSWebWaKZ3x7k+caRX9LZC_cw@mail.gmail.com>
+Message-ID: <SC1P152MB0544896B3BA159D21541937491660@SC1P152MB0544.LAMP152.PROD.OUTLOOK.COM>
+
+Olá, Cesar Rabak.
+
+
+O experimento foi realizado em DIC com adição de doses de extrato de óleo essencial de capim santo em ração de peixes. Assim, o tratamento é "Oleo" e a variável é a taxa de sobrevivência (S).
+
+
+Os dados plotados:
+
+[cid:a1cd90f0-63e3-48e9-b9db-0aabefec4e46]
+
+
+Eu queria entender porque não dá certo a análise de regressão e o teste de médias utilizando o pacote ExpDes.pt, sendo que para outras variáveis deu tudo certo. O que me levou a acreditar que o problema está no fato de não haver variância e o CV=0%. Mas não sei explicar o porquê.
+
+
+Angélica Ricarte da Silva Batista
+
+Mestre em Agronomia/ Graduada em Engenharia Agronômica (Universidade Federal do Vale do São Francisco - UNIVASF)
+
+<http://lattes.cnpq.br/0601801978475226>Currículo Lattes<http://lattes.cnpq.br/0601801978475226><http://lattes.cnpq.br/0601801978475226>
+
+<http://lattes.cnpq.br/0601801978475226>
+
+
+________________________________
+De: Cesar Rabak <cesar.rabak em gmail.com>
+Enviado: segunda-feira, 4 de junho de 2018 22:09
+Para: Angélica Ricarte; a lista Brasileira oficial de discussão do programa R.
+Assunto: Re: [R-br] Erro na análise de regressão
+
+Angélica,
+
+O tratamento seria a variável Oleo e a resposta, a var. S ?
+
+Você já experimentou plotar esses dados?
+
+Qual é o seu pressuposto para chamar dic do pacote ExpDes.pt, dessa maneira?
+
+--
+Cesar Rabak
+
+
+2018-06-04 20:15 GMT-03:00 Angélica Ricarte via R-br <r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br>>:
+
+Prezados, boa noite.
+
+Estou com a seguinte dúvida, se puderem me ajudar, agradeço demais:
+
+Utilizando o pacote "ExpDes.pt", fiz a seguinte análise:
+>dados
+   Oleo      S
+1   0.0  85.71
+2   0.0  85.71
+3   0.0  85.71
+4   0.0  85.71
+5   0.0  85.71
+6   0.5  85.71
+7   0.5  85.71
+8   0.5  85.71
+9   0.5  85.71
+10  0.5  85.71
+11  1.0 100.00
+12  1.0 100.00
+13  1.0 100.00
+14  1.0 100.00
+15  1.0 100.00
+16  1.5  71.42
+17  1.5  71.42
+18  1.5  71.42
+19  1.5  71.42
+20  1.5  71.42
+> dic(dados[,1],dados[,2],quali=F,sigF=0.05)
+------------------------------------------------------------------------
+Quadro da analise de variancia
+------------------------------------------------------------------------
+           GL   SQ     QM         Fc       Pr>Fc
+Tratamento  3 2042 680.68 4.4071e+30 1.5357e-239
+Residuo    16    0   0.00
+Total      19 2042
+------------------------------------------------------------------------
+CV = 0 %
+
+------------------------------------------------------------------------
+Teste de normalidade dos residuos
+Valor-p:  5.640644e-07
+ATENCAO: a 5% de significancia, os residuos nao podem ser considerados normais!
+------------------------------------------------------------------------
+
+------------------------------------------------------------------------
+Teste de homogeneidade de variancia
+valor-p:  NaN
+Error in if (pvalor.hvar < 0.05) { :
+  valor ausente onde TRUE/FALSE necessário
+> dic(dados[,1],dados[,2],quali=F,sigF=0.05)
+
+Porque não consigo obter um resultado para a análise de regressão? Seria porque o CV é igual a zero e porque não há variância? Se sim, poderiam me dar uma explicação sobre a relação entre a variância e a regressão? Também tentei fazer o mesmo considerando os tratamentos qualitativos (quali=T) para obter um teste de médias, porém aparece a mesma mensagem de erro. OBS: para outras variáveis (que possuem variância e CV diferente de zero) deu certo a análise.
+
+Grata, aguardo retorno.
+Att.,
+Angélica Batista.
+
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br<mailto:R-br em listas.c3sl.ufpr.br>
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180605/f0947a92/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: pastedImage.png
+Tipo: image/png
+Tamanho: 12523 bytes
+Descrição: pastedImage.png
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180605/f0947a92/attachment.png>
+
+From cesar.rabak em gmail.com  Mon Jun  4 21:25:29 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 4 Jun 2018 21:25:29 -0300
+Subject: [R-br]
+	=?utf-8?b?Z2dwbG90Ml9hcHJlc2VudGFyIGVxdWHDp8OjbyBubyBncsOh?=
+	=?utf-8?q?fico?=
+In-Reply-To: <956481544.57554.1528154986044@mail.yahoo.com>
+References: <118210587.116420.1528125679343.JavaMail.administrator@mben.nabble.com>
+ <956481544.57554.1528154986044@mail.yahoo.com>
+Message-ID: <CAKrF98niGyn29Bqp=gTpEpKQRBgntovgMAM-DidiiF1M3viWCQ@mail.gmail.com>
+
+Henrique,
+
+Se você está pedindo para o SW, via  geom_smooth(method = lm, formula = y ~
+exp(-x), se = FALSE) fazer o alisamento de uma curva usando a equação y ~
+exp(-x), como você esperaria que o SW "adivinhasse" que você quer calcular
+um coeficiente para o expoente?
+
+Por outro lado, se você está se perguntando qual coeficiente poderia ser
+usado para fazer uma equação fechada considerando as duas curvas, bastaria
+você pegar os dados do procedimento proposto por Cayan e dividir os
+coeficientes para obter o fator, não seria isso?
+
+HTH
+--
+Cesar Rabak
+
+
+
+2018-06-04 20:29 GMT-03:00 Henrique Boriolo Dias via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Obrigado Cayan.
+>
+> Todavia, acho que não me expressei direito com relação ao que procuro.
+>
+> Saberia me dizer se nessa equação y ~ exp(-x) tem algum número que
+> multiplica o 'x' ?
+> Tem como escrever essa equação, por exemplo, y ~ exp(-xz). O 'z' que
+> gostaria de descobrir/ajustar, se for possível com essa função.
+>
+> Outra dificuldade, é plotar a equação usando o facet_wrap, ou seja, uma
+> equação (y ~ exp(-xz)) e regressão (a, b, R²) para cada gráfico. Não sei
+> se isso é possível ou se é melhor fazer um loop para cada gráfico.
+>
+> Perdão a falha ao explicar. Nem sei se é possível ou não, mas está ai para
+> discussão.
+> Obrigado mais uma vez.
+>
+> Henrique
+>
+>
+> Em Terça-feira, 5 de Junho de 2018 1:21, Cayan Portela via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Você pode gerar um modelo utilizando a função lm e extrair os coeficientes.
+>
+> De acordo com https://stackoverflow.com/questions/30144785/how-to-
+> extract-intercept-and-slope-from-a-plot-for-large-number-of-variables ,
+> no seu caso ficaria assim:
+>
+> db %>%
+>   group_by(type) %>%
+>   do({
+>     mod = lm(y ~ exp(-x), data = .)
+>     data.frame(Intercept = coef(mod)[1],
+>               Slope = coef(mod)[2])
+>   })
+>
+> Cayan
+>
+> _____________________________________
+> Sent from http://r-br.2285057.n4.nabble.com
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180604/d0614848/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Jun  4 21:51:22 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 4 Jun 2018 21:51:22 -0300
+Subject: [R-br] =?utf-8?q?Erro_na_an=C3=A1lise_de_regress=C3=A3o?=
+In-Reply-To: <SC1P152MB0544896B3BA159D21541937491660@SC1P152MB0544.LAMP152.PROD.OUTLOOK.COM>
+References: <242992500.122408.1528153775320.JavaMail.administrator@mben.nabble.com>
+ <SC1P152MB0544C9B3AB666FD1FADBA34B91670@SC1P152MB0544.LAMP152.PROD.OUTLOOK.COM>
+ <CAKrF98=HsvG9HaEnqAN=Ws=4QeSWebWaKZ3x7k+caRX9LZC_cw@mail.gmail.com>
+ <SC1P152MB0544896B3BA159D21541937491660@SC1P152MB0544.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <CAKrF98nQdPtiqkmU1YQ7W__m=Uxsc7qZNbOw-cZ3jyPJ-vr6YQ@mail.gmail.com>
+
+OK, Angélica.
+
+Veja que seu plot indica uma varição não linear com relação à
+sobrevivência, ela é máxima para um certo valor de concentração do óleo,
+enquanto sua curva e uma regressão linear faz entender que o aumento do
+óleo diminui monotonicamente a taxa de sobrevivência.
+
+SE for feita uma regressão linear, obtem-se com seus dados o seguinte:
+
+> summary(lm(S ~ Oleo))
+
+Call:
+lm(formula = S ~ Oleo)
+
+Residuals:
+    Min      1Q  Median      3Q     Max
+-10,003  -5,716  -2,858   2,858  15,719
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)   89,997      3,781  23,804 4,68e-15 ***
+Oleo          -5,716      4,042  -1,414    0,174
+---
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
+
+Residual standard error: 10,1 on 18 degrees of freedom
+Multiple R-squared:    0,1, Adjusted R-squared:   0,05
+F-statistic:     2 on 1 and 18 DF,  p-value: 0,1744
+
+> anova(lm(S ~ Oleo))
+Analysis of Variance Table
+
+Response: S
+          Df Sum Sq Mean Sq F value Pr(>F)
+Oleo       1  204,2   204,2       2 0,1744
+Residuals 18 1837,8   102,1
+
+
+Quando você chama dic, ele força a variável tratamento (mesmo neste caso
+sendo uma variável numérica contínua) a ser vista pelo SW que chama aov()
+em dic, como uma variável categórica não ordenada, e como dentro de cada
+categoria não há variabilidade nenhuma no seus dados você acaba com isto:
+
+> summary(aov(S ~ factor(Oleo)))
+             Df Sum Sq Mean Sq   F value Pr(>F)
+factor(Oleo)  3   2042   680,7 4,407e+30 <2e-16 ***
+Residuals    16      0     0,0
+---
+Signif. codes:  0 '***' 0,001 '**' 0,01 '*' 0,05 '.' 0,1 ' ' 1
+
+O código acima redunda o óbvio que se saberia lendo os seus dados, para
+cada valor de conc. de óleo há um valor de sobrevivência!
+
+HTH
+--
+Cesar Rabak
+
+
+2018-06-04 21:16 GMT-03:00 Angélica Ricarte <angelica.ricarte em hotmail.com>:
+
+> Olá, Cesar Rabak.
+>
+>
+> O experimento foi realizado em DIC com adição de doses de extrato de óleo
+> essencial de capim santo em ração de peixes. Assim, o tratamento é "Oleo" e
+> a variável é a taxa de sobrevivência (S).
+>
+>
+> Os dados plotados:
+>
+>
+>
+> Eu queria entender porque não dá certo a análise de regressão e o teste de
+> médias utilizando o pacote ExpDes.pt, sendo que para outras variáveis deu
+> tudo certo. O que me levou a acreditar que o problema está no fato de não
+> haver variância e o CV=0%. Mas não sei explicar o porquê.
+>
+>
+> *Angélica Ricarte da Silva Batista*
+>
+> Mestre em Agronomia/ Graduada em Engenharia Agronômica (Universidade
+> Federal do Vale do São Francisco - UNIVASF)
+>
+> <http://lattes.cnpq.br/0601801978475226>Currículo Lattes
+> <http://lattes.cnpq.br/0601801978475226>
+> <http://lattes.cnpq.br/0601801978475226>
+>
+> <http://lattes.cnpq.br/0601801978475226>
+>
+>
+> ------------------------------
+> *De:* Cesar Rabak <cesar.rabak em gmail.com>
+> *Enviado:* segunda-feira, 4 de junho de 2018 22:09
+> *Para:* Angélica Ricarte; a lista Brasileira oficial de discussão do
+> programa R.
+> *Assunto:* Re: [R-br] Erro na análise de regressão
+>
+> Angélica,
+>
+> O tratamento seria a variável *Oleo* e a resposta, a var. *S* ?
+>
+> Você já experimentou plotar esses dados?
+>
+> Qual é o seu pressuposto para chamar dic do pacote ExpDes.pt, dessa
+> maneira?
+>
+> --
+> Cesar Rabak
+>
+>
+> 2018-06-04 20:15 GMT-03:00 Angélica Ricarte via R-br <
+> r-br em listas.c3sl.ufpr.br>:
+>
+> Prezados, boa noite.
+>
+> Estou com a seguinte dúvida, se puderem me ajudar, agradeço demais:
+>
+> Utilizando o pacote "ExpDes.pt", fiz a seguinte análise:
+> >dados
+>    Oleo      S
+> 1   0.0  85.71
+> 2   0.0  85.71
+> 3   0.0  85.71
+> 4   0.0  85.71
+> 5   0.0  85.71
+> 6   0.5  85.71
+> 7   0.5  85.71
+> 8   0.5  85.71
+> 9   0.5  85.71
+> 10  0.5  85.71
+> 11  1.0 100.00
+> 12  1.0 100.00
+> 13  1.0 100.00
+> 14  1.0 100.00
+> 15  1.0 100.00
+> 16  1.5  71.42
+> 17  1.5  71.42
+> 18  1.5  71.42
+> 19  1.5  71.42
+> 20  1.5  71.42
+> > dic(dados[,1],dados[,2],quali=F,sigF=0.05)
+> ------------------------------------------------------------------------
+> Quadro da analise de variancia
+> ------------------------------------------------------------------------
+>            GL   SQ     QM         Fc       Pr>Fc
+> Tratamento  3 2042 680.68 4.4071e+30 1.5357e-239
+> Residuo    16    0   0.00
+> Total      19 2042
+> ------------------------------------------------------------------------
+> CV = 0 %
+>
+> ------------------------------------------------------------------------
+> Teste de normalidade dos residuos
+> Valor-p:  5.640644e-07
+> ATENCAO: a 5% de significancia, os residuos nao podem ser considerados
+> normais!
+> ------------------------------------------------------------------------
+>
+> ------------------------------------------------------------------------
+> Teste de homogeneidade de variancia
+> valor-p:  NaN
+> Error in if (pvalor.hvar < 0.05) { :
+>   valor ausente onde TRUE/FALSE necessário
+> > dic(dados[,1],dados[,2],quali=F,sigF=0.05)
+>
+> Porque não consigo obter um resultado para a análise de regressão? Seria
+> porque o CV é igual a zero e porque não há variância? Se sim, poderiam me
+> dar uma explicação sobre a relação entre a variância e a regressão? Também
+> tentei fazer o mesmo considerando os tratamentos qualitativos (quali=T)
+> para obter um teste de médias, porém aparece a mesma mensagem de erro. OBS:
+> para outras variáveis (que possuem variância e CV diferente de zero) deu
+> certo a análise.
+>
+> Grata, aguardo retorno.
+> Att.,
+> Angélica Batista.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180604/67a775ad/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: pastedImage.png
+Tipo: image/png
+Tamanho: 12523 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180604/67a775ad/attachment-0001.png>
+
+From henrique.bdias em yahoo.com.br  Tue Jun  5 00:06:21 2018
+From: henrique.bdias em yahoo.com.br (Henrique Boriolo Dias)
+Date: Tue, 5 Jun 2018 03:06:21 +0000 (UTC)
+Subject: [R-br]
+ =?utf-8?b?Z2dwbG90Ml9hcHJlc2VudGFyIGVxdWHDp8OjbyBubyBncsOh?=
+ =?utf-8?q?fico?=
+In-Reply-To: <CAKrF98niGyn29Bqp=gTpEpKQRBgntovgMAM-DidiiF1M3viWCQ@mail.gmail.com>
+References: <118210587.116420.1528125679343.JavaMail.administrator@mben.nabble.com>
+ <956481544.57554.1528154986044@mail.yahoo.com>
+ <CAKrF98niGyn29Bqp=gTpEpKQRBgntovgMAM-DidiiF1M3viWCQ@mail.gmail.com>
+Message-ID: <2090582424.88043.1528167981719@mail.yahoo.com>
+
+Pois é,Acho que to misturando tudo. Enfim, vou estudar melhor antes.Obrigado pelas sugestões e esclarecimentos.Henrique 
+
+    Em Terça-feira, 5 de Junho de 2018 10:25, Cesar Rabak <cesar.rabak em gmail.com> escreveu:
+ 
+
+ Henrique,
+Se você está pedindo para o SW, via geom_smooth(method = lm, formula = y ~ exp(-x), se = FALSE)fazer o alisamento de uma curva usando a equação y ~ exp(-x), como você esperaria que o SW "adivinhasse" que você quer calcular um coeficiente para o expoente?
+Por outro lado, se você está se perguntando qual coeficiente poderia ser usado para fazer uma equação fechada considerando as duas curvas, bastaria você pegar os dados do procedimento proposto por Cayan e dividir os coeficientes para obter o fator, não seria isso?
+HTH--Cesar Rabak
+
+
+2018-06-04 20:29 GMT-03:00 Henrique Boriolo Dias via R-br <r-br em listas.c3sl.ufpr.br>:
+
+Obrigado Cayan.
+Todavia, acho que não me expressei direito com relação ao que procuro.
+Saberia me dizer se nessa equação y ~ exp(-x) tem algum número que multiplica o 'x' ?
+Tem como escrever essa equação, por exemplo, y ~ exp(-xz). O 'z' que gostaria de descobrir/ajustar, se for possível com essa função.
+Outra dificuldade, é plotar a equação usando o facet_wrap, ou seja, uma equação (y ~ exp(-xz)) e regressão (a, b, R²) para cada gráfico. Não sei se isso é possível ou se é melhor fazer um loop para cada gráfico.
+Perdão a falha ao explicar. Nem sei se é possível ou não, mas está ai para discussão.Obrigado mais uma vez.
+Henrique 
+
+    Em Terça-feira, 5 de Junho de 2018 1:21, Cayan Portela via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+ Você pode gerar um modelo utilizando a função lm e extrair os coeficientes.
+
+De acordo com https://stackoverflow.com/ questions/30144785/how-to- extract-intercept-and-slope- from-a-plot-for-large-number- of-variables ,
+no seu caso ficaria assim:
+
+db %>% 
+  group_by(type) %>% 
+  do({
+    mod = lm(y ~ exp(-x), data = .)
+    data.frame(Intercept = coef(mod)[1],
+              Slope = coef(mod)[2])
+  })
+
+Cayan
+
+______________________________ _______
+Sent from http://r-br.2285057.n4.nabble. com
+
+______________________________ _________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e fornea cdigo mnimo reproduzvel.
+
+   
+______________________________ _________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forneça código mínimo reproduzível.
+
+
+
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180605/ec1ce02b/attachment.html>
+
+From neves.peres135 em gmail.com  Tue Jun  5 07:51:05 2018
+From: neves.peres135 em gmail.com (Alice Peres)
+Date: Tue, 5 Jun 2018 06:51:05 -0400
+Subject: [R-br] linhas de densidade com legenda
+Message-ID: <CAJ+iSzDTJrScJmN3YVESqRFw48RRCOT5JcrpWX7MMZ4k-vuAwg@mail.gmail.com>
+
+Bom dia, caros membros
+
+Estou tendo dificuldade, vocês podem me ajudar a  a transformar o gráfico
+abaixo em 4 linhas de densidade com legenda?
+
+x=c(3.42,4.01,4.04,4.26,4.10,5.61,4.90,3.67,5.30,5.05,4.44,3.50,4.09,5.05,4.40,3.99,3.86,
+4.99,2.86,2.18,3.61,4.45,5.01,3.11,3.53,4.70,4.03,3.23,2.87,3.38,3.04,4.59,1.45,3.91,5.46,5.70,
+3.33,3.38,5.43,3.33,4.37,3.83,3.45,5.74,3.64,3.23,4.32,2.91,4.69,4.04,3.10,3.29,4.04,3.41,4.57,
+2.97,5.46,4.02,5.62,4.94,3.23,4.39,3.67,3.99,2.60,3.05,2.81,2.61,3.06,4.21,3.19,2.30,2.84,2.60,
+4.32,2.55,3.23,3.66,3.26,3.90,4.60,3.99,3.42,4.53,3.20,3.46,3.19)
+
+
+hist(rexp(1000,1/min(x)),freq=FALSE)
+
+hist(rgamma(1000,shape=mean(x)^2,rate=mean(x)),freq=FALSE,add=TRUE)
+
+hist(rexp(1000,1/mean(x)),freq=FALSE,add=TRUE)
+
+hist(rexp(1000,1/max(x)),freq=FALSE,add=TRUE)
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180605/6fbbd37b/attachment.html>
+
+From dtiezzi em usp.br  Tue Jun  5 08:40:52 2018
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 5 Jun 2018 08:40:52 -0300
+Subject: [R-br] linhas de densidade com legenda
+In-Reply-To: <CAJ+iSzDTJrScJmN3YVESqRFw48RRCOT5JcrpWX7MMZ4k-vuAwg@mail.gmail.com>
+References: <CAJ+iSzDTJrScJmN3YVESqRFw48RRCOT5JcrpWX7MMZ4k-vuAwg@mail.gmail.com>
+Message-ID: <75A181EC-AAAB-4C20-AA95-28A3252C71B9@usp.br>
+
+Seria isso?
+
+x=c(3.42,4.01,4.04,4.26,4.10,5.61,4.90,3.67,5.30,5.05,4.44,3.50,4.09,5.05,4.40,3.99,3.86,
+    4.99,2.86,2.18,3.61,4.45,5.01,3.11,3.53,4.70,4.03,3.23,2.87,3.38,3.04,4.59,1.45,3.91,5.46,5.70,
+    3.33,3.38,5.43,3.33,4.37,3.83,3.45,5.74,3.64,3.23,4.32,2.91,4.69,4.04,3.10,3.29,4.04,3.41,4.57,
+    2.97,5.46,4.02,5.62,4.94,3.23,4.39,3.67,3.99,2.60,3.05,2.81,2.61,3.06,4.21,3.19,2.30,2.84,2.60,
+    4.32,2.55,3.23,3.66,3.26,3.90,4.60,3.99,3.42,4.53,3.20,3.46,3.19)
+
+plot(density(rgamma(1000,shape=mean(x)^2)), col= 'orange', xlim= c(0, 40), ylim= c(0,.6))
+lines(density(rexp(1000,1/min(x))),col= 'red', lty=2)
+lines(density(rexp(1000,1/mean(x))), col= 'blue', lty=3)
+lines(density(rexp(1000,1/max(x))), col= 'green',  lty= 4)
+legend(30, .5, legend=c("Line 1", "Line 2", "Line 3", "Line 4"),
+       col=c('orange',"red", "blue", 'green'), lty=1:4, cex=0.8)
+
+
+Daniel
+
+> On 5 Jun 2018, at 07:51, Alice Peres via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> x=c(3.42,4.01,4.04,4.26,4.10,5.61,4.90,3.67,5.30,5.05,4.44,3.50,4.09,5.05,4.40,3.99,3.86,
+> 4.99,2.86,2.18,3.61,4.45,5.01,3.11,3.53,4.70,4.03,3.23,2.87,3.38,3.04,4.59,1.45,3.91,5.46,5.70,
+> 3.33,3.38,5.43,3.33,4.37,3.83,3.45,5.74,3.64,3.23,4.32,2.91,4.69,4.04,3.10,3.29,4.04,3.41,4.57,
+> 2.97,5.46,4.02,5.62,4.94,3.23,4.39,3.67,3.99,2.60,3.05,2.81,2.61,3.06,4.21,3.19,2.30,2.84,2.60,
+> 4.32,2.55,3.23,3.66,3.26,3.90,4.60,3.99,3.42,4.53,3.20,3.46,3.19)
+> 
+> 
+> hist(rexp(1000,1/min(x)),freq=FALSE)
+> 
+> hist(rgamma(1000,shape=mean(x)^2,rate=mean(x)),freq=FALSE,add=TRUE)
+> 
+> hist(rexp(1000,1/mean(x)),freq=FALSE,add=TRUE)
+> 
+> hist(rexp(1000,1/max(x)),freq=FALSE,add=TRUE)
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180605/2dbdca48/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Wed Jun  6 15:46:25 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Wed, 6 Jun 2018 18:46:25 +0000 (UTC)
+Subject: [R-br] Converter character em numeric
+References: <523264520.1312683.1528310785037.ref@mail.yahoo.com>
+Message-ID: <523264520.1312683.1528310785037@mail.yahoo.com>
+
+Boa Tarde!
+estou tentando converter uma variável character em numerica e não estou conseguindo, alguem pode me ajudar por favor?
+> typeof(mes_ano)[1] "character"> agregar<-as.numeric(as.character(mes_ano))> is.numeric(mes_ano)[1] FALSE
+
+Edmar
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180606/c5de09fe/attachment.html>
+
+From jasmine.moreira.2013 em gmail.com  Wed Jun  6 16:05:31 2018
+From: jasmine.moreira.2013 em gmail.com (Jasmine Moreira)
+Date: Wed, 6 Jun 2018 16:05:31 -0300
+Subject: [R-br] Converter character em numeric
+In-Reply-To: <523264520.1312683.1528310785037@mail.yahoo.com>
+References: <523264520.1312683.1528310785037.ref@mail.yahoo.com>
+ <523264520.1312683.1528310785037@mail.yahoo.com>
+Message-ID: <935C3245-5724-4000-9FD8-9751A87BD6FA@gmail.com>
+
+Oi Edmar,
+
+Teste assim:
+
+mes_ano <- as.numeric(mes_ano)
+
+Jasmine
+
+> Em 6 de jun de 2018, à(s) 15:46, Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+> 
+> Boa Tarde!
+> 
+> estou tentando converter uma variável character em numerica e não estou conseguindo, alguem pode me ajudar por favor?
+> 
+> > typeof(mes_ano)
+> [1] "character"
+> > agregar<-as.numeric(as.character(mes_ano))
+> > is.numeric(mes_ano)
+> [1] FALSE
+> 
+> 
+> Edmar
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180606/7307311d/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Wed Jun  6 16:07:02 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Wed, 6 Jun 2018 19:07:02 +0000 (UTC)
+Subject: [R-br] Converter character em numeric
+In-Reply-To: <935C3245-5724-4000-9FD8-9751A87BD6FA@gmail.com>
+References: <523264520.1312683.1528310785037.ref@mail.yahoo.com>
+ <523264520.1312683.1528310785037@mail.yahoo.com>
+ <935C3245-5724-4000-9FD8-9751A87BD6FA@gmail.com>
+Message-ID: <1145867900.1246857.1528312022968@mail.yahoo.com>
+
+Funcionou Obrigado!
+Edmar 
+
+    Em quarta-feira, 6 de junho de 2018 16:05:37 BRT, Jasmine Moreira <jasmine.moreira.2013 em gmail.com> escreveu:  
+ 
+ Oi Edmar,
+Teste assim:
+mes_ano <- as.numeric(mes_ano)
+Jasmine
+
+Em 6 de jun de 2018, à(s) 15:46, Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+Boa Tarde!
+estou tentando converter uma variável character em numerica e não estou conseguindo, alguem pode me ajudar por favor?
+> typeof(mes_ano)[1] "character"> agregar<-as.numeric(as.character(mes_ano))> is.numeric(mes_ano)[1] FALSE
+
+Edmar_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180606/372d5b90/attachment.html>
+
+From gersonprimo em gmail.com  Mon Jun 11 13:11:01 2018
+From: gersonprimo em gmail.com (Gerson Jr)
+Date: Mon, 11 Jun 2018 13:11:01 -0300
+Subject: [R-br]
+	=?utf-8?q?como_usar_um_layout_gr=C3=A1fico_do_tipo_3x2_=3F?=
+In-Reply-To: <2fbc9a09-7c72-46c8-4fbc-c860bb844d7b@yahoo.com.br>
+References: <2fbc9a09-7c72-46c8-4fbc-c860bb844d7b@yahoo.com.br>
+Message-ID: <CAPco9824MmrvAeOjtAKruQza74yMrDpuBE=VSWdaGWDSnBwbZA@mail.gmail.com>
+
+ Veja se essa ideia ajuda:
+grafico <- matrix(c(1:6),ncol=2, byrow = TRUE)
+layout(grafico)
+for(i in 1:6)
+{hist(rnorm(100))}
+
+
+
+*Att,Gerson R. Primo Jr*
+
+
+
+Em seg, 16 de abr de 2018 às 16:04, Cleber N.Borges via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá a todos,
+>
+> Gostaria de fazer 5 gráficos em uma mesma janela...
+>
+> mas não entendi como usar as funções de layout... Gostaria de algo mais
+> ou menos como coloco abaixo:
+>
+> ########
+>
+> #   primeira linha na janela gráfica =>   3 gráficos
+>
+> plot( rnorm(10), col=1 ); plot( rnorm(10), col=2 ); plot( rnorm(10),
+> col=3 );
+>
+> #   segunda linha na janela gráfica =>   2 gráficos
+>
+> hist( rnorm(10), col=1 ); hist( rnorm(10), col=2 ); plot( rnorm(10),
+> col=3 );
+>
+>
+> agradeço antecipadamente pela ajuda
+>
+> Cleber Borges
+>
+>
+> ---
+> Este email foi escaneado pelo Avast antivírus.
+> https://www.avast.com/antivirus
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180611/d7797e71/attachment.html>
+
+From nobrega.manasses em gmail.com  Tue Jun 12 00:36:40 2018
+From: nobrega.manasses em gmail.com (=?UTF-8?Q?Manasses_N=C3=B3brega?=)
+Date: Tue, 12 Jun 2018 00:36:40 -0300
+Subject: [R-br] Criar um VETOR de um dataframe
+Message-ID: <CAEVGS=KNN5Cxnae31qiPDnKvgQiZ1Yx85O6qqvhDbAP41h1TaQ@mail.gmail.com>
+
+Olá, pessoal!
+
+Este parece ser um problema fácil de resolver, mas não estou conseguindo!!
+
+Tenho um conjunto de dados (com quase 3000 linhas) que relaciona a resposta
+de um voluntário sob várias condições experimentais, cada uma dela com seus
+respectivos níveis. Exemplo:
+         resp              V1               V2               V3
+0.35 1 1 1
+0.38 1 2 1
+0.65 1 3 1
+0.49 1 4 1
+-0.25 0 1 2
+-1 0 2 2
+-0.73 0 3 2
+-0.47 0 4 2
+Para realizar uma análise, por exemplo, vou precisar de *um vetor* com as
+respostas apenas para o nível 1 de V2 ou, por exemplo, de* um vetor* com as
+respostas apenas para o nível 2 de V3.
+
+Tentei a função aggregate mas não consegui. Vocês poderiam me ajudar?
+
+Desde já agradeço a todos.
+
+Um abraço,
+Manasses
+
+
+
+-- 
+
+*I am a brain, Watson. The rest of me is a mere appendix. *
+
+*(Sherlock Holmes)*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180612/5b39c772/attachment.html>
+
+From dtiezzi em usp.br  Tue Jun 12 00:44:23 2018
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 12 Jun 2018 00:44:23 -0300
+Subject: [R-br] Criar um VETOR de um dataframe
+In-Reply-To: <CAEVGS=KNN5Cxnae31qiPDnKvgQiZ1Yx85O6qqvhDbAP41h1TaQ@mail.gmail.com>
+References: <CAEVGS=KNN5Cxnae31qiPDnKvgQiZ1Yx85O6qqvhDbAP41h1TaQ@mail.gmail.com>
+Message-ID: <EA141DF5-C8D6-4E76-8596-AC74D723C7C6@usp.br>
+
+Boa noite Manasses
+
+Seria isso?
+
+n1 <- df$resp[df$V1 == 1]
+Aqui você tem um vetor (n1) dos valores de resp para os V1 igual a 1
+
+Daniel
+
+Daniel Tiezzi, MD, PhD
+Professor Associado
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em fmrp.usp.br
+
+
+
+> On 12 Jun 2018, at 00:36, Manasses Nóbrega via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> resp             V1              V2              V30.351110.381210.651310.49141-0.25012-1022-0.73032-0.47042
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180612/9d7b57e5/attachment.html>
+
+From nobrega.manasses em gmail.com  Tue Jun 12 09:05:52 2018
+From: nobrega.manasses em gmail.com (=?UTF-8?Q?Manasses_N=C3=B3brega?=)
+Date: Tue, 12 Jun 2018 09:05:52 -0300
+Subject: [R-br] Criar um VETOR de um dataframe
+In-Reply-To: <EA141DF5-C8D6-4E76-8596-AC74D723C7C6@usp.br>
+References: <CAEVGS=KNN5Cxnae31qiPDnKvgQiZ1Yx85O6qqvhDbAP41h1TaQ@mail.gmail.com>
+ <EA141DF5-C8D6-4E76-8596-AC74D723C7C6@usp.br>
+Message-ID: <CAEVGS=KKZKUZizg1oHEz2Q2ud9Z4L7GLgsBN+3_Gwcx--bt6JA@mail.gmail.com>
+
+É isso mesmo, meu caro!
+Muito obrigado!
+
+Em ter, 12 de jun de 2018 às 00:44, Daniel Guimarães Tiezzi <dtiezzi em usp.br>
+escreveu:
+
+> Boa noite Manasses
+>
+> Seria isso?
+>
+> n1 <- df$resp[df$V1 == 1]
+> Aqui você tem um vetor (n1) dos valores de resp para os V1 igual a 1
+>
+> Daniel
+>
+> Daniel Tiezzi, MD, PhD
+> Professor Associado
+> Departamento de Ginecologia e Obstetrícia
+> Setor de Mastologia e Oncologia Ginecológica
+> Faculdade de Medicina de Ribeirão Preto - USP
+> Tel.: 16 3602-2488
+> e-mail: dtiezzi em fmrp.usp.br <dtiezzi em fmrp.usp.br>
+>
+>
+>
+> On 12 Jun 2018, at 00:36, Manasses Nóbrega via R-br <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> resp             V1              V2
+> V30.351110.381210.651310.49141-0.25012-1022-0.73032-0.47042
+>
+>
+>
+
+-- 
+
+*I am a brain, Watson. The rest of me is a mere appendix. *
+
+*(Sherlock Holmes)*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180612/3077fea6/attachment.html>
+
+From rafaeltieppo em yahoo.com.br  Tue Jun 12 19:54:00 2018
+From: rafaeltieppo em yahoo.com.br (Rafael Tieppo)
+Date: Tue, 12 Jun 2018 22:54:00 +0000 (UTC)
+Subject: [R-br]
+ =?utf-8?q?como_usar_um_layout_gr=C3=A1fico_do_tipo_3x2_=3F?=
+ =?utf-8?q?_=28Gerson_Jr=29?=
+References: <1024039600.4090336.1528844040677.ref@mail.yahoo.com>
+Message-ID: <1024039600.4090336.1528844040677@mail.yahoo.com>
+
+a função grid.arrange() pode ajudar:
+library(gridExtra)grid.arrange(plot1, plot2)
+mais exemplos:
+
+https://www.r-graph-gallery.com/261-multiple-graphs-on-same-page/
+
+
+
+Rafael Tieppo
+State University of Mato Grosso - Department of Agricultural Engineering 
+site: https://rafatieppo.github.io  "Evite o desperdício: antes de imprimir pense na sua responsabilidade com o ambiente".  
+ 
+
+  
+ 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180612/bc4559e1/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Jun 12 20:28:05 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 12 Jun 2018 20:28:05 -0300
+Subject: [R-br] Criar um VETOR de um dataframe
+In-Reply-To: <CAEVGS=KNN5Cxnae31qiPDnKvgQiZ1Yx85O6qqvhDbAP41h1TaQ@mail.gmail.com>
+References: <CAEVGS=KNN5Cxnae31qiPDnKvgQiZ1Yx85O6qqvhDbAP41h1TaQ@mail.gmail.com>
+Message-ID: <CAKrF98nozE3WQcv6kkgpDDgzYOBa5XB4keBrKr-P_p7u959WLA@mail.gmail.com>
+
+Manasses,
+
+Já recebeste uma resposta com uma solução.
+
+Uma outra maneira seria você se familiarizar com a função *subset*.
+
+HTH
+
+--
+Cesar Rabak
+
+
+2018-06-12 0:36 GMT-03:00 Manasses Nóbrega via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Olá, pessoal!
+>
+> Este parece ser um problema fácil de resolver, mas não estou conseguindo!!
+>
+> Tenho um conjunto de dados (com quase 3000 linhas) que relaciona a
+> resposta de um voluntário sob várias condições experimentais, cada uma dela
+> com seus respectivos níveis. Exemplo:
+>          resp              V1               V2               V3
+> 0.35 1 1 1
+> 0.38 1 2 1
+> 0.65 1 3 1
+> 0.49 1 4 1
+> -0.25 0 1 2
+> -1 0 2 2
+> -0.73 0 3 2
+> -0.47 0 4 2
+> Para realizar uma análise, por exemplo, vou precisar de *um vetor* com as
+> respostas apenas para o nível 1 de V2 ou, por exemplo, de* um vetor* com
+> as respostas apenas para o nível 2 de V3.
+>
+> Tentei a função aggregate mas não consegui. Vocês poderiam me ajudar?
+>
+> Desde já agradeço a todos.
+>
+> Um abraço,
+> Manasses
+>
+>
+>
+> --
+>
+> *I am a brain, Watson. The rest of me is a mere appendix. *
+>
+> *(Sherlock Holmes)*
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180612/3ea8323e/attachment.html>
+
+From marcelejc.marinho em gmail.com  Wed Jun 13 12:00:22 2018
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Wed, 13 Jun 2018 12:00:22 -0300
+Subject: [R-br] =?utf-8?b?VW1hIHNvbGljaXRhw6fDo28=?=
+Message-ID: <CABAKcsBA=8PkFUUbMzKfsXMr+VDF+OTzfvqju2NNztTVKd40_Q@mail.gmail.com>
+
+Olá, bom dia pessoal!
+
+Gostaria de saber se alguém tem um dos livros abaixo que possa
+compartilhar, porque tentei baixá-los mas, sem sucesso. Caso alguém tenha
+outros que possa compartilhar ou sugerir, aceito e desde já agradeço.
+
+A Modern Approach to Regression with R *ou* Modern Regression Techniques
+Using R: A Practical Guide.
+
+​Att,
+​
+​​
+Marcele Correa.
+Geographer
+Master Student in Climate Sciences
+​
+Research Line - Bioclimatology and
+​C​
+limatic
+​C​
+hanges
+Advisor - Kellen Carla Lima
+Federal University of Rio Grande do Norte - UFRN / Brazil.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180613/8998a396/attachment.html>
+
+From icximenes em gmail.com  Wed Jun 13 15:06:46 2018
+From: icximenes em gmail.com (Ivanildo Ximenes)
+Date: Wed, 13 Jun 2018 15:06:46 -0300
+Subject: [R-br] =?utf-8?b?VW1hIHNvbGljaXRhw6fDo28=?=
+In-Reply-To: <CABAKcsBA=8PkFUUbMzKfsXMr+VDF+OTzfvqju2NNztTVKd40_Q@mail.gmail.com>
+References: <CABAKcsBA=8PkFUUbMzKfsXMr+VDF+OTzfvqju2NNztTVKd40_Q@mail.gmail.com>
+Message-ID: <CAG3LyWm0M4m1BhKtnFs40GP5opJKuGCjv33syAekeVSCZxjjLw@mail.gmail.com>
+
+http://www.stat.tamu.edu/~sheather/book/docs/statacode/StataPrimer.pdf
+
+2018-06-13 12:00 GMT-03:00 Marcele de Jesus Correa via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Olá, bom dia pessoal!
+>
+> Gostaria de saber se alguém tem um dos livros abaixo que possa
+> compartilhar, porque tentei baixá-los mas, sem sucesso. Caso alguém tenha
+> outros que possa compartilhar ou sugerir, aceito e desde já agradeço.
+>
+> A Modern Approach to Regression with R *ou* Modern Regression Techniques
+> Using R: A Practical Guide.
+>
+> ​Att,
+> ​
+> ​​
+> Marcele Correa.
+> Geographer
+> Master Student in Climate Sciences
+> ​
+> Research Line - Bioclimatology and
+> ​C​
+> limatic
+> ​C​
+> hanges
+> Advisor - Kellen Carla Lima
+> Federal University of Rio Grande do Norte - UFRN / Brazil.
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180613/caab82e5/attachment.html>
+
+From marcelejc.marinho em gmail.com  Wed Jun 13 16:44:56 2018
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Wed, 13 Jun 2018 16:44:56 -0300
+Subject: [R-br] =?utf-8?b?VW1hIHNvbGljaXRhw6fDo28=?=
+In-Reply-To: <CAG3LyWm0M4m1BhKtnFs40GP5opJKuGCjv33syAekeVSCZxjjLw@mail.gmail.com>
+References: <CABAKcsBA=8PkFUUbMzKfsXMr+VDF+OTzfvqju2NNztTVKd40_Q@mail.gmail.com>
+ <CAG3LyWm0M4m1BhKtnFs40GP5opJKuGCjv33syAekeVSCZxjjLw@mail.gmail.com>
+Message-ID: <CABAKcsBh8=PWbqp+-ivAQYdK1VMYXkshf_yM5k8a8WpfCasswQ@mail.gmail.com>
+
+Muito obrigada, Ivanildo.
+
+
+​​
+Marcele Correa.
+Geographer
+Master Student in Climate Sciences
+​
+Research Line - Bioclimatology and
+​C​
+limatic
+​C​
+hanges
+Advisor - Kellen Carla Lima
+Federal University of Rio Grande do Norte - UFRN / Brazil.
+
+
+
+Em 13 de junho de 2018 15:06, Ivanildo Ximenes <icximenes em gmail.com>
+escreveu:
+
+> http://www.stat.tamu.edu/~sheather/book/docs/statacode/StataPrimer.pdf
+>
+> 2018-06-13 12:00 GMT-03:00 Marcele de Jesus Correa via R-br <
+> r-br em listas.c3sl.ufpr.br>:
+>
+>> Olá, bom dia pessoal!
+>>
+>> Gostaria de saber se alguém tem um dos livros abaixo que possa
+>> compartilhar, porque tentei baixá-los mas, sem sucesso. Caso alguém tenha
+>> outros que possa compartilhar ou sugerir, aceito e desde já agradeço.
+>>
+>> A Modern Approach to Regression with R *ou* Modern Regression Techniques
+>> Using R: A Practical Guide.
+>>
+>> ​Att,
+>> ​
+>> ​​
+>> Marcele Correa.
+>> Geographer
+>> Master Student in Climate Sciences
+>> ​
+>> Research Line - Bioclimatology and
+>> ​C​
+>> limatic
+>> ​C​
+>> hanges
+>> Advisor - Kellen Carla Lima
+>> Federal University of Rio Grande do Norte - UFRN / Brazil.
+>>
+>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180613/1735e77a/attachment.html>
+
+From bodevan.ec em gmail.com  Thu Jun 14 13:44:11 2018
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Thu, 14 Jun 2018 13:44:11 -0300
+Subject: [R-br] =?utf-8?q?Planejamento_e_An=C3=A1lise_de_Experimentos?=
+Message-ID: <CAP5i-sxbMhx0+eu_9AR9T1_weNmVwZN=X5xj2aQUrEfFqexijA@mail.gmail.com>
+
+Prezados, boa tarde.
+
+Estou estudando o assunto e gostaria de fazê-lo utilizando o R.
+
+Alguém poderia indicar um bom livro/material sobre planejamento e análise
+de experimentos (preferencialmente utilizando o R) voltado para área de
+Farmácia?
+
+Agradeço qualquer indicação.
+
+Att.,
+
+*Emerson*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180614/f4935723/attachment.html>
+
+From sznelwar em uol.com.br  Thu Jun 14 22:28:58 2018
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Thu, 14 Jun 2018 22:28:58 -0300
+Subject: [R-br] =?utf-8?q?Planejamento_e_An=C3=A1lise_de_Experimentos?=
+In-Reply-To: ["CAP5i-sxbMhx0+eu_9AR9T1_weNmVwZN=X5xj2aQUrEfFqexijA@mail.gmail.com"]
+References: ["CAP5i-sxbMhx0+eu_9AR9T1_weNmVwZN=X5xj2aQUrEfFqexijA@mail.gmail.com"]
+Message-ID: <5b23165a25ee3_43cf2b138d5ff13852516@a4-weasel7.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180614/9bf16bc4/attachment.html>
+
+From edinhoestat em yahoo.com.br  Fri Jun 15 09:07:58 2018
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Fri, 15 Jun 2018 12:07:58 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Planejamento_e_An=C3=A1lise_de_Experimentos?=
+In-Reply-To: <5b23165a25ee3_43cf2b138d5ff13852516@a4-weasel7.mail>
+References: <5b23165a25ee3_43cf2b138d5ff13852516@a4-weasel7.mail>
+Message-ID: <1481638898.826996.1529064478589@mail.yahoo.com>
+
+No Google busque "ANÁLISE DE EXPERIMENTOS COM R"
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em quinta-feira, 14 de junho de 2018 21:29:19 AMT, Mauro Sznelwar via R-br <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Veja este livro lhe é útil, tem um capítulo grande sobre Análise de Variância, que é planejamento de experimentos.https://www.dropbox.com/home?preview=The+R+Book.pdf  Prezados, boa tarde. Estou estudando o assunto e gostaria de fazê-lo utilizando o R. Alguém poderia indicar um bom livro/material sobre planejamento e análise de experimentos (preferencialmente utilizando o R) voltado para área de Farmácia? Agradeço qualquer indicação. Att.,
+
+Emerson_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel._______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180615/afff438a/attachment.html>
+
+From bodevan.ec em gmail.com  Fri Jun 15 13:19:43 2018
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Fri, 15 Jun 2018 13:19:43 -0300
+Subject: [R-br] =?utf-8?q?Planejamento_e_An=C3=A1lise_de_Experimentos?=
+In-Reply-To: <1481638898.826996.1529064478589@mail.yahoo.com>
+References: <5b23165a25ee3_43cf2b138d5ff13852516@a4-weasel7.mail>
+ <1481638898.826996.1529064478589@mail.yahoo.com>
+Message-ID: <CAP5i-sycO-4WLfv_ps2VcWXpizoio_mdqtXuA9ODRbh4auC-Zg@mail.gmail.com>
+
+Prezados, boa tarde.
+
+Muitíssimo obrigado pelas indicações.
+
+Att.,
+
+Em sex, 15 de jun de 2018 09:08, Edson Lira <edinhoestat em yahoo.com.br>
+escreveu:
+
+> No Google busque "ANÁLISE DE EXPERIMENTOS COM R"
+>
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+>
+> Em quinta-feira, 14 de junho de 2018 21:29:19 AMT, Mauro Sznelwar via R-br
+> <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Veja este livro lhe é útil, tem um capítulo grande sobre Análise de
+> Variância, que é planejamento de experimentos.
+> https://www.dropbox.com/home?preview=The+R+Book.pdf
+>
+>
+> Prezados, boa tarde.
+>
+> Estou estudando o assunto e gostaria de fazê-lo utilizando o R.
+>
+> Alguém poderia indicar um bom livro/material sobre planejamento e análise
+> de experimentos (preferencialmente utilizando o R) voltado para área de
+> Farmácia?
+>
+> Agradeço qualquer indicação.
+>
+> Att.,
+>
+> *Emerson*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180615/4a927b0a/attachment.html>
+
+From gislaine em itapeva.unesp.br  Fri Jun 15 13:35:42 2018
+From: gislaine em itapeva.unesp.br (=?UTF-8?Q?Prof=c2=aa_Gislaine?=)
+Date: Fri, 15 Jun 2018 13:35:42 -0300
+Subject: [R-br] =?utf-8?q?Planejamento_e_An=C3=A1lise_de_Experimentos?=
+In-Reply-To: <5b23165a25ee3_43cf2b138d5ff13852516@a4-weasel7.mail>
+References: <5b23165a25ee3_43cf2b138d5ff13852516@a4-weasel7.mail>
+Message-ID: <fbb4819c-5372-ec52-3983-4ba292867485@itapeva.unesp.br>
+
+Boa tarde!
+
+Eu não consegui acessar o livro, o link não funcionou.
+
+Obrigada!
+
+Gislaine
+
+
+Em 14/06/18 22:28, Mauro Sznelwar via R-br escreveu:
+> Veja este livro lhe é útil, tem um capítulo grande sobre Análise de 
+> Variância, que é planejamento de experimentos.
+> https://www.dropbox.com/home?preview=The+R+Book.pdf
+> Prezados, boa tarde.
+> Estou estudando o assunto e gostaria de fazê-lo utilizando o R.
+> Alguém poderia indicar um bom livro/material sobre planejamento e 
+> análise de experimentos (preferencialmente utilizando o R) voltado 
+> para área de Farmácia?
+> Agradeço qualquer indicação.
+> Att.,
+> *
+> *
+> /*Emerson*/
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a 
+> c�digo m�nimo reproduz�vel.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180615/f5ec194c/attachment.html>
+
+From bodevan.ec em gmail.com  Fri Jun 15 13:57:03 2018
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Fri, 15 Jun 2018 13:57:03 -0300
+Subject: [R-br] =?utf-8?q?Planejamento_e_An=C3=A1lise_de_Experimentos?=
+In-Reply-To: <fbb4819c-5372-ec52-3983-4ba292867485@itapeva.unesp.br>
+References: <5b23165a25ee3_43cf2b138d5ff13852516@a4-weasel7.mail>
+ <fbb4819c-5372-ec52-3983-4ba292867485@itapeva.unesp.br>
+Message-ID: <CAP5i-szSJVKdOUzeVZM6+-E+2AY_nTABdrTJrzgvRRX46_tQSQ@mail.gmail.com>
+
+Pra mim funcionou. Demorou mas consegui acessar o livro.
+
+Em 15 de jun de 2018 1:34 PM, "Profª Gislaine via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+Boa tarde!
+
+Eu não consegui acessar o livro, o link não funcionou.
+
+Obrigada!
+
+Gislaine
+
+Em 14/06/18 22:28, Mauro Sznelwar via R-br escreveu:
+
+Veja este livro lhe é útil, tem um capítulo grande sobre Análise de
+Variância, que é planejamento de experimentos.
+https://www.dropbox.com/home?preview=The+R+Book.pdf
+
+
+Prezados, boa tarde.
+
+Estou estudando o assunto e gostaria de fazê-lo utilizando o R.
+
+Alguém poderia indicar um bom livro/material sobre planejamento e análise
+de experimentos (preferencialmente utilizando o R) voltado para área de
+Farmácia?
+
+Agradeço qualquer indicação.
+
+Att.,
+
+*Emerson*
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo
+m�nimo reproduz�vel.
+
+
+_______________________________________________
+R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+c�digo m�nimo reproduz�vel.
+
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
+mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180615/a489ba13/attachment.html>
+
+From no-reply em dropbox.com  Fri Jun 15 20:20:48 2018
+From: no-reply em dropbox.com (Mauro Sznelwar (via Dropbox))
+Date: Fri, 15 Jun 2018 23:20:48 +0000
+Subject: [R-br] =?utf-8?q?Mauro_Sznelwar_compartilhou_The_R_Book=2Epdf_com?=
+	=?utf-8?b?IHZvY8Oq?=
+Message-ID: <0101016405c05674-29da2f79-9771-48af-ace5-a3228e250b47-000000@us-west-2.amazonses.com>
+
+Olá,
+
+Mauro Sznelwar (sznelwar em uol.com.br) convidou você para visualizar o arquivo " The R Book.pdf " no Dropbox.
+
+Visualizar arquivo[1]
+
+Aproveite!
+Equipe Dropbox 
+ Mauro e outras pessoas poderão ver quando você visualizar este arquivo. Outros arquivos compartilhados com você pelo Dropbox também podem mostrar esta informação. Saiba mais[2] em nossa Central de ajuda. 
+
+[1]: https://www.dropbox.com/l/scl/AABKkLrU7BrGQMQ5jbYZa44eonjq2jqi1z0
+[2]: https://www.dropbox.com/l/AABspd8wT0fNffNbgXZilx5XPqt2GJo3JIo
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180615/3e8859c5/attachment.html>
+
+From sznelwar em uol.com.br  Fri Jun 15 20:22:03 2018
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Fri, 15 Jun 2018 20:22:03 -0300
+Subject: [R-br] =?utf-8?q?Planejamento_e_An=C3=A1lise_de_Experimentos?=
+In-Reply-To: ["fbb4819c-5372-ec52-3983-4ba292867485@itapeva.unesp.br"]
+References: ["5b23165a25ee3_43cf2b138d5ff13852516@a4-weasel7.mail",
+ "fbb4819c-5372-ec52-3983-4ba292867485@itapeva.unesp.br"]
+Message-ID: <5b244a1b34537_54952ab47c55b13487024@a4-weasel11.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180615/eb281a79/attachment.html>
+
+From edinhoestat em yahoo.com.br  Fri Jun 15 20:44:06 2018
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Fri, 15 Jun 2018 23:44:06 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Planejamento_e_An=C3=A1lise_de_Experimentos?=
+In-Reply-To: <5b244a1b34537_54952ab47c55b13487024@a4-weasel11.mail>
+References: <5b244a1b34537_54952ab47c55b13487024@a4-weasel11.mail>
+Message-ID: <993066861.1175292.1529106246054@mail.yahoo.com>
+
+Faça a busca no Google e você verá uma lista de possibilidades
+R BOOK FREE DOWNLOAD
+
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em sexta-feira, 15 de junho de 2018 19:22:13 AMT, Mauro Sznelwar via R-br <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Tente de novo, já pedi para compartilhar com o seu e-mail e do grupo. 
+Boa tarde!
+
+Eu não consegui acessar o livro, o link não funcionou.
+
+Obrigada!
+
+Gislaine
+ Em 14/06/18 22:28, Mauro Sznelwar via R-br escreveu:
+Veja este livro lhe é útil, tem um capítulo grande sobre Análise de Variância, que é planejamento de experimentos.https://www.dropbox.com/home?preview=The+R+Book.pdf  Prezados, boa tarde. Estou estudando o assunto e gostaria de fazê-lo utilizando o R. Alguém poderia indicar um bom livro/material sobre planejamento e análise de experimentos (preferencialmente utilizando o R) voltado para área de Farmácia? Agradeço qualquer indicação. Att.,
+
+ Emerson_______________________________________________
+ R-br mailing list
+ R-br em listas.c3sl.ufpr.br
+ https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+ Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel._______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180615/e355aca0/attachment.html>
+
+From no-reply em dropbox.com  Fri Jun 15 20:56:05 2018
+From: no-reply em dropbox.com (Mauro Sznelwar (via Dropbox))
+Date: Fri, 15 Jun 2018 23:56:05 +0000
+Subject: [R-br] =?utf-8?q?Mauro_Sznelwar_compartilhou_The_R_Book=2Epdf_com?=
+	=?utf-8?b?IHZvY8Oq?=
+Message-ID: <0101016405e0a24b-6197fbe3-342a-4e25-8ed2-983b74a2b497-000000@us-west-2.amazonses.com>
+
+Olá, EDSON,
+
+Mauro Sznelwar (sznelwar em uol.com.br) convidou você para visualizar o arquivo " The R Book.pdf " no Dropbox.
+
+Visualizar arquivo[1]
+
+Aproveite!
+Equipe Dropbox
+
+[1]: https://www.dropbox.com/l/scl/AAB4hkRYDcrJ2TMz4AuhQrQaqaNzDeqa3QA
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180615/0ea2cde9/attachment.html>
+
+From gislaine em itapeva.unesp.br  Sun Jun 17 09:11:28 2018
+From: gislaine em itapeva.unesp.br (=?UTF-8?Q?Prof=c2=aa_Gislaine?=)
+Date: Sun, 17 Jun 2018 09:11:28 -0300
+Subject: [R-br]
+ =?utf-8?q?Mauro_Sznelwar_compartilhou_The_R_Book=2Epdf_com?=
+ =?utf-8?b?IHZvY8Oq?=
+In-Reply-To: <0101016405c05674-29da2f79-9771-48af-ace5-a3228e250b47-000000@us-west-2.amazonses.com>
+References: <0101016405c05674-29da2f79-9771-48af-ace5-a3228e250b47-000000@us-west-2.amazonses.com>
+Message-ID: <51a99929-ba3c-e1e7-41dc-a4473fff42fe@itapeva.unesp.br>
+
+Muito obrigada!
+
+Agora deu certo!
+
+Gislaine
+
+
+Em 15/06/18 20:20, Mauro Sznelwar (via Dropbox) via R-br escreveu:
+>
+>
+>
+> 	Olá,
+>
+> Mauro Sznelwar (sznelwar em uol.com.br) convidou você para visualizar o 
+> arquivo "*The R Book.pdf*" no Dropbox.
+>
+> Visualizar arquivo 
+> <https://www.dropbox.com/l/scl/AABO7oJLB7UGZDwyd2c51BRrcbzyQeeIx0c>
+>
+>
+> Aproveite!
+> Equipe Dropbox
+>
+> /Mauro e outras pessoas poderão ver quando você visualizar este 
+> arquivo. Outros arquivos compartilhados com você pelo Dropbox também 
+> podem mostrar esta informação. Saiba mais 
+> <https://www.dropbox.com/l/AAA0vbZK_ALRt6JjeBeBkRYBpKKXy8tiSOE> em 
+> nossa Central de ajuda. /
+> 	
+>
+>
+>
+> 	© 2018 Dropbox
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180617/733d7985/attachment.html>
+
+From cesar.rabak em gmail.com  Sun Jun 17 17:31:44 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 17 Jun 2018 17:31:44 -0300
+Subject: [R-br]
+	=?utf-8?q?Mauro_Sznelwar_compartilhou_The_R_Book=2Epdf_com?=
+	=?utf-8?b?IHZvY8Oq?=
+In-Reply-To: <0101016405c05674-29da2f79-9771-48af-ace5-a3228e250b47-000000@us-west-2.amazonses.com>
+References: <0101016405c05674-29da2f79-9771-48af-ace5-a3228e250b47-000000@us-west-2.amazonses.com>
+Message-ID: <CAKrF98=jhnRjhmxM2_jXNf=oMOiq=qECELhgoknbU8Tm8fUm0Q@mail.gmail.com>
+
+Mauro,
+
+Quando eu clico em "visualizar o arquivo" ele entra numa tela de login com
+o e-mail da lista, que obviamente não tenho senha...
+Se eu tento acessar via minha conta no Dropbox, ele reclama que estou
+tentando de um e-mail diferente (pois o registro do Dropbox é com outro
+e-mail)...
+
+Não dá para você deixar numa área de acesso público o livro?
+
+Ou alternativamente indicar o link para o material na web diretamente?
+
+[]s
+
+--
+Cesar Rabak
+
+
+2018-06-15 20:20 GMT-03:00 Mauro Sznelwar (via Dropbox) via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Olá,
+>
+> Mauro Sznelwar (sznelwar em uol.com.br) convidou você para visualizar o
+> arquivo "*The R Book.pdf*" no Dropbox.
+>
+> Visualizar arquivo
+> <https://www.dropbox.com/l/scl/AABO7oJLB7UGZDwyd2c51BRrcbzyQeeIx0c>
+> Aproveite!
+> Equipe Dropbox
+>
+> *Mauro e outras pessoas poderão ver quando você visualizar este arquivo.
+> Outros arquivos compartilhados com você pelo Dropbox também podem mostrar
+> esta informação. Saiba mais
+> <https://www.dropbox.com/l/AAA0vbZK_ALRt6JjeBeBkRYBpKKXy8tiSOE> em nossa
+> Central de ajuda. *
+> © 2018 Dropbox
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180617/c7c3416d/attachment.html>
+
+From andreolsouza em yahoo.com.br  Tue Jun 19 17:07:23 2018
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Tue, 19 Jun 2018 20:07:23 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Erro_na_fun=C3=A7=C3=A3o_da_-_asremlPlus?=
+References: <1386014657.2151330.1529438843043.ref@mail.yahoo.com>
+Message-ID: <1386014657.2151330.1529438843043@mail.yahoo.com>
+
+
+Boa tarde,
+estou com problema neste modelo.
+
+require(asremlPlus)
+data(Wheat.dat)
+current.asr <- asreml(yield ~ Rep + WithinColPairs + Variety, 
+random = ~ Row + Column + units,
+rcov = ~ ar1(Row):ar1(Column), 
+data=Wheat.dat)
+
+Error in asreml(yield ~ Rep + WithinColPairs + Variety, random = ~Row + : 
+could not find function "asreml"
+Alguém saberia dizer alguma dica de solução?
+André Oliveira Souza. obg
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180619/6d109717/attachment.html>
+
+From fulcris em yahoo.com.br  Wed Jun 20 00:48:07 2018
+From: fulcris em yahoo.com.br (=?UTF-8?Q?f=C3=BAlvia_cristina_oliveira?=)
+Date: Wed, 20 Jun 2018 03:48:07 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Transforma=C3=A7=C3=A3o_dos_dados?=
+References: <1941384971.118005.1529466487407.ref@mail.yahoo.com>
+Message-ID: <1941384971.118005.1529466487407@mail.yahoo.com>
+
+Boa noite
+Como eu faço para transformar dados que estão em esquema fatorial (com 2 fatores)?
+
+
+
+Fúlvia Cristina Oliveira Bióloga - UFMS  Mestre em Zootecnia - UEMSDoutoranda em Ciência Animal - UFMS(67) 99610-2812 / 99129-6612
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180620/a00e8d41/attachment.html>
+
+From nandodesouza em gmail.com  Wed Jun 20 11:46:45 2018
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 20 Jun 2018 11:46:45 -0300
+Subject: [R-br] =?utf-8?q?Transforma=C3=A7=C3=A3o_dos_dados?=
+In-Reply-To: <1941384971.118005.1529466487407@mail.yahoo.com>
+References: <1941384971.118005.1529466487407.ref@mail.yahoo.com>
+ <1941384971.118005.1529466487407@mail.yahoo.com>
+Message-ID: <CAFrWFsmaOPfp7avu7bTfAP57EH-n5gqONJSr4MUD9kvLY=T=ag@mail.gmail.com>
+
+Seja mais específica em sua definição de transformar de preferência envie
+um CMR (código mínimo reproduzível) com seu problema para que possa obter
+ajuda.
+
+Acredito que você se refira a transformações dos dados para obter algum
+pressuposto estatístico. Existem vários que dependem das características
+dos seus dados e há uma ampla discussão a respeito do tema. Acredito que
+sem ver do que se trata fica impossível responder.
+
+
+Em 20 de junho de 2018 00:48, fúlvia cristina oliveira via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa noite
+>
+> Como eu faço para transformar dados que estão em esquema fatorial (com 2
+> fatores)?
+>
+>
+>
+>
+> Fúlvia Cristina Oliveira
+> Bióloga - UFMS
+> Mestre em Zootecnia - UEMS
+> Doutoranda em Ciência Animal - UFMS
+> (67) 99610-2812 / 99129-6612
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+=========================================
+Fernando Souza
+Zootecnista, DSc. Produção e Alimentação Animal
+Celular: (31)99796-8781 (Vivo)
+E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+Lattes: http://lattes.cnpq.br/6519538815038307
+Blog: https://producaoanimalcomr.wordpress.com/
+==========================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180620/3f4a03bb/attachment.html>
+
+From richfield1974 em yahoo.com  Thu Jun 21 16:49:04 2018
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Thu, 21 Jun 2018 19:49:04 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?d=C3=BAvida_no_shiny?=
+References: <1996218689.475503.1529610544385.ref@mail.yahoo.com>
+Message-ID: <1996218689.475503.1529610544385@mail.yahoo.com>
+
+PrezadosEstou rodando o código abaixo que peguei na internet, mas não funciona. Alguém saberia o motivo?Desde já agradeço.Luiz
+
+ require(shiny)  runApp(      list(ui = pageWithSidebar(                       headerPanel(withMathJax("$$\\text{Display formula in heading }X_n=X_{n-1}-\\varepsilon$$")),                       sidebarPanel( ),                    mainPanel( )       ),        server= function(input, output, session){                       }      ) )
+
+
+ 
+
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180621/0b36c560/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: 1529610539599blob.jpg
+Tipo: image/png
+Tamanho: 24235 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180621/0b36c560/attachment.png>
+
+From dtiezzi em usp.br  Thu Jun 21 18:04:26 2018
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Thu, 21 Jun 2018 18:04:26 -0300
+Subject: [R-br] =?utf-8?q?d=C3=BAvida_no_shiny?=
+In-Reply-To: <1996218689.475503.1529610544385@mail.yahoo.com>
+References: <1996218689.475503.1529610544385.ref@mail.yahoo.com>
+ <1996218689.475503.1529610544385@mail.yahoo.com>
+Message-ID: <48BA40BA-5859-4BA0-AAAD-9E72F858B69F@usp.br>
+
+Segue este tutorial que vai dar tudo certo
+
+https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/
+
+Daniel
+
+
+
+
+> On 21 Jun 2018, at 16:49, Luiz Leal via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Prezados
+> Estou rodando o código abaixo que peguei na internet, mas não funciona. Alguém saberia o motivo?
+> Desde já agradeço.
+> Luiz
+> 
+> 
+>  require(shiny)
+>  
+>  runApp(
+>       list(ui = pageWithSidebar(
+>            
+>             headerPanel(withMathJax("$$\\text{Display formula in heading }X_n=X_{n-1}-\\varepsilon$$")),
+>            
+>             sidebarPanel( ),
+>         
+>             mainPanel( )
+>        ),
+>         server= function(input, output, session){
+>               
+>          }
+>       )
+>  )
+> 
+> 
+> 
+> <1529610539599blob.jpg>
+> 
+> 
+> 
+> 
+> <1529610539599blob.jpg>_______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180621/45fc37fe/attachment.html>
+
+From fulcris em yahoo.com.br  Fri Jun 22 11:45:06 2018
+From: fulcris em yahoo.com.br (=?UTF-8?Q?f=C3=BAlvia_cristina_oliveira?=)
+Date: Fri, 22 Jun 2018 14:45:06 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Transforma=C3=A7=C3=A3o_de_dados_em_delineamento?=
+	=?utf-8?q?_fatorial?=
+References: <709269469.1059437.1529678706674.ref@mail.yahoo.com>
+Message-ID: <709269469.1059437.1529678706674@mail.yahoo.com>
+
+Eu tenho alguns dados que rodei em delineamento fatorial, com dois fatores. Usei o pacote Expdes e o teste do Shapiro dos dados estão normais.Como transformo esses dados? Em DIC eu uso as transformações em Log, raiz quadrada e outros. Mas em fatorial qual valores que transformo? Do fator 1 ou fator 2.?
+
+Fúlvia Cristina Oliveira Bióloga - UFMS  Mestre em Zootecnia - UEMSDoutoranda em Ciência Animal - UFMS(67) 99610-2812 / 99129-6612
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180622/4df78010/attachment.html>
+
+From henriquepertille em gmail.com  Fri Jun 22 20:02:27 2018
+From: henriquepertille em gmail.com (Rafael Pertille)
+Date: Fri, 22 Jun 2018 20:02:27 -0300
+Subject: [R-br]
+	=?utf-8?q?Transforma=C3=A7=C3=A3o_de_dados_em_delineamento?=
+	=?utf-8?q?_fatorial?=
+In-Reply-To: <709269469.1059437.1529678706674@mail.yahoo.com>
+References: <709269469.1059437.1529678706674.ref@mail.yahoo.com>
+ <709269469.1059437.1529678706674@mail.yahoo.com>
+Message-ID: <CAKtUNjfPk+z3SHik0dCrzOJqvyiY-DjTnHqMc2C4WS7g_m9fiA@mail.gmail.com>
+
+Se o teste de Shapiro indica normalidade não há necessidade de
+transformá-los. Caso não apresente normalidade faça a transformação na
+própria linha de comando do ExpDes para todos os dados.
+Ex:
+
+fat2.dic(Fator 1, Fator 2, *sqrt(x)*, quali = TRUE, mcomp="tukey", sigT =
+0.05, sigF = 0.05)
+
+Em 22 de junho de 2018 11:45, fúlvia cristina oliveira via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Eu tenho alguns dados que rodei em delineamento fatorial, com dois
+> fatores.
+> Usei o pacote Expdes e o teste do Shapiro dos dados estão normais.
+> Como transformo esses dados? Em DIC eu uso as transformações em Log, raiz
+> quadrada e outros. Mas em fatorial qual valores que transformo? Do fator 1
+> ou fator 2.?
+>
+>
+> Fúlvia Cristina Oliveira
+> Bióloga - UFMS
+> Mestre em Zootecnia - UEMS
+> Doutoranda em Ciência Animal - UFMS
+> (67) 99610-2812 / 99129-6612
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+*Rafael Henrique Pertille*
+Técnico em Agropecuária
+Acadêmico de Agronomia - UTFPR Campus Pato Branco
+(46) 99770049
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180622/9780fbff/attachment.html>
+
+From nandodesouza em gmail.com  Fri Jun 22 20:25:54 2018
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Fri, 22 Jun 2018 20:25:54 -0300
+Subject: [R-br]
+	=?utf-8?q?Transforma=C3=A7=C3=A3o_de_dados_em_delineamento?=
+	=?utf-8?q?_fatorial?=
+In-Reply-To: <CAKtUNjfPk+z3SHik0dCrzOJqvyiY-DjTnHqMc2C4WS7g_m9fiA@mail.gmail.com>
+References: <709269469.1059437.1529678706674.ref@mail.yahoo.com>
+ <709269469.1059437.1529678706674@mail.yahoo.com>
+ <CAKtUNjfPk+z3SHik0dCrzOJqvyiY-DjTnHqMc2C4WS7g_m9fiA@mail.gmail.com>
+Message-ID: <CAFrWFsn8Q1ft-K0DMkSn_pN55Zxi=GJZZVr3djaUEk8foruGhQ@mail.gmail.com>
+
+Não sou usuário do expedes. Geralmente faço a análise usando a função
+anova() . Seus dados estão normais. Você que tranformá-los porque? É devido
+a variância? se for antes de buscar transformação faça uma análise mais
+profunda dos seus dados para tentar compreender a causa. Se ainda assim não
+tiver jeito. Acho melhor utilizar modelos mais flexíveis quanto a
+variância. Abordagens como os quadrados minimos ponderados pode ser uma
+melhor saída.
+Eu sempre tento evitar usar transformações. Você acaba corrigindo uma coisa
+e complicando outra.
+Se ainda quiser usar transformação tenta fazer a análise utilizando a
+função anova e utilize a função box-cox (do pacote MASS) para encontrar uma
+possível transformação.
+
+att
+
+Em 22 de junho de 2018 20:02, Rafael Pertille via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Se o teste de Shapiro indica normalidade não há necessidade de
+> transformá-los. Caso não apresente normalidade faça a transformação na
+> própria linha de comando do ExpDes para todos os dados.
+> Ex:
+>
+> fat2.dic(Fator 1, Fator 2, *sqrt(x)*, quali = TRUE, mcomp="tukey", sigT =
+> 0.05, sigF = 0.05)
+>
+> Em 22 de junho de 2018 11:45, fúlvia cristina oliveira via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Eu tenho alguns dados que rodei em delineamento fatorial, com dois
+>> fatores.
+>> Usei o pacote Expdes e o teste do Shapiro dos dados estão normais.
+>> Como transformo esses dados? Em DIC eu uso as transformações em Log, raiz
+>> quadrada e outros. Mas em fatorial qual valores que transformo? Do fator 1
+>> ou fator 2.?
+>>
+>>
+>> Fúlvia Cristina Oliveira
+>> Bióloga - UFMS
+>> Mestre em Zootecnia - UEMS
+>> Doutoranda em Ciência Animal - UFMS
+>> (67) 99610-2812 / 99129-6612
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+>
+> --
+> *Rafael Henrique Pertille*
+> Técnico em Agropecuária
+> Acadêmico de Agronomia - UTFPR Campus Pato Branco
+> (46) 99770049
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+=========================================
+Fernando Souza
+Zootecnista, DSc. Produção e Alimentação Animal
+Celular: (31)99796-8781 (Vivo)
+E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+Lattes: http://lattes.cnpq.br/6519538815038307
+Blog: https://producaoanimalcomr.wordpress.com/
+==========================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180622/608d67dd/attachment.html>
+
+From ecacarva em gmail.com  Sat Jun 23 20:56:36 2018
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Sat, 23 Jun 2018 20:56:36 -0300
+Subject: [R-br] =?utf-8?q?Faixa_et=C3=A1ria?=
+Message-ID: <CAH8E6UvrcFmmwKoi6ozHb1DFjcR6sGCgg0ZuGXMPo1xWMDQ1JQ@mail.gmail.com>
+
+Boa noite pessoal
+
+Qual a melhor forma de categorizar a variável "idade"?
+Existe uma pré-definição de faixa etária no Brasil ?
+Coisa do tipo: criança, jovem, adulto, idoso?
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180623/f8f4f6d7/attachment.html>
+
+From mbissoli em gmail.com  Sat Jun 23 21:18:21 2018
+From: mbissoli em gmail.com (Marcos Bissoli)
+Date: Sat, 23 Jun 2018 21:18:21 -0300
+Subject: [R-br] =?utf-8?q?Faixa_et=C3=A1ria?=
+In-Reply-To: <CAH8E6UvrcFmmwKoi6ozHb1DFjcR6sGCgg0ZuGXMPo1xWMDQ1JQ@mail.gmail.com>
+References: <CAH8E6UvrcFmmwKoi6ozHb1DFjcR6sGCgg0ZuGXMPo1xWMDQ1JQ@mail.gmail.com>
+Message-ID: <612F6EBC-C3FE-42DB-A9CD-614AE40BCC03@gmail.com>
+
+Olá,
+
+Ministério da saúde segue os pontos de corte:
+
+Crianças [0,10)
+Adolescente [10,20)
+Adultos [20,60)
+Idosos >=60
+
+Abraços,
+
+Marcos Coelho Bissoli
+
+> Em 23 de jun de 2018, às 20:56, Elias Carvalho via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+> 
+> Boa noite pessoal
+> 
+> Qual a melhor forma de categorizar a variável "idade"?
+> Existe uma pré-definição de faixa etária no Brasil ? 
+> Coisa do tipo: criança, jovem, adulto, idoso? 
+> 
+> -- 
+> In Jesu et Maria
+> 
+> Obrigado
+> Prof. Elias Carvalho
+> 
+> "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed is he who has been able to understand the cause of things"
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180623/001d9857/attachment.html>
+
+From ecacarva em gmail.com  Sat Jun 23 21:36:50 2018
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Sat, 23 Jun 2018 21:36:50 -0300
+Subject: [R-br] =?utf-8?q?Faixa_et=C3=A1ria?=
+In-Reply-To: <612F6EBC-C3FE-42DB-A9CD-614AE40BCC03@gmail.com>
+References: <CAH8E6UvrcFmmwKoi6ozHb1DFjcR6sGCgg0ZuGXMPo1xWMDQ1JQ@mail.gmail.com>
+ <612F6EBC-C3FE-42DB-A9CD-614AE40BCC03@gmail.com>
+Message-ID: <CAH8E6Uvnzxg2CtD=M2N_OL+-CaV6hhRVn6VNX01pcwUOZ-CSiA@mail.gmail.com>
+
+Valeu Marcos
+
+Tem uma referencia que posso usar no meu artigo?
+
+Em sáb, 23 de jun de 2018 às 21:18, Marcos Bissoli <mbissoli em gmail.com>
+escreveu:
+
+> Olá,
+>
+> Ministério da saúde segue os pontos de corte:
+>
+> Crianças [0,10)
+> Adolescente [10,20)
+> Adultos [20,60)
+> Idosos >=60
+>
+> Abraços,
+>
+> Marcos Coelho Bissoli
+>
+> Em 23 de jun de 2018, às 20:56, Elias Carvalho via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+> Boa noite pessoal
+>
+> Qual a melhor forma de categorizar a variável "idade"?
+> Existe uma pré-definição de faixa etária no Brasil ?
+> Coisa do tipo: criança, jovem, adulto, idoso?
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180623/70bb30ed/attachment.html>
+
+From yurynepomuceno em gmail.com  Mon Jun 25 14:44:14 2018
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Mon, 25 Jun 2018 14:44:14 -0300
+Subject: [R-br] Ler arquivo JSON com diversos outros JSONs dentro dele
+Message-ID: <CADFS6E6=kr=7KByZNsh+rLSiLArbWQWF1efi1+8wC_DOGSatJw@mail.gmail.com>
+
+Boa tarde colegas listeiros, como vão?
+
+Ultimamente venho encontrando certa dificuldade para trabalhar com arquivos
+JSON que contém outros JSON dentro deles.
+Sempre que precisei trabalhar com esse tipo de arquivo utilizei a expressão:
+
+library(jsonlite)
+raiz= ('C:\\Users\\Desktop\\')
+a = fromJSON(paste0(raiz,'document.json'))
+
+Dessa forma eu obtenho uma lista e consigo selecionar os valores dos campos
+que quero.
+Mas quando tento aplicar a mesma lógica para um JSON que contém diversos
+outros JSONs, o código quebra e retorna:
+Error in parse_con(txt, bigint_as_char) : parse error: trailing garbage
+          99809265137         }       },       {         "_index": "ch
+                     (right here) ------^
+
+Meu interesse é acessar apenas as informações de alguns campos desses JSONs
+e construir uma tabela, onde nas colunas eu terei os campos que desejo e
+nas linhas eu terei os valores de cada um dos JSONs.
+A seguir, estou colando no corpo da mensagem um pedaço de um desses
+arquivos que estou tentando lidar no R.
+
+Desde já, agradeço pela ajuda e atenção.
+
+Att
+
+
+{
+        "_index": "busca",
+        "_type": "data_point",
+        "_id": "interpolation:699646|mgper-0-20|2018-06-22|5x21sxq1km3b",
+        "_score": 1,
+        "_source": {
+          "name": "Mg% 0-20",
+          "data_type": "interpolation",
+          "attribute": "Mg%",
+          "farm_id": 22706,
+          "depth": "0-20",
+          "location": [
+            -48.91500982855756,
+            -22.293821593345108
+          ],
+          "inceres_id": 699646,
+          "date_created": "2018-06-22T14:06:13.587631-03:00",
+          "slug": "mgper-0-20",
+          "quantity": 10.565964698791504
+        }
+      },
+      {
+        "_index": "busca",
+        "_type": "data_point",
+        "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc94cc55",
+        "_score": 1,
+        "_source": {
+          "name": "ph 20-40",
+          "data_type": "interpolation",
+          "attribute": "ph",
+          "farm_id": 22706,
+          "depth": "20-40",
+          "location": [
+            -48.90241501215151,
+            -22.28980716917012
+          ],
+          "inceres_id": 701809,
+          "date_created": "2018-06-22T14:06:35.183784-03:00",
+          "slug": "ph-20-40",
+          "quantity": 4.381259918212891
+        }
+      },
+      {
+        "_index": "busca",
+        "_type": "data_point",
+        "_id": "interpolation:699646|mgper-0-20|2018-06-22|5x21sz1rcjp5",
+        "_score": 1,
+        "_source": {
+          "name": "Mg% 0-20",
+          "data_type": "interpolation",
+          "attribute": "Mg%",
+          "farm_id": 22706,
+          "depth": "0-20",
+          "location": [
+            -48.915268161911925,
+            -22.289490533842073
+          ],
+          "inceres_id": 699646,
+          "date_created": "2018-06-22T14:06:13.587631-03:00",
+          "slug": "mgper-0-20",
+          "quantity": 8.669662475585938
+        }
+      },
+      {
+        "_index": "busca",
+        "_type": "data_point",
+        "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc3097d7",
+        "_score": 1,
+        "_source": {
+          "name": "ph 20-40",
+          "data_type": "interpolation",
+          "attribute": "ph",
+          "farm_id": 22706,
+          "depth": "20-40",
+          "location": [
+            -48.904161243141765,
+            -22.289829735373146
+          ],
+          "inceres_id": 701809,
+          "date_created": "2018-06-22T14:06:35.183784-03:00",
+          "slug": "ph-20-40",
+          "quantity": 4.352087497711182
+        }
+      }
+
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180625/3f43dd97/attachment.html>
+
+From drigo.angelo em gmail.com  Mon Jun 25 17:19:53 2018
+From: drigo.angelo em gmail.com (=?UTF-8?Q?Rodrigo_=C3=82ngelo?=)
+Date: Mon, 25 Jun 2018 17:19:53 -0300
+Subject: [R-br] Ler arquivo JSON com diversos outros JSONs dentro dele
+In-Reply-To: <CADFS6E6=kr=7KByZNsh+rLSiLArbWQWF1efi1+8wC_DOGSatJw@mail.gmail.com>
+References: <CADFS6E6=kr=7KByZNsh+rLSiLArbWQWF1efi1+8wC_DOGSatJw@mail.gmail.com>
+Message-ID: <CANsnirXyYo+JnNOAieJ76x2kAkL7vA=uBVUG4id7BTABmz7siw@mail.gmail.com>
+
+Oi Yuri,
+
+Tem algum outro sistema que gera esse arquivo para você, ou você tem
+controle de como ele é gerado?
+
+Não sei se é a solução que você procura, mas talvez colocar [ no início do
+arquivo e ] no final pode fazer a biblioteca jsonlite reconhecer como uma
+lista de objetos.
+
+Sds,
+Rodrigo
+
+On Mon, Jun 25, 2018 at 2:44 PM Yury Duarte via R-br <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde colegas listeiros, como vão?
+>
+> Ultimamente venho encontrando certa dificuldade para trabalhar com
+> arquivos JSON que contém outros JSON dentro deles.
+> Sempre que precisei trabalhar com esse tipo de arquivo utilizei a
+> expressão:
+>
+> library(jsonlite)
+> raiz= ('C:\\Users\\Desktop\\')
+> a = fromJSON(paste0(raiz,'document.json'))
+>
+> Dessa forma eu obtenho uma lista e consigo selecionar os valores dos
+> campos que quero.
+> Mas quando tento aplicar a mesma lógica para um JSON que contém diversos
+> outros JSONs, o código quebra e retorna:
+> Error in parse_con(txt, bigint_as_char) : parse error: trailing garbage
+>           99809265137         }       },       {         "_index": "ch
+>                      (right here) ------^
+>
+> Meu interesse é acessar apenas as informações de alguns campos desses
+> JSONs e construir uma tabela, onde nas colunas eu terei os campos que
+> desejo e nas linhas eu terei os valores de cada um dos JSONs.
+> A seguir, estou colando no corpo da mensagem um pedaço de um desses
+> arquivos que estou tentando lidar no R.
+>
+> Desde já, agradeço pela ajuda e atenção.
+>
+> Att
+>
+>
+> {
+>         "_index": "busca",
+>         "_type": "data_point",
+>         "_id": "interpolation:699646|mgper-0-20|2018-06-22|5x21sxq1km3b",
+>         "_score": 1,
+>         "_source": {
+>           "name": "Mg% 0-20",
+>           "data_type": "interpolation",
+>           "attribute": "Mg%",
+>           "farm_id": 22706,
+>           "depth": "0-20",
+>           "location": [
+>             -48.91500982855756,
+>             -22.293821593345108
+>           ],
+>           "inceres_id": 699646,
+>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>           "slug": "mgper-0-20",
+>           "quantity": 10.565964698791504
+>         }
+>       },
+>       {
+>         "_index": "busca",
+>         "_type": "data_point",
+>         "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc94cc55",
+>         "_score": 1,
+>         "_source": {
+>           "name": "ph 20-40",
+>           "data_type": "interpolation",
+>           "attribute": "ph",
+>           "farm_id": 22706,
+>           "depth": "20-40",
+>           "location": [
+>             -48.90241501215151,
+>             -22.28980716917012
+>           ],
+>           "inceres_id": 701809,
+>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>           "slug": "ph-20-40",
+>           "quantity": 4.381259918212891
+>         }
+>       },
+>       {
+>         "_index": "busca",
+>         "_type": "data_point",
+>         "_id": "interpolation:699646|mgper-0-20|2018-06-22|5x21sz1rcjp5",
+>         "_score": 1,
+>         "_source": {
+>           "name": "Mg% 0-20",
+>           "data_type": "interpolation",
+>           "attribute": "Mg%",
+>           "farm_id": 22706,
+>           "depth": "0-20",
+>           "location": [
+>             -48.915268161911925,
+>             -22.289490533842073
+>           ],
+>           "inceres_id": 699646,
+>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>           "slug": "mgper-0-20",
+>           "quantity": 8.669662475585938
+>         }
+>       },
+>       {
+>         "_index": "busca",
+>         "_type": "data_point",
+>         "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc3097d7",
+>         "_score": 1,
+>         "_source": {
+>           "name": "ph 20-40",
+>           "data_type": "interpolation",
+>           "attribute": "ph",
+>           "farm_id": 22706,
+>           "depth": "20-40",
+>           "location": [
+>             -48.904161243141765,
+>             -22.289829735373146
+>           ],
+>           "inceres_id": 701809,
+>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>           "slug": "ph-20-40",
+>           "quantity": 4.352087497711182
+>         }
+>       }
+>
+>
+> Yury Duarte
+> Engenheiro Agrônomo - ESALQ/USP
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180625/525c44d7/attachment.html>
+
+From drigo.angelo em gmail.com  Mon Jun 25 17:21:11 2018
+From: drigo.angelo em gmail.com (=?UTF-8?Q?Rodrigo_=C3=82ngelo?=)
+Date: Mon, 25 Jun 2018 17:21:11 -0300
+Subject: [R-br] Ler arquivo JSON com diversos outros JSONs dentro dele
+In-Reply-To: <CANsnirXyYo+JnNOAieJ76x2kAkL7vA=uBVUG4id7BTABmz7siw@mail.gmail.com>
+References: <CADFS6E6=kr=7KByZNsh+rLSiLArbWQWF1efi1+8wC_DOGSatJw@mail.gmail.com>
+ <CANsnirXyYo+JnNOAieJ76x2kAkL7vA=uBVUG4id7BTABmz7siw@mail.gmail.com>
+Message-ID: <CANsnirXMAXsu_X2bWgmhhKqx0U_rHy_MG-DzEX+n00STaBM2Zw@mail.gmail.com>
+
+Corrigindo: Yury.
+
+Escrevi seu nome errado. Me desculpe.
+
+On Mon, Jun 25, 2018 at 5:19 PM Rodrigo Ângelo <drigo.angelo em gmail.com>
+wrote:
+
+> Oi Yuri,
+>
+> Tem algum outro sistema que gera esse arquivo para você, ou você tem
+> controle de como ele é gerado?
+>
+> Não sei se é a solução que você procura, mas talvez colocar [ no início do
+> arquivo e ] no final pode fazer a biblioteca jsonlite reconhecer como uma
+> lista de objetos.
+>
+> Sds,
+> Rodrigo
+>
+> On Mon, Jun 25, 2018 at 2:44 PM Yury Duarte via R-br <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Boa tarde colegas listeiros, como vão?
+>>
+>> Ultimamente venho encontrando certa dificuldade para trabalhar com
+>> arquivos JSON que contém outros JSON dentro deles.
+>> Sempre que precisei trabalhar com esse tipo de arquivo utilizei a
+>> expressão:
+>>
+>> library(jsonlite)
+>> raiz= ('C:\\Users\\Desktop\\')
+>> a = fromJSON(paste0(raiz,'document.json'))
+>>
+>> Dessa forma eu obtenho uma lista e consigo selecionar os valores dos
+>> campos que quero.
+>> Mas quando tento aplicar a mesma lógica para um JSON que contém diversos
+>> outros JSONs, o código quebra e retorna:
+>> Error in parse_con(txt, bigint_as_char) : parse error: trailing garbage
+>>           99809265137         }       },       {         "_index": "ch
+>>                      (right here) ------^
+>>
+>> Meu interesse é acessar apenas as informações de alguns campos desses
+>> JSONs e construir uma tabela, onde nas colunas eu terei os campos que
+>> desejo e nas linhas eu terei os valores de cada um dos JSONs.
+>> A seguir, estou colando no corpo da mensagem um pedaço de um desses
+>> arquivos que estou tentando lidar no R.
+>>
+>> Desde já, agradeço pela ajuda e atenção.
+>>
+>> Att
+>>
+>>
+>> {
+>>         "_index": "busca",
+>>         "_type": "data_point",
+>>         "_id": "interpolation:699646|mgper-0-20|2018-06-22|5x21sxq1km3b",
+>>         "_score": 1,
+>>         "_source": {
+>>           "name": "Mg% 0-20",
+>>           "data_type": "interpolation",
+>>           "attribute": "Mg%",
+>>           "farm_id": 22706,
+>>           "depth": "0-20",
+>>           "location": [
+>>             -48.91500982855756,
+>>             -22.293821593345108
+>>           ],
+>>           "inceres_id": 699646,
+>>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>>           "slug": "mgper-0-20",
+>>           "quantity": 10.565964698791504
+>>         }
+>>       },
+>>       {
+>>         "_index": "busca",
+>>         "_type": "data_point",
+>>         "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc94cc55",
+>>         "_score": 1,
+>>         "_source": {
+>>           "name": "ph 20-40",
+>>           "data_type": "interpolation",
+>>           "attribute": "ph",
+>>           "farm_id": 22706,
+>>           "depth": "20-40",
+>>           "location": [
+>>             -48.90241501215151,
+>>             -22.28980716917012
+>>           ],
+>>           "inceres_id": 701809,
+>>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>>           "slug": "ph-20-40",
+>>           "quantity": 4.381259918212891
+>>         }
+>>       },
+>>       {
+>>         "_index": "busca",
+>>         "_type": "data_point",
+>>         "_id": "interpolation:699646|mgper-0-20|2018-06-22|5x21sz1rcjp5",
+>>         "_score": 1,
+>>         "_source": {
+>>           "name": "Mg% 0-20",
+>>           "data_type": "interpolation",
+>>           "attribute": "Mg%",
+>>           "farm_id": 22706,
+>>           "depth": "0-20",
+>>           "location": [
+>>             -48.915268161911925,
+>>             -22.289490533842073
+>>           ],
+>>           "inceres_id": 699646,
+>>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>>           "slug": "mgper-0-20",
+>>           "quantity": 8.669662475585938
+>>         }
+>>       },
+>>       {
+>>         "_index": "busca",
+>>         "_type": "data_point",
+>>         "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc3097d7",
+>>         "_score": 1,
+>>         "_source": {
+>>           "name": "ph 20-40",
+>>           "data_type": "interpolation",
+>>           "attribute": "ph",
+>>           "farm_id": 22706,
+>>           "depth": "20-40",
+>>           "location": [
+>>             -48.904161243141765,
+>>             -22.289829735373146
+>>           ],
+>>           "inceres_id": 701809,
+>>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>>           "slug": "ph-20-40",
+>>           "quantity": 4.352087497711182
+>>         }
+>>       }
+>>
+>>
+>> Yury Duarte
+>> Engenheiro Agrônomo - ESALQ/USP
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180625/d5099a0b/attachment.html>
+
+From yurynepomuceno em gmail.com  Mon Jun 25 17:37:03 2018
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Mon, 25 Jun 2018 17:37:03 -0300
+Subject: [R-br] Ler arquivo JSON com diversos outros JSONs dentro dele
+In-Reply-To: <CANsnirXyYo+JnNOAieJ76x2kAkL7vA=uBVUG4id7BTABmz7siw@mail.gmail.com>
+References: <CADFS6E6=kr=7KByZNsh+rLSiLArbWQWF1efi1+8wC_DOGSatJw@mail.gmail.com>
+ <CANsnirXyYo+JnNOAieJ76x2kAkL7vA=uBVUG4id7BTABmz7siw@mail.gmail.com>
+Message-ID: <CADFS6E68cg=HTsTh0HTg=0pAx5ea-XoRCXM52aUr6QCk14OCaw@mail.gmail.com>
+
+Olá Rodrigo, como vai?
+
+Tranquilo, normal essa troca de letras no nome!
+hehe
+
+Infelizmente não tenho controle sobre o formato das saídas. Elas sempre
+chegam nesse formato .jason.
+Vou tentar utilizar os colchetes no inicio e final do arquivo pra ver o que
+acontece com a saida.
+
+Mais uma vez, agradeço pela atenção de todos!
+
+Att
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+Em 25 de junho de 2018 17:19, Rodrigo Ângelo <drigo.angelo em gmail.com>
+escreveu:
+
+> Oi Yuri,
+>
+> Tem algum outro sistema que gera esse arquivo para você, ou você tem
+> controle de como ele é gerado?
+>
+> Não sei se é a solução que você procura, mas talvez colocar [ no início do
+> arquivo e ] no final pode fazer a biblioteca jsonlite reconhecer como uma
+> lista de objetos.
+>
+> Sds,
+> Rodrigo
+>
+> On Mon, Jun 25, 2018 at 2:44 PM Yury Duarte via R-br <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Boa tarde colegas listeiros, como vão?
+>>
+>> Ultimamente venho encontrando certa dificuldade para trabalhar com
+>> arquivos JSON que contém outros JSON dentro deles.
+>> Sempre que precisei trabalhar com esse tipo de arquivo utilizei a
+>> expressão:
+>>
+>> library(jsonlite)
+>> raiz= ('C:\\Users\\Desktop\\')
+>> a = fromJSON(paste0(raiz,'document.json'))
+>>
+>> Dessa forma eu obtenho uma lista e consigo selecionar os valores dos
+>> campos que quero.
+>> Mas quando tento aplicar a mesma lógica para um JSON que contém diversos
+>> outros JSONs, o código quebra e retorna:
+>> Error in parse_con(txt, bigint_as_char) : parse error: trailing garbage
+>>           99809265137         }       },       {         "_index": "ch
+>>                      (right here) ------^
+>>
+>> Meu interesse é acessar apenas as informações de alguns campos desses
+>> JSONs e construir uma tabela, onde nas colunas eu terei os campos que
+>> desejo e nas linhas eu terei os valores de cada um dos JSONs.
+>> A seguir, estou colando no corpo da mensagem um pedaço de um desses
+>> arquivos que estou tentando lidar no R.
+>>
+>> Desde já, agradeço pela ajuda e atenção.
+>>
+>> Att
+>>
+>>
+>> {
+>>         "_index": "busca",
+>>         "_type": "data_point",
+>>         "_id": "interpolation:699646|mgper-0-20|2018-06-22|5x21sxq1km3b",
+>>         "_score": 1,
+>>         "_source": {
+>>           "name": "Mg% 0-20",
+>>           "data_type": "interpolation",
+>>           "attribute": "Mg%",
+>>           "farm_id": 22706,
+>>           "depth": "0-20",
+>>           "location": [
+>>             -48.91500982855756,
+>>             -22.293821593345108
+>>           ],
+>>           "inceres_id": 699646,
+>>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>>           "slug": "mgper-0-20",
+>>           "quantity": 10.565964698791504
+>>         }
+>>       },
+>>       {
+>>         "_index": "busca",
+>>         "_type": "data_point",
+>>         "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc94cc55",
+>>         "_score": 1,
+>>         "_source": {
+>>           "name": "ph 20-40",
+>>           "data_type": "interpolation",
+>>           "attribute": "ph",
+>>           "farm_id": 22706,
+>>           "depth": "20-40",
+>>           "location": [
+>>             -48.90241501215151,
+>>             -22.28980716917012
+>>           ],
+>>           "inceres_id": 701809,
+>>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>>           "slug": "ph-20-40",
+>>           "quantity": 4.381259918212891
+>>         }
+>>       },
+>>       {
+>>         "_index": "busca",
+>>         "_type": "data_point",
+>>         "_id": "interpolation:699646|mgper-0-20|2018-06-22|5x21sz1rcjp5",
+>>         "_score": 1,
+>>         "_source": {
+>>           "name": "Mg% 0-20",
+>>           "data_type": "interpolation",
+>>           "attribute": "Mg%",
+>>           "farm_id": 22706,
+>>           "depth": "0-20",
+>>           "location": [
+>>             -48.915268161911925,
+>>             -22.289490533842073
+>>           ],
+>>           "inceres_id": 699646,
+>>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>>           "slug": "mgper-0-20",
+>>           "quantity": 8.669662475585938
+>>         }
+>>       },
+>>       {
+>>         "_index": "busca",
+>>         "_type": "data_point",
+>>         "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc3097d7",
+>>         "_score": 1,
+>>         "_source": {
+>>           "name": "ph 20-40",
+>>           "data_type": "interpolation",
+>>           "attribute": "ph",
+>>           "farm_id": 22706,
+>>           "depth": "20-40",
+>>           "location": [
+>>             -48.904161243141765,
+>>             -22.289829735373146
+>>           ],
+>>           "inceres_id": 701809,
+>>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>>           "slug": "ph-20-40",
+>>           "quantity": 4.352087497711182
+>>         }
+>>       }
+>>
+>>
+>> Yury Duarte
+>> Engenheiro Agrônomo - ESALQ/USP
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180625/1db52072/attachment.html>
+
+From yurynepomuceno em gmail.com  Mon Jun 25 17:49:43 2018
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Mon, 25 Jun 2018 17:49:43 -0300
+Subject: [R-br] Ler arquivo JSON com diversos outros JSONs dentro dele
+In-Reply-To: <CANsnirXMAXsu_X2bWgmhhKqx0U_rHy_MG-DzEX+n00STaBM2Zw@mail.gmail.com>
+References: <CADFS6E6=kr=7KByZNsh+rLSiLArbWQWF1efi1+8wC_DOGSatJw@mail.gmail.com>
+ <CANsnirXyYo+JnNOAieJ76x2kAkL7vA=uBVUG4id7BTABmz7siw@mail.gmail.com>
+ <CANsnirXMAXsu_X2bWgmhhKqx0U_rHy_MG-DzEX+n00STaBM2Zw@mail.gmail.com>
+Message-ID: <CADFS6E7d5kYKJnpjg8k2wnazL_0Pahxv-WHDUAUagr1-fZfeUw@mail.gmail.com>
+
+Rodrigo,
+
+segundo os testes que fiz, num arquivo com número reduzido de JSONs (testei
+com 4) dentro de um outro JSON, a solução dos colchetes funcionou e me
+retornou uma lista com 4 campos, onde cada campo continha as informações de
+todos os JSONs.
+Entretanto, quando apliquei essa mesma lógica para um dos meus arquivos na
+integra (cada arquivo tem, em média, 200 mil linhas...isso deve dar uns 10
+mil JSONs diferentes), o comando me retorna o mesmo erro de antes:
+Error in parse_con(txt, bigint_as_char) :
+  parse error: after array element, I expect ',' or ']'
+          uantity": 5         } }      },       {         "_index": "c
+                     (right here) ------^
+
+Será que existe alguma solução praticável no R para trabalhar com um
+arquivo dessa magnitude?
+
+Mais uma vez, agradeço a atenção de todos!
+
+Att
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+Em 25 de junho de 2018 17:21, Rodrigo Ângelo <drigo.angelo em gmail.com>
+escreveu:
+
+> Corrigindo: Yury.
+>
+> Escrevi seu nome errado. Me desculpe.
+>
+> On Mon, Jun 25, 2018 at 5:19 PM Rodrigo Ângelo <drigo.angelo em gmail.com>
+> wrote:
+>
+>> Oi Yuri,
+>>
+>> Tem algum outro sistema que gera esse arquivo para você, ou você tem
+>> controle de como ele é gerado?
+>>
+>> Não sei se é a solução que você procura, mas talvez colocar [ no início
+>> do arquivo e ] no final pode fazer a biblioteca jsonlite reconhecer como
+>> uma lista de objetos.
+>>
+>> Sds,
+>> Rodrigo
+>>
+>> On Mon, Jun 25, 2018 at 2:44 PM Yury Duarte via R-br <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Boa tarde colegas listeiros, como vão?
+>>>
+>>> Ultimamente venho encontrando certa dificuldade para trabalhar com
+>>> arquivos JSON que contém outros JSON dentro deles.
+>>> Sempre que precisei trabalhar com esse tipo de arquivo utilizei a
+>>> expressão:
+>>>
+>>> library(jsonlite)
+>>> raiz= ('C:\\Users\\Desktop\\')
+>>> a = fromJSON(paste0(raiz,'document.json'))
+>>>
+>>> Dessa forma eu obtenho uma lista e consigo selecionar os valores dos
+>>> campos que quero.
+>>> Mas quando tento aplicar a mesma lógica para um JSON que contém diversos
+>>> outros JSONs, o código quebra e retorna:
+>>> Error in parse_con(txt, bigint_as_char) : parse error: trailing garbage
+>>>           99809265137         }       },       {         "_index": "ch
+>>>                      (right here) ------^
+>>>
+>>> Meu interesse é acessar apenas as informações de alguns campos desses
+>>> JSONs e construir uma tabela, onde nas colunas eu terei os campos que
+>>> desejo e nas linhas eu terei os valores de cada um dos JSONs.
+>>> A seguir, estou colando no corpo da mensagem um pedaço de um desses
+>>> arquivos que estou tentando lidar no R.
+>>>
+>>> Desde já, agradeço pela ajuda e atenção.
+>>>
+>>> Att
+>>>
+>>>
+>>> {
+>>>         "_index": "busca",
+>>>         "_type": "data_point",
+>>>         "_id": "interpolation:699646|mgper-0-
+>>> 20|2018-06-22|5x21sxq1km3b",
+>>>         "_score": 1,
+>>>         "_source": {
+>>>           "name": "Mg% 0-20",
+>>>           "data_type": "interpolation",
+>>>           "attribute": "Mg%",
+>>>           "farm_id": 22706,
+>>>           "depth": "0-20",
+>>>           "location": [
+>>>             -48.91500982855756,
+>>>             -22.293821593345108
+>>>           ],
+>>>           "inceres_id": 699646,
+>>>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>>>           "slug": "mgper-0-20",
+>>>           "quantity": 10.565964698791504
+>>>         }
+>>>       },
+>>>       {
+>>>         "_index": "busca",
+>>>         "_type": "data_point",
+>>>         "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc94cc55",
+>>>         "_score": 1,
+>>>         "_source": {
+>>>           "name": "ph 20-40",
+>>>           "data_type": "interpolation",
+>>>           "attribute": "ph",
+>>>           "farm_id": 22706,
+>>>           "depth": "20-40",
+>>>           "location": [
+>>>             -48.90241501215151,
+>>>             -22.28980716917012
+>>>           ],
+>>>           "inceres_id": 701809,
+>>>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>>>           "slug": "ph-20-40",
+>>>           "quantity": 4.381259918212891
+>>>         }
+>>>       },
+>>>       {
+>>>         "_index": "busca",
+>>>         "_type": "data_point",
+>>>         "_id": "interpolation:699646|mgper-0-
+>>> 20|2018-06-22|5x21sz1rcjp5",
+>>>         "_score": 1,
+>>>         "_source": {
+>>>           "name": "Mg% 0-20",
+>>>           "data_type": "interpolation",
+>>>           "attribute": "Mg%",
+>>>           "farm_id": 22706,
+>>>           "depth": "0-20",
+>>>           "location": [
+>>>             -48.915268161911925,
+>>>             -22.289490533842073
+>>>           ],
+>>>           "inceres_id": 699646,
+>>>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>>>           "slug": "mgper-0-20",
+>>>           "quantity": 8.669662475585938
+>>>         }
+>>>       },
+>>>       {
+>>>         "_index": "busca",
+>>>         "_type": "data_point",
+>>>         "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc3097d7",
+>>>         "_score": 1,
+>>>         "_source": {
+>>>           "name": "ph 20-40",
+>>>           "data_type": "interpolation",
+>>>           "attribute": "ph",
+>>>           "farm_id": 22706,
+>>>           "depth": "20-40",
+>>>           "location": [
+>>>             -48.904161243141765,
+>>>             -22.289829735373146
+>>>           ],
+>>>           "inceres_id": 701809,
+>>>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>>>           "slug": "ph-20-40",
+>>>           "quantity": 4.352087497711182
+>>>         }
+>>>       }
+>>>
+>>>
+>>> Yury Duarte
+>>> Engenheiro Agrônomo - ESALQ/USP
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>
+>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180625/b0436010/attachment.html>
+
+From drigo.angelo em gmail.com  Tue Jun 26 09:30:08 2018
+From: drigo.angelo em gmail.com (=?UTF-8?Q?Rodrigo_=C3=82ngelo?=)
+Date: Tue, 26 Jun 2018 09:30:08 -0300
+Subject: [R-br] Ler arquivo JSON com diversos outros JSONs dentro dele
+In-Reply-To: <CADFS6E7d5kYKJnpjg8k2wnazL_0Pahxv-WHDUAUagr1-fZfeUw@mail.gmail.com>
+References: <CADFS6E6=kr=7KByZNsh+rLSiLArbWQWF1efi1+8wC_DOGSatJw@mail.gmail.com>
+ <CANsnirXyYo+JnNOAieJ76x2kAkL7vA=uBVUG4id7BTABmz7siw@mail.gmail.com>
+ <CANsnirXMAXsu_X2bWgmhhKqx0U_rHy_MG-DzEX+n00STaBM2Zw@mail.gmail.com>
+ <CADFS6E7d5kYKJnpjg8k2wnazL_0Pahxv-WHDUAUagr1-fZfeUw@mail.gmail.com>
+Message-ID: <CANsnirUktCEanjRNmPu7FkHBq6caf05DV7EG7JEOn2vyCYHkuQ@mail.gmail.com>
+
+Yury,
+
+Então eu não sei como faz no R. Talvez outra pessoa da lista possa te
+ajudar.
+
+Sds,
+Rodrigo
+
+On Mon, Jun 25, 2018 at 5:49 PM Yury Duarte <yurynepomuceno em gmail.com>
+wrote:
+
+> Rodrigo,
+>
+> segundo os testes que fiz, num arquivo com número reduzido de JSONs
+> (testei com 4) dentro de um outro JSON, a solução dos colchetes funcionou e
+> me retornou uma lista com 4 campos, onde cada campo continha as informações
+> de todos os JSONs.
+> Entretanto, quando apliquei essa mesma lógica para um dos meus arquivos na
+> integra (cada arquivo tem, em média, 200 mil linhas...isso deve dar uns 10
+> mil JSONs diferentes), o comando me retorna o mesmo erro de antes:
+> Error in parse_con(txt, bigint_as_char) :
+>   parse error: after array element, I expect ',' or ']'
+>           uantity": 5         } }      },       {         "_index": "c
+>                      (right here) ------^
+>
+> Será que existe alguma solução praticável no R para trabalhar com um
+> arquivo dessa magnitude?
+>
+> Mais uma vez, agradeço a atenção de todos!
+>
+> Att
+>
+> Yury Duarte
+> Engenheiro Agrônomo - ESALQ/USP
+>
+> Em 25 de junho de 2018 17:21, Rodrigo Ângelo <drigo.angelo em gmail.com>
+> escreveu:
+>
+>> Corrigindo: Yury.
+>>
+>> Escrevi seu nome errado. Me desculpe.
+>>
+>> On Mon, Jun 25, 2018 at 5:19 PM Rodrigo Ângelo <drigo.angelo em gmail.com>
+>> wrote:
+>>
+>>> Oi Yuri,
+>>>
+>>> Tem algum outro sistema que gera esse arquivo para você, ou você tem
+>>> controle de como ele é gerado?
+>>>
+>>> Não sei se é a solução que você procura, mas talvez colocar [ no início
+>>> do arquivo e ] no final pode fazer a biblioteca jsonlite reconhecer como
+>>> uma lista de objetos.
+>>>
+>>> Sds,
+>>> Rodrigo
+>>>
+>>> On Mon, Jun 25, 2018 at 2:44 PM Yury Duarte via R-br <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Boa tarde colegas listeiros, como vão?
+>>>>
+>>>> Ultimamente venho encontrando certa dificuldade para trabalhar com
+>>>> arquivos JSON que contém outros JSON dentro deles.
+>>>> Sempre que precisei trabalhar com esse tipo de arquivo utilizei a
+>>>> expressão:
+>>>>
+>>>> library(jsonlite)
+>>>> raiz= ('C:\\Users\\Desktop\\')
+>>>> a = fromJSON(paste0(raiz,'document.json'))
+>>>>
+>>>> Dessa forma eu obtenho uma lista e consigo selecionar os valores dos
+>>>> campos que quero.
+>>>> Mas quando tento aplicar a mesma lógica para um JSON que contém
+>>>> diversos outros JSONs, o código quebra e retorna:
+>>>> Error in parse_con(txt, bigint_as_char) : parse error: trailing garbage
+>>>>           99809265137         }       },       {         "_index": "ch
+>>>>                      (right here) ------^
+>>>>
+>>>> Meu interesse é acessar apenas as informações de alguns campos desses
+>>>> JSONs e construir uma tabela, onde nas colunas eu terei os campos que
+>>>> desejo e nas linhas eu terei os valores de cada um dos JSONs.
+>>>> A seguir, estou colando no corpo da mensagem um pedaço de um desses
+>>>> arquivos que estou tentando lidar no R.
+>>>>
+>>>> Desde já, agradeço pela ajuda e atenção.
+>>>>
+>>>> Att
+>>>>
+>>>>
+>>>> {
+>>>>         "_index": "busca",
+>>>>         "_type": "data_point",
+>>>>         "_id":
+>>>> "interpolation:699646|mgper-0-20|2018-06-22|5x21sxq1km3b",
+>>>>         "_score": 1,
+>>>>         "_source": {
+>>>>           "name": "Mg% 0-20",
+>>>>           "data_type": "interpolation",
+>>>>           "attribute": "Mg%",
+>>>>           "farm_id": 22706,
+>>>>           "depth": "0-20",
+>>>>           "location": [
+>>>>             -48.91500982855756,
+>>>>             -22.293821593345108
+>>>>           ],
+>>>>           "inceres_id": 699646,
+>>>>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>>>>           "slug": "mgper-0-20",
+>>>>           "quantity": 10.565964698791504
+>>>>         }
+>>>>       },
+>>>>       {
+>>>>         "_index": "busca",
+>>>>         "_type": "data_point",
+>>>>         "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc94cc55",
+>>>>         "_score": 1,
+>>>>         "_source": {
+>>>>           "name": "ph 20-40",
+>>>>           "data_type": "interpolation",
+>>>>           "attribute": "ph",
+>>>>           "farm_id": 22706,
+>>>>           "depth": "20-40",
+>>>>           "location": [
+>>>>             -48.90241501215151,
+>>>>             -22.28980716917012
+>>>>           ],
+>>>>           "inceres_id": 701809,
+>>>>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>>>>           "slug": "ph-20-40",
+>>>>           "quantity": 4.381259918212891
+>>>>         }
+>>>>       },
+>>>>       {
+>>>>         "_index": "busca",
+>>>>         "_type": "data_point",
+>>>>         "_id":
+>>>> "interpolation:699646|mgper-0-20|2018-06-22|5x21sz1rcjp5",
+>>>>         "_score": 1,
+>>>>         "_source": {
+>>>>           "name": "Mg% 0-20",
+>>>>           "data_type": "interpolation",
+>>>>           "attribute": "Mg%",
+>>>>           "farm_id": 22706,
+>>>>           "depth": "0-20",
+>>>>           "location": [
+>>>>             -48.915268161911925,
+>>>>             -22.289490533842073
+>>>>           ],
+>>>>           "inceres_id": 699646,
+>>>>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>>>>           "slug": "mgper-0-20",
+>>>>           "quantity": 8.669662475585938
+>>>>         }
+>>>>       },
+>>>>       {
+>>>>         "_index": "busca",
+>>>>         "_type": "data_point",
+>>>>         "_id": "interpolation:701809|ph-20-40|2018-06-22|5x21uc3097d7",
+>>>>         "_score": 1,
+>>>>         "_source": {
+>>>>           "name": "ph 20-40",
+>>>>           "data_type": "interpolation",
+>>>>           "attribute": "ph",
+>>>>           "farm_id": 22706,
+>>>>           "depth": "20-40",
+>>>>           "location": [
+>>>>             -48.904161243141765,
+>>>>             -22.289829735373146
+>>>>           ],
+>>>>           "inceres_id": 701809,
+>>>>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>>>>           "slug": "ph-20-40",
+>>>>           "quantity": 4.352087497711182
+>>>>         }
+>>>>       }
+>>>>
+>>>>
+>>>> Yury Duarte
+>>>> Engenheiro Agrônomo - ESALQ/USP
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>
+>>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180626/e47fa0ea/attachment.html>
+
+From yurynepomuceno em gmail.com  Tue Jun 26 10:00:29 2018
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Tue, 26 Jun 2018 10:00:29 -0300
+Subject: [R-br] Ler arquivo JSON com diversos outros JSONs dentro dele
+In-Reply-To: <CANsnirUktCEanjRNmPu7FkHBq6caf05DV7EG7JEOn2vyCYHkuQ@mail.gmail.com>
+References: <CADFS6E6=kr=7KByZNsh+rLSiLArbWQWF1efi1+8wC_DOGSatJw@mail.gmail.com>
+ <CANsnirXyYo+JnNOAieJ76x2kAkL7vA=uBVUG4id7BTABmz7siw@mail.gmail.com>
+ <CANsnirXMAXsu_X2bWgmhhKqx0U_rHy_MG-DzEX+n00STaBM2Zw@mail.gmail.com>
+ <CADFS6E7d5kYKJnpjg8k2wnazL_0Pahxv-WHDUAUagr1-fZfeUw@mail.gmail.com>
+ <CANsnirUktCEanjRNmPu7FkHBq6caf05DV7EG7JEOn2vyCYHkuQ@mail.gmail.com>
+Message-ID: <CADFS6E6wwhhjXdKKOtefTi1MSrFBuY1mP6DMB1S0T8OT5rt8Qw@mail.gmail.com>
+
+Bom dia, Rodrigo!
+
+Obrigado pelas dicas!
+Vamos aguardar, acredito que logo uma solução irá aparecer. Caso eu
+encontre uma saída, postarei aqui as linhas de comando que usei.
+Se alguém quiser testar na integra o arquivo JSON que estou tentando abrir,
+segue o link do Google drive para download:
+https://drive.google.com/open?id=14TzdtllxDULkG22QVMVNaDWnwLaBPkBj
+
+Mais uma vez, agradeço pela atenção de todos!
+
+Att
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+Em 26 de junho de 2018 09:30, Rodrigo Ângelo <drigo.angelo em gmail.com>
+escreveu:
+
+> Yury,
+>
+> Então eu não sei como faz no R. Talvez outra pessoa da lista possa te
+> ajudar.
+>
+> Sds,
+> Rodrigo
+>
+> On Mon, Jun 25, 2018 at 5:49 PM Yury Duarte <yurynepomuceno em gmail.com>
+> wrote:
+>
+>> Rodrigo,
+>>
+>> segundo os testes que fiz, num arquivo com número reduzido de JSONs
+>> (testei com 4) dentro de um outro JSON, a solução dos colchetes funcionou e
+>> me retornou uma lista com 4 campos, onde cada campo continha as informações
+>> de todos os JSONs.
+>> Entretanto, quando apliquei essa mesma lógica para um dos meus arquivos
+>> na integra (cada arquivo tem, em média, 200 mil linhas...isso deve dar uns
+>> 10 mil JSONs diferentes), o comando me retorna o mesmo erro de antes:
+>> Error in parse_con(txt, bigint_as_char) :
+>>   parse error: after array element, I expect ',' or ']'
+>>           uantity": 5         } }      },       {         "_index": "c
+>>                      (right here) ------^
+>>
+>> Será que existe alguma solução praticável no R para trabalhar com um
+>> arquivo dessa magnitude?
+>>
+>> Mais uma vez, agradeço a atenção de todos!
+>>
+>> Att
+>>
+>> Yury Duarte
+>> Engenheiro Agrônomo - ESALQ/USP
+>>
+>> Em 25 de junho de 2018 17:21, Rodrigo Ângelo <drigo.angelo em gmail.com>
+>> escreveu:
+>>
+>>> Corrigindo: Yury.
+>>>
+>>> Escrevi seu nome errado. Me desculpe.
+>>>
+>>> On Mon, Jun 25, 2018 at 5:19 PM Rodrigo Ângelo <drigo.angelo em gmail.com>
+>>> wrote:
+>>>
+>>>> Oi Yuri,
+>>>>
+>>>> Tem algum outro sistema que gera esse arquivo para você, ou você tem
+>>>> controle de como ele é gerado?
+>>>>
+>>>> Não sei se é a solução que você procura, mas talvez colocar [ no início
+>>>> do arquivo e ] no final pode fazer a biblioteca jsonlite reconhecer como
+>>>> uma lista de objetos.
+>>>>
+>>>> Sds,
+>>>> Rodrigo
+>>>>
+>>>> On Mon, Jun 25, 2018 at 2:44 PM Yury Duarte via R-br <
+>>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>>
+>>>>> Boa tarde colegas listeiros, como vão?
+>>>>>
+>>>>> Ultimamente venho encontrando certa dificuldade para trabalhar com
+>>>>> arquivos JSON que contém outros JSON dentro deles.
+>>>>> Sempre que precisei trabalhar com esse tipo de arquivo utilizei a
+>>>>> expressão:
+>>>>>
+>>>>> library(jsonlite)
+>>>>> raiz= ('C:\\Users\\Desktop\\')
+>>>>> a = fromJSON(paste0(raiz,'document.json'))
+>>>>>
+>>>>> Dessa forma eu obtenho uma lista e consigo selecionar os valores dos
+>>>>> campos que quero.
+>>>>> Mas quando tento aplicar a mesma lógica para um JSON que contém
+>>>>> diversos outros JSONs, o código quebra e retorna:
+>>>>> Error in parse_con(txt, bigint_as_char) : parse error: trailing garbage
+>>>>>           99809265137         }       },       {         "_index": "ch
+>>>>>                      (right here) ------^
+>>>>>
+>>>>> Meu interesse é acessar apenas as informações de alguns campos desses
+>>>>> JSONs e construir uma tabela, onde nas colunas eu terei os campos que
+>>>>> desejo e nas linhas eu terei os valores de cada um dos JSONs.
+>>>>> A seguir, estou colando no corpo da mensagem um pedaço de um desses
+>>>>> arquivos que estou tentando lidar no R.
+>>>>>
+>>>>> Desde já, agradeço pela ajuda e atenção.
+>>>>>
+>>>>> Att
+>>>>>
+>>>>>
+>>>>> {
+>>>>>         "_index": "busca",
+>>>>>         "_type": "data_point",
+>>>>>         "_id": "interpolation:699646|mgper-0-
+>>>>> 20|2018-06-22|5x21sxq1km3b",
+>>>>>         "_score": 1,
+>>>>>         "_source": {
+>>>>>           "name": "Mg% 0-20",
+>>>>>           "data_type": "interpolation",
+>>>>>           "attribute": "Mg%",
+>>>>>           "farm_id": 22706,
+>>>>>           "depth": "0-20",
+>>>>>           "location": [
+>>>>>             -48.91500982855756,
+>>>>>             -22.293821593345108
+>>>>>           ],
+>>>>>           "inceres_id": 699646,
+>>>>>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>>>>>           "slug": "mgper-0-20",
+>>>>>           "quantity": 10.565964698791504
+>>>>>         }
+>>>>>       },
+>>>>>       {
+>>>>>         "_index": "busca",
+>>>>>         "_type": "data_point",
+>>>>>         "_id": "interpolation:701809|ph-20-
+>>>>> 40|2018-06-22|5x21uc94cc55",
+>>>>>         "_score": 1,
+>>>>>         "_source": {
+>>>>>           "name": "ph 20-40",
+>>>>>           "data_type": "interpolation",
+>>>>>           "attribute": "ph",
+>>>>>           "farm_id": 22706,
+>>>>>           "depth": "20-40",
+>>>>>           "location": [
+>>>>>             -48.90241501215151,
+>>>>>             -22.28980716917012
+>>>>>           ],
+>>>>>           "inceres_id": 701809,
+>>>>>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>>>>>           "slug": "ph-20-40",
+>>>>>           "quantity": 4.381259918212891
+>>>>>         }
+>>>>>       },
+>>>>>       {
+>>>>>         "_index": "busca",
+>>>>>         "_type": "data_point",
+>>>>>         "_id": "interpolation:699646|mgper-0-
+>>>>> 20|2018-06-22|5x21sz1rcjp5",
+>>>>>         "_score": 1,
+>>>>>         "_source": {
+>>>>>           "name": "Mg% 0-20",
+>>>>>           "data_type": "interpolation",
+>>>>>           "attribute": "Mg%",
+>>>>>           "farm_id": 22706,
+>>>>>           "depth": "0-20",
+>>>>>           "location": [
+>>>>>             -48.915268161911925,
+>>>>>             -22.289490533842073
+>>>>>           ],
+>>>>>           "inceres_id": 699646,
+>>>>>           "date_created": "2018-06-22T14:06:13.587631-03:00",
+>>>>>           "slug": "mgper-0-20",
+>>>>>           "quantity": 8.669662475585938
+>>>>>         }
+>>>>>       },
+>>>>>       {
+>>>>>         "_index": "busca",
+>>>>>         "_type": "data_point",
+>>>>>         "_id": "interpolation:701809|ph-20-
+>>>>> 40|2018-06-22|5x21uc3097d7",
+>>>>>         "_score": 1,
+>>>>>         "_source": {
+>>>>>           "name": "ph 20-40",
+>>>>>           "data_type": "interpolation",
+>>>>>           "attribute": "ph",
+>>>>>           "farm_id": 22706,
+>>>>>           "depth": "20-40",
+>>>>>           "location": [
+>>>>>             -48.904161243141765,
+>>>>>             -22.289829735373146
+>>>>>           ],
+>>>>>           "inceres_id": 701809,
+>>>>>           "date_created": "2018-06-22T14:06:35.183784-03:00",
+>>>>>           "slug": "ph-20-40",
+>>>>>           "quantity": 4.352087497711182
+>>>>>         }
+>>>>>       }
+>>>>>
+>>>>>
+>>>>> Yury Duarte
+>>>>> Engenheiro Agrônomo - ESALQ/USP
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>
+>>>>
+>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180626/9ef9ef8f/attachment.html>
+
+From pjobenil em gmail.com  Tue Jun 26 11:36:56 2018
+From: pjobenil em gmail.com (=?UTF-8?Q?Jobenil_Luiz_Magalh=C3=A3es_J=C3=BAnior?=)
+Date: Tue, 26 Jun 2018 11:36:56 -0300
+Subject: [R-br] Equalizar duas colunas em dois data frames a fim de realizar
+ posterior merge
+Message-ID: <CALiz7qqu07Rdbnc7ON2uthkLJLeuz1ZPxRVLA++gfMbyqQZ3DA@mail.gmail.com>
+
+Boa tarde pessoal,
+
+Estou tentando realizar o merge em dois dataframes, porém as respectivas
+colunas são ligeiramente diferentes:
+
+df1 <- (concatenado = c("1 _ 307", "22 _ 105", "12 _ 303", "6 _ 201"), var1
+= 1:4, var2 = rnorm(4))
+df2 <- (concatenar = c("500002_01 _ 307", "5001245_05 _ 303", "500033_22 _
+105",
+  "501256_12 _ 303", "500345_06 _ 201", var3 = runif(5), var4 = rnorm(5))
+
+Quero usar os 8 últimos caracteres da variável df2$concatenar e comparar
+com as da variável df1$concatenado.
+Noto que tenho dois problemas: 1) completar com 0 "zeros" à esquerda os
+valores à esquerda em df1$concatenado, quando forem menores do que 10.
+2) Extrair os 8 caracteres à direita da variável df2$concatenar.
+
+Como posso equalizar as duas colunas?
+Agradeço desde logo qualquer ajuda que puderem dispensar.
+Atenciosamente
+Jobenil Júnior
+
+
+
+
+[image: Mailtrack]
+<https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&>
+Remetente
+notificado por
+Mailtrack
+<https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&>
+26/06/18
+11:37:17
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180626/0b4754c5/attachment.html>
+
+From edinhoestat em yahoo.com.br  Tue Jun 26 12:36:44 2018
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 26 Jun 2018 15:36:44 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Faixa_et=C3=A1ria?=
+In-Reply-To: <CAH8E6Uvnzxg2CtD=M2N_OL+-CaV6hhRVn6VNX01pcwUOZ-CSiA@mail.gmail.com>
+References: <CAH8E6UvrcFmmwKoi6ozHb1DFjcR6sGCgg0ZuGXMPo1xWMDQ1JQ@mail.gmail.com>
+ <612F6EBC-C3FE-42DB-A9CD-614AE40BCC03@gmail.com>
+ <CAH8E6Uvnzxg2CtD=M2N_OL+-CaV6hhRVn6VNX01pcwUOZ-CSiA@mail.gmail.com>
+Message-ID: <160016933.2851877.1530027404184@mail.yahoo.com>
+
+#Fonte:http://www.psiquiatriageral.com.br/educacaomedica/ciclosvitais.htmbr$ida<-rep(NA,length(br$IDADE))br$ida[12<=br$IDADE&br$IDADE<20]<-'4.Adolescente'br$ida[20<=br$IDADE&br$IDADE<40]<-'5.Jovem adulto'br$ida[40<=br$IDADE&br$IDADE<65]<-'5.Meia idade'br$ida[br$IDADE>=65]<-'6.Terceira idade'
+Geralmente eu uso essa classificação.
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em sábado, 23 de junho de 2018 20:37:39 AMT, Elias Carvalho via R-br <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Valeu Marcos
+
+Tem uma referencia que posso usar no meu artigo?
+Em sáb, 23 de jun de 2018 às 21:18, Marcos Bissoli <mbissoli em gmail.com> escreveu:
+
+Olá,
+Ministério da saúde segue os pontos de corte:
+Crianças [0,10)Adolescente [10,20)Adultos [20,60)Idosos >=60
+Abraços,
+
+Marcos Coelho Bissoli
+Em 23 de jun de 2018, às 20:56, Elias Carvalho via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+
+
+Boa noite pessoal
+Qual a melhor forma de categorizar a variável "idade"?Existe uma pré-definição de faixa etária no Brasil ? Coisa do tipo: criança, jovem, adulto, idoso? 
+-- 
+In Jesu et Maria
+
+ObrigadoProf. Elias Carvalho
+"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he who has been able to understand the cause of things"
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+
+-- 
+In Jesu et Maria
+
+ObrigadoProf. Elias Carvalho
+"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he who has been able to understand the cause of things"_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180626/3784204b/attachment.html>
+
+From marcosfs2006 em gmail.com  Tue Jun 26 14:27:35 2018
+From: marcosfs2006 em gmail.com (Marcos Silva)
+Date: Tue, 26 Jun 2018 14:27:35 -0300
+Subject: [R-br] Equalizar duas colunas em dois data frames a fim de
+ realizar posterior merge
+In-Reply-To: <CALiz7qqu07Rdbnc7ON2uthkLJLeuz1ZPxRVLA++gfMbyqQZ3DA@mail.gmail.com>
+References: <CALiz7qqu07Rdbnc7ON2uthkLJLeuz1ZPxRVLA++gfMbyqQZ3DA@mail.gmail.com>
+Message-ID: <CAHKdobzMY1WN7K_-=_K-TP+rSo5vx3ViQra3D5q+miv7=aBmWw@mail.gmail.com>
+
+Caro Jobenil, veja se o código abaixo ajuda alguma coisa.
+
+df1 <- data.frame(concatenado = c("1 _ 307", "22 _ 105", "12 _ 303", "6 _
+201"), var1 = 1:4, var2 = rnorm(4), stringsAsFactors = F)
+df2 <- data.frame(concatenar = c("500002_01 _ 307", "5001245_05 _ 303",
+"500033_22 _ 105",
+                       "501256_12 _ 303", "500345_06 _ 201"), var3 =
+runif(5), var4 = rnorm(5), stringsAsFactors = F)
+
+# Limpar
+df1$concatenado <- gsub("[[:punct:]]| ", "", df1$concatenado)
+df2$concatenar <-  gsub("[[:punct:]]| ", "", df2$concatenar)
+
+# Tratar
+df2$concatenar <- gsub(".*(\\d{8})$", "\\1", df2$concatenar)
+df1$concatenado <- sprintf("%08.0f", as.numeric(df1$concatenado))
+
+
+
+Em 26 de junho de 2018 11:36, Jobenil Luiz Magalhães Júnior via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+>
+> Boa tarde pessoal,
+>
+> Estou tentando realizar o merge em dois dataframes, porém as respectivas
+> colunas são ligeiramente diferentes:
+>
+> df1 <- (concatenado = c("1 _ 307", "22 _ 105", "12 _ 303", "6 _ 201"),
+> var1 = 1:4, var2 = rnorm(4))
+> df2 <- (concatenar = c("500002_01 _ 307", "5001245_05 _ 303", "500033_22 _
+> 105",
+>   "501256_12 _ 303", "500345_06 _ 201", var3 = runif(5), var4 = rnorm(5))
+>
+> Quero usar os 8 últimos caracteres da variável df2$concatenar e comparar
+> com as da variável df1$concatenado.
+> Noto que tenho dois problemas: 1) completar com 0 "zeros" à esquerda os
+> valores à esquerda em df1$concatenado, quando forem menores do que 10.
+> 2) Extrair os 8 caracteres à direita da variável df2$concatenar.
+>
+> Como posso equalizar as duas colunas?
+> Agradeço desde logo qualquer ajuda que puderem dispensar.
+> Atenciosamente
+> Jobenil Júnior
+>
+>
+>
+>
+> [image: Mailtrack]
+> <https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&> Remetente
+> notificado por
+> Mailtrack
+> <https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&> 26/06/18
+> 11:37:17
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+Marcos F. Silva
+http://sites.google.com/site/marcosfs2006
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180626/a966bfac/attachment.html>
+
+From ecacarva em gmail.com  Wed Jun 27 07:19:18 2018
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Wed, 27 Jun 2018 07:19:18 -0300
+Subject: [R-br] =?utf-8?q?Faixa_et=C3=A1ria?=
+In-Reply-To: <160016933.2851877.1530027404184@mail.yahoo.com>
+References: <CAH8E6UvrcFmmwKoi6ozHb1DFjcR6sGCgg0ZuGXMPo1xWMDQ1JQ@mail.gmail.com>
+ <612F6EBC-C3FE-42DB-A9CD-614AE40BCC03@gmail.com>
+ <CAH8E6Uvnzxg2CtD=M2N_OL+-CaV6hhRVn6VNX01pcwUOZ-CSiA@mail.gmail.com>
+ <160016933.2851877.1530027404184@mail.yahoo.com>
+Message-ID: <CAH8E6UsPT1yx1RshJDwSzuUZ-V_04Kv99VkyPmjnmHZ3CCrPQA@mail.gmail.com>
+
+Obrigado Prof. Lira
+
+Em ter, 26 de jun de 2018 às 12:36, Edson Lira <edinhoestat em yahoo.com.br>
+escreveu:
+
+> #Fonte:http://www.psiquiatriageral.com.br/educacaomedica/ciclosvitais.htm
+> br$ida<-rep(NA,length(br$IDADE))
+> br$ida[12<=br$IDADE&br$IDADE<20]<-'4.Adolescente'
+> br$ida[20<=br$IDADE&br$IDADE<40]<-'5.Jovem adulto'
+> br$ida[40<=br$IDADE&br$IDADE<65]<-'5.Meia idade'
+> br$ida[br$IDADE>=65]<-'6.Terceira idade'
+>
+> Geralmente eu uso essa classificação.
+>
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+>
+> Em sábado, 23 de junho de 2018 20:37:39 AMT, Elias Carvalho via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Valeu Marcos
+>
+> Tem uma referencia que posso usar no meu artigo?
+>
+> Em sáb, 23 de jun de 2018 às 21:18, Marcos Bissoli <mbissoli em gmail.com>
+> escreveu:
+>
+> Olá,
+>
+> Ministério da saúde segue os pontos de corte:
+>
+> Crianças [0,10)
+> Adolescente [10,20)
+> Adultos [20,60)
+> Idosos >=60
+>
+> Abraços,
+>
+> Marcos Coelho Bissoli
+>
+> Em 23 de jun de 2018, às 20:56, Elias Carvalho via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+> Boa noite pessoal
+>
+> Qual a melhor forma de categorizar a variável "idade"?
+> Existe uma pré-definição de faixa etária no Brasil ?
+> Coisa do tipo: criança, jovem, adulto, idoso?
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed is he who has been able to understand the cause of things"
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed is he who has been able to understand the cause of things"
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180627/11266657/attachment.html>
+
+From alexandre.loures em ymail.com  Thu Jun 28 00:14:39 2018
+From: alexandre.loures em ymail.com (Alexandre Loures)
+Date: Thu, 28 Jun 2018 00:14:39 -0300
+Subject: [R-br] =?utf-8?b?RWxpbWluYcOnw6NvIGRlIG9ic2VydmHDp8O1ZXMgcXVlIG4=?=
+ =?utf-8?q?=C3=A3o_variam_ao_longo_do_per=C3=ADodo?=
+Message-ID: <fb355f41-0cd0-7450-e71e-cb32c25d35d2@ymail.com>
+
+Boa noite!
+
+Tenho uma base com a seguinte característica:
+
+Ano            origem        destino        HS04            valor
+1989             ARG            BRA            0101                1
+1989             ARG            BRA            0102                0
+1989             ARG            BRA            0103                0
+1989             ARG            BRA            0104                1
+
+2010             ARG            BRA           0101                 1
+2010             ARG            BRA           0102                 1
+2010             ARG            BRA           0103                 1
+2010             ARG            BRA           0104                 1
+
+Preciso eliminar as observações HS04 que não variaram ao longo do 
+período. Ou seja, HS04 0101 e a HS04 0104 pois tanto no ano inicial 
+quanto no final tinham valor 1.
+
+Desde já, muito obrigado pela atenção!
+
+
+
+-- 
+*Alexandre Loures*
+Bolsista de Pós-doutorado Júnior do CNPq
+Centro de Ciências Sociais Aplicadas
+Universidade Federal da Paraíba
+www.ccsa.ufpb.br/ppge/
+www.rodriguesloures.com
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180628/7eb9969a/attachment.html>
+
+From marcosvital em gmail.com  Fri Jun 29 08:47:41 2018
+From: marcosvital em gmail.com (Marcos Vital)
+Date: Fri, 29 Jun 2018 08:47:41 -0300
+Subject: [R-br] =?utf-8?q?Convite_para_a_comunidade_de_R=3A_submiss=C3=B5e?=
+	=?utf-8?q?s_de_propostas_para_o_Mozilla_Festival_2018?=
+Message-ID: <CAKLUGQ8-fdQHDcwkVhJ2Tif+cSm8v6P2MU8_MQjH0HCR4hbFwA@mail.gmail.com>
+
+Oi, pessoal da lista!
+
+A nona edição do Mozilla Festival (o MozFest) será realizada em Londres,
+sexta-feira, 26 de outubro a domingo, 28 de outubro.  O festival é um
+evento super diverso, que tenta acolher pessoas do mundo todo que estejam
+de alguma forma interessadas em uma internet livre e acessível para todas
+as pessoas - isso passa por vários aspectos, que incluem iniciativas
+ligadas à Open Science e Open Source, de forma que a comunidade ligada ao R
+pode se interessar.
+
+No ano passado eu tive a chance de participar como facilitador de uma
+sessão sobre ensino de R, e neste ano sou um dos "wranglers", a equipe que
+organiza o festival. No momento a chamada para sessões está aberta, e vocês
+podem submeter uma proposta aqui: https://mozillafestival.org/proposals
+
+As inscrições de sessões ficam abertas até o dia 1o de Agosto - depois
+disso só será possível se inscrever como participante. Há recursos para que
+algumas propostas de sessões tenham ajuda de custo, no caso de candidatos
+que não tenham condições de viajar para Londres e se hospedar lá sem isso.
+
+Caso alguém queira saber mais, fiquem à vontade para entrar em contato
+comigo, ok?
+
+Abraços!
+
+Marcos
+
+-- 
+Marcos Vinícius Carneiro Vital
+Universidade Federal de Alagoas
+Instituto de Ciências Biológicas e da Saúde
+Setor de Biodiversidade e Ecologia
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180629/c98e9231/attachment.html>
+

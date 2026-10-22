@@ -1,0 +1,3731 @@
+From vanessa.felix.est em gmail.com  Mon Nov  6 10:09:59 2017
+From: vanessa.felix.est em gmail.com (Vanessa Felix)
+Date: Mon, 6 Nov 2017 10:09:59 -0200
+Subject: [R-br] =?utf-8?q?Pacotes_n=C3=A3o_carregam_no_R_version_3=2E4=2E2?=
+Message-ID: <CAJAeJpsU0JSoJZLDsFZTQReApafV-tYD+iy6ju0EASqjs+cLxQ@mail.gmail.com>
+
+Pessoal, alguém pode me ajudar a resolver este problema??
+Isto está acontecendo com vários outros pacotes.
+PS: Acabei de instalar o R na minha máquina.
+
+> install.packages(mapdata)
+Error in install.packages(mapdata) : object 'mapdata' not found
+> install.packages("mapdata")
+--- Please select a CRAN mirror for use in this session ---
+Warning: unable to access index for repository
+https://cran-r.c3sl.ufpr.br/src/contrib:
+  cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES'
+Warning: unable to access index for repository
+https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4:
+  cannot open URL '
+https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/PACKAGES'
+Warning message:
+package ‘mapdata’ is not available (for R version 3.4.2)
+> library(mapdata)
+Error: package ‘maps’ required by ‘mapdata’ could not be found
+
+Desde já, obrigada!!
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171106/0b524ef6/attachment.html>
+
+From nandodesouza em gmail.com  Mon Nov  6 10:18:38 2017
+From: nandodesouza em gmail.com (Fernando Antonio de souza)
+Date: Mon, 06 Nov 2017 12:18:38 +0000
+Subject: [R-br]
+ =?utf-8?q?Pacotes_n=C3=A3o_carregam_no_R_version_3=2E4=2E2?=
+In-Reply-To: <CAJAeJpsU0JSoJZLDsFZTQReApafV-tYD+iy6ju0EASqjs+cLxQ@mail.gmail.com>
+References: <CAJAeJpsU0JSoJZLDsFZTQReApafV-tYD+iy6ju0EASqjs+cLxQ@mail.gmail.com>
+Message-ID: <local-ae5f2495-3148@nylas-mail.nylas.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171106/88a0500b/attachment.html>
+
+From vanessa.felix.est em gmail.com  Mon Nov  6 10:20:28 2017
+From: vanessa.felix.est em gmail.com (Vanessa Felix)
+Date: Mon, 6 Nov 2017 10:20:28 -0200
+Subject: [R-br]
+	=?utf-8?q?Pacotes_n=C3=A3o_carregam_no_R_version_3=2E4=2E2?=
+In-Reply-To: <local-ae5f2495-3148@nylas-mail.nylas.com>
+References: <CAJAeJpsU0JSoJZLDsFZTQReApafV-tYD+iy6ju0EASqjs+cLxQ@mail.gmail.com>
+ <local-ae5f2495-3148@nylas-mail.nylas.com>
+Message-ID: <CAJAeJpssUAv_sBQg_UVYaP8ZsppdrdHiO6uOqMZgVSQT4qg8rw@mail.gmail.com>
+
+Tentei esse Fernando, e não funcionou.
+
+Em 6 de novembro de 2017 10:18, Fernando Antonio de souza <
+nandodesouza em gmail.com> escreveu:
+
+> pode ser algum problema com o repositório! Você ja tentou com outro
+> espelho?
+>
+> Eu utilizo esse aqui e deu certo https://vps.fmvz.usp.br/CRAN/
+>
+> options(repos = "https://vps.fmvz.usp.br/CRAN/")
+>
+> att
+>
+> =========================================
+> Fernando Souza
+> Celular: (31)99796-8781 <(31)%2099796-8781> (Vivo)
+> E-mail:nandodesouza em gmail.com
+> <https://n1.nylas.com/link/6593b52914d1aab4e1f96df3e30975198aa7fa918e747a036a54cfff041669a0/0?redirect=mailto%3Ae-mail%253Anandodesouza%40gmail.com&recipient=vanessa.felix.est%40gmail.com>
+> ==========================================
+>
+> On Nov 6 2017, at 10:09 am, Vanessa Felix via R-br <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Pessoal, alguém pode me ajudar a resolver este problema??
+>> Isto está acontecendo com vários outros pacotes.
+>> PS: Acabei de instalar o R na minha máquina.
+>>
+>> > install.packages(mapdata)
+>> Error in install.packages(mapdata) : object 'mapdata' not found
+>> > install.packages("mapdata")
+>> --- Please select a CRAN mirror for use in this session ---
+>> Warning: unable to access index for repository
+>> https://cran-r.c3sl.ufpr.br/src/contrib
+>> <https://cran-r.c3sl.ufpr.br/src/contrib?recipient=vanessa.felix.est%40gmail.com>
+>> :
+>>   cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES
+>> <https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES?recipient=vanessa.felix.est%40gmail.com>
+>> '
+>> Warning: unable to access index for repository
+>> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4
+>> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4?recipient=vanessa.felix.est%40gmail.com>
+>> :
+>>   cannot open URL 'https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/
+>> PACKAGES
+>> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/PACKAGES?recipient=vanessa.felix.est%40gmail.com>
+>> '
+>> Warning message:
+>> package ‘mapdata’ is not available (for R version 3.4.2)
+>> > library(mapdata)
+>> Error: package ‘maps’ required by ‘mapdata’ could not be found
+>>
+>> Desde já, obrigada!!
+>>
+>> _______________________________________________
+>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>>
+>>
+
+
+-- 
+
+
+------------------------------------------------------------------------------------------
+Vanessa Felix do Nascimento Sergio
+Graduada em Estatística - ICE/UFJF
+Mestre em Saúde Coletiva - IMS/UERJ
+http://lattes.cnpq.br/2516291371035474
+(21) 97557-3956
+-------------------------------------------------------------------------------------------
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171106/eab9a5ac/attachment.html>
+
+From pjobenil em gmail.com  Mon Nov  6 10:53:34 2017
+From: pjobenil em gmail.com (=?utf-8?Q?Jobenil_Luiz_Magalh=C3=A3es_J=C3=BAnior?=)
+Date: Mon, 6 Nov 2017 10:53:34 -0200
+Subject: [R-br] =?utf-8?q?RES=3A__Pacotes_n=C3=A3o_carregam_no_R_version_3?=
+	=?utf-8?q?=2E4=2E2?=
+In-Reply-To: <CAJAeJpsU0JSoJZLDsFZTQReApafV-tYD+iy6ju0EASqjs+cLxQ@mail.gmail.com>
+References: <CAJAeJpsU0JSoJZLDsFZTQReApafV-tYD+iy6ju0EASqjs+cLxQ@mail.gmail.com>
+Message-ID: <5a005b4d.6232c80a.fa547.21bf@mx.google.com>
+
+Vanessa
+
+Deve ser problema com o repositório. Uma solução que você pode tentar é baixar o pacote de qualquer um dos repositórios e instalá-lo diretamente pelo menu.
+
+Atenciosamente
+Jobenil Júnior
+
+Enviado do Email para Windows 10
+
+De: Vanessa Felix via R-br
+Enviado:segunda-feira, 6 de novembro de 2017 10:10
+Para: r-br em listas.c3sl.ufpr.br
+Assunto: [R-br] Pacotes não carregam no R version 3.4.2
+
+Pessoal, alguém pode me ajudar a resolver este problema??
+Isto está acontecendo com vários outros pacotes.
+PS: Acabei de instalar o R na minha máquina.
+
+> install.packages(mapdata)
+Error in install.packages(mapdata) : object 'mapdata' not found
+> install.packages("mapdata")
+--- Please select a CRAN mirror for use in this session ---
+Warning: unable to access index for repository https://cran-r.c3sl.ufpr.br/src/contrib:
+  cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES'
+Warning: unable to access index for repository https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4:
+  cannot open URL 'https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/PACKAGES'
+Warning message:
+package ‘mapdata’ is not available (for R version 3.4.2) 
+> library(mapdata)
+Error: package ‘maps’ required by ‘mapdata’ could not be found
+
+Desde já, obrigada!!
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171106/7f48670d/attachment.html>
+
+From nandodesouza em gmail.com  Mon Nov  6 11:02:42 2017
+From: nandodesouza em gmail.com (Fernando Antonio de souza)
+Date: Mon, 06 Nov 2017 13:02:42 +0000
+Subject: [R-br]
+ =?utf-8?q?Pacotes_n=C3=A3o_carregam_no_R_version_3=2E4=2E2?=
+In-Reply-To: <CAJAeJpssUAv_sBQg_UVYaP8ZsppdrdHiO6uOqMZgVSQT4qg8rw@mail.gmail.com>
+References: <CAJAeJpsU0JSoJZLDsFZTQReApafV-tYD+iy6ju0EASqjs+cLxQ@mail.gmail.com>
+ <local-ae5f2495-3148@nylas-mail.nylas.com>
+ <CAJAeJpssUAv_sBQg_UVYaP8ZsppdrdHiO6uOqMZgVSQT4qg8rw@mail.gmail.com>
+Message-ID: <local-44011900-4fa9@nylas-mail.nylas.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171106/f3a36933/attachment.html>
+
+From vanessa.felix.est em gmail.com  Mon Nov  6 11:04:27 2017
+From: vanessa.felix.est em gmail.com (Vanessa Felix)
+Date: Mon, 6 Nov 2017 11:04:27 -0200
+Subject: [R-br]
+	=?utf-8?q?Pacotes_n=C3=A3o_carregam_no_R_version_3=2E4=2E2?=
+In-Reply-To: <local-44011900-4fa9@nylas-mail.nylas.com>
+References: <CAJAeJpsU0JSoJZLDsFZTQReApafV-tYD+iy6ju0EASqjs+cLxQ@mail.gmail.com>
+ <local-ae5f2495-3148@nylas-mail.nylas.com>
+ <CAJAeJpssUAv_sBQg_UVYaP8ZsppdrdHiO6uOqMZgVSQT4qg8rw@mail.gmail.com>
+ <local-44011900-4fa9@nylas-mail.nylas.com>
+Message-ID: <CAJAeJpsK0PSQ5F7S=dbF=HczqdFM51bYH7nQfcHL3pzjL9tPaQ@mail.gmail.com>
+
+Eu não uso Rstudio.
+Vou tentar a dica do Jobenil tbm.
+
+Em 6 de novembro de 2017 11:02, Fernando Antonio de souza <
+nandodesouza em gmail.com> escreveu:
+
+> Você utiliza o Rstudio? Se sim, tenta fazer a instalação manual
+>
+> Entre nesse diretório e baixa o arquivo  zip do pacote maps e mapdata
+> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/
+>
+> Na janela do Rstudo no canto inferior direito (Janela History), clique na
+> aba packages >> install >> mude install from para: "Package Archive file"
+> >> navegue até onde salvou os arquivos zip maps e mapdata  e selecione>>
+> clique em  install.
+> veja se assim instala
+>
+> =========================================
+> Fernando Souza
+> Celular: (31)99796-8781 <(31)%2099796-8781> (Vivo)
+> E-mail:nandodesouza em gmail.com
+> <https://n1.nylas.com/link/e4be6b11068dee176cc7e8325461f6612bca66bb056034be806c868a54955594/0?redirect=mailto%3Ae-mail%253Anandodesouza%40gmail.com&recipient=vanessa.felix.est%40gmail.com>
+> ==========================================
+>
+> On Nov 6 2017, at 10:20 am, Vanessa Felix <vanessa.felix.est em gmail.com>
+> wrote:
+>
+>> Tentei esse Fernando, e não funcionou.
+>>
+>> Em 6 de novembro de 2017 10:18, Fernando Antonio de souza <
+>> nandodesouza em gmail.com> escreveu:
+>>
+>> pode ser algum problema com o repositório! Você ja tentou com outro
+>> espelho?
+>>
+>> Eu utilizo esse aqui e deu certo https://vps.fmvz.usp.br/CRAN/
+>> <https://vps.fmvz.usp.br/CRAN/?recipient=vanessa.felix.est%40gmail.com>
+>>
+>> options(repos = "https://vps.fmvz.usp.br/CRAN/
+>> <https://vps.fmvz.usp.br/CRAN/?recipient=vanessa.felix.est%40gmail.com>")
+>>
+>> att
+>>
+>> =========================================
+>> Fernando Souza
+>> Celular: (31)99796-8781 (Vivo)
+>> E-mail:nandodesouza em gmail.com
+>> <https://n1.nylas.com/link/6593b52914d1aab4e1f96df3e30975198aa7fa918e747a036a54cfff041669a0/0?redirect=mailto%3Ae-mail%253Anandodesouza%40gmail.com&amp%3Brecipient=vanessa.felix.est%40gmail.com&recipient=vanessa.felix.est%40gmail.com>
+>> ==========================================
+>>
+>> On Nov 6 2017, at 10:09 am, Vanessa Felix via R-br <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>> Pessoal, alguém pode me ajudar a resolver este problema??
+>> Isto está acontecendo com vários outros pacotes.
+>> PS: Acabei de instalar o R na minha máquina.
+>>
+>> > install.packages(mapdata)
+>> Error in install.packages(mapdata) : object 'mapdata' not found
+>> > install.packages("mapdata")
+>> --- Please select a CRAN mirror for use in this session ---
+>> Warning: unable to access index for repository
+>> https://cran-r.c3sl.ufpr.br/src/contrib
+>> <https://cran-r.c3sl.ufpr.br/src/contrib?recipient=vanessa.felix.est%40gmail.com>
+>> :
+>>   cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES
+>> <https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES?recipient=vanessa.felix.est%40gmail.com>
+>> '
+>> Warning: unable to access index for repository
+>> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4
+>> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4?recipient=vanessa.felix.est%40gmail.com>
+>> :
+>>   cannot open URL 'https://cran-r.c3sl.ufpr.br/b
+>> in/windows/contrib/3.4/PACKAGES
+>> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/PACKAGES?recipient=vanessa.felix.est%40gmail.com>
+>> '
+>> Warning message:
+>> package ‘mapdata’ is not available (for R version 3.4.2)
+>> > library(mapdata)
+>> Error: package ‘maps’ required by ‘mapdata’ could not be found
+>>
+>> Desde já, obrigada!!
+>>
+>> _______________________________________________
+>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br?recipient=vanessa.felix.est%40gmail.com>
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <http://www.leg.ufpr.br/r-br-guia?recipient=vanessa.felix.est%40gmail.com>) e forne�a c�digo m�nimo reproduz�vel.
+>>
+>>
+>>
+>>
+>> --
+>>
+>>
+>> ------------------------------------------------------------
+>> ------------------------------
+>> Vanessa Felix do Nascimento Sergio
+>> Graduada em Estatística - ICE/UFJF
+>> Mestre em Saúde Coletiva - IMS/UERJ
+>> http://lattes.cnpq.br/2516291371035474
+>> <http://lattes.cnpq.br/2516291371035474?recipient=vanessa.felix.est%40gmail.com>
+>> (21) 97557-3956
+>> ------------------------------------------------------------
+>> -------------------------------
+>>
+>>
+
+
+-- 
+
+
+------------------------------------------------------------------------------------------
+Vanessa Felix do Nascimento Sergio
+Graduada em Estatística - ICE/UFJF
+Mestre em Saúde Coletiva - IMS/UERJ
+http://lattes.cnpq.br/2516291371035474
+(21) 97557-3956
+-------------------------------------------------------------------------------------------
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171106/61cfccac/attachment.html>
+
+From nandodesouza em gmail.com  Mon Nov  6 12:02:28 2017
+From: nandodesouza em gmail.com (Fernando Antonio de souza)
+Date: Mon, 06 Nov 2017 14:02:28 +0000
+Subject: [R-br]
+ =?utf-8?q?Pacotes_n=C3=A3o_carregam_no_R_version_3=2E4=2E2?=
+In-Reply-To: <CAJAeJpsK0PSQ5F7S=dbF=HczqdFM51bYH7nQfcHL3pzjL9tPaQ@mail.gmail.com>
+References: <CAJAeJpsU0JSoJZLDsFZTQReApafV-tYD+iy6ju0EASqjs+cLxQ@mail.gmail.com>
+ <local-ae5f2495-3148@nylas-mail.nylas.com>
+ <CAJAeJpssUAv_sBQg_UVYaP8ZsppdrdHiO6uOqMZgVSQT4qg8rw@mail.gmail.com>
+ <local-44011900-4fa9@nylas-mail.nylas.com>
+ <CAJAeJpsK0PSQ5F7S=dbF=HczqdFM51bYH7nQfcHL3pzjL9tPaQ@mail.gmail.com>
+Message-ID: <local-5f84caaf-84fb@nylas-mail.nylas.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171106/2fd12dc3/attachment.html>
+
+From wilsoncelula em gmail.com  Tue Nov  7 01:09:55 2017
+From: wilsoncelula em gmail.com (Wilson Cohen)
+Date: Tue, 7 Nov 2017 00:09:55 -0300
+Subject: [R-br] Digest R-br, volume 83, assunto 2
+In-Reply-To: <mailman.1.1509976801.29436.r-br@listas.c3sl.ufpr.br>
+References: <mailman.1.1509976801.29436.r-br@listas.c3sl.ufpr.br>
+Message-ID: <CAPaLGrhApsacxNqoD8HSBcZZQdMVGSnUqznBrsJ+z+yk3-SUSw@mail.gmail.com>
+
+Olá Pessoal
+Alguém poderia compartilhar um exemplo simples de uso do modelo não-linear
+usando o pacote nlme?
+Obrigado.
+
+Em 6 de novembro de 2017 11:00, <r-br-request em listas.c3sl.ufpr.br> escreveu:
+
+> Enviar submissões para a lista de discussão R-br para
+>         r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+>         r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+>         r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+>    1. Pacotes não carregam no R version 3.4.2 (Vanessa Felix)
+>    2. Re: Pacotes não carregam no R version 3.4.2
+>       (Fernando Antonio de souza)
+>    3. Re: Pacotes não carregam no R version 3.4.2 (Vanessa Felix)
+>    4. RES:  Pacotes não carregam no R version 3.4.2
+>       (Jobenil Luiz Magalhães Júnior)
+>    5. Re: Pacotes não carregam no R version 3.4.2
+>       (Fernando Antonio de souza)
+>    6. Re: Pacotes não carregam no R version 3.4.2 (Vanessa Felix)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Mon, 6 Nov 2017 10:09:59 -0200
+> From: Vanessa Felix <vanessa.felix.est em gmail.com>
+> To: r-br em listas.c3sl.ufpr.br
+> Subject: [R-br] Pacotes não carregam no R version 3.4.2
+> Message-ID:
+>         <CAJAeJpsU0JSoJZLDsFZTQReApafV-tYD+iy6ju0EASqjs+cLxQ em mail.
+> gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Pessoal, alguém pode me ajudar a resolver este problema??
+> Isto está acontecendo com vários outros pacotes.
+> PS: Acabei de instalar o R na minha máquina.
+>
+> > install.packages(mapdata)
+> Error in install.packages(mapdata) : object 'mapdata' not found
+> > install.packages("mapdata")
+> --- Please select a CRAN mirror for use in this session ---
+> Warning: unable to access index for repository
+> https://cran-r.c3sl.ufpr.br/src/contrib:
+>   cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES'
+> Warning: unable to access index for repository
+> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4:
+>   cannot open URL '
+> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/PACKAGES'
+> Warning message:
+> package ‘mapdata’ is not available (for R version 3.4.2)
+> > library(mapdata)
+> Error: package ‘maps’ required by ‘mapdata’ could not be found
+>
+> Desde já, obrigada!!
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/
+> 20171106/0b524ef6/attachment-0001.html>
+>
+> ------------------------------
+>
+> Message: 2
+> Date: Mon, 06 Nov 2017 12:18:38 +0000
+> From: Fernando Antonio de souza <nandodesouza em gmail.com>
+> To: Vanessa Felix <vanessa.felix.est em gmail.com>, a lista Brasileira
+>         oficial de discussão do programa R. <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Pacotes não carregam no R version 3.4.2
+> Message-ID: <local-ae5f2495-3148 em nylas-mail.nylas.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/
+> 20171106/88a0500b/attachment-0001.html>
+>
+> ------------------------------
+>
+> Message: 3
+> Date: Mon, 6 Nov 2017 10:20:28 -0200
+> From: Vanessa Felix <vanessa.felix.est em gmail.com>
+> To: Fernando Antonio de souza <nandodesouza em gmail.com>
+> Cc: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Pacotes não carregam no R version 3.4.2
+> Message-ID:
+>         <CAJAeJpssUAv_sBQg_UVYaP8ZsppdrdHiO6uOqMZgVSQT4qg
+> 8rw em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Tentei esse Fernando, e não funcionou.
+>
+> Em 6 de novembro de 2017 10:18, Fernando Antonio de souza <
+> nandodesouza em gmail.com> escreveu:
+>
+> > pode ser algum problema com o repositório! Você ja tentou com outro
+> > espelho?
+> >
+> > Eu utilizo esse aqui e deu certo https://vps.fmvz.usp.br/CRAN/
+> >
+> > options(repos = "https://vps.fmvz.usp.br/CRAN/")
+> >
+> > att
+> >
+> > =========================================
+> > Fernando Souza
+> > Celular: (31)99796-8781 <(31)%2099796-8781> (Vivo)
+> > E-mail:nandodesouza em gmail.com
+> > <https://n1.nylas.com/link/6593b52914d1aab4e1f96df3e30975
+> 198aa7fa918e747a036a54cfff041669a0/0?redirect=mailto%3Ae-
+> mail%253Anandodesouza%40gmail.com&recipient=vanessa.felix.est%40gmail.com>
+> > ==========================================
+> >
+> > On Nov 6 2017, at 10:09 am, Vanessa Felix via R-br <
+> > r-br em listas.c3sl.ufpr.br> wrote:
+> >
+> >> Pessoal, alguém pode me ajudar a resolver este problema??
+> >> Isto está acontecendo com vários outros pacotes.
+> >> PS: Acabei de instalar o R na minha máquina.
+> >>
+> >> > install.packages(mapdata)
+> >> Error in install.packages(mapdata) : object 'mapdata' not found
+> >> > install.packages("mapdata")
+> >> --- Please select a CRAN mirror for use in this session ---
+> >> Warning: unable to access index for repository
+> >> https://cran-r.c3sl.ufpr.br/src/contrib
+> >> <https://cran-r.c3sl.ufpr.br/src/contrib?recipient=vanessa.
+> felix.est%40gmail.com>
+> >> :
+> >>   cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES
+> >> <https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES?
+> recipient=vanessa.felix.est%40gmail.com>
+> >> '
+> >> Warning: unable to access index for repository
+> >> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4
+> >> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4?
+> recipient=vanessa.felix.est%40gmail.com>
+> >> :
+> >>   cannot open URL 'https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/
+> >> PACKAGES
+> >> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/
+> PACKAGES?recipient=vanessa.felix.est%40gmail.com>
+> >> '
+> >> Warning message:
+> >> package ‘mapdata’ is not available (for R version 3.4.2)
+> >> > library(mapdata)
+> >> Error: package ‘maps’ required by ‘mapdata’ could not be found
+> >>
+> >> Desde já, obrigada!!
+> >>
+> >> _______________________________________________
+> >> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/
+> cgi-bin/mailman/listinfo/r-br
+> >> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+> >>
+> >>
+>
+>
+> --
+>
+>
+> ------------------------------------------------------------
+> ------------------------------
+> Vanessa Felix do Nascimento Sergio
+> Graduada em Estatística - ICE/UFJF
+> Mestre em Saúde Coletiva - IMS/UERJ
+> http://lattes.cnpq.br/2516291371035474
+> (21) 97557-3956
+> ------------------------------------------------------------
+> -------------------------------
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/
+> 20171106/eab9a5ac/attachment-0001.html>
+>
+> ------------------------------
+>
+> Message: 4
+> Date: Mon, 6 Nov 2017 10:53:34 -0200
+> From: Jobenil Luiz Magalhães Júnior <pjobenil em gmail.com>
+> To: Vanessa Felix <vanessa.felix.est em gmail.com>,  a lista Brasileira
+>         oficial de discussão do programa R.  <r-br em listas.c3sl.ufpr.br>
+> Subject: [R-br] RES:  Pacotes não carregam no R version 3.4.2
+> Message-ID: <5a005b4d.6232c80a.fa547.21bf em mx.google.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Vanessa
+>
+> Deve ser problema com o repositório. Uma solução que você pode tentar é
+> baixar o pacote de qualquer um dos repositórios e instalá-lo diretamente
+> pelo menu.
+>
+> Atenciosamente
+> Jobenil Júnior
+>
+> Enviado do Email para Windows 10
+>
+> De: Vanessa Felix via R-br
+> Enviado:segunda-feira, 6 de novembro de 2017 10:10
+> Para: r-br em listas.c3sl.ufpr.br
+> Assunto: [R-br] Pacotes não carregam no R version 3.4.2
+>
+> Pessoal, alguém pode me ajudar a resolver este problema??
+> Isto está acontecendo com vários outros pacotes.
+> PS: Acabei de instalar o R na minha máquina.
+>
+> > install.packages(mapdata)
+> Error in install.packages(mapdata) : object 'mapdata' not found
+> > install.packages("mapdata")
+> --- Please select a CRAN mirror for use in this session ---
+> Warning: unable to access index for repository
+> https://cran-r.c3sl.ufpr.br/src/contrib:
+>   cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES'
+> Warning: unable to access index for repository
+> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4:
+>   cannot open URL 'https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/
+> PACKAGES'
+> Warning message:
+> package ‘mapdata’ is not available (for R version 3.4.2)
+> > library(mapdata)
+> Error: package ‘maps’ required by ‘mapdata’ could not be found
+>
+> Desde já, obrigada!!
+>
+>
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/
+> 20171106/7f48670d/attachment-0001.html>
+>
+> ------------------------------
+>
+> Message: 5
+> Date: Mon, 06 Nov 2017 13:02:42 +0000
+> From: Fernando Antonio de souza <nandodesouza em gmail.com>
+> To: Vanessa Felix <vanessa.felix.est em gmail.com>
+> Cc: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Pacotes não carregam no R version 3.4.2
+> Message-ID: <local-44011900-4fa9 em nylas-mail.nylas.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/
+> 20171106/f3a36933/attachment-0001.html>
+>
+> ------------------------------
+>
+> Message: 6
+> Date: Mon, 6 Nov 2017 11:04:27 -0200
+> From: Vanessa Felix <vanessa.felix.est em gmail.com>
+> To: Fernando Antonio de souza <nandodesouza em gmail.com>
+> Cc: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Pacotes não carregam no R version 3.4.2
+> Message-ID:
+>         <CAJAeJpsK0PSQ5F7S=dbF=HczqdFM51bYH7nQfcHL3pzjL9tPaQ em mail.
+> gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Eu não uso Rstudio.
+> Vou tentar a dica do Jobenil tbm.
+>
+> Em 6 de novembro de 2017 11:02, Fernando Antonio de souza <
+> nandodesouza em gmail.com> escreveu:
+>
+> > Você utiliza o Rstudio? Se sim, tenta fazer a instalação manual
+> >
+> > Entre nesse diretório e baixa o arquivo  zip do pacote maps e mapdata
+> > https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/
+> >
+> > Na janela do Rstudo no canto inferior direito (Janela History), clique na
+> > aba packages >> install >> mude install from para: "Package Archive file"
+> > >> navegue até onde salvou os arquivos zip maps e mapdata  e selecione>>
+> > clique em  install.
+> > veja se assim instala
+> >
+> > =========================================
+> > Fernando Souza
+> > Celular: (31)99796-8781 <(31)%2099796-8781> (Vivo)
+> > E-mail:nandodesouza em gmail.com
+> > <https://n1.nylas.com/link/e4be6b11068dee176cc7e8325461f6
+> 612bca66bb056034be806c868a54955594/0?redirect=mailto%3Ae-
+> mail%253Anandodesouza%40gmail.com&recipient=vanessa.felix.est%40gmail.com>
+> > ==========================================
+> >
+> > On Nov 6 2017, at 10:20 am, Vanessa Felix <vanessa.felix.est em gmail.com>
+> > wrote:
+> >
+> >> Tentei esse Fernando, e não funcionou.
+> >>
+> >> Em 6 de novembro de 2017 10:18, Fernando Antonio de souza <
+> >> nandodesouza em gmail.com> escreveu:
+> >>
+> >> pode ser algum problema com o repositório! Você ja tentou com outro
+> >> espelho?
+> >>
+> >> Eu utilizo esse aqui e deu certo https://vps.fmvz.usp.br/CRAN/
+> >> <https://vps.fmvz.usp.br/CRAN/?recipient=vanessa.felix.est%40gmail.com>
+> >>
+> >> options(repos = "https://vps.fmvz.usp.br/CRAN/
+> >> <https://vps.fmvz.usp.br/CRAN/?recipient=vanessa.felix.est%40gmail.com
+> >")
+> >>
+> >> att
+> >>
+> >> =========================================
+> >> Fernando Souza
+> >> Celular: (31)99796-8781 (Vivo)
+> >> E-mail:nandodesouza em gmail.com
+> >> <https://n1.nylas.com/link/6593b52914d1aab4e1f96df3e30975
+> 198aa7fa918e747a036a54cfff041669a0/0?redirect=mailto%3Ae-
+> mail%253Anandodesouza%40gmail.com&amp%3Brecipient=vanessa.
+> felix.est%40gmail.com&recipient=vanessa.felix.est%40gmail.com>
+> >> ==========================================
+> >>
+> >> On Nov 6 2017, at 10:09 am, Vanessa Felix via R-br <
+> >> r-br em listas.c3sl.ufpr.br> wrote:
+> >>
+> >> Pessoal, alguém pode me ajudar a resolver este problema??
+> >> Isto está acontecendo com vários outros pacotes.
+> >> PS: Acabei de instalar o R na minha máquina.
+> >>
+> >> > install.packages(mapdata)
+> >> Error in install.packages(mapdata) : object 'mapdata' not found
+> >> > install.packages("mapdata")
+> >> --- Please select a CRAN mirror for use in this session ---
+> >> Warning: unable to access index for repository
+> >> https://cran-r.c3sl.ufpr.br/src/contrib
+> >> <https://cran-r.c3sl.ufpr.br/src/contrib?recipient=vanessa.
+> felix.est%40gmail.com>
+> >> :
+> >>   cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES
+> >> <https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES?
+> recipient=vanessa.felix.est%40gmail.com>
+> >> '
+> >> Warning: unable to access index for repository
+> >> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4
+> >> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4?
+> recipient=vanessa.felix.est%40gmail.com>
+> >> :
+> >>   cannot open URL 'https://cran-r.c3sl.ufpr.br/b
+> >> in/windows/contrib/3.4/PACKAGES
+> >> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/
+> PACKAGES?recipient=vanessa.felix.est%40gmail.com>
+> >> '
+> >> Warning message:
+> >> package ‘mapdata’ is not available (for R version 3.4.2)
+> >> > library(mapdata)
+> >> Error: package ‘maps’ required by ‘mapdata’ could not be found
+> >>
+> >> Desde já, obrigada!!
+> >>
+> >> _______________________________________________
+> >> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/
+> cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/
+> cgi-bin/mailman/listinfo/r-br?recipient=vanessa.felix.est%40gmail.com>
+> >> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <
+> http://www.leg.ufpr.br/r-br-guia?recipient=vanessa.felix.est%40gmail.com>)
+> e forne�a c�digo m�nimo reproduz�vel.
+> >>
+> >>
+> >>
+> >>
+> >> --
+> >>
+> >>
+> >> ------------------------------------------------------------
+> >> ------------------------------
+> >> Vanessa Felix do Nascimento Sergio
+> >> Graduada em Estatística - ICE/UFJF
+> >> Mestre em Saúde Coletiva - IMS/UERJ
+> >> http://lattes.cnpq.br/2516291371035474
+> >> <http://lattes.cnpq.br/2516291371035474?recipient=
+> vanessa.felix.est%40gmail.com>
+> >> (21) 97557-3956
+> >> ------------------------------------------------------------
+> >> -------------------------------
+> >>
+> >>
+>
+>
+> --
+>
+>
+> ------------------------------------------------------------
+> ------------------------------
+> Vanessa Felix do Nascimento Sergio
+> Graduada em Estatística - ICE/UFJF
+> Mestre em Saúde Coletiva - IMS/UERJ
+> http://lattes.cnpq.br/2516291371035474
+> (21) 97557-3956
+> ------------------------------------------------------------
+> -------------------------------
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/
+> 20171106/61cfccac/attachment-0001.html>
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 83, assunto 2
+> ****************************************
+>
+
+
+
+-- 
+*Prof. MSc. Wilson Martins da Silva*
+*Mestre em Ecologia Aquática e Pesca - PPGEAP/ICB/UFPA*
+
+*Especialista em Biodiversidade Amazônica - UFPA/ATMDepto de Morfologia e
+Ciências Fisiológicas*
+*Centro de Ciências Biológicas e da Saúde*
+*Universidade do Estado do Pará*
+*Campus IX - Altamira - Pará*
+http://lattes.cnpq.br/2440617911389759
+wilsoncelula em gmail.com, wilsoncelula em hotmail.com <wilsonms em ufpa.br>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171107/ef0460ea/attachment.html>
+
+From diegovieir4 em gmail.com  Tue Nov  7 16:53:10 2017
+From: diegovieir4 em gmail.com (Diego Vieira)
+Date: Tue, 7 Nov 2017 16:53:10 -0200
+Subject: [R-br] =?utf-8?q?Compara=C3=A7=C3=A3o_de_modelos_n=C3=A3o_lineare?=
+	=?utf-8?q?s_via_teste_de_Vuong_=5Bnonnest2=5D?=
+Message-ID: <CAKnQR824848j5xQ2tgm+YEaofGFzk451p1g5nBxpPo1hgDM0fg@mail.gmail.com>
+
+Companheiros recorro a ajuda de vocês novamente. Meu objetivo é comparar
+dois modelos, ambos exponenciais negativo, porém para dois diferentes
+tratamentos. Como os modelos não são aninhados eu estou utilizando o teste
+de Vuong do pacote "nonnest2"  para avaliar se as curvas obtidas a partir
+desses modelos diferem entre si. O problema é que eu consigo entender a
+saída do R. O "Variance test" diz que os modelos são indistinguíveis, porém
+o teste de razão de verossimilhança não aninhada diz que o modelo 1 e
+diferente do 2, isso é correto ? Segue a saída e os comandos. Agradeço a
+todos que me ajudarem. Abraços.
+
+SAÍDA:
+
+Model 1
+ Class: nls
+ Call: nls(formula = diversidade ~ a * parA^b, data =
+dados.ajuste[dados.ajuste$sistema == ...
+
+Model 2
+ Class: nls
+ Call: nls(formula = diversidade ~ a * parA^b, data =
+dados.ajuste[dados.ajuste$sistema == ...
+
+Variance test
+  H0: Model 1 and Model 2 are indistinguishable
+  H1: Model 1 and Model 2 are distinguishable
+    w2 = 0.048,   p = 0.997
+
+Non-nested likelihood ratio test
+  H0: Model fits are equal for the focal population
+  H1A: Model 1 fits better than Model 2
+    z = 6.840,   p = 3.97e-12
+  H1B: Model 2 fits better than Model 1
+    z = 6.840,   p = 1
+
+COMANDOS:
+
+dados.ajuste <- expand.grid(parA = c(0.0,0.99,2,3,4,5,6)+1, sistema =
+factor(c("MAFA01","MAFA04"))); perfilMAFA01; perfilMAFA04
+dados.ajuste$diversidade <- c(55.00000,19.572140, 10.230871,  7.224990,
+6.004212,  5.402218,  5.056630,
+                              62.00000, 31.69523, 21.41784, 17.61259,
+15.76542, 14.70719, 14.03339); dados.ajuste
+
+expMAFA01 <- nls(diversidade ~ a * parA^b, data =
+dados.ajuste[dados.ajuste$sistema == "MAFA01",], start = list(a = 50, b =
+-1))
+summary(expMAFA01)
+lines(fitted.values(expMAFA01))
+
+expMAFA04 <- nls(diversidade ~ a * parA^b, data =
+dados.ajuste[dados.ajuste$sistema == "MAFA04",], start = list(a = 50, b =
+-1))
+summary(expMAFA04)
+lines(fitted.values(expMAFA04))
+
+ggplot(dados.ajuste,aes(parA,diversidade))+
+  stat_function(fun=function(parA){coef(expMAFA01)[[1]] *
+parA^coef(expMAFA01)[[2]]},
+                aes(colour="MAFA01", linetype="MAFA01")) +
+  stat_function(fun=function(parA){coef(expMAFA04)[[1]] *
+parA^coef(expMAFA04)[[2]]},
+                aes(colour="MAFA04", linetype="MAFA04"))
+
+AIC(expMAFA01,expMAFA04)
+
+vuongtest(expMAFA01,expMAFA04)
+
+-- 
+Diego dos Santos Vieira
+Engenheiro Florestal - UFRA
+Mestre em Ciência Florestal - UFVJM
+Doutorando em Ciência Florestal - UFVJM
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171107/c7afe737/attachment.html>
+
+From walmeszeviani em gmail.com  Tue Nov  7 18:46:38 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Tue, 7 Nov 2017 18:46:38 -0200
+Subject: [R-br]
+	=?utf-8?q?Compara=C3=A7=C3=A3o_de_modelos_n=C3=A3o_lineare?=
+	=?utf-8?q?s_via_teste_de_Vuong_=5Bnonnest2=5D?=
+In-Reply-To: <CAKnQR824848j5xQ2tgm+YEaofGFzk451p1g5nBxpPo1hgDM0fg@mail.gmail.com>
+References: <CAKnQR824848j5xQ2tgm+YEaofGFzk451p1g5nBxpPo1hgDM0fg@mail.gmail.com>
+Message-ID: <CAFU=EkaCTKD8deqiEGmcmaUT+46T-1f+D2YFWaGvUR2f0dD41Q@mail.gmail.com>
+
+Recomendo proceder da seguinte forma para testar o efeito de sistema sobre
+a curva ajustada, ou seja, se as curvas são iguais independente dos níveis
+do fator sistema. O teste usado abaixo é o de razão de verossimilhanças. Eu
+desconheço a teoria que sustenta o teste de Vuong que você mencinou, mas
+não me parece correto porque você está usando dados diferentes e ajustando
+o mesmo modelo. Eu creio que ele seja recomendado para avaliar a igualdade
+de dois modelos aplicados ao mesmo conjunto dados. Segue CMR.
+
+library(nlme)
+
+n0 <- gnls(diversidade ~ a * parA^b,
+           data = dados.ajuste,
+           params = a + b ~ 1,
+           start = list(50, -1))
+summary(n0)
+
+n1 <- gnls(diversidade ~ a * parA^b,
+           data = dados.ajuste,
+           params = a + b ~ sistema,
+           start = list(50, 0, -1, 0))
+summary(n1)
+
+# LRT.
+anova(n0, n1)
+
+anova(n1, test = "marginal")
+
+​À
+​ disposição.
+
+Walmes​.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171107/e048bb89/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Nov  8 13:44:01 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 8 Nov 2017 13:44:01 -0200
+Subject: [R-br] Digest R-br, volume 83, assunto 2
+In-Reply-To: <CAPaLGrhApsacxNqoD8HSBcZZQdMVGSnUqznBrsJ+z+yk3-SUSw@mail.gmail.com>
+References: <mailman.1.1509976801.29436.r-br@listas.c3sl.ufpr.br>
+ <CAPaLGrhApsacxNqoD8HSBcZZQdMVGSnUqznBrsJ+z+yk3-SUSw@mail.gmail.com>
+Message-ID: <CAKrF98nsZuk7ZmRKY=1=vBmiRNjvMErxRkAGECxJuKgGbWSXVA@mail.gmail.com>
+
+O próprio pacote não vem com nenhum exemplo? 🤔
+
+2017-11-07 1:09 GMT-02:00 Wilson Cohen via R-br <r-br em listas.c3sl.ufpr.br>:
+
+> Olá Pessoal
+> Alguém poderia compartilhar um exemplo simples de uso do modelo não-linear
+> usando o pacote nlme?
+> Obrigado.
+>
+> Em 6 de novembro de 2017 11:00, <r-br-request em listas.c3sl.ufpr.br>
+> escreveu:
+>
+>> Enviar submissões para a lista de discussão R-br para
+>>         r-br em listas.c3sl.ufpr.br
+>>
+>> Para se cadastrar ou descadastrar via WWW, visite o endereço
+>>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+>> corpo da mensagem para
+>>         r-br-request em listas.c3sl.ufpr.br
+>>
+>> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+>> endereço
+>>         r-br-owner em listas.c3sl.ufpr.br
+>>
+>> Quando responder, por favor edite sua linha Assunto assim ela será
+>> mais específica que "Re: Contents of R-br digest..."
+>>
+>>
+>> Tópicos de Hoje:
+>>
+>>    1. Pacotes não carregam no R version 3.4.2 (Vanessa Felix)
+>>    2. Re: Pacotes não carregam no R version 3.4.2
+>>       (Fernando Antonio de souza)
+>>    3. Re: Pacotes não carregam no R version 3.4.2 (Vanessa Felix)
+>>    4. RES:  Pacotes não carregam no R version 3.4.2
+>>       (Jobenil Luiz Magalhães Júnior)
+>>    5. Re: Pacotes não carregam no R version 3.4.2
+>>       (Fernando Antonio de souza)
+>>    6. Re: Pacotes não carregam no R version 3.4.2 (Vanessa Felix)
+>>
+>>
+>> ----------------------------------------------------------------------
+>>
+>> Message: 1
+>> Date: Mon, 6 Nov 2017 10:09:59 -0200
+>> From: Vanessa Felix <vanessa.felix.est em gmail.com>
+>> To: r-br em listas.c3sl.ufpr.br
+>> Subject: [R-br] Pacotes não carregam no R version 3.4.2
+>> Message-ID:
+>>         <CAJAeJpsU0JSoJZLDsFZTQReApafV-tYD+iy6ju0EASqjs+cLxQ em mail.gm
+>> ail.com>
+>> Content-Type: text/plain; charset="utf-8"
+>>
+>> Pessoal, alguém pode me ajudar a resolver este problema??
+>> Isto está acontecendo com vários outros pacotes.
+>> PS: Acabei de instalar o R na minha máquina.
+>>
+>> > install.packages(mapdata)
+>> Error in install.packages(mapdata) : object 'mapdata' not found
+>> > install.packages("mapdata")
+>> --- Please select a CRAN mirror for use in this session ---
+>> Warning: unable to access index for repository
+>> https://cran-r.c3sl.ufpr.br/src/contrib:
+>>   cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES'
+>> Warning: unable to access index for repository
+>> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4:
+>>   cannot open URL '
+>> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/PACKAGES'
+>> Warning message:
+>> package ‘mapdata’ is not available (for R version 3.4.2)
+>> > library(mapdata)
+>> Error: package ‘maps’ required by ‘mapdata’ could not be found
+>>
+>> Desde já, obrigada!!
+>> -------------- Próxima Parte ----------
+>> Um anexo em HTML foi limpo...
+>> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/201711
+>> 06/0b524ef6/attachment-0001.html>
+>>
+>> ------------------------------
+>>
+>> Message: 2
+>> Date: Mon, 06 Nov 2017 12:18:38 +0000
+>> From: Fernando Antonio de souza <nandodesouza em gmail.com>
+>> To: Vanessa Felix <vanessa.felix.est em gmail.com>, a lista Brasileira
+>>         oficial de discussão do programa R. <r-br em listas.c3sl.ufpr.br>
+>> Subject: Re: [R-br] Pacotes não carregam no R version 3.4.2
+>> Message-ID: <local-ae5f2495-3148 em nylas-mail.nylas.com>
+>> Content-Type: text/plain; charset="utf-8"
+>>
+>> Um anexo em HTML foi limpo...
+>> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/201711
+>> 06/88a0500b/attachment-0001.html>
+>>
+>> ------------------------------
+>>
+>> Message: 3
+>> Date: Mon, 6 Nov 2017 10:20:28 -0200
+>> From: Vanessa Felix <vanessa.felix.est em gmail.com>
+>> To: Fernando Antonio de souza <nandodesouza em gmail.com>
+>> Cc: a lista Brasileira oficial de discussão do programa R.
+>>         <r-br em listas.c3sl.ufpr.br>
+>> Subject: Re: [R-br] Pacotes não carregam no R version 3.4.2
+>> Message-ID:
+>>         <CAJAeJpssUAv_sBQg_UVYaP8ZsppdrdHiO6uOqMZgVSQT4qg8rw em mail.
+>> gmail.com>
+>> Content-Type: text/plain; charset="utf-8"
+>>
+>> Tentei esse Fernando, e não funcionou.
+>>
+>> Em 6 de novembro de 2017 10:18, Fernando Antonio de souza <
+>> nandodesouza em gmail.com> escreveu:
+>>
+>> > pode ser algum problema com o repositório! Você ja tentou com outro
+>> > espelho?
+>> >
+>> > Eu utilizo esse aqui e deu certo https://vps.fmvz.usp.br/CRAN/
+>> >
+>> > options(repos = "https://vps.fmvz.usp.br/CRAN/")
+>> >
+>> > att
+>> >
+>> > =========================================
+>> > Fernando Souza
+>> > Celular: (31)99796-8781 <(31)%2099796-8781> (Vivo)
+>> > E-mail:nandodesouza em gmail.com
+>> > <https://n1.nylas.com/link/6593b52914d1aab4e1f96df3e30975198
+>> aa7fa918e747a036a54cfff041669a0/0?redirect=mailto%3Ae-mail%
+>> 253Anandodesouza%40gmail.com&recipient=vanessa.felix.est%40gmail.com>
+>> > ==========================================
+>> >
+>> > On Nov 6 2017, at 10:09 am, Vanessa Felix via R-br <
+>> > r-br em listas.c3sl.ufpr.br> wrote:
+>> >
+>> >> Pessoal, alguém pode me ajudar a resolver este problema??
+>> >> Isto está acontecendo com vários outros pacotes.
+>> >> PS: Acabei de instalar o R na minha máquina.
+>> >>
+>> >> > install.packages(mapdata)
+>> >> Error in install.packages(mapdata) : object 'mapdata' not found
+>> >> > install.packages("mapdata")
+>> >> --- Please select a CRAN mirror for use in this session ---
+>> >> Warning: unable to access index for repository
+>> >> https://cran-r.c3sl.ufpr.br/src/contrib
+>> >> <https://cran-r.c3sl.ufpr.br/src/contrib?recipient=vanessa.f
+>> elix.est%40gmail.com>
+>> >> :
+>> >>   cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES
+>> >> <https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES?recipient=
+>> vanessa.felix.est%40gmail.com>
+>> >> '
+>> >> Warning: unable to access index for repository
+>> >> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4
+>> >> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4?recipie
+>> nt=vanessa.felix.est%40gmail.com>
+>> >> :
+>> >>   cannot open URL 'https://cran-r.c3sl.ufpr.br/b
+>> in/windows/contrib/3.4/
+>> >> PACKAGES
+>> >> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/PACKAGE
+>> S?recipient=vanessa.felix.est%40gmail.com>
+>> >> '
+>> >> Warning message:
+>> >> package ‘mapdata’ is not available (for R version 3.4.2)
+>> >> > library(mapdata)
+>> >> Error: package ‘maps’ required by ‘mapdata’ could not be found
+>> >>
+>> >> Desde já, obrigada!!
+>> >>
+>> >> _______________________________________________
+>> >> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://
+>> listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> >> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+>> c�digo m�nimo reproduz�vel.
+>> >>
+>> >>
+>>
+>>
+>> --
+>>
+>>
+>> ------------------------------------------------------------
+>> ------------------------------
+>> Vanessa Felix do Nascimento Sergio
+>> Graduada em Estatística - ICE/UFJF
+>> Mestre em Saúde Coletiva - IMS/UERJ
+>> http://lattes.cnpq.br/2516291371035474
+>> (21) 97557-3956
+>> ------------------------------------------------------------
+>> -------------------------------
+>> -------------- Próxima Parte ----------
+>> Um anexo em HTML foi limpo...
+>> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/201711
+>> 06/eab9a5ac/attachment-0001.html>
+>>
+>> ------------------------------
+>>
+>> Message: 4
+>> Date: Mon, 6 Nov 2017 10:53:34 -0200
+>> From: Jobenil Luiz Magalhães Júnior <pjobenil em gmail.com>
+>> To: Vanessa Felix <vanessa.felix.est em gmail.com>,  a lista Brasileira
+>>         oficial de discussão do programa R.  <r-br em listas.c3sl.ufpr.br>
+>> Subject: [R-br] RES:  Pacotes não carregam no R version 3.4.2
+>> Message-ID: <5a005b4d.6232c80a.fa547.21bf em mx.google.com>
+>> Content-Type: text/plain; charset="utf-8"
+>>
+>> Vanessa
+>>
+>> Deve ser problema com o repositório. Uma solução que você pode tentar é
+>> baixar o pacote de qualquer um dos repositórios e instalá-lo diretamente
+>> pelo menu.
+>>
+>> Atenciosamente
+>> Jobenil Júnior
+>>
+>> Enviado do Email para Windows 10
+>>
+>> De: Vanessa Felix via R-br
+>> Enviado:segunda-feira, 6 de novembro de 2017 10:10
+>> Para: r-br em listas.c3sl.ufpr.br
+>> Assunto: [R-br] Pacotes não carregam no R version 3.4.2
+>>
+>> Pessoal, alguém pode me ajudar a resolver este problema??
+>> Isto está acontecendo com vários outros pacotes.
+>> PS: Acabei de instalar o R na minha máquina.
+>>
+>> > install.packages(mapdata)
+>> Error in install.packages(mapdata) : object 'mapdata' not found
+>> > install.packages("mapdata")
+>> --- Please select a CRAN mirror for use in this session ---
+>> Warning: unable to access index for repository
+>> https://cran-r.c3sl.ufpr.br/src/contrib:
+>>   cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES'
+>> Warning: unable to access index for repository
+>> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4:
+>>   cannot open URL 'https://cran-r.c3sl.ufpr.br/b
+>> in/windows/contrib/3.4/PACKAGES'
+>> Warning message:
+>> package ‘mapdata’ is not available (for R version 3.4.2)
+>> > library(mapdata)
+>> Error: package ‘maps’ required by ‘mapdata’ could not be found
+>>
+>> Desde já, obrigada!!
+>>
+>>
+>> -------------- Próxima Parte ----------
+>> Um anexo em HTML foi limpo...
+>> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/201711
+>> 06/7f48670d/attachment-0001.html>
+>>
+>> ------------------------------
+>>
+>> Message: 5
+>> Date: Mon, 06 Nov 2017 13:02:42 +0000
+>> From: Fernando Antonio de souza <nandodesouza em gmail.com>
+>> To: Vanessa Felix <vanessa.felix.est em gmail.com>
+>> Cc: a lista Brasileira oficial de discussão do programa R.
+>>         <r-br em listas.c3sl.ufpr.br>
+>> Subject: Re: [R-br] Pacotes não carregam no R version 3.4.2
+>> Message-ID: <local-44011900-4fa9 em nylas-mail.nylas.com>
+>> Content-Type: text/plain; charset="utf-8"
+>>
+>> Um anexo em HTML foi limpo...
+>> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/201711
+>> 06/f3a36933/attachment-0001.html>
+>>
+>> ------------------------------
+>>
+>> Message: 6
+>> Date: Mon, 6 Nov 2017 11:04:27 -0200
+>> From: Vanessa Felix <vanessa.felix.est em gmail.com>
+>> To: Fernando Antonio de souza <nandodesouza em gmail.com>
+>> Cc: a lista Brasileira oficial de discussão do programa R.
+>>         <r-br em listas.c3sl.ufpr.br>
+>> Subject: Re: [R-br] Pacotes não carregam no R version 3.4.2
+>> Message-ID:
+>>         <CAJAeJpsK0PSQ5F7S=dbF=HczqdFM51bYH7nQfcHL3pzjL9tPaQ em mail.gm
+>> ail.com>
+>> Content-Type: text/plain; charset="utf-8"
+>>
+>> Eu não uso Rstudio.
+>> Vou tentar a dica do Jobenil tbm.
+>>
+>> Em 6 de novembro de 2017 11:02, Fernando Antonio de souza <
+>> nandodesouza em gmail.com> escreveu:
+>>
+>> > Você utiliza o Rstudio? Se sim, tenta fazer a instalação manual
+>> >
+>> > Entre nesse diretório e baixa o arquivo  zip do pacote maps e mapdata
+>> > https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/
+>> >
+>> > Na janela do Rstudo no canto inferior direito (Janela History), clique
+>> na
+>> > aba packages >> install >> mude install from para: "Package Archive
+>> file"
+>> > >> navegue até onde salvou os arquivos zip maps e mapdata  e selecione>>
+>> > clique em  install.
+>> > veja se assim instala
+>> >
+>> > =========================================
+>> > Fernando Souza
+>> > Celular: (31)99796-8781 <(31)%2099796-8781> (Vivo)
+>> > E-mail:nandodesouza em gmail.com
+>> > <https://n1.nylas.com/link/e4be6b11068dee176cc7e8325461f6612
+>> bca66bb056034be806c868a54955594/0?redirect=mailto%3Ae-mail%
+>> 253Anandodesouza%40gmail.com&recipient=vanessa.felix.est%40gmail.com>
+>> > ==========================================
+>> >
+>> > On Nov 6 2017, at 10:20 am, Vanessa Felix <vanessa.felix.est em gmail.com>
+>> > wrote:
+>> >
+>> >> Tentei esse Fernando, e não funcionou.
+>> >>
+>> >> Em 6 de novembro de 2017 10:18, Fernando Antonio de souza <
+>> >> nandodesouza em gmail.com> escreveu:
+>> >>
+>> >> pode ser algum problema com o repositório! Você ja tentou com outro
+>> >> espelho?
+>> >>
+>> >> Eu utilizo esse aqui e deu certo https://vps.fmvz.usp.br/CRAN/
+>> >> <https://vps.fmvz.usp.br/CRAN/?recipient=vanessa.felix.est%40gmail.com
+>> >
+>> >>
+>> >> options(repos = "https://vps.fmvz.usp.br/CRAN/
+>> >> <https://vps.fmvz.usp.br/CRAN/?recipient=vanessa.felix.est%40gmail.com
+>> >")
+>> >>
+>> >> att
+>> >>
+>> >> =========================================
+>> >> Fernando Souza
+>> >> Celular: (31)99796-8781 (Vivo)
+>> >> E-mail:nandodesouza em gmail.com
+>> >> <https://n1.nylas.com/link/6593b52914d1aab4e1f96df3e30975198
+>> aa7fa918e747a036a54cfff041669a0/0?redirect=mailto%3Ae-mail%
+>> 253Anandodesouza%40gmail.com&amp%3Brecipient=vanessa.felix.
+>> est%40gmail.com&recipient=vanessa.felix.est%40gmail.com>
+>> >> ==========================================
+>> >>
+>> >> On Nov 6 2017, at 10:09 am, Vanessa Felix via R-br <
+>> >> r-br em listas.c3sl.ufpr.br> wrote:
+>> >>
+>> >> Pessoal, alguém pode me ajudar a resolver este problema??
+>> >> Isto está acontecendo com vários outros pacotes.
+>> >> PS: Acabei de instalar o R na minha máquina.
+>> >>
+>> >> > install.packages(mapdata)
+>> >> Error in install.packages(mapdata) : object 'mapdata' not found
+>> >> > install.packages("mapdata")
+>> >> --- Please select a CRAN mirror for use in this session ---
+>> >> Warning: unable to access index for repository
+>> >> https://cran-r.c3sl.ufpr.br/src/contrib
+>> >> <https://cran-r.c3sl.ufpr.br/src/contrib?recipient=vanessa.f
+>> elix.est%40gmail.com>
+>> >> :
+>> >>   cannot open URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES
+>> >> <https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES?recipient=
+>> vanessa.felix.est%40gmail.com>
+>> >> '
+>> >> Warning: unable to access index for repository
+>> >> https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4
+>> >> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4?recipie
+>> nt=vanessa.felix.est%40gmail.com>
+>> >> :
+>> >>   cannot open URL 'https://cran-r.c3sl.ufpr.br/b
+>> >> in/windows/contrib/3.4/PACKAGES
+>> >> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.4/PACKAGE
+>> S?recipient=vanessa.felix.est%40gmail.com>
+>> >> '
+>> >> Warning message:
+>> >> package ‘mapdata’ is not available (for R version 3.4.2)
+>> >> > library(mapdata)
+>> >> Error: package ‘maps’ required by ‘mapdata’ could not be found
+>> >>
+>> >> Desde já, obrigada!!
+>> >>
+>> >> _______________________________________________
+>> >> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://
+>> listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br?re
+>> cipient=vanessa.felix.est%40gmail.com>
+>> >> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <
+>> http://www.leg.ufpr.br/r-br-guia?recipient=vanessa.felix.est%40gmail.com>)
+>> e forne�a c�digo m�nimo reproduz�vel.
+>> >>
+>> >>
+>> >>
+>> >>
+>> >> --
+>> >>
+>> >>
+>> >> ------------------------------------------------------------
+>> >> ------------------------------
+>> >> Vanessa Felix do Nascimento Sergio
+>> >> Graduada em Estatística - ICE/UFJF
+>> >> Mestre em Saúde Coletiva - IMS/UERJ
+>> >> http://lattes.cnpq.br/2516291371035474
+>> >> <http://lattes.cnpq.br/2516291371035474?recipient=vanessa.
+>> felix.est%40gmail.com>
+>> >> (21) 97557-3956
+>> >> ------------------------------------------------------------
+>> >> -------------------------------
+>> >>
+>> >>
+>>
+>>
+>> --
+>>
+>>
+>> ------------------------------------------------------------
+>> ------------------------------
+>> Vanessa Felix do Nascimento Sergio
+>> Graduada em Estatística - ICE/UFJF
+>> Mestre em Saúde Coletiva - IMS/UERJ
+>> http://lattes.cnpq.br/2516291371035474
+>> (21) 97557-3956
+>> ------------------------------------------------------------
+>> -------------------------------
+>> -------------- Próxima Parte ----------
+>> Um anexo em HTML foi limpo...
+>> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/201711
+>> 06/61cfccac/attachment-0001.html>
+>>
+>> ------------------------------
+>>
+>> Subject: Legenda do Digest
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>
+>>
+>> ------------------------------
+>>
+>> Fim da Digest R-br, volume 83, assunto 2
+>> ****************************************
+>>
+>
+>
+>
+> --
+> *Prof. MSc. Wilson Martins da Silva*
+> *Mestre em Ecologia Aquática e Pesca - PPGEAP/ICB/UFPA*
+>
+> *Especialista em Biodiversidade Amazônica - UFPA/ATMDepto de Morfologia e
+> Ciências Fisiológicas*
+> *Centro de Ciências Biológicas e da Saúde*
+> *Universidade do Estado do Pará*
+> *Campus IX - Altamira - Pará*
+> http://lattes.cnpq.br/2440617911389759
+> wilsoncelula em gmail.com, wilsoncelula em hotmail.com <wilsonms em ufpa.br>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171108/6a73a988/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Nov  8 15:12:24 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 8 Nov 2017 15:12:24 -0200
+Subject: [R-br] Digest R-br, volume 83, assunto 2
+In-Reply-To: <CAKrF98nsZuk7ZmRKY=1=vBmiRNjvMErxRkAGECxJuKgGbWSXVA@mail.gmail.com>
+References: <mailman.1.1509976801.29436.r-br@listas.c3sl.ufpr.br>
+ <CAPaLGrhApsacxNqoD8HSBcZZQdMVGSnUqznBrsJ+z+yk3-SUSw@mail.gmail.com>
+ <CAKrF98nsZuk7ZmRKY=1=vBmiRNjvMErxRkAGECxJuKgGbWSXVA@mail.gmail.com>
+Message-ID: <CAFU=EkbRyGkAS3jqvc3G-yT7aR3JgyOzwFproKeDfCyRrmPjTQ@mail.gmail.com>
+
+Considere os scripts de 11 a 14 aqui
+http://leg.ufpr.br/~walmes/cursoR/conest2013/, o 11 e o 12 aqui
+http://leg.ufpr.br/~walmes/cursoR/cnpaf3/.
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171108/c24db1b4/attachment.html>
+
+From euriann em outlook.com  Wed Nov  8 15:57:55 2017
+From: euriann em outlook.com (Euriann Yamamoto)
+Date: Wed, 8 Nov 2017 17:57:55 +0000
+Subject: [R-br] =?iso-8859-1?q?Ajuste_dos_graus_de_liberdade_-_m=E9todo_Co?=
+	=?iso-8859-1?q?chran?=
+Message-ID: <CP2P152MB1812308369E42106601ABE32B6560@CP2P152MB1812.LAMP152.PROD.OUTLOOK.COM>
+
+Boa tarde, r-nautas.
+
+O R possui uma rotina para o cálculo dos ajustes dos graus de liberdade quando as variâncias são muito heterogêneas (>7)?
+
+No entanto, já fiz o cálculo à mão. Gostaria de saber se tem algum problema em continuar a análise de estabilidade e adaptabilidade com as médias originais (sem transformação), considerando essas variâncias.
+Att.,
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171108/e5feca49/attachment.html>
+
+From lipfelix em gmail.com  Wed Nov  8 17:06:46 2017
+From: lipfelix em gmail.com (Felipe Felix Costa)
+Date: Wed, 8 Nov 2017 16:06:46 -0300
+Subject: [R-br] =?utf-8?q?Qual_teste_devo_ou_se_d=C3=A1_para_usar?=
+Message-ID: <CADF9o4B9ACTEuAHsUPbXngXaTWX-c0rNwpRQbKdhC=UtMRgyJQ@mail.gmail.com>
+
+Olá, estou com dúvidas se existe algum teste estatístico que permita eu
+analisar, ao mesmo tempo, o índice de área foliar em diferentes estratos de
+altura da vegetação e regiões diferentes. Sendo que há dependência entre os
+estratos nas diferentes alturas.
+
+att.,
+abs
+-- 
+*Felipe Felix Costa*
+Tel. 96-98122-3077
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171108/4605f410/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Nov  8 18:43:46 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 8 Nov 2017 18:43:46 -0200
+Subject: [R-br]
+	=?utf-8?q?Ajuste_dos_graus_de_liberdade_-_m=C3=A9todo_Coch?=
+	=?utf-8?q?ran?=
+In-Reply-To: <CP2P152MB1812308369E42106601ABE32B6560@CP2P152MB1812.LAMP152.PROD.OUTLOOK.COM>
+References: <CP2P152MB1812308369E42106601ABE32B6560@CP2P152MB1812.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <CAFU=EkbSpeOgXBwVH_oAZjYu1k3iX7DKqfbnxX7suSOeDFge+A@mail.gmail.com>
+
+Porque não passar a resposta para uma escala que promova mais igualdade de
+variâncias para realizar as inferências? Depois você volta com a
+transformação nas estimativas pontuais para descomplicar a interpretação.
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171108/06ed4748/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Nov  8 18:46:22 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 8 Nov 2017 18:46:22 -0200
+Subject: [R-br] =?utf-8?q?Qual_teste_devo_ou_se_d=C3=A1_para_usar?=
+In-Reply-To: <CADF9o4B9ACTEuAHsUPbXngXaTWX-c0rNwpRQbKdhC=UtMRgyJQ@mail.gmail.com>
+References: <CADF9o4B9ACTEuAHsUPbXngXaTWX-c0rNwpRQbKdhC=UtMRgyJQ@mail.gmail.com>
+Message-ID: <CAFU=EkZ6K7UqaoaAGAQQ5vTvUmbJGmWDAoxD7azOW_Ai4QvY=A@mail.gmail.com>
+
+Procure especificar um modelo aos seus dados baseado no plano
+amostral/experimental adotado para levantamento dos dados. Na especificação
+do modelo acomode a dependência entre estratos. Talvez um modelo misto
+(unidades experimentais, UE) para dados longitudinais (níveis de estrato
+dentro da mesma UE) já esteja na medida certa para o seu caso.
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171108/579db8c4/attachment.html>
+
+From andreolsouza em yahoo.com.br  Thu Nov  9 23:54:45 2017
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Fri, 10 Nov 2017 01:54:45 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Fun=C3=A7=C3=A3o_do__ExpDes=2Ept?=
+References: <1165267790.5849087.1510278885101.ref@mail.yahoo.com>
+Message-ID: <1165267790.5849087.1510278885101@mail.yahoo.com>
+
+Boa noite,não houve atualização por aqui, mas, a função faixas do pacote  ExpDes.pt não funciona mais. Alguém saberia apontar uma possível causa? 
+
+ faixas(trat, mes, bloco, altura,  quali = c(TRUE, TRUE), mcomp = "sk", fac.names = c("trat", "mes"), sigT = 0.05, sigF = 0.05)
+Error in faixas(trat, mes, bloco, altura, quali = c(TRUE, TRUE), mcomp = "sk",  : 
+  não foi possível encontrar a função "faixas" att., 
+André Oliveira Souza
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171110/a7b9e80e/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Nov 10 08:06:40 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 10 Nov 2017 08:06:40 -0200
+Subject: [R-br] =?utf-8?b?RnVuw6fDo28gZG8gRXhwRGVzLnB0?=
+In-Reply-To: <1165267790.5849087.1510278885101@mail.yahoo.com>
+References: <1165267790.5849087.1510278885101.ref@mail.yahoo.com>
+ <1165267790.5849087.1510278885101@mail.yahoo.com>
+Message-ID: <CAKrF98nvxmpm2SrCkrHbid+GU6_UkL82hcvzeLixX_Sy1wB2ZA@mail.gmail.com>
+
+André,
+
+Em adição ao que se pede costumeiramente (e que a lista automaticamente
+adiciona sobre o CMR), neste caso ajudaria se você fornecesse informações
+sobre a plataforma, versão do R e a versão do pacote em questão...
+
+O pacote datado de 2013, versão 1.1.2 não tem essa função na minha
+instalação, seja no Linux como Windows, ambas atualizadas para a versão R
+3.4.2.
+
+HTH
+
+
+2017-11-09 23:54 GMT-02:00 Andre Oliveira via R-br <r-br em listas.c3sl.ufpr.br
+>:
+
+> Boa noite,
+> não houve atualização por aqui, mas, a função faixas do pacote  ExpDes.pt
+> não funciona mais. Alguém saberia apontar uma possível causa?
+>
+>
+>
+> * faixas(trat, mes, bloco, altura,  quali = c(TRUE, TRUE), mcomp = "sk",
+> fac.names = c("trat", "mes"), sigT = 0.05, sigF = 0.05)Error in
+> faixas(trat, mes, bloco, altura, quali = c(TRUE, TRUE), mcomp = "sk",  :   **não
+> foi possível encontrar a função "faixas"*
+>
+> att.,
+> André Oliveira Souza
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171110/95d19311/attachment.html>
+
+From ecacarva em gmail.com  Fri Nov 10 15:17:52 2017
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Fri, 10 Nov 2017 15:17:52 -0200
+Subject: [R-br] =?utf-8?q?Correla=C3=A7=C3=A3o_entre_vari=C3=A1veis_catego?=
+	=?utf-8?q?ricas?=
+Message-ID: <CAH8E6UtkD=XmLfbMYBMPQndWunJwZGEZH0qL37+swHYJQCrGCQ@mail.gmail.com>
+
+Boa Tarde Pessoal
+
+Tenho um banco de dados com 9 variáveis categóricas binárias e 12 variáveis
+categóricas ordinais.
+
+Preciso saber se há correlação entre elas, preciso de um valor que diga se
+há uma correlação ou associação baixa, média ou alta.
+
+O objetivo é pré-processar um banco de dados antes de criar um grafo de
+rede (path analysis e rede bayesiana) e eliminar os relacionamentos de
+variáveis com baixa corrrelação para evitar conexões causais espurias.
+
+Lendo alguns materiais foi recomendado o seguinte:
+
+   - Para variáveis categoricas x categoricas usar o qui-quadrado para
+   determinar se elas são independentes ou não.Sendo o valor P considerado a
+   medida de correlação
+   - Calcular também o v de Crammer (quanto menor maior é a força da
+   correlação)
+
+Alguuém pode me confirmar se esse é o melhor método ? Ou sugere outra coisa
+?
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171110/dcde8ce0/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Nov 10 16:10:54 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 10 Nov 2017 16:10:54 -0200
+Subject: [R-br]
+	=?utf-8?q?Correla=C3=A7=C3=A3o_entre_vari=C3=A1veis_catego?=
+	=?utf-8?q?ricas?=
+In-Reply-To: <CAH8E6UtkD=XmLfbMYBMPQndWunJwZGEZH0qL37+swHYJQCrGCQ@mail.gmail.com>
+References: <CAH8E6UtkD=XmLfbMYBMPQndWunJwZGEZH0qL37+swHYJQCrGCQ@mail.gmail.com>
+Message-ID: <CAKrF98mAd=yDrsu9GskH9N4aXe9EakP8oDYcCd2R8_Rsi8rqOQ@mail.gmail.com>
+
+Elias,
+
+Umas observações:
+
+
+   - Ao você « ... e eliminar os relacionamentos de variáveis com baixa
+   corrrelação para evitar conexões causais espurias. » vai deixar as com
+   alta correlação *apenas* e aí ter "colinearidade" para as variáveis?
+   - A recomendação: « Para variáveis categoricas x categoricas. . . Sendo
+   o valor P considerado a medida de correlação » não é muito correta do
+   ponto de vista teórico🤔 Qual material "recomenda isso"?
+
+Para ser assertivo seria necessário que você nos contasse mais sobre quem
+seria (uma binária ou categórica ordinal) a variável resposta. . .
+
+HTH
+--
+Cesar Rabak
+
+
+
+2017-11-10 15:17 GMT-02:00 Elias Carvalho via R-br <r-br em listas.c3sl.ufpr.br
+>:
+
+> Boa Tarde Pessoal
+>
+> Tenho um banco de dados com 9 variáveis categóricas binárias e 12
+> variáveis categóricas ordinais.
+>
+> Preciso saber se há correlação entre elas, preciso de um valor que diga se
+> há uma correlação ou associação baixa, média ou alta.
+>
+> O objetivo é pré-processar um banco de dados antes de criar um grafo de
+> rede (path analysis e rede bayesiana) e eliminar os relacionamentos de
+> variáveis com baixa corrrelação para evitar conexões causais espurias.
+>
+> Lendo alguns materiais foi recomendado o seguinte:
+>
+>    - Para variáveis categoricas x categoricas usar o qui-quadrado para
+>    determinar se elas são independentes ou não.Sendo o valor P considerado a
+>    medida de correlação
+>    - Calcular também o v de Crammer (quanto menor maior é a força da
+>    correlação)
+>
+> Alguuém pode me confirmar se esse é o melhor método ? Ou sugere outra
+> coisa ?
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171110/04ddb231/attachment.html>
+
+From ecacarva em gmail.com  Fri Nov 10 18:06:22 2017
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Fri, 10 Nov 2017 18:06:22 -0200
+Subject: [R-br]
+	=?utf-8?q?Correla=C3=A7=C3=A3o_entre_vari=C3=A1veis_catego?=
+	=?utf-8?q?ricas?=
+In-Reply-To: <CAKrF98mAd=yDrsu9GskH9N4aXe9EakP8oDYcCd2R8_Rsi8rqOQ@mail.gmail.com>
+References: <CAH8E6UtkD=XmLfbMYBMPQndWunJwZGEZH0qL37+swHYJQCrGCQ@mail.gmail.com>
+ <CAKrF98mAd=yDrsu9GskH9N4aXe9EakP8oDYcCd2R8_Rsi8rqOQ@mail.gmail.com>
+Message-ID: <CAH8E6UuX3t8yfOJuPzgVjG2XA06Yi8rrUS-JG5R1x6NKg5U29w@mail.gmail.com>
+
+Ola Cesar, obrigado pelo retorno
+
+Respostas abaixo:
+
+Em 10 de novembro de 2017 16:10, Cesar Rabak <cesar.rabak em gmail.com>
+escreveu:
+
+> Elias,
+>
+> Umas observações:
+>
+>
+>    - Ao você « ... e eliminar os relacionamentos de variáveis com baixa
+>    corrrelação para evitar conexões causais espurias. » vai deixar as com alta
+>    correlação *apenas* e aí ter "colinearidade" para as variáveis?
+>
+> ​A idéia é remover correlações extremamente baixas, algo como 0.01 para
+baixo.
+Eu tenho uma rotina que verificar e remover colinearidades, mas de dados
+numéricos por meio do VIF.
+Você conhece algo similar para verificar colinearidade em variáveis
+categóricas ?
+
+>
+>    - A recomendação: « Para variáveis categoricas x categoricas. . .
+>    Sendo o valor P considerado a medida de correlação » não é muito correta do
+>    ponto de vista teórico🤔 Qual material "recomenda isso"?
+>
+>
+​Eu vi tantos links que até não acho mais, mas foi no
+stackoverflow
+​ ​
+​
+​e
+stats.stackexchange.com​
+
+
+>    - Para ser assertivo seria necessário que você nos contasse mais sobre
+>    quem seria (uma binária ou categórica ordinal) a variável resposta.
+>
+> ​Abaixo, uma amostra das variáveis, são no total 9 categóricas binárias e
+12 categóricas ordinais sendo a de defecho é binaria.
+
+Restaram 23.000 registros após remover respostas que não nos interessam
+como DON​'T KNOW, REFUSAL, NOT STATED.
+
+*​VARIÁVEL DE DESFECHO*
+*C121 - ​Has heart disease*
+​*Content                  Code               Sample             *
+NO                              0                 4,429
+YES                            1                57,079 ​
+
+
+*​G001 - In general, how would you say your health is now?*
+*Content                  Code               Sample             *
+EXCELLENT              1                11,328
+VERY GOOD             2                23,290
+GOOD                        3                18,472
+FAIR                           4                  6,287
+POOR                        5                  2,204
+​
+*​G008 - Have you worked at a job or business at any time in the past 12
+months?*
+*Content                  Code               Sample             *
+NO                              0                15,233
+YES                            1                35,675
+​
+*​CCC_071 - Has high blood pressure*
+​*Content                  Code               Sample             *
+NO                              0                14,364
+YES                            1                47,086
+
+
+*​R002 - Does a long-term physical condition or mental condition or health
+problem, reduce the amount or the kind of activity at your home? ​*
+​*Content                  Code               Sample             *
+SOMETIMES                 1                    9,189
+OFTEN                          2                    5,939
+NEVER                          3                  46,419
+
+
+
+>    -
+>
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+>
+> 2017-11-10 15:17 GMT-02:00 Elias Carvalho via R-br <
+> r-br em listas.c3sl.ufpr.br>:
+>
+>> Boa Tarde Pessoal
+>>
+>> Tenho um banco de dados com 9 variáveis categóricas binárias e 12
+>> variáveis categóricas ordinais.
+>>
+>> Preciso saber se há correlação entre elas, preciso de um valor que diga
+>> se há uma correlação ou associação baixa, média ou alta.
+>>
+>> O objetivo é pré-processar um banco de dados antes de criar um grafo de
+>> rede (path analysis e rede bayesiana) e eliminar os relacionamentos de
+>> variáveis com baixa corrrelação para evitar conexões causais espurias.
+>>
+>> Lendo alguns materiais foi recomendado o seguinte:
+>>
+>>    - Para variáveis categoricas x categoricas usar o qui-quadrado para
+>>    determinar se elas são independentes ou não.Sendo o valor P considerado a
+>>    medida de correlação
+>>    - Calcular também o v de Crammer (quanto menor maior é a força da
+>>    correlação)
+>>
+>> Alguuém pode me confirmar se esse é o melhor método ? Ou sugere outra
+>> coisa ?
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria*
+>> *Obrigado*
+>> *Prof. Elias Carvalho*
+>>
+>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+>> who has been able to understand the cause of things"*
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171110/ab741546/attachment.html>
+
+From carlos.eggos em gmail.com  Mon Nov 13 12:51:13 2017
+From: carlos.eggos em gmail.com (Carlos Peixoto Neto)
+Date: Mon, 13 Nov 2017 11:51:13 -0300
+Subject: [R-br] =?utf-8?q?Gr=C3=A1fico_com_m=C3=A9dias_e_erro_agrupando_va?=
+	=?utf-8?q?r=2E_preditora_atrav=C3=A9s_de_duas_categorias?=
+Message-ID: <CA+ZXmShKAzfrR-W2Umfyo_+xvyh-JM4AG-ag20CiYEr7nGv3Wg@mail.gmail.com>
+
+Boa tarde a todos. Peço um auxílio para o caso : uma espécie de peixe
+dividida em duas categorias de tamanho "grande" e "pequeno" e dentro dessas
+categorias obtenho variáveis de interação social métrica em segundos "Peixe
+isolado ", "peixe interação pequeno ", "peixe interação grande " estas
+variáveis tenho tanto para o grupo de peixes "grande" como para o
+"pequeno". Desejo ver o efeito na variável "Altura coluna d'água (metros)".
+Como representar estes dados graficamente no R, de forma que no gráfico o
+eixo x tenha as var. de interação social e para cada uma apareça a
+representação de média e erro padrão para categoria de tamanho "grande" e
+"pequeno" ? Segue link com médias simuladas
+<https://drive.google.com/open?id=1c7EkAl0s7abiHdUdbTWrmKTowsz9z0GV>. Grato.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171113/3be34862/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Nov 13 14:40:12 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 13 Nov 2017 14:40:12 -0200
+Subject: [R-br]
+	=?utf-8?q?Gr=C3=A1fico_com_m=C3=A9dias_e_erro_agrupando_va?=
+	=?utf-8?q?r=2E_preditora_atrav=C3=A9s_de_duas_categorias?=
+In-Reply-To: <CA+ZXmShKAzfrR-W2Umfyo_+xvyh-JM4AG-ag20CiYEr7nGv3Wg@mail.gmail.com>
+References: <CA+ZXmShKAzfrR-W2Umfyo_+xvyh-JM4AG-ag20CiYEr7nGv3Wg@mail.gmail.com>
+Message-ID: <CAKrF98myt6DrSkPQ4c+LXT07WFp+5vvet9WtXMC8BA37v=qrEA@mail.gmail.com>
+
+Veja os comandos stack() para colocar os seus dados no jeito necessário e a
+função plotCI() do pacote gplots.
+
+HTH
+--
+Cesar Rabak
+
+
+2017-11-13 12:51 GMT-02:00 Carlos Peixoto Neto via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Boa tarde a todos. Peço um auxílio para o caso : uma espécie de peixe
+> dividida em duas categorias de tamanho "grande" e "pequeno" e dentro dessas
+> categorias obtenho variáveis de interação social métrica em segundos "Peixe
+> isolado ", "peixe interação pequeno ", "peixe interação grande " estas
+> variáveis tenho tanto para o grupo de peixes "grande" como para o
+> "pequeno". Desejo ver o efeito na variável "Altura coluna d'água (metros)".
+> Como representar estes dados graficamente no R, de forma que no gráfico o
+> eixo x tenha as var. de interação social e para cada uma apareça a
+> representação de média e erro padrão para categoria de tamanho "grande" e
+> "pequeno" ? Segue link com médias simuladas
+> <https://drive.google.com/open?id=1c7EkAl0s7abiHdUdbTWrmKTowsz9z0GV>.
+> Grato.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171113/1cc095cf/attachment.html>
+
+From edinhoestat em yahoo.com.br  Tue Nov 14 12:30:54 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 14 Nov 2017 14:30:54 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+Message-ID: <1558300951.1700480.1510669854150@mail.yahoo.com>
+
+Caros amigos, tenho uma série de dados de pea e pnea que têm uma ausência de dados no ano de 2010. Como faço para corrigir essa ausência?
+TrêsDuas dúvidas:
+1. Como organizar a planilha visto que devo corrigir a ausência por estado para corrigir a ausência de pea e pnea para o ano de 2010 por estado?2. Qual a técnica que me aconselham a usar?3. E como fazê-lo com uma única rotina?
+Abaixo o link da planilha
+Download pea pnea 02 14.csv
+
+  
+|  
+|   |  
+Download pea pnea 02 14.csv
+   |  |
+
+  |
+
+ 
+ [  ]'s
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171114/0795a556/attachment.html>
+
+From edinhoestat em yahoo.com.br  Tue Nov 14 18:14:26 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 14 Nov 2017 20:14:26 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+In-Reply-To: <1558300951.1700480.1510669854150@mail.yahoo.com>
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+ <1558300951.1700480.1510669854150@mail.yahoo.com>
+Message-ID: <1749894726.15850.1510690466381@mail.yahoo.com>
+
+Ninguém tem alguma idéia?
+[  ['s 
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em Terça-feira, 14 de Novembro de 2017 10:31, Edson Lira via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+ Caros amigos, tenho uma série de dados de pea e pnea que têm uma ausência de dados no ano de 2010. Como faço para corrigir essa ausência?
+TrêsDuas dúvidas:
+1. Como organizar a planilha visto que devo corrigir a ausência por estado para corrigir a ausência de pea e pnea para o ano de 2010 por estado?2. Qual a técnica que me aconselham a usar?3. E como fazê-lo com uma única rotina?
+Abaixo o link da planilha
+Download pea pnea 02 14.csv
+
+  
+|  
+|   |  
+Download pea pnea 02 14.csv
+   |  |
+
+  |
+
+ 
+ [  ]'s
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171114/47197a70/attachment.html>
+
+From edinhoestat em yahoo.com.br  Tue Nov 14 18:14:26 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 14 Nov 2017 20:14:26 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+In-Reply-To: <1558300951.1700480.1510669854150@mail.yahoo.com>
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+ <1558300951.1700480.1510669854150@mail.yahoo.com>
+Message-ID: <1749894726.15850.1510690466381@mail.yahoo.com>
+
+Ninguém tem alguma idéia?
+[  ['s 
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em Terça-feira, 14 de Novembro de 2017 10:31, Edson Lira via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+ Caros amigos, tenho uma série de dados de pea e pnea que têm uma ausência de dados no ano de 2010. Como faço para corrigir essa ausência?
+TrêsDuas dúvidas:
+1. Como organizar a planilha visto que devo corrigir a ausência por estado para corrigir a ausência de pea e pnea para o ano de 2010 por estado?2. Qual a técnica que me aconselham a usar?3. E como fazê-lo com uma única rotina?
+Abaixo o link da planilha
+Download pea pnea 02 14.csv
+
+  
+|  
+|   |  
+Download pea pnea 02 14.csv
+   |  |
+
+  |
+
+ 
+ [  ]'s
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171114/47197a70/attachment-0001.html>
+
+From eliaskrainski em yahoo.com.br  Tue Nov 14 18:28:49 2017
+From: eliaskrainski em yahoo.com.br (Elias T Krainski)
+Date: Tue, 14 Nov 2017 23:28:49 +0300
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+In-Reply-To: <1749894726.15850.1510690466381@mail.yahoo.com>
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+ <1558300951.1700480.1510669854150@mail.yahoo.com>
+ <1749894726.15850.1510690466381@mail.yahoo.com>
+Message-ID: <40017c71-7ff1-9a3a-d890-ab268223d1b5@yahoo.com.br>
+
+Acho que você precisa procurar por dados do censo pois 2010 é ano de 
+censo e não está incluido em séries de PNADs. Aliás, essas estatísticas 
+são ainda mais precisas para esse ano.
+
+Elias
+
+On 14/11/17 23:14, Edson Lira via R-br wrote:
+> Caros amigos, tenho uma série de dados de pea e pnea que têm uma 
+> ausência de dados no ano de 2010. Como faço para corrigir essa ausência?
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171114/1e958723/attachment.html>
+
+From edinhoestat em yahoo.com.br  Tue Nov 14 18:32:16 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 14 Nov 2017 20:32:16 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+In-Reply-To: <40017c71-7ff1-9a3a-d890-ab268223d1b5@yahoo.com.br>
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+ <1558300951.1700480.1510669854150@mail.yahoo.com>
+ <1749894726.15850.1510690466381@mail.yahoo.com>
+ <40017c71-7ff1-9a3a-d890-ab268223d1b5@yahoo.com.br>
+Message-ID: <943005608.45412.1510691536752@mail.yahoo.com>
+
+Obrigado Elias, mas supondo que houvesse esse problema, como resolvê-lo? 
+Pensei em um modelo de regressão, como terei que fazer por estrado, como fazer em única rotina? Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em Terça-feira, 14 de Novembro de 2017 16:29, Elias T Krainski via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+  Acho que você precisa procurar por dados do censo pois 2010 é ano de censo e não está incluido em séries de PNADs. Aliás, essas estatísticas são ainda mais precisas para esse ano. Elias
+  On 14/11/17 23:14, Edson Lira via R-br wrote:
+  
+ Caros amigos, tenho uma série de dados de pea e pnea que têm uma ausência de dados no ano de 2010. Como faço para corrigir essa ausência? 
+ 
+ _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171114/8523a36c/attachment.html>
+
+From edinhoestat em yahoo.com.br  Tue Nov 14 18:32:16 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 14 Nov 2017 20:32:16 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+In-Reply-To: <40017c71-7ff1-9a3a-d890-ab268223d1b5@yahoo.com.br>
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+ <1558300951.1700480.1510669854150@mail.yahoo.com>
+ <1749894726.15850.1510690466381@mail.yahoo.com>
+ <40017c71-7ff1-9a3a-d890-ab268223d1b5@yahoo.com.br>
+Message-ID: <943005608.45412.1510691536752@mail.yahoo.com>
+
+Obrigado Elias, mas supondo que houvesse esse problema, como resolvê-lo? 
+Pensei em um modelo de regressão, como terei que fazer por estrado, como fazer em única rotina? Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em Terça-feira, 14 de Novembro de 2017 16:29, Elias T Krainski via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+  Acho que você precisa procurar por dados do censo pois 2010 é ano de censo e não está incluido em séries de PNADs. Aliás, essas estatísticas são ainda mais precisas para esse ano. Elias
+  On 14/11/17 23:14, Edson Lira via R-br wrote:
+  
+ Caros amigos, tenho uma série de dados de pea e pnea que têm uma ausência de dados no ano de 2010. Como faço para corrigir essa ausência? 
+ 
+ _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171114/8523a36c/attachment-0001.html>
+
+From eliaskrainski em yahoo.com.br  Tue Nov 14 18:35:01 2017
+From: eliaskrainski em yahoo.com.br (Elias T Krainski)
+Date: Tue, 14 Nov 2017 23:35:01 +0300
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+In-Reply-To: <943005608.45412.1510691536752@mail.yahoo.com>
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+ <1558300951.1700480.1510669854150@mail.yahoo.com>
+ <1749894726.15850.1510690466381@mail.yahoo.com>
+ <40017c71-7ff1-9a3a-d890-ab268223d1b5@yahoo.com.br>
+ <943005608.45412.1510691536752@mail.yahoo.com>
+Message-ID: <d3fa595c-09a4-7504-baf5-bcc8f5af5289@yahoo.com.br>
+
+Eu usaria a distribuição preditiva baseada em algum modelo razoável para 
+os dados observados e consideraria o sumário. Mas nesse caso não faz 
+sentido por ter a informação nos dados do censo. Aliás, os dados do 
+censo podem ser usados para corrigir possíveis distorções nos dados que 
+você tem. Acho que há um paper do prof. Migon nisso.
+
+Elias
+
+On 14/11/17 23:32, Edson Lira wrote:
+> Obrigado Elias, mas supondo que houvesse esse problema, como resolvê-lo?
+> Pensei em um modelo de regressão, como terei que fazer por estrado, 
+> como fazer em única rotina?
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+>
+> Em Terça-feira, 14 de Novembro de 2017 16:29, Elias T Krainski via 
+> R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Acho que você precisa procurar por dados do censo pois 2010 é ano de 
+> censo e não está incluido em séries de PNADs. Aliás, essas 
+> estatísticas são ainda mais precisas para esse ano.
+> Elias
+> On 14/11/17 23:14, Edson Lira via R-br wrote:
+>> Caros amigos, tenho uma série de dados de pea e pnea que têm uma 
+>> ausência de dados no ano de 2010. Como faço para corrigir essa ausência?
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a 
+> c�digo m�nimo reproduz�vel.
+>
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171114/f8bd36c4/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Nov 14 20:27:28 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 14 Nov 2017 20:27:28 -0200
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+In-Reply-To: <1558300951.1700480.1510669854150@mail.yahoo.com>
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+ <1558300951.1700480.1510669854150@mail.yahoo.com>
+Message-ID: <CAKrF98kamJFY0uZ2LjoEvAraJHdobJWJJsF3SCM=g2ZEv7dcbQ@mail.gmail.com>
+
+Edson,
+
+Considerando a última msg, sobre o problema em geral:
+
+Não existe uma *única* fórmula para resolver esse problema. No jargão atual
+a tentativa de resolvê-lo, além do óbvio de deletar os casos com as
+variáveis faltantes ou considerar uma a uma, há, a assim denominada,
+*imputação*.
+
+A respeito disso há desde tutoriais simples até obras (com custo até
+salgado) inteiras dedicadas a esse assunto.
+
+Como sempre, existem pacotes do R para isso, que consideram o usuário já
+sapiente sobre as técnicas que automatiza.
+
+HTH
+--
+Cesar Rabak
+
+
+2017-11-14 12:30 GMT-02:00 Edson Lira via R-br <r-br em listas.c3sl.ufpr.br>:
+
+> Caros amigos, tenho uma série de dados de pea e pnea que têm uma ausência
+> de dados no ano de 2010. Como faço para corrigir essa ausência?
+>
+> TrêsDuas dúvidas:
+>
+> 1. Como organizar a planilha visto que devo corrigir a ausência por estado
+> para corrigir a ausência de pea e pnea para o ano de 2010 por estado?
+> 2. Qual a técnica que me aconselham a usar?
+> 3. E como fazê-lo com uma única rotina?
+> Abaixo o link da planilha
+>
+> Download pea pnea 02 14.csv <http://www.datafilehost.com/d/9d9001cc>
+>
+> Download pea pnea 02 14.csv
+> <http://www.datafilehost.com/d/9d9001cc>
+>
+>  [  ]'s
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171114/c0ef73f3/attachment.html>
+
+From edinhoestat em yahoo.com.br  Tue Nov 14 22:37:56 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Wed, 15 Nov 2017 00:37:56 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+In-Reply-To: <CAKrF98kamJFY0uZ2LjoEvAraJHdobJWJJsF3SCM=g2ZEv7dcbQ@mail.gmail.com>
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+ <1558300951.1700480.1510669854150@mail.yahoo.com>
+ <CAKrF98kamJFY0uZ2LjoEvAraJHdobJWJJsF3SCM=g2ZEv7dcbQ@mail.gmail.com>
+Message-ID: <69245384.149170.1510706276162@mail.yahoo.com>
+
+Valeu Cesar e Elias
+ Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em Terça-feira, 14 de Novembro de 2017 18:27, Cesar Rabak <cesar.rabak em gmail.com> escreveu:
+ 
+
+ Edson,
+Considerando a última msg, sobre o problema em geral:
+Não existe uma única fórmula para resolver esse problema. No jargão atual a tentativa de resolvê-lo, além do óbvio de deletar os casos com as variáveis faltantes ou considerar uma a uma, há, a assim denominada, imputação.
+A respeito disso há desde tutoriais simples até obras (com custo até salgado) inteiras dedicadas a esse assunto.
+Como sempre, existem pacotes do R para isso, que consideram o usuário já sapiente sobre as técnicas que automatiza.
+HTH--Cesar Rabak
+
+2017-11-14 12:30 GMT-02:00 Edson Lira via R-br <r-br em listas.c3sl.ufpr.br>:
+
+Caros amigos, tenho uma série de dados de pea e pnea que têm uma ausência de dados no ano de 2010. Como faço para corrigir essa ausência?
+TrêsDuas dúvidas:
+1. Como organizar a planilha visto que devo corrigir a ausência por estado para corrigir a ausência de pea e pnea para o ano de 2010 por estado?2. Qual a técnica que me aconselham a usar?3. E como fazê-lo com uma única rotina?
+Abaixo o link da planilha
+Download pea pnea 02 14.csv
+
+  
+|  
+|   |  
+Download pea pnea 02 14.csv
+   |  |
+
+  |
+
+ 
+ [  ]'s
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas
+______________________________ _________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forneça código mínimo reproduzível.
+
+
+
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171115/012186db/attachment.html>
+
+From assis.leonard em gmail.com  Tue Nov 14 23:22:16 2017
+From: assis.leonard em gmail.com (Leonard Assis)
+Date: Tue, 14 Nov 2017 23:22:16 -0200
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+In-Reply-To: <943005608.45412.1510691536752@mail.yahoo.com>
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+ <1558300951.1700480.1510669854150@mail.yahoo.com>
+ <1749894726.15850.1510690466381@mail.yahoo.com>
+ <40017c71-7ff1-9a3a-d890-ab268223d1b5@yahoo.com.br>
+ <943005608.45412.1510691536752@mail.yahoo.com>
+Message-ID: <CAEG0FK-JyBKE05_YYyuropGxbnarWd683O1jG=toXRfXs9ew5g@mail.gmail.com>
+
+Olhe teorias sobre missing value imputation.
+
+O R tem o pacote mice (eu utilizo) que corrige por diversos métodos à
+escolha do freguês. Mas desconheço forma logica para série temporal
+
+Em 14 de nov de 2017 6:32 PM, "Edson Lira via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Obrigado Elias, mas supondo que houvesse esse problema, como resolvê-lo?
+> Pensei em um modelo de regressão, como terei que fazer por estrado, como
+> fazer em única rotina?
+>
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+>
+> Em Terça-feira, 14 de Novembro de 2017 16:29, Elias T Krainski via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Acho que você precisa procurar por dados do censo pois 2010 é ano de censo
+> e não está incluido em séries de PNADs. Aliás, essas estatísticas são ainda
+> mais precisas para esse ano.
+> Elias
+> On 14/11/17 23:14, Edson Lira via R-br wrote:
+>
+> Caros amigos, tenho uma série de dados de pea e pnea que têm uma ausência
+> de dados no ano de 2010. Como faço para corrigir essa ausência?
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171114/3fcd4455/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Wed Nov 15 03:56:08 2017
+From: eliaskrainski em yahoo.com.br (Elias T Krainski)
+Date: Wed, 15 Nov 2017 08:56:08 +0300
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+In-Reply-To: <CAEG0FK-JyBKE05_YYyuropGxbnarWd683O1jG=toXRfXs9ew5g@mail.gmail.com>
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+ <1558300951.1700480.1510669854150@mail.yahoo.com>
+ <1749894726.15850.1510690466381@mail.yahoo.com>
+ <40017c71-7ff1-9a3a-d890-ab268223d1b5@yahoo.com.br>
+ <943005608.45412.1510691536752@mail.yahoo.com>
+ <CAEG0FK-JyBKE05_YYyuropGxbnarWd683O1jG=toXRfXs9ew5g@mail.gmail.com>
+Message-ID: <c76c1814-3420-f9e9-e6fd-c869fbb34576@yahoo.com.br>
+
+Tem o pacote 'mtsdi' para imputação de séries temporais multivariadas 
+Gaussianas, desenvolvido por um Brasileiro. Mas não acho que o problema 
+do Edson seja o caso de imputação.
+
+Elias
+
+
+On 15/11/17 04:22, Leonard Assis via R-br wrote:
+> Olhe teorias sobre missing value imputation.
+>
+> O R tem o pacote mice (eu utilizo) que corrige por diversos métodos à 
+> escolha do freguês. Mas desconheço forma logica para série temporal
+>
+> Em 14 de nov de 2017 6:32 PM, "Edson Lira via R-br" 
+> <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> escreveu:
+>
+>     Obrigado Elias, mas supondo que houvesse esse problema, como
+>     resolvê-lo?
+>     Pensei em um modelo de regressão, como terei que fazer por
+>     estrado, como fazer em única rotina?
+>     Prof. Edson Lira, Me
+>     Estatístico
+>     Manaus-Amazonas
+>
+>
+>     Em Terça-feira, 14 de Novembro de 2017 16:29, Elias T Krainski via
+>     R-br <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>>
+>     escreveu:
+>
+>
+>     Acho que você precisa procurar por dados do censo pois 2010 é ano
+>     de censo e não está incluido em séries de PNADs. Aliás, essas
+>     estatísticas são ainda mais precisas para esse ano.
+>     Elias
+>     On 14/11/17 23:14, Edson Lira via R-br wrote:
+>>     Caros amigos, tenho uma série de dados de pea e pnea que têm uma
+>>     ausência de dados no ano de 2010. Como faço para corrigir essa
+>>     ausência?
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia
+>     <http://www.leg.ufpr.br/r-br-guia>) e forne�a c�digo m�nimo
+>     reproduz�vel.
+>
+>
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia
+>     <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo
+>     reproduzível.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171115/64099702/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Wed Nov 15 04:01:48 2017
+From: eliaskrainski em yahoo.com.br (Elias T Krainski)
+Date: Wed, 15 Nov 2017 09:01:48 +0300
+Subject: [R-br] =?utf-8?q?Corrigir_aus=C3=AAncia_de_dados?=
+In-Reply-To: <CAEG0FK-JyBKE05_YYyuropGxbnarWd683O1jG=toXRfXs9ew5g@mail.gmail.com>
+References: <1558300951.1700480.1510669854150.ref@mail.yahoo.com>
+ <1558300951.1700480.1510669854150@mail.yahoo.com>
+ <1749894726.15850.1510690466381@mail.yahoo.com>
+ <40017c71-7ff1-9a3a-d890-ab268223d1b5@yahoo.com.br>
+ <943005608.45412.1510691536752@mail.yahoo.com>
+ <CAEG0FK-JyBKE05_YYyuropGxbnarWd683O1jG=toXRfXs9ew5g@mail.gmail.com>
+Message-ID: <a7f7e9fd-6e52-53ca-ec43-b56b5df26a68@yahoo.com.br>
+
+Tem o pacote 'mtsdi' para imputação de séries temporais multivariadas 
+Gaussianas, desenvolvido por um Brasileiro. Mas não acho que o problema 
+do Edson seja o caso de imputação.
+
+Elias
+
+On 15/11/17 04:22, Leonard Assis via R-br wrote:
+> Olhe teorias sobre missing value imputation.
+>
+> O R tem o pacote mice (eu utilizo) que corrige por diversos métodos à 
+> escolha do freguês. Mas desconheço forma logica para série temporal
+>
+> Em 14 de nov de 2017 6:32 PM, "Edson Lira via R-br" 
+> <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> escreveu:
+>
+>     Obrigado Elias, mas supondo que houvesse esse problema, como
+>     resolvê-lo?
+>     Pensei em um modelo de regressão, como terei que fazer por
+>     estrado, como fazer em única rotina?
+>     Prof. Edson Lira, Me
+>     Estatístico
+>     Manaus-Amazonas
+>
+>
+>     Em Terça-feira, 14 de Novembro de 2017 16:29, Elias T Krainski via
+>     R-br <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>>
+>     escreveu:
+>
+>
+>     Acho que você precisa procurar por dados do censo pois 2010 é ano
+>     de censo e não está incluido em séries de PNADs. Aliás, essas
+>     estatísticas são ainda mais precisas para esse ano.
+>     Elias
+>     On 14/11/17 23:14, Edson Lira via R-br wrote:
+>>     Caros amigos, tenho uma série de dados de pea e pnea que têm uma
+>>     ausência de dados no ano de 2010. Como faço para corrigir essa
+>>     ausência?
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia
+>     <http://www.leg.ufpr.br/r-br-guia>) e forne�a c�digo m�nimo
+>     reproduz�vel.
+>
+>
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia
+>     <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo
+>     reproduzível.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171115/4abfd265/attachment.html>
+
+From adrielegbiase em gmail.com  Wed Nov 15 21:18:51 2017
+From: adrielegbiase em gmail.com (Adriele Giaretta Biase)
+Date: Wed, 15 Nov 2017 21:18:51 -0200
+Subject: [R-br] usar separador de milhar
+Message-ID: <CANjWqYzds+rAHTO9dgffCj+Gmnqhx9Aok51sQNVeMmJofhdDUQ@mail.gmail.com>
+
+Bom dia a todos,
+
+tenho uma tabela, em que os números não estão separados por milhar, uma
+tabela com muitas linhas, mas para exemplificar, tomei como exemplo essa
+tabela pequena abaixo:
+
+Ex:
+
+teste metodo_1 metodo_2
+A 30000000 530000000
+B 40000034 550003600
+C 30000020 570000002
+D 50000000 830000000
+E 20000000 730000000
+F 30000400 530000500
+
+Eu faço graficos de barras usando cada linha de forma  que os valores
+apareçam em cima de cada barra.
+A dúvida é como fazer com que esses valores (da tabela) fiquem separados
+por milhar. A minha intenção é fazer tanto em padrão ingles como em padrão
+português.
+
+Exemplo, tomando o padrão português, o teste A da tabela acima, no metodo1
+queria que o R lesse 3.000.0000 e no metodo2  53.000.0000
+Se tomasse o padrão ingles, o teste A no metodo1 seria 3,000,0000 e no
+metodo2  53,000,0000
+
+Porém, a tabela não tem nem ponto e nem virgula para poder trocar de uma
+nomenclatura para outra.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171115/5ce1a6e8/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Nov 16 00:24:25 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 16 Nov 2017 00:24:25 -0200
+Subject: [R-br] usar separador de milhar
+In-Reply-To: <CANjWqYzds+rAHTO9dgffCj+Gmnqhx9Aok51sQNVeMmJofhdDUQ@mail.gmail.com>
+References: <CANjWqYzds+rAHTO9dgffCj+Gmnqhx9Aok51sQNVeMmJofhdDUQ@mail.gmail.com>
+Message-ID: <CAKrF98=VCcsu1bO6hN1eSu+RWsSf+f=iM4Jaj3HGnyL0FGpF5Q@mail.gmail.com>
+
+Adriele,
+
+Essa sua pergunta ou é muito elementar, e o caminho para a resposta seria
+você ler o documento (ou assemelhado) R-intro, e a documentação das funções:
+cat(), sprintf() e a melhor para começar format().
+
+OU tem algo complicado aí que você não conseguiu "passar" na sua pergunta...
+
+
+HTH
+--
+Cesar Rabak
+
+
+2017-11-15 21:18 GMT-02:00 Adriele Giaretta Biase via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Bom dia a todos,
+>
+> tenho uma tabela, em que os números não estão separados por milhar, uma
+> tabela com muitas linhas, mas para exemplificar, tomei como exemplo essa
+> tabela pequena abaixo:
+>
+> Ex:
+>
+> teste metodo_1 metodo_2
+> A 30000000 530000000
+> B 40000034 550003600
+> C 30000020 570000002
+> D 50000000 830000000
+> E 20000000 730000000
+> F 30000400 530000500
+>
+> Eu faço graficos de barras usando cada linha de forma  que os valores
+> apareçam em cima de cada barra.
+> A dúvida é como fazer com que esses valores (da tabela) fiquem separados
+> por milhar. A minha intenção é fazer tanto em padrão ingles como em padrão
+> português.
+>
+> Exemplo, tomando o padrão português, o teste A da tabela acima, no metodo1
+> queria que o R lesse 3.000.0000 e no metodo2  53.000.0000
+> Se tomasse o padrão ingles, o teste A no metodo1 seria 3,000,0000 e no
+> metodo2  53,000,0000
+>
+> Porém, a tabela não tem nem ponto e nem virgula para poder trocar de uma
+> nomenclatura para outra.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171116/b6fe7b17/attachment.html>
+
+From edinhoestat em yahoo.com.br  Thu Nov 16 11:16:44 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Thu, 16 Nov 2017 13:16:44 +0000 (UTC)
+Subject: [R-br] Reshape
+References: <1924524050.828107.1510838204958.ref@mail.yahoo.com>
+Message-ID: <1924524050.828107.1510838204958@mail.yahoo.com>
+
+Bom dia caros amigos, estou trabalhando com a base de dados abaixo(somente 6 linhas):
+
+   id     UF    x2002 x2003 x2004 x2005 x2006 x2007 x2008 x2009 x2011 x2012 x2013 x2014
+1  1     Acre      192    189     311     311     333    327      338    354     357     381     337   373
+2  2  Alagoas  1251  1269  1292    1357   1413  1410    1355  1401   1344   1391   1429  1417
+3  3    Amapá    204   198   239   262   252   294   317   299   302   311   332   355
+4  4 Amazonas   958  1050  1433  1528  1502  1488  1531  1673  1689  1720  1771  1908
+5  5    Bahia  6885  6901  7167  7336  7292  7338  7665  7792  7602  7416  7530  7879
+6  6    Ceará  3705  3871  3944  4120  4143  4138  4314  4380  4121  4184  4215  4319
+
+Estou  usando o reshape para tentar transformar as linhas em colunas, ou seja, cada uma UF seria uma coluna, e assim com as demaisComo gostaria que ficasse:
+Acre Alagoas Amapá Amazonas Bahia Ceará  ano
+192      1251                                             3705  2002
+189      1269                                             3871  2003
+311     1293                                              3944  2004
+...       .... Estou usando a rotina:
+
+pea<-reshape(pea1, 
+                  varying=c("x2002","x2003","x2004","x2005","x2006","x2007",
+                  "x2008","x2009","x2011","x2012","x2013","x2014"),
+                   v.names="Medida",
+                   timevar="UF",
+                   times=c("Acre","Alagoas","Amapá","Amazonas","Bahia",
+                         "Ceará","Distrito Federal","Espírito Santo",
+                         "Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul",
+                         "Minas Gerais","Pará","Paraíba","Paraná"," Pernambuco",
+                         "Piauí","Rio de Janeiro","Rio Grande do Norte",
+                         "Rio Grande do Sul","Rondônia","Roraima",
+                         "Santa Catarina","São Paulo","Sergipe","Tocantins"),
+                   new.row.names=1:27,
+                   direction="wide")
+
+que está me dando o erro:
+Erro em varying[, i] : número incorreto de dimensões
+
+Alguém tem alguma sugesstão?
+
+[  ]'s
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171116/a1cfc0c5/attachment.html>
+
+From J__P em hotmail.com  Thu Nov 16 11:26:41 2017
+From: J__P em hotmail.com (=?utf-8?B?Sm/Do28gUGVkcm8gRG9taW5ndWVz?=)
+Date: Thu, 16 Nov 2017 13:26:41 +0000
+Subject: [R-br] RES:  Reshape
+In-Reply-To: <1924524050.828107.1510838204958@mail.yahoo.com>
+References: <1924524050.828107.1510838204958.ref@mail.yahoo.com>
+ <1924524050.828107.1510838204958@mail.yahoo.com>
+Message-ID: <BN6PR2001MB1666BDE2925F65013A034AA6D52E0@BN6PR2001MB1666.namprd20.prod.outlook.com>
+
+Procura a função para realizar a transposta da matriz que vai dar certo. Mais simples
+
+João Pedro Araujo Domingues
+C +55 27 99232-9582<tel:%2B55%2027%2099232-9582>
+
+De: R-br [mailto:r-br-bounces em listas.c3sl.ufpr.br] Em nome de Edson Lira via R-br
+Enviada em: Thursday, November 16, 2017 11:17 AM
+Para: a lista Brasileira oficial de discussão do programa R. <r-br em listas.c3sl.ufpr.br>
+Assunto: [R-br] Reshape
+
+Bom dia caros amigos, estou trabalhando com a base de dados abaixo(somente 6 linhas):
+
+
+   id     UF    x2002 x2003 x2004 x2005 x2006 x2007 x2008 x2009 x2011 x2012 x2013 x2014
+1  1     Acre      192    189     311     311     333    327      338    354     357     381     337   373
+2  2  Alagoas  1251  1269  1292    1357   1413  1410    1355  1401   1344   1391   1429  1417
+3  3    Amapá    204   198   239   262   252   294   317   299   302   311   332   355
+4  4 Amazonas   958  1050  1433  1528  1502  1488  1531  1673  1689  1720  1771  1908
+5  5    Bahia  6885  6901  7167  7336  7292  7338  7665  7792  7602  7416  7530  7879
+6  6    Ceará  3705  3871  3944  4120  4143  4138  4314  4380  4121  4184  4215  4319
+
+
+Estou  usando o reshape para tentar transformar as linhas em colunas, ou seja, cada uma UF seria uma coluna, e assim com as demais
+Como gostaria que ficasse:
+
+Acre Alagoas Amapá Amazonas Bahia Ceará  ano
+
+192      1251                                             3705  2002
+
+189      1269                                             3871  2003
+
+311     1293                                              3944  2004
+
+...       ....
+
+Estou usando a rotina:
+
+
+pea<-reshape(pea1,
+                  varying=c("x2002","x2003","x2004","x2005","x2006","x2007",
+                  "x2008","x2009","x2011","x2012","x2013","x2014"),
+                   v.names="Medida",
+                   timevar="UF",
+                   times=c("Acre","Alagoas","Amapá","Amazonas","Bahia",
+                         "Ceará","Distrito Federal","Espírito Santo",
+                         "Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul",
+                         "Minas Gerais","Pará","Paraíba","Paraná"," Pernambuco",
+                         "Piauí","Rio de Janeiro","Rio Grande do Norte",
+                         "Rio Grande do Sul","Rondônia","Roraima",
+                         "Santa Catarina","São Paulo","Sergipe","Tocantins"),
+                   new.row.names=1:27,
+                   direction="wide")
+que está me dando o erro:
+
+Erro em varying[, i] : número incorreto de dimensões
+Alguém tem alguma sugesstão?
+
+[  ]'s
+Prof. Edson Lira, Me
+Estatístico
+Manaus-Amazonas
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171116/d3584019/attachment.html>
+
+From scostajeanne em gmail.com  Thu Nov 16 12:53:09 2017
+From: scostajeanne em gmail.com (Jeanne Costa)
+Date: Thu, 16 Nov 2017 12:53:09 -0200
+Subject: [R-br] RES: Reshape
+In-Reply-To: <BN6PR2001MB1666BDE2925F65013A034AA6D52E0@BN6PR2001MB1666.namprd20.prod.outlook.com>
+References: <1924524050.828107.1510838204958.ref@mail.yahoo.com>
+ <1924524050.828107.1510838204958@mail.yahoo.com>
+ <BN6PR2001MB1666BDE2925F65013A034AA6D52E0@BN6PR2001MB1666.namprd20.prod.outlook.com>
+Message-ID: <CAFJdn-0sfW+DzH+A39WQ7wuXo7r0pvqy1hmGDiKromSYmbjeGg@mail.gmail.com>
+
+Tente usar o a função dcast, do pkg reshape2. Fiz isso no código abaixo:
+
+
+> head(latlon_dist)
+            ID_ZAP5M            parque   distance   dist_km
+1: V_A20380-AM154583 ESTADUAL DO BELÉM 0.02678070  2.678070
+2: V_A20380-AM154583        BURLE MARX 0.14722285 14.722285
+3: V_A20380-AM154583     INDEPENDENCIA 0.02756847  2.756847
+4: V_A20380-AM154583   JARDIM BOTANICO 0.08291090  8.291090
+5: V_A20380-AM154583          CORDEIRO 0.11904040 11.904040
+6: V_A20380-AM154583    PARQUE DO POVO 0.10402230 10.402230
+> mdist2 <- dcast(data = latlon_dist, formula = ID_ZAP5M~parque, value.var
+= 'dist_km',
++                 fun.aggregate =mean)
+> head(mdist2)
+         ID_ZAP5M  ACLIMACAO BUENOS AIRES BURLE MARX     CERET CHACARA DO
+JOCKEY  CORDEIRO
+1 V_A1-ZAP1001667  2.0396479     2.844645   8.525611  9.254039
+9.502118  7.010958
+2 V_A1-ZAP1002649  0.6065181     3.697467   9.611037  7.867584
+ 10.874485  7.486414
+3 V_A1-ZAP1004006  8.0701516     7.037070   3.100807 15.332267
+3.451979  5.179773
+4 V_A1-ZAP1004795 11.5358657     7.762406  10.507915 17.698645
+7.621947 12.969276
+5 V_A1-ZAP1008204  4.1418657     2.540428  12.543114  8.003843
+ 12.639629 11.513499
+6 V_A1-ZAP1008249  5.1073948     2.751751   7.304517 12.072894
+7.164578  7.552054
+  ESTADUAL DO BELÉM IBIRAPUERA INDEPENDENCIA JARDIM BOTANICO JUVENTUDE
+PARQUE DA LUZ
+1          7.012610  0.9911163      3.912788        6.929003  7.002871
+4.22853720
+2          5.963840  1.9098469      2.423499        6.291981  6.818811
+4.15078971
+3         13.109059  4.3334982      9.775095        9.089064 12.112062
+9.48957949
+4         14.259577  9.2082404     13.394847       15.805615 11.000220
+9.74552685
+5          4.457268  5.4825756      5.225521       10.733382  2.514522
+0.01950312
+6          9.311688  2.4820681      7.008602        9.236796  7.819413
+5.27780835
+  PARQUE DO CARMO PARQUE DO POVO VILA LOBOS
+1        17.57522       3.787772   7.036348
+2        16.09237       5.148572   8.498657
+3        23.30077       1.854193   4.814991
+4        26.52802       7.770679   1.925128
+5        16.86382       7.464910   8.188995
+6        20.60717       2.319196   3.899231
+
+
+
+Em 16 de novembro de 2017 11:26, João Pedro Domingues via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Procura a função para realizar a transposta da matriz que vai dar certo.
+> Mais simples
+>
+>
+>
+> *João Pedro Araujo Domingues*
+>
+> C +55 27 99232-9582
+>
+>
+>
+> *De:* R-br [mailto:r-br-bounces em listas.c3sl.ufpr.br] *Em nome de *Edson
+> Lira via R-br
+> *Enviada em:* Thursday, November 16, 2017 11:17 AM
+> *Para:* a lista Brasileira oficial de discussão do programa R. <
+> r-br em listas.c3sl.ufpr.br>
+> *Assunto:* [R-br] Reshape
+>
+>
+>
+> Bom dia caros amigos, estou trabalhando com a base de dados abaixo(somente
+> 6 linhas):
+>
+>
+>
+>    id     UF    x2002 x2003 x2004 x2005 x2006 x2007 x2008 x2009 x2011
+> x2012 x2013 x2014
+> 1  1     Acre      192    189     311     311     333    327      338
+> 354     357     381     337   373
+> 2  2  Alagoas  1251  1269  1292    1357   1413  1410    1355  1401
+> 1344   1391   1429  1417
+> 3  3    Amapá    204   198   239   262   252   294   317   299   302
+> 311   332   355
+> 4  4 Amazonas   958  1050  1433  1528  1502  1488  1531  1673  1689  1720
+> 1771  1908
+> 5  5    Bahia  6885  6901  7167  7336  7292  7338  7665  7792  7602  7416
+> 7530  7879
+> 6  6    Ceará  3705  3871  3944  4120  4143  4138  4314  4380  4121  4184
+> 4215  4319
+>
+>
+> Estou  usando o reshape para tentar transformar as linhas em colunas, ou
+> seja, cada uma UF seria uma coluna, e assim com as demais
+>
+> Como gostaria que ficasse:
+>
+>
+>
+> Acre Alagoas Amapá Amazonas Bahia Ceará  ano
+>
+> 192      1251                                             3705  2002
+>
+> 189      1269                                             3871  2003
+>
+> 311     1293                                              3944  2004
+>
+> ...       ....
+>
+>
+>
+> Estou usando a rotina:
+>
+>
+>
+>
+>
+> pea<-reshape(pea1,
+>                   varying=c("x2002","x2003","
+> x2004","x2005","x2006","x2007",
+>                   "x2008","x2009","x2011","x2012","x2013","x2014"),
+>                    v.names="Medida",
+>                    timevar="UF",
+>                    times=c("Acre","Alagoas","Amapá","Amazonas","Bahia",
+>                          "Ceará","Distrito Federal","Espírito Santo",
+>                          "Goiás","Maranhão","Mato Grosso","Mato Grosso do
+> Sul",
+>                          "Minas Gerais","Pará","Paraíba","Paraná","
+> Pernambuco",
+>                          "Piauí","Rio de Janeiro","Rio Grande do Norte",
+>                          "Rio Grande do Sul","Rondônia","Roraima",
+>                          "Santa Catarina","São
+> Paulo","Sergipe","Tocantins"),
+>                    new.row.names=1:27,
+>                    direction="wide")
+>
+> que está me dando o erro:
+>
+>
+>
+> Erro em varying[, i] : número incorreto de dimensões
+>
+> Alguém tem alguma sugesstão?
+>
+>
+>
+> [  ]'s
+>
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171116/b57092b8/attachment.html>
+
+From delcio.bortolanza em outlook.com  Thu Nov 16 14:13:06 2017
+From: delcio.bortolanza em outlook.com (Delcio Rudinei Bortolanza)
+Date: Thu, 16 Nov 2017 16:13:06 +0000
+Subject: [R-br] Reshape
+In-Reply-To: <1924524050.828107.1510838204958@mail.yahoo.com>
+References: <1924524050.828107.1510838204958.ref@mail.yahoo.com>,
+ <1924524050.828107.1510838204958@mail.yahoo.com>
+Message-ID: <BN6PR18MB15241728C8D1A85EC739E838E62E0@BN6PR18MB1524.namprd18.prod.outlook.com>
+
+dados<-read.table(header = F, stringsAsFactors = F, text = "
+n     id     UF    x2002 x2003 x2004 x2005 x2006 x2007 x2008 x2009 x2011 x2012 x2013 x2014
+1  1     Acre      192    189     311     311     333    327      338    354     357     381     337   373
+2  2  Alagoas  1251  1269  1292    1357   1413  1410    1355  1401   1344   1391   1429  1417
+3  3    Amapá    204   198   239   262   252   294   317   299   302   311   332   355
+4  4 Amazonas   958  1050  1433  1528  1502  1488  1531  1673  1689  1720  1771  1908
+5  5    Bahia  6885  6901  7167  7336  7292  7338  7665  7792  7602  7416  7530  7879
+6  6    Ceará  3705  3871  3944  4120  4143  4138  4314  4380  4121  4184  4215  4319
+  ")
+dados
+dados1<-t(dados)
+dados1
+
+dados2<-dados1[c(-1,-2),]
+dados2
+
+dados3<-as.data.frame(dados2)
+rownames(dados3)<-NULL
+colnames(dados3)<-NULL
+dados3
+
+
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Edson Lira via R-br <r-br em listas.c3sl.ufpr.br>
+Enviado: quinta-feira, 16 de novembro de 2017 11:16
+Para: a lista Brasileira oficial de discussão do programa R.
+Assunto: [R-br] Reshape
+
+Bom dia caros amigos, estou trabalhando com a base de dados abaixo(somente 6 linhas):
+
+   id     UF    x2002 x2003 x2004 x2005 x2006 x2007 x2008 x2009 x2011 x2012 x2013 x2014
+1  1     Acre      192    189     311     311     333    327      338    354     357     381     337   373
+2  2  Alagoas  1251  1269  1292    1357   1413  1410    1355  1401   1344   1391   1429  1417
+3  3    Amapá    204   198   239   262   252   294   317   299   302   311   332   355
+4  4 Amazonas   958  1050  1433  1528  1502  1488  1531  1673  1689  1720  1771  1908
+5  5    Bahia  6885  6901  7167  7336  7292  7338  7665  7792  7602  7416  7530  7879
+6  6    Ceará  3705  3871  3944  4120  4143  4138  4314  4380  4121  4184  4215  4319
+
+Estou  usando o reshape para tentar transformar as linhas em colunas, ou seja, cada uma UF seria uma coluna, e assim com as demais
+Como gostaria que ficasse:
+
+Acre Alagoas Amapá Amazonas Bahia Ceará  ano
+192      1251                                             3705  2002
+189      1269                                             3871  2003
+311     1293                                              3944  2004
+...       ....
+
+Estou usando a rotina:
+
+
+pea<-reshape(pea1,
+                  varying=c("x2002","x2003","x2004","x2005","x2006","x2007",
+                  "x2008","x2009","x2011","x2012","x2013","x2014"),
+                   v.names="Medida",
+                   timevar="UF",
+                   times=c("Acre","Alagoas","Amapá","Amazonas","Bahia",
+                         "Ceará","Distrito Federal","Espírito Santo",
+                         "Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul",
+                         "Minas Gerais","Pará","Paraíba","Paraná"," Pernambuco",
+                         "Piauí","Rio de Janeiro","Rio Grande do Norte",
+                         "Rio Grande do Sul","Rondônia","Roraima",
+                         "Santa Catarina","São Paulo","Sergipe","Tocantins"),
+                   new.row.names=1:27,
+                   direction="wide")
+
+que está me dando o erro:
+
+Erro em varying[, i] : número incorreto de dimensões
+
+Alguém tem alguma sugesstão?
+
+[  ]'s
+Prof. Edson Lira, Me
+Estatístico
+Manaus-Amazonas
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171116/543df963/attachment.html>
+
+From nandodesouza em gmail.com  Thu Nov 16 14:21:54 2017
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 16 Nov 2017 14:21:54 -0200
+Subject: [R-br] RES: Reshape
+In-Reply-To: <CAFJdn-0sfW+DzH+A39WQ7wuXo7r0pvqy1hmGDiKromSYmbjeGg@mail.gmail.com>
+References: <1924524050.828107.1510838204958.ref@mail.yahoo.com>
+ <1924524050.828107.1510838204958@mail.yahoo.com>
+ <BN6PR2001MB1666BDE2925F65013A034AA6D52E0@BN6PR2001MB1666.namprd20.prod.outlook.com>
+ <CAFJdn-0sfW+DzH+A39WQ7wuXo7r0pvqy1hmGDiKromSYmbjeGg@mail.gmail.com>
+Message-ID: <CAFrWFskJu41n7XBVwppK8jma5ZXLvurhsYp8zO=-yVsDirTckw@mail.gmail.com>
+
+install.packages("tidyr")
+library(tidyr)
+
+dados<-structure(list(id = 1:6, UF = structure(1:6, .Label = c("Acre",
+"Alagoas", "Amapá", "Amazonas", "Bahia", "Ceará"), class = "factor"),
+    x2002 = c(192L, 1251L, 204L, 958L, 6885L, 3705L), x2003 = c(189L,
+    1269L, 198L, 1050L, 6901L, 3871L), x2004 = c(311L, 1292L,
+    239L, 1433L, 7167L, 3944L), x2005 = c(311L, 1357L, 262L,
+    1528L, 7336L, 4120L), x2006 = c(333L, 1413L, 252L, 1502L,
+    7292L, 4143L), x2007 = c(327L, 1410L, 294L, 1488L, 7338L,
+    4138L), x2008 = c(338L, 1355L, 317L, 1531L, 7665L, 4314L),
+    x2009 = c(354L, 1401L, 299L, 1673L, 7792L, 4380L), x2011 = c(357L,
+    1344L, 302L, 1689L, 7602L, 4121L), x2012 = c(381L, 1391L,
+    311L, 1720L, 7416L, 4184L), x2013 = c(337L, 1429L, 332L,
+    1771L, 7530L, 4215L), x2014 = c(373L, 1417L, 355L, 1908L,
+    7879L, 4319L)), .Names = c("id", "UF", "x2002", "x2003",
+"x2004", "x2005", "x2006", "x2007", "x2008", "x2009", "x2011",
+"x2012", "x2013", "x2014"), class = "data.frame", row.names = c(NA,
+-6L))
+
+
+arrumado<-dados[,-1]%>%gather(key="ano",value="valor",-c(UF))
+
+arrumado2<-arrumado%>%spread(key= "UF",value= "valor")
+
+Em 16 de novembro de 2017 12:53, Jeanne Costa via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Tente usar o a função dcast, do pkg reshape2. Fiz isso no código abaixo:
+>
+>
+> > head(latlon_dist)
+>             ID_ZAP5M            parque   distance   dist_km
+> 1: V_A20380-AM154583 ESTADUAL DO BELÉM 0.02678070  2.678070
+> 2: V_A20380-AM154583        BURLE MARX 0.14722285 14.722285
+> 3: V_A20380-AM154583     INDEPENDENCIA 0.02756847  2.756847
+> 4: V_A20380-AM154583   JARDIM BOTANICO 0.08291090  8.291090
+> 5: V_A20380-AM154583          CORDEIRO 0.11904040 11.904040
+> 6: V_A20380-AM154583    PARQUE DO POVO 0.10402230 10.402230
+> > mdist2 <- dcast(data = latlon_dist, formula = ID_ZAP5M~parque, value.var
+> = 'dist_km',
+> +                 fun.aggregate =mean)
+> > head(mdist2)
+>          ID_ZAP5M  ACLIMACAO BUENOS AIRES BURLE MARX     CERET CHACARA DO
+> JOCKEY  CORDEIRO
+> 1 V_A1-ZAP1001667  2.0396479     2.844645   8.525611  9.254039
+> 9.502118  7.010958
+> 2 V_A1-ZAP1002649  0.6065181     3.697467   9.611037  7.867584
+>  10.874485  7.486414
+> 3 V_A1-ZAP1004006  8.0701516     7.037070   3.100807 15.332267
+> 3.451979  5.179773
+> 4 V_A1-ZAP1004795 11.5358657     7.762406  10.507915 17.698645
+> 7.621947 12.969276
+> 5 V_A1-ZAP1008204  4.1418657     2.540428  12.543114  8.003843
+>  12.639629 11.513499
+> 6 V_A1-ZAP1008249  5.1073948     2.751751   7.304517 12.072894
+> 7.164578  7.552054
+>   ESTADUAL DO BELÉM IBIRAPUERA INDEPENDENCIA JARDIM BOTANICO JUVENTUDE
+> PARQUE DA LUZ
+> 1          7.012610  0.9911163      3.912788        6.929003  7.002871
+> 4.22853720
+> 2          5.963840  1.9098469      2.423499        6.291981  6.818811
+> 4.15078971
+> 3         13.109059  4.3334982      9.775095        9.089064 12.112062
+> 9.48957949
+> 4         14.259577  9.2082404     13.394847       15.805615 11.000220
+> 9.74552685
+> 5          4.457268  5.4825756      5.225521       10.733382  2.514522
+> 0.01950312
+> 6          9.311688  2.4820681      7.008602        9.236796  7.819413
+> 5.27780835
+>   PARQUE DO CARMO PARQUE DO POVO VILA LOBOS
+> 1        17.57522       3.787772   7.036348
+> 2        16.09237       5.148572   8.498657
+> 3        23.30077       1.854193   4.814991
+> 4        26.52802       7.770679   1.925128
+> 5        16.86382       7.464910   8.188995
+> 6        20.60717       2.319196   3.899231
+>
+>
+>
+> Em 16 de novembro de 2017 11:26, João Pedro Domingues via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Procura a função para realizar a transposta da matriz que vai dar certo.
+>> Mais simples
+>>
+>>
+>>
+>> *João Pedro Araujo Domingues*
+>>
+>> C +55 27 99232-9582
+>>
+>>
+>>
+>> *De:* R-br [mailto:r-br-bounces em listas.c3sl.ufpr.br] *Em nome de *Edson
+>> Lira via R-br
+>> *Enviada em:* Thursday, November 16, 2017 11:17 AM
+>> *Para:* a lista Brasileira oficial de discussão do programa R. <
+>> r-br em listas.c3sl.ufpr.br>
+>> *Assunto:* [R-br] Reshape
+>>
+>>
+>>
+>> Bom dia caros amigos, estou trabalhando com a base de dados
+>> abaixo(somente 6 linhas):
+>>
+>>
+>>
+>>    id     UF    x2002 x2003 x2004 x2005 x2006 x2007 x2008 x2009 x2011
+>> x2012 x2013 x2014
+>> 1  1     Acre      192    189     311     311     333    327      338
+>> 354     357     381     337   373
+>> 2  2  Alagoas  1251  1269  1292    1357   1413  1410    1355  1401
+>> 1344   1391   1429  1417
+>> 3  3    Amapá    204   198   239   262   252   294   317   299   302
+>> 311   332   355
+>> 4  4 Amazonas   958  1050  1433  1528  1502  1488  1531  1673  1689
+>> 1720  1771  1908
+>> 5  5    Bahia  6885  6901  7167  7336  7292  7338  7665  7792  7602
+>> 7416  7530  7879
+>> 6  6    Ceará  3705  3871  3944  4120  4143  4138  4314  4380  4121
+>> 4184  4215  4319
+>>
+>>
+>> Estou  usando o reshape para tentar transformar as linhas em colunas, ou
+>> seja, cada uma UF seria uma coluna, e assim com as demais
+>>
+>> Como gostaria que ficasse:
+>>
+>>
+>>
+>> Acre Alagoas Amapá Amazonas Bahia Ceará  ano
+>>
+>> 192      1251                                             3705  2002
+>>
+>> 189      1269                                             3871  2003
+>>
+>> 311     1293                                              3944  2004
+>>
+>> ...       ....
+>>
+>>
+>>
+>> Estou usando a rotina:
+>>
+>>
+>>
+>>
+>>
+>> pea<-reshape(pea1,
+>>                   varying=c("x2002","x2003","x20
+>> 04","x2005","x2006","x2007",
+>>                   "x2008","x2009","x2011","x2012","x2013","x2014"),
+>>                    v.names="Medida",
+>>                    timevar="UF",
+>>                    times=c("Acre","Alagoas","Amapá","Amazonas","Bahia",
+>>                          "Ceará","Distrito Federal","Espírito Santo",
+>>                          "Goiás","Maranhão","Mato Grosso","Mato Grosso do
+>> Sul",
+>>                          "Minas Gerais","Pará","Paraíba","Paraná","
+>> Pernambuco",
+>>                          "Piauí","Rio de Janeiro","Rio Grande do Norte",
+>>                          "Rio Grande do Sul","Rondônia","Roraima",
+>>                          "Santa Catarina","São
+>> Paulo","Sergipe","Tocantins"),
+>>                    new.row.names=1:27,
+>>                    direction="wide")
+>>
+>> que está me dando o erro:
+>>
+>>
+>>
+>> Erro em varying[, i] : número incorreto de dimensões
+>>
+>> Alguém tem alguma sugesstão?
+>>
+>>
+>>
+>> [  ]'s
+>>
+>> Prof. Edson Lira, Me
+>> Estatístico
+>> Manaus-Amazonas
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+=========================================
+Fernando Souza
+Zootecnista, DSc. Produção e Alimentação Animal
+Celular: (31)99796-8781 (Vivo)
+E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+Lattes: http://lattes.cnpq.br/6519538815038307
+Blog: https://producaoanimalcomr.wordpress.com/
+==========================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171116/a01140a2/attachment.html>
+
+From edinhoestat em yahoo.com.br  Thu Nov 16 23:33:16 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Fri, 17 Nov 2017 01:33:16 +0000 (UTC)
+Subject: [R-br] Reshape
+In-Reply-To: <BN6PR18MB15241728C8D1A85EC739E838E62E0@BN6PR18MB1524.namprd18.prod.outlook.com>
+References: <1924524050.828107.1510838204958.ref@mail.yahoo.com>
+ <1924524050.828107.1510838204958@mail.yahoo.com>
+ <BN6PR18MB15241728C8D1A85EC739E838E62E0@BN6PR18MB1524.namprd18.prod.outlook.com>
+Message-ID: <1473934169.1431417.1510882396224@mail.yahoo.com>
+
+Valeu Delcio, muito obrigado!!!
+ [  ]'s
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em Quinta-feira, 16 de Novembro de 2017 12:13, Delcio Rudinei Bortolanza via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+ #yiv6713012464 #yiv6713012464 -- P {margin-top:0;margin-bottom:0;}#yiv6713012464 dados<-read.table(header = F, stringsAsFactors = F, text = "n     id     UF    x2002 x2003 x2004 x2005 x2006 x2007 x2008 x2009 x2011 x2012 x2013 x20141  1     Acre      192    189     311     311     333    327      338    354     357     381     337   3732  2  Alagoas  1251  1269  1292    1357   1413  1410    1355  1401   1344   1391   1429  14173  3    Amapá    204   198   239   262   252   294   317   299   302   311   332   3554  4 Amazonas   958  1050  1433  1528  1502  1488  1531  1673  1689  1720  1771  19085  5    Bahia  6885  6901  7167  7336  7292  7338  7665  7792  7602  7416  7530  78796  6    Ceará  3705  3871  3944  4120  4143  4138  4314  4380  4121  4184  4215  4319  ")dadosdados1<-t(dados)dados1
+dados2<-dados1[c(-1,-2),]dados2
+dados3<-as.data.frame(dados2)rownames(dados3)<-NULLcolnames(dados3)<-NULLdados3
+
+
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Edson Lira via R-br <r-br em listas.c3sl.ufpr.br>
+Enviado: quinta-feira, 16 de novembro de 2017 11:16
+Para: a lista Brasileira oficial de discussão do programa R.
+Assunto: [R-br] Reshape Bom dia caros amigos, estou trabalhando com a base de dados abaixo(somente 6 linhas):
+
+   id     UF    x2002 x2003 x2004 x2005 x2006 x2007 x2008 x2009 x2011 x2012 x2013 x2014
+1  1     Acre      192    189     311     311     333    327      338    354     357     381     337   373
+2  2  Alagoas  1251  1269  1292    1357   1413  1410    1355  1401   1344   1391   1429  1417
+3  3    Amapá    204   198   239   262   252   294   317   299   302   311   332   355
+4  4 Amazonas   958  1050  1433  1528  1502  1488  1531  1673  1689  1720  1771  1908
+5  5    Bahia  6885  6901  7167  7336  7292  7338  7665  7792  7602  7416  7530  7879
+6  6    Ceará  3705  3871  3944  4120  4143  4138  4314  4380  4121  4184  4215  4319
+
+Estou  usando o reshape para tentar transformar as linhas em colunas, ou seja, cada uma UF seria uma coluna, e assim com as demaisComo gostaria que ficasse:
+Acre Alagoas Amapá Amazonas Bahia Ceará  ano
+192      1251                                             3705  2002
+189      1269                                             3871  2003
+311     1293                                              3944  2004
+...       .... Estou usando a rotina:
+
+pea<-reshape(pea1, 
+                  varying=c("x2002","x2003","x2004","x2005","x2006","x2007",
+                  "x2008","x2009","x2011","x2012","x2013","x2014"),
+                   v.names="Medida",
+                   timevar="UF",
+                   times=c("Acre","Alagoas","Amapá","Amazonas","Bahia",
+                         "Ceará","Distrito Federal","Espírito Santo",
+                         "Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul",
+                         "Minas Gerais","Pará","Paraíba","Paraná"," Pernambuco",
+                         "Piauí","Rio de Janeiro","Rio Grande do Norte",
+                         "Rio Grande do Sul","Rondônia","Roraima",
+                         "Santa Catarina","São Paulo","Sergipe","Tocantins"),
+                   new.row.names=1:27,
+                   direction="wide")
+
+que está me dando o erro:
+Erro em varying[, i] : número incorreto de dimensões
+
+Alguém tem alguma sugesstão?
+
+[  ]'s
+Prof. Edson Lira, Me
+Estatístico
+Manaus-Amazonas_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171117/36cd8259/attachment.html>
+
+From edinhoestat em yahoo.com.br  Thu Nov 16 23:33:16 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Fri, 17 Nov 2017 01:33:16 +0000 (UTC)
+Subject: [R-br] Reshape
+In-Reply-To: <BN6PR18MB15241728C8D1A85EC739E838E62E0@BN6PR18MB1524.namprd18.prod.outlook.com>
+References: <1924524050.828107.1510838204958.ref@mail.yahoo.com>
+ <1924524050.828107.1510838204958@mail.yahoo.com>
+ <BN6PR18MB15241728C8D1A85EC739E838E62E0@BN6PR18MB1524.namprd18.prod.outlook.com>
+Message-ID: <1473934169.1431417.1510882396224@mail.yahoo.com>
+
+Valeu Delcio, muito obrigado!!!
+ [  ]'s
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em Quinta-feira, 16 de Novembro de 2017 12:13, Delcio Rudinei Bortolanza via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+ #yiv6713012464 #yiv6713012464 -- P {margin-top:0;margin-bottom:0;}#yiv6713012464 dados<-read.table(header = F, stringsAsFactors = F, text = "n     id     UF    x2002 x2003 x2004 x2005 x2006 x2007 x2008 x2009 x2011 x2012 x2013 x20141  1     Acre      192    189     311     311     333    327      338    354     357     381     337   3732  2  Alagoas  1251  1269  1292    1357   1413  1410    1355  1401   1344   1391   1429  14173  3    Amapá    204   198   239   262   252   294   317   299   302   311   332   3554  4 Amazonas   958  1050  1433  1528  1502  1488  1531  1673  1689  1720  1771  19085  5    Bahia  6885  6901  7167  7336  7292  7338  7665  7792  7602  7416  7530  78796  6    Ceará  3705  3871  3944  4120  4143  4138  4314  4380  4121  4184  4215  4319  ")dadosdados1<-t(dados)dados1
+dados2<-dados1[c(-1,-2),]dados2
+dados3<-as.data.frame(dados2)rownames(dados3)<-NULLcolnames(dados3)<-NULLdados3
+
+
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Edson Lira via R-br <r-br em listas.c3sl.ufpr.br>
+Enviado: quinta-feira, 16 de novembro de 2017 11:16
+Para: a lista Brasileira oficial de discussão do programa R.
+Assunto: [R-br] Reshape Bom dia caros amigos, estou trabalhando com a base de dados abaixo(somente 6 linhas):
+
+   id     UF    x2002 x2003 x2004 x2005 x2006 x2007 x2008 x2009 x2011 x2012 x2013 x2014
+1  1     Acre      192    189     311     311     333    327      338    354     357     381     337   373
+2  2  Alagoas  1251  1269  1292    1357   1413  1410    1355  1401   1344   1391   1429  1417
+3  3    Amapá    204   198   239   262   252   294   317   299   302   311   332   355
+4  4 Amazonas   958  1050  1433  1528  1502  1488  1531  1673  1689  1720  1771  1908
+5  5    Bahia  6885  6901  7167  7336  7292  7338  7665  7792  7602  7416  7530  7879
+6  6    Ceará  3705  3871  3944  4120  4143  4138  4314  4380  4121  4184  4215  4319
+
+Estou  usando o reshape para tentar transformar as linhas em colunas, ou seja, cada uma UF seria uma coluna, e assim com as demaisComo gostaria que ficasse:
+Acre Alagoas Amapá Amazonas Bahia Ceará  ano
+192      1251                                             3705  2002
+189      1269                                             3871  2003
+311     1293                                              3944  2004
+...       .... Estou usando a rotina:
+
+pea<-reshape(pea1, 
+                  varying=c("x2002","x2003","x2004","x2005","x2006","x2007",
+                  "x2008","x2009","x2011","x2012","x2013","x2014"),
+                   v.names="Medida",
+                   timevar="UF",
+                   times=c("Acre","Alagoas","Amapá","Amazonas","Bahia",
+                         "Ceará","Distrito Federal","Espírito Santo",
+                         "Goiás","Maranhão","Mato Grosso","Mato Grosso do Sul",
+                         "Minas Gerais","Pará","Paraíba","Paraná"," Pernambuco",
+                         "Piauí","Rio de Janeiro","Rio Grande do Norte",
+                         "Rio Grande do Sul","Rondônia","Roraima",
+                         "Santa Catarina","São Paulo","Sergipe","Tocantins"),
+                   new.row.names=1:27,
+                   direction="wide")
+
+que está me dando o erro:
+Erro em varying[, i] : número incorreto de dimensões
+
+Alguém tem alguma sugesstão?
+
+[  ]'s
+Prof. Edson Lira, Me
+Estatístico
+Manaus-Amazonas_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171117/36cd8259/attachment-0001.html>
+
+From economatistica em yahoo.com.br  Mon Nov 20 18:10:34 2017
+From: economatistica em yahoo.com.br (Edimeire Alexandra Pinto)
+Date: Mon, 20 Nov 2017 20:10:34 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Peso_espacial_em__X_usando_spreg-_regress=C3=A3o?=
+	=?utf-8?q?_espacial?=
+References: <1045658944.2189893.1511208634896.ref@mail.yahoo.com>
+Message-ID: <1045658944.2189893.1511208634896@mail.yahoo.com>
+
+Boa tarde, pessoal.
+Alguém por acaso sabe com se trabalha com modelos "parecidos" com CLIFF-ORD usando spreg  do pacote sphet? Sei que o Stata faz, mas gostaria de fazer no R.  Estou trabalhando com vários tipos de modelos espaciais (na realidade, quase todos do pacote sphet) e esse me gerou muita dúvida, pois preciso de que uma das variaveis explicativas com e sem peso espacial da matriz W.
+Por exemplo, acrescentando peso espacial a uma das variaveis explicativas do modelo.
+library(spdep)data(columbus)listw<-nb2listw(col.gal.nb)res1<- spreg(CRIME~HOVAL + INC+ INC, data=columbus , listw= listw, het = TRUE, verbose = FALSE,model="sarar")res2<- spreg(CRIME~HOVAL + INC+ WINC, data=columbus , listw= listw, het = TRUE, verbose = FALSE,model="sarar") ### WINC é o peso espacial multiplicado #pelo variavel INC, especie de W*INC
+
+ou mesmo
+res3<- spreg(CRIME~HOVAL + INC+WINC, data=columbus , listw= listw, het = TRUE, verbose = FALSE,model="error") 
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171120/29ea409f/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Tue Nov 21 09:10:42 2017
+From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
+Date: Tue, 21 Nov 2017 09:10:42 -0200
+Subject: [R-br]
+ =?utf-8?q?Peso_espacial_em_X_usando_spreg-_regress=C3=A3o_?=
+ =?utf-8?q?espacial?=
+In-Reply-To: <1045658944.2189893.1511208634896@mail.yahoo.com>
+References: <1045658944.2189893.1511208634896.ref@mail.yahoo.com>
+ <1045658944.2189893.1511208634896@mail.yahoo.com>
+Message-ID: <d075123e-5e0d-3b96-6c08-8cc4748952c8@yahoo.com.br>
+
+Oi Edimeire,
+
+Acho que a implementação no 'spdep' não é muito restritiva e você pode 
+usar pesos (adequados) que você mesmo definir. Como são esses pesos 
+"CLIFF-ORD"?
+
+Elias
+
+On 20/11/2017 18:10, Edimeire Alexandra Pinto via R-br wrote:
+> Boa tarde, pessoal.
+>
+> Alguém por acaso sabe com se trabalha com modelos "parecidos" com 
+> CLIFF-ORD usando spreg  do pacote sphet? Sei que o Stata faz, mas 
+> gostaria de fazer no R.  Estou trabalhando com vários tipos de modelos 
+> espaciais (na realidade, quase todos do pacote sphet) e esse me gerou 
+> muita dúvida, pois preciso de que uma das variaveis explicativas com e 
+> sem peso espacial da matriz W.
+>
+> Por exemplo, acrescentando peso espacial a uma das variaveis 
+> explicativas do modelo.
+>
+> library(spdep) data(columbus) listw<-nb2listw(col.gal.nb)
+> res1<- spreg(CRIME~HOVAL + INC+ INC, data=columbus , listw= listw, het 
+> = TRUE, verbose = FALSE,model="sarar") res2<- spreg(CRIME~HOVAL + INC+ 
+> WINC, data=columbus , listw= listw, het = TRUE, verbose = 
+> FALSE,model="sarar") ### WINC é o peso espacial multiplicado #pelo 
+> variavel INC, especie de W*INC
+>
+> ou mesmo
+>
+> res3<- spreg(CRIME~HOVAL + INC+WINC, data=columbus , listw= listw, het 
+> = TRUE, verbose = FALSE,model="error")
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171121/a77e2eca/attachment.html>
+
+From economatistica em yahoo.com.br  Tue Nov 21 11:12:24 2017
+From: economatistica em yahoo.com.br (Edimeire Alexandra Pinto)
+Date: Tue, 21 Nov 2017 13:12:24 +0000 (UTC)
+Subject: [R-br]
+ =?utf-8?q?Peso_espacial_em_X_usando_spreg-_regress=C3=A3o_?=
+ =?utf-8?q?espacial?=
+In-Reply-To: <d075123e-5e0d-3b96-6c08-8cc4748952c8@yahoo.com.br>
+References: <1045658944.2189893.1511208634896.ref@mail.yahoo.com>
+ <1045658944.2189893.1511208634896@mail.yahoo.com>
+ <d075123e-5e0d-3b96-6c08-8cc4748952c8@yahoo.com.br>
+Message-ID: <1550618455.301078.1511269944667@mail.yahoo.com>
+
+Olá pessoal.
+OI Elias.
+Recentemente estou estudando a função spreg para tentar resolver o problema de singularidade que dá. Ocorre apenas quando coloco modelos do tipo: Y=beta1X1+beta2WX1+beta3X2+ erro onde erro pode seguir o modelo SEM. Também ocorre em modelos Sarar.
+O importante é entender que o erro ocorre sempre que ponho na equação X1 e WX1 em conjunto, pois se não coloco os dois ao mesmo tempo não dá erro. 
+O erro que ocorre em minha base de dados é similar a esse do exemplo abaixo, pois a mensagem de erro é sempre a mesma, estranho que no outro programa do Stata roda. No R, em meus dados, dá sempre: system is exactly singular
+Pode ser que tenho começar a "abrir" a função no R para entendê-la melhor....
+library(spdep)require(sphet)data(columbus)listw<-nb2listw(col.gal.nb)head(columbus)WINC<-lag.listw(listw,columbus$INC,NAOK=TRUE,zero.policy = TRUE)columbus$WINC<-WINC
+res<- spreg(CRIME~HOVAL + INC+WINC+PLUMB, data=columbus , listw= listw,   het = TRUE,            verbose = FALSE,model = "sarar")
+Error in solve.default(HH, Hye) :   Lapack routine dgesv: system is exactly singular: U[7,7] = 0
+
+
+
+
+Bem, faço vários tipos de modelos, SAR, SEM, DURBIN, etc etc, mas necessito de modelo que use tenha a variável X1 e WX1 conjuntamente. 
+
+Obrigada pessoal , obrigada GRANDE Elias.
+ 
+
+    Em Terça-feira, 21 de Novembro de 2017 9:11, Elias T. Krainski via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+  Oi Edimeire, 
+  Acho que a implementação no 'spdep' não é muito restritiva e você pode usar pesos (adequados) que você mesmo definir. Como são esses pesos "CLIFF-ORD"? 
+ 
+ Elias
+ 
+ On 20/11/2017 18:10, Edimeire Alexandra Pinto via R-br wrote:
+  
+ 
+ Boa tarde, pessoal. 
+  Alguém por acaso sabe com se trabalha com modelos "parecidos" com CLIFF-ORD usando spreg  do pacote sphet? Sei que o Stata faz, mas gostaria de fazer no R.  Estou trabalhando com vários tipos de modelos espaciais (na realidade, quase todos do pacote sphet) e esse me gerou muita dúvida, pois preciso de que uma das variaveis explicativas com e sem peso espacial da matriz W. 
+  Por exemplo, acrescentando peso espacial a uma das variaveis explicativas do modelo. 
+  library(spdep) data(columbus) listw<-nb2listw(col.gal.nb) res1<- spreg(CRIME~HOVAL + INC+ INC, data=columbus , listw= listw, het = TRUE, verbose = FALSE,model="sarar") res2<- spreg(CRIME~HOVAL + INC+ WINC, data=columbus , listw= listw, het = TRUE, verbose = FALSE,model="sarar") ### WINC é o peso espacial multiplicado #pelo variavel INC, especie de W*INC
+  
+  ou mesmo 
+  res3<- spreg(CRIME~HOVAL + INC+WINC, data=columbus , listw= listw, het = TRUE, verbose = FALSE,model="error") 
+  
+  
+   
+  
+ _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel. 
+ _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171121/83374ef7/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Tue Nov 21 12:01:08 2017
+From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
+Date: Tue, 21 Nov 2017 12:01:08 -0200
+Subject: [R-br]
+ =?utf-8?q?Peso_espacial_em_X_usando_spreg-_regress=C3=A3o_?=
+ =?utf-8?q?espacial?=
+In-Reply-To: <1550618455.301078.1511269944667@mail.yahoo.com>
+References: <1045658944.2189893.1511208634896.ref@mail.yahoo.com>
+ <1045658944.2189893.1511208634896@mail.yahoo.com>
+ <d075123e-5e0d-3b96-6c08-8cc4748952c8@yahoo.com.br>
+ <1550618455.301078.1511269944667@mail.yahoo.com>
+Message-ID: <7fbebe2a-591b-f9bc-5937-09a0a0616034@yahoo.com.br>
+
+como vc tem um modelo do tipo
+
+             y=lambda W y + X beta + u
+             u=rho W u + e
+
+automaticamente ja tem X lagged porque E(Y) = Xbeta. Por isso nao 
+precisa criar XW.
+
+Elias
+
+
+On 21/11/2017 11:12, Edimeire Alexandra Pinto wrote:
+> Olá pessoal.
+>
+> OI Elias.
+>
+> Recentemente estou estudando a função spreg para tentar resolver o 
+> problema de singularidade que dá. Ocorre apenas quando coloco modelos 
+> do tipo: Y=beta1X1+beta2WX1+beta3X2+ erro onde erro pode seguir o 
+> modelo SEM. Também ocorre em modelos Sarar.
+>
+> O importante é entender que o erro ocorre sempre que ponho na equação 
+> X1 e WX1 em conjunto, pois se não coloco os dois ao mesmo tempo não dá 
+> erro.
+>
+> O erro que ocorre em minha base de dados é similar a esse do exemplo 
+> abaixo, pois a mensagem de erro é sempre a mesma, estranho que no 
+> outro programa do Stata roda. No R, em meus dados, dá sempre: *system 
+> is exactly singular*
+>
+> Pode ser que tenho começar a "abrir" a função no R para entendê-la 
+> melhor....
+>
+> library(spdep)
+> require(sphet)
+> data(columbus)
+> listw<-nb2listw(col.gal.nb)
+> head(columbus)
+> WINC<-lag.listw(listw,columbus$INC,NAOK=TRUE,zero.policy = TRUE)
+> columbus$WINC<-WINC
+> res<- spreg(CRIME~HOVAL + INC+WINC+PLUMB, data=columbus , listw= 
+> listw,   het = TRUE,
+>     verbose = FALSE,model = "sarar")
+>
+> Error in solve.default(HH, Hye) :
+> Lapack routine dgesv: system is exactly singular: U[7,7] = 0
+>
+>
+>
+>
+>
+> Bem, faço vários tipos de modelos, SAR, SEM, DURBIN, etc etc, mas 
+> necessito de modelo que use tenha a variável X1 e WX1 conjuntamente.
+>
+>
+> Obrigada pessoal , obrigada GRANDE Elias.
+>
+>
+>
+> Em Terça-feira, 21 de Novembro de 2017 9:11, Elias T. Krainski via 
+> R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Oi Edimeire,
+> Acho que a implementação no 'spdep' não é muito restritiva e você pode 
+> usar pesos (adequados) que você mesmo definir. Como são esses pesos 
+> "CLIFF-ORD"?
+>
+> Elias
+>
+> On 20/11/2017 18:10, Edimeire Alexandra Pinto via R-br wrote:
+> Boa tarde, pessoal.
+>
+> Alguém por acaso sabe com se trabalha com modelos "parecidos" com 
+> CLIFF-ORD usando spreg  do pacote sphet? Sei que o Stata faz, mas 
+> gostaria de fazer no R.  Estou trabalhando com vários tipos de modelos 
+> espaciais (na realidade, quase todos do pacote sphet) e esse me gerou 
+> muita dúvida, pois preciso de que uma das variaveis explicativas com e 
+> sem peso espacial da matriz W.
+>
+> Por exemplo, acrescentando peso espacial a uma das variaveis 
+> explicativas do modelo.
+>
+> library(spdep) data(columbus) listw<-nb2listw(col.gal.nb)
+> res1<- spreg(CRIME~HOVAL + INC+ INC, data=columbus , listw= listw, het 
+> = TRUE, verbose = FALSE,model="sarar") res2<- spreg(CRIME~HOVAL + INC+ 
+> WINC, data=columbus , listw= listw, het = TRUE, verbose = 
+> FALSE,model="sarar") ### WINC é o peso espacial multiplicado #pelo 
+> variavel INC, especie de W*INC
+>
+> ou mesmo
+>
+> res3<- spreg(CRIME~HOVAL + INC+WINC, data=columbus , listw= listw, het 
+> = TRUE, verbose = FALSE,model="error")
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a 
+> c�digo m�nimo reproduz�vel.
+>
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171121/514b2ece/attachment.html>
+
+From jhguilhen em gmail.com  Thu Nov 30 23:15:54 2017
+From: jhguilhen em gmail.com (Ze Henrique)
+Date: Fri, 01 Dec 2017 01:15:54 -0000
+Subject: [R-br] editar eixo no ggplo2
+Message-ID: <CAHi1An-inLg1KN-XrvFPikyizka0X-=B-xC4+jqndq6s8mpa9w@mail.gmail.com>
+
+Boa noite pessoal,
+
+desde já agradeço a ajuda de vcs.
+
+Estou tentando fazer uma figura usando o ggplot2 mas os nomes em volta
+cortão, alguém poderia me ajudar, em qual função devo alterar para isso não
+acontecer mais, tentei varias cosias mas não consegui.
+
+Desde já obrigado.
+
+[image: Imagem inline 1]
+
+-- 
+*José Henrique Soler Guilhen*
+Doutorando em Genética e Melhoramento
+Universidade Federal do Espírito Santo - CCAUFES
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171201/47f1f678/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 514543 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20171201/47f1f678/attachment.png>
+

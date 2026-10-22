@@ -1,0 +1,3998 @@
+From bodevan.ec em gmail.com  Wed May  6 20:21:31 2020
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Wed, 6 May 2020 20:21:31 -0300
+Subject: [R-br] =?utf-8?q?IC_em_tabelas_de_frequ=C3=AAncia?=
+Message-ID: <CAP5i-syG4dz1fS8f++mR8OugPkis3=qkXAPAPz8rBTkmhsh2nw@mail.gmail.com>
+
+Prezados, boa noite.
+
+Uma dúvida sobre como reproduzir alguns resultados de um artigo no R.
+
+O artigo tem o seguinte DOI: 10.1590/1980-549720190009 (Revista Brasileira
+de Epidemiologia).
+
+Tem-se uma amostra de 28427 indivíduos. Destes 17244 tem o habito de ler a
+bula de remédios (A) e 11183 (o restante) não tem este hábito (B).
+
+A dúvida é como obter a prevalência e o IC95% que eles conseguiram no
+artigo, a saber:
+(A) 59.6 (57.7 - 61.5)
+(B) 40.4 (38.5 - 42.5)
+
+Eu obtive os seguintes resultados:
+(A)
+17244/28427 = 60.7
+17244/28427-1.96*sqrt(17244/28427*(1-17244/28427)/28427) = 60.1
+17244/28427+1.96*sqrt(17244/28427*(1-17244/28427)/28427) = 61.2
+*60.7 (60.1 - 61.2)*
+(B)
+11183/28427 = 39.3
+11183/28427-1.96*sqrt(11183/28427*(1-11183/28427)/28427) = 38.8
+11183/28427+1.96*sqrt(11183/28427*(1-11183/28427)/28427) = 39.9
+
+*39.3 (38.8, 39.9)*
+
+Primeiro... o porquê das diferenças. Segundo... sugestão de material para
+leitura. E terceiro... como fazer isso no R? Há algum pacote pronto?
+
+Qualquer ajuda será bem vinda.
+
+Obrigado.
+
+*Emerson*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200506/2f471400/attachment.html>
+
+From cesar.rabak em gmail.com  Wed May  6 20:58:23 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 6 May 2020 20:58:23 -0300
+Subject: [R-br] =?utf-8?q?IC_em_tabelas_de_frequ=C3=AAncia?=
+In-Reply-To: <CAP5i-syG4dz1fS8f++mR8OugPkis3=qkXAPAPz8rBTkmhsh2nw@mail.gmail.com>
+References: <CAP5i-syG4dz1fS8f++mR8OugPkis3=qkXAPAPz8rBTkmhsh2nw@mail.gmail.com>
+Message-ID: <CAKrF98kNKvDg=OqKOhOmRj19QYVfKCYk-d92aSjcS362C9fj+w@mail.gmail.com>
+
+1) Você deve contatar os autores do artigo;
+2) Análise de Dados Categorizados, Paulino & Singer, Ed. Edgar  Blücher,
+2006;
+3) Sim; há diversos:
+https://pt.lmgtfy.com/?q=confidence+interval+for+proportion+in+r&pp=1
+
+On Wed, May 6, 2020 at 8:21 PM Emerson Cotta Bodevan por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados, boa noite.
+>
+> Uma dúvida sobre como reproduzir alguns resultados de um artigo no R.
+>
+> O artigo tem o seguinte DOI: 10.1590/1980-549720190009 (Revista Brasileira
+> de Epidemiologia).
+>
+> Tem-se uma amostra de 28427 indivíduos. Destes 17244 tem o habito de ler a
+> bula de remédios (A) e 11183 (o restante) não tem este hábito (B).
+>
+> A dúvida é como obter a prevalência e o IC95% que eles conseguiram no
+> artigo, a saber:
+> (A) 59.6 (57.7 - 61.5)
+> (B) 40.4 (38.5 - 42.5)
+>
+> Eu obtive os seguintes resultados:
+> (A)
+> 17244/28427 = 60.7
+> 17244/28427-1.96*sqrt(17244/28427*(1-17244/28427)/28427) = 60.1
+> 17244/28427+1.96*sqrt(17244/28427*(1-17244/28427)/28427) = 61.2
+> *60.7 (60.1 - 61.2)*
+> (B)
+> 11183/28427 = 39.3
+> 11183/28427-1.96*sqrt(11183/28427*(1-11183/28427)/28427) = 38.8
+> 11183/28427+1.96*sqrt(11183/28427*(1-11183/28427)/28427) = 39.9
+>
+> *39.3 (38.8, 39.9)*
+>
+> Primeiro... o porquê das diferenças. Segundo... sugestão de material para
+> leitura. E terceiro... como fazer isso no R? Há algum pacote pronto?
+>
+> Qualquer ajuda será bem vinda.
+>
+> Obrigado.
+>
+> *Emerson*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200506/d9638eca/attachment.html>
+
+From bodevan.ec em gmail.com  Wed May  6 22:42:36 2020
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Wed, 6 May 2020 22:42:36 -0300
+Subject: [R-br] =?utf-8?q?IC_em_tabelas_de_frequ=C3=AAncia?=
+In-Reply-To: <CAKrF98kNKvDg=OqKOhOmRj19QYVfKCYk-d92aSjcS362C9fj+w@mail.gmail.com>
+References: <CAP5i-syG4dz1fS8f++mR8OugPkis3=qkXAPAPz8rBTkmhsh2nw@mail.gmail.com>
+ <CAKrF98kNKvDg=OqKOhOmRj19QYVfKCYk-d92aSjcS362C9fj+w@mail.gmail.com>
+Message-ID: <CAP5i-syQww-JBWdnyew7QJcSRqoq3Zy4CuDOQBrvaL7JLm=TQw@mail.gmail.com>
+
+Prezado Cezar, boa noite.
+
+Obrigado pelo retorno. Seguirei suas orientações.
+
+Atenciosamente,
+
+*Emerson*
+
+
+Em qua., 6 de mai. de 2020 às 20:58, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> 1) Você deve contatar os autores do artigo;
+> 2) Análise de Dados Categorizados, Paulino & Singer, Ed. Edgar  Blücher,
+> 2006;
+> 3) Sim; há diversos:
+> https://pt.lmgtfy.com/?q=confidence+interval+for+proportion+in+r&pp=1
+>
+> On Wed, May 6, 2020 at 8:21 PM Emerson Cotta Bodevan por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Prezados, boa noite.
+>>
+>> Uma dúvida sobre como reproduzir alguns resultados de um artigo no R.
+>>
+>> O artigo tem o seguinte DOI: 10.1590/1980-549720190009 (Revista
+>> Brasileira de Epidemiologia).
+>>
+>> Tem-se uma amostra de 28427 indivíduos. Destes 17244 tem o habito de ler
+>> a bula de remédios (A) e 11183 (o restante) não tem este hábito (B).
+>>
+>> A dúvida é como obter a prevalência e o IC95% que eles conseguiram no
+>> artigo, a saber:
+>> (A) 59.6 (57.7 - 61.5)
+>> (B) 40.4 (38.5 - 42.5)
+>>
+>> Eu obtive os seguintes resultados:
+>> (A)
+>> 17244/28427 = 60.7
+>> 17244/28427-1.96*sqrt(17244/28427*(1-17244/28427)/28427) = 60.1
+>> 17244/28427+1.96*sqrt(17244/28427*(1-17244/28427)/28427) = 61.2
+>> *60.7 (60.1 - 61.2)*
+>> (B)
+>> 11183/28427 = 39.3
+>> 11183/28427-1.96*sqrt(11183/28427*(1-11183/28427)/28427) = 38.8
+>> 11183/28427+1.96*sqrt(11183/28427*(1-11183/28427)/28427) = 39.9
+>>
+>> *39.3 (38.8, 39.9)*
+>>
+>> Primeiro... o porquê das diferenças. Segundo... sugestão de material para
+>> leitura. E terceiro... como fazer isso no R? Há algum pacote pronto?
+>>
+>> Qualquer ajuda será bem vinda.
+>>
+>> Obrigado.
+>>
+>> *Emerson*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200506/10a42d50/attachment.html>
+
+From alexandre.loures em ymail.com  Wed May  6 23:06:36 2020
+From: alexandre.loures em ymail.com (Alexandre Loures)
+Date: Wed, 6 May 2020 23:06:36 -0300
+Subject: [R-br] Boxplot
+References: <fb924daf-7c6f-ccfc-11c2-530fd697b4ac.ref@ymail.com>
+Message-ID: <fb924daf-7c6f-ccfc-11c2-530fd697b4ac@ymail.com>
+
+Boa noite, Listeiros!
+
+Saberiam como adaptar meu script para criar um Boxplot igual ao da 
+figura anexada?
+
+p <- ggplot (df, aes (type, lmean, fill = type)) + geom_boxplot () + 
+scale_fill_viridis (discrete = TRUE, alpha = .6) + geom_jitter (color = 
+'black', size = 1, alpha = .9) + theme_ipsum () + theme (legend.position 
+= 'none', plot.title = element_text (size = 11)) + ggtitle ('A boxplot 
+with jitter') + xlab (' ')
+
+Seguem meus dados abaixo:
+
+dput (df)
+structure(list(Mean = c(14935404544, 15222448128, 38751113216,
+14268438528, 14946194432, 15161123840, 9273937920, 9673856000,
+14560262144, 17200879616, 3811098880, 7633272320, 290639968,
+89202434048, 2005522432, 625789952, 1819531136, 2311044096, 1209199872,
+296506752, 915887232, 2633880832, 488109632, 91674344, 694895872,
+170653968, 586009152, 67529624, 2587323136, 66061892), type = c("gmean",
+"gmean", "gmean", "gmean", "gmean", "gmean", "gmean", "gmean",
+"gmean", "gmean", "gmean", "gmean", "gmean", "gmean", "gmean",
+"mean", "mean", "mean", "mean", "mean", "mean", "mean", "mean",
+"mean", "mean", "mean", "mean", "mean", "mean", "mean"), lmean = 
+c(23.4270003752245,
+23.4460370258537, 24.380425320488, 23.3813158390422, 23.4277225513355,
+23.4420003463391, 22.9504739289101, 22.992692825977, 23.4015618839485,
+23.5682263599233, 22.0611834044475, 22.7557824657935, 19.4875958357754,
+25.2141741636937, 21.4191704283524, 20.2545253328222, 21.3218446872636,
+21.560965248974, 20.9132247150145, 19.5075805484868, 20.6354038058895,
+21.6917241970269, 20.0060505943238, 18.3337531161829, 20.3592725678438,
+18.9551484853174, 20.1888459651668, 18.0280769336398, 21.673889639965,
+18.0061026181465)), datalabel = "", time.stamp = " 1 May 2020 12:05", 
+formats = c("%9s",
+"%9.0g", "%9s"), types = c(5L, 254L, 5L), val.labels = c("",
+"", ""), var.labels = c("Reporter.ISO", "", ""), row.names = c("1",
+"2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13",
+"14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
+"25", "26", "27", "28", "29", "30"), version = 12L, class = 
+"data.frame")Boxplot com dados experimentais plotados
+
+
+-- 
+*Alexandre Loures*
+Professor Substituto
+Universidade Federal da Paraíba <https://ufpb.br>
+Pós-graduação em Economia - PPGE 
+<https://sigaa.ufpb.br/sigaa/public/programa/portal.jsf?lc=pt_BR&id=1875>
+www.rodriguesloures.com
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200506/85a3f83a/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: boxplot.png
+Tipo: image/png
+Tamanho: 15465 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200506/85a3f83a/attachment.png>
+
+From diogojose21 em yahoo.com.br  Thu May  7 10:04:44 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Thu, 7 May 2020 13:04:44 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+References: <176348309.1103838.1588856684166.ref@mail.yahoo.com>
+Message-ID: <176348309.1103838.1588856684166@mail.yahoo.com>
+
+Bom dia!!!
+Talvez ridícula, mas não achei resposta. Quero atualizar meu R para outra versão (3.6.0 para 4.0.0). Tem um monte de libraries no anterior que não estão no atual, e que me darão muito trabalho de reinstalar, devido a quantidade.
+Pergunta: é possível instalar a versão nova, e fazer com que as libraries do antigo apareçam no atual?
+Obrigado!!! 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE AEmail: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/25f15ba7/attachment.html>
+
+From nandodesouza em gmail.com  Thu May  7 11:12:11 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 7 May 2020 11:12:11 -0300
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+In-Reply-To: <176348309.1103838.1588856684166@mail.yahoo.com>
+References: <176348309.1103838.1588856684166@mail.yahoo.com>
+Message-ID: <101E3CD3-9EFB-46D5-B973-B5B1E7B7E7A4@getmailspring.com>
+
+Nunca fiz, porém acredito que tenha jeito sim!
+Você terá de informar a nova versão do R o path para o diretório contendo os antigos pacotes.
+Aqui tem uma discussão que talvez possa lhe ser útil para a sua busca.
+https://stackoverflow.com/questions/15170399/change-r-default-library-path-using-libpaths-in-rprofile-site-fails-to-work (https://link.getmailspring.com/link/101E3CD3-9EFB-46D5-B973-B5B1E7B7E7A4 em getmailspring.com/0?redirect=https%3A%2F%2Fstackoverflow.com%2Fquestions%2F15170399%2Fchange-r-default-library-path-using-libpaths-in-rprofile-site-fails-to-work&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+
+On May 7 2020, at 10:04 am, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Bom dia!!!
+>
+> Talvez ridícula, mas não achei resposta. Quero atualizar meu R para outra versão (3.6.0 para 4.0.0). Tem um monte de libraries no anterior que não estão no atual, e que me darão muito trabalho de reinstalar, devido a quantidade.
+>
+> Pergunta: é possível instalar a versão nova, e fazer com que as libraries do antigo apareçam no atual?
+>
+> Obrigado!!!
+>
+> Diogo Jerônimo
+> Bacharel em Ciências Estatísticas - ENCE/IBGE
+> Mestre em Metrologia - PUC-Rio/PósMQI
+> CONRE: 8514 - SÉRIE A
+> Email: diogojose21 em yahoo.com.br
+> http://lattes.cnpq.br/8996149312896520
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/4c6723ce/attachment.html>
+
+From fernandomayer em gmail.com  Thu May  7 10:55:11 2020
+From: fernandomayer em gmail.com (Fernando Mayer)
+Date: Thu, 7 May 2020 10:55:11 -0300
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+In-Reply-To: <176348309.1103838.1588856684166@mail.yahoo.com>
+References: <176348309.1103838.1588856684166.ref@mail.yahoo.com>
+ <176348309.1103838.1588856684166@mail.yahoo.com>
+Message-ID: <CAO4bAdMPaned2iRzdr=9N_ZTqVvCJEhhiqzXZ22gAm9Kvmuyrg@mail.gmail.com>
+
+Não. O R 4.0.0 é uma atualização "major" é por isso é necessário reinstalar
+todos os pacotes para que funcionem nessa nova versão. Veja o primeiro item
+aqui http://cran-r.c3sl.ufpr.br/doc/manuals/r-release/NEWS.html
+
+Depois de instalar o 4.0.0 vc pode fazer
+
+update.packages(ask = FALSE, checkBuilt = TRUE)
+
+---
+Fernando de Pol Mayer
+Laboratório de Estatística e Geoinformação - LEG
+Departamento de Estatística - DEST
+Universidade Federal do Paraná - UFPR
+URL: http://leg.ufpr.br/~fernandomayer/
+e-mail: fernando.mayer [@] {gmail.com, ufpr.br}
+
+On Thu, 7 May 2020, 10:07 Diogo Jerônimo por (R-br), <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Bom dia!!!
+>
+> Talvez ridícula, mas não achei resposta. Quero atualizar meu R para outra
+> versão (3.6.0 para 4.0.0). Tem um monte de libraries no anterior que não
+> estão no atual, e que me darão muito trabalho de reinstalar, devido a
+> quantidade.
+>
+> Pergunta: é possível instalar a versão nova, e fazer com que as libraries
+> do antigo apareçam no atual?
+>
+> Obrigado!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+> *Email: diogojose21 em yahoo.com.br <diogojose21 em yahoo.com.br>*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/6bc1cd71/attachment.html>
+
+From nandodesouza em gmail.com  Thu May  7 11:38:22 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 7 May 2020 11:38:22 -0300
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+In-Reply-To: <CAO4bAdMPaned2iRzdr=9N_ZTqVvCJEhhiqzXZ22gAm9Kvmuyrg@mail.gmail.com>
+References: <CAO4bAdMPaned2iRzdr=9N_ZTqVvCJEhhiqzXZ22gAm9Kvmuyrg@mail.gmail.com>
+Message-ID: <FB1C9EBA-01D5-449F-B687-9D8D0ED8A31F@getmailspring.com>
+
+Fernando Mayer,
+
+Me interessei pela questão do Diogo, pois ja tive situação em que após a atualização para a nova versão do R, alguns pacotes de terceiros não puderam ser atualizados.
+Após atualizar para a versão 4.0.0 é possível configurar o R para utilizar pacotes antigos que estão em um diretório do usuário?
+Via .libPaths ( no arquivo Rprofile) por exemplo.
+
+conforme discutido nesse link.
+https://stackoverflow.com/questions/15170399/change-r-default-library-path-using-libpaths-in-rprofile-site-fails-to-work
+Ou somente utilizando a versão antiga do R mesmo.
+On May 7 2020, at 10:55 am, Fernando Mayer por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Não. O R 4.0.0 é uma atualização "major" é por isso é necessário reinstalar todos os pacotes para que funcionem nessa nova versão. Veja o primeiro item aqui http://cran-r.c3sl.ufpr.br/doc/manuals/r-release/NEWS.html
+>
+> Depois de instalar o 4.0.0 vc pode fazer
+>
+> update.packages(ask = FALSE, checkBuilt = TRUE)
+> ---
+> Fernando de Pol Mayer
+> Laboratório de Estatística e Geoinformação - LEG
+> Departamento de Estatística - DEST
+> Universidade Federal do Paraná - UFPR
+> URL: http://leg.ufpr.br/~fernandomayer/
+> e-mail: fernando.mayer [@] {gmail.com (http://gmail.com), ufpr.br (http://ufpr.br)}
+>
+>
+>
+>
+> On Thu, 7 May 2020, 10:07 Diogo Jerônimo por (R-br), <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > Bom dia!!!
+> >
+> > Talvez ridícula, mas não achei resposta. Quero atualizar meu R para outra versão (3.6.0 para 4.0.0). Tem um monte de libraries no anterior que não estão no atual, e que me darão muito trabalho de reinstalar, devido a quantidade.
+> >
+> > Pergunta: é possível instalar a versão nova, e fazer com que as libraries do antigo apareçam no atual?
+> >
+> > Obrigado!!!
+> >
+> > Diogo Jerônimo
+> > Bacharel em Ciências Estatísticas - ENCE/IBGE
+> > Mestre em Metrologia - PUC-Rio/PósMQI
+> > CONRE: 8514 - SÉRIE A
+> > Email: diogojose21 em yahoo.com.br (mailto:diogojose21 em yahoo.com.br)
+> > http://lattes.cnpq.br/8996149312896520
+> >
+> >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/3706587f/attachment.html>
+
+From ivanildodemedeiros em gmail.com  Thu May  7 11:38:31 2020
+From: ivanildodemedeiros em gmail.com (Ivanildo de Medeiros)
+Date: Thu, 7 May 2020 11:38:31 -0300
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+In-Reply-To: <FB1C9EBA-01D5-449F-B687-9D8D0ED8A31F@getmailspring.com>
+References: <CAO4bAdMPaned2iRzdr=9N_ZTqVvCJEhhiqzXZ22gAm9Kvmuyrg@mail.gmail.com>
+ <FB1C9EBA-01D5-449F-B687-9D8D0ED8A31F@getmailspring.com>
+Message-ID: <CANX_2oQpDBXYdUfwTooGZ5CcqBtJn3izoDtV_Fux0eRBBaUTnw@mail.gmail.com>
+
+Solicito que me retirem da lista.
+
+Em qui, 7 de mai de 2020 11:38, Fernando Souza por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Fernando Mayer,
+>
+> Me interessei pela questão do Diogo, pois ja tive situação em que após a
+> atualização para a nova versão do R, alguns pacotes de terceiros não
+> puderam ser atualizados.
+>
+> Após atualizar para a versão 4.0.0 é possível configurar o R para
+> utilizar pacotes antigos que estão em um diretório do usuário?
+> Via  .libPaths ( no arquivo Rprofile) por exemplo.
+>
+> conforme discutido nesse link.
+>
+>
+> https://stackoverflow.com/questions/15170399/change-r-default-library-path-using-libpaths-in-rprofile-site-fails-to-work
+> Ou somente utilizando a versão antiga do R mesmo.
+>
+> On May 7 2020, at 10:55 am, Fernando Mayer por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Não. O R 4.0.0 é uma atualização "major" é por isso é necessário
+> reinstalar todos os pacotes para que funcionem nessa nova versão. Veja o
+> primeiro item aqui
+> http://cran-r.c3sl.ufpr.br/doc/manuals/r-release/NEWS.html
+>
+> Depois de instalar o 4.0.0 vc pode fazer
+>
+> update.packages(ask = FALSE, checkBuilt = TRUE)
+>
+> ---
+> Fernando de Pol Mayer
+> Laboratório de Estatística e Geoinformação - LEG
+> Departamento de Estatística - DEST
+> Universidade Federal do Paraná - UFPR
+> URL: http://leg.ufpr.br/~fernandomayer/
+> e-mail: fernando.mayer [@] {gmail.com, ufpr.br}
+>
+> On Thu, 7 May 2020, 10:07 Diogo Jerônimo por (R-br), <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Bom dia!!!
+>
+> Talvez ridícula, mas não achei resposta. Quero atualizar meu R para outra
+> versão (3.6.0 para 4.0.0). Tem um monte de libraries no anterior que não
+> estão no atual, e que me darão muito trabalho de reinstalar, devido a
+> quantidade.
+>
+> Pergunta: é possível instalar a versão nova, e fazer com que as libraries
+> do antigo apareçam no atual?
+>
+> Obrigado!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+> *Email: **diogojose21 em yahoo.com.br <diogojose21 em yahoo.com.br>*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/f4e52579/attachment.html>
+
+From eloi.igor em yandex.com  Thu May  7 11:40:24 2020
+From: eloi.igor em yandex.com (Igor Eloi)
+Date: Thu, 07 May 2020 11:40:24 -0300
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+In-Reply-To: <176348309.1103838.1588856684166@mail.yahoo.com>
+References: <176348309.1103838.1588856684166.ref@mail.yahoo.com>
+ <176348309.1103838.1588856684166@mail.yahoo.com>
+Message-ID: <1327321588860852@mail.yandex.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/321b57b5/attachment.html>
+
+From eloi.igor em yandex.com  Thu May  7 11:44:21 2020
+From: eloi.igor em yandex.com (Igor Eloi)
+Date: Thu, 07 May 2020 11:44:21 -0300
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+In-Reply-To: <FB1C9EBA-01D5-449F-B687-9D8D0ED8A31F@getmailspring.com>
+References: <CAO4bAdMPaned2iRzdr=9N_ZTqVvCJEhhiqzXZ22gAm9Kvmuyrg@mail.gmail.com>
+ <FB1C9EBA-01D5-449F-B687-9D8D0ED8A31F@getmailspring.com>
+Message-ID: <1351831588862567@mail.yandex.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/b363bc5c/attachment.html>
+
+From marcelolaia em gmail.com  Thu May  7 11:55:17 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Thu, 7 May 2020 11:55:17 -0300
+Subject: [R-br] Como desinscrever da lista
+In-Reply-To: <CANX_2oQpDBXYdUfwTooGZ5CcqBtJn3izoDtV_Fux0eRBBaUTnw@mail.gmail.com>
+References: <CAO4bAdMPaned2iRzdr=9N_ZTqVvCJEhhiqzXZ22gAm9Kvmuyrg@mail.gmail.com>
+ <FB1C9EBA-01D5-449F-B687-9D8D0ED8A31F@getmailspring.com>
+ <CANX_2oQpDBXYdUfwTooGZ5CcqBtJn3izoDtV_Fux0eRBBaUTnw@mail.gmail.com>
+Message-ID: <CAEEYVUCMeNkd_t_BOiVEa=0u7SxcH4sDbbyJLYaetmGwDWCsOg@mail.gmail.com>
+
+No rodapé das mensagens tem um link para se desinscrever das lista
+
+Em qui, 7 de mai de 2020 11:39, Ivanildo de Medeiros por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Solicito que me retirem da lista.
+>
+> Em qui, 7 de mai de 2020 11:38, Fernando Souza por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Fernando Mayer,
+>>
+>> Me interessei pela questão do Diogo, pois ja tive situação em que após a
+>> atualização para a nova versão do R, alguns pacotes de terceiros não
+>> puderam ser atualizados.
+>>
+>> Após atualizar para a versão 4.0.0 é possível configurar o R para
+>> utilizar pacotes antigos que estão em um diretório do usuário?
+>> Via  .libPaths ( no arquivo Rprofile) por exemplo.
+>>
+>> conforme discutido nesse link.
+>>
+>>
+>> https://stackoverflow.com/questions/15170399/change-r-default-library-path-using-libpaths-in-rprofile-site-fails-to-work
+>> Ou somente utilizando a versão antiga do R mesmo.
+>>
+>> On May 7 2020, at 10:55 am, Fernando Mayer por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>> Não. O R 4.0.0 é uma atualização "major" é por isso é necessário
+>> reinstalar todos os pacotes para que funcionem nessa nova versão. Veja o
+>> primeiro item aqui
+>> http://cran-r.c3sl.ufpr.br/doc/manuals/r-release/NEWS.html
+>>
+>> Depois de instalar o 4.0.0 vc pode fazer
+>>
+>> update.packages(ask = FALSE, checkBuilt = TRUE)
+>>
+>> ---
+>> Fernando de Pol Mayer
+>> Laboratório de Estatística e Geoinformação - LEG
+>> Departamento de Estatística - DEST
+>> Universidade Federal do Paraná - UFPR
+>> URL: http://leg.ufpr.br/~fernandomayer/
+>> e-mail: fernando.mayer [@] {gmail.com, ufpr.br}
+>>
+>> On Thu, 7 May 2020, 10:07 Diogo Jerônimo por (R-br), <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>> Bom dia!!!
+>>
+>> Talvez ridícula, mas não achei resposta. Quero atualizar meu R para outra
+>> versão (3.6.0 para 4.0.0). Tem um monte de libraries no anterior que não
+>> estão no atual, e que me darão muito trabalho de reinstalar, devido a
+>> quantidade.
+>>
+>> Pergunta: é possível instalar a versão nova, e fazer com que as libraries
+>> do antigo apareçam no atual?
+>>
+>> Obrigado!!!
+>>
+>> *Diogo Jerônimo*
+>> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+>> *Mestre em Metrologia - PUC-Rio/PósMQI*
+>> *CONRE: 8514 - SÉRIE A*
+>> *Email: **diogojose21 em yahoo.com.br <diogojose21 em yahoo.com.br>*
+>> *http://lattes.cnpq.br/8996149312896520
+>> <http://lattes.cnpq.br/8996149312896520>*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/efed2ff7/attachment-0001.html>
+
+From zhushazang em gmail.com  Thu May  7 12:18:32 2020
+From: zhushazang em gmail.com (Rodolfo Silva)
+Date: Thu, 7 May 2020 11:18:32 -0400
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+In-Reply-To: <1327321588860852@mail.yandex.com>
+References: <176348309.1103838.1588856684166.ref@mail.yahoo.com>
+ <176348309.1103838.1588856684166@mail.yahoo.com>
+ <1327321588860852@mail.yandex.com>
+Message-ID: <58a1ca7e-944b-8392-cce4-21f56cf48df5@gmail.com>
+
+Ou isso aqui:
+
+
+/#Get currently installed packages//
+//package_df <-
+as.data.frame(installed.packages("~/R/x86_64-pc-linux-gnu-library/3.6/"))//
+//package_list <- as.character(package_df$Package)//
+// //
+//#Re-install Install packages//
+//install.packages(package_list,repos="http://cran.r-project.org")/
+
+
+Atenciosamente
+
+
+
+Em 07/05/2020 10:40, Igor Eloi por (R-br) escreveu:
+> Olá Diogo.
+> Essa dúvida acomete várias pessoas.
+>  
+> Eu vou dar a você uma série de dicas que eu uso para solucionar este
+> problema;
+> Eu vou presumir que você usa linux.
+>  
+> Muitas pessoas gostam de copiar as pastas dos pacotes do diretório
+> da versão mais antiga para a mais nova e usar update.packages()
+> Mas nunca tive boas experiências fazendo isso;
+>  
+> Então o que eu faço é primeiro criar uma lista com todos os pacotes
+> que estão na minha pasta:
+>  
+> cd ~R/x86_64-pc-linux-gnu-library/3.6
+>  
+> ls > /tmp/pac_list.txt
+>  
+> Agora nós temos uma lista com todos os pacotes que eu tinha antes.
+>  
+> Agora, Em R:
+>  
+> setwd("/tmp/")
+> pac_list<-read.table("pac_list.txt", h=F)
+>  
+> ###essa parte é Auto explicativa
+> ###depois um simples
+>  
+> install.packages(as.character(pac_list$V1),
+> dependencies=T)
+>  
+> Isso deve resolver a maior parte dos seus problemas.
+> Alguns pacotes você terá que suar para conseguir.
+> Algumas ferramentas boas são: pacman e devtools.
+>  
+> Espero que ajude.
+> Qualquer dúvida é só perguntar.
+>  
+> 07.05.2020, 10:07, "Diogo Jerônimo por (R-br)" <r-br em listas.c3sl.ufpr.br>:
+>
+>     Bom dia!!!
+>      
+>     Talvez ridícula, mas não achei resposta. Quero atualizar meu R
+>     para outra versão (3.6.0 para 4.0.0). Tem um monte de libraries no
+>     anterior que não estão no atual, e que me darão muito trabalho de
+>     reinstalar, devido a quantidade.
+>      
+>     Pergunta: é possível instalar a versão nova, e fazer com que as
+>     libraries do antigo apareçam no atual?
+>      
+>     Obrigado!!! 
+>      
+>     /Diogo Jerônimo/
+>     /Bacharel em Ciências Estatísticas - ENCE/IBGE/
+>     /Mestre em Metrologia - PUC-Rio/PósMQI/
+>     /CONRE: 8514 - SÉRIE A/
+>     /Email: diogojose21 em yahoo.com.br <mailto:diogojose21 em yahoo.com.br>/
+>     /http://lattes.cnpq.br/8996149312896520/
+>     ,
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/aff097ee/attachment.html>
+
+From sznelwar em uol.com.br  Thu May  7 13:14:58 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Thu, 07 May 2020 13:14:58 -0300
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+In-Reply-To: ["58a1ca7e-944b-8392-cce4-21f56cf48df5@gmail.com"]
+References: ["176348309.1103838.1588856684166.ref@mail.yahoo.com",
+ "176348309.1103838.1588856684166@mail.yahoo.com",
+ "1327321588860852@mail.yandex.com",
+ "58a1ca7e-944b-8392-cce4-21f56cf48df5@gmail.com"]
+Message-ID: <5eb434025c81c_4fa02adca7e2912878926@ip-10-81-19-107.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/2c7c5bd4/attachment.html>
+
+From zhushazang em gmail.com  Thu May  7 14:32:25 2020
+From: zhushazang em gmail.com (Rodolfo Silva)
+Date: Thu, 7 May 2020 13:32:25 -0400
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+In-Reply-To: <5eb434025c81c_4fa02adca7e2912878926@ip-10-81-19-107.ec2.internal.mail>
+References: <5eb434025c81c_4fa02adca7e2912878926@ip-10-81-19-107.ec2.internal.mail>
+Message-ID: <94a79209-c7f7-e283-6390-7153c60f61cc@gmail.com>
+
+Definitivamente não. O caminho é a seu critério já que não uso R no windows.
+
+Atenciosamente
+
+Em 07/05/2020 12:14, Mauro Sznelwar por (R-br) escreveu:
+> Para o Windows é o mesmo caminho?
+>  
+>
+> Ou isso aqui:
+>
+>  
+>
+> /#Get currently installed packages//
+> //package_df <-
+> as.data.frame(installed.packages("~/R/x86_64-pc-linux-gnu-library/3.6/"))//
+> //package_list <- as.character(package_df$Package)//
+> // //
+> //#Re-install Install packages//
+> //install.packages(package_list,repos="http://cran.r-project.org")/
+>
+>  
+>
+> Atenciosamente
+>
+>  
+>
+>  
+>
+> Em 07/05/2020 10:40, Igor Eloi por (R-br) escreveu:
+>
+>     Olá Diogo.
+>     Essa dúvida acomete várias pessoas.
+>      
+>     Eu vou dar a você uma série de dicas que eu uso para solucionar
+>     este problema;
+>     Eu vou presumir que você usa linux.
+>      
+>     Muitas pessoas gostam de copiar as pastas dos pacotes do diretório
+>     da versão mais antiga para a mais nova e usar update.packages()
+>     Mas nunca tive boas experiências fazendo isso;
+>      
+>     Então o que eu faço é primeiro criar uma lista com todos os
+>     pacotes que estão na minha pasta:
+>      
+>     cd ~R/x86_64-pc-linux-gnu-library/3.6
+>      
+>     ls > /tmp/pac_list.txt
+>      
+>     Agora nós temos uma lista com todos os pacotes que eu tinha antes.
+>      
+>     Agora, Em R:
+>      
+>     setwd("/tmp/")
+>     pac_list<-read.table("pac_list.txt", h=F)
+>      
+>     ###essa parte é Auto explicativa
+>     ###depois um simples
+>      
+>     install.packages(as.character(pac_list$V1),
+>     dependencies=T)
+>      
+>     Isso deve resolver a maior parte dos seus problemas.
+>     Alguns pacotes você terá que suar para conseguir.
+>     Algumas ferramentas boas são: pacman e devtools.
+>      
+>     Espero que ajude.
+>     Qualquer dúvida é só perguntar.
+>      
+>     07.05.2020, 10:07, "Diogo Jerônimo por (R-br)"
+>     <r-br em listas.c3sl.ufpr.br>:
+>
+>         Bom dia!!!
+>          
+>         Talvez ridícula, mas não achei resposta. Quero atualizar meu R
+>         para outra versão (3.6.0 para 4.0.0). Tem um monte de
+>         libraries no anterior que não estão no atual, e que me darão
+>         muito trabalho de reinstalar, devido a quantidade.
+>          
+>         Pergunta: é possível instalar a versão nova, e fazer com que
+>         as libraries do antigo apareçam no atual?
+>          
+>         Obrigado!!! 
+>          
+>         /Diogo Jerônimo/
+>         /Bacharel em Ciências Estatísticas - ENCE/IBGE/
+>         /Mestre em Metrologia - PUC-Rio/PósMQI/
+>         /CONRE: 8514 - SÉRIE A/
+>         /Email: diogojose21 em yahoo.com.br
+>         <../../../undefined//compose?to=diogojose21 em yahoo.com.br>/
+>         /http://lattes.cnpq.br/8996149312896520/
+>         ,
+>
+>         _______________________________________________
+>         R-br mailing list
+>         R-br em listas.c3sl.ufpr.br
+>         <../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>         forneça código mínimo reproduzível.
+>
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/a9b6edd2/attachment.html>
+
+From diogojose21 em yahoo.com.br  Thu May  7 17:14:30 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Thu, 7 May 2020 20:14:30 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+In-Reply-To: <94a79209-c7f7-e283-6390-7153c60f61cc@gmail.com>
+References: <5eb434025c81c_4fa02adca7e2912878926@ip-10-81-19-107.ec2.internal.mail>
+ <94a79209-c7f7-e283-6390-7153c60f61cc@gmail.com>
+Message-ID: <1579611640.3000498.1588882470180@mail.yahoo.com>
+
+A todos que puderam ajudar nessa dúvida, agradeço!!! Vou avaliar. Muito obrigado!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE AEmail: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520 
+
+    Em quinta-feira, 7 de maio de 2020 14:33:46 BRT, Rodolfo Silva por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+  
+Definitivamente não. O caminho é a seu critério já que não uso R no windows.
+ 
+ 
+Atenciosamente
+ 
+ Em 07/05/2020 12:14, Mauro Sznelwar por (R-br) escreveu:
+  
+ 
+Para o Windows é o mesmo caminho?   
+Ou isso aqui:
+ 
+ 
+ 
+#Get currently installed packages
+ package_df <-as.data.frame(installed.packages("~/R/x86_64-pc-linux-gnu-library/3.6/"))
+ package_list <- as.character(package_df$Package)
+  
+ #Re-install Install packages
+ install.packages(package_list,repos="http://cran.r-project.org")
+ 
+ 
+ 
+Atenciosamente
+ 
+ 
+ 
+ 
+ Em 07/05/2020 10:40, Igor Eloi por (R-br) escreveu: 
+ Olá Diogo. Essa dúvida acomete várias pessoas.   Eu vou dar a você uma série de dicas que eu uso para solucionar este problema; Eu vou presumir que você usa linux.    Muitas pessoas gostam de copiar as pastas dos pacotes do diretório da versão mais antiga para a mais nova e usar update.packages() Mas nunca tive boas experiências fazendo isso;   Então o que eu faço é primeiro criar uma lista com todos os pacotes que estão na minha pasta:   cd ~R/x86_64-pc-linux-gnu-library/3.6    ls > /tmp/pac_list.txt   Agora nós temos uma lista com todos os pacotes que eu tinha antes.   Agora, Em R:   setwd("/tmp/") pac_list<-read.table("pac_list.txt", h=F)   ###essa parte é Auto explicativa ###depois um simples   install.packages(as.character(pac_list$V1), dependencies=T)   Isso deve resolver a maior parte dos seus problemas. Alguns pacotes você terá que suar para conseguir. Algumas ferramentas boas são: pacman e devtools.   Espero que ajude. Qualquer dúvida é só perguntar.   07.05.2020, 10:07, "Diogo Jerônimo por (R-br)" <r-br em listas.c3sl.ufpr.br>: 
+  Bom dia!!!   Talvez ridícula, mas não achei resposta. Quero atualizar meu R para outra versão (3.6.0 para 4.0.0). Tem um monte de libraries no anterior que não estão no atual, e que me darão muito trabalho de reinstalar, devido a quantidade.   Pergunta: é possível instalar a versão nova, e fazer com que as libraries do antigo apareçam no atual?   Obrigado!!!      Diogo Jerônimo Bacharel em Ciências Estatísticas - ENCE/IBGE Mestre em Metrologia - PUC-Rio/PósMQI CONRE: 8514 - SÉRIE A Email: diogojose21 em yahoo.com.br http://lattes.cnpq.br/8996149312896520    , 
+_______________________________________________
+ R-br mailing list
+ R-br em listas.c3sl.ufpr.br
+ https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+ Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+ 
+ 
+  _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+ 
+ _______________________________________________
+ R-br mailing list
+ R-br em listas.c3sl.ufpr.br
+ https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+ Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+ 
+  
+  _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+ _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200507/dba7a542/attachment.html>
+
+From sarahfontesr em gmail.com  Sat May  9 00:22:57 2020
+From: sarahfontesr em gmail.com (Sarah Reis)
+Date: Sat, 9 May 2020 00:22:57 -0300
+Subject: [R-br] Pacote Bipartite
+Message-ID: <CAFes0Eg3EY2pQV0vny3bP1RBr=KTpmP_ek+RNCiuc74FjiZiag@mail.gmail.com>
+
+Olá pessoal,
+
+Estou realizando análises de interações ectoparasita-hospedeiro utilizando
+o pacote Bipartite. Utilizei a função dfun, porém, com o modelo padrão
+fornecido pelo pacote, sendo dfun(web,abuns=NULL), onde a abundância não é
+levada em consideração, só a frequência de interações. Agora, gostaria de
+refazer as análises levando em consideração a abundância dos ectoparasitas,
+contudo, quando insiro o vetor abundância, o R diz que "o comprimento do
+vetor não condiz com o número de espécies do nível trófico mais alto".
+Utilizo uma matriz de abundância do mesmo modelo da matriz de frequência
+utilizada para a análise. Já tentei inverter a matriz, mas o erro continua
+o mesmo.
+Alguém pode me ajudar?
+
+Desde já, muito obrigada!
+
+-- 
+Sarah Fontes Reis
+Mestranda em Biologia Animal - UFV
+Bacharela em Ciências Biológicas - UFV
+Museu de Zoologia João Moojen
+Contato: (31)9-98993346 (wpp)
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200509/2f08881d/attachment.html>
+
+From joseclaudio.faria em gmail.com  Sat May  9 12:26:12 2020
+From: joseclaudio.faria em gmail.com (=?UTF-8?Q?Jos=c3=a9_Cl=c3=a1udio_Faria?=)
+Date: Sat, 9 May 2020 12:26:12 -0300
+Subject: [R-br] 
+ =?utf-8?q?Problema_com_a_instala=C3=A7=C3=A3o_de_pacotes_?=
+ =?utf-8?q?no_R!?=
+In-Reply-To: <143489856.590906.1587996267179@mail.yahoo.com>
+References: <1612379416.560570.1587989423517.ref@mail.yahoo.com>
+ <1612379416.560570.1587989423517@mail.yahoo.com>
+ <CAKrF98nV3Z=AJEPBjOFOcPwwD81bUpbuX=7KzrGvXJ=yVcLF8A@mail.gmail.com>
+ <143489856.590906.1587996267179@mail.yahoo.com>
+Message-ID: <b2406987-063e-1cc8-9ae8-932ece23d001@gmail.com>
+
+Pra usar a versão 4.0 e 4.1 do R acho melhor partir do zero em relação 
+aos pacotes que porventura já tenha aproveitado das pastas de outras 
+versões.
+
+Ou seja, instala tudo do repositório do CRAN dessas versões.
+
+Ab,
+
+Em 27/04/2020 11:04, Andre Oliveira por (R-br) escreveu:
+> Pessoal obrigado pela colocações, foram úteis!
+> Por enquanto vou usar a sugestão 
+> C:\Users\andreoliveira\Documents\R\win-library\3.6\ *(nlme excluído) 
+> *que resolveu o problema. Mas em breve vou fazer novos testes com as 
+> outras dicas.
+>
+> obg
+> André
+>
+>
+> Em segunda-feira, 27 de abril de 2020 10:13:45 BRT, Cesar Rabak por 
+> (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> André,
+>
+> Uma forma sutil de esse problema aparecer na instalação de pacotes no 
+> Windows é ele estar carregado pelo R na sessão que você está usando 
+> para fazer a instalação.
+>
+> Certifique-se que você começa de uma imagem sem carga de nenhum pacote 
+> que deseja atualizar ou reinstalar para evitar esse tipo de erro.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Mon, Apr 27, 2020 at 9:11 AM Andre Oliveira por (R-br) 
+> <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+>
+>     bom dia,
+>     mesmo depois de executar o R como administrador tenho alguns
+>     problemas para instalar alguns pacotes no R (*nlme**e**lubridate*
+>     entre outros).  Alguma dica para solução deste problema?
+>
+>     *> install.packages("nlme")*
+>
+>     Installing package into
+>     'C:/Users/andreoliveira/Documents/R/win-library/3.6'
+>     (as 'lib' is unspecified)
+>     tentando a URL
+>     'https://cran-r.c3sl.ufpr.br/.../contrib/3.6/nlme_3.1-147.zip
+>     <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.6/nlme_3.1-147.zip?fbclid=IwAR0Q7UiuiyVjtFl7ioP_TH3_sib12rHZPQrdWPFoxVo--gHpcwfNT3yxiWI>'
+>     Content type 'application/zip' length 2374568 bytes (2.3 MB)
+>     downloaded 2.3 MB
+>
+>     package 'nlme' successfully unpacked and MD5 sums checked
+>     Warning: cannot remove prior installation of package 'nlme'
+>     Warning: *restored* 'nlme'
+>
+>     The downloaded binary packages are in
+>     C:\Users\andreoliveira\AppData\Local\Temp\RtmpMH69CO\downloaded_packages
+>     Warning message:
+>     In file.copy(savedcopy, lib, recursive = TRUE) :
+>     problem copying
+>     C:\Users\andreoliveira\Documents\R\win-library\3.6\*00LOCK*\nlme\libs\x64\nlme.dll
+>     to
+>     C:\Users\andreoliveira\Documents\R\win-library\3.6\nlme\libs\x64\nlme.dll:*Permission
+>     denied*
+>
+>
+>
+>     att,.
+>     André
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça 
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-- 
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+Jose Claudio Faria
+UESC/DCET/Brasil
+joseclaudio.faria at gmail.com
+55(73)9-9966.9100 - VIVO
+55(73)3680.5545 - UESC
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+
+If you have software to deal with statistics, you have arms
+if you have good software, you have arms and legs
+if you have software like R, you have arms, legs and wings...
+the height of your flight depends only on you!
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200509/659c7b74/attachment.html>
+
+From joseclaudio.faria em gmail.com  Sat May  9 12:29:01 2020
+From: joseclaudio.faria em gmail.com (=?UTF-8?Q?Jos=c3=a9_Cl=c3=a1udio_Faria?=)
+Date: Sat, 9 May 2020 12:29:01 -0300
+Subject: [R-br] =?utf-8?q?Atualizar_pacotes_R_em_outra_vers=C3=A3o?=
+In-Reply-To: <176348309.1103838.1588856684166@mail.yahoo.com>
+References: <176348309.1103838.1588856684166.ref@mail.yahoo.com>
+ <176348309.1103838.1588856684166@mail.yahoo.com>
+Message-ID: <5e1fbe38-2b14-55ba-3d1d-4339d09e7155@gmail.com>
+
+Não recomendo! Veja o News da versão 4.0.
+
+Melhor reinstalar tudo do repositório do CRAN de sua versão (4.0 ou 
+4.1-dev). Ou seja, partir da pasta de pacotes vazia.
+Uma dica: opte por um o mais perto possível de você para agilizar o 
+processo.
+
+Ab,
+
+Em 07/05/2020 10:04, Diogo Jerônimo por (R-br) escreveu:
+> Bom dia!!!
+>
+> Talvez ridícula, mas não achei resposta. Quero atualizar meu R para 
+> outra versão (3.6.0 para 4.0.0). Tem um monte de libraries no anterior 
+> que não estão no atual, e que me darão muito trabalho de reinstalar, 
+> devido a quantidade.
+>
+> Pergunta: é possível instalar a versão nova, e fazer com que as 
+> libraries do antigo apareçam no atual?
+>
+> Obrigado!!!
+>
+> /Diogo Jerônimo/
+> /Bacharel em Ciências Estatísticas - ENCE/IBGE/
+> /Mestre em Metrologia - PUC-Rio/PósMQI/
+> /CONRE: 8514 - SÉRIE A/
+> /Email: diogojose21 em yahoo.com.br/
+> /http://lattes.cnpq.br/8996149312896520/
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-- 
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+Jose Claudio Faria
+UESC/DCET/Brasil
+joseclaudio.faria at gmail.com
+55(73)9-9966.9100 - VIVO
+55(73)3680.5545 - UESC
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+
+If you have software to deal with statistics, you have arms
+if you have good software, you have arms and legs
+if you have software like R, you have arms, legs and wings...
+the height of your flight depends only on you!
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200509/9d1133a6/attachment.html>
+
+From jhguilhen em gmail.com  Wed May 13 08:17:24 2020
+From: jhguilhen em gmail.com (Ze Henrique)
+Date: Wed, 13 May 2020 08:17:24 -0300
+Subject: [R-br] =?utf-8?q?Informa=C3=A7=C3=B5es_para_an=C3=A1lises_na_nuv?=
+ =?utf-8?b?ZW0u?=
+Message-ID: <CAHi1An-NxR_S+hHSni91rqgy5xSvcztrD8g_UBsKi8xzOqXDvg@mail.gmail.com>
+
+Bom dia Srs.,
+
+estou necessitando realizar análises de um grande conjunto de dados só que
+estou sem servidor neste momento e meu computador não suporta.
+
+Gostaria de saber se os Srs. poderiam me recomendar alguma plataforma que
+tenha um preço acessível e posso realizar para realizar as análises pelo R.
+
+Desde já obrigado.
+
+-- 
+*José Henrique Soler Guilhen*
+Doutor em Genética e Melhoramento
+Universidade Federal do Espírito Santo - CCAUFES
+
+
+[image: Mailtrack]
+<https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&>
+Remetente
+notificado por
+Mailtrack
+<https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&>
+13/05/20
+08:14:43
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200513/f6a53ae8/attachment.html>
+
+From marco.goncalves em ifpr.edu.br  Wed May 13 09:25:29 2020
+From: marco.goncalves em ifpr.edu.br (=?UTF-8?Q?Marco_Tadeu_Gon=C3=A7alves?=)
+Date: Wed, 13 May 2020 09:25:29 -0300
+Subject: [R-br] Dificuldade em instalar pacotes
+Message-ID: <CAGB2GpuFX_9t79T3X3BgLg9aJtjpYUPufRVQFHckgv6YM1F19Q@mail.gmail.com>
+
+Bom dia,
+Sou novo no R e   estou com dificuldade na instalação de um pacote.
+Uso o Ubuntu 18.04 e também utilizo o Rstudio.
+O pacote que não consigo instalar é o devtools. Já tentei no script do
+Rstudio e também pelo terminal o comando install.packages, mas não
+funcionou, aparecendo a seguinte mensagem:
+
+1: In install.packages("devtools") :
+  installation of package ?xml2? had non-zero exit status
+2: In install.packages("devtools") :
+  installation of package ?roxygen2? had non-zero exit status
+3: In install.packages("devtools") :
+  installation of package ?rversions? had non-zero exit status
+4: In install.packages("devtools") :
+  installation of package ?devtools? had non-zero exit status
+
+Desde já agradeço.
+
+-- 
+
+*Marco Tadeu Gonçalves - Professor EBTT*
+*Área de atuação: Matemática*
+Instituto Federal do Paraná
+Campus Avançado de Goioerê
+Rodovia BR 180 - Trevo da UEM s/n CEP: 87360-000
+(44) 3522 - 5432
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200513/92d9a38d/attachment.html>
+
+From zhushazang em gmail.com  Wed May 13 09:29:17 2020
+From: zhushazang em gmail.com (Rodolfo Silva)
+Date: Wed, 13 May 2020 08:29:17 -0400
+Subject: [R-br] Dificuldade em instalar pacotes
+In-Reply-To: <CAGB2GpuFX_9t79T3X3BgLg9aJtjpYUPufRVQFHckgv6YM1F19Q@mail.gmail.com>
+References: <CAGB2GpuFX_9t79T3X3BgLg9aJtjpYUPufRVQFHckgv6YM1F19Q@mail.gmail.com>
+Message-ID: <7441dd8e-4e5c-877e-51f2-2f3eba8f808f@gmail.com>
+
+Esse "erro final" não ajuda muito. Coloque os erros anteriores,
+especificamente o do xml2, que foi o erro inicial. Entretanto, acredito
+que deva ter de instalar algum pacote de desenvolvimento (headers) do
+xml para que a instalação funcione corretamente. É suposição...
+
+
+Atenciosamente
+
+On 13/05/2020 08:25, Marco Tadeu Gonçalves por (R-br) wrote:
+> Bom dia, 
+> Sou novo no R e   estou com dificuldade na instalação de um pacote.
+> Uso o Ubuntu 18.04 e também utilizo o Rstudio. 
+> O pacote que não consigo instalar é o devtools. Já tentei no script do
+> Rstudio e também pelo terminal o comando install.packages, mas não
+> funcionou, aparecendo a seguinte mensagem:
+>
+> 1: In install.packages("devtools") :
+>   installation of package ?xml2? had non-zero exit status
+> 2: In install.packages("devtools") :
+>   installation of package ?roxygen2? had non-zero exit status
+> 3: In install.packages("devtools") :
+>   installation of package ?rversions? had non-zero exit status
+> 4: In install.packages("devtools") :
+>   installation of package ?devtools? had non-zero exit status
+>
+> Desde já agradeço.
+>
+> -- 
+>
+> *Marco Tadeu Gonçalves - Professor EBTT*
+> *Área de atuação: Matemática*
+> Instituto Federal do Paraná
+> Campus Avançado de Goioerê
+> Rodovia BR 180 - Trevo da UEM s/n CEP: 87360-000
+> (44) 3522 - 5432
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200513/fb38aad8/attachment.html>
+
+From coroasolaris em gmail.com  Wed May 13 10:52:27 2020
+From: coroasolaris em gmail.com (Elielson P Barbosa)
+Date: Wed, 13 May 2020 10:52:27 -0300
+Subject: [R-br] 
+	=?utf-8?q?Pesquisa_de_artigos_na_=C3=A1rea_de_Estat=C3=AD?=
+	=?utf-8?q?stica?=
+In-Reply-To: <CAEVGS=LSQBXcn27MHTvP-evEAdF4yp9AKyerRT1pvkJxz0He5A@mail.gmail.com>
+References: <CAEVGS=LSQBXcn27MHTvP-evEAdF4yp9AKyerRT1pvkJxz0He5A@mail.gmail.com>
+Message-ID: <CAL6xZMpyuY2oFkrOm_xWH_YOMBHaekEQjCTSNvaf1qHD3a0h2Q@mail.gmail.com>
+
+Manassés, bom dia!
+Quais os temas que pretende estudar?
+Algumas dicas:
+Probabilidade, distribuiçlões e inúmeras técnicas de Estatística Descritiva
+e Inferencial: Estatística para Engenheiros, Douglas Montgomery
+Bioestatística - Marcelo Pagano
+Análise de sobrvivência: Marília Sá Carvalho et al. Fiocruz // Sueli R
+Giolo e Enrico Colósimo
+
+Em seg., 27 de abr. de 2020 às 19:27, Manasses Nóbrega por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa noite, pessoal.
+>
+> Por conta de meus estudos, tenho utilizado nos últimos anos a plataforma
+> PubMEd para busca de artigos científicos na área das "ciências da vida".
+>
+> Entretanto, surgiu a necessidade de pesquisar alguns temas da área de
+> Estatística. Assim como no caso do PubMed, existe alguma plataforma
+> específica para busca de artigos científicos na área de Estatística? Caso
+> não haja, poderiam me indicar sites de busca específicos da área?
+>
+> Desde já agradeço a colaboração de vocês.
+> Atenciosamente,
+> Manasses
+>
+>
+>
+> --
+>
+> *I am a brain, Watson. The rest of me is a mere appendix. *
+>
+> *(Sherlock Holmes)*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200513/b2a72f0c/attachment.html>
+
+From diegopenhanut em gmail.com  Wed May 13 12:39:11 2020
+From: diegopenhanut em gmail.com (emanuel penha)
+Date: Wed, 13 May 2020 12:39:11 -0300
+Subject: [R-br] 
+ =?utf-8?q?Informa=C3=A7=C3=B5es_para_an=C3=A1lises_na_nuv?=
+ =?utf-8?b?ZW0u?=
+In-Reply-To: <CAHi1An-NxR_S+hHSni91rqgy5xSvcztrD8g_UBsKi8xzOqXDvg@mail.gmail.com>
+References: <CAHi1An-NxR_S+hHSni91rqgy5xSvcztrD8g_UBsKi8xzOqXDvg@mail.gmail.com>
+Message-ID: <CADoML9Y-EzUWDCXtnQasKt2yf_2dcDgFKCshnFPnAJT68xyy4Q@mail.gmail.com>
+
+Recomendo dar uma olhada no AWS (Amazon Web Services). Lá você pode montar
+o servidor que melhor se adapte as suas necessidades e só paga pelo o que
+você usar. Depois que tiver feito o que precisar, basta
+"desligar/desmontar" o servidor.
+Achei os preços razoáveis, na última vez que usei.
+
+Atenciosamente.
+Emanuel Diego S. Penha
+
+
+Em qua., 13 de mai. de 2020 às 08:20, Ze Henrique por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia Srs.,
+>
+> estou necessitando realizar análises de um grande conjunto de dados só que
+> estou sem servidor neste momento e meu computador não suporta.
+>
+> Gostaria de saber se os Srs. poderiam me recomendar alguma plataforma que
+> tenha um preço acessível e posso realizar para realizar as análises pelo R.
+>
+> Desde já obrigado.
+>
+> --
+> *José Henrique Soler Guilhen*
+> Doutor em Genética e Melhoramento
+> Universidade Federal do Espírito Santo - CCAUFES
+>
+>
+> [image: Mailtrack]
+> <https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&> Remetente
+> notificado por
+> Mailtrack
+> <https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&> 13/05/20
+> 08:14:43
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200513/f05332ea/attachment.html>
+
+From jhguilhen em gmail.com  Wed May 13 12:50:34 2020
+From: jhguilhen em gmail.com (Ze Henrique)
+Date: Wed, 13 May 2020 12:50:34 -0300
+Subject: [R-br] 
+ =?utf-8?q?Informa=C3=A7=C3=B5es_para_an=C3=A1lises_na_nuv?=
+ =?utf-8?b?ZW0u?=
+In-Reply-To: <CADoML9Y-EzUWDCXtnQasKt2yf_2dcDgFKCshnFPnAJT68xyy4Q@mail.gmail.com>
+References: <CAHi1An-NxR_S+hHSni91rqgy5xSvcztrD8g_UBsKi8xzOqXDvg@mail.gmail.com>
+ <CADoML9Y-EzUWDCXtnQasKt2yf_2dcDgFKCshnFPnAJT68xyy4Q@mail.gmail.com>
+Message-ID: <CAHi1An-m3-XDkPBaU-GEMr4LnMNqOdjX-9yrEY0hUCOVpciUYw@mail.gmail.com>
+
+Obrigado pela ajuda.
+
+Irei dar olhar.
+
+
+
+[image: Mailtrack]
+<https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&>
+Remetente
+notificado por
+Mailtrack
+<https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&>
+13/05/20
+12:50:10
+
+Em qua., 13 de mai. de 2020 às 12:39, emanuel penha <diegopenhanut em gmail.com>
+escreveu:
+
+> Recomendo dar uma olhada no AWS (Amazon Web Services). Lá você pode montar
+> o servidor que melhor se adapte as suas necessidades e só paga pelo o que
+> você usar. Depois que tiver feito o que precisar, basta
+> "desligar/desmontar" o servidor.
+> Achei os preços razoáveis, na última vez que usei.
+>
+> Atenciosamente.
+> Emanuel Diego S. Penha
+>
+>
+> Em qua., 13 de mai. de 2020 às 08:20, Ze Henrique por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Bom dia Srs.,
+>>
+>> estou necessitando realizar análises de um grande conjunto de dados só
+>> que estou sem servidor neste momento e meu computador não suporta.
+>>
+>> Gostaria de saber se os Srs. poderiam me recomendar alguma plataforma que
+>> tenha um preço acessível e posso realizar para realizar as análises pelo R.
+>>
+>> Desde já obrigado.
+>>
+>> --
+>> *José Henrique Soler Guilhen*
+>> Doutor em Genética e Melhoramento
+>> Universidade Federal do Espírito Santo - CCAUFES
+>>
+>>
+>> [image: Mailtrack]
+>> <https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&> Remetente
+>> notificado por
+>> Mailtrack
+>> <https://mailtrack.io?utm_source=gmail&utm_medium=signature&utm_campaign=signaturevirality5&> 13/05/20
+>> 08:14:43
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+
+-- 
+*José Henrique Soler Guilhen*
+Doutorando em Genética e Melhoramento
+Universidade Federal do Espírito Santo - CCAUFES
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200513/85993397/attachment.html>
+
+From marco.goncalves em ifpr.edu.br  Wed May 13 13:52:48 2020
+From: marco.goncalves em ifpr.edu.br (=?UTF-8?Q?Marco_Tadeu_Gon=C3=A7alves?=)
+Date: Wed, 13 May 2020 13:52:48 -0300
+Subject: [R-br] Dificuldade em instalar pacotes
+In-Reply-To: <7441dd8e-4e5c-877e-51f2-2f3eba8f808f@gmail.com>
+References: <CAGB2GpuFX_9t79T3X3BgLg9aJtjpYUPufRVQFHckgv6YM1F19Q@mail.gmail.com>
+ <7441dd8e-4e5c-877e-51f2-2f3eba8f808f@gmail.com>
+Message-ID: <CAGB2GpupN2FaVLWy59eFcRAtH6kw=h4Pwu72Wea-G33Wu=5h+w@mail.gmail.com>
+
+Caro Rodolfo, realmente foi o que você falou. Tentando a instalação pelo
+terminal ví que faltava o pacote libxml2-dev. Depois de instalado, consegui
+inserir o devtools.
+
+Obrigado pela ajuda.
+
+
+Em qua., 13 de mai. de 2020 às 09:30, Rodolfo Silva por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Esse "erro final" não ajuda muito. Coloque os erros anteriores,
+> especificamente o do xml2, que foi o erro inicial. Entretanto, acredito que
+> deva ter de instalar algum pacote de desenvolvimento (headers) do xml para
+> que a instalação funcione corretamente. É suposição...
+>
+>
+> Atenciosamente
+> On 13/05/2020 08:25, Marco Tadeu Gonçalves por (R-br) wrote:
+>
+> Bom dia,
+> Sou novo no R e   estou com dificuldade na instalação de um pacote.
+> Uso o Ubuntu 18.04 e também utilizo o Rstudio.
+> O pacote que não consigo instalar é o devtools. Já tentei no script do
+> Rstudio e também pelo terminal o comando install.packages, mas não
+> funcionou, aparecendo a seguinte mensagem:
+>
+> 1: In install.packages("devtools") :
+>   installation of package ?xml2? had non-zero exit status
+> 2: In install.packages("devtools") :
+>   installation of package ?roxygen2? had non-zero exit status
+> 3: In install.packages("devtools") :
+>   installation of package ?rversions? had non-zero exit status
+> 4: In install.packages("devtools") :
+>   installation of package ?devtools? had non-zero exit status
+>
+> Desde já agradeço.
+>
+> --
+>
+> *Marco Tadeu Gonçalves - Professor EBTT*
+> *Área de atuação: Matemática*
+> Instituto Federal do Paraná
+> Campus Avançado de Goioerê
+> Rodovia BR 180 - Trevo da UEM s/n CEP: 87360-000
+> (44) 3522 - 5432
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+
+*Marco Tadeu Gonçalves - Professor EBTT*
+*Área de atuação: Matemática*
+Instituto Federal do Paraná
+Campus Avançado de Goioerê
+Rodovia BR 180 - Trevo da UEM s/n CEP: 87360-000
+(44) 3522 - 5432
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200513/bc099992/attachment.html>
+
+From leonardocalado em hotmail.com  Sun May 17 13:17:07 2020
+From: leonardocalado em hotmail.com (Leonardo Luiz Calado)
+Date: Sun, 17 May 2020 16:17:07 +0000
+Subject: [R-br] =?utf-8?q?Dificuldades_em_substitui=C3=A7=C3=A3o_de_progr?=
+ =?utf-8?q?amas?=
+Message-ID: <FR1P15201MB248745C63AE049542BC04821DBBB0@FR1P15201MB2487.LAMP152.PROD.OUTLOOK.COM>
+
+Caros Amigos, boa tarde. Estou com dificuldades, por ser iniciante no R, em conseguir substituir um pacote no mesmo de essencial funcionamento no meu escopo de trabalho.  O pacote a ser 'rimage' já não consta nas instalações do R e mesmo os antigos não funcionam. Gostaria de saber se existe algum que substituiria o mesmo realizando o mesmo trabalho. Atualmente estou trabalhando fotos para morfometria geométrica em especies animais e necessito em suma manipular e transformar essas fotos estabelecendo coordenadas na imagem para landmarks, estabelecer escalas, transformar grids de deformação dentre outras coisas.
+
+
+Grande abraço a todos e muito obrigado
+
+
+?LCalado
+
+PhD. Biotechnology in natural resources
+http://lattes.cnpq.br/2459740082072347
+leonardocalado em hotmail.com
+84-9 9931-1630
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200517/fbb68c22/attachment.html>
+
+From nandodesouza em gmail.com  Sun May 17 17:09:06 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sun, 17 May 2020 17:09:06 -0300
+Subject: [R-br] Dificuldades em =?utf-8?Q?substitui=C3=A7=C3=A3o_?=de
+ programas
+In-Reply-To: <FR1P15201MB248745C63AE049542BC04821DBBB0@FR1P15201MB2487.LAMP152.PROD.OUTLOOK.COM>
+References: <FR1P15201MB248745C63AE049542BC04821DBBB0@FR1P15201MB2487.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <9304C972-C2C2-4D51-AC9B-5F00BAC3F928@getmailspring.com>
+
+Já olhou se o software imageJ não lhe serve? Ele tem uma integração com o R editor Bio7.
+
+Dei uma olhada na net e encontrei esse "ripa: R Image Processing and Analysis" (https://rdrr.io/cran/ripa/_) . Veja se lhe atende.
+att
+On May 17 2020, at 1:17 pm, Leonardo Luiz Calado por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Caros Amigos, boa tarde. Estou com dificuldades, por ser iniciante no R, em conseguir substituir um pacote no mesmo de essencial funcionamento no meu escopo de trabalho. O pacote a ser 'rimage' já não consta nas instalações do R e mesmo os antigos não funcionam. Gostaria de saber se existe algum que substituiria o mesmo realizando o mesmo trabalho. Atualmente estou trabalhando fotos para morfometria geométrica em especies animais e necessito em suma manipular e transformar essas fotos estabelecendo coordenadas na imagem para landmarks, estabelecer escalas, transformar grids de deformação dentre outras coisas.
+>
+>
+> Grande abraço a todos e muito obrigado
+>
+>
+> ?LCalado
+> PhD. Biotechnology in natural resources
+> http://lattes.cnpq.br/2459740082072347
+> leonardocalado em hotmail.com
+> 84-9 9931-1630
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200517/34c66394/attachment.html>
+
+From leonardocalado em hotmail.com  Sun May 17 17:47:30 2020
+From: leonardocalado em hotmail.com (Leonardo Luiz Calado)
+Date: Sun, 17 May 2020 20:47:30 +0000
+Subject: [R-br] 
+ =?utf-8?q?Dificuldades_em_substitui=C3=A7=C3=A3o_de_progr?=
+ =?utf-8?q?amas?=
+In-Reply-To: <9304C972-C2C2-4D51-AC9B-5F00BAC3F928@getmailspring.com>
+References: <FR1P15201MB248745C63AE049542BC04821DBBB0@FR1P15201MB2487.LAMP152.PROD.OUTLOOK.COM>,
+ <9304C972-C2C2-4D51-AC9B-5F00BAC3F928@getmailspring.com>
+Message-ID: <RO1P15201MB24915978F6AD887BB9B5EC97DBBB0@RO1P15201MB2491.LAMP152.PROD.OUTLOOK.COM>
+
+Caro Fernando, obrigado pela presteza, vou acessar e instalar o pacote, estou vendo um que se chama StereoMorph também que encontrei no site da SBmorphometrics, mas sua dica também é preciosa já que quero maior independencia de outros programas e utilizar ao máximo o R  e o python como ferramenta de trabalho....obrigado mais uma vez
+
+?LCalado
+
+PhD. Biotechnology in natural resources
+http://lattes.cnpq.br/2459740082072347
+leonardocalado em hotmail.com
+84-9 9931-1630
+________________________________
+De: Fernando Souza <nandodesouza em gmail.com>
+Enviado: domingo, 17 de maio de 2020 17:09
+Para: a lista Brasileira oficial de discussão do programa R. <r-br em listas.c3sl.ufpr.br>
+Cc: Leonardo Luiz Calado <leonardocalado em hotmail.com>
+Assunto: Re: [R-br] Dificuldades em substituição de programas
+
+Já olhou se o software imageJ não lhe serve? Ele tem uma integração com o R editor Bio7.
+
+Dei uma olhada na net e encontrei esse  "ripa: R Image Processing and Analysis" (https://rdrr.io/cran/ripa/_) . Veja se lhe atende.
+
+att
+
+On May 17 2020, at 1:17 pm, Leonardo Luiz Calado por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+Caros Amigos, boa tarde. Estou com dificuldades, por ser iniciante no R, em conseguir substituir um pacote no mesmo de essencial funcionamento no meu escopo de trabalho.  O pacote a ser 'rimage' já não consta nas instalações do R e mesmo os antigos não funcionam. Gostaria de saber se existe algum que substituiria o mesmo realizando o mesmo trabalho. Atualmente estou trabalhando fotos para morfometria geométrica em especies animais e necessito em suma manipular e transformar essas fotos estabelecendo coordenadas na imagem para landmarks, estabelecer escalas, transformar grids de deformação dentre outras coisas.
+
+
+Grande abraço a todos e muito obrigado
+
+
+?LCalado
+
+PhD. Biotechnology in natural resources
+http://lattes.cnpq.br/2459740082072347
+leonardocalado em hotmail.com
+84-9 9931-1630
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200517/ef190f8f/attachment.html>
+
+From diogojose21 em yahoo.com.br  Mon May 18 11:05:59 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Mon, 18 May 2020 14:05:59 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+References: <1539783676.821279.1589810759313.ref@mail.yahoo.com>
+Message-ID: <1539783676.821279.1589810759313@mail.yahoo.com>
+
+Lista, bom dia e boa semana!!! Criei o "reproduzível" para explicar a dúvida. Nesse exemplo, de uma pasta, identifiquei arquivos "*.csv", e depois apliquei o lapply e o do.call para importar e juntar esses bancos:
+dir.create('c:/users/diogo/desktop/bancosex/')banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000)))
+write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE)banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000)))
+write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE)banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500)))
+write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE)
+setwd('c:/users/diogo/desktop/bancosex/')
+lista<-list.files()
+arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";")) 
+dados<-do.call("rbind", arquivos) 
+Meu problema: esse código vai "pegar" TODOS os bancos da pasta antes de importar e juntar. Eu gostaria de pegar somente PARTE desses bancos (ex: apenas banco1 e banco2, apenas banco2 e banco3...).
+Alguém saberia como fazer isso?
+Obrigado!!! 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE A
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200518/93621d1e/attachment.html>
+
+From sznelwar em uol.com.br  Mon May 18 18:11:00 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Mon, 18 May 2020 18:11:00 -0300
+Subject: [R-br] 
+ =?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+In-Reply-To: ["1539783676.821279.1589810759313@mail.yahoo.com"]
+References: ["1539783676.821279.1589810759313.ref@mail.yahoo.com",
+ "1539783676.821279.1589810759313@mail.yahoo.com"]
+Message-ID: <5ec2f9e488213_6aa52af27a67111894015@ip-10-81-19-50.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200518/afd7872e/attachment.html>
+
+From dtiezzi em usp.br  Mon May 18 18:14:10 2020
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Mon, 18 May 2020 18:14:10 -0300
+Subject: [R-br] 
+	=?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+In-Reply-To: <5ec2f9e488213_6aa52af27a67111894015@ip-10-81-19-50.ec2.internal.mail>
+References: <5ec2f9e488213_6aa52af27a67111894015@ip-10-81-19-50.ec2.internal.mail>
+Message-ID: <CA+RL3DNV_vDo753RYLEO8QaX1BHWp=x1PNQkzKSM+G5UORjo2Q@mail.gmail.com>
+
+Se VC sabe qual os arquivos VC precisa let, certo? Deixe somente eles no
+seu objeto listas.
+
+Daniel
+
+On Mon, 18 May 2020, 18:11 Mauro Sznelwar por (R-br), <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Tem o data set para rodar?
+>
+>
+>
+>
+> Lista, bom dia e boa semana!!! Criei o "reproduzível" para explicar a
+> dúvida. Nesse exemplo, de uma pasta, identifiquei arquivos "*.csv", e
+> depois apliquei o *lapply* e o *do.call* para importar e juntar esses
+> bancos:
+>
+> dir.create('c:/users/diogo/desktop/bancosex/')
+> banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000)))
+>
+> write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE)
+> banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000)))
+>
+> write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE)
+> banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500)))
+>
+> write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE)
+>
+> setwd('c:/users/diogo/desktop/bancosex/')
+> lista<-list.files()
+> arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+> dados<-do.call("rbind", arquivos)
+>
+> Meu problema: esse código vai "pegar" TODOS os bancos da pasta antes de
+> importar e juntar. Eu gostaria de pegar somente PARTE desses bancos (ex:
+> apenas banco1 e banco2, apenas banco2 e banco3...).
+>
+> Alguém saberia como fazer isso?
+>
+> Obrigado!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+> _______________________________________________
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200518/cd3ab220/attachment.html>
+
+From diogojose21 em yahoo.com.br  Mon May 18 19:20:24 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Mon, 18 May 2020 22:20:24 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+In-Reply-To: <5ec2f9e488213_6aa52af27a67111894015@ip-10-81-19-50.ec2.internal.mail>
+References: <5ec2f9e488213_6aa52af27a67111894015@ip-10-81-19-50.ec2.internal.mail>
+Message-ID: <1588110280.1145508.1589840424976@mail.yahoo.com>
+
+Oi Mauro, boa noite. O data set é composto de arquivos ".*csv" similares ao do exemplo que enviei. Essa é a pergunta?
+Obrigado!!!!   
+
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE AEmail: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520 
+
+    Em segunda-feira, 18 de maio de 2020 18:11:04 BRT, sznelwar em uol.com.br <sznelwar em uol.com.br> escreveu:  
+ 
+ Tem o data set para rodar? 
+
+ Lista, bom dia e boa semana!!! Criei o "reproduzível" para explicar a dúvida. Nesse exemplo, de uma pasta, identifiquei arquivos "*.csv", e depois apliquei o lapply e o do.call para importar e juntar esses bancos: dir.create('c:/users/diogo/desktop/bancosex/')banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000)))write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE)banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000)))
+write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE)banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500)))
+write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE) setwd('c:/users/diogo/desktop/bancosex/')
+lista<-list.files()arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";")) dados<-do.call("rbind", arquivos)  Meu problema: esse código vai "pegar" TODOS os bancos da pasta antes de importar e juntar. Eu gostaria de pegar somente PARTE desses bancos (ex: apenas banco1 e banco2, apenas banco2 e banco3...). Alguém saberia como fazer isso? Obrigado!!!  Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE A_______________________________________________
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200518/f81ef7ee/attachment.html>
+
+From diogojose21 em yahoo.com.br  Mon May 18 19:39:10 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Mon, 18 May 2020 22:39:10 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+In-Reply-To: <CA+RL3DNV_vDo753RYLEO8QaX1BHWp=x1PNQkzKSM+G5UORjo2Q@mail.gmail.com>
+References: <5ec2f9e488213_6aa52af27a67111894015@ip-10-81-19-50.ec2.internal.mail>
+ <CA+RL3DNV_vDo753RYLEO8QaX1BHWp=x1PNQkzKSM+G5UORjo2Q@mail.gmail.com>
+Message-ID: <2010081109.1161231.1589841550975@mail.yahoo.com>
+
+Oi Daniel, boa noite.
+Esse exemplo eu dei para ilustrar, mas o meu caso é de bases de dados trimestrais em *.csv, onde cada base trimestral tem por volta de 100 Megas, bases que vem desde 2006 até 2020!!! 
+Fora o tamanho, essas bases podem ter variáveis adicionais solicitadas pelo gestor ao longo dos anos (códigos adicionais, dado de alteração de um serviço...), e isso cria conflito se eu juntar as bases com número de colunas diferentes pelo "rbind".
+No meu caso, um período em que tenho dados uniformes (sem alteração do número de colunas) é entre 2017 e 2018, e nesse caso, não posso apagar e nem copiar as outras bases (por motivos de segurança). Assim, eu teria de escolher somente as bases dos trimestres dos anos que me interessam (2017 trim1,...,2018 trim4) para processar a análise estatística de interesse.
+Não sei se consegui ser claro, mas é isso.
+Obrigado!!! 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE A
+Em segunda-feira, 18 de maio de 2020 18:14:38 BRT, Daniel Guimarães Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+ 
+ Se VC sabe qual os arquivos VC precisa let, certo? Deixe somente eles no seu objeto listas.
+Daniel
+
+On Mon, 18 May 2020, 18:11 Mauro Sznelwar por (R-br), <r-br em listas.c3sl.ufpr.br> wrote:
+
+Tem o data set para rodar? 
+
+ Lista, bom dia e boa semana!!! Criei o "reproduzível" para explicar a dúvida. Nesse exemplo, de uma pasta, identifiquei arquivos "*.csv", e depois apliquei o lapply e o do.call para importar e juntar esses bancos: dir.create('c:/users/diogo/desktop/bancosex/')banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000)))write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE)banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000)))
+write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE)banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500)))
+write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE) setwd('c:/users/diogo/desktop/bancosex/')
+lista<-list.files()arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";")) dados<-do.call("rbind", arquivos)  Meu problema: esse código vai "pegar" TODOS os bancos da pasta antes de importar e juntar. Eu gostaria de pegar somente PARTE desses bancos (ex: apenas banco1 e banco2, apenas banco2 e banco3...). Alguém saberia como fazer isso? Obrigado!!!  Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE A_______________________________________________
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200518/15d108d9/attachment.html>
+
+From nandodesouza em gmail.com  Mon May 18 23:24:29 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Mon, 18 May 2020 23:24:29 -0300
+Subject: [R-br] 
+	=?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+In-Reply-To: <2010081109.1161231.1589841550975@mail.yahoo.com>
+References: <5ec2f9e488213_6aa52af27a67111894015@ip-10-81-19-50.ec2.internal.mail>
+ <CA+RL3DNV_vDo753RYLEO8QaX1BHWp=x1PNQkzKSM+G5UORjo2Q@mail.gmail.com>
+ <2010081109.1161231.1589841550975@mail.yahoo.com>
+Message-ID: <CAFrWFs=opmj6i12eiiY=sHw_8N=xYZEu+dyWEJGz=WvxhtAipQ@mail.gmail.com>
+
+Diogo,
+Segue minha solução a seu problema. Faça as adaptações necessárias.
+
+Fiz algumas alterações em seu código para tornar a saídas mais legíveis.
+
+
+dir.create('~/Downloads/bancosex/')
+banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))
+write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)
+banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))
+write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)
+banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))
+write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+
+## dir= uma string com o path para o diretório
+## nameBD= um vetor string com os nomes completos dos arquivos (p.ex
+"meuarquivo.csv")
+
+importaBD <-function(dir, nameBD){
+
+    lista<- vector(mode = "list", length =length(nameBD))
+
+    setwd(dir)
+
+    for(i in 1:length(nameBD)){
+
+        lista[[i]]<-list.files(path=dir,pattern=nameBD)
+
+    }
+
+    arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+
+    dados<-do.call("rbind",arquivos)
+
+    print(dados)
+
+}
+
+importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))
+
+  Nome Idade Salario
+1    Diogo    42    5000
+2 Patrícia    40    7000
+3    Diogo    42    5000
+4 Patrícia    40    7000
+
+att
+
+Em seg., 18 de mai. de 2020 às 19:39, Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Oi Daniel, boa noite.
+>
+> Esse exemplo eu dei para ilustrar, mas o meu caso é de bases de dados
+> trimestrais em *.csv, onde cada base trimestral tem por volta de 100 Megas,
+> bases que vem desde 2006 até 2020!!!
+>
+> Fora o tamanho, essas bases podem ter variáveis adicionais solicitadas
+> pelo gestor ao longo dos anos (códigos adicionais, dado de alteração de um
+> serviço...), e isso cria conflito se eu juntar as bases com número de
+> colunas diferentes pelo "rbind".
+>
+> No meu caso, um período em que tenho dados uniformes (sem alteração do
+> número de colunas) é entre 2017 e 2018, e nesse caso, não posso apagar e
+> nem copiar as outras bases (por motivos de segurança). Assim, eu teria de
+> escolher somente as bases dos trimestres dos anos que me interessam (2017
+> trim1,...,2018 trim4) para processar a análise estatística de interesse.
+>
+> Não sei se consegui ser claro, mas é isso.
+>
+> Obrigado!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+>
+> Em segunda-feira, 18 de maio de 2020 18:14:38 BRT, Daniel Guimarães Tiezzi
+> por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Se VC sabe qual os arquivos VC precisa let, certo? Deixe somente eles no
+> seu objeto listas.
+>
+> Daniel
+>
+> On Mon, 18 May 2020, 18:11 Mauro Sznelwar por (R-br), <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Tem o data set para rodar?
+>
+>
+>
+>
+> Lista, bom dia e boa semana!!! Criei o "reproduzível" para explicar a
+> dúvida. Nesse exemplo, de uma pasta, identifiquei arquivos "*.csv", e
+> depois apliquei o *lapply* e o *do.call* para importar e juntar esses
+> bancos:
+>
+> dir.create('c:/users/diogo/desktop/bancosex/')
+> banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000)))
+>
+> write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE)
+> banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000)))
+>
+> write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE)
+> banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500)))
+>
+> write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE)
+>
+> setwd('c:/users/diogo/desktop/bancosex/')
+> lista<-list.files()
+> arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+> dados<-do.call("rbind", arquivos)
+>
+> Meu problema: esse código vai "pegar" TODOS os bancos da pasta antes de
+> importar e juntar. Eu gostaria de pegar somente PARTE desses bancos (ex:
+> apenas banco1 e banco2, apenas banco2 e banco3...).
+>
+> Alguém saberia como fazer isso?
+>
+> Obrigado!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+> _______________________________________________
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+
+Lattes: http://lattes.cnpq.br/6519538815038307
+Blog: https://producaoanimalcomr.wordpress.com/
+==========================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200518/83e2957b/attachment.html>
+
+From nandodesouza em gmail.com  Tue May 19 00:03:26 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Tue, 19 May 2020 00:03:26 -0300
+Subject: [R-br] Selecionar bancos =?utf-8?Q?espec=C3=ADficos_?=de uma
+ pasta
+In-Reply-To: <CAFrWFs=opmj6i12eiiY=sHw_8N=xYZEu+dyWEJGz=WvxhtAipQ@mail.gmail.com>
+References: <CAFrWFs=opmj6i12eiiY=sHw_8N=xYZEu+dyWEJGz=WvxhtAipQ@mail.gmail.com>
+Message-ID: <CFEBFDF1-5D91-411C-A929-6DE1BCA22D7F@getmailspring.com>
+
+Uma pequena correção.
+
+Considere esse código aqui.
+att
+dir.create('~/Downloads/bancosex/')
+banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))
+write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)
+banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))
+write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)
+banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))
+write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+
+importaBD <-function(dir,nameBD){
+lista<- vector(mode = "list", length =length(nameBD))
+
+setwd(dir)
+
+for(i in 1:length(nameBD)){
+
+lista[i]<-list.files(path=dir,pattern=nameBD[i])
+
+}
+
+arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+do.call("rbind",arquivos)
+
+}
+
+Exemplo de uso
+importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))
+Nome Idade Salario
+1 Diogo 42 5000
+2 Patrícia 40 7000
+3 João 41 8000
+4 Alexandre 40 9000
+
+> importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco3.csv","banco2.csv"))
+Nome Idade Salario
+1 Angélica 40 9500
+2 Nádia 38 7500
+3 João 41 8000
+4 Alexandre 40 9000
+
+On May 18 2020, at 11:24 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+> Diogo,
+> Segue minha solução a seu problema. Faça as adaptações necessárias.
+>
+>
+> Fiz algumas alterações em seu código para tornar a saídas mais legíveis.
+>
+>
+> dir.create('~/Downloads/bancosex/')
+> banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))
+> write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)
+> banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))
+> write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)
+> banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))
+> write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+>
+> ## dir= uma string com o path para o diretório
+> ## nameBD= um vetor string com os nomes completos dos arquivos (p.ex "meuarquivo.csv")
+>
+>
+> importaBD <-function(dir, nameBD){
+> lista<- vector(mode = "list", length =length(nameBD))
+>
+> setwd(dir)
+>
+> for(i in 1:length(nameBD)){
+>
+> lista[[i]]<-list.files(path=dir,pattern=nameBD)
+>
+> }
+>
+> arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+> dados<-do.call("rbind",arquivos)
+> print(dados)
+>
+> }
+>
+> importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))
+>
+> Nome Idade Salario
+> 1 Diogo 42 5000
+> 2 Patrícia 40 7000
+> 3 Diogo 42 5000
+> 4 Patrícia 40 7000
+>
+>
+> att
+> Em seg., 18 de mai. de 2020 às 19:39, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> escreveu:
+> > Oi Daniel, boa noite.
+> >
+> > Esse exemplo eu dei para ilustrar, mas o meu caso é de bases de dados trimestrais em *.csv, onde cada base trimestral tem por volta de 100 Megas, bases que vem desde 2006 até 2020!!!
+> >
+> > Fora o tamanho, essas bases podem ter variáveis adicionais solicitadas pelo gestor ao longo dos anos (códigos adicionais, dado de alteração de um serviço...), e isso cria conflito se eu juntar as bases com número de colunas diferentes pelo "rbind".
+> >
+> > No meu caso, um período em que tenho dados uniformes (sem alteração do número de colunas) é entre 2017 e 2018, e nesse caso, não posso apagar e nem copiar as outras bases (por motivos de segurança). Assim, eu teria de escolher somente as bases dos trimestres dos anos que me interessam (2017 trim1,...,2018 trim4) para processar a análise estatística de interesse.
+> >
+> > Não sei se consegui ser claro, mas é isso.
+> >
+> > Obrigado!!!
+> >
+> > Diogo Jerônimo
+> > Bacharel em Ciências Estatísticas - ENCE/IBGE
+> > Mestre em Metrologia - PUC-Rio/PósMQI
+> > CONRE: 8514 - SÉRIE A
+> >
+> > Em segunda-feira, 18 de maio de 2020 18:14:38 BRT, Daniel Guimarães Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> escreveu:
+> >
+> >
+> > Se VC sabe qual os arquivos VC precisa let, certo? Deixe somente eles no seu objeto listas.
+> >
+> > Daniel
+> > On Mon, 18 May 2020, 18:11 Mauro Sznelwar por (R-br), <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > > Tem o data set para rodar?
+> > >
+> > >
+> > >
+> > > Lista, bom dia e boa semana!!! Criei o "reproduzível" para explicar a dúvida. Nesse exemplo, de uma pasta, identifiquei arquivos "*.csv", e depois apliquei o lapply e o do.call para importar e juntar esses bancos:
+> > >
+> > > dir.create('c:/users/diogo/desktop/bancosex/')
+> > > banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000)))
+> > > write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE)
+> > > banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000)))
+> > >
+> > > write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE)
+> > > banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500)))
+> > >
+> > > write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE)
+> > >
+> > > setwd('c:/users/diogo/desktop/bancosex/')
+> > >
+> > > lista<-list.files()
+> > > arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+> > > dados<-do.call("rbind", arquivos)
+> > >
+> > >
+> > >
+> > > Meu problema: esse código vai "pegar" TODOS os bancos da pasta antes de importar e juntar. Eu gostaria de pegar somente PARTE desses bancos (ex: apenas banco1 e banco2, apenas banco2 e banco3...).
+> > >
+> > > Alguém saberia como fazer isso?
+> > >
+> > > Obrigado!!!
+> > >
+> > >
+> > >
+> > > Diogo Jerônimo
+> > > Bacharel em Ciências Estatísticas - ENCE/IBGE
+> > > Mestre em Metrologia - PUC-Rio/PósMQI
+> > > CONRE: 8514 - SÉRIE A
+> > >
+> > >
+> > >
+> > > _______________________________________________
+> > >
+> > > _______________________________________________
+> > > R-br mailing list
+> > > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > >
+> > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> > >
+> >
+> >
+> >
+> >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> >
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> >
+> >
+> >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>
+>
+>
+> --
+>
+>
+> Lattes: http://lattes.cnpq.br/6519538815038307 (https://link.getmailspring.com/link/CFEBFDF1-5D91-411C-A929-6DE1BCA22D7F em getmailspring.com/0?redirect=http%3A%2F%2Flattes.cnpq.br%2F6519538815038307&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> Blog: https://producaoanimalcomr.wordpress.com/ (https://link.getmailspring.com/link/CFEBFDF1-5D91-411C-A929-6DE1BCA22D7F em getmailspring.com/1?redirect=https%3A%2F%2Fproducaoanimalcomr.wordpress.com%2F&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> ==========================================
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200519/bb8edc51/attachment.html>
+
+From diogojose21 em yahoo.com.br  Tue May 19 08:21:32 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Tue, 19 May 2020 11:21:32 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+In-Reply-To: <CAFrWFs=opmj6i12eiiY=sHw_8N=xYZEu+dyWEJGz=WvxhtAipQ@mail.gmail.com>
+References: <5ec2f9e488213_6aa52af27a67111894015@ip-10-81-19-50.ec2.internal.mail>
+ <CA+RL3DNV_vDo753RYLEO8QaX1BHWp=x1PNQkzKSM+G5UORjo2Q@mail.gmail.com>
+ <2010081109.1161231.1589841550975@mail.yahoo.com>
+ <CAFrWFs=opmj6i12eiiY=sHw_8N=xYZEu+dyWEJGz=WvxhtAipQ@mail.gmail.com>
+Message-ID: <176671351.1389895.1589887292559@mail.yahoo.com>
+
+Obrigado Fernando, vou adequar meu código e ver o resultado!!! Bom dia!!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE AEmail: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520 
+
+    Em segunda-feira, 18 de maio de 2020 23:24:43 BRT, Fernando Souza <nandodesouza em gmail.com> escreveu:  
+ 
+ Diogo,Segue minha solução a seu problema. Faça as adaptações necessárias.
+
+Fiz algumas alterações em seu código para tornar a saídas mais legíveis.
+
+dir.create('~/Downloads/bancosex/')banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))
+write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)
+banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))
+write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)
+banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))
+write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+
+## dir= uma string com o path para o diretório## nameBD= um vetor string com os nomes completos dos arquivos (p.ex "meuarquivo.csv")
+
+importaBD <-function(dir, nameBD){
+
+    lista<- vector(mode = "list", length =length(nameBD))
+ 
+    setwd(dir)
+    
+    for(i in 1:length(nameBD)){
+
+        lista[[i]]<-list.files(path=dir,pattern=nameBD)
+        
+    }
+
+    arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";")) 
+
+    dados<-do.call("rbind",arquivos)
+
+    print(dados)
+    
+}
+
+importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))
+  Nome Idade Salario
+1    Diogo    42    5000
+2 Patrícia    40    7000
+3    Diogo    42    5000
+4 Patrícia    40    7000
+att
+
+Em seg., 18 de mai. de 2020 às 19:39, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+
+Oi Daniel, boa noite.
+Esse exemplo eu dei para ilustrar, mas o meu caso é de bases de dados trimestrais em *.csv, onde cada base trimestral tem por volta de 100 Megas, bases que vem desde 2006 até 2020!!! 
+Fora o tamanho, essas bases podem ter variáveis adicionais solicitadas pelo gestor ao longo dos anos (códigos adicionais, dado de alteração de um serviço...), e isso cria conflito se eu juntar as bases com número de colunas diferentes pelo "rbind".
+No meu caso, um período em que tenho dados uniformes (sem alteração do número de colunas) é entre 2017 e 2018, e nesse caso, não posso apagar e nem copiar as outras bases (por motivos de segurança). Assim, eu teria de escolher somente as bases dos trimestres dos anos que me interessam (2017 trim1,...,2018 trim4) para processar a análise estatística de interesse.
+Não sei se consegui ser claro, mas é isso.
+Obrigado!!! 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE A
+Em segunda-feira, 18 de maio de 2020 18:14:38 BRT, Daniel Guimarães Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+ 
+ Se VC sabe qual os arquivos VC precisa let, certo? Deixe somente eles no seu objeto listas.
+Daniel
+
+On Mon, 18 May 2020, 18:11 Mauro Sznelwar por (R-br), <r-br em listas.c3sl.ufpr.br> wrote:
+
+Tem o data set para rodar? 
+
+ Lista, bom dia e boa semana!!! Criei o "reproduzível" para explicar a dúvida. Nesse exemplo, de uma pasta, identifiquei arquivos "*.csv", e depois apliquei o lapply e o do.call para importar e juntar esses bancos: dir.create('c:/users/diogo/desktop/bancosex/')banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000)))write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE)banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000)))
+write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE)banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500)))
+write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE) setwd('c:/users/diogo/desktop/bancosex/')
+lista<-list.files()arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";")) dados<-do.call("rbind", arquivos)  Meu problema: esse código vai "pegar" TODOS os bancos da pasta antes de importar e juntar. Eu gostaria de pegar somente PARTE desses bancos (ex: apenas banco1 e banco2, apenas banco2 e banco3...). Alguém saberia como fazer isso? Obrigado!!!  Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE A_______________________________________________
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+
+-- 
+
+Lattes: http://lattes.cnpq.br/6519538815038307
+Blog: https://producaoanimalcomr.wordpress.com/
+==========================================  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200519/e091c7e9/attachment-0001.html>
+
+From diogojose21 em yahoo.com.br  Tue May 19 13:24:06 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Tue, 19 May 2020 16:24:06 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+In-Reply-To: <CFEBFDF1-5D91-411C-A929-6DE1BCA22D7F@getmailspring.com>
+References: <CAFrWFs=opmj6i12eiiY=sHw_8N=xYZEu+dyWEJGz=WvxhtAipQ@mail.gmail.com>
+ <CFEBFDF1-5D91-411C-A929-6DE1BCA22D7F@getmailspring.com>
+Message-ID: <1962159707.1549407.1589905446038@mail.yahoo.com>
+
+Prezado Fernando, não sei se é pertinente, mas... Deus o abençoe e o ilumine!!!
+Era exatamente o que eu queria, resolveu o problema!!!
+Obrigado!!!! Boa tarde a todos!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE A
+    Em terça-feira, 19 de maio de 2020 00:03:33 BRT, Fernando Souza <nandodesouza em gmail.com> escreveu:  
+ 
+ Uma pequena correção.
+Considere esse código aqui.
+att
+dir.create('~/Downloads/bancosex/')banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+importaBD <-function(dir,nameBD){
+    lista<- vector(mode = "list", length =length(nameBD))        setwd(dir)        for(i in 1:length(nameBD)){
+        lista[i]<-list.files(path=dir,pattern=nameBD[i])            }
+    arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+          do.call("rbind",arquivos)      }
+Exemplo de uso
+ importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))       Nome Idade Salario1     Diogo    42    50002  Patrícia    40    70003      João    41    80004 Alexandre    40    9000
+> importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco3.csv","banco2.csv"))       Nome Idade Salario1  Angélica    40    95002     Nádia    38    75003      João    41    80004 Alexandre    40    9000
+On May 18 2020, at 11:24 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+Diogo,Segue minha solução a seu problema. Faça as adaptações necessárias.
+Fiz algumas alterações em seu código para tornar a saídas mais legíveis.
+
+dir.create('~/Downloads/bancosex/')banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+## dir= uma string com o path para o diretório## nameBD= um vetor string com os nomes completos dos arquivos (p.ex "meuarquivo.csv")
+importaBD <-function(dir, nameBD){
+    lista<- vector(mode = "list", length =length(nameBD))     setwd(dir)       for(i in 1:length(nameBD)){
+        lista[[i]]<-list.files(path=dir,pattern=nameBD)           }
+    arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+    dados<-do.call("rbind",arquivos)
+    print(dados)   }
+importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))
+  Nome Idade Salario1    Diogo    42    50002 Patrícia    40    70003    Diogo    42    50004 Patrícia    40    7000
+att
+Em seg., 18 de mai. de 2020 às 19:39, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+Oi Daniel, boa noite.
+Esse exemplo eu dei para ilustrar, mas o meu caso é de bases de dados trimestrais em *.csv, onde cada base trimestral tem por volta de 100 Megas, bases que vem desde 2006 até 2020!!! 
+Fora o tamanho, essas bases podem ter variáveis adicionais solicitadas pelo gestor ao longo dos anos (códigos adicionais, dado de alteração de um serviço...), e isso cria conflito se eu juntar as bases com número de colunas diferentes pelo "rbind".
+No meu caso, um período em que tenho dados uniformes (sem alteração do número de colunas) é entre 2017 e 2018, e nesse caso, não posso apagar e nem copiar as outras bases (por motivos de segurança). Assim, eu teria de escolher somente as bases dos trimestres dos anos que me interessam (2017 trim1,...,2018 trim4) para processar a análise estatística de interesse.
+Não sei se consegui ser claro, mas é isso.
+Obrigado!!! 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE A
+Em segunda-feira, 18 de maio de 2020 18:14:38 BRT, Daniel Guimarães Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+
+Se VC sabe qual os arquivos VC precisa let, certo? Deixe somente eles no seu objeto listas.
+Daniel
+On Mon, 18 May 2020, 18:11 Mauro Sznelwar por (R-br), <r-br em listas.c3sl.ufpr.br> wrote:
+Tem o data set para rodar? 
+
+ Lista, bom dia e boa semana!!! Criei o "reproduzível" para explicar a dúvida. Nesse exemplo, de uma pasta, identifiquei arquivos "*.csv", e depois apliquei o lapply e o do.call para importar e juntar esses bancos: dir.create('c:/users/diogo/desktop/bancosex/')banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000)))write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE)banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000)))write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE)banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500)))write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE) setwd('c:/users/diogo/desktop/bancosex/')lista<-list.files()arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";")) dados<-do.call("rbind", arquivos)  Meu problema: esse código vai "pegar" TODOS os bancos da pasta antes de importar e juntar. Eu gostaria de pegar somente PARTE desses bancos (ex: apenas banco1 e banco2, apenas banco2 e banco3...). Alguém saberia como fazer isso? Obrigado!!!  Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE A_______________________________________________
+_______________________________________________R-br mailing listR-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-brLeia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+_______________________________________________R-br mailing listR-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-brLeia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível._______________________________________________R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-brLeia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+--
+Lattes: http://lattes.cnpq.br/6519538815038307Blog: https://producaoanimalcomr.wordpress.com/==========================================
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200519/0a7fa331/attachment.html>
+
+From sznelwar em uol.com.br  Tue May 19 21:26:54 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Tue, 19 May 2020 21:26:54 -0300
+Subject: [R-br] 
+ =?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+In-Reply-To: <CFEBFDF1-5D91-411C-A929-6DE1BCA22D7F@getmailspring.com>
+References: <WvxhtAipQ@mail.gmail.com>
+ <CFEBFDF1-5D91-411C-A929-6DE1BCA22D7F@getmailspring.com>
+Message-ID: <5ec4794e1dc9f_1bb12ae6f37c30f8884c5@ip-10-81-19-102.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200519/04145117/attachment.html>
+
+From dtiezzi em usp.br  Tue May 19 21:34:01 2020
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 19 May 2020 21:34:01 -0300
+Subject: [R-br] 
+ =?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+In-Reply-To: <5ec4794e1dc9f_1bb12ae6f37c30f8884c5@ip-10-81-19-102.ec2.internal.mail>
+References: <WvxhtAipQ@mail.gmail.com>
+ <CFEBFDF1-5D91-411C-A929-6DE1BCA22D7F@getmailspring.com>
+ <5ec4794e1dc9f_1bb12ae6f37c30f8884c5@ip-10-81-19-102.ec2.internal.mail>
+Message-ID: <8C33D0F4-0089-467B-A20E-3CFD316F033F@usp.br>
+
+Eu não conheço o Windows, mas não seria uma incompatibilidade do diretório HOME?
+
+Daniel
+
+
+
+> On 19 May 2020, at 21:26, Mauro Sznelwar por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Não consegui rodar,alguém explica o motivo?
+>  
+> dir.create('~/Downloads/bancosex/')
+>  
+> Warning message:
+> In dir.create("~/Downloads/bancosex/") :
+>   não foi possível criar o diretório 'C:\Users\Mauro\Documents\Downloads\bancosex', motivo 'No such file or directory'
+>  
+>  
+>  
+> Uma pequena correção.
+>  
+> Considere esse código aqui.
+>  
+> att
+>  
+> dir.create('~/Downloads/bancosex/')
+> banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))
+> write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)
+> banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))
+> write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)
+> banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))
+> write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+>  
+> importaBD <-function(dir,nameBD){
+>  
+>     lista<- vector(mode = "list", length =length(nameBD))
+>    
+>     setwd(dir)
+>    
+>     for(i in 1:length(nameBD)){
+>  
+>         lista[i]<-list.files(path=dir,pattern=nameBD[i])
+>        
+>     }
+>  
+>     arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+>  
+>      
+>     do.call("rbind",arquivos) 
+>    
+> }
+>  
+> Exemplo de uso
+>  
+>  importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))
+>        Nome Idade Salario
+> 1     Diogo    42    5000
+> 2  Patrícia    40    7000
+> 3      João    41    8000
+> 4 Alexandre    40    9000
+>  
+> > importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco3.csv","banco2.csv"))
+>        Nome Idade Salario
+> 1  Angélica    40    9500
+> 2     Nádia    38    7500
+> 3      João    41    8000
+> 4 Alexandre    40    9000
+>  
+> On May 18 2020, at 11:24 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+> Diogo,
+> Segue minha solução a seu problema. Faça as adaptações necessárias.
+>  
+> Fiz algumas alterações em seu código para tornar a saídas mais legíveis.
+>  
+>  
+> dir.create('~/Downloads/bancosex/')
+> banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))
+> write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)
+> banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))
+> write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)
+> banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))
+> write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+>  
+> ## dir= uma string com o path para o diretório
+> ## nameBD= um vetor string com os nomes completos dos arquivos (p.ex "meuarquivo.csv")
+> 
+> importaBD <-function(dir, nameBD){
+> 
+>     lista<- vector(mode = "list", length =length(nameBD))
+>  
+>     setwd(dir)
+>    
+>     for(i in 1:length(nameBD)){
+> 
+>         lista[[i]]<-list.files(path=dir,pattern=nameBD)
+>        
+>     }
+> 
+>     arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+> 
+>     dados<-do.call("rbind",arquivos)
+> 
+>     print(dados)
+>    
+> }
+> 
+> importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))
+>  
+>   Nome Idade Salario
+> 1    Diogo    42    5000
+> 2 Patrícia    40    7000
+> 3    Diogo    42    5000
+> 4 Patrícia    40    7000
+>  
+> att
+> 
+> Em seg., 18 de mai. de 2020 às 19:39, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br <x-msg://35/undefined//compose?to=r-br em listas.c3sl.ufpr.br>> escreveu:
+> Oi Daniel, boa noite.
+>  
+> Esse exemplo eu dei para ilustrar, mas o meu caso é de bases de dados trimestrais em *.csv, onde cada base trimestral tem por volta de 100 Megas, bases que vem desde 2006 até 2020!!! 
+>  
+> Fora o tamanho, essas bases podem ter variáveis adicionais solicitadas pelo gestor ao longo dos anos (códigos adicionais, dado de alteração de um serviço...), e isso cria conflito se eu juntar as bases com número de colunas diferentes pelo "rbind".
+>  
+> No meu caso, um período em que tenho dados uniformes (sem alteração do número de colunas) é entre 2017 e 2018, e nesse caso, não posso apagar e nem copiar as outras bases (por motivos de segurança). Assim, eu teria de escolher somente as bases dos trimestres dos anos que me interessam (2017 trim1,...,2018 trim4) para processar a análise estatística de interesse.
+>  
+> Não sei se consegui ser claro, mas é isso.
+>  
+> Obrigado!!! 
+>  
+> Diogo Jerônimo
+> Bacharel em Ciências Estatísticas - ENCE/IBGE
+> Mestre em Metrologia - PUC-Rio/PósMQI
+> CONRE: 8514 - SÉRIE A
+>  
+> Em segunda-feira, 18 de maio de 2020 18:14:38 BRT, Daniel Guimarães Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br <x-msg://35/undefined//compose?to=r-br em listas.c3sl.ufpr.br>> escreveu:
+>  
+>  
+> Se VC sabe qual os arquivos VC precisa let, certo? Deixe somente eles no seu objeto listas.
+>  
+> Daniel
+> 
+> On Mon, 18 May 2020, 18:11 Mauro Sznelwar por (R-br), <r-br em listas.c3sl.ufpr.br <x-msg://35/undefined//compose?to=r-br em listas.c3sl.ufpr.br>> wrote:
+> Tem o data set para rodar?
+>  
+> 
+> 
+>  
+> Lista, bom dia e boa semana!!! Criei o "reproduzível" para explicar a dúvida. Nesse exemplo, de uma pasta, identifiquei arquivos "*.csv", e depois apliquei o lapply e o do.call para importar e juntar esses bancos:
+>  
+> dir.create('c:/users/diogo/desktop/bancosex/')
+> banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000)))
+> write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE)
+> banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000)))
+> write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE)
+> banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500)))
+> write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE)
+>  
+> setwd('c:/users/diogo/desktop/bancosex/')
+> lista<-list.files()
+> arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";")) 
+> dados<-do.call("rbind", arquivos) 
+>  
+> Meu problema: esse código vai "pegar" TODOS os bancos da pasta antes de importar e juntar. Eu gostaria de pegar somente PARTE desses bancos (ex: apenas banco1 e banco2, apenas banco2 e banco3...).
+>  
+> Alguém saberia como fazer isso?
+>  
+> Obrigado!!! 
+>  
+> Diogo Jerônimo
+> Bacharel em Ciências Estatísticas - ENCE/IBGE
+> Mestre em Metrologia - PUC-Rio/PósMQI
+> CONRE: 8514 - SÉRIE A
+> _______________________________________________
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <x-msg://35/undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+> 
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo reproduzível.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <x-msg://35/undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+> 
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo reproduzível.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <x-msg://35/undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo reproduzível.
+> 
+> 
+> --
+> 
+> 
+> Lattes: http://lattes.cnpq.br/6519538815038307 <https://link.getmailspring.com/link/CFEBFDF1-5D91-411C-A929-6DE1BCA22D7F em getmailspring.com/0?redirect=http%3A%2F%2Flattes.cnpq.br%2F6519538815038307&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>
+> Blog: https://producaoanimalcomr.wordpress.com/ <https://link.getmailspring.com/link/CFEBFDF1-5D91-411C-A929-6DE1BCA22D7F em getmailspring.com/1?redirect=https%3A%2F%2Fproducaoanimalcomr.wordpress.com%2F&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>
+> ==========================================
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo reproduzível.
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200519/b90c52e4/attachment.html>
+
+From nandodesouza em gmail.com  Tue May 19 21:44:15 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Tue, 19 May 2020 21:44:15 -0300
+Subject: [R-br] Selecionar bancos =?utf-8?Q?espec=C3=ADficos_?=de uma
+ pasta
+In-Reply-To: <5ec4794e1dc9f_1bb12ae6f37c30f8884c5@ip-10-81-19-102.ec2.internal.mail>
+References: <5ec4794e1dc9f_1bb12ae6f37c30f8884c5@ip-10-81-19-102.ec2.internal.mail>
+Message-ID: <8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1@getmailspring.com>
+
+Mauro
+
+Eu utilizo o linux. No linux o edereço "~/Dowlnload/bancosex/" é o mesmo que "/home/fernando/Dowlnload/bancosex/"
+ele informa o caminho para a pasta "bancosex"
+
+no windows seria algo assim:
+C:\Users\Mauro\Downloads\bancosex
+
+Você pode clicar com o botão direito do mouse sobre a pasta, ir em propriedades e copiar o endereço
+
+May 19 2020, at 9:26 pm, Mauro Sznelwar por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Não consegui rodar,alguém explica o motivo?
+>
+> dir.create('~/Downloads/bancosex/')
+>
+>
+> Warning message:
+> In dir.create("~/Downloads/bancosex/") :
+> não foi possível criar o diretório 'C:\Users\Mauro\Documents\Downloads\bancosex', motivo 'No such file or directory'
+>
+>
+>
+>
+> Uma pequena correção.
+>
+> Considere esse código aqui.
+>
+> att
+>
+> dir.create('~/Downloads/bancosex/')
+> banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))
+> write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)
+> banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))
+> write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)
+> banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))
+> write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+>
+> importaBD <-function(dir,nameBD){
+>
+> lista<- vector(mode = "list", length =length(nameBD))
+>
+> setwd(dir)
+>
+> for(i in 1:length(nameBD)){
+>
+> lista[i]<-list.files(path=dir,pattern=nameBD[i])
+>
+> }
+>
+> arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+>
+>
+> do.call("rbind",arquivos)
+>
+> }
+>
+> Exemplo de uso
+>
+> importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))
+> Nome Idade Salario
+> 1 Diogo 42 5000
+> 2 Patrícia 40 7000
+> 3 João 41 8000
+> 4 Alexandre 40 9000
+>
+> > importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco3.csv","banco2.csv"))
+> Nome Idade Salario
+> 1 Angélica 40 9500
+> 2 Nádia 38 7500
+> 3 João 41 8000
+> 4 Alexandre 40 9000
+>
+> On May 18 2020, at 11:24 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+> > Diogo,
+> > Segue minha solução a seu problema. Faça as adaptações necessárias.
+> >
+> >
+> > Fiz algumas alterações em seu código para tornar a saídas mais legíveis.
+> >
+> >
+> > dir.create('~/Downloads/bancosex/')
+> > banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))
+> > write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)
+> > banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))
+> > write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)
+> > banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))
+> > write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+> >
+> > ## dir= uma string com o path para o diretório
+> > ## nameBD= um vetor string com os nomes completos dos arquivos (p.ex "meuarquivo.csv")
+> >
+> >
+> > importaBD <-function(dir, nameBD){
+> > lista<- vector(mode = "list", length =length(nameBD))
+> >
+> > setwd(dir)
+> >
+> > for(i in 1:length(nameBD)){
+> >
+> > lista[[i]]<-list.files(path=dir,pattern=nameBD)
+> >
+> > }
+> >
+> > arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+> > dados<-do.call("rbind",arquivos)
+> > print(dados)
+> >
+> > }
+> >
+> > importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))
+> >
+> > Nome Idade Salario
+> > 1 Diogo 42 5000
+> > 2 Patrícia 40 7000
+> > 3 Diogo 42 5000
+> > 4 Patrícia 40 7000
+> >
+> >
+> > att
+> >
+> >
+> >
+> > Em seg., 18 de mai. de 2020 às 19:39, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br (../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br)> escreveu:
+> > > Oi Daniel, boa noite.
+> > >
+> > > Esse exemplo eu dei para ilustrar, mas o meu caso é de bases de dados trimestrais em *.csv, onde cada base trimestral tem por volta de 100 Megas, bases que vem desde 2006 até 2020!!!
+> > >
+> > > Fora o tamanho, essas bases podem ter variáveis adicionais solicitadas pelo gestor ao longo dos anos (códigos adicionais, dado de alteração de um serviço...), e isso cria conflito se eu juntar as bases com número de colunas diferentes pelo "rbind".
+> > >
+> > > No meu caso, um período em que tenho dados uniformes (sem alteração do número de colunas) é entre 2017 e 2018, e nesse caso, não posso apagar e nem copiar as outras bases (por motivos de segurança). Assim, eu teria de escolher somente as bases dos trimestres dos anos que me interessam (2017 trim1,...,2018 trim4) para processar a análise estatística de interesse.
+> > >
+> > > Não sei se consegui ser claro, mas é isso.
+> > >
+> > > Obrigado!!!
+> > >
+> > > Diogo Jerônimo
+> > > Bacharel em Ciências Estatísticas - ENCE/IBGE
+> > > Mestre em Metrologia - PUC-Rio/PósMQI
+> > > CONRE: 8514 - SÉRIE A
+> > >
+> > >
+> > >
+> > >
+> > > Em segunda-feira, 18 de maio de 2020 18:14:38 BRT, Daniel Guimarães Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br (../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br)> escreveu:
+> > >
+> > >
+> > >
+> > >
+> > > Se VC sabe qual os arquivos VC precisa let, certo? Deixe somente eles no seu objeto listas.
+> > >
+> > > Daniel
+> > >
+> > > On Mon, 18 May 2020, 18:11 Mauro Sznelwar por (R-br), <r-br em listas.c3sl.ufpr.br (../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br)> wrote:
+> > > > Tem o data set para rodar?
+> > > >
+> > > >
+> > > >
+> > > > Lista, bom dia e boa semana!!! Criei o "reproduzível" para explicar a dúvida. Nesse exemplo, de uma pasta, identifiquei arquivos "*.csv", e depois apliquei o lapply e o do.call para importar e juntar esses bancos:
+> > > >
+> > > > dir.create('c:/users/diogo/desktop/bancosex/')
+> > > > banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000)))
+> > > > write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE)
+> > > > banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000)))
+> > > >
+> > > > write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE)
+> > > > banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500)))
+> > > >
+> > > > write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE)
+> > > >
+> > > > setwd('c:/users/diogo/desktop/bancosex/')
+> > > >
+> > > > lista<-list.files()
+> > > > arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, sep=";"))
+> > > > dados<-do.call("rbind", arquivos)
+> > > >
+> > > >
+> > > >
+> > > > Meu problema: esse código vai "pegar" TODOS os bancos da pasta antes de importar e juntar. Eu gostaria de pegar somente PARTE desses bancos (ex: apenas banco1 e banco2, apenas banco2 e banco3...).
+> > > >
+> > > > Alguém saberia como fazer isso?
+> > > >
+> > > > Obrigado!!!
+> > > >
+> > > >
+> > > >
+> > > > Diogo Jerônimo
+> > > > Bacharel em Ciências Estatísticas - ENCE/IBGE
+> > > > Mestre em Metrologia - PUC-Rio/PósMQI
+> > > > CONRE: 8514 - SÉRIE A
+> > > >
+> > > >
+> > > >
+> > > > _______________________________________________
+> > > >
+> > > > _______________________________________________
+> > > > R-br mailing list
+> > > > R-br em listas.c3sl.ufpr.br (../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br)
+> > > >
+> > > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > > > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> > > >
+> > >
+> > >
+> > >
+> > >
+> > >
+> > >
+> > > _______________________________________________
+> > > R-br mailing list
+> > > R-br em listas.c3sl.ufpr.br (../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br)
+> > >
+> > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> > >
+> > >
+> > >
+> > >
+> > >
+> > > _______________________________________________
+> > > R-br mailing list
+> > > R-br em listas.c3sl.ufpr.br (../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br)
+> > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> >
+> >
+> >
+> >
+> > --
+> >
+> >
+> >
+> > Lattes: http://lattes.cnpq.br/6519538815038307 (https://link.getmailspring.com/link/8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1 em getmailspring.com/0?redirect=https%3A%2F%2Flink.getmailspring.com%2Flink%2FCFEBFDF1-5D91-411C-A929-6DE1BCA22D7F%40getmailspring.com%2F0%3Fredirect%3Dhttp%253A%252F%252Flattes.cnpq.br%252F6519538815038307%26recipient%3Dci1ickBsaXN0YXMuYzNzbC51ZnByLmJy&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> > Blog: https://producaoanimalcomr.wordpress.com/ (https://link.getmailspring.com/link/8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1 em getmailspring.com/1?redirect=https%3A%2F%2Flink.getmailspring.com%2Flink%2FCFEBFDF1-5D91-411C-A929-6DE1BCA22D7F%40getmailspring.com%2F1%3Fredirect%3Dhttps%253A%252F%252Fproducaoanimalcomr.wordpress.com%252F%26recipient%3Dci1ickBsaXN0YXMuYzNzbC51ZnByLmJy&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> > ==========================================
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br (https://link.getmailspring.com/link/8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1 em getmailspring.com/2?redirect=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia (https://link.getmailspring.com/link/8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1 em getmailspring.com/3?redirect=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)) e forneça código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200519/c8f3e669/attachment-0001.html>
+
+From fernandohtoledo em gmail.com  Tue May 19 23:12:31 2020
+From: fernandohtoledo em gmail.com (Fernando H Toledo)
+Date: Tue, 19 May 2020 21:12:31 -0500
+Subject: [R-br] 
+ =?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+In-Reply-To: <8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1@getmailspring.com>
+References: <5ec4794e1dc9f_1bb12ae6f37c30f8884c5@ip-10-81-19-102.ec2.internal.mail>
+ <8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1@getmailspring.com>
+Message-ID: <c63f4d1a-4981-698a-b9c9-c6fd9da1b986@gmail.com>
+
+Colegas,
+
+Em todos SOs um path (caminho/para/o/meu/diretorio/) é definido com / 
+(forward slash), exceto o Windows que usa \ (backslash).
+
+Deve-se levar em conta que \ "dentro de uma string" no R significa um 
+"scape", assim tem-se que por "\\" para ter o resultado esperado.
+
+att,
+FH
+
+On 5/19/20 7:44 PM, Fernando Souza por (R-br) wrote:
+> Mauro
+>
+> Eu utilizo o linux. No linux o edereço "~/Dowlnload/bancosex/" é o 
+> mesmo que "/home/fernando/Dowlnload/bancosex/"
+> ele informa o caminho para a pasta  "bancosex"
+>
+> no windows seria algo assim:
+> C:\Users\Mauro\Downloads\bancosex
+>
+> Você pode clicar com o botão direito do mouse sobre a pasta, ir em 
+> propriedades e copiar o endereço
+>
+>
+>  May 19 2020, at 9:26 pm, Mauro Sznelwar por (R-br) 
+> <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>     Não consegui rodar,alguém explica o motivo?
+>     dir.create('~/Downloads/bancosex/')
+>     Warning message:
+>     In dir.create("~/Downloads/bancosex/") :
+>       não foi possível criar o diretório
+>     'C:\Users\Mauro\Documents\Downloads\bancosex', motivo 'No such
+>     file or directory'
+>     Uma pequena correção.
+>     Considere esse código aqui.
+>     att
+>     dir.create('~/Downloads/bancosex/')
+>     banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))
+>     write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)
+>     banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))
+>     write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)
+>     banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))
+>     write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+>     importaBD <-function(dir,nameBD){
+>         lista<- vector(mode = "list", length =length(nameBD))
+>         setwd(dir)
+>         for(i in 1:length(nameBD)){
+>             lista[i]<-list.files(path=dir,pattern=nameBD[i])
+>         }
+>         arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE,
+>     sep=";"))
+>         do.call("rbind",arquivos)
+>     }
+>     Exemplo de uso
+>      importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))
+>            Nome Idade Salario
+>     1     Diogo    42    5000
+>     2  Patrícia    40    7000
+>     3      João    41    8000
+>     4 Alexandre    40    9000
+>     >
+>     importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco3.csv","banco2.csv"))
+>            Nome Idade Salario
+>     1  Angélica    40    9500
+>     2     Nádia    38    7500
+>     3      João    41    8000
+>     4 Alexandre    40    9000
+>     On May 18 2020, at 11:24 pm, Fernando Souza
+>     <nandodesouza em gmail.com> wrote:
+>
+>         Diogo,
+>         Segue minha solução a seu problema. Faça as adaptações
+>         necessárias.
+>         Fiz algumas alterações em seu código para tornar a saídas mais
+>         legíveis.
+>         dir.create('~/Downloads/bancosex/')
+>         banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000))
+>         write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE)
+>         banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000))
+>         write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE)
+>         banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500))
+>         write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE)
+>         ## dir= uma string com o path para o diretório
+>         ## nameBD= um vetor string com os nomes completos dos arquivos
+>         (p.ex "meuarquivo.csv")
+>
+>         importaBD <-function(dir, nameBD){
+>
+>             lista<- vector(mode = "list", length =length(nameBD))
+>             setwd(dir)
+>             for(i in 1:length(nameBD)){
+>
+>         lista[[i]]<-list.files(path=dir,pattern=nameBD)
+>             }
+>
+>             arquivos<-lapply(lista, function(x) read.csv2(x,
+>         header=TRUE, sep=";"))
+>
+>             dados<-do.call("rbind",arquivos)
+>
+>             print(dados)
+>         }
+>
+>         importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv"))
+>           Nome Idade Salario
+>         1    Diogo    42    5000
+>         2 Patrícia    40    7000
+>         3    Diogo    42    5000
+>         4 Patrícia    40    7000
+>         att
+>
+>         Em seg., 18 de mai. de 2020 às 19:39, Diogo Jerônimo por
+>         (R-br) <r-br em listas.c3sl.ufpr.br
+>         <../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br>>
+>         escreveu:
+>
+>             Oi Daniel, boa noite.
+>             Esse exemplo eu dei para ilustrar, mas o meu caso é de
+>             bases de dados trimestrais em *.csv, onde cada base
+>             trimestral tem por volta de 100 Megas, bases que vem desde
+>             2006 até 2020!!!
+>             Fora o tamanho, essas bases podem ter variáveis adicionais
+>             solicitadas pelo gestor ao longo dos anos (códigos
+>             adicionais, dado de alteração de um serviço...), e isso
+>             cria conflito se eu juntar as bases com número de colunas
+>             diferentes pelo "rbind".
+>             No meu caso, um período em que tenho dados uniformes (sem
+>             alteração do número de colunas) é entre 2017 e 2018, e
+>             nesse caso, não posso apagar e nem copiar as outras bases
+>             (por motivos de segurança). Assim, eu teria de escolher
+>             somente as bases dos trimestres dos anos que me interessam
+>             (2017 trim1,...,2018 trim4) para processar a análise
+>             estatística de interesse.
+>             Não sei se consegui ser claro, mas é isso.
+>             Obrigado!!!
+>             /Diogo Jerônimo/
+>             /Bacharel em Ciências Estatísticas - ENCE/IBGE/
+>             /Mestre em Metrologia - PUC-Rio/PósMQI/
+>             /CONRE: 8514 - SÉRIE A/
+>             Em segunda-feira, 18 de maio de 2020 18:14:38 BRT, Daniel
+>             Guimarães Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br
+>             <../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br>>
+>             escreveu:
+>             Se VC sabe qual os arquivos VC precisa let, certo? Deixe
+>             somente eles no seu objeto listas.
+>             Daniel
+>
+>             On Mon, 18 May 2020, 18:11 Mauro Sznelwar por (R-br),
+>             <r-br em listas.c3sl.ufpr.br
+>             <../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br>>
+>             wrote:
+>
+>                 Tem o data set para rodar?
+>
+>
+>                 Lista, bom dia e boa semana!!! Criei o "reproduzível"
+>                 para explicar a dúvida. Nesse exemplo, de uma pasta,
+>                 identifiquei arquivos "*.csv", e depois apliquei o
+>                 *lapply* e o *do.call* para importar e juntar esses
+>                 bancos:
+>                 dir.create('c:/users/diogo/desktop/bancosex/')
+>                 banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000)))
+>                 write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE)
+>                 banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000)))
+>                 write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE)
+>                 banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500)))
+>                 write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE)
+>                 setwd('c:/users/diogo/desktop/bancosex/')
+>                 lista<-list.files()
+>                 arquivos<-lapply(lista, function(x) read.csv2(x,
+>                 header=TRUE, sep=";"))
+>                 dados<-do.call("rbind", arquivos)
+>                 Meu problema: esse código vai "pegar" TODOS os bancos
+>                 da pasta antes de importar e juntar. Eu gostaria de
+>                 pegar somente PARTE desses bancos (ex: apenas banco1 e
+>                 banco2, apenas banco2 e banco3...).
+>                 Alguém saberia como fazer isso?
+>                 Obrigado!!!
+>                 /Diogo Jerônimo/
+>                 /Bacharel em Ciências Estatísticas - ENCE/IBGE/
+>                 /Mestre em Metrologia - PUC-Rio/PósMQI/
+>                 /CONRE: 8514 - SÉRIE A/
+>                 _______________________________________________
+>                 _______________________________________________
+>                 R-br mailing list
+>                 R-br em listas.c3sl.ufpr.br
+>                 <../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+>
+>                 https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>                 Leia o guia de postagem
+>                 (http://www.leg.ufpr.br/r-br-guia) e forneça código
+>                 mínimo reproduzível.
+>
+>             _______________________________________________
+>             R-br mailing list
+>             R-br em listas.c3sl.ufpr.br
+>             <../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+>
+>             https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>             Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia)
+>             e forneça código mínimo reproduzível.
+>             _______________________________________________
+>             R-br mailing list
+>             R-br em listas.c3sl.ufpr.br
+>             <../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+>             https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>             Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia)
+>             e forneça código mínimo reproduzível.
+>
+>
+>
+>         --
+>
+>         Lattes: http://lattes.cnpq.br/6519538815038307
+>         <https://link.getmailspring.com/link/8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1 em getmailspring.com/0?redirect=https%3A%2F%2Flink.getmailspring.com%2Flink%2FCFEBFDF1-5D91-411C-A929-6DE1BCA22D7F%40getmailspring.com%2F0%3Fredirect%3Dhttp%253A%252F%252Flattes.cnpq.br%252F6519538815038307%26recipient%3Dci1ickBsaXN0YXMuYzNzbC51ZnByLmJy&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>
+>         Blog: https://producaoanimalcomr.wordpress.com/
+>         <https://link.getmailspring.com/link/8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1 em getmailspring.com/1?redirect=https%3A%2F%2Flink.getmailspring.com%2Flink%2FCFEBFDF1-5D91-411C-A929-6DE1BCA22D7F%40getmailspring.com%2F1%3Fredirect%3Dhttps%253A%252F%252Fproducaoanimalcomr.wordpress.com%252F%26recipient%3Dci1ickBsaXN0YXMuYzNzbC51ZnByLmJy&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>
+>         ==========================================
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     <https://link.getmailspring.com/link/8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1 em getmailspring.com/2?redirect=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia
+>     <https://link.getmailspring.com/link/8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1 em getmailspring.com/3?redirect=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>)
+>     e forneça código mínimo reproduzível.
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+From nandodesouza em gmail.com  Tue May 19 23:34:32 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Tue, 19 May 2020 23:34:32 -0300
+Subject: [R-br] Selecionar bancos =?utf-8?Q?espec=C3=ADficos_?=de uma
+ pasta
+In-Reply-To: <c63f4d1a-4981-698a-b9c9-c6fd9da1b986@gmail.com>
+References: <c63f4d1a-4981-698a-b9c9-c6fd9da1b986@gmail.com>
+Message-ID: <8B1D43F8-3643-4F50-ABFE-FA32C8B4D391@getmailspring.com>
+
+É mesmo, muito bem lembrado Fernando Toledo. Não sou usuário Windows e não me atentei para esse detalhe até você chamar a atenção.
+
+Muito obrigado!
+
+On May 19 2020, at 11:12 pm, Fernando H Toledo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Colegas, Em todos SOs um path (caminho/para/o/meu/diretorio/) é definido com / (forward slash), exceto o Windows que usa \ (backslash). Deve-se levar em conta que \ "dentro de uma string" no R significa um "scape", assim tem-se que por "\\" para ter o resultado esperado. att, FH On 5/19/20 7:44 PM, Fernando Souza por (R-br) wrote: > Mauro > > Eu utilizo o linux. No linux o edereço "~/Dowlnload/bancosex/" é o > mesmo que "/home/fernando/Dowlnload/bancosex/" > ele informa o caminho para a pasta "bancosex" > > no windows seria algo assim: > C:\Users\Mauro\Downloads\bancosex > > Você pode clicar com o botão direito do mouse sobre a pasta, ir em > propriedades e copiar o endereço > > > May 19 2020, at 9:26 pm, Mauro Sznelwar por (R-br) > wrote: > > Não consegui rodar,alguém explica o motivo? > dir.create('~/Downloads/bancosex/') > Warning message: > In dir.create("~/Downloads/bancosex/") : > não foi possível criar o diretório > 'C:\Users\Mauro\Documents\Downloads\bancosex', motivo 'No such > file or directory' > Uma pequena correção. > Considere esse código aqui. > att > dir.create('~/Downloads/bancosex/') > banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000)) > write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE) > banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000)) > write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE) > banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500)) > write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE) > importaBD <-function(dir,nameBD){ > lista<- vector(mode = "list", length =length(nameBD)) > setwd(dir) > for(i in 1:length(nameBD)){ > lista[i]<-list.files(path=dir,pattern=nameBD[i]) > } > arquivos<-lapply(lista, function(x) read.csv2(x, header=TRUE, > sep=";")) > do.call("rbind",arquivos) > } > Exemplo de uso > importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv")) > Nome Idade Salario > 1 Diogo 42 5000 > 2 Patrícia 40 7000 > 3 João 41 8000 > 4 Alexandre 40 9000 > > > importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco3.csv","banco2.csv")) > Nome Idade Salario > 1 Angélica 40 9500 > 2 Nádia 38 7500 > 3 João 41 8000 > 4 Alexandre 40 9000 > On May 18 2020, at 11:24 pm, Fernando Souza > wrote: > > Diogo, > Segue minha solução a seu problema. Faça as adaptações > necessárias. > Fiz algumas alterações em seu código para tornar a saídas mais > legíveis. > dir.create('~/Downloads/bancosex/') > banco1=data.frame(Nome=c("Diogo","Patrícia"),Idade=c(42,40),Salario=c(5000,7000)) > write.csv2(banco1,file='~/Downloads/bancosex/banco1.csv',row.names=FALSE) > banco2=data.frame(Nome=c("João","Alexandre"),Idade=c(41,40),Salario=c(8000,9000)) > write.csv2(banco2,file='~/Downloads/bancosex/banco2.csv',row.names=FALSE) > banco3=data.frame(Nome=c("Angélica","Nádia"),Idade=c(40,38),Salario=c(9500,7500)) > write.csv2(banco3,file='~/Downloads/bancosex/banco3.csv',row.names=FALSE) > ## dir= uma string com o path para o diretório > ## nameBD= um vetor string com os nomes completos dos arquivos > (p.ex "meuarquivo.csv") > > importaBD <-function(dir, nameBD){ > > lista<- vector(mode = "list", length =length(nameBD)) > setwd(dir) > for(i in 1:length(nameBD)){ > > lista[[i]]<-list.files(path=dir,pattern=nameBD) > } > > arquivos<-lapply(lista, function(x) read.csv2(x, > header=TRUE, sep=";")) > > dados<-do.call("rbind",arquivos) > > print(dados) > } > > importaBD(dir="~/Downloads/bancosex/",nameBD=c("banco1.csv","banco2.csv")) > Nome Idade Salario > 1 Diogo 42 5000 > 2 Patrícia 40 7000 > 3 Diogo 42 5000 > 4 Patrícia 40 7000 > att > > Em seg., 18 de mai. de 2020 às 19:39, Diogo Jerônimo por > (R-br) <../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br>> > escreveu: > > Oi Daniel, boa noite. > Esse exemplo eu dei para ilustrar, mas o meu caso é de > bases de dados trimestrais em *.csv, onde cada base > trimestral tem por volta de 100 Megas, bases que vem desde > 2006 até 2020!!! > Fora o tamanho, essas bases podem ter variáveis adicionais > solicitadas pelo gestor ao longo dos anos (códigos > adicionais, dado de alteração de um serviço...), e isso > cria conflito se eu juntar as bases com número de colunas > diferentes pelo "rbind". > No meu caso, um período em que tenho dados uniformes (sem > alteração do número de colunas) é entre 2017 e 2018, e > nesse caso, não posso apagar e nem copiar as outras bases > (por motivos de segurança). Assim, eu teria de escolher > somente as bases dos trimestres dos anos que me interessam > (2017 trim1,...,2018 trim4) para processar a análise > estatística de interesse. > Não sei se consegui ser claro, mas é isso. > Obrigado!!! > /Diogo Jerônimo/ > /Bacharel em Ciências Estatísticas - ENCE/IBGE/ > /Mestre em Metrologia - PUC-Rio/PósMQI/ > /CONRE: 8514 - SÉRIE A/ > Em segunda-feira, 18 de maio de 2020 18:14:38 BRT, Daniel > Guimarães Tiezzi por (R-br) <../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br>> > escreveu: > Se VC sabe qual os arquivos VC precisa let, certo? Deixe > somente eles no seu objeto listas. > Daniel > > On Mon, 18 May 2020, 18:11 Mauro Sznelwar por (R-br), > <../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br>> > wrote: > > Tem o data set para rodar? > > > Lista, bom dia e boa semana!!! Criei o "reproduzível" > para explicar a dúvida. Nesse exemplo, de uma pasta, > identifiquei arquivos "*.csv", e depois apliquei o > *lapply* e o *do.call* para importar e juntar esses > bancos: > dir.create('c:/users/diogo/desktop/bancosex/') > banco1=data.frame(cbind(c("Diogo","Patrícia"),c(42,40),c(5000,7000))) > write.csv2(banco1,file='c:/users/diogo/desktop/bancosex/banco1.csv',row.names=FALSE) > banco2=data.frame(cbind(c("João","Alexandre"),c(41,40),c(8000,9000))) > write.csv2(banco2,file='c:/users/diogo/desktop/bancosex/banco2.csv',row.names=FALSE) > banco3=data.frame(cbind(c("Angélica","Nádia"),c(40,38),c(9500,7500))) > write.csv2(banco3,file='c:/users/diogo/desktop/bancosex/banco3.csv',row.names=FALSE) > setwd('c:/users/diogo/desktop/bancosex/') > lista<-list.files() > arquivos<-lapply(lista, function(x) read.csv2(x, > header=TRUE, sep=";")) > dados<-do.call("rbind", arquivos) > Meu problema: esse código vai "pegar" TODOS os bancos > da pasta antes de importar e juntar. Eu gostaria de > pegar somente PARTE desses bancos (ex: apenas banco1 e > banco2, apenas banco2 e banco3...). > Alguém saberia como fazer isso? > Obrigado!!! > /Diogo Jerônimo/ > /Bacharel em Ciências Estatísticas - ENCE/IBGE/ > /Mestre em Metrologia - PUC-Rio/PósMQI/ > /CONRE: 8514 - SÉRIE A/ > _______________________________________________ > _______________________________________________ > R-br mailing list > R-br em listas.c3sl.ufpr.br > <../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br> > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br > Leia o guia de postagem > (http://www.leg.ufpr.br/r-br-guia) e forneça código > mínimo reproduzível. > > _______________________________________________ > R-br mailing list > R-br em listas.c3sl.ufpr.br > <../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br> > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) > e forneça código mínimo reproduzível. > _______________________________________________ > R-br mailing list > R-br em listas.c3sl.ufpr.br > <../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) > e forneça código mínimo reproduzível. > > > > -- > > Lattes: http://lattes.cnpq.br/6519538815038307 > > Blog: https://producaoanimalcomr.wordpress.com/ > > ========================================== > > _______________________________________________ > R-br mailing list > R-br em listas.c3sl.ufpr.br > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br > > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia > ) > e forneça código mínimo reproduzível. > > _______________________________________________ > R-br mailing list > R-br em listas.c3sl.ufpr.br > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e > forneça código mínimo reproduzível. > > > _______________________________________________ > R-br mailing list > R-br em listas.c3sl.ufpr.br > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível. _______________________________________________ R-br mailing list R-br em listas.c3sl.ufpr.br https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200519/200a98d2/attachment.html>
+
+From gilenio em ufba.br  Thu May 21 17:23:19 2020
+From: gilenio em ufba.br (Gilenio Borges Fernandes)
+Date: Thu, 21 May 2020 17:23:19 -0300
+Subject: [R-br] =?utf-8?q?Ajuda_na_fun=C3=A7=C3=A3o_matplot?=
+Message-ID: <CA+7i11ZGDvCVEhgiyQCgJqC_VH8XqkbO_EBA0rD8U-GW_xfWsw@mail.gmail.com>
+
+Prezados(as)
+
+No CMR seguinte, esperava 255 linhas no matplot. Está plotando apenas uma
+linha e a seguinte mensagem:
+
+Error in plot.xy(xy.coords(x, y), type = type, ...) :
+
+  tipo de gráfico inválido ','
+
+
+
+Alguma ideia/sugestão?
+
+
+
+set.seed(1000)
+
+u = 0.25
+
+dp = 0.15
+
+periodo = 1:256
+
+n_sim = 50
+
+total_sim = matrix(0, nrow = 256, ncol = n_sim)
+
+p_inicial = 10
+
+for(j in 1:n_sim) {
+
+  aux = 2
+
+  p = p_inicial
+
+  preco = c(p)
+
+  dist = rnorm(255, 0, 1)
+
+  for (i in dist)
+
+  {
+
+    P = p+p*(u/255 + dp/sqrt(255)*i)
+
+    preco[aux] = P
+
+    p = P
+
+    aux = aux +1
+
+  }
+
+  total_sim[,j] = preco
+
+}
+
+matplot(periodo,total_sim, main = "Simulacao Monte Carlo", xlab= "Tempo",
+ylab = "Valor", type = "l,",
+
+        col = 1:n_sim)
+
+
+Gilênio Borges Fernandes
+Professor substituto da UFBA (03/2019 a ...)
+Professor substituto da UEFS/DEXA (01/2018 a 03/2019)
+Professor substituto Adjunto A (UFBA - 03/2015 a 03/2017)
+Professor Associado IV (Aposentado)
+Universidade Federal da Bahia
+Instituto de Matemática e Estatística
+Departamento de Estatística
+Av. Adhemar de Barros, s/n ? Ondina.
+40.170-110 - Salvador - BA, Brasil
+Tel.: (071)3283-6340/6341/6337  Fax:  (071)3283-6336
+ORCID: http://orcid.org/0000-0002-2364-0954
+Lattes: http://lattes.cnpq.br/6764860618464860
+https://gilenio.github.io/
+Skype: gilenio.fernandes
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200521/96c2a899/attachment.html>
+
+From woprates em gmail.com  Thu May 21 17:36:53 2020
+From: woprates em gmail.com (Wecsley Prates)
+Date: Thu, 21 May 2020 17:36:53 -0300
+Subject: [R-br] =?utf-8?q?Ajuda_na_fun=C3=A7=C3=A3o_matplot?=
+In-Reply-To: <CA+7i11ZGDvCVEhgiyQCgJqC_VH8XqkbO_EBA0rD8U-GW_xfWsw@mail.gmail.com>
+References: <CA+7i11ZGDvCVEhgiyQCgJqC_VH8XqkbO_EBA0rD8U-GW_xfWsw@mail.gmail.com>
+Message-ID: <CAPCa3opM-j3jQ3Z+VQo0kAvdHJCPOiL7xQQ5ov97UToMeh166Q@mail.gmail.com>
+
+type = "l,"
+Tem uma vírgula a mais.
+
+
+
+Em qui., 21 de mai. de 2020 às 17:23, Gilenio Borges Fernandes por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados(as)
+>
+> No CMR seguinte, esperava 255 linhas no matplot. Está plotando apenas uma
+> linha e a seguinte mensagem:
+>
+> Error in plot.xy(xy.coords(x, y), type = type, ...) :
+>
+>   tipo de gráfico inválido ','
+>
+>
+>
+> Alguma ideia/sugestão?
+>
+>
+>
+> set.seed(1000)
+>
+> u = 0.25
+>
+> dp = 0.15
+>
+> periodo = 1:256
+>
+> n_sim = 50
+>
+> total_sim = matrix(0, nrow = 256, ncol = n_sim)
+>
+> p_inicial = 10
+>
+> for(j in 1:n_sim) {
+>
+>   aux = 2
+>
+>   p = p_inicial
+>
+>   preco = c(p)
+>
+>   dist = rnorm(255, 0, 1)
+>
+>   for (i in dist)
+>
+>   {
+>
+>     P = p+p*(u/255 + dp/sqrt(255)*i)
+>
+>     preco[aux] = P
+>
+>     p = P
+>
+>     aux = aux +1
+>
+>   }
+>
+>   total_sim[,j] = preco
+>
+> }
+>
+> matplot(periodo,total_sim, main = "Simulacao Monte Carlo", xlab= "Tempo",
+> ylab = "Valor", type = "l,",
+>
+>         col = 1:n_sim)
+>
+>
+> Gilênio Borges Fernandes
+> Professor substituto da UFBA (03/2019 a ...)
+> Professor substituto da UEFS/DEXA (01/2018 a 03/2019)
+> Professor substituto Adjunto A (UFBA - 03/2015 a 03/2017)
+> Professor Associado IV (Aposentado)
+> Universidade Federal da Bahia
+> Instituto de Matemática e Estatística
+> Departamento de Estatística
+> Av. Adhemar de Barros, s/n ? Ondina.
+> 40.170-110 - Salvador - BA, Brasil
+> Tel.: (071)3283-6340/6341/6337  Fax:  (071)3283-6336
+> ORCID: http://orcid.org/0000-0002-2364-0954
+> Lattes: http://lattes.cnpq.br/6764860618464860
+> https://gilenio.github.io/
+> Skype: gilenio.fernandes
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+*                       Wecsley O. Prates*
+
+
+*Professor Adjunto do Departamento de Estatística da UFBA*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200521/97e860c6/attachment.html>
+
+From sznelwar em uol.com.br  Fri May 22 18:30:34 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Fri, 22 May 2020 18:30:34 -0300
+Subject: [R-br] 
+ =?utf-8?q?Selecionar_bancos_espec=C3=ADficos_de_uma_pasta?=
+In-Reply-To: ["8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1@getmailspring.com"]
+References: ["5ec4794e1dc9f_1bb12ae6f37c30f8884c5@ip-10-81-19-102.ec2.internal.mail", 
+ "8D1775C6-DE0A-4444-B3A2-CAC5A979A7D1@getmailspring.com"]
+Message-ID: <5ec8447a2fa94_662c2aff1f1391081563f@ip-10-81-19-55.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200522/7eba1827/attachment.html>
+
+From nguiotoku2017 em gmail.com  Wed May 27 11:22:23 2020
+From: nguiotoku2017 em gmail.com (Nilson Guiotoku)
+Date: Wed, 27 May 2020 11:22:23 -0300
+Subject: [R-br] =?utf-8?q?Expoente_de_Lyapunov=3A_horizonte_de_predi?=
+ =?utf-8?b?w6fDo28=?=
+Message-ID: <CAKZWzEEaEV45yCb22ULkK7hiB8Z8GGbJ+toC4DnZ3FqHvc4ghg@mail.gmail.com>
+
+Pessoal,
+
+quero encontrar o horizonte de previsões, usando o expoente de Lyapunov.
+
+O exemplo proposto no R, a serie de lorenz.ts funciona. Porém, quando troco
+pela minha variável que estou predizendo, da erro. Gostaria de entender
+qual parâmetro estou colocando errado. Segue o código mínimo reproduzível.
+
+
+#=====================================
+
+set.seed(22)
+y_obs <- 1:100 + rnorm(100,mean=0, sd=5) # supondo essa ser a variavel
+observada (100 observações temporais)
+y_estimado  <- 1:80   # supondo essa ser a variavel estimada, até  o tempo
+80
+y_pred  <- 81:100 + rnorm(20,mean=0, sd=3) # suponha que usando uma rede
+recorrente chegue nesse resultado, como codigo minimo reproduzido,
+#simplifiquemos com uma rnorm com tendencia linear, para predição usando 80
+tempos de predição
+plot(y_obs)
+points(1:80,1:80, type = "l")
+points(81:100,y_pred, type = "l", col="blue")
+legend("topleft", c("Observado","Estimado", "Predito"),
+          col=c("black","black", "blue"), pch = c(1,NA, NA), lty = c(NA,1,
+1))
+
+# Horizonte de predicao usando o expoente de Lyapunov
+require("tseriesChaos")
+y_pred = as.ts(y_pred)
+output <-lyap_k(y_pred, m=3, d=2, s=200, t=2, ref=2, k=2, eps=4)
+par = lyap(output, 0.73, 2.47)
+lambda = par[2]
+plot(output)
+
+#===================================
+
+O erro é esse:
+
+> output <-lyap_k(y_pred, m=3, d=2, s=200, t=2, ref=2, k=2, eps=4)
+Finding nearests
+Error in find_knearests(series, m = m, d = d, t = t, ref = length(ref),  :
+  cannot allocate memory block of size 134217728 Tb
+
+
+OBS: No meu caso, já havia testado e a dimensão m e d, são exatamente 3 e
+2. Porém, não sei como controlar os demais parâmetros.
+
+
+Fico no aguardo, se alguém conseguir me explicar o problema.
+
+Agradeço e obrigado.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200527/9ef250af/attachment.html>
+
+From rzucarattobio em gmail.com  Wed May 27 15:08:01 2020
+From: rzucarattobio em gmail.com (Rodrigo Zucaratto)
+Date: Wed, 27 May 2020 15:08:01 -0300
+Subject: [R-br] =?utf-8?q?Duvida_teste_de_correla=C3=A7=C3=A3o?=
+Message-ID: <CA+BUDGpF4sONKxwebv+fCfgemAuWwiT_SzB85KjtQtWD4HVahA@mail.gmail.com>
+
+Prezados,
+
+Estou com uma duvida em relação ao teste de correlação. Quando faço uma
+correlação, não ha uma relação de causa e efeito (até aqui entendo). No
+entanto, estou querendo avaliar a inluência de variáveis
+ambientais (temperatura e pluviosidade) na fenologia de uma palmeira. To
+fazendo a correlação usando a função "cor.test". Um dos argumentos na
+função é method=pearson (normalidade) ou method=sperman (dados sem
+normalidade). Gostaria de saber como testo a normalidade em uma correlação,
+alguem pode ajudar?
+
+Abraços
+
+*Rodrigo Zucaratto*
+
+Bacharel em Ciências Biológicas
+Mestre em Ciências - Conservação da Natureza
+Doutor em Ecologia e Evolução
+Laboratório de Ecologia de Mamíferos - Universidade do Estado do Rio de
+Janeiro - UERJ
+Laboratório de Ecologia e Conservação de Florestas - LECF - UFRuralRJ
+Currículo: http://lattes.cnpq.br/2138780069263641
+
+BSc - Biology
+MSc - Nature Conservation
+PhD - Ecology and Evolution
+Mammalian Ecology Lab - Rio de Janeiro State University - UERJ
+Ecology and Conservation Forests Lab - LECF - Federal Rural University of
+Rio da Janeiro
+Curriculum: http://lattes.cnpq.br/2138780069263641
+
+https://scholar.google.com/citations?view_op=list_works&hl=en&user=on_Y4WYAAAAJ
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200527/62f67e79/attachment.html>
+
+From diogojose21 em yahoo.com.br  Wed May 27 15:14:40 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Wed, 27 May 2020 18:14:40 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Duvida_teste_de_correla=C3=A7=C3=A3o?=
+In-Reply-To: <CA+BUDGpF4sONKxwebv+fCfgemAuWwiT_SzB85KjtQtWD4HVahA@mail.gmail.com>
+References: <CA+BUDGpF4sONKxwebv+fCfgemAuWwiT_SzB85KjtQtWD4HVahA@mail.gmail.com>
+Message-ID: <1852224513.557728.1590603280639@mail.yahoo.com>
+
+Boa tarde a todos!!!
+Rodrigo, você testa normalidade nos dados que vão gerar a correlação, não na correlação em si.
+Você deve testar se suas variáveis possuem distribuição normal (aí tem vários, Kolmogorov-Smirnov com a correção de Lilliefors, Anderson-Darling, Shapiro-Wilks...). Se uma dessas variáveis não tiver distribuição normal, é melhor obter a correlação de Spearman, se ambas forem normais, é mais recomendado aplicar Pearson.
+Esperando ter ajudado, 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE AEmail: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520 
+
+    Em quarta-feira, 27 de maio de 2020 15:09:14 BRT, Rodrigo Zucaratto por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Prezados,
+Estou com uma duvida em relação ao teste de correlação. Quando faço uma correlação, não ha uma relação de causa e efeito (até aqui entendo). No entanto, estou querendo avaliar a inluência de variáveis ambientais (temperatura e pluviosidade) na fenologia de uma palmeira. To fazendo a correlação usando a função "cor.test". Um dos argumentos na função é method=pearson (normalidade) ou method=sperman (dados sem normalidade). Gostaria de saber como testo a normalidade em uma correlação, alguem pode ajudar?
+Abraços 
+Rodrigo Zucaratto
+Bacharel em Ciências BiológicasMestre em Ciências - Conservação da NaturezaDoutor em Ecologia e EvoluçãoLaboratório de Ecologia de Mamíferos - Universidade do Estado do Rio de Janeiro - UERJ
+Laboratório de Ecologia e Conservação de Florestas - LECF - UFRuralRJCurrículo: http://lattes.cnpq.br/2138780069263641
+
+BSc - BiologyMSc - Nature ConservationPhD - Ecology and EvolutionMammalian Ecology Lab - Rio de Janeiro State University - UERJEcology and Conservation Forests Lab - LECF - Federal Rural University of Rio da JaneiroCurriculum: http://lattes.cnpq.br/2138780069263641 
+
+https://scholar.google.com/citations?view_op=list_works&hl=en&user=on_Y4WYAAAAJ
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200527/66daa435/attachment.html>
+
+From rzucarattobio em gmail.com  Wed May 27 15:47:55 2020
+From: rzucarattobio em gmail.com (Rodrigo Zucaratto)
+Date: Wed, 27 May 2020 15:47:55 -0300
+Subject: [R-br] =?utf-8?q?Duvida_teste_de_correla=C3=A7=C3=A3o?=
+In-Reply-To: <1852224513.557728.1590603280639@mail.yahoo.com>
+References: <CA+BUDGpF4sONKxwebv+fCfgemAuWwiT_SzB85KjtQtWD4HVahA@mail.gmail.com>
+ <1852224513.557728.1590603280639@mail.yahoo.com>
+Message-ID: <CA+BUDGomznMEXW0gaXe5uqAQK3u7uiPPLc2M9mui9AdeGZn0qQ@mail.gmail.com>
+
+Oi Diogo, boa tarde. Entendi sim, mas ai tem que ser uma por uma, ou tem
+alguma maneira de testar com as variaveis juntas?
+
+Abraços,
+
+*Rodrigo Zucaratto*
+
+Bacharel em Ciências Biológicas
+Mestre em Ciências - Conservação da Natureza
+Doutor em Ecologia e Evolução
+Laboratório de Ecologia de Mamíferos - Universidade do Estado do Rio de
+Janeiro - UERJ
+Laboratório de Ecologia e Conservação de Florestas - LECF - UFRuralRJ
+Currículo: http://lattes.cnpq.br/2138780069263641
+
+BSc - Biology
+MSc - Nature Conservation
+PhD - Ecology and Evolution
+Mammalian Ecology Lab - Rio de Janeiro State University - UERJ
+Ecology and Conservation Forests Lab - LECF - Federal Rural University of
+Rio da Janeiro
+Curriculum: http://lattes.cnpq.br/2138780069263641
+
+https://scholar.google.com/citations?view_op=list_works&hl=en&user=on_Y4WYAAAAJ
+
+
+
+Em qua., 27 de mai. de 2020 às 15:14, Diogo Jerônimo <
+diogojose21 em yahoo.com.br> escreveu:
+
+> Boa tarde a todos!!!
+>
+> Rodrigo, você testa normalidade nos dados que vão gerar a correlação, não
+> na correlação em si.
+>
+> Você deve testar se suas variáveis possuem distribuição normal (aí tem
+> vários, Kolmogorov-Smirnov com a correção de Lilliefors, Anderson-Darling,
+> Shapiro-Wilks...). Se uma dessas variáveis não tiver distribuição normal, é
+> melhor obter a correlação de Spearman, se ambas forem normais, é mais
+> recomendado aplicar Pearson.
+>
+> Esperando ter ajudado,
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+> *Email: diogojose21 em yahoo.com.br <diogojose21 em yahoo.com.br>*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+>
+>
+> Em quarta-feira, 27 de maio de 2020 15:09:14 BRT, Rodrigo Zucaratto por
+> (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Prezados,
+>
+> Estou com uma duvida em relação ao teste de correlação. Quando faço uma
+> correlação, não ha uma relação de causa e efeito (até aqui entendo). No
+> entanto, estou querendo avaliar a inluência de variáveis
+> ambientais (temperatura e pluviosidade) na fenologia de uma palmeira. To
+> fazendo a correlação usando a função "cor.test". Um dos argumentos na
+> função é method=pearson (normalidade) ou method=sperman (dados sem
+> normalidade). Gostaria de saber como testo a normalidade em uma correlação,
+> alguem pode ajudar?
+>
+> Abraços
+>
+> *Rodrigo Zucaratto*
+>
+> Bacharel em Ciências Biológicas
+> Mestre em Ciências - Conservação da Natureza
+> Doutor em Ecologia e Evolução
+> Laboratório de Ecologia de Mamíferos - Universidade do Estado do Rio de
+> Janeiro - UERJ
+> Laboratório de Ecologia e Conservação de Florestas - LECF - UFRuralRJ
+> Currículo: http://lattes.cnpq.br/2138780069263641
+>
+> BSc - Biology
+> MSc - Nature Conservation
+> PhD - Ecology and Evolution
+> Mammalian Ecology Lab - Rio de Janeiro State University - UERJ
+> Ecology and Conservation Forests Lab - LECF - Federal Rural University of
+> Rio da Janeiro
+> Curriculum: http://lattes.cnpq.br/2138780069263641
+>
+>
+> https://scholar.google.com/citations?view_op=list_works&hl=en&user=on_Y4WYAAAAJ
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200527/90f8ea26/attachment.html>
+
+From diogojose21 em yahoo.com.br  Wed May 27 16:09:47 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Wed, 27 May 2020 19:09:47 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Duvida_teste_de_correla=C3=A7=C3=A3o?=
+In-Reply-To: <CA+BUDGomznMEXW0gaXe5uqAQK3u7uiPPLc2M9mui9AdeGZn0qQ@mail.gmail.com>
+References: <CA+BUDGpF4sONKxwebv+fCfgemAuWwiT_SzB85KjtQtWD4HVahA@mail.gmail.com>
+ <1852224513.557728.1590603280639@mail.yahoo.com>
+ <CA+BUDGomznMEXW0gaXe5uqAQK3u7uiPPLc2M9mui9AdeGZn0qQ@mail.gmail.com>
+Message-ID: <864831937.606107.1590606587238@mail.yahoo.com>
+
+Irmão, como quer avaliar correlação, acho que o teste de normalidade deve ser por variável...
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE AEmail: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520 
+
+    Em quarta-feira, 27 de maio de 2020 15:48:34 BRT, Rodrigo Zucaratto <rzucarattobio em gmail.com> escreveu:  
+ 
+ Oi Diogo, boa tarde. Entendi sim, mas ai tem que ser uma por uma, ou tem alguma maneira de testar com as variaveis juntas?
+Abraços,
+Rodrigo Zucaratto
+Bacharel em Ciências BiológicasMestre em Ciências - Conservação da NaturezaDoutor em Ecologia e EvoluçãoLaboratório de Ecologia de Mamíferos - Universidade do Estado do Rio de Janeiro - UERJ
+Laboratório de Ecologia e Conservação de Florestas - LECF - UFRuralRJCurrículo: http://lattes.cnpq.br/2138780069263641
+
+BSc - BiologyMSc - Nature ConservationPhD - Ecology and EvolutionMammalian Ecology Lab - Rio de Janeiro State University - UERJEcology and Conservation Forests Lab - LECF - Federal Rural University of Rio da JaneiroCurriculum: http://lattes.cnpq.br/2138780069263641 
+
+https://scholar.google.com/citations?view_op=list_works&hl=en&user=on_Y4WYAAAAJ
+
+
+
+Em qua., 27 de mai. de 2020 às 15:14, Diogo Jerônimo <diogojose21 em yahoo.com.br> escreveu:
+
+Boa tarde a todos!!!
+Rodrigo, você testa normalidade nos dados que vão gerar a correlação, não na correlação em si.
+Você deve testar se suas variáveis possuem distribuição normal (aí tem vários, Kolmogorov-Smirnov com a correção de Lilliefors, Anderson-Darling, Shapiro-Wilks...). Se uma dessas variáveis não tiver distribuição normal, é melhor obter a correlação de Spearman, se ambas forem normais, é mais recomendado aplicar Pearson.
+Esperando ter ajudado, 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE AEmail: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520 
+
+    Em quarta-feira, 27 de maio de 2020 15:09:14 BRT, Rodrigo Zucaratto por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Prezados,
+Estou com uma duvida em relação ao teste de correlação. Quando faço uma correlação, não ha uma relação de causa e efeito (até aqui entendo). No entanto, estou querendo avaliar a inluência de variáveis ambientais (temperatura e pluviosidade) na fenologia de uma palmeira. To fazendo a correlação usando a função "cor.test". Um dos argumentos na função é method=pearson (normalidade) ou method=sperman (dados sem normalidade). Gostaria de saber como testo a normalidade em uma correlação, alguem pode ajudar?
+Abraços 
+Rodrigo Zucaratto
+Bacharel em Ciências BiológicasMestre em Ciências - Conservação da NaturezaDoutor em Ecologia e EvoluçãoLaboratório de Ecologia de Mamíferos - Universidade do Estado do Rio de Janeiro - UERJ
+Laboratório de Ecologia e Conservação de Florestas - LECF - UFRuralRJCurrículo: http://lattes.cnpq.br/2138780069263641
+
+BSc - BiologyMSc - Nature ConservationPhD - Ecology and EvolutionMammalian Ecology Lab - Rio de Janeiro State University - UERJEcology and Conservation Forests Lab - LECF - Federal Rural University of Rio da JaneiroCurriculum: http://lattes.cnpq.br/2138780069263641 
+
+https://scholar.google.com/citations?view_op=list_works&hl=en&user=on_Y4WYAAAAJ
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200527/e1dad8df/attachment.html>
+
+From cesar.rabak em gmail.com  Wed May 27 18:28:31 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 27 May 2020 18:28:31 -0300
+Subject: [R-br] =?utf-8?q?Duvida_teste_de_correla=C3=A7=C3=A3o?=
+In-Reply-To: <CA+BUDGpF4sONKxwebv+fCfgemAuWwiT_SzB85KjtQtWD4HVahA@mail.gmail.com>
+References: <CA+BUDGpF4sONKxwebv+fCfgemAuWwiT_SzB85KjtQtWD4HVahA@mail.gmail.com>
+Message-ID: <CAKrF98njSL=ySjunqYbAjjKuDo36NHAyLcd4VaLS4fUHsGgFUA@mail.gmail.com>
+
+Você nunca conseguirá *testar* a normalidade em uma correlação. . .
+
+E o uso do método de Spearman *não* é para dados não normais (*apenas*) mas
+sim para dados cuja medida não seja intervalar e a única forma de
+interpretar as diferenças seja via postos (*ranks* na língua de
+Shakespeare).
+
+O que seria possível fazer do ponto de vista teórico (como já respondido
+por outros) seria testar a distribuição dos seus dados para normalidade,
+mas isso é uma grande bobagem do ponto de vista epistemológico, como se
+pode demonstrar por um simples exemplo:
+
+Um experimentador¹ submete uma barra de um determinado material suspensa em
+dois apoios, um fixo e um livre, ambos de materiais refratários e de baixa
+condução de calor, para diminuir erros sistemáticos, e por meio de marcas
+na extremidade livre e um aparelho óptico que amplia essa observação
+submete a barra a uma centena de medidas de temperatura fazendo o
+levantamento de cem pares de dados temperatura x dilatação.
+
+SE você plotar, fizer qualquer um dos testes propostos para normalidade,
+etc. Nenhuma das duas "distribuições" de dados seria nada que se assemelhe
+à gaussiana (*Normal*).
+
+*Entretanto* o valor do coeficiente de dilatação térmica determinado,
+usando a teoria dos erros que afirma que os desvios experimentais nas
+medidas se distribuem conforme a curva normal de Gauss, será perfeitamente
+correto!!
+
+No exemplo acima, deliberadamente fugi do problema da questão outra sobre
+correlação indicar ou não causação, porque o procedimento experimental por
+si dirime essa dúvida (ele é "intervencional²" por desenho).
+
+Então como a resposta acima pode te ajudar?
+
+Obviamente apontado para o caminho correto.
+
+A forma de você examinar a sua correlação é examinar a distribuição dos
+*resíduos* da correlação, e IMNSHO melhor que usar as pajelanças de
+"testes" de normalidade que dão uma sensação de segurança igual a amuletos
+para quem tem medo de viajar de navio, é o uso das técnicas gráfica do
+diagnóstico da correlação.
+
+No R para regressão linear, a qual o testes corr.test  é decorrente, o
+simples comando plot no objeto retornado pela sua regressão mostrará quatro
+(por defeito) dos seis testes gráficos da sua regressão e você poderá
+analisar a floresta como um todo para decidir se a análise estatística lhe
+ajuda a construir sua tese ou a rejeitar a hipótese.
+
+HTH
+--
+Cesar Rabak
+
+[1] Para quem conhece, descrevo em resumo a denominada experiência de
+Laplace. Aliás, Laplace junto com Gauss são reconhecidos como os
+desenvolvedores da teoria (da distribuição) dos erros cuja curva leva, em
+geral o nome do segundo, mas em muitas obras na Europa inclui ambos os
+pensadores.
+
+[2] Intervencional. O pesquisador não se limita à simples observação, mas
+interfere pela exclusão, inclusão ou modificação de um determinado
+fator. Desenhos
+de pesquisa
+<https://www.scielo.br/scielo.php?script=sci_arttext&pid=S0102-86502005000800002>,
+consultado 27 de maio de 2020.
+
+On Wed, May 27, 2020 at 3:09 PM Rodrigo Zucaratto por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados,
+>
+> Estou com uma duvida em relação ao teste de correlação. Quando faço uma
+> correlação, não ha uma relação de causa e efeito (até aqui entendo). No
+> entanto, estou querendo avaliar a inluência de variáveis
+> ambientais (temperatura e pluviosidade) na fenologia de uma palmeira. To
+> fazendo a correlação usando a função "cor.test". Um dos argumentos na
+> função é method=pearson (normalidade) ou method=sperman (dados sem
+> normalidade). Gostaria de saber como testo a normalidade em uma correlação,
+> alguem pode ajudar?
+>
+> Abraços
+>
+> *Rodrigo Zucaratto*
+>
+> Bacharel em Ciências Biológicas
+> Mestre em Ciências - Conservação da Natureza
+> Doutor em Ecologia e Evolução
+> Laboratório de Ecologia de Mamíferos - Universidade do Estado do Rio de
+> Janeiro - UERJ
+> Laboratório de Ecologia e Conservação de Florestas - LECF - UFRuralRJ
+> Currículo: http://lattes.cnpq.br/2138780069263641
+>
+> BSc - Biology
+> MSc - Nature Conservation
+> PhD - Ecology and Evolution
+> Mammalian Ecology Lab - Rio de Janeiro State University - UERJ
+> Ecology and Conservation Forests Lab - LECF - Federal Rural University of
+> Rio da Janeiro
+> Curriculum: http://lattes.cnpq.br/2138780069263641
+>
+>
+> https://scholar.google.com/citations?view_op=list_works&hl=en&user=on_Y4WYAAAAJ
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200527/1ea9ecd8/attachment.html>
+
+From jacksonmrodrigues em gmail.com  Thu May 28 09:40:27 2020
+From: jacksonmrodrigues em gmail.com (Jackson Rodrigues)
+Date: Thu, 28 May 2020 09:40:27 -0300
+Subject: [R-br] Comparar 2 rasterbricks usando pacote TSdist
+Message-ID: <CAPL76w9ks0jWMmsxVmiUozg_+fqj0GS8QY5o2Ou07nY8nhhevA@mail.gmail.com>
+
+Pessoal
+Bom Dia!
+
+Estou com uma demanda aqui e não estou consigo enxergar onde estou errando.
+Preciso comparar 2 rasterbricks usando a função de dissimilaridade
+CorDistance  do pacote TSdist.
+No entanto ela não funciona com NA's.
+Eu tentei remover ou ignorar os NA's sem sucesso.
+
+Alguém poderia me dar uma luz sobre como proceder?
+Abaixo está uma cópia do código que estou trabalhando.
+
+Saudações,
+
+Jackson
+
+###################
+library(raster)
+library(TSdist)
+
+set.seed(12)
+r <- raster(nrow=10, ncol=10)
+s <- lapply(1:200, function(i) setValues(r, rnorm(ncell(r),
+                                                  sample.int(5,1), 0.5)))
+s <- stack(s)
+s[s < 0] <- NA
+s2<-s^2
+
+# Visualizando que alguns pixels são NA
+hasna <- stackApply(s, indices = 1, fun = function(x, na.rm){anyNA(x)})
+hasna2 <- stackApply(s2, indices = 1, fun = function(x, na.rm){anyNA(x)})
+
+par(mfrow=c(1,2))
+plot(hasna);plot(hasna2)
+
+# CorDistancenão funciona com NA
+CorDistance(as.vector(s[1]),as.vector(s2[1]))
+[1] 0.2192382
+
+CorDistance(as.vector(s[2]),as.vector(s2[2]))
+<simpleError in .common.ts.sanity.check(x): NA in the series>
+  [1] NA
+
+fun <- function(x,y){
+  out <- ifelse(anyNA(x) | anyNA(y), #Preciso resolver esta questão
+                yes = NA,
+                no = unname(CorDistance(x,y)))
+  return(out)
+}
+
+# Aqui funciona
+fun(as.vector(s[1]),as.vector(s2[1]))
+[1] 0.2192382
+
+# Aqui não funciona
+fun(as.vector(s[2]),as.vector(s2[2]))
+[1] NA
+
+new_s1 <- fun(s,s2)
+<simpleError in if (any(is.na(x))) { stop("NA in the series")}:
+  argument is not interpretable as logical>
+
+# Veja que não funciona com calc
+new_s2 <- calc(s,s2, fun = fun)
+Error in .calcTest(x[1:5], fun, na.rm, forcefun, forceapply) :
+  cannot use this function
+
+plot(s_out)
+#############
+
+-- 
+
+Jackson M. Rodrigues
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200528/519747c0/attachment.html>
+

@@ -1,0 +1,92 @@
+{
+  "list": "r-br",
+  "description": "",
+  "month": "2024-10",
+  "messages": [
+    {
+      "id": "msg-66f94f251457",
+      "message_id": "<CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>",
+      "from_name": "Maurício Lordêlo",
+      "from_email_hash": "9067ef2a28020d88734a847bdba92d56381d5b63f3317af308372e749ef6d68f",
+      "date": "2024-10-15T15:48:59Z",
+      "subject": "[R-br] Uso do ifelse",
+      "subject_clean": "[R-br] Uso do ifelse",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "#Olá,\n#saudações a tod em s!!!\n#Vou precisar várias comparações múltiplas usando o\n#teste de Scott Knott\n#Quero no final, capturar as letras e formar um único vetor\n\n#No exemplo abaixo, só serão formados dois \"grupos\"\n#Porém pode acontecer de formar um, três ou quatro\n#Não acontecerá de cinco ou mais\n\n#Usei o \"ifelse\" para isso, porém o retorno é um\n#vetor de tamanho 1\nlibrary(ScottKnott)\ndata(RCBD)\nsk1 <- with(RCBD,\n            SK(y ~ blk + tra,\n               data=dfm,\n               which='tra'))\nsk1$out$Result   #aqui eu verifico a formação de dois grupos\n\n#O objeto que vai ser gerado no final, deveria ser igual a este\n#aqui\ngrupos = c(sk1$out$Result$G1,\n                  sk1$out$Result$G2)\ngrupos[nzchar(grupos)]\n\n#Porém, isso não acontece quando eu uso o \"ifelse\"\nrm(grupos)\ngrupos = ifelse(dim(sk1$out$Result)[2] == 5, c(sk1$out$Result$G1,\n                                               sk1$out$Result$G2,\n                                               sk1$out$Result$G3,\n                                               sk1$out$Result$G4),\n            ifelse(dim(sk1$out$Result)[2] == 4, c(sk1$out$Result$G1,\n                                                  sk1$out$Result$G2,\n                                                  sk1$out$Result$G3),\n                   ifelse(dim(sk1$out$Result)[2] == 3, c(sk1$out$Result$G1,\n\n sk1$out$Result$G2),\n                          sk1$out$Result$G1)))\ngrupos\n\n#O que há de errado?\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20241015/addf5973/attachment.htm>",
+      "body_snippet": "#Olá,\n#saudações a tod em s!!!\n#Vou precisar várias comparações múltiplas usando o\n#teste de Scott Knott\n#Quero no final, capturar as letras e formar um único vetor\n\n#No exemplo abaixo, só serão forma",
+      "thread_id": "thread-66f94f251457",
+      "thread_depth": 0,
+      "month": "2024-10"
+    },
+    {
+      "id": "msg-685266b7c8d1",
+      "message_id": "<CAGUUkAv0G7AxZZw8_6+Wf=gx2fgwH35nWTJxrPzybqb+TjBiaw@mail.gmail.com>",
+      "from_name": "Maurício Lordêlo",
+      "from_email_hash": "9067ef2a28020d88734a847bdba92d56381d5b63f3317af308372e749ef6d68f",
+      "date": "2024-10-15T16:25:28Z",
+      "subject": "[R-br] Uso do ifelse",
+      "subject_clean": "[R-br] Uso do ifelse",
+      "in_reply_to": "<CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>",
+      "references": [
+        "<CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>"
+      ],
+      "body_plain": "Vi que \"ifelse\" não retorna vetor.\nBuscando alternativas para isso.\n\n\n\n\nEm ter., 15 de out. de 2024 às 12:48, Maurício Lordêlo <mslordelo em gmail.com>\nescreveu:\n\n> #Olá,\n> #saudações a tod em s!!!\n> #Vou precisar várias comparações múltiplas usando o\n> #teste de Scott Knott\n> #Quero no final, capturar as letras e formar um único vetor\n>\n> #No exemplo abaixo, só serão formados dois \"grupos\"\n> #Porém pode acontecer de formar um, três ou quatro\n> #Não acontecerá de cinco ou mais\n>\n> #Usei o \"ifelse\" para isso, porém o retorno é um\n> #vetor de tamanho 1\n> library(ScottKnott)\n> data(RCBD)\n> sk1 <- with(RCBD,\n>             SK(y ~ blk + tra,\n>                data=dfm,\n>                which='tra'))\n> sk1$out$Result   #aqui eu verifico a formação de dois grupos\n>\n> #O objeto que vai ser gerado no final, deveria ser igual a este\n> #aqui\n> grupos = c(sk1$out$Result$G1,\n>                   sk1$out$Result$G2)\n> grupos[nzchar(grupos)]\n>\n> #Porém, isso não acontece quando eu uso o \"ifelse\"\n> rm(grupos)\n> grupos = ifelse(dim(sk1$out$Result)[2] == 5, c(sk1$out$Result$G1,\n>                                                sk1$out$Result$G2,\n>                                                sk1$out$Result$G3,\n>                                                sk1$out$Result$G4),\n>             ifelse(dim(sk1$out$Result)[2] == 4, c(sk1$out$Result$G1,\n>                                                   sk1$out$Result$G2,\n>                                                   sk1$out$Result$G3),\n>                    ifelse(dim(sk1$out$Result)[2] == 3, c(sk1$out$Result$G1,\n>\n>  sk1$out$Result$G2),\n>                           sk1$out$Result$G1)))\n> grupos\n>\n> #O que há de errado?\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20241015/fb5ac7b0/attachment.htm>",
+      "body_snippet": "Vi que \"ifelse\" não retorna vetor.\nBuscando alternativas para isso.\n\n\n\n\nEm ter., 15 de out. de 2024 às 12:48, Maurício Lordêlo <mslordelo em gmail.com>\nescreveu:\n\n> #Olá,\n> #saudações a tod em s!!!\n> ",
+      "thread_id": "thread-66f94f251457",
+      "thread_depth": 1,
+      "month": "2024-10"
+    },
+    {
+      "id": "msg-39b46bec113e",
+      "message_id": "<CAAmR2794AymfU+tGvXuyFLwgQw3m6S=+s+udOQ31SvONK41AxQ@mail.gmail.com>",
+      "from_name": "Cid Póvoas",
+      "from_email_hash": "9aafc1df0593326152bc76e18e0a69995838bb07f62ed7aab31a2ac73fc5bdeb",
+      "date": "2024-10-15T16:30:23Z",
+      "subject": "[R-br] Uso do ifelse",
+      "subject_clean": "[R-br] Uso do ifelse",
+      "in_reply_to": "<CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>",
+      "references": [
+        "<CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>"
+      ],
+      "body_plain": "if (dim(sk1$out$Result)[2] == 5) {\n  grupos <- c(sk1$out$Result$G1,\n              sk1$out$Result$G2,\n              sk1$out$Result$G3,\n              sk1$out$Result$G4)\n} else if (dim(sk1$out$Result)[2] == 4) {\n  grupos <- c(sk1$out$Result$G1,\n              sk1$out$Result$G2,\n              sk1$out$Result$G3)\n} else if (dim(sk1$out$Result)[2] == 3) {\n  grupos <- c(sk1$out$Result$G1,\n              sk1$out$Result$G2)\n} else {\n  grupos <- sk1$out$Result$G1\n}\n\ngrupos\n\nrm(grupos)\n\nlibrary(dplyr)\n\ngrupos <- case_when(\n  dim(sk1$out$Result)[2] == 5 ~ list(c(sk1$out$Result$G1,\n                                       sk1$out$Result$G2,\n                                       sk1$out$Result$G3,\n                                       sk1$out$Result$G4)),\n  dim(sk1$out$Result)[2] == 4 ~ list(c(sk1$out$Result$G1,\n                                       sk1$out$Result$G2,\n                                       sk1$out$Result$G3)),\n  dim(sk1$out$Result)[2] == 3 ~ list(c(sk1$out$Result$G1,\n                                       sk1$out$Result$G2)),\n  TRUE ~ list(sk1$out$Result$G1)\n)\n\ngrupos <- unlist(grupos)\n\nrm(grupos)\n\n\nnum_grupos <- min(dim(sk1$out$Result)[2], 10)\n\n# Criar dinamicamente a lista de grupos\ngrupos <- unlist(lapply(1:num_grupos, function(i)\nsk1$out$Result[[paste0('G', i)]]))\n\ngrupos\n\n*Cid Edson Mendonça Póvoas*\n*Agrônomo - **Data Analyst - Crop Protection & Seeds*\n*Tel: +55 73 99151-9565*\n*Lattes : *http://lattes.cnpq.br/2303498368142537\n*LinkedIn :* http://br.linkedin.com/in/cidedson/\n*Whatsapp :* https://wa.me/5573991519565\n\n\nEm ter., 15 de out. de 2024 às 12:56, Maurício Lordêlo por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> #Olá,\n> #saudações a tod em s!!!\n> #Vou precisar várias comparações múltiplas usando o\n> #teste de Scott Knott\n> #Quero no final, capturar as letras e formar um único vetor\n>\n> #No exemplo abaixo, só serão formados dois \"grupos\"\n> #Porém pode acontecer de formar um, três ou quatro\n> #Não acontecerá de cinco ou mais\n>\n> #Usei o \"ifelse\" para isso, porém o retorno é um\n> #vetor de tamanho 1\n> library(ScottKnott)\n> data(RCBD)\n> sk1 <- with(RCBD,\n>             SK(y ~ blk + tra,\n>                data=dfm,\n>                which='tra'))\n> sk1$out$Result   #aqui eu verifico a formação de dois grupos\n>\n> #O objeto que vai ser gerado no final, deveria ser igual a este\n> #aqui\n> grupos = c(sk1$out$Result$G1,\n>                   sk1$out$Result$G2)\n> grupos[nzchar(grupos)]\n>\n> #Porém, isso não acontece quando eu uso o \"ifelse\"\n> rm(grupos)\n> grupos = ifelse(dim(sk1$out$Result)[2] == 5, c(sk1$out$Result$G1,\n>                                                sk1$out$Result$G2,\n>                                                sk1$out$Result$G3,\n>                                                sk1$out$Result$G4),\n>             ifelse(dim(sk1$out$Result)[2] == 4, c(sk1$out$Result$G1,\n>                                                   sk1$out$Result$G2,\n>                                                   sk1$out$Result$G3),\n>                    ifelse(dim(sk1$out$Result)[2] == 3, c(sk1$out$Result$G1,\n>\n>  sk1$out$Result$G2),\n>                           sk1$out$Result$G1)))\n> grupos\n>\n> #O que há de errado?\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20241015/1fa685cd/attachment.htm>",
+      "body_snippet": "if (dim(sk1$out$Result)[2] == 5) {\n  grupos <- c(sk1$out$Result$G1,\n              sk1$out$Result$G2,\n              sk1$out$Result$G3,\n              sk1$out$Result$G4)\n} else if (dim(sk1$out$Result)[2]",
+      "thread_id": "thread-66f94f251457",
+      "thread_depth": 1,
+      "month": "2024-10"
+    },
+    {
+      "id": "msg-bf71b05cc03d",
+      "message_id": "<CAGUUkAvphAkVAo6obf7x3zYZPKT05abBgZFvKGXJO8tcAah4rg@mail.gmail.com>",
+      "from_name": "Maurício Lordêlo",
+      "from_email_hash": "9067ef2a28020d88734a847bdba92d56381d5b63f3317af308372e749ef6d68f",
+      "date": "2024-10-15T20:49:15Z",
+      "subject": "[R-br] Uso do ifelse",
+      "subject_clean": "[R-br] Uso do ifelse",
+      "in_reply_to": "<CAAmR2794AymfU+tGvXuyFLwgQw3m6S=+s+udOQ31SvONK41AxQ@mail.gmail.com>",
+      "references": [
+        "<CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>",
+        "<CAAmR2794AymfU+tGvXuyFLwgQw3m6S=+s+udOQ31SvONK41AxQ@mail.gmail.com>"
+      ],
+      "body_plain": "Muito obrigado!\n\nEm ter., 15 de out. de 2024 às 13:30, Cid Póvoas por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n>\n> if (dim(sk1$out$Result)[2] == 5) {\n>   grupos <- c(sk1$out$Result$G1,\n>               sk1$out$Result$G2,\n>               sk1$out$Result$G3,\n>               sk1$out$Result$G4)\n> } else if (dim(sk1$out$Result)[2] == 4) {\n>   grupos <- c(sk1$out$Result$G1,\n>               sk1$out$Result$G2,\n>               sk1$out$Result$G3)\n> } else if (dim(sk1$out$Result)[2] == 3) {\n>   grupos <- c(sk1$out$Result$G1,\n>               sk1$out$Result$G2)\n> } else {\n>   grupos <- sk1$out$Result$G1\n> }\n>\n> grupos\n>\n> rm(grupos)\n>\n> library(dplyr)\n>\n> grupos <- case_when(\n>   dim(sk1$out$Result)[2] == 5 ~ list(c(sk1$out$Result$G1,\n>                                        sk1$out$Result$G2,\n>                                        sk1$out$Result$G3,\n>                                        sk1$out$Result$G4)),\n>   dim(sk1$out$Result)[2] == 4 ~ list(c(sk1$out$Result$G1,\n>                                        sk1$out$Result$G2,\n>                                        sk1$out$Result$G3)),\n>   dim(sk1$out$Result)[2] == 3 ~ list(c(sk1$out$Result$G1,\n>                                        sk1$out$Result$G2)),\n>   TRUE ~ list(sk1$out$Result$G1)\n> )\n>\n> grupos <- unlist(grupos)\n>\n> rm(grupos)\n>\n>\n> num_grupos <- min(dim(sk1$out$Result)[2], 10)\n>\n> # Criar dinamicamente a lista de grupos\n> grupos <- unlist(lapply(1:num_grupos, function(i)\n> sk1$out$Result[[paste0('G', i)]]))\n>\n> grupos\n>\n> *Cid Edson Mendonça Póvoas*\n> *Agrônomo - **Data Analyst - Crop Protection & Seeds*\n> *Tel: +55 73 99151-9565*\n> *Lattes : *http://lattes.cnpq.br/2303498368142537\n> *LinkedIn :* http://br.linkedin.com/in/cidedson/\n> *Whatsapp :* https://wa.me/5573991519565\n>\n>\n> Em ter., 15 de out. de 2024 às 12:56, Maurício Lordêlo por (R-br) <\n> r-br em listas.c3sl.ufpr.br> escreveu:\n>\n>> #Olá,\n>> #saudações a tod em s!!!\n>> #Vou precisar várias comparações múltiplas usando o\n>> #teste de Scott Knott\n>> #Quero no final, capturar as letras e formar um único vetor\n>>\n>> #No exemplo abaixo, só serão formados dois \"grupos\"\n>> #Porém pode acontecer de formar um, três ou quatro\n>> #Não acontecerá de cinco ou mais\n>>\n>> #Usei o \"ifelse\" para isso, porém o retorno é um\n>> #vetor de tamanho 1\n>> library(ScottKnott)\n>> data(RCBD)\n>> sk1 <- with(RCBD,\n>>             SK(y ~ blk + tra,\n>>                data=dfm,\n>>                which='tra'))\n>> sk1$out$Result   #aqui eu verifico a formação de dois grupos\n>>\n>> #O objeto que vai ser gerado no final, deveria ser igual a este\n>> #aqui\n>> grupos = c(sk1$out$Result$G1,\n>>                   sk1$out$Result$G2)\n>> grupos[nzchar(grupos)]\n>>\n>> #Porém, isso não acontece quando eu uso o \"ifelse\"\n>> rm(grupos)\n>> grupos = ifelse(dim(sk1$out$Result)[2] == 5, c(sk1$out$Result$G1,\n>>                                                sk1$out$Result$G2,\n>>                                                sk1$out$Result$G3,\n>>                                                sk1$out$Result$G4),\n>>             ifelse(dim(sk1$out$Result)[2] == 4, c(sk1$out$Result$G1,\n>>                                                   sk1$out$Result$G2,\n>>                                                   sk1$out$Result$G3),\n>>                    ifelse(dim(sk1$out$Result)[2] == 3,\n>> c(sk1$out$Result$G1,\n>>\n>>  sk1$out$Result$G2),\n>>                           sk1$out$Result$G1)))\n>> grupos\n>>\n>> #O que há de errado?\n>> _______________________________________________\n>> R-br mailing list\n>> R-br em listas.c3sl.ufpr.br\n>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>> código mínimo reproduzível.\n>>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20241015/f273eb0c/attachment.htm>",
+      "body_snippet": "Muito obrigado!\n\nEm ter., 15 de out. de 2024 às 13:30, Cid Póvoas por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n>\n> if (dim(sk1$out$Result)[2] == 5) {\n>   grupos <- c(sk1$out$Result$G1,\n>      ",
+      "thread_id": "thread-66f94f251457",
+      "thread_depth": 2,
+      "month": "2024-10"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-66f94f251457",
+      "subject": "[R-br] Uso do ifelse",
+      "message_count": 4,
+      "participants": [
+        "Cid Póvoas",
+        "Maurício Lordêlo"
+      ],
+      "started": "2024-10-15T15:48:59Z",
+      "last_reply": "2024-10-15T20:49:15Z",
+      "root_message_id": "msg-66f94f251457"
+    }
+  ]
+}

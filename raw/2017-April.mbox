@@ -1,0 +1,6127 @@
+From camargo.ufpr em gmail.com  Sat Apr  1 12:38:17 2017
+From: camargo.ufpr em gmail.com (=?UTF-8?Q?Maur=C3=ADcio_Camargo?=)
+Date: Sat, 1 Apr 2017 12:38:17 -0300
+Subject: [R-br] =?utf-8?q?=5BR-Br=5D_Algu=C3=A9m_sabe_sobre_o_suporte_a_ve?=
+	=?utf-8?q?tores_longos_=28=3E_2_GB=29=3F?=
+Message-ID: <CANEUzYvZ2sG9xKPjW11bnNTzmm-4=46Bi=-jmaNsoYYY89KTTw@mail.gmail.com>
+
+Olá a todos.
+
+Preciso alocar um vetor com mais de 2 GB.
+
+Alguém sabe como anda o suporte a LongVectors do  R?
+
+Obrigado.
+
+Maurício Camargo
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170401/0bf9161b/attachment.html>
+
+From edinhoestat em yahoo.com.br  Sun Apr  2 16:23:32 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Sun, 2 Apr 2017 19:23:32 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Assunto=3A__=5BR-Br=5D_Algu=C3=A9m_sabe_sobre_o_?=
+ =?utf-8?q?suporte_a_vetores_longos_=28=3E_2_GB=29=3F?=
+In-Reply-To: <CANEUzYvZ2sG9xKPjW11bnNTzmm-4=46Bi=-jmaNsoYYY89KTTw@mail.gmail.com>
+References: <CANEUzYvZ2sG9xKPjW11bnNTzmm-4=46Bi=-jmaNsoYYY89KTTw@mail.gmail.com>
+Message-ID: <767573443.3181401.1491161012205@mail.yahoo.com>
+
+Baixa o pacote FF, vê se ele resolve.
+
+Enviado do Yahoo Mail no Android 
+ 
+  Em sáb, 1 1e abr 1e 2017 às 17:39, Maurício Camargo via R-br&It;r-br em listas.c3sl.ufpr.br> escreveu:   Olá a todos.
+Preciso alocar um vetor com mais de 2 GB.
+Alguém sabe como anda o suporte a LongVectors do  R?
+Obrigado.
+Maurício Camargo_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170402/eec39e02/attachment.html>
+
+From edinhoestat em yahoo.com.br  Sun Apr  2 16:27:16 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Sun, 2 Apr 2017 19:27:16 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Assunto=3A__Assunto=3A__=5BR-Br=5D_Algu=C3=A9m_s?=
+ =?utf-8?q?abe_sobre_o_suporte_a_vetores_longos_=28=3E_2_GB=29=3F?=
+In-Reply-To: <767573443.3181401.1491161012205@mail.yahoo.com>
+References: <CANEUzYvZ2sG9xKPjW11bnNTzmm-4=46Bi=-jmaNsoYYY89KTTw@mail.gmail.com>
+ <767573443.3181401.1491161012205@mail.yahoo.com>
+Message-ID: <926266704.2355020.1491161236632@mail.yahoo.com>
+
+ff
+
+Enviado do Yahoo Mail no Android 
+ 
+  Em dom, 2 2e abr 2e 2017 às 21:26, Edson Lira via R-br&It;r-br em listas.c3sl.ufpr.br> escreveu:   _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170402/cd5990a3/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Mon Apr  3 13:27:53 2017
+From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
+Date: Mon, 3 Apr 2017 13:27:53 -0300
+Subject: [R-br]
+ =?utf-8?q?Algu=C3=A9m_sabe_sobre_o_suporte_a_vetores_longo?=
+ =?utf-8?b?cyAoPiAyIEdCKT8=?=
+In-Reply-To: <CANEUzYvZ2sG9xKPjW11bnNTzmm-4=46Bi=-jmaNsoYYY89KTTw@mail.gmail.com>
+References: <CANEUzYvZ2sG9xKPjW11bnNTzmm-4=46Bi=-jmaNsoYYY89KTTw@mail.gmail.com>
+Message-ID: <e34a57a1-9433-dbb1-4b05-b01735183957@yahoo.com.br>
+
+2GB não é tão grande assim... Talvez você não tem
+
+  - 2GB de RAM no seu hardware
+
+  - 2GB disponível (precisa remover outras coisas da memória)
+
+  - código otimizado para uso de memória
+
+Sobre grandes conjuntos de dados: Dois links (um de 7 anos atrás e outro 
+de 4 anos atrás)
+
+https://www.r-bloggers.com/michael-kane-on-bigmemory/
+
+https://www.r-bloggers.com/five-ways-to-handle-big-data-in-r/
+
+geralmente aparecem links suregindo outros casos a partir desses aí
+
+Elias
+
+On 01/04/2017 12:38, Maurício Camargo via R-br wrote:
+> Olá a todos.
+>
+> Preciso alocar um vetor com mais de 2 GB.
+>
+> Alguém sabe como anda o suporte a LongVectors do  R?
+>
+> Obrigado.
+>
+> Maurício Camargo
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/a8ddbc44/attachment.html>
+
+From nunes.mateusdias em gmail.com  Mon Apr  3 15:15:44 2017
+From: nunes.mateusdias em gmail.com (Mateus Dias Nunes)
+Date: Mon, 3 Apr 2017 15:15:44 -0300
+Subject: [R-br] Problemas com NA's
+Message-ID: <CAHw9po-wWt0s2JbkiLfzF6CZ0qXCCw_wpsfvKGQhhRumsjAEpw@mail.gmail.com>
+
+Olá
+
+Estou com um problema para abrir meus dados. Segui o procediemnto correto
+para a Abertura dos mesmo, porém um erro insiste em aparecer.
+
+library(openair)
+
+mydata<-read.csv("abrir.csv",header=T)
+mydata$date <- as.POSIXct(strptime(mydata$date, format = "%d/%m/%Y %H:%M",
+tz = "GMT"))
+mean(mydata$direta, na.rm = TRUE)
+
+Warning message:
+In mean.default(mydata$direta, na.rm = TRUE) :
+  argumento não é numérico nem lógico: retornando NA
+
+Os dados faltantes estão em branco no meu vetor de dados, isso que causa
+estranhesa.
+
+abaixo o dado a ser trabalhado.
+
+Desde já, agradeço.
+
+dados
+https://www.dropbox.com/s/7p5pw9wk0mz5lmq/abrir.csv?dl=0
+
+_______________________________________________________________________________________
+
+MATEUS DIAS NUNES
+Postgraduate Program in Meteorology - PGMET - CPTEC / INPE
+Center for Weather Forecasting and Climate Studies / National Institute for
+Space Research
+Cachoeira Paulista - SP - Brasil
+FONE: +55 (53) 98112-5154
+SKYPE: omsndomateus em hotmail.com
+____________________________________________
+___________________________________________
+
+
+
+  <https://mailtrack.io/> Sent with Mailtrack
+<https://mailtrack.io/install?source=signature&lang=en&referral=nunes.mateusdias em gmail.com&idSignature=22>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/de4de666/attachment.html>
+
+From rafareds em gmail.com  Mon Apr  3 15:30:02 2017
+From: rafareds em gmail.com (Rafael Garcia Cunha)
+Date: Mon, 3 Apr 2017 15:30:02 -0300
+Subject: [R-br] Problemas com NA's
+In-Reply-To: <CAHw9po-wWt0s2JbkiLfzF6CZ0qXCCw_wpsfvKGQhhRumsjAEpw@mail.gmail.com>
+References: <CAHw9po-wWt0s2JbkiLfzF6CZ0qXCCw_wpsfvKGQhhRumsjAEpw@mail.gmail.com>
+Message-ID: <CAGFfgX+zRiFGc18Pkj4v=Dq-+qiQSDLzQr_8zpOmKaGui-pNdA@mail.gmail.com>
+
+sua variável "direita" não é numérica, por isso o erro "In
+mean.default(mydata$direta, na.rm = TRUE) :
+  argumento não é numérico nem lógico: retornando NA"
+
+Em 3 de abril de 2017 15:15, Mateus Dias Nunes via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá
+>
+> Estou com um problema para abrir meus dados. Segui o procediemnto correto
+> para a Abertura dos mesmo, porém um erro insiste em aparecer.
+>
+> library(openair)
+>
+> mydata<-read.csv("abrir.csv",header=T)
+> mydata$date <- as.POSIXct(strptime(mydata$date, format = "%d/%m/%Y
+> %H:%M", tz = "GMT"))
+> mean(mydata$direta, na.rm = TRUE)
+>
+> Warning message:
+> In mean.default(mydata$direta, na.rm = TRUE) :
+>   argumento não é numérico nem lógico: retornando NA
+>
+> Os dados faltantes estão em branco no meu vetor de dados, isso que causa
+> estranhesa.
+>
+> abaixo o dado a ser trabalhado.
+>
+> Desde já, agradeço.
+>
+> dados
+> https://www.dropbox.com/s/7p5pw9wk0mz5lmq/abrir.csv?dl=0
+>
+> ____________________________________________________________
+> ___________________________
+>
+> MATEUS DIAS NUNES
+> Postgraduate Program in Meteorology - PGMET - CPTEC / INPE
+> Center for Weather Forecasting and Climate Studies / National Institute
+> for Space Research
+> Cachoeira Paulista - SP - Brasil
+> FONE: +55 (53) 98112-5154 <+55%2053%2098112-5154>
+> SKYPE: omsndomateus em hotmail.com
+> ____________________________________________________________
+> ___________________________
+>
+>
+>
+>   <https://mailtrack.io/> Sent with Mailtrack
+> <https://mailtrack.io/install?source=signature&lang=en&referral=nunes.mateusdias em gmail.com&idSignature=22>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+Rafael Garcia Cunha
+
+YNWA
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/f24a1404/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Mon Apr  3 15:30:13 2017
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Mon, 3 Apr 2017 18:30:13 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Ajuda=3A_arrendondando_uma_vari=C3=A1vel?=
+References: <2066706569.3953009.1491244213763.ref@mail.yahoo.com>
+Message-ID: <2066706569.3953009.1491244213763@mail.yahoo.com>
+
+Boa Tarde!
+Tenho uma dúvida, nesse código a variável idade não é pra ter dígitos. como faço pra tirar isso?
+
+# Chamando o arquivocadastro_funcionario
+
+data_atual <- as.Date ("2017-04-03")data_atual
+cadastro_funcionario$data_atual <- c(data_atual)cadastro_funcionario
+idade <-difftime(data_atual,datanasc)/365.25round(idade, digits = 0)
+
+cadastro_funcionario$idade <-c(idade)
+
+resultado
+
+
+ Edmar
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/4f6797cc/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: blob.jpg
+Tipo: image/png
+Tamanho: 3134 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/4f6797cc/attachment.png>
+
+From dtiezzi em usp.br  Mon Apr  3 15:37:16 2017
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Mon, 3 Apr 2017 15:37:16 -0300
+Subject: [R-br] Problemas com NA's
+In-Reply-To: <CAHw9po-wWt0s2JbkiLfzF6CZ0qXCCw_wpsfvKGQhhRumsjAEpw@mail.gmail.com>
+References: <CAHw9po-wWt0s2JbkiLfzF6CZ0qXCCw_wpsfvKGQhhRumsjAEpw@mail.gmail.com>
+Message-ID: <9E10E411-588A-41B4-B51A-FF8C1FA4E140@usp.br>
+
+Boa tarde Mateus
+
+Tente colocar NA nos dados em branco.
+
+daniel
+
+
+> On 3 Apr 2017, at 15:15, Mateus Dias Nunes via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> 
+> Olá
+> 
+> Estou com um problema para abrir meus dados. Segui o procediemnto correto para a Abertura dos mesmo, porém um erro insiste em aparecer.
+> 
+> library(openair)
+> 
+> mydata<-read.csv("abrir.csv",header=T)
+> mydata$date <- as.POSIXct(strptime(mydata$date, format = "%d/%m/%Y %H:%M", tz = "GMT"))
+> mean(mydata$direta, na.rm = TRUE)
+> 
+> Warning message:
+> In mean.default(mydata$direta, na.rm = TRUE) :
+>   argumento não é numérico nem lógico: retornando NA
+> 
+> Os dados faltantes estão em branco no meu vetor de dados, isso que causa estranhesa.
+> 
+> abaixo o dado a ser trabalhado.
+> 
+> Desde já, agradeço.
+> 
+> dados
+> https://www.dropbox.com/s/7p5pw9wk0mz5lmq/abrir.csv?dl=0 <https://www.dropbox.com/s/7p5pw9wk0mz5lmq/abrir.csv?dl=0>
+> 
+> _______________________________________________________________________________________
+> 
+> MATEUS DIAS NUNES
+> Postgraduate Program in Meteorology - PGMET - CPTEC / INPE
+> Center for Weather Forecasting and Climate Studies / National Institute for Space Research
+> Cachoeira Paulista - SP - Brasil
+> FONE: +55 (53) 98112-5154     
+> SKYPE: omsndomateus em hotmail.com <mailto:omsndomateus em hotmail.com>      
+> _______________________________________________________________________________________
+> 
+> 
+> 
+>     <https://mailtrack.io/>Sent with Mailtrack <https://mailtrack.io/install?source=signature&lang=en&referral=nunes.mateusdias em gmail.com&idSignature=22>_______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/a90943fe/attachment.html>
+
+From fabiolasantos em udipesquisa.com  Mon Apr  3 15:39:56 2017
+From: fabiolasantos em udipesquisa.com (Fabiola Santos)
+Date: Mon, 3 Apr 2017 15:39:56 -0300
+Subject: [R-br] ENC: Parcela dividida - coletas de amostras dentro da
+	parcela e no tempo
+Message-ID: <!&!AAAAAAAAAAAYAAAAAAAAABCe/hWSnMNPr7rPxTKYHPnCgAAAEAAAAKTE+vx+9Z1Ovyqomip8MikBAAAAAA==@udipesquisa.com>
+
+ 
+
+
+Assunto: Parcela dividida - coletas de amostras dentro da parcela e no tempo
+
+ 
+
+Boa tarde
+
+ 
+
+ 
+
+Tenho um experimento da seguinte forma:
+
+ 
+
+3 tratamentos (tipo de manejo diferente) com 4 repeticoes em bloco.
+
+Parcela de 1ha
+
+ 
+
+As avaliações foram feitas em subparcelas onde escolhia 5 pontos aleatorios
+e coletava informações dentro dessas parcelas(de 1ha) em 10 plantas
+avaliando o numero de lagartas e especie.
+
+ 
+
+Porem foram feitas semanalmente as avaliações sendo em  varios estagios do
+milho
+
+ 
+
+Gostarida de saber se o modelo a seguir estaria correto:
+
+O que eu nao estou conseguindo e fazer os teste de Tukey ou SK no proprio R.
+
+ 
+
+mod1 <- aov(PeqS~Rep+Trat*Est + Ponto + Error(Rep:Est, Rep:Ponto), data=x)
+
+ 
+
+ 
+
+Error: Rep:Est
+
+          Df    Sum Sq   Mean Sq F value Pr(>F)
+
+Rep        3 8.010e-27 2.669e-27   0.746  0.541
+
+Est        5 1.815e-26 3.630e-27   1.015  0.443
+
+Residuals 15 5.365e-26 3.577e-27               
+
+ 
+
+Error: Within
+
+            Df Sum Sq Mean Sq F value Pr(>F)    
+
+Trat         2      0     0.0       0      1    
+
+Ponto        1    648   648.0   10689 <2e-16 ***
+
+Trat:Est    10      0     0.0       0      1    
+
+Residuals 3563    216     0.1     
+
+ 
+
+ 
+
+Obrigada
+
+ 
+
+Abraços
+
+ 
+
+Ótimo final de semana
+
+ 
+
+ 
+
+ 
+
+Vídeo Institucional
+
+ 
+
+https://www.youtube.com/watch?v=u1Z3_YZ2WpY
+
+ 
+
+https://www.facebook.com/udipesquisaedesenvolvimento/
+
+ 
+
+https://www.linkedin.com/company/10401615?trk=tyah
+<https://www.linkedin.com/company/10401615?trk=tyah&trkInfo=clickedVertical%
+3Acompany%2CclickedEntityId%3A10401615%2Cidx%3A2-1-2%2CtarId%3A1479812006594
+%2Ctas%3AUDI%20PESQUISA%20E%20DESENV>
+&trkInfo=clickedVertical%3Acompany%2CclickedEntityId%3A10401615%2Cidx%3A2-1-
+2%2CtarId%3A1479812006594%2Ctas%3AUDI%20PESQUISA%20E%20DESENV
+
+ 
+
+ 
+
+Atenciosamente / Best Regards / Mit freundlichen Grüßen / Saludos
+
+ 
+
+www.udipesquisa.om <http://www.udipesquisa.om> 
+
+
+
+
+
+Esta mensagem, incluindo anexos, é confidencial, privilegiada e para o único
+benefício da pessoa devida ou endereçada.
+Caso seja recebido erroneamente, favor apagá-la do sistema, não faça cópias,
+não exponha seu conteúdo a uma terceira parte ou utilize-a para seu
+benefício pessoal ou de outra pessoa. Favor avisar
+(fabiolasantos em udipesquisa.com <mailto:fabiolasantos em udipesquisa.com> ) do
+seu recebimento, o mais rápido possível.
+
+ 
+
+Agradecemos a sua colaboração.
+
+
+The information contained in this e-mail and in the attached files are for
+the exclusive use of the addressee herein nominated, and may contain trade
+secrets, privileged and other confidential information, protected by the
+applicable laws. In case you are not the right addressee, you are hereby
+notified that any reviewing, reading, copying and/or distributing of this
+e-mail's content is strictly prohibited and unauthorized. Please, delete the
+e-mail's content and notify the sender (fabiolasantos em udipesquisa.com
+<mailto:fabiolasantos em udipesquisa.com> ) immediately.
+
+
+Thank you for your cooperation.
+
+ 
+
+
+
+---
+Este email foi escaneado pelo Avast antivírus.
+https://www.avast.com/antivirus
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/51b8e421/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image001.png
+Tipo: image/png
+Tamanho: 62050 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/51b8e421/attachment-0002.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image002.png
+Tipo: image/png
+Tamanho: 38146 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/51b8e421/attachment-0003.png>
+
+From rcoster em gmail.com  Mon Apr  3 16:12:37 2017
+From: rcoster em gmail.com (Rodrigo Coster)
+Date: Mon, 3 Apr 2017 16:12:37 -0300
+Subject: [R-br] =?utf-8?q?Ajuda=3A_arrendondando_uma_vari=C3=A1vel?=
+In-Reply-To: <2066706569.3953009.1491244213763@mail.yahoo.com>
+References: <2066706569.3953009.1491244213763.ref@mail.yahoo.com>
+ <2066706569.3953009.1491244213763@mail.yahoo.com>
+Message-ID: <CAKU4wosnWx1=+rBLVqP5RV=mThiJE5mztKxLBhpD2akZZf=+gw@mail.gmail.com>
+
+Tu precisa salvar o resultado:
+
+*idade <- round(idade, digits = 0)*
+
+2017-04-03 15:30 GMT-03:00 Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br>:
+
+> Boa Tarde!
+>
+> Tenho uma dúvida, nesse código a variável idade *não é pra ter dígitos.
+> como faço pra tirar isso?*
+>
+>
+> *# Chamando o arquivo*
+> *cadastro_funcionario*
+>
+>
+> *data_atual <- as.Date ("2017-04-03")*
+> *data_atual*
+>
+> *cadastro_funcionario$data_atual <- c(data_atual)*
+> *cadastro_funcionario*
+>
+> *idade <-difftime(data_atual,datanasc)/365.25*
+> *round(idade, digits = 0)*
+>
+>
+> *cadastro_funcionario$idade <-c(idade)*
+>
+>
+> resultado
+>
+> [image: Alinhar imagem]
+>
+>
+> Edmar
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/5f962efd/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: blob.jpg
+Tipo: image/png
+Tamanho: 3134 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/5f962efd/attachment.png>
+
+From edmar_caldas em yahoo.com.br  Mon Apr  3 17:07:38 2017
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Mon, 3 Apr 2017 20:07:38 +0000 (UTC)
+Subject: [R-br] Ajuda: If else
+References: <564461757.3222259.1491250058873.ref@mail.yahoo.com>
+Message-ID: <564461757.3222259.1491250058873@mail.yahoo.com>
+
+ Pessoal estou com outra dúvida, preciso criar uma coluna de inconsistência que funciona assim. Zero quando a condição está ok e 1 quando tem erro de inconsistência.minha logica é simples. se estcivil == solteiro e felicidade_casamento ==  NRA coloca Zero caso contrario coloque 1.
+
+erro <-1if (estcivil == "solteiro"){  +   else if (Felicidade_casamento != "NRA")else   erro <- 0
+
+
+Edmar
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/56e012ed/attachment.html>
+
+From leoaguirre32 em gmail.com  Mon Apr  3 17:22:06 2017
+From: leoaguirre32 em gmail.com (Leonardo Aguirre)
+Date: Mon, 3 Apr 2017 17:22:06 -0300
+Subject: [R-br] Ajuda: If else
+In-Reply-To: <564461757.3222259.1491250058873@mail.yahoo.com>
+References: <564461757.3222259.1491250058873.ref@mail.yahoo.com>
+ <564461757.3222259.1491250058873@mail.yahoo.com>
+Message-ID: <CAAdDf_MA79z8aHXQ4H1V7_uLr5Mb9kpo8ktFxUmKBKC6NtqnOg@mail.gmail.com>
+
+veja a função ifelse()
+
+Em 3 de abril de 2017 17:07, Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br
+> escreveu:
+
+>  Pessoal estou com outra dúvida, preciso criar uma coluna de
+> inconsistência que funciona assim. Zero quando a condição está ok e 1
+> quando tem erro de inconsistência.
+> minha logica é simples. se estcivil == solteiro e felicidade_casamento ==
+>  NRA coloca Zero caso contrario coloque 1.
+>
+>
+> erro <-1
+> if (estcivil == "solteiro"){
+>   +   else if (Felicidade_casamento != "NRA")
+> else
+>   erro <- 0
+>
+>
+>
+> Edmar
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+*Leonardo Aguirre*
++55 (61) 98133-8373
+leoaguirre32 em gmail.com
+[image: Facebook] <https://facebook.com/leoaguirre32> [image: LinkedIn]
+<https://linkedin.com/in/leonardo-aguirre-1965a660>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170403/91b39b92/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Tue Apr  4 11:51:07 2017
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Tue, 4 Apr 2017 14:51:07 +0000 (UTC)
+Subject: [R-br] Ajuda: Append
+References: <582460432.513714.1491317467344.ref@mail.yahoo.com>
+Message-ID: <582460432.513714.1491317467344@mail.yahoo.com>
+
+Pessoal estou com outra duvida. Estou tentando unir dois banco com a função append. tenho arquivo A que contém a variável id, nome, lazer e arquivo B que contém a variável id, nome, trabalho. quero unir os 02 arquivos e ficar com id, nome, lazer, trabalho mesmo que alguns casos fiquem NULL.
+append <- rbind(LAZER_1,LAZER_2) dá erro de numero de colunas ou argumentos não coincidem. estou tentando fazer isso:
+
+LAZER_1$lazer <-NULLLAZER_1
+LAZER_2$trabalho <-NULLLAZER_2
+depois
+append <- rbind(LAZER_1,LAZER_2)
+
+continua com o mesmo erro?
+Edmar
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170404/7b87b260/attachment.html>
+
+From leoaguirre32 em gmail.com  Tue Apr  4 11:52:34 2017
+From: leoaguirre32 em gmail.com (Leonardo Aguirre)
+Date: Tue, 4 Apr 2017 11:52:34 -0300
+Subject: [R-br] Ajuda: Append
+In-Reply-To: <582460432.513714.1491317467344@mail.yahoo.com>
+References: <582460432.513714.1491317467344.ref@mail.yahoo.com>
+ <582460432.513714.1491317467344@mail.yahoo.com>
+Message-ID: <CAAdDf_P2rsV9pL-x5j12kOPYcTgJETLne_kbYJxjrW2Had9jaQ@mail.gmail.com>
+
+rbind.fill()
+
+Em 4 de abril de 2017 11:51, Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br
+> escreveu:
+
+> Pessoal estou com outra duvida. Estou tentando unir dois banco com a
+> função append. tenho arquivo A que contém a variável id, nome, lazer e
+> arquivo B que contém a variável id, nome, trabalho. quero unir os 02
+> arquivos e ficar com id, nome, lazer, trabalho mesmo que alguns casos
+> fiquem NULL.
+>
+> append <- rbind(LAZER_1,LAZER_2) dá erro de numero de colunas ou
+> argumentos não coincidem. estou tentando fazer isso:
+>
+>
+> LAZER_1$lazer <-NULL
+> LAZER_1
+>
+> LAZER_2$trabalho <-NULL
+> LAZER_2
+>
+> depois
+>
+> append <- rbind(LAZER_1,LAZER_2)
+>
+> continua com o mesmo erro?
+>
+> Edmar
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+*Leonardo Aguirre*
++55 (61) 98133-8373
+leoaguirre32 em gmail.com
+[image: Facebook] <https://facebook.com/leoaguirre32> [image: LinkedIn]
+<https://linkedin.com/in/leonardo-aguirre-1965a660>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170404/45778669/attachment.html>
+
+From fernandohtoledo em gmail.com  Tue Apr  4 12:00:52 2017
+From: fernandohtoledo em gmail.com (FHRB Toledo)
+Date: Tue, 4 Apr 2017 10:00:52 -0500
+Subject: [R-br] Ajuda: Append
+In-Reply-To: <CAAdDf_P2rsV9pL-x5j12kOPYcTgJETLne_kbYJxjrW2Had9jaQ@mail.gmail.com>
+References: <582460432.513714.1491317467344.ref@mail.yahoo.com>
+ <582460432.513714.1491317467344@mail.yahoo.com>
+ <CAAdDf_P2rsV9pL-x5j12kOPYcTgJETLne_kbYJxjrW2Had9jaQ@mail.gmail.com>
+Message-ID: <CAN55XP62-UGqsk8Mf4mZr2tgDA9AV0MjGbDv80bFjWyDKfHr+A@mail.gmail.com>
+
+Talvez o que você pretenda fazer seja um merge(), veja o help.
+
+2017-04-04 9:52 GMT-05:00 Leonardo Aguirre via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> rbind.fill()
+>
+> Em 4 de abril de 2017 11:51, Edmar Caldas via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Pessoal estou com outra duvida. Estou tentando unir dois banco com a
+>> função append. tenho arquivo A que contém a variável id, nome, lazer e
+>> arquivo B que contém a variável id, nome, trabalho. quero unir os 02
+>> arquivos e ficar com id, nome, lazer, trabalho mesmo que alguns casos
+>> fiquem NULL.
+>>
+>> append <- rbind(LAZER_1,LAZER_2) dá erro de numero de colunas ou
+>> argumentos não coincidem. estou tentando fazer isso:
+>>
+>>
+>> LAZER_1$lazer <-NULL
+>> LAZER_1
+>>
+>> LAZER_2$trabalho <-NULL
+>> LAZER_2
+>>
+>> depois
+>>
+>> append <- rbind(LAZER_1,LAZER_2)
+>>
+>> continua com o mesmo erro?
+>>
+>> Edmar
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+>
+> --
+> *Leonardo Aguirre*
+> +55 (61) 98133-8373
+> leoaguirre32 em gmail.com
+> [image: Facebook] <https://facebook.com/leoaguirre32> [image: LinkedIn]
+> <https://linkedin.com/in/leonardo-aguirre-1965a660>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170404/ea40a700/attachment.html>
+
+From edinhoestat em yahoo.com.br  Tue Apr  4 12:58:35 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 4 Apr 2017 15:58:35 +0000 (UTC)
+Subject: [R-br] Assunto: Re:  Ajuda: Append
+In-Reply-To: <CAN55XP62-UGqsk8Mf4mZr2tgDA9AV0MjGbDv80bFjWyDKfHr+A@mail.gmail.com>
+References: <582460432.513714.1491317467344.ref@mail.yahoo.com>
+ <582460432.513714.1491317467344@mail.yahoo.com>
+ <CAAdDf_P2rsV9pL-x5j12kOPYcTgJETLne_kbYJxjrW2Had9jaQ@mail.gmail.com>
+ <CAN55XP62-UGqsk8Mf4mZr2tgDA9AV0MjGbDv80bFjWyDKfHr+A@mail.gmail.com>
+Message-ID: <1546680543.604695.1491321515527@mail.yahoo.com>
+
+Você pode também ler os dois bancos no mesmo vem e criar dois novos  data.frame  (df1,df2) com as variáveis de interesse e fazer um rbind.
+df1=data.frame(lazer=bv1$lazer, trabalho=bv1$trab)
+df2=data.frame(lazer=bv2$lazer, trabalho=bv2$trab)
+dfn=rbind(df1,df2)
+Acho que assim vai resolver, faça o teste.
+Caso contrário, deve usar o merge, que é mais apropriado.
+Enviado do Yahoo Mail no Android 
+ 
+  Em ter, 4 4e abr 4e 2017 às 17:01, FHRB Toledo via R-br&It;r-br em listas.c3sl.ufpr.br> escreveu:   _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170404/d9c58fb1/attachment.html>
+
+From edinhoestat em yahoo.com.br  Tue Apr  4 13:04:45 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 4 Apr 2017 16:04:45 +0000 (UTC)
+Subject: [R-br] Assunto:  Assunto: Re:  Ajuda: Append
+In-Reply-To: <1546680543.604695.1491321515527@mail.yahoo.com>
+References: <582460432.513714.1491317467344.ref@mail.yahoo.com>
+ <582460432.513714.1491317467344@mail.yahoo.com>
+ <CAAdDf_P2rsV9pL-x5j12kOPYcTgJETLne_kbYJxjrW2Had9jaQ@mail.gmail.com>
+ <CAN55XP62-UGqsk8Mf4mZr2tgDA9AV0MjGbDv80bFjWyDKfHr+A@mail.gmail.com>
+ <1546680543.604695.1491321515527@mail.yahoo.com>
+Message-ID: <823158052.597804.1491321885293@mail.yahoo.com>
+
+Ler no mesmo CRM
+
+Enviado do Yahoo Mail no Android 
+ 
+  Em ter, 4 4e abr 4e 2017 às 18:01, Edson Lira via R-br&It;r-br em listas.c3sl.ufpr.br> escreveu:   _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170404/dd42c555/attachment.html>
+
+From elviradebastianii em gmail.com  Thu Apr  6 09:00:35 2017
+From: elviradebastianii em gmail.com (Elvira De Bastiani)
+Date: Thu, 6 Apr 2017 09:00:35 -0300
+Subject: [R-br] - Pacote bipartite
+In-Reply-To: <CACMkfRxFSTi2igjRkjhn5Kp4yHiG2H-dk98YFRaoNS6iDKhEeg@mail.gmail.com>
+References: <CAExVY4E1LYGrphaUGe9p4dj=kwPj-+sq9f624L+cX3JGFRzqCQ@mail.gmail.com>
+ <CACMkfRxFSTi2igjRkjhn5Kp4yHiG2H-dk98YFRaoNS6iDKhEeg@mail.gmail.com>
+Message-ID: <CAExVY4GTSi0uq6i9GonpH+2BbvGYTruHKKQ383fGCA_kfMRCBQ@mail.gmail.com>
+
+Bom dia pessoal!
+
+Estou utilizando o windows.
+
+Segue o script:
+
+
+library(bipartite)
+namostras=1000
+
+exemplo=matrix(1/100,10,10)
+exemplo<-mgen(exemplo, n = 10, rep.cell=F)
+
+for (n in 1:namostras){
+  NODF=nested(exemplo,method="NODF2",rescale=F)
+  NODFarr=round(NODF,digits=3)
+  Modular=computeModules(exemplo)
+  Modularidade=slot(Modular,"likelihood")
+  }
+
+
+
+ERRO:
+
+Error in file(file, ifelse(append, "a", "w")) :    cannot open the
+connection In addition: Warning
+
+message: In file(file, ifelse(append, "a", "w")) :   cannot open file
+'web-1-1.pairs': Permission denied
+
+
+
+Muito obrigada!
+
+Elvira D'Bastiani
+Mestranda em Ecologia e Conservação
+Laboratório de Ecologia e Evolução de Interações (Leei)
+Universidade Federal do Paraná - UFPR
+Curitiba, Paraná, Brasil
+
+
+Em 28 de março de 2017 15:40, Augusto Ribas <ribas.aca em gmail.com> escreveu:
+
+> Você está usando windows ou linux?
+> Se for o windows, eu acho que os arquivos estão sendo gerados dentro da
+> pasta do R, que fica na pasta onde ficam os programas, e la é protegido, as
+> vezes erros parecidos acontecem quando a gente tenta usar algo que modifica
+> arquivos, como o Rprofile automaticamente.
+>
+> Mas você precisa dar mais informações, como qual função ta usando, um
+> script mínimo reproduzível para outras pessoas verem o mesmo erro etc, não
+> da para ajudar muito somente com a informação que vc ta dando
+>
+> Em 26 de março de 2017 18:58, Elvira De Bastiani via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Boa noite pessoal!
+>>
+>>
+>>
+>> Sou iniciante no programa R e estou utilizando o pacote Bipartite para
+>> minhas análises.
+>>
+>>
+>>
+>> Eu estou tentando rodar um modelo com 1.000 amostras de redes de
+>> interação que são criadas aleatoriamente a partir de um banco de dados.
+>>
+>>
+>>
+>> E agora durante a análise, começou a aparecer o seguinte erro:
+>>
+>> Error in file(file, ifelse(append, "a", "w")) :    cannot open the
+>> connection In addition: Warning
+>>
+>> message: In file(file, ifelse(append, "a", "w")) :   cannot open file
+>> 'web-1-1.pairs': Permission denied
+>>
+>>
+>>
+>> Aparentemente, durante a análise é gerado um arquivo que neste caso é o
+>> 'web-1-1.pairs', e o mesmo tem acesso negado, não finalizando a análise
+>> para as 1.000 redes de interação.
+>>
+>> Pelo que andei pesquisando, este erro pode acontecer quando:
+>>
+>>
+>>
+>> Tem um arquivo aberto em outro programa, como o Excel, enquanto tenta
+>> gravá-lo..ou se o diretório de trabalho não tenha acesso para gravação a
+>> esse diretório.. mas acredito que isso não seja o meu caso.
+>>
+>>
+>>
+>> Alguém conhece ou já teve esse erro, e poderia compartilhar como
+>> solucioná-lo ?
+>>
+>>
+>>
+>>
+>>
+>> Muito obrigada
+>>
+>>
+>> Elvira D'Bastiani
+>> Mestranda em Ecologia e Conservação
+>> Laboratório de Ecologia e Evolução de Interações (Leei)
+>> Universidade Federal do Paraná - UFPR
+>> Curitiba, Paraná, Brasil
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+>
+> --
+> Grato
+> Augusto C. A. Ribas
+>
+> Site Pessoal: http://recologia.com.br/ <http://augustoribas.heliohost.org>
+> Github: https://github.com/Squiercg
+> Lattes: http://lattes.cnpq.br/7355685961127056
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170406/255c4398/attachment.html>
+
+From simonetrc em gmail.com  Fri Apr  7 09:54:34 2017
+From: simonetrc em gmail.com (=?UTF-8?Q?Simone_toni_ruiz_corr=C3=AAa?=)
+Date: Fri, 07 Apr 2017 12:54:34 +0000
+Subject: [R-br] APSIM.R
+Message-ID: <CABp9pcqp1Zc14PQx2ts0pN5PRYrEPT+K=ZrCWYgx1TqHrnL7Gg@mail.gmail.com>
+
+Bom dia a todos,
+
+Gostaria de saber se alguém já trabalhou com o packege APSIM.R
+Trabalho com o modelo APSIM e vi que existe essa ferramenta no R, para
+auxilio de calibração e análise de sensibilidade.
+Gostaria de tirar dúvidas...
+Obrigada,
+Simone
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170407/78e4c9bb/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Apr  7 10:49:55 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 7 Apr 2017 10:49:55 -0300
+Subject: [R-br] Ajuda: If else
+In-Reply-To: <564461757.3222259.1491250058873@mail.yahoo.com>
+References: <564461757.3222259.1491250058873.ref@mail.yahoo.com>
+ <564461757.3222259.1491250058873@mail.yahoo.com>
+Message-ID: <CAKrF98msYUGa566D4Y7cwePSroiSB1p1uLgt_k7n94U=p6EaKw@mail.gmail.com>
+
+Edmar,
+
+No seu R, tecle o comando e leia o help sobre o assunto que você tem dúvida:
+
+>?Logic
+
+HTH
+
+--
+Cesar Rabak
+
+2017-04-03 17:07 GMT-03:00 Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br>:
+
+>  Pessoal estou com outra dúvida, preciso criar uma coluna de
+> inconsistência que funciona assim. Zero quando a condição está ok e 1
+> quando tem erro de inconsistência.
+> minha logica é simples. se estcivil == solteiro e felicidade_casamento ==
+>  NRA coloca Zero caso contrario coloque 1.
+>
+>
+> erro <-1
+> if (estcivil == "solteiro"){
+>   +   else if (Felicidade_casamento != "NRA")
+> else
+>   erro <- 0
+>
+>
+>
+> Edmar
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170407/1c65d8e0/attachment.html>
+
+From nunes.mateusdias em gmail.com  Fri Apr  7 12:14:26 2017
+From: nunes.mateusdias em gmail.com (Mateus Dias Nunes)
+Date: Fri, 7 Apr 2017 12:14:26 -0300
+Subject: [R-br] =?utf-8?b?U3Vhdml6YcOnw6NvIGRvIGdyw6FmaWNv?=
+Message-ID: <CAHw9po98sBtHYViMDVWkv8Af51RkGiM4nmVJ7gXHVU8ck2uT4Q@mail.gmail.com>
+
+Bom dia,
+
+Eu estou com um problema para suavizar meu gráfico. Eu tenho dados horários
+e desejo plotar individualmente cada data (no período das 06h as 18h).
+Entretanto o gráfico tem ficado com muito ruído devido as observações serem
+horárias e existirem falhas (NA) nas observações. E por isso eu gostaria de
+suavizar o gráfico com as médias horárias, porém não estou conseguindo
+implementar isso.
+
+Espero que alguém possa me ajudar a resolver.
+
+dado utilizado:
+https://www.dropbox.com/s/b80zzzeaesnh8qp/dado.txt?dl=0
+
+
+library(openair)
+
+ mydata<-read.table("dado.txt", h = T, sep = ",")
+ mydata$direta <- as.numeric(as.character(mydata$direta))
+ mydata$date <- as.POSIXct(strptime(mydata$date, format = "%d/%m/%Y
+%H:%M:%S",tz = "Etc/GMT-1"))
+
+means <- aggregate(mydata["direta"], format(mydata["date"],"%d-%m-%Y
+%H:%M:%S"), mean, na.rm = TRUE)
+means[ ,"date"] <- seq(min(mydata[ , "date"]), max(mydata[ , "date"]),
+length = nrow(means))
+
+
+Figura1<-plot(mydata$date[2:721], mydata$direta[2:721], type = "l",
+col="red",xlab = "minutes",main = "01 de Janeiro de 2007", ylab = "Direct
+Solar Radiation (W/m²)")
+Figura1
+dev.copy(device=jpeg,filename="Brasilia_01dejaneiro2007.jpg", width = 800,
+height = 500)
+dev.off ()
+
+desde já, agradeço.
+
+_______________________________________________________________________________________
+
+MATEUS DIAS NUNES
+Postgraduate Program in Meteorology - PGMET - CPTEC / INPE
+Center for Weather Forecasting and Climate Studies / National Institute for
+Space Research
+Cachoeira Paulista - SP - Brasil
+FONE: +55 (53) 98112-5154
+SKYPE: omsndomateus em hotmail.com
+____________________________________________
+___________________________________________
+
+
+
+  <https://mailtrack.io/> Sent with Mailtrack
+<https://mailtrack.io/install?source=signature&lang=en&referral=nunes.mateusdias em gmail.com&idSignature=22>
+<#>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170407/3c98f4b4/attachment.html>
+
+From mcardeal2010 em gmail.com  Fri Apr  7 14:59:12 2017
+From: mcardeal2010 em gmail.com (Mauricio Cardeal)
+Date: Fri, 7 Apr 2017 14:59:12 -0300
+Subject: [R-br] =?utf-8?q?c=C3=B3digo_para_construir_tabela_com_dados_pare?=
+	=?utf-8?q?ados?=
+Message-ID: <3dc10824-b646-99ee-005d-b37a9a3f66cd@gmail.com>
+
+Boa tarde!
+
+Por favor, como faço para construir uma tabela como a do modelo do final 
+do script,
+
+onde o conteúdo das 4 caselas são contagens do número de pares que combinam
+
+melhora e não melhora de 2 tratamentos aplicados simultaneamente no mesmo
+
+individuo (perna direita e perna esquerda), por exemplo ?
+
+# CMR:
+
+par <- c(1,1,2,2,3,3,4,4,5,5,6,6,7,7)  # refere-se ao número do individuo
+trata <-  c(1,0,1,0,1,0,1,0,1,0,1,0,1,0) # tratamento 1 (A) ou 0 (B)
+melhora <-  c(1,0,1,0,1,0,0,1,0,1,0,0,1,1) # resultado do tratamento 1 
+(melhora) 0 (não melhora)
+tratac <- factor(trata)
+levels(tratac)<-list("A"=1,"B"=0 )
+melhorac <- factor(melhora)
+levels(melhorac)<-list("+"=1,"-"=0)
+
+data.frame(par,tratac,melhorac)
+
+    par tratac melhorac
+1    1      A        +
+2    1      B        -
+3    2      A        +
+4    2      B        -
+5    3      A        +
+6    3      B        -
+7    4      A        -
+8    4      B        +
+9    5      A        -
+10   5      B        +
+11   6      A        -
+12   6      B        -
+13   7      A        +
+14   7      B        +
+
+# COMO FAÇO PARA GERAR ESSA TABELA A PARTIR DOS DADOS ACIMA?
+
+#                      tratamento B
+#                      melhora melhora
+#                         +       -
+#tratamento A melhora +   1       3
+#             melhora -   2       1
+
+Obrigado,
+
+Maurício Cardeal
+
+UFBA
+
+
+
+From fernandohtoledo em gmail.com  Fri Apr  7 15:17:55 2017
+From: fernandohtoledo em gmail.com (FHRB Toledo)
+Date: Fri, 7 Apr 2017 13:17:55 -0500
+Subject: [R-br]
+	=?utf-8?q?c=C3=B3digo_para_construir_tabela_com_dados_pare?=
+	=?utf-8?q?ados?=
+In-Reply-To: <3dc10824-b646-99ee-005d-b37a9a3f66cd@gmail.com>
+References: <3dc10824-b646-99ee-005d-b37a9a3f66cd@gmail.com>
+Message-ID: <CAN55XP4NmaBdBrB=kYXJ1HPAUZQP5HR_gxBsPk7uBBg52Q4qvA@mail.gmail.com>
+
+help(xtabs)
+
+2017-04-07 12:59 GMT-05:00 Mauricio Cardeal via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Boa tarde!
+>
+> Por favor, como faço para construir uma tabela como a do modelo do final
+> do script,
+>
+> onde o conteúdo das 4 caselas são contagens do número de pares que combinam
+>
+> melhora e não melhora de 2 tratamentos aplicados simultaneamente no mesmo
+>
+> individuo (perna direita e perna esquerda), por exemplo ?
+>
+> # CMR:
+>
+> par <- c(1,1,2,2,3,3,4,4,5,5,6,6,7,7)  # refere-se ao número do individuo
+> trata <-  c(1,0,1,0,1,0,1,0,1,0,1,0,1,0) # tratamento 1 (A) ou 0 (B)
+> melhora <-  c(1,0,1,0,1,0,0,1,0,1,0,0,1,1) # resultado do tratamento 1
+> (melhora) 0 (não melhora)
+> tratac <- factor(trata)
+> levels(tratac)<-list("A"=1,"B"=0 )
+> melhorac <- factor(melhora)
+> levels(melhorac)<-list("+"=1,"-"=0)
+>
+> data.frame(par,tratac,melhorac)
+>
+>    par tratac melhorac
+> 1    1      A        +
+> 2    1      B        -
+> 3    2      A        +
+> 4    2      B        -
+> 5    3      A        +
+> 6    3      B        -
+> 7    4      A        -
+> 8    4      B        +
+> 9    5      A        -
+> 10   5      B        +
+> 11   6      A        -
+> 12   6      B        -
+> 13   7      A        +
+> 14   7      B        +
+>
+> # COMO FAÇO PARA GERAR ESSA TABELA A PARTIR DOS DADOS ACIMA?
+>
+> #                      tratamento B
+> #                      melhora melhora
+> #                         +       -
+> #tratamento A melhora +   1       3
+> #             melhora -   2       1
+>
+> Obrigado,
+>
+> Maurício Cardeal
+>
+> UFBA
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170407/3c9a39a1/attachment.html>
+
+From mcardeal2010 em gmail.com  Fri Apr  7 15:40:50 2017
+From: mcardeal2010 em gmail.com (Mauricio Cardeal)
+Date: Fri, 7 Apr 2017 15:40:50 -0300
+Subject: [R-br]
+ =?utf-8?q?c=C3=B3digo_para_construir_tabela_com_dados_pare?=
+ =?utf-8?q?ados?=
+In-Reply-To: <CAN55XP4NmaBdBrB=kYXJ1HPAUZQP5HR_gxBsPk7uBBg52Q4qvA@mail.gmail.com>
+References: <3dc10824-b646-99ee-005d-b37a9a3f66cd@gmail.com>
+ <CAN55XP4NmaBdBrB=kYXJ1HPAUZQP5HR_gxBsPk7uBBg52Q4qvA@mail.gmail.com>
+Message-ID: <cde024a3-51fa-48be-04b9-398a376ccf9c@gmail.com>
+
+Fernando, agradeço a ajuda, mas infelizmente já tentei com table, xtabs, 
+ftable, e clogit e não consegui o que preciso. Os resultados não são 
+contagens de pares. Tenho certeza de que estou fazendo algo errado.
+
+Devido à minha dificuldade, recorri à lista.
+
+Não postei as tentativas erradas que fiz, para deixar o script mais limpo.
+
+Abraço,
+
+Maurício Cardeal
+
+UFBA
+
+
+Em 07/04/2017 15:17, FHRB Toledo escreveu:
+> help(xtabs)
+>
+> 2017-04-07 12:59 GMT-05:00 Mauricio Cardeal via R-br 
+> <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>>:
+>
+>     Boa tarde!
+>
+>     Por favor, como faço para construir uma tabela como a do modelo do
+>     final do script,
+>
+>     onde o conteúdo das 4 caselas são contagens do número de pares que
+>     combinam
+>
+>     melhora e não melhora de 2 tratamentos aplicados simultaneamente
+>     no mesmo
+>
+>     individuo (perna direita e perna esquerda), por exemplo ?
+>
+>     # CMR:
+>
+>     par <- c(1,1,2,2,3,3,4,4,5,5,6,6,7,7)  # refere-se ao número do
+>     individuo
+>     trata <-  c(1,0,1,0,1,0,1,0,1,0,1,0,1,0) # tratamento 1 (A) ou 0 (B)
+>     melhora <-  c(1,0,1,0,1,0,0,1,0,1,0,0,1,1) # resultado do
+>     tratamento 1 (melhora) 0 (não melhora)
+>     tratac <- factor(trata)
+>     levels(tratac)<-list("A"=1,"B"=0 )
+>     melhorac <- factor(melhora)
+>     levels(melhorac)<-list("+"=1,"-"=0)
+>
+>     data.frame(par,tratac,melhorac)
+>
+>        par tratac melhorac
+>     1    1      A        +
+>     2    1      B        -
+>     3    2      A        +
+>     4    2      B        -
+>     5    3      A        +
+>     6    3      B        -
+>     7    4      A        -
+>     8    4      B        +
+>     9    5      A        -
+>     10   5      B        +
+>     11   6      A        -
+>     12   6      B        -
+>     13   7      A        +
+>     14   7      B        +
+>
+>     # COMO FAÇO PARA GERAR ESSA TABELA A PARTIR DOS DADOS ACIMA?
+>
+>     #                      tratamento B
+>     #                      melhora melhora
+>     #                         +       -
+>     #tratamento A melhora +   1       3
+>     #             melhora -   2       1
+>
+>     Obrigado,
+>
+>     Maurício Cardeal
+>
+>     UFBA
+>
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia
+>     <http://www.leg.ufpr.br/r-br-guia>) e fornea cdigo mnimo reproduzvel.
+>
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170407/a04dc211/attachment.html>
+
+From marcospaulo_agronomo em hotmail.com  Fri Apr  7 16:40:40 2017
+From: marcospaulo_agronomo em hotmail.com (marcos paulo)
+Date: Fri, 7 Apr 2017 19:40:40 +0000
+Subject: [R-br] =?iso-8859-1?q?Retornando_de_NaN_para_raiz_c=FAbica_de_n?=
+ =?iso-8859-1?q?=FAmeros_negativos_alocados_em_vetores?=
+Message-ID: <BY2PR15MB0149C5BB0B9F6D2D2A58D142EE0C0@BY2PR15MB0149.namprd15.prod.outlook.com>
+
+Olá prezados boa tarde.
+
+
+Alguém saberia me explicar porque ao concatenar números negativos e positivos em um vetor não é possível obter a raiz cúbica dos números negativos? Como procederia para contornar esse problema, mantendo os dados no vetor ?
+
+
+Exemplo:
+
+
+> vec<-c(27,-27,27,27,-27)
+> vec^(1/3)
+[1]   3 NaN   3   3 NaN
+> -27^(1/3)
+[1] -3
+
+Situação desejada:
+[1]   3 -3   3   3 -3
+
+
+À disposição
+Marcos Paulo
+
+Técnico Agrícola em Zootecnia
+Bacharel em Agronomia
+
+Mestrando em Produção Vegetal - Universidade Federal de Goiás
+Estagiário de Pós-Graduação da Embrapa Arroz e Feijão/CNPAF-Santo Antônio de Goiás-GO
+
+Contato: (62) 85075783
+
+http://lattes.cnpq.br/4322347592884852
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170407/ddd8a6d6/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Fri Apr  7 18:24:10 2017
+From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
+Date: Fri, 7 Apr 2017 18:24:10 -0300
+Subject: [R-br] =?utf-8?q?Retornando_de_NaN_para_raiz_c=C3=BAbica_de_n?=
+ =?utf-8?q?=C3=BAmeros_negativos_alocados_em_vetores?=
+In-Reply-To: <BY2PR15MB0149C5BB0B9F6D2D2A58D142EE0C0@BY2PR15MB0149.namprd15.prod.outlook.com>
+References: <BY2PR15MB0149C5BB0B9F6D2D2A58D142EE0C0@BY2PR15MB0149.namprd15.prod.outlook.com>
+Message-ID: <791d344e-beb4-9f20-1faf-cf4d1958b929@yahoo.com.br>
+
+(-27)^(1/3)
+
+
+From marcus.nunes em gmail.com  Fri Apr  7 18:36:38 2017
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Fri, 7 Apr 2017 18:36:38 -0300
+Subject: [R-br] =?utf-8?q?Retornando_de_NaN_para_raiz_c=C3=BAbica_de_n?=
+	=?utf-8?q?=C3=BAmeros_negativos_alocados_em_vetores?=
+In-Reply-To: <BY2PR15MB0149C5BB0B9F6D2D2A58D142EE0C0@BY2PR15MB0149.namprd15.prod.outlook.com>
+References: <BY2PR15MB0149C5BB0B9F6D2D2A58D142EE0C0@BY2PR15MB0149.namprd15.prod.outlook.com>
+Message-ID: <CA+QGQvvaYKfhBVw-6MduOzGq7e=hEN0B1OitL0dJf-dPwWQEyA@mail.gmail.com>
+
+-27 tem três raízes cúbicas:
+
+1) -3
+2) 1.5 + 2.5981*i
+3) 1.5 - 2.5981*i
+
+O R, ao dizer que (-27)^(1/3) é NaN, ele apenas diz que a raiz cúbica
+principal de -27 não é um número real. Rode, por exemplo, o seguinte:
+
+(as.complex(-27))^(1/3)
+[1] 1.5+2.598076i
+
+Além disso, -27^(1/3) != (-27)^(1/3). Por isso os cálculos utilizando o
+vetor vec são diferentes.
+
+Uma maneira de corrigir este problema é com a seguinte função:
+
+RaizCubica <- function(x){
+  return(sign(x)*abs(x)^(1/3))
+}
+
+Esta função pode ser facilmente generalizada para qualquer raiz:
+
+RaizQualquer <- function(x, y){
+  return(sign(x)*abs(x)^(1/y))
+}
+
+
+
+
+
+
+--
+Marcus Nunes
+Professor Adjunto
+Universidade Federal do Rio Grande do Norte
+Centro de Ciências Exatas e da Terra
+Departamento de Estatística
+Laboratório de Estatística Aplicada
+marcus.nunes em ccet.ufrn.br
+http://marcusnunes.me/
+
+
+2017-04-07 16:40 GMT-03:00 marcos paulo via R-br <r-br em listas.c3sl.ufpr.br>:
+
+> Olá prezados boa tarde.
+>
+>
+> Alguém saberia me explicar porque ao concatenar números negativos e
+> positivos em um vetor não é possível obter a raiz cúbica dos números
+> negativos? Como procederia para contornar esse problema, mantendo os dados
+> no vetor ?
+>
+>
+> Exemplo:
+>
+>
+> > vec<-c(27,-27,27,27,-27)
+> > vec^(1/3)
+> [1]   3 NaN   3   3 NaN
+> > -27^(1/3)
+> [1] -3
+>
+> Situação desejada:
+> [1]   3 -3   3   3 -3
+>
+>
+> À disposição
+> Marcos Paulo
+>
+>
+> *Técnico Agrícola em Zootecnia Bacharel em Agronomia *
+>
+> *Mestrando em Produção Vegetal - Universidade Federal de Goiás*
+> *Estagiário de Pós-Graduação da Embrapa Arroz e Feijão/CNPAF-Santo Antônio
+> de Goiás-GO*
+>
+> *Contato: (62) 85075783*
+>
+> http://lattes.cnpq.br/4322347592884852
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170407/72608f41/attachment.html>
+
+From viniciusbritor em gmail.com  Fri Apr  7 19:32:44 2017
+From: viniciusbritor em gmail.com (Vinicius Brito Rocha)
+Date: Fri, 07 Apr 2017 22:32:44 +0000
+Subject: [R-br] =?utf-8?q?Retornando_de_NaN_para_raiz_c=C3=BAbica_de_n?=
+	=?utf-8?q?=C3=BAmeros_negativos_alocados_em_vetores?=
+In-Reply-To: <CA+QGQvvaYKfhBVw-6MduOzGq7e=hEN0B1OitL0dJf-dPwWQEyA@mail.gmail.com>
+References: <BY2PR15MB0149C5BB0B9F6D2D2A58D142EE0C0@BY2PR15MB0149.namprd15.prod.outlook.com>
+ <CA+QGQvvaYKfhBVw-6MduOzGq7e=hEN0B1OitL0dJf-dPwWQEyA@mail.gmail.com>
+Message-ID: <CAJSzTec=7-phuLR-iU4C--NLY2XmK7=ivniej7SZ=GhjBjST8A@mail.gmail.com>
+
+Uma sugestão apenas. Fonte ABNT no seu email corporativo.
+
+Abs
+
+Em Sex, 7 de abr de 2017 18:37, Marcus Nunes via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> -27 tem três raízes cúbicas:
+>
+> 1) -3
+> 2) 1.5 + 2.5981*i
+> 3) 1.5 - 2.5981*i
+>
+> O R, ao dizer que (-27)^(1/3) é NaN, ele apenas diz que a raiz cúbica
+> principal de -27 não é um número real. Rode, por exemplo, o seguinte:
+>
+> (as.complex(-27))^(1/3)
+> [1] 1.5+2.598076i
+>
+> Além disso, -27^(1/3) != (-27)^(1/3). Por isso os cálculos utilizando o
+> vetor vec são diferentes.
+>
+> Uma maneira de corrigir este problema é com a seguinte função:
+>
+> RaizCubica <- function(x){
+>   return(sign(x)*abs(x)^(1/3))
+> }
+>
+> Esta função pode ser facilmente generalizada para qualquer raiz:
+>
+> RaizQualquer <- function(x, y){
+>   return(sign(x)*abs(x)^(1/y))
+> }
+>
+>
+>
+>
+>
+>
+> --
+> Marcus Nunes
+> Professor Adjunto
+> Universidade Federal do Rio Grande do Norte
+> Centro de Ciências Exatas e da Terra
+> Departamento de Estatística
+> Laboratório de Estatística Aplicada
+> marcus.nunes em ccet.ufrn.br
+> http://marcusnunes.me/
+>
+>
+> 2017-04-07 16:40 GMT-03:00 marcos paulo via R-br <r-br em listas.c3sl.ufpr.br
+> >:
+>
+> Olá prezados boa tarde.
+>
+>
+> Alguém saberia me explicar porque ao concatenar números negativos e
+> positivos em um vetor não é possível obter a raiz cúbica dos números
+> negativos? Como procederia para contornar esse problema, mantendo os dados
+> no vetor ?
+>
+>
+> Exemplo:
+>
+>
+> > vec<-c(27,-27,27,27,-27)
+> > vec^(1/3)
+> [1]   3 NaN   3   3 NaN
+> > -27^(1/3)
+> [1] -3
+>
+> Situação desejada:
+> [1]   3 -3   3   3 -3
+>
+>
+> À disposição
+> Marcos Paulo
+>
+>
+> *Técnico Agrícola em Zootecnia Bacharel em Agronomia *
+>
+> *Mestrando em Produção Vegetal - Universidade Federal de Goiás*
+> *Estagiário de Pós-Graduação da Embrapa Arroz e Feijão/CNPAF-Santo Antônio
+> de Goiás-GO*
+>
+> *Contato: (62) 85075783*
+>
+> http://lattes.cnpq.br/4322347592884852
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170407/20ed061c/attachment.html>
+
+From gsantostiago em gmail.com  Sat Apr  8 14:44:31 2017
+From: gsantostiago em gmail.com (Tiago G. Santos)
+Date: Sat, 08 Apr 2017 17:44:31 +0000
+Subject: [R-br] =?utf-8?q?Duvida_em_estat=C3=ADstica_no_R?=
+Message-ID: <CA+8fqbCkig5wdZ95jTo10LP-tZnFXcVARoskQmkk63wspdNn5A@mail.gmail.com>
+
+Boa tarde,
+Alguém sabe como faço para apresentar os resultados dos testes tukey ou
+dunnet como as letras que indicam significância estatística .....
+-- 
+Tiago Gonçalves Santos
+http://lattes.cnpq.br/7645251131511453
+Doutorando em Fìsica pelo Instituto Tecnológico de Aeronáutica - ITA
+Laboratório de Caracterização de Dispositivos Semicondutores
+Instituto de Estudos Avançados - IEAv
+Trevo Coronel Aviador José Alberto Albano do Amarante, no. 1
+12.228-001
+São José dos Campos – SP – Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170408/3ff90cd1/attachment.html>
+
+From cesar.rabak em gmail.com  Sat Apr  8 16:27:17 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 8 Apr 2017 16:27:17 -0300
+Subject: [R-br] =?utf-8?q?Duvida_em_estat=C3=ADstica_no_R?=
+In-Reply-To: <CA+8fqbCkig5wdZ95jTo10LP-tZnFXcVARoskQmkk63wspdNn5A@mail.gmail.com>
+References: <CA+8fqbCkig5wdZ95jTo10LP-tZnFXcVARoskQmkk63wspdNn5A@mail.gmail.com>
+Message-ID: <CAKrF98=ymugHiQQnCq2ZHFygaiCKd8QiJn2+2XQPCTXGsKFNNA@mail.gmail.com>
+
+Veja  a função HSD.test do pacote agricolae.
+
+HTH
+--
+Cesar Rabak
+
+
+2017-04-08 14:44 GMT-03:00 Tiago G. Santos via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Boa tarde,
+> Alguém sabe como faço para apresentar os resultados dos testes tukey ou
+> dunnet como as letras que indicam significância estatística .....
+> --
+> Tiago Gonçalves Santos
+> http://lattes.cnpq.br/7645251131511453
+> Doutorando em Fìsica pelo Instituto Tecnológico de Aeronáutica - ITA
+> Laboratório de Caracterização de Dispositivos Semicondutores
+> Instituto de Estudos Avançados - IEAv
+> Trevo Coronel Aviador José Alberto Albano do Amarante, no. 1
+> 12.228-001
+> São José dos Campos – SP – Brasil
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170408/de293ee8/attachment.html>
+
+From thi_veloso em yahoo.com.br  Sat Apr  8 21:44:58 2017
+From: thi_veloso em yahoo.com.br (Thiago V. dos Santos)
+Date: Sun, 9 Apr 2017 00:44:58 +0000 (UTC)
+Subject: [R-br] =?utf-8?b?U3Vhdml6YcOnw6NvIGRvIGdyw6FmaWNv?=
+In-Reply-To: <CAHw9po98sBtHYViMDVWkv8Af51RkGiM4nmVJ7gXHVU8ck2uT4Q@mail.gmail.com>
+References: <CAHw9po98sBtHYViMDVWkv8Af51RkGiM4nmVJ7gXHVU8ck2uT4Q@mail.gmail.com>
+Message-ID: <1320996413.4052044.1491698698790@mail.yahoo.com>
+
+O problema é que o comando aggregate, como está escrito no código, não está fazendo nada.
+
+Nesses casos de médias com séries temporais de alta resolução, uma solução rápida e legível é criar fatores na frequência desejada. Veja o exemplo abaixo, onde eu crio fatores horários:
+
+
+mydata <- read.csv("Downloads/dado.txt", header=T, sep=",", na.strings='NA', as.is=T)
+mydata$direta <- as.numeric(mydata$direta)
+mydata$date <- as.POSIXct(strptime(mydata$date, format="%d/%m/%Y %H:%M:%S", tz="Etc/GMT-1"))
+
+# Primeiro, crie fatores com as horas
+# com esse comando, tudo o que estiver dentro de seis horas vai receber o label 06:00,
+# tudo o que estiver dentro das sete horas vai receber o label 07:00 e assim por diante
+mydata$hfac <- droplevels(cut(mydata$date, breaks='hour'))
+
+# Confere como ficou
+mydata[50:70,] # repare a transicao dos fatores nas linhas 60 e 61
+
+# Em seguida, tira a media os dados usando o fator recem-criado
+mydata.h <- aggregate(direta ~ hfac, data=mydata, FUN=mean, na.rm=TRUE, na.action=na.pass)
+
+# Conserta a data (converte de fator para data)
+mydata.h$hfac <- as.POSIXct(mydata.h$hfac)
+
+# Plota somente o primeiro dia
+plot(mydata.h$hfac[1:13], mydata.h$direta[1:13], type = "l", col="red",xlab = "hour", ylab = "Direct Solar Radiation (W/m²)")
+
+# Plota a serie toda
+plot(mydata.h$hfac, mydata.h$direta, type = "l", col="red",xlab = "date", ylab = "Direct Solar Radiation (W/m²)")
+
+
+ 
+Greetings,
+ -- Thiago V. dos Santos
+
+PhD student
+Land and Atmospheric Science
+University of Minnesota
+
+
+On Friday, April 7, 2017 10:14 AM, Mateus Dias Nunes via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+
+
+
+Bom dia,
+
+Eu estou com um problema para suavizar meu gráfico. Eu tenho dados horários e desejo plotar individualmente cada data (no período das 06h as 18h). Entretanto o gráfico tem ficado com muito ruído devido as observações serem horárias e existirem falhas (NA) nas observações. E por isso eu gostaria de suavizar o gráfico com as médias horárias, porém não estou conseguindo implementar isso.
+
+Espero que alguém possa me ajudar a resolver.
+
+dado utilizado: 
+https://www.dropbox.com/s/b80zzzeaesnh8qp/dado.txt?dl=0
+
+
+
+library(openair)
+
+ mydata<-read.table("dado.txt", h = T, sep = ",")
+ mydata$direta <- as.numeric(as.character(mydata$direta))
+ mydata$date <- as.POSIXct(strptime(mydata$date, format = "%d/%m/%Y %H:%M:%S",tz = "Etc/GMT-1"))
+
+means <- aggregate(mydata["direta"], format(mydata["date"],"%d-%m-%Y %H:%M:%S"), mean, na.rm = TRUE)
+means[ ,"date"] <- seq(min(mydata[ , "date"]), max(mydata[ , "date"]), length = nrow(means))
+
+
+Figura1<-plot(mydata$date[2:721], mydata$direta[2:721], type = "l", col="red",xlab = "minutes",main = "01 de Janeiro de 2007", ylab = "Direct Solar Radiation (W/m²)")
+Figura1
+dev.copy(device=jpeg,filename="Brasilia_01dejaneiro2007.jpg", width = 800, height = 500) 
+dev.off ()
+
+desde já, agradeço.
+
+_______________________________________________________________________________________
+MATEUS DIAS NUNES
+
+Postgraduate Program in Meteorology - PGMET - CPTEC / INPE
+Center for Weather Forecasting and Climate Studies / National Institute for Space ResearchCachoeira Paulista - SP - Brasil
+FONE: +55 (53) 98112-5154    
+SKYPE: omsndomateus em hotmail.com      
+
+_______________________________________________________________________________________
+
+
+
+   Sent with Mailtrack  _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+From mcardeal2010 em gmail.com  Sun Apr  9 09:23:52 2017
+From: mcardeal2010 em gmail.com (Mauricio Cardeal)
+Date: Sun, 9 Apr 2017 09:23:52 -0300
+Subject: [R-br] =?utf-8?q?_c=C3=B3digo_para_construir_tabela_com_dados_par?=
+ =?utf-8?q?eados_=5BRESOLVIDO=5D?=
+In-Reply-To: <CAN55XP4NmaBdBrB=kYXJ1HPAUZQP5HR_gxBsPk7uBBg52Q4qvA@mail.gmail.com>
+References: <3dc10824-b646-99ee-005d-b37a9a3f66cd@gmail.com>
+ <CAN55XP4NmaBdBrB=kYXJ1HPAUZQP5HR_gxBsPk7uBBg52Q4qvA@mail.gmail.com>
+Message-ID: <2f760d2d-326c-98f2-e0b3-5917fe4f826c@gmail.com>
+
+Compartilho uma das soluções dada por:
+
+Peter Dalgaard, Professor,
+Center for Statistics, Copenhagen Business School
+Solbjerg Plads 3, 2000 Frederiksberg, Denmark
+Phone: (+45)38153501
+Office: A 4.23
+Email:pd.mes em cbs.dk   Priv:PDalgd em gmail.com
+
+Através da lista r-help em r-project.org:
+
+# CMR
+
+pair <- c(1,1,2,2,3,3,4,4,5,5,6,6,7,7)  # identification
+treat <-  c(1,0,1,0,1,0,1,0,1,0,1,0,1,0) # treatament 1 (A) or 0 (B)
+impr <-  c(1,0,1,0,1,0,0,1,0,1,0,0,1,1) # improvement 1 (yes) 0 (no)
+treatfac <- factor(treat)
+levels(treatfac)<-list("A"=1,"B"=0 )
+imprfac <- factor(impr)
+levels(imprfac)<-list("+"=1,"-"=0)
+
+dd<-data.frame(pair,treatfac,imprfac)
+dd
+
+
+    pair treatfac imprfac
+1     1        A       +
+2     1        B       -
+3     2        A       +
+4     2        B       -
+5     3        A       +
+6     3        B       -
+7     4        A       -
+8     4        B       +
+9     5        A       -
+10    5        B       +
+11    6        A       -
+12    6        B       -
+13    7        A       +
+14    7        B       +
+
+# A solução
+
+# O segredo é rearrumar os dados primeiro:
+
+ddw <- reshape(dd, direction="wide", idvar="pair", timevar="treatfac")
+ddw
+
+    pair imprfac.A imprfac.B
+1     1         +         -
+3     2         +         -
+5     3         +         -
+7     4         -         +
+9     5         -         +
+11    6         -         -
+13    7         +         +
+
+# Para em seguida, através da função xtabs (como mencionado 
+anteriormente por Fernando)
+
+xtabs(~ imprfac.A + imprfac.B, ddw)
+
+# Se obter o resultado desejado:
+
+          imprfac.B
+imprfac.A + -
+         + 1 3
+         - 2 1
+
+Maurício Cardeal
+UFBA
+
+Em 07/04/2017 15:17, FHRB Toledo escreveu:
+> help(xtabs)
+>
+> 2017-04-07 12:59 GMT-05:00 Mauricio Cardeal via R-br 
+> <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>>:
+>
+>     Boa tarde!
+>
+>     Por favor, como faço para construir uma tabela como a do modelo do
+>     final do script,
+>
+>     onde o conteúdo das 4 caselas são contagens do número de pares que
+>     combinam
+>
+>     melhora e não melhora de 2 tratamentos aplicados simultaneamente
+>     no mesmo
+>
+>     individuo (perna direita e perna esquerda), por exemplo ?
+>
+>     # CMR:
+>
+>     par <- c(1,1,2,2,3,3,4,4,5,5,6,6,7,7)  # refere-se ao número do
+>     individuo
+>     trata <-  c(1,0,1,0,1,0,1,0,1,0,1,0,1,0) # tratamento 1 (A) ou 0 (B)
+>     melhora <-  c(1,0,1,0,1,0,0,1,0,1,0,0,1,1) # resultado do
+>     tratamento 1 (melhora) 0 (não melhora)
+>     tratac <- factor(trata)
+>     levels(tratac)<-list("A"=1,"B"=0 )
+>     melhorac <- factor(melhora)
+>     levels(melhorac)<-list("+"=1,"-"=0)
+>
+>     data.frame(par,tratac,melhorac)
+>
+>        par tratac melhorac
+>     1    1      A        +
+>     2    1      B        -
+>     3    2      A        +
+>     4    2      B        -
+>     5    3      A        +
+>     6    3      B        -
+>     7    4      A        -
+>     8    4      B        +
+>     9    5      A        -
+>     10   5      B        +
+>     11   6      A        -
+>     12   6      B        -
+>     13   7      A        +
+>     14   7      B        +
+>
+>     # COMO FAÇO PARA GERAR ESSA TABELA A PARTIR DOS DADOS ACIMA?
+>
+>     #                      tratamento B
+>     #                      melhora melhora
+>     #                         +       -
+>     #tratamento A melhora +   1       3
+>     #             melhora -   2       1
+>
+>     Obrigado,
+>
+>     Maurício Cardeal
+>
+>     UFBA
+>
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia
+>     <http://www.leg.ufpr.br/r-br-guia>) e fornea cdigo mnimo reproduzvel.
+>
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170409/78c272a9/attachment.html>
+
+From ecacarva em gmail.com  Tue Apr 11 00:59:19 2017
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Tue, 11 Apr 2017 00:59:19 -0300
+Subject: [R-br] =?utf-8?q?Combinar_multiplos_datasets_-_Inputa=C3=A7=C3=A3?=
+	=?utf-8?q?o_M=C3=BAltipla_com_MICE?=
+Message-ID: <CAH8E6UuUPsKh=WTSBiaoiDRR-=-=6Z-uhh8L6=90qKi0nJVEAA@mail.gmail.com>
+
+*Boa noite pessoal*
+
+*Eu preciso tratar dados missing do meu dataset, li bastante e o MICE me
+pareceu uma boa ferramente para isso, então p**rossegui da seguinte
+maneira:*
+
+​mice(df.factor.variable, m=5, maxit = 50, method = 'polyreg', seed = 500)​
+
+*e depois para juntar os 5 datasets usei:*
+
+complete.factor.data <- complete(factor.variable.imputed, 'long')
+​
+​*Como tenho 1999 registros no meu dataset e foram gerados 5 conjuntos de
+dados imputados, o resultado foi de 9995 observações (1999 * 5)​.*
+
+*Alguém sabe me dizer se o procedimento está correto ou há uma maneira de
+unir os 5 datasets imputados em um só gerando um dataset de 1999 registros
+sem NAs?*
+
+*ps: vou usar esse novo dataset sem missing para aprender uma rede
+Bayesiana*
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170411/77e52f22/attachment.html>
+
+From ecacarva em gmail.com  Thu Apr 13 11:13:01 2017
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Thu, 13 Apr 2017 11:13:01 -0300
+Subject: [R-br] Maximizar plot window no RStudio
+Message-ID: <CAH8E6UvMnueAFNaysJXvR9vo74o5gRtcdyjvp2au0Xuw-SEv3A@mail.gmail.com>
+
+Bom dia pessoal
+
+Alguém sabe como posso maximizar a janela plot do RSstudio via linha de
+comando ?
+
+Explicando:
+
+Estou fazendo uma rotina para verificação de outliers baseado no boxplot
+então ao examinar os dados eu gero os gráficos abaixo, no entanto, se a
+janela estiver pequena demais os gráficos não aparecem e ainda surge uma
+mensagem  Error in plot.new() : figure margins too large in R
+<http://stackoverflow.com/questions/12766166/error-in-plot-new-figure-margins-too-large-in-r>
+:
+
+​
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170413/f4a87c56/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Captura de tela de 2017-04-13 11-09-40.png
+Tipo: image/png
+Tamanho: 42068 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170413/f4a87c56/attachment.png>
+
+From walmeszeviani em gmail.com  Thu Apr 13 11:38:13 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Thu, 13 Apr 2017 11:38:13 -0300
+Subject: [R-br] Maximizar plot window no RStudio
+In-Reply-To: <CAH8E6UvMnueAFNaysJXvR9vo74o5gRtcdyjvp2au0Xuw-SEv3A@mail.gmail.com>
+References: <CAH8E6UvMnueAFNaysJXvR9vo74o5gRtcdyjvp2au0Xuw-SEv3A@mail.gmail.com>
+Message-ID: <CAFU=EkYvux76=uniRobzWJHRUMNA+jQPwvTpdU-cTFEedAh5CQ@mail.gmail.com>
+
+Eu não uso RStudio e uma das razões é justamente essa. Mas meus alunos
+usam, então acabo descobrindo algumas coisas. Quando você faz Ctrol + Shift
++ 1 (conforme está em View > Panes), você ocupa toda área visível com o
+script. Fazendo Ctrol + Shift + 0, você volta para a exibição das 4
+janelas. Então a dica é, antes de fazer os gráficos, dê um Ctrol + Shift +
+0 e volte para o estado com 4 espaços, sendo que o espaço para o gráfico
+tem que ter dimensão compatível. Esse padrão de 4 janelas é bem
+interessante quando você tem um grande monitor e fina resolução. Porém,
+quando você está em um note/netbook, perde-se muito tempo arrastando as
+divisórias dos espaços para acomodar o que se quer ver (eu não gosto de
+tirar a mão do teclado). Isso também acontece quando você está projetando,
+já que os projetores tem resolução menor que os monitores. A outra opção é:
+use o Emacs.
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170413/91ebd42b/attachment.html>
+
+From nandodesouza em gmail.com  Thu Apr 13 11:41:22 2017
+From: nandodesouza em gmail.com (Fernando Antonio de souza)
+Date: Thu, 13 Apr 2017 14:41:22 +0000
+Subject: [R-br] Maximizar plot window no RStudio
+In-Reply-To: <CAH8E6UvMnueAFNaysJXvR9vo74o5gRtcdyjvp2au0Xuw-SEv3A@mail.gmail.com>
+References: <CAH8E6UvMnueAFNaysJXvR9vo74o5gRtcdyjvp2au0Xuw-SEv3A@mail.gmail.com>
+Message-ID: <local-8dc5eb5d-0b93@nylas-mail.nylas.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170413/6ad6f0a5/attachment.html>
+
+From nandodesouza em gmail.com  Thu Apr 13 11:49:07 2017
+From: nandodesouza em gmail.com (Fernando Antonio de souza)
+Date: Thu, 13 Apr 2017 14:49:07 +0000
+Subject: [R-br] Maximizar plot window no RStudio
+In-Reply-To: <local-8dc5eb5d-0b93@nylas-mail.nylas.com>
+References: <CAH8E6UvMnueAFNaysJXvR9vo74o5gRtcdyjvp2au0Xuw-SEv3A@mail.gmail.com>
+ <local-8dc5eb5d-0b93@nylas-mail.nylas.com>
+Message-ID: <local-650496ac-07df@nylas-mail.nylas.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170413/5105a1d1/attachment.html>
+
+From ecacarva em gmail.com  Thu Apr 13 11:48:09 2017
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Thu, 13 Apr 2017 11:48:09 -0300
+Subject: [R-br] Maximizar plot window no RStudio
+In-Reply-To: <local-8dc5eb5d-0b93@nylas-mail.nylas.com>
+References: <CAH8E6UvMnueAFNaysJXvR9vo74o5gRtcdyjvp2au0Xuw-SEv3A@mail.gmail.com>
+ <local-8dc5eb5d-0b93@nylas-mail.nylas.com>
+Message-ID: <CAH8E6UuwG46h69aHBt4Zqy1N9KU6WrUufzmXA2QRHcSjWx3+Kw@mail.gmail.com>
+
+Obrigado Walmes
+​
+Em 13 de abril de 2017 11:38, Walmes Zeviani <walmeszeviani em gmail.com>
+ escreveu:
+
+> Eu não uso RStudio e uma das razões é justamente essa. Mas meus alunos
+> usam, então acabo descobrindo algumas coisas. Quando você faz Ctrol + Shift
+> + 1 (conforme está em View > Panes), você ocupa toda área visível com o
+> script. Fazendo Ctrol + Shift + 0, você volta para a exibição das 4
+> janelas. Então a dica é, antes de fazer os gráficos, dê um Ctrol + Shift +
+> 0 e volte para o estado com 4 espaços, sendo que o espaço para o gráfico
+> tem que ter dimensão compatível. Esse padrão de 4 janelas é bem
+> interessante quando você tem um grande monitor e fina resolução. Porém,
+> quando você está em um note/netbook, perde-se muito tempo arrastando as
+> divisórias dos espaços para acomodar o que se quer ver (eu não gosto de
+> tirar a mão do teclado). Isso também acontece quando você está projetando,
+> já que os projetores tem resolução menor que os monitores. A outra opção é:
+> use o Emacs.
+>
+
+Meu problema é justamente este, usar o notebook, a sua dia é interessante,
+porém ao voltar nas 4 janelas eu tenho que redimensionar a janela dos
+gráficos manualmente para que eles possam se ajustar dentro da janela. Eu
+gostaria de fazer isso via código porque quando o erro ocorre a gente tem
+que perder tempo redimensionando a janela e reexecutando o código. Além do
+que é uma função dentro de um pacote que deveria controlar isso. Como estou
+produzindo um código para pesquisadores fazerem seu próprio
+pre-processamento eu queria diminuir a intervenção humana o máximo
+justamente para otimizar a tarefa.
+
+Fernando
+
+Obrigado pelo seu retorno, mas já tentei usar o par(mfrow=c(nºlinha, nº
+coluna)), porém se a janela plot do RStudio estiver pequena o erro continua
+e o gráfico não sai.
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170413/9d328f07/attachment.html>
+
+From suzabio em yahoo.com.br  Sun Apr 16 09:10:53 2017
+From: suzabio em yahoo.com.br (suzana de souza rodrigues)
+Date: Sun, 16 Apr 2017 12:10:53 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Substitui=C3=A7ao_de_missing?=
+References: <2038825383.1534509.1492344653050.ref@mail.yahoo.com>
+Message-ID: <2038825383.1534509.1492344653050@mail.yahoo.com>
+
+Bom dia,Tenho um banco de dados:
+    regiao semana notificados confirmados sexo local1      1      1          82                              45    M     A2      1      2         105                             32    F     A3      1      3         134                             71    M     A4      1      4          80                              44    M     A5      1      5         102                             32    M     A6      1      6         108                             46    F     A
+Formado por 50 regiões, a variável confirmados apresenta missings (NA).Preciso substituir os missings pela média de casos confirmados por região.Calculei a média por região por esse comando, sem considerar os missings:
+media <- bancos%>%  group_by(regiao)%>%  summarise(mean(na.exclude(confirmados)))as.data.frame(media)
+Com esse resultado:
+ regiao mean(na.exclude(confirmados))1       1                      50.151522       2                      51.526043       3                      69.907694       4                      45.185575       5                      61.658166       6                      57.796887       7                      47.305268       8                      69.717959       9                      68.4070410     10                      62.2552111     11                      58.00000
+Só que não estou conseguindo trocar os missings por essas médias e preciso de ajuda nisso.Desde já agradeço,Suzana
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170416/000f1124/attachment.html>
+
+From leoaguirre32 em gmail.com  Sun Apr 16 09:28:19 2017
+From: leoaguirre32 em gmail.com (Leonardo Aguirre)
+Date: Sun, 16 Apr 2017 09:28:19 -0300
+Subject: [R-br] =?utf-8?q?Substitui=C3=A7ao_de_missing?=
+In-Reply-To: <2038825383.1534509.1492344653050@mail.yahoo.com>
+References: <2038825383.1534509.1492344653050.ref@mail.yahoo.com>
+ <2038825383.1534509.1492344653050@mail.yahoo.com>
+Message-ID: <CAAdDf_P=O19+BdLzViD7EDmA02PJSx+hTT_Nduu+PyypScwamg@mail.gmail.com>
+
+Como vc já calculou as medias, uma opção é jogar esse campo na tabela
+usando a função merge() e depois utilizar a função ifelse() para substituir
+os NA.
+
+Abs,
+
+Leonado
+
+Em 16 de abr de 2017 9:11 AM, "suzana de souza rodrigues via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia,
+> Tenho um banco de dados:
+>
+>     regiao semana notificados confirmados sexo local
+> 1      1      1          82                              45    M     A
+> 2      1      2         105                             32    F     A
+> 3      1      3         134                             71    M     A
+> 4      1      4          80                              44    M     A
+> 5      1      5         102                             32    M     A
+> 6      1      6         108                             46    F     A
+>
+> Formado por 50 regiões, a variável confirmados apresenta missings (NA).
+> Preciso substituir os missings pela média de casos confirmados por região.
+> Calculei a média por região por esse comando, sem considerar os missings:
+>
+> media <- bancos%>%
+>   group_by(regiao)%>%
+>   summarise(mean(na.exclude(confirmados)))
+> as.data.frame(media)
+>
+> Com esse resultado:
+>
+>  regiao mean(na.exclude(confirmados))
+> 1       1                      50.15152
+> 2       2                      51.52604
+> 3       3                      69.90769
+> 4       4                      45.18557
+> 5       5                      61.65816
+> 6       6                      57.79688
+> 7       7                      47.30526
+> 8       8                      69.71795
+> 9       9                      68.40704
+> 10     10                      62.25521
+> 11     11                      58.00000
+>
+> Só que não estou conseguindo trocar os missings por essas médias e preciso
+> de ajuda nisso.
+> Desde já agradeço,
+> Suzana
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170416/44bbe783/attachment.html>
+
+From suzabio em yahoo.com.br  Sun Apr 16 15:54:39 2017
+From: suzabio em yahoo.com.br (suzabio)
+Date: Sun, 16 Apr 2017 15:54:39 -0300
+Subject: [R-br] =?iso-8859-1?q?Substitui=E7ao_de_missing?=
+Message-ID: <pn2dk32tlktaxqfeb4iwc91a.1492368879579@email.android.com>
+
+
+    
+Olá Leonardo, Obrigada! Deu certo, eu não estava conseguindo ver um jeito de substituir esses NAs, tudo que eu pensei deu errado.Um abraço e boa Páscoa! Suzana 
+
+
+Enviado do meu dispositivo Samsung
+
+-------- Mensagem original --------
+De : Leonardo Aguirre <leoaguirre32 em gmail.com> 
+Data: 16/04/2017  09:28  (GMT-03:00) 
+Para: suzana de souza rodrigues <suzabio em yahoo.com.br>, "a lista Brasileira oficial de discussão do programa R." <r-br em listas.c3sl.ufpr.br> 
+Assunto: Re: [R-br] Substituiçao de missing 
+
+Como vc já calculou as medias, uma opção é jogar esse campo na tabela usando a função merge() e depois utilizar a função ifelse() para substituir os NA.
+Abs,
+Leonado
+Em 16 de abr de 2017 9:11 AM, "suzana de souza rodrigues via R-br" <r-br em listas.c3sl.ufpr.br> escreveu:
+Bom dia,Tenho um banco de dados:
+    regiao semana notificados confirmados sexo local1      1      1          82                              45    M     A2      1      2         105                             32    F     A3      1      3         134                             71    M     A4      1      4          80                              44    M     A5      1      5         102                             32    M     A6      1      6         108                             46    F     A
+Formado por 50 regiões, a variável confirmados apresenta missings (NA).Preciso substituir os missings pela média de casos confirmados por região.Calculei a média por região por esse comando, sem considerar os missings:
+media <- bancos%>%  group_by(regiao)%>%  summarise(mean(na.exclude(confirmados)))as.data.frame(media)
+Com esse resultado:
+ regiao mean(na.exclude(confirmados))1       1                      50.151522       2                      51.526043       3                      69.907694       4                      45.185575       5                      61.658166       6                      57.796887       7                      47.305268       8                      69.717959       9                      68.4070410     10                      62.2552111     11                      58.00000
+Só que não estou conseguindo trocar os missings por essas médias e preciso de ajuda nisso.Desde já agradeço,Suzana
+_______________________________________________
+
+R-br mailing list
+
+R-br em listas.c3sl.ufpr.br
+
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170416/01e487c0/attachment.html>
+
+From sznelwar em uol.com.br  Sun Apr 16 23:00:25 2017
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Sun, 16 Apr 2017 23:00:25 -0300
+Subject: [R-br] =?utf-8?b?U3Vhdml6YcOnw6NvIGRvIGdyw6FmaWNv?=
+In-Reply-To: ["CAHw9po98sBtHYViMDVWkv8Af51RkGiM4nmVJ7gXHVU8ck2uT4Q@mail.gmail.com"]
+References: ["CAHw9po98sBtHYViMDVWkv8Af51RkGiM4nmVJ7gXHVU8ck2uT4Q@mail.gmail.com"]
+Message-ID: <58f421b97d9a9_71d15a4e92c33d420964@a4-weasel4.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170416/8b2c9ac1/attachment.html>
+
+From zegomesufg em gmail.com  Tue Apr 18 13:53:25 2017
+From: zegomesufg em gmail.com (jose gomes de souza filho Gomes)
+Date: Tue, 18 Apr 2017 13:53:25 -0300
+Subject: [R-br] Banco de Dados
+Message-ID: <CAH=UPSF2Uc255_BB-TShfKimWL9jduVgqZbYVLW5pWSFfnNwBQ@mail.gmail.com>
+
+Boa tarde,
+
+Tem o seguinte banco de dados
+
+*cidade*
+
+*parcela2*
+
+*parcela3*
+
+*ano*
+
+*item*
+
+*quantidade*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2011*
+
+*baixados*
+
+*82331*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2011*
+
+*baixados*
+
+*15733*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2011*
+
+*baixados*
+
+*9989*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2011*
+
+*Pendentes*
+
+*7282*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2011*
+
+*Pendentes*
+
+*6819*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2011*
+
+*Pendentes*
+
+*5420*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2011*
+
+*novos*
+
+*4635*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2011*
+
+*novos*
+
+*4270*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2011*
+
+*novos*
+
+*4125*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2012*
+
+*baixados*
+
+*82332*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2012*
+
+*baixados*
+
+*15734*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2012*
+
+*baixados*
+
+*9990*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2012*
+
+*Pendentes*
+
+*7283*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2012*
+
+*Pendentes*
+
+*6820*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2012*
+
+*Pendentes*
+
+*5421*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2012*
+
+*novos*
+
+*4636*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2012*
+
+*novos*
+
+*4271*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2012*
+
+*novos*
+
+*4126*
+
+
+
+
+Gostaria que ficasse assim:
+
+
+
+*cidade*
+
+*parcela2*
+
+*parcela3*
+
+*baixados_2011*
+
+*baixados_2012*
+
+*Pendentes_2011*
+
+*Pendentes_2012*
+
+*novos_2011*
+
+*novos_2012*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*82331*
+
+*82332*
+
+*7282*
+
+*7283*
+
+*4635*
+
+*4636*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*15733*
+
+*15734*
+
+*6819*
+
+*6820*
+
+*4636*
+
+*4271*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*9989*
+
+*9990*
+
+*5420*
+
+*5421*
+
+*4125*
+
+*4126*
+
+
+
+Obrigado.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170418/356e5751/attachment.html>
+
+From nandodesouza em gmail.com  Tue Apr 18 15:01:17 2017
+From: nandodesouza em gmail.com (Fernando Antonio de souza)
+Date: Tue, 18 Apr 2017 15:01:17 -0300
+Subject: [R-br] Banco de Dados
+In-Reply-To: <CAH=UPSF2Uc255_BB-TShfKimWL9jduVgqZbYVLW5pWSFfnNwBQ@mail.gmail.com>
+References: <CAH=UPSF2Uc255_BB-TShfKimWL9jduVgqZbYVLW5pWSFfnNwBQ@mail.gmail.com>
+Message-ID: <CAFrWFsnkQH2udkztzw5hyCbswiV-5DK4AMWdQi9Lcx=-9Sds2A@mail.gmail.com>
+
+Envie um código mínimo reproduzível para q possa obter ajuda mais rápido
+
+Em 18/04/2017 13:53, "jose gomes de souza filho Gomes via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa tarde,
+>
+> Tem o seguinte banco de dados
+>
+> *cidade*
+>
+> *parcela2*
+>
+> *parcela3*
+>
+> *ano*
+>
+> *item*
+>
+> *quantidade*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2011*
+>
+> *baixados*
+>
+> *82331*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2011*
+>
+> *baixados*
+>
+> *15733*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2011*
+>
+> *baixados*
+>
+> *9989*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2011*
+>
+> *Pendentes*
+>
+> *7282*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2011*
+>
+> *Pendentes*
+>
+> *6819*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2011*
+>
+> *Pendentes*
+>
+> *5420*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2011*
+>
+> *novos*
+>
+> *4635*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2011*
+>
+> *novos*
+>
+> *4270*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2011*
+>
+> *novos*
+>
+> *4125*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2012*
+>
+> *baixados*
+>
+> *82332*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2012*
+>
+> *baixados*
+>
+> *15734*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2012*
+>
+> *baixados*
+>
+> *9990*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2012*
+>
+> *Pendentes*
+>
+> *7283*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2012*
+>
+> *Pendentes*
+>
+> *6820*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2012*
+>
+> *Pendentes*
+>
+> *5421*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2012*
+>
+> *novos*
+>
+> *4636*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2012*
+>
+> *novos*
+>
+> *4271*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2012*
+>
+> *novos*
+>
+> *4126*
+>
+>
+>
+>
+> Gostaria que ficasse assim:
+>
+>
+>
+> *cidade*
+>
+> *parcela2*
+>
+> *parcela3*
+>
+> *baixados_2011*
+>
+> *baixados_2012*
+>
+> *Pendentes_2011*
+>
+> *Pendentes_2012*
+>
+> *novos_2011*
+>
+> *novos_2012*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *82331*
+>
+> *82332*
+>
+> *7282*
+>
+> *7283*
+>
+> *4635*
+>
+> *4636*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *15733*
+>
+> *15734*
+>
+> *6819*
+>
+> *6820*
+>
+> *4636*
+>
+> *4271*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *9989*
+>
+> *9990*
+>
+> *5420*
+>
+> *5421*
+>
+> *4125*
+>
+> *4126*
+>
+>
+>
+> Obrigado.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170418/98db6483/attachment.html>
+
+From zegomesufg em gmail.com  Tue Apr 18 16:26:33 2017
+From: zegomesufg em gmail.com (jose gomes de souza filho Gomes)
+Date: Tue, 18 Apr 2017 16:26:33 -0300
+Subject: [R-br] Banco de Dados - Linhas e Colunas
+Message-ID: <CAH=UPSFRfxYMXVrUzL=aUFLPChi2QoGDuxmKpmfFakrP+Wy+zA@mail.gmail.com>
+
+Boa tarde,
+
+Tem o seguinte banco de dados
+
+base de dados:
+https://www.datafilehost.com/d/6c117eac
+
+*cidade*
+
+*parcela2*
+
+*parcela3*
+
+*ano*
+
+*item*
+
+*quantidade*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2011*
+
+*baixados*
+
+*82331*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2011*
+
+*baixados*
+
+*15733*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2011*
+
+*baixados*
+
+*9989*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2011*
+
+*Pendentes*
+
+*7282*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2011*
+
+*Pendentes*
+
+*6819*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2011*
+
+*Pendentes*
+
+*5420*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2011*
+
+*novos*
+
+*4635*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2011*
+
+*novos*
+
+*4270*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2011*
+
+*novos*
+
+*4125*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2012*
+
+*baixados*
+
+*82332*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2012*
+
+*baixados*
+
+*15734*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2012*
+
+*baixados*
+
+*9990*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2012*
+
+*Pendentes*
+
+*7283*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2012*
+
+*Pendentes*
+
+*6820*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2012*
+
+*Pendentes*
+
+*5421*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*2012*
+
+*novos*
+
+*4636*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*2012*
+
+*novos*
+
+*4271*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*2012*
+
+*novos*
+
+*4126*
+
+
+
+
+Gostaria que ficasse assim:
+
+
+
+*cidade*
+
+*parcela2*
+
+*parcela3*
+
+*baixados_2011*
+
+*baixados_2012*
+
+*Pendentes_2011*
+
+*Pendentes_2012*
+
+*novos_2011*
+
+*novos_2012*
+
+*GOIÂNIA*
+
+*Ana*
+
+*serv*
+
+*82331*
+
+*82332*
+
+*7282*
+
+*7283*
+
+*4635*
+
+*4636*
+
+*GOIÂNIA*
+
+*Paulo*
+
+*terc*
+
+*15733*
+
+*15734*
+
+*6819*
+
+*6820*
+
+*4636*
+
+*4271*
+
+*ANÁPOLIS*
+
+*Roberto*
+
+*serv*
+
+*9989*
+
+*9990*
+
+*5420*
+
+*5421*
+
+*4125*
+
+*4126*
+
+
+
+Obrigado.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170418/7bb92125/attachment-0001.html>
+
+From lgsilvaesilva em gmail.com  Tue Apr 18 17:29:01 2017
+From: lgsilvaesilva em gmail.com (Luis G. S. e Silva)
+Date: Tue, 18 Apr 2017 20:29:01 +0000
+Subject: [R-br] Banco de Dados - Linhas e Colunas
+In-Reply-To: <CAH=UPSFRfxYMXVrUzL=aUFLPChi2QoGDuxmKpmfFakrP+Wy+zA@mail.gmail.com>
+References: <CAH=UPSFRfxYMXVrUzL=aUFLPChi2QoGDuxmKpmfFakrP+Wy+zA@mail.gmail.com>
+Message-ID: <CALruoAEa75fUUwPbBtwmm+cxcZAk-YCXdU5m1uecviqUKLdsdw@mail.gmail.com>
+
+require(reshape2)
+dados <- read.csv2('dadosg.csv', encoding = 'latin1')
+dcast(cidade+parcela2+parcela3~item+ano, value.var = 'quantidade', data =
+dados)
+
+
+On Tue, Apr 18, 2017 at 4:27 PM jose gomes de souza filho Gomes via R-br <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde,
+>
+> Tem o seguinte banco de dados
+>
+> base de dados:
+> https://www.datafilehost.com/d/6c117eac
+>
+> *cidade*
+>
+> *parcela2*
+>
+> *parcela3*
+>
+> *ano*
+>
+> *item*
+>
+> *quantidade*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2011*
+>
+> *baixados*
+>
+> *82331*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2011*
+>
+> *baixados*
+>
+> *15733*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2011*
+>
+> *baixados*
+>
+> *9989*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2011*
+>
+> *Pendentes*
+>
+> *7282*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2011*
+>
+> *Pendentes*
+>
+> *6819*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2011*
+>
+> *Pendentes*
+>
+> *5420*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2011*
+>
+> *novos*
+>
+> *4635*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2011*
+>
+> *novos*
+>
+> *4270*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2011*
+>
+> *novos*
+>
+> *4125*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2012*
+>
+> *baixados*
+>
+> *82332*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2012*
+>
+> *baixados*
+>
+> *15734*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2012*
+>
+> *baixados*
+>
+> *9990*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2012*
+>
+> *Pendentes*
+>
+> *7283*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2012*
+>
+> *Pendentes*
+>
+> *6820*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2012*
+>
+> *Pendentes*
+>
+> *5421*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *2012*
+>
+> *novos*
+>
+> *4636*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *2012*
+>
+> *novos*
+>
+> *4271*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *2012*
+>
+> *novos*
+>
+> *4126*
+>
+>
+>
+>
+> Gostaria que ficasse assim:
+>
+>
+>
+> *cidade*
+>
+> *parcela2*
+>
+> *parcela3*
+>
+> *baixados_2011*
+>
+> *baixados_2012*
+>
+> *Pendentes_2011*
+>
+> *Pendentes_2012*
+>
+> *novos_2011*
+>
+> *novos_2012*
+>
+> *GOIÂNIA*
+>
+> *Ana*
+>
+> *serv*
+>
+> *82331*
+>
+> *82332*
+>
+> *7282*
+>
+> *7283*
+>
+> *4635*
+>
+> *4636*
+>
+> *GOIÂNIA*
+>
+> *Paulo*
+>
+> *terc*
+>
+> *15733*
+>
+> *15734*
+>
+> *6819*
+>
+> *6820*
+>
+> *4636*
+>
+> *4271*
+>
+> *ANÁPOLIS*
+>
+> *Roberto*
+>
+> *serv*
+>
+> *9989*
+>
+> *9990*
+>
+> *5420*
+>
+> *5421*
+>
+> *4125*
+>
+> *4126*
+>
+>
+>
+> Obrigado.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+
+-- 
+
+Luís G. Silva e Silva
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170418/4cf30447/attachment.html>
+
+From ecacarva em gmail.com  Wed Apr 19 00:34:50 2017
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Wed, 19 Apr 2017 00:34:50 -0300
+Subject: [R-br] Como escolher o melhor conjunto de dados imputador no MICE
+Message-ID: <CAH8E6UuWYW_xG_OKU0ft=UNWOFODNWX-c8e0kzxbi_qzV43xSw@mail.gmail.com>
+
+Usando o pacote mice fiz o seguinte teste (imputação de dados):
+
+imp <- mice(nhanes)
+
+Isso gerou 5 conjuntos de dados imputados:
+
+imp$imp$bmi
+
+
+
+​​
+
+Eu gostaria de entender como escolher o melhor dataset imputado
+
+Por exemplo, para bmi (acima) qual das 5 colunas será a melhor escolha?
+
+Eu achei vários exemplos usando regressão logistica, mas eu não vou rodar
+uma regressão logistica, vou usar os dados para criar uma rede bayesiana.
+
+Alguém poderia me ajudar por favor?
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170419/6bf0c555/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Captura de tela de 2017-04-19 00-30-32.png
+Tipo: image/png
+Tamanho: 14828 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170419/6bf0c555/attachment.png>
+
+From profiack em gmail.com  Wed Apr 19 12:28:23 2017
+From: profiack em gmail.com (Cleber Iack)
+Date: Wed, 19 Apr 2017 16:28:23 +0100
+Subject: [R-br] =?utf-8?q?Inclus=C3=A3o_de_estrutura_de_correla=C3=A7?=
+	=?utf-8?b?w6NvIGZ1bsOnw6NvIGdsbWVyIGRvIHBhY290ZSBsbWU0?=
+Message-ID: <CAM-sWA10W6U1tBfa=XOYt5ssgJpX1VvepgWU2yX6+9Rm=OvJmQ@mail.gmail.com>
+
+Prezados
+
+Eu estou utilizando a função glmer do pacote lme4 do R. A minha resposta é
+binomial.
+
+No Pacote bild, eu posso utilizar a opção Mc1 ou MC2 para estruturas de
+correlação, tendo em vista os meus dados serem longitudinais.
+
+Há alguma maneira de utilizando a funçao glmer, poder incluir esta
+estrutura?
+
+
+Obrigado
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170419/83823f2a/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Apr 19 19:01:36 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 19 Apr 2017 19:01:36 -0300
+Subject: [R-br] =?utf-8?q?Inclus=C3=A3o_de_estrutura_de_correla=C3=A7?=
+	=?utf-8?b?w6NvIGZ1bsOnw6NvIGdsbWVyIGRvIHBhY290ZSBsbWU0?=
+In-Reply-To: <CAM-sWA10W6U1tBfa=XOYt5ssgJpX1VvepgWU2yX6+9Rm=OvJmQ@mail.gmail.com>
+References: <CAM-sWA10W6U1tBfa=XOYt5ssgJpX1VvepgWU2yX6+9Rm=OvJmQ@mail.gmail.com>
+Message-ID: <CAFU=EkYUxs6Lpq1PBoaawhYmGaivAVgs1DyHjcrBVW6Cjp=bxA@mail.gmail.com>
+
+Cleber,
+
+Leia a documentação da função. Espera-se que isso esteja descrito lá.
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170419/06793063/attachment.html>
+
+From profiack em gmail.com  Wed Apr 19 19:25:32 2017
+From: profiack em gmail.com (Cleber Iack)
+Date: Wed, 19 Apr 2017 23:25:32 +0100
+Subject: [R-br] =?utf-8?q?Inclus=C3=A3o_de_estrutura_de_correla=C3=A7?=
+	=?utf-8?b?w6NvIGZ1bsOnw6NvIGdsbWVyIGRvIHBhY290ZSBsbWU0?=
+In-Reply-To: <CAFU=EkYUxs6Lpq1PBoaawhYmGaivAVgs1DyHjcrBVW6Cjp=bxA@mail.gmail.com>
+References: <CAM-sWA10W6U1tBfa=XOYt5ssgJpX1VvepgWU2yX6+9Rm=OvJmQ@mail.gmail.com>
+ <CAFU=EkYUxs6Lpq1PBoaawhYmGaivAVgs1DyHjcrBVW6Cjp=bxA@mail.gmail.com>
+Message-ID: <CAM-sWA0UT_1Vu6yGrQ_BO4cdPYxTE9h4MTHxTcAb_qssK5+fEg@mail.gmail.com>
+
+Prezado Walmes,
+
+Agradeço a atencao dispensada.
+
+Ja li, por nao ter encontrado a resposta que eu enviei a pergunta ao grupo.
+
+Cumprimentos
+
+Cleber
+
+
+Em 19 de abr de 2017 23:01, "Walmes Zeviani" <walmeszeviani em gmail.com>
+escreveu:
+
+Cleber,
+
+Leia a documentação da função. Espera-se que isso esteja descrito lá.
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170419/d8a2de6a/attachment.html>
+
+From rosiana.alves em embrapa.br  Wed Apr 19 22:22:55 2017
+From: rosiana.alves em embrapa.br (ROSIANA RODRIGUES ALVES)
+Date: Wed, 19 Apr 2017 22:22:55 -0300 (BRT)
+Subject: [R-br] Experimento em faixa com medidas repetidas no tempo
+In-Reply-To: <mailman.9.1492614017.24793.r-br@listas.c3sl.ufpr.br>
+Message-ID: <707296412.1203509.1492651375455.JavaMail.root@embrapa.br>
+
+Boa noite, 
+
+
+Tenho que analisar um experimento e estou com duvidas como analisar. Os experimento teve o objetivo de avaliar a produção e qualidade de matéria seca de uma pastagem ao longo de um ano, que foi conduzida em piquetes com duas alturas de pastejo e três lâminas de irrigação. Dois fatores (Altura de pastejo e Laminas de irrigação). Devido a dificuldade de casualização das laminas de irrigação o experimento foi conduzido em faixas. Já analisei e experimentos em faixa, e experimentos com medida repetida mas os dois ao mesmo tempo, nunca analisei, peço ajuda de alguém que já fez esse tipo de analise para me passar umas dicas. 
+
+Abraços 
+
+
+
+Rosiana Rodrig ues Alves 
+Estat ística e Experi mentação Agropecuária 
+
+Em brapa Pesca e Aquicu ltura 
+
+Empresa Brasileira de Pesquisa Agropecuária (Embrapa) 
+Palmas/TO 
+
++55 (63) 3229-7805/7800 | Skype: cnpasa.rosiana 
+
+http://cnpasa.sede.embrapa.br | twitter.com/embrapa 
+Confira também: www.facebook.com/agrosustentavel 
+
+
+----- Mensagem original -----
+
+De: r-br-request em listas.c3sl.ufpr.br 
+Para: r-br em listas.c3sl.ufpr.br 
+Enviadas: Quarta-feira, 19 de abril de 2017 12:00:17 
+Assunto: Digest R-br, volume 76, assunto 13 
+
+Enviar submissões para a lista de discussão R-br para 
+r-br em listas.c3sl.ufpr.br 
+
+Para se cadastrar ou descadastrar via WWW, visite o endereço 
+https://imsva91-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=https%3a%2f%2flistas.inf.ufpr.br%2fcgi%2dbin%2fmailman%2flistinfo%2fr%2dbr&umid=F47AEA70-4D86-4905-9B4E-B32144718AC3&auth=21f1be4651a15dc98d8fa3d0e3c599b318018b6d-67f6e146dd7c4249ec8c7e43937800b81d4219f0 
+ou, via email, envie uma mensagem com a palavra 'help' no assunto ou 
+corpo da mensagem para 
+r-br-request em listas.c3sl.ufpr.br 
+
+Você poderá entrar em contato com a pessoa que gerencia a lista pelo 
+endereço 
+r-br-owner em listas.c3sl.ufpr.br 
+
+Quando responder, por favor edite sua linha Assunto assim ela será 
+mais específica que "Re: Contents of R-br digest..." 
+
+
+Tópicos de Hoje: 
+
+1. Re: Banco de Dados - Linhas e Colunas (Luis G. S. e Silva) 
+2. Como escolher o melhor conjunto de dados imputador no MICE 
+(Elias Carvalho) 
+
+
+---------------------------------------------------------------------- 
+
+Message: 1 
+Date: Tue, 18 Apr 2017 20:29:01 +0000 
+From: "Luis G. S. e Silva" <lgsilvaesilva em gmail.com> 
+To: jose gomes de souza filho Gomes <zegomesufg em gmail.com>, a lista 
+Brasileira oficial de discussão do programa R. 
+<r-br em listas.c3sl.ufpr.br> 
+Subject: Re: [R-br] Banco de Dados - Linhas e Colunas 
+Message-ID: 
+<CALruoAEa75fUUwPbBtwmm+cxcZAk-YCXdU5m1uecviqUKLdsdw em mail.gmail.com> 
+Content-Type: text/plain; charset="utf-8" 
+
+require(reshape2) 
+dados <- read.csv2('dadosg.csv', encoding = 'latin1') 
+dcast(cidade+parcela2+parcela3~item+ano, value.var = 'quantidade', data = 
+dados) 
+
+
+On Tue, Apr 18, 2017 at 4:27 PM jose gomes de souza filho Gomes via R-br < 
+r-br em listas.c3sl.ufpr.br> wrote: 
+
+> Boa tarde, 
+> 
+> Tem o seguinte banco de dados 
+> 
+> base de dados: 
+> https://imsva91-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=https%3a%2f%2fwww.datafilehost.com%2fd%2f6c117eac&umid=F47AEA70-4D86-4905-9B4E-B32144718AC3&auth=21f1be4651a15dc98d8fa3d0e3c599b318018b6d-aa04375c4de8fd8699473d93594530bf2e6bb6fd 
+> 
+> *cidade* 
+> 
+> *parcela2* 
+> 
+> *parcela3* 
+> 
+> *ano* 
+> 
+> *item* 
+> 
+> *quantidade* 
+> 
+> *GOIÂNIA* 
+> 
+> *Ana* 
+> 
+> *serv* 
+> 
+> *2011* 
+> 
+> *baixados* 
+> 
+> *82331* 
+> 
+> *GOIÂNIA* 
+> 
+> *Paulo* 
+> 
+> *terc* 
+> 
+> *2011* 
+> 
+> *baixados* 
+> 
+> *15733* 
+> 
+> *ANÁPOLIS* 
+> 
+> *Roberto* 
+> 
+> *serv* 
+> 
+> *2011* 
+> 
+> *baixados* 
+> 
+> *9989* 
+> 
+> *GOIÂNIA* 
+> 
+> *Ana* 
+> 
+> *serv* 
+> 
+> *2011* 
+> 
+> *Pendentes* 
+> 
+> *7282* 
+> 
+> *GOIÂNIA* 
+> 
+> *Paulo* 
+> 
+> *terc* 
+> 
+> *2011* 
+> 
+> *Pendentes* 
+> 
+> *6819* 
+> 
+> *ANÁPOLIS* 
+> 
+> *Roberto* 
+> 
+> *serv* 
+> 
+> *2011* 
+> 
+> *Pendentes* 
+> 
+> *5420* 
+> 
+> *GOIÂNIA* 
+> 
+> *Ana* 
+> 
+> *serv* 
+> 
+> *2011* 
+> 
+> *novos* 
+> 
+> *4635* 
+> 
+> *GOIÂNIA* 
+> 
+> *Paulo* 
+> 
+> *terc* 
+> 
+> *2011* 
+> 
+> *novos* 
+> 
+> *4270* 
+> 
+> *ANÁPOLIS* 
+> 
+> *Roberto* 
+> 
+> *serv* 
+> 
+> *2011* 
+> 
+> *novos* 
+> 
+> *4125* 
+> 
+> *GOIÂNIA* 
+> 
+> *Ana* 
+> 
+> *serv* 
+> 
+> *2012* 
+> 
+> *baixados* 
+> 
+> *82332* 
+> 
+> *GOIÂNIA* 
+> 
+> *Paulo* 
+> 
+> *terc* 
+> 
+> *2012* 
+> 
+> *baixados* 
+> 
+> *15734* 
+> 
+> *ANÁPOLIS* 
+> 
+> *Roberto* 
+> 
+> *serv* 
+> 
+> *2012* 
+> 
+> *baixados* 
+> 
+> *9990* 
+> 
+> *GOIÂNIA* 
+> 
+> *Ana* 
+> 
+> *serv* 
+> 
+> *2012* 
+> 
+> *Pendentes* 
+> 
+> *7283* 
+> 
+> *GOIÂNIA* 
+> 
+> *Paulo* 
+> 
+> *terc* 
+> 
+> *2012* 
+> 
+> *Pendentes* 
+> 
+> *6820* 
+> 
+> *ANÁPOLIS* 
+> 
+> *Roberto* 
+> 
+> *serv* 
+> 
+> *2012* 
+> 
+> *Pendentes* 
+> 
+> *5421* 
+> 
+> *GOIÂNIA* 
+> 
+> *Ana* 
+> 
+> *serv* 
+> 
+> *2012* 
+> 
+> *novos* 
+> 
+> *4636* 
+> 
+> *GOIÂNIA* 
+> 
+> *Paulo* 
+> 
+> *terc* 
+> 
+> *2012* 
+> 
+> *novos* 
+> 
+> *4271* 
+> 
+> *ANÁPOLIS* 
+> 
+> *Roberto* 
+> 
+> *serv* 
+> 
+> *2012* 
+> 
+> *novos* 
+> 
+> *4126* 
+> 
+> 
+> 
+> 
+> Gostaria que ficasse assim: 
+> 
+> 
+> 
+> *cidade* 
+> 
+> *parcela2* 
+> 
+> *parcela3* 
+> 
+> *baixados_2011* 
+> 
+> *baixados_2012* 
+> 
+> *Pendentes_2011* 
+> 
+> *Pendentes_2012* 
+> 
+> *novos_2011* 
+> 
+> *novos_2012* 
+> 
+> *GOIÂNIA* 
+> 
+> *Ana* 
+> 
+> *serv* 
+> 
+> *82331* 
+> 
+> *82332* 
+> 
+> *7282* 
+> 
+> *7283* 
+> 
+> *4635* 
+> 
+> *4636* 
+> 
+> *GOIÂNIA* 
+> 
+> *Paulo* 
+> 
+> *terc* 
+> 
+> *15733* 
+> 
+> *15734* 
+> 
+> *6819* 
+> 
+> *6820* 
+> 
+> *4636* 
+> 
+> *4271* 
+> 
+> *ANÁPOLIS* 
+> 
+> *Roberto* 
+> 
+> *serv* 
+> 
+> *9989* 
+> 
+> *9990* 
+> 
+> *5420* 
+> 
+> *5421* 
+> 
+> *4125* 
+> 
+> *4126* 
+> 
+> 
+> 
+> Obrigado. 
+> _______________________________________________ 
+> R-br mailing list 
+> R-br em listas.c3sl.ufpr.br 
+> https://imsva91-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=https%3a%2f%2flistas.inf.ufpr.br%2fcgi%2dbin%2fmailman%2flistinfo%2fr%2dbr&umid=F47AEA70-4D86-4905-9B4E-B32144718AC3&auth=21f1be4651a15dc98d8fa3d0e3c599b318018b6d-67f6e146dd7c4249ec8c7e43937800b81d4219f0 
+> Leia o guia de postagem (https://imsva91-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=http%3a%2f%2fwww.leg.ufpr.br%2fr%2dbr%2dguia%29&umid=F47AEA70-4D86-4905-9B4E-B32144718AC3&auth=21f1be4651a15dc98d8fa3d0e3c599b318018b6d-fa4d9cd503f47c252bcde108a65416bcf539bf49 e forneça 
+> código mínimo reproduzível. 
+
+-- 
+
+Luís G. Silva e Silva 
+-------------- Próxima Parte ---------- 
+Um anexo em HTML foi limpo... 
+URL: <https://imsva91-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=http%3a%2f%2flistas.inf.ufpr.br%2fpipermail%2fr%2dbr%2fattachments%2f20170418%2f4cf30447%2fattachment%2d0001.html%3e&umid=F47AEA70-4D86-4905-9B4E-B32144718AC3&auth=21f1be4651a15dc98d8fa3d0e3c599b318018b6d-fe1a37cf14c637baf81b9380995d80d787f00952 
+
+------------------------------ 
+
+Message: 2 
+Date: Wed, 19 Apr 2017 00:34:50 -0300 
+From: Elias Carvalho <ecacarva em gmail.com> 
+To: a lista Brasileira oficial de discussão do programa R. 
+<r-br em listas.c3sl.ufpr.br> 
+Subject: [R-br] Como escolher o melhor conjunto de dados imputador no 
+MICE 
+Message-ID: 
+<CAH8E6UuWYW_xG_OKU0ft=UNWOFODNWX-c8e0kzxbi_qzV43xSw em mail.gmail.com> 
+Content-Type: text/plain; charset="utf-8" 
+
+Usando o pacote mice fiz o seguinte teste (imputação de dados): 
+
+imp <- mice(nhanes) 
+
+Isso gerou 5 conjuntos de dados imputados: 
+
+imp$imp$bmi 
+
+
+
+​​ 
+
+Eu gostaria de entender como escolher o melhor dataset imputado 
+
+Por exemplo, para bmi (acima) qual das 5 colunas será a melhor escolha? 
+
+Eu achei vários exemplos usando regressão logistica, mas eu não vou rodar 
+uma regressão logistica, vou usar os dados para criar uma rede bayesiana. 
+
+Alguém poderia me ajudar por favor? 
+-- 
+
+
+*In Jesu et Maria* 
+*Obrigado* 
+*Prof. Elias Carvalho* 
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he 
+who has been able to understand the cause of things"* 
+-------------- Próxima Parte ---------- 
+Um anexo em HTML foi limpo... 
+URL: <https://imsva91-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=http%3a%2f%2flistas.inf.ufpr.br%2fpipermail%2fr%2dbr%2fattachments%2f20170419%2f6bf0c555%2fattachment%2d0001.html%3e&umid=F47AEA70-4D86-4905-9B4E-B32144718AC3&auth=21f1be4651a15dc98d8fa3d0e3c599b318018b6d-82f0d07b7cec3bb7ea8a76e6dd9b3623c39358c1 
+-------------- Próxima Parte ---------- 
+Um anexo não-texto foi limpo... 
+Nome: Captura de tela de 2017-04-19 00-30-32.png 
+Tipo: image/png 
+Tamanho: 14828 bytes 
+Descrição: não disponível 
+URL: <https://imsva91-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=http%3a%2f%2flistas.inf.ufpr.br%2fpipermail%2fr%2dbr%2fattachments%2f20170419%2f6bf0c555%2fattachment%2d0001.png%3e&umid=F47AEA70-4D86-4905-9B4E-B32144718AC3&auth=21f1be4651a15dc98d8fa3d0e3c599b318018b6d-9cc7f723859d6242b5982ed5dea1d5eff001a1c7 
+
+------------------------------ 
+
+Subject: Legenda do Digest 
+
+_______________________________________________ 
+R-br mailing list 
+R-br em listas.c3sl.ufpr.br 
+https://imsva91-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=https%3a%2f%2flistas.inf.ufpr.br%2fcgi%2dbin%2fmailman%2flistinfo%2fr%2dbr&umid=F47AEA70-4D86-4905-9B4E-B32144718AC3&auth=21f1be4651a15dc98d8fa3d0e3c599b318018b6d-67f6e146dd7c4249ec8c7e43937800b81d4219f0 
+
+
+------------------------------ 
+
+Fim da Digest R-br, volume 76, assunto 13 
+***************************************** 
+
+
+____________________________________________________________________________
+Aviso de confidencialidade 
+
+Esta mensagem da Empresa  Brasileira de Pesquisa  Agropecuaria  (Embrapa),
+empresa publica federal  regida pelo disposto  na Lei Federal no. 5.851,  de
+7 de dezembro de 1972,  e  enviada exclusivamente  a seu destinatario e pode
+conter informacoes  confidenciais, protegidas  por sigilo profissional.  Sua
+utilizacao desautorizada  e ilegal e  sujeita o infrator as penas da lei. Se
+voce  a recebeu indevidamente, queira, por gentileza, reenvia-la ao emitente,
+esclarecendo o equivoco.
+
+Confidentiality note
+
+This message from Empresa  Brasileira de Pesquisa  Agropecuaria  (Embrapa), a
+government company  established under  Brazilian law  (5.851/72), is directed
+exclusively to  its addressee  and may contain  confidential data,  protected
+under  professional secrecy  rules. Its unauthorized  use is illegal and  may
+subject the transgressor to the law's penalties. If you are not the addressee,
+please send it back, elucidating the failure.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170419/b749a27a/attachment.html>
+
+From walmeszeviani em gmail.com  Thu Apr 20 00:24:24 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Thu, 20 Apr 2017 00:24:24 -0300
+Subject: [R-br] Experimento em faixa com medidas repetidas no tempo
+In-Reply-To: <707296412.1203509.1492651375455.JavaMail.root@embrapa.br>
+References: <mailman.9.1492614017.24793.r-br@listas.c3sl.ufpr.br>
+ <707296412.1203509.1492651375455.JavaMail.root@embrapa.br>
+Message-ID: <CAFU=Ekb4+29cycNOihhVJ9-cGYL-9kGviqzWwbvKkmsg12jd7g@mail.gmail.com>
+
+Rosiana,
+
+É possível você fornecer um código mínimo reproduzível para servir de ponto
+de partida? O experimento é em blocos onde as faixas de lâmina foram
+casualizadas primeiro e depois as faixas de altura de pastejo no sentido
+perpendicular, sendo isso refeito em cada bloco (blocos são repetições
+genuínas)? Ou por faixa você quer dizer que o experimento teve apenas uma
+unidade experimental para cada lâmina (então 3 faixões) e as repetições são
+fatias dessa faixa (pseudo repetição) onde foi casualizada a altura de
+pastejo? As medidas feitas ao longo do tempo são feixas sempre juntas para
+todas as parcelas, ou seja, é balanceado no tempo?
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170420/d1891b10/attachment.html>
+
+From paulons em gmail.com  Thu Apr 20 14:42:46 2017
+From: paulons em gmail.com (Paulo Nogueira Starzynski)
+Date: Thu, 20 Apr 2017 14:42:46 -0300
+Subject: [R-br] =?utf-8?q?Interface_para_usu=C3=A1rio_realizar_chamada_de_?=
+	=?utf-8?b?ZnVuw6fDo28gZW0gUg==?=
+Message-ID: <CAN=WoTMRNuP8YXthMyHYf_ZXVbgLdJ0Yn45+uSok__B2XYprkQ@mail.gmail.com>
+
+Olá colegas de lista.
+Gostaria da opinião de vocês com relação a algo que envolve R, mas não
+apenas ele.
+
+Desenvolvi em R um código que automatiza alguns processos. Todo o trabalho
+foi encapsulado dentro de uma função principal (aqui chamada de
+*realiza.consulta*), que recebe um parâmetro com as configurações
+informando o que deve ser feito.
+
+Criei algo parecido para exemplificar:
+
+#
+# "Painel de Controle" do Usuário
+#
+configuracoes <- list(
+
+  idUser <- 'usuario',
+  idPassword <- 'senha123',
+
+  consultas <- list(c("info1", "todos"),
+                    c("info2", "apenas alguns"),
+                    c("info3", NA),
+                    c("info4", "opcao1", "opcao2")
+                    )
+)
+
+
+#
+# Excucao do PROGRAMA PRINCIPAL
+source("/codigos.R")
+realiza.consulta(configuracoes)
+
+
+Como vocês podem ver, as configurações ficam armazenadas em um objeto do
+tipo lista, que é passado para a função principal. É de responsabilidade do
+usuário criar esse objeto e chamar a função realiza.consulta.
+
+A questão é que eu gostaria de desenvolver uma "máscara" para esse
+processo, onde os usuários informariam tais configurações e clicariam em um
+botão para iniciar o procedimento, sem ter de abrir o R ou RStudio.
+
+Vocês já fizeram algo semelhante para poder dividir o conhecimento?
+
+Abraços,
+Paulo
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170420/d6a9939b/attachment.html>
+
+From fernandohtoledo em gmail.com  Thu Apr 20 15:17:18 2017
+From: fernandohtoledo em gmail.com (FHRB Toledo)
+Date: Thu, 20 Apr 2017 13:17:18 -0500
+Subject: [R-br]
+	=?utf-8?q?Interface_para_usu=C3=A1rio_realizar_chamada_de_?=
+	=?utf-8?b?ZnVuw6fDo28gZW0gUg==?=
+In-Reply-To: <CAN=WoTMRNuP8YXthMyHYf_ZXVbgLdJ0Yn45+uSok__B2XYprkQ@mail.gmail.com>
+References: <CAN=WoTMRNuP8YXthMyHYf_ZXVbgLdJ0Yn45+uSok__B2XYprkQ@mail.gmail.com>
+Message-ID: <CAN55XP7fM_91vzUfWrujWyF1Lm1uddh3JmRmc5DDRjVKd6Kh0Q@mail.gmail.com>
+
+Infinitas possibilidades podem ser feitas... minha sugestão seria você
+tentar algo como:
+
+http://dirk.eddelbuettel.com/code/rinside.html
+
+Att,
+FH
+
+2017-04-20 12:42 GMT-05:00 Paulo Nogueira Starzynski via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Olá colegas de lista.
+> Gostaria da opinião de vocês com relação a algo que envolve R, mas não
+> apenas ele.
+>
+> Desenvolvi em R um código que automatiza alguns processos. Todo o trabalho
+> foi encapsulado dentro de uma função principal (aqui chamada de
+> *realiza.consulta*), que recebe um parâmetro com as configurações
+> informando o que deve ser feito.
+>
+> Criei algo parecido para exemplificar:
+>
+> #
+> # "Painel de Controle" do Usuário
+> #
+> configuracoes <- list(
+>
+>   idUser <- 'usuario',
+>   idPassword <- 'senha123',
+>
+>   consultas <- list(c("info1", "todos"),
+>                     c("info2", "apenas alguns"),
+>                     c("info3", NA),
+>                     c("info4", "opcao1", "opcao2")
+>                     )
+> )
+>
+>
+> #
+> # Excucao do PROGRAMA PRINCIPAL
+> source("/codigos.R")
+> realiza.consulta(configuracoes)
+>
+>
+> Como vocês podem ver, as configurações ficam armazenadas em um objeto do
+> tipo lista, que é passado para a função principal. É de responsabilidade do
+> usuário criar esse objeto e chamar a função realiza.consulta.
+>
+> A questão é que eu gostaria de desenvolver uma "máscara" para esse
+> processo, onde os usuários informariam tais configurações e clicariam em um
+> botão para iniciar o procedimento, sem ter de abrir o R ou RStudio.
+>
+> Vocês já fizeram algo semelhante para poder dividir o conhecimento?
+>
+> Abraços,
+> Paulo
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170420/a415fa47/attachment.html>
+
+From walmeszeviani em gmail.com  Thu Apr 20 15:43:28 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Thu, 20 Apr 2017 15:43:28 -0300
+Subject: [R-br]
+	=?utf-8?q?Interface_para_usu=C3=A1rio_realizar_chamada_de_?=
+	=?utf-8?b?ZnVuw6fDo28gZW0gUg==?=
+In-Reply-To: <CAN55XP7fM_91vzUfWrujWyF1Lm1uddh3JmRmc5DDRjVKd6Kh0Q@mail.gmail.com>
+References: <CAN=WoTMRNuP8YXthMyHYf_ZXVbgLdJ0Yn45+uSok__B2XYprkQ@mail.gmail.com>
+ <CAN55XP7fM_91vzUfWrujWyF1Lm1uddh3JmRmc5DDRjVKd6Kh0Q@mail.gmail.com>
+Message-ID: <CAFU=EkZD-UeHk_Xaa1d20vfACTUU4C4a5g0n6C6zxYZ1BoRB6A@mail.gmail.com>
+
+Como o Fernando disse, são infinitas possibilidades.
+
+Recomendo que consulte o TCC do Raffael da Silva Nagel que comparou algumas
+alternativas.
+
+Raffael da Silva Nagel - *Comparação de Alternativas de Implementação de
+Interfaces de Usuário para Aplicações em R*:
+http://www.lume.ufrgs.br/handle/10183/126049
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170420/fb78c6e3/attachment.html>
+
+From paulons em gmail.com  Thu Apr 20 17:09:37 2017
+From: paulons em gmail.com (Paulo Nogueira Starzynski)
+Date: Thu, 20 Apr 2017 17:09:37 -0300
+Subject: [R-br]
+	=?utf-8?q?Interface_para_usu=C3=A1rio_realizar_chamada_de_?=
+	=?utf-8?b?ZnVuw6fDo28gZW0gUg==?=
+In-Reply-To: <CAFU=EkZD-UeHk_Xaa1d20vfACTUU4C4a5g0n6C6zxYZ1BoRB6A@mail.gmail.com>
+References: <CAN=WoTMRNuP8YXthMyHYf_ZXVbgLdJ0Yn45+uSok__B2XYprkQ@mail.gmail.com>
+ <CAN55XP7fM_91vzUfWrujWyF1Lm1uddh3JmRmc5DDRjVKd6Kh0Q@mail.gmail.com>
+ <CAFU=EkZD-UeHk_Xaa1d20vfACTUU4C4a5g0n6C6zxYZ1BoRB6A@mail.gmail.com>
+Message-ID: <CAN=WoTMaKesrCNpAKpiEwmhLBQFS0pmZ9j3UKNMS=BUEEru=4w@mail.gmail.com>
+
+Fernando e Walmes,
+grato pelos apontamentos. A partir deles vou investigar as possibilidades.
+
+Muito obrigado.
+
+
+
+Abraços,
+Paulo
+
+Em 20 de abril de 2017 15:43, Walmes Zeviani <walmeszeviani em gmail.com>
+escreveu:
+
+> Como o Fernando disse, são infinitas possibilidades.
+>
+> Recomendo que consulte o TCC do Raffael da Silva Nagel que comparou
+> algumas alternativas.
+>
+> Raffael da Silva Nagel - *Comparação de Alternativas de Implementação de
+> Interfaces de Usuário para Aplicações em R*: http://www.lume.ufrgs.br/
+> handle/10183/126049
+>
+> À disposição.
+> Walmes.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170420/487f25f6/attachment.html>
+
+From laurateixeira1111 em gmail.com  Thu Apr 20 17:20:47 2017
+From: laurateixeira1111 em gmail.com (Laura Teixeira Rocha)
+Date: Thu, 20 Apr 2017 17:20:47 -0300
+Subject: [R-br] =?utf-8?q?_Plotar_linhas_em_gr=C3=A1fico_3d_no_R?=
+Message-ID: <CAACHSSO7KwfLNj+q416ojkV3mvxzQdtHTA+yJTULYdvY3hAE-g@mail.gmail.com>
+
+Possuo um gráfico de dispersão 3d realizado com duas funções no R, a função
+'plotly' e a ''scatterplot3d'. Os gráficos podem ser reproduzidos através
+do código:
+
+x <- c(0,50,100,150,200,250,300,350,400,450)
+y <- c(0,50,100,150,200,250,300,350,400,450)
+z <- c(1,2,1,1,2,1,2,1,2,1)
+plot_ly(x=x,y=y,z=z)
+scatterplot3d(x, y, z)
+
+Se possível, para ambas as funções, gostaria de saber como posso plotar, no
+plano deste gráfico, duas retas cortando o eixo x e duas retas cortando o
+eixo y, de modo que essas retas se encontrem no plano, formando uma região
+de intersecção entre as duas.
+
+Além disso, gostaria de saber se é possível preencher/ressaltar essa área
+de encontro com alguma cor.
+
+Muito obrigada! Laura.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170420/9668c2bc/attachment.html>
+
+From ecacarva em gmail.com  Thu Apr 20 20:30:28 2017
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Thu, 20 Apr 2017 20:30:28 -0300
+Subject: [R-br] =?utf-8?q?Extrair_P-value_do_resultado_de_uma_imputa=C3=A7?=
+	=?utf-8?q?=C3=A3o_com_MICE?=
+Message-ID: <CAH8E6Us8Fu55EMmJkkKeRbAUkfHQfoHqrJKNEvtL2_QhJUZUnA@mail.gmail.com>
+
+Boa noite pessoal
+
+Estou testando o pacote mice para fazer imputação múltipla de dados
+missing, conforme exemplo:
+
+library(mice)
+
+imp <- mice(nhanes2)
+fit <- with(imp, lm(chl~age+bmi))
+
+summary(fit)
+
+O resultado se resume em:
+
+ ## summary of imputation 1 :
+
+Call:
+lm(formula = chl ~ age + bmi)
+
+Residuals:
+   Min     1Q Median     3Q    Max
+-46.37 -19.23 -11.24  12.66  83.69
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept)   32.134     53.202   0.604  0.55232
+age2          49.058     18.153   2.702  0.01334 *
+age3          62.837     19.886   3.160  0.00472 **
+bmi            4.907      1.795   2.733  0.01246 *
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 34.89 on 21 degrees of freedom
+Multiple R-squared:  0.3835,	Adjusted R-squared:  0.2954
+F-statistic: 4.354 on 3 and 21 DF,  p-value: 0.01557
+
+
+​Eu gostaria de extrair o p-value: 0.01557 dessa estrutura, mas não
+consegui com os métodos convencionais, pois a estrutura parece diferente da
+estrutura gerada por um lm ou glm.
+
+Alguém poderia me ajudar
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170420/4fe442ad/attachment.html>
+
+From sznelwar em uol.com.br  Fri Apr 21 01:29:17 2017
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Fri, 21 Apr 2017 01:29:17 -0300
+Subject: [R-br] =?utf-8?q?Plotar_linhas_em_gr=C3=A1fico_3d_no_R?=
+In-Reply-To: ["CAACHSSO7KwfLNj+q416ojkV3mvxzQdtHTA+yJTULYdvY3hAE-g@mail.gmail.com"]
+References: ["CAACHSSO7KwfLNj+q416ojkV3mvxzQdtHTA+yJTULYdvY3hAE-g@mail.gmail.com"]
+Message-ID: <58f98a9dbfd1_73ea15b0f8b7b3e47390@a4-weasel6.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170421/c5099849/attachment.html>
+
+From paulons em gmail.com  Fri Apr 21 09:50:29 2017
+From: paulons em gmail.com (Paulo Nogueira Starzynski)
+Date: Fri, 21 Apr 2017 09:50:29 -0300
+Subject: [R-br]
+	=?utf-8?q?Extrair_P-value_do_resultado_de_uma_imputa=C3=A7?=
+	=?utf-8?q?=C3=A3o_com_MICE?=
+In-Reply-To: <CAH8E6Us8Fu55EMmJkkKeRbAUkfHQfoHqrJKNEvtL2_QhJUZUnA@mail.gmail.com>
+References: <CAH8E6Us8Fu55EMmJkkKeRbAUkfHQfoHqrJKNEvtL2_QhJUZUnA@mail.gmail.com>
+Message-ID: <CAN=WoTN6Y3-r66UFFJCuxkd9Jtc5xZJhYyOQ3-1waRz8iaHkxw@mail.gmail.com>
+
+Bom dia Elias.
+Consegui extrair os valores pra depois consultar a distribuição F.
+Veja abaixo.
+
+imp <- mice(nhanes2)
+fit <- with(imp, lm(chl~age+bmi))
+summary(fit)
+
+tam1 <- length(fit)
+tam2 <- length(fit[[4]])
+s <- summary(fit[[tam1]][[tam2]])
+p.value <- 1 - pf(q = s$fstatistic["value"], df1 = s$fstatistic["numdf"],
+df2 = s$fstatistic["dendf"])
+p.value
+
+
+Abraços,
+Paulo
+
+2017-04-20 20:30 GMT-03:00 Elias Carvalho via R-br <r-br em listas.c3sl.ufpr.br
+>:
+
+> Boa noite pessoal
+>
+> Estou testando o pacote mice para fazer imputação múltipla de dados
+> missing, conforme exemplo:
+>
+> library(mice)
+>
+> imp <- mice(nhanes2)
+> fit <- with(imp, lm(chl~age+bmi))
+>
+> summary(fit)
+>
+> O resultado se resume em:
+>
+>  ## summary of imputation 1 :
+>
+> Call:
+> lm(formula = chl ~ age + bmi)
+>
+> Residuals:
+>    Min     1Q Median     3Q    Max
+> -46.37 -19.23 -11.24  12.66  83.69
+>
+> Coefficients:
+>             Estimate Std. Error t value Pr(>|t|)
+> (Intercept)   32.134     53.202   0.604  0.55232
+> age2          49.058     18.153   2.702  0.01334 *
+> age3          62.837     19.886   3.160  0.00472 **
+> bmi            4.907      1.795   2.733  0.01246 *
+> ---
+> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+>
+> Residual standard error: 34.89 on 21 degrees of freedom
+> Multiple R-squared:  0.3835,	Adjusted R-squared:  0.2954
+> F-statistic: 4.354 on 3 and 21 DF,  p-value: 0.01557
+>
+>
+> ​Eu gostaria de extrair o p-value: 0.01557 dessa estrutura, mas não
+> consegui com os métodos convencionais, pois a estrutura parece diferente da
+> estrutura gerada por um lm ou glm.
+>
+> Alguém poderia me ajudar
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170421/e6eed917/attachment.html>
+
+From paulons em gmail.com  Fri Apr 21 09:51:33 2017
+From: paulons em gmail.com (Paulo Nogueira Starzynski)
+Date: Fri, 21 Apr 2017 09:51:33 -0300
+Subject: [R-br]
+	=?utf-8?q?Extrair_P-value_do_resultado_de_uma_imputa=C3=A7?=
+	=?utf-8?q?=C3=A3o_com_MICE?=
+In-Reply-To: <CAN=WoTN6Y3-r66UFFJCuxkd9Jtc5xZJhYyOQ3-1waRz8iaHkxw@mail.gmail.com>
+References: <CAH8E6Us8Fu55EMmJkkKeRbAUkfHQfoHqrJKNEvtL2_QhJUZUnA@mail.gmail.com>
+ <CAN=WoTN6Y3-r66UFFJCuxkd9Jtc5xZJhYyOQ3-1waRz8iaHkxw@mail.gmail.com>
+Message-ID: <CAN=WoTN11TRHaGsjnRBFHjtiha9ERLEwAy-7hFaj5n_6VyKgag@mail.gmail.com>
+
+esqueci de substituir o valor 4 por tam1... segue abaixo:
+
+
+imp <- mice(nhanes2)
+fit <- with(imp, lm(chl~age+bmi))
+summary(fit)
+
+tam1 <- length(fit)
+tam2 <- length(fit[[tam1]])
+s <- summary(fit[[tam1]][[tam2]])
+p.value <- 1 - pf(q = s$fstatistic["value"], df1 = s$fstatistic["numdf"],
+df2 = s$fstatistic["dendf"])
+p.value
+
+
+Abraços,
+Paulo
+
+Em 21 de abril de 2017 09:50, Paulo Nogueira Starzynski <paulons em gmail.com>
+escreveu:
+
+> Bom dia Elias.
+> Consegui extrair os valores pra depois consultar a distribuição F.
+> Veja abaixo.
+>
+> imp <- mice(nhanes2)
+> fit <- with(imp, lm(chl~age+bmi))
+> summary(fit)
+>
+> tam1 <- length(fit)
+> tam2 <- length(fit[[4]])
+> s <- summary(fit[[tam1]][[tam2]])
+> p.value <- 1 - pf(q = s$fstatistic["value"], df1 = s$fstatistic["numdf"],
+> df2 = s$fstatistic["dendf"])
+> p.value
+>
+>
+> Abraços,
+> Paulo
+>
+> 2017-04-20 20:30 GMT-03:00 Elias Carvalho via R-br <
+> r-br em listas.c3sl.ufpr.br>:
+>
+>> Boa noite pessoal
+>>
+>> Estou testando o pacote mice para fazer imputação múltipla de dados
+>> missing, conforme exemplo:
+>>
+>> library(mice)
+>>
+>> imp <- mice(nhanes2)
+>> fit <- with(imp, lm(chl~age+bmi))
+>>
+>> summary(fit)
+>>
+>> O resultado se resume em:
+>>
+>>  ## summary of imputation 1 :
+>>
+>> Call:
+>> lm(formula = chl ~ age + bmi)
+>>
+>> Residuals:
+>>    Min     1Q Median     3Q    Max
+>> -46.37 -19.23 -11.24  12.66  83.69
+>>
+>> Coefficients:
+>>             Estimate Std. Error t value Pr(>|t|)
+>> (Intercept)   32.134     53.202   0.604  0.55232
+>> age2          49.058     18.153   2.702  0.01334 *
+>> age3          62.837     19.886   3.160  0.00472 **
+>> bmi            4.907      1.795   2.733  0.01246 *
+>> ---
+>> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+>>
+>> Residual standard error: 34.89 on 21 degrees of freedom
+>> Multiple R-squared:  0.3835,	Adjusted R-squared:  0.2954
+>> F-statistic: 4.354 on 3 and 21 DF,  p-value: 0.01557
+>>
+>>
+>> ​Eu gostaria de extrair o p-value: 0.01557 dessa estrutura, mas não
+>> consegui com os métodos convencionais, pois a estrutura parece diferente da
+>> estrutura gerada por um lm ou glm.
+>>
+>> Alguém poderia me ajudar
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria*
+>> *Obrigado*
+>> *Prof. Elias Carvalho*
+>>
+>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+>> who has been able to understand the cause of things"*
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170421/80a56e71/attachment.html>
+
+From ecacarva em gmail.com  Fri Apr 21 10:38:50 2017
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Fri, 21 Apr 2017 10:38:50 -0300
+Subject: [R-br]
+	=?utf-8?q?Extrair_P-value_do_resultado_de_uma_imputa=C3=A7?=
+	=?utf-8?q?=C3=A3o_com_MICE?=
+In-Reply-To: <CAH8E6Us8Fu55EMmJkkKeRbAUkfHQfoHqrJKNEvtL2_QhJUZUnA@mail.gmail.com>
+References: <CAH8E6Us8Fu55EMmJkkKeRbAUkfHQfoHqrJKNEvtL2_QhJUZUnA@mail.gmail.com>
+Message-ID: <CAH8E6UtoPsHeAcz+BPvg_q39HjpH+qUy0gyn2CDk7VATLYSnNQ@mail.gmail.com>
+
+Excelente trabalho Paulo, muitíssimo obrigado, me ajudou muito.
+
+Eu gostaria de conhecer melhor essa estrutura para entender como você
+chegou ai, ontem eu fiquei horas tentando e nada.
+
+Tenho trabalhado com o R a algum tempo, não sou estatístico, sou da
+computação.
+
+Alguma dica de onde estudar isso, ou somente na prática mesmo ?
+
+
+
+2017-04-20 20:30 GMT-03:00 Elias Carvalho <ecacarva em gmail.com>:
+
+> Boa noite pessoal
+>
+> Estou testando o pacote mice para fazer imputação múltipla de dados
+> missing, conforme exemplo:
+>
+> library(mice)
+>
+> imp <- mice(nhanes2)
+> fit <- with(imp, lm(chl~age+bmi))
+>
+> summary(fit)
+>
+> O resultado se resume em:
+>
+>  ## summary of imputation 1 :
+>
+> Call:
+> lm(formula = chl ~ age + bmi)
+>
+> Residuals:
+>    Min     1Q Median     3Q    Max
+> -46.37 -19.23 -11.24  12.66  83.69
+>
+> Coefficients:
+>             Estimate Std. Error t value Pr(>|t|)
+> (Intercept)   32.134     53.202   0.604  0.55232
+> age2          49.058     18.153   2.702  0.01334 *
+> age3          62.837     19.886   3.160  0.00472 **
+> bmi            4.907      1.795   2.733  0.01246 *
+> ---
+> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+>
+> Residual standard error: 34.89 on 21 degrees of freedom
+> Multiple R-squared:  0.3835,	Adjusted R-squared:  0.2954
+> F-statistic: 4.354 on 3 and 21 DF,  p-value: 0.01557
+>
+>
+> ​Eu gostaria de extrair o p-value: 0.01557 dessa estrutura, mas não
+> consegui com os métodos convencionais, pois a estrutura parece diferente da
+> estrutura gerada por um lm ou glm.
+>
+> Alguém poderia me ajudar
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+>
+
+
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170421/71b008a9/attachment.html>
+
+From paulons em gmail.com  Fri Apr 21 10:55:13 2017
+From: paulons em gmail.com (Paulo Nogueira Starzynski)
+Date: Fri, 21 Apr 2017 10:55:13 -0300
+Subject: [R-br]
+	=?utf-8?q?Extrair_P-value_do_resultado_de_uma_imputa=C3=A7?=
+	=?utf-8?q?=C3=A3o_com_MICE?=
+In-Reply-To: <CAH8E6UtoPsHeAcz+BPvg_q39HjpH+qUy0gyn2CDk7VATLYSnNQ@mail.gmail.com>
+References: <CAH8E6Us8Fu55EMmJkkKeRbAUkfHQfoHqrJKNEvtL2_QhJUZUnA@mail.gmail.com>
+ <CAH8E6UtoPsHeAcz+BPvg_q39HjpH+qUy0gyn2CDk7VATLYSnNQ@mail.gmail.com>
+Message-ID: <CAN=WoTPAzBAhYR0KBkNp8wgV++FQqE3tdwNDLoof+KThwfdjkw@mail.gmail.com>
+
+Elias,
+as vezes algumas estruturas são realmente menos intuitivas do que outras.
+Essa por exemplo eu não matei de cara, tive que invetigar um pouco. O lance
+foi perceber que a saída da função summary(fit) era na verdade uma lista
+com 5 "coisas", e você queria o p-valor da última delas.
+
+imp <- mice(nhanes2)
+fit <- with(imp, lm(chl~age+bmi))
+
+summary(fit)
+class(fit) #objeto do tipo *mira* (em geral quando eles são de tipos
+estranhos na verdade eles são listas)
+is.list(fit) #TRUE
+
+length(fit) # 4 objetos na lista
+names(fit) # os nomes deles
+# avaliando cada um deles
+fit$call     # não tem o que precisamos nesse caso
+fit$call1   # não tem o que precisamos nesse caso
+fit$nmis   # não tem o que precisamos nesse caso
+fit$analyses  #  é uma lista, contendo 5 modelos. o último deles nos
+interessa
+
+Ou seja, temos uma lista dentro de uma lista, mas acessar é fácil:
+
+summary(fit[[4]][[5]])  # agora sim é um summary comum
+summary(fit[[analyses]][[5]])  # dá no mesmo... é o mesmo acesso
+
+
+Embora esse summary não tenha o p-valor que você procura, ele possui as
+informações para consultar a distribuição F e obtê-lo. Somente essa parte
+final está relacionada à estatística propriamente dita, o resto vem
+simplesmente de fuçar os objetos do R.
+
+Como dica, se acostume a usar e abusar de funções como str(), class(),
+names() e length(). Facilita a entender como os objetos estão estruturados.
+
+
+
+Abraços,
+Paulo
+
+Em 21 de abril de 2017 10:38, Elias Carvalho via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Excelente trabalho Paulo, muitíssimo obrigado, me ajudou muito.
+>
+> Eu gostaria de conhecer melhor essa estrutura para entender como você
+> chegou ai, ontem eu fiquei horas tentando e nada.
+>
+> Tenho trabalhado com o R a algum tempo, não sou estatístico, sou da
+> computação.
+>
+> Alguma dica de onde estudar isso, ou somente na prática mesmo ?
+>
+>
+>
+> 2017-04-20 20:30 GMT-03:00 Elias Carvalho <ecacarva em gmail.com>:
+>
+>> Boa noite pessoal
+>>
+>> Estou testando o pacote mice para fazer imputação múltipla de dados
+>> missing, conforme exemplo:
+>>
+>> library(mice)
+>>
+>> imp <- mice(nhanes2)
+>> fit <- with(imp, lm(chl~age+bmi))
+>>
+>> summary(fit)
+>>
+>> O resultado se resume em:
+>>
+>>  ## summary of imputation 1 :
+>>
+>> Call:
+>> lm(formula = chl ~ age + bmi)
+>>
+>> Residuals:
+>>    Min     1Q Median     3Q    Max
+>> -46.37 -19.23 -11.24  12.66  83.69
+>>
+>> Coefficients:
+>>             Estimate Std. Error t value Pr(>|t|)
+>> (Intercept)   32.134     53.202   0.604  0.55232
+>> age2          49.058     18.153   2.702  0.01334 *
+>> age3          62.837     19.886   3.160  0.00472 **
+>> bmi            4.907      1.795   2.733  0.01246 *
+>> ---
+>> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+>>
+>> Residual standard error: 34.89 on 21 degrees of freedom
+>> Multiple R-squared:  0.3835,	Adjusted R-squared:  0.2954
+>> F-statistic: 4.354 on 3 and 21 DF,  p-value: 0.01557
+>>
+>>
+>> ​Eu gostaria de extrair o p-value: 0.01557 dessa estrutura, mas não
+>> consegui com os métodos convencionais, pois a estrutura parece diferente da
+>> estrutura gerada por um lm ou glm.
+>>
+>> Alguém poderia me ajudar
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria*
+>> *Obrigado*
+>> *Prof. Elias Carvalho*
+>>
+>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+>> who has been able to understand the cause of things"*
+>>
+>
+>
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170421/e92b73bb/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Apr 21 11:16:04 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 21 Apr 2017 11:16:04 -0300
+Subject: [R-br] Como escolher o melhor conjunto de dados imputador no
+	MICE
+In-Reply-To: <CAH8E6UuWYW_xG_OKU0ft=UNWOFODNWX-c8e0kzxbi_qzV43xSw@mail.gmail.com>
+References: <CAH8E6UuWYW_xG_OKU0ft=UNWOFODNWX-c8e0kzxbi_qzV43xSw@mail.gmail.com>
+Message-ID: <CAKrF98=d5xpE0AS1r+snYobfFc0Wt9nxvr=uej6ipUGY_oGWNw@mail.gmail.com>
+
+Elias,
+
+A imputação é uma técnica que super simplificadamente objetiva colocar
+dados em variáveis cujos valores estão ausentes para não "perturbar" uma
+determinada estatística e permitir analisar as outras variáveis dos casos
+sob estudo.
+
+Um exemplo simples seria colocar a média da variável em todos os casos de
+valores ausentes¹.
+
+No seu caso que você deseja fazer uma pesquisa usando redes bayesianas
+haveria necessidade de ver se a abordagem em si da imputação faria sentido
+e então ver qual (tipo) seria mais apropriada.
+
+Há uma extensa literatura sobre esse tema, que suponho você esteja
+familiarizado e consultando-a, e pelo meu contato com o tema quer me
+parecer que há uma certa preferência (do jeito da imputação) em função do
+domínio do problema.
+
+HTH
+--
+Cesar Rabak
+
+
+[1] Bem simples, vou elidir a discussão sobre vantagens e desvantagens
+dessa específica abordagem e propriedade em função da quantidade de dados
+faltantes.
+
+2017-04-19 0:34 GMT-03:00 Elias Carvalho via R-br <r-br em listas.c3sl.ufpr.br>
+:
+
+> Usando o pacote mice fiz o seguinte teste (imputação de dados):
+>
+> imp <- mice(nhanes)
+>
+> Isso gerou 5 conjuntos de dados imputados:
+>
+> imp$imp$bmi
+>
+>
+>
+> ​​
+>
+> Eu gostaria de entender como escolher o melhor dataset imputado
+>
+> Por exemplo, para bmi (acima) qual das 5 colunas será a melhor escolha?
+>
+> Eu achei vários exemplos usando regressão logistica, mas eu não vou rodar
+> uma regressão logistica, vou usar os dados para criar uma rede bayesiana.
+>
+> Alguém poderia me ajudar por favor?
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170421/569fa353/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Captura de tela de 2017-04-19 00-30-32.png
+Tipo: image/png
+Tamanho: 14828 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170421/569fa353/attachment.png>
+
+From delcio.bortolanza em outlook.com  Sat Apr 22 00:21:45 2017
+From: delcio.bortolanza em outlook.com (Delcio Rudinei Bortolanza)
+Date: Sat, 22 Apr 2017 03:21:45 +0000
+Subject: [R-br] =?iso-8859-1?q?Resolver_equa=E7=F5es_com_o_R?=
+Message-ID: <BN6PR18MB15247D78581203B3449F9952E61D0@BN6PR18MB1524.namprd18.prod.outlook.com>
+
+Olá!
+Tenho esta equação para encontrar a solução e gostaria de utilizar o R para isso.
+
+(0.501143 - 0.314445)*((1 + (0.716407*x)^1.574827)^(((1 - 1/1.574827) - 1) - 1)*(((1 - 1/1.574827) - 1)*((0.716407*x)^(1.574827 - 1)*(1.574827*0.716407)))*((1 -  1/1.574827)*((0.716407*x)^(1.574827 - 1)*(1.574827*0.716407))) + (1 + (0.716407*x)^1.574827)^((1 - 1/1.574827) - 1)*((1 - 1/1.574827)*((0.716407*x)^((1.574827 - 1) - 1)*((1.574827 - 1)*0.716407)*(1.574827*0.716407))))/((1 + (0.716407*x)^1.574827)^(1 - 1/1.574827))^2 - (0.501143 - 0.314445)*((1 + (0.716407*x)^1.574827)^((1 - 1/1.574827) - 1)*((1 - 1/1.574827)*((0.716407*x)^(1.574827 - 1)*(1.574827*0.716407))))*(2*((1 + (0.716407*x)^1.574827)^((1 - 1/1.574827) - 1)*((1 - 1/1.574827)*((0.716407*x)^(1.574827 - 1)*(1.574827*0.716407)))*((1 + (0.716407*x)^1.574827)^(1 - 1/1.574827))))/(((1 + (0.716407*x)^1.574827)^(1 - 1/1.574827))^2)^2 == 0
+
+Utilizando o Wolfram Mathematica consigo encontrar a resposta com Solve[(0.501143 - 0.314445)*((1 + ... ==0, x, Reals], que nesse caso é x = 0.736051, mas o problema é que ai toda vez tem ficar abrindo outro software (pago) e transformar em valores as variáveis com atribuição.
+
+Existe alguma maneira de resolver essa equação utilizando o R?
+
+
+Att., Delcio R. Bortolanza
+Doutorando em agronomia - UPF
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170422/c649150e/attachment.html>
+
+From elisa.henning em gmail.com  Sat Apr 22 08:39:45 2017
+From: elisa.henning em gmail.com (Elisa Henning)
+Date: Sat, 22 Apr 2017 08:39:45 -0300
+Subject: [R-br] =?utf-8?q?Resolver_equa=C3=A7=C3=B5es_com_o_R?=
+In-Reply-To: <BN6PR18MB15247D78581203B3449F9952E61D0@BN6PR18MB1524.namprd18.prod.outlook.com>
+References: <BN6PR18MB15247D78581203B3449F9952E61D0@BN6PR18MB1524.namprd18.prod.outlook.com>
+Message-ID: <CAG6iEojhv6SFcnp6Jsoy2vpj6+LpA01+=RnLh_LPSGV-wC4wpA@mail.gmail.com>
+
+Bom dia Delcio
+
+
+Sugiro a função uniroot.
+
+fx<-function(x) (0.501143 - 0.314445)*((1 + (0.716407*x)^1.574827)^(((1 -
+1/1.574827) - 1) - 1)*(((1 - 1/1.574827) - 1)*((0.716407*x)^(1.574827 -
+1)*(1.574827*0.716407)))*((1 -  1/1.574827)*((0.716407*x)^(1.574827 -
+1)*(1.574827*0.716407))) + (1 + (0.716407*x)^1.574827)^((1 - 1/1.574827) -
+1)*((1 - 1/1.574827)*((0.716407*x)^((1.574827 - 1) - 1)*((1.574827 -
+1)*0.716407)*(1.574827*0.716407))))/((1 + (0.716407*x)^1.574827)^(1 -
+1/1.574827))^2 - (0.501143 - 0.314445)*((1 + (0.716407*x)^1.574827)^((1 -
+1/1.574827) - 1)*((1 - 1/1.574827)*((0.716407*x)^(1.574827 -
+1)*(1.574827*0.716407))))*(2*((1 + (0.716407*x)^1.574827)^((1 - 1/1.574827)
+- 1)*((1 - 1/1.574827)*((0.716407*x)^(1.574827 -
+1)*(1.574827*0.716407)))*((1 + (0.716407*x)^1.574827)^(1 -
+1/1.574827))))/(((1 + (0.716407*x)^1.574827)^(1 - 1/1.574827))^2)^2
+
+uniroot(fx,c(0,1))
+
+Votos de um bom final de semana
+Elisa
+
+Em 22 de abril de 2017 00:21, Delcio Rudinei Bortolanza via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá!
+> Tenho esta equação para encontrar a solução e gostaria de utilizar o R
+> para isso.
+>
+> (0.501143 - 0.314445)*((1 + (0.716407*x)^1.574827)^(((1 - 1/1.574827) - 1)
+> - 1)*(((1 - 1/1.574827) - 1)*((0.716407*x)^(1.574827 -
+> 1)*(1.574827*0.716407)))*((1 -  1/1.574827)*((0.716407*x)^(1.574827 -
+> 1)*(1.574827*0.716407))) + (1 + (0.716407*x)^1.574827)^((1 - 1/1.574827) -
+> 1)*((1 - 1/1.574827)*((0.716407*x)^((1.574827 - 1) - 1)*((1.574827 -
+> 1)*0.716407)*(1.574827*0.716407))))/((1 + (0.716407*x)^1.574827)^(1 -
+> 1/1.574827))^2 - (0.501143 - 0.314445)*((1 + (0.716407*x)^1.574827)^((1 -
+> 1/1.574827) - 1)*((1 - 1/1.574827)*((0.716407*x)^(1.574827 -
+> 1)*(1.574827*0.716407))))*(2*((1 + (0.716407*x)^1.574827)^((1 -
+> 1/1.574827) - 1)*((1 - 1/1.574827)*((0.716407*x)^(1.574827 -
+> 1)*(1.574827*0.716407)))*((1 + (0.716407*x)^1.574827)^(1 -
+> 1/1.574827))))/(((1 + (0.716407*x)^1.574827)^(1 - 1/1.574827))^2)^2 == 0
+>
+> Utilizando o Wolfram Mathematica consigo encontrar a resposta com Solve[(0.501143
+> - 0.314445)*((1 + ... ==0, x, Reals], que nesse caso é x = 0.736051, mas
+> o problema é que ai toda vez tem ficar abrindo outro software (pago) e
+> transformar em valores as variáveis com atribuição.
+>
+> Existe alguma maneira de resolver essa equação utilizando o R?
+>
+>
+> Att., Delcio R. Bortolanza
+> Doutorando em agronomia - UPF
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170422/66f75930/attachment.html>
+
+From isabela.micaroni em hotmail.com  Sat Apr 22 17:38:30 2017
+From: isabela.micaroni em hotmail.com (Isabela M.)
+Date: Sat, 22 Apr 2017 20:38:30 +0000
+Subject: [R-br] =?iso-8859-1?q?Compara=E7=F5es_M=FAltiplas?=
+Message-ID: <DM5PR08MB29699BA7807E5603875A4A478C1D0@DM5PR08MB2969.namprd08.prod.outlook.com>
+
+Boa tarde,
+Meu nome é Isabela, faço iniciação científica e trabalho com análise multivariada, mais especificamente com a MANOVA. Alguém poderia me ajudar com script do R, para realizar a comparação múltipla multivariada, no caso para 5 variáveis?
+Desde já agradeço!
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170422/0fc4c60d/attachment.html>
+
+From edujrrib em gmail.com  Sat Apr 22 18:15:14 2017
+From: edujrrib em gmail.com (Eduardo Junior)
+Date: Sat, 22 Apr 2017 18:15:14 -0300
+Subject: [R-br] =?utf-8?b?Q29tcGFyYcOnw7VlcyBNw7psdGlwbGFz?=
+In-Reply-To: <DM5PR08MB29699BA7807E5603875A4A478C1D0@DM5PR08MB2969.namprd08.prod.outlook.com>
+References: <DM5PR08MB29699BA7807E5603875A4A478C1D0@DM5PR08MB2969.namprd08.prod.outlook.com>
+Message-ID: <CAO7eVPzSdGyHRopMsAk3Me2Bp4M4D4tF2fKWG4dV_eiWdtsX-w@mail.gmail.com>
+
+Boa tarde Isabela,
+
+Sugiro a leitura do apêndice sobre modelos lineares multivariados do livro *An
+R Companion to Applied Regression*, John Fox. O manuscrito é ilustrado com
+códigos R <
+https://socserv.socsci.mcmaster.ca/jfox/Books/Companion/appendix/Appendix-Multivariate-Linear-Models.pdf
+>.
+
+Um outro material que pode servir como apoio é <
+https://jreduardo.github.io/lce5859-mem/exercises.pdf> a primeira seção é
+sobre testes de hipóteses em modelos multivariados, o código fonte fica em <
+https://github.com/JrEduardo/lce5859-mem/blob/master/exercises.R>.
+
+Bons estudos.
+
+Att,
+Eduardo E. R, Junior <http://jreduardo.github.io/>
+
+2017-04-22 17:28 GMT-03:00 R-br mailing list [via R-br] <
+ml-node+s2285057n4667256h4 em n4.nabble.com>:
+
+> Boa tarde,
+>
+> Meu nome é Isabela, faço iniciação científica e trabalho com análise
+> multivariada, mais especificamente com a MANOVA. Alguém poderia me ajudar
+> com script do R, para realizar a comparação múltipla multivariada, no caso
+> para 5 variáveis?
+>
+> Desde já agradeço!
+>
+>
+> _______________________________________________
+> R-br mailing list
+> [hidden email] <http:///user/SendEmail.jtp?type=node&node=4667256&i=0>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+> ------------------------------
+> If you reply to this email, your message will be added to the discussion
+> below:
+> http://r-br.2285057.n4.nabble.com/R-br-Comparacoes-
+> Multiplas-tp4667256.html
+> To unsubscribe from R-br, click here
+> <http://r-br.2285057.n4.nabble.com/template/NamlServlet.jtp?macro=unsubscribe_by_code&node=3357982&code=ZWR1anJyaWJAZ21haWwuY29tfDMzNTc5ODJ8MjA4MTkxODU5MA==>
+> .
+> NAML
+> <http://r-br.2285057.n4.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&id=instant_html%21nabble%3Aemail.naml&base=nabble.naml.namespaces.BasicNamespace-nabble.view.web.template.NabbleNamespace-nabble.view.web.template.NodeNamespace&breadcrumbs=notify_subscribers%21nabble%3Aemail.naml-instant_emails%21nabble%3Aemail.naml-send_instant_email%21nabble%3Aemail.naml>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170422/2527e62c/attachment.html>
+
+From coroasolaris em gmail.com  Mon Apr 24 19:59:09 2017
+From: coroasolaris em gmail.com (coroasolaris)
+Date: Mon, 24 Apr 2017 19:59:09 -0300
+Subject: [R-br] =?iso-8859-1?q?Compara=E7=F5es_M=FAltiplas?=
+Message-ID: <ourpxyi1kclsr4bg4scsba7i.1493073894600@email.android.com>
+
+Isabela, boa noite! No livro "Métodos de Análise Multivariada em R", Anderson Rodrigues da Silva, Ed. Fealq, 2016, penso que você vai encontrar a ajuda da qual precisa. O c.8 cuida do assunto. 
+
+
+Enviado do meu smartphone Samsung Galaxy.
+-------- Mensagem original --------De: "Isabela M. via R-br" <r-br em listas.c3sl.ufpr.br> Data: 22/04/17  17:38  (GMT-03:00) Para: "a lista Brasileira oficial de discussão do programa R." <r-br em listas.c3sl.ufpr.br> Assunto: [R-br] Comparações Múltiplas 
+
+
+
+Boa tarde, 
+Meu nome é Isabela, faço iniciação científica e trabalho com análise multivariada, mais especificamente com a MANOVA. Alguém poderia me ajudar com script do R, para realizar a comparação múltipla multivariada, no caso para 5 variáveis?
+Desde já agradeço!
+
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170424/aa7e2f57/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Apr 24 21:00:22 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 24 Apr 2017 21:00:22 -0300
+Subject: [R-br] Como escolher o melhor conjunto de dados imputador no
+	MICE
+In-Reply-To: <1128433410.2959166.1493037524529@mail.yahoo.com>
+References: <CAH8E6UuWYW_xG_OKU0ft=UNWOFODNWX-c8e0kzxbi_qzV43xSw@mail.gmail.com>
+ <CAKrF98=d5xpE0AS1r+snYobfFc0Wt9nxvr=uej6ipUGY_oGWNw@mail.gmail.com>
+ <1128433410.2959166.1493037524529@mail.yahoo.com>
+Message-ID: <CAKrF98mZai-xf=y08Lndj8nn_Pu-xGDpV+Zg0h22fgMNqtXAfg@mail.gmail.com>
+
+Técnicas de bootstraping têm sido sugeridas para serem usadas *em conjunto* com
+imputação (geralmente múltipla como deseja o OP) mas não como uma solução
+para os valores inexistentes.
+
+HTH
+
+2017-04-24 9:38 GMT-03:00 Edson Lira <edinhoestat em yahoo.com.br>:
+
+> Não seria o caso de bootstrap?
+> Quick-R: Bootstrapping
+> <http://www.statmethods.net/advstats/bootstrapping.html>
+>
+> Quick-R: Bootstrapping
+> You can bootstrap a single statistic or a vector (e.g., regression
+> weights). This section will get you started w...
+> <http://www.statmethods.net/advstats/bootstrapping.html>
+>
+>
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+>
+> Em Sexta-feira, 21 de Abril de 2017 10:16, Cesar Rabak via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Elias,
+>
+> A imputação é uma técnica que super simplificadamente objetiva colocar
+> dados em variáveis cujos valores estão ausentes para não "perturbar" uma
+> determinada estatística e permitir analisar as outras variáveis dos casos
+> sob estudo.
+>
+> Um exemplo simples seria colocar a média da variável em todos os casos de
+> valores ausentes¹.
+>
+> No seu caso que você deseja fazer uma pesquisa usando redes bayesianas
+> haveria necessidade de ver se a abordagem em si da imputação faria sentido
+> e então ver qual (tipo) seria mais apropriada.
+>
+> Há uma extensa literatura sobre esse tema, que suponho você esteja
+> familiarizado e consultando-a, e pelo meu contato com o tema quer me
+> parecer que há uma certa preferência (do jeito da imputação) em função do
+> domínio do problema.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> [1] Bem simples, vou elidir a discussão sobre vantagens e desvantagens
+> dessa específica abordagem e propriedade em função da quantidade de dados
+> faltantes.
+>
+> 2017-04-19 0:34 GMT-03:00 Elias Carvalho via R-br <
+> r-br em listas.c3sl.ufpr.br>:
+>
+> Usando o pacote mice fiz o seguinte teste (imputação de dados):
+> imp <- mice(nhanes)
+> Isso gerou 5 conjuntos de dados imputados:
+> imp$imp$bmi
+>
+>
+> ​​
+> Eu gostaria de entender como escolher o melhor dataset imputado
+> Por exemplo, para bmi (acima) qual das 5 colunas será a melhor escolha?
+> Eu achei vários exemplos usando regressão logistica, mas eu não vou rodar
+> uma regressão logistica, vou usar os dados para criar uma rede bayesiana.
+> Alguém poderia me ajudar por favor?
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed is he who has been able to understand the cause of things"
+>
+> ______________________________ _________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
+> <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia
+> <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170424/ee9ad6fa/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Captura de tela de 2017-04-19 00-30-32.png
+Tipo: image/png
+Tamanho: 14828 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170424/ee9ad6fa/attachment.png>
+
+From gilenio em ufba.br  Tue Apr 25 10:19:45 2017
+From: gilenio em ufba.br (Gilenio Borges Fernandes)
+Date: Tue, 25 Apr 2017 10:19:45 -0300
+Subject: [R-br] =?utf-8?q?Dificuldade_no_ajuste_de_modelo_com_a_fun=C3=A7?=
+	=?utf-8?q?=C3=A3o_survreg_do_pacote_survival?=
+Message-ID: <CA+7i11bwCPYF9xqvJgHqpqHBEF=pQ6JCxcBvJdE-YTJ9Q+9C_g@mail.gmail.com>
+
+Prezad em s
+
+Alguma ideia de solução na seguinte dificuldade:
+
+
+
+*library(survival)*
+
+*fit <- survreg(Surv(futime, fustat) ~ rx + age, data = ovarian, dist =
+"weibull")*
+
+
+
+Error in coxph.wtest(t(x) %*% (wt * x), c((wt * eta + weights * deriv$dg)
+%*%  : object 'Ccoxph_wtest' not found
+
+
+
+*fit <- survreg(Surv(futime, fustat) ~ 1, data = ovarian,  dist =
+"weibull")*
+
+summary(fit)
+
+
+
+Call:
+
+survreg(formula = Surv(futime, fustat) ~ 1, data = ovarian, dist = "weibull")
+
+             Value Std. Error      z         p
+
+(Intercept)  7.111      0.293 24.292 2.36e-130
+
+Log(scale)  -0.103      0.254 -0.405  6.86e-01
+
+
+
+Scale= 0.902
+
+
+
+Weibull distribution
+
+Loglik(model)= -98   Loglik(intercept only)= -98
+
+Number of Newton-Raphson Iterations: 5
+
+n= 26
+
+
+
+Ou seja, a função só funciona no ajuste do modelo sem variáveis
+explanatórias. Observação: o pacote survival tem a função coxph.wtest(.).
+
+Desde já agradeço
+
+
+Gilênio Borges Fernandes
+Professor Associado IV (Aposentado)
+Professor Adjunto A (Substituto)
+Universidade Federal da Bahia
+Instituto de Matemática e Estatística
+Departamento de Estatística
+Av. Adhemar de Barros, s/n – Ondina.
+40.170-110 - Salvador - BA, Brasil
+Tel.: (071)3283-6340/6341/6337  Fax:  (071)3283-6336
+Skype: gilenio.fernandes
+Lattes: http://lattes.cnpq.br/6764860618464860
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170425/12319deb/attachment.html>
+
+From gilenio em ufba.br  Tue Apr 25 16:04:16 2017
+From: gilenio em ufba.br (Gilenio Borges Fernandes)
+Date: Tue, 25 Apr 2017 16:04:16 -0300
+Subject: [R-br] Dificuldade com o pacote survival - Problema resolvido
+Message-ID: <CA+7i11abHrHSW_2DfPRNMmkfKTsmwDjaYgwh85AGvuX35-7AsA@mail.gmail.com>
+
+ A dificuldade no ajuste de modelo com a função survreg do pacote survival
+já foi resolvida com a re-instalação do pacote.
+
+
+Agradeço
+
+
+Gilênio Borges Fernandes
+Professor Associado IV (Aposentado)
+Professor Adjunto A (Substituto)
+Universidade Federal da Bahia
+Instituto de Matemática e Estatística
+Departamento de Estatística
+Av. Adhemar de Barros, s/n – Ondina.
+40.170-110 - Salvador - BA, Brasil
+Tel.: (071)3283-6340/6341/6337  Fax:  (071)3283-6336
+Skype: gilenio.fernandes
+Lattes: http://lattes.cnpq.br/6764860618464860
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170425/5d1b0af6/attachment.html>
+
+From apcmadeira em hotmail.com  Tue Apr 25 16:23:53 2017
+From: apcmadeira em hotmail.com (ana paula coelho madeira)
+Date: Tue, 25 Apr 2017 19:23:53 +0000
+Subject: [R-br] =?iso-8859-1?q?Gr=E1fico_de_intera=E7=E3o_entre_dois_fator?=
+	=?iso-8859-1?q?es?=
+Message-ID: <DM5PR02MB2268C7EAE4275626DE71078ECA1E0@DM5PR02MB2268.namprd02.prod.outlook.com>
+
+Prezados colegas,
+
+
+Boa tarde! Estou analisando um experimento em DBC no esquema de parcelas subdivididas. Nas parcelas tenho 5 níveis do fator adubação e na sub parcela dois níveis do fator espaçamento. Verificada as pressuposições da ANOVA, uma fato me chamou atenção: o efeito da interação não foi significativa (OK!), porém, ao fazer o gráfico da interação, o gráfico está mostrando o contrário. Alguma ideia do que pode estar ocorrendo?
+
+Comando utilizado: interaction.plot(Adubação,Espaçamento,Brix)
+
+
+Desde já agradeço
+
+
+Ana Paula
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170425/7f7560b5/attachment.html>
+
+From walmeszeviani em gmail.com  Tue Apr 25 17:36:33 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Tue, 25 Apr 2017 17:36:33 -0300
+Subject: [R-br]
+	=?utf-8?q?Gr=C3=A1fico_de_intera=C3=A7=C3=A3o_entre_dois_f?=
+	=?utf-8?q?atores?=
+In-Reply-To: <DM5PR02MB2268C7EAE4275626DE71078ECA1E0@DM5PR02MB2268.namprd02.prod.outlook.com>
+References: <DM5PR02MB2268C7EAE4275626DE71078ECA1E0@DM5PR02MB2268.namprd02.prod.outlook.com>
+Message-ID: <CAFU=EkZyNUENYKvGfMeicb0cRRePN+dfD1=qwkD6CkLR1WApAg@mail.gmail.com>
+
+Sem condições de afirmar nada sem acesso aos dados e códigos que você
+utilizou.
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170425/5111bc19/attachment.html>
+
+From apcmadeira em hotmail.com  Wed Apr 26 13:00:13 2017
+From: apcmadeira em hotmail.com (ana paula coelho madeira)
+Date: Wed, 26 Apr 2017 16:00:13 +0000
+Subject: [R-br] =?iso-8859-1?q?Enc=3A__Gr=E1fico_de_intera=E7=E3o_entre_do?=
+	=?iso-8859-1?q?is_fatores?=
+In-Reply-To: <DM5PR02MB2268CBC47001B59497D9E979CA110@DM5PR02MB2268.namprd02.prod.outlook.com>
+References: <DM5PR02MB2268C7EAE4275626DE71078ECA1E0@DM5PR02MB2268.namprd02.prod.outlook.com>,
+ <CAFU=EkZyNUENYKvGfMeicb0cRRePN+dfD1=qwkD6CkLR1WApAg@mail.gmail.com>,
+ <DM5PR02MB2268CBC47001B59497D9E979CA110@DM5PR02MB2268.namprd02.prod.outlook.com>
+Message-ID: <DM5PR02MB226871A8B538ACCDB1D4CA06CA110@DM5PR02MB2268.namprd02.prod.outlook.com>
+
+
+
+
+________________________________
+
+
+Prezado Walmes e demais colegas,
+
+
+Bom dia! Encaminho os dados e os códigos utilizados. Desde já agradeço.
+
+
+Ana Paula
+
+
+________________________________
+De: Walmes Zeviani <walmeszeviani em gmail.com>
+Enviado: terça-feira, 25 de abril de 2017 15:36
+Para: ana paula coelho madeira; a lista Brasileira oficial de discussão do programa R.
+Assunto: Re: [R-br] Gráfico de interação entre dois fatores
+
+Sem condições de afirmar nada sem acesso aos dados e códigos que você utilizou.
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170426/7a605928/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: analise1.R
+Tipo: application/octet-stream
+Tamanho: 559 bytes
+Descrição: analise1.R
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170426/7a605928/attachment.obj>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: Dados.txt
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170426/7a605928/attachment.txt>
+
+From walmeszeviani em gmail.com  Wed Apr 26 21:05:01 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 26 Apr 2017 21:05:01 -0300
+Subject: [R-br]
+	=?utf-8?b?RW5jOiBHcsOhZmljbyBkZSBpbnRlcmHDp8OjbyBlbnRyZSBk?=
+	=?utf-8?q?ois_fatores?=
+In-Reply-To: <DM5PR02MB226871A8B538ACCDB1D4CA06CA110@DM5PR02MB2268.namprd02.prod.outlook.com>
+References: <DM5PR02MB2268C7EAE4275626DE71078ECA1E0@DM5PR02MB2268.namprd02.prod.outlook.com>
+ <CAFU=EkZyNUENYKvGfMeicb0cRRePN+dfD1=qwkD6CkLR1WApAg@mail.gmail.com>
+ <DM5PR02MB2268CBC47001B59497D9E979CA110@DM5PR02MB2268.namprd02.prod.outlook.com>
+ <DM5PR02MB226871A8B538ACCDB1D4CA06CA110@DM5PR02MB2268.namprd02.prod.outlook.com>
+Message-ID: <CAFU=EkZ5iM6HVEKoFme9jg1279OA8fzqrW+QD1Qe8ZAOKKo3Sg@mail.gmail.com>
+
+Ana Paula,
+
+Segue CRM. O guia de contribuição dessa lista de discussão não recomenda o
+envio de conteúdo anexo as mensagens. Isso por motivos de segurança,
+reprodutibilidade, portabilidade e economia. Procure fazer códigos
+reproduzíveis a partir de recorta e cola, como é esse que eu envio. Isso
+ajuda muito as pessoas dispostas a te ajudar porque elas passam a ter bons
+motivos para isso. Quando os dados não são grandes (tabelas de poucas
+linhas/colunas), um mecanismo com textConnection() é suficiente. Estou
+certo da sua compreensão.
+
+#-----------------------------------------------------------------------
+
+txt <-
+"A    E    Bloco    Y
+0    1    1    3.05
+0    1    2    4.45
+0    1    3    3.05
+0    1    4    3.35
+0    2    1    3.50
+0    2    2    3.90
+0    2    3    3.80
+0    2    4    4.05
+25    1    1    4.15
+25    1    2    3.90
+25    1    3    4.25
+25    1    4    3.15
+25    2    1    2.40
+25    2    2    3.65
+25    2    3    3.35
+25    2    4    3.45
+50    1    1    3.40
+50    1    2    5.00
+50    1    3    3.80
+50    1    4    2.55
+50    2    1    2.50
+50    2    2    4.00
+50    2    3    3.25
+50    2    4    2.95
+75    1    1    3.25
+75    1    2    3.80
+75    1    3    3.45
+75    1    4    3.30
+75    2    1    3.50
+75    2    2    4.25
+75    2    3    3.55
+75    2    4    3.10
+100    1    1    3.25
+100    1    2    3.00
+100    1    3    4.35
+100    1    4    3.00
+100    2    1    2.40
+100    2    2    4.65
+100    2    3    4.20
+100    2    4    3.60"
+
+da <- read.table(textConnection(txt),
+                 header = TRUE,
+                 sep = "\t",
+                 colClasses = c("integer",
+                                "factor",
+                                "factor",
+                                "numeric"))
+closeAllConnections()
+str(da)
+
+xtabs(~A + E, data = da)
+
+with(da,
+     interaction.plot(A,
+                      E,
+                      Y,
+                      xlab = "Adubação",
+                      ylab = "ºBrix"))
+
+# ATTENTION: o interaction.plot() só te fornece o sinal mas não de dá
+# uma ideia do ruído para julgar a clareza ou saliência deste sinal.
+# Recomendo gráficos para isso que incorporem os valores observados e
+# não somente as médias.
+
+library(lattice)
+library(latticeExtra)
+
+xyplot(Y ~ A,
+       groups = E,
+       data = da,
+       type = c("p", "a"))
+
+# Gráfico destaca as médias de cada nível de A variando E. Os blocos não
+# são identificáveis nesse gráfico e parte da variação é explicada
+# pelos blocos. No gráfico abaixo, observações do mesmo bloco são unidas
+# por segmentos. As linhas grossas indicam o efeito de A com E.
+
+xyplot(Y ~ A,
+       groups = interaction(E, Bloco),
+       data = da,
+       lty = 2,
+       type = c("p", "a")) +
+    as.layer(xyplot(Y ~ A,
+       groups = E,
+       data = da,
+       lty = 1, lwd = 2,
+       type = c("p", "a")))
+
+# Note que o ruído domina a expressão do sinal, fazendo com tenhamos
+# pouca evidência para esperar por uma interação. Ou seja, dentro da
+# aplitude de variação vista, o sinal de interação é desprezível.
+
+xyplot(Y ~ A,
+       groups = E,
+       data = da) +
+    glayer(panel.smoother(x = x, y = y))
+
+# Esse gráfico ajusta uma regressão suave e mostra a curva ajustadas com
+# bandas de confiança. Atenção: o efeito de bloco não foi considerado e
+# portanto veja isso como algo exploratório.
+
+# Passa A para fator.
+da$A <- factor(da$A, levels = sort(unique(da$A)))
+
+# Ajusta o modelo de parcelas subdivididas.
+m0 <- aov(Y ~ Bloco + E * A + Error(Bloco:E),
+          data = da)
+
+# Quadro de anova.
+summary(m0)
+
+#-----------------------------------------------------------------------
+
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170426/a07a5964/attachment.html>
+
+From sznelwar em uol.com.br  Wed Apr 26 21:30:04 2017
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Wed, 26 Apr 2017 21:30:04 -0300
+Subject: [R-br]
+ =?utf-8?b?RW5jOiBHcsOhZmljbyBkZSBpbnRlcmHDp8OjbyBlbnRyZSBk?=
+ =?utf-8?q?ois_fatores?=
+In-Reply-To: <QD1Qe8ZAOKKo3Sg@mail.gmail.com>
+References: <DM5PR02MB2268C7EAE4275626DE71078ECA1E0@DM5PR02MB2268.namprd02.prod.outlook.com>
+ <qwkD6CkLR1WApAg@mail.gmail.com>
+ <DM5PR02MB2268CBC47001B59497D9E979CA110@DM5PR02MB2268.namprd02.prod.outlook.com>
+ <DM5PR02MB226871A8B538ACCDB1D4CA06CA110@DM5PR02MB2268.namprd02.prod.outlook.com>
+ <QD1Qe8ZAOKKo3Sg@mail.gmail.com>
+Message-ID: <59013b8cb67eb_2fbf1583a63e93e46353b@a4-weasel9.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170426/ced67728/attachment.html>
+
+From isabela.micaroni em hotmail.com  Wed Apr 26 21:50:33 2017
+From: isabela.micaroni em hotmail.com (Isabela M.)
+Date: Thu, 27 Apr 2017 00:50:33 +0000
+Subject: [R-br] =?utf-8?b?Q29tcGFyYcOnw7VlcyBNw7psdGlwbGFz?=
+In-Reply-To: <CAO7eVPzSdGyHRopMsAk3Me2Bp4M4D4tF2fKWG4dV_eiWdtsX-w@mail.gmail.com>
+References: <DM5PR08MB29699BA7807E5603875A4A478C1D0@DM5PR08MB2969.namprd08.prod.outlook.com>,
+ <CAO7eVPzSdGyHRopMsAk3Me2Bp4M4D4tF2fKWG4dV_eiWdtsX-w@mail.gmail.com>
+Message-ID: <DM5PR08MB296950B2DD1E82300C694C7C8C100@DM5PR08MB2969.namprd08.prod.outlook.com>
+
+Eduardo,
+Obrigada pela ajuda. Mas acredito que ainda não é isso que eu preciso. Tentarei explicar com mais detalhes.
+Fizemos uma MANOVA utilizando 5 variáveis respostas correlacionadas onde tínhamos um delineamento em bloco com 5 tratamentos qualitativos. As pressuposições da MANOVA foram atendidas, e o resultado da MANOVA indicou a diferença entre esses tratamentos. Como eu descubro a diferença entre esses tratamentos?
+
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Eduardo Junior via R-br <r-br em listas.c3sl.ufpr.br>
+Enviado: sábado, 22 de abril de 2017 18:15
+Para: r-br em listas.c3sl.ufpr.br
+Assunto: Re: [R-br] Comparações Múltiplas
+
+Boa tarde Isabela,
+
+Sugiro a leitura do apêndice sobre modelos lineares multivariados do livro An R Companion to Applied Regression, John Fox. O manuscrito é ilustrado com códigos R <https://socserv.socsci.mcmaster.ca/jfox/Books/Companion/appendix/Appendix-Multivariate-Linear-Models.pdf>.
+Multivariate Linear Models in R - McMaster University, Canada<https://socserv.socsci.mcmaster.ca/jfox/Books/Companion/appendix/Appendix-Multivariate-Linear-Models.pdf>
+socserv.socsci.mcmaster.ca
+Multivariate Linear Models in R An Appendix to An R Companion to Applied Regression, Second Edition John Fox & Sanford Weisberg last revision: 28 July 2011
+
+
+
+
+Um outro material que pode servir como apoio é <https://jreduardo.github.io/lce5859-mem/exercises.pdf> a primeira seção é sobre testes de hipóteses em modelos multivariados, o código fonte fica em <https://github.com/JrEduardo/lce5859-mem/blob/master/exercises.R>.
+
+Bons estudos.
+
+Att,
+Eduardo E. R, Junior<http://jreduardo.github.io/>
+
+2017-04-22 17:28 GMT-03:00 R-br mailing list [via R-br] <ml-node+s2285057n4667256h4 em n4.nabble.com<mailto:ml-node+s2285057n4667256h4 em n4.nabble.com>>:
+Boa tarde,
+Meu nome é Isabela, faço iniciação científica e trabalho com análise multivariada, mais especificamente com a MANOVA. Alguém poderia me ajudar com script do R, para realizar a comparação múltipla multivariada, no caso para 5 variáveis?
+Desde já agradeço!
+
+
+_______________________________________________
+R-br mailing list
+[hidden email]<http:///user/SendEmail.jtp?type=node&node=4667256&i=0>
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+________________________________
+If you reply to this email, your message will be added to the discussion below:
+http://r-br.2285057.n4.nabble.com/R-br-Comparacoes-Multiplas-tp4667256.html
+To unsubscribe from R-br, click here<http://r-br.2285057.n4.nabble.com/template/NamlServlet.jtp?macro=unsubscribe_by_code&node=3357982&code=ZWR1anJyaWJAZ21haWwuY29tfDMzNTc5ODJ8MjA4MTkxODU5MA==>.
+NAML<http://r-br.2285057.n4.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&id=instant_html%21nabble%3Aemail.naml&base=nabble.naml.namespaces.BasicNamespace-nabble.view.web.template.NabbleNamespace-nabble.view.web.template.NodeNamespace&breadcrumbs=notify_subscribers%21nabble%3Aemail.naml-instant_emails%21nabble%3Aemail.naml-send_instant_email%21nabble%3Aemail.naml>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170427/ce4255ee/attachment.html>
+
+From jose-wellingthon.santos em embrapa.br  Thu Apr 27 09:04:00 2017
+From: jose-wellingthon.santos em embrapa.br (Jose Wellingthon Dos Santos)
+Date: Thu, 27 Apr 2017 09:04:00 -0300 (BRT)
+Subject: [R-br]
+	=?iso-8859-1?q?=5BSPAM=5D_Re=3A__Compara=E7=F5es_M=FAltipl?=
+	=?iso-8859-1?q?as?=
+In-Reply-To: <DM5PR08MB296950B2DD1E82300C694C7C8C100@DM5PR08MB2969.namprd08.prod.outlook.com>
+Message-ID: <1317304306.16644172.1493294640970.JavaMail.root@embrapa.br>
+
+Prezada Isabela, 
+
+Voce pode transformar os dados multivariados em uma nova variavel, por meio da aplicação da primeira função discriminante linear de Fisher(FDF). Neste caso, voce passa a reduzir o espaço p dimensional a um espaço unidimensional e a partir do qual pode-se realizar uma anova (univariada) para essa nova variável e aplicar o teste de Roy para comparações de médias. 
+Att 
+
+-- 
+José Wellingthon dos Santos 
+Pesquisador - Métodos Quantitativos 
+Embrapa Algodão 
+Empresa Brasileira de Pesquisa Agropecuária (Embrapa) 
+Campina Grande, PB 
+
+jose-wellingthon.santos em embrapa.br 
+Telefone: +55 (83) 3182-4401 | Fax: +55 (83) 3182-4367 
+www.embrapa.br/algodao | https://twitter.com/embrapa_algodao 
+Confira também: www.facebook.com/agrosustentavel 
+
+
+----- Mensagem original -----
+
+De: "Isabela M. via R-br" <r-br em listas.c3sl.ufpr.br> 
+Para: "Eduardo Junior" <edujrrib em gmail.com>, "a lista Brasileira oficial de discussão do programa R." <r-br em listas.c3sl.ufpr.br> 
+Enviadas: Quarta-feira, 26 de abril de 2017 21:50:33 
+Assunto: [SPAM] Re: [R-br] Comparações Múltiplas 
+
+
+
+Eduardo, 
+
+Obrigada pela ajuda. Mas acredito que ainda não é isso que eu preciso. Tentarei explicar com mais detalhes. 
+Fizemos uma MANOVA utilizando 5 variáveis respostas correlacionadas onde tínhamos um delineamento em bloco com 5 tratamentos qualitativos. As pressuposições da MANOVA foram atendidas, e o resultado da MANOVA indicou a diferença entre esses tratamentos. Como eu descubro a diferença entre esses tratamentos? 
+
+
+
+
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Eduardo Junior via R-br <r-br em listas.c3sl.ufpr.br> 
+Enviado: sábado, 22 de abril de 2017 18:15 
+Para: r-br em listas.c3sl.ufpr.br 
+Assunto: Re: [R-br] Comparações Múltiplas 
+
+
+
+
+Boa tarde Isabela, 
+
+Sugiro a leitura do apêndice sobre modelos lineares multivariados do livro An R Companion to Applied Regression , John Fox. O manuscrito é ilustrado com códigos R < https://socserv.socsci.mcmaster.ca/jfox/Books/Companion/appendix/Appendix-Multivariate-Linear-Models.pdf >. 
+
+	
+
+Multivariate Linear Models in R - McMaster University, Canada 
+socserv.socsci.mcmaster.ca 
+Multivariate Linear Models in R An Appendix to An R Companion to Applied Regression, Second Edition John Fox & Sanford Weisberg last revision: 28 July 2011 
+
+
+Um outro material que pode servir como apoio é < https://jreduardo.github.io/lce5859-mem/exercises.pdf > a primeira seção é sobre testes de hipóteses em modelos multivariados, o código fonte fica em < https://github.com/JrEduardo/lce5859-mem/blob/master/exercises.R >. 
+
+
+
+
+Bons estudos. 
+
+
+
+
+
+
+
+Att, 
+Eduardo E. R, Junior 
+
+2017-04-22 17:28 GMT-03:00 R-br mailing list [via R-br] < ml-node+s2285057n4667256h4 em n4.nabble.com > : 
+
+
+
+
+
+Boa tarde, 
+Meu nome é Isabela, faço iniciação científica e trabalho com análise multivariada, mais especificamente com a MANOVA. Alguém poderia me ajudar com script do R, para realizar a comparação múltipla multivariada, no caso para 5 variáveis? 
+Desde já agradeço! 
+
+
+_______________________________________________ 
+R-br mailing list 
+[hidden email] 
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br 
+Leia o guia de postagem ( http://www.leg.ufpr.br/r-br-guia ) e forne�a c�digo m�nimo reproduz�vel. 
+
+
+
+
+If you reply to this email, your message will be added to the discussion below: http://r-br.2285057.n4.nabble.com/R-br-Comparacoes-Multiplas-tp4667256.html 
+To unsubscribe from R-br, click here . 
+NAML 
+
+
+
+_______________________________________________ 
+R-br mailing list 
+R-br em listas.c3sl.ufpr.br 
+https://imsva91-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=https%3a%2f%2flistas.inf.ufpr.br%2fcgi%2dbin%2fmailman%2flistinfo%2fr%2dbr&umid=EF88919F-4E1B-5A05-BE45-5FE22B694227&auth=21f1be4651a15dc98d8fa3d0e3c599b318018b6d-56e2afd919c2b935928ea93ae0ecd77c6691dad0 
+Leia o guia de postagem (https://imsva91-ctp.trendmicro.com:443/wis/clicktime/v1/query?url=http%3a%2f%2fwww.leg.ufpr.br%2fr%2dbr%2dguia%29&umid=EF88919F-4E1B-5A05-BE45-5FE22B694227&auth=21f1be4651a15dc98d8fa3d0e3c599b318018b6d-026cd9579cce7f4005978289ed014d8ee500f0bb e forne�a c�digo m�nimo reproduz�vel. 
+
+____________________________________________________________________________
+Aviso de confidencialidade 
+
+Esta mensagem da Empresa  Brasileira de Pesquisa  Agropecuaria  (Embrapa),
+empresa publica federal  regida pelo disposto  na Lei Federal no. 5.851,  de
+7 de dezembro de 1972,  e  enviada exclusivamente  a seu destinatario e pode
+conter informacoes  confidenciais, protegidas  por sigilo profissional.  Sua
+utilizacao desautorizada  e ilegal e  sujeita o infrator as penas da lei. Se
+voce  a recebeu indevidamente, queira, por gentileza, reenvia-la ao emitente,
+esclarecendo o equivoco.
+
+Confidentiality note
+
+This message from Empresa  Brasileira de Pesquisa  Agropecuaria  (Embrapa), a
+government company  established under  Brazilian law  (5.851/72), is directed
+exclusively to  its addressee  and may contain  confidential data,  protected
+under  professional secrecy  rules. Its unauthorized  use is illegal and  may
+subject the transgressor to the law's penalties. If you are not the addressee,
+please send it back, elucidating the failure.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170427/59a21255/attachment.html>
+
+From walmeszeviani em gmail.com  Thu Apr 27 09:20:42 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Thu, 27 Apr 2017 09:20:42 -0300
+Subject: [R-br] =?utf-8?b?Q29tcGFyYcOnw7VlcyBNw7psdGlwbGFz?=
+In-Reply-To: <DM5PR08MB296950B2DD1E82300C694C7C8C100@DM5PR08MB2969.namprd08.prod.outlook.com>
+References: <DM5PR08MB29699BA7807E5603875A4A478C1D0@DM5PR08MB2969.namprd08.prod.outlook.com>
+ <CAO7eVPzSdGyHRopMsAk3Me2Bp4M4D4tF2fKWG4dV_eiWdtsX-w@mail.gmail.com>
+ <DM5PR08MB296950B2DD1E82300C694C7C8C100@DM5PR08MB2969.namprd08.prod.outlook.com>
+Message-ID: <CAFU=EkZnErDsxQm3EVB_Bh5qiSztKwy4C_tv3K=fTeqf920HBQ@mail.gmail.com>
+
+Isabela,
+
+Não sou um competente em análise multivariada mas vejo dois caminhos: 1)
+faça análises univariadas e use o método de comparações múltiplas que
+quiser ou 2) faça aglutinação entre níveis do seu fator, reduzindo o número
+de níveis. A primeira situação é bem convencional. A segunda seria uma
+espécie de "Skott-Knott", só que não automatizado. Você proporia uma junção
+de níveis e testaria se ela pode ser feita. Segue fazendo até não mais ser
+possível juntar. Pode dar trabalho, principalmente se você não tiver ideia
+de quais são os vizinhos mais próximos para propor a aglutinação (um
+dendograma ajudaria). Além destas, tem a proposta do José Wellington, que
+seria uma análise univariada sobre o "primeiro componente".
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170427/bd356678/attachment.html>
+
+From walmeszeviani em gmail.com  Thu Apr 27 09:23:39 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Thu, 27 Apr 2017 09:23:39 -0300
+Subject: [R-br]
+	=?utf-8?b?RW5jOiBHcsOhZmljbyBkZSBpbnRlcmHDp8OjbyBlbnRyZSBk?=
+	=?utf-8?q?ois_fatores?=
+In-Reply-To: <59013b8cb67eb_2fbf1583a63e93e46353b@a4-weasel9.mail>
+References: <DM5PR02MB2268C7EAE4275626DE71078ECA1E0@DM5PR02MB2268.namprd02.prod.outlook.com>
+ <qwkD6CkLR1WApAg@mail.gmail.com>
+ <DM5PR02MB2268CBC47001B59497D9E979CA110@DM5PR02MB2268.namprd02.prod.outlook.com>
+ <DM5PR02MB226871A8B538ACCDB1D4CA06CA110@DM5PR02MB2268.namprd02.prod.outlook.com>
+ <QD1Qe8ZAOKKo3Sg@mail.gmail.com>
+ <59013b8cb67eb_2fbf1583a63e93e46353b@a4-weasel9.mail>
+Message-ID: <CAFU=EkY=BFpWavAgnb0hcDD2QAsNZYrzCi+ixVSGS3T4DfioCw@mail.gmail.com>
+
+Por alguma razão desconhecida, durante a leitura não foi reconhecida a
+tabulação. A primeira linha prensou o texto sem considerar os espaços
+gerando o "0113.05". Tente ler de outras formas, como por um arquivo txt.
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170427/9b3fc6f6/attachment.html>
+
+From andreolsouza em yahoo.com.br  Sat Apr 29 12:08:34 2017
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Sat, 29 Apr 2017 15:08:34 +0000 (UTC)
+Subject: [R-br] =?utf-8?b?Q29tcGFyYcOnw7VlcyBNw7psdGlwbGFz?=
+In-Reply-To: <CAFU=EkZnErDsxQm3EVB_Bh5qiSztKwy4C_tv3K=fTeqf920HBQ@mail.gmail.com>
+References: <DM5PR08MB29699BA7807E5603875A4A478C1D0@DM5PR08MB2969.namprd08.prod.outlook.com>
+ <CAO7eVPzSdGyHRopMsAk3Me2Bp4M4D4tF2fKWG4dV_eiWdtsX-w@mail.gmail.com>
+ <DM5PR08MB296950B2DD1E82300C694C7C8C100@DM5PR08MB2969.namprd08.prod.outlook.com>
+ <CAFU=EkZnErDsxQm3EVB_Bh5qiSztKwy4C_tv3K=fTeqf920HBQ@mail.gmail.com>
+Message-ID: <45805027.329657.1493478514029@mail.yahoo.com>
+
+Boa tarde,alguém poderia indicar literatura teórica e aplicações sobre a sugestão do José Wellington? E como rodar no R! 
+obg
+ André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito Santo.  IFES 
+
+    Em Quinta-feira, 27 de Abril de 2017 9:20, Walmes Zeviani via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+ Isabela,
+
+Não sou um competente em análise multivariada mas vejo dois caminhos: 1) faça análises univariadas e use o método de comparações múltiplas que quiser ou 2) faça aglutinação entre níveis do seu fator, reduzindo o número de níveis. A primeira situação é bem convencional. A segunda seria uma espécie de "Skott-Knott", só que não automatizado. Você proporia uma junção de níveis e testaria se ela pode ser feita. Segue fazendo até não mais ser possível juntar. Pode dar trabalho, principalmente se você não tiver ideia de quais são os vizinhos mais próximos para propor a aglutinação (um dendograma ajudaria). Além destas, tem a proposta do José Wellington, que seria uma análise univariada sobre o "primeiro componente".
+
+À disposição.
+Walmes.
+​_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170429/59ae2df0/attachment.html>
+

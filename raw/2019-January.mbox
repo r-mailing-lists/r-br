@@ -1,0 +1,4347 @@
+From andreolsouza em yahoo.com.br  Tue Jan  8 12:43:09 2019
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Tue, 8 Jan 2019 14:43:09 +0000 (UTC)
+Subject: [R-br] Particionar soma de quadrado
+References: <1659241582.14896161.1546958589075.ref@mail.yahoo.com>
+Message-ID: <1659241582.14896161.1546958589075@mail.yahoo.com>
+
+
+Boa noite,
+
+ dados que houve a internação entre fatores, preciso particionar a soma de quadrado. É apenas um exercício que estou fazendo co dados que está na web. Evidentemente que posso construir os contraste e testar o que me interessa e também poderia usar a ExpDes para isto. Alguém poderia ajudar com um script para tal desdobramento?
+Grato
+Pequei este exemplo! 
+
+ da <- read.table("http://www.leg.ufpr.br/~walmes/cursoR/anovareg.txt", header=TRUE, sep="\t")
+ str(da)
+
+ attach(da)
+# Este exemplo testa regressão! 
+
+fit=aov(indice ~ cultivar*ordered(dose))
+summary(fit)
+summary.lm(fit)
+
+
+# Gostaria de ajuda para desdobrar e testar doses para este modelo abaixo! 
+
+ fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose))
+
+ summary(fit)
+Grato
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190108/1b0d0316/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Jan  9 21:33:07 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 9 Jan 2019 21:33:07 -0200
+Subject: [R-br] Particionar soma de quadrado
+In-Reply-To: <1659241582.14896161.1546958589075@mail.yahoo.com>
+References: <1659241582.14896161.1546958589075.ref@mail.yahoo.com>
+ <1659241582.14896161.1546958589075@mail.yahoo.com>
+Message-ID: <CAKrF98mFnh9t2CoihjSseSxBwq-r775i1XN+w5tyEvc3SGTvmw@mail.gmail.com>
+
+Andre,
+
+O seu CMR está cheio de problemas...
+
+A linha:
+
+fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose))
+
+dá erro por falta de um parêntese no final.
+
+Colocando-se o símbolo faltante caímos em:
+
+> fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose)))
+Warning message:
+In aov(indice ~ cultivar * factor(dose) + Error(bloco:(cultivar +  :
+  modelo Error() é singular
+
+O que me parece esperado dado que o número total de amostras é 72 e você
+está querendo fazer  interação de 4 x 6 x 3 (blocos x doses x cultivar) ou
+seja você só tem *um* experimento por interação... isso deixa de ser
+regressão😶
+
+HTH
+
+
+
+
+On Tue, Jan 8, 2019 at 12:45 PM Andre Oliveira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa noite,
+> dados que houve a internação entre fatores, preciso particionar a soma de
+> quadrado. É apenas um exercício que estou fazendo co dados que está na web.
+> Evidentemente que posso construir os contraste e testar o que me interessa
+> e também poderia usar a ExpDes para isto. Alguém poderia ajudar com um
+> script para tal desdobramento?
+> Grato
+>
+> Pequei este exemplo!
+>
+> da <- read.table("http://www.leg.ufpr.br/~walmes/cursoR/anovareg.txt
+> <http://www.leg.ufpr.br/~walmes/cursoR/anovareg.txt?fbclid=IwAR3oUEJYP2LMuNkZCndm3jrtUceBc16QUaD1lEvqHhpoh7l4NJN8-Vkzubs>",
+> header=TRUE, sep="\t")
+> str(da)
+> attach(da)
+>
+> # Este exemplo testa regressão!
+>
+> fit=aov(indice ~ cultivar*ordered(dose))
+> summary(fit)
+> summary.lm(fit)
+>
+>
+> # Gostaria de ajuda para desdobrar e testar doses para este modelo abaixo!
+>
+> fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose))
+> summary(fit)
+>
+> Grato
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190109/bdfd87d2/attachment.html>
+
+From andreolsouza em yahoo.com.br  Thu Jan 10 08:22:47 2019
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Thu, 10 Jan 2019 10:22:47 +0000 (UTC)
+Subject: [R-br] Particionar soma de quadrado
+In-Reply-To: <CAKrF98mFnh9t2CoihjSseSxBwq-r775i1XN+w5tyEvc3SGTvmw@mail.gmail.com>
+References: <1659241582.14896161.1546958589075.ref@mail.yahoo.com>
+ <1659241582.14896161.1546958589075@mail.yahoo.com>
+ <CAKrF98mFnh9t2CoihjSseSxBwq-r775i1XN+w5tyEvc3SGTvmw@mail.gmail.com>
+Message-ID: <1442456196.16129039.1547115767547@mail.yahoo.com>
+
+Oi Cesar, obrigado pela atenção de fato esqueci do parenteses!
+A função aov quando usado o parâmetro Error () passou avisar desta forma, mas, a soma de quadrado está correta. Conferi em outros programas e há muitos avisos sobre o tema no google. 
+
+ Warning message:In aov(indice ~ cultivar * factor(dose) + Error(bloco:(cultivar +  :  modelo Error() é singular
+A regressão seria está aqui.
+require(lattice)
+xyplot(indice~dose|cultivar, groups=bloco, data=da, jitter.x=TRUE, type=c("p","l"), layout=c(3,1), pch=19)
+
+Grato
+
+
+    Em quarta-feira, 9 de janeiro de 2019 21:33:26 BRST, Cesar Rabak <cesar.rabak em gmail.com> escreveu:  
+ 
+ Andre,
+O seu CMR está cheio de problemas...
+
+A linha: 
+fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose))  
+
+dá erro por falta de um parêntese no final.
+Colocando-se o símbolo faltante caímos em:
+> fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose)))Warning message:In aov(indice ~ cultivar * factor(dose) + Error(bloco:(cultivar +  :  modelo Error() é singular
+O que me parece esperado dado que o número total de amostras é 72 e você está querendo fazer  interação de 4 x 6 x 3 (blocos x doses x cultivar) ou seja você só tem um experimento por interação... isso deixa de ser regressão😶
+HTH
+
+
+
+On Tue, Jan 8, 2019 at 12:45 PM Andre Oliveira por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+
+Boa noite,
+
+ dados que houve a internação entre fatores, preciso particionar a soma de quadrado. É apenas um exercício que estou fazendo co dados que está na web. Evidentemente que posso construir os contraste e testar o que me interessa e também poderia usar a ExpDes para isto. Alguém poderia ajudar com um script para tal desdobramento?
+Grato
+Pequei este exemplo! 
+
+ da <- read.table("http://www.leg.ufpr.br/~walmes/cursoR/anovareg.txt", header=TRUE, sep="\t")
+ str(da)
+
+ attach(da)
+# Este exemplo testa regressão! 
+
+fit=aov(indice ~ cultivar*ordered(dose))
+summary(fit)
+summary.lm(fit)
+
+
+# Gostaria de ajuda para desdobrar e testar doses para este modelo abaixo! 
+
+ fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose))
+
+ summary(fit)
+Grato
+
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190110/faabe953/attachment.html>
+
+From nandodesouza em gmail.com  Thu Jan 10 09:14:34 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 10 Jan 2019 09:14:34 -0200
+Subject: [R-br] Particionar soma de quadrado
+In-Reply-To: <1442456196.16129039.1547115767547@mail.yahoo.com>
+References: <1659241582.14896161.1546958589075.ref@mail.yahoo.com>
+ <1659241582.14896161.1546958589075@mail.yahoo.com>
+ <CAKrF98mFnh9t2CoihjSseSxBwq-r775i1XN+w5tyEvc3SGTvmw@mail.gmail.com>
+ <1442456196.16129039.1547115767547@mail.yahoo.com>
+Message-ID: <CAFrWFs=roXGOiHRxH8E6UPoM-hh2TfBGz752eu++dBOVkzRqwg@mail.gmail.com>
+
+Talvez aqui te ajude a compreender o significado da mensagem
+https://www.r-bloggers.com/two-way-anova-with-repeated-measures/amp/
+
+Em qui, 10 de jan de 2019 8:23 AM, Andre Oliveira por (R-br) <
+r-br em listas.c3sl.ufpr.br escreveu:
+
+> Oi Cesar,
+> obrigado pela atenção de fato esqueci do parenteses!
+>
+> A função aov quando usado o parâmetro Error () passou avisar desta forma,
+> mas, a soma de quadrado está correta. Conferi em outros programas e há
+> muitos avisos sobre o tema no google.
+>
+> Warning message:
+> In aov(indice ~ cultivar * factor(dose) + Error(bloco:(cultivar +  :
+>   modelo Error() é singular
+>
+> A regressão seria está aqui.
+>
+> require(lattice)
+> xyplot(indice~dose|cultivar, groups=bloco, data=da, jitter.x=TRUE,
+> type=c("p","l"), layout=c(3,1), pch=19)
+>
+> Grato
+>
+>
+> Em quarta-feira, 9 de janeiro de 2019 21:33:26 BRST, Cesar Rabak <
+> cesar.rabak em gmail.com> escreveu:
+>
+>
+> Andre,
+>
+> O seu CMR está cheio de problemas...
+>
+> A linha:
+>
+> fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose))
+>
+> dá erro por falta de um parêntese no final.
+>
+> Colocando-se o símbolo faltante caímos em:
+>
+> > fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose)))
+> Warning message:
+> In aov(indice ~ cultivar * factor(dose) + Error(bloco:(cultivar +  :
+>   modelo Error() é singular
+>
+> O que me parece esperado dado que o número total de amostras é 72 e você
+> está querendo fazer  interação de 4 x 6 x 3 (blocos x doses x cultivar) ou
+> seja você só tem *um* experimento por interação... isso deixa de ser
+> regressão😶
+>
+> HTH
+>
+>
+>
+>
+> On Tue, Jan 8, 2019 at 12:45 PM Andre Oliveira por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Boa noite,
+> dados que houve a internação entre fatores, preciso particionar a soma de
+> quadrado. É apenas um exercício que estou fazendo co dados que está na web.
+> Evidentemente que posso construir os contraste e testar o que me interessa
+> e também poderia usar a ExpDes para isto. Alguém poderia ajudar com um
+> script para tal desdobramento?
+> Grato
+>
+> Pequei este exemplo!
+>
+> da <- read.table("http://www.leg.ufpr.br/~walmes/cursoR/anovareg.txt
+> <http://www.leg.ufpr.br/~walmes/cursoR/anovareg.txt?fbclid=IwAR3oUEJYP2LMuNkZCndm3jrtUceBc16QUaD1lEvqHhpoh7l4NJN8-Vkzubs>",
+> header=TRUE, sep="\t")
+> str(da)
+> attach(da)
+>
+> # Este exemplo testa regressão!
+>
+> fit=aov(indice ~ cultivar*ordered(dose))
+> summary(fit)
+> summary.lm(fit)
+>
+>
+> # Gostaria de ajuda para desdobrar e testar doses para este modelo abaixo!
+>
+> fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose))
+> summary(fit)
+>
+> Grato
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190110/459adb45/attachment.html>
+
+From marcelolaia em gmail.com  Thu Jan 10 11:54:55 2019
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Thu, 10 Jan 2019 11:54:55 -0200
+Subject: [R-br] Modelo em aov semelhante ao do ExpDes.pt
+Message-ID: <20190110135455.GD27002@localhost>
+
+Colegas,
+
+Minha aluna está rodando no ExpDes o seguinte modelo:
+
+attach(clorofila)
+fat3.dbc(Isolado,Genótipo,Tempo,Bloco,Clorofila, quali = c(TRUE, TRUE, TRUE),
+fac.names = c("Isolado","Genótipo","Tempo"), sigF = "0.05", sigT = "0.05"
+
+
+Qual seria o modelo semelhante para ela rodar diretamente no aov? Por exemplo:
+
+aov(Clorofila ~ Genótipo*Tempo*Isolado ... etc
+
+Muito obrigado
+-- 
+Marcelo
+
+From cesar.rabak em gmail.com  Thu Jan 10 19:07:08 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 10 Jan 2019 19:07:08 -0200
+Subject: [R-br] Particionar soma de quadrado
+In-Reply-To: <CAFrWFs=roXGOiHRxH8E6UPoM-hh2TfBGz752eu++dBOVkzRqwg@mail.gmail.com>
+References: <1659241582.14896161.1546958589075.ref@mail.yahoo.com>
+ <1659241582.14896161.1546958589075@mail.yahoo.com>
+ <CAKrF98mFnh9t2CoihjSseSxBwq-r775i1XN+w5tyEvc3SGTvmw@mail.gmail.com>
+ <1442456196.16129039.1547115767547@mail.yahoo.com>
+ <CAFrWFs=roXGOiHRxH8E6UPoM-hh2TfBGz752eu++dBOVkzRqwg@mail.gmail.com>
+Message-ID: <CAKrF98m0L=oyGYUkjRvrHAfp2fyOyVPknP9BuJFUnuFodbop+Q@mail.gmail.com>
+
+Acho que não. . . a página indicada faz esta contribuição acaciana que
+IMNSHO não ajuda um iota OP na solução da ANOVA dele: « . . . This can
+happen due to a bug in your programming, a participant being noncompliant,
+data trimming after the fact, or a whole host of other reasons. . . . »
+
+O caso do OP caindo na classe "...toda uma série de outras razões..."
+
+HTH
+
+On Thu, Jan 10, 2019 at 9:14 AM Fernando Souza <nandodesouza em gmail.com>
+wrote:
+
+> Talvez aqui te ajude a compreender o significado da mensagem
+> https://www.r-bloggers.com/two-way-anova-with-repeated-measures/amp/
+>
+> Em qui, 10 de jan de 2019 8:23 AM, Andre Oliveira por (R-br) <
+> r-br em listas.c3sl.ufpr.br escreveu:
+>
+>> Oi Cesar,
+>> obrigado pela atenção de fato esqueci do parenteses!
+>>
+>> A função aov quando usado o parâmetro Error () passou avisar desta
+>> forma, mas, a soma de quadrado está correta. Conferi em outros programas e
+>> há muitos avisos sobre o tema no google.
+>>
+>> Warning message:
+>> In aov(indice ~ cultivar * factor(dose) + Error(bloco:(cultivar +  :
+>>   modelo Error() é singular
+>>
+>> A regressão seria está aqui.
+>>
+>> require(lattice)
+>> xyplot(indice~dose|cultivar, groups=bloco, data=da, jitter.x=TRUE,
+>> type=c("p","l"), layout=c(3,1), pch=19)
+>>
+>> Grato
+>>
+>>
+>> Em quarta-feira, 9 de janeiro de 2019 21:33:26 BRST, Cesar Rabak <
+>> cesar.rabak em gmail.com> escreveu:
+>>
+>>
+>> Andre,
+>>
+>> O seu CMR está cheio de problemas...
+>>
+>> A linha:
+>>
+>> fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose))
+>>
+>> dá erro por falta de um parêntese no final.
+>>
+>> Colocando-se o símbolo faltante caímos em:
+>>
+>> > fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose)))
+>> Warning message:
+>> In aov(indice ~ cultivar * factor(dose) + Error(bloco:(cultivar +  :
+>>   modelo Error() é singular
+>>
+>> O que me parece esperado dado que o número total de amostras é 72 e você
+>> está querendo fazer  interação de 4 x 6 x 3 (blocos x doses x cultivar) ou
+>> seja você só tem *um* experimento por interação... isso deixa de ser
+>> regressão😶
+>>
+>> HTH
+>>
+>>
+>>
+>>
+>> On Tue, Jan 8, 2019 at 12:45 PM Andre Oliveira por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>> Boa noite,
+>> dados que houve a internação entre fatores, preciso particionar a soma de
+>> quadrado. É apenas um exercício que estou fazendo co dados que está na web.
+>> Evidentemente que posso construir os contraste e testar o que me interessa
+>> e também poderia usar a ExpDes para isto. Alguém poderia ajudar com um
+>> script para tal desdobramento?
+>> Grato
+>>
+>> Pequei este exemplo!
+>>
+>> da <- read.table("http://www.leg.ufpr.br/~walmes/cursoR/anovareg.txt
+>> <http://www.leg.ufpr.br/~walmes/cursoR/anovareg.txt?fbclid=IwAR3oUEJYP2LMuNkZCndm3jrtUceBc16QUaD1lEvqHhpoh7l4NJN8-Vkzubs>",
+>> header=TRUE, sep="\t")
+>> str(da)
+>> attach(da)
+>>
+>> # Este exemplo testa regressão!
+>>
+>> fit=aov(indice ~ cultivar*ordered(dose))
+>> summary(fit)
+>> summary.lm(fit)
+>>
+>>
+>> # Gostaria de ajuda para desdobrar e testar doses para este modelo
+>> abaixo!
+>>
+>> fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose))
+>> summary(fit)
+>>
+>> Grato
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190110/5a7dd9e8/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Jan 10 19:23:57 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 10 Jan 2019 19:23:57 -0200
+Subject: [R-br] Particionar soma de quadrado
+In-Reply-To: <1442456196.16129039.1547115767547@mail.yahoo.com>
+References: <1659241582.14896161.1546958589075.ref@mail.yahoo.com>
+ <1659241582.14896161.1546958589075@mail.yahoo.com>
+ <CAKrF98mFnh9t2CoihjSseSxBwq-r775i1XN+w5tyEvc3SGTvmw@mail.gmail.com>
+ <1442456196.16129039.1547115767547@mail.yahoo.com>
+Message-ID: <CAKrF98kE3Th2B4uAMPKW=i9GV2PDqmRb_Y__r9vW5VmjNqqSaw@mail.gmail.com>
+
+André, o fato de a soma dos quadrados estar correta não muda o fato de você
+estar fazendo o equivalente a encontrar uma reta com apenas dois pontos e
+querer tratar isso como uma generalização e estudar o valor-p da ANOVA, etc.
+
+A razão porque aquela função é denominada *Error* é que ela deveria
+ajudá-lo no caso de *medidas repetidas* para cada caso de interação.
+
+No exemplo acima, quantas medidas repetidas você tem para cada caso dose *
+cultivar?
+
+Espero que estas questões lhe ajudem a entender o seu problema e recomendo
+a leitura to texto indicado pelo Fernando, malgrado já discordei que para a
+questão da msg de erro ele é insuficiente.
+
+Saindo um pouco fora da questão original e comentando seu último código (no
+momento ñ consigo baixar o arquivo da LEG, (falha em InternetOpenUrl: 'Uma
+conexão com o servidor não pôde ser estabelecida') note que o gráfico que
+você gera com xyplot mostra algo *diferente* do que você quer fazer via a
+ANOVA que você codifica: *dose *tratada como variável contínua no seu
+gráfico e como fator na ANOVA que vc codifica.
+
+IMNSHO se você mantivesse a variável dose como numérica e estudasse o
+assunto como regressão você obteria *mais* dos dados.
+
+HTH
+--
+Cesar Rabak
+
+On Thu, Jan 10, 2019 at 8:23 AM Andre Oliveira <andreolsouza em yahoo.com.br>
+wrote:
+
+> Oi Cesar,
+> obrigado pela atenção de fato esqueci do parenteses!
+>
+> A função aov quando usado o parâmetro Error () passou avisar desta forma,
+> mas, a soma de quadrado está correta. Conferi em outros programas e há
+> muitos avisos sobre o tema no google.
+>
+> Warning message:
+> In aov(indice ~ cultivar * factor(dose) + Error(bloco:(cultivar +  :
+>   modelo Error() é singular
+>
+> A regressão seria está aqui.
+>
+> require(lattice)
+> xyplot(indice~dose|cultivar, groups=bloco, data=da, jitter.x=TRUE,
+> type=c("p","l"), layout=c(3,1), pch=19)
+>
+> Grato
+>
+>
+> Em quarta-feira, 9 de janeiro de 2019 21:33:26 BRST, Cesar Rabak <
+> cesar.rabak em gmail.com> escreveu:
+>
+>
+> Andre,
+>
+> O seu CMR está cheio de problemas...
+>
+> A linha:
+>
+> fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose))
+>
+> dá erro por falta de um parêntese no final.
+>
+> Colocando-se o símbolo faltante caímos em:
+>
+> > fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose)))
+> Warning message:
+> In aov(indice ~ cultivar * factor(dose) + Error(bloco:(cultivar +  :
+>   modelo Error() é singular
+>
+> O que me parece esperado dado que o número total de amostras é 72 e você
+> está querendo fazer  interação de 4 x 6 x 3 (blocos x doses x cultivar) ou
+> seja você só tem *um* experimento por interação... isso deixa de ser
+> regressão😶
+>
+> HTH
+>
+>
+>
+>
+> On Tue, Jan 8, 2019 at 12:45 PM Andre Oliveira por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Boa noite,
+> dados que houve a internação entre fatores, preciso particionar a soma de
+> quadrado. É apenas um exercício que estou fazendo co dados que está na web.
+> Evidentemente que posso construir os contraste e testar o que me interessa
+> e também poderia usar a ExpDes para isto. Alguém poderia ajudar com um
+> script para tal desdobramento?
+> Grato
+>
+> Pequei este exemplo!
+>
+> da <- read.table("http://www.leg.ufpr.br/~walmes/cursoR/anovareg.txt
+> <http://www.leg.ufpr.br/~walmes/cursoR/anovareg.txt?fbclid=IwAR3oUEJYP2LMuNkZCndm3jrtUceBc16QUaD1lEvqHhpoh7l4NJN8-Vkzubs>",
+> header=TRUE, sep="\t")
+> str(da)
+> attach(da)
+>
+> # Este exemplo testa regressão!
+>
+> fit=aov(indice ~ cultivar*ordered(dose))
+> summary(fit)
+> summary.lm(fit)
+>
+>
+> # Gostaria de ajuda para desdobrar e testar doses para este modelo abaixo!
+>
+> fit=aov(indice ~ cultivar*factor(dose)+Error(bloco:(cultivar+dose))
+> summary(fit)
+>
+> Grato
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190110/d864c3ec/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Jan 10 21:24:11 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 10 Jan 2019 21:24:11 -0200
+Subject: [R-br] Modelo em aov semelhante ao do ExpDes.pt
+In-Reply-To: <20190110135455.GD27002@localhost>
+References: <20190110135455.GD27002@localhost>
+Message-ID: <CAKrF98mdsd6CXByF8AedWKvbP8Hg3haOzckrdcNL0ktL5O9w_A@mail.gmail.com>
+
+Usando o código do próprio pacote:
+
+> fat3.dbc
+
+Não resolve seu problema?
+
+
+
+On Thu, Jan 10, 2019 at 11:55 AM Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Colegas,
+>
+> Minha aluna está rodando no ExpDes o seguinte modelo:
+>
+> attach(clorofila)
+> fat3.dbc(Isolado,Genótipo,Tempo,Bloco,Clorofila, quali = c(TRUE, TRUE,
+> TRUE),
+> fac.names = c("Isolado","Genótipo","Tempo"), sigF = "0.05", sigT = "0.05"
+>
+>
+> Qual seria o modelo semelhante para ela rodar diretamente no aov? Por
+> exemplo:
+>
+> aov(Clorofila ~ Genótipo*Tempo*Isolado ... etc
+>
+> Muito obrigado
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190110/ec4ff201/attachment.html>
+
+From marcelolaia em gmail.com  Thu Jan 10 21:36:38 2019
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Thu, 10 Jan 2019 21:36:38 -0200
+Subject: [R-br] Modelo em aov semelhante ao do ExpDes.pt
+In-Reply-To: <CAKrF98mdsd6CXByF8AedWKvbP8Hg3haOzckrdcNL0ktL5O9w_A@mail.gmail.com>
+References: <20190110135455.GD27002@localhost>
+ <CAKrF98mdsd6CXByF8AedWKvbP8Hg3haOzckrdcNL0ktL5O9w_A@mail.gmail.com>
+Message-ID: <CAEEYVUCGsYS-HVFrHAJ-KrwBijXwS53FAiToaGwn5r-4z_b3oQ@mail.gmail.com>
+
+Sim! Fiz isso hoje cedo! Também pegamos um exemplo do ridículas.
+
+Até amanhã sai!
+
+Muito grato!
+
+Laia ML
+
+Em qui, 10 de jan de 2019 21:24, Cesar Rabak <cesar.rabak em gmail.com
+escreveu:
+
+> Usando o código do próprio pacote:
+>
+> > fat3.dbc
+>
+> Não resolve seu problema?
+>
+>
+>
+> On Thu, Jan 10, 2019 at 11:55 AM Marcelo Laia por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Colegas,
+>>
+>> Minha aluna está rodando no ExpDes o seguinte modelo:
+>>
+>> attach(clorofila)
+>> fat3.dbc(Isolado,Genótipo,Tempo,Bloco,Clorofila, quali = c(TRUE, TRUE,
+>> TRUE),
+>> fac.names = c("Isolado","Genótipo","Tempo"), sigF = "0.05", sigT = "0.05"
+>>
+>>
+>> Qual seria o modelo semelhante para ela rodar diretamente no aov? Por
+>> exemplo:
+>>
+>> aov(Clorofila ~ Genótipo*Tempo*Isolado ... etc
+>>
+>> Muito obrigado
+>> --
+>> Marcelo
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+>> cdigo mnimo reproduzvel.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190110/dbcdde21/attachment.html>
+
+From marcelolaia em gmail.com  Fri Jan 11 09:12:58 2019
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Fri, 11 Jan 2019 09:12:58 -0200
+Subject: [R-br] =?iso-8859-1?q?Linha_de_tend=EAncia_em_xyplot_=28lattice?=
+ =?iso-8859-1?q?=29=3A_melhor_ajuste?=
+Message-ID: <20190111111258.GG27002@localhost>
+
+Colegas,
+
+Fiz o seguinte:
+
+xyplot(Clorofila~Tempo|Isolado, groups=Genotipo, data=a, type = c("p", "spline", "spline"), distribute.type = FALSE,  auto.key=TRUE)
+
+Na ajuda do panel.xyplot consta que:
+
+"smooth"’ adds a loess fit
+
+"spline"’ adds a cubic smoothing spline fit
+
+"a"’ has the effect of calling ‘panel.average’, which can be useful for
+creating interaction plots
+
+Minha pergunta é:
+
+Nos dois primeiros casos, tem como eu saber, diretamente no gráfico, qual seria
+o melhor ajuste? Plotar algo como um R2, por exemplo? (Se falei besteira, aqui,
+perdão!)
+
+Obrigado
+
+-- 
+Marcelo
+
+From bruno.pasquini em gmail.com  Fri Jan 11 09:16:44 2019
+From: bruno.pasquini em gmail.com (=?UTF-8?Q?Bruno_C=C3=A9sar_Pasquini?=)
+Date: Fri, 11 Jan 2019 09:16:44 -0200
+Subject: [R-br] =?utf-8?q?Ajuda_com_a_passagem_incorreta_de_vari=C3=A1vel_?=
+	=?utf-8?q?string_para_uma_fun=C3=A7=C3=A3o_do_R?=
+Message-ID: <CAKZqVpOyKBNcDXOZJWgaWoyJtTzjAvgn2HS91W3Ys0pHtg28UA@mail.gmail.com>
+
+PessoALL, bom dia!
+
+Estou com dificuldade em passar os valores de uma variável string para uma
+função do R de forma que esta função a interprete corretamente.
+
+Por exemplo, para indicar qual coluna eu quero que a função selecione para
+um cruzamento de 2 data.tables (acho melhor que usar data.frames pela
+melhor performance do data.table)... Eu poderia levar a tabela inteira para
+o cruzamento, mas depois teria que deletar as demais colunas manualmente,
+gostaria de resolver com a função conforme o exemplo abaixo.
+
+Construí este exemplo baseado nos resultados do primeiro turno das últimas
+eleições presidenciais. Normalmente eu importaria as tabelas, mas eu as
+declaro aqui para a devida reprodução do código.
+Fonte:
+https://pt.wikipedia.org/wiki/Resultados_da_eleição_presidencial_no_Brasil_em_2018#Primeiro_turno_3
+
+Meu propósito é entender o que estou fazendo de errado (ou deixando de
+fazer...), não estou propondo um debate político-ideológico que foge ao
+escopo desta lista...
+
+Especificamente, eu não consigo fazer a função "*consolida*" (na verdade as
+versões 1, 2 e 3 desta função) interprete(m) o parâmetro "*Candidato*"
+corretamente.
+Eu tento usar o parâmetro sozinho e com as funções "*substitute*" e "*eval*",
+mas não consigo levar a coluna com os números de votação do candidato por
+região para o cruzamento. Sim, eu sei que o cruzamento como o desenhei vai
+gerar duplicidade, mas o que preciso é que o cruzamento "funcione"...
+
+Vocês podem me ajudar a entender o que estou fazendo de errado?
+
+Muito grato pela atenção de cada um(a),
+Bruno César Pasquini
+Estatístico
+
+####### Codigo Reprodutivel...
+
+library(data.table)
+
+### Percentual de Votos Validos nos estados e no exterior...
+perc_validos <- data.table(Regiao = c('Centro-Oeste', 'Centro-Oeste',
+'Centro-Oeste', 'Centro-Oeste', 'Exterior', 'Nordeste', 'Nordeste',
+'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste',
+'Nordeste', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte',
+'Sudeste', 'Sudeste', 'Sudeste', 'Sudeste', 'Sul', 'Sul', 'Sul'),
+                           Estado = c('Distrito Federal', 'Goias', 'Mato
+Grosso', 'Mato Grosso do Sul', '', 'Alagoas', 'Bahia', 'Ceara', 'Maranhao',
+'Paraiba', 'Pernambuco', 'Piaui', 'Rio Grande do Norte', 'Sergipe', 'Acre',
+'Amapa', 'Amazonas', 'Para', 'Rondonia', 'Roraima', 'Tocantins', 'Espirito
+Santo', 'Minas Gerais', 'Rio de Janeiro', 'Sao Paulo', 'Parana', 'Rio
+Grande do Sul', 'Santa Catarina'),
+                           Bolsonaro = c(0.5837, 0.5724, 0.6004, 0.5506,
+0.5879, 0.3440, 0.2341, 0.2174, 0.2428, 0.3130, 0.3057, 0.1876, 0.3021,
+0.2721, 0.6224, 0.4074, 0.4348, 0.3619, 0.6224, 0.6297, 0.4464, 0.5476,
+0.4831, 0.5979, 0.5300, 0.5689, 0.5263, 0.6582),
+                           Haddad = c(0.1187, 0.2186, 0.2476, 0.2387,
+0.1010, 0.4475, 0.6028, 0.3312, 0.6126, 0.4546, 0.4887, 0.6340, 0.4119,
+0.5009, 0.1853, 0.3277, 0.4030, 0.4139, 0.2036, 0.1785, 0.4112, 0.2420,
+0.2765, 0.1469, 0.1642, 0.1970, 0.2281, 0.1513),
+                           Ciro = c(0.1660, 0.0860, 0.0559, 0.0804, 0.1452,
+0.1012, 0.0941, 0.4095, 0.0839, 0.1675, 0.1356, 0.1142, 0.2231, 0.1302,
+0.0517, 0.1234, 0.0750, 0.1003, 0.0603, 0.0536, 0.0717, 0.0954, 0.1164,
+0.1522, 0.1135, 0.0831, 0.1137, 0.0668),
+                           Outros = c(0.1316, 0.1230, 0.0961, 0.1304,
+0.1659, 0.1072, 0.0690, 0.0419, 0.0606, 0.0650, 0.0700, 0.0642, 0.0631,
+0.0967, 0.1405, 0.1417, 0.0873, 0.1237, 0.1739, 0.1383, 0.0707, 0.1149,
+0.1241, 0.1030, 0.1922, 0.1510, 0.1318, 0.1236)
+                           )
+### Analisando o data.table perc_validos...
+perc_validos; class(perc_validos); str(perc_validos); dim(perc_validos)
+
+### Total de Votos Validos por regiao e no exterior...
+votos_regiao <- data.table(Regiao = c('Centro-Oeste', 'Exterior',
+'Nordeste', 'Norte', 'Sudeste', 'Sul'),
+                           'Jair Bolsonaro' = c(4555415, 113690, 7453186,
+3785038, 23915925, 9453736),
+                           'Fernando Haddad' = c(1642054, 19540, 14583334,
+3211002, 8623232, 3262843),
+                           'Ciro Gomes' = c(750776, 28073, 4892961, 748170,
+5425104, 1499282),
+                           'Demais Candidatos' = c(952142, 32078, 1894092,
+982103, 6968773, 2258047)
+                           )
+### Analisando o data.table votos_regiao...
+votos_regiao; class(votos_regiao); str(votos_regiao); dim(votos_regiao)
+
+### Fazendo o cruzamento... Ou pelo menos tentando...
+consolida1 <- function(Candidato) {
+   temporario <- merge(x = perc_validos,
+                       y = votos_regiao[, .(Regiao,
+                                            Candidato)],
+                       by = "Regiao",
+                       all.x = TRUE,
+                       sort = TRUE)
+   return(temporario)
+}
+consolida1(Candidato = "Jair Bolsonaro")
+
+consolida2 <- function(Candidato) {
+   temporario <- merge(x = perc_validos,
+                       y = votos_regiao[, .(Regiao,
+                                            substitute(Candidato))],
+                       by = "Regiao",
+                       all.x = TRUE,
+                       sort = TRUE)
+   return(temporario)
+}
+consolida2(Candidato = "Ciro Gomes")
+
+consolida3 <- function(Candidato) {
+   temporario <- merge(x = perc_validos,
+                       y = votos_regiao[, .(Regiao,
+                                            eval(Candidato))],
+                       by = "Regiao",
+                       all.x = TRUE,
+                       sort = TRUE)
+   return(temporario)
+}
+consolida3(Candidato = "Fernando Haddad")
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190111/99df5a2f/attachment.html>
+
+From dtiezzi em usp.br  Fri Jan 11 10:50:57 2019
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Fri, 11 Jan 2019 10:50:57 -0200
+Subject: [R-br] 
+ =?utf-8?q?Ajuda_com_a_passagem_incorreta_de_vari=C3=A1vel?=
+ =?utf-8?q?_string_para_uma_fun=C3=A7=C3=A3o_do_R?=
+In-Reply-To: <CAKZqVpOyKBNcDXOZJWgaWoyJtTzjAvgn2HS91W3Ys0pHtg28UA@mail.gmail.com>
+References: <CAKZqVpOyKBNcDXOZJWgaWoyJtTzjAvgn2HS91W3Ys0pHtg28UA@mail.gmail.com>
+Message-ID: <594C7C8D-0989-42A0-A609-78E9D0752E4F@usp.br>
+
+Bom dia Bruno
+
+Me parece que suas 3 funções são idênticas.
+
+Passa a variável “Ciro Gomes” como parâmetro para a consolida1(). Deve ter algum erro de digitação na consolida2().
+
+
+daniel
+
+
+
+Daniel Tiezzi, MD, PhD
+Professor Associado
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em fmrp.usp.br
+
+
+
+> On 11 Jan 2019, at 09:16, Bruno César Pasquini por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> ####### Codigo Reprodutivel...
+> 
+> library(data.table)
+> 
+> ### Percentual de Votos Validos nos estados e no exterior...
+> perc_validos <- data.table(Regiao = c('Centro-Oeste', 'Centro-Oeste', 'Centro-Oeste', 'Centro-Oeste', 'Exterior', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Sudeste', 'Sudeste', 'Sudeste', 'Sudeste', 'Sul', 'Sul', 'Sul'),
+>                            Estado = c('Distrito Federal', 'Goias', 'Mato Grosso', 'Mato Grosso do Sul', '', 'Alagoas', 'Bahia', 'Ceara', 'Maranhao', 'Paraiba', 'Pernambuco', 'Piaui', 'Rio Grande do Norte', 'Sergipe', 'Acre', 'Amapa', 'Amazonas', 'Para', 'Rondonia', 'Roraima', 'Tocantins', 'Espirito Santo', 'Minas Gerais', 'Rio de Janeiro', 'Sao Paulo', 'Parana', 'Rio Grande do Sul', 'Santa Catarina'),
+>                            Bolsonaro = c(0.5837, 0.5724, 0.6004, 0.5506, 0.5879, 0.3440, 0.2341, 0.2174, 0.2428, 0.3130, 0.3057, 0.1876, 0.3021, 0.2721, 0.6224, 0.4074, 0.4348, 0.3619, 0.6224, 0.6297, 0.4464, 0.5476, 0.4831, 0.5979, 0.5300, 0.5689, 0.5263, 0.6582),
+>                            Haddad = c(0.1187, 0.2186, 0.2476, 0.2387, 0.1010, 0.4475, 0.6028, 0.3312, 0.6126, 0.4546, 0.4887, 0.6340, 0.4119, 0.5009, 0.1853, 0.3277, 0.4030, 0.4139, 0.2036, 0.1785, 0.4112, 0.2420, 0.2765, 0.1469, 0.1642, 0.1970, 0.2281, 0.1513),
+>                            Ciro = c(0.1660, 0.0860, 0.0559, 0.0804, 0.1452, 0.1012, 0.0941, 0.4095, 0.0839, 0.1675, 0.1356, 0.1142, 0.2231, 0.1302, 0.0517, 0.1234, 0.0750, 0.1003, 0.0603, 0.0536, 0.0717, 0.0954, 0.1164, 0.1522, 0.1135, 0.0831, 0.1137, 0.0668),
+>                            Outros = c(0.1316, 0.1230, 0.0961, 0.1304, 0.1659, 0.1072, 0.0690, 0.0419, 0.0606, 0.0650, 0.0700, 0.0642, 0.0631, 0.0967, 0.1405, 0.1417, 0.0873, 0.1237, 0.1739, 0.1383, 0.0707, 0.1149, 0.1241, 0.1030, 0.1922, 0.1510, 0.1318, 0.1236)
+>                            )
+> ### Analisando o data.table perc_validos...
+> perc_validos; class(perc_validos); str(perc_validos); dim(perc_validos)
+> 
+> ### Total de Votos Validos por regiao e no exterior...
+> votos_regiao <- data.table(Regiao = c('Centro-Oeste', 'Exterior', 'Nordeste', 'Norte', 'Sudeste', 'Sul'),
+>                            'Jair Bolsonaro' = c(4555415, 113690, 7453186, 3785038, 23915925, 9453736),
+>                            'Fernando Haddad' = c(1642054, 19540, 14583334, 3211002, 8623232, 3262843),
+>                            'Ciro Gomes' = c(750776, 28073, 4892961, 748170, 5425104, 1499282),
+>                            'Demais Candidatos' = c(952142, 32078, 1894092, 982103, 6968773, 2258047)
+>                            )
+> ### Analisando o data.table votos_regiao...
+> votos_regiao; class(votos_regiao); str(votos_regiao); dim(votos_regiao)
+> 
+> ### Fazendo o cruzamento... Ou pelo menos tentando...
+> consolida1 <- function(Candidato) {
+>    temporario <- merge(x = perc_validos,
+>                        y = votos_regiao[, .(Regiao,
+>                                             Candidato)],
+>                        by = "Regiao",
+>                        all.x = TRUE,
+>                        sort = TRUE)
+>    return(temporario)
+> }
+> consolida1(Candidato = "Jair Bolsonaro")
+> 
+> consolida2 <- function(Candidato) {
+>    temporario <- merge(x = perc_validos,
+>                        y = votos_regiao[, .(Regiao,
+>                                             substitute(Candidato))],
+>                        by = "Regiao",
+>                        all.x = TRUE,
+>                        sort = TRUE)
+>    return(temporario)
+> }
+> consolida2(Candidato = "Ciro Gomes")
+> 
+> consolida3 <- function(Candidato) {
+>    temporario <- merge(x = perc_validos,
+>                        y = votos_regiao[, .(Regiao,
+>                                             eval(Candidato))],
+>                        by = "Regiao",
+>                        all.x = TRUE,
+>                        sort = TRUE)
+>    return(temporario)
+> }
+> consolida3(Candidato = "Fernando Haddad")
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190111/e7fedf84/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Jan 11 23:15:57 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 11 Jan 2019 23:15:57 -0200
+Subject: [R-br] 
+	=?utf-8?q?Linha_de_tend=C3=AAncia_em_xyplot_=28lattice=29?=
+	=?utf-8?q?=3A_melhor_ajuste?=
+In-Reply-To: <20190111111258.GG27002@localhost>
+References: <20190111111258.GG27002@localhost>
+Message-ID: <CAKrF98=ZYwJjM2DZ8GqfayuQumQs5PCF_jCwBjO8xFv+2G6krw@mail.gmail.com>
+
+Marcelo,
+
+Tanto o LOESS como a Spline são curvas "heurísticas" portanto, embora nada
+seja impossível (que alguém tenha inventado algum tipo de *pseudo R²* para
+elas), não teriam muito sentido porque a parte que o R² supostamente é
+chamada a responder é o ajuste a um *modelo* dos seus dados que precisa ter
+um pressuposto adicional aos dados, enquanto o uso da LOESS e Splines não.
+
+Há excelentes referências à LOESS (a.k.a. LOWESS), embora o *site* primário
+(o NIST) pode estar fora do ar devido ao *shutdown* de um certo país da
+América do Norte...
+
+De forma similar, o desenvolvimento e uso das splines pode ser bem
+pesquisado na Internet sem problemas.
+
+Ademais, você plota seus dados condicionando em fator, o que precisa ver se
+permite analisar às curvas obtidas como paralelas o suficiente, senão você
+poderia achar que dependendo desse fator o modelo seria diferente, o que
+pode ser um fato científico ou uma bela besteira 😑!
+
+HTH
+__
+Cesar Rabak
+
+
+On Fri, Jan 11, 2019 at 9:13 AM Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Colegas,
+>
+> Fiz o seguinte:
+>
+> xyplot(Clorofila~Tempo|Isolado, groups=Genotipo, data=a, type = c("p",
+> "spline", "spline"), distribute.type = FALSE,  auto.key=TRUE)
+>
+> Na ajuda do panel.xyplot consta que:
+>
+> "smooth"’ adds a loess fit
+>
+> "spline"’ adds a cubic smoothing spline fit
+>
+> "a"’ has the effect of calling ‘panel.average’, which can be useful for
+> creating interaction plots
+>
+> Minha pergunta é:
+>
+> Nos dois primeiros casos, tem como eu saber, diretamente no gráfico, qual
+> seria
+> o melhor ajuste? Plotar algo como um R2, por exemplo? (Se falei besteira,
+> aqui,
+> perdão!)
+>
+> Obrigado
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190111/fb53e2b0/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Jan 11 23:36:39 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 11 Jan 2019 23:36:39 -0200
+Subject: [R-br] 
+	=?utf-8?q?Ajuda_com_a_passagem_incorreta_de_vari=C3=A1vel?=
+	=?utf-8?q?_string_para_uma_fun=C3=A7=C3=A3o_do_R?=
+In-Reply-To: <CAKZqVpOyKBNcDXOZJWgaWoyJtTzjAvgn2HS91W3Ys0pHtg28UA@mail.gmail.com>
+References: <CAKZqVpOyKBNcDXOZJWgaWoyJtTzjAvgn2HS91W3Ys0pHtg28UA@mail.gmail.com>
+Message-ID: <CAKrF98kA6xTpvw5BBzJsXBP2aEvPDRdK_UDtBc-fSdSEJGWCxw@mail.gmail.com>
+
+Bruno, apenas uma dúvida: como você espera fazer um *merge* em dois
+conjuntos de dados cujas "chaves" (no data.table, que um dataframe) as
+variáveis ou colunas... ou sendo mais simplório: como você espera que o SW
+estatístico *saiba* que  Bolsonaro na data.table  perc_validos é a *mesma
+coisa* que 'Jair Bolsonaro' na votos_regiao 🤔??
+
+HTH
+--
+Cesar Rabak
+
+
+On Fri, Jan 11, 2019 at 9:17 AM Bruno César Pasquini por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> PessoALL, bom dia!
+>
+> Estou com dificuldade em passar os valores de uma variável string para uma
+> função do R de forma que esta função a interprete corretamente.
+>
+> Por exemplo, para indicar qual coluna eu quero que a função selecione para
+> um cruzamento de 2 data.tables (acho melhor que usar data.frames pela
+> melhor performance do data.table)... Eu poderia levar a tabela inteira para
+> o cruzamento, mas depois teria que deletar as demais colunas manualmente,
+> gostaria de resolver com a função conforme o exemplo abaixo.
+>
+> Construí este exemplo baseado nos resultados do primeiro turno das últimas
+> eleições presidenciais. Normalmente eu importaria as tabelas, mas eu as
+> declaro aqui para a devida reprodução do código.
+> Fonte:
+> https://pt.wikipedia.org/wiki/Resultados_da_eleição_presidencial_no_Brasil_em_2018#Primeiro_turno_3
+>
+> Meu propósito é entender o que estou fazendo de errado (ou deixando de
+> fazer...), não estou propondo um debate político-ideológico que foge ao
+> escopo desta lista...
+>
+> Especificamente, eu não consigo fazer a função "*consolida*" (na verdade
+> as versões 1, 2 e 3 desta função) interprete(m) o parâmetro "*Candidato*"
+> corretamente.
+> Eu tento usar o parâmetro sozinho e com as funções "*substitute*" e "
+> *eval*", mas não consigo levar a coluna com os números de votação do
+> candidato por região para o cruzamento. Sim, eu sei que o cruzamento como o
+> desenhei vai gerar duplicidade, mas o que preciso é que o cruzamento
+> "funcione"...
+>
+> Vocês podem me ajudar a entender o que estou fazendo de errado?
+>
+> Muito grato pela atenção de cada um(a),
+> Bruno César Pasquini
+> Estatístico
+>
+> ####### Codigo Reprodutivel...
+>
+> library(data.table)
+>
+> ### Percentual de Votos Validos nos estados e no exterior...
+> perc_validos <- data.table(Regiao = c('Centro-Oeste', 'Centro-Oeste',
+> 'Centro-Oeste', 'Centro-Oeste', 'Exterior', 'Nordeste', 'Nordeste',
+> 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste',
+> 'Nordeste', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte',
+> 'Sudeste', 'Sudeste', 'Sudeste', 'Sudeste', 'Sul', 'Sul', 'Sul'),
+>                            Estado = c('Distrito Federal', 'Goias', 'Mato
+> Grosso', 'Mato Grosso do Sul', '', 'Alagoas', 'Bahia', 'Ceara', 'Maranhao',
+> 'Paraiba', 'Pernambuco', 'Piaui', 'Rio Grande do Norte', 'Sergipe', 'Acre',
+> 'Amapa', 'Amazonas', 'Para', 'Rondonia', 'Roraima', 'Tocantins', 'Espirito
+> Santo', 'Minas Gerais', 'Rio de Janeiro', 'Sao Paulo', 'Parana', 'Rio
+> Grande do Sul', 'Santa Catarina'),
+>                            Bolsonaro = c(0.5837, 0.5724, 0.6004, 0.5506,
+> 0.5879, 0.3440, 0.2341, 0.2174, 0.2428, 0.3130, 0.3057, 0.1876, 0.3021,
+> 0.2721, 0.6224, 0.4074, 0.4348, 0.3619, 0.6224, 0.6297, 0.4464, 0.5476,
+> 0.4831, 0.5979, 0.5300, 0.5689, 0.5263, 0.6582),
+>                            Haddad = c(0.1187, 0.2186, 0.2476, 0.2387,
+> 0.1010, 0.4475, 0.6028, 0.3312, 0.6126, 0.4546, 0.4887, 0.6340, 0.4119,
+> 0.5009, 0.1853, 0.3277, 0.4030, 0.4139, 0.2036, 0.1785, 0.4112, 0.2420,
+> 0.2765, 0.1469, 0.1642, 0.1970, 0.2281, 0.1513),
+>                            Ciro = c(0.1660, 0.0860, 0.0559, 0.0804,
+> 0.1452, 0.1012, 0.0941, 0.4095, 0.0839, 0.1675, 0.1356, 0.1142, 0.2231,
+> 0.1302, 0.0517, 0.1234, 0.0750, 0.1003, 0.0603, 0.0536, 0.0717, 0.0954,
+> 0.1164, 0.1522, 0.1135, 0.0831, 0.1137, 0.0668),
+>                            Outros = c(0.1316, 0.1230, 0.0961, 0.1304,
+> 0.1659, 0.1072, 0.0690, 0.0419, 0.0606, 0.0650, 0.0700, 0.0642, 0.0631,
+> 0.0967, 0.1405, 0.1417, 0.0873, 0.1237, 0.1739, 0.1383, 0.0707, 0.1149,
+> 0.1241, 0.1030, 0.1922, 0.1510, 0.1318, 0.1236)
+>                            )
+> ### Analisando o data.table perc_validos...
+> perc_validos; class(perc_validos); str(perc_validos); dim(perc_validos)
+>
+> ### Total de Votos Validos por regiao e no exterior...
+> votos_regiao <- data.table(Regiao = c('Centro-Oeste', 'Exterior',
+> 'Nordeste', 'Norte', 'Sudeste', 'Sul'),
+>                            'Jair Bolsonaro' = c(4555415, 113690, 7453186,
+> 3785038, 23915925, 9453736),
+>                            'Fernando Haddad' = c(1642054, 19540, 14583334,
+> 3211002, 8623232, 3262843),
+>                            'Ciro Gomes' = c(750776, 28073, 4892961,
+> 748170, 5425104, 1499282),
+>                            'Demais Candidatos' = c(952142, 32078, 1894092,
+> 982103, 6968773, 2258047)
+>                            )
+> ### Analisando o data.table votos_regiao...
+> votos_regiao; class(votos_regiao); str(votos_regiao); dim(votos_regiao)
+>
+> ### Fazendo o cruzamento... Ou pelo menos tentando...
+> consolida1 <- function(Candidato) {
+>    temporario <- merge(x = perc_validos,
+>                        y = votos_regiao[, .(Regiao,
+>                                             Candidato)],
+>                        by = "Regiao",
+>                        all.x = TRUE,
+>                        sort = TRUE)
+>    return(temporario)
+> }
+> consolida1(Candidato = "Jair Bolsonaro")
+>
+> consolida2 <- function(Candidato) {
+>    temporario <- merge(x = perc_validos,
+>                        y = votos_regiao[, .(Regiao,
+>                                             substitute(Candidato))],
+>                        by = "Regiao",
+>                        all.x = TRUE,
+>                        sort = TRUE)
+>    return(temporario)
+> }
+> consolida2(Candidato = "Ciro Gomes")
+>
+> consolida3 <- function(Candidato) {
+>    temporario <- merge(x = perc_validos,
+>                        y = votos_regiao[, .(Regiao,
+>                                             eval(Candidato))],
+>                        by = "Regiao",
+>                        all.x = TRUE,
+>                        sort = TRUE)
+>    return(temporario)
+> }
+> consolida3(Candidato = "Fernando Haddad")
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190111/74bcff2d/attachment.html>
+
+From joseclaudio.faria em gmail.com  Fri Jan 11 23:38:33 2019
+From: joseclaudio.faria em gmail.com (Jose Claudio Faria)
+Date: Fri, 11 Jan 2019 22:38:33 -0300
+Subject: [R-br] =?utf-8?q?Tinn-R=3A_nova_p=C3=A1gina?=
+Message-ID: <CAN+Emd-80X5hNMTnT-fxLHJsDBPOm7FuRvJD7kK-PAGmiHaHLQ@mail.gmail.com>
+
+Prezados,
+
+O projeto Tinn-R está com nova web page:
+http://nbcgib.uesc.br/tinnr/en/index.php
+
+Abraços,
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+Jose Claudio Faria
+UESC/DCET/Brasil
+joseclaudio.faria at gmail.com
+Telefones:
+55(73)3680.5545 - UESC
+55(73)99966.9100 - VIVO
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+
+If you have software to deal with statistics, you have arms;
+if you have good software, you have arms and legs;
+if you have software like R, you have arms, legs and wings...
+the height of your flight depends only on you!
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190111/a00e1f08/attachment.html>
+
+From bruno.pasquini em gmail.com  Tue Jan 15 08:00:14 2019
+From: bruno.pasquini em gmail.com (=?UTF-8?Q?Bruno_C=C3=A9sar_Pasquini?=)
+Date: Tue, 15 Jan 2019 08:00:14 -0200
+Subject: [R-br] 
+	=?utf-8?q?Ajuda_com_a_passagem_incorreta_de_vari=C3=A1vel?=
+	=?utf-8?q?_string_para_uma_fun=C3=A7=C3=A3o_do_R?=
+In-Reply-To: <CAKrF98kA6xTpvw5BBzJsXBP2aEvPDRdK_UDtBc-fSdSEJGWCxw@mail.gmail.com>
+References: <CAKZqVpOyKBNcDXOZJWgaWoyJtTzjAvgn2HS91W3Ys0pHtg28UA@mail.gmail.com>
+ <CAKrF98kA6xTpvw5BBzJsXBP2aEvPDRdK_UDtBc-fSdSEJGWCxw@mail.gmail.com>
+Message-ID: <CAKZqVpNvoiD_fMMyHnZLon3Y7HckRqhOjaO+g=TjE+cV2R_woA@mail.gmail.com>
+
+*Daniel* e *César*,
+
+Agradeço muito o terem tentado rodar meu código...
+
+Arranjei este exemplo para tentar resolver um problema que estou tendo com
+dados da indústria química alemã onde trabalho, dados que não posso expor
+aqui. Arranjei um exemplo fake (ainda que com dados reais) para pedir a
+ajuda no processamento da função.
+
+Minha expectativa é a de conseguir que o R selecione apenas a variável
+chave para o cruzamento (*Regiao*) mais alguma outra (uma das colunas com
+contagem de votos) cuja interpretação não estou conseguindo acertar no meu
+código R.
+
+Como o problema é este, eu deixei os nomes das demais variáveis
+propositalmente diferentes, eu não espero mesmo que o R associe uma
+variável chamada "Ciro" com outra que se chama "Ciro Gomes" (a menos que eu
+o faça manualmente depois...).
+
+O que eu gostaria de obter neste cruzamento a ser feito pela função é algo
+como (vamos supor que peça a coluna dos votos dos demais candidatos):
+
+Regiao Estado Bolsonaro Haddad Ciro Outros 'Demais Candidatos'
+'Centro-Oeste' 'Distrito Federal' 0.5837 0.1187 0.1660 0.1316 952142
+'Centro-Oeste' 'Goias' 0.5724 0.2186 0.0860 0.1230 952142
+'Centro-Oeste' 'Mato Grosso' 0.6004 0.2476 0.0559 0.0961 952142
+'Centro-Oeste' 'Mato Grosso do Sul' 0.5506 0.2387 0.0804 0.1304 952142
+'Exterior' '' 0.5879 0.1010 0.1452 0.1659 32078
+'Nordeste' 'Alagoas' 0.3440 0.4475 0.1012 0.1072 1894092
+'Nordeste' 'Bahia' 0.2341 0.6028 0.0941 0.0690 1894092
+'Nordeste' 'Ceara' 0.2174 0.3312 0.4095 0.0419 1894092
+(...)
+É a tabela *perc_validos* com o acréscimo da coluna "Demais Candidatos".
+
+Meu desafio é separar, dentre as várias colunas na tabela *votos_regiao*,
+apenas a coluna chave (*Regiao*) e a coluna que eu apontar como parametro
+na função (neste exemplo acima a "Demais Candidatos"). Da maneira que
+coloquei (as 3 versões da função *consolida*), nenhuma delas tem funcionado
+e é nisso que eu preciso da ajuda para entender no que estou errando. O
+fato de gerar duplicidades e de que (no exemplo acima) a coluna "Outros"
+não se relacionar com a coluna "Demais Candidatos" nao são problema, eu
+tratarei na sequência do meu código. Para mim o importante é acertar a
+seleção para o cruzamento...
+
+Assim, como eu faço para selecionar uma das colunas com contagem de votos
+além da variável chave nas funções? O que eu estou fazendo de errado?
+
+Grato mais uma vez pela atenção de vocês,
+
+Bruno César Pasquini
+Estatístico.
+
+
+Em sex, 11 de jan de 2019 às 23:37, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bruno, apenas uma dúvida: como você espera fazer um *merge* em dois
+> conjuntos de dados cujas "chaves" (no data.table, que um dataframe) as
+> variáveis ou colunas... ou sendo mais simplório: como você espera que o SW
+> estatístico *saiba* que  Bolsonaro na data.table  perc_validos é a *mesma
+> coisa* que 'Jair Bolsonaro' na votos_regiao 🤔??
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Fri, Jan 11, 2019 at 9:17 AM Bruno César Pasquini por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> PessoALL, bom dia!
+>>
+>> Estou com dificuldade em passar os valores de uma variável string para
+>> uma função do R de forma que esta função a interprete corretamente.
+>>
+>> Por exemplo, para indicar qual coluna eu quero que a função selecione
+>> para um cruzamento de 2 data.tables (acho melhor que usar data.frames pela
+>> melhor performance do data.table)... Eu poderia levar a tabela inteira para
+>> o cruzamento, mas depois teria que deletar as demais colunas manualmente,
+>> gostaria de resolver com a função conforme o exemplo abaixo.
+>>
+>> Construí este exemplo baseado nos resultados do primeiro turno das
+>> últimas eleições presidenciais. Normalmente eu importaria as tabelas, mas
+>> eu as declaro aqui para a devida reprodução do código.
+>> Fonte:
+>> https://pt.wikipedia.org/wiki/Resultados_da_eleição_presidencial_no_Brasil_em_2018#Primeiro_turno_3
+>>
+>> Meu propósito é entender o que estou fazendo de errado (ou deixando de
+>> fazer...), não estou propondo um debate político-ideológico que foge ao
+>> escopo desta lista...
+>>
+>> Especificamente, eu não consigo fazer a função "*consolida*" (na verdade
+>> as versões 1, 2 e 3 desta função) interprete(m) o parâmetro "*Candidato*"
+>> corretamente.
+>> Eu tento usar o parâmetro sozinho e com as funções "*substitute*" e "
+>> *eval*", mas não consigo levar a coluna com os números de votação do
+>> candidato por região para o cruzamento. Sim, eu sei que o cruzamento como o
+>> desenhei vai gerar duplicidade, mas o que preciso é que o cruzamento
+>> "funcione"...
+>>
+>> Vocês podem me ajudar a entender o que estou fazendo de errado?
+>>
+>> Muito grato pela atenção de cada um(a),
+>> Bruno César Pasquini
+>> Estatístico
+>>
+>> ####### Codigo Reprodutivel...
+>>
+>> library(data.table)
+>>
+>> ### Percentual de Votos Validos nos estados e no exterior...
+>> perc_validos <- data.table(Regiao = c('Centro-Oeste', 'Centro-Oeste',
+>> 'Centro-Oeste', 'Centro-Oeste', 'Exterior', 'Nordeste', 'Nordeste',
+>> 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste',
+>> 'Nordeste', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte',
+>> 'Sudeste', 'Sudeste', 'Sudeste', 'Sudeste', 'Sul', 'Sul', 'Sul'),
+>>                            Estado = c('Distrito Federal', 'Goias', 'Mato
+>> Grosso', 'Mato Grosso do Sul', '', 'Alagoas', 'Bahia', 'Ceara', 'Maranhao',
+>> 'Paraiba', 'Pernambuco', 'Piaui', 'Rio Grande do Norte', 'Sergipe', 'Acre',
+>> 'Amapa', 'Amazonas', 'Para', 'Rondonia', 'Roraima', 'Tocantins', 'Espirito
+>> Santo', 'Minas Gerais', 'Rio de Janeiro', 'Sao Paulo', 'Parana', 'Rio
+>> Grande do Sul', 'Santa Catarina'),
+>>                            Bolsonaro = c(0.5837, 0.5724, 0.6004, 0.5506,
+>> 0.5879, 0.3440, 0.2341, 0.2174, 0.2428, 0.3130, 0.3057, 0.1876, 0.3021,
+>> 0.2721, 0.6224, 0.4074, 0.4348, 0.3619, 0.6224, 0.6297, 0.4464, 0.5476,
+>> 0.4831, 0.5979, 0.5300, 0.5689, 0.5263, 0.6582),
+>>                            Haddad = c(0.1187, 0.2186, 0.2476, 0.2387,
+>> 0.1010, 0.4475, 0.6028, 0.3312, 0.6126, 0.4546, 0.4887, 0.6340, 0.4119,
+>> 0.5009, 0.1853, 0.3277, 0.4030, 0.4139, 0.2036, 0.1785, 0.4112, 0.2420,
+>> 0.2765, 0.1469, 0.1642, 0.1970, 0.2281, 0.1513),
+>>                            Ciro = c(0.1660, 0.0860, 0.0559, 0.0804,
+>> 0.1452, 0.1012, 0.0941, 0.4095, 0.0839, 0.1675, 0.1356, 0.1142, 0.2231,
+>> 0.1302, 0.0517, 0.1234, 0.0750, 0.1003, 0.0603, 0.0536, 0.0717, 0.0954,
+>> 0.1164, 0.1522, 0.1135, 0.0831, 0.1137, 0.0668),
+>>                            Outros = c(0.1316, 0.1230, 0.0961, 0.1304,
+>> 0.1659, 0.1072, 0.0690, 0.0419, 0.0606, 0.0650, 0.0700, 0.0642, 0.0631,
+>> 0.0967, 0.1405, 0.1417, 0.0873, 0.1237, 0.1739, 0.1383, 0.0707, 0.1149,
+>> 0.1241, 0.1030, 0.1922, 0.1510, 0.1318, 0.1236)
+>>                            )
+>> ### Analisando o data.table perc_validos...
+>> perc_validos; class(perc_validos); str(perc_validos); dim(perc_validos)
+>>
+>> ### Total de Votos Validos por regiao e no exterior...
+>> votos_regiao <- data.table(Regiao = c('Centro-Oeste', 'Exterior',
+>> 'Nordeste', 'Norte', 'Sudeste', 'Sul'),
+>>                            'Jair Bolsonaro' = c(4555415, 113690, 7453186,
+>> 3785038, 23915925, 9453736),
+>>                            'Fernando Haddad' = c(1642054, 19540,
+>> 14583334, 3211002, 8623232, 3262843),
+>>                            'Ciro Gomes' = c(750776, 28073, 4892961,
+>> 748170, 5425104, 1499282),
+>>                            'Demais Candidatos' = c(952142, 32078,
+>> 1894092, 982103, 6968773, 2258047)
+>>                            )
+>> ### Analisando o data.table votos_regiao...
+>> votos_regiao; class(votos_regiao); str(votos_regiao); dim(votos_regiao)
+>>
+>> ### Fazendo o cruzamento... Ou pelo menos tentando...
+>> consolida1 <- function(Candidato) {
+>>    temporario <- merge(x = perc_validos,
+>>                        y = votos_regiao[, .(Regiao,
+>>                                             Candidato)],
+>>                        by = "Regiao",
+>>                        all.x = TRUE,
+>>                        sort = TRUE)
+>>    return(temporario)
+>> }
+>> consolida1(Candidato = "Jair Bolsonaro")
+>>
+>> consolida2 <- function(Candidato) {
+>>    temporario <- merge(x = perc_validos,
+>>                        y = votos_regiao[, .(Regiao,
+>>                                             substitute(Candidato))],
+>>                        by = "Regiao",
+>>                        all.x = TRUE,
+>>                        sort = TRUE)
+>>    return(temporario)
+>> }
+>> consolida2(Candidato = "Ciro Gomes")
+>>
+>> consolida3 <- function(Candidato) {
+>>    temporario <- merge(x = perc_validos,
+>>                        y = votos_regiao[, .(Regiao,
+>>                                             eval(Candidato))],
+>>                        by = "Regiao",
+>>                        all.x = TRUE,
+>>                        sort = TRUE)
+>>    return(temporario)
+>> }
+>> consolida3(Candidato = "Fernando Haddad")
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190115/1ae6ea0f/attachment.html>
+
+From yurynepomuceno em gmail.com  Tue Jan 15 11:29:54 2019
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Tue, 15 Jan 2019 11:29:54 -0200
+Subject: [R-br] Como Salvar Shapefile
+Message-ID: <CADFS6E7CfscOy1CK4g91tA2m=_dOAk=+nGRsEQRF6bFbGfepHA@mail.gmail.com>
+
+Bom dia colegas listeiros!
+
+Ultimamente venho tentando manusear arquivos espaciais utilizando o R.
+Em alguns casos, objetos do tipo 'large SpatialPolygons' são gerados dentro
+do código. Quando isso ocorre (acredito que seja algo que acontece por
+padrão, devido a grande quantidade de informações armazenadas no objeto), a
+função writeOGR, que utilizo para salvar os shapefiles, quebra, por só
+tratar de objetos do tipo 'Spatial' e não os 'large Spatial'.
+Sendo assim, gostaria de saber se existe a possibilidade de salvar um
+shapefile a partir de um objeto do tipo 'large Spatial' ou ainda se existe
+a possibilidade de transformar esse num objeto do tipo
+SpatialPolygonsDataFrame, para que a função writeOGR possa funcionar
+normalmente.
+
+Segue código desenvolvido seguido do erro gerado.
+Desde já, agradeço pela ajuda de todos!
+
+rodar_bibliotecas = function(necessarias_para_o_projeto){
+
+  if(necessarias_para_o_projeto){
+    library(rgrass7)
+    library(spatstat)
+    library(maptools)
+    library(shapefiles)
+    library(foreign)
+    library(magrittr)
+    library(formattable)
+    library(e1071)
+    library(rlang)
+    library(rgdal)
+    library(rgeos)
+    library(raster)
+    library(sp)
+    library(sf)
+    library(RcppCNPy)
+    library(deldir)
+    library(dismo)
+    library(dplyr)
+    library(ggplot2)
+    library(gstat)
+    library(tidyverse)
+    library(smoothr)
+    library(viridisLite)
+  }
+  return('Ok')
+}
+
+rodar_bibliotecas(TRUE)
+
+raiz = '/home/yury/pesquisa/arquivos/areas/'
+clientes = dir(raiz)
+
+for (cliente in 1:length(clientes)) {
+
+  analises = dir(paste0(raiz, clientes[cliente]))
+  q = list()
+
+  for (analise in 1:length(analises)) {
+
+    shapefile_contorno = readOGR(paste0(raiz, clientes[cliente], '/',
+analises[analise], '/', 'vetores.shp'))
+    shapefile_contorno$id = 1
+    dissolvido = unionSpatialPolygons(shapefile_contorno, IDs =
+shapefile_contorno$id)
+    #plot(dissolvido)
+
+    q[analise] = dissolvido
+
+  }
+
+  fim = q[[1]]
+  for (x in 2:length(q)){
+
+    fim = bind(fim, q[[x]])
+
+  }
+plot(fim)
+
+path_to_save = paste0(raiz, clientes[cliente])
+writeOGR(fim,
+         dsn = path_to_save,
+         layer = paste0('contorno_', clientes[cliente]),
+         driver = 'ESRI Shapefile',
+         overwrite_layer = TRUE)
+
+}
+
+Error in writeOGR(fim, dsn = path_to_save, layer = paste0("contorno_", :
+obj must be a SpatialPointsDataFrame, SpatialLinesDataFrame or
+SpatialPolygonsDataFrame
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190115/ba495bb5/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Jan 15 22:31:28 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 15 Jan 2019 22:31:28 -0200
+Subject: [R-br] 
+	=?utf-8?q?Ajuda_com_a_passagem_incorreta_de_vari=C3=A1vel?=
+	=?utf-8?q?_string_para_uma_fun=C3=A7=C3=A3o_do_R?=
+In-Reply-To: <CAKZqVpNvoiD_fMMyHnZLon3Y7HckRqhOjaO+g=TjE+cV2R_woA@mail.gmail.com>
+References: <CAKZqVpOyKBNcDXOZJWgaWoyJtTzjAvgn2HS91W3Ys0pHtg28UA@mail.gmail.com>
+ <CAKrF98kA6xTpvw5BBzJsXBP2aEvPDRdK_UDtBc-fSdSEJGWCxw@mail.gmail.com>
+ <CAKZqVpNvoiD_fMMyHnZLon3Y7HckRqhOjaO+g=TjE+cV2R_woA@mail.gmail.com>
+Message-ID: <CAKrF98=EJqykntyUnQ4re7iiYi67wTdw=gkALTD=mvBo=XwHPw@mail.gmail.com>
+
+Bruno,
+
+*Acho* que estou começando a entender a sua demanda, mas para ter certeza é
+necessário ainda elicitar umas coisinhas:
+
+a) No exemplo que você passa como resultado desejado você tem uma mescla de
+proporções com totais absolutos dos votos para a nova coluna oriunda da
+operação de mescla;
+
+b) Como você usa Região como a chave comum entre as duas tabelas, os
+valores de contagem de votos são repetidos pois na tabela perc_validos  a
+região é subdividida por UF enquanto na tabela votos_regiao há apenas o
+agregado e não a quebra por UF.
+
+O resultado dessa forma faz sentido para você e é exatamente o que você
+deseja da operação da sua função Consolida?
+
+HTH
+--
+Cesar Rabak
+
+
+On Tue, Jan 15, 2019 at 8:01 AM Bruno César Pasquini por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> *Daniel* e *César*,
+>
+> Agradeço muito o terem tentado rodar meu código...
+>
+> Arranjei este exemplo para tentar resolver um problema que estou tendo com
+> dados da indústria química alemã onde trabalho, dados que não posso expor
+> aqui. Arranjei um exemplo fake (ainda que com dados reais) para pedir a
+> ajuda no processamento da função.
+>
+> Minha expectativa é a de conseguir que o R selecione apenas a variável
+> chave para o cruzamento (*Regiao*) mais alguma outra (uma das colunas com
+> contagem de votos) cuja interpretação não estou conseguindo acertar no meu
+> código R.
+>
+> Como o problema é este, eu deixei os nomes das demais variáveis
+> propositalmente diferentes, eu não espero mesmo que o R associe uma
+> variável chamada "Ciro" com outra que se chama "Ciro Gomes" (a menos que eu
+> o faça manualmente depois...).
+>
+> O que eu gostaria de obter neste cruzamento a ser feito pela função é algo
+> como (vamos supor que peça a coluna dos votos dos demais candidatos):
+>
+> Regiao Estado Bolsonaro Haddad Ciro Outros 'Demais Candidatos'
+> 'Centro-Oeste' 'Distrito Federal' 0.5837 0.1187 0.1660 0.1316 952142
+> 'Centro-Oeste' 'Goias' 0.5724 0.2186 0.0860 0.1230 952142
+> 'Centro-Oeste' 'Mato Grosso' 0.6004 0.2476 0.0559 0.0961 952142
+> 'Centro-Oeste' 'Mato Grosso do Sul' 0.5506 0.2387 0.0804 0.1304 952142
+> 'Exterior' '' 0.5879 0.1010 0.1452 0.1659 32078
+> 'Nordeste' 'Alagoas' 0.3440 0.4475 0.1012 0.1072 1894092
+> 'Nordeste' 'Bahia' 0.2341 0.6028 0.0941 0.0690 1894092
+> 'Nordeste' 'Ceara' 0.2174 0.3312 0.4095 0.0419 1894092
+> (...)
+> É a tabela *perc_validos* com o acréscimo da coluna "Demais Candidatos".
+>
+> Meu desafio é separar, dentre as várias colunas na tabela *votos_regiao*,
+> apenas a coluna chave (*Regiao*) e a coluna que eu apontar como parametro
+> na função (neste exemplo acima a "Demais Candidatos"). Da maneira que
+> coloquei (as 3 versões da função *consolida*), nenhuma delas tem
+> funcionado e é nisso que eu preciso da ajuda para entender no que estou
+> errando. O fato de gerar duplicidades e de que (no exemplo acima) a coluna
+> "Outros" não se relacionar com a coluna "Demais Candidatos" nao são
+> problema, eu tratarei na sequência do meu código. Para mim o importante é
+> acertar a seleção para o cruzamento...
+>
+> Assim, como eu faço para selecionar uma das colunas com contagem de votos
+> além da variável chave nas funções? O que eu estou fazendo de errado?
+>
+> Grato mais uma vez pela atenção de vocês,
+>
+> Bruno César Pasquini
+> Estatístico.
+>
+>
+> Em sex, 11 de jan de 2019 às 23:37, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Bruno, apenas uma dúvida: como você espera fazer um *merge* em dois
+>> conjuntos de dados cujas "chaves" (no data.table, que um dataframe) as
+>> variáveis ou colunas... ou sendo mais simplório: como você espera que o SW
+>> estatístico *saiba* que  Bolsonaro na data.table  perc_validos é a *mesma
+>> coisa* que 'Jair Bolsonaro' na votos_regiao 🤔??
+>>
+>> HTH
+>> --
+>> Cesar Rabak
+>>
+>>
+>> On Fri, Jan 11, 2019 at 9:17 AM Bruno César Pasquini por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> PessoALL, bom dia!
+>>>
+>>> Estou com dificuldade em passar os valores de uma variável string para
+>>> uma função do R de forma que esta função a interprete corretamente.
+>>>
+>>> Por exemplo, para indicar qual coluna eu quero que a função selecione
+>>> para um cruzamento de 2 data.tables (acho melhor que usar data.frames pela
+>>> melhor performance do data.table)... Eu poderia levar a tabela inteira para
+>>> o cruzamento, mas depois teria que deletar as demais colunas manualmente,
+>>> gostaria de resolver com a função conforme o exemplo abaixo.
+>>>
+>>> Construí este exemplo baseado nos resultados do primeiro turno das
+>>> últimas eleições presidenciais. Normalmente eu importaria as tabelas, mas
+>>> eu as declaro aqui para a devida reprodução do código.
+>>> Fonte:
+>>> https://pt.wikipedia.org/wiki/Resultados_da_eleição_presidencial_no_Brasil_em_2018#Primeiro_turno_3
+>>>
+>>> Meu propósito é entender o que estou fazendo de errado (ou deixando de
+>>> fazer...), não estou propondo um debate político-ideológico que foge ao
+>>> escopo desta lista...
+>>>
+>>> Especificamente, eu não consigo fazer a função "*consolida*" (na
+>>> verdade as versões 1, 2 e 3 desta função) interprete(m) o parâmetro "
+>>> *Candidato*" corretamente.
+>>> Eu tento usar o parâmetro sozinho e com as funções "*substitute*" e "
+>>> *eval*", mas não consigo levar a coluna com os números de votação do
+>>> candidato por região para o cruzamento. Sim, eu sei que o cruzamento como o
+>>> desenhei vai gerar duplicidade, mas o que preciso é que o cruzamento
+>>> "funcione"...
+>>>
+>>> Vocês podem me ajudar a entender o que estou fazendo de errado?
+>>>
+>>> Muito grato pela atenção de cada um(a),
+>>> Bruno César Pasquini
+>>> Estatístico
+>>>
+>>> ####### Codigo Reprodutivel...
+>>>
+>>> library(data.table)
+>>>
+>>> ### Percentual de Votos Validos nos estados e no exterior...
+>>> perc_validos <- data.table(Regiao = c('Centro-Oeste', 'Centro-Oeste',
+>>> 'Centro-Oeste', 'Centro-Oeste', 'Exterior', 'Nordeste', 'Nordeste',
+>>> 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste',
+>>> 'Nordeste', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte',
+>>> 'Sudeste', 'Sudeste', 'Sudeste', 'Sudeste', 'Sul', 'Sul', 'Sul'),
+>>>                            Estado = c('Distrito Federal', 'Goias', 'Mato
+>>> Grosso', 'Mato Grosso do Sul', '', 'Alagoas', 'Bahia', 'Ceara', 'Maranhao',
+>>> 'Paraiba', 'Pernambuco', 'Piaui', 'Rio Grande do Norte', 'Sergipe', 'Acre',
+>>> 'Amapa', 'Amazonas', 'Para', 'Rondonia', 'Roraima', 'Tocantins', 'Espirito
+>>> Santo', 'Minas Gerais', 'Rio de Janeiro', 'Sao Paulo', 'Parana', 'Rio
+>>> Grande do Sul', 'Santa Catarina'),
+>>>                            Bolsonaro = c(0.5837, 0.5724, 0.6004, 0.5506,
+>>> 0.5879, 0.3440, 0.2341, 0.2174, 0.2428, 0.3130, 0.3057, 0.1876, 0.3021,
+>>> 0.2721, 0.6224, 0.4074, 0.4348, 0.3619, 0.6224, 0.6297, 0.4464, 0.5476,
+>>> 0.4831, 0.5979, 0.5300, 0.5689, 0.5263, 0.6582),
+>>>                            Haddad = c(0.1187, 0.2186, 0.2476, 0.2387,
+>>> 0.1010, 0.4475, 0.6028, 0.3312, 0.6126, 0.4546, 0.4887, 0.6340, 0.4119,
+>>> 0.5009, 0.1853, 0.3277, 0.4030, 0.4139, 0.2036, 0.1785, 0.4112, 0.2420,
+>>> 0.2765, 0.1469, 0.1642, 0.1970, 0.2281, 0.1513),
+>>>                            Ciro = c(0.1660, 0.0860, 0.0559, 0.0804,
+>>> 0.1452, 0.1012, 0.0941, 0.4095, 0.0839, 0.1675, 0.1356, 0.1142, 0.2231,
+>>> 0.1302, 0.0517, 0.1234, 0.0750, 0.1003, 0.0603, 0.0536, 0.0717, 0.0954,
+>>> 0.1164, 0.1522, 0.1135, 0.0831, 0.1137, 0.0668),
+>>>                            Outros = c(0.1316, 0.1230, 0.0961, 0.1304,
+>>> 0.1659, 0.1072, 0.0690, 0.0419, 0.0606, 0.0650, 0.0700, 0.0642, 0.0631,
+>>> 0.0967, 0.1405, 0.1417, 0.0873, 0.1237, 0.1739, 0.1383, 0.0707, 0.1149,
+>>> 0.1241, 0.1030, 0.1922, 0.1510, 0.1318, 0.1236)
+>>>                            )
+>>> ### Analisando o data.table perc_validos...
+>>> perc_validos; class(perc_validos); str(perc_validos); dim(perc_validos)
+>>>
+>>> ### Total de Votos Validos por regiao e no exterior...
+>>> votos_regiao <- data.table(Regiao = c('Centro-Oeste', 'Exterior',
+>>> 'Nordeste', 'Norte', 'Sudeste', 'Sul'),
+>>>                            'Jair Bolsonaro' = c(4555415, 113690,
+>>> 7453186, 3785038, 23915925, 9453736),
+>>>                            'Fernando Haddad' = c(1642054, 19540,
+>>> 14583334, 3211002, 8623232, 3262843),
+>>>                            'Ciro Gomes' = c(750776, 28073, 4892961,
+>>> 748170, 5425104, 1499282),
+>>>                            'Demais Candidatos' = c(952142, 32078,
+>>> 1894092, 982103, 6968773, 2258047)
+>>>                            )
+>>> ### Analisando o data.table votos_regiao...
+>>> votos_regiao; class(votos_regiao); str(votos_regiao); dim(votos_regiao)
+>>>
+>>> ### Fazendo o cruzamento... Ou pelo menos tentando...
+>>> consolida1 <- function(Candidato) {
+>>>    temporario <- merge(x = perc_validos,
+>>>                        y = votos_regiao[, .(Regiao,
+>>>                                             Candidato)],
+>>>                        by = "Regiao",
+>>>                        all.x = TRUE,
+>>>                        sort = TRUE)
+>>>    return(temporario)
+>>> }
+>>> consolida1(Candidato = "Jair Bolsonaro")
+>>>
+>>> consolida2 <- function(Candidato) {
+>>>    temporario <- merge(x = perc_validos,
+>>>                        y = votos_regiao[, .(Regiao,
+>>>                                             substitute(Candidato))],
+>>>                        by = "Regiao",
+>>>                        all.x = TRUE,
+>>>                        sort = TRUE)
+>>>    return(temporario)
+>>> }
+>>> consolida2(Candidato = "Ciro Gomes")
+>>>
+>>> consolida3 <- function(Candidato) {
+>>>    temporario <- merge(x = perc_validos,
+>>>                        y = votos_regiao[, .(Regiao,
+>>>                                             eval(Candidato))],
+>>>                        by = "Regiao",
+>>>                        all.x = TRUE,
+>>>                        sort = TRUE)
+>>>    return(temporario)
+>>> }
+>>> consolida3(Candidato = "Fernando Haddad")
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190115/d7f5b6d3/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Wed Jan 16 11:24:01 2019
+From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
+Date: Wed, 16 Jan 2019 13:24:01 +0000 (UTC)
+Subject: [R-br] Como Salvar Shapefile
+In-Reply-To: <CADFS6E7CfscOy1CK4g91tA2m=_dOAk=+nGRsEQRF6bFbGfepHA@mail.gmail.com>
+References: <CADFS6E7CfscOy1CK4g91tA2m=_dOAk=+nGRsEQRF6bFbGfepHA@mail.gmail.com>
+Message-ID: <822620824.481456.1547645041440@mail.yahoo.com>
+
+se você for usar apenas em ambiente R, a melhor opção é usar save(...). Frequentemente uso com compress='xz'.
+
+Elias T. Krainski 
+
+    Em terça-feira, 15 de janeiro de 2019 11:30:21 BRST, Yury Duarte por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Bom dia colegas listeiros!
+Ultimamente venho tentando manusear arquivos espaciais utilizando o R.Em alguns casos, objetos do tipo 'large SpatialPolygons' são gerados dentro do código. Quando isso ocorre (acredito que seja algo que acontece por padrão, devido a grande quantidade de informações armazenadas no objeto), a função writeOGR, que utilizo para salvar os shapefiles, quebra, por só tratar de objetos do tipo 'Spatial' e não os 'large Spatial'.
+Sendo assim, gostaria de saber se existe a possibilidade de salvar um shapefile a partir de um objeto do tipo 'large Spatial' ou ainda se existe a possibilidade de transformar esse num objeto do tipo SpatialPolygonsDataFrame, para que a função writeOGR possa funcionar normalmente.
+Segue código desenvolvido seguido do erro gerado. 
+Desde já, agradeço pela ajuda de todos!
+rodar_bibliotecas = function(necessarias_para_o_projeto){    if(necessarias_para_o_projeto){    library(rgrass7)    library(spatstat)     library(maptools)     library(shapefiles)    library(foreign)    library(magrittr)    library(formattable)    library(e1071)    library(rlang)    library(rgdal)    library(rgeos)    library(raster)    library(sp)    library(sf)    library(RcppCNPy)    library(deldir)    library(dismo)    library(dplyr)    library(ggplot2)    library(gstat)    library(tidyverse)    library(smoothr)    library(viridisLite)  }  return('Ok')}
+rodar_bibliotecas(TRUE)
+raiz = '/home/yury/pesquisa/arquivos/areas/'clientes = dir(raiz)
+for (cliente in 1:length(clientes)) {    analises = dir(paste0(raiz, clientes[cliente]))  q = list()    for (analise in 1:length(analises)) {        shapefile_contorno = readOGR(paste0(raiz, clientes[cliente], '/', analises[analise], '/', 'vetores.shp'))    shapefile_contorno$id = 1    dissolvido = unionSpatialPolygons(shapefile_contorno, IDs = shapefile_contorno$id)    #plot(dissolvido)        q[analise] = dissolvido      }    fim = q[[1]]  for (x in 2:length(q)){        fim = bind(fim, q[[x]])      }plot(fim)
+path_to_save = paste0(raiz, clientes[cliente])writeOGR(fim,         dsn = path_to_save,         layer = paste0('contorno_', clientes[cliente]),         driver = 'ESRI Shapefile',         overwrite_layer = TRUE)
+}
+Error in writeOGR(fim, dsn = path_to_save, layer = paste0("contorno_", : obj must be a SpatialPointsDataFrame, SpatialLinesDataFrame or SpatialPolygonsDataFrame
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190116/f916c0b4/attachment.html>
+
+From yurynepomuceno em gmail.com  Wed Jan 16 12:07:51 2019
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Wed, 16 Jan 2019 12:07:51 -0200
+Subject: [R-br] Como Salvar Shapefile
+In-Reply-To: <822620824.481456.1547645041440@mail.yahoo.com>
+References: <CADFS6E7CfscOy1CK4g91tA2m=_dOAk=+nGRsEQRF6bFbGfepHA@mail.gmail.com>
+ <822620824.481456.1547645041440@mail.yahoo.com>
+Message-ID: <CADFS6E4Xc6nhahEXHWRozCU94G_UgGny+dBKf0Z=DkSo5cdg4Q@mail.gmail.com>
+
+Bom dia Elias, como vai?
+
+Interessante sua solução!
+Não estou acostumado a salvar minhas saídas no formato .RData. Irei testar
+esse formato nos casos onde irei trabalhar os dados/analises apenas em
+ambiente R.
+Aparentemente, esse formato economiza bastante espaço em disco.
+Entretanto, para essa situação em especial, eu realmente tenho a
+necessidade de salvar as saídas em formato .shp, pois tenho que aplicar o
+resultado do script em outros ambientes (nos SIGs em geral e no Google
+Earth).
+
+Caso tenha(m) mais alguma sugestão, ficarei feliz em testar.
+
+Mais uma vez, agradeço pela disponibilidade e apoio!
+
+Att
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+
+Em qua, 16 de jan de 2019 às 11:24, Elias T. Krainski <
+eliaskrainski em yahoo.com.br> escreveu:
+
+> se você for usar apenas em ambiente R, a melhor opção é usar save(...).
+> Frequentemente uso com compress='xz'.
+>
+> Elias T. Krainski
+>
+>
+> Em terça-feira, 15 de janeiro de 2019 11:30:21 BRST, Yury Duarte por
+> (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Bom dia colegas listeiros!
+>
+> Ultimamente venho tentando manusear arquivos espaciais utilizando o R.
+> Em alguns casos, objetos do tipo 'large SpatialPolygons' são gerados
+> dentro do código. Quando isso ocorre (acredito que seja algo que acontece
+> por padrão, devido a grande quantidade de informações armazenadas no
+> objeto), a função writeOGR, que utilizo para salvar os shapefiles, quebra,
+> por só tratar de objetos do tipo 'Spatial' e não os 'large Spatial'.
+> Sendo assim, gostaria de saber se existe a possibilidade de salvar um
+> shapefile a partir de um objeto do tipo 'large Spatial' ou ainda se existe
+> a possibilidade de transformar esse num objeto do tipo
+> SpatialPolygonsDataFrame, para que a função writeOGR possa funcionar
+> normalmente.
+>
+> Segue código desenvolvido seguido do erro gerado.
+> Desde já, agradeço pela ajuda de todos!
+>
+> rodar_bibliotecas = function(necessarias_para_o_projeto){
+>
+>   if(necessarias_para_o_projeto){
+>     library(rgrass7)
+>     library(spatstat)
+>     library(maptools)
+>     library(shapefiles)
+>     library(foreign)
+>     library(magrittr)
+>     library(formattable)
+>     library(e1071)
+>     library(rlang)
+>     library(rgdal)
+>     library(rgeos)
+>     library(raster)
+>     library(sp)
+>     library(sf)
+>     library(RcppCNPy)
+>     library(deldir)
+>     library(dismo)
+>     library(dplyr)
+>     library(ggplot2)
+>     library(gstat)
+>     library(tidyverse)
+>     library(smoothr)
+>     library(viridisLite)
+>   }
+>   return('Ok')
+> }
+>
+> rodar_bibliotecas(TRUE)
+>
+> raiz = '/home/yury/pesquisa/arquivos/areas/'
+> clientes = dir(raiz)
+>
+> for (cliente in 1:length(clientes)) {
+>
+>   analises = dir(paste0(raiz, clientes[cliente]))
+>   q = list()
+>
+>   for (analise in 1:length(analises)) {
+>
+>     shapefile_contorno = readOGR(paste0(raiz, clientes[cliente], '/',
+> analises[analise], '/', 'vetores.shp'))
+>     shapefile_contorno$id = 1
+>     dissolvido = unionSpatialPolygons(shapefile_contorno, IDs =
+> shapefile_contorno$id)
+>     #plot(dissolvido)
+>
+>     q[analise] = dissolvido
+>
+>   }
+>
+>   fim = q[[1]]
+>   for (x in 2:length(q)){
+>
+>     fim = bind(fim, q[[x]])
+>
+>   }
+> plot(fim)
+>
+> path_to_save = paste0(raiz, clientes[cliente])
+> writeOGR(fim,
+>          dsn = path_to_save,
+>          layer = paste0('contorno_', clientes[cliente]),
+>          driver = 'ESRI Shapefile',
+>          overwrite_layer = TRUE)
+>
+> }
+>
+> Error in writeOGR(fim, dsn = path_to_save, layer = paste0("contorno_", :
+> obj must be a SpatialPointsDataFrame, SpatialLinesDataFrame or
+> SpatialPolygonsDataFrame
+>
+> Yury Duarte
+> Engenheiro Agrônomo - ESALQ/USP
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190116/071b3e02/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Wed Jan 16 13:22:33 2019
+From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
+Date: Wed, 16 Jan 2019 15:22:33 +0000 (UTC)
+Subject: [R-br] Como Salvar Shapefile
+In-Reply-To: <CADFS6E4Xc6nhahEXHWRozCU94G_UgGny+dBKf0Z=DkSo5cdg4Q@mail.gmail.com>
+References: <CADFS6E7CfscOy1CK4g91tA2m=_dOAk=+nGRsEQRF6bFbGfepHA@mail.gmail.com>
+ <822620824.481456.1547645041440@mail.yahoo.com>
+ <CADFS6E4Xc6nhahEXHWRozCU94G_UgGny+dBKf0Z=DkSo5cdg4Q@mail.gmail.com>
+Message-ID: <213121009.502238.1547652153706@mail.yahoo.com>
+
+Não seria o caso de reduzir a resolução do shapefile? Já teve situaçoes que usei gSimplify() e escolhi parametros que se mostraram adequados ao meu objetivo.
+
+Elias T. Krainski 
+
+    Em quarta-feira, 16 de janeiro de 2019 12:08:04 BRST, Yury Duarte <yurynepomuceno em gmail.com> escreveu:  
+ 
+ Bom dia Elias, como vai?
+Interessante sua solução!Não estou acostumado a salvar minhas saídas no formato .RData. Irei testar esse formato nos casos onde irei trabalhar os dados/analises apenas em ambiente R.Aparentemente, esse formato economiza bastante espaço em disco.
+Entretanto, para essa situação em especial, eu realmente tenho a necessidade de salvar as saídas em formato .shp, pois tenho que aplicar o resultado do script em outros ambientes (nos SIGs em geral e no Google Earth). 
+Caso tenha(m) mais alguma sugestão, ficarei feliz em testar.
+Mais uma vez, agradeço pela disponibilidade e apoio!
+Att 
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+
+Em qua, 16 de jan de 2019 às 11:24, Elias T. Krainski <eliaskrainski em yahoo.com.br> escreveu:
+
+se você for usar apenas em ambiente R, a melhor opção é usar save(...). Frequentemente uso com compress='xz'.
+
+Elias T. Krainski 
+
+    Em terça-feira, 15 de janeiro de 2019 11:30:21 BRST, Yury Duarte por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Bom dia colegas listeiros!
+Ultimamente venho tentando manusear arquivos espaciais utilizando o R.Em alguns casos, objetos do tipo 'large SpatialPolygons' são gerados dentro do código. Quando isso ocorre (acredito que seja algo que acontece por padrão, devido a grande quantidade de informações armazenadas no objeto), a função writeOGR, que utilizo para salvar os shapefiles, quebra, por só tratar de objetos do tipo 'Spatial' e não os 'large Spatial'.
+Sendo assim, gostaria de saber se existe a possibilidade de salvar um shapefile a partir de um objeto do tipo 'large Spatial' ou ainda se existe a possibilidade de transformar esse num objeto do tipo SpatialPolygonsDataFrame, para que a função writeOGR possa funcionar normalmente.
+Segue código desenvolvido seguido do erro gerado. 
+Desde já, agradeço pela ajuda de todos!
+rodar_bibliotecas = function(necessarias_para_o_projeto){    if(necessarias_para_o_projeto){    library(rgrass7)    library(spatstat)     library(maptools)     library(shapefiles)    library(foreign)    library(magrittr)    library(formattable)    library(e1071)    library(rlang)    library(rgdal)    library(rgeos)    library(raster)    library(sp)    library(sf)    library(RcppCNPy)    library(deldir)    library(dismo)    library(dplyr)    library(ggplot2)    library(gstat)    library(tidyverse)    library(smoothr)    library(viridisLite)  }  return('Ok')}
+rodar_bibliotecas(TRUE)
+raiz = '/home/yury/pesquisa/arquivos/areas/'clientes = dir(raiz)
+for (cliente in 1:length(clientes)) {    analises = dir(paste0(raiz, clientes[cliente]))  q = list()    for (analise in 1:length(analises)) {        shapefile_contorno = readOGR(paste0(raiz, clientes[cliente], '/', analises[analise], '/', 'vetores.shp'))    shapefile_contorno$id = 1    dissolvido = unionSpatialPolygons(shapefile_contorno, IDs = shapefile_contorno$id)    #plot(dissolvido)        q[analise] = dissolvido      }    fim = q[[1]]  for (x in 2:length(q)){        fim = bind(fim, q[[x]])      }plot(fim)
+path_to_save = paste0(raiz, clientes[cliente])writeOGR(fim,         dsn = path_to_save,         layer = paste0('contorno_', clientes[cliente]),         driver = 'ESRI Shapefile',         overwrite_layer = TRUE)
+}
+Error in writeOGR(fim, dsn = path_to_save, layer = paste0("contorno_", : obj must be a SpatialPointsDataFrame, SpatialLinesDataFrame or SpatialPolygonsDataFrame
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190116/1063cfd1/attachment.html>
+
+From yurynepomuceno em gmail.com  Wed Jan 16 16:22:05 2019
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Wed, 16 Jan 2019 16:22:05 -0200
+Subject: [R-br] Como Salvar Shapefile
+In-Reply-To: <213121009.502238.1547652153706@mail.yahoo.com>
+References: <CADFS6E7CfscOy1CK4g91tA2m=_dOAk=+nGRsEQRF6bFbGfepHA@mail.gmail.com>
+ <822620824.481456.1547645041440@mail.yahoo.com>
+ <CADFS6E4Xc6nhahEXHWRozCU94G_UgGny+dBKf0Z=DkSo5cdg4Q@mail.gmail.com>
+ <213121009.502238.1547652153706@mail.yahoo.com>
+Message-ID: <CADFS6E7UFmYkbv9buYy90bmA6WR02fS3Gwq9DwOEB7yw=izykQ@mail.gmail.com>
+
+Testei o efeito da função gSimplify(), mas acho que não vou poder
+utiliza-la.
+Mesmo passando um valor baixo no parâmetro 'tol', a quantidade de detalhes
+perdida nos contornos dos meus polígonos é grande.
+Acredito que eliminar polígonos concêntricos possa ajudar a diminuir o
+tamanho do objeto gerado pelo script (ainda não sei como fazer essa
+verificação e eliminação), mas o número de casos em que isso ocorre não
+está sendo tão grande assim.
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+
+Em qua, 16 de jan de 2019 às 13:22, Elias T. Krainski <
+eliaskrainski em yahoo.com.br> escreveu:
+
+> Não seria o caso de reduzir a resolução do shapefile? Já teve situaçoes
+> que usei gSimplify() e escolhi parametros que se mostraram adequados ao meu
+> objetivo.
+>
+> Elias T. Krainski
+>
+>
+> Em quarta-feira, 16 de janeiro de 2019 12:08:04 BRST, Yury Duarte <
+> yurynepomuceno em gmail.com> escreveu:
+>
+>
+> Bom dia Elias, como vai?
+>
+> Interessante sua solução!
+> Não estou acostumado a salvar minhas saídas no formato .RData. Irei testar
+> esse formato nos casos onde irei trabalhar os dados/analises apenas em
+> ambiente R.
+> Aparentemente, esse formato economiza bastante espaço em disco.
+> Entretanto, para essa situação em especial, eu realmente tenho a
+> necessidade de salvar as saídas em formato .shp, pois tenho que aplicar o
+> resultado do script em outros ambientes (nos SIGs em geral e no Google
+> Earth).
+>
+> Caso tenha(m) mais alguma sugestão, ficarei feliz em testar.
+>
+> Mais uma vez, agradeço pela disponibilidade e apoio!
+>
+> Att
+>
+> Yury Duarte
+> Engenheiro Agrônomo - ESALQ/USP
+>
+>
+> Em qua, 16 de jan de 2019 às 11:24, Elias T. Krainski <
+> eliaskrainski em yahoo.com.br> escreveu:
+>
+> se você for usar apenas em ambiente R, a melhor opção é usar save(...).
+> Frequentemente uso com compress='xz'.
+>
+> Elias T. Krainski
+>
+>
+> Em terça-feira, 15 de janeiro de 2019 11:30:21 BRST, Yury Duarte por
+> (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Bom dia colegas listeiros!
+>
+> Ultimamente venho tentando manusear arquivos espaciais utilizando o R.
+> Em alguns casos, objetos do tipo 'large SpatialPolygons' são gerados
+> dentro do código. Quando isso ocorre (acredito que seja algo que acontece
+> por padrão, devido a grande quantidade de informações armazenadas no
+> objeto), a função writeOGR, que utilizo para salvar os shapefiles, quebra,
+> por só tratar de objetos do tipo 'Spatial' e não os 'large Spatial'.
+> Sendo assim, gostaria de saber se existe a possibilidade de salvar um
+> shapefile a partir de um objeto do tipo 'large Spatial' ou ainda se existe
+> a possibilidade de transformar esse num objeto do tipo
+> SpatialPolygonsDataFrame, para que a função writeOGR possa funcionar
+> normalmente.
+>
+> Segue código desenvolvido seguido do erro gerado.
+> Desde já, agradeço pela ajuda de todos!
+>
+> rodar_bibliotecas = function(necessarias_para_o_projeto){
+>
+>   if(necessarias_para_o_projeto){
+>     library(rgrass7)
+>     library(spatstat)
+>     library(maptools)
+>     library(shapefiles)
+>     library(foreign)
+>     library(magrittr)
+>     library(formattable)
+>     library(e1071)
+>     library(rlang)
+>     library(rgdal)
+>     library(rgeos)
+>     library(raster)
+>     library(sp)
+>     library(sf)
+>     library(RcppCNPy)
+>     library(deldir)
+>     library(dismo)
+>     library(dplyr)
+>     library(ggplot2)
+>     library(gstat)
+>     library(tidyverse)
+>     library(smoothr)
+>     library(viridisLite)
+>   }
+>   return('Ok')
+> }
+>
+> rodar_bibliotecas(TRUE)
+>
+> raiz = '/home/yury/pesquisa/arquivos/areas/'
+> clientes = dir(raiz)
+>
+> for (cliente in 1:length(clientes)) {
+>
+>   analises = dir(paste0(raiz, clientes[cliente]))
+>   q = list()
+>
+>   for (analise in 1:length(analises)) {
+>
+>     shapefile_contorno = readOGR(paste0(raiz, clientes[cliente], '/',
+> analises[analise], '/', 'vetores.shp'))
+>     shapefile_contorno$id = 1
+>     dissolvido = unionSpatialPolygons(shapefile_contorno, IDs =
+> shapefile_contorno$id)
+>     #plot(dissolvido)
+>
+>     q[analise] = dissolvido
+>
+>   }
+>
+>   fim = q[[1]]
+>   for (x in 2:length(q)){
+>
+>     fim = bind(fim, q[[x]])
+>
+>   }
+> plot(fim)
+>
+> path_to_save = paste0(raiz, clientes[cliente])
+> writeOGR(fim,
+>          dsn = path_to_save,
+>          layer = paste0('contorno_', clientes[cliente]),
+>          driver = 'ESRI Shapefile',
+>          overwrite_layer = TRUE)
+>
+> }
+>
+> Error in writeOGR(fim, dsn = path_to_save, layer = paste0("contorno_", :
+> obj must be a SpatialPointsDataFrame, SpatialLinesDataFrame or
+> SpatialPolygonsDataFrame
+>
+> Yury Duarte
+> Engenheiro Agrônomo - ESALQ/USP
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190116/4d6e288f/attachment.html>
+
+From pedro.andrade em inpe.br  Wed Jan 16 16:56:54 2019
+From: pedro.andrade em inpe.br (Pedro R. Andrade)
+Date: Wed, 16 Jan 2019 16:56:54 -0200
+Subject: [R-br] Como Salvar Shapefile
+In-Reply-To: <CADFS6E7UFmYkbv9buYy90bmA6WR02fS3Gwq9DwOEB7yw=izykQ@mail.gmail.com>
+References: <CADFS6E7CfscOy1CK4g91tA2m=_dOAk=+nGRsEQRF6bFbGfepHA@mail.gmail.com>
+ <822620824.481456.1547645041440@mail.yahoo.com>
+ <CADFS6E4Xc6nhahEXHWRozCU94G_UgGny+dBKf0Z=DkSo5cdg4Q@mail.gmail.com>
+ <213121009.502238.1547652153706@mail.yahoo.com>
+ <CADFS6E7UFmYkbv9buYy90bmA6WR02fS3Gwq9DwOEB7yw=izykQ@mail.gmail.com>
+Message-ID: <e57eda38-2fcf-dbb2-5aff-b383430d5928@inpe.br>
+
+Prezado Yury,
+
+todo shapefile precisa de uma tabela de atributos, mesmo que voce nao 
+tenha uma. Por isto o writeOGR precisa de um Spatial*DataFrame. Para 
+conseguir salvar, basta criar um SpatialPolygonsDataFrame a partir do 
+seu SpatialPolygons. Por exemplo:
+
+require(rgdal)
+require(sp)
+
+p <- 
+SpatialPolygons(list(Polygons(list(Polygon(cbind(c(2,4,4,1,2),c(2,3,5,4,2)))), 
+"2"), Polygons(list(Polygon(cbind(c(5,4,2,5),c(2,3,2,2)))), "3")))
+
+# o codigo abaixo vai dar o mesmo erro que voce teve:
+writeOGR(p,dsn = ".", layer = "abc", driver = 'ESRI Shapefile', 
+overwrite_layer = TRUE)
+
+# transforma o SpatialPolygons em um SpatialPolygonsDataFrame
+p.df <- data.frame(value=1:length(p)) # cria um atributo fake
+rownames(p.df)<-getSpPPolygonsIDSlots(p)
+p <- SpatialPolygonsDataFrame(p, p.df)
+
+# agora funciona (mesmo codigo pra salvar acima)
+writeOGR(p,dsn = ".", layer = "abc", driver = 'ESRI Shapefile', 
+overwrite_layer = TRUE)
+
+Agora, caso o seu dado seja muito grande e o rgdal nao funcione, melhor 
+migrar para o sf que é muito mais rapido e eficiente em termos de memória.
+
+Um abraço,
+
+Pedro
+
+
+Em 16/01/2019 16:22, Yury Duarte por (R-br) escreveu:
+> Testei o efeito da função gSimplify(), mas acho que não vou poder 
+> utiliza-la.
+> Mesmo passando um valor baixo no parâmetro 'tol', a quantidade de 
+> detalhes perdida nos contornos dos meus polígonos é grande.
+> Acredito que eliminar polígonos concêntricos possa ajudar a diminuir o 
+> tamanho do objeto gerado pelo script (ainda não sei como fazer essa 
+> verificação e eliminação), mas o número de casos em que isso ocorre não 
+> está sendo tão grande assim.
+> 
+> Yury Duarte
+> Engenheiro Agrônomo - ESALQ/USP
+> 
+> 
+> Em qua, 16 de jan de 2019 às 13:22, Elias T. Krainski 
+> <eliaskrainski em yahoo.com.br <mailto:eliaskrainski em yahoo.com.br>> escreveu:
+> 
+>     Não seria o caso de reduzir a resolução do shapefile? Já teve
+>     situaçoes que usei gSimplify() e escolhi parametros que se mostraram
+>     adequados ao meu objetivo.
+> 
+>     Elias T. Krainski
+> 
+> 
+>     Em quarta-feira, 16 de janeiro de 2019 12:08:04 BRST, Yury Duarte
+>     <yurynepomuceno em gmail.com <mailto:yurynepomuceno em gmail.com>> escreveu:
+> 
+> 
+>     Bom dia Elias, como vai?
+> 
+>     Interessante sua solução!
+>     Não estou acostumado a salvar minhas saídas no formato .RData. Irei
+>     testar esse formato nos casos onde irei trabalhar os dados/analises
+>     apenas em ambiente R.
+>     Aparentemente, esse formato economiza bastante espaço em disco.
+>     Entretanto, para essa situação em especial, eu realmente tenho a
+>     necessidade de salvar as saídas em formato .shp, pois tenho que
+>     aplicar o resultado do script em outros ambientes (nos SIGs em geral
+>     e no Google Earth).
+> 
+>     Caso tenha(m) mais alguma sugestão, ficarei feliz em testar.
+> 
+>     Mais uma vez, agradeço pela disponibilidade e apoio!
+> 
+>     Att
+> 
+>     Yury Duarte
+>     Engenheiro Agrônomo - ESALQ/USP
+> 
+> 
+>     Em qua, 16 de jan de 2019 às 11:24, Elias T. Krainski
+>     <eliaskrainski em yahoo.com.br <mailto:eliaskrainski em yahoo.com.br>>
+>     escreveu:
+> 
+>         se você for usar apenas em ambiente R, a melhor opção é usar
+>         save(...). Frequentemente uso com compress='xz'.
+> 
+>         Elias T. Krainski
+> 
+> 
+>         Em terça-feira, 15 de janeiro de 2019 11:30:21 BRST, Yury Duarte
+>         por (R-br) <r-br em listas.c3sl.ufpr.br
+>         <mailto:r-br em listas.c3sl.ufpr.br>> escreveu:
+> 
+> 
+>         Bom dia colegas listeiros!
+> 
+>         Ultimamente venho tentando manusear arquivos espaciais
+>         utilizando o R.
+>         Em alguns casos, objetos do tipo 'large SpatialPolygons' são
+>         gerados dentro do código. Quando isso ocorre (acredito que seja
+>         algo que acontece por padrão, devido a grande quantidade de
+>         informações armazenadas no objeto), a função writeOGR, que
+>         utilizo para salvar os shapefiles, quebra, por só tratar de
+>         objetos do tipo 'Spatial' e não os 'large Spatial'.
+>         Sendo assim, gostaria de saber se existe a possibilidade de
+>         salvar um shapefile a partir de um objeto do tipo 'large
+>         Spatial' ou ainda se existe a possibilidade de transformar esse
+>         num objeto do tipo SpatialPolygonsDataFrame, para que a função
+>         writeOGR possa funcionar normalmente.
+> 
+>         Segue código desenvolvido seguido do erro gerado.
+>         Desde já, agradeço pela ajuda de todos!
+> 
+>         rodar_bibliotecas = function(necessarias_para_o_projeto){
+>            if(necessarias_para_o_projeto){
+>              library(rgrass7)
+>              library(spatstat)
+>              library(maptools)
+>              library(shapefiles)
+>              library(foreign)
+>              library(magrittr)
+>              library(formattable)
+>              library(e1071)
+>              library(rlang)
+>              library(rgdal)
+>              library(rgeos)
+>              library(raster)
+>              library(sp)
+>              library(sf)
+>              library(RcppCNPy)
+>              library(deldir)
+>              library(dismo)
+>              library(dplyr)
+>              library(ggplot2)
+>              library(gstat)
+>              library(tidyverse)
+>              library(smoothr)
+>              library(viridisLite)
+>            }
+>            return('Ok')
+>         }
+> 
+>         rodar_bibliotecas(TRUE)
+> 
+>         raiz = '/home/yury/pesquisa/arquivos/areas/'
+>         clientes = dir(raiz)
+> 
+>         for (cliente in 1:length(clientes)) {
+>            analises = dir(paste0(raiz, clientes[cliente]))
+>            q = list()
+>            for (analise in 1:length(analises)) {
+>              shapefile_contorno = readOGR(paste0(raiz,
+>         clientes[cliente], '/', analises[analise], '/', 'vetores.shp'))
+>              shapefile_contorno$id = 1
+>              dissolvido = unionSpatialPolygons(shapefile_contorno, IDs =
+>         shapefile_contorno$id)
+>              #plot(dissolvido)
+>              q[analise] = dissolvido
+>            }
+>            fim = q[[1]]
+>            for (x in 2:length(q)){
+>              fim = bind(fim, q[[x]])
+>            }
+>         plot(fim)
+> 
+>         path_to_save = paste0(raiz, clientes[cliente])
+>         writeOGR(fim,
+>                   dsn = path_to_save,
+>                   layer = paste0('contorno_', clientes[cliente]),
+>                   driver = 'ESRI Shapefile',
+>                   overwrite_layer = TRUE)
+> 
+>         }
+> 
+>         Error in writeOGR(fim, dsn = path_to_save, layer =
+>         paste0("contorno_", : obj must be a SpatialPointsDataFrame,
+>         SpatialLinesDataFrame or SpatialPolygonsDataFrame
+> 
+>         Yury Duarte
+>         Engenheiro Agrônomo - ESALQ/USP
+>         _______________________________________________
+>         R-br mailing list
+>         R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>         forne�a c�digo m�nimo reproduz�vel.
+> 
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+> 
+
+-- 
+Pedro R. Andrade, Dr.
+Earth System Science Center (CCST)
+National Institute for Space Research (INPE)
+Sao Jose dos Campos, Brazil
+
+From yurynepomuceno em gmail.com  Thu Jan 17 08:36:36 2019
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Thu, 17 Jan 2019 08:36:36 -0200
+Subject: [R-br] Como Salvar Shapefile
+In-Reply-To: <e57eda38-2fcf-dbb2-5aff-b383430d5928@inpe.br>
+References: <CADFS6E7CfscOy1CK4g91tA2m=_dOAk=+nGRsEQRF6bFbGfepHA@mail.gmail.com>
+ <822620824.481456.1547645041440@mail.yahoo.com>
+ <CADFS6E4Xc6nhahEXHWRozCU94G_UgGny+dBKf0Z=DkSo5cdg4Q@mail.gmail.com>
+ <213121009.502238.1547652153706@mail.yahoo.com>
+ <CADFS6E7UFmYkbv9buYy90bmA6WR02fS3Gwq9DwOEB7yw=izykQ@mail.gmail.com>
+ <e57eda38-2fcf-dbb2-5aff-b383430d5928@inpe.br>
+Message-ID: <CADFS6E71kOSaz+WFFtjoKDj81TJTAHQiE5oLq_+5rtANAh1bFg@mail.gmail.com>
+
+Bom dia, Pedro e colegas listeiros.
+
+Gostaria de agradecer pela elucidação do problema, Pedro!
+Não havia percebido que a falta de valor para o atributo dos polígonos
+estava ausente/era necessário para a função desempenhar corretamente.
+Agora, com os valores fake inseridos no objeto, mesmo para os que tem
+grande número de polígonos, o 'rgdal' está performando bem em grava-los,
+mas farei uns testes utilizando a lib 'sf'.
+
+Mais uma vez, agradeço pela ajuda dos colegas!
+
+Att
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+
+Em qua, 16 de jan de 2019 às 16:57, Pedro R. Andrade por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezado Yury,
+>
+> todo shapefile precisa de uma tabela de atributos, mesmo que voce nao
+> tenha uma. Por isto o writeOGR precisa de um Spatial*DataFrame. Para
+> conseguir salvar, basta criar um SpatialPolygonsDataFrame a partir do
+> seu SpatialPolygons. Por exemplo:
+>
+> require(rgdal)
+> require(sp)
+>
+> p <-
+> SpatialPolygons(list(Polygons(list(Polygon(cbind(c(2,4,4,1,2),c(2,3,5,4,2)))),
+>
+> "2"), Polygons(list(Polygon(cbind(c(5,4,2,5),c(2,3,2,2)))), "3")))
+>
+> # o codigo abaixo vai dar o mesmo erro que voce teve:
+> writeOGR(p,dsn = ".", layer = "abc", driver = 'ESRI Shapefile',
+> overwrite_layer = TRUE)
+>
+> # transforma o SpatialPolygons em um SpatialPolygonsDataFrame
+> p.df <- data.frame(value=1:length(p)) # cria um atributo fake
+> rownames(p.df)<-getSpPPolygonsIDSlots(p)
+> p <- SpatialPolygonsDataFrame(p, p.df)
+>
+> # agora funciona (mesmo codigo pra salvar acima)
+> writeOGR(p,dsn = ".", layer = "abc", driver = 'ESRI Shapefile',
+> overwrite_layer = TRUE)
+>
+> Agora, caso o seu dado seja muito grande e o rgdal nao funcione, melhor
+> migrar para o sf que é muito mais rapido e eficiente em termos de memória.
+>
+> Um abraço,
+>
+> Pedro
+>
+>
+> Em 16/01/2019 16:22, Yury Duarte por (R-br) escreveu:
+> > Testei o efeito da função gSimplify(), mas acho que não vou poder
+> > utiliza-la.
+> > Mesmo passando um valor baixo no parâmetro 'tol', a quantidade de
+> > detalhes perdida nos contornos dos meus polígonos é grande.
+> > Acredito que eliminar polígonos concêntricos possa ajudar a diminuir o
+> > tamanho do objeto gerado pelo script (ainda não sei como fazer essa
+> > verificação e eliminação), mas o número de casos em que isso ocorre não
+> > está sendo tão grande assim.
+> >
+> > Yury Duarte
+> > Engenheiro Agrônomo - ESALQ/USP
+> >
+> >
+> > Em qua, 16 de jan de 2019 às 13:22, Elias T. Krainski
+> > <eliaskrainski em yahoo.com.br <mailto:eliaskrainski em yahoo.com.br>>
+> escreveu:
+> >
+> >     Não seria o caso de reduzir a resolução do shapefile? Já teve
+> >     situaçoes que usei gSimplify() e escolhi parametros que se mostraram
+> >     adequados ao meu objetivo.
+> >
+> >     Elias T. Krainski
+> >
+> >
+> >     Em quarta-feira, 16 de janeiro de 2019 12:08:04 BRST, Yury Duarte
+> >     <yurynepomuceno em gmail.com <mailto:yurynepomuceno em gmail.com>>
+> escreveu:
+> >
+> >
+> >     Bom dia Elias, como vai?
+> >
+> >     Interessante sua solução!
+> >     Não estou acostumado a salvar minhas saídas no formato .RData. Irei
+> >     testar esse formato nos casos onde irei trabalhar os dados/analises
+> >     apenas em ambiente R.
+> >     Aparentemente, esse formato economiza bastante espaço em disco.
+> >     Entretanto, para essa situação em especial, eu realmente tenho a
+> >     necessidade de salvar as saídas em formato .shp, pois tenho que
+> >     aplicar o resultado do script em outros ambientes (nos SIGs em geral
+> >     e no Google Earth).
+> >
+> >     Caso tenha(m) mais alguma sugestão, ficarei feliz em testar.
+> >
+> >     Mais uma vez, agradeço pela disponibilidade e apoio!
+> >
+> >     Att
+> >
+> >     Yury Duarte
+> >     Engenheiro Agrônomo - ESALQ/USP
+> >
+> >
+> >     Em qua, 16 de jan de 2019 às 11:24, Elias T. Krainski
+> >     <eliaskrainski em yahoo.com.br <mailto:eliaskrainski em yahoo.com.br>>
+> >     escreveu:
+> >
+> >         se você for usar apenas em ambiente R, a melhor opção é usar
+> >         save(...). Frequentemente uso com compress='xz'.
+> >
+> >         Elias T. Krainski
+> >
+> >
+> >         Em terça-feira, 15 de janeiro de 2019 11:30:21 BRST, Yury Duarte
+> >         por (R-br) <r-br em listas.c3sl.ufpr.br
+> >         <mailto:r-br em listas.c3sl.ufpr.br>> escreveu:
+> >
+> >
+> >         Bom dia colegas listeiros!
+> >
+> >         Ultimamente venho tentando manusear arquivos espaciais
+> >         utilizando o R.
+> >         Em alguns casos, objetos do tipo 'large SpatialPolygons' são
+> >         gerados dentro do código. Quando isso ocorre (acredito que seja
+> >         algo que acontece por padrão, devido a grande quantidade de
+> >         informações armazenadas no objeto), a função writeOGR, que
+> >         utilizo para salvar os shapefiles, quebra, por só tratar de
+> >         objetos do tipo 'Spatial' e não os 'large Spatial'.
+> >         Sendo assim, gostaria de saber se existe a possibilidade de
+> >         salvar um shapefile a partir de um objeto do tipo 'large
+> >         Spatial' ou ainda se existe a possibilidade de transformar esse
+> >         num objeto do tipo SpatialPolygonsDataFrame, para que a função
+> >         writeOGR possa funcionar normalmente.
+> >
+> >         Segue código desenvolvido seguido do erro gerado.
+> >         Desde já, agradeço pela ajuda de todos!
+> >
+> >         rodar_bibliotecas = function(necessarias_para_o_projeto){
+> >            if(necessarias_para_o_projeto){
+> >              library(rgrass7)
+> >              library(spatstat)
+> >              library(maptools)
+> >              library(shapefiles)
+> >              library(foreign)
+> >              library(magrittr)
+> >              library(formattable)
+> >              library(e1071)
+> >              library(rlang)
+> >              library(rgdal)
+> >              library(rgeos)
+> >              library(raster)
+> >              library(sp)
+> >              library(sf)
+> >              library(RcppCNPy)
+> >              library(deldir)
+> >              library(dismo)
+> >              library(dplyr)
+> >              library(ggplot2)
+> >              library(gstat)
+> >              library(tidyverse)
+> >              library(smoothr)
+> >              library(viridisLite)
+> >            }
+> >            return('Ok')
+> >         }
+> >
+> >         rodar_bibliotecas(TRUE)
+> >
+> >         raiz = '/home/yury/pesquisa/arquivos/areas/'
+> >         clientes = dir(raiz)
+> >
+> >         for (cliente in 1:length(clientes)) {
+> >            analises = dir(paste0(raiz, clientes[cliente]))
+> >            q = list()
+> >            for (analise in 1:length(analises)) {
+> >              shapefile_contorno = readOGR(paste0(raiz,
+> >         clientes[cliente], '/', analises[analise], '/', 'vetores.shp'))
+> >              shapefile_contorno$id = 1
+> >              dissolvido = unionSpatialPolygons(shapefile_contorno, IDs =
+> >         shapefile_contorno$id)
+> >              #plot(dissolvido)
+> >              q[analise] = dissolvido
+> >            }
+> >            fim = q[[1]]
+> >            for (x in 2:length(q)){
+> >              fim = bind(fim, q[[x]])
+> >            }
+> >         plot(fim)
+> >
+> >         path_to_save = paste0(raiz, clientes[cliente])
+> >         writeOGR(fim,
+> >                   dsn = path_to_save,
+> >                   layer = paste0('contorno_', clientes[cliente]),
+> >                   driver = 'ESRI Shapefile',
+> >                   overwrite_layer = TRUE)
+> >
+> >         }
+> >
+> >         Error in writeOGR(fim, dsn = path_to_save, layer =
+> >         paste0("contorno_", : obj must be a SpatialPointsDataFrame,
+> >         SpatialLinesDataFrame or SpatialPolygonsDataFrame
+> >
+> >         Yury Duarte
+> >         Engenheiro Agrônomo - ESALQ/USP
+> >         _______________________________________________
+> >         R-br mailing list
+> >         R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+> >         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+> >         forne�a c�digo m�nimo reproduz�vel.
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+> >
+>
+> --
+> Pedro R. Andrade, Dr.
+> Earth System Science Center (CCST)
+> National Institute for Space Research (INPE)
+> Sao Jose dos Campos, Brazil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190117/f5580bb7/attachment.html>
+
+From bruno.pasquini em gmail.com  Fri Jan 18 09:18:13 2019
+From: bruno.pasquini em gmail.com (=?UTF-8?Q?Bruno_C=C3=A9sar_Pasquini?=)
+Date: Fri, 18 Jan 2019 09:18:13 -0200
+Subject: [R-br] 
+	=?utf-8?q?Ajuda_com_a_passagem_incorreta_de_vari=C3=A1vel?=
+	=?utf-8?q?_string_para_uma_fun=C3=A7=C3=A3o_do_R?=
+In-Reply-To: <CAKrF98=EJqykntyUnQ4re7iiYi67wTdw=gkALTD=mvBo=XwHPw@mail.gmail.com>
+References: <CAKZqVpOyKBNcDXOZJWgaWoyJtTzjAvgn2HS91W3Ys0pHtg28UA@mail.gmail.com>
+ <CAKrF98kA6xTpvw5BBzJsXBP2aEvPDRdK_UDtBc-fSdSEJGWCxw@mail.gmail.com>
+ <CAKZqVpNvoiD_fMMyHnZLon3Y7HckRqhOjaO+g=TjE+cV2R_woA@mail.gmail.com>
+ <CAKrF98=EJqykntyUnQ4re7iiYi67wTdw=gkALTD=mvBo=XwHPw@mail.gmail.com>
+Message-ID: <CAKZqVpN1wSz4eOkmiYW67zV607n-f-cKvrYRkpMxMroBawy8gg@mail.gmail.com>
+
+*César*,
+
+Bom dia.
+
+Eu reconheço que, sob o aspecto de banco de dados, não faz sentido ter a
+mescla de proporções com totais absolutos de votos válidos. E que também
+acabo duplicando os valores no cruzamento. Meu exemplo não foi bom neste
+sentido.
+
+Ainda assim, a dúvida continua sendo como fazer a função reconhecer a
+variável que eu gostaria de levar para o cruzamento além da variável chave
+para o cruzamento (neste caso a variavel *Regiao*).
+
+Assim, ignorando estes problemas de bancos de dados, o que preciso fazer
+para passar o parâmetro da função de forma correta? Você(s) pode(m) me
+apontar o que estou fazendo de errado nas versões da função *consolida*?
+
+Grato mais uma vez pela sua atenção,
+
+Bruno César Pasquini
+Estatístico
+
+
+Em ter, 15 de jan de 2019 às 22:31, Cesar Rabak <cesar.rabak em gmail.com>
+escreveu:
+
+> Bruno,
+>
+> *Acho* que estou começando a entender a sua demanda, mas para ter certeza
+> é necessário ainda elicitar umas coisinhas:
+>
+> a) No exemplo que você passa como resultado desejado você tem uma mescla
+> de proporções com totais absolutos dos votos para a nova coluna oriunda da
+> operação de mescla;
+>
+> b) Como você usa Região como a chave comum entre as duas tabelas, os
+> valores de contagem de votos são repetidos pois na tabela perc_validos  a
+> região é subdividida por UF enquanto na tabela votos_regiao há apenas o
+> agregado e não a quebra por UF.
+>
+> O resultado dessa forma faz sentido para você e é exatamente o que você
+> deseja da operação da sua função Consolida?
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Tue, Jan 15, 2019 at 8:01 AM Bruno César Pasquini por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> *Daniel* e *César*,
+>>
+>> Agradeço muito o terem tentado rodar meu código...
+>>
+>> Arranjei este exemplo para tentar resolver um problema que estou tendo
+>> com dados da indústria química alemã onde trabalho, dados que não posso
+>> expor aqui. Arranjei um exemplo fake (ainda que com dados reais) para pedir
+>> a ajuda no processamento da função.
+>>
+>> Minha expectativa é a de conseguir que o R selecione apenas a variável
+>> chave para o cruzamento (*Regiao*) mais alguma outra (uma das colunas
+>> com contagem de votos) cuja interpretação não estou conseguindo acertar no
+>> meu código R.
+>>
+>> Como o problema é este, eu deixei os nomes das demais variáveis
+>> propositalmente diferentes, eu não espero mesmo que o R associe uma
+>> variável chamada "Ciro" com outra que se chama "Ciro Gomes" (a menos que eu
+>> o faça manualmente depois...).
+>>
+>> O que eu gostaria de obter neste cruzamento a ser feito pela função é
+>> algo como (vamos supor que peça a coluna dos votos dos demais candidatos):
+>>
+>> Regiao Estado Bolsonaro Haddad Ciro Outros 'Demais Candidatos'
+>> 'Centro-Oeste' 'Distrito Federal' 0.5837 0.1187 0.1660 0.1316 952142
+>> 'Centro-Oeste' 'Goias' 0.5724 0.2186 0.0860 0.1230 952142
+>> 'Centro-Oeste' 'Mato Grosso' 0.6004 0.2476 0.0559 0.0961 952142
+>> 'Centro-Oeste' 'Mato Grosso do Sul' 0.5506 0.2387 0.0804 0.1304 952142
+>> 'Exterior' '' 0.5879 0.1010 0.1452 0.1659 32078
+>> 'Nordeste' 'Alagoas' 0.3440 0.4475 0.1012 0.1072 1894092
+>> 'Nordeste' 'Bahia' 0.2341 0.6028 0.0941 0.0690 1894092
+>> 'Nordeste' 'Ceara' 0.2174 0.3312 0.4095 0.0419 1894092
+>> (...)
+>> É a tabela *perc_validos* com o acréscimo da coluna "Demais Candidatos".
+>>
+>> Meu desafio é separar, dentre as várias colunas na tabela *votos_regiao*,
+>> apenas a coluna chave (*Regiao*) e a coluna que eu apontar como
+>> parametro na função (neste exemplo acima a "Demais Candidatos"). Da maneira
+>> que coloquei (as 3 versões da função *consolida*), nenhuma delas tem
+>> funcionado e é nisso que eu preciso da ajuda para entender no que estou
+>> errando. O fato de gerar duplicidades e de que (no exemplo acima) a coluna
+>> "Outros" não se relacionar com a coluna "Demais Candidatos" nao são
+>> problema, eu tratarei na sequência do meu código. Para mim o importante é
+>> acertar a seleção para o cruzamento...
+>>
+>> Assim, como eu faço para selecionar uma das colunas com contagem de votos
+>> além da variável chave nas funções? O que eu estou fazendo de errado?
+>>
+>> Grato mais uma vez pela atenção de vocês,
+>>
+>> Bruno César Pasquini
+>> Estatístico.
+>>
+>>
+>> Em sex, 11 de jan de 2019 às 23:37, Cesar Rabak por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Bruno, apenas uma dúvida: como você espera fazer um *merge* em dois
+>>> conjuntos de dados cujas "chaves" (no data.table, que um dataframe) as
+>>> variáveis ou colunas... ou sendo mais simplório: como você espera que o SW
+>>> estatístico *saiba* que  Bolsonaro na data.table  perc_validos é a *mesma
+>>> coisa* que 'Jair Bolsonaro' na votos_regiao 🤔??
+>>>
+>>> HTH
+>>> --
+>>> Cesar Rabak
+>>>
+>>>
+>>> On Fri, Jan 11, 2019 at 9:17 AM Bruno César Pasquini por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> PessoALL, bom dia!
+>>>>
+>>>> Estou com dificuldade em passar os valores de uma variável string para
+>>>> uma função do R de forma que esta função a interprete corretamente.
+>>>>
+>>>> Por exemplo, para indicar qual coluna eu quero que a função selecione
+>>>> para um cruzamento de 2 data.tables (acho melhor que usar data.frames pela
+>>>> melhor performance do data.table)... Eu poderia levar a tabela inteira para
+>>>> o cruzamento, mas depois teria que deletar as demais colunas manualmente,
+>>>> gostaria de resolver com a função conforme o exemplo abaixo.
+>>>>
+>>>> Construí este exemplo baseado nos resultados do primeiro turno das
+>>>> últimas eleições presidenciais. Normalmente eu importaria as tabelas, mas
+>>>> eu as declaro aqui para a devida reprodução do código.
+>>>> Fonte:
+>>>> https://pt.wikipedia.org/wiki/Resultados_da_eleição_presidencial_no_Brasil_em_2018#Primeiro_turno_3
+>>>>
+>>>> Meu propósito é entender o que estou fazendo de errado (ou deixando de
+>>>> fazer...), não estou propondo um debate político-ideológico que foge ao
+>>>> escopo desta lista...
+>>>>
+>>>> Especificamente, eu não consigo fazer a função "*consolida*" (na
+>>>> verdade as versões 1, 2 e 3 desta função) interprete(m) o parâmetro "
+>>>> *Candidato*" corretamente.
+>>>> Eu tento usar o parâmetro sozinho e com as funções "*substitute*" e "
+>>>> *eval*", mas não consigo levar a coluna com os números de votação do
+>>>> candidato por região para o cruzamento. Sim, eu sei que o cruzamento como o
+>>>> desenhei vai gerar duplicidade, mas o que preciso é que o cruzamento
+>>>> "funcione"...
+>>>>
+>>>> Vocês podem me ajudar a entender o que estou fazendo de errado?
+>>>>
+>>>> Muito grato pela atenção de cada um(a),
+>>>> Bruno César Pasquini
+>>>> Estatístico
+>>>>
+>>>> ####### Codigo Reprodutivel...
+>>>>
+>>>> library(data.table)
+>>>>
+>>>> ### Percentual de Votos Validos nos estados e no exterior...
+>>>> perc_validos <- data.table(Regiao = c('Centro-Oeste', 'Centro-Oeste',
+>>>> 'Centro-Oeste', 'Centro-Oeste', 'Exterior', 'Nordeste', 'Nordeste',
+>>>> 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste',
+>>>> 'Nordeste', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte',
+>>>> 'Sudeste', 'Sudeste', 'Sudeste', 'Sudeste', 'Sul', 'Sul', 'Sul'),
+>>>>                            Estado = c('Distrito Federal', 'Goias',
+>>>> 'Mato Grosso', 'Mato Grosso do Sul', '', 'Alagoas', 'Bahia', 'Ceara',
+>>>> 'Maranhao', 'Paraiba', 'Pernambuco', 'Piaui', 'Rio Grande do Norte',
+>>>> 'Sergipe', 'Acre', 'Amapa', 'Amazonas', 'Para', 'Rondonia', 'Roraima',
+>>>> 'Tocantins', 'Espirito Santo', 'Minas Gerais', 'Rio de Janeiro', 'Sao
+>>>> Paulo', 'Parana', 'Rio Grande do Sul', 'Santa Catarina'),
+>>>>                            Bolsonaro = c(0.5837, 0.5724, 0.6004,
+>>>> 0.5506, 0.5879, 0.3440, 0.2341, 0.2174, 0.2428, 0.3130, 0.3057, 0.1876,
+>>>> 0.3021, 0.2721, 0.6224, 0.4074, 0.4348, 0.3619, 0.6224, 0.6297, 0.4464,
+>>>> 0.5476, 0.4831, 0.5979, 0.5300, 0.5689, 0.5263, 0.6582),
+>>>>                            Haddad = c(0.1187, 0.2186, 0.2476, 0.2387,
+>>>> 0.1010, 0.4475, 0.6028, 0.3312, 0.6126, 0.4546, 0.4887, 0.6340, 0.4119,
+>>>> 0.5009, 0.1853, 0.3277, 0.4030, 0.4139, 0.2036, 0.1785, 0.4112, 0.2420,
+>>>> 0.2765, 0.1469, 0.1642, 0.1970, 0.2281, 0.1513),
+>>>>                            Ciro = c(0.1660, 0.0860, 0.0559, 0.0804,
+>>>> 0.1452, 0.1012, 0.0941, 0.4095, 0.0839, 0.1675, 0.1356, 0.1142, 0.2231,
+>>>> 0.1302, 0.0517, 0.1234, 0.0750, 0.1003, 0.0603, 0.0536, 0.0717, 0.0954,
+>>>> 0.1164, 0.1522, 0.1135, 0.0831, 0.1137, 0.0668),
+>>>>                            Outros = c(0.1316, 0.1230, 0.0961, 0.1304,
+>>>> 0.1659, 0.1072, 0.0690, 0.0419, 0.0606, 0.0650, 0.0700, 0.0642, 0.0631,
+>>>> 0.0967, 0.1405, 0.1417, 0.0873, 0.1237, 0.1739, 0.1383, 0.0707, 0.1149,
+>>>> 0.1241, 0.1030, 0.1922, 0.1510, 0.1318, 0.1236)
+>>>>                            )
+>>>> ### Analisando o data.table perc_validos...
+>>>> perc_validos; class(perc_validos); str(perc_validos); dim(perc_validos)
+>>>>
+>>>> ### Total de Votos Validos por regiao e no exterior...
+>>>> votos_regiao <- data.table(Regiao = c('Centro-Oeste', 'Exterior',
+>>>> 'Nordeste', 'Norte', 'Sudeste', 'Sul'),
+>>>>                            'Jair Bolsonaro' = c(4555415, 113690,
+>>>> 7453186, 3785038, 23915925, 9453736),
+>>>>                            'Fernando Haddad' = c(1642054, 19540,
+>>>> 14583334, 3211002, 8623232, 3262843),
+>>>>                            'Ciro Gomes' = c(750776, 28073, 4892961,
+>>>> 748170, 5425104, 1499282),
+>>>>                            'Demais Candidatos' = c(952142, 32078,
+>>>> 1894092, 982103, 6968773, 2258047)
+>>>>                            )
+>>>> ### Analisando o data.table votos_regiao...
+>>>> votos_regiao; class(votos_regiao); str(votos_regiao); dim(votos_regiao)
+>>>>
+>>>> ### Fazendo o cruzamento... Ou pelo menos tentando...
+>>>> consolida1 <- function(Candidato) {
+>>>>    temporario <- merge(x = perc_validos,
+>>>>                        y = votos_regiao[, .(Regiao,
+>>>>                                             Candidato)],
+>>>>                        by = "Regiao",
+>>>>                        all.x = TRUE,
+>>>>                        sort = TRUE)
+>>>>    return(temporario)
+>>>> }
+>>>> consolida1(Candidato = "Jair Bolsonaro")
+>>>>
+>>>> consolida2 <- function(Candidato) {
+>>>>    temporario <- merge(x = perc_validos,
+>>>>                        y = votos_regiao[, .(Regiao,
+>>>>                                             substitute(Candidato))],
+>>>>                        by = "Regiao",
+>>>>                        all.x = TRUE,
+>>>>                        sort = TRUE)
+>>>>    return(temporario)
+>>>> }
+>>>> consolida2(Candidato = "Ciro Gomes")
+>>>>
+>>>> consolida3 <- function(Candidato) {
+>>>>    temporario <- merge(x = perc_validos,
+>>>>                        y = votos_regiao[, .(Regiao,
+>>>>                                             eval(Candidato))],
+>>>>                        by = "Regiao",
+>>>>                        all.x = TRUE,
+>>>>                        sort = TRUE)
+>>>>    return(temporario)
+>>>> }
+>>>> consolida3(Candidato = "Fernando Haddad")
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190118/4a880d9e/attachment.html>
+
+From yurynepomuceno em gmail.com  Fri Jan 18 11:11:44 2019
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Fri, 18 Jan 2019 11:11:44 -0200
+Subject: [R-br] =?utf-8?q?Construir_um_la=C3=A7o_que_modifique_o_conte?=
+	=?utf-8?q?=C3=BAdo_do_meu_contador?=
+Message-ID: <CADFS6E7xg4CDtuP84f0GQDgf6wG5M_OLP+MtBw6WTFmBDYNHiA@mail.gmail.com>
+
+Bom dia a todos!
+
+Há algum tempo venho tentando encontrar uma lógica de laço aonde eu consiga
+eliminar determinadas posições de uma lista (que uso de contador), de
+acordo com uma condição, e seguir com laço.
+Em suma, dentro de uma lista de polígonos, preciso identificar os polígonos
+que se sobrepõe (mesmo que apenas se encostem), uni-los num novo polígono
+(sobrescrevendo o primeiro?), eliminando o que restou da união e seguindo o
+fluxo do laço com o resultado da união.
+Assim, um polígono que foi unido não mais seria considerado no laço.
+
+Segue um código como exemplo, aonde testei algumas possibilidades para
+contornar a questão. Acredito que a leitura do código elucide melhor meu
+problema.
+Caso alguém tenha uma ideia de logica/abordagem diferente, ficarei feliz em
+testar!
+
+Desde já, agradeço o auxilio de todos!
+
+#############################################################################
+rodar_bibliotecas = function(necessarias){
+
+  if(necessarias){
+    library(rgrass7)
+    library(spatstat)
+    library(maptools)
+    library(shapefiles)
+    library(foreign)
+    library(magrittr)
+    library(formattable)
+    library(e1071)
+    library(rlang)
+    library(rgdal)
+    library(rgeos)
+    library(raster)
+    library(sp)
+    library(sf)
+    library(RcppCNPy)
+    library(deldir)
+    library(dismo)
+    library(dplyr)
+    library(ggplot2)
+    library(gstat)
+    library(tidyverse)
+    library(smoothr)
+    library(viridisLite)
+    library(gpclib)
+  }
+  return('Ok')
+}
+
+#############################################################################
+rodar_bibliotecas(TRUE)
+
+xpol = c(0,1,1,0,0)
+ypol = c(0,0,1,1,0)
+pol = SpatialPolygons(list(
+  Polygons(list(Polygon(cbind(xpol-1.05,ypol))), ID="x1"),
+  Polygons(list(Polygon(cbind(xpol,ypol))), ID="x2"),
+  Polygons(list(Polygon(cbind(xpol,ypol - 1.0))), ID="x3"),
+  Polygons(list(Polygon(cbind(xpol + 1.0, ypol))), ID="x4"),
+  Polygons(list(Polygon(cbind(xpol+.4, ypol+.1))), ID="x5")))
+plot(pol)
+
+#############################################################################
+#nao precisava ter feito isso, mas fiz para deixar o exemplo no mesmo
+formato com que meus dados estao vindo
+areas = length(pol)
+lista_vazia = list()
+
+for (area in 1:length(areas)) {
+  lista_vazia[area] = pol[area]
+}
+
+lista = lista_vazia
+lista.1 = lista_vazia
+#tentativa de loop para unir poligonos que se encostam
+# for (i in 1:length(lista)) {
+while (i < length(lista)) {
+  if(i >= length(lista.1)){
+    break()
+  }else{
+    j = 2
+    while (j < length(lista.1)) {
+      # for (j in 2:length(lista.1)) {
+      if(!is.na((over(lista[[i]], lista.1[[j]], returnList = F) == 1))) {
+        lista[[i]] = gUnion(lista.1[[i]], lista.1[[j]])
+        lista.1[[i]] = gUnion(lista.1[[i]], lista.1[[j]])
+
+        #lista[[j]] = NULL
+        lista.1 = lista.1[-j]
+        lista = lista[-j]
+      }else{
+        j = j+1
+      }
+    }
+    i = i+1
+  }
+}
+
+#############################################################################
+fim = lista.1[[1]]
+plot(fim)
+for (x in 2:length(lista)){
+  if(x==2){
+    if(is.na((over(fim, lista[[x]], returnList = T) == 1))){
+      fim = bind(fim, lista[[x]])
+    }
+  }else{
+    a = is.na((over(fim, lista[[x]], returnList = T) == 1))
+
+    if(a[length(a)] == TRUE){
+      fim = bind(fim, lista[[x]])
+    }
+  }
+}
+#o objetivo final seria ter todas as areas da lista unidas num unico objeto
+#dessa forma, o contorno do polt(pol) devera ser igual ao contorno do
+plot(fim)
+plot(pol)
+plot(fim)
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190118/81c661e9/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Jan 18 17:09:37 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 18 Jan 2019 17:09:37 -0200
+Subject: [R-br] 
+	=?utf-8?q?Ajuda_com_a_passagem_incorreta_de_vari=C3=A1vel?=
+	=?utf-8?q?_string_para_uma_fun=C3=A7=C3=A3o_do_R?=
+In-Reply-To: <CAKZqVpN1wSz4eOkmiYW67zV607n-f-cKvrYRkpMxMroBawy8gg@mail.gmail.com>
+References: <CAKZqVpOyKBNcDXOZJWgaWoyJtTzjAvgn2HS91W3Ys0pHtg28UA@mail.gmail.com>
+ <CAKrF98kA6xTpvw5BBzJsXBP2aEvPDRdK_UDtBc-fSdSEJGWCxw@mail.gmail.com>
+ <CAKZqVpNvoiD_fMMyHnZLon3Y7HckRqhOjaO+g=TjE+cV2R_woA@mail.gmail.com>
+ <CAKrF98=EJqykntyUnQ4re7iiYi67wTdw=gkALTD=mvBo=XwHPw@mail.gmail.com>
+ <CAKZqVpN1wSz4eOkmiYW67zV607n-f-cKvrYRkpMxMroBawy8gg@mail.gmail.com>
+Message-ID: <CAKrF98mvLiEjpK0e7ipJYKgpuomOzRHAE-cTbUarzBmMk1U65g@mail.gmail.com>
+
+Bruno,
+
+Com as provisões de adequação do exemplo e demais considerações, *acho* obtive
+que a resposta que você deseja fazendo o seguinte:
+
+1) na criação das data.tables perc_validos e votos_regiao eu coloquei que a
+chave para ambas era a região com o parâmetro Key="Regiao".
+
+2) usando a seguinte chamada obtive o seguinte (ignore o fato que meu R é
+parametrizado para português e a vírgula usada como marca de raíz):
+
+> merge(perc_validos, votos_regiao[,Regiao,"Demais Candidatos"], all.x=T,
+sort=T) # isto aqui é tudo uma linha só!!
+          Regiao              Estado Bolsonaro Haddad   Ciro Outros
+ 1: Centro-Oeste    Distrito Federal    0,5837 0,1187 0,1660 0,1316
+ 2: Centro-Oeste               Goias    0,5724 0,2186 0,0860 0,1230
+ 3: Centro-Oeste         Mato Grosso    0,6004 0,2476 0,0559 0,0961
+ 4: Centro-Oeste  Mato Grosso do Sul    0,5506 0,2387 0,0804 0,1304
+ 5:     Exterior                        0,5879 0,1010 0,1452 0,1659
+ 6:     Nordeste             Alagoas    0,3440 0,4475 0,1012 0,1072
+ 7:     Nordeste               Bahia    0,2341 0,6028 0,0941 0,0690
+ 8:     Nordeste               Ceara    0,2174 0,3312 0,4095 0,0419
+ 9:     Nordeste            Maranhao    0,2428 0,6126 0,0839 0,0606
+10:     Nordeste             Paraiba    0,3130 0,4546 0,1675 0,0650
+11:     Nordeste          Pernambuco    0,3057 0,4887 0,1356 0,0700
+12:     Nordeste               Piaui    0,1876 0,6340 0,1142 0,0642
+13:     Nordeste Rio Grande do Norte    0,3021 0,4119 0,2231 0,0631
+14:     Nordeste             Sergipe    0,2721 0,5009 0,1302 0,0967
+15:        Norte                Acre    0,6224 0,1853 0,0517 0,1405
+16:        Norte               Amapa    0,4074 0,3277 0,1234 0,1417
+17:        Norte            Amazonas    0,4348 0,4030 0,0750 0,0873
+18:        Norte                Para    0,3619 0,4139 0,1003 0,1237
+19:        Norte            Rondonia    0,6224 0,2036 0,0603 0,1739
+20:        Norte             Roraima    0,6297 0,1785 0,0536 0,1383
+21:        Norte           Tocantins    0,4464 0,4112 0,0717 0,0707
+22:      Sudeste      Espirito Santo    0,5476 0,2420 0,0954 0,1149
+23:      Sudeste        Minas Gerais    0,4831 0,2765 0,1164 0,1241
+24:      Sudeste      Rio de Janeiro    0,5979 0,1469 0,1522 0,1030
+25:      Sudeste           Sao Paulo    0,5300 0,1642 0,1135 0,1922
+26:          Sul              Parana    0,5689 0,1970 0,0831 0,1510
+27:          Sul   Rio Grande do Sul    0,5263 0,2281 0,1137 0,1318
+28:          Sul      Santa Catarina    0,6582 0,1513 0,0668 0,1236
+          Regiao              Estado Bolsonaro Haddad   Ciro Outros
+    Demais Candidatos
+ 1:            952142
+ 2:            952142
+ 3:            952142
+ 4:            952142
+ 5:             32078
+ 6:           1894092
+ 7:           1894092
+ 8:           1894092
+ 9:           1894092
+10:           1894092
+11:           1894092
+12:           1894092
+13:           1894092
+14:           1894092
+15:            982103
+16:            982103
+17:            982103
+18:            982103
+19:            982103
+20:            982103
+21:            982103
+22:           6968773
+23:           6968773
+24:           6968773
+25:           6968773
+26:           2258047
+27:           2258047
+28:           2258047
+    Demais Candidatos
+>
+
+HTH
+--
+Cesar Rabak
+
+
+On Fri, Jan 18, 2019 at 9:19 AM Bruno César Pasquini por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> *César*,
+>
+> Bom dia.
+>
+> Eu reconheço que, sob o aspecto de banco de dados, não faz sentido ter a
+> mescla de proporções com totais absolutos de votos válidos. E que também
+> acabo duplicando os valores no cruzamento. Meu exemplo não foi bom neste
+> sentido.
+>
+> Ainda assim, a dúvida continua sendo como fazer a função reconhecer a
+> variável que eu gostaria de levar para o cruzamento além da variável chave
+> para o cruzamento (neste caso a variavel *Regiao*).
+>
+> Assim, ignorando estes problemas de bancos de dados, o que preciso fazer
+> para passar o parâmetro da função de forma correta? Você(s) pode(m) me
+> apontar o que estou fazendo de errado nas versões da função *consolida*?
+>
+> Grato mais uma vez pela sua atenção,
+>
+> Bruno César Pasquini
+> Estatístico
+>
+>
+> Em ter, 15 de jan de 2019 às 22:31, Cesar Rabak <cesar.rabak em gmail.com>
+> escreveu:
+>
+>> Bruno,
+>>
+>> *Acho* que estou começando a entender a sua demanda, mas para ter
+>> certeza é necessário ainda elicitar umas coisinhas:
+>>
+>> a) No exemplo que você passa como resultado desejado você tem uma mescla
+>> de proporções com totais absolutos dos votos para a nova coluna oriunda da
+>> operação de mescla;
+>>
+>> b) Como você usa Região como a chave comum entre as duas tabelas, os
+>> valores de contagem de votos são repetidos pois na tabela perc_validos
+>> a região é subdividida por UF enquanto na tabela votos_regiao há apenas
+>> o agregado e não a quebra por UF.
+>>
+>> O resultado dessa forma faz sentido para você e é exatamente o que você
+>> deseja da operação da sua função Consolida?
+>>
+>> HTH
+>> --
+>> Cesar Rabak
+>>
+>>
+>> On Tue, Jan 15, 2019 at 8:01 AM Bruno César Pasquini por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> *Daniel* e *César*,
+>>>
+>>> Agradeço muito o terem tentado rodar meu código...
+>>>
+>>> Arranjei este exemplo para tentar resolver um problema que estou tendo
+>>> com dados da indústria química alemã onde trabalho, dados que não posso
+>>> expor aqui. Arranjei um exemplo fake (ainda que com dados reais) para pedir
+>>> a ajuda no processamento da função.
+>>>
+>>> Minha expectativa é a de conseguir que o R selecione apenas a variável
+>>> chave para o cruzamento (*Regiao*) mais alguma outra (uma das colunas
+>>> com contagem de votos) cuja interpretação não estou conseguindo acertar no
+>>> meu código R.
+>>>
+>>> Como o problema é este, eu deixei os nomes das demais variáveis
+>>> propositalmente diferentes, eu não espero mesmo que o R associe uma
+>>> variável chamada "Ciro" com outra que se chama "Ciro Gomes" (a menos que eu
+>>> o faça manualmente depois...).
+>>>
+>>> O que eu gostaria de obter neste cruzamento a ser feito pela função é
+>>> algo como (vamos supor que peça a coluna dos votos dos demais candidatos):
+>>>
+>>> Regiao Estado Bolsonaro Haddad Ciro Outros 'Demais Candidatos'
+>>> 'Centro-Oeste' 'Distrito Federal' 0.5837 0.1187 0.1660 0.1316 952142
+>>> 'Centro-Oeste' 'Goias' 0.5724 0.2186 0.0860 0.1230 952142
+>>> 'Centro-Oeste' 'Mato Grosso' 0.6004 0.2476 0.0559 0.0961 952142
+>>> 'Centro-Oeste' 'Mato Grosso do Sul' 0.5506 0.2387 0.0804 0.1304 952142
+>>> 'Exterior' '' 0.5879 0.1010 0.1452 0.1659 32078
+>>> 'Nordeste' 'Alagoas' 0.3440 0.4475 0.1012 0.1072 1894092
+>>> 'Nordeste' 'Bahia' 0.2341 0.6028 0.0941 0.0690 1894092
+>>> 'Nordeste' 'Ceara' 0.2174 0.3312 0.4095 0.0419 1894092
+>>> (...)
+>>> É a tabela *perc_validos* com o acréscimo da coluna "Demais Candidatos".
+>>>
+>>> Meu desafio é separar, dentre as várias colunas na tabela *votos_regiao*,
+>>> apenas a coluna chave (*Regiao*) e a coluna que eu apontar como
+>>> parametro na função (neste exemplo acima a "Demais Candidatos"). Da maneira
+>>> que coloquei (as 3 versões da função *consolida*), nenhuma delas tem
+>>> funcionado e é nisso que eu preciso da ajuda para entender no que estou
+>>> errando. O fato de gerar duplicidades e de que (no exemplo acima) a coluna
+>>> "Outros" não se relacionar com a coluna "Demais Candidatos" nao são
+>>> problema, eu tratarei na sequência do meu código. Para mim o importante é
+>>> acertar a seleção para o cruzamento...
+>>>
+>>> Assim, como eu faço para selecionar uma das colunas com contagem de
+>>> votos além da variável chave nas funções? O que eu estou fazendo de errado?
+>>>
+>>> Grato mais uma vez pela atenção de vocês,
+>>>
+>>> Bruno César Pasquini
+>>> Estatístico.
+>>>
+>>>
+>>> Em sex, 11 de jan de 2019 às 23:37, Cesar Rabak por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>
+>>>> Bruno, apenas uma dúvida: como você espera fazer um *merge* em dois
+>>>> conjuntos de dados cujas "chaves" (no data.table, que um dataframe) as
+>>>> variáveis ou colunas... ou sendo mais simplório: como você espera que o SW
+>>>> estatístico *saiba* que  Bolsonaro na data.table  perc_validos é a *mesma
+>>>> coisa* que 'Jair Bolsonaro' na votos_regiao 🤔??
+>>>>
+>>>> HTH
+>>>> --
+>>>> Cesar Rabak
+>>>>
+>>>>
+>>>> On Fri, Jan 11, 2019 at 9:17 AM Bruno César Pasquini por (R-br) <
+>>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>>
+>>>>> PessoALL, bom dia!
+>>>>>
+>>>>> Estou com dificuldade em passar os valores de uma variável string para
+>>>>> uma função do R de forma que esta função a interprete corretamente.
+>>>>>
+>>>>> Por exemplo, para indicar qual coluna eu quero que a função selecione
+>>>>> para um cruzamento de 2 data.tables (acho melhor que usar data.frames pela
+>>>>> melhor performance do data.table)... Eu poderia levar a tabela inteira para
+>>>>> o cruzamento, mas depois teria que deletar as demais colunas manualmente,
+>>>>> gostaria de resolver com a função conforme o exemplo abaixo.
+>>>>>
+>>>>> Construí este exemplo baseado nos resultados do primeiro turno das
+>>>>> últimas eleições presidenciais. Normalmente eu importaria as tabelas, mas
+>>>>> eu as declaro aqui para a devida reprodução do código.
+>>>>> Fonte:
+>>>>> https://pt.wikipedia.org/wiki/Resultados_da_eleição_presidencial_no_Brasil_em_2018#Primeiro_turno_3
+>>>>>
+>>>>> Meu propósito é entender o que estou fazendo de errado (ou deixando de
+>>>>> fazer...), não estou propondo um debate político-ideológico que foge ao
+>>>>> escopo desta lista...
+>>>>>
+>>>>> Especificamente, eu não consigo fazer a função "*consolida*" (na
+>>>>> verdade as versões 1, 2 e 3 desta função) interprete(m) o parâmetro "
+>>>>> *Candidato*" corretamente.
+>>>>> Eu tento usar o parâmetro sozinho e com as funções "*substitute*" e "
+>>>>> *eval*", mas não consigo levar a coluna com os números de votação do
+>>>>> candidato por região para o cruzamento. Sim, eu sei que o cruzamento como o
+>>>>> desenhei vai gerar duplicidade, mas o que preciso é que o cruzamento
+>>>>> "funcione"...
+>>>>>
+>>>>> Vocês podem me ajudar a entender o que estou fazendo de errado?
+>>>>>
+>>>>> Muito grato pela atenção de cada um(a),
+>>>>> Bruno César Pasquini
+>>>>> Estatístico
+>>>>>
+>>>>> ####### Codigo Reprodutivel...
+>>>>>
+>>>>> library(data.table)
+>>>>>
+>>>>> ### Percentual de Votos Validos nos estados e no exterior...
+>>>>> perc_validos <- data.table(Regiao = c('Centro-Oeste', 'Centro-Oeste',
+>>>>> 'Centro-Oeste', 'Centro-Oeste', 'Exterior', 'Nordeste', 'Nordeste',
+>>>>> 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste', 'Nordeste',
+>>>>> 'Nordeste', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte', 'Norte',
+>>>>> 'Sudeste', 'Sudeste', 'Sudeste', 'Sudeste', 'Sul', 'Sul', 'Sul'),
+>>>>>                            Estado = c('Distrito Federal', 'Goias',
+>>>>> 'Mato Grosso', 'Mato Grosso do Sul', '', 'Alagoas', 'Bahia', 'Ceara',
+>>>>> 'Maranhao', 'Paraiba', 'Pernambuco', 'Piaui', 'Rio Grande do Norte',
+>>>>> 'Sergipe', 'Acre', 'Amapa', 'Amazonas', 'Para', 'Rondonia', 'Roraima',
+>>>>> 'Tocantins', 'Espirito Santo', 'Minas Gerais', 'Rio de Janeiro', 'Sao
+>>>>> Paulo', 'Parana', 'Rio Grande do Sul', 'Santa Catarina'),
+>>>>>                            Bolsonaro = c(0.5837, 0.5724, 0.6004,
+>>>>> 0.5506, 0.5879, 0.3440, 0.2341, 0.2174, 0.2428, 0.3130, 0.3057, 0.1876,
+>>>>> 0.3021, 0.2721, 0.6224, 0.4074, 0.4348, 0.3619, 0.6224, 0.6297, 0.4464,
+>>>>> 0.5476, 0.4831, 0.5979, 0.5300, 0.5689, 0.5263, 0.6582),
+>>>>>                            Haddad = c(0.1187, 0.2186, 0.2476, 0.2387,
+>>>>> 0.1010, 0.4475, 0.6028, 0.3312, 0.6126, 0.4546, 0.4887, 0.6340, 0.4119,
+>>>>> 0.5009, 0.1853, 0.3277, 0.4030, 0.4139, 0.2036, 0.1785, 0.4112, 0.2420,
+>>>>> 0.2765, 0.1469, 0.1642, 0.1970, 0.2281, 0.1513),
+>>>>>                            Ciro = c(0.1660, 0.0860, 0.0559, 0.0804,
+>>>>> 0.1452, 0.1012, 0.0941, 0.4095, 0.0839, 0.1675, 0.1356, 0.1142, 0.2231,
+>>>>> 0.1302, 0.0517, 0.1234, 0.0750, 0.1003, 0.0603, 0.0536, 0.0717, 0.0954,
+>>>>> 0.1164, 0.1522, 0.1135, 0.0831, 0.1137, 0.0668),
+>>>>>                            Outros = c(0.1316, 0.1230, 0.0961, 0.1304,
+>>>>> 0.1659, 0.1072, 0.0690, 0.0419, 0.0606, 0.0650, 0.0700, 0.0642, 0.0631,
+>>>>> 0.0967, 0.1405, 0.1417, 0.0873, 0.1237, 0.1739, 0.1383, 0.0707, 0.1149,
+>>>>> 0.1241, 0.1030, 0.1922, 0.1510, 0.1318, 0.1236)
+>>>>>                            )
+>>>>> ### Analisando o data.table perc_validos...
+>>>>> perc_validos; class(perc_validos); str(perc_validos); dim(perc_validos)
+>>>>>
+>>>>> ### Total de Votos Validos por regiao e no exterior...
+>>>>> votos_regiao <- data.table(Regiao = c('Centro-Oeste', 'Exterior',
+>>>>> 'Nordeste', 'Norte', 'Sudeste', 'Sul'),
+>>>>>                            'Jair Bolsonaro' = c(4555415, 113690,
+>>>>> 7453186, 3785038, 23915925, 9453736),
+>>>>>                            'Fernando Haddad' = c(1642054, 19540,
+>>>>> 14583334, 3211002, 8623232, 3262843),
+>>>>>                            'Ciro Gomes' = c(750776, 28073, 4892961,
+>>>>> 748170, 5425104, 1499282),
+>>>>>                            'Demais Candidatos' = c(952142, 32078,
+>>>>> 1894092, 982103, 6968773, 2258047)
+>>>>>                            )
+>>>>> ### Analisando o data.table votos_regiao...
+>>>>> votos_regiao; class(votos_regiao); str(votos_regiao); dim(votos_regiao)
+>>>>>
+>>>>> ### Fazendo o cruzamento... Ou pelo menos tentando...
+>>>>> consolida1 <- function(Candidato) {
+>>>>>    temporario <- merge(x = perc_validos,
+>>>>>                        y = votos_regiao[, .(Regiao,
+>>>>>                                             Candidato)],
+>>>>>                        by = "Regiao",
+>>>>>                        all.x = TRUE,
+>>>>>                        sort = TRUE)
+>>>>>    return(temporario)
+>>>>> }
+>>>>> consolida1(Candidato = "Jair Bolsonaro")
+>>>>>
+>>>>> consolida2 <- function(Candidato) {
+>>>>>    temporario <- merge(x = perc_validos,
+>>>>>                        y = votos_regiao[, .(Regiao,
+>>>>>                                             substitute(Candidato))],
+>>>>>                        by = "Regiao",
+>>>>>                        all.x = TRUE,
+>>>>>                        sort = TRUE)
+>>>>>    return(temporario)
+>>>>> }
+>>>>> consolida2(Candidato = "Ciro Gomes")
+>>>>>
+>>>>> consolida3 <- function(Candidato) {
+>>>>>    temporario <- merge(x = perc_validos,
+>>>>>                        y = votos_regiao[, .(Regiao,
+>>>>>                                             eval(Candidato))],
+>>>>>                        by = "Regiao",
+>>>>>                        all.x = TRUE,
+>>>>>                        sort = TRUE)
+>>>>>    return(temporario)
+>>>>> }
+>>>>> consolida3(Candidato = "Fernando Haddad")
+>>>>>
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190118/0e71389e/attachment.html>
+
+From joseclaudio.faria em gmail.com  Fri Jan 18 22:57:10 2019
+From: joseclaudio.faria em gmail.com (Jose Claudio Faria)
+Date: Fri, 18 Jan 2019 21:57:10 -0300
+Subject: [R-br] Tinn-R: novo website sob protocolo https
+Message-ID: <CAN+Emd-CrJzm7YqmL9yWQ5YmQBvv+UpMtrc-LcJ=oja9zG51EQ@mail.gmail.com>
+
+Prezados,
+
+O projeto Tinn-R está com novo website sob o protocolo https: Dears,
+
+The Tinn-R projetc has a new website under the https protocol:
+https://nbcgib.uesc.br/tinnr/en/
+
+Best,
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+Jose Claudio Faria
+UESC/DCET/Brasil
+joseclaudio.faria at gmail.com
+Telefones:
+55(73)3680.5545 - UESC
+55(73)99966.9100 - VIVO
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+
+If you have software to deal with statistics, you have arms;
+if you have good software, you have arms and legs;
+if you have software like R, you have arms, legs and wings...
+the height of your flight depends only on you!
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190118/c54b1868/attachment.html>
+
+From luizroberto.uesc em gmail.com  Sat Jan 19 11:51:36 2019
+From: luizroberto.uesc em gmail.com (Luiz Roberto Martins Pinto)
+Date: Sat, 19 Jan 2019 10:51:36 -0300
+Subject: [R-br] Tinn-R: novo website sob protocolo https
+In-Reply-To: <CAN+Emd-CrJzm7YqmL9yWQ5YmQBvv+UpMtrc-LcJ=oja9zG51EQ@mail.gmail.com>
+References: <CAN+Emd-CrJzm7YqmL9yWQ5YmQBvv+UpMtrc-LcJ=oja9zG51EQ@mail.gmail.com>
+Message-ID: <CAK4=-FDXrSd=VHYGxnHixDZS=QfxY_W9WWMBZXaZJqKZBamPsg@mail.gmail.com>
+
+Parabéns!!!
+
+Ficou muito bom!!!
+
+Luiz Roberto.
+
+Em sex, 18 de jan de 2019 21:57, Jose Claudio Faria por (R-br) <
+r-br em listas.c3sl.ufpr.br escreveu:
+
+> Prezados,
+>
+> O projeto Tinn-R está com novo website sob o protocolo https: Dears,
+>
+> The Tinn-R projetc has a new website under the https protocol:
+> https://nbcgib.uesc.br/tinnr/en/
+>
+> Best,
+> ///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+> Jose Claudio Faria
+> UESC/DCET/Brasil
+> joseclaudio.faria at gmail.com
+> Telefones:
+> 55(73)3680.5545 - UESC
+> 55(73)99966.9100 - VIVO
+> ///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+>
+> If you have software to deal with statistics, you have arms;
+> if you have good software, you have arms and legs;
+> if you have software like R, you have arms, legs and wings...
+> the height of your flight depends only on you!
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190119/f137e320/attachment.html>
+
+From sznelwar em uol.com.br  Tue Jan 22 04:17:58 2019
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Tue, 22 Jan 2019 04:17:58 -0200
+Subject: [R-br] Como Salvar Shapefile
+In-Reply-To: <e57eda38-2fcf-dbb2-5aff-b383430d5928@inpe.br>
+References: <nGRsEQRF6bFbGfepHA@mail.gmail.com>
+ <822620824.481456.1547645041440@mail.yahoo.com>
+ <DkSo5cdg4Q@mail.gmail.com>
+ <213121009.502238.1547652153706@mail.yahoo.com>
+ <izykQ@mail.gmail.com>
+ <e57eda38-2fcf-dbb2-5aff-b383430d5928@inpe.br>
+Message-ID: <5c46b596a5430_6ac02af5d7e5f1304176e@a4-weasel6.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190122/a8ad70e9/attachment.html>
+
+From edinhoestat em yahoo.com.br  Fri Jan 25 18:40:18 2019
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Fri, 25 Jan 2019 20:40:18 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?JUNTAR_DOIS_ARQUIVOS_COM_DIMENS=C3=95ES_DIFERENT?=
+ =?utf-8?q?ES?=
+References: <808684828.1260225.1548448818536.ref@mail.yahoo.com>
+Message-ID: <808684828.1260225.1548448818536@mail.yahoo.com>
+
+Boa tarde a todos!!!
+Tenho dois arquivos: um com os CEP's de pacientes de um hospital (57000 registros) sem as coordenadas, o outro arquivo que consegui no link abixo
+http://results.openaddresses.io/?runs=all#runs
+No link acima tem POSTCODES (CEP"S) de todo o mundo. Baixei o do Amazonas que tem o CEP DE MANAUS (SEPAREI ESSE ARQUIVO com 554000 registros)
+Quero fazer uma rotina aonde eu possa juntar o arquivo de consultas sem as coordenadas com o arquivo de CEP'S com as coordendas. (LAT LON), ou seja, quero fazer um arquivo mantendo a dimensão do arquivo das consultas.
+Espero ter sido claro.
+Abaixo o link dos arquivos (um com CEP e o outro com CEP e Coordenadas)
+https://www.datafilehost.com/d/b93da0f3
+https://www.datafilehost.com/d/b8f65984
+
+
+ [  ]'s.Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190125/dff36509/attachment.html>
+
+From jhguilhen em gmail.com  Mon Jan 28 20:55:58 2019
+From: jhguilhen em gmail.com (Ze Henrique)
+Date: Mon, 28 Jan 2019 20:55:58 -0200
+Subject: [R-br] =?utf-8?q?an=C3=A1lise_da_estrutura_de_popula=C3=A7=C3=B5e?=
+ =?utf-8?q?s?=
+Message-ID: <CAHi1An8T1CnPk3-h4WNFhM5yCre3-O9w6SgEcSvTXkHn-6JDQQ@mail.gmail.com>
+
+Boa noite Srs.
+
+gostaria de fazer uma figura de análise da estrutura de populações.
+
+Sei que o programa STRUCTURE, faz estas análises, porém gostaria de saber
+se existe algum pacote implementado no R que faz.
+
+Alguém poderia me recomendar algum pacote.
+
+Desde já agradeço pela atenção.
+-- 
+*José Henrique Soler Guilhen*
+Doutorando em Genética e Melhoramento
+Universidade Federal do Espírito Santo - CCAUFES
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190128/79cee755/attachment.html>
+
+From henriquepertille em gmail.com  Mon Jan 28 22:37:13 2019
+From: henriquepertille em gmail.com (Rafael Pertille)
+Date: Mon, 28 Jan 2019 22:37:13 -0200
+Subject: [R-br] 
+ =?utf-8?q?an=C3=A1lise_da_estrutura_de_popula=C3=A7=C3=B5?=
+ =?utf-8?q?es?=
+In-Reply-To: <CAHi1An8T1CnPk3-h4WNFhM5yCre3-O9w6SgEcSvTXkHn-6JDQQ@mail.gmail.com>
+References: <CAHi1An8T1CnPk3-h4WNFhM5yCre3-O9w6SgEcSvTXkHn-6JDQQ@mail.gmail.com>
+Message-ID: <CAKtUNjcWQUxW4aEfoto=HjvXdXcgxih3LXXak7HSf-NSfgm9xA@mail.gmail.com>
+
+Opa. Dá uma olhada na Bioconductor, deve ter algum pacote que seja
+adequado. Talvez o pacote "GENESIS" te ajude.
+
+Em seg, 28 de jan de 2019 às 20:57, Ze Henrique por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa noite Srs.
+>
+> gostaria de fazer uma figura de análise da estrutura de populações.
+>
+> Sei que o programa STRUCTURE, faz estas análises, porém gostaria de saber
+> se existe algum pacote implementado no R que faz.
+>
+> Alguém poderia me recomendar algum pacote.
+>
+> Desde já agradeço pela atenção.
+> --
+> *José Henrique Soler Guilhen*
+> Doutorando em Genética e Melhoramento
+> Universidade Federal do Espírito Santo - CCAUFES
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+
+
+
+-- 
+*Rafael Henrique Pertille*
+Acadêmico de Agronomia - UTFPR Campus Pato Branco
+(46) 999770049
+ORCID: orcid.org/0000-0002-4888-2001
+Google Scholar:
+https://scholar.google.com.br/citations?user=lr68sUIAAAAJ&hl=pt-BR
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190128/7a90ffec/attachment.html>
+
+From marcelolaia em gmail.com  Mon Jan 28 23:11:30 2019
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Mon, 28 Jan 2019 23:11:30 -0200
+Subject: [R-br] 
+ =?iso-8859-1?q?an=E1lise_da_estrutura_de_popula=E7=F5es?=
+In-Reply-To: <CAHi1An8T1CnPk3-h4WNFhM5yCre3-O9w6SgEcSvTXkHn-6JDQQ@mail.gmail.com>
+References: <CAHi1An8T1CnPk3-h4WNFhM5yCre3-O9w6SgEcSvTXkHn-6JDQQ@mail.gmail.com>
+Message-ID: <20190129011130.GG2010@localhost>
+
+Já deu uma olhada nas listas abaixo?
+
+https://stat.ethz.ch/mailman/listinfo/r-sig-genetics
+
+https://stat.ethz.ch/mailman/listinfo/r-sig-ecology
+
+Nesse Task View de Genética tem um monte de pacotes. Acredito que algum deles
+possa te ajudar, também.
+
+Laia ML
+
+https://cran.r-project.org/web/views/Genetics.html
+
+On 28/01/19 at 08:55, Ze Henrique por (R-br) wrote:
+> Boa noite Srs.
+> 
+> gostaria de fazer uma figura de análise da estrutura de populações.
+> 
+> Sei que o programa STRUCTURE, faz estas análises, porém gostaria de saber
+> se existe algum pacote implementado no R que faz.
+> 
+> Alguém poderia me recomendar algum pacote.
+> 
+> Desde já agradeço pela atenção.
+> -- 
+> *José Henrique Soler Guilhen*
+> Doutorando em Genética e Melhoramento
+> Universidade Federal do Espírito Santo - CCAUFES
+
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne?a c?digo m?nimo reproduz?vel.
+
+
+
+-- 
+Marcelo
+
+From cesar.rabak em gmail.com  Tue Jan 29 12:20:55 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 29 Jan 2019 12:20:55 -0200
+Subject: [R-br] 
+	=?utf-8?q?JUNTAR_DOIS_ARQUIVOS_COM_DIMENS=C3=95ES_DIFEREN?=
+	=?utf-8?q?TES?=
+In-Reply-To: <808684828.1260225.1548448818536@mail.yahoo.com>
+References: <808684828.1260225.1548448818536.ref@mail.yahoo.com>
+ <808684828.1260225.1548448818536@mail.yahoo.com>
+Message-ID: <CAKrF98nKu+58sj4y9TyJw07OqwdRiYrJ4mNgeNEUoJ9KVcPzwA@mail.gmail.com>
+
+Edson,
+
+Veja uma trédi recente nesta lista sobre o uso da função merge ela parece
+servir exatamente para o que você deseja.
+
+Na trédi você poderá ver que podes escolher entre a merge da biblioteca base
+ou a do pacote data.table.
+
+HTH
+--
+Cesar Rabak
+
+
+On Fri, Jan 25, 2019 at 6:40 PM Edson Lira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde a todos!!!
+>
+> Tenho dois arquivos: um com os CEP's de pacientes de um hospital (57000
+> registros) sem as coordenadas, o outro arquivo que consegui no link abixo
+>
+> http://results.openaddresses.io/?runs=all#runs
+> No link acima tem POSTCODES (CEP"S) de todo o mundo.
+> Baixei o do Amazonas que tem o CEP DE MANAUS (SEPAREI ESSE ARQUIVO com
+> 554000 registros)
+>
+> Quero fazer uma rotina aonde eu possa juntar o arquivo de consultas sem as
+> coordenadas com o arquivo de CEP'S com as coordendas. (LAT LON), ou seja,
+> quero fazer um arquivo mantendo a dimensão do arquivo das consultas.
+>
+> Espero ter sido claro.
+>
+> Abaixo o link dos arquivos (um com CEP e o outro com CEP e Coordenadas)
+>
+> https://www.datafilehost.com/d/b93da0f3
+>
+> https://www.datafilehost.com/d/b8f65984
+>
+>
+>
+> [  ]'s.
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190129/56599ee3/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Tue Jan 29 16:45:08 2019
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Tue, 29 Jan 2019 15:45:08 -0300
+Subject: [R-br] =?utf-8?q?Ajuda_para_plotar_IC_para_modelo_glm_com_jun?=
+ =?utf-8?b?w6fDo28gZGUgbsOtdmVpcw==?=
+In-Reply-To: <8d326872-10b9-06f7-cc1b-564caf54f3e7@cas.ifmt.edu.br>
+References: <8d326872-10b9-06f7-cc1b-564caf54f3e7@cas.ifmt.edu.br>
+Message-ID: <1aac8742-e909-20a0-01f2-d2f6e08bfc83@cas.ifmt.edu.br>
+
+Prezados Membros do R-br,
+
+     Estou tentando plotar um modelo glmcom stat_smooth() no ggplot2 sem 
+sucesso. Minha ideia é representar o intervalo de confiança para um 
+modelo onde realizei a junção de dois níveis para o fator Feature. Ou 
+seja, modelos iguais são representados por uma única curva, porém a 
+função stat_smooth() não "enxerga" os níveis que foram juntados. Segundo 
+exemplo fictício do meu problema:
+
+#Simulação de um banco de dados, onde a variável resposta Production tem 
+distribuição Gamma
+set.seed(123)
+d<-NULL
+N<-50
+d$Production <- rgamma(N,10)
+d$Feature <- ifelse(d$Production >7 & d$Production<10, 
+c("green"),ifelse(d$Production>11,
+c("red"), c("blue")))
+d$Temp<-rnorm(N,20,5)
+d<-as.data.frame(d)
+#
+
+# Ajusto um modelo de Gamma completo
+mG<- glm(Production~ Feature + Temp, family= Gamma, data = d)
+summary(mG)
+anova(mG,test="Chi")
+
+# Comparo os níveis do fator Feature
+library(multcomp)
+PW<-summary(glht(mG, linfct = mcp(Feature= "Tukey")))
+PW
+cld(PW)
+
+# Faço de conta que os níveis green = blue e realizo um novo ajuste
+Feature2<-d$Feature
+levels(Feature2)
+levels(Feature2)[1]<-"blue&green"
+levels(Feature2)[2]<-"blue&green"
+levels(Feature2)
+d$Feature2<-Feature2
+mG2<- glm(Production~ Feature2 + Temp, family= Gamma, data = d)
+
+# Crio os valores de predição
+pred.data = data.frame(
+Feature2<-d$Feature2,
+Temp<-d$Temp
+)
+pred.data$Production = predict(mG2, newdata=pred.data, type="response")
+
+#Realizo o plot
+library("ggplot2")
+ggplot(d, aes(Temp, Production, colour = Feature2)) +
+   geom_point() +
+   geom_line(data=pred.data) +
+   stat_smooth(method = "glm", formula = y ~ x, family = Gamma)
+#
+
+      E tenho uma representação errada do intervalo de confiança do meu 
+modelo mG2 porque não consigo fazer a função stat_smooth() considerar o 
+ajuste mG2. Como posso resolver isso?
+
+Obrigado
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+
+From edinhoestat em yahoo.com.br  Tue Jan 29 16:47:22 2019
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 29 Jan 2019 18:47:22 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?JUNTAR_DOIS_ARQUIVOS_COM_DIMENS=C3=95ES_DIFEREN?=
+ =?utf-8?q?TES?=
+In-Reply-To: <CAKrF98nKu+58sj4y9TyJw07OqwdRiYrJ4mNgeNEUoJ9KVcPzwA@mail.gmail.com>
+References: <808684828.1260225.1548448818536.ref@mail.yahoo.com>
+ <808684828.1260225.1548448818536@mail.yahoo.com>
+ <CAKrF98nKu+58sj4y9TyJw07OqwdRiYrJ4mNgeNEUoJ9KVcPzwA@mail.gmail.com>
+Message-ID: <716475780.3013419.1548787642080@mail.yahoo.com>
+
+Cesar, vc tem o link? Não consegui encontrar.
+
+[  ]'sProf. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em terça-feira, 29 de janeiro de 2019 10:21:39 AMT, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Edson,
+Veja uma trédi recente nesta lista sobre o uso da função merge ela parece servir exatamente para o que você deseja.
+Na trédi você poderá ver que podes escolher entre a merge da biblioteca base ou a do pacote data.table.
+HTH--Cesar Rabak
+
+On Fri, Jan 25, 2019 at 6:40 PM Edson Lira por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+Boa tarde a todos!!!
+Tenho dois arquivos: um com os CEP's de pacientes de um hospital (57000 registros) sem as coordenadas, o outro arquivo que consegui no link abixo
+http://results.openaddresses.io/?runs=all#runs
+No link acima tem POSTCODES (CEP"S) de todo o mundo. Baixei o do Amazonas que tem o CEP DE MANAUS (SEPAREI ESSE ARQUIVO com 554000 registros)
+Quero fazer uma rotina aonde eu possa juntar o arquivo de consultas sem as coordenadas com o arquivo de CEP'S com as coordendas. (LAT LON), ou seja, quero fazer um arquivo mantendo a dimensão do arquivo das consultas.
+Espero ter sido claro.
+Abaixo o link dos arquivos (um com CEP e o outro com CEP e Coordenadas)
+https://www.datafilehost.com/d/b93da0f3
+https://www.datafilehost.com/d/b8f65984
+
+
+ [  ]'s.Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190129/12d52878/attachment.html>
+
+From claudia_debem em hotmail.com  Wed Jan 30 16:30:57 2019
+From: claudia_debem em hotmail.com (Claudia de Bem)
+Date: Wed, 30 Jan 2019 18:30:57 +0000
+Subject: [R-br] =?iso-8859-1?q?Ajuda_para_modelos_de_regress=E7=E3o_nao_li?=
+ =?iso-8859-1?q?neares_multivariados?=
+In-Reply-To: <1aac8742-e909-20a0-01f2-d2f6e08bfc83@cas.ifmt.edu.br>
+References: <8d326872-10b9-06f7-cc1b-564caf54f3e7@cas.ifmt.edu.br>,
+ <1aac8742-e909-20a0-01f2-d2f6e08bfc83@cas.ifmt.edu.br>
+Message-ID: <MWHPR16MB1535F592A42911CFE53850628C900@MWHPR16MB1535.namprd16.prod.outlook.com>
+
+Boa tarde,
+Estou tentando modelar as funções gompertz e logístico porem quero somar as duas equações e gerar um único gráfico. Porem a equação terá 6 parâmetros teria alguma rotina para esse caso. Irei anexar a rotina utilizada quando uma equação é modelada de cada vez e os dados MFF que eu utilizei para modelar essas funções. Meu novo arquivo de dados GG (y são dois caracteres juntos) por isso que na rotina teria que somar a equação de gompertz (y~b0*exp(-exp(b1-b2*x) porem quando somo essa equação com a mesma equação de gompertz da erro. Eu terei 6 parâmetros nesse caso , já tentei indicar de varias formas o b0, b1 e b2 pois além desses tenho mais um b0, b1 e b2. Espero que eu tenha me feito entender.
+Att Cláudia de Bem
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de ASANTOS por (R-br) <r-br em listas.c3sl.ufpr.br>
+Enviado: terça-feira, 29 de janeiro de 2019 18:45
+Para: r-br em listas.c3sl.ufpr.br; r-br-request em listas.c3sl.ufpr.br
+Cc: ASANTOS
+Assunto: [R-br] Ajuda para plotar IC para modelo glm com junção de níveis
+
+Prezados Membros do R-br,
+
+     Estou tentando plotar um modelo glmcom stat_smooth() no ggplot2 sem
+sucesso. Minha ideia é representar o intervalo de confiança para um
+modelo onde realizei a junção de dois níveis para o fator Feature. Ou
+seja, modelos iguais são representados por uma única curva, porém a
+função stat_smooth() não "enxerga" os níveis que foram juntados. Segundo
+exemplo fictício do meu problema:
+
+#Simulação de um banco de dados, onde a variável resposta Production tem
+distribuição Gamma
+set.seed(123)
+d<-NULL
+N<-50
+d$Production <- rgamma(N,10)
+d$Feature <- ifelse(d$Production >7 & d$Production<10,
+c("green"),ifelse(d$Production>11,
+c("red"), c("blue")))
+d$Temp<-rnorm(N,20,5)
+d<-as.data.frame(d)
+#
+
+# Ajusto um modelo de Gamma completo
+mG<- glm(Production~ Feature + Temp, family= Gamma, data = d)
+summary(mG)
+anova(mG,test="Chi")
+
+# Comparo os níveis do fator Feature
+library(multcomp)
+PW<-summary(glht(mG, linfct = mcp(Feature= "Tukey")))
+PW
+cld(PW)
+
+# Faço de conta que os níveis green = blue e realizo um novo ajuste
+Feature2<-d$Feature
+levels(Feature2)
+levels(Feature2)[1]<-"blue&green"
+levels(Feature2)[2]<-"blue&green"
+levels(Feature2)
+d$Feature2<-Feature2
+mG2<- glm(Production~ Feature2 + Temp, family= Gamma, data = d)
+
+# Crio os valores de predição
+pred.data = data.frame(
+Feature2<-d$Feature2,
+Temp<-d$Temp
+)
+pred.data$Production = predict(mG2, newdata=pred.data, type="response")
+
+#Realizo o plot
+library("ggplot2")
+ggplot(d, aes(Temp, Production, colour = Feature2)) +
+   geom_point() +
+   geom_line(data=pred.data) +
+   stat_smooth(method = "glm", formula = y ~ x, family = Gamma)
+#
+
+      E tenho uma representação errada do intervalo de confiança do meu
+modelo mG2 porque não consigo fazer a função stat_smooth() considerar o
+ajuste mG2. Como posso resolver isso?
+
+Obrigado
+
+--
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10<http://www.researchgate.net/profile/Alexandre_Santos10>
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190130/98a90878/attachment.html>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: Rotina utilizada para modelos univariados.txt
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190130/98a90878/attachment.txt>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: MFF.txt
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190130/98a90878/attachment-0001.txt>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: GG.txt
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190130/98a90878/attachment-0002.txt>
+
+From cesar.rabak em gmail.com  Wed Jan 30 21:53:11 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 30 Jan 2019 21:53:11 -0200
+Subject: [R-br] 
+	=?utf-8?q?JUNTAR_DOIS_ARQUIVOS_COM_DIMENS=C3=95ES_DIFEREN?=
+	=?utf-8?q?TES?=
+In-Reply-To: <716475780.3013419.1548787642080@mail.yahoo.com>
+References: <808684828.1260225.1548448818536.ref@mail.yahoo.com>
+ <808684828.1260225.1548448818536@mail.yahoo.com>
+ <CAKrF98nKu+58sj4y9TyJw07OqwdRiYrJ4mNgeNEUoJ9KVcPzwA@mail.gmail.com>
+ <716475780.3013419.1548787642080@mail.yahoo.com>
+Message-ID: <CAKrF98muBqcKfmtzPoLZ1-aSOvxVVDtdT=8ChK=6_ANXttADyw@mail.gmail.com>
+
+Edson, não sei como postar um *link* de uma msg desta lista de discussão...
+
+O assunto da trédi é: "[R-br] Ajuda com a passagem incorreta de variável
+string para uma função do R"
+
+HTH
+--
+Cesar Rabak
+
+
+On Tue, Jan 29, 2019 at 4:47 PM Edson Lira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Cesar, vc tem o link? Não consegui encontrar.
+>
+>
+> [  ]'s
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+>
+> Em terça-feira, 29 de janeiro de 2019 10:21:39 AMT, Cesar Rabak por (R-br)
+> <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Edson,
+>
+> Veja uma trédi recente nesta lista sobre o uso da função merge ela parece
+> servir exatamente para o que você deseja.
+>
+> Na trédi você poderá ver que podes escolher entre a merge da biblioteca
+> base ou a do pacote data.table.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Fri, Jan 25, 2019 at 6:40 PM Edson Lira por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Boa tarde a todos!!!
+>
+> Tenho dois arquivos: um com os CEP's de pacientes de um hospital (57000
+> registros) sem as coordenadas, o outro arquivo que consegui no link abixo
+>
+> http://results.openaddresses.io/?runs=all#runs
+> No link acima tem POSTCODES (CEP"S) de todo o mundo.
+> Baixei o do Amazonas que tem o CEP DE MANAUS (SEPAREI ESSE ARQUIVO com
+> 554000 registros)
+>
+> Quero fazer uma rotina aonde eu possa juntar o arquivo de consultas sem as
+> coordenadas com o arquivo de CEP'S com as coordendas. (LAT LON), ou seja,
+> quero fazer um arquivo mantendo a dimensão do arquivo das consultas.
+>
+> Espero ter sido claro.
+>
+> Abaixo o link dos arquivos (um com CEP e o outro com CEP e Coordenadas)
+>
+> https://www.datafilehost.com/d/b93da0f3
+>
+> https://www.datafilehost.com/d/b8f65984
+>
+>
+>
+> [  ]'s.
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190130/5ce12e83/attachment.html>
+
+From marcus.nunes em gmail.com  Wed Jan 30 22:55:29 2019
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Wed, 30 Jan 2019 21:55:29 -0300
+Subject: [R-br] 
+	=?utf-8?q?JUNTAR_DOIS_ARQUIVOS_COM_DIMENS=C3=95ES_DIFEREN?=
+	=?utf-8?q?TES?=
+In-Reply-To: <CAKrF98muBqcKfmtzPoLZ1-aSOvxVVDtdT=8ChK=6_ANXttADyw@mail.gmail.com>
+References: <808684828.1260225.1548448818536.ref@mail.yahoo.com>
+ <808684828.1260225.1548448818536@mail.yahoo.com>
+ <CAKrF98nKu+58sj4y9TyJw07OqwdRiYrJ4mNgeNEUoJ9KVcPzwA@mail.gmail.com>
+ <716475780.3013419.1548787642080@mail.yahoo.com>
+ <CAKrF98muBqcKfmtzPoLZ1-aSOvxVVDtdT=8ChK=6_ANXttADyw@mail.gmail.com>
+Message-ID: <CA+QGQvv85GXrPU1d+rrL6g2GHZFq0a3QZhwJyhPmUKFVEgRROg@mail.gmail.com>
+
+Basta jogar o título do email no Google, entre aspas e sem '[R-br]', que
+ele encontra os arquivos da lista com os links para as discussões já
+realizadas. Por exemplo, este é o arquivo da mensagem citada:
+
+http://r-br.2285057.n4.nabble.com/R-br-Ajuda-com-a-passagem-incorreta-de-variavel-string-para-uma-funcao-do-R-td4668377.html
+--
+Marcus Nunes
+Professor Adjunto
+Universidade Federal do Rio Grande do Norte
+Centro de Ciências Exatas e da Terra
+Departamento de Estatística
+Laboratório de Estatística Aplicada
+marcus em marcusnunes.me
+https://marcusnunes.me/
+http://shiny.estatistica.ccet.ufrn.br
+https://tinyletter.com/mnunes
+
+
+
+On Wed, Jan 30, 2019 at 8:53 PM Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Edson, não sei como postar um *link* de uma msg desta lista de
+> discussão...
+>
+> O assunto da trédi é: "[R-br] Ajuda com a passagem incorreta de variável
+> string para uma função do R"
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Tue, Jan 29, 2019 at 4:47 PM Edson Lira por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Cesar, vc tem o link? Não consegui encontrar.
+>>
+>>
+>> [  ]'s
+>> Prof. Edson Lira, Me
+>> Estatístico
+>> Manaus-Amazonas
+>>
+>>
+>> Em terça-feira, 29 de janeiro de 2019 10:21:39 AMT, Cesar Rabak por
+>> (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>
+>> Edson,
+>>
+>> Veja uma trédi recente nesta lista sobre o uso da função merge ela
+>> parece servir exatamente para o que você deseja.
+>>
+>> Na trédi você poderá ver que podes escolher entre a merge da biblioteca
+>> base ou a do pacote data.table.
+>>
+>> HTH
+>> --
+>> Cesar Rabak
+>>
+>>
+>> On Fri, Jan 25, 2019 at 6:40 PM Edson Lira por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>> Boa tarde a todos!!!
+>>
+>> Tenho dois arquivos: um com os CEP's de pacientes de um hospital (57000
+>> registros) sem as coordenadas, o outro arquivo que consegui no link abixo
+>>
+>> http://results.openaddresses.io/?runs=all#runs
+>> No link acima tem POSTCODES (CEP"S) de todo o mundo.
+>> Baixei o do Amazonas que tem o CEP DE MANAUS (SEPAREI ESSE ARQUIVO com
+>> 554000 registros)
+>>
+>> Quero fazer uma rotina aonde eu possa juntar o arquivo de consultas sem
+>> as coordenadas com o arquivo de CEP'S com as coordendas. (LAT LON), ou
+>> seja, quero fazer um arquivo mantendo a dimensão do arquivo das consultas.
+>>
+>> Espero ter sido claro.
+>>
+>> Abaixo o link dos arquivos (um com CEP e o outro com CEP e Coordenadas)
+>>
+>> https://www.datafilehost.com/d/b93da0f3
+>>
+>> https://www.datafilehost.com/d/b8f65984
+>>
+>>
+>>
+>> [  ]'s.
+>> Prof. Edson Lira, Me
+>> Estatístico
+>> Manaus-Amazonas
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+>> c�digo m�nimo reproduz�vel.
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190130/e65037de/attachment.html>
+
+From edinhoestat em yahoo.com.br  Thu Jan 31 20:19:36 2019
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Thu, 31 Jan 2019 22:19:36 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Assunto=3A_Re=3A__=09JUNTAR_DOIS_ARQUIVOS_COM_DI?=
+ =?utf-8?q?MENS=C3=95ES_DIFERENTES?=
+In-Reply-To: <CA+QGQvv85GXrPU1d+rrL6g2GHZFq0a3QZhwJyhPmUKFVEgRROg@mail.gmail.com>
+References: <808684828.1260225.1548448818536.ref@mail.yahoo.com>
+ <808684828.1260225.1548448818536@mail.yahoo.com>
+ <CAKrF98nKu+58sj4y9TyJw07OqwdRiYrJ4mNgeNEUoJ9KVcPzwA@mail.gmail.com>
+ <716475780.3013419.1548787642080@mail.yahoo.com>
+ <CAKrF98muBqcKfmtzPoLZ1-aSOvxVVDtdT=8ChK=6_ANXttADyw@mail.gmail.com>
+ <CA+QGQvv85GXrPU1d+rrL6g2GHZFq0a3QZhwJyhPmUKFVEgRROg@mail.gmail.com>
+Message-ID: <1661977038.1186878.1548973176805@mail.yahoo.com>
+
+Muito obrigado.
+
+Enviado do Yahoo Mail no Android 
+ 
+  <div>Em qua, 30 30e jan 30e 2019 às 22:56, Marcus Nunes por (R-br)</div><div><r-br em listas.c3sl.ufpr.br> escreveu:</div>   _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190131/bb012f5a/attachment.html>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: Untitled
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190131/bb012f5a/attachment.ksh>
+

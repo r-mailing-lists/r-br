@@ -1,0 +1,1265 @@
+From diogojose21 em yahoo.com.br  Mon Jul  4 15:02:47 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Mon, 4 Jul 2022 18:02:47 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Gera=C3=A7=C3=A3o_de_vetor=2C_segundo_linha_da_?=
+ =?utf-8?q?tabela?=
+References: <783351718.939785.1656957767063.ref@mail.yahoo.com>
+Message-ID: <783351718.939785.1656957767063@mail.yahoo.com>
+
+Boa tarde prezados, uma vez mais, solicitando a ajuda dos amigos!!
+Estou necessitando gerar valores de uma normal, condicionada a parâmetros de interesse, como no exemplo reproduzível abaixo:
+x<-c("X1","X2","X3","X4")média<-c(100,120,150,180)dp<-c(20,15,10,25)exemplo<-data.frame(cbind(x,média,dp))
+
+O meu objetivo é gerar de forma automática, para cada linha, uma distribuição normal com os parâmetros nessas linhas. No exemplo, para a linha que contêm X1, gerar 1000 valores de uma normal com média=100 e dp=20, para a linha que contêm X2, gerar 1000 valores de uma normal de média=120 e dp=15, e assim sucessivamente, até o último vetor, gerado pelos parâmetros da última linha (média=180 e dp=25).  Algo similar a isso:
+for (i in 1:nrow(exemplo)){
+    simu[i]<-rnorm(100,exemplo[i,2],exemplo[i,3])  }
+Alguém teria uma solução para isso? É que o número de linhas dessa tabela "exemplo" poderá variar.
+Muito obrigado!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220704/7a882aef/attachment.htm>
+
+From cesar.rabak em gmail.com  Mon Jul  4 16:46:57 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 4 Jul 2022 16:46:57 -0300
+Subject: [R-br] 
+	=?utf-8?q?Gera=C3=A7=C3=A3o_de_vetor=2C_segundo_linha_da_?=
+	=?utf-8?q?tabela?=
+In-Reply-To: <783351718.939785.1656957767063@mail.yahoo.com>
+References: <783351718.939785.1656957767063.ref@mail.yahoo.com>
+ <783351718.939785.1656957767063@mail.yahoo.com>
+Message-ID: <CAKrF98nYRGiY4o1hnihdMYwo93nEN5829iXUT5VP6dwtS3Zt0A@mail.gmail.com>
+
+O busílis aqui é que a geração que vc *parece* que deseja é de criar mil
+colunas por chamada a rnorm.
+
+É isso mesmo? Para cada linha "X..." vc quer criar mil variaveis ou seja
+mil colunas no dataframe?
+
+
+On Mon, Jul 4, 2022 at 3:03 PM Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde prezados, uma vez mais, solicitando a ajuda dos amigos!!
+>
+> Estou necessitando gerar valores de uma normal, condicionada a parâmetros
+> de interesse, como no exemplo reproduzível abaixo:
+>
+> x<-c("X1","X2","X3","X4")
+> média<-c(100,120,150,180)
+> dp<-c(20,15,10,25)
+> exemplo<-data.frame(cbind(x,média,dp))
+>
+> O meu objetivo é gerar de forma automática, *para cada linha*, uma
+> distribuição normal com os parâmetros nessas linhas. No exemplo, para a
+> linha que contêm X1, gerar 1000 valores de uma normal com média=100 e
+> dp=20, para a linha que contêm X2, gerar 1000 valores de uma normal de
+> média=120 e dp=15, e assim sucessivamente, até o último vetor, gerado pelos
+> parâmetros da última linha (média=180 e dp=25).  Algo similar a isso:
+>
+> for (i in 1:nrow(exemplo)){
+>
+>   simu[i]<-rnorm(100,exemplo[i,2],exemplo[i,3])
+>
+> }
+>
+> Alguém teria uma solução para isso? É que o número de linhas dessa tabela
+> "exemplo" poderá variar.
+>
+> Muito obrigado!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220704/f45be0e6/attachment.htm>
+
+From dtiezzi em usp.br  Mon Jul  4 18:59:50 2022
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Mon, 4 Jul 2022 18:59:50 -0300
+Subject: [R-br] 
+ =?utf-8?q?Gera=C3=A7=C3=A3o_de_vetor=2C_segundo_linha_da_?=
+ =?utf-8?q?tabela?=
+In-Reply-To: <783351718.939785.1656957767063@mail.yahoo.com>
+References: <783351718.939785.1656957767063.ref@mail.yahoo.com>
+ <783351718.939785.1656957767063@mail.yahoo.com>
+Message-ID: <E752763B-13B0-48ED-86F1-68180AB49F20@usp.br>
+
+v <- c()
+m <- c(100,120,150,180)
+dp<-c(20,15,10,25)
+n = 1
+for (i in m) {
+  v <- c(v, rnorm(1000, i,dp[n]))
+  n=n+1
+}
+m <- matrix(v, 1000)
+
+> On 4 Jul 2022, at 15:02, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> dp<-c(20,15,10,25)
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220704/0d5b6796/attachment.htm>
+
+From alexandre.santos em cas.ifmt.edu.br  Mon Jul  4 22:17:00 2022
+From: alexandre.santos em cas.ifmt.edu.br (Alexandre Dos Santos)
+Date: Mon, 4 Jul 2022 21:17:00 -0400
+Subject: [R-br] Digest R-br, volume 137, assunto 6
+In-Reply-To: <mailman.5.1656514801.2303.r-br@listas.c3sl.ufpr.br>
+References: <mailman.5.1656514801.2303.r-br@listas.c3sl.ufpr.br>
+Message-ID: <CAFP39_ZRF=kg=K4mYc=wD+h5Xm8iU=C=2SZaeiqO0gedoUUuFg@mail.gmail.com>
+
+Obrigado pela resposta Cesar,
+
+Então o maior entrave é a dificultade com a sintaxe e vou tentar trazer o
+resultado para o mais próximo que eu consigo:
+
+library(dplyr)
+library(tidyr)
+
+my.ds <- read.csv("
+https://raw.githubusercontent.com/Leprechault/trash/main/test_ants.csv")
+
+my.ds$ClassType <- cut(my.ds$AT,breaks=c(-Inf,1,2.9,8.9,24.9,49.9,Inf),
+    right=FALSE,labels=c("Class_0_1","Class_1_3","Class_3_9",
+    "Class_9_25","Class_25_50","Class_50"))
+
+
+if (my.ds$nest<1000 & my.ds$ClassType!="Class_0_1") { #1)  Se nest for <
+1000 - considerando "Class_1_3" para "Class_50"
+
+counts <- my.ds%>%group_by(nest)%>%summarize(N=length(unique(ClassType)))
+
+my.ds.3 <- my.ds%>%group_by(nest)%>%dplyr::summarize(ClassType=ClassType,
+max_AT=max(AT))
+my.ds.3$class_max<- as.numeric(gsub('Class_[^_]*[^_]_', '', my.ds.3$
+ClassType)) # Extrai o maior valor da classe
+
+if(counts$N>1 | my.ds.3$max_AT>my.ds.3$class_max){ #ClassType não mudar por
+nest durante o tempo ou AT entrar e não sair da classe
+
+nests <- unique(rbind(counts$nest,my.ds.3$nest))
+my.ds.2 <- my.ds[my.ds$nest %in% nests,]
+
+my.ds.2$velocity <- c(0,diff(my.ds.2$AT))/c(0,diff(my.ds.2$days)) #
+Procurando o último ClassType antes de AT e calcula a `velocity` entre o
+último ClassType e o atual ClassType para nest
+
+my.ds.2 <- %>%
+  group_by(nest,ClassType)%>%
+  summarize(velocity=mean(velocity)) %>%
+  complete(ClassType, tidyr:fill = list(velocity = NA)) %>%
+  fill(velocity, .direction = "downup") # Se atrasar qualquer ClassType em
+"Class_1_3" para "Class_50" em uma classe maior que o valor de AT no tempo
+0, a classe não presente é o valor de velocity do último ClassType
+
+}
+
+} else { #Se o ninho for >= 1000 - apenas considerando "Class_0_1"
+
+my.ds$velocity <- c(0,diff(my.ds$AT))/c(0,diff(my.ds$days))
+
+}
+
+
+Em qua., 29 de jun. de 2022 às 11:00, <r-br-request em listas.c3sl.ufpr.br>
+escreveu:
+
+> Enviar submissões para a lista de discussão R-br para
+>         r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+>         r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+>         r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+>    1. Re: Criação de uma função complexa com dplyr (Cesar Rabak)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Tue, 28 Jun 2022 17:52:46 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Criação de uma função complexa com dplyr
+> Message-ID:
+>         <
+> CAKrF98n75bODbfyc0O5wBg9VOn2PFx+HHExqUDkvJSOoHs6YAA em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> A sua descrição está difícil de acompanhar porque é colocado entremeado nas
+> regras termos que necessitam melhor definição para entendê-las:
+>
+>
+>    - considerando "Class_1_3" para "Class_50"  ;
+>    - ClassType não mudar por nest durante o tempo   ;
+>    - AT entrar mas não sair do ClassType  ;
+>    - o último ClassType antes de AT  ;
+>    - último ClassType e o atual ClassType para nest  ;
+>    - Se atrasar qualquer ClassType em  ;
+>    - "Class_1_3" para "Class_50"  ;
+>    - valor de AT no tempo 0  ;
+>    - classe não presente  ;
+>    - último ClassType para nest  ;
+>
+> Ademais, parece que sua formulação de velocidade e mesmo a saída desejável
+> indica, que existam velocidades diferentes para o mesmo nest e classe.
+>
+> Por certo esses termos todos acima devem fazer todo o sentido para vc mas
+> para podermos ajudá-lo, essas definições devem ser quebradas nas operações
+> que elas implicam, aí naturalmente convergir-se-á para a formulação final
+> desejada.
+>
+> Por exemplo, se ClassType implica em ordem, então necessita-se de listas
+> ordenadas dessas classe por nest?
+>
+> Parece que a formulação para o cálculo de velocidade é mais simples quando
+> Se AT for >= 50 && Se o ninho for >= 1000  ->  a velocidade é
+> c(0,diff(AT))/
+> c(0,diff(days)) por days para cada nest, Que se entendida corretamente sua
+> explicação,  significa que apenas as linhas que tenham classe "Class_0_1",
+> seriam usadas para esses cálculos.
+>
+> Não entendo porque é catenado um zero no num e dem dos cálculos de
+> velocidade . . .
+>
+> Supondo as condições para esse cálculo para classe e ninho, você consegue
+> escrever essa spec na linguagem R ou tem problemas com a sintaxe para
+> produzir o resultado?
+>
+> HTH
+>
+>
+> On Tue, Jun 28, 2022 at 8:49 AM Alexandre Dos Santos por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> > Prezados Membros do R-br,
+> >
+> > Meu dados de exemplo são:
+> >
+> > library(dplyr)
+> >
+> > my.ds <- read.csv("
+> > https://raw.githubusercontent.com/Leprechault/trash/main/test_ants.csv")
+> >
+> > my.ds
+> >
+> > # days nest       AT
+> >
+> > # 1     0    2  10.9200
+> >
+> > # 2    47    2  22.8600
+> >
+> > # 3    76    2  23.2400
+> >
+> > # 4     0    3   0.1400
+> >
+> > # 5    47    3   0.4800
+> >
+> > # 6    76    3   0.8300
+> >
+> > # 7   118    3   0.8300
+> >
+> > # 8   160    3   0.9400
+> >
+> > # 9   193    3   0.9400
+> >
+> > # 10  227    3   0.9400
+> >
+> > # 11  262    3   0.9400
+> >
+> > # 12  306    3   0.9400
+> >
+> > # 13  355    3  11.9300
+> >
+> > # 14  396    3  12.8100
+> >
+> > # 15  450    3  29.3600
+> >
+> > # 16    0    4   1.0000
+> >
+> > # 17   76    4   1.5600
+> >
+> > # 18  160    4   2.8800
+> >
+> > # 19  193    4   2.8800
+> >
+> > # 20  227    4   2.8800
+> >
+> > # 21  262    4   2.8800
+> >
+> > # 22  306    4   2.8800
+> >
+> > # 23  355    4  17.0500
+> >
+> > # 24    0    7  11.7100
+> >
+> > # 25   47    7  24.7900
+> >
+> > # 26   76    7  33.1200
+> >
+> > # 27    0   10   4.1400
+> >
+> > # 28   47   10   6.3000
+> >
+> > # 29   76   10  13.9400
+> >
+> > # 30  118   10  13.3000
+> >
+> > # 31  160   10  29.4200
+> >
+> > # 32  193   10  29.6000
+> >
+> > # 33  227   10  45.1500
+> >
+> > # 34  262   10  45.1500
+> >
+> > # 35  306   10  45.1500
+> >
+> > # 36  355   10  70.5300
+> >
+> > # 37  396   10 109.2600
+> >
+> > # 38  450   10 149.2000
+> >
+> > # 39    0 1066   0.0289
+> >
+> > # 40   29 1066   0.0870
+> >
+> > # 41   70 1066   0.1254
+> >
+> > # 42  112 1066   0.1254
+> >
+> > # 43  146 1066   0.1254
+> >
+> > # 44  180 1066   0.1254
+> >
+> > # 45  215 1066   0.1350
+> >
+> > # 46  259 1066   0.1350
+> >
+> > # 47    0 1067   0.0520
+> >
+> > # 48   29 1067   0.1254
+> >
+> > # 49   70 1067   0.1440
+> >
+> > # 50  112 1067   0.2160
+> >
+> > # 51  146 1067   0.2538
+> >
+> > # 52  180 1067   0.2538
+> >
+> > # 53  215 1067   0.9600
+> >
+> > # 54  259 1067   0.9600
+> >
+> > # 55  349 1067   0.9600
+> >
+> > # Class size
+> >
+> > my.ds$ClassType <- cut(my.ds$AT,breaks=c(-Inf,1,2.9,8.9,24.9,49.9,Inf),
+> > right=FALSE,
+> >
+> >                           labels=c("Class_0_1","Class_1_3","Class_3_9",
+> > "Class_9_25","Class_25_50","Class_50"))
+> >
+> >
+> > Eu gostaria de calular a variável velocity com as seguintes regras:
+> >
+> > Se nest for < 1000 - considerando "Class_1_3" para "Class_50"
+> >
+> > 1.1) Se AT for < 50
+> >
+> > 1.1.1) Se ClassType não mudar por nest durante o tempo ou AT entrar mas
+> > não sair do ClassType, então não calcule velocity (no meu caso nest 2 e 7
+> > ).,
+> >
+> > 1.1.2) Procurando o último ClassType antes de AT e calcula a `velocity`
+> > entre o último ClassType e o atual ClassType para nest
+> >
+> > 1.1.3) Se atrasar qualquer ClassType em "Class_1_3" para "Class_50" em
+> uma
+> > classe maior que o valor de AT no tempo 0, a classe não presente é o
+> valor
+> > de velocity do último ClassType para nest.
+> > 1.2) Se AT for >= 50
+> >
+> > 1.2.1) velocity é c(0,diff(AT))/c(0,diff(days)) por days para cada nest
+> > Se o ninho for >= 1000 - apenas considerando "Class_0_1"
+> >
+> > 2.1) a velocidade é c(0,diff(AT))/c(0,diff(days)) por days para cada nest
+> > também.
+> >
+> > Meu output desejável é:
+> >
+> > # nest  ClassType   velocity
+> >
+> > # 3 Classe_ 1_3 0,224285714
+> >
+> > # 3 Classe_ 3_9 0,224285714
+> >
+> > # 3 Classe_ 9_25 0,224285714
+> >
+> > # 3 Classe_ 9_25 0,021463415
+> >
+> > # 3 Classe_ 9_25 0,306481481
+> >
+> > # 4 Classe_ 1_3 0,0075
+> >
+> > # 4 Classe_ 1_3 0,015714286
+> >
+> > # 4 Classe_ 1_3 0
+> >
+> > # 4 Classe_ 1_3 0
+> >
+> > # 4 Classe_ 1_3 0
+> >
+> > # 4 Classe_ 1_3 0
+> >
+> > # 4 Classe_ 1_3 0,289183673
+> >
+> > # 4 Classe_ 3_9 0,289183673
+> >
+> > # 10 Classe_9_25 0,263448276
+> >
+> > # 10 Classe_9_25 -0,015238095
+> >
+> > # 10 Classe_9_25 0,383809524
+> >
+> > # 10 Class_25_50 0,383809524
+> >
+> > # 10 Classe_25_50 0,005454545
+> >
+> > # 10 Class_25_50 0,457352941
+> >
+> > # 10 Classe_25_50 0
+> >
+> > # 10 Classe_25_50 0
+> >
+> > # 10 Class_25_50 0,517959184
+> >
+> > # 10 Class_50 0,517959184
+> >
+> > # 10 Class_50 0,944634146
+> >
+> > # 10 Class_50 0,73962963
+> >
+> > # 1066 Classe_0_1 0,002003448
+> >
+> > # 1066 Classe_0_1 0,000936585
+> >
+> > # 1066 Classe_0_1 0
+> >
+> > # 1066 Classe_0_1 0
+> >
+> > # 1066 Classe_0_1 0
+> >
+> > # 1066 Classe_0_1 0,000274286
+> >
+> > # 1066 Classe_0_1 0
+> >
+> > # 1067 Classe_0_1 0,002531034
+> >
+> > # 1067 Classe_0_1 0,000453659
+> >
+> > # 1067 Classe_0_1 0,001714286
+> >
+> > # 1067 Classe_0_1 0,001111765
+> >
+> > # 1067 Classe_0_1 0
+> >
+> > # 1067 Classe_0_1 0.020177143
+> >
+> > # 1067 Classe_0_1 0
+> >
+> > # 1067 Classe_0_1 0
+> >
+> > Por favor, alguém poderia me ajudar com isso?
+> >
+> >
+> >
+> > --
+> >
+> > --
+> > Alexandre dos Santos
+> > Geotechnologies and Spatial Statistics applied to Forest Entomology
+> > Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+> > Caixa Postal 244 (PO Box)
+> > Avenida dos Ramires, s/n - Vila Real
+> > Caceres - MT - CEP 78201-380 (ZIP code)
+> > Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+> > Lattes CV: http://lattes.cnpq.br/1360403201088680
+> > OrcID: orcid.org/0000-0001-8232-6722
+> > ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+> > Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+> > --
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> > código mínimo reproduzível.
+> >
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220628/7cd50a50/attachment-0001.htm
+> >
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 137, assunto 6
+> *****************************************
+>
+
+
+-- 
+
+--
+Alexandre dos Santos
+Geotechnologies and Spatial Statistics applied to Forest Entomology
+Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+Caixa Postal 244 (PO Box)
+Avenida dos Ramires, s/n - Vila Real
+Caceres - MT - CEP 78201-380 (ZIP code)
+Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+Lattes CV: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722
+ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+--
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220704/abb6aa34/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Tue Jul  5 09:53:46 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Tue, 5 Jul 2022 12:53:46 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?Gera=C3=A7=C3=A3o_de_vetor=2C_segundo_linha_da_?=
+ =?utf-8?q?tabela?=
+In-Reply-To: <CAKrF98nYRGiY4o1hnihdMYwo93nEN5829iXUT5VP6dwtS3Zt0A@mail.gmail.com>
+References: <783351718.939785.1656957767063.ref@mail.yahoo.com>
+ <783351718.939785.1656957767063@mail.yahoo.com>
+ <CAKrF98nYRGiY4o1hnihdMYwo93nEN5829iXUT5VP6dwtS3Zt0A@mail.gmail.com>
+Message-ID: <1949661755.580376.1657025626413@mail.yahoo.com>
+
+Bom dia a todos!!! 
+Oi Cesar, obrigado pelo retorno. Não seriam mil colunas, mas mil número aleatórios de um normal, cujos parâmetros estariam na linha.
+Empreguei esse exemplo, mas é assim: quero comparar as médias de métodos de medição, digamos quatro métodos (M1, M2, M3 e M4). Vou aplicar teste estatístico para compará-los, mas uma uma visualização útil para os leigos será montar histogramas dos dados. 
+Problema: a quantidade de dados reportados para analisar cada método são não muitos (n1=10; n2=16;...) e a visualização no R desses histogramas reunidos no mesmo plot é ruim. Então, a ideia que tive foi de, usando os parâmetros estimados para esses métodos, gerar números aleatórios de uma normal (digamos 1000) para os parâmetros de cada método, e ainda envolvendo o globamento de todos os resultados. 
+Por exemplo, no método 1 tive 10 dados, então calculo a média e o dp, e então gero 1000 dados aleatórios. Depois, faria o mesmo para o método 2... e finalmente, faria o mesmo com todos os resultados. Cada grupo de mil dados aleatórios seria plotado em forma de histogramas no mesmo plot.
+Desculpa, consegui ser claro?
+Obrigado!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520 
+
+    Em segunda-feira, 4 de julho de 2022 16:47:09 BRT, Cesar Rabak <cesar.rabak em gmail.com> escreveu:  
+ 
+ O busílis aqui é que a geração que vc parece que deseja é de criar mil colunas por chamada a rnorm.
+É isso mesmo? Para cada linha "X..." vc quer criar mil variaveis ou seja mil colunas no dataframe?
+
+
+On Mon, Jul 4, 2022 at 3:03 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+Boa tarde prezados, uma vez mais, solicitando a ajuda dos amigos!!
+Estou necessitando gerar valores de uma normal, condicionada a parâmetros de interesse, como no exemplo reproduzível abaixo:
+x<-c("X1","X2","X3","X4")média<-c(100,120,150,180)dp<-c(20,15,10,25)exemplo<-data.frame(cbind(x,média,dp))
+
+O meu objetivo é gerar de forma automática, para cada linha, uma distribuição normal com os parâmetros nessas linhas. No exemplo, para a linha que contêm X1, gerar 1000 valores de uma normal com média=100 e dp=20, para a linha que contêm X2, gerar 1000 valores de uma normal de média=120 e dp=15, e assim sucessivamente, até o último vetor, gerado pelos parâmetros da última linha (média=180 e dp=25).  Algo similar a isso:
+for (i in 1:nrow(exemplo)){
+    simu[i]<-rnorm(100,exemplo[i,2],exemplo[i,3])  }
+Alguém teria uma solução para isso? É que o número de linhas dessa tabela "exemplo" poderá variar.
+Muito obrigado!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220705/8154c896/attachment.htm>
+
+From toni.arb em gmail.com  Wed Jul 13 09:53:29 2022
+From: toni.arb em gmail.com (Toni)
+Date: Wed, 13 Jul 2022 09:53:29 -0300
+Subject: [R-br] Agrupamento - Listar elementos
+Message-ID: <CAKA6cOs92t_Q7VDdwiLJ=pTHK9KdEofm8QbvfDjEn9LBDjWqyw@mail.gmail.com>
+
+Olá Pessoal!
+
+Alguém sabe como faço para listar os elementos de um determinado
+agrupamento?
+
+Comando utiizado:
+fviz_cluster(objeto, geom="point", data =  df_utilizado)
+
+Nesse caso o objeto tem 23 clusters;
+Como resultado ele me fornece o agrupamento dos pontos mas eu gostaria de
+listar quem são os pontos de cada um desses 23 agrupamentos.
+Tem como fazer isso?
+OBS: Se trocar o geom para "text" ele mostra os pontos mas é impossível ler
+isso.
+
+Grato,
+Toni Borges
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220713/e0d8db68/attachment.htm>
+
+From marcus.nunes em gmail.com  Wed Jul 13 10:44:44 2022
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Wed, 13 Jul 2022 10:44:44 -0300
+Subject: [R-br] Agrupamento - Listar elementos
+In-Reply-To: <CAKA6cOs92t_Q7VDdwiLJ=pTHK9KdEofm8QbvfDjEn9LBDjWqyw@mail.gmail.com>
+References: <CAKA6cOs92t_Q7VDdwiLJ=pTHK9KdEofm8QbvfDjEn9LBDjWqyw@mail.gmail.com>
+Message-ID: <CA+QGQvvbE5N7q41zEJmmCtSigjQOX+NY7h2F2zeVABEmBjYG_g@mail.gmail.com>
+
+Olá,
+
+Algo tipo isso?
+
+###
+library(factoextra)
+library(dplyr)
+
+iris_kmeans <- kmeans(iris[, -5], centers = 3)
+
+clusters <- fviz_cluster(iris_kmeans, geom = "point", data =  iris[, -5])
+
+clusters$data
+
+clusters$data %>%
+  select(cluster)
+###
+--
+Marcus Nunes
+Professor Adjunto
+https://marcusnunes.me/
+Universidade Federal do Rio Grande do Norte
+Departamento de Estatística
+Laboratório de Estatística Aplicada - http://lea.estatistica.ccet.ufrn.br
+Curso de Big Data - https://introbigdata.org
+Aplicações em Shiny - http://shiny.estatistica.ccet.ufrn.br
+
+
+On Wed, Jul 13, 2022 at 9:53 AM Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Olá Pessoal!
+>
+> Alguém sabe como faço para listar os elementos de um determinado
+> agrupamento?
+>
+> Comando utiizado:
+> fviz_cluster(objeto, geom="point", data =  df_utilizado)
+>
+> Nesse caso o objeto tem 23 clusters;
+> Como resultado ele me fornece o agrupamento dos pontos mas eu gostaria de
+> listar quem são os pontos de cada um desses 23 agrupamentos.
+> Tem como fazer isso?
+> OBS: Se trocar o geom para "text" ele mostra os pontos mas é impossível
+> ler isso.
+>
+> Grato,
+> Toni Borges
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220713/a8c14b59/attachment.htm>
+
+From toni.arb em gmail.com  Wed Jul 13 11:18:03 2022
+From: toni.arb em gmail.com (Toni)
+Date: Wed, 13 Jul 2022 11:18:03 -0300
+Subject: [R-br] Agrupamento - Listar elementos
+In-Reply-To: <CA+QGQvvbE5N7q41zEJmmCtSigjQOX+NY7h2F2zeVABEmBjYG_g@mail.gmail.com>
+References: <CAKA6cOs92t_Q7VDdwiLJ=pTHK9KdEofm8QbvfDjEn9LBDjWqyw@mail.gmail.com>
+ <CA+QGQvvbE5N7q41zEJmmCtSigjQOX+NY7h2F2zeVABEmBjYG_g@mail.gmail.com>
+Message-ID: <CAKA6cOvUv=5Q0S3ub23hhwQkaZMfGOcPK+Yhut0hWRZgbhWNPQ@mail.gmail.com>
+
+Obrigado Marcus,
+
+Resolveu.
+
+Att,
+Toni Borges
+
+On Wed, Jul 13, 2022 at 10:44 AM Marcus Nunes <marcus.nunes em gmail.com>
+wrote:
+
+> Olá,
+>
+> Algo tipo isso?
+>
+> ###
+> library(factoextra)
+> library(dplyr)
+>
+> iris_kmeans <- kmeans(iris[, -5], centers = 3)
+>
+> clusters <- fviz_cluster(iris_kmeans, geom = "point", data =  iris[, -5])
+>
+> clusters$data
+>
+> clusters$data %>%
+>   select(cluster)
+> ###
+> --
+> Marcus Nunes
+> Professor Adjunto
+> https://marcusnunes.me/
+> Universidade Federal do Rio Grande do Norte
+> Departamento de Estatística
+> Laboratório de Estatística Aplicada - http://lea.estatistica.ccet.ufrn.br
+> Curso de Big Data - https://introbigdata.org
+> Aplicações em Shiny - http://shiny.estatistica.ccet.ufrn.br
+>
+>
+> On Wed, Jul 13, 2022 at 9:53 AM Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+>> Olá Pessoal!
+>>
+>> Alguém sabe como faço para listar os elementos de um determinado
+>> agrupamento?
+>>
+>> Comando utiizado:
+>> fviz_cluster(objeto, geom="point", data =  df_utilizado)
+>>
+>> Nesse caso o objeto tem 23 clusters;
+>> Como resultado ele me fornece o agrupamento dos pontos mas eu gostaria de
+>> listar quem são os pontos de cada um desses 23 agrupamentos.
+>> Tem como fazer isso?
+>> OBS: Se trocar o geom para "text" ele mostra os pontos mas é impossível
+>> ler isso.
+>>
+>> Grato,
+>> Toni Borges
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220713/0cf010b2/attachment.htm>
+
+From toni.arb em gmail.com  Wed Jul 20 17:58:07 2022
+From: toni.arb em gmail.com (Toni)
+Date: Wed, 20 Jul 2022 17:58:07 -0300
+Subject: [R-br] Agrupamento - Kmeans
+In-Reply-To: <CAKA6cOs92t_Q7VDdwiLJ=pTHK9KdEofm8QbvfDjEn9LBDjWqyw@mail.gmail.com>
+References: <CAKA6cOs92t_Q7VDdwiLJ=pTHK9KdEofm8QbvfDjEn9LBDjWqyw@mail.gmail.com>
+Message-ID: <CAKA6cOt2vv3LX6HNnOWFtPNqn4MAJMja9O1L40S_4fMA2gw2Rg@mail.gmail.com>
+
+Olá Pessoal,
+
+Vou recorrer novamente a vocês porque já pesquisei sobre isso e não consigo
+encontrar uma resposta, nenhum conteúdo que achei fala sobre isso.
+Veja a parte do código:
+
+# Pego as coordenadas de Longitude e Latitude (5 e 4) de uma base e monto
+com 25 centroides (k)
+
+k <- 25
+grupos <- kmeans(base[c(5,4)], k)
+
+# Pego o resultado do agrupamento e jogo na variável cluster usando o
+fviz_cluster para visualizar o resultado da clusterização
+
+cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data =
+base[c(5,4)])
+
+Depois monto o grid com o resultado do cluster com k igual a 25, 26, 27,
+28, 29 e 30
+
+Problema:
+Ele mostra o resultado no grid com os seis mapas, mas o problema é que
+quando comparo os pontos de cada mapa, alguns não aparecem, parece que
+alguns pontos desaparecem e também tem alguns clusters com o agrupamento
+vazio. Isso faz parte do resultado do fviz_cluster, esses parâmetros estão
+corretos? Esses pontos não teriam que aparecer todos, independente do
+processo de agrupamento (vazio ou não)? Ou existe alguma outra função para
+esse processo de agrupamento?
+
+Mais uma vez obrigado!!!
+Toni Borges
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220720/60a9f0fb/attachment.htm>
+
+From sznelwar em uol.com.br  Wed Jul 20 18:12:53 2022
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Wed, 20 Jul 2022 18:12:53 -0300
+Subject: [R-br] Agrupamento - Kmeans
+In-Reply-To: <CAKA6cOt2vv3LX6HNnOWFtPNqn4MAJMja9O1L40S_4fMA2gw2Rg@mail.gmail.com>
+References: <pTHK9KdEofm8QbvfDjEn9LBDjWqyw@mail.gmail.com>
+ <CAKA6cOt2vv3LX6HNnOWFtPNqn4MAJMja9O1L40S_4fMA2gw2Rg@mail.gmail.com>
+Message-ID: <62d86fd5ba50a_3b0d2b27d7e311187933f@ip-10-81-19-80.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220720/12d5d73f/attachment.htm>
+
+From toni.arb em gmail.com  Thu Jul 21 06:30:09 2022
+From: toni.arb em gmail.com (Toni)
+Date: Thu, 21 Jul 2022 06:30:09 -0300
+Subject: [R-br] Agrupamento - Kmeans
+In-Reply-To: <62d86fd5ba50a_3b0d2b27d7e311187933f@ip-10-81-19-80.ec2.internal.mail>
+References: <pTHK9KdEofm8QbvfDjEn9LBDjWqyw@mail.gmail.com>
+ <CAKA6cOt2vv3LX6HNnOWFtPNqn4MAJMja9O1L40S_4fMA2gw2Rg@mail.gmail.com>
+ <62d86fd5ba50a_3b0d2b27d7e311187933f@ip-10-81-19-80.ec2.internal.mail>
+Message-ID: <CAKA6cOtdBK0isuAeWEXYUaAp7GeM=cVZQprjtyMGubMKFNX=AQ@mail.gmail.com>
+
+Opa!!!
+Obrigado pela ajuda!!!
+Para o problema, basicamente, é esse o código que enviei, no mais é pegar a
+base e plotar, mas ficaria assim:
+
+# Início do Código
+
+estado = read.csv(file.choose())
+library(tidyverse)
+library(cluster)
+library(factoextra)
+library(ggplot2)
+library(gridExtra)
+library(ggrepel)
+
+base <- estado[c(5,4)]
+
+k <- 25
+grupos <- kmeans(base,k)
+cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data = base)
++
+  ggtitle (paste("K =",k))
+p25 <- cluster + theme(legend.position = "none")
+
+k <- 26
+grupos <- kmeans(base,k)
+cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data = base)
++
+  ggtitle (paste("K =",k))
+p26 <- cluster + theme(legend.position = "none")
+
+k <- 27
+grupos <- kmeans(base,k)
+cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data = base)
++
+  ggtitle (paste("K =",k))
+p27 <- cluster + theme(legend.position = "none")
+
+grid.arrange(p25,p26,p27,nrow=1)
+
+# Fim do Código
+
+Segue a imagem também para uma melhor visualização do problema.
+
+Grato!!!
+Toni Borges
+
+...
+
+Att,
+
+Toni Borges
+Enviado por Mobile
+
+On Wed, Jul 20, 2022, 6:13 PM sznelwar--- por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Envie um código reproduzível para tentar ajudar.
+>
+> Olá Pessoal,
+>
+> Vou recorrer novamente a vocês porque já pesquisei sobre isso e não
+> consigo encontrar uma resposta, nenhum conteúdo que achei fala sobre isso.
+> Veja a parte do código:
+>
+> # Pego as coordenadas de Longitude e Latitude (5 e 4) de uma base e monto
+> com 25 centroides (k)
+>
+> k <- 25
+> grupos <- kmeans(base[c(5,4)], k)
+>
+> # Pego o resultado do agrupamento e jogo na variável cluster usando o
+> fviz_cluster para visualizar o resultado da clusterização
+>
+> cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data =
+> base[c(5,4)])
+>
+> Depois monto o grid com o resultado do cluster com k igual a 25, 26, 27,
+> 28, 29 e 30
+>
+> Problema:
+> Ele mostra o resultado no grid com os seis mapas, mas o problema é que
+> quando comparo os pontos de cada mapa, alguns não aparecem, parece que
+> alguns pontos desaparecem e também tem alguns clusters com o agrupamento
+> vazio. Isso faz parte do resultado do fviz_cluster, esses parâmetros estão
+> corretos? Esses pontos não teriam que aparecer todos, independente do
+> processo de agrupamento (vazio ou não)? Ou existe alguma outra função para
+> esse processo de agrupamento?
+>
+> Mais uma vez obrigado!!!
+> Toni Borges
+>
+>
+>>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível. _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220721/bae5f439/attachment.htm>
+
+From cesar.rabak em gmail.com  Thu Jul 21 10:14:41 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 21 Jul 2022 10:14:41 -0300
+Subject: [R-br] Agrupamento - Kmeans
+In-Reply-To: <CAKA6cOtdBK0isuAeWEXYUaAp7GeM=cVZQprjtyMGubMKFNX=AQ@mail.gmail.com>
+References: <pTHK9KdEofm8QbvfDjEn9LBDjWqyw@mail.gmail.com>
+ <CAKA6cOt2vv3LX6HNnOWFtPNqn4MAJMja9O1L40S_4fMA2gw2Rg@mail.gmail.com>
+ <62d86fd5ba50a_3b0d2b27d7e311187933f@ip-10-81-19-80.ec2.internal.mail>
+ <CAKA6cOtdBK0isuAeWEXYUaAp7GeM=cVZQprjtyMGubMKFNX=AQ@mail.gmail.com>
+Message-ID: <CAKrF98mkixVh7z=26XMmT9yOkspt8kxnQOy0be+CSeHVyEMPCA@mail.gmail.com>
+
+Não há meios de acessar os dados ... e a imagem não veio...
+
+Se ñ for possível enviá-los nem um *link* para baixá-los, pelo menos
+imprima e mostre aqui o resultado das funções de resumo do R, como summary(),
+por exemplo.
+
+
+
+On Thu, Jul 21, 2022 at 6:30 AM Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Opa!!!
+> Obrigado pela ajuda!!!
+> Para o problema, basicamente, é esse o código que enviei, no mais é pegar
+> a base e plotar, mas ficaria assim:
+>
+> # Início do Código
+>
+> estado = read.csv(file.choose())
+> library(tidyverse)
+> library(cluster)
+> library(factoextra)
+> library(ggplot2)
+> library(gridExtra)
+> library(ggrepel)
+>
+> base <- estado[c(5,4)]
+>
+> k <- 25
+> grupos <- kmeans(base,k)
+> cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data =
+> base) +
+>   ggtitle (paste("K =",k))
+> p25 <- cluster + theme(legend.position = "none")
+>
+> k <- 26
+> grupos <- kmeans(base,k)
+> cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data =
+> base) +
+>   ggtitle (paste("K =",k))
+> p26 <- cluster + theme(legend.position = "none")
+>
+> k <- 27
+> grupos <- kmeans(base,k)
+> cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data =
+> base) +
+>   ggtitle (paste("K =",k))
+> p27 <- cluster + theme(legend.position = "none")
+>
+> grid.arrange(p25,p26,p27,nrow=1)
+>
+> # Fim do Código
+>
+> Segue a imagem também para uma melhor visualização do problema.
+>
+> Grato!!!
+> Toni Borges
+>
+> ...
+>
+> Att,
+>
+> Toni Borges
+> Enviado por Mobile
+>
+> On Wed, Jul 20, 2022, 6:13 PM sznelwar--- por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Envie um código reproduzível para tentar ajudar.
+>>
+>> Olá Pessoal,
+>>
+>> Vou recorrer novamente a vocês porque já pesquisei sobre isso e não
+>> consigo encontrar uma resposta, nenhum conteúdo que achei fala sobre isso.
+>> Veja a parte do código:
+>>
+>> # Pego as coordenadas de Longitude e Latitude (5 e 4) de uma base e monto
+>> com 25 centroides (k)
+>>
+>> k <- 25
+>> grupos <- kmeans(base[c(5,4)], k)
+>>
+>> # Pego o resultado do agrupamento e jogo na variável cluster usando o
+>> fviz_cluster para visualizar o resultado da clusterização
+>>
+>> cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data =
+>> base[c(5,4)])
+>>
+>> Depois monto o grid com o resultado do cluster com k igual a 25, 26, 27,
+>> 28, 29 e 30
+>>
+>> Problema:
+>> Ele mostra o resultado no grid com os seis mapas, mas o problema é que
+>> quando comparo os pontos de cada mapa, alguns não aparecem, parece que
+>> alguns pontos desaparecem e também tem alguns clusters com o agrupamento
+>> vazio. Isso faz parte do resultado do fviz_cluster, esses parâmetros estão
+>> corretos? Esses pontos não teriam que aparecer todos, independente do
+>> processo de agrupamento (vazio ou não)? Ou existe alguma outra função para
+>> esse processo de agrupamento?
+>>
+>> Mais uma vez obrigado!!!
+>> Toni Borges
+>>
+>>
+>>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível. _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220721/e1c88dcf/attachment.htm>
+
+From toni.arb em gmail.com  Mon Jul 25 10:22:16 2022
+From: toni.arb em gmail.com (Toni)
+Date: Mon, 25 Jul 2022 10:22:16 -0300
+Subject: [R-br] Agrupamento - Kmeans
+In-Reply-To: <CAKrF98mkixVh7z=26XMmT9yOkspt8kxnQOy0be+CSeHVyEMPCA@mail.gmail.com>
+References: <pTHK9KdEofm8QbvfDjEn9LBDjWqyw@mail.gmail.com>
+ <CAKA6cOt2vv3LX6HNnOWFtPNqn4MAJMja9O1L40S_4fMA2gw2Rg@mail.gmail.com>
+ <62d86fd5ba50a_3b0d2b27d7e311187933f@ip-10-81-19-80.ec2.internal.mail>
+ <CAKA6cOtdBK0isuAeWEXYUaAp7GeM=cVZQprjtyMGubMKFNX=AQ@mail.gmail.com>
+ <CAKrF98mkixVh7z=26XMmT9yOkspt8kxnQOy0be+CSeHVyEMPCA@mail.gmail.com>
+Message-ID: <CAKA6cOv3XuH_miu=X1cUeA2nBD4Ku57bmvxAdFUFrANs3N-QuQ@mail.gmail.com>
+
+Olá Pessoal!!!
+Apenas para dar um retorno para vocês, eu fiz um procedimento diferente,
+fiz o mapeamento com o k-means, identifiquei os elementos de cada grupo e
+gerei um agrupamento baseado nesse grupo de elementos. A princípio
+funcionou, mas quero agradecer a ajuda de vocês.
+Depois com mais calma vou dar uma estudada melhor nessas funções  "fviz_"
+Grande abraço!!!
+Toni
+
+
+On Thu, Jul 21, 2022 at 10:14 AM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+
+> Não há meios de acessar os dados ... e a imagem não veio...
+>
+> Se ñ for possível enviá-los nem um *link* para baixá-los, pelo menos
+> imprima e mostre aqui o resultado das funções de resumo do R, como
+> summary(),  por exemplo.
+>
+>
+>
+> On Thu, Jul 21, 2022 at 6:30 AM Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+>> Opa!!!
+>> Obrigado pela ajuda!!!
+>> Para o problema, basicamente, é esse o código que enviei, no mais é pegar
+>> a base e plotar, mas ficaria assim:
+>>
+>> # Início do Código
+>>
+>> estado = read.csv(file.choose())
+>> library(tidyverse)
+>> library(cluster)
+>> library(factoextra)
+>> library(ggplot2)
+>> library(gridExtra)
+>> library(ggrepel)
+>>
+>> base <- estado[c(5,4)]
+>>
+>> k <- 25
+>> grupos <- kmeans(base,k)
+>> cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data =
+>> base) +
+>>   ggtitle (paste("K =",k))
+>> p25 <- cluster + theme(legend.position = "none")
+>>
+>> k <- 26
+>> grupos <- kmeans(base,k)
+>> cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data =
+>> base) +
+>>   ggtitle (paste("K =",k))
+>> p26 <- cluster + theme(legend.position = "none")
+>>
+>> k <- 27
+>> grupos <- kmeans(base,k)
+>> cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data =
+>> base) +
+>>   ggtitle (paste("K =",k))
+>> p27 <- cluster + theme(legend.position = "none")
+>>
+>> grid.arrange(p25,p26,p27,nrow=1)
+>>
+>> # Fim do Código
+>>
+>> Segue a imagem também para uma melhor visualização do problema.
+>>
+>> Grato!!!
+>> Toni Borges
+>>
+>> ...
+>>
+>> Att,
+>>
+>> Toni Borges
+>> Enviado por Mobile
+>>
+>> On Wed, Jul 20, 2022, 6:13 PM sznelwar--- por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Envie um código reproduzível para tentar ajudar.
+>>>
+>>> Olá Pessoal,
+>>>
+>>> Vou recorrer novamente a vocês porque já pesquisei sobre isso e não
+>>> consigo encontrar uma resposta, nenhum conteúdo que achei fala sobre isso.
+>>> Veja a parte do código:
+>>>
+>>> # Pego as coordenadas de Longitude e Latitude (5 e 4) de uma base e
+>>> monto com 25 centroides (k)
+>>>
+>>> k <- 25
+>>> grupos <- kmeans(base[c(5,4)], k)
+>>>
+>>> # Pego o resultado do agrupamento e jogo na variável cluster usando o
+>>> fviz_cluster para visualizar o resultado da clusterização
+>>>
+>>> cluster <- fviz_cluster(grupos, labelsize = 8, geom = "point", data =
+>>> base[c(5,4)])
+>>>
+>>> Depois monto o grid com o resultado do cluster com k igual a 25, 26, 27,
+>>> 28, 29 e 30
+>>>
+>>> Problema:
+>>> Ele mostra o resultado no grid com os seis mapas, mas o problema é que
+>>> quando comparo os pontos de cada mapa, alguns não aparecem, parece que
+>>> alguns pontos desaparecem e também tem alguns clusters com o agrupamento
+>>> vazio. Isso faz parte do resultado do fviz_cluster, esses parâmetros estão
+>>> corretos? Esses pontos não teriam que aparecer todos, independente do
+>>> processo de agrupamento (vazio ou não)? Ou existe alguma outra função para
+>>> esse processo de agrupamento?
+>>>
+>>> Mais uma vez obrigado!!!
+>>> Toni Borges
+>>>
+>>>
+>>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível. _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220725/a747148b/attachment.htm>
+

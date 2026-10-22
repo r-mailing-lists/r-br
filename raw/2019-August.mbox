@@ -1,0 +1,1332 @@
+From andreolsouza em yahoo.com.br  Wed Aug  7 16:47:49 2019
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Wed, 7 Aug 2019 19:47:49 +0000 (UTC)
+Subject: [R-br] Contrastes - MLG
+References: <642002604.1904317.1565207269786.ref@mail.yahoo.com>
+Message-ID: <642002604.1904317.1565207269786@mail.yahoo.com>
+
+
+Boa tarde!
+
+Tem como inverter a ordem do contraste que vem por padrão na função glht do pacote multcomp? Digo inverter para bater com o padrão do resultado do summary(fit) onde coloca t1-t2 e não t2 - t1 como fica no objeto p.
+
+dados <- read.table("http://www.leg.ufpr.br/~paulojus/dados/exemplo01.txt", head = T)
+
+attach(dados)
+
+boxplot(resp~trat, col=8)
+
+hist(resp, col=8)
+
+fit=glm(resp~trat, family = Gamma)
+
+summary(fit)
+
+require(multcomp)
+
+p <- glht(fit, linfct = mcp(trat = "Tukey"))
+plot(p, main= "", xlab = "")
+
+obg
+
+att.André 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190807/e5508270/attachment.html>
+
+From nandodesouza em gmail.com  Wed Aug  7 17:20:06 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 7 Aug 2019 17:20:06 -0300
+Subject: [R-br] =?utf-8?q?Graficos_para_n=C3=A3o_parametrica?=
+Message-ID: <CAFrWFsm3a-MUoh1+rRRK4SnQikyfjt=H+BXfqNYbckSn5Tmq-A@mail.gmail.com>
+
+Pessoal
+Gostari de uma informação. Qual o melhor gráfico para utilizar com dados
+não paramétricos?
+Fiz uma análise utiizando a função art() do pacote ARTols do R o qual me
+permitiu testar interações não parametrica.
+Porém para mostrar os dados na forma gráfica e ilustrar uma interação
+significativa, há alguma forma?
+
+Desde já agradeço
+
+
+-- 
+=========================================
+Fernando Souza
+Zootecnista, DSc. Produção e Alimentação Animal
+Celular: (31)99796-8781 (Vivo)
+E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+Lattes: http://lattes.cnpq.br/6519538815038307
+Blog: https://producaoanimalcomr.wordpress.com/
+==========================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190807/655083be/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Aug  7 18:57:00 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 7 Aug 2019 18:57:00 -0300
+Subject: [R-br] Contrastes - MLG
+In-Reply-To: <642002604.1904317.1565207269786@mail.yahoo.com>
+References: <642002604.1904317.1565207269786.ref@mail.yahoo.com>
+ <642002604.1904317.1565207269786@mail.yahoo.com>
+Message-ID: <CAKrF98=k=uudnQ8aJECUSoj+j2-HGECsGSH=Sxh2LM3u3esWUA@mail.gmail.com>
+
+André,
+
+A função glht está usando a ordem "alfabética" dos seus fatores, como a
+função não deve ter meios de mudar isso (você já *olhou* no FM, não
+*olhou*?) ?,
+a única forma seria fazer uma cópia do objeto retornado 'p' neste teu
+exemplo, e inverter os sinais de *todos* os contrastes e colocar os
+*labels* manualmente
+no gráfico.
+
+HTH
+--
+Cesar Rabak
+
+
+On Wed, Aug 7, 2019 at 4:50 PM Andre Oliveira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde!
+>
+> Tem como inverter a ordem do contraste que vem por padrão na função glht
+> do pacote multcomp? Digo inverter para bater com o padrão do resultado do
+> summary(fit) onde coloca t1-t2 e não t2 - t1 como fica no objeto p.
+>
+> dados <- read.table("http://www.leg.ufpr.br/~paulojus/dados/exemplo01.txt
+> <https://l.facebook.com/l.php?u=http%3A%2F%2Fwww.leg.ufpr.br%2F%7Epaulojus%2Fdados%2Fexemplo01.txt%3Ffbclid%3DIwAR2krDEvOI3rtXw4xASIrG0AxtCOmoRmbY0gt0SGuBk-7g3PhQcb3fS8o9o&h=AT3yPMcJkTSq7ku8iquqWH8fXOHRd76dpt80tMGemb1IX4c-yDBvcK2kBDS9NehkvTxIwEZkPdQWWtusjgFnfpytgzMKEyTEuIfdENjzZl7RO8VxxlRP3fhEUIwedOiNIZlwR5o_3H0>",
+> head = T)
+>
+> attach(dados)
+>
+> boxplot(resp~trat, col=8)
+>
+> hist(resp, col=8)
+>
+> fit=glm(resp~trat, family = Gamma)
+>
+> summary(fit)
+>
+> require(multcomp)
+>
+> p <- glht(fit, linfct = mcp(trat = "Tukey"))
+> plot(p, main= "", xlab = "")
+>
+> obg
+>
+> att.
+> André
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190807/54b9507a/attachment.html>
+
+From ms_sangiogo em hotmail.com  Thu Aug  8 14:51:52 2019
+From: ms_sangiogo em hotmail.com (=?iso-8859-1?Q?Maur=EDcio_Sangiogo?=)
+Date: Thu, 8 Aug 2019 17:51:52 +0000
+Subject: [R-br] Digest R-br, volume 104, assunto 2
+In-Reply-To: <mailman.1.1565276402.3243.r-br@listas.c3sl.ufpr.br>
+References: <mailman.1.1565276402.3243.r-br@listas.c3sl.ufpr.br>
+Message-ID: <SN6PR03MB419148756D4AC1F39FCBE0869BD70@SN6PR03MB4191.namprd03.prod.outlook.com>
+
+Fernando Souza, quando não uso uma tabela com as medianas, uso um gráfico Box Plot, eu acho a apresentação desse gráfico interessante para esse tipo de dados.
+
+Att,
+_______________________________________________________
+Eng. Agr. Maurício Sangiogo
+Doutorando em Fitossanidade - UFPel
+Analista Ambiental - FEPAM
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de r-br-request em listas.c3sl.ufpr.br <r-br-request em listas.c3sl.ufpr.br>
+Enviado: quinta-feira, 8 de agosto de 2019 12:00
+Para: r-br em listas.c3sl.ufpr.br <r-br em listas.c3sl.ufpr.br>
+Assunto: Digest R-br, volume 104, assunto 1
+
+Enviar submissões para a lista de discussão R-br para
+        r-br em listas.c3sl.ufpr.br
+
+Para se cadastrar ou descadastrar via WWW, visite o endereço
+        https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+corpo da mensagem para
+        r-br-request em listas.c3sl.ufpr.br
+
+Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+endereço
+        r-br-owner em listas.c3sl.ufpr.br
+
+Quando responder, por favor edite sua linha Assunto assim ela será
+mais específica que "Re: Contents of R-br digest..."
+
+
+Tópicos de Hoje:
+
+   1. Contrastes - MLG (Andre Oliveira)
+   2. Graficos para não parametrica (Fernando Souza)
+   3. Re: Contrastes - MLG (Cesar Rabak)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Wed, 7 Aug 2019 19:47:49 +0000 (UTC)
+From: Andre Oliveira <andreolsouza em yahoo.com.br>
+To: a lista Brasileira oficial de discussão do programa R.
+        <r-br em listas.c3sl.ufpr.br>
+Subject: [R-br] Contrastes - MLG
+Message-ID: <642002604.1904317.1565207269786 em mail.yahoo.com>
+Content-Type: text/plain; charset="utf-8"
+
+
+Boa tarde!
+
+Tem como inverter a ordem do contraste que vem por padrão na função glht do pacote multcomp? Digo inverter para bater com o padrão do resultado do summary(fit) onde coloca t1-t2 e não t2 - t1 como fica no objeto p.
+
+dados <- read.table("http://www.leg.ufpr.br/~paulojus/dados/exemplo01.txt", head = T)
+
+attach(dados)
+
+boxplot(resp~trat, col=8)
+
+hist(resp, col=8)
+
+fit=glm(resp~trat, family = Gamma)
+
+summary(fit)
+
+require(multcomp)
+
+p <- glht(fit, linfct = mcp(trat = "Tukey"))
+plot(p, main= "", xlab = "")
+
+obg
+
+att.André
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190807/e5508270/attachment-0001.html>
+
+------------------------------
+
+Message: 2
+Date: Wed, 7 Aug 2019 17:20:06 -0300
+From: Fernando Souza <nandodesouza em gmail.com>
+To: "r-br em listas.c3sl.ufpr.br" <r-br em listas.c3sl.ufpr.br>
+Subject: [R-br] Graficos para não parametrica
+Message-ID:
+        <CAFrWFsm3a-MUoh1+rRRK4SnQikyfjt=H+BXfqNYbckSn5Tmq-A em mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+
+Pessoal
+Gostari de uma informação. Qual o melhor gráfico para utilizar com dados
+não paramétricos?
+Fiz uma análise utiizando a função art() do pacote ARTols do R o qual me
+permitiu testar interações não parametrica.
+Porém para mostrar os dados na forma gráfica e ilustrar uma interação
+significativa, há alguma forma?
+
+Desde já agradeço
+
+
+--
+=========================================
+Fernando Souza
+Zootecnista, DSc. Produção e Alimentação Animal
+Celular: (31)99796-8781 (Vivo)
+E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+Lattes: http://lattes.cnpq.br/6519538815038307
+Blog: https://producaoanimalcomr.wordpress.com/
+==========================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190807/655083be/attachment-0001.html>
+
+------------------------------
+
+Message: 3
+Date: Wed, 7 Aug 2019 18:57:00 -0300
+From: Cesar Rabak <cesar.rabak em gmail.com>
+To: a lista Brasileira oficial de discussão do programa R.
+        <r-br em listas.c3sl.ufpr.br>
+Subject: Re: [R-br] Contrastes - MLG
+Message-ID:
+        <CAKrF98=k=uudnQ8aJECUSoj+j2-HGECsGSH=Sxh2LM3u3esWUA em mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+
+André,
+
+A função glht está usando a ordem "alfabética" dos seus fatores, como a
+função não deve ter meios de mudar isso (você já *olhou* no FM, não
+*olhou*?) ?,
+a única forma seria fazer uma cópia do objeto retornado 'p' neste teu
+exemplo, e inverter os sinais de *todos* os contrastes e colocar os
+*labels* manualmente
+no gráfico.
+
+HTH
+--
+Cesar Rabak
+
+
+On Wed, Aug 7, 2019 at 4:50 PM Andre Oliveira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde!
+>
+> Tem como inverter a ordem do contraste que vem por padrão na função glht
+> do pacote multcomp? Digo inverter para bater com o padrão do resultado do
+> summary(fit) onde coloca t1-t2 e não t2 - t1 como fica no objeto p.
+>
+> dados <- read.table("http://www.leg.ufpr.br/~paulojus/dados/exemplo01.txt
+> <https://l.facebook.com/l.php?u=http%3A%2F%2Fwww.leg.ufpr.br%2F%7Epaulojus%2Fdados%2Fexemplo01.txt%3Ffbclid%3DIwAR2krDEvOI3rtXw4xASIrG0AxtCOmoRmbY0gt0SGuBk-7g3PhQcb3fS8o9o&h=AT3yPMcJkTSq7ku8iquqWH8fXOHRd76dpt80tMGemb1IX4c-yDBvcK2kBDS9NehkvTxIwEZkPdQWWtusjgFnfpytgzMKEyTEuIfdENjzZl7RO8VxxlRP3fhEUIwedOiNIZlwR5o_3H0>",
+> head = T)
+>
+> attach(dados)
+>
+> boxplot(resp~trat, col=8)
+>
+> hist(resp, col=8)
+>
+> fit=glm(resp~trat, family = Gamma)
+>
+> summary(fit)
+>
+> require(multcomp)
+>
+> p <- glht(fit, linfct = mcp(trat = "Tukey"))
+> plot(p, main= "", xlab = "")
+>
+> obg
+>
+> att.
+> André
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190807/54b9507a/attachment-0001.html>
+
+------------------------------
+
+Subject: Legenda do Digest
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+
+
+------------------------------
+
+Fim da Digest R-br, volume 104, assunto 1
+*****************************************
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190808/7567d1c2/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Mon Aug 19 19:51:50 2019
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Mon, 19 Aug 2019 22:51:50 +0000 (UTC)
+Subject: [R-br] Package Tibble
+References: <2090336582.86957.1566255110255.ref@mail.yahoo.com>
+Message-ID: <2090336582.86957.1566255110255@mail.yahoo.com>
+
+Boa noite!
+estou com um erro no código abaixo e não consigo descobrir o motivo. Já executei esse mesmo código em outra maquina.
+versao do R
+version.string R version 3.6.1 (2019-07-05)
+
+
+library(readxl)Salario <- read_excel("F:/FIAP/R/Excel/Salario.xlsx")View(Salario)  
+attach(Salario)install.packages("dplyr")library(dplyr)agregar <-summarise(group_by(Salario, id),                    salario_m = mean(salario_m),                    data_pagamento_min=min(data_pagamento),                    data_pagamento_max=max(data_pagamento),                    contagem =n())agregar
+View(agregar)
+
+install.packages("rfm")install.packages("lubridate")library(rfm)library(lubridate)
+data_atual <- lubridate::as_date("2019-04-05", tz = "UTC-3")agregar$data_atual <-data_atualattach(agregar)
+data_compra <-lubridate::as_date(data_pagamento_max, tz="UTC")agregar$data_compra<-data_compra
+attach(agregar)View(agregar)
+rfm_result <- rfm_table_order(agregar, id, data_compra, salario_m, data_atual)rfm_result
+install.packages("tibble")library(tibble)
+rfm<-as.tibble(rfm_result)rfm
+
+erro
+Error: Tibble columns must have consistent lengths, only values of length one are recycled:* Length 0: Requested with `.rows` argument* Length 50: Column `rfm`Call `rlang::last_error()` to see a backtraceIn addition: Warning message:`as.tibble()` is deprecated, use `as_tibble()` (but mind the new semantics).This warning is displayed once per session.
+
+Edmar
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190819/3d08833e/attachment.html>
+
+From nandodesouza em gmail.com  Mon Aug 19 21:37:29 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Mon, 19 Aug 2019 21:37:29 -0300
+Subject: [R-br] Package Tibble
+In-Reply-To: <2090336582.86957.1566255110255@mail.yahoo.com>
+References: <2090336582.86957.1566255110255@mail.yahoo.com>
+Message-ID: <982FECB8-90E4-41AC-9120-62372264667C@getmailspring.com>
+
+Seu exemplo não é reproduzível,, uma vez que não é possível acessar os dados.
+
+Att
+On Aug 19 2019, at 7:51 pm, Edmar Caldas por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Boa noite!
+>
+> estou com um erro no código abaixo e não consigo descobrir o motivo.
+> Já executei esse mesmo código em outra maquina.
+>
+> versao do R
+>
+> version.string R version 3.6.1 (2019-07-05)
+>
+>
+> library(readxl)
+> Salario <- read_excel("F:/FIAP/R/Excel/Salario.xlsx")
+> View(Salario)
+>
+> attach(Salario)
+> install.packages("dplyr")
+> library(dplyr)
+> agregar <-summarise(group_by(Salario, id),
+> salario_m = mean(salario_m),
+> data_pagamento_min=min(data_pagamento),
+> data_pagamento_max=max(data_pagamento),
+> contagem =n())
+> agregar
+>
+> View(agregar)
+>
+>
+> install.packages("rfm")
+> install.packages("lubridate")
+> library(rfm)
+> library(lubridate)
+>
+> data_atual <- lubridate::as_date("2019-04-05", tz = "UTC-3")
+> agregar$data_atual <-data_atual
+> attach(agregar)
+>
+> data_compra <-lubridate::as_date(data_pagamento_max, tz="UTC")
+> agregar$data_compra<-data_compra
+>
+> attach(agregar)
+> View(agregar)
+>
+> rfm_result <- rfm_table_order(agregar, id, data_compra, salario_m, data_atual)
+> rfm_result
+>
+> install.packages("tibble")
+> library(tibble)
+>
+> rfm<-as.tibble(rfm_result)
+> rfm
+>
+>
+>
+> erro
+>
+> Error: Tibble columns must have consistent lengths, only values of length one are recycled:
+> * Length 0: Requested with `.rows` argument
+> * Length 50: Column `rfm`
+> Call `rlang::last_error()` to see a backtrace
+> In addition: Warning message:
+> `as.tibble()` is deprecated, use `as_tibble()` (but mind the new semantics).
+> This warning is displayed once per session.
+>
+>
+>
+> Edmar
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190819/c2981dae/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Tue Aug 20 12:07:05 2019
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Tue, 20 Aug 2019 15:07:05 +0000 (UTC)
+Subject: [R-br] Digest R-br, volume 104, assunto 3
+In-Reply-To: <mailman.3.1566313201.1123.r-br@listas.c3sl.ufpr.br>
+References: <mailman.3.1566313201.1123.r-br@listas.c3sl.ufpr.br>
+Message-ID: <1633992461.398026.1566313625675@mail.yahoo.com>
+
+
+
+Edmar 
+
+    Em terça-feira, 20 de agosto de 2019 12:00:28 BRT, r-br-request em listas.c3sl.ufpr.br <r-br-request em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Enviar submissões para a lista de discussão R-br para 
+    r-br em listas.c3sl.ufpr.br
+
+Para se cadastrar ou descadastrar via WWW, visite o endereço
+    https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+corpo da mensagem para 
+    r-br-request em listas.c3sl.ufpr.br
+
+Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+endereço
+    r-br-owner em listas.c3sl.ufpr.br
+
+Quando responder, por favor edite sua linha Assunto assim ela será
+mais específica que "Re: Contents of R-br digest..."
+
+
+Tópicos de Hoje:
+
+  1. Package Tibble (Edmar Caldas)
+  2. Re: Package Tibble (Fernando Souza)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Mon, 19 Aug 2019 22:51:50 +0000 (UTC)
+From: Edmar Caldas <edmar_caldas em yahoo.com.br>
+To: R-br Lista <r-br em listas.c3sl.ufpr.br>
+Subject: [R-br] Package Tibble
+Message-ID: <2090336582.86957.1566255110255 em mail.yahoo.com>
+Content-Type: text/plain; charset="utf-8"
+
+Boa noite!
+estou com um erro no código abaixo e não consigo descobrir o motivo. Já executei esse mesmo código em outra maquina.
+versao do R
+version.string R version 3.6.1 (2019-07-05)
+
+
+library(readxl)Salario <- read_excel("F:/FIAP/R/Excel/Salario.xlsx")View(Salario)  
+attach(Salario)install.packages("dplyr")library(dplyr)agregar <-summarise(group_by(Salario, id),                    salario_m = mean(salario_m),                    data_pagamento_min=min(data_pagamento),                    data_pagamento_max=max(data_pagamento),                    contagem =n())agregar
+View(agregar)
+
+install.packages("rfm")install.packages("lubridate")library(rfm)library(lubridate)
+data_atual <- lubridate::as_date("2019-04-05", tz = "UTC-3")agregar$data_atual <-data_atualattach(agregar)
+data_compra <-lubridate::as_date(data_pagamento_max, tz="UTC")agregar$data_compra<-data_compra
+attach(agregar)View(agregar)
+rfm_result <- rfm_table_order(agregar, id, data_compra, salario_m, data_atual)rfm_result
+install.packages("tibble")library(tibble)
+rfm<-as.tibble(rfm_result)rfm
+
+erro
+Error: Tibble columns must have consistent lengths, only values of length one are recycled:* Length 0: Requested with `.rows` argument* Length 50: Column `rfm`Call `rlang::last_error()` to see a backtraceIn addition: Warning message:`as.tibble()` is deprecated, use `as_tibble()` (but mind the new semantics).This warning is displayed once per session.
+
+Edmar
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190819/3d08833e/attachment-0001.html>
+
+------------------------------
+
+Message: 2
+Date: Mon, 19 Aug 2019 21:37:29 -0300
+From: Fernando Souza <nandodesouza em gmail.com>
+To:
+    "=?utf-8?Q?a_lista_Brasileira_oficial_de_discuss=C3=83=C2=A3o_do_programa_R.?=" 
+    <r-br em listas.c3sl.ufpr.br>
+Cc: Edmar Caldas <edmar_caldas em yahoo.com.br>
+Subject: Re: [R-br] Package Tibble
+Message-ID: <982FECB8-90E4-41AC-9120-62372264667C em getmailspring.com>
+Content-Type: text/plain; charset="utf-8"
+
+Seu exemplo não é reproduzível,, uma vez que não é possível acessar os dados.
+
+Att
+On Aug 19 2019, at 7:51 pm, Edmar Caldas por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Boa noite!
+>
+> estou com um erro no código abaixo e não consigo descobrir o motivo.
+> Já executei esse mesmo código em outra maquina.
+>
+> versao do R
+>
+> version.string R version 3.6.1 (2019-07-05)
+>
+>
+> library(readxl)
+> Salario <- read_excel("F:/FIAP/R/Excel/Salario.xlsx")
+> View(Salario)
+>
+> attach(Salario)
+> install.packages("dplyr")
+> library(dplyr)
+> agregar <-summarise(group_by(Salario, id),
+> salario_m = mean(salario_m),
+> data_pagamento_min=min(data_pagamento),
+> data_pagamento_max=max(data_pagamento),
+> contagem =n())
+> agregar
+>
+> View(agregar)
+>
+>
+> install.packages("rfm")
+> install.packages("lubridate")
+> library(rfm)
+> library(lubridate)
+>
+> data_atual <- lubridate::as_date("2019-04-05", tz = "UTC-3")
+> agregar$data_atual <-data_atual
+> attach(agregar)
+>
+> data_compra <-lubridate::as_date(data_pagamento_max, tz="UTC")
+> agregar$data_compra<-data_compra
+>
+> attach(agregar)
+> View(agregar)
+>
+> rfm_result <- rfm_table_order(agregar, id, data_compra, salario_m, data_atual)
+> rfm_result
+>
+> install.packages("tibble")
+> library(tibble)
+>
+> rfm<-as.tibble(rfm_result)
+> rfm
+>
+>
+>
+> erro
+>
+> Error: Tibble columns must have consistent lengths, only values of length one are recycled:
+> * Length 0: Requested with `.rows` argument
+> * Length 50: Column `rfm`
+> Call `rlang::last_error()` to see a backtrace
+> In addition: Warning message:
+> `as.tibble()` is deprecated, use `as_tibble()` (but mind the new semantics).
+> This warning is displayed once per session.
+>
+>
+>
+> Edmar
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190819/c2981dae/attachment-0001.html>
+
+------------------------------
+
+Subject: Legenda do Digest
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+
+
+------------------------------
+
+Fim da Digest R-br, volume 104, assunto 3
+*****************************************  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190820/caddb154/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Salario.xlsx
+Tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Tamanho: 10935 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190820/caddb154/attachment.xlsx>
+
+From edmar_caldas em yahoo.com.br  Tue Aug 20 13:02:23 2019
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Tue, 20 Aug 2019 16:02:23 +0000 (UTC)
+Subject: [R-br] Digest R-br, volume 104, assunto 3
+In-Reply-To: <mailman.3.1566313201.1123.r-br@listas.c3sl.ufpr.br>
+References: <mailman.3.1566313201.1123.r-br@listas.c3sl.ufpr.br>
+Message-ID: <181398860.432728.1566316943576@mail.yahoo.com>
+
+
+
+Edmar 
+
+    Em terça-feira, 20 de agosto de 2019 12:00:28 BRT, r-br-request em listas.c3sl.ufpr.br <r-br-request em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Enviar submissões para a lista de discussão R-br para 
+    r-br em listas.c3sl.ufpr.br
+
+Para se cadastrar ou descadastrar via WWW, visite o endereço
+    https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+corpo da mensagem para 
+    r-br-request em listas.c3sl.ufpr.br
+
+Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+endereço
+    r-br-owner em listas.c3sl.ufpr.br
+
+Quando responder, por favor edite sua linha Assunto assim ela será
+mais específica que "Re: Contents of R-br digest..."
+
+
+Tópicos de Hoje:
+
+  1. Package Tibble (Edmar Caldas)
+  2. Re: Package Tibble (Fernando Souza)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Mon, 19 Aug 2019 22:51:50 +0000 (UTC)
+From: Edmar Caldas <edmar_caldas em yahoo.com.br>
+To: R-br Lista <r-br em listas.c3sl.ufpr.br>
+Subject: [R-br] Package Tibble
+Message-ID: <2090336582.86957.1566255110255 em mail.yahoo.com>
+Content-Type: text/plain; charset="utf-8"
+
+Boa noite!
+estou com um erro no código abaixo e não consigo descobrir o motivo. Já executei esse mesmo código em outra maquina.
+versao do R
+version.string R version 3.6.1 (2019-07-05)
+
+
+library(readxl)Salario <- read_excel("F:/FIAP/R/Excel/Salario.xlsx")View(Salario)  
+attach(Salario)install.packages("dplyr")library(dplyr)agregar <-summarise(group_by(Salario, id),                    salario_m = mean(salario_m),                    data_pagamento_min=min(data_pagamento),                    data_pagamento_max=max(data_pagamento),                    contagem =n())agregar
+View(agregar)
+
+install.packages("rfm")install.packages("lubridate")library(rfm)library(lubridate)
+data_atual <- lubridate::as_date("2019-04-05", tz = "UTC-3")agregar$data_atual <-data_atualattach(agregar)
+data_compra <-lubridate::as_date(data_pagamento_max, tz="UTC")agregar$data_compra<-data_compra
+attach(agregar)View(agregar)
+rfm_result <- rfm_table_order(agregar, id, data_compra, salario_m, data_atual)rfm_result
+install.packages("tibble")library(tibble)
+rfm<-as.tibble(rfm_result)rfm
+
+erro
+Error: Tibble columns must have consistent lengths, only values of length one are recycled:* Length 0: Requested with `.rows` argument* Length 50: Column `rfm`Call `rlang::last_error()` to see a backtraceIn addition: Warning message:`as.tibble()` is deprecated, use `as_tibble()` (but mind the new semantics).This warning is displayed once per session.
+
+Edmar
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190819/3d08833e/attachment-0001.html>
+
+------------------------------
+
+Message: 2
+Date: Mon, 19 Aug 2019 21:37:29 -0300
+From: Fernando Souza <nandodesouza em gmail.com>
+To:
+    "=?utf-8?Q?a_lista_Brasileira_oficial_de_discuss=C3=83=C2=A3o_do_programa_R.?=" 
+    <r-br em listas.c3sl.ufpr.br>
+Cc: Edmar Caldas <edmar_caldas em yahoo.com.br>
+Subject: Re: [R-br] Package Tibble
+Message-ID: <982FECB8-90E4-41AC-9120-62372264667C em getmailspring.com>
+Content-Type: text/plain; charset="utf-8"
+
+Seu exemplo não é reproduzível,, uma vez que não é possível acessar os dados.
+
+Att
+On Aug 19 2019, at 7:51 pm, Edmar Caldas por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Boa noite!
+>
+> estou com um erro no código abaixo e não consigo descobrir o motivo.
+> Já executei esse mesmo código em outra maquina.
+>
+> versao do R
+>
+> version.string R version 3.6.1 (2019-07-05)
+>
+>
+> library(readxl)
+> Salario <- read_excel("F:/FIAP/R/Excel/Salario.xlsx")
+> View(Salario)
+>
+> attach(Salario)
+> install.packages("dplyr")
+> library(dplyr)
+> agregar <-summarise(group_by(Salario, id),
+> salario_m = mean(salario_m),
+> data_pagamento_min=min(data_pagamento),
+> data_pagamento_max=max(data_pagamento),
+> contagem =n())
+> agregar
+>
+> View(agregar)
+>
+>
+> install.packages("rfm")
+> install.packages("lubridate")
+> library(rfm)
+> library(lubridate)
+>
+> data_atual <- lubridate::as_date("2019-04-05", tz = "UTC-3")
+> agregar$data_atual <-data_atual
+> attach(agregar)
+>
+> data_compra <-lubridate::as_date(data_pagamento_max, tz="UTC")
+> agregar$data_compra<-data_compra
+>
+> attach(agregar)
+> View(agregar)
+>
+> rfm_result <- rfm_table_order(agregar, id, data_compra, salario_m, data_atual)
+> rfm_result
+>
+> install.packages("tibble")
+> library(tibble)
+>
+> rfm<-as.tibble(rfm_result)
+> rfm
+>
+>
+>
+> erro
+>
+> Error: Tibble columns must have consistent lengths, only values of length one are recycled:
+> * Length 0: Requested with `.rows` argument
+> * Length 50: Column `rfm`
+> Call `rlang::last_error()` to see a backtrace
+> In addition: Warning message:
+> `as.tibble()` is deprecated, use `as_tibble()` (but mind the new semantics).
+> This warning is displayed once per session.
+>
+>
+>
+> Edmar
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190819/c2981dae/attachment-0001.html>
+
+------------------------------
+
+Subject: Legenda do Digest
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+
+
+------------------------------
+
+Fim da Digest R-br, volume 104, assunto 3
+*****************************************  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190820/700ce2bc/attachment.html>
+
+From enoches em gmail.com  Thu Aug 22 17:31:12 2019
+From: enoches em gmail.com (Enoch)
+Date: Thu, 22 Aug 2019 17:31:12 -0300
+Subject: [R-br] Package Tibble
+In-Reply-To: <2090336582.86957.1566255110255@mail.yahoo.com>
+References: <2090336582.86957.1566255110255.ref@mail.yahoo.com>
+ <2090336582.86957.1566255110255@mail.yahoo.com>
+Message-ID: <CAOtNP_-GV4441hLy1iituvedF-O=ytAu7Ykq79M3Sp78E3sN1g@mail.gmail.com>
+
+Edmar,
+
+Conseguiu resolver o problema?  O seu R e os os pacotes estão atualizados
+para as versões mais recentes?
+
+Sugiro que você vá rodando o script por partes até identificar em que
+momento aparece a mensagem de erro e buscar a solução a partir daí.
+
+Se os pacotes já estiverem instalados, também não precisa instalar tudo
+novamente (install.packages("nome-do-pacote")) toda vez que rodar o script.
+Basta carregá-los com library("nome-do-pacote").
+
+Ao consultar a documentação do pacote rfm, vi que a função  rfm_table_order()
+já gera um tibble como resultado. Então, no seu código, não entendi qual o
+motivo de utilizar `rfm <- as.tibble(rfm_result)` em seguida. Dito isso,
+acredito que `rfm_result` já deve entregar o que você está esperando.
+
+Espero ter ajudado.
+
+
+*Enoch Sousa Filho*
+** http://EnochFilho.net <http://enochfilho.net/> *
+
+
+
+Em seg, 19 de ago de 2019 às 19:52, Edmar Caldas por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa noite!
+>
+> estou com um erro no código abaixo e não consigo descobrir o motivo.
+> Já executei esse mesmo código em outra maquina.
+>
+> versao do R
+>
+> version.string R version 3.6.1 (2019-07-05)
+>
+>
+> library(readxl)
+> Salario <- read_excel("F:/FIAP/R/Excel/Salario.xlsx")
+> View(Salario)
+>
+> attach(Salario)
+> install.packages("dplyr")
+> library(dplyr)
+> agregar <-summarise(group_by(Salario, id),
+>                     salario_m = mean(salario_m),
+>                     data_pagamento_min=min(data_pagamento),
+>                     data_pagamento_max=max(data_pagamento),
+>                     contagem =n())
+> agregar
+>
+> View(agregar)
+>
+>
+> install.packages("rfm")
+> install.packages("lubridate")
+> library(rfm)
+> library(lubridate)
+>
+> data_atual <- lubridate::as_date("2019-04-05", tz = "UTC-3")
+> agregar$data_atual <-data_atual
+> attach(agregar)
+>
+> data_compra <-lubridate::as_date(data_pagamento_max, tz="UTC")
+> agregar$data_compra<-data_compra
+>
+> attach(agregar)
+> View(agregar)
+>
+> rfm_result <- rfm_table_order(agregar, id, data_compra, salario_m,
+> data_atual)
+> rfm_result
+>
+> install.packages("tibble")
+> library(tibble)
+>
+> rfm<-as.tibble(rfm_result)
+> rfm
+>
+>
+> erro
+>
+> Error: Tibble columns must have consistent lengths, only values of length
+> one are recycled:
+> * Length 0: Requested with `.rows` argument
+> * Length 50: Column `rfm`
+> Call `rlang::last_error()` to see a backtrace
+> In addition: Warning message:
+> `as.tibble()` is deprecated, use `as_tibble()` (but mind the new
+> semantics).
+> This warning is displayed once per session.
+>
+>
+> Edmar
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190822/2b3b7cf0/attachment.html>
+
+From ecacarva em gmail.com  Wed Aug 28 08:34:28 2019
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Wed, 28 Aug 2019 08:34:28 -0300
+Subject: [R-br] Como reportar o valor do Odds Ratio
+Message-ID: <CAH8E6Ut2sZU2TAEmL603+Ehrc0TBtqCJb3+fQVdHoXYXyxSXhQ@mail.gmail.com>
+
+Fiz uma regressão logistica e a relação da variável "X" sobre o desfecho
+foi negativa:  -0.53, porém o Odds ratio foi positivo: 0.559, por ser uma
+proporção entendo que OR deve ser sempre positivo. Então como se reporta
+isso (X tem uma influencia negativa de acordo com a RL e para cada unidade
+de alcool consumida há uma aumento dessa influencia de 0.559?)
+O que reportar na tabela de resultados?
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190828/f66994c5/attachment.html>
+
+From drigo.angelo em gmail.com  Wed Aug 28 09:53:14 2019
+From: drigo.angelo em gmail.com (=?UTF-8?Q?Rodrigo_=C3=82ngelo?=)
+Date: Wed, 28 Aug 2019 09:53:14 -0300
+Subject: [R-br] Como reportar o valor do Odds Ratio
+In-Reply-To: <CAH8E6Ut2sZU2TAEmL603+Ehrc0TBtqCJb3+fQVdHoXYXyxSXhQ@mail.gmail.com>
+References: <CAH8E6Ut2sZU2TAEmL603+Ehrc0TBtqCJb3+fQVdHoXYXyxSXhQ@mail.gmail.com>
+Message-ID: <CANsnirWoKAUhM5n_jUcg4UXUaQtnFBKFuBJwFngArvtkUXaQ3g@mail.gmail.com>
+
+Olá, Professor Elias
+
+Pelo que eu entendi, como OR < 1, então a probabilidade de fracasso é maior
+que a probabilidade de sucesso, ou seja, a probabilidade de sucesso tende a
+diminuir para cada unidade de alcool consumida.
+
+Atenciosamente,
+Rodrigo Ângelo
+
+
+Atenciosamente,
+Rodrigo de Castro Ângelo
+
+
+Em qua, 28 de ago de 2019 às 08:35, Elias Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Fiz uma regressão logistica e a relação da variável "X" sobre o desfecho
+> foi negativa:  -0.53, porém o Odds ratio foi positivo: 0.559, por ser uma
+> proporção entendo que OR deve ser sempre positivo. Então como se reporta
+> isso (X tem uma influencia negativa de acordo com a RL e para cada unidade
+> de alcool consumida há uma aumento dessa influencia de 0.559?)
+> O que reportar na tabela de resultados?
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190828/f9cee612/attachment.html>
+
+From felipe.e.barletta em gmail.com  Wed Aug 28 13:45:29 2019
+From: felipe.e.barletta em gmail.com (Felipe Barletta)
+Date: Wed, 28 Aug 2019 13:45:29 -0300
+Subject: [R-br] Como reportar o valor do Odds Ratio
+In-Reply-To: <CAH8E6Ut2sZU2TAEmL603+Ehrc0TBtqCJb3+fQVdHoXYXyxSXhQ@mail.gmail.com>
+References: <CAH8E6Ut2sZU2TAEmL603+Ehrc0TBtqCJb3+fQVdHoXYXyxSXhQ@mail.gmail.com>
+Message-ID: <CAJz4ZjGk99ax4P=JBgmhZFKnwV1VhZ4124_Lt-5G0VCt=x1SAg@mail.gmail.com>
+
+Elias, por definição a Odds Ratio (OR), ela varia de 0 a infinito.
+Ela é uma medida que descreve a associação de duas variáveis em uma tabela
+2x2,
+
+OR = n11*n22/n12*n21
+Quando OR=1, não existe associação, ou seja, a chance é a mesma.
+Se OR>1, o grupo 1 apresenta chance maior do que o grupo 2
+Se OR<1 (que é o seu caso) o grupo 1 apresenta chance menor de ter a
+resposta
+
+Por exemplo. Em um hospital foi feito um estudo caso-controle e podemos
+querer saber se existe associação entre tabagismp e câncer de pulmão
+
+H0: não existe associação entre tabagismo e câncer de pulmão (ou OR = 1)
+
+                         Câncer    Sem câncer
+  Fumante             75              45
+  Não fumante       21              56
+
+############# R
+dados<-matrix(c(75,21,45,56), nc=2)
+# Odds Ratio
+OR<-(dados[1,1]*dados[2,2])/(dados[1,2]*dados[2,1])
+vf<-(1/dados[1,1])+(1/dados[1,2])+(1/dados[2,1]+(1/dados[2,2])) # variância
+dpf<-sqrt(vf)
+z<-qnorm(0.975)
+# Intervalo de confiança para OR
+li<-exp(log(OR) - z*dpf)
+ls<-exp(log(OR) + z*dpf)
+cbind(OR,li,ls)
+           OR       li       ls
+ 4.444444 2.38374 8.286594
+
+Logo, a chance dos indivíduos que fumam apresentarem a câncer é 4,44 vezes
+maior dos que não fumam. esta chance, ao nível de confiança de 95%, pode
+variar entre 2,38 e 8,29 vezes.
+
+No seu caso em que tem um modelo de regressão logística:
+
+theta(x) = exp(beta0 + beta1 alcool_cons)/1+exp(beta0 + beta1 alcool_cons)
+- seu beta1 é negativo (-0.53) e vale a interpretação do Rodrigo Ângelo
+
+No seu caso, você obteve uma odds de 0.559, pode inverter a interpretação
+(1/0.559 = 1.788), logo a cada unidade que acrescenta X, a chance (se sua
+variável resposta é 0= negativo ou fracasso, 1=positivo ou sucesso) de
+fracasso é 1.788 vezes.
+
+Pode-se demonstrar matematicamente que a razão de chance é o exponencial da
+estimativa pontual
+
+exp(-0.53)
+[1] 0.588605
+
+Veja também a função epiDisplay::logistic.display()
+
+
+
+
+
+
+
+
+
+Em qua, 28 de ago de 2019 às 08:35, Elias Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Fiz uma regressão logistica e a relação da variável "X" sobre o desfecho
+> foi negativa:  -0.53, porém o Odds ratio foi positivo: 0.559, por ser uma
+> proporção entendo que OR deve ser sempre positivo. Então como se reporta
+> isso (X tem uma influencia negativa de acordo com a RL e para cada unidade
+> de alcool consumida há uma aumento dessa influencia de 0.559?)
+> O que reportar na tabela de resultados?
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190828/e35fa59e/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Aug 28 14:50:19 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 28 Aug 2019 14:50:19 -0300
+Subject: [R-br] Como reportar o valor do Odds Ratio
+In-Reply-To: <CAH8E6Ut2sZU2TAEmL603+Ehrc0TBtqCJb3+fQVdHoXYXyxSXhQ@mail.gmail.com>
+References: <CAH8E6Ut2sZU2TAEmL603+Ehrc0TBtqCJb3+fQVdHoXYXyxSXhQ@mail.gmail.com>
+Message-ID: <CAKrF98=Sc1ft=cNu7HMSkLBHomG3OnmefSuRgo=J0uw0JO0jrA@mail.gmail.com>
+
+Elias,
+
+Você já recebeu respostas em relação ao aspecto *matemático* da questão, e
+portanto vou pular essa e partir para observações sobre a segunda parte da
+sua questão:
+
+O que reportar na tabela de resultados?
+
+
+Há diferentes respostas "corretas" para essa questão em função do "público
+alvo" e/ou publicação que você tenha que apresentar os resultados.
+
+Quando não há formato pré-definido, eu prefiro usar a forma gráfica do
+pacote do Virasakdi Chongsuvivatwong, embora "imagem valha mil palavras"
+você precisará fazer uma boa legenda para explicar os resultados nesse
+formato. . .
+
+A apresentação da tabela dos resultados da RL (com os valores-p e tudo) é
+interessante para a audiência poder ver o todo e não raro se publica também
+(em geral em lugar do gráfico) uma tabela com o valor da razão de chances e
+seus intervalos de confiança 95%. Quanto a estes últimos, recomendo que
+uses a função confint   do pacote MASS que emprega um algoritmo de máxima
+verossimilhança *também* para calcular esse intervalo (confronte com a
+função confint.default que emprega os intervalos de Wald [baseados na
+teoria da curva normal]), em particular recomendado para análises onde as
+amostras sejam "pequenas". O cuidado será ver se o intervalo assim
+calculado difere muito do calculado na função do pacote epiDisplay, que
+IIRC, usa os intervalos de Wald.
+
+Para que a reportagem seja correta, é importante assegurar que sua
+regressão ficou com resíduos pequenos o suficiente, caso contrário a
+admoestação de Norton & Dowd [1] e as recomendações de Austin &
+Steyerberg[2].
+
+Veja com particular atenção a subseção "*Implications*" no artigo de Norton
+& Dowd.
+
+HTH
+--
+Cesar Rabak
+
+
+[1] Norton, E. C., & Dowd, B. E. (2018). Log Odds and the Interpretation of
+Logit Models. *Health services research*, *53*(2), 859?878.
+doi:10.1111/1475-6773.12712.
+
+[2] Austin, Peter C.; Steyerberg, Ewout W.,Interpreting the concordance
+statistic of a logistic regression model: relation to the variance and odds
+ratio of a continuous explanatory variable,*BMC Medical Research
+Methodology*,12,1,Jun,82,2012, https://doi.org/10.1186/1471-2288-12-82.
+
+
+
+
+"Austin2012","Austin, Peter C.; Steyerberg, Ewout W.","Interpreting the
+concordance statistic of a logistic regression model: relation to the
+variance and odds ratio of a continuous explanatory variable","BMC Medical
+Research Methodology",12,1,"Jun","82",2012,"","","
+https://doi.org/10.1186/1471-2288-12-82
+
+
+
+On Wed, Aug 28, 2019 at 8:35 AM Elias Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Fiz uma regressão logistica e a relação da variável "X" sobre o desfecho
+> foi negativa:  -0.53, porém o Odds ratio foi positivo: 0.559, por ser uma
+> proporção entendo que OR deve ser sempre positivo. Então como se reporta
+> isso (X tem uma influencia negativa de acordo com a RL e para cada unidade
+> de alcool consumida há uma aumento dessa influencia de 0.559?)
+> O que reportar na tabela de resultados?
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190828/f66f898f/attachment.html>
+
+From amikobh em gmail.com  Sat Aug 31 12:29:16 2019
+From: amikobh em gmail.com (Elerson)
+Date: Sat, 31 Aug 2019 12:29:16 -0300
+Subject: [R-br] Problema criar colunas: socorro!
+Message-ID: <10e2c4a8-e315-fcbf-9e61-e9bf6417ee60@gmail.com>
+
+Prezados:
+
+Trabalho um banco de dados com mais de 10000 linhas, representado pelo 
+exemplo abaixo.
+
+*PROCESSO* 	*DATA_DISTRIBUICAO* 	*NOME_PARTE* 	*DATA_CRIME* 
+*DATA_DENUNCIA* 	*ENQUADRAMENTO*
+180022121 	02/01/2018 	A_NONIMATO 	02/01/2018 	02/01/2018 	ART.33 
+PAR.CAPUT - 11.343/06
+180022121 	02/01/2018 	B_NONIMATO 	02/01/2018 	02/01/2018 	ART.33 
+PAR.CAPUT - 11.343/06
+180022105 	02/01/2018 	C_NONIMATO 	01/01/2018 	02/01/2018 	ART.35 - 
+11343/06
+180022105 	02/01/2018 	C_NONIMATO 	01/01/2018 	02/01/2018 	ART.33 - 
+11343/06
+180022097 	02/01/2018 	D_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 PAR. 
+4º INC. II E IV - CPB
+180022097 	02/01/2018 	E_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 
+PAR.4º INC.II E IV - CPB
+180022097 	02/01/2018 	F_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 PAR. 
+4º INC. II E IV - CPB
+180022501 	03/01/2018 	G_NONIMATO 	02/01/2018 	03/01/2018 	ART.157 PAR.2 
+INC.I E II - CP
+180022501 	03/01/2018 	G_NONIMATO 	02/01/2018 	03/01/2018 	ART.14 - CP
+
+Hipóteses:
+
+a) mesmo PROCESSO, NOME_PARTE diferentes, ENQUADRAMENTO igual (linhas 1 e 2)
+
+b) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 3 e 4)
+
+c) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 8 e 9)
+
+Minha questão se refere à hipótese c: preciso criar um coluna 
+(enquadramento2) para transferir o art. 14 transformando o caso em 
+apenas uma linha? sem que se mexa na hipótese b. Em todo o banco sempre 
+estará escrito ART.14 ? CP.
+
+Para ficar assim:
+
+*PROCESSO* 	*DATA_DISTRIBUICAO* 	*NOME_PARTE* 	*DATA_CRIME* 
+*DATA_DENUNCIA* 	*ENQUADRAMENTO* 	*ENQUADRAMENTO2*
+180022121 	02/01/2018 	A_NONIMATO 	02/01/2018 	02/01/2018 	ART.33 
+PAR.CAPUT - 11.343/06 	
+180022121 	02/01/2018 	B_NONIMATO 	02/01/2018 	02/01/2018 	ART.33 
+PAR.CAPUT - 11.343/06 	
+180022105 	02/01/2018 	C_NONIMATO 	01/01/2018 	02/01/2018 	ART.35 - 
+11343/06 	
+180022105 	02/01/2018 	C_NONIMATO 	01/01/2018 	02/01/2018 	ART.33 - 
+11343/06 	
+180022097 	02/01/2018 	D_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 PAR. 
+4º INC. II E IV - CPB 	
+180022097 	02/01/2018 	E_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 
+PAR.4º INC.II E IV - CPB 	
+180022097 	02/01/2018 	F_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 PAR. 
+4º INC. II E IV - CPB 	
+180022501 	03/01/2018 	G_NONIMATO 	02/01/2018 	03/01/2018 	ART.157 PAR.2 
+INC.I E II - CP 	ART.14 - CP
+
+Obrigado.
+
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190831/9f704ffc/attachment.html>
+
+From andreolsouza em yahoo.com.br  Sat Aug 31 20:00:11 2019
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Sat, 31 Aug 2019 23:00:11 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Estimativas_de_componentes_de_vari=C3=A2ncia!?=
+References: <431505181.501497.1567292411188.ref@mail.yahoo.com>
+Message-ID: <431505181.501497.1567292411188@mail.yahoo.com>
+
+boa noite!Estou analisando as saídas destes dois modelos abaixo. 
+Progenie=factor(Progenie)Row=factor(Row)Column=factor(Column)
+require(lmer4)fit1=lmer(Prod ~  (1|Progenie) + (1|Row) , data=dados)summary(fit1)
+Random effects: Groups   Name        Variance Std.Dev. Progenie (Intercept)  66.2     8.14    Row      (Intercept)  47.6     6.90    Residual             100.1    10.00   Number of obs: 162, groups:  Progenie, 81; Row, 19
+
+require(sommer)fit=mmer(Prod ~ 1, random = ~ Progenie + Row, data=dados)summary(fit)Variance-Covariance components:                   VarComp VarCompSE Zratio ConstraintProgenie.Prod-Prod   62.11     20.60  3.016   PositiveRow.Prod-Prod         1.75      2.54  0.688   Positiveunits.Prod-Prod     110.69     17.49  6.328   Positive
+
+Alguém saberia dizer por qual motivo os componentes não são "iguais"? Seria algum erro na declaração do modelo ou seria devido o método de aproximação? 
+
+
+
+att.André 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190831/771a37b6/attachment.html>
+

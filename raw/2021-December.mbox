@@ -1,0 +1,3386 @@
+From ms_sangiogo em hotmail.com  Sat Dec  4 08:48:09 2021
+From: ms_sangiogo em hotmail.com (=?ISO-8859-1?Q?Maur=EDcio_Sangiogo?=)
+Date: Sat, 04 Dec 2021 08:48:09 -0300
+Subject: [R-br] =?iso-8859-1?q?An=E1lise_de_experimento_fatorial_com_parc?=
+ =?iso-8859-1?q?ela_subdividida_no_tempo?=
+In-Reply-To: <CP2PR80MB4724EB7F6E5C9DDC11E98EF59B989@CP2PR80MB4724.lamprd80.prod.outlook.com>
+Message-ID: <CP2PR80MB472486C3E3BABE2749C850929B6B9@CP2PR80MB4724.lamprd80.prod.outlook.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211204/51691133/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Tue Dec  7 11:33:53 2021
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 7 Dec 2021 11:33:53 -0300
+Subject: [R-br] =?utf-8?q?Download_de_dados_p=C3=BAblicos_do_DATASUS?=
+Message-ID: <CAFfGvy+A_q2PFueMDvdfHP=CYRtd0P5_AQAH3-NAajC+hGW5rA@mail.gmail.com>
+
+Saudações turma,
+
+Talvez seja meio off topic mas não estou sabendo a quem recorrer. Eu estou
+procurando uma maneira inteligente de acessar dados públicos que estariam
+disponíveis pelo DATASUS.
+
+1. Tem alguém na lista que trabalha com dados secundário do PNI (programa
+nacional de imunizações)? Alguém que poderia me ajudar a encontrar dados
+públicos dos CRIE?
+
+2. Há alguns lugares meio escondidos do ministério da saúde e do datasus
+que dão acesso a algumas coisas a partir de um ftp como aqui
+ftp://ftp.datasus.gov.br/ Mas aqui os dados que me interessariam só vão até
+2019, ou seja, não há  continuidade na disponibilização. Neste exemplo eu
+acho que usar um utils::download.file() daria certo pra baixar por dentro
+do R. Alguma sugestão mais inteligente para baixar arquivos por dentro do R?
+
+3.Como baixar dados que me interessam de um sítio que não tem um ftp
+visível e eu deveria dar um monte de cliques pra ver a o botão de baixar em
+csv? http://tabnet.datasus.gov.br/cgi/dhdat.exe?bd_pni/cpnibr.def por
+exemplo nesse endereço eu deveria marcar na caixa "periodo" todos os anos,
+na caixa "linha" marcar ano, na caixa "coluna" marcar imuno, depois na
+seleções Imuno+ marcar "Sarampo" e clicar em pesquisa e só depois aparece o
+botão salvar como csv ou excel. Não há um jeito inteligente de fazer isso
+por dentro do R? Aceito sugestões de leitura!!! Eu tentei umas paradas no
+RCurl, downloader e remotes mas sem sucesso.
+
+Abraço forte a todos,
+
+Pedro Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211207/ffc59857/attachment.htm>
+
+From dtiezzi em usp.br  Tue Dec  7 11:36:14 2021
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 7 Dec 2021 11:36:14 -0300
+Subject: [R-br] =?utf-8?q?Download_de_dados_p=C3=BAblicos_do_DATASUS?=
+In-Reply-To: <CAFfGvy+A_q2PFueMDvdfHP=CYRtd0P5_AQAH3-NAajC+hGW5rA@mail.gmail.com>
+References: <CAFfGvy+A_q2PFueMDvdfHP=CYRtd0P5_AQAH3-NAajC+hGW5rA@mail.gmail.com>
+Message-ID: <CA+RL3DMvZJoRJyybnrSYBxaB7AoSEpUi2eoTD-9_xVYrGe5c6A@mail.gmail.com>
+
+Bom dia
+
+Já verificou este pacote?
+
+https://github.com/rfsaldanha/microdatasus
+
+Daniel
+
+On Tue, Dec 7, 2021, 11:32 AM Pedro Emmanuel Alvarenga Americano do Brasil
+por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+> Saudações turma,
+>
+> Talvez seja meio off topic mas não estou sabendo a quem recorrer. Eu estou
+> procurando uma maneira inteligente de acessar dados públicos que estariam
+> disponíveis pelo DATASUS.
+>
+> 1. Tem alguém na lista que trabalha com dados secundário do PNI (programa
+> nacional de imunizações)? Alguém que poderia me ajudar a encontrar dados
+> públicos dos CRIE?
+>
+> 2. Há alguns lugares meio escondidos do ministério da saúde e do datasus
+> que dão acesso a algumas coisas a partir de um ftp como aqui
+> ftp://ftp.datasus.gov.br/ Mas aqui os dados que me interessariam só vão
+> até 2019, ou seja, não há  continuidade na disponibilização. Neste exemplo
+> eu acho que usar um utils::download.file() daria certo pra baixar por
+> dentro do R. Alguma sugestão mais inteligente para baixar arquivos por
+> dentro do R?
+>
+> 3.Como baixar dados que me interessam de um sítio que não tem um ftp
+> visível e eu deveria dar um monte de cliques pra ver a o botão de baixar em
+> csv? http://tabnet.datasus.gov.br/cgi/dhdat.exe?bd_pni/cpnibr.def por
+> exemplo nesse endereço eu deveria marcar na caixa "periodo" todos os anos,
+> na caixa "linha" marcar ano, na caixa "coluna" marcar imuno, depois na
+> seleções Imuno+ marcar "Sarampo" e clicar em pesquisa e só depois aparece o
+> botão salvar como csv ou excel. Não há um jeito inteligente de fazer isso
+> por dentro do R? Aceito sugestões de leitura!!! Eu tentei umas paradas no
+> RCurl, downloader e remotes mas sem sucesso.
+>
+> Abraço forte a todos,
+>
+> Pedro Brasil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211207/d5a21d82/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Tue Dec  7 13:24:42 2021
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 7 Dec 2021 13:24:42 -0300
+Subject: [R-br] =?utf-8?q?Download_de_dados_p=C3=BAblicos_do_DATASUS?=
+In-Reply-To: <CA+RL3DMvZJoRJyybnrSYBxaB7AoSEpUi2eoTD-9_xVYrGe5c6A@mail.gmail.com>
+References: <CAFfGvy+A_q2PFueMDvdfHP=CYRtd0P5_AQAH3-NAajC+hGW5rA@mail.gmail.com>
+ <CA+RL3DMvZJoRJyybnrSYBxaB7AoSEpUi2eoTD-9_xVYrGe5c6A@mail.gmail.com>
+Message-ID: <CAFfGvyKAkqrbiE=BqL8+KcpBMKLfkuYDTO7Qv6M+vP5TKT-fuA@mail.gmail.com>
+
+Ei Daniel,
+
+Eu ja conhecia o pacote do Raphael. Graças a Deus que tem gente que
+consegue abrir esses arquivos dbc.  So que la o acesso acontece somente
+para algumas partes do SiNAN, SIM, SINASC, SIH... SiPNI ainda nao esta la.
+E nem deve estar. Ano passado quando conversei com ele nao havia
+planejamento pra incluir esse dado la. De qualque forma é um lugar pra dar
+uma fuçada e ver como ele faz os downloads. Nao tinha pensado nessa forma
+antes.
+
+Pedro Emmanuel Brasil
+(:)=
+
+Em ter, 7 de dez de 2021 11:36, Daniel Guimarães Tiezzi <dtiezzi em usp.br>
+escreveu:
+
+> Bom dia
+>
+> Já verificou este pacote?
+>
+> https://github.com/rfsaldanha/microdatasus
+>
+> Daniel
+>
+> On Tue, Dec 7, 2021, 11:32 AM Pedro Emmanuel Alvarenga Americano do Brasil
+> por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Saudações turma,
+>>
+>> Talvez seja meio off topic mas não estou sabendo a quem recorrer. Eu
+>> estou procurando uma maneira inteligente de acessar dados públicos que
+>> estariam disponíveis pelo DATASUS.
+>>
+>> 1. Tem alguém na lista que trabalha com dados secundário do PNI (programa
+>> nacional de imunizações)? Alguém que poderia me ajudar a encontrar dados
+>> públicos dos CRIE?
+>>
+>> 2. Há alguns lugares meio escondidos do ministério da saúde e do datasus
+>> que dão acesso a algumas coisas a partir de um ftp como aqui
+>> ftp://ftp.datasus.gov.br/ Mas aqui os dados que me interessariam só vão
+>> até 2019, ou seja, não há  continuidade na disponibilização. Neste exemplo
+>> eu acho que usar um utils::download.file() daria certo pra baixar por
+>> dentro do R. Alguma sugestão mais inteligente para baixar arquivos por
+>> dentro do R?
+>>
+>> 3.Como baixar dados que me interessam de um sítio que não tem um ftp
+>> visível e eu deveria dar um monte de cliques pra ver a o botão de baixar em
+>> csv? http://tabnet.datasus.gov.br/cgi/dhdat.exe?bd_pni/cpnibr.def por
+>> exemplo nesse endereço eu deveria marcar na caixa "periodo" todos os anos,
+>> na caixa "linha" marcar ano, na caixa "coluna" marcar imuno, depois na
+>> seleções Imuno+ marcar "Sarampo" e clicar em pesquisa e só depois aparece o
+>> botão salvar como csv ou excel. Não há um jeito inteligente de fazer isso
+>> por dentro do R? Aceito sugestões de leitura!!! Eu tentei umas paradas no
+>> RCurl, downloader e remotes mas sem sucesso.
+>>
+>> Abraço forte a todos,
+>>
+>> Pedro Brasil
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211207/790cfafc/attachment.htm>
+
+From rfsaldanha em gmail.com  Tue Dec  7 16:19:29 2021
+From: rfsaldanha em gmail.com (Raphael Saldanha)
+Date: Tue, 7 Dec 2021 16:19:29 -0300
+Subject: [R-br] =?utf-8?q?Download_de_dados_p=C3=BAblicos_do_DATASUS?=
+In-Reply-To: <CAFfGvyKAkqrbiE=BqL8+KcpBMKLfkuYDTO7Qv6M+vP5TKT-fuA@mail.gmail.com>
+References: <CAFfGvy+A_q2PFueMDvdfHP=CYRtd0P5_AQAH3-NAajC+hGW5rA@mail.gmail.com>
+ <CA+RL3DMvZJoRJyybnrSYBxaB7AoSEpUi2eoTD-9_xVYrGe5c6A@mail.gmail.com>
+ <CAFfGvyKAkqrbiE=BqL8+KcpBMKLfkuYDTO7Qv6M+vP5TKT-fuA@mail.gmail.com>
+Message-ID: <A3F7545A-13A4-46CB-B523-9027D6E1258D@gmail.com>
+
+Oi pessoal!
+
+Obrigado pela indicação do pacote. A algumas semanas até olhei os dados do PNI, com a intenção de colocar no pacote, mas vi o seguinte problema: os dados em DBC disponibilizados pelo MinSaúde vão até 2019 apenas (ftp://ftp.datasus.gov.br/dissemin/publicos/PNI/DADOS <ftp://ftp.datasus.gov.br/dissemin/publicos/PNI/DADOS>).
+
+No TabNet tem dados mais recentes, mas no FTP do DataSUS não colocaram os arquivos. Se for importante para alguém, posso incluir esses dados de até 2019 no pacote, mas o ideal seria ter acesso aos dados atualizados.
+
+
+Abraços,
+
+Raphael Saldanha
+
+> Em 7 de dez. de 2021, à(s) 13:24, Pedro Emmanuel Alvarenga Americano do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+> 
+> Ei Daniel,
+> 
+> Eu ja conhecia o pacote do Raphael. Graças a Deus que tem gente que consegue abrir esses arquivos dbc.  So que la o acesso acontece somente para algumas partes do SiNAN, SIM, SINASC, SIH... SiPNI ainda nao esta la. E nem deve estar. Ano passado quando conversei com ele nao havia planejamento pra incluir esse dado la. De qualque forma é um lugar pra dar uma fuçada e ver como ele faz os downloads. Nao tinha pensado nessa forma antes. 
+> 
+> Pedro Emmanuel Brasil
+> (:)=
+> 
+> Em ter, 7 de dez de 2021 11:36, Daniel Guimarães Tiezzi <dtiezzi em usp.br <mailto:dtiezzi em usp.br>> escreveu:
+> Bom dia
+> 
+> Já verificou este pacote?
+> 
+> https://github.com/rfsaldanha/microdatasus <https://github.com/rfsaldanha/microdatasus>
+> 
+> Daniel
+> 
+> On Tue, Dec 7, 2021, 11:32 AM Pedro Emmanuel Alvarenga Americano do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+> Saudações turma, 
+> 
+> Talvez seja meio off topic mas não estou sabendo a quem recorrer. Eu estou procurando uma maneira inteligente de acessar dados públicos que estariam disponíveis pelo DATASUS.
+> 
+> 1. Tem alguém na lista que trabalha com dados secundário do PNI (programa nacional de imunizações)? Alguém que poderia me ajudar a encontrar dados públicos dos CRIE?
+> 
+> 2. Há alguns lugares meio escondidos do ministério da saúde e do datasus que dão acesso a algumas coisas a partir de um ftp como aqui ftp://ftp.datasus.gov.br/ <ftp://ftp.datasus.gov.br/> Mas aqui os dados que me interessariam só vão até 2019, ou seja, não há  continuidade na disponibilização. Neste exemplo eu acho que usar um utils::download.file() daria certo pra baixar por dentro do R. Alguma sugestão mais inteligente para baixar arquivos por dentro do R?
+> 
+> 3.Como baixar dados que me interessam de um sítio que não tem um ftp visível e eu deveria dar um monte de cliques pra ver a o botão de baixar em csv? http://tabnet.datasus.gov.br/cgi/dhdat.exe?bd_pni/cpnibr.def <http://tabnet.datasus.gov.br/cgi/dhdat.exe?bd_pni/cpnibr.def> por exemplo nesse endereço eu deveria marcar na caixa "periodo" todos os anos, na caixa "linha" marcar ano, na caixa "coluna" marcar imuno, depois na seleções Imuno+ marcar "Sarampo" e clicar em pesquisa e só depois aparece o botão salvar como csv ou excel. Não há um jeito inteligente de fazer isso por dentro do R? Aceito sugestões de leitura!!! Eu tentei umas paradas no RCurl, downloader e remotes mas sem sucesso.
+> 
+> Abraço forte a todos,
+> 
+> Pedro Brasil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo reproduzível.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211207/ba5e5d88/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Wed Dec  8 17:11:36 2021
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Wed, 8 Dec 2021 17:11:36 -0300
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+Message-ID: <CAFfGvyKV5XWc3K68U4gOq5NPb=Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+
+Saudações amigos do R,
+
+Estou as voltas de estimar taxas de eventos e estou batendo cabeça. Antes
+de escrever uma função eu mesmo para fazer uma tabela com alguns valores
+gostaria de uma luz dos amigos de R.
+
+O banco aml está no pacote survival então bastaria carregar o pacote
+pra reproduzir o exemplo. Eu gostaria de ver em formato de tabela alguns
+momentos específicos da tabela de sobrevivência. Só que o summary.survfit
+só retorna a sobrevivência e não a taxa cumulativa.
+
+library("survival")
+ fit <- survfit(Surv(time, status) ~ x, data = aml)
+> fit
+Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+
+                 n events median 0.95LCL 0.95UCL
+x=Maintained    11      7     31      18      NA
+x=Nonmaintained 12     11     23       8      NA
+# Summary com todos os momentos de eventos
+> summary(fit)
+Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+
+                x=Maintained
+ time n.risk n.event survival std.err lower 95% CI upper 95% CI
+    9     11       1    0.909  0.0867       0.7541        1.000
+   13     10       1    0.818  0.1163       0.6192        1.000
+   18      8       1    0.716  0.1397       0.4884        1.000
+   23      7       1    0.614  0.1526       0.3769        0.999
+   31      5       1    0.491  0.1642       0.2549        0.946
+   34      4       1    0.368  0.1627       0.1549        0.875
+   48      2       1    0.184  0.1535       0.0359        0.944
+
+                x=Nonmaintained
+ time n.risk n.event survival std.err lower 95% CI upper 95% CI
+    5     12       2   0.8333  0.1076       0.6470        1.000
+    8     10       2   0.6667  0.1361       0.4468        0.995
+   12      8       1   0.5833  0.1423       0.3616        0.941
+   23      6       1   0.4861  0.1481       0.2675        0.883
+   27      5       1   0.3889  0.1470       0.1854        0.816
+   30      4       1   0.2917  0.1387       0.1148        0.741
+   33      3       1   0.1944  0.1219       0.0569        0.664
+   43      2       1   0.0972  0.0919       0.0153        0.620
+   45      1       1   0.0000     NaN           NA           NA
+
+# Summary com os momentos desejados
+> summary(fit, times = c(14,28,35))
+Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+
+                x=Maintained
+ time n.risk n.event survival std.err lower 95% CI upper 95% CI
+   14      8       2    0.818   0.116        0.619        1.000
+   28      6       2    0.614   0.153        0.377        0.999
+   35      3       2    0.368   0.163        0.155        0.875
+
+                x=Nonmaintained
+ time n.risk n.event survival std.err lower 95% CI upper 95% CI
+   14      7       5    0.583   0.142       0.3616        0.941
+   28      4       2    0.389   0.147       0.1854        0.816
+   35      2       2    0.194   0.122       0.0569        0.664
+
+> plot(fit)
+> plot(fit, cumhaz = T)
+>
+Reparem que há uma opção para o gráfico cumhaz = T, o que significa que o
+cumhaz está depositado no objeto, inclusive dentro do summary também. Tipo
+summary(fit)$cumhaz. Só que não há uma opção summary(fit, cumhaz = T) que
+retorne o cumhaz ao invés da sobrevivência. Alguém tem algum bizu pra
+fazer  isso organizado, extrair a mesma tabela só que com o cumhaz,
+como summary(fit,
+times = c(14,28,35)) sem muito trabalho?
+
+Abraço forte,
+Pedro Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211208/7a5abf42/attachment.htm>
+
+From cesar.rabak em gmail.com  Wed Dec  8 20:42:48 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 8 Dec 2021 20:42:48 -0300
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+In-Reply-To: <CAFfGvyKV5XWc3K68U4gOq5NPb=Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+References: <CAFfGvyKV5XWc3K68U4gOq5NPb=Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+Message-ID: <CAKrF98m-L6OsY43rOgeC0=BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+
+Isto não é suficiente?
+
+> fit$cumhaz
+ [1] 0.09090909 0.19090909 0.31590909 0.45876623 0.45876623 0.65876623
+ [7] 0.90876623 0.90876623 1.40876623 1.40876623 0.16666667 0.36666667
+[13] 0.49166667 0.49166667 0.65833333 0.85833333 1.10833333 1.44166667
+[19] 1.94166667 2.94166667
+>
+HTH
+--
+Cesar Rabak
+
+On Wed, Dec 8, 2021 at 5:12 PM Pedro Emmanuel Alvarenga Americano do Brasil
+por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+> Saudações amigos do R,
+>
+> Estou as voltas de estimar taxas de eventos e estou batendo cabeça. Antes
+> de escrever uma função eu mesmo para fazer uma tabela com alguns valores
+> gostaria de uma luz dos amigos de R.
+>
+> O banco aml está no pacote survival então bastaria carregar o pacote
+> pra reproduzir o exemplo. Eu gostaria de ver em formato de tabela alguns
+> momentos específicos da tabela de sobrevivência. Só que o summary.survfit
+> só retorna a sobrevivência e não a taxa cumulativa.
+>
+> library("survival")
+>  fit <- survfit(Surv(time, status) ~ x, data = aml)
+> > fit
+> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>
+>                  n events median 0.95LCL 0.95UCL
+> x=Maintained    11      7     31      18      NA
+> x=Nonmaintained 12     11     23       8      NA
+> # Summary com todos os momentos de eventos
+> > summary(fit)
+> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>
+>                 x=Maintained
+>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>     9     11       1    0.909  0.0867       0.7541        1.000
+>    13     10       1    0.818  0.1163       0.6192        1.000
+>    18      8       1    0.716  0.1397       0.4884        1.000
+>    23      7       1    0.614  0.1526       0.3769        0.999
+>    31      5       1    0.491  0.1642       0.2549        0.946
+>    34      4       1    0.368  0.1627       0.1549        0.875
+>    48      2       1    0.184  0.1535       0.0359        0.944
+>
+>                 x=Nonmaintained
+>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>     5     12       2   0.8333  0.1076       0.6470        1.000
+>     8     10       2   0.6667  0.1361       0.4468        0.995
+>    12      8       1   0.5833  0.1423       0.3616        0.941
+>    23      6       1   0.4861  0.1481       0.2675        0.883
+>    27      5       1   0.3889  0.1470       0.1854        0.816
+>    30      4       1   0.2917  0.1387       0.1148        0.741
+>    33      3       1   0.1944  0.1219       0.0569        0.664
+>    43      2       1   0.0972  0.0919       0.0153        0.620
+>    45      1       1   0.0000     NaN           NA           NA
+>
+> # Summary com os momentos desejados
+> > summary(fit, times = c(14,28,35))
+> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>
+>                 x=Maintained
+>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>    14      8       2    0.818   0.116        0.619        1.000
+>    28      6       2    0.614   0.153        0.377        0.999
+>    35      3       2    0.368   0.163        0.155        0.875
+>
+>                 x=Nonmaintained
+>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>    14      7       5    0.583   0.142       0.3616        0.941
+>    28      4       2    0.389   0.147       0.1854        0.816
+>    35      2       2    0.194   0.122       0.0569        0.664
+>
+> > plot(fit)
+> > plot(fit, cumhaz = T)
+> >
+> Reparem que há uma opção para o gráfico cumhaz = T, o que significa que o
+> cumhaz está depositado no objeto, inclusive dentro do summary também. Tipo
+> summary(fit)$cumhaz. Só que não há uma opção summary(fit, cumhaz = T) que
+> retorne o cumhaz ao invés da sobrevivência. Alguém tem algum bizu pra
+> fazer  isso organizado, extrair a mesma tabela só que com o cumhaz, como summary(fit,
+> times = c(14,28,35)) sem muito trabalho?
+>
+> Abraço forte,
+> Pedro Brasil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211208/9dcc1148/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Thu Dec  9 09:25:54 2021
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Thu, 9 Dec 2021 09:25:54 -0300
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+In-Reply-To: <CAKrF98m-L6OsY43rOgeC0=BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+References: <CAFfGvyKV5XWc3K68U4gOq5NPb=Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+ <CAKrF98m-L6OsY43rOgeC0=BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+Message-ID: <CAFfGvy+oBHvZG8wX_+_ncpZw99iO0JYTjb5-pUXb5_GgZdc47Q@mail.gmail.com>
+
+Ei Cesar,
+
+Ei sei que o cumhaz esta la. Eu so queria uma saida parecida com a do
+survival. Parece que vou ter que montar uma um esquema aqui pegar esses
+valores e montar uma tabela de saida.
+
+Valeu.
+
+Pedro Emmanuel Brasil
+(:)=
+
+Em qua, 8 de dez de 2021 20:42, Cesar Rabak <cesar.rabak em gmail.com>
+escreveu:
+
+> Isto não é suficiente?
+>
+> > fit$cumhaz
+>  [1] 0.09090909 0.19090909 0.31590909 0.45876623 0.45876623 0.65876623
+>  [7] 0.90876623 0.90876623 1.40876623 1.40876623 0.16666667 0.36666667
+> [13] 0.49166667 0.49166667 0.65833333 0.85833333 1.10833333 1.44166667
+> [19] 1.94166667 2.94166667
+> >
+> HTH
+> --
+> Cesar Rabak
+>
+> On Wed, Dec 8, 2021 at 5:12 PM Pedro Emmanuel Alvarenga Americano do
+> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Saudações amigos do R,
+>>
+>> Estou as voltas de estimar taxas de eventos e estou batendo cabeça. Antes
+>> de escrever uma função eu mesmo para fazer uma tabela com alguns valores
+>> gostaria de uma luz dos amigos de R.
+>>
+>> O banco aml está no pacote survival então bastaria carregar o pacote
+>> pra reproduzir o exemplo. Eu gostaria de ver em formato de tabela alguns
+>> momentos específicos da tabela de sobrevivência. Só que o summary.survfit
+>> só retorna a sobrevivência e não a taxa cumulativa.
+>>
+>> library("survival")
+>>  fit <- survfit(Surv(time, status) ~ x, data = aml)
+>> > fit
+>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>
+>>                  n events median 0.95LCL 0.95UCL
+>> x=Maintained    11      7     31      18      NA
+>> x=Nonmaintained 12     11     23       8      NA
+>> # Summary com todos os momentos de eventos
+>> > summary(fit)
+>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>
+>>                 x=Maintained
+>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>     9     11       1    0.909  0.0867       0.7541        1.000
+>>    13     10       1    0.818  0.1163       0.6192        1.000
+>>    18      8       1    0.716  0.1397       0.4884        1.000
+>>    23      7       1    0.614  0.1526       0.3769        0.999
+>>    31      5       1    0.491  0.1642       0.2549        0.946
+>>    34      4       1    0.368  0.1627       0.1549        0.875
+>>    48      2       1    0.184  0.1535       0.0359        0.944
+>>
+>>                 x=Nonmaintained
+>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>     5     12       2   0.8333  0.1076       0.6470        1.000
+>>     8     10       2   0.6667  0.1361       0.4468        0.995
+>>    12      8       1   0.5833  0.1423       0.3616        0.941
+>>    23      6       1   0.4861  0.1481       0.2675        0.883
+>>    27      5       1   0.3889  0.1470       0.1854        0.816
+>>    30      4       1   0.2917  0.1387       0.1148        0.741
+>>    33      3       1   0.1944  0.1219       0.0569        0.664
+>>    43      2       1   0.0972  0.0919       0.0153        0.620
+>>    45      1       1   0.0000     NaN           NA           NA
+>>
+>> # Summary com os momentos desejados
+>> > summary(fit, times = c(14,28,35))
+>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>
+>>                 x=Maintained
+>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>    14      8       2    0.818   0.116        0.619        1.000
+>>    28      6       2    0.614   0.153        0.377        0.999
+>>    35      3       2    0.368   0.163        0.155        0.875
+>>
+>>                 x=Nonmaintained
+>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>    14      7       5    0.583   0.142       0.3616        0.941
+>>    28      4       2    0.389   0.147       0.1854        0.816
+>>    35      2       2    0.194   0.122       0.0569        0.664
+>>
+>> > plot(fit)
+>> > plot(fit, cumhaz = T)
+>> >
+>> Reparem que há uma opção para o gráfico cumhaz = T, o que significa que o
+>> cumhaz está depositado no objeto, inclusive dentro do summary também. Tipo
+>> summary(fit)$cumhaz. Só que não há uma opção summary(fit, cumhaz = T) que
+>> retorne o cumhaz ao invés da sobrevivência. Alguém tem algum bizu pra
+>> fazer  isso organizado, extrair a mesma tabela só que com o cumhaz, como summary(fit,
+>> times = c(14,28,35)) sem muito trabalho?
+>>
+>> Abraço forte,
+>> Pedro Brasil
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211209/404b4b79/attachment.htm>
+
+From cidedson em gmail.com  Thu Dec  9 10:42:43 2021
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Thu, 9 Dec 2021 10:42:43 -0300
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+In-Reply-To: <CAFfGvy+oBHvZG8wX_+_ncpZw99iO0JYTjb5-pUXb5_GgZdc47Q@mail.gmail.com>
+References: <CAFfGvyKV5XWc3K68U4gOq5NPb=Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+ <CAKrF98m-L6OsY43rOgeC0=BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+ <CAFfGvy+oBHvZG8wX_+_ncpZw99iO0JYTjb5-pUXb5_GgZdc47Q@mail.gmail.com>
+Message-ID: <CAAmR27_oErE4y7Au3wxEpx9LQ4VjtLm=e7Z9ROLfp8eR9ZNW2Q@mail.gmail.com>
+
+library(survival)
+library(broom)
+library(tidyverse)
+
+fit <- survfit(Surv(time, status) ~ x, data = aml)
+df<-tidy(fit)
+df$cumhaz <- fit$cumhaz
+df %>% filter(time%in%c(9,8,28,33,48))
+
+fit1 <- summary(fit, times = c(14,28,35))
+fit1
+
+tab <- data.frame(time = fit1$time,
+                  n.risk = fit1$n.risk,
+                  n.event = fit1$n.event,
+                  survival = fit1$surv,
+                  std.err = fit1$std.err,
+                  `lower 95% CI` = fit1$lower,
+                  `upper 95% CI` = fit1$upper,
+                  cumhaz = fit1$cumhaz,
+                  strata = fit1$strata)
+
+tab
+
+*Cid Edson Mendonça Póvoas*
+
+*AnovAgro <http://www.anovagro.com/>*
+*Engenheiro Agrônomo - **Data Scientist*
+*CREA : 051984991-4*
+*Técnico em Segurança do Trabalho *
+*Nº: **0012669/BA*
+*Tel: +55 73 99151-9565*
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em qui., 9 de dez. de 2021 às 09:26, Pedro Emmanuel Alvarenga Americano do
+Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Ei Cesar,
+>
+> Ei sei que o cumhaz esta la. Eu so queria uma saida parecida com a do
+> survival. Parece que vou ter que montar uma um esquema aqui pegar esses
+> valores e montar uma tabela de saida.
+>
+> Valeu.
+>
+> Pedro Emmanuel Brasil
+> (:)=
+>
+> Em qua, 8 de dez de 2021 20:42, Cesar Rabak <cesar.rabak em gmail.com>
+> escreveu:
+>
+>> Isto não é suficiente?
+>>
+>> > fit$cumhaz
+>>  [1] 0.09090909 0.19090909 0.31590909 0.45876623 0.45876623 0.65876623
+>>  [7] 0.90876623 0.90876623 1.40876623 1.40876623 0.16666667 0.36666667
+>> [13] 0.49166667 0.49166667 0.65833333 0.85833333 1.10833333 1.44166667
+>> [19] 1.94166667 2.94166667
+>> >
+>> HTH
+>> --
+>> Cesar Rabak
+>>
+>> On Wed, Dec 8, 2021 at 5:12 PM Pedro Emmanuel Alvarenga Americano do
+>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Saudações amigos do R,
+>>>
+>>> Estou as voltas de estimar taxas de eventos e estou batendo cabeça.
+>>> Antes de escrever uma função eu mesmo para fazer uma tabela com alguns
+>>> valores gostaria de uma luz dos amigos de R.
+>>>
+>>> O banco aml está no pacote survival então bastaria carregar o pacote
+>>> pra reproduzir o exemplo. Eu gostaria de ver em formato de tabela alguns
+>>> momentos específicos da tabela de sobrevivência. Só que o summary.survfit
+>>> só retorna a sobrevivência e não a taxa cumulativa.
+>>>
+>>> library("survival")
+>>>  fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>> > fit
+>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>
+>>>                  n events median 0.95LCL 0.95UCL
+>>> x=Maintained    11      7     31      18      NA
+>>> x=Nonmaintained 12     11     23       8      NA
+>>> # Summary com todos os momentos de eventos
+>>> > summary(fit)
+>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>
+>>>                 x=Maintained
+>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>     9     11       1    0.909  0.0867       0.7541        1.000
+>>>    13     10       1    0.818  0.1163       0.6192        1.000
+>>>    18      8       1    0.716  0.1397       0.4884        1.000
+>>>    23      7       1    0.614  0.1526       0.3769        0.999
+>>>    31      5       1    0.491  0.1642       0.2549        0.946
+>>>    34      4       1    0.368  0.1627       0.1549        0.875
+>>>    48      2       1    0.184  0.1535       0.0359        0.944
+>>>
+>>>                 x=Nonmaintained
+>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>     5     12       2   0.8333  0.1076       0.6470        1.000
+>>>     8     10       2   0.6667  0.1361       0.4468        0.995
+>>>    12      8       1   0.5833  0.1423       0.3616        0.941
+>>>    23      6       1   0.4861  0.1481       0.2675        0.883
+>>>    27      5       1   0.3889  0.1470       0.1854        0.816
+>>>    30      4       1   0.2917  0.1387       0.1148        0.741
+>>>    33      3       1   0.1944  0.1219       0.0569        0.664
+>>>    43      2       1   0.0972  0.0919       0.0153        0.620
+>>>    45      1       1   0.0000     NaN           NA           NA
+>>>
+>>> # Summary com os momentos desejados
+>>> > summary(fit, times = c(14,28,35))
+>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>
+>>>                 x=Maintained
+>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>
+>>>                 x=Nonmaintained
+>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>
+>>> > plot(fit)
+>>> > plot(fit, cumhaz = T)
+>>> >
+>>> Reparem que há uma opção para o gráfico cumhaz = T, o que significa que
+>>> o cumhaz está depositado no objeto, inclusive dentro do summary também.
+>>> Tipo summary(fit)$cumhaz. Só que não há uma opção summary(fit, cumhaz = T)
+>>> que retorne o cumhaz ao invés da sobrevivência. Alguém tem algum bizu pra
+>>> fazer  isso organizado, extrair a mesma tabela só que com o cumhaz, como summary(fit,
+>>> times = c(14,28,35)) sem muito trabalho?
+>>>
+>>> Abraço forte,
+>>> Pedro Brasil
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211209/bdb594b8/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Fri Dec 10 13:22:49 2021
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Fri, 10 Dec 2021 13:22:49 -0300
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+In-Reply-To: <CAAmR27_oErE4y7Au3wxEpx9LQ4VjtLm=e7Z9ROLfp8eR9ZNW2Q@mail.gmail.com>
+References: <CAFfGvyKV5XWc3K68U4gOq5NPb=Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+ <CAKrF98m-L6OsY43rOgeC0=BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+ <CAFfGvy+oBHvZG8wX_+_ncpZw99iO0JYTjb5-pUXb5_GgZdc47Q@mail.gmail.com>
+ <CAAmR27_oErE4y7Au3wxEpx9LQ4VjtLm=e7Z9ROLfp8eR9ZNW2Q@mail.gmail.com>
+Message-ID: <CAFfGvyLb+aNx7EEiUT1Eo2K0WsTn4ukQHopZcOHYw8VUAHRsDg@mail.gmail.com>
+
+> fit <- survfit(Surv(time, status) ~ x, data = aml)
+> y <- summary(fit, times = c(14,28,35))
+> y
+Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+
+                x=Maintained
+ time n.risk n.event survival std.err lower 95% CI upper 95% CI
+   14      8       2    0.818   0.116        0.619        1.000
+   28      6       2    0.614   0.153        0.377        0.999
+   35      3       2    0.368   0.163        0.155        0.875
+
+                x=Nonmaintained
+ time n.risk n.event survival std.err lower 95% CI upper 95% CI
+   14      7       5    0.583   0.142       0.3616        0.941
+   28      4       2    0.389   0.147       0.1854        0.816
+   35      2       2    0.194   0.122       0.0569        0.664
+
+> cumhaz.summ <- function(y, digits = 3){
++   cond <- y$strata == levels(y$strata)[1]
++   y$cumhaz.upper  <- pmax(y$cumhaz + 1.96 * y$std.chaz,0)
++   y$cumhaz.lower  <- pmax(y$cumhaz - 1.96 * y$std.chaz,0)
++   output <- list()
++   for(i in seq_along(levels(y$strata))){
++     cond <- y$strata == levels(y$strata)[i]
++     output[[i]] <- round(data.frame(Time = y$time[cond],
++                                     'N risk' = y$n.risk[cond],
++                                     'N events' = y$n.event[cond],
++                                     'Cum Hazard' = y$cumhaz[cond],
++                                     lower = y$cumhaz.lower[cond],
++                                     upper = y$cumhaz.upper[cond]),digits)
++   }
++   names(output) <- levels(y$strata)
++   output
++ }
+> cumhaz.summ(y)
+$`x=Maintained`
+  Time N.risk N.events Cum.Hazard lower upper
+1   14      8        2      0.191 0.000 0.456
+2   28      6        2      0.459 0.002 0.915
+3   35      3        2      0.909 0.133 1.685
+
+$`x=Nonmaintained`
+  Time N.risk N.events Cum.Hazard lower upper
+1   14      7        5      0.492 0.056 0.928
+2   28      4        2      0.858 0.187 1.530
+3   35      2        2      1.442 0.385 2.499
+
+>
+
+Em qui., 9 de dez. de 2021 às 10:43, Cid Póvoas por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> library(survival)
+> library(broom)
+> library(tidyverse)
+>
+> fit <- survfit(Surv(time, status) ~ x, data = aml)
+> df<-tidy(fit)
+> df$cumhaz <- fit$cumhaz
+> df %>% filter(time%in%c(9,8,28,33,48))
+>
+> fit1 <- summary(fit, times = c(14,28,35))
+> fit1
+>
+> tab <- data.frame(time = fit1$time,
+>                   n.risk = fit1$n.risk,
+>                   n.event = fit1$n.event,
+>                   survival = fit1$surv,
+>                   std.err = fit1$std.err,
+>                   `lower 95% CI` = fit1$lower,
+>                   `upper 95% CI` = fit1$upper,
+>                   cumhaz = fit1$cumhaz,
+>                   strata = fit1$strata)
+>
+> tab
+>
+> *Cid Edson Mendonça Póvoas*
+>
+> *AnovAgro <http://www.anovagro.com/>*
+> *Engenheiro Agrônomo - **Data Scientist*
+> *CREA : 051984991-4*
+> *Técnico em Segurança do Trabalho *
+> *Nº: **0012669/BA*
+> *Tel: +55 73 99151-9565*
+> *Lattes : *http://lattes.cnpq.br/2303498368142537
+> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+> *Whatsapp :* https://wa.me/5573991519565
+>
+>
+> Em qui., 9 de dez. de 2021 às 09:26, Pedro Emmanuel Alvarenga Americano do
+> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Ei Cesar,
+>>
+>> Ei sei que o cumhaz esta la. Eu so queria uma saida parecida com a do
+>> survival. Parece que vou ter que montar uma um esquema aqui pegar esses
+>> valores e montar uma tabela de saida.
+>>
+>> Valeu.
+>>
+>> Pedro Emmanuel Brasil
+>> (:)=
+>>
+>> Em qua, 8 de dez de 2021 20:42, Cesar Rabak <cesar.rabak em gmail.com>
+>> escreveu:
+>>
+>>> Isto não é suficiente?
+>>>
+>>> > fit$cumhaz
+>>>  [1] 0.09090909 0.19090909 0.31590909 0.45876623 0.45876623 0.65876623
+>>>  [7] 0.90876623 0.90876623 1.40876623 1.40876623 0.16666667 0.36666667
+>>> [13] 0.49166667 0.49166667 0.65833333 0.85833333 1.10833333 1.44166667
+>>> [19] 1.94166667 2.94166667
+>>> >
+>>> HTH
+>>> --
+>>> Cesar Rabak
+>>>
+>>> On Wed, Dec 8, 2021 at 5:12 PM Pedro Emmanuel Alvarenga Americano do
+>>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Saudações amigos do R,
+>>>>
+>>>> Estou as voltas de estimar taxas de eventos e estou batendo cabeça.
+>>>> Antes de escrever uma função eu mesmo para fazer uma tabela com alguns
+>>>> valores gostaria de uma luz dos amigos de R.
+>>>>
+>>>> O banco aml está no pacote survival então bastaria carregar o pacote
+>>>> pra reproduzir o exemplo. Eu gostaria de ver em formato de tabela alguns
+>>>> momentos específicos da tabela de sobrevivência. Só que o summary.survfit
+>>>> só retorna a sobrevivência e não a taxa cumulativa.
+>>>>
+>>>> library("survival")
+>>>>  fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>> > fit
+>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>
+>>>>                  n events median 0.95LCL 0.95UCL
+>>>> x=Maintained    11      7     31      18      NA
+>>>> x=Nonmaintained 12     11     23       8      NA
+>>>> # Summary com todos os momentos de eventos
+>>>> > summary(fit)
+>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>
+>>>>                 x=Maintained
+>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>     9     11       1    0.909  0.0867       0.7541        1.000
+>>>>    13     10       1    0.818  0.1163       0.6192        1.000
+>>>>    18      8       1    0.716  0.1397       0.4884        1.000
+>>>>    23      7       1    0.614  0.1526       0.3769        0.999
+>>>>    31      5       1    0.491  0.1642       0.2549        0.946
+>>>>    34      4       1    0.368  0.1627       0.1549        0.875
+>>>>    48      2       1    0.184  0.1535       0.0359        0.944
+>>>>
+>>>>                 x=Nonmaintained
+>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>     5     12       2   0.8333  0.1076       0.6470        1.000
+>>>>     8     10       2   0.6667  0.1361       0.4468        0.995
+>>>>    12      8       1   0.5833  0.1423       0.3616        0.941
+>>>>    23      6       1   0.4861  0.1481       0.2675        0.883
+>>>>    27      5       1   0.3889  0.1470       0.1854        0.816
+>>>>    30      4       1   0.2917  0.1387       0.1148        0.741
+>>>>    33      3       1   0.1944  0.1219       0.0569        0.664
+>>>>    43      2       1   0.0972  0.0919       0.0153        0.620
+>>>>    45      1       1   0.0000     NaN           NA           NA
+>>>>
+>>>> # Summary com os momentos desejados
+>>>> > summary(fit, times = c(14,28,35))
+>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>
+>>>>                 x=Maintained
+>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>>
+>>>>                 x=Nonmaintained
+>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>>
+>>>> > plot(fit)
+>>>> > plot(fit, cumhaz = T)
+>>>> >
+>>>> Reparem que há uma opção para o gráfico cumhaz = T, o que significa que
+>>>> o cumhaz está depositado no objeto, inclusive dentro do summary também.
+>>>> Tipo summary(fit)$cumhaz. Só que não há uma opção summary(fit, cumhaz = T)
+>>>> que retorne o cumhaz ao invés da sobrevivência. Alguém tem algum bizu pra
+>>>> fazer  isso organizado, extrair a mesma tabela só que com o cumhaz, como summary(fit,
+>>>> times = c(14,28,35)) sem muito trabalho?
+>>>>
+>>>> Abraço forte,
+>>>> Pedro Brasil
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211210/a5ec1f76/attachment.htm>
+
+From cesar.rabak em gmail.com  Fri Dec 10 13:32:17 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 10 Dec 2021 13:32:17 -0300
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+In-Reply-To: <CAFfGvyLb+aNx7EEiUT1Eo2K0WsTn4ukQHopZcOHYw8VUAHRsDg@mail.gmail.com>
+References: <CAFfGvyKV5XWc3K68U4gOq5NPb=Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+ <CAKrF98m-L6OsY43rOgeC0=BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+ <CAFfGvy+oBHvZG8wX_+_ncpZw99iO0JYTjb5-pUXb5_GgZdc47Q@mail.gmail.com>
+ <CAAmR27_oErE4y7Au3wxEpx9LQ4VjtLm=e7Z9ROLfp8eR9ZNW2Q@mail.gmail.com>
+ <CAFfGvyLb+aNx7EEiUT1Eo2K0WsTn4ukQHopZcOHYw8VUAHRsDg@mail.gmail.com>
+Message-ID: <CAKrF98kCX9MJJ7joDb4CENTLtqX7iMjPyCm5BXyT2Ju-xwAvQQ@mail.gmail.com>
+
+Esse cálculo dos limites superiores e inferiores do risco acumulado me
+parece estranho..
+
+A formulação é baseada em alguma referência?
+
+
+On Fri, Dec 10, 2021 at 1:23 PM Pedro Emmanuel Alvarenga Americano do
+Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+> > fit <- survfit(Surv(time, status) ~ x, data = aml)
+> > y <- summary(fit, times = c(14,28,35))
+> > y
+> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>
+>                 x=Maintained
+>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>    14      8       2    0.818   0.116        0.619        1.000
+>    28      6       2    0.614   0.153        0.377        0.999
+>    35      3       2    0.368   0.163        0.155        0.875
+>
+>                 x=Nonmaintained
+>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>    14      7       5    0.583   0.142       0.3616        0.941
+>    28      4       2    0.389   0.147       0.1854        0.816
+>    35      2       2    0.194   0.122       0.0569        0.664
+>
+> > cumhaz.summ <- function(y, digits = 3){
+> +   cond <- y$strata == levels(y$strata)[1]
+> +   y$cumhaz.upper  <- pmax(y$cumhaz + 1.96 * y$std.chaz,0)
+> +   y$cumhaz.lower  <- pmax(y$cumhaz - 1.96 * y$std.chaz,0)
+> +   output <- list()
+> +   for(i in seq_along(levels(y$strata))){
+> +     cond <- y$strata == levels(y$strata)[i]
+> +     output[[i]] <- round(data.frame(Time = y$time[cond],
+> +                                     'N risk' = y$n.risk[cond],
+> +                                     'N events' = y$n.event[cond],
+> +                                     'Cum Hazard' = y$cumhaz[cond],
+> +                                     lower = y$cumhaz.lower[cond],
+> +                                     upper = y$cumhaz.upper[cond]),digits)
+> +   }
+> +   names(output) <- levels(y$strata)
+> +   output
+> + }
+> > cumhaz.summ(y)
+> $`x=Maintained`
+>   Time N.risk N.events Cum.Hazard lower upper
+> 1   14      8        2      0.191 0.000 0.456
+> 2   28      6        2      0.459 0.002 0.915
+> 3   35      3        2      0.909 0.133 1.685
+>
+> $`x=Nonmaintained`
+>   Time N.risk N.events Cum.Hazard lower upper
+> 1   14      7        5      0.492 0.056 0.928
+> 2   28      4        2      0.858 0.187 1.530
+> 3   35      2        2      1.442 0.385 2.499
+>
+> >
+>
+> Em qui., 9 de dez. de 2021 às 10:43, Cid Póvoas por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> library(survival)
+>> library(broom)
+>> library(tidyverse)
+>>
+>> fit <- survfit(Surv(time, status) ~ x, data = aml)
+>> df<-tidy(fit)
+>> df$cumhaz <- fit$cumhaz
+>> df %>% filter(time%in%c(9,8,28,33,48))
+>>
+>> fit1 <- summary(fit, times = c(14,28,35))
+>> fit1
+>>
+>> tab <- data.frame(time = fit1$time,
+>>                   n.risk = fit1$n.risk,
+>>                   n.event = fit1$n.event,
+>>                   survival = fit1$surv,
+>>                   std.err = fit1$std.err,
+>>                   `lower 95% CI` = fit1$lower,
+>>                   `upper 95% CI` = fit1$upper,
+>>                   cumhaz = fit1$cumhaz,
+>>                   strata = fit1$strata)
+>>
+>> tab
+>>
+>> *Cid Edson Mendonça Póvoas*
+>>
+>> *AnovAgro <http://www.anovagro.com/>*
+>> *Engenheiro Agrônomo - **Data Scientist*
+>> *CREA : 051984991-4*
+>> *Técnico em Segurança do Trabalho *
+>> *Nº: **0012669/BA*
+>> *Tel: +55 73 99151-9565*
+>> *Lattes : *http://lattes.cnpq.br/2303498368142537
+>> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+>> *Whatsapp :* https://wa.me/5573991519565
+>>
+>>
+>> Em qui., 9 de dez. de 2021 às 09:26, Pedro Emmanuel Alvarenga Americano
+>> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Ei Cesar,
+>>>
+>>> Ei sei que o cumhaz esta la. Eu so queria uma saida parecida com a do
+>>> survival. Parece que vou ter que montar uma um esquema aqui pegar esses
+>>> valores e montar uma tabela de saida.
+>>>
+>>> Valeu.
+>>>
+>>> Pedro Emmanuel Brasil
+>>> (:)=
+>>>
+>>> Em qua, 8 de dez de 2021 20:42, Cesar Rabak <cesar.rabak em gmail.com>
+>>> escreveu:
+>>>
+>>>> Isto não é suficiente?
+>>>>
+>>>> > fit$cumhaz
+>>>>  [1] 0.09090909 0.19090909 0.31590909 0.45876623 0.45876623 0.65876623
+>>>>  [7] 0.90876623 0.90876623 1.40876623 1.40876623 0.16666667 0.36666667
+>>>> [13] 0.49166667 0.49166667 0.65833333 0.85833333 1.10833333 1.44166667
+>>>> [19] 1.94166667 2.94166667
+>>>> >
+>>>> HTH
+>>>> --
+>>>> Cesar Rabak
+>>>>
+>>>> On Wed, Dec 8, 2021 at 5:12 PM Pedro Emmanuel Alvarenga Americano do
+>>>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>>>
+>>>>> Saudações amigos do R,
+>>>>>
+>>>>> Estou as voltas de estimar taxas de eventos e estou batendo cabeça.
+>>>>> Antes de escrever uma função eu mesmo para fazer uma tabela com alguns
+>>>>> valores gostaria de uma luz dos amigos de R.
+>>>>>
+>>>>> O banco aml está no pacote survival então bastaria carregar o pacote
+>>>>> pra reproduzir o exemplo. Eu gostaria de ver em formato de tabela alguns
+>>>>> momentos específicos da tabela de sobrevivência. Só que o summary.survfit
+>>>>> só retorna a sobrevivência e não a taxa cumulativa.
+>>>>>
+>>>>> library("survival")
+>>>>>  fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>>> > fit
+>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>
+>>>>>                  n events median 0.95LCL 0.95UCL
+>>>>> x=Maintained    11      7     31      18      NA
+>>>>> x=Nonmaintained 12     11     23       8      NA
+>>>>> # Summary com todos os momentos de eventos
+>>>>> > summary(fit)
+>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>
+>>>>>                 x=Maintained
+>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>     9     11       1    0.909  0.0867       0.7541        1.000
+>>>>>    13     10       1    0.818  0.1163       0.6192        1.000
+>>>>>    18      8       1    0.716  0.1397       0.4884        1.000
+>>>>>    23      7       1    0.614  0.1526       0.3769        0.999
+>>>>>    31      5       1    0.491  0.1642       0.2549        0.946
+>>>>>    34      4       1    0.368  0.1627       0.1549        0.875
+>>>>>    48      2       1    0.184  0.1535       0.0359        0.944
+>>>>>
+>>>>>                 x=Nonmaintained
+>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>     5     12       2   0.8333  0.1076       0.6470        1.000
+>>>>>     8     10       2   0.6667  0.1361       0.4468        0.995
+>>>>>    12      8       1   0.5833  0.1423       0.3616        0.941
+>>>>>    23      6       1   0.4861  0.1481       0.2675        0.883
+>>>>>    27      5       1   0.3889  0.1470       0.1854        0.816
+>>>>>    30      4       1   0.2917  0.1387       0.1148        0.741
+>>>>>    33      3       1   0.1944  0.1219       0.0569        0.664
+>>>>>    43      2       1   0.0972  0.0919       0.0153        0.620
+>>>>>    45      1       1   0.0000     NaN           NA           NA
+>>>>>
+>>>>> # Summary com os momentos desejados
+>>>>> > summary(fit, times = c(14,28,35))
+>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>
+>>>>>                 x=Maintained
+>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>>>
+>>>>>                 x=Nonmaintained
+>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>>>
+>>>>> > plot(fit)
+>>>>> > plot(fit, cumhaz = T)
+>>>>> >
+>>>>> Reparem que há uma opção para o gráfico cumhaz = T, o que significa
+>>>>> que o cumhaz está depositado no objeto, inclusive dentro do summary também.
+>>>>> Tipo summary(fit)$cumhaz. Só que não há uma opção summary(fit, cumhaz = T)
+>>>>> que retorne o cumhaz ao invés da sobrevivência. Alguém tem algum bizu pra
+>>>>> fazer  isso organizado, extrair a mesma tabela só que com o cumhaz, como summary(fit,
+>>>>> times = c(14,28,35)) sem muito trabalho?
+>>>>>
+>>>>> Abraço forte,
+>>>>> Pedro Brasil
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211210/d591bef1/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Fri Dec 10 16:02:31 2021
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Fri, 10 Dec 2021 16:02:31 -0300
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+In-Reply-To: <CAKrF98kCX9MJJ7joDb4CENTLtqX7iMjPyCm5BXyT2Ju-xwAvQQ@mail.gmail.com>
+References: <CAFfGvyKV5XWc3K68U4gOq5NPb=Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+ <CAKrF98m-L6OsY43rOgeC0=BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+ <CAFfGvy+oBHvZG8wX_+_ncpZw99iO0JYTjb5-pUXb5_GgZdc47Q@mail.gmail.com>
+ <CAAmR27_oErE4y7Au3wxEpx9LQ4VjtLm=e7Z9ROLfp8eR9ZNW2Q@mail.gmail.com>
+ <CAFfGvyLb+aNx7EEiUT1Eo2K0WsTn4ukQHopZcOHYw8VUAHRsDg@mail.gmail.com>
+ <CAKrF98kCX9MJJ7joDb4CENTLtqX7iMjPyCm5BXyT2Ju-xwAvQQ@mail.gmail.com>
+Message-ID: <CAFfGvyJess64N32YT5k16i0FU6SKNozNCh2OiYjnNvYTYOFzjg@mail.gmail.com>
+
+Na verdade eu estou fuçando ainda como plot.survfit faz pq não esta escrito
+em qualquer lugar que eu tenha achado como essa função faz e a
+summary.survfit retorna o erro padrão. Mas como a duvida era como extrair o
+cumhaz... achei que poderia postar. Se voce souber como a função plot faz
+posta aí que eu acerto.
+
+Pedro Brasil
+
+
+Em sex., 10 de dez. de 2021 às 13:32, Cesar Rabak <cesar.rabak em gmail.com>
+escreveu:
+
+> Esse cálculo dos limites superiores e inferiores do risco acumulado me
+> parece estranho..
+>
+> A formulação é baseada em alguma referência?
+>
+>
+> On Fri, Dec 10, 2021 at 1:23 PM Pedro Emmanuel Alvarenga Americano do
+> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> > fit <- survfit(Surv(time, status) ~ x, data = aml)
+>> > y <- summary(fit, times = c(14,28,35))
+>> > y
+>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>
+>>                 x=Maintained
+>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>    14      8       2    0.818   0.116        0.619        1.000
+>>    28      6       2    0.614   0.153        0.377        0.999
+>>    35      3       2    0.368   0.163        0.155        0.875
+>>
+>>                 x=Nonmaintained
+>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>    14      7       5    0.583   0.142       0.3616        0.941
+>>    28      4       2    0.389   0.147       0.1854        0.816
+>>    35      2       2    0.194   0.122       0.0569        0.664
+>>
+>> > cumhaz.summ <- function(y, digits = 3){
+>> +   cond <- y$strata == levels(y$strata)[1]
+>> +   y$cumhaz.upper  <- pmax(y$cumhaz + 1.96 * y$std.chaz,0)
+>> +   y$cumhaz.lower  <- pmax(y$cumhaz - 1.96 * y$std.chaz,0)
+>> +   output <- list()
+>> +   for(i in seq_along(levels(y$strata))){
+>> +     cond <- y$strata == levels(y$strata)[i]
+>> +     output[[i]] <- round(data.frame(Time = y$time[cond],
+>> +                                     'N risk' = y$n.risk[cond],
+>> +                                     'N events' = y$n.event[cond],
+>> +                                     'Cum Hazard' = y$cumhaz[cond],
+>> +                                     lower = y$cumhaz.lower[cond],
+>> +                                     upper =
+>> y$cumhaz.upper[cond]),digits)
+>> +   }
+>> +   names(output) <- levels(y$strata)
+>> +   output
+>> + }
+>> > cumhaz.summ(y)
+>> $`x=Maintained`
+>>   Time N.risk N.events Cum.Hazard lower upper
+>> 1   14      8        2      0.191 0.000 0.456
+>> 2   28      6        2      0.459 0.002 0.915
+>> 3   35      3        2      0.909 0.133 1.685
+>>
+>> $`x=Nonmaintained`
+>>   Time N.risk N.events Cum.Hazard lower upper
+>> 1   14      7        5      0.492 0.056 0.928
+>> 2   28      4        2      0.858 0.187 1.530
+>> 3   35      2        2      1.442 0.385 2.499
+>>
+>> >
+>>
+>> Em qui., 9 de dez. de 2021 às 10:43, Cid Póvoas por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> library(survival)
+>>> library(broom)
+>>> library(tidyverse)
+>>>
+>>> fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>> df<-tidy(fit)
+>>> df$cumhaz <- fit$cumhaz
+>>> df %>% filter(time%in%c(9,8,28,33,48))
+>>>
+>>> fit1 <- summary(fit, times = c(14,28,35))
+>>> fit1
+>>>
+>>> tab <- data.frame(time = fit1$time,
+>>>                   n.risk = fit1$n.risk,
+>>>                   n.event = fit1$n.event,
+>>>                   survival = fit1$surv,
+>>>                   std.err = fit1$std.err,
+>>>                   `lower 95% CI` = fit1$lower,
+>>>                   `upper 95% CI` = fit1$upper,
+>>>                   cumhaz = fit1$cumhaz,
+>>>                   strata = fit1$strata)
+>>>
+>>> tab
+>>>
+>>> *Cid Edson Mendonça Póvoas*
+>>>
+>>> *AnovAgro <http://www.anovagro.com/>*
+>>> *Engenheiro Agrônomo - **Data Scientist*
+>>> *CREA : 051984991-4*
+>>> *Técnico em Segurança do Trabalho *
+>>> *Nº: **0012669/BA*
+>>> *Tel: +55 73 99151-9565*
+>>> *Lattes : *http://lattes.cnpq.br/2303498368142537
+>>> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+>>> *Whatsapp :* https://wa.me/5573991519565
+>>>
+>>>
+>>> Em qui., 9 de dez. de 2021 às 09:26, Pedro Emmanuel Alvarenga Americano
+>>> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>>
+>>>> Ei Cesar,
+>>>>
+>>>> Ei sei que o cumhaz esta la. Eu so queria uma saida parecida com a do
+>>>> survival. Parece que vou ter que montar uma um esquema aqui pegar esses
+>>>> valores e montar uma tabela de saida.
+>>>>
+>>>> Valeu.
+>>>>
+>>>> Pedro Emmanuel Brasil
+>>>> (:)=
+>>>>
+>>>> Em qua, 8 de dez de 2021 20:42, Cesar Rabak <cesar.rabak em gmail.com>
+>>>> escreveu:
+>>>>
+>>>>> Isto não é suficiente?
+>>>>>
+>>>>> > fit$cumhaz
+>>>>>  [1] 0.09090909 0.19090909 0.31590909 0.45876623 0.45876623 0.65876623
+>>>>>  [7] 0.90876623 0.90876623 1.40876623 1.40876623 0.16666667 0.36666667
+>>>>> [13] 0.49166667 0.49166667 0.65833333 0.85833333 1.10833333 1.44166667
+>>>>> [19] 1.94166667 2.94166667
+>>>>> >
+>>>>> HTH
+>>>>> --
+>>>>> Cesar Rabak
+>>>>>
+>>>>> On Wed, Dec 8, 2021 at 5:12 PM Pedro Emmanuel Alvarenga Americano do
+>>>>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>>>>
+>>>>>> Saudações amigos do R,
+>>>>>>
+>>>>>> Estou as voltas de estimar taxas de eventos e estou batendo cabeça.
+>>>>>> Antes de escrever uma função eu mesmo para fazer uma tabela com alguns
+>>>>>> valores gostaria de uma luz dos amigos de R.
+>>>>>>
+>>>>>> O banco aml está no pacote survival então bastaria carregar o pacote
+>>>>>> pra reproduzir o exemplo. Eu gostaria de ver em formato de tabela alguns
+>>>>>> momentos específicos da tabela de sobrevivência. Só que o summary.survfit
+>>>>>> só retorna a sobrevivência e não a taxa cumulativa.
+>>>>>>
+>>>>>> library("survival")
+>>>>>>  fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>>>> > fit
+>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>
+>>>>>>                  n events median 0.95LCL 0.95UCL
+>>>>>> x=Maintained    11      7     31      18      NA
+>>>>>> x=Nonmaintained 12     11     23       8      NA
+>>>>>> # Summary com todos os momentos de eventos
+>>>>>> > summary(fit)
+>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>
+>>>>>>                 x=Maintained
+>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>     9     11       1    0.909  0.0867       0.7541        1.000
+>>>>>>    13     10       1    0.818  0.1163       0.6192        1.000
+>>>>>>    18      8       1    0.716  0.1397       0.4884        1.000
+>>>>>>    23      7       1    0.614  0.1526       0.3769        0.999
+>>>>>>    31      5       1    0.491  0.1642       0.2549        0.946
+>>>>>>    34      4       1    0.368  0.1627       0.1549        0.875
+>>>>>>    48      2       1    0.184  0.1535       0.0359        0.944
+>>>>>>
+>>>>>>                 x=Nonmaintained
+>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>     5     12       2   0.8333  0.1076       0.6470        1.000
+>>>>>>     8     10       2   0.6667  0.1361       0.4468        0.995
+>>>>>>    12      8       1   0.5833  0.1423       0.3616        0.941
+>>>>>>    23      6       1   0.4861  0.1481       0.2675        0.883
+>>>>>>    27      5       1   0.3889  0.1470       0.1854        0.816
+>>>>>>    30      4       1   0.2917  0.1387       0.1148        0.741
+>>>>>>    33      3       1   0.1944  0.1219       0.0569        0.664
+>>>>>>    43      2       1   0.0972  0.0919       0.0153        0.620
+>>>>>>    45      1       1   0.0000     NaN           NA           NA
+>>>>>>
+>>>>>> # Summary com os momentos desejados
+>>>>>> > summary(fit, times = c(14,28,35))
+>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>
+>>>>>>                 x=Maintained
+>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>>>>
+>>>>>>                 x=Nonmaintained
+>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>>>>
+>>>>>> > plot(fit)
+>>>>>> > plot(fit, cumhaz = T)
+>>>>>> >
+>>>>>> Reparem que há uma opção para o gráfico cumhaz = T, o que significa
+>>>>>> que o cumhaz está depositado no objeto, inclusive dentro do summary também.
+>>>>>> Tipo summary(fit)$cumhaz. Só que não há uma opção summary(fit, cumhaz = T)
+>>>>>> que retorne o cumhaz ao invés da sobrevivência. Alguém tem algum bizu pra
+>>>>>> fazer  isso organizado, extrair a mesma tabela só que com o cumhaz, como summary(fit,
+>>>>>> times = c(14,28,35)) sem muito trabalho?
+>>>>>>
+>>>>>> Abraço forte,
+>>>>>> Pedro Brasil
+>>>>>> _______________________________________________
+>>>>>> R-br mailing list
+>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>>> código mínimo reproduzível.
+>>>>>>
+>>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211210/8b4a2b51/attachment.htm>
+
+From cesar.rabak em gmail.com  Fri Dec 10 20:38:38 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 10 Dec 2021 20:38:38 -0300
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+In-Reply-To: <CAFfGvyJess64N32YT5k16i0FU6SKNozNCh2OiYjnNvYTYOFzjg@mail.gmail.com>
+References: <CAFfGvyKV5XWc3K68U4gOq5NPb=Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+ <CAKrF98m-L6OsY43rOgeC0=BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+ <CAFfGvy+oBHvZG8wX_+_ncpZw99iO0JYTjb5-pUXb5_GgZdc47Q@mail.gmail.com>
+ <CAAmR27_oErE4y7Au3wxEpx9LQ4VjtLm=e7Z9ROLfp8eR9ZNW2Q@mail.gmail.com>
+ <CAFfGvyLb+aNx7EEiUT1Eo2K0WsTn4ukQHopZcOHYw8VUAHRsDg@mail.gmail.com>
+ <CAKrF98kCX9MJJ7joDb4CENTLtqX7iMjPyCm5BXyT2Ju-xwAvQQ@mail.gmail.com>
+ <CAFfGvyJess64N32YT5k16i0FU6SKNozNCh2OiYjnNvYTYOFzjg@mail.gmail.com>
+Message-ID: <CAKrF98koCAefJpc8rYkW158Rvk082qRkohFfNGTbkfC76N9=Xw@mail.gmail.com>
+
+Pedro,
+
+A função plot.surfit não coloca os erros padrão da função cumulativa.
+
+Ademais, pegue os resultados do summary e veja se se o cálculo do intervalo
+do CI 95% "bate" com a conta 1,96 × d.p.
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Fri, Dec 10, 2021 at 4:02 PM Pedro Emmanuel Alvarenga Americano do
+Brasil <emmanuel.brasil em gmail.com> wrote:
+
+> Na verdade eu estou fuçando ainda como plot.survfit faz pq não esta
+> escrito em qualquer lugar que eu tenha achado como essa função faz e a
+> summary.survfit retorna o erro padrão. Mas como a duvida era como extrair o
+> cumhaz... achei que poderia postar. Se voce souber como a função plot faz
+> posta aí que eu acerto.
+>
+> Pedro Brasil
+>
+>
+> Em sex., 10 de dez. de 2021 às 13:32, Cesar Rabak <cesar.rabak em gmail.com>
+> escreveu:
+>
+>> Esse cálculo dos limites superiores e inferiores do risco acumulado me
+>> parece estranho..
+>>
+>> A formulação é baseada em alguma referência?
+>>
+>>
+>> On Fri, Dec 10, 2021 at 1:23 PM Pedro Emmanuel Alvarenga Americano do
+>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> > fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>> > y <- summary(fit, times = c(14,28,35))
+>>> > y
+>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>
+>>>                 x=Maintained
+>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>
+>>>                 x=Nonmaintained
+>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>
+>>> > cumhaz.summ <- function(y, digits = 3){
+>>> +   cond <- y$strata == levels(y$strata)[1]
+>>> +   y$cumhaz.upper  <- pmax(y$cumhaz + 1.96 * y$std.chaz,0)
+>>> +   y$cumhaz.lower  <- pmax(y$cumhaz - 1.96 * y$std.chaz,0)
+>>> +   output <- list()
+>>> +   for(i in seq_along(levels(y$strata))){
+>>> +     cond <- y$strata == levels(y$strata)[i]
+>>> +     output[[i]] <- round(data.frame(Time = y$time[cond],
+>>> +                                     'N risk' = y$n.risk[cond],
+>>> +                                     'N events' = y$n.event[cond],
+>>> +                                     'Cum Hazard' = y$cumhaz[cond],
+>>> +                                     lower = y$cumhaz.lower[cond],
+>>> +                                     upper =
+>>> y$cumhaz.upper[cond]),digits)
+>>> +   }
+>>> +   names(output) <- levels(y$strata)
+>>> +   output
+>>> + }
+>>> > cumhaz.summ(y)
+>>> $`x=Maintained`
+>>>   Time N.risk N.events Cum.Hazard lower upper
+>>> 1   14      8        2      0.191 0.000 0.456
+>>> 2   28      6        2      0.459 0.002 0.915
+>>> 3   35      3        2      0.909 0.133 1.685
+>>>
+>>> $`x=Nonmaintained`
+>>>   Time N.risk N.events Cum.Hazard lower upper
+>>> 1   14      7        5      0.492 0.056 0.928
+>>> 2   28      4        2      0.858 0.187 1.530
+>>> 3   35      2        2      1.442 0.385 2.499
+>>>
+>>> >
+>>>
+>>> Em qui., 9 de dez. de 2021 às 10:43, Cid Póvoas por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>
+>>>> library(survival)
+>>>> library(broom)
+>>>> library(tidyverse)
+>>>>
+>>>> fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>> df<-tidy(fit)
+>>>> df$cumhaz <- fit$cumhaz
+>>>> df %>% filter(time%in%c(9,8,28,33,48))
+>>>>
+>>>> fit1 <- summary(fit, times = c(14,28,35))
+>>>> fit1
+>>>>
+>>>> tab <- data.frame(time = fit1$time,
+>>>>                   n.risk = fit1$n.risk,
+>>>>                   n.event = fit1$n.event,
+>>>>                   survival = fit1$surv,
+>>>>                   std.err = fit1$std.err,
+>>>>                   `lower 95% CI` = fit1$lower,
+>>>>                   `upper 95% CI` = fit1$upper,
+>>>>                   cumhaz = fit1$cumhaz,
+>>>>                   strata = fit1$strata)
+>>>>
+>>>> tab
+>>>>
+>>>> *Cid Edson Mendonça Póvoas*
+>>>>
+>>>> *AnovAgro <http://www.anovagro.com/>*
+>>>> *Engenheiro Agrônomo - **Data Scientist*
+>>>> *CREA : 051984991-4*
+>>>> *Técnico em Segurança do Trabalho *
+>>>> *Nº: **0012669/BA*
+>>>> *Tel: +55 73 99151-9565*
+>>>> *Lattes : *http://lattes.cnpq.br/2303498368142537
+>>>> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+>>>> *Whatsapp :* https://wa.me/5573991519565
+>>>>
+>>>>
+>>>> Em qui., 9 de dez. de 2021 às 09:26, Pedro Emmanuel Alvarenga Americano
+>>>> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>
+>>>>> Ei Cesar,
+>>>>>
+>>>>> Ei sei que o cumhaz esta la. Eu so queria uma saida parecida com a do
+>>>>> survival. Parece que vou ter que montar uma um esquema aqui pegar esses
+>>>>> valores e montar uma tabela de saida.
+>>>>>
+>>>>> Valeu.
+>>>>>
+>>>>> Pedro Emmanuel Brasil
+>>>>> (:)=
+>>>>>
+>>>>> Em qua, 8 de dez de 2021 20:42, Cesar Rabak <cesar.rabak em gmail.com>
+>>>>> escreveu:
+>>>>>
+>>>>>> Isto não é suficiente?
+>>>>>>
+>>>>>> > fit$cumhaz
+>>>>>>  [1] 0.09090909 0.19090909 0.31590909 0.45876623 0.45876623 0.65876623
+>>>>>>  [7] 0.90876623 0.90876623 1.40876623 1.40876623 0.16666667 0.36666667
+>>>>>> [13] 0.49166667 0.49166667 0.65833333 0.85833333 1.10833333 1.44166667
+>>>>>> [19] 1.94166667 2.94166667
+>>>>>> >
+>>>>>> HTH
+>>>>>> --
+>>>>>> Cesar Rabak
+>>>>>>
+>>>>>> On Wed, Dec 8, 2021 at 5:12 PM Pedro Emmanuel Alvarenga Americano do
+>>>>>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>>>>>
+>>>>>>> Saudações amigos do R,
+>>>>>>>
+>>>>>>> Estou as voltas de estimar taxas de eventos e estou batendo cabeça.
+>>>>>>> Antes de escrever uma função eu mesmo para fazer uma tabela com alguns
+>>>>>>> valores gostaria de uma luz dos amigos de R.
+>>>>>>>
+>>>>>>> O banco aml está no pacote survival então bastaria carregar o pacote
+>>>>>>> pra reproduzir o exemplo. Eu gostaria de ver em formato de tabela alguns
+>>>>>>> momentos específicos da tabela de sobrevivência. Só que o summary.survfit
+>>>>>>> só retorna a sobrevivência e não a taxa cumulativa.
+>>>>>>>
+>>>>>>> library("survival")
+>>>>>>>  fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>>>>> > fit
+>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>
+>>>>>>>                  n events median 0.95LCL 0.95UCL
+>>>>>>> x=Maintained    11      7     31      18      NA
+>>>>>>> x=Nonmaintained 12     11     23       8      NA
+>>>>>>> # Summary com todos os momentos de eventos
+>>>>>>> > summary(fit)
+>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>
+>>>>>>>                 x=Maintained
+>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>     9     11       1    0.909  0.0867       0.7541        1.000
+>>>>>>>    13     10       1    0.818  0.1163       0.6192        1.000
+>>>>>>>    18      8       1    0.716  0.1397       0.4884        1.000
+>>>>>>>    23      7       1    0.614  0.1526       0.3769        0.999
+>>>>>>>    31      5       1    0.491  0.1642       0.2549        0.946
+>>>>>>>    34      4       1    0.368  0.1627       0.1549        0.875
+>>>>>>>    48      2       1    0.184  0.1535       0.0359        0.944
+>>>>>>>
+>>>>>>>                 x=Nonmaintained
+>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>     5     12       2   0.8333  0.1076       0.6470        1.000
+>>>>>>>     8     10       2   0.6667  0.1361       0.4468        0.995
+>>>>>>>    12      8       1   0.5833  0.1423       0.3616        0.941
+>>>>>>>    23      6       1   0.4861  0.1481       0.2675        0.883
+>>>>>>>    27      5       1   0.3889  0.1470       0.1854        0.816
+>>>>>>>    30      4       1   0.2917  0.1387       0.1148        0.741
+>>>>>>>    33      3       1   0.1944  0.1219       0.0569        0.664
+>>>>>>>    43      2       1   0.0972  0.0919       0.0153        0.620
+>>>>>>>    45      1       1   0.0000     NaN           NA           NA
+>>>>>>>
+>>>>>>> # Summary com os momentos desejados
+>>>>>>> > summary(fit, times = c(14,28,35))
+>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>
+>>>>>>>                 x=Maintained
+>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>>>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>>>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>>>>>
+>>>>>>>                 x=Nonmaintained
+>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>>>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>>>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>>>>>
+>>>>>>> > plot(fit)
+>>>>>>> > plot(fit, cumhaz = T)
+>>>>>>> >
+>>>>>>> Reparem que há uma opção para o gráfico cumhaz = T, o que significa
+>>>>>>> que o cumhaz está depositado no objeto, inclusive dentro do summary também.
+>>>>>>> Tipo summary(fit)$cumhaz. Só que não há uma opção summary(fit, cumhaz = T)
+>>>>>>> que retorne o cumhaz ao invés da sobrevivência. Alguém tem algum bizu pra
+>>>>>>> fazer  isso organizado, extrair a mesma tabela só que com o cumhaz, como summary(fit,
+>>>>>>> times = c(14,28,35)) sem muito trabalho?
+>>>>>>>
+>>>>>>> Abraço forte,
+>>>>>>> Pedro Brasil
+>>>>>>> _______________________________________________
+>>>>>>> R-br mailing list
+>>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>>>>>> forneça código mínimo reproduzível.
+>>>>>>>
+>>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211210/70b84523/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Sat Dec 11 11:56:44 2021
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Sat, 11 Dec 2021 11:56:44 -0300
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+In-Reply-To: <CAKrF98koCAefJpc8rYkW158Rvk082qRkohFfNGTbkfC76N9=Xw@mail.gmail.com>
+References: <CAFfGvyKV5XWc3K68U4gOq5NPb=Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+ <CAKrF98m-L6OsY43rOgeC0=BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+ <CAFfGvy+oBHvZG8wX_+_ncpZw99iO0JYTjb5-pUXb5_GgZdc47Q@mail.gmail.com>
+ <CAAmR27_oErE4y7Au3wxEpx9LQ4VjtLm=e7Z9ROLfp8eR9ZNW2Q@mail.gmail.com>
+ <CAFfGvyLb+aNx7EEiUT1Eo2K0WsTn4ukQHopZcOHYw8VUAHRsDg@mail.gmail.com>
+ <CAKrF98kCX9MJJ7joDb4CENTLtqX7iMjPyCm5BXyT2Ju-xwAvQQ@mail.gmail.com>
+ <CAFfGvyJess64N32YT5k16i0FU6SKNozNCh2OiYjnNvYTYOFzjg@mail.gmail.com>
+ <CAKrF98koCAefJpc8rYkW158Rvk082qRkohFfNGTbkfC76N9=Xw@mail.gmail.com>
+Message-ID: <CAFfGvyL37qKEot+djURHkeskSWu-6CvEwRBAP_vR+D5-QHb8wA@mail.gmail.com>
+
+Cesar,
+Não sei se entendi direito a tua colocação. Tanto as funções survfit como a
+summary.survfit retornam o erro padrão dentro do objeto. Então, de qualquer
+objeto survfit, se pedirmos um plot com cumhaz = T e conf.int = T o grafico
+vem com a banda de confiança do hazard.
+
+lsurv2 <- survfit(Surv(time, status) ~ x, aml, type='fleming')
+plot(lsurv2, lty=2:3, fun="cumhaz", xlab="Months", ylab="Cumulative
+Hazard", conf.int = T)
+
+Funçando por achei o seguinte...
+https://www.rdocumentation.org/packages/survival/versions/3.2-13/topics/survfit.formula
+
+conf.type
+
+One of "none", "plain", "log" (the default), "log-log", "logit" or "arcsin".
+Only enough of the string to uniquely identify it is necessary. The first
+option causes confidence intervals not to be generated. The second causes
+the standard intervals curve +- k *se(curve), where k is determined from
+conf.int. The log option calculates intervals based on the cumulative
+hazard or log(survival). The log-log option bases the intervals on the log
+hazard or log(-log(survival)), the logit option on
+log(survival/(1-survival)) and arcsin on arcsin(survival).
+O que significa que das varias formas de se estimar a banda, uma delas é a
+"plain". Ainda não tenho certeza se o que ele chama de curve já é a cumhaz
+ou se é S(t). Vou ter que fuçar melhor nas referencias.
+
+Pedro Brasil
+
+
+Em sex., 10 de dez. de 2021 às 20:38, Cesar Rabak <cesar.rabak em gmail.com>
+escreveu:
+
+> Pedro,
+>
+> A função plot.surfit não coloca os erros padrão da função cumulativa.
+>
+> Ademais, pegue os resultados do summary e veja se se o cálculo do
+> intervalo do CI 95% "bate" com a conta 1,96 × d.p.
+>
+> HTH
+>
+> --
+> Cesar Rabak
+>
+>
+> On Fri, Dec 10, 2021 at 4:02 PM Pedro Emmanuel Alvarenga Americano do
+> Brasil <emmanuel.brasil em gmail.com> wrote:
+>
+>> Na verdade eu estou fuçando ainda como plot.survfit faz pq não esta
+>> escrito em qualquer lugar que eu tenha achado como essa função faz e a
+>> summary.survfit retorna o erro padrão. Mas como a duvida era como extrair o
+>> cumhaz... achei que poderia postar. Se voce souber como a função plot faz
+>> posta aí que eu acerto.
+>>
+>> Pedro Brasil
+>>
+>>
+>> Em sex., 10 de dez. de 2021 às 13:32, Cesar Rabak <cesar.rabak em gmail.com>
+>> escreveu:
+>>
+>>> Esse cálculo dos limites superiores e inferiores do risco acumulado me
+>>> parece estranho..
+>>>
+>>> A formulação é baseada em alguma referência?
+>>>
+>>>
+>>> On Fri, Dec 10, 2021 at 1:23 PM Pedro Emmanuel Alvarenga Americano do
+>>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> > fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>> > y <- summary(fit, times = c(14,28,35))
+>>>> > y
+>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>
+>>>>                 x=Maintained
+>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>>
+>>>>                 x=Nonmaintained
+>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>>
+>>>> > cumhaz.summ <- function(y, digits = 3){
+>>>> +   cond <- y$strata == levels(y$strata)[1]
+>>>> +   y$cumhaz.upper  <- pmax(y$cumhaz + 1.96 * y$std.chaz,0)
+>>>> +   y$cumhaz.lower  <- pmax(y$cumhaz - 1.96 * y$std.chaz,0)
+>>>> +   output <- list()
+>>>> +   for(i in seq_along(levels(y$strata))){
+>>>> +     cond <- y$strata == levels(y$strata)[i]
+>>>> +     output[[i]] <- round(data.frame(Time = y$time[cond],
+>>>> +                                     'N risk' = y$n.risk[cond],
+>>>> +                                     'N events' = y$n.event[cond],
+>>>> +                                     'Cum Hazard' = y$cumhaz[cond],
+>>>> +                                     lower = y$cumhaz.lower[cond],
+>>>> +                                     upper =
+>>>> y$cumhaz.upper[cond]),digits)
+>>>> +   }
+>>>> +   names(output) <- levels(y$strata)
+>>>> +   output
+>>>> + }
+>>>> > cumhaz.summ(y)
+>>>> $`x=Maintained`
+>>>>   Time N.risk N.events Cum.Hazard lower upper
+>>>> 1   14      8        2      0.191 0.000 0.456
+>>>> 2   28      6        2      0.459 0.002 0.915
+>>>> 3   35      3        2      0.909 0.133 1.685
+>>>>
+>>>> $`x=Nonmaintained`
+>>>>   Time N.risk N.events Cum.Hazard lower upper
+>>>> 1   14      7        5      0.492 0.056 0.928
+>>>> 2   28      4        2      0.858 0.187 1.530
+>>>> 3   35      2        2      1.442 0.385 2.499
+>>>>
+>>>> >
+>>>>
+>>>> Em qui., 9 de dez. de 2021 às 10:43, Cid Póvoas por (R-br) <
+>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>
+>>>>> library(survival)
+>>>>> library(broom)
+>>>>> library(tidyverse)
+>>>>>
+>>>>> fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>>> df<-tidy(fit)
+>>>>> df$cumhaz <- fit$cumhaz
+>>>>> df %>% filter(time%in%c(9,8,28,33,48))
+>>>>>
+>>>>> fit1 <- summary(fit, times = c(14,28,35))
+>>>>> fit1
+>>>>>
+>>>>> tab <- data.frame(time = fit1$time,
+>>>>>                   n.risk = fit1$n.risk,
+>>>>>                   n.event = fit1$n.event,
+>>>>>                   survival = fit1$surv,
+>>>>>                   std.err = fit1$std.err,
+>>>>>                   `lower 95% CI` = fit1$lower,
+>>>>>                   `upper 95% CI` = fit1$upper,
+>>>>>                   cumhaz = fit1$cumhaz,
+>>>>>                   strata = fit1$strata)
+>>>>>
+>>>>> tab
+>>>>>
+>>>>> *Cid Edson Mendonça Póvoas*
+>>>>>
+>>>>> *AnovAgro <http://www.anovagro.com/>*
+>>>>> *Engenheiro Agrônomo - **Data Scientist*
+>>>>> *CREA : 051984991-4*
+>>>>> *Técnico em Segurança do Trabalho *
+>>>>> *Nº: **0012669/BA*
+>>>>> *Tel: +55 73 99151-9565*
+>>>>> *Lattes : *http://lattes.cnpq.br/2303498368142537
+>>>>> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+>>>>> *Whatsapp :* https://wa.me/5573991519565
+>>>>>
+>>>>>
+>>>>> Em qui., 9 de dez. de 2021 às 09:26, Pedro Emmanuel Alvarenga
+>>>>> Americano do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>>
+>>>>>> Ei Cesar,
+>>>>>>
+>>>>>> Ei sei que o cumhaz esta la. Eu so queria uma saida parecida com a do
+>>>>>> survival. Parece que vou ter que montar uma um esquema aqui pegar esses
+>>>>>> valores e montar uma tabela de saida.
+>>>>>>
+>>>>>> Valeu.
+>>>>>>
+>>>>>> Pedro Emmanuel Brasil
+>>>>>> (:)=
+>>>>>>
+>>>>>> Em qua, 8 de dez de 2021 20:42, Cesar Rabak <cesar.rabak em gmail.com>
+>>>>>> escreveu:
+>>>>>>
+>>>>>>> Isto não é suficiente?
+>>>>>>>
+>>>>>>> > fit$cumhaz
+>>>>>>>  [1] 0.09090909 0.19090909 0.31590909 0.45876623 0.45876623
+>>>>>>> 0.65876623
+>>>>>>>  [7] 0.90876623 0.90876623 1.40876623 1.40876623 0.16666667
+>>>>>>> 0.36666667
+>>>>>>> [13] 0.49166667 0.49166667 0.65833333 0.85833333 1.10833333
+>>>>>>> 1.44166667
+>>>>>>> [19] 1.94166667 2.94166667
+>>>>>>> >
+>>>>>>> HTH
+>>>>>>> --
+>>>>>>> Cesar Rabak
+>>>>>>>
+>>>>>>> On Wed, Dec 8, 2021 at 5:12 PM Pedro Emmanuel Alvarenga Americano do
+>>>>>>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>>>>>>
+>>>>>>>> Saudações amigos do R,
+>>>>>>>>
+>>>>>>>> Estou as voltas de estimar taxas de eventos e estou batendo cabeça.
+>>>>>>>> Antes de escrever uma função eu mesmo para fazer uma tabela com alguns
+>>>>>>>> valores gostaria de uma luz dos amigos de R.
+>>>>>>>>
+>>>>>>>> O banco aml está no pacote survival então bastaria carregar o
+>>>>>>>> pacote pra reproduzir o exemplo. Eu gostaria de ver em formato de tabela
+>>>>>>>> alguns momentos específicos da tabela de sobrevivência. Só que o
+>>>>>>>> summary.survfit só retorna a sobrevivência e não a taxa cumulativa.
+>>>>>>>>
+>>>>>>>> library("survival")
+>>>>>>>>  fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>>>>>> > fit
+>>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>>
+>>>>>>>>                  n events median 0.95LCL 0.95UCL
+>>>>>>>> x=Maintained    11      7     31      18      NA
+>>>>>>>> x=Nonmaintained 12     11     23       8      NA
+>>>>>>>> # Summary com todos os momentos de eventos
+>>>>>>>> > summary(fit)
+>>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>>
+>>>>>>>>                 x=Maintained
+>>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>>     9     11       1    0.909  0.0867       0.7541        1.000
+>>>>>>>>    13     10       1    0.818  0.1163       0.6192        1.000
+>>>>>>>>    18      8       1    0.716  0.1397       0.4884        1.000
+>>>>>>>>    23      7       1    0.614  0.1526       0.3769        0.999
+>>>>>>>>    31      5       1    0.491  0.1642       0.2549        0.946
+>>>>>>>>    34      4       1    0.368  0.1627       0.1549        0.875
+>>>>>>>>    48      2       1    0.184  0.1535       0.0359        0.944
+>>>>>>>>
+>>>>>>>>                 x=Nonmaintained
+>>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>>     5     12       2   0.8333  0.1076       0.6470        1.000
+>>>>>>>>     8     10       2   0.6667  0.1361       0.4468        0.995
+>>>>>>>>    12      8       1   0.5833  0.1423       0.3616        0.941
+>>>>>>>>    23      6       1   0.4861  0.1481       0.2675        0.883
+>>>>>>>>    27      5       1   0.3889  0.1470       0.1854        0.816
+>>>>>>>>    30      4       1   0.2917  0.1387       0.1148        0.741
+>>>>>>>>    33      3       1   0.1944  0.1219       0.0569        0.664
+>>>>>>>>    43      2       1   0.0972  0.0919       0.0153        0.620
+>>>>>>>>    45      1       1   0.0000     NaN           NA           NA
+>>>>>>>>
+>>>>>>>> # Summary com os momentos desejados
+>>>>>>>> > summary(fit, times = c(14,28,35))
+>>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>>
+>>>>>>>>                 x=Maintained
+>>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>>>>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>>>>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>>>>>>
+>>>>>>>>                 x=Nonmaintained
+>>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>>>>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>>>>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>>>>>>
+>>>>>>>> > plot(fit)
+>>>>>>>> > plot(fit, cumhaz = T)
+>>>>>>>> >
+>>>>>>>> Reparem que há uma opção para o gráfico cumhaz = T, o que significa
+>>>>>>>> que o cumhaz está depositado no objeto, inclusive dentro do summary também.
+>>>>>>>> Tipo summary(fit)$cumhaz. Só que não há uma opção summary(fit, cumhaz = T)
+>>>>>>>> que retorne o cumhaz ao invés da sobrevivência. Alguém tem algum bizu pra
+>>>>>>>> fazer  isso organizado, extrair a mesma tabela só que com o cumhaz, como summary(fit,
+>>>>>>>> times = c(14,28,35)) sem muito trabalho?
+>>>>>>>>
+>>>>>>>> Abraço forte,
+>>>>>>>> Pedro Brasil
+>>>>>>>> _______________________________________________
+>>>>>>>> R-br mailing list
+>>>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>>>>>>> forneça código mínimo reproduzível.
+>>>>>>>>
+>>>>>>> _______________________________________________
+>>>>>> R-br mailing list
+>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>>> código mínimo reproduzível.
+>>>>>>
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211211/7e3904a4/attachment-0001.htm>
+
+From cesar.rabak em gmail.com  Sat Dec 11 14:11:36 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 11 Dec 2021 14:11:36 -0300
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+In-Reply-To: <CAFfGvyL37qKEot+djURHkeskSWu-6CvEwRBAP_vR+D5-QHb8wA@mail.gmail.com>
+References: <CAFfGvyKV5XWc3K68U4gOq5NPb=Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+ <CAKrF98m-L6OsY43rOgeC0=BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+ <CAFfGvy+oBHvZG8wX_+_ncpZw99iO0JYTjb5-pUXb5_GgZdc47Q@mail.gmail.com>
+ <CAAmR27_oErE4y7Au3wxEpx9LQ4VjtLm=e7Z9ROLfp8eR9ZNW2Q@mail.gmail.com>
+ <CAFfGvyLb+aNx7EEiUT1Eo2K0WsTn4ukQHopZcOHYw8VUAHRsDg@mail.gmail.com>
+ <CAKrF98kCX9MJJ7joDb4CENTLtqX7iMjPyCm5BXyT2Ju-xwAvQQ@mail.gmail.com>
+ <CAFfGvyJess64N32YT5k16i0FU6SKNozNCh2OiYjnNvYTYOFzjg@mail.gmail.com>
+ <CAKrF98koCAefJpc8rYkW158Rvk082qRkohFfNGTbkfC76N9=Xw@mail.gmail.com>
+ <CAFfGvyL37qKEot+djURHkeskSWu-6CvEwRBAP_vR+D5-QHb8wA@mail.gmail.com>
+Message-ID: <CAKrF98kqWiDT+e5brqc3d-dTxLpooeaEnoJbovLo=n1-DYAw_Q@mail.gmail.com>
+
+Pedro,
+Em retrospecto, vejo que não fui muito claro no que escrevi...
+
+O que quis dizer foi que (segundo sua primeira postagem), a chamada:
+> plot(fit, cumhaz = T)
+não inclui o intervalo de confiança do risco acumulado.
+
+Secundariamente, o cálculo do desvio padrão para esse resultado estatístico
+me parecia incorreto, e usando os dados que já haviam sido lançados na sua
+1ª postagem pode-se ver que nem para cada ponto de risco (no tempo) a
+fórmula valeria.
+
+Com o avanço da sua pesquisa, estou seguro que verá as formas corretas de
+calcular esses IC.
+
+Por ora estou sem acesso à minhas referências em polpa de celulose e com
+acesso bastante restrito à Web para encontrar algo mais assertivo.
+
+HTH
+
+--
+Cesar Rabak
+
+
+
+On Sat, Dec 11, 2021 at 11:56 AM Pedro Emmanuel Alvarenga Americano do
+Brasil <emmanuel.brasil em gmail.com> wrote:
+
+> Cesar,
+> Não sei se entendi direito a tua colocação. Tanto as funções survfit como
+> a summary.survfit retornam o erro padrão dentro do objeto. Então, de
+> qualquer objeto survfit, se pedirmos um plot com cumhaz = T e conf.int =
+> T o grafico vem com a banda de confiança do hazard.
+>
+> lsurv2 <- survfit(Surv(time, status) ~ x, aml, type='fleming')
+> plot(lsurv2, lty=2:3, fun="cumhaz", xlab="Months", ylab="Cumulative
+> Hazard", conf.int = T)
+>
+> Funçando por achei o seguinte...
+>
+> https://www.rdocumentation.org/packages/survival/versions/3.2-13/topics/survfit.formula
+>
+> conf.type
+>
+> One of "none", "plain", "log" (the default), "log-log", "logit" or
+> "arcsin". Only enough of the string to uniquely identify it is necessary.
+> The first option causes confidence intervals not to be generated. The
+> second causes the standard intervals curve +- k *se(curve), where k is
+> determined from conf.int. The log option calculates intervals based on
+> the cumulative hazard or log(survival). The log-log option bases the
+> intervals on the log hazard or log(-log(survival)), the logit option on
+> log(survival/(1-survival)) and arcsin on arcsin(survival).
+> O que significa que das varias formas de se estimar a banda, uma delas é a
+> "plain". Ainda não tenho certeza se o que ele chama de curve já é a cumhaz
+> ou se é S(t). Vou ter que fuçar melhor nas referencias.
+>
+> Pedro Brasil
+>
+>
+> Em sex., 10 de dez. de 2021 às 20:38, Cesar Rabak <cesar.rabak em gmail.com>
+> escreveu:
+>
+>> Pedro,
+>>
+>> A função plot.surfit não coloca os erros padrão da função cumulativa.
+>>
+>> Ademais, pegue os resultados do summary e veja se se o cálculo do
+>> intervalo do CI 95% "bate" com a conta 1,96 × d.p.
+>>
+>> HTH
+>>
+>> --
+>> Cesar Rabak
+>>
+>>
+>> On Fri, Dec 10, 2021 at 4:02 PM Pedro Emmanuel Alvarenga Americano do
+>> Brasil <emmanuel.brasil em gmail.com> wrote:
+>>
+>>> Na verdade eu estou fuçando ainda como plot.survfit faz pq não esta
+>>> escrito em qualquer lugar que eu tenha achado como essa função faz e a
+>>> summary.survfit retorna o erro padrão. Mas como a duvida era como extrair o
+>>> cumhaz... achei que poderia postar. Se voce souber como a função plot faz
+>>> posta aí que eu acerto.
+>>>
+>>> Pedro Brasil
+>>>
+>>>
+>>> Em sex., 10 de dez. de 2021 às 13:32, Cesar Rabak <cesar.rabak em gmail.com>
+>>> escreveu:
+>>>
+>>>> Esse cálculo dos limites superiores e inferiores do risco acumulado me
+>>>> parece estranho..
+>>>>
+>>>> A formulação é baseada em alguma referência?
+>>>>
+>>>>
+>>>> On Fri, Dec 10, 2021 at 1:23 PM Pedro Emmanuel Alvarenga Americano do
+>>>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>>>
+>>>>> > fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>>> > y <- summary(fit, times = c(14,28,35))
+>>>>> > y
+>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>
+>>>>>                 x=Maintained
+>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>>>
+>>>>>                 x=Nonmaintained
+>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>>>
+>>>>> > cumhaz.summ <- function(y, digits = 3){
+>>>>> +   cond <- y$strata == levels(y$strata)[1]
+>>>>> +   y$cumhaz.upper  <- pmax(y$cumhaz + 1.96 * y$std.chaz,0)
+>>>>> +   y$cumhaz.lower  <- pmax(y$cumhaz - 1.96 * y$std.chaz,0)
+>>>>> +   output <- list()
+>>>>> +   for(i in seq_along(levels(y$strata))){
+>>>>> +     cond <- y$strata == levels(y$strata)[i]
+>>>>> +     output[[i]] <- round(data.frame(Time = y$time[cond],
+>>>>> +                                     'N risk' = y$n.risk[cond],
+>>>>> +                                     'N events' = y$n.event[cond],
+>>>>> +                                     'Cum Hazard' = y$cumhaz[cond],
+>>>>> +                                     lower = y$cumhaz.lower[cond],
+>>>>> +                                     upper =
+>>>>> y$cumhaz.upper[cond]),digits)
+>>>>> +   }
+>>>>> +   names(output) <- levels(y$strata)
+>>>>> +   output
+>>>>> + }
+>>>>> > cumhaz.summ(y)
+>>>>> $`x=Maintained`
+>>>>>   Time N.risk N.events Cum.Hazard lower upper
+>>>>> 1   14      8        2      0.191 0.000 0.456
+>>>>> 2   28      6        2      0.459 0.002 0.915
+>>>>> 3   35      3        2      0.909 0.133 1.685
+>>>>>
+>>>>> $`x=Nonmaintained`
+>>>>>   Time N.risk N.events Cum.Hazard lower upper
+>>>>> 1   14      7        5      0.492 0.056 0.928
+>>>>> 2   28      4        2      0.858 0.187 1.530
+>>>>> 3   35      2        2      1.442 0.385 2.499
+>>>>>
+>>>>> >
+>>>>>
+>>>>> Em qui., 9 de dez. de 2021 às 10:43, Cid Póvoas por (R-br) <
+>>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>>
+>>>>>> library(survival)
+>>>>>> library(broom)
+>>>>>> library(tidyverse)
+>>>>>>
+>>>>>> fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>>>> df<-tidy(fit)
+>>>>>> df$cumhaz <- fit$cumhaz
+>>>>>> df %>% filter(time%in%c(9,8,28,33,48))
+>>>>>>
+>>>>>> fit1 <- summary(fit, times = c(14,28,35))
+>>>>>> fit1
+>>>>>>
+>>>>>> tab <- data.frame(time = fit1$time,
+>>>>>>                   n.risk = fit1$n.risk,
+>>>>>>                   n.event = fit1$n.event,
+>>>>>>                   survival = fit1$surv,
+>>>>>>                   std.err = fit1$std.err,
+>>>>>>                   `lower 95% CI` = fit1$lower,
+>>>>>>                   `upper 95% CI` = fit1$upper,
+>>>>>>                   cumhaz = fit1$cumhaz,
+>>>>>>                   strata = fit1$strata)
+>>>>>>
+>>>>>> tab
+>>>>>>
+>>>>>> *Cid Edson Mendonça Póvoas*
+>>>>>>
+>>>>>> *AnovAgro <http://www.anovagro.com/>*
+>>>>>> *Engenheiro Agrônomo - **Data Scientist*
+>>>>>> *CREA : 051984991-4*
+>>>>>> *Técnico em Segurança do Trabalho *
+>>>>>> *Nº: **0012669/BA*
+>>>>>> *Tel: +55 73 99151-9565*
+>>>>>> *Lattes : *http://lattes.cnpq.br/2303498368142537
+>>>>>> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+>>>>>> *Whatsapp :* https://wa.me/5573991519565
+>>>>>>
+>>>>>>
+>>>>>> Em qui., 9 de dez. de 2021 às 09:26, Pedro Emmanuel Alvarenga
+>>>>>> Americano do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>>>
+>>>>>>> Ei Cesar,
+>>>>>>>
+>>>>>>> Ei sei que o cumhaz esta la. Eu so queria uma saida parecida com a
+>>>>>>> do survival. Parece que vou ter que montar uma um esquema aqui pegar esses
+>>>>>>> valores e montar uma tabela de saida.
+>>>>>>>
+>>>>>>> Valeu.
+>>>>>>>
+>>>>>>> Pedro Emmanuel Brasil
+>>>>>>> (:)=
+>>>>>>>
+>>>>>>> Em qua, 8 de dez de 2021 20:42, Cesar Rabak <cesar.rabak em gmail.com>
+>>>>>>> escreveu:
+>>>>>>>
+>>>>>>>> Isto não é suficiente?
+>>>>>>>>
+>>>>>>>> > fit$cumhaz
+>>>>>>>>  [1] 0.09090909 0.19090909 0.31590909 0.45876623 0.45876623
+>>>>>>>> 0.65876623
+>>>>>>>>  [7] 0.90876623 0.90876623 1.40876623 1.40876623 0.16666667
+>>>>>>>> 0.36666667
+>>>>>>>> [13] 0.49166667 0.49166667 0.65833333 0.85833333 1.10833333
+>>>>>>>> 1.44166667
+>>>>>>>> [19] 1.94166667 2.94166667
+>>>>>>>> >
+>>>>>>>> HTH
+>>>>>>>> --
+>>>>>>>> Cesar Rabak
+>>>>>>>>
+>>>>>>>> On Wed, Dec 8, 2021 at 5:12 PM Pedro Emmanuel Alvarenga Americano
+>>>>>>>> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>>>>>>>
+>>>>>>>>> Saudações amigos do R,
+>>>>>>>>>
+>>>>>>>>> Estou as voltas de estimar taxas de eventos e estou batendo
+>>>>>>>>> cabeça. Antes de escrever uma função eu mesmo para fazer uma tabela com
+>>>>>>>>> alguns valores gostaria de uma luz dos amigos de R.
+>>>>>>>>>
+>>>>>>>>> O banco aml está no pacote survival então bastaria carregar o
+>>>>>>>>> pacote pra reproduzir o exemplo. Eu gostaria de ver em formato de tabela
+>>>>>>>>> alguns momentos específicos da tabela de sobrevivência. Só que o
+>>>>>>>>> summary.survfit só retorna a sobrevivência e não a taxa cumulativa.
+>>>>>>>>>
+>>>>>>>>> library("survival")
+>>>>>>>>>  fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>>>>>>> > fit
+>>>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>>>
+>>>>>>>>>                  n events median 0.95LCL 0.95UCL
+>>>>>>>>> x=Maintained    11      7     31      18      NA
+>>>>>>>>> x=Nonmaintained 12     11     23       8      NA
+>>>>>>>>> # Summary com todos os momentos de eventos
+>>>>>>>>> > summary(fit)
+>>>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>>>
+>>>>>>>>>                 x=Maintained
+>>>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>>>     9     11       1    0.909  0.0867       0.7541        1.000
+>>>>>>>>>    13     10       1    0.818  0.1163       0.6192        1.000
+>>>>>>>>>    18      8       1    0.716  0.1397       0.4884        1.000
+>>>>>>>>>    23      7       1    0.614  0.1526       0.3769        0.999
+>>>>>>>>>    31      5       1    0.491  0.1642       0.2549        0.946
+>>>>>>>>>    34      4       1    0.368  0.1627       0.1549        0.875
+>>>>>>>>>    48      2       1    0.184  0.1535       0.0359        0.944
+>>>>>>>>>
+>>>>>>>>>                 x=Nonmaintained
+>>>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>>>     5     12       2   0.8333  0.1076       0.6470        1.000
+>>>>>>>>>     8     10       2   0.6667  0.1361       0.4468        0.995
+>>>>>>>>>    12      8       1   0.5833  0.1423       0.3616        0.941
+>>>>>>>>>    23      6       1   0.4861  0.1481       0.2675        0.883
+>>>>>>>>>    27      5       1   0.3889  0.1470       0.1854        0.816
+>>>>>>>>>    30      4       1   0.2917  0.1387       0.1148        0.741
+>>>>>>>>>    33      3       1   0.1944  0.1219       0.0569        0.664
+>>>>>>>>>    43      2       1   0.0972  0.0919       0.0153        0.620
+>>>>>>>>>    45      1       1   0.0000     NaN           NA           NA
+>>>>>>>>>
+>>>>>>>>> # Summary com os momentos desejados
+>>>>>>>>> > summary(fit, times = c(14,28,35))
+>>>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>>>
+>>>>>>>>>                 x=Maintained
+>>>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>>>>>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>>>>>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>>>>>>>
+>>>>>>>>>                 x=Nonmaintained
+>>>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>>>>>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>>>>>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>>>>>>>
+>>>>>>>>> > plot(fit)
+>>>>>>>>> > plot(fit, cumhaz = T)
+>>>>>>>>> >
+>>>>>>>>> Reparem que há uma opção para o gráfico cumhaz = T, o que
+>>>>>>>>> significa que o cumhaz está depositado no objeto, inclusive dentro do
+>>>>>>>>> summary também. Tipo summary(fit)$cumhaz. Só que não há uma opção
+>>>>>>>>> summary(fit, cumhaz = T) que retorne o cumhaz ao invés da sobrevivência.
+>>>>>>>>> Alguém tem algum bizu pra fazer  isso organizado, extrair a mesma tabela só
+>>>>>>>>> que com o cumhaz, como summary(fit, times = c(14,28,35)) sem
+>>>>>>>>> muito trabalho?
+>>>>>>>>>
+>>>>>>>>> Abraço forte,
+>>>>>>>>> Pedro Brasil
+>>>>>>>>> _______________________________________________
+>>>>>>>>> R-br mailing list
+>>>>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>>>>>>>> forneça código mínimo reproduzível.
+>>>>>>>>>
+>>>>>>>> _______________________________________________
+>>>>>>> R-br mailing list
+>>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>>>>>> forneça código mínimo reproduzível.
+>>>>>>>
+>>>>>> _______________________________________________
+>>>>>> R-br mailing list
+>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>>> código mínimo reproduzível.
+>>>>>>
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211211/189a6cd0/attachment.htm>
+
+From sznelwar em uol.com.br  Wed Dec 15 21:52:25 2021
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Wed, 15 Dec 2021 22:52:25 -0200
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+In-Reply-To: <CAFfGvyJess64N32YT5k16i0FU6SKNozNCh2OiYjnNvYTYOFzjg@mail.gmail.com>
+References: <Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+ <BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+ <_ncpZw99iO0JYTjb5-pUXb5_GgZdc47Q@mail.gmail.com>
+ <e7Z9ROLfp8eR9ZNW2Q@mail.gmail.com>
+ <aNx7EEiUT1Eo2K0WsTn4ukQHopZcOHYw8VUAHRsDg@mail.gmail.com>
+ <CAKrF98kCX9MJJ7joDb4CENTLtqX7iMjPyCm5BXyT2Ju-xwAvQQ@mail.gmail.com>
+ <CAFfGvyJess64N32YT5k16i0FU6SKNozNCh2OiYjnNvYTYOFzjg@mail.gmail.com>
+Message-ID: <61ba8dc9cb944_22392b1c031930f896384@ip-10-81-19-22.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211215/1c6fe99b/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Thu Dec 16 15:47:19 2021
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Thu, 16 Dec 2021 15:47:19 -0300
+Subject: [R-br] Extraindo o "cumulative hazard" de objeto survfit
+In-Reply-To: <61ba8dc9cb944_22392b1c031930f896384@ip-10-81-19-22.ec2.internal.mail>
+References: <Lzy43twmMitwiKaHHLz6wVPQ@mail.gmail.com>
+ <BXGr_O2cWWJac1Xk3cwwefaDh7hg@mail.gmail.com>
+ <_ncpZw99iO0JYTjb5-pUXb5_GgZdc47Q@mail.gmail.com>
+ <e7Z9ROLfp8eR9ZNW2Q@mail.gmail.com>
+ <aNx7EEiUT1Eo2K0WsTn4ukQHopZcOHYw8VUAHRsDg@mail.gmail.com>
+ <CAKrF98kCX9MJJ7joDb4CENTLtqX7iMjPyCm5BXyT2Ju-xwAvQQ@mail.gmail.com>
+ <CAFfGvyJess64N32YT5k16i0FU6SKNozNCh2OiYjnNvYTYOFzjg@mail.gmail.com>
+ <61ba8dc9cb944_22392b1c031930f896384@ip-10-81-19-22.ec2.internal.mail>
+Message-ID: <CAFfGvyLfEKhwcdWXU+ozrp_u5E68nSvwiC7cv2rZbnN94KVM-g@mail.gmail.com>
+
+Cara,
+
+Primeiro um comentário a respeito do IC. Li umas paradas aqui que me levou a
+seguinte conclusão. O objeto y$std.chaz é identico ao objeto y$std.err.
+Então o cumhaz no y nada mais é que -log(y$surv). Dessa forma, pra achar o
+IC do cumhaz basta fazer o -log(y$lower) e -log(y$upper), independente do
+método utilizado, sendo que como tem o "-" na frente, o upper vira lower e
+vice versa. Está batendo aqui com os meus dados nas primeiras casas
+decimais.
+cumhaz.summ <- function(y, digits = 3){
+y$cumhaz.upper  <- -log(y$lower)
+y$cumhaz.lower  <- -log(y$upper)
+      for(i in seq_along(levels(y$strata))){
+        cond <- y$strata == levels(y$strata)[i]
+        output[[i]] <- round(data.frame(Time = y$time[cond],
+                                        'N risk' = y$n.risk[cond],
+                                        'N events' = y$n.event[cond],
+                                        'Cum Hazard' = y$cumhaz[cond],
+                                        lower = y$cumhaz.lower[cond],
+                                        upper =
+y$cumhaz.upper[cond]),digits)
+      }
+ names(output) <- levels(y$strata)
+ output
+}
+cumhaz.summ(y)
+
+A segunda parada é que essa função só foi testada para um preditor que
+estratifica a curva. No exemplo acima o "~ x". Possivelmente daria errado
+se não houver preditor (e dá errado mesmo no meu teste aqui retorna uma
+lista vazia pq o y$strata retorna NULL) ou mais de um preditor. Este deve
+ser o teu caso já que o erro dá a entender que o comprimento da condição
+está retornando objetos de tamanhos diferentes. Mas se colocar um exemplo
+reprodutível, talvez eu consiga te ajudar.
+
+Abraço forte,
+
+Pedro Brasil
+Pedro Brasil
+
+
+Em qua., 15 de dez. de 2021 às 21:52, sznelwar--- por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Não consegui rodar esta função:
+> > cumhaz.summ <- function(y, digits = 3){
+> +   cond <- y$strata == levels(y$strata)[1]
+> +   y$cumhaz.upper  <- pmax(y$cumhaz + 1.96 * y$std.chaz,0)
+> +   y$cumhaz.lower  <- pmax(y$cumhaz - 1.96 * y$std.chaz,0)
+> +   output <- list()
+> +   for(i in seq_along(levels(y$strata))){
+> +     cond <- y$strata == levels(y$strata)[i]
+> +     output[[i]] <- round(data.frame(Time = y$time[cond],
+> +                                     'N risk' = y$n.risk[cond],
+> +                                     'N events' = y$n.event[cond],
+> +                                     'Cum Hazard' = y$cumhaz[cond],
+> +                                     lower = y$cumhaz.lower[cond],
+> +                                     upper = y$cumhaz.upper[cond]),digits)
+> +   }
+> +   names(output) <- levels(y$strata)
+> +   output
+> + }
+> > cumhaz.summ(y)
+> Error in data.frame(Time = y$time[cond], `N risk` = y$n.risk[cond], `N
+> events` = y$n.event[cond],  :
+>   arguments imply differing number of rows: 3, 10
+> Além disso: Warning messages:
+> 1: In y$cumhaz + 1.96 * y$std.chaz :
+>   comprimento do objeto maior não é múltiplo do comprimento do objeto menor
+> 2: In y$cumhaz - 1.96 * y$std.chaz :
+>   comprimento do objeto maior não é múltiplo do comprimento do objeto menor
+> >
+>
+> Na verdade eu estou fuçando ainda como plot.survfit faz pq não esta
+> escrito em qualquer lugar que eu tenha achado como essa função faz e a
+> summary.survfit retorna o erro padrão. Mas como a duvida era como extrair o
+> cumhaz... achei que poderia postar. Se voce souber como a função plot faz
+> posta aí que eu acerto.
+>
+> Pedro Brasil
+>
+> Em sex., 10 de dez. de 2021 às 13:32, Cesar Rabak <cesar.rabak em gmail.com>
+> escreveu:
+>
+>> Esse cálculo dos limites superiores e inferiores do risco acumulado me
+>> parece estranho..
+>>
+>> A formulação é baseada em alguma referência?
+>>
+>>
+>> On Fri, Dec 10, 2021 at 1:23 PM Pedro Emmanuel Alvarenga Americano do
+>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> > fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>> > y <- summary(fit, times = c(14,28,35))
+>>> > y
+>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>
+>>>                 x=Maintained
+>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>
+>>>                 x=Nonmaintained
+>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>
+>>> > cumhaz.summ <- function(y, digits = 3){
+>>> +   cond <- y$strata == levels(y$strata)[1]
+>>> +   y$cumhaz.upper  <- pmax(y$cumhaz + 1.96 * y$std.chaz,0)
+>>> +   y$cumhaz.lower  <- pmax(y$cumhaz - 1.96 * y$std.chaz,0)
+>>> +   output <- list()
+>>> +   for(i in seq_along(levels(y$strata))){
+>>> +     cond <- y$strata == levels(y$strata)[i]
+>>> +     output[[i]] <- round(data.frame(Time = y$time[cond],
+>>> +                                     'N risk' = y$n.risk[cond],
+>>> +                                     'N events' = y$n.event[cond],
+>>> +                                     'Cum Hazard' = y$cumhaz[cond],
+>>> +                                     lower = y$cumhaz.lower[cond],
+>>> +                                     upper =
+>>> y$cumhaz.upper[cond]),digits)
+>>> +   }
+>>> +   names(output) <- levels(y$strata)
+>>> +   output
+>>> + }
+>>> > cumhaz.summ(y)
+>>> $`x=Maintained`
+>>>   Time N.risk N.events Cum.Hazard lower upper
+>>> 1   14      8        2      0.191 0.000 0.456
+>>> 2   28      6        2      0.459 0.002 0.915
+>>> 3   35      3        2      0.909 0.133 1.685
+>>>
+>>> $`x=Nonmaintained`
+>>>   Time N.risk N.events Cum.Hazard lower upper
+>>> 1   14      7        5      0.492 0.056 0.928
+>>> 2   28      4        2      0.858 0.187 1.530
+>>> 3   35      2        2      1.442 0.385 2.499
+>>>
+>>> >
+>>>
+>>> Em qui., 9 de dez. de 2021 às 10:43, Cid Póvoas por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>
+>>>> library(survival)
+>>>> library(broom)
+>>>> library(tidyverse)
+>>>>
+>>>> fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>> df<-tidy(fit)
+>>>> df$cumhaz <- fit$cumhaz
+>>>> df %>% filter(time%in%c(9,8,28,33,48))
+>>>>
+>>>> fit1 <- summary(fit, times = c(14,28,35))
+>>>> fit1
+>>>>
+>>>> tab <- data.frame(time = fit1$time,
+>>>>                   n.risk = fit1$n.risk,
+>>>>                   n.event = fit1$n.event,
+>>>>                   survival = fit1$surv,
+>>>>                   std.err = fit1$std.err,
+>>>>                   `lower 95% CI` = fit1$lower,
+>>>>                   `upper 95% CI` = fit1$upper,
+>>>>                   cumhaz = fit1$cumhaz,
+>>>>                   strata = fit1$strata)
+>>>>
+>>>> tab
+>>>>
+>>>> *Cid Edson Mendonça Póvoas*
+>>>>
+>>>> *AnovAgro*
+>>>> *Engenheiro Agrônomo - **Data Scientist*
+>>>> *CREA : 051984991-4*
+>>>> *Técnico em Segurança do Trabalho *
+>>>> *Nº: **0012669/BA*
+>>>> *Tel: +55 73 99151-9565*
+>>>> *Lattes : *http://lattes.cnpq.br/2303498368142537
+>>>> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+>>>> *Whatsapp :* https://wa.me/5573991519565
+>>>>
+>>>> Em qui., 9 de dez. de 2021 às 09:26, Pedro Emmanuel Alvarenga Americano
+>>>> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>
+>>>>> Ei Cesar,
+>>>>>
+>>>>> Ei sei que o cumhaz esta la. Eu so queria uma saida parecida com a do
+>>>>> survival. Parece que vou ter que montar uma um esquema aqui pegar esses
+>>>>> valores e montar uma tabela de saida.
+>>>>>
+>>>>> Valeu.
+>>>>>
+>>>>> Pedro Emmanuel Brasil
+>>>>> (:)=
+>>>>>
+>>>>> Em qua, 8 de dez de 2021 20:42, Cesar Rabak <cesar.rabak em gmail.com>
+>>>>> escreveu:
+>>>>>
+>>>>>> Isto não é suficiente?
+>>>>>>
+>>>>>> > fit$cumhaz
+>>>>>>  [1] 0.09090909 0.19090909 0.31590909 0.45876623 0.45876623 0.65876623
+>>>>>>  [7] 0.90876623 0.90876623 1.40876623 1.40876623 0.16666667 0.36666667
+>>>>>> [13] 0.49166667 0.49166667 0.65833333 0.85833333 1.10833333 1.44166667
+>>>>>> [19] 1.94166667 2.94166667
+>>>>>> >
+>>>>>> HTH
+>>>>>> --
+>>>>>> Cesar Rabak
+>>>>>>
+>>>>>> On Wed, Dec 8, 2021 at 5:12 PM Pedro Emmanuel Alvarenga Americano do
+>>>>>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>>>>>
+>>>>>>> Saudações amigos do R,
+>>>>>>>
+>>>>>>> Estou as voltas de estimar taxas de eventos e estou batendo cabeça.
+>>>>>>> Antes de escrever uma função eu mesmo para fazer uma tabela com alguns
+>>>>>>> valores gostaria de uma luz dos amigos de R.
+>>>>>>>
+>>>>>>> O banco aml está no pacote survival então bastaria carregar o pacote
+>>>>>>> pra reproduzir o exemplo. Eu gostaria de ver em formato de tabela alguns
+>>>>>>> momentos específicos da tabela de sobrevivência. Só que o summary.survfit
+>>>>>>> só retorna a sobrevivência e não a taxa cumulativa.
+>>>>>>>
+>>>>>>> library("survival")
+>>>>>>>  fit <- survfit(Surv(time, status) ~ x, data = aml)
+>>>>>>> > fit
+>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>
+>>>>>>>                  n events median 0.95LCL 0.95UCL
+>>>>>>> x=Maintained    11      7     31      18      NA
+>>>>>>> x=Nonmaintained 12     11     23       8      NA
+>>>>>>> # Summary com todos os momentos de eventos
+>>>>>>> > summary(fit)
+>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>
+>>>>>>>                 x=Maintained
+>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>     9     11       1    0.909  0.0867       0.7541        1.000
+>>>>>>>    13     10       1    0.818  0.1163       0.6192        1.000
+>>>>>>>    18      8       1    0.716  0.1397       0.4884        1.000
+>>>>>>>    23      7       1    0.614  0.1526       0.3769        0.999
+>>>>>>>    31      5       1    0.491  0.1642       0.2549        0.946
+>>>>>>>    34      4       1    0.368  0.1627       0.1549        0.875
+>>>>>>>    48      2       1    0.184  0.1535       0.0359        0.944
+>>>>>>>
+>>>>>>>                 x=Nonmaintained
+>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>     5     12       2   0.8333  0.1076       0.6470        1.000
+>>>>>>>     8     10       2   0.6667  0.1361       0.4468        0.995
+>>>>>>>    12      8       1   0.5833  0.1423       0.3616        0.941
+>>>>>>>    23      6       1   0.4861  0.1481       0.2675        0.883
+>>>>>>>    27      5       1   0.3889  0.1470       0.1854        0.816
+>>>>>>>    30      4       1   0.2917  0.1387       0.1148        0.741
+>>>>>>>    33      3       1   0.1944  0.1219       0.0569        0.664
+>>>>>>>    43      2       1   0.0972  0.0919       0.0153        0.620
+>>>>>>>    45      1       1   0.0000     NaN           NA           NA
+>>>>>>>
+>>>>>>> # Summary com os momentos desejados
+>>>>>>> > summary(fit, times = c(14,28,35))
+>>>>>>> Call: survfit(formula = Surv(time, status) ~ x, data = aml)
+>>>>>>>
+>>>>>>>                 x=Maintained
+>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>    14      8       2    0.818   0.116        0.619        1.000
+>>>>>>>    28      6       2    0.614   0.153        0.377        0.999
+>>>>>>>    35      3       2    0.368   0.163        0.155        0.875
+>>>>>>>
+>>>>>>>                 x=Nonmaintained
+>>>>>>>  time n.risk n.event survival std.err lower 95% CI upper 95% CI
+>>>>>>>    14      7       5    0.583   0.142       0.3616        0.941
+>>>>>>>    28      4       2    0.389   0.147       0.1854        0.816
+>>>>>>>    35      2       2    0.194   0.122       0.0569        0.664
+>>>>>>>
+>>>>>>> > plot(fit)
+>>>>>>> > plot(fit, cumhaz = T)
+>>>>>>> >
+>>>>>>> Reparem que há uma opção para o gráfico cumhaz = T, o que significa
+>>>>>>> que o cumhaz está depositado no objeto, inclusive dentro do summary também.
+>>>>>>> Tipo summary(fit)$cumhaz. Só que não há uma opção summary(fit, cumhaz = T)
+>>>>>>> que retorne o cumhaz ao invés da sobrevivência. Alguém tem algum bizu pra
+>>>>>>> fazer  isso organizado, extrair a mesma tabela só que com o cumhaz, como summary(fit,
+>>>>>>> times = c(14,28,35)) sem muito trabalho?
+>>>>>>>
+>>>>>>> Abraço forte,
+>>>>>>> Pedro Brasil
+>>>>>>> _______________________________________________
+>>>>>>> R-br mailing list
+>>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>>>>>> forneça código mínimo reproduzível.
+>>>>>>
+>>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível._______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211216/cf9f7eae/attachment.htm>
+
+From apcmadeira em hotmail.com  Sat Dec 18 13:14:34 2021
+From: apcmadeira em hotmail.com (ana paula coelho madeira)
+Date: Sat, 18 Dec 2021 16:14:34 +0000
+Subject: [R-br] Teste de Dunn
+Message-ID: <BN8PR10MB35399C5A552FE27327940B70CA799@BN8PR10MB3539.namprd10.prod.outlook.com>
+
+Boa tarde a todos,
+
+Apliquei um teste de Kruskal Wallis visando comparar grupos independentes e no posto hoc apliquei o teste de Dunn. Utilizei os pacotes  FSA e dunn.test e nenhum dos dois apresenta na saída as tradicionais letras usadas nos testes parametricos. Encontrei um material que faz referência a um pacote "rcompanion" porém não está mais disponível.  Desta forma, gostaria de saber se há alguma indicação de pacotes  que fazer o teste de Dunn e apresentem na saída as letras para indicar diferenças entre os grupos.
+Desde já agradeço
+
+Ana Paula
+
+Obter o Outlook para Android<https://aka.ms/AAb9ysg>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211218/02b0c680/attachment.htm>
+
+From cidedson em gmail.com  Sat Dec 18 13:35:20 2021
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Sat, 18 Dec 2021 13:35:20 -0300
+Subject: [R-br] Teste de Dunn
+In-Reply-To: <BN8PR10MB35399C5A552FE27327940B70CA799@BN8PR10MB3539.namprd10.prod.outlook.com>
+References: <BN8PR10MB35399C5A552FE27327940B70CA799@BN8PR10MB3539.namprd10.prod.outlook.com>
+Message-ID: <CAAmR2781PCv2ni=HBoXuG9AMMJyST-ReBa5HNs0Vbz6=Xw8MyQ@mail.gmail.com>
+
+Tenta o pacote "agricolae" a função
+
+
+library(agricolae)
+
+data(corn)
+
+outKruskal<-with(corn,kruskal(observation,method,group=TRUE, main="corn",
+console=TRUE))
+
+
+
+
+Cid Edson Mendonça Póvoas
+
+Analista de Dados
+Engenheiro Agrônomo
+Técnico em Segurança do Trabalho
+
+Enviado do celular
+
+Em sáb., 18 de dez. de 2021 13:14, ana paula coelho madeira por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa tarde a todos,
+>
+> Apliquei um teste de Kruskal Wallis visando comparar grupos independentes
+> e no posto hoc apliquei o teste de Dunn. Utilizei os pacotes  FSA e
+> dunn.test e nenhum dos dois apresenta na saída as tradicionais letras
+> usadas nos testes parametricos. Encontrei um material que faz referência a
+> um pacote "rcompanion" porém não está mais disponível.  Desta forma,
+> gostaria de saber se há alguma indicação de pacotes  que fazer o teste de
+> Dunn e apresentem na saída as letras para indicar diferenças entre os
+> grupos.
+> Desde já agradeço
+>
+> Ana Paula
+>
+> Obter o Outlook para Android <https://aka.ms/AAb9ysg>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211218/076b6ef7/attachment.htm>
+
+From fanefonseca em gmail.com  Sat Dec 18 15:24:44 2021
+From: fanefonseca em gmail.com (Stefane Fonseca Freitas)
+Date: Sat, 18 Dec 2021 15:24:44 -0300
+Subject: [R-br] =?utf-8?q?k_means_em_vari=C3=A1vel_2d?=
+Message-ID: <CAE+fbcUNcrTUEPZ6SnFvrgo_Jp-cDz5R12a7d4FwdnB6pCBhtQ@mail.gmail.com>
+
+Boa tarde usuários,
+
+Sou iniciante no uso do R e tenho dúvidas em relação ao uso da função de
+clusterização kmeans. Meu banco de dados é um perfil de refletividade, logo
+tenho observações para cada nível na vertical, neste caso, 144 níveis.
+Meu objetivo é aplicar o kmeans nesse banco de dados, preservando a
+estrutura inicial dele, que é 2d.
+Já realizei testes no R para outra variável 1d e li que era
+necessário preparar o dado em formato data frame para então usar o
+kmeans. No entanto, fiquei em dúvida se para esse caso específico, é
+possível realizar a clusterização sem modificar essa estrutura que é
+importante que se mantenha.
+
+Desde já agradeço,
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211218/b9734056/attachment.htm>
+
+From apcmadeira em hotmail.com  Sat Dec 18 20:15:06 2021
+From: apcmadeira em hotmail.com (ana paula coelho madeira)
+Date: Sat, 18 Dec 2021 23:15:06 +0000
+Subject: [R-br] Help Teste de Dunn
+Message-ID: <BN8PR10MB3539F5B54DBFE3EA1E62860DCA799@BN8PR10MB3539.namprd10.prod.outlook.com>
+
+Boa noite a todos
+
+Apliquei um teste de Kruskal Wallis visando comparar grupos independentes e no posto hoc apliquei o teste de Dunn. Utilizei os pacotes  FSA e dunn.test e nenhum dos dois apresenta na saída as tradicionais letras usadas nos testes paramétricos. Encontrei um material que faz referência a um pacote "rcompanion" porém não está mais disponível.  Desta forma, gostaria de saber se há alguma indicação de pacotes  que fazer o teste de Dunn e apresentem na saída as letras para indicar diferenças entre os grupos.
+Desde já agradeço,
+
+Ana Paula
+
+OBS: Peço desculpas caso o mesmo email tenha sido enviado mais de uma vez, achei que não estava mais inscrita
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211218/01cf479e/attachment.htm>
+
+From eloi.igor em yandex.com  Sun Dec 19 09:55:43 2021
+From: eloi.igor em yandex.com (Igor Eloi)
+Date: Sun, 19 Dec 2021 09:55:43 -0300
+Subject: [R-br] Help Teste de Dunn
+In-Reply-To: <BN8PR10MB3539F5B54DBFE3EA1E62860DCA799@BN8PR10MB3539.namprd10.prod.outlook.com>
+References: <BN8PR10MB3539F5B54DBFE3EA1E62860DCA799@BN8PR10MB3539.namprd10.prod.outlook.com>
+Message-ID: <1490941639918321@mail.yandex.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211219/55c5d976/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Tue Dec 21 12:02:18 2021
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 21 Dec 2021 12:02:18 -0300
+Subject: [R-br] ggplot + geom_bar
+Message-ID: <CAFfGvyJYPHe9dVsA-vnkcJZbasp_3WWOS4_GzBCY3oTgKvs3og@mail.gmail.com>
+
+Amigos de R,
+
+Estou num esforço de tentar aprender a usar o tidyverse. Gostaria de manter
+a consistência de um relatório que estou trabalhando com gráficos do
+ggplot. Mas há um particular gráfico de barras que não estou conseguindo
+fazer. Alguém pode me ajudar a fazer o gráfico no ggplot + geom_bar? Segue
+abaixo um exemplo como eu faria com o graphics.
+
+# Preparando os dados simulados
+tab <- array(c(92,74,11,0,0,94,98,10,1,0,
+               83,56,13,2,0,96,68,9,7,0,
+               46,28,7,1,1,54,59,16,7,0,
+               26,20,3,0,0,36,32,16,4,0,
+               8,2,0,0,0,3,3,1,0,0), c(5, 2, 5))
+dimnames(tab) <- list(c("Definitively satisfied",
+                        "Satisfied",
+                        "Little satisfied",
+                        "Little dissatisfied",
+                        "Definitively dissatisfied"),
+                        c("Surface 1","Surface 2"),
+                      c(1:5))
+names(dimnames(tab)) <- c("Satisfaction","Intervention","Visit")
+tab
+a <- epitools::expand.table(tab)
+a$Visit <- paste0("Visit ", a$Visit)
+head(a)
+
+# Fazendo as tabelas ja com os percentuais
+x <- sapply(unique(a$Visit), function(i)
+prop.table(table(a$Satisfaction[a$Visit==i],a$Intervention[a$Visit==i]),2),
+simplify = FALSE)
+
+# Criando o objeto height do barplot
+y <- x[[1]] ; for(i in 2:length(x)) {y <- cbind(y,x[[i]])}
+ramp <- colorRampPalette(c("darkgreen","red"))
+
+# Criando o gráfico
+z <- barplot(y, beside = T, col = ramp(5),
+             legend = T,
+             args.legend = list(x="top",xpd=NA,inset=-.15,bty="n",cex=.8,
+ncol = 2),
+             axisnames = FALSE)
+axis(2, at = seq(0,1,.025),labels = FALSE, tck = -.01)
+text(z[3,], -.005, colnames(y), cex = .5,  srt = 35, xpd = NA, adj = 1,
+offset = 5)
+axis(1, at = sapply(seq(0,ncol(z)-2,2),function(i) mean(z[,c(1:2) +
+i])),labels = unique(a$Visit), line = 1.5, tick = FALSE)
+sapply(1:ncol(y), function(i) text(x = z[1:5,i], y = y[1:5,i], labels =
+round(y[1:5,i],2), pos = 3, cex = .5, xpd = NA))
+
+Abraço forte a todos,
+Pedro Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211221/eec1ea19/attachment.htm>
+
+From felipe.e.barletta em gmail.com  Tue Dec 21 14:54:08 2021
+From: felipe.e.barletta em gmail.com (Felipe Barletta)
+Date: Tue, 21 Dec 2021 14:54:08 -0300
+Subject: [R-br] ggplot + geom_bar
+In-Reply-To: <CAFfGvyJYPHe9dVsA-vnkcJZbasp_3WWOS4_GzBCY3oTgKvs3og@mail.gmail.com>
+References: <CAFfGvyJYPHe9dVsA-vnkcJZbasp_3WWOS4_GzBCY3oTgKvs3og@mail.gmail.com>
+Message-ID: <CAJz4ZjGqjDthUTPRXvXgP6J3YjTZn1HJHqvDxuVEiE4fCds8Hg@mail.gmail.com>
+
+Prezado Pedro,
+
+Talvez esse código lhe sirva (com alguns ajustes de perfumaria nas legendas
+e eixos)
+
+###########################################################################
+library(ggplot2)
+ggplot(a, aes( x = Satisfaction, group=Visit)) +
+    geom_bar(aes(y = ..prop.., fill = factor(..x..)), stat="count") +
+    geom_text(aes( label = scales::percent(..prop..),
+                  y= ..prop.. ), stat= "count", vjust = -.5,
+              size = 2.5 ) +
+    theme(axis.text.x= element_text(angle=45, size = 8),
+          legend.title=element_blank()) +
+    labs(y = "Percent", fill="Satisfaction") +
+    facet_grid(~Visit+Intervention) +
+    scale_y_continuous(labels = scales::percent)
+
+Em ter., 21 de dez. de 2021 às 12:02, Pedro Emmanuel Alvarenga Americano do
+Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Amigos de R,
+>
+> Estou num esforço de tentar aprender a usar o tidyverse. Gostaria de
+> manter a consistência de um relatório que estou trabalhando com gráficos do
+> ggplot. Mas há um particular gráfico de barras que não estou conseguindo
+> fazer. Alguém pode me ajudar a fazer o gráfico no ggplot + geom_bar? Segue
+> abaixo um exemplo como eu faria com o graphics.
+>
+> # Preparando os dados simulados
+> tab <- array(c(92,74,11,0,0,94,98,10,1,0,
+>                83,56,13,2,0,96,68,9,7,0,
+>                46,28,7,1,1,54,59,16,7,0,
+>                26,20,3,0,0,36,32,16,4,0,
+>                8,2,0,0,0,3,3,1,0,0), c(5, 2, 5))
+> dimnames(tab) <- list(c("Definitively satisfied",
+>                         "Satisfied",
+>                         "Little satisfied",
+>                         "Little dissatisfied",
+>                         "Definitively dissatisfied"),
+>                         c("Surface 1","Surface 2"),
+>                       c(1:5))
+> names(dimnames(tab)) <- c("Satisfaction","Intervention","Visit")
+> tab
+> a <- epitools::expand.table(tab)
+> a$Visit <- paste0("Visit ", a$Visit)
+> head(a)
+>
+> # Fazendo as tabelas ja com os percentuais
+> x <- sapply(unique(a$Visit), function(i)
+> prop.table(table(a$Satisfaction[a$Visit==i],a$Intervention[a$Visit==i]),2),
+> simplify = FALSE)
+>
+> # Criando o objeto height do barplot
+> y <- x[[1]] ; for(i in 2:length(x)) {y <- cbind(y,x[[i]])}
+> ramp <- colorRampPalette(c("darkgreen","red"))
+>
+> # Criando o gráfico
+> z <- barplot(y, beside = T, col = ramp(5),
+>              legend = T,
+>              args.legend = list(x="top",xpd=NA,inset=-.15,bty="n",cex=.8,
+> ncol = 2),
+>              axisnames = FALSE)
+> axis(2, at = seq(0,1,.025),labels = FALSE, tck = -.01)
+> text(z[3,], -.005, colnames(y), cex = .5,  srt = 35, xpd = NA, adj = 1,
+> offset = 5)
+> axis(1, at = sapply(seq(0,ncol(z)-2,2),function(i) mean(z[,c(1:2) +
+> i])),labels = unique(a$Visit), line = 1.5, tick = FALSE)
+> sapply(1:ncol(y), function(i) text(x = z[1:5,i], y = y[1:5,i], labels =
+> round(y[1:5,i],2), pos = 3, cex = .5, xpd = NA))
+>
+> Abraço forte a todos,
+> Pedro Brasil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211221/b159dfcc/attachment.htm>
+
+From cidedson em gmail.com  Tue Dec 21 15:38:22 2021
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Tue, 21 Dec 2021 15:38:22 -0300
+Subject: [R-br] ggplot + geom_bar
+In-Reply-To: <CAJz4ZjGqjDthUTPRXvXgP6J3YjTZn1HJHqvDxuVEiE4fCds8Hg@mail.gmail.com>
+References: <CAFfGvyJYPHe9dVsA-vnkcJZbasp_3WWOS4_GzBCY3oTgKvs3og@mail.gmail.com>
+ <CAJz4ZjGqjDthUTPRXvXgP6J3YjTZn1HJHqvDxuVEiE4fCds8Hg@mail.gmail.com>
+Message-ID: <CAAmR278PA35TnJOmJ6_iwyBxnZ0wJHv_5FpczWTyLk=Jr0tQQQ@mail.gmail.com>
+
+Adicionei umas coisas
+
+library(ggplot2)
+ggplot(a, aes( x = Satisfaction, group=Visit)) +
+  geom_bar(aes(y = ..prop.., fill = factor(..x..)), stat="count") +
+  geom_text(aes(label = scales::percent(round(..prop..,2)),
+                 y= ..prop.. ), stat= "count", vjust = -.5,
+            size = 3) +
+  theme_bw(15)+
+  theme(axis.text.x= element_text(angle=45, size = 10, hjust=1),
+        legend.position = "top",
+        strip.background = element_blank(),
+        panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        #panel.grid.major.y = element_line(linetype=2, size=1),
+        panel.grid.minor =  element_blank(),
+        panel.grid.major = element_blank(),
+        legend.title = element_blank()) +
+  labs(y = "Percent", fill="Satisfaction") +
+  #facet_grid(~Visit+Intervention) +
+  facet_wrap(~Visit+Intervention,strip.position="top",ncol=10)+
+  scale_y_continuous(labels = scales::percent)+
+  scale_fill_manual(values = ramp(5),labels=levels(a$Satisfaction))
+
+
+
+*Cid Edson Mendonça Póvoas*
+
+*AnovAgro <http://www.anovagro.com/>*
+*Engenheiro Agrônomo - **Data Scientist*
+*CREA : 051984991-4*
+*Técnico em Segurança do Trabalho *
+*Nº: **0012669/BA*
+*Tel: +55 73 99151-9565*
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em ter., 21 de dez. de 2021 às 14:54, Felipe Barletta por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezado Pedro,
+>
+> Talvez esse código lhe sirva (com alguns ajustes de perfumaria nas
+> legendas e eixos)
+>
+> ###########################################################################
+> library(ggplot2)
+> ggplot(a, aes( x = Satisfaction, group=Visit)) +
+>     geom_bar(aes(y = ..prop.., fill = factor(..x..)), stat="count") +
+>     geom_text(aes( label = scales::percent(..prop..),
+>                   y= ..prop.. ), stat= "count", vjust = -.5,
+>               size = 2.5 ) +
+>     theme(axis.text.x= element_text(angle=45, size = 8),
+>           legend.title=element_blank()) +
+>     labs(y = "Percent", fill="Satisfaction") +
+>     facet_grid(~Visit+Intervention) +
+>     scale_y_continuous(labels = scales::percent)
+>
+> Em ter., 21 de dez. de 2021 às 12:02, Pedro Emmanuel Alvarenga Americano
+> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Amigos de R,
+>>
+>> Estou num esforço de tentar aprender a usar o tidyverse. Gostaria de
+>> manter a consistência de um relatório que estou trabalhando com gráficos do
+>> ggplot. Mas há um particular gráfico de barras que não estou conseguindo
+>> fazer. Alguém pode me ajudar a fazer o gráfico no ggplot + geom_bar? Segue
+>> abaixo um exemplo como eu faria com o graphics.
+>>
+>> # Preparando os dados simulados
+>> tab <- array(c(92,74,11,0,0,94,98,10,1,0,
+>>                83,56,13,2,0,96,68,9,7,0,
+>>                46,28,7,1,1,54,59,16,7,0,
+>>                26,20,3,0,0,36,32,16,4,0,
+>>                8,2,0,0,0,3,3,1,0,0), c(5, 2, 5))
+>> dimnames(tab) <- list(c("Definitively satisfied",
+>>                         "Satisfied",
+>>                         "Little satisfied",
+>>                         "Little dissatisfied",
+>>                         "Definitively dissatisfied"),
+>>                         c("Surface 1","Surface 2"),
+>>                       c(1:5))
+>> names(dimnames(tab)) <- c("Satisfaction","Intervention","Visit")
+>> tab
+>> a <- epitools::expand.table(tab)
+>> a$Visit <- paste0("Visit ", a$Visit)
+>> head(a)
+>>
+>> # Fazendo as tabelas ja com os percentuais
+>> x <- sapply(unique(a$Visit), function(i)
+>> prop.table(table(a$Satisfaction[a$Visit==i],a$Intervention[a$Visit==i]),2),
+>> simplify = FALSE)
+>>
+>> # Criando o objeto height do barplot
+>> y <- x[[1]] ; for(i in 2:length(x)) {y <- cbind(y,x[[i]])}
+>> ramp <- colorRampPalette(c("darkgreen","red"))
+>>
+>> # Criando o gráfico
+>> z <- barplot(y, beside = T, col = ramp(5),
+>>              legend = T,
+>>              args.legend = list(x="top",xpd=NA,inset=-.15,bty="n",cex=.8,
+>> ncol = 2),
+>>              axisnames = FALSE)
+>> axis(2, at = seq(0,1,.025),labels = FALSE, tck = -.01)
+>> text(z[3,], -.005, colnames(y), cex = .5,  srt = 35, xpd = NA, adj = 1,
+>> offset = 5)
+>> axis(1, at = sapply(seq(0,ncol(z)-2,2),function(i) mean(z[,c(1:2) +
+>> i])),labels = unique(a$Visit), line = 1.5, tick = FALSE)
+>> sapply(1:ncol(y), function(i) text(x = z[1:5,i], y = y[1:5,i], labels =
+>> round(y[1:5,i],2), pos = 3, cex = .5, xpd = NA))
+>>
+>> Abraço forte a todos,
+>> Pedro Brasil
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211221/ecf7b84e/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Tue Dec 21 16:13:28 2021
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 21 Dec 2021 16:13:28 -0300
+Subject: [R-br] ggplot + geom_bar
+In-Reply-To: <CAAmR278PA35TnJOmJ6_iwyBxnZ0wJHv_5FpczWTyLk=Jr0tQQQ@mail.gmail.com>
+References: <CAFfGvyJYPHe9dVsA-vnkcJZbasp_3WWOS4_GzBCY3oTgKvs3og@mail.gmail.com>
+ <CAJz4ZjGqjDthUTPRXvXgP6J3YjTZn1HJHqvDxuVEiE4fCds8Hg@mail.gmail.com>
+ <CAAmR278PA35TnJOmJ6_iwyBxnZ0wJHv_5FpczWTyLk=Jr0tQQQ@mail.gmail.com>
+Message-ID: <CAFfGvy+JacL-BPBWkdHnHwZunx_MeV32bOt+9nTjSV3EBSrVzQ@mail.gmail.com>
+
+Valeu,
+
+O que o Cid mandou ficou bem proximo mesmo. Agora, eu fiquei olhando umas
+coisas no código e não consigo entender umas coisas, por exemplo o que
+seria o ..prop.. e o  ..x..? Com frequência eu procuro quais os possíveis
+valores que o stat pode receber e eu so vejo o stat = "count" ou uma função
+definida pelo usuário. Outra coisa que acho bem difícil é que com o ggplot
+muitos graficos não tem a cara do desejado no final nas primeiras linhas de
+comando. Por exemplo, no recomendado pelo Cid, se eu rodar somente as 3
+primeiras linhas... fica muito esquisito ainda.
+
+Por ultimo, nesse codigo do Cid, como eu faria pra tirar os níveis das
+categorias da Satisfação do eixo x já que estão na legenda do fill?
+
+Pedro Brasil
+
+
+Em ter., 21 de dez. de 2021 às 15:39, Cid Póvoas por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+>
+> Adicionei umas coisas
+>
+> library(ggplot2)
+> ggplot(a, aes( x = Satisfaction, group=Visit)) +
+>   geom_bar(aes(y = ..prop.., fill = factor(..x..)), stat="count") +
+>   geom_text(aes(label = scales::percent(round(..prop..,2)),
+>                  y= ..prop.. ), stat= "count", vjust = -.5,
+>             size = 3) +
+>   theme_bw(15)+
+>   theme(axis.text.x= element_text(angle=45, size = 10, hjust=1),
+>         legend.position = "top",
+>         strip.background = element_blank(),
+>         panel.grid.major.x = element_blank(),
+>         panel.grid.minor.x = element_blank(),
+>         panel.grid.minor.y = element_blank(),
+>         #panel.grid.major.y = element_line(linetype=2, size=1),
+>         panel.grid.minor =  element_blank(),
+>         panel.grid.major = element_blank(),
+>         legend.title = element_blank()) +
+>   labs(y = "Percent", fill="Satisfaction") +
+>   #facet_grid(~Visit+Intervention) +
+>   facet_wrap(~Visit+Intervention,strip.position="top",ncol=10)+
+>   scale_y_continuous(labels = scales::percent)+
+>   scale_fill_manual(values = ramp(5),labels=levels(a$Satisfaction))
+>
+>
+>
+> *Cid Edson Mendonça Póvoas*
+>
+> *AnovAgro <http://www.anovagro.com/>*
+> *Engenheiro Agrônomo - **Data Scientist*
+> *CREA : 051984991-4*
+> *Técnico em Segurança do Trabalho *
+> *Nº: **0012669/BA*
+> *Tel: +55 73 99151-9565*
+> *Lattes : *http://lattes.cnpq.br/2303498368142537
+> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+> *Whatsapp :* https://wa.me/5573991519565
+>
+>
+> Em ter., 21 de dez. de 2021 às 14:54, Felipe Barletta por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Prezado Pedro,
+>>
+>> Talvez esse código lhe sirva (com alguns ajustes de perfumaria nas
+>> legendas e eixos)
+>>
+>>
+>> ###########################################################################
+>> library(ggplot2)
+>> ggplot(a, aes( x = Satisfaction, group=Visit)) +
+>>     geom_bar(aes(y = ..prop.., fill = factor(..x..)), stat="count") +
+>>     geom_text(aes( label = scales::percent(..prop..),
+>>                   y= ..prop.. ), stat= "count", vjust = -.5,
+>>               size = 2.5 ) +
+>>     theme(axis.text.x= element_text(angle=45, size = 8),
+>>           legend.title=element_blank()) +
+>>     labs(y = "Percent", fill="Satisfaction") +
+>>     facet_grid(~Visit+Intervention) +
+>>     scale_y_continuous(labels = scales::percent)
+>>
+>> Em ter., 21 de dez. de 2021 às 12:02, Pedro Emmanuel Alvarenga Americano
+>> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Amigos de R,
+>>>
+>>> Estou num esforço de tentar aprender a usar o tidyverse. Gostaria de
+>>> manter a consistência de um relatório que estou trabalhando com gráficos do
+>>> ggplot. Mas há um particular gráfico de barras que não estou conseguindo
+>>> fazer. Alguém pode me ajudar a fazer o gráfico no ggplot + geom_bar? Segue
+>>> abaixo um exemplo como eu faria com o graphics.
+>>>
+>>> # Preparando os dados simulados
+>>> tab <- array(c(92,74,11,0,0,94,98,10,1,0,
+>>>                83,56,13,2,0,96,68,9,7,0,
+>>>                46,28,7,1,1,54,59,16,7,0,
+>>>                26,20,3,0,0,36,32,16,4,0,
+>>>                8,2,0,0,0,3,3,1,0,0), c(5, 2, 5))
+>>> dimnames(tab) <- list(c("Definitively satisfied",
+>>>                         "Satisfied",
+>>>                         "Little satisfied",
+>>>                         "Little dissatisfied",
+>>>                         "Definitively dissatisfied"),
+>>>                         c("Surface 1","Surface 2"),
+>>>                       c(1:5))
+>>> names(dimnames(tab)) <- c("Satisfaction","Intervention","Visit")
+>>> tab
+>>> a <- epitools::expand.table(tab)
+>>> a$Visit <- paste0("Visit ", a$Visit)
+>>> head(a)
+>>>
+>>> # Fazendo as tabelas ja com os percentuais
+>>> x <- sapply(unique(a$Visit), function(i)
+>>> prop.table(table(a$Satisfaction[a$Visit==i],a$Intervention[a$Visit==i]),2),
+>>> simplify = FALSE)
+>>>
+>>> # Criando o objeto height do barplot
+>>> y <- x[[1]] ; for(i in 2:length(x)) {y <- cbind(y,x[[i]])}
+>>> ramp <- colorRampPalette(c("darkgreen","red"))
+>>>
+>>> # Criando o gráfico
+>>> z <- barplot(y, beside = T, col = ramp(5),
+>>>              legend = T,
+>>>              args.legend =
+>>> list(x="top",xpd=NA,inset=-.15,bty="n",cex=.8, ncol = 2),
+>>>              axisnames = FALSE)
+>>> axis(2, at = seq(0,1,.025),labels = FALSE, tck = -.01)
+>>> text(z[3,], -.005, colnames(y), cex = .5,  srt = 35, xpd = NA, adj = 1,
+>>> offset = 5)
+>>> axis(1, at = sapply(seq(0,ncol(z)-2,2),function(i) mean(z[,c(1:2) +
+>>> i])),labels = unique(a$Visit), line = 1.5, tick = FALSE)
+>>> sapply(1:ncol(y), function(i) text(x = z[1:5,i], y = y[1:5,i], labels =
+>>> round(y[1:5,i],2), pos = 3, cex = .5, xpd = NA))
+>>>
+>>> Abraço forte a todos,
+>>> Pedro Brasil
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211221/759abdba/attachment.htm>
+

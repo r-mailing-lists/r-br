@@ -1,0 +1,2139 @@
+From nandodesouza em gmail.com  Sun Mar  1 19:43:06 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sun, 1 Mar 2020 19:43:06 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <CAEEYVUDb366Gt9ABUE+q40C15ww_W+amQrwtK5UtVTtkejDn-Q@mail.gmail.com>
+References: <CAEEYVUDb366Gt9ABUE+q40C15ww_W+amQrwtK5UtVTtkejDn-Q@mail.gmail.com>
+Message-ID: <8611E4AD-307A-4B24-BEA1-72CD291EB74B@getmailspring.com>
+
+O repositório não é:
+deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/ (https://link.getmailspring.com/link/8611E4AD-307A-4B24-BEA1-72CD291EB74B em getmailspring.com/0?redirect=https%3A%2F%2Fcran-r.c3sl.ufpr.br%2Fbin%2Flinux%2Fubuntu%2Fbionic-cran35%2F&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+Acredito que está faltando a barra antes do bionic.
+Att
+On Feb 28 2020, at 7:13 pm, Marcelo Laia por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Emerson,
+>
+> Esqueci de escrever que, após adicionar a chave do apt, você tem que adicionar o repositório deb http://cran.fiocruz.br/bin/linux/debian (https://link.getmailspring.com/link/8611E4AD-307A-4B24-BEA1-72CD291EB74B em getmailspring.com/1?redirect=http%3A%2F%2Fcran.fiocruz.br%2Fbin%2Flinux%2Fdebian&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy) buster-cran35/ e rodar apt update e apt upgrade
+>
+> Laia, ML
+> Em sex, 28 de fev de 2020 18:42, Marcelo Laia <marcelolaia em gmail.com (mailto:marcelolaia em gmail.com)> escreveu:
+> > Emerson,
+> >
+> > Para adicionar a chave, rode o seguinte comando como root (ou sudo antes do comando):
+> >
+> > apt-key adv --keyserver keys.gnupg.net (http://keys.gnupg.net) --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
+> > Tudo em uma única linha.
+> >
+> > Qualquer coisa, posta aqui!
+> >
+> > Laia, ML
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> > Em sex, 28 de fev de 2020 18:09, Marcelo Laia <marcelolaia em gmail.com (mailto:marcelolaia em gmail.com)> escreveu:
+> > > Emerson,
+> > >
+> > > Em sex, 28 de fev de 2020 18:05, Emerson Cotta Bodevan por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)>
+> > > >
+> > > >
+> > > > Prezado Marcelo... adicionando o repositório
+> > > > deb http://cran.fiocruz.br/bin/linux/debian buster-cran35/
+> > > > obtive o mesmo erro anterior adicionado de uma mensagem falando sobre uma chave pública.
+> > > >
+> > > >
+> > > >
+> > >
+> > > Muito bom!
+> > >
+> > > Você só tem que adicionar a chave pública para o apt acreditar nela.
+> > >
+> > > Estou fora de casa, mas, na mensagem que eu lhe enviei tem o link para a página do CRAN com as informações e lá tem como incluir a chave pública!
+> > >
+> > > Assim que chegar em casa, caso ainda não tenha conseguido, lhe envio o como fazer.
+> > >
+> > > Laia, ML
+> > > >
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200301/41adb470/attachment.html>
+
+From marcelolaia em gmail.com  Sun Mar  1 20:38:00 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Sun, 1 Mar 2020 20:38:00 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <8611E4AD-307A-4B24-BEA1-72CD291EB74B@getmailspring.com>
+References: <CAEEYVUDb366Gt9ABUE+q40C15ww_W+amQrwtK5UtVTtkejDn-Q@mail.gmail.com>
+ <8611E4AD-307A-4B24-BEA1-72CD291EB74B@getmailspring.com>
+Message-ID: <20200301233800.GC391956@localhost>
+
+On 01/03/20 at 07:43, Fernando Souza wrote:
+>    O repositório não é:
+> 
+>    deb [1]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/
+> 
+>    Acredito que está faltando a barra antes do bionic.
+
+Olá Fernando,
+
+Na primeira mensagem eu coloquei corretamente o link direto do CRAN,
+mas com o repositório da fiocruz devido o da UFPR estar sem certificado
+de segurança.
+
+Por favor, dê uma olhada e veja se esqueci ou escrevi algo errado.
+
+http://listas.inf.ufpr.br/pipermail/r-br/2020-February/019958.html
+
+
+-- 
+Laia, ML
+https://publons.com/researcher/1755871/
+http://orcid.org/0000-0001-6366-4558
+
+From nandodesouza em gmail.com  Sun Mar  1 20:47:43 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sun, 1 Mar 2020 20:47:43 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <20200301233800.GC391956@localhost>
+References: <20200301233800.GC391956@localhost>
+Message-ID: <E9698C40-2583-493D-8D8C-8A4AABCA599E@getmailspring.com>
+
+Olá marcelo,
+Acho que o repositório como está escrito no cran está incompleto.
+Copie e cole os dois endereços no seu browser e você verá que o segundo a página não será encontrada.
+tente:
+Correto
+https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/ (https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/0?redirect=https%3A%2F%2Fcran-r.c3sl.ufpr.br%2Fbin%2Flinux%2Fubuntu%2Fbionic-cran35%2F&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+
+Incorreto
+https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu (https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/1?redirect=https%3A%2F%2Fcran-r.c3sl.ufpr.br%2Fbin%2Flinux%2Fubuntu&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy) bionic-cran35/ (https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/2?redirect=https%3A%2F%2Fcran-r.c3sl.ufpr.br%2Fbin%2Flinux%2Fubuntu%2Fbionic-cran35%2F&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+
+att
+On Mar 1 2020, at 8:38 pm, Marcelo Laia <marcelolaia em gmail.com> wrote:
+> On 01/03/20 at 07:43, Fernando Souza wrote: > O repositório não é: > > deb [1]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/ > > Acredito que está faltando a barra antes do bionic. Olá Fernando, Na primeira mensagem eu coloquei corretamente o link direto do CRAN, mas com o repositório da fiocruz devido o da UFPR estar sem certificado de segurança. Por favor, dê uma olhada e veja se esqueci ou escrevi algo errado. http://listas.inf.ufpr.br/pipermail/r-br/2020-February/019958.html -- Laia, ML https://publons.com/researcher/1755871/ http://orcid.org/0000-0001-6366-4558
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200301/a64f4a6d/attachment.html>
+
+From marcelolaia em gmail.com  Sun Mar  1 21:21:05 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Sun, 1 Mar 2020 21:21:05 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <E9698C40-2583-493D-8D8C-8A4AABCA599E@getmailspring.com>
+References: <20200301233800.GC391956@localhost>
+ <E9698C40-2583-493D-8D8C-8A4AABCA599E@getmailspring.com>
+Message-ID: <20200302002105.GD391956@localhost>
+
+On 01/03/20 at 08:47, Fernando Souza wrote:
+>    Copie e cole os dois endereços no seu browser e você verá que o segundo
+>    a página não será encontrada.
+> 
+>    tente:
+> 
+>    Correto
+> 
+>     [1]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/
+> 
+>    Incorreto
+> 
+>     [2]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu [3]bionic-cran35/
+
+
+Fernando, para incluir um repositório no arquivo /etc/apt/sources.list
+o formato é diferente do formato utilizado em um navegador (browser).
+
+Eu sugeri utilizar no arquivo /etc/apt/sources.list o respositório:
+
+deb https://cran.fiocruz.br/bin/linux/debian buster-cran35/
+
+Veja que há um espaço entre debian e buster-cran35 e um prefixo deb no
+início. Isso é um padrão. Mais informações aqui:
+https://wiki.debian.org/SourcesList
+
+Para acessar o repositório CRAN acima via navegador, tu estás correto em 
+trocar o espaço pela barra e excluir o prefixo deb no início, assim:
+
+https://cran.fiocruz.br/bin/linux/debian/buster-cran35/
+
+Se ainda houver erro, vamos tentar corrigir.
+
+Laia, ML
+
+
+> 
+>    att
+> 
+>    On Mar 1 2020, at 8:38 pm, Marcelo Laia <marcelolaia em gmail.com> wrote:
+> 
+>    On 01/03/20 at 07:43, Fernando Souza wrote: > O repositório não é: > >
+>    deb [1]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/ > >
+>    Acredito que está faltando a barra antes do bionic. Olá Fernando, Na
+>    primeira mensagem eu coloquei corretamente o link direto do CRAN, mas
+>    com o repositório da fiocruz devido o da UFPR estar sem certificado de
+>    segurança. Por favor, dê uma olhada e veja se esqueci ou escrevi algo
+>    errado.
+>    http://listas.inf.ufpr.br/pipermail/r-br/2020-February/019958.html --
+>    Laia, ML https://publons.com/researcher/1755871/
+>    http://orcid.org/0000-0001-6366-4558
+> 
+> Referências
+> 
+>    1. https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/0?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t
+>    2. https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/1?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t
+>    3. https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/2?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t
+
+ ^[
+
+-- 
+Marcelo
+
+From nandodesouza em gmail.com  Sun Mar  1 21:29:09 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sun, 1 Mar 2020 21:29:09 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <20200302002105.GD391956@localhost>
+References: <20200302002105.GD391956@localhost>
+Message-ID: <FA48EE3C-5A7B-42A2-AE47-D5BE6224A8AA@getmailspring.com>
+
+Ah é mesmo!!! Foi mal, viajei aqui.
+
+Eu também utilizo o Debian buster e para mim o endereço da forma como indicou funciona bem.
+Estava tentando encontrar um possível erro postado pelo Emerson. Mas não estou encontrando, possivelmente é do servido que ele utilizou.
+Obrigado!
+
+On Mar 1 2020, at 9:21 pm, Marcelo Laia <marcelolaia em gmail.com> wrote:
+> On 01/03/20 at 08:47, Fernando Souza wrote: > Copie e cole os dois endereços no seu browser e você verá que o segundo > a página não será encontrada. > > tente: > > Correto > > [1]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/ > > Incorreto > > [2]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu [3]bionic-cran35/ Fernando, para incluir um repositório no arquivo /etc/apt/sources.list o formato é diferente do formato utilizado em um navegador (browser). Eu sugeri utilizar no arquivo /etc/apt/sources.list o respositório: deb https://cran.fiocruz.br/bin/linux/debian buster-cran35/ Veja que há um espaço entre debian e buster-cran35 e um prefixo deb no início. Isso é um padrão. Mais informações aqui: https://wiki.debian.org/SourcesList Para acessar o repositório CRAN acima via navegador, tu estás correto em trocar o espaço pela barra e excluir o prefixo deb no início, assim: https://cran.fiocruz.br/bin/linux/debian/buster-cran35/ Se ainda houver erro, vamos tentar corrigir. Laia, ML > > att > > On Mar 1 2020, at 8:38 pm, Marcelo Laia wrote: > > On 01/03/20 at 07:43, Fernando Souza wrote: > O repositório não é: > > > deb [1]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/ > > > Acredito que está faltando a barra antes do bionic. Olá Fernando, Na > primeira mensagem eu coloquei corretamente o link direto do CRAN, mas > com o repositório da fiocruz devido o da UFPR estar sem certificado de > segurança. Por favor, dê uma olhada e veja se esqueci ou escrevi algo > errado. > http://listas.inf.ufpr.br/pipermail/r-br/2020-February/019958.html -- > Laia, ML https://publons.com/researcher/1755871/ > http://orcid.org/0000-0001-6366-4558 > > Referências > > 1. https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/0?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t > 2. https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/1?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t > 3. https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/2?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t ^[ -- Marcelo
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200301/9eb0d243/attachment.html>
+
+From marcelolaia em gmail.com  Sun Mar  1 21:34:57 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Sun, 1 Mar 2020 21:34:57 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <FA48EE3C-5A7B-42A2-AE47-D5BE6224A8AA@getmailspring.com>
+References: <20200302002105.GD391956@localhost>
+ <FA48EE3C-5A7B-42A2-AE47-D5BE6224A8AA@getmailspring.com>
+Message-ID: <CAEEYVUBtEzjDYp8yC7H294yHcD3fVR8312MteFTuHnZQ8bhGKw@mail.gmail.com>
+
+Fernando,
+
+Acredito que o problema dele foi somente a chave pública do apt.
+
+Laia ML
+
+Em dom., 1 de mar. de 2020 às 21:29, Fernando Souza
+<nandodesouza em gmail.com> escreveu:
+>
+> Ah é mesmo!!! Foi mal, viajei aqui.
+>
+> Eu também utilizo o Debian  buster e para mim o endereço da forma como indicou funciona bem.
+>
+> Estava tentando encontrar um possível erro postado pelo Emerson. Mas não estou encontrando, possivelmente é do servido que ele utilizou.
+>
+> Obrigado!
+>
+>
+> On Mar 1 2020, at 9:21 pm, Marcelo Laia <marcelolaia em gmail.com> wrote:
+>
+> On 01/03/20 at 08:47, Fernando Souza wrote: > Copie e cole os dois endereços no seu browser e você verá que o segundo > a página não será encontrada. > > tente: > > Correto > > [1]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/ > > Incorreto > > [2]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu [3]bionic-cran35/ Fernando, para incluir um repositório no arquivo /etc/apt/sources.list o formato é diferente do formato utilizado em um navegador (browser). Eu sugeri utilizar no arquivo /etc/apt/sources.list o respositório: deb https://cran.fiocruz.br/bin/linux/debian buster-cran35/ Veja que há um espaço entre debian e buster-cran35 e um prefixo deb no início. Isso é um padrão. Mais informações aqui: https://wiki.debian.org/SourcesList Para acessar o repositório CRAN acima via navegador, tu estás correto em trocar o espaço pela barra e excluir o prefixo deb no início, assim: https://cran.fiocruz.br/bin/linux/debian/buster-cran35/ Se ainda houver erro, vamos tentar corrigir. Laia, ML > > att > > On Mar 1 2020, at 8:38 pm, Marcelo Laia wrote: > > On 01/03/20 at 07:43, Fernando Souza wrote: > O repositório não é: > > > deb [1]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/ > > > Acredito que está faltando a barra antes do bionic. Olá Fernando, Na > primeira mensagem eu coloquei corretamente o link direto do CRAN, mas > com o repositório da fiocruz devido o da UFPR estar sem certificado de > segurança. Por favor, dê uma olhada e veja se esqueci ou escrevi algo > errado. > http://listas.inf.ufpr.br/pipermail/r-br/2020-February/019958.html -- > Laia, ML https://publons.com/researcher/1755871/ > http://orcid.org/0000-0001-6366-4558 > > Referências > > 1. https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/0?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t > 2. https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/1?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t > 3. https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/2?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t ^[ -- Marcelo
+
+
+
+-- 
+Laia, M. L.
+
+From rodolpholuiz42 em gmail.com  Tue Mar  3 21:11:18 2020
+From: rodolpholuiz42 em gmail.com (Rodolpho Medeiros)
+Date: Tue, 3 Mar 2020 21:11:18 -0300
+Subject: [R-br] Rasterstack
+Message-ID: <CA+e4poESgRsTm-7nR8xp63HQ0PzYAmyXvytSNnF2_JBYsGFNjw@mail.gmail.com>
+
+Calculei a média de uma série temporal de um arquivo rasterstack, tem como
+dessa média extrair só os dados de um polígono no formato csv?
+
+-- 
+Att,
+
+Rodolpho Luiz Barros de Medeiros. Graduado e Mestrando em Meteorologia pela
+Universidade Federal de Campina Grande - UFCG
+
+Lattes: *http://lattes.cnpq.br/4495223945475265*
+<https://wwws.cnpq.br/cvlattesweb/PKG_MENU.menu?f_cod=441B5FA4192F2CAE928C845753332BE6#>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200303/429dc447/attachment.html>
+
+From andreolsouza em yahoo.com.br  Fri Mar  6 08:55:03 2020
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Fri, 6 Mar 2020 11:55:03 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Defini=C3=A7=C3=A3o_de_Prior_do_modelo?=
+References: <1145732326.563452.1583495703585.ref@mail.yahoo.com>
+Message-ID: <1145732326.563452.1583495703585@mail.yahoo.com>
+
+Pessoal, bom dia!
+estou com problemas de colocar priori para os efeitos fixos do modelo II. Alguém saberia onde estaria o erro?  
+
+rm(list=ls(all=TRUE))
+# Modelo I 
+data(PlodiaPO)
+model1<-MCMCglmm(PO ~ plate, random=~FSfamily, data=PlodiaPO, verbose=FALSE,
+                 nitt=1300, burnin=300, thin=1)
+summary(model1)
+# Modelo II
+prioriC0 <- list(B = list(B1=list(mu = 0, V = 1e+8), B2=list(mu = 0, V = 1e+8),
+                 R = list(V=1, nu=1),
+                 G = list(G1=list(V=1, nu=1, alpha.mu = 0, alpha.V = 25^2))))model2<-MCMCglmm(PO ~ plate, random=~FSfamily, data=PlodiaPO, verbose=FALSE,
+                 nitt=13000, burnin=300, thin=2, prior=prioriC0)Error in MCMCglmm(PO ~ plate, random = ~FSfamily, data = PlodiaPO, verbose = FALSE,  : 
+  either both or neither R and G structures need a priorsummary(model2)
+
+
+
+att,.André 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200306/c7255695/attachment.html>
+
+From richfield1974 em yahoo.com  Tue Mar 17 14:12:10 2020
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Tue, 17 Mar 2020 17:12:10 +0000 (UTC)
+Subject: [R-br] F-value no modelo gls do pacote nlme
+References: <1360517047.4175778.1584465130336.ref@mail.yahoo.com>
+Message-ID: <1360517047.4175778.1584465130336@mail.yahoo.com>
+
+Prezados, boa tarde
+Alguém sabe como o valor F é calculado na tabela de Anova do modelo gls do pacote nlme?Li a documentação, procurei na internet e não achei.Desde já agradeço.Luiz
+y=c(2370,1687,2592,2283,2910,3020,1282,1527,871,1025,825,920,562,321,636,317,485,842,173,127,132,150,129,227,193,71,82,62,96,44)
+x=as.factor(c("A","A","A","A","A","A","B","B","B","B","B","B","C","C","C","C","C","C","D","D","D","D","D","D","E","E","E","E","E","E"))library(nlme)
+model=gls(y~x, weights = varExp())
+anova(model)Denom. DF: 25 
+            numDF   F-value p-value
+(Intercept)     1 148.55052  <.0001
+x               4  50.83288  <.0001
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200317/7a0e723a/attachment.html>
+
+From nandodesouza em gmail.com  Tue Mar 17 15:15:23 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Tue, 17 Mar 2020 15:15:23 -0300
+Subject: [R-br] F-value no modelo gls do pacote nlme
+In-Reply-To: <1360517047.4175778.1584465130336@mail.yahoo.com>
+References: <1360517047.4175778.1584465130336@mail.yahoo.com>
+Message-ID: <4375E08E-DAC8-4EF5-A5D4-9411589DCCD7@getmailspring.com>
+
+No capítulo 2 do livro Pinheiro e Bates 2000 a partir da página 57 explica toda algebra utilizada nos modelos lme e gls. Você provavelmente encontrará a resposta lá.
+
+https://books.google.com.br/books?id=y54QDUTmvDcC&pg=PA268&lpg=PA268&dq=variance+structura+nlme&source=bl&ots=L_VWkvrQRS&sig=ACfU3U2xReHee03_Lap44C-nNwq9xyyP4A&hl=pt-BR&sa=X&ved=2ahUKEwi__PbOoozoAhWKdN8KHa2RD7wQ6AEwAnoECAoQAQ#v=onepage&q=variance%20structura%20nlme&f=false
+
+On Mar 17 2020, at 2:12 pm, Luiz Leal por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Prezados, boa tarde
+>
+> Alguém sabe como o valor F é calculado na tabela de Anova do modelo gls do pacote nlme?
+> Li a documentação, procurei na internet e não achei.
+> Desde já agradeço.
+> Luiz
+>
+> y=c(2370,1687,2592,2283,2910,3020,1282,1527,871,1025,825,920,562,321,636,317,485,842,173,127,132,150,129,227,193,71,82,62,96,44)
+> x=as.factor(c("A","A","A","A","A","A","B","B","B","B","B","B","C","C","C","C","C","C","D","D","D","D","D","D","E","E","E","E","E","E"))
+>
+> library(nlme)
+> model=gls(y~x, weights = varExp())
+> anova(model)
+>
+> Denom. DF: 25
+> numDF F-value p-value
+> (Intercept) 1 148.55052 <.0001
+> x 4 50.83288 <.0001
+>
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200317/dbff5dd8/attachment.html>
+
+From vanderfsouza em gmail.com  Tue Mar 24 11:02:11 2020
+From: vanderfsouza em gmail.com (Vander Souza)
+Date: Tue, 24 Mar 2020 11:02:11 -0300
+Subject: [R-br] =?utf-8?b?U3VtYXJpemHDp8OjbyBkZSBkYXRhLmZyYW1l?=
+Message-ID: <CAEnD59u53wHM5MPo7ivbpC2aJQ80bkvcExTUYr1NFLSLHqObmw@mail.gmail.com>
+
+Prezados, bom dia
+
+espero que estejam bem e seguindo a quarentena.
+
+Qual seria a maneira mais prática de sumarizar um dataframe:
+
+Entrada = data.frame(
+  Ensaio = c(rep(1,6),rep(2,6)),
+  Parcela = c(2,44,88,4,66,100,111,167,205,122,177,195),
+  Bloco = c(rep(c(1,2,3),4)),
+  Tratamento = c(rep("T1",3),rep("T2",3),rep("T1",3),rep("T2",3))
+)
+
+Para obter uma saída semelhante a esta:
+
+Saida = data.frame(
+  Tratamento = c("T1", "T2"),
+  Localiza = c("Ensaio 1 Parcela 2, 44, 88; Ensaio 2 Parcela 111, 167, 205",
+               "Ensaio 1 Parcela 4, 66, 100; Ensaio 2 Parcela 122, 177,
+195")
+)
+
+Desde já agradeço,
+
+Vander
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200324/2c62f260/attachment.html>
+
+From dtiezzi em usp.br  Tue Mar 24 11:51:36 2020
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 24 Mar 2020 11:51:36 -0300
+Subject: [R-br] =?utf-8?b?U3VtYXJpemHDp8OjbyBkZSBkYXRhLmZyYW1l?=
+In-Reply-To: <CAEnD59u53wHM5MPo7ivbpC2aJQ80bkvcExTUYr1NFLSLHqObmw@mail.gmail.com>
+References: <CAEnD59u53wHM5MPo7ivbpC2aJQ80bkvcExTUYr1NFLSLHqObmw@mail.gmail.com>
+Message-ID: <9D98D411-8C8A-4E5C-B327-60A925F8B90F@usp.br>
+
+Bom dia
+
+Não sei se é o modo mais eficaz, mas acho que isso resolve seu problema
+
+trat <- unique(Entrada$Tratamento)
+df <- data.frame(Tratamento=character(), Localiza=character())
+for (i in trat) {
+  tmp <- as.data.frame(Entrada[Entrada$Tratamento == i,])
+  ens = unique(tmp$Ensaio)
+  loc = ''
+  n = 0
+  for (e in ens) {
+    tmp_e <- as.data.frame(tmp[tmp$Ensaio == e, ])
+    print(tmp_e)
+    s <- paste('Ensaio ', e)
+    ps <- paste(tmp_e$Parcela, collapse = ', ')
+    ps <- paste('Parcela ', ps)
+    psf <- paste(s, ps, sep = ' ')
+    if (n > 0) {
+      psf <- paste('; ', psf)
+    }
+    loc <- paste(loc, psf, sep = '')
+    n = n+1
+  }
+  tmp_df <- data.frame(Tratamento = tmp_e[1,4], Localiza=loc)
+  df <- rbind(df, tmp_df)
+}
+df
+
+
+Daniel Tiezzi, MD, PhD
+Oncologia / Mastologia
+Professor Associado - Livre Docente
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em usp.br
+
+
+
+> On 24 Mar 2020, at 11:02, Vander Souza por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Saida = data.frame(
+>   Tratamento = c("T1", "T2"),
+>   Localiza = c("Ensaio 1 Parcela 2, 44, 88; Ensaio 2 Parcela 111, 167, 205",
+>                "Ensaio 1 Parcela 4, 66, 100; Ensaio 2 Parcela 122, 177, 195")
+> )
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200324/0cd5c567/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Wed Mar 25 10:01:44 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Wed, 25 Mar 2020 09:01:44 -0400
+Subject: [R-br] Editar dados em arquivo *txt em um data frame
+In-Reply-To: <0de47ac9-3da4-2ba3-9842-6f9777a172f2@cas.ifmt.edu.br>
+References: <0de47ac9-3da4-2ba3-9842-6f9777a172f2@cas.ifmt.edu.br>
+Message-ID: <ae73f105-b4ab-15c4-e380-9f9c66121a0a@cas.ifmt.edu.br>
+
+
+Prezados membros do r-br,
+
+
+Eu gostaria de criar um data frame à partir de output de uma análise em 
+*txt, sendo:
+
+
+#Arquivo original
+https://www.dropbox.com/s/pncmjwl3camap6d/log.txt?dl=0
+
+#Faço a leitura do arquivo
+myfile<-read.table("log.txt", sep="\t", quote="", comment.char="")
+
+
+#Estrutura parcial do arquivo myfile
+#
+obj
+Learning Rate: 0.001, Momentum: 0.9, Decay: 0.0005
+Resizing
+416
+Loaded: 0.062388 seconds
+Region 82 Avg IOU: 0.254732, Class: 0.000000, Obj: 0.575008, No Obj: 
+0.417811, .5R: 0.000000, .75R: 0.000000,  count: 4
+Region 94 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.496387, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 106 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.415856, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 82 Avg IOU: 0.263274, Class: 0.000000, Obj: 0.306391, No Obj: 
+0.418069, .5R: 0.000000, .75R: 0.000000,  count: 4
+Region 94 Avg IOU: 0.435966, Class: 0.000000, Obj: 0.207774, No Obj: 
+0.496172, .5R: 0.000000, .75R: 0.000000,  count: 1
+Region 106 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.413582, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 82 Avg IOU: 0.303235, Class: 0.000000, Obj: 0.424457, No Obj: 
+0.418686, .5R: 0.000000, .75R: 0.000000,  count: 4
+Region 94 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.496352, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 106 Avg IOU: 0.579218, Class: 0.000000, Obj: 0.502197, No Obj: 
+0.415232, .5R: 1.000000, .75R: 0.000000,  count: 1
+Region 82 Avg IOU: 0.187162, Class: 0.000000, Obj: 0.501398, No Obj: 
+0.416089, .5R: 0.000000, .75R: 0.000000,  count: 5
+Region 94 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.496362, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 106 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.414499, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 82 Avg IOU: 0.271427, Class: 0.000000, Obj: 0.481964, No Obj: 
+0.417647, .5R: 0.166667, .75R: 0.000000,  count: 6
+Region 94 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.495838, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 106 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.415899, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 82 Avg IOU: 0.285605, Class: 0.000000, Obj: 0.469981, No Obj: 
+0.417026, .5R: 0.000000, .75R: 0.000000,  count: 3
+Region 94 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.494833, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 106 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.413943, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 82 Avg IOU: 0.300229, Class: 0.000000, Obj: 0.313481, No Obj: 
+0.416831, .5R: 0.000000, .75R: 0.000000,  count: 6
+Region 94 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.495936, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 106 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.413855, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 82 Avg IOU: 0.384617, Class: 0.000000, Obj: 0.398042, No Obj: 
+0.418052, .5R: 0.333333, .75R: 0.000000,  count: 3
+Region 94 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.496205, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 106 Avg IOU: 0.144387, Class: 0.000000, Obj: 0.349722, No Obj: 
+0.414624, .5R: 0.000000, .75R: 0.000000,  count: 1
+1: 799.219543, 799.219543 avg, 0.000000 rate, 654.661284 seconds, 24 images
+Loaded: 0.000042 seconds
+Region 82 Avg IOU: 0.308919, Class: 0.000000, Obj: 0.264983, No Obj: 
+0.418332, .5R: 0.250000, .75R: 0.000000,  count: 4
+Region 94 Avg IOU: 0.204282, Class: 0.000000, Obj: 0.167168, No Obj: 
+0.495162, .5R: 0.000000, .75R: 0.000000,  count: 2
+Region 106 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.415848, .5R: 
+-nan, .75R: -nan,  count: 0
+Region 82 Avg IOU: 0.274081, Class: 0.000000, Obj: 0.471111, No Obj: 
+0.418323, .5R: 0.000000, .75R: 0.000000,  count: 3
+Region 94 Avg IOU: -nan, Class: -nan, Obj: -nan, No Obj: 0.495826, .5R: 
+-nan, .75R: -nan,  count: 0
+...
+55: 1025.803833, 1181.399658 avg, 0.000000 rate, 919.132681 seconds, 
+1320 images
+Loaded: 0.000050 seconds
+#
+
+Agora, eu quero criar um data frame onde eu não preciso de toda essa 
+informação e eu sei que cada linha que eu preciso está acima de linha 
+que começam com a expressão "Loaded:", sendo as minhas linhas de 
+interesse caracterizadas pela estrutura "1: 799.219543, 799.219543 avg, 
+0.000000 rate, 654.661284 seconds, 24 images".
+
+Eu preciso que seja criada alguma regra (informação desnecessária começa 
+com a expressão "Region" e ocorre a cada 24 linhas) para que eu consiga 
+inicialmente isolar a informação pertinente, ficando meu output 
+processado com 55 linhas:
+
+#
+1: 799.219543, 799.219543 avg, 0.000000 rate, 654.661284 seconds, 24 images
+2: 799.555359, 799.253113 avg, 0.000000 rate, 672.519735 seconds, 48 images
+...
+55: 1025.803833, 1181.399658 avg, 0.000000 rate, 919.132681 seconds, 
+1320 images
+#
+
+e após com alguma manipulação a mais de modo a reorganizar a informação 
+isolada, conseguir gerar o meu data frame final, que seria:
+
+#
+iteration  total_loss      loss_error     rate time               n_images
+1               799.219543  799.219543  0.000000  654.661284 24
+2               799.555359  799.253113  0.000000  672.519735 48
+...
+55            1025.803833 1181.399658 0.000000  919.132681  1320
+#
+
+Alguém que trabalha com manipulação de tabelas em R teria alguma dica 
+para dar?
+
+Obrigado,
+
+Alexandre
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200325/7163ce19/attachment.html>
+
+From verginio em unesc.net  Wed Mar 25 13:27:44 2020
+From: verginio em unesc.net (verginio em unesc.net)
+Date: Wed, 25 Mar 2020 11:27:44 -0500 (CDT)
+Subject: [R-br] Editar dados em arquivo *txt em um data frame
+Message-ID: <1738291108.330325.1585153664487.JavaMail.administrator@n4.nabble.com>
+
+Olá,
+
+Segue uma sugestão:
+
+
+library(tidyverse)
+myfile <- read_lines("log.txt")
+
+names_col <- c("iteration", "total_loss", "loss_error", "rate", "time", "n_images")
+
+mydf <- myfile %>% 
+  str_subset("images$") %>% 
+  enframe(name = NULL) %>% 
+  separate(col = value, into = names_col, sep = "[:,]") %>% 
+  mutate_all(parse_number)
+
+mydf
+
+
+Atenciosamente,
+Max Richard Verginio
+
+_____________________________________
+Sent from http://r-br.2285057.n4.nabble.com
+
+
+From sznelwar em uol.com.br  Wed Mar 25 18:33:22 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Wed, 25 Mar 2020 18:33:22 -0300
+Subject: [R-br] Editar dados em arquivo *txt em um data frame
+In-Reply-To: ["1738291108.330325.1585153664487.JavaMail.administrator@n4.nabble.com"]
+References: ["1738291108.330325.1585153664487.JavaMail.administrator@n4.nabble.com"]
+Message-ID: <5e7bce22943e_5e922b1d522cd10870933@ip-10-81-19-112.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200325/4345eda5/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Mar 25 21:02:08 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 25 Mar 2020 21:02:08 -0300
+Subject: [R-br] Editar dados em arquivo *txt em um data frame
+In-Reply-To: <5e7bce22943e_5e922b1d522cd10870933@ip-10-81-19-112.ec2.internal.mail>
+References: <5e7bce22943e_5e922b1d522cd10870933@ip-10-81-19-112.ec2.internal.mail>
+Message-ID: <CAKrF98=mp-fZR0jFxuN4VwOF_EceOenERbqav7a+OOucVqarvQ@mail.gmail.com>
+
+O arquivo que o OP postou o *link* não lhe parece adequado?
+
+
+
+On Wed, Mar 25, 2020 at 6:33 PM Mauro Sznelwar por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Tem um arquivo para rodar e ver como fica?
+>
+>
+> Olá,
+>
+> Segue uma sugestão:
+>
+>
+> library(tidyverse)
+> myfile <- read_lines("log.txt")
+>
+> names_col <- c("iteration", "total_loss", "loss_error", "rate", "time",
+> "n_images")
+>
+> mydf <- myfile %>%
+> str_subset("images$") %>%
+> enframe(name = NULL) %>%
+> separate(col = value, into = names_col, sep = "[:,]") %>%
+> mutate_all(parse_number)
+>
+> mydf
+>
+>
+> Atenciosamente,
+> Max Richard Verginio
+>
+> _____________________________________
+> Sent from http://r-br.2285057.n4.nabble.com
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200325/53488a8e/attachment.html>
+
+From sznelwar em uol.com.br  Wed Mar 25 21:27:44 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Wed, 25 Mar 2020 21:27:44 -0300
+Subject: [R-br] Editar dados em arquivo *txt em um data frame
+In-Reply-To: ["CAKrF98=mp-fZR0jFxuN4VwOF_EceOenERbqav7a+OOucVqarvQ@mail.gmail.com"]
+References: ["5e7bce22943e_5e922b1d522cd10870933@ip-10-81-19-112.ec2.internal.mail", 
+ "CAKrF98=mp-fZR0jFxuN4VwOF_EceOenERbqav7a+OOucVqarvQ@mail.gmail.com"]
+Message-ID: <5e7bf70012764_4c462b1d522cd1087147c@ip-10-81-19-112.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200325/5fcc4576/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Mar 25 21:31:37 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 25 Mar 2020 21:31:37 -0300
+Subject: [R-br] Editar dados em arquivo *txt em um data frame
+In-Reply-To: <5e7bf70012764_4c462b1d522cd1087147c@ip-10-81-19-112.ec2.internal.mail>
+References: <5e7bf70012764_4c462b1d522cd1087147c@ip-10-81-19-112.ec2.internal.mail>
+Message-ID: <CAKrF98nTgqFA9E_Zy5o6X2B2bEQ0LT=fdg1MtMx-nsTBy22xgQ@mail.gmail.com>
+
+Veja esta linha no texto do OP:
+
+> #Arquivo original
+> https://www.dropbox.com/s/pncmjwl3camap6d/log.txt?dl=0
+>
+
+Fazendo a entrada conforme a sugestão do Max:
+> str(myfile)
+ chr [1:1445] "obj" "Learning Rate: 0.001, Momentum: 0.9, Decay: 0.0005" ...
+
+HTH
+--
+Cesar Rabak
+
+
+On Wed, Mar 25, 2020 at 9:27 PM Mauro Sznelwar por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Muito obrigado pelo retorno! Sim, eu acabei vendo e consegui rodar, mas
+> ele só motra os dez primeiros dados, como faço para ver o resto?
+>
+>
+>
+> O arquivo que o OP postou o *link* não lhe parece adequado?
+>
+>
+>
+> On Wed, Mar 25, 2020 at 6:33 PM Mauro Sznelwar por (R-br) <
+> r-br em listas.c3sl.ufpr.br
+> <http://../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br>> wrote:
+>
+>> Tem um arquivo para rodar e ver como fica?
+>>
+>>
+>> Olá,
+>>
+>> Segue uma sugestão:
+>>
+>>
+>> library(tidyverse)
+>> myfile <- read_lines("log.txt")
+>>
+>> names_col <- c("iteration", "total_loss", "loss_error", "rate", "time",
+>> "n_images")
+>>
+>> mydf <- myfile %>%
+>> str_subset("images$") %>%
+>> enframe(name = NULL) %>%
+>> separate(col = value, into = names_col, sep = "[:,]") %>%
+>> mutate_all(parse_number)
+>>
+>> mydf
+>>
+>>
+>> Atenciosamente,
+>> Max Richard Verginio
+>>
+>> _____________________________________
+>> Sent from http://r-br.2285057.n4.nabble.com
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> <http://../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> <http://../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200325/9e13902f/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Mar 25 21:36:32 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 25 Mar 2020 21:36:32 -0300
+Subject: [R-br] Editar dados em arquivo *txt em um data frame
+In-Reply-To: <1738291108.330325.1585153664487.JavaMail.administrator@n4.nabble.com>
+References: <1738291108.330325.1585153664487.JavaMail.administrator@n4.nabble.com>
+Message-ID: <CAKrF98nxi4mdR9mtQnS0DOwyfUeqKJ+EBKsAF1hHNKNSb11YvA@mail.gmail.com>
+
+Só gostaria de comentar, que o resultado mydf finda sendo um *tibble* e não
+mais "apenas" um *data.frame*.
+
+Se isso é vantajoso ou requer que o tiblle seja demovido para data.frame só
+Alexandre pode aquilatar...
+
+HTH
+--
+Cesar Rabak
+
+On Wed, Mar 25, 2020 at 1:28 PM Max Richard Verginio por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá,
+>
+> Segue uma sugestão:
+>
+>
+> library(tidyverse)
+> myfile <- read_lines("log.txt")
+>
+> names_col <- c("iteration", "total_loss", "loss_error", "rate", "time",
+> "n_images")
+>
+> mydf <- myfile %>%
+>   str_subset("images$") %>%
+>   enframe(name = NULL) %>%
+>   separate(col = value, into = names_col, sep = "[:,]") %>%
+>   mutate_all(parse_number)
+>
+> mydf
+>
+>
+> Atenciosamente,
+> Max Richard Verginio
+>
+> _____________________________________
+> Sent from http://r-br.2285057.n4.nabble.com
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200325/cb109757/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Thu Mar 26 16:47:26 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Thu, 26 Mar 2020 15:47:26 -0400
+Subject: [R-br] Editar dados em arquivo *txt em um data frame
+In-Reply-To: <84d6c955-bc74-d72d-b44f-36c3035030ff@yahoo.com.br>
+References: <84d6c955-bc74-d72d-b44f-36c3035030ff@yahoo.com.br>
+Message-ID: <1b937940-6c2a-e49c-dc27-b2a4b796c948@cas.ifmt.edu.br>
+
+Obrigado Max, Mauro e Cesar,
+
+Deu certo, só tive que transformar o objeto *tibble* em *dataframe* na 
+solução inicial do Max e tem outra que não necessita do pacote 
+tidyverse, mas utilizam gsub, strsplit e grep, seguem as soluções:
+
+# Solução 1
+library(tidyverse)
+myfile <- read_lines("log.txt")
+
+names_col <- c("iteration", "total_loss", "loss_error", "rate", "time",
+"n_images")
+
+mydf <- myfile %>%
+   str_subset("images$") %>%
+   enframe(name = NULL) %>%
+   separate(col = value, into = names_col, sep = "[:,]") %>%
+
+mutate_all(parse_number)
+
+
+  head(as.data.frame(mydf))
+#  iteration total_loss loss_error rate     time n_images
+#1         1   799.2195   799.2195    0 654.6613       24
+#2         2   799.5554   799.2531    0 672.5197       48
+#3         3   801.0438   799.4322    0 667.1184       72
+#4         4   799.9001   799.4790    0 647.3321       96
+#5         5   801.5366   799.6848    0 660.7798      120
+#6         6   799.3589   799.6522    0 683.4424      144
+
+
+
+#Solução 2
+myfile <- read_lines("log.txt")
+tmp <- myfile[grep("^\\d*\\:", unlist(myfile))]
+tmp <- do.call(rbind, strsplit(tmp, ", "))
+tmp <- data.frame(do.call(rbind, strsplit(tmp[, 1], "\\: ")), tmp[, -1],
+                   stringsAsFactors=FALSE)
+tmp[] <- lapply(tmp, gsub, pat="\\s.+", repl="")
+tmp[] <- lapply(tmp, as.numeric)
+mydf <- setNames(tmp, c("iteration", "total_loss", "loss_error", "rate",
+                        "time", "n_images"))
+
+head(mydf)
+#   iteration total_loss loss_error rate     time n_images
+# 1         1   799.2195   799.2195    0 654.6613       24
+# 2         2   799.5554   799.2531    0 672.5197       48
+# 3         3   801.0438   799.4322    0 667.1184       72
+# 4         4   799.9001   799.4790    0 647.3321       96
+# 5         5   801.5366   799.6848    0 660.7798      120
+# 6         6   799.3589   799.6522    0 683.4424      144
+
+
+
+Abraços,
+
+Alexandre
+
+Em 26/03/2020 11:00, r-br-request em listas.c3sl.ufpr.br escreveu:
+> Enviar submissões para a lista de discussão R-br para
+> 	r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+> 	https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+> 	r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+> 	r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+>      1. Re: Editar dados em arquivo *txt em um data frame
+>         (verginio em unesc.net)
+>      2. Re: Editar dados em arquivo *txt em um data frame
+>         (sznelwar em uol.com.br)
+>      3. Re: Editar dados em arquivo *txt em um data frame (Cesar Rabak)
+>      4. Re: Editar dados em arquivo *txt em um data frame
+>         (sznelwar em uol.com.br)
+>      5. Re: Editar dados em arquivo *txt em um data frame (Cesar Rabak)
+>      6. Re: Editar dados em arquivo *txt em um data frame (Cesar Rabak)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Wed, 25 Mar 2020 11:27:44 -0500 (CDT)
+> From: verginio em unesc.net
+> To: r-br em listas.c3sl.ufpr.br
+> Subject: Re: [R-br] Editar dados em arquivo *txt em um data frame
+> Message-ID:
+> 	<1738291108.330325.1585153664487.JavaMail.administrator em n4.nabble.com>
+> Content-Type: text/plain; charset=UTF-8
+>
+> Olá,
+>
+> Segue uma sugestão:
+>
+>
+> library(tidyverse)
+> myfile <- read_lines("log.txt")
+>
+> names_col <- c("iteration", "total_loss", "loss_error", "rate", "time", "n_images")
+>
+> mydf <- myfile %>%
+>     str_subset("images$") %>%
+>     enframe(name = NULL) %>%
+>     separate(col = value, into = names_col, sep = "[:,]") %>%
+>     mutate_all(parse_number)
+>
+> mydf
+>
+>
+> Atenciosamente,
+> Max Richard Verginio
+>
+> _____________________________________
+> Sent from http://r-br.2285057.n4.nabble.com
+>
+>
+>
+> ------------------------------
+>
+> Message: 2
+> Date: Wed, 25 Mar 2020 18:33:22 -0300
+> From: sznelwar em uol.com.br
+> To: r-br em listas.c3sl.ufpr.br
+> Subject: Re: [R-br] Editar dados em arquivo *txt em um data frame
+> Message-ID:
+> 	<5e7bce22943e_5e922b1d522cd10870933 em ip-10-81-19-112.ec2.internal.mail>
+> Content-Type: text/plain; charset="iso-8859-1"
+>
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200325/4345eda5/attachment-0001.html>
+>
+> ------------------------------
+>
+> Message: 3
+> Date: Wed, 25 Mar 2020 21:02:08 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+> 	<r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Editar dados em arquivo *txt em um data frame
+> Message-ID:
+> 	<CAKrF98=mp-fZR0jFxuN4VwOF_EceOenERbqav7a+OOucVqarvQ em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> O arquivo que o OP postou o *link* não lhe parece adequado?
+>
+>
+>
+> On Wed, Mar 25, 2020 at 6:33 PM Mauro Sznelwar por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Tem um arquivo para rodar e ver como fica?
+>>
+>>
+>> Olá,
+>>
+>> Segue uma sugestão:
+>>
+>>
+>> library(tidyverse)
+>> myfile <- read_lines("log.txt")
+>>
+>> names_col <- c("iteration", "total_loss", "loss_error", "rate", "time",
+>> "n_images")
+>>
+>> mydf <- myfile %>%
+>> str_subset("images$") %>%
+>> enframe(name = NULL) %>%
+>> separate(col = value, into = names_col, sep = "[:,]") %>%
+>> mutate_all(parse_number)
+>>
+>> mydf
+>>
+>>
+>> Atenciosamente,
+>> Max Richard Verginio
+>>
+>> _____________________________________
+>> Sent from http://r-br.2285057.n4.nabble.com
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200325/53488a8e/attachment-0001.html>
+>
+> ------------------------------
+>
+> Message: 4
+> Date: Wed, 25 Mar 2020 21:27:44 -0300
+> From: sznelwar em uol.com.br
+> To: r-br em listas.c3sl.ufpr.br
+> Subject: Re: [R-br] Editar dados em arquivo *txt em um data frame
+> Message-ID:
+> 	<5e7bf70012764_4c462b1d522cd1087147c em ip-10-81-19-112.ec2.internal.mail>
+> 	
+> Content-Type: text/plain; charset="iso-8859-1"
+>
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200325/5fcc4576/attachment-0001.html>
+>
+> ------------------------------
+>
+> Message: 5
+> Date: Wed, 25 Mar 2020 21:31:37 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+> 	<r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Editar dados em arquivo *txt em um data frame
+> Message-ID:
+> 	<CAKrF98nTgqFA9E_Zy5o6X2B2bEQ0LT=fdg1MtMx-nsTBy22xgQ em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Veja esta linha no texto do OP:
+>
+>> #Arquivo original
+>> https://www.dropbox.com/s/pncmjwl3camap6d/log.txt?dl=0
+>>
+> Fazendo a entrada conforme a sugestão do Max:
+>> str(myfile)
+>    chr [1:1445] "obj" "Learning Rate: 0.001, Momentum: 0.9, Decay: 0.0005" ...
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Wed, Mar 25, 2020 at 9:27 PM Mauro Sznelwar por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Muito obrigado pelo retorno! Sim, eu acabei vendo e consegui rodar, mas
+>> ele só motra os dez primeiros dados, como faço para ver o resto?
+>>
+>>
+>>
+>> O arquivo que o OP postou o *link* não lhe parece adequado?
+>>
+>>
+>>
+>> On Wed, Mar 25, 2020 at 6:33 PM Mauro Sznelwar por (R-br) <
+>> r-br em listas.c3sl.ufpr.br
+>> <http://../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br>> wrote:
+>>
+>>> Tem um arquivo para rodar e ver como fica?
+>>>
+>>>
+>>> Olá,
+>>>
+>>> Segue uma sugestão:
+>>>
+>>>
+>>> library(tidyverse)
+>>> myfile <- read_lines("log.txt")
+>>>
+>>> names_col <- c("iteration", "total_loss", "loss_error", "rate", "time",
+>>> "n_images")
+>>>
+>>> mydf <- myfile %>%
+>>> str_subset("images$") %>%
+>>> enframe(name = NULL) %>%
+>>> separate(col = value, into = names_col, sep = "[:,]") %>%
+>>> mutate_all(parse_number)
+>>>
+>>> mydf
+>>>
+>>>
+>>> Atenciosamente,
+>>> Max Richard Verginio
+>>>
+>>> _____________________________________
+>>> Sent from http://r-br.2285057.n4.nabble.com
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> <http://../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> <http://../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200325/9e13902f/attachment-0001.html>
+>
+> ------------------------------
+>
+> Message: 6
+> Date: Wed, 25 Mar 2020 21:36:32 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+> 	<r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Editar dados em arquivo *txt em um data frame
+> Message-ID:
+> 	<CAKrF98nxi4mdR9mtQnS0DOwyfUeqKJ+EBKsAF1hHNKNSb11YvA em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Só gostaria de comentar, que o resultado mydf finda sendo um *tibble* e não
+> mais "apenas" um *data.frame*.
+>
+> Se isso é vantajoso ou requer que o tiblle seja demovido para data.frame só
+> Alexandre pode aquilatar...
+>
+> HTH
+> --
+> Cesar Rabak
+>
+> On Wed, Mar 25, 2020 at 1:28 PM Max Richard Verginio por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Olá,
+>>
+>> Segue uma sugestão:
+>>
+>>
+>> library(tidyverse)
+>> myfile <- read_lines("log.txt")
+>>
+>> names_col <- c("iteration", "total_loss", "loss_error", "rate", "time",
+>> "n_images")
+>>
+>> mydf <- myfile %>%
+>>     str_subset("images$") %>%
+>>     enframe(name = NULL) %>%
+>>     separate(col = value, into = names_col, sep = "[:,]") %>%
+>>     mutate_all(parse_number)
+>>
+>> mydf
+>>
+>>
+>> Atenciosamente,
+>> Max Richard Verginio
+>>
+>> _____________________________________
+>> Sent from http://r-br.2285057.n4.nabble.com
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200325/cb109757/attachment-0001.html>
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 111, assunto 7
+> *****************************************
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200326/9301f50a/attachment.html>
+
+From marcelolaia em gmail.com  Thu Mar 26 19:44:53 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Thu, 26 Mar 2020 19:44:53 -0300
+Subject: [R-br] =?iso-8859-1?q?Sugest=E3o_de_pacotes_para_plotar_pontos_e?=
+ =?iso-8859-1?q?m_mapa_=28google_maps=2C_p=2Eex=29?=
+Message-ID: <20200326224453.GO2626@marcelo>
+
+Caros(as),
+
+Preciso plotar os seguintes pontos em um mapa e penso em utilizar os
+mapas do Google (Google Maps ou Google Earth).
+
+
+S/W
+
+16°41'01"/39°22'31"
+
+16°34'38"/39°25'40"
+
+16°41'01"/39°22'31"
+
+16°42'27"/39°36'22"
+
+Eu preciso plotar esses 4 pontos, calcular as distâncias entre eles
+(plotar no próprio gráfico ou indicar essas distâncias na legenda) e
+descarregar a figura para poder inserir em uma tese de uma orientada.
+
+Em uma busca no Google (https://is.gd/3kzPM8) eu encontrei diversos
+pacotes e tutoriais.
+
+Mas, pra você que já necessitou realizar algo assim, qual foi o pacote
+que você utilizou? Se puder ajudar, agradeço muito! Se tiver tutorial,
+também será muito bem vindo!
+
+Existe um mapeamento de solo da EMBRAPA. Seria possível utilizar essa
+informação? Divisa de municípios, estado?
+
+Obrigado
+
+-- 
+Marcelo
+
+From apcmadeira em hotmail.com  Fri Mar 27 14:29:57 2020
+From: apcmadeira em hotmail.com (ana paula coelho madeira)
+Date: Fri, 27 Mar 2020 17:29:57 +0000
+Subject: [R-br] =?iso-8859-1?q?An=E1lise_de_dados_microbiol=F3gicos_-_Est?=
+ =?iso-8859-1?q?at=EDstica_n=E3o_param=E9trica?=
+Message-ID: <BL0PR08MB4577B11E6E0F956AA04E284ACACC0@BL0PR08MB4577.namprd08.prod.outlook.com>
+
+Prezados colegas,
+
+Boa tarde. Estou tentando analisar um conjunto de dados resultante de um experimento com queijo. Dentre as variáveis analisadas, temos a contagem de Coliformes e  Staphylococcus  cuja resposta, em muitos casos, aparece na forma de desigualdade, a saber:  "<1000" ou "< que um determinado valor". Na literatura, todos os trabalho na área de alimentos que me deparei trabalham com a Estatística não paramétrica, em função da não normalidade dos dados ( até aí ok!). Minha dúvida é como entrar com esses dados no R , sabendo que não tenho "uma número" específico?
+
+Desde já agradeço
+
+Ana Paula
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200327/338811f1/attachment.html>
+
+From nandodesouza em gmail.com  Fri Mar 27 14:40:30 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Fri, 27 Mar 2020 14:40:30 -0300
+Subject: [R-br] =?utf-8?b?PT91dGYtOD9RP0FuPUMzPUExbGlzZV8/PWRlIGRhZG9z?=
+ =?utf-8?b?ID0/dXRmLTg/UT9taWNyb2Jpb2w9QzM9QjNnaWNvc18/PS0gRXN0YXTDrXN0?=
+ =?utf-8?b?aWNhIG7Do28gcGFyYW3DqXRyaWNh?=
+In-Reply-To: <BL0PR08MB4577B11E6E0F956AA04E284ACACC0@BL0PR08MB4577.namprd08.prod.outlook.com>
+References: <BL0PR08MB4577B11E6E0F956AA04E284ACACC0@BL0PR08MB4577.namprd08.prod.outlook.com>
+Message-ID: <B542877F-AFC2-4140-BD36-FCA35892FF87@getmailspring.com>
+
+Você poderia classificar a sua resposta, por exemplo levando em consideração as faixas de valores que possuem significado para você. Então você realiza uma análise de proporção.
+
+<1000 ; 1000-3000; 3001-5000; etc
+att
+On Mar 27 2020, at 2:29 pm, ana paula coelho madeira por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Prezados colegas,
+>
+> Boa tarde. Estou tentando analisar um conjunto de dados resultante de um experimento com queijo. Dentre as variáveis analisadas, temos a contagem de Coliformes e Staphylococcus cuja resposta, em muitos casos, aparece na forma de desigualdade, a saber: "<1000" ou "< que um determinado valor". Na literatura, todos os trabalho na área de alimentos que me deparei trabalham com a Estatística não paramétrica, em função da não normalidade dos dados ( até aí ok!). Minha dúvida é como entrar com esses dados no R , sabendo que não tenho "uma número" específico?
+>
+> Desde já agradeço
+>
+> Ana Paula
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200327/0d237dd0/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Mar 27 17:52:53 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 27 Mar 2020 17:52:53 -0300
+Subject: [R-br] 
+	=?utf-8?q?An=C3=A1lise_de_dados_microbiol=C3=B3gicos_-_Es?=
+	=?utf-8?q?tat=C3=ADstica_n=C3=A3o_param=C3=A9trica?=
+In-Reply-To: <BL0PR08MB4577B11E6E0F956AA04E284ACACC0@BL0PR08MB4577.namprd08.prod.outlook.com>
+References: <BL0PR08MB4577B11E6E0F956AA04E284ACACC0@BL0PR08MB4577.namprd08.prod.outlook.com>
+Message-ID: <CAKrF98nPCQUTfiCNa-v==qjfQX5o_To9vYo55Yq2GLiRQmowZw@mail.gmail.com>
+
+Olá Ana Paula,
+O problema com seus dados tem um nome procure nos pacotes do R por
+*interval-censored
+data*.
+Os dados ficariam assim:
+(0, 1000), ... , 2780, ... (certo valor, determinado valor), etc.
+
+HTH
+
+On Fri, Mar 27, 2020 at 2:30 PM ana paula coelho madeira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados colegas,
+>
+> Boa tarde. Estou tentando analisar um conjunto de dados resultante de um
+> experimento com queijo. Dentre as variáveis analisadas, temos a contagem de
+> Coliformes e  Staphylococcus  cuja resposta, em muitos casos, aparece na
+> forma de desigualdade, a saber:  "<1000" ou "< que um determinado valor".
+> Na literatura, todos os trabalho na área de alimentos que me deparei
+> trabalham com a Estatística não paramétrica, em função da não normalidade
+> dos dados ( até aí ok!). Minha dúvida é como entrar com esses dados no R ,
+> sabendo que não tenho "uma número" específico?
+>
+> Desde já agradeço
+>
+> Ana Paula
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200327/2196488a/attachment.html>
+
+From marcelonerymagalhaes em gmail.com  Sun Mar 29 09:04:45 2020
+From: marcelonerymagalhaes em gmail.com (marcelonerymagalhaes em gmail.com)
+Date: Sun, 29 Mar 2020 09:04:45 -0300
+Subject: [R-br] ggplot2 (Mapa/UDHs/IVS)
+Message-ID: <5e808edf.1c69fb81.9ab94.cc9f@mx.google.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200329/1a4e8b74/attachment.html>
+
+From cesar.rabak em gmail.com  Sun Mar 29 12:07:36 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 29 Mar 2020 12:07:36 -0300
+Subject: [R-br] ggplot2 (Mapa/UDHs/IVS)
+In-Reply-To: <5e808edf.1c69fb81.9ab94.cc9f@mx.google.com>
+References: <5e808edf.1c69fb81.9ab94.cc9f@mx.google.com>
+Message-ID: <CAKrF98=XG_Ka6Y0y5PfWzQwBrj9S68fp+EFJR98i0qHtMRgjFg@mail.gmail.com>
+
+Marcelo,
+
+Seu código não atende à diretriz deste grupo em Guia de Postagem no R-br
+<http://www.leg.ufpr.br/r-br-guia>, em particular, a solicitação de
+fornecer o CMR (*código mínimo reproduzível*).
+As chances de você obter respostas são maiores quando essa recomendação é
+seguida.
+
+HTH
+
+On Sun, Mar 29, 2020 at 9:05 AM Marcelo Magalhães por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+>
+>
+>
+>
+> Prezados e Prezadas,
+>
+>
+>
+> Estou trabalhando com o IVS (Índice de Vulnerabilidade Social), mais
+> precisamente com as UDHs (Unidades de Habitação) para o Município de
+> Jaboatão dos Guararapes - PE. A base  Completa + Shapefiles estão no site
+> do Ipea (http://ivs.ipea.gov.br/index.php/pt/biblioteca). Gostaria de
+> fazer um mapa do Índice de Vulnerabilidade Social do Município para saber
+> quais as localidades mais vulneráveis.
+>
+> Tentei unir pelo código do município e pela variável  UDH_Atlas no
+> shapefile e udh e travei.
+>
+> Ao que parece:
+>
+> 1. UDHs são colocados como "strings" pelo R, ao colocar a função
+> as.numeric(), há uma mudança nas linhas.
+>
+> 2. UDHs são coordenadas únicas (não se separam em Long. e Lat.), ou temos
+> que separá-las em Long e Lat?
+>
+>
+>
+> Agradeço desde já a ajuda,
+>
+>
+>
+> Marcelo Nery Magalhães
+>
+>
+>
+> Script:
+>
+> #Bibliotecas
+>
+> library(ggplot2)
+>
+> library(rgdal)
+>
+>
+>
+> #Shape
+>
+> Jab<-readOGR("C:/Users/usuario/Documents/IVS", "UDHs_RM_Todas")
+>
+> head(Jab em data)
+>
+>
+>
+> #Transformando string em numérico
+>
+> Jab$UDH_ATLAS<-as.numeric(Jab$UDH_ATLAS)
+>
+>
+>
+> #Base de dados/tabela
+>
+> ivs<-read.csv("C:/Users/usuario/Documents/IVS/jab.csv", sep = ";", head=T,
+> dec = ",")
+>
+> head(ivs)
+>
+>
+>
+> ivs<-na.omit(ivs)
+>
+>
+>
+> names(Jab em data)
+>
+> names(ivs)
+>
+>
+>
+> #Transformando os nomes das variáveis em um só para cada objeto
+>
+> names(ivs)[12]<-c("Cod_mun_6")
+>
+> names(Jab)[1]<-c("udh")  # tentei criar uma chave com essa variável, já
+> que com o código do município não estava funcionando
+>
+> names(Jab)
+>
+> names(ivs)
+>
+>
+>
+> #Ordenando
+>
+> ivs<-ivs[order(ivs$Cod_mun_6),]
+>
+> Jab<-Jab em data[order(Jab$Cod_mun_6),]
+>
+>
+>
+> head(ivs)
+>
+> head(Jab)
+>
+>
+>
+> #Combinando através da Chave do Código do Município
+>
+> j<-merge(Jab,ivs,by.y="Cod_mun_6") # Houve problema ao criar ?j?
+>
+> head(j)
+>
+>
+>
+> dim(Jab)
+>
+> dim(ivs)
+>
+> dim(j)
+>
+>
+>
+> fortify(Jab)
+>
+> j.f<-fortify(Jab,region="udh")
+>
+>
+>
+> j$ivs
+>
+> #Categorizando
+>
+> j$ivscat<-cut(j$ivs, breaks = c(0,0.200,0.300,0.400,0.500,1), labels=c("0
+> a 0,200 - Muito Baixa", "0,200 a 0,300 - Baixa", "0,300 a 0,400 - Média",
+> "0,400 a 0,500 - Alta", "0,500 a 1 - Muito Alta"), include.lowest=T)
+>
+> names(j)
+>
+> names(j.f)
+>
+> #Problema: udh não possui latitude e lobgitude (como fazer, então?)
+>
+> jabo<-merge(j, j.f, by.y="udh")
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200329/de37531d/attachment.html>
+
+From sznelwar em uol.com.br  Sun Mar 29 18:11:30 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Sun, 29 Mar 2020 18:11:30 -0300
+Subject: [R-br] ggplot2 (Mapa/UDHs/IVS)
+In-Reply-To: ["CAKrF98=XG_Ka6Y0y5PfWzQwBrj9S68fp+EFJR98i0qHtMRgjFg@mail.gmail.com"]
+References: ["5e808edf.1c69fb81.9ab94.cc9f@mx.google.com",
+ "CAKrF98=XG_Ka6Y0y5PfWzQwBrj9S68fp+EFJR98i0qHtMRgjFg@mail.gmail.com"]
+Message-ID: <5e810f02dbf1c_6eb12b0764d2d1102227b@ip-10-81-19-28.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200329/92e371a7/attachment.html>
+
+From marcelonerymagalhaes em gmail.com  Sun Mar 29 18:22:49 2020
+From: marcelonerymagalhaes em gmail.com (=?UTF-8?Q?Marcelo_Magalh=C3=A3es?=)
+Date: Sun, 29 Mar 2020 18:22:49 -0300
+Subject: [R-br] ggplot2 (Mapa/UDHs/IVS)
+In-Reply-To: <5e810f02dbf1c_6eb12b0764d2d1102227b@ip-10-81-19-28.ec2.internal.mail>
+References: <5e810f02dbf1c_6eb12b0764d2d1102227b@ip-10-81-19-28.ec2.internal.mail>
+Message-ID: <CAPfD_SDOGqTnLv-gTDOhyQhEp0hMn8BNtUe7EDyrPD5wD2mfrw@mail.gmail.com>
+
+Obrigado a todos. Vou tentar me adequar às diretrizes do Fórum.
+
+Att,
+
+Marcelo Magalhães
+
+Em dom, 29 de mar de 2020 18:11, Mauro Sznelwar por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Está faltando o conjunto de dados!
+>
+> Marcelo,
+>
+> Seu código não atende à diretriz deste grupo em Guia de Postagem no R-br
+> <http://www.leg.ufpr.br/r-br-guia>, em particular, a solicitação de
+> fornecer o CMR (*código mínimo reproduzível*).
+> As chances de você obter respostas são maiores quando essa recomendação é
+> seguida.
+>
+> HTH
+>
+> On Sun, Mar 29, 2020 at 9:05 AM Marcelo Magalhães por (R-br) <
+> r-br em listas.c3sl.ufpr.br
+> <http://../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br>> wrote:
+>
+>>
+>>
+>>
+>>
+>> Prezados e Prezadas,
+>>
+>>
+>>
+>> Estou trabalhando com o IVS (Índice de Vulnerabilidade Social), mais
+>> precisamente com as UDHs (Unidades de Habitação) para o Município de
+>> Jaboatão dos Guararapes - PE. A base  Completa + Shapefiles estão no site
+>> do Ipea (http://ivs.ipea.gov.br/index.php/pt/biblioteca). Gostaria de
+>> fazer um mapa do Índice de Vulnerabilidade Social do Município para saber
+>> quais as localidades mais vulneráveis.
+>>
+>> Tentei unir pelo código do município e pela variável  UDH_Atlas no
+>> shapefile e udh e travei.
+>>
+>> Ao que parece:
+>>
+>> 1. UDHs são colocados como "strings" pelo R, ao colocar a função
+>> as.numeric(), há uma mudança nas linhas.
+>>
+>> 2. UDHs são coordenadas únicas (não se separam em Long. e Lat.), ou temos
+>> que separá-las em Long e Lat?
+>>
+>>
+>>
+>> Agradeço desde já a ajuda,
+>>
+>>
+>>
+>> Marcelo Nery Magalhães
+>>
+>>
+>>
+>> Script:
+>>
+>> #Bibliotecas
+>>
+>> library(ggplot2)
+>>
+>> library(rgdal)
+>>
+>>
+>>
+>> #Shape
+>>
+>> Jab<-readOGR("C:/Users/usuario/Documents/IVS", "UDHs_RM_Todas")
+>>
+>> head(Jab em data)
+>>
+>>
+>>
+>> #Transformando string em numérico
+>>
+>> Jab$UDH_ATLAS<-as.numeric(Jab$UDH_ATLAS)
+>>
+>>
+>>
+>> #Base de dados/tabela
+>>
+>> ivs<-read.csv("C:/Users/usuario/Documents/IVS/jab.csv", sep = ";",
+>> head=T, dec = ",")
+>>
+>> head(ivs)
+>>
+>>
+>>
+>> ivs<-na.omit(ivs)
+>>
+>>
+>>
+>> names(Jab em data)
+>>
+>> names(ivs)
+>>
+>>
+>>
+>> #Transformando os nomes das variáveis em um só para cada objeto
+>>
+>> names(ivs)[12]<-c("Cod_mun_6")
+>>
+>> names(Jab)[1]<-c("udh")  # tentei criar uma chave com essa variável, já
+>> que com o código do município não estava funcionando
+>>
+>> names(Jab)
+>>
+>> names(ivs)
+>>
+>>
+>>
+>> #Ordenando
+>>
+>> ivs<-ivs[order(ivs$Cod_mun_6),]
+>>
+>> Jab<-Jab em data[order(Jab$Cod_mun_6),]
+>>
+>>
+>>
+>> head(ivs)
+>>
+>> head(Jab)
+>>
+>>
+>>
+>> #Combinando através da Chave do Código do Município
+>>
+>> j<-merge(Jab,ivs,by.y="Cod_mun_6") # Houve problema ao criar ?j?
+>>
+>> head(j)
+>>
+>>
+>>
+>> dim(Jab)
+>>
+>> dim(ivs)
+>>
+>> dim(j)
+>>
+>>
+>>
+>> fortify(Jab)
+>>
+>> j.f<-fortify(Jab,region="udh")
+>>
+>>
+>>
+>> j$ivs
+>>
+>> #Categorizando
+>>
+>> j$ivscat<-cut(j$ivs, breaks = c(0,0.200,0.300,0.400,0.500,1), labels=c("0
+>> a 0,200 - Muito Baixa", "0,200 a 0,300 - Baixa", "0,300 a 0,400 - Média",
+>> "0,400 a 0,500 - Alta", "0,500 a 1 - Muito Alta"), include.lowest=T)
+>>
+>> names(j)
+>>
+>> names(j.f)
+>>
+>> #Problema: udh não possui latitude e lobgitude (como fazer, então?)
+>>
+>> jabo<-merge(j, j.f, by.y="udh")
+>>
+>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> <http://../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200329/0722bb65/attachment.html>
+
+From richfield1974 em yahoo.com  Mon Mar 30 10:13:59 2020
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Mon, 30 Mar 2020 13:13:59 +0000 (UTC)
+Subject: [R-br] variance components no modelo gls
+References: <775265814.653092.1585574039779.ref@mail.yahoo.com>
+Message-ID: <775265814.653092.1585574039779@mail.yahoo.com>
+
+
+Prezados, bom dia.
+Alguém sabe como estimar "variance between groups" e "variance within groups" no modelo abaixo?y <- c(1,2,3, 5,9,8, 2,3,4, 9,7,8 )
+x <- as.factor(rep(letters[1:4], each=3))
+library(nlme)
+model <- gls(y~x, weights = varExp())Desde já agradeçoLuiz
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200330/aa82bbab/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Mon Mar 30 12:03:25 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Mon, 30 Mar 2020 11:03:25 -0400
+Subject: [R-br] =?utf-8?q?Criar_um_dataframe_pela_combina=C3=A7=C3=A3o_de?=
+ =?utf-8?q?_duas_linhas_de_informa=C3=A7=C3=A3o_em_*txt?=
+In-Reply-To: <3fccef30-8464-a2bb-fb6c-05091d29c5ab@cas.ifmt.edu.br>
+References: <3fccef30-8464-a2bb-fb6c-05091d29c5ab@cas.ifmt.edu.br>
+Message-ID: <742e7018-8eaf-af95-91f3-3ad4a3066687@cas.ifmt.edu.br>
+
+Prezados membros do r-br,
+
+Eu gostaria de criar um novo data frame à partir de output de uma 
+análise em *txt empregando o pacote *tidyverse*, sendo:
+
+library(tidyverse)
+
+#Arquivo original
+https://www.dropbox.com/s/2f13c2wb66zfrmr/result.txt?dl=0
+
+#Faço a leitura do arquivo
+myfile<-read_lines("result.txt")
+
+#Separo o nome do arquivo
+filename<-myfile[1]
+filename<-gsub("\\..*","",filename)
+filename
+#[1] "sample_107"
+
+#Então removo a primeira linha que só tem a informação do nome do 
+arquivo que o originou
+myfile<-myfile[-1]
+
+
+#Estrutura parcial do arquivo myfile
+#
+head(myfile)
+#[1] "lca: 84%"
+#[2] "left=475, right=586, top=0, bottom=527, obj_id=0, obj=lca "
+#[3] "lca: 82%"
+#[4] "left=548, right=553, top=0, bottom=722, obj_id=0, obj=lca "
+#[5] "lca: 79%"
+$[6] "left=439, right=534, top=174, bottom=440, obj_id=0, obj=lca "
+#
+
+Agora, eu quero criar um data frame onde eu reorganize essa informação 
+de modo que sempre a linha superior que começa com "lca:... forme a 
+última coluna da informação da linha abaixo que inicia-se com "left= 
+...., de forma que meu *dataframe* final fique, baseado na estrutura 
+parcial apresentada:
+
+left right top bottom obj_id obj lca
+475  586   0   527    0      lca 84
+548  553   0   722    0      lca 82
+439  534   174 440    0      lca 79
+
+Para ao final salvar como:
+write.table(mydataframe, paste0("pred_",filename, "*txt"),h=T)
+
+Tentei uma derivação das sugestões do Max, mas eu tenho um problema, 
+pois na primeira linha
+os valores estão depois de ":" e na segunda depois de "=". Também tenho 
+uma variável que chama lca
+na primeira linha e um nível lca na variável obj do meu arquivo myfile.
+
+names_col <- c("left", "right", "top", "botton", "obj_id",
+"obj","lca")
+
+mydf <- myfile %>%
+   str_subset("lca$") %>%
+   enframe(name = NULL) %>%
+   separate(col = value, into = names_col, sep = "[=,]") %>%
+   mutate_all(parse_number)
+
+head(as.data.frame(mydf))
+#[1] left   right  top    botton obj_id obj    lca
+#<0 linhas> (ou row.names de comprimento 0)
+
+Alguém que trabalha com manipulação de tabelas em R teria alguma dica 
+para dar?
+
+Obrigado,
+
+Alexandre
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200330/2ca0d47d/attachment.html>
+
+From verginio em unesc.net  Tue Mar 31 14:49:23 2020
+From: verginio em unesc.net (verginio em unesc.net)
+Date: Tue, 31 Mar 2020 12:49:23 -0500 (CDT)
+Subject: [R-br] 
+ =?utf-8?q?Criar_um_dataframe_pela_combina=C3=A7=C3=A3o_de?=
+ =?utf-8?q?_duas_linhas_de_informa=C3=A7=C3=A3o_em_*txt?=
+Message-ID: <405102500.442846.1585676963466.JavaMail.administrator@n4.nabble.com>
+
+Boa tarde Alexandre,
+
+Segue sugestão para leitura do seu documento de texto. Fiz um teste fazendo a leitura do arquivo como csv.
+
+
+
+# define a pasta de trabalho para ler e salvar os arquivos
+setwd(set_path)
+
+# Faço a leitura do arquivo usando read.csv
+## nesse caso já faz a leitura como data.frame e separa seis colunas
+myfile <-
+  read.csv(
+    file = "result.txt",
+    header = F,
+    row.names = NULL,
+    stringsAsFactors = F
+  )
+head(myfile)
+
+# Novos nomes das colunas, incluindo a nova coluna "ica"
+names_col <- c("left", "right", "top",
+               "botton", "obj_id", "obj", "lca")
+
+# arruma df
+## lag passa o vetor 'atrasado' em uma linha
+## str_detect filtra linhas que iniciam com "left"
+## set_names coloca novos nomes das colunas
+## str_remove, retira o texto no início dos valores
+## str_remove, retira o simbolo de percentual da 7ª coluna,
+### e transforma todas em número, exceto a 6ª coluna
+## trimws, retira o espaço sobrando na 6ª coluna
+mydataframe <- myfile %>%
+  mutate(V7 = lag(V1)) %>%
+  filter(str_detect(V1, "^left")) %>%
+  set_names(names_col) %>%
+  mutate_all( ~ str_remove(.x, ".*[=:]")) %>%
+  mutate_at(-6, ~ str_remove(.x, "%") %>% as.numeric) %>%
+  mutate_at(6, trimws)
+
+mydataframe
+
+
+#Separo o nome do arquivo
+## adicionei a extensão do arquivo, já nesta etapa [opicional]
+filename <- myfile[1, 1] %>%
+  str_extract(".*:") %>%
+  str_remove("\\.jpg:") %>%
+  paste0("pred_", ., ".txt")
+
+filename
+
+# salva o arquivo
+write.table(x = mydataframe, file = filename)
+
+
+
+Atenciosamente,
+Max Richard Verginio
+
+_____________________________________
+Sent from http://r-br.2285057.n4.nabble.com
+
+
+From wwwhsd em gmail.com  Tue Mar 31 16:01:01 2020
+From: wwwhsd em gmail.com (Henrique Dallazuanna)
+Date: Tue, 31 Mar 2020 16:01:01 -0300
+Subject: [R-br] 
+	=?utf-8?q?Criar_um_dataframe_pela_combina=C3=A7=C3=A3o_de?=
+	=?utf-8?q?_duas_linhas_de_informa=C3=A7=C3=A3o_em_*txt?=
+In-Reply-To: <742e7018-8eaf-af95-91f3-3ad4a3066687@cas.ifmt.edu.br>
+References: <3fccef30-8464-a2bb-fb6c-05091d29c5ab@cas.ifmt.edu.br>
+ <742e7018-8eaf-af95-91f3-3ad4a3066687@cas.ifmt.edu.br>
+Message-ID: <CAPvBnPE7O-ZPwTjzeoy4LtCQX+OkiObfLuzXa3fKcwz7duE5aQ@mail.gmail.com>
+
+Segue outra sugestão usando pacote base do R:
+
+mydf <- cbind.data.frame(do.call(rbind,
+lapply(strsplit(myfile[!seq(length(myfile)) %% 2], ", "),
+function(x)gsub(".*\\=", "", x))), lca = gsub(".*\\:\\s+", "",
+myfile[seq(length(myfile)) %% 2]))
+
+On Mon, Mar 30, 2020 at 12:03 PM ASANTOS por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados membros do r-br,
+>
+> Eu gostaria de criar um novo data frame à partir de output de uma análise
+> em *txt empregando o pacote *tidyverse*, sendo:
+>
+> library(tidyverse)
+>
+> #Arquivo original
+> https://www.dropbox.com/s/2f13c2wb66zfrmr/result.txt?dl=0
+>
+> #Faço a leitura do arquivo
+> myfile<-read_lines("result.txt")
+>
+> #Separo o nome do arquivo
+> filename<-myfile[1]
+> filename<-gsub("\\..*","",filename)
+> filename
+> #[1] "sample_107"
+>
+> #Então removo a primeira linha que só tem a informação do nome do arquivo
+> que o originou
+> myfile<-myfile[-1]
+>
+>
+> #Estrutura parcial do arquivo myfile
+> #
+> head(myfile)
+> #[1] "lca: 84%"
+> #[2] "left=475, right=586, top=0, bottom=527, obj_id=0, obj=lca "
+> #[3] "lca: 82%"
+> #[4] "left=548, right=553, top=0, bottom=722, obj_id=0, obj=lca "
+> #[5] "lca: 79%"
+> $[6] "left=439, right=534, top=174, bottom=440, obj_id=0, obj=lca "
+> #
+>
+> Agora, eu quero criar um data frame onde eu reorganize essa informação de
+> modo que sempre a linha superior que começa com "lca:... forme a última
+> coluna da informação da linha abaixo que inicia-se com "left= ...., de
+> forma que meu *dataframe* final fique, baseado na estrutura parcial
+> apresentada:
+>
+> left right top bottom obj_id obj lca
+> 475  586   0   527    0      lca 84
+> 548  553   0   722    0      lca 82
+> 439  534   174 440    0      lca 79
+>
+> Para ao final salvar como:
+> write.table(mydataframe, paste0("pred_",filename, "*txt"),h=T)
+>
+> Tentei uma derivação das sugestões do Max, mas eu tenho um problema, pois
+> na primeira linha
+> os valores estão depois de ":" e na segunda depois de "=". Também tenho
+> uma variável que chama lca
+> na primeira linha e um nível lca na variável obj do meu arquivo myfile.
+>
+> names_col <- c("left", "right", "top", "botton", "obj_id",
+> "obj","lca")
+>
+> mydf <- myfile %>%
+>   str_subset("lca$") %>%
+>   enframe(name = NULL) %>%
+>   separate(col = value, into = names_col, sep = "[=,]") %>%
+>   mutate_all(parse_number)
+>
+> head(as.data.frame(mydf))
+> #[1] left   right  top    botton obj_id obj    lca
+> #<0 linhas> (ou row.names de comprimento 0)
+>
+> Alguém que trabalha com manipulação de tabelas em R teria alguma dica para
+> dar?
+>
+> Obrigado,
+>
+> Alexandre
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+Henrique Dallazuanna
+Curitiba-Paraná-Brasil
+25° 25' 40" S 49° 16' 22" O
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200331/3b43a37e/attachment.html>
+

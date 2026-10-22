@@ -1,0 +1,262 @@
+{
+  "list": "r-br",
+  "description": "",
+  "month": "2021-06",
+  "messages": [
+    {
+      "id": "msg-77ecac4cfb3b",
+      "message_id": "<CALkxgdwzZGQ9Zyew4R+mxng9us5iP7zEK0xZJT9UiT3VjmsEMQ@mail.gmail.com>",
+      "from_name": "Sergio Pinto",
+      "from_email_hash": "0cb2e5bd4ba7d872b0b3beef12ce0cf35a32f1c0a1f59f567a188993d6e7c6ae",
+      "date": "2021-06-02T14:15:35Z",
+      "subject": "[R-br]  Visualização de resposta de questionário",
+      "subject_clean": "[R-br]  Visualização de resposta de questionário",
+      "in_reply_to": "<60b576317a68c_39ff2ad25754310849c7@ip-10-81-19-110.ec2.internal.mail>",
+      "references": [
+        "<V8wOCzyzCcg@mail.gmail.com>",
+        "<CAKrF98n1_uQFuxfbu7wgtTbqZwqEKKk5f3LkLo0wAfoijEgHTQ@mail.gmail.com>",
+        "<W-G1eg@mail.gmail.com>",
+        "<8x1oX4-A-YpO0A@mail.gmail.com>",
+        "<60b576317a68c_39ff2ad25754310849c7@ip-10-81-19-110.ec2.internal.mail>"
+      ],
+      "body_plain": "Prezados\nMais uma vez este grupo me ajuda e resolve meus problemas com R!!\n\nTodas as sugestões ajudaram. Agora sei resolver meus problemas de várias\nmaneiras!!\n\nObrigado César Rabank, Leonardo Assis, Daniel Guimarães Tiezzi,  Cid Póvoas\ne sznelwar em uol.com.br\npelas orientações. Esta lista de discussões é excelente!!\n\nGrato mais uma vez!!\n\nEm seg., 31 de mai. de 2021 às 20:50, sznelwar--- por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Eu não consegui baixar este arquivo, será que poderia anexá-lo no meu\n> e-mail?\n>\n>\n>\n>\n> ------------------------------\n>\n> *De: *\"Cid Póvoas por (R-br)\" <r-br em listas.c3sl.ufpr.br>\n> *Enviada: *2021/05/31 09:23:22\n> *Para: *r-br em listas.c3sl.ufpr.br\n> *Cc: * cidedson em gmail.com\n> *Assunto: * Re: [R-br] Visualização de resposta de questionário\n>\n> library(sjPlot)\n> respsfum <- read.csv(\"respsfum.csv\")[-1:-2]\n> plot_likert(respsfum)\n>\n> *Cid Edson Mendonça Póvoas*\n>\n> *Engenheiro Agrônomo*\n> *Técnico em Segurança do Trabalho *\n> *CREA : 051984991-4*\n>\n> *Lattes : *http://lattes.cnpq.br/2303498368142537\n> *LinkedIn :* http://br.linkedin.com/in/cidedson/\n> *Whatsapp :* https://wa.me/5573991519565\n>\n> Em seg., 31 de mai. de 2021 às 08:44, Daniel Guimarães Tiezzi por (R-br) <\n> r-br em listas.c3sl.ufpr.br> escreveu:\n>\n>> Concordo.\n>>\n>> Acho que esse documento deve ajudar:\n>> https://jtr13.github.io/cc19/how-to-plot-likert-data.html\n>>\n>> daniel\n>>\n>>\n>>\n>> Em dom., 30 de mai. de 2021 às 21:04, Cesar Rabak por (R-br) <\n>> r-br em listas.c3sl.ufpr.br> escreveu:\n>>\n>>> Prezado Sergio,\n>>>\n>>> A figura que mostras parece ser um *plot* de variáveis tratadas como\n>>> escalas Likert.\n>>>\n>>> Há um pacote específico no R para tal.\n>>>\n>>> Adicionalmente, o \"jeitão\" do gráfico parece ser resultado do conjunto\n>>> de pacotes do ggplot, que deve ter em uma das suas \"estéticas\" (\n>>> *aesthetics*) o tipo de gráfico \"likert\" ou nome dele associado a essa\n>>> representação.\n>>>\n>>> HTH\n>>> --\n>>> Cesar Rabak\n>>>\n>>>\n>>> On Sun, May 30, 2021 at 8:33 PM Sergio Pinto por (R-br) <\n>>> r-br em listas.c3sl.ufpr.br> wrote:\n>>>\n>>>> Prezados tenho um conjunto de dados que desejo apresentar de forma que\n>>>> fique semelhante a imagem abaixo.\n>>>> Entretanto não sei como plotar as frequências nas categorias das\n>>>> respostas. A imagem é do site:\n>>>> https://sebastiansauer.github.io/plotting_surveys/\n>>>>\n>>>> Envio o link dos meus conjuntos de dados.\n>>>> https://www.datafilehost.com/d/604da9ba\n>>>>\n>>>> Pelo que li a respeito eu preciso saber a frequência de respostas do\n>>>> tipo 1, do tipo 2 , do tipo 3, etc, para conseguir plotar o valores no\n>>>> g?afico que desejo.\n>>>> ex: p01 20 resp do tipo 1;  4o respostas do tipo 2, 10 respostas do\n>>>> tipo 3 etc.\n>>>>\n>>>> Agradeço desde já.\n>>>>\n>>>> [image: image.png]\n>>>>\n>>>>\n>>>>\n>>>>\n>>>> Uma amostra dos meus dados:\n>>>> id,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11\n>>>> 1,  6,  6,  6,  5,  4,  6,  4,  5,  5,  5,  5\n>>>> 2,  5,  5,  3,  3,  4,  3,  6,  5,  4,  4,  1\n>>>> 3,  3,  5,  5,  4,  5,  3,  5,  6,  3,  4,  1\n>>>> 4,  1,  1,  1,  8,  8,  8,  7,  7,  7,  7,  7\n>>>>\n>>>>   p01 até p11 são as perguntas e os números  sob as perguntas são o s\n>>>> itens das respostas.\n>>>>\n>>>> > sessionInfo()\n>>>> R version 4.0.3 (2020-10-10)\n>>>> Platform: x86_64-pc-linux-gnu (64-bit)\n>>>> Running under: Linux Mint 20.1\n>>>>\n>>>> Matrix products: default\n>>>> BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0\n>>>> LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0\n>>>>\n>>>> locale:\n>>>>  [1] LC_CTYPE=pt_BR.UTF-8       LC_NUMERIC=C\n>>>>  [3] LC_TIME=pt_BR.UTF-8        LC_COLLATE=pt_BR.UTF-8\n>>>>  [5] LC_MONETARY=pt_BR.UTF-8    LC_MESSAGES=pt_BR.UTF-8\n>>>>  [7] LC_PAPER=pt_BR.UTF-8       LC_NAME=C\n>>>>  [9] LC_ADDRESS=C               LC_TELEPHONE=C\n>>>> [11] LC_MEASUREMENT=pt_BR.UTF-8 LC_IDENTIFICATION=C\n>>>>\n>>>> attached base packages:\n>>>> [1] stats     graphics  grDevices utils     datasets  methods   base\n>>>>\n>>>> other attached packages:\n>>>> [1] forcats_0.5.1   stringr_1.4.0   dplyr_1.0.5     purrr_0.3.4\n>>>> [5] readr_1.4.0     tidyr_1.1.3     tibble_3.1.1    ggplot2_3.3.3\n>>>> [9] tidyverse_1.3.1\n>>>>\n>>>> loaded via a namespace (and not attached):\n>>>>  [1] Rcpp_1.0.6       cellranger_1.1.0 pillar_1.6.0     compiler_4.0.3\n>>>>  [5] dbplyr_2.1.1     tools_4.0.3      digest_0.6.27    jsonlite_1.7.2\n>>>>  [9] lubridate_1.7.10 lifecycle_1.0.0  gtable_0.3.0     pkgconfig_2.0.3\n>>>> [13] rlang_0.4.10     reprex_2.0.0     cli_2.4.0        rstudioapi_0.13\n>>>> [17] DBI_1.1.1        haven_2.4.0      xml2_1.3.2       withr_2.4.2\n>>>> [21] httr_1.4.2       fs_1.5.0         generics_0.1.0   vctrs_0.3.7\n>>>> [25] hms_1.0.0        grid_4.0.3       tidyselect_1.1.0 glue_1.4.2\n>>>> [29] R6_2.5.0         fansi_0.4.2      readxl_1.3.1     farver_2.1.0\n>>>> [33] modelr_0.1.8     magrittr_2.0.1   backports_1.2.1  scales_1.1.1\n>>>> [37] ellipsis_0.3.1   rvest_1.0.0      assertthat_0.2.1 colorspace_2.0-0\n>>>> [41] labeling_0.4.2   utf8_1.2.1       stringi_1.5.3    munsell_0.5.0\n>>>> [45] broom_0.7.6      crayon_1.4.1\n>>>>\n>>>>\n>>>>\n>>>> --\n>>>> *_______________________________________*\n>>>> *Prof. Dr. SERGIO MEDEIROS PINTO*\n>>>> LABICOM/IEFD-UERJ\n>>>> FAMERC-RJ\n>>>> UNESA-RJ\n>>>> http://lattes.cnpq.br/5897044784217523\n>>>>\n>>>>\n>>>>\n>>>>\n>>>> _______________________________________________\n>>>> R-br mailing list\n>>>> R-br em listas.c3sl.ufpr.br\n>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>>>> código mínimo reproduzível.\n>>>\n>>> _______________________________________________\n>>> R-br mailing list\n>>> R-br em listas.c3sl.ufpr.br\n>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>>> código mínimo reproduzível.\n>>\n>>\n>>\n>> --\n>> Daniel Tiezzi, MD, PhD\n>> Breast Disease and Gynecologic Oncology Division\n>> Department of Gynecology and Obstetrics\n>> University of São Paulo\n>> Brazil\n>> _______________________________________________\n>> R-br mailing list\n>> R-br em listas.c3sl.ufpr.br\n>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>> código mínimo reproduzível.\n>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível._______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n\n\n-- \n\n*_______________________________________*\n\n*Prof. Dr. SERGIO MEDEIROS PINTO*\nLABICOM/IEFD-UERJ\nFAMERC-RJ\nUNESA-RJ\nhttp://lattes.cnpq.br/5897044784217523\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210602/8aab6115/attachment.html>",
+      "body_snippet": "Prezados\nMais uma vez este grupo me ajuda e resolve meus problemas com R!!\n\nTodas as sugestões ajudaram. Agora sei resolver meus problemas de várias\nmaneiras!!\n\nObrigado César Rabank, Leonardo Assis, ",
+      "thread_id": "thread-77ecac4cfb3b",
+      "thread_depth": 0,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-0136e918fb6d",
+      "message_id": "<CANKG9zDonu5F5KWso2uyR5hrZDHZrpHo7ysnoC9CUx+nA0BJVw@mail.gmail.com>",
+      "from_name": "Urias Otaviano Vaz",
+      "from_email_hash": "0791a79bf4bb940529c0070a8c3cc22ef444041bc616de4b0e79addbeeaf4a1b",
+      "date": "2021-06-17T07:36:39Z",
+      "subject": "[R-br] Modelos Jones e Jones Modificado",
+      "subject_clean": "[R-br] Modelos Jones e Jones Modificado",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Bom dia!\nEstou fazendo uma pesquisa na área contábil-financeira e preciso gerar\nrespectivamente os modelos de Jones (1991) e Jones Modificado (1995), porém\nnão localizei algum pacote (se é que exista) que possa me auxiliar neste\ncálculo para depois eu fazer uma regressão com outras variáveis que estão\nsendo analisadas. As variáveis que compõem os Modelos eu até conheço, mas a\nminha dificuldade está sendo gerar tais modelos no R. Existe algum pacote\nou alguém tem alguma sugestão que possa me auxiliar?\nAbraços,\nUrias\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210617/acdb3065/attachment.html>",
+      "body_snippet": "Bom dia!\nEstou fazendo uma pesquisa na área contábil-financeira e preciso gerar\nrespectivamente os modelos de Jones (1991) e Jones Modificado (1995), porém\nnão localizei algum pacote (se é que exista)",
+      "thread_id": "thread-0136e918fb6d",
+      "thread_depth": 0,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-bd751d3e33fe",
+      "message_id": "<CAFfGvy+DP5RJZaaocx8x7SFnE=Hfrbq6RLqE1j03Emk-TEP1LA@mail.gmail.com>",
+      "from_name": "Pedro Emmanuel Alvarenga Americano do Brasil",
+      "from_email_hash": "8e2efeaf7fd699e0c233894cbc5197bc359976c2f9e8f1056deea185a651244a",
+      "date": "2021-06-18T22:58:08Z",
+      "subject": "[R-br] Extraindo formula do preditor linear GEE",
+      "subject_clean": "[R-br] Extraindo formula do preditor linear GEE",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Amigos de R,\n\nVenho procurar uma luz. Tenho certeza que é alguma coisa ridícula que não\nconsigo ver. Eu gostaria de adicionar num relatório a fórmula do preditor\nlinear de um modelo GEE. No pacote Hmisc há uma função Formula que faz\nisso, mas não funciona para objetos geeglm. Além disso, a formula possui um\ntermo spline e depois de um tempo fuçando por ai eu não consegui fazer a\nformula funcionar.\n\nfitar1_11 <- geeglm(outcome ~ v1 + v2 + v4_recoded + v5_trunc + bs(weeks,\ndf = 3), family = binomial(), data = M2, id = f1p0,  corstr = \"ar1\")\nfitar1_11\ngeeglm(formula = outcome ~ v1 + v2 + v4_recoded + v5_trunc +\n    bs(weeks, df = 3), family = binomial(), data = M2, id = f1p0,\n    corstr = \"ar1\")\nCoefficients:\n                           (Intercept)\nv1\n                         -1.586386e+00\n8.363458e-02\n                                    v2 v4_recodedNET, NGT, JF, OET, GF or\nTPN\n                         -3.763166e-02\n4.503599e+15\n                              v5_trunc                     bs(weeks, df =\n3)1\n                          7.261799e-02\n3.469451e-03\n                    bs(weeks, df = 3)2                     bs(weeks, df =\n3)3\n                          3.756985e-01\n4.542696e+00\n\nDegrees of Freedom: 472 Total (i.e. Null);  464 Residual\n> nd # newdata to predict at\n  v1 v2  v4_recoded v5_trunc weeks\n1  8  3 No catheter       36     2\n> predict(fitar1_11, type = \"response\", newdata = nd) # prediction from the\nmodel\n        1\n0.8345324\n# Not working prediction from the hand made formula\n> plogis(-1.586386 + 0.08363458*nd$v1 + -0.03763166*nd$v2 +\n4503599142291968*0 + 0.07261799*nd$v5_trunc + 0.003469451*nd$weeks +\n0.3756985*pmax(nd$weeks-1,0)^3 + 4.542696*pmax(nd$weeks-8,0)^3)\n[1] 0.8772541\n\nAlguem consegue me dar uma luz o que está errado para eu acertar esta\nprevisão? Se puder indicar uma leitura que resolva eu gostaria também.\n\nAbraço forte e que a força esteja com voces,\n\nPedro Brasil\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210618/e8ddc57c/attachment.html>",
+      "body_snippet": "Amigos de R,\n\nVenho procurar uma luz. Tenho certeza que é alguma coisa ridícula que não\nconsigo ver. Eu gostaria de adicionar num relatório a fórmula do preditor\nlinear de um modelo GEE. No pacote Hmi",
+      "thread_id": "thread-bd751d3e33fe",
+      "thread_depth": 0,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-379922dcaa12",
+      "message_id": "<CAH8E6UuCkgpqUOowZF7erj_jBe8gh_TSwndEXQM9twJJUoOFnw@mail.gmail.com>",
+      "from_name": "Elias Carvalho",
+      "from_email_hash": "94c4d4ee5a2872549a27ba774786d6a377d6716e74d89bc81b42c01c2add89b9",
+      "date": "2021-06-21T17:01:21Z",
+      "subject": "[R-br] Um preditor e vários resultados",
+      "subject_clean": "[R-br] Um preditor e vários resultados",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Boa tarde Pessoal\n\nRecebi uma base de dados com 272 registros, onde temos 54 variáveis\ndicotômicas sobre diagnósticos de crianças, como \"risco de aspiração\",\n\"degluticao\nprejudicada\", etc e uma variável dicotômica indicando se a mães dessas\ncrianças tem ou não tem Near Miss Materno (NMM) que significa quase morte\ndurante a gestação.\n\nA pessoa que me enviou quer saber se o fato da mãe ter Near Miss Materno\ncontribui com alguns dos 54 diagnósticos de suas crianças. Neste caso eu\nteria um único preditor (NMM) e 54 possíveis resultados.\n\nEeu pensei em fazer uma regressão logística binária NMM x V1...V54, mas\nclaro, o resultado tem que ser confrontado com a literatura pelo\npesquisador.\n\nUm amigo disse achar estranho um só preditor para 54 possíveis resultados.\n\nAlguém poderia dar uma opinião?\n\n-- \n\n\n*In Jesu et Maria*\n*Obrigado*\n*Prof. Elias Carvalho*\n\n*\"Felix, qui potuit rerum cognoscere causas\" (Virgil 29 BC)\"Blessed is he\nwho has been able to understand the cause of things\"*\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210621/374e7b68/attachment.html>",
+      "body_snippet": "Boa tarde Pessoal\n\nRecebi uma base de dados com 272 registros, onde temos 54 variáveis\ndicotômicas sobre diagnósticos de crianças, como \"risco de aspiração\",\n\"degluticao\nprejudicada\", etc e uma variáv",
+      "thread_id": "thread-379922dcaa12",
+      "thread_depth": 0,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-27917c491fe6",
+      "message_id": "<CAKrF98naDBnGtUpUVm_-Ae+fY5=Gc+SXkG+-m7zTg8boOM2ZCg@mail.gmail.com>",
+      "from_name": "Cesar Rabak",
+      "from_email_hash": "a6a76a30e7f42e9ffe22c166faa4b923f4a1dd242efac82d3ffc9e877bf9c16c",
+      "date": "2021-06-21T18:58:37Z",
+      "subject": "[R-br] Um preditor e vários resultados",
+      "subject_clean": "[R-br] Um preditor e vários resultados",
+      "in_reply_to": "<CAH8E6UuCkgpqUOowZF7erj_jBe8gh_TSwndEXQM9twJJUoOFnw@mail.gmail.com>",
+      "references": [
+        "<CAH8E6UuCkgpqUOowZF7erj_jBe8gh_TSwndEXQM9twJJUoOFnw@mail.gmail.com>"
+      ],
+      "body_plain": "BT Elias,\n\nTeu amigo é um grande amigo e vou aproveitar o gancho e explicar que você\nincorre num grande problema ao fazer a busca de 54 possíveis resultados\ncontra um preditor:\n\nDenomina-se o problema das comparações repetidas ou a inflação dos erros de\ntestes de família.\n\nFazer uma regressão logística binária onde o NMM fosse *desfecho* (ou seja\nela seria a *var* *dependente*) e os 54 diagnósticos seria as variáveis\nindependentes inverte a direção da causalidade, e só tem um uso muito\npequeno na análise posto que uma eventual significância estatística poderia\nser usada para investigações ulteriores, mas ainda assim, com 54 variáveis\ne 272 casos (vc ñ menciona a prevalência do NMM) de cara aposto que não há\ncasos suficientes para tanto diagnóstico.\n\nAdemais com 54 diagnósticos, antes de seguir haveria de se fazer a pergunta\nse não há \"colinearidade\" entre eles, ou como são dicotômicas, associações\nduas a duas entre elas, e na contrapartida alguns desses diagnósticos\npoderiam ser importantes quando aparecem simultaneamente (cofatores no\nsentido etiológico) que aumentaria a quantidade de possíveis comparações....\n\nOutrossim, a menos que esses 272 casos sejam muito balanceados em relação à\ncondição sob estudo (NMM, se eu entendo corretamente), haveria ainda que\nexaminar a anamnese dessas mães para ver se não condições confundidoras\ndesbalanços de ordem demográficas e outros fatores que já possam ser\nconhecidos para cada um dos diagnósticos *antes* de querer incluir no \"rol\ndos suspeitos\" a NMM como condição explicativa dos diagnósticos.\n\nHTH\n\n\nOn Mon, Jun 21, 2021 at 2:02 PM Elias Carvalho por (R-br) <\nr-br em listas.c3sl.ufpr.br> wrote:\n\n> Boa tarde Pessoal\n>\n> Recebi uma base de dados com 272 registros, onde temos 54 variáveis\n> dicotômicas sobre diagnósticos de crianças, como \"risco de aspiração\", \"degluticao\n> prejudicada\", etc e uma variável dicotômica indicando se a mães dessas\n> crianças tem ou não tem Near Miss Materno (NMM) que significa quase morte\n> durante a gestação.\n>\n> A pessoa que me enviou quer saber se o fato da mãe ter Near Miss Materno\n> contribui com alguns dos 54 diagnósticos de suas crianças. Neste caso eu\n> teria um único preditor (NMM) e 54 possíveis resultados.\n>\n> Eeu pensei em fazer uma regressão logística binária NMM x V1...V54, mas\n> claro, o resultado tem que ser confrontado com a literatura pelo\n> pesquisador.\n>\n> Um amigo disse achar estranho um só preditor para 54 possíveis resultados.\n>\n> Alguém poderia dar uma opinião?\n>\n> --\n>\n>\n> *In Jesu et Maria*\n> *Obrigado*\n> *Prof. Elias Carvalho*\n>\n> *\"Felix, qui potuit rerum cognoscere causas\" (Virgil 29 BC)\"Blessed is he\n> who has been able to understand the cause of things\"*\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210621/5375ca52/attachment.html>",
+      "body_snippet": "BT Elias,\n\nTeu amigo é um grande amigo e vou aproveitar o gancho e explicar que você\nincorre num grande problema ao fazer a busca de 54 possíveis resultados\ncontra um preditor:\n\nDenomina-se o problema",
+      "thread_id": "thread-379922dcaa12",
+      "thread_depth": 1,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-dea166bc69da",
+      "message_id": "<FR1P152MB31944B1EC525DC208499E991A5079@FR1P152MB3194.LAMP152.PROD.OUTLOOK.COM>",
+      "from_name": "Luiz Paulo Serrano",
+      "from_email_hash": "e251456bf980471f861cbbbf6343034a2de29150d60384ddf29a6cf02ac2f73b",
+      "date": "2021-06-24T16:50:36Z",
+      "subject": "[R-br] Lista brasileira oficial de discussão do programa R",
+      "subject_clean": "[R-br] Lista brasileira oficial de discussão do programa R",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Prezadas (os)\nSolicito ajuda para corrigir esse código teoricamente bem simples mas que\njá tentei e não encontrei o erro.\nAgradeço desde já a atenção dispensada.\nLuiz Paulo Serrano.\n\n\n#Função Duplo Loop - Correção do código\n\n#A partir de um vetor qualquer\n#Exemplo para um vetor de 5 elementos (normalmente são mais de 30 elementos)\n#L1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\nn=5\n\n#O que a função desenvolvida está fazendo\n\nloopD<-function(A){\n  n<-length(A)\nV<-NULL\n  Vc<-NULL\n  for (p in 1:(n-1)){\nfor(i in 1:(n-p)){\nV[i]<-(A[i+p]-A[i])^2/(2*(n-p))\n}\n\nprint(V)\nVc[p]<-sum(V)}\n\nprint(Vc)\n\n}\n\nloopD(L1)\n#Saída da função está errada\n[1] 1.186878245 0.306661961 0.013049201 0.000006125\n[1] 0.382588002 0.594972060 0.018161002 0.000006125\n[1] 0.355216000 0.899083240 0.018161002 0.000006125\n[1] 0.702112500 0.899083240 0.018161002 0.000006125\n[1] 1.5065955 0.9957272 1.2724664 1.6193629\n\n#Está fixando quatro parcelas por passo\n\n#Passo 1: Ve1\n1.186878245+0.306661961+0.013049201+0.000006125 = 1.5065955 - OK\nquatro parcelas - OK\n\n#Passo 2: Ve2\n0.382588002+0.594972060+0.018161002+0.000006125 = 0.9957272 - Não OK\n#quatro parcelas - Não OK\n#Valor correto: três parcelas\nVe2: 0.382588002+0.594972060+0.018161002 = 0.9957211\n\n#Passo 3: Ve3\n0.355216000+0.899083240+0.018161002+0.000006125 = 1.2724664 - Não OK\n#quatro parcelas - Não OK\n#Valor correto: duas parcelas\n0.355216000+0.899083240 =  1.254299\n\n#Passo 4: Ve4\nVe4: 0.702112500+0.899083240+0.018161002+0.000006125 = 1.6193629 - Não OK\nquatro parcelas - Não OK\n#Valor correto: uma parcela\n0.702112500\n\n#O que a função deve fazer\n\nL1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\nn=5\n\n#Passo 1: quatro parcelas\nVe1<-((L1[2]-L1[1])^2+(L1[3]-L1[2])^2+(L1[4]-L1[3])^2+\n(L1[5]-L1[4])^2)/(2*(n-1));Ve1# 1.506596\n\nVe1<-(L1[2]-L1[1])^2/(2*(n-1))=1.186878...+(L1[5]-L1[4])^2/(2*(n-1))=6.125e-06\n\nVe1=1.186878245+0.306661961+0.013049201+0.000006125 = 1.506596\n\n#Passo 2: três parcelas\nVe2<-((L1[3]-L1[1])^2+(L1[4]-L1[2])^2+(L1[5]-L1[3])^2)/(2*(n-2));Ve2#0.9957211\n\nVe2<-(L1[3]-L1[1])^2/(2*(n-2))=0,382588...+(L1[5]-L1[3])^2/(2*(n-2))=0.018161\n\nVe2= 0.382588002+0.594972060+0.018161002 = 0.9957272\n\n#Passo 3: duas parcelas\nVe3<-((L1[4]-L1[1])^2+(L1[5]-L1[2])^2) /(2*(n-3));Ve3# 1.254299\n\nVe3<-(L1[4]-L1[1])^2\n\nVe3=0.355216000+0.899083240 = 1.254299\n\n#Passo 4: uma parcela\nVe4<-(L1[5]-L1[1])^2/(2*(n-4));Ve4#0.7021125\n\n\nComo corrigir?\n\n\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210624/29b7505f/attachment.html>",
+      "body_snippet": "Prezadas (os)\nSolicito ajuda para corrigir esse código teoricamente bem simples mas que\njá tentei e não encontrei o erro.\nAgradeço desde já a atenção dispensada.\nLuiz Paulo Serrano.\n\n\n#Função Duplo Lo",
+      "thread_id": "thread-dea166bc69da",
+      "thread_depth": 0,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-475c5386fabb",
+      "message_id": "<CAKrF98=M-vEekGeERor+WC1mmW9Dkt2SAUDOqhffCkajf=rBxg@mail.gmail.com>",
+      "from_name": "Cesar Rabak",
+      "from_email_hash": "a6a76a30e7f42e9ffe22c166faa4b923f4a1dd242efac82d3ffc9e877bf9c16c",
+      "date": "2021-06-24T19:25:31Z",
+      "subject": "[R-br]  Lista brasileira oficial de discussão do programa R",
+      "subject_clean": "[R-br]  Lista brasileira oficial de discussão do programa R",
+      "in_reply_to": "<FR1P152MB31944B1EC525DC208499E991A5079@FR1P152MB3194.LAMP152.PROD.OUTLOOK.COM>",
+      "references": [
+        "<FR1P152MB31944B1EC525DC208499E991A5079@FR1P152MB3194.LAMP152.PROD.OUTLOOK.COM>"
+      ],
+      "body_plain": "Escreva em português o que esta linha do seu código faz:\n\n>  V[i]<-(A[i+p]-A[i])^2/(2*(n-p))\n\nSe ainda ? ainda não acender, responda a seguinte pergunta:\n\nO que acontece quando o vetor *V* indexado por *i* passar pela segunda,\nterceira, ..., interação em *p*.\n\nAí veja qual a correção que precisa fazer para que o comportamento, que\nentendo seja o que  você esperaria, seja este:\n\n> L1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\n> loopD(L1)\n[1] 1,186878245 0,306661961 0,013049201 0,000006125\n[1] 0,3825880   0,5949721   0,0181610\n[1] 0,3552160   0,8990832\n[1] 0,7021125\n[1] 1,5065955   0,9957211   1,2542992   0,7021125\n\nHTH\n\n--\nCesar Rabak\n\n\n\n\n\nOn Thu, Jun 24, 2021 at 1:50 PM Luiz Paulo Serrano por (R-br) <\nr-br em listas.c3sl.ufpr.br> wrote:\n\n> Prezadas (os)\n> Solicito ajuda para corrigir esse código teoricamente bem simples mas que\n> já tentei e não encontrei o erro.\n> Agradeço desde já a atenção dispensada.\n> Luiz Paulo Serrano.\n>\n>\n> #Função Duplo Loop - Correção do código\n>\n> #A partir de um vetor qualquer\n> #Exemplo para um vetor de 5 elementos (normalmente são mais de 30\n> elementos)\n> #L1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\n> n=5\n>\n> #O que a função desenvolvida está fazendo\n>\n> loopD<-function(A){\n>   n<-length(A)\n> V<-NULL\n>   Vc<-NULL\n>   for (p in 1:(n-1)){\n> for(i in 1:(n-p)){\n> V[i]<-(A[i+p]-A[i])^2/(2*(n-p))\n> }\n>\n> print(V)\n> Vc[p]<-sum(V)}\n>\n> print(Vc)\n>\n> }\n>\n> loopD(L1)\n> #Saída da função está errada\n> [1] 1.186878245 0.306661961 0.013049201 0.000006125\n> [1] 0.382588002 0.594972060 0.018161002 0.000006125\n> [1] 0.355216000 0.899083240 0.018161002 0.000006125\n> [1] 0.702112500 0.899083240 0.018161002 0.000006125\n> [1] 1.5065955 0.9957272 1.2724664 1.6193629\n>\n> #Está fixando quatro parcelas por passo\n>\n> #Passo 1: Ve1\n> 1.186878245+0.306661961+0.013049201+0.000006125 = 1.5065955 - OK\n> quatro parcelas - OK\n>\n> #Passo 2: Ve2\n> 0.382588002+0.594972060+0.018161002+0.000006125 = 0.9957272 - Não OK\n> #quatro parcelas - Não OK\n> #Valor correto: três parcelas\n> Ve2: 0.382588002+0.594972060+0.018161002 = 0.9957211\n>\n> #Passo 3: Ve3\n> 0.355216000+0.899083240+0.018161002+0.000006125 = 1.2724664 - Não OK\n> #quatro parcelas - Não OK\n> #Valor correto: duas parcelas\n> 0.355216000+0.899083240 =  1.254299\n>\n> #Passo 4: Ve4\n> Ve4: 0.702112500+0.899083240+0.018161002+0.000006125 = 1.6193629 - Não OK\n> quatro parcelas - Não OK\n> #Valor correto: uma parcela\n> 0.702112500\n>\n> #O que a função deve fazer\n>\n> L1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\n> n=5\n>\n> #Passo 1: quatro parcelas\n> Ve1<-((L1[2]-L1[1])^2+(L1[3]-L1[2])^2+(L1[4]-L1[3])^2+\n> (L1[5]-L1[4])^2)/(2*(n-1));Ve1# 1.506596\n>\n>\n> Ve1<-(L1[2]-L1[1])^2/(2*(n-1))=1.186878...+(L1[5]-L1[4])^2/(2*(n-1))=6.125e-06\n>\n> Ve1=1.186878245+0.306661961+0.013049201+0.000006125 = 1.506596\n>\n> #Passo 2: três parcelas\n>\n> Ve2<-((L1[3]-L1[1])^2+(L1[4]-L1[2])^2+(L1[5]-L1[3])^2)/(2*(n-2));Ve2#0.9957211\n>\n>\n> Ve2<-(L1[3]-L1[1])^2/(2*(n-2))=0,382588...+(L1[5]-L1[3])^2/(2*(n-2))=0.018161\n>\n> Ve2= 0.382588002+0.594972060+0.018161002 = 0.9957272\n>\n> #Passo 3: duas parcelas\n> Ve3<-((L1[4]-L1[1])^2+(L1[5]-L1[2])^2) /(2*(n-3));Ve3# 1.254299\n>\n> Ve3<-(L1[4]-L1[1])^2\n>\n> Ve3=0.355216000+0.899083240 = 1.254299\n>\n> #Passo 4: uma parcela\n> Ve4<-(L1[5]-L1[1])^2/(2*(n-4));Ve4#0.7021125\n>\n>\n> Como corrigir?\n>\n>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210624/ee2f7a7a/attachment.html>",
+      "body_snippet": "Escreva em português o que esta linha do seu código faz:\n\n>  V[i]<-(A[i+p]-A[i])^2/(2*(n-p))\n\nSe ainda ? ainda não acender, responda a seguinte pergunta:\n\nO que acontece quando o vetor *V* indexado po",
+      "thread_id": "thread-dea166bc69da",
+      "thread_depth": 1,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-4b9173c4955e",
+      "message_id": "<CA+RL3DMDRMHoL832xuYY9vTrf=tzd0t+CqrBz-Wcwory_s_jmA@mail.gmail.com>",
+      "from_name": "Daniel Guimarães Tiezzi",
+      "from_email_hash": "96abb78a12030b8e1c79971799a2bcbc501b139ad57e24b6972db5c4575829d9",
+      "date": "2021-06-25T01:23:54Z",
+      "subject": "[R-br]  Lista brasileira oficial de discussão do programa R",
+      "subject_clean": "[R-br]  Lista brasileira oficial de discussão do programa R",
+      "in_reply_to": "<FR1P152MB31944B1EC525DC208499E991A5079@FR1P152MB3194.LAMP152.PROD.OUTLOOK.COM>",
+      "references": [
+        "<FR1P152MB31944B1EC525DC208499E991A5079@FR1P152MB3194.LAMP152.PROD.OUTLOOK.COM>"
+      ],
+      "body_plain": "Veja se seria isso?\n\nl = c(65.1537,62.0723,63.6386,63.9617,63.9687)\nV = list()\ns = 1\ni = 2\nfor (n in 1:(length(l)-1)) {\n  i = i + n -1\n  v = 0\n  for (j in 1:(length(l)-s)) {\n    v = v + (l[i] - l[j])^2\n    i = i+1\n  }\n  v = v / (2*(length(l)-n))\n  i = 2\n  s = s+1\n  V[[paste0(n)]] <- v\n}\n\nprint(unlist(V))\n\nEm qui., 24 de jun. de 2021 às 13:50, Luiz Paulo Serrano por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Prezadas (os)\n> Solicito ajuda para corrigir esse código teoricamente bem simples mas que\n> já tentei e não encontrei o erro.\n> Agradeço desde já a atenção dispensada.\n> Luiz Paulo Serrano.\n>\n>\n> #Função Duplo Loop - Correção do código\n>\n> #A partir de um vetor qualquer\n> #Exemplo para um vetor de 5 elementos (normalmente são mais de 30\n> elementos)\n> #L1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\n> n=5\n>\n> #O que a função desenvolvida está fazendo\n>\n> loopD<-function(A){\n>   n<-length(A)\n> V<-NULL\n>   Vc<-NULL\n>   for (p in 1:(n-1)){\n> for(i in 1:(n-p)){\n> V[i]<-(A[i+p]-A[i])^2/(2*(n-p))\n> }\n>\n> print(V)\n> Vc[p]<-sum(V)}\n>\n> print(Vc)\n>\n> }\n>\n> loopD(L1)\n> #Saída da função está errada\n> [1] 1.186878245 0.306661961 0.013049201 0.000006125\n> [1] 0.382588002 0.594972060 0.018161002 0.000006125\n> [1] 0.355216000 0.899083240 0.018161002 0.000006125\n> [1] 0.702112500 0.899083240 0.018161002 0.000006125\n> [1] 1.5065955 0.9957272 1.2724664 1.6193629\n>\n> #Está fixando quatro parcelas por passo\n>\n> #Passo 1: Ve1\n> 1.186878245+0.306661961+0.013049201+0.000006125 = 1.5065955 - OK\n> quatro parcelas - OK\n>\n> #Passo 2: Ve2\n> 0.382588002+0.594972060+0.018161002+0.000006125 = 0.9957272 - Não OK\n> #quatro parcelas - Não OK\n> #Valor correto: três parcelas\n> Ve2: 0.382588002+0.594972060+0.018161002 = 0.9957211\n>\n> #Passo 3: Ve3\n> 0.355216000+0.899083240+0.018161002+0.000006125 = 1.2724664 - Não OK\n> #quatro parcelas - Não OK\n> #Valor correto: duas parcelas\n> 0.355216000+0.899083240 =  1.254299\n>\n> #Passo 4: Ve4\n> Ve4: 0.702112500+0.899083240+0.018161002+0.000006125 = 1.6193629 - Não OK\n> quatro parcelas - Não OK\n> #Valor correto: uma parcela\n> 0.702112500\n>\n> #O que a função deve fazer\n>\n> L1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\n> n=5\n>\n> #Passo 1: quatro parcelas\n> Ve1<-((L1[2]-L1[1])^2+(L1[3]-L1[2])^2+(L1[4]-L1[3])^2+\n> (L1[5]-L1[4])^2)/(2*(n-1));Ve1# 1.506596\n>\n>\n> Ve1<-(L1[2]-L1[1])^2/(2*(n-1))=1.186878...+(L1[5]-L1[4])^2/(2*(n-1))=6.125e-06\n>\n> Ve1=1.186878245+0.306661961+0.013049201+0.000006125 = 1.506596\n>\n> #Passo 2: três parcelas\n>\n> Ve2<-((L1[3]-L1[1])^2+(L1[4]-L1[2])^2+(L1[5]-L1[3])^2)/(2*(n-2));Ve2#0.9957211\n>\n>\n> Ve2<-(L1[3]-L1[1])^2/(2*(n-2))=0,382588...+(L1[5]-L1[3])^2/(2*(n-2))=0.018161\n>\n> Ve2= 0.382588002+0.594972060+0.018161002 = 0.9957272\n>\n> #Passo 3: duas parcelas\n> Ve3<-((L1[4]-L1[1])^2+(L1[5]-L1[2])^2) /(2*(n-3));Ve3# 1.254299\n>\n> Ve3<-(L1[4]-L1[1])^2\n>\n> Ve3=0.355216000+0.899083240 = 1.254299\n>\n> #Passo 4: uma parcela\n> Ve4<-(L1[5]-L1[1])^2/(2*(n-4));Ve4#0.7021125\n>\n>\n> Como corrigir?\n>\n>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n\n\n-- \nDaniel Tiezzi, MD, PhD\nBreast Disease and Gynecologic Oncology Division\nDepartment of Gynecology and Obstetrics\nUniversity of São Paulo\nBrazil\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210624/f1d7a2a9/attachment.html>",
+      "body_snippet": "Veja se seria isso?\n\nl = c(65.1537,62.0723,63.6386,63.9617,63.9687)\nV = list()\ns = 1\ni = 2\nfor (n in 1:(length(l)-1)) {\n  i = i + n -1\n  v = 0\n  for (j in 1:(length(l)-s)) {\n    v = v + (l[i] - l[j])^",
+      "thread_id": "thread-dea166bc69da",
+      "thread_depth": 1,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-4ab6ebe7607b",
+      "message_id": "<CA+RL3DPtM4WS3MFW4W=pwsoBcHwCXTLBMRt6sOr2F2mS2M2=bw@mail.gmail.com>",
+      "from_name": "Daniel Guimarães Tiezzi",
+      "from_email_hash": "96abb78a12030b8e1c79971799a2bcbc501b139ad57e24b6972db5c4575829d9",
+      "date": "2021-06-25T01:24:14Z",
+      "subject": "[R-br]  Lista brasileira oficial de discussão do programa R",
+      "subject_clean": "[R-br]  Lista brasileira oficial de discussão do programa R",
+      "in_reply_to": "<FR1P152MB31944B1EC525DC208499E991A5079@FR1P152MB3194.LAMP152.PROD.OUTLOOK.COM>",
+      "references": [
+        "<FR1P152MB31944B1EC525DC208499E991A5079@FR1P152MB3194.LAMP152.PROD.OUTLOOK.COM>"
+      ],
+      "body_plain": "Seria isso?\n\nl = c(65.1537,62.0723,63.6386,63.9617,63.9687)\nV = list()\ns = 1\ni = 2\nfor (n in 1:(length(l)-1)) {\n  i = i + n -1\n  v = 0\n  for (j in 1:(length(l)-s)) {\n    v = v + (l[i] - l[j])^2\n    i = i+1\n  }\n  v = v / (2*(length(l)-n))\n  i = 2\n  s = s+1\n  V[[paste0(n)]] <- v\n}\n\nprint(unlist(V))\n\nEm qui., 24 de jun. de 2021 às 13:50, Luiz Paulo Serrano por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Prezadas (os)\n> Solicito ajuda para corrigir esse código teoricamente bem simples mas que\n> já tentei e não encontrei o erro.\n> Agradeço desde já a atenção dispensada.\n> Luiz Paulo Serrano.\n>\n>\n> #Função Duplo Loop - Correção do código\n>\n> #A partir de um vetor qualquer\n> #Exemplo para um vetor de 5 elementos (normalmente são mais de 30\n> elementos)\n> #L1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\n> n=5\n>\n> #O que a função desenvolvida está fazendo\n>\n> loopD<-function(A){\n>   n<-length(A)\n> V<-NULL\n>   Vc<-NULL\n>   for (p in 1:(n-1)){\n> for(i in 1:(n-p)){\n> V[i]<-(A[i+p]-A[i])^2/(2*(n-p))\n> }\n>\n> print(V)\n> Vc[p]<-sum(V)}\n>\n> print(Vc)\n>\n> }\n>\n> loopD(L1)\n> #Saída da função está errada\n> [1] 1.186878245 0.306661961 0.013049201 0.000006125\n> [1] 0.382588002 0.594972060 0.018161002 0.000006125\n> [1] 0.355216000 0.899083240 0.018161002 0.000006125\n> [1] 0.702112500 0.899083240 0.018161002 0.000006125\n> [1] 1.5065955 0.9957272 1.2724664 1.6193629\n>\n> #Está fixando quatro parcelas por passo\n>\n> #Passo 1: Ve1\n> 1.186878245+0.306661961+0.013049201+0.000006125 = 1.5065955 - OK\n> quatro parcelas - OK\n>\n> #Passo 2: Ve2\n> 0.382588002+0.594972060+0.018161002+0.000006125 = 0.9957272 - Não OK\n> #quatro parcelas - Não OK\n> #Valor correto: três parcelas\n> Ve2: 0.382588002+0.594972060+0.018161002 = 0.9957211\n>\n> #Passo 3: Ve3\n> 0.355216000+0.899083240+0.018161002+0.000006125 = 1.2724664 - Não OK\n> #quatro parcelas - Não OK\n> #Valor correto: duas parcelas\n> 0.355216000+0.899083240 =  1.254299\n>\n> #Passo 4: Ve4\n> Ve4: 0.702112500+0.899083240+0.018161002+0.000006125 = 1.6193629 - Não OK\n> quatro parcelas - Não OK\n> #Valor correto: uma parcela\n> 0.702112500\n>\n> #O que a função deve fazer\n>\n> L1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\n> n=5\n>\n> #Passo 1: quatro parcelas\n> Ve1<-((L1[2]-L1[1])^2+(L1[3]-L1[2])^2+(L1[4]-L1[3])^2+\n> (L1[5]-L1[4])^2)/(2*(n-1));Ve1# 1.506596\n>\n>\n> Ve1<-(L1[2]-L1[1])^2/(2*(n-1))=1.186878...+(L1[5]-L1[4])^2/(2*(n-1))=6.125e-06\n>\n> Ve1=1.186878245+0.306661961+0.013049201+0.000006125 = 1.506596\n>\n> #Passo 2: três parcelas\n>\n> Ve2<-((L1[3]-L1[1])^2+(L1[4]-L1[2])^2+(L1[5]-L1[3])^2)/(2*(n-2));Ve2#0.9957211\n>\n>\n> Ve2<-(L1[3]-L1[1])^2/(2*(n-2))=0,382588...+(L1[5]-L1[3])^2/(2*(n-2))=0.018161\n>\n> Ve2= 0.382588002+0.594972060+0.018161002 = 0.9957272\n>\n> #Passo 3: duas parcelas\n> Ve3<-((L1[4]-L1[1])^2+(L1[5]-L1[2])^2) /(2*(n-3));Ve3# 1.254299\n>\n> Ve3<-(L1[4]-L1[1])^2\n>\n> Ve3=0.355216000+0.899083240 = 1.254299\n>\n> #Passo 4: uma parcela\n> Ve4<-(L1[5]-L1[1])^2/(2*(n-4));Ve4#0.7021125\n>\n>\n> Como corrigir?\n>\n>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n\n\n-- \nDaniel Tiezzi, MD, PhD\nBreast Disease and Gynecologic Oncology Division\nDepartment of Gynecology and Obstetrics\nUniversity of São Paulo\nBrazil\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210624/01ffd356/attachment.html>",
+      "body_snippet": "Seria isso?\n\nl = c(65.1537,62.0723,63.6386,63.9617,63.9687)\nV = list()\ns = 1\ni = 2\nfor (n in 1:(length(l)-1)) {\n  i = i + n -1\n  v = 0\n  for (j in 1:(length(l)-s)) {\n    v = v + (l[i] - l[j])^2\n    i ",
+      "thread_id": "thread-dea166bc69da",
+      "thread_depth": 1,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-25e2dcff3f0c",
+      "message_id": "<CA+RL3DPG23vr6=YvKvWo9-XzDrFC3Etv3W-C+2o6t6YaX+4-PQ@mail.gmail.com>",
+      "from_name": "Daniel Guimarães Tiezzi",
+      "from_email_hash": "96abb78a12030b8e1c79971799a2bcbc501b139ad57e24b6972db5c4575829d9",
+      "date": "2021-06-25T01:26:29Z",
+      "subject": "[R-br]  Lista brasileira oficial de discussão do programa R",
+      "subject_clean": "[R-br]  Lista brasileira oficial de discussão do programa R",
+      "in_reply_to": "<FR1P152MB31944B1EC525DC208499E991A5079@FR1P152MB3194.LAMP152.PROD.OUTLOOK.COM>",
+      "references": [
+        "<FR1P152MB31944B1EC525DC208499E991A5079@FR1P152MB3194.LAMP152.PROD.OUTLOOK.COM>"
+      ],
+      "body_plain": "Cezar Rabak tem razão.\nSeu post está bem fora do que é preconizado pela Lista de Discussão\n\ndaniel\n\n\n\n\nEm qui., 24 de jun. de 2021 às 13:50, Luiz Paulo Serrano por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Prezadas (os)\n> Solicito ajuda para corrigir esse código teoricamente bem simples mas que\n> já tentei e não encontrei o erro.\n> Agradeço desde já a atenção dispensada.\n> Luiz Paulo Serrano.\n>\n>\n> #Função Duplo Loop - Correção do código\n>\n> #A partir de um vetor qualquer\n> #Exemplo para um vetor de 5 elementos (normalmente são mais de 30\n> elementos)\n> #L1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\n> n=5\n>\n> #O que a função desenvolvida está fazendo\n>\n> loopD<-function(A){\n>   n<-length(A)\n> V<-NULL\n>   Vc<-NULL\n>   for (p in 1:(n-1)){\n> for(i in 1:(n-p)){\n> V[i]<-(A[i+p]-A[i])^2/(2*(n-p))\n> }\n>\n> print(V)\n> Vc[p]<-sum(V)}\n>\n> print(Vc)\n>\n> }\n>\n> loopD(L1)\n> #Saída da função está errada\n> [1] 1.186878245 0.306661961 0.013049201 0.000006125\n> [1] 0.382588002 0.594972060 0.018161002 0.000006125\n> [1] 0.355216000 0.899083240 0.018161002 0.000006125\n> [1] 0.702112500 0.899083240 0.018161002 0.000006125\n> [1] 1.5065955 0.9957272 1.2724664 1.6193629\n>\n> #Está fixando quatro parcelas por passo\n>\n> #Passo 1: Ve1\n> 1.186878245+0.306661961+0.013049201+0.000006125 = 1.5065955 - OK\n> quatro parcelas - OK\n>\n> #Passo 2: Ve2\n> 0.382588002+0.594972060+0.018161002+0.000006125 = 0.9957272 - Não OK\n> #quatro parcelas - Não OK\n> #Valor correto: três parcelas\n> Ve2: 0.382588002+0.594972060+0.018161002 = 0.9957211\n>\n> #Passo 3: Ve3\n> 0.355216000+0.899083240+0.018161002+0.000006125 = 1.2724664 - Não OK\n> #quatro parcelas - Não OK\n> #Valor correto: duas parcelas\n> 0.355216000+0.899083240 =  1.254299\n>\n> #Passo 4: Ve4\n> Ve4: 0.702112500+0.899083240+0.018161002+0.000006125 = 1.6193629 - Não OK\n> quatro parcelas - Não OK\n> #Valor correto: uma parcela\n> 0.702112500\n>\n> #O que a função deve fazer\n>\n> L1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\n> n=5\n>\n> #Passo 1: quatro parcelas\n> Ve1<-((L1[2]-L1[1])^2+(L1[3]-L1[2])^2+(L1[4]-L1[3])^2+\n> (L1[5]-L1[4])^2)/(2*(n-1));Ve1# 1.506596\n>\n>\n> Ve1<-(L1[2]-L1[1])^2/(2*(n-1))=1.186878...+(L1[5]-L1[4])^2/(2*(n-1))=6.125e-06\n>\n> Ve1=1.186878245+0.306661961+0.013049201+0.000006125 = 1.506596\n>\n> #Passo 2: três parcelas\n>\n> Ve2<-((L1[3]-L1[1])^2+(L1[4]-L1[2])^2+(L1[5]-L1[3])^2)/(2*(n-2));Ve2#0.9957211\n>\n>\n> Ve2<-(L1[3]-L1[1])^2/(2*(n-2))=0,382588...+(L1[5]-L1[3])^2/(2*(n-2))=0.018161\n>\n> Ve2= 0.382588002+0.594972060+0.018161002 = 0.9957272\n>\n> #Passo 3: duas parcelas\n> Ve3<-((L1[4]-L1[1])^2+(L1[5]-L1[2])^2) /(2*(n-3));Ve3# 1.254299\n>\n> Ve3<-(L1[4]-L1[1])^2\n>\n> Ve3=0.355216000+0.899083240 = 1.254299\n>\n> #Passo 4: uma parcela\n> Ve4<-(L1[5]-L1[1])^2/(2*(n-4));Ve4#0.7021125\n>\n>\n> Como corrigir?\n>\n>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n\n\n-- \nDaniel Tiezzi, MD, PhD\nBreast Disease and Gynecologic Oncology Division\nDepartment of Gynecology and Obstetrics\nUniversity of São Paulo\nBrazil\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210624/0f2c037b/attachment.html>",
+      "body_snippet": "Cezar Rabak tem razão.\nSeu post está bem fora do que é preconizado pela Lista de Discussão\n\ndaniel\n\n\n\n\nEm qui., 24 de jun. de 2021 às 13:50, Luiz Paulo Serrano por (R-br) <\nr-br em listas.c3sl.ufpr.br",
+      "thread_id": "thread-dea166bc69da",
+      "thread_depth": 1,
+      "month": "2021-06"
+    },
+    {
+      "id": "msg-40214c739c4d",
+      "message_id": "<FR1P152MB31940763D12641CEB1B1C83FA5069@FR1P152MB3194.LAMP152.PROD.OUTLOOK.COM>",
+      "from_name": "Luiz Paulo Serrano",
+      "from_email_hash": "e251456bf980471f861cbbbf6343034a2de29150d60384ddf29a6cf02ac2f73b",
+      "date": "2021-06-25T12:19:38Z",
+      "subject": "[R-br]  Lista brasileira oficial de discussão do programa R",
+      "subject_clean": "[R-br]  Lista brasileira oficial de discussão do programa R",
+      "in_reply_to": "<CA+RL3DPG23vr6=YvKvWo9-XzDrFC3Etv3W-C+2o6t6YaX+4-PQ@mail.gmail.com>",
+      "references": [
+        "<FR1P152MB31944B1EC525DC208499E991A5079@FR1P152MB3194.LAMP152.PROD.OUTLOOK.COM>",
+        "<CA+RL3DPG23vr6=YvKvWo9-XzDrFC3Etv3W-C+2o6t6YaX+4-PQ@mail.gmail.com>"
+      ],
+      "body_plain": "Prezados Cesar e Daniel, bom dia!\nAntes de mais nada agradeço muito a atenção de vocês.\nVou rever o que preconiza a Lista de Discussão.\nSds,\nLuiz Paulo Serrano.\n\n________________________________\nDe: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Daniel Guimarães Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br>\nEnviado: quinta-feira, 24 de junho de 2021 22:26\nPara: a lista Brasileira oficial de discussão do programa R. <r-br em listas.c3sl.ufpr.br>\nCc: Daniel Guimarães Tiezzi <P>\nAssunto: Re: [R-br] Lista brasileira oficial de discussão do programa R\n\nCezar Rabak tem razão.\nSeu post está bem fora do que é preconizado pela Lista de Discussão\n\ndaniel\n\n\n\n\nEm qui., 24 de jun. de 2021 às 13:50, Luiz Paulo Serrano por (R-br) <r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br>> escreveu:\nPrezadas (os)\nSolicito ajuda para corrigir esse código teoricamente bem simples mas que\njá tentei e não encontrei o erro.\nAgradeço desde já a atenção dispensada.\nLuiz Paulo Serrano.\n\n\n#Função Duplo Loop - Correção do código\n\n#A partir de um vetor qualquer\n#Exemplo para um vetor de 5 elementos (normalmente são mais de 30 elementos)\n#L1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\nn=5\n\n#O que a função desenvolvida está fazendo\n\nloopD<-function(A){\n  n<-length(A)\nV<-NULL\n  Vc<-NULL\n  for (p in 1:(n-1)){\nfor(i in 1:(n-p)){\nV[i]<-(A[i+p]-A[i])^2/(2*(n-p))\n}\n\nprint(V)\nVc[p]<-sum(V)}\n\nprint(Vc)\n\n}\n\nloopD(L1)\n#Saída da função está errada\n[1] 1.186878245 0.306661961 0.013049201 0.000006125\n[1] 0.382588002 0.594972060 0.018161002 0.000006125\n[1] 0.355216000 0.899083240 0.018161002 0.000006125\n[1] 0.702112500 0.899083240 0.018161002 0.000006125\n[1] 1.5065955 0.9957272 1.2724664 1.6193629\n\n#Está fixando quatro parcelas por passo\n\n#Passo 1: Ve1\n1.186878245+0.306661961+0.013049201+0.000006125 = 1.5065955 - OK\nquatro parcelas - OK\n\n#Passo 2: Ve2\n0.382588002+0.594972060+0.018161002+0.000006125 = 0.9957272 - Não OK\n#quatro parcelas - Não OK\n#Valor correto: três parcelas\nVe2: 0.382588002+0.594972060+0.018161002 = 0.9957211\n\n#Passo 3: Ve3\n0.355216000+0.899083240+0.018161002+0.000006125 = 1.2724664 - Não OK\n#quatro parcelas - Não OK\n#Valor correto: duas parcelas\n0.355216000+0.899083240 =  1.254299\n\n#Passo 4: Ve4\nVe4: 0.702112500+0.899083240+0.018161002+0.000006125 = 1.6193629 - Não OK\nquatro parcelas - Não OK\n#Valor correto: uma parcela\n0.702112500\n\n#O que a função deve fazer\n\nL1<-c(65.1537,62.0723,63.6386,63.9617,63.9687)\nn=5\n\n#Passo 1: quatro parcelas\nVe1<-((L1[2]-L1[1])^2+(L1[3]-L1[2])^2+(L1[4]-L1[3])^2+\n(L1[5]-L1[4])^2)/(2*(n-1));Ve1# 1.506596\n\nVe1<-(L1[2]-L1[1])^2/(2*(n-1))=1.186878...+(L1[5]-L1[4])^2/(2*(n-1))=6.125e-06\n\nVe1=1.186878245+0.306661961+0.013049201+0.000006125 = 1.506596\n\n#Passo 2: três parcelas\nVe2<-((L1[3]-L1[1])^2+(L1[4]-L1[2])^2+(L1[5]-L1[3])^2)/(2*(n-2));Ve2#0.9957211\n\nVe2<-(L1[3]-L1[1])^2/(2*(n-2))=0,382588...+(L1[5]-L1[3])^2/(2*(n-2))=0.018161\n\nVe2= 0.382588002+0.594972060+0.018161002 = 0.9957272\n\n#Passo 3: duas parcelas\nVe3<-((L1[4]-L1[1])^2+(L1[5]-L1[2])^2) /(2*(n-3));Ve3# 1.254299\n\nVe3<-(L1[4]-L1[1])^2\n\nVe3=0.355216000+0.899083240 = 1.254299\n\n#Passo 4: uma parcela\nVe4<-(L1[5]-L1[1])^2/(2*(n-4));Ve4#0.7021125\n\n\nComo corrigir?\n\n\n_______________________________________________\nR-br mailing list\nR-br em listas.c3sl.ufpr.br<mailto:R-br em listas.c3sl.ufpr.br>\nhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\nLeia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.\n\n\n--\nDaniel Tiezzi, MD, PhD\nBreast Disease and Gynecologic Oncology Division\nDepartment of Gynecology and Obstetrics\nUniversity of São Paulo\nBrazil\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210625/43a2768c/attachment.html>",
+      "body_snippet": "Prezados Cesar e Daniel, bom dia!\nAntes de mais nada agradeço muito a atenção de vocês.\nVou rever o que preconiza a Lista de Discussão.\nSds,\nLuiz Paulo Serrano.\n\n________________________________\nDe: R",
+      "thread_id": "thread-dea166bc69da",
+      "thread_depth": 2,
+      "month": "2021-06"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-77ecac4cfb3b",
+      "subject": "[R-br]  Visualização de resposta de questionário",
+      "message_count": 1,
+      "participants": [
+        "Sergio Pinto"
+      ],
+      "started": "2021-06-02T14:15:35Z",
+      "last_reply": "2021-06-02T14:15:35Z",
+      "root_message_id": "msg-77ecac4cfb3b"
+    },
+    {
+      "id": "thread-0136e918fb6d",
+      "subject": "[R-br] Modelos Jones e Jones Modificado",
+      "message_count": 1,
+      "participants": [
+        "Urias Otaviano Vaz"
+      ],
+      "started": "2021-06-17T07:36:39Z",
+      "last_reply": "2021-06-17T07:36:39Z",
+      "root_message_id": "msg-0136e918fb6d"
+    },
+    {
+      "id": "thread-bd751d3e33fe",
+      "subject": "[R-br] Extraindo formula do preditor linear GEE",
+      "message_count": 1,
+      "participants": [
+        "Pedro Emmanuel Alvarenga Americano do Brasil"
+      ],
+      "started": "2021-06-18T22:58:08Z",
+      "last_reply": "2021-06-18T22:58:08Z",
+      "root_message_id": "msg-bd751d3e33fe"
+    },
+    {
+      "id": "thread-379922dcaa12",
+      "subject": "[R-br] Um preditor e vários resultados",
+      "message_count": 2,
+      "participants": [
+        "Cesar Rabak",
+        "Elias Carvalho"
+      ],
+      "started": "2021-06-21T17:01:21Z",
+      "last_reply": "2021-06-21T18:58:37Z",
+      "root_message_id": "msg-379922dcaa12"
+    },
+    {
+      "id": "thread-dea166bc69da",
+      "subject": "[R-br] Lista brasileira oficial de discussão do programa R",
+      "message_count": 6,
+      "participants": [
+        "Cesar Rabak",
+        "Daniel Guimarães Tiezzi",
+        "Luiz Paulo Serrano"
+      ],
+      "started": "2021-06-24T16:50:36Z",
+      "last_reply": "2021-06-25T12:19:38Z",
+      "root_message_id": "msg-dea166bc69da"
+    }
+  ]
+}

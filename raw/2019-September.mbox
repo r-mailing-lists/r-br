@@ -1,0 +1,1340 @@
+From cesar.rabak em gmail.com  Sun Sep  1 15:43:41 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 1 Sep 2019 15:43:41 -0300
+Subject: [R-br] Problema criar colunas: socorro!
+In-Reply-To: <10e2c4a8-e315-fcbf-9e61-e9bf6417ee60@gmail.com>
+References: <10e2c4a8-e315-fcbf-9e61-e9bf6417ee60@gmail.com>
+Message-ID: <CAKrF98naSShzBUhJB9eP0S1R0EgVRsCx-fsVxdLsNJWzg8noqA@mail.gmail.com>
+
+Ellerson,
+
+SE a amostra de dados que você passou é um bom exemplo, você tem um
+problema *anterior* para resolver que é o de multiplicidade de entradas com
+grafia levemente diferentes. . .
+
+Veja as linhas cinco e seis do seu exemplo que o enquadramento, embora
+igual do ponto de vista legal, está escrito de forma levemente diferente e
+faria qualquer *script* (aliás, em qualquer linguagem, não só no R) entrar
+em parafuso ?. . .
+
+Há vários autores que dizem que a preparação e "limpeza" dos dados leva 80%
+do tempo de análise dos dados...
+
+Para atingir teus objetivos precisarás fazer uma busca no seu BD pela
+cadeia de caracteres que contenha o "ART. 14 - CP" e a partir dessa lista
+auxiliar ir eliminando as linhas e incluir numa nova coluna nos número de
+processo correspondentes.
+
+HTH
+--
+Cesar Rabak
+
+
+On Sat, Aug 31, 2019 at 12:29 PM Elerson por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados:
+>
+> Trabalho um banco de dados com mais de 10000 linhas, representado pelo
+> exemplo abaixo.
+>
+> *PROCESSO* *DATA_DISTRIBUICAO* *NOME_PARTE* *DATA_CRIME* *DATA_DENUNCIA*
+> *ENQUADRAMENTO*
+> 180022121 02/01/2018 A_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT -
+> 11.343/06
+> 180022121 02/01/2018 B_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT -
+> 11.343/06
+> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.35 - 11343/06
+> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.33 - 11343/06
+> 180022097 02/01/2018 D_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+> INC. II E IV - CPB
+> 180022097 02/01/2018 E_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR.4º
+> INC.II E IV - CPB
+> 180022097 02/01/2018 F_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+> INC. II E IV - CPB
+> 180022501 03/01/2018 G_NONIMATO 02/01/2018 03/01/2018 ART.157 PAR.2 INC.I
+> E II - CP
+> 180022501 03/01/2018 G_NONIMATO 02/01/2018 03/01/2018 ART.14 - CP
+>
+> Hipóteses:
+>
+> a) mesmo PROCESSO, NOME_PARTE diferentes, ENQUADRAMENTO igual (linhas 1 e
+> 2)
+>
+> b) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 3 e
+> 4)
+>
+> c) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 8 e
+> 9)
+>
+> Minha questão se refere à hipótese c: preciso criar um coluna
+> (enquadramento2) para transferir o art. 14 transformando o caso em apenas
+> uma linha? sem que se mexa na hipótese b. Em todo o banco sempre estará
+> escrito ART.14 ? CP.
+>
+> Para ficar assim:
+>
+> *PROCESSO* *DATA_DISTRIBUICAO* *NOME_PARTE* *DATA_CRIME* *DATA_DENUNCIA*
+> *ENQUADRAMENTO* *ENQUADRAMENTO2*
+> 180022121 02/01/2018 A_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT -
+> 11.343/06
+> 180022121 02/01/2018 B_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT -
+> 11.343/06
+> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.35 - 11343/06
+> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.33 - 11343/06
+> 180022097 02/01/2018 D_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+> INC. II E IV - CPB
+> 180022097 02/01/2018 E_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR.4º
+> INC.II E IV - CPB
+> 180022097 02/01/2018 F_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+> INC. II E IV - CPB
+> 180022501 03/01/2018 G_NONIMATO 02/01/2018 03/01/2018 ART.157 PAR.2 INC.I
+> E II - CP ART.14 - CP
+>
+> Obrigado.
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190901/169626a9/attachment.html>
+
+From andreolsouza em yahoo.com.br  Sun Sep  1 20:34:12 2019
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Sun, 1 Sep 2019 23:34:12 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?N=C3=A3o_carrega_o_biblioteca_-_lmer4?=
+References: <961903059.659010.1567380852137.ref@mail.yahoo.com>
+Message-ID: <961903059.659010.1567380852137@mail.yahoo.com>
+
+boa noite,de uma hora para outra não consigo carregar a biblioteca lme4.Alguém tem alguma sugestão de ajuda?  (estou usando win10)
+require(lmer4)Carregando pacotes exigidos: lmer4Warning message:In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :  there is no package called ?lmer4?
+
+att., André 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190901/e9504c92/attachment.html>
+
+From jersitonmattos em hotmail.com  Sun Sep  1 20:50:35 2019
+From: jersitonmattos em hotmail.com (Jersiton Tiago Pereira Matos)
+Date: Sun, 1 Sep 2019 23:50:35 +0000
+Subject: [R-br] =?windows-1252?q?N=E3o_carrega_o_biblioteca_-_lmer4?=
+In-Reply-To: <961903059.659010.1567380852137@mail.yahoo.com>
+References: <961903059.659010.1567380852137.ref@mail.yahoo.com>,
+ <961903059.659010.1567380852137@mail.yahoo.com>
+Message-ID: <RO1P152MB11965C6A9482667AFE7E42E0CDBF0@RO1P152MB1196.LAMP152.PROD.OUTLOOK.COM>
+
+boa noite
+
+reinstale o package.
+
+o erro diz: "aqui não há um pacote chamado lmer4"
+
+att.
+Jersiton
+
+
+
+Sent from my Samsung Galaxy smartphone.
+
+
+-------- Original message --------
+From: "Andre Oliveira por (R-br)" <r-br em listas.c3sl.ufpr.br>
+Date: 9/1/19 20:34 (GMT-03:00)
+To: "a lista Brasileira oficial de discussão do programa R." <r-br em listas.c3sl.ufpr.br>
+Cc: Andre Oliveira <andreolsouza em yahoo.com.br>
+Subject: [R-br] Não carrega o biblioteca - lmer4
+
+boa noite,
+de uma hora para outra não consigo carregar a biblioteca lme4.
+Alguém tem alguma sugestão de ajuda?  (estou usando win10)
+
+require(lmer4)
+Carregando pacotes exigidos: lmer4
+Warning message:
+In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :
+  there is no package called ?lmer4?
+
+
+att.,
+André
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190901/6979719b/attachment.html>
+
+From andreolsouza em yahoo.com.br  Sun Sep  1 21:13:33 2019
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Mon, 2 Sep 2019 00:13:33 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?N=C3=A3o_carrega_o_biblioteca_-_lmer4?=
+In-Reply-To: <RO1P152MB11965C6A9482667AFE7E42E0CDBF0@RO1P152MB1196.LAMP152.PROD.OUTLOOK.COM>
+References: <961903059.659010.1567380852137.ref@mail.yahoo.com>
+ <961903059.659010.1567380852137@mail.yahoo.com>
+ <RO1P152MB11965C6A9482667AFE7E42E0CDBF0@RO1P152MB1196.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <1722756277.654464.1567383213173@mail.yahoo.com>
+
+Boa noite, obrigado pela reposta! Já havia instalado o R e a lme4.Resolvi assim:rm(list=ls(all=TRUE))
+rm(list=ls()) gc(reset = TRUE)
+
+
+att,.André  
+
+    Em domingo, 1 de setembro de 2019 20:50:54 GMT-3, Jersiton Tiago Pereira Matos por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ boa noite
+reinstale o package.
+o erro diz: "aqui não há um pacote chamado lmer4"
+att.Jersiton
+
+
+Sent from my Samsung Galaxy smartphone.
+
+-------- Original message --------From: "Andre Oliveira por (R-br)" <r-br em listas.c3sl.ufpr.br> Date: 9/1/19 20:34 (GMT-03:00) To: "a lista Brasileira oficial de discussão do programa R." <r-br em listas.c3sl.ufpr.br>Cc: Andre Oliveira <andreolsouza em yahoo.com.br> Subject: [R-br] Não carrega o biblioteca - lmer4 
+boa noite,de uma hora para outra não consigo carregar a biblioteca lme4.Alguém tem alguma sugestão de ajuda?  (estou usando win10)
+require(lmer4)Carregando pacotes exigidos: lmer4Warning message:In library(package, lib.loc = lib.loc, character.only = TRUE, logical.return = TRUE,  :  there is no package called ?lmer4?
+
+att., André _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190902/dbecc2a0/attachment.html>
+
+From amikobh em gmail.com  Sun Sep  1 22:43:27 2019
+From: amikobh em gmail.com (Amiko Bh)
+Date: Sun, 1 Sep 2019 22:43:27 -0300
+Subject: [R-br] Problema criar colunas: socorro!
+In-Reply-To: <CAKrF98naSShzBUhJB9eP0S1R0EgVRsCx-fsVxdLsNJWzg8noqA@mail.gmail.com>
+References: <10e2c4a8-e315-fcbf-9e61-e9bf6417ee60@gmail.com>
+ <CAKrF98naSShzBUhJB9eP0S1R0EgVRsCx-fsVxdLsNJWzg8noqA@mail.gmail.com>
+Message-ID: <CAMgS91w8rDz2G8kHF=Ds4dVd-09=GSTivToYXW8BzXeYNQyxKw@mail.gmail.com>
+
+Muito obrigado pela ajuda.
+
+1) Entendi a importância da ?limpeza?
+
+2) ?Para atingir teus objetivos precisarás fazer uma busca no seu BD pela
+cadeia de caracteres que contenha o "ART. 14 - CP" e a partir dessa lista
+auxiliar ir eliminando as linhas e incluir numa nova coluna nos número de
+processo correspondentes?
+
+Estou sem saber que passo a passo considerar aqui...
+
+
+
+
+Em dom, 1 de set de 2019 15:44, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Ellerson,
+>
+> SE a amostra de dados que você passou é um bom exemplo, você tem um
+> problema *anterior* para resolver que é o de multiplicidade de entradas
+> com grafia levemente diferentes. . .
+>
+> Veja as linhas cinco e seis do seu exemplo que o enquadramento, embora
+> igual do ponto de vista legal, está escrito de forma levemente diferente e
+> faria qualquer *script* (aliás, em qualquer linguagem, não só no R)
+> entrar em parafuso ?. . .
+>
+> Há vários autores que dizem que a preparação e "limpeza" dos dados leva
+> 80% do tempo de análise dos dados...
+>
+> Para atingir teus objetivos precisarás fazer uma busca no seu BD pela
+> cadeia de caracteres que contenha o "ART. 14 - CP" e a partir dessa lista
+> auxiliar ir eliminando as linhas e incluir numa nova coluna nos número de
+> processo correspondentes.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Sat, Aug 31, 2019 at 12:29 PM Elerson por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Prezados:
+>>
+>> Trabalho um banco de dados com mais de 10000 linhas, representado pelo
+>> exemplo abaixo.
+>>
+>> *PROCESSO* *DATA_DISTRIBUICAO* *NOME_PARTE* *DATA_CRIME* *DATA_DENUNCIA*
+>> *ENQUADRAMENTO*
+>> 180022121 02/01/2018 A_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT -
+>> 11.343/06
+>> 180022121 02/01/2018 B_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT -
+>> 11.343/06
+>> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.35 - 11343/06
+>> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.33 - 11343/06
+>> 180022097 02/01/2018 D_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+>> INC. II E IV - CPB
+>> 180022097 02/01/2018 E_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR.4º
+>> INC.II E IV - CPB
+>> 180022097 02/01/2018 F_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+>> INC. II E IV - CPB
+>> 180022501 03/01/2018 G_NONIMATO 02/01/2018 03/01/2018 ART.157 PAR.2
+>> INC.I E II - CP
+>> 180022501 03/01/2018 G_NONIMATO 02/01/2018 03/01/2018 ART.14 - CP
+>>
+>> Hipóteses:
+>>
+>> a) mesmo PROCESSO, NOME_PARTE diferentes, ENQUADRAMENTO igual (linhas 1 e
+>> 2)
+>>
+>> b) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 3 e
+>> 4)
+>>
+>> c) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 8 e
+>> 9)
+>>
+>> Minha questão se refere à hipótese c: preciso criar um coluna
+>> (enquadramento2) para transferir o art. 14 transformando o caso em apenas
+>> uma linha? sem que se mexa na hipótese b. Em todo o banco sempre estará
+>> escrito ART.14 ? CP.
+>>
+>> Para ficar assim:
+>>
+>> *PROCESSO* *DATA_DISTRIBUICAO* *NOME_PARTE* *DATA_CRIME* *DATA_DENUNCIA*
+>> *ENQUADRAMENTO* *ENQUADRAMENTO2*
+>> 180022121 02/01/2018 A_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT -
+>> 11.343/06
+>> 180022121 02/01/2018 B_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT -
+>> 11.343/06
+>> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.35 - 11343/06
+>> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.33 - 11343/06
+>> 180022097 02/01/2018 D_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+>> INC. II E IV - CPB
+>> 180022097 02/01/2018 E_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR.4º
+>> INC.II E IV - CPB
+>> 180022097 02/01/2018 F_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+>> INC. II E IV - CPB
+>> 180022501 03/01/2018 G_NONIMATO 02/01/2018 03/01/2018 ART.157 PAR.2
+>> INC.I E II - CP ART.14 - CP
+>>
+>> Obrigado.
+>>
+>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190901/87292969/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Sep  2 13:30:54 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 2 Sep 2019 13:30:54 -0300
+Subject: [R-br] Problema criar colunas: socorro!
+In-Reply-To: <CAMgS91w8rDz2G8kHF=Ds4dVd-09=GSTivToYXW8BzXeYNQyxKw@mail.gmail.com>
+References: <10e2c4a8-e315-fcbf-9e61-e9bf6417ee60@gmail.com>
+ <CAKrF98naSShzBUhJB9eP0S1R0EgVRsCx-fsVxdLsNJWzg8noqA@mail.gmail.com>
+ <CAMgS91w8rDz2G8kHF=Ds4dVd-09=GSTivToYXW8BzXeYNQyxKw@mail.gmail.com>
+Message-ID: <CAKrF98mvrGaBU9FA3jbQzZDHQWXnvD326LCD=ErpB5aYXYj=ww@mail.gmail.com>
+
+Dê uma olhada na documentação de grep().
+
+On Sun, Sep 1, 2019 at 10:43 PM Amiko Bh por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Muito obrigado pela ajuda.
+>
+> 1) Entendi a importância da ?limpeza?
+>
+> 2) ?Para atingir teus objetivos precisarás fazer uma busca no seu BD pela
+> cadeia de caracteres que contenha o "ART. 14 - CP" e a partir dessa lista
+> auxiliar ir eliminando as linhas e incluir numa nova coluna nos número de
+> processo correspondentes?
+>
+> Estou sem saber que passo a passo considerar aqui...
+>
+>
+>
+>
+> Em dom, 1 de set de 2019 15:44, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Ellerson,
+>>
+>> SE a amostra de dados que você passou é um bom exemplo, você tem um
+>> problema *anterior* para resolver que é o de multiplicidade de entradas
+>> com grafia levemente diferentes. . .
+>>
+>> Veja as linhas cinco e seis do seu exemplo que o enquadramento, embora
+>> igual do ponto de vista legal, está escrito de forma levemente diferente e
+>> faria qualquer *script* (aliás, em qualquer linguagem, não só no R)
+>> entrar em parafuso ?. . .
+>>
+>> Há vários autores que dizem que a preparação e "limpeza" dos dados leva
+>> 80% do tempo de análise dos dados...
+>>
+>> Para atingir teus objetivos precisarás fazer uma busca no seu BD pela
+>> cadeia de caracteres que contenha o "ART. 14 - CP" e a partir dessa lista
+>> auxiliar ir eliminando as linhas e incluir numa nova coluna nos número de
+>> processo correspondentes.
+>>
+>> HTH
+>> --
+>> Cesar Rabak
+>>
+>>
+>> On Sat, Aug 31, 2019 at 12:29 PM Elerson por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Prezados:
+>>>
+>>> Trabalho um banco de dados com mais de 10000 linhas, representado pelo
+>>> exemplo abaixo.
+>>>
+>>> *PROCESSO* *DATA_DISTRIBUICAO* *NOME_PARTE* *DATA_CRIME* *DATA_DENUNCIA*
+>>> *ENQUADRAMENTO*
+>>> 180022121 02/01/2018 A_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT
+>>> - 11.343/06
+>>> 180022121 02/01/2018 B_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT
+>>> - 11.343/06
+>>> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.35 - 11343/06
+>>> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.33 - 11343/06
+>>> 180022097 02/01/2018 D_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+>>> INC. II E IV - CPB
+>>> 180022097 02/01/2018 E_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR.4º
+>>> INC.II E IV - CPB
+>>> 180022097 02/01/2018 F_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+>>> INC. II E IV - CPB
+>>> 180022501 03/01/2018 G_NONIMATO 02/01/2018 03/01/2018 ART.157 PAR.2
+>>> INC.I E II - CP
+>>> 180022501 03/01/2018 G_NONIMATO 02/01/2018 03/01/2018 ART.14 - CP
+>>>
+>>> Hipóteses:
+>>>
+>>> a) mesmo PROCESSO, NOME_PARTE diferentes, ENQUADRAMENTO igual (linhas 1
+>>> e 2)
+>>>
+>>> b) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 3
+>>> e 4)
+>>>
+>>> c) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 8
+>>> e 9)
+>>>
+>>> Minha questão se refere à hipótese c: preciso criar um coluna
+>>> (enquadramento2) para transferir o art. 14 transformando o caso em apenas
+>>> uma linha? sem que se mexa na hipótese b. Em todo o banco sempre estará
+>>> escrito ART.14 ? CP.
+>>>
+>>> Para ficar assim:
+>>>
+>>> *PROCESSO* *DATA_DISTRIBUICAO* *NOME_PARTE* *DATA_CRIME* *DATA_DENUNCIA*
+>>> *ENQUADRAMENTO* *ENQUADRAMENTO2*
+>>> 180022121 02/01/2018 A_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT
+>>> - 11.343/06
+>>> 180022121 02/01/2018 B_NONIMATO 02/01/2018 02/01/2018 ART.33 PAR.CAPUT
+>>> - 11.343/06
+>>> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.35 - 11343/06
+>>> 180022105 02/01/2018 C_NONIMATO 01/01/2018 02/01/2018 ART.33 - 11343/06
+>>> 180022097 02/01/2018 D_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+>>> INC. II E IV - CPB
+>>> 180022097 02/01/2018 E_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR.4º
+>>> INC.II E IV - CPB
+>>> 180022097 02/01/2018 F_NONIMATO 01/01/2018 02/01/2018 ART.155 PAR. 4º
+>>> INC. II E IV - CPB
+>>> 180022501 03/01/2018 G_NONIMATO 02/01/2018 03/01/2018 ART.157 PAR.2
+>>> INC.I E II - CP ART.14 - CP
+>>>
+>>> Obrigado.
+>>>
+>>>
+>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190902/0d829f4e/attachment.html>
+
+From nguiotoku2017 em gmail.com  Wed Sep  4 22:17:06 2019
+From: nguiotoku2017 em gmail.com (Nilson Guiotoku)
+Date: Wed, 4 Sep 2019 22:17:06 -0300
+Subject: [R-br] =?utf-8?q?gr=C3=A1ficos_com_bandas_de_confian=C3=A7a_no_R?=
+ =?utf-8?q?_-_com_sombra?=
+Message-ID: <CAKZWzEGhkzjfP=+pn=FWF_nkErG=qbdm99kkX4ThFjifWowcQQ@mail.gmail.com>
+
+Pessoal, gostaria de fazer um gráfico conforme o anexo, cujo o intervalo de
+confiança fique com formato de sombra dentro do gráfico. Conforme figura
+anexada:
+
+[image: image.png]
+
+Como tentativa usei o  *polygon*, mas não sei se existe um outro recurso
+melhor. Se alguém souber e puder contribuir, a lista do R agradece. Segue o
+código:
+
+ x <- seq(1:30)
+Y <- x + rnorm(30, 0,3)
+model <-  lm(Y ~ x)
+pred <- data.frame(x1 = x)
+pred$y1 <- predict(model, newdata = pred, interval = "confidence")
+plot(consumo, type = "n",
+     main = "Consumo médio, kg",
+     xlab = "Consumo estimado, kg ",
+     ylab = "Consumo observado, kg" )
+icfit = pred$y1
+yy = c(as.numeric(as.vector(icfit[,2])),
+rev(as.numeric(as.vector(icfit[,3]))))
+xx = c(x, rev(x))
+polygon(xx, yy, col = "lightsteelblue2", border = NA)
+points(consumo)
+abline(model, col="blue", lwd= 2)
+points(seq(2:15), seq(2:15), type = "l", col = "green", lwd = 2)
+legend("topright", legend = c("modelo linear base y = x",
+                              "modelo ajustado", "Bandas de confiança, 95%"
+),
+       lty = c(1,1,1), col = c("green", "blue", "lightsteelblue2"),
+       lwd = c(2,2,NA), bty = "n", pch = c(NA,NA, 15))
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190904/bfde02f0/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 13743 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190904/bfde02f0/attachment.png>
+
+From sznelwar em uol.com.br  Wed Sep  4 22:55:41 2019
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Wed, 04 Sep 2019 22:55:41 -0300
+Subject: [R-br] 
+ =?utf-8?q?gr=C3=A1ficos_com_bandas_de_confian=C3=A7a_no_R?=
+ =?utf-8?q?_-_com_sombra?=
+In-Reply-To: ["CAKZWzEGhkzjfP=+pn=FWF_nkErG=qbdm99kkX4ThFjifWowcQQ@mail.gmail.com"]
+References: ["CAKZWzEGhkzjfP=+pn=FWF_nkErG=qbdm99kkX4ThFjifWowcQQ@mail.gmail.com"]
+Message-ID: <5d706b1dba0af_1702adaf02d1108447f4@ip-10-81-19-47.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190904/16b6e1b2/attachment.html>
+
+From nguiotoku2017 em gmail.com  Thu Sep  5 18:11:52 2019
+From: nguiotoku2017 em gmail.com (Nilson Guiotoku)
+Date: Thu, 5 Sep 2019 18:11:52 -0300
+Subject: [R-br] =?utf-8?q?gr=C3=A1ficos_com_bandas_de_confian=C3=A7a_no_R?=
+ =?utf-8?q?_-_com_sombra?=
+Message-ID: <CAKZWzEGhZBrpOZowO4+ckB_28E8ffbfWESGqSys-Bd-eNebRCw@mail.gmail.com>
+
+Pessoal, gostaria de fazer um gráfico conforme o anexo, cujo o intervalo de
+confiança fique com formato de sombra dentro do gráfico. Conforme figura
+anexada:
+
+URL: <
+http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190904/bfde02f0/attachment-0001.png
+>
+
+Como tentativa usei o  *polygon*, mas não sei se existe um outro recurso
+melhor. Se alguém souber e puder contribuir, a lista do R agradece. Segue o
+código:
+
+ x <- seq(1:30)
+Y <- x + rnorm(30, 0,3)
+model <-  lm(Y ~ x)
+pred <- data.frame(x1 = x)
+pred$y1 <- predict(model, newdata = pred, interval = "confidence")
+plot(consumo, type = "n",
+     main = "Consumo médio, kg",
+     xlab = "Consumo estimado, kg ",
+     ylab = "Consumo observado, kg" )
+icfit = pred$y1
+yy = c(as.numeric(as.vector(icfit[,2])),
+rev(as.numeric(as.vector(icfit[,3]))))
+xx = c(x, rev(x))
+polygon(xx, yy, col = "lightsteelblue2", border = NA)
+points(consumo)
+abline(model, col="blue", lwd= 2)
+points(seq(2:15), seq(2:15), type = "l", col = "green", lwd = 2)
+legend("topright", legend = c("modelo linear base y = x",
+                              "modelo ajustado", "Bandas de confiança, 95%"
+),       lty = c(1,1,1), col = c("green", "blue", "lightsteelblue2"),
+       lwd = c(2,2,NA), bty = "n", pch = c(NA,NA, 15))
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190905/a0892983/attachment.html>
+
+From nicolaycunha em gmail.com  Thu Sep  5 18:41:17 2019
+From: nicolaycunha em gmail.com (Nicolay Cunha)
+Date: Thu, 5 Sep 2019 18:41:17 -0300
+Subject: [R-br] 
+	=?utf-8?q?gr=C3=A1ficos_com_bandas_de_confian=C3=A7a_no_R?=
+	=?utf-8?q?_-_com_sombra?=
+In-Reply-To: <CAKZWzEGhZBrpOZowO4+ckB_28E8ffbfWESGqSys-Bd-eNebRCw@mail.gmail.com>
+References: <CAKZWzEGhZBrpOZowO4+ckB_28E8ffbfWESGqSys-Bd-eNebRCw@mail.gmail.com>
+Message-ID: <CAAPK02B0VC8yqrnwmDMCQi6ux71zESrkJVFCUXbjm9+aSFJURA@mail.gmail.com>
+
+Oi Nilson,
+
+Infelizmente seu CMR ainda não é totalmente reproduzível. Note que você
+chama plot(consumo...), mas não há nenhum objeto "consumo" até então.
+Substituindo "consumo" por "x"  e "Y" o código funciona.
+
+Sugiro que você tente fazer o que quer no ggplot e use geom_ribbon para
+isso. Há muitos exemplos disponíveis, creio que algum servirá para o seu
+propósito.
+
+https://www.google.com/search?q=geom_ribbon&newwindow=1&rlz=1C5CHFA_enAR816AR817&sxsrf=ACYBGNRFJCCuwK4wOGpQ_UvWpF0fLQ6XWw:1567719453513&source=lnms&tbm=isch&sa=X&ved=0ahUKEwjhhomJ0rrkAhX2CrkGHQL2B9gQ_AUIEigB&biw=1432&bih=784&dpr=2
+
+Um abraço
+Nicolay
+
+-----------------------------------------------------------------------
+Grupo de Ecología de la Polinización
+(https://sites.google.com/view/ecopol/home)
+INIBIOMA, CONICET-Universidad Nacional del Comahue
+Quintral 1250
+8400 San Carlos de Bariloche
+Rio Negro, Argentina
+-----------------------------------------------------------------------
+
+On Thu, Sep 5, 2019 at 6:12 PM Nilson Guiotoku por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Pessoal, gostaria de fazer um gráfico conforme o anexo, cujo o intervalo de
+> confiança fique com formato de sombra dentro do gráfico. Conforme figura
+> anexada:
+>
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190904/bfde02f0/attachment-0001.png
+> >
+>
+> Como tentativa usei o  *polygon*, mas não sei se existe um outro recurso
+> melhor. Se alguém souber e puder contribuir, a lista do R agradece. Segue o
+> código:
+>
+>  x <- seq(1:30)
+> Y <- x + rnorm(30, 0,3)
+> model <-  lm(Y ~ x)
+> pred <- data.frame(x1 = x)
+> pred$y1 <- predict(model, newdata = pred, interval = "confidence")
+> plot(consumo, type = "n",
+>      main = "Consumo médio, kg",
+>      xlab = "Consumo estimado, kg ",
+>      ylab = "Consumo observado, kg" )
+> icfit = pred$y1
+> yy = c(as.numeric(as.vector(icfit[,2])),
+> rev(as.numeric(as.vector(icfit[,3]))))
+> xx = c(x, rev(x))
+> polygon(xx, yy, col = "lightsteelblue2", border = NA)
+> points(consumo)
+> abline(model, col="blue", lwd= 2)
+> points(seq(2:15), seq(2:15), type = "l", col = "green", lwd = 2)
+> legend("topright", legend = c("modelo linear base y = x",
+>                               "modelo ajustado", "Bandas de confiança, 95%"
+> ),       lty = c(1,1,1), col = c("green", "blue", "lightsteelblue2"),
+>        lwd = c(2,2,NA), bty = "n", pch = c(NA,NA, 15))
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190905/43f26340/attachment.html>
+
+From walmeszeviani em gmail.com  Fri Sep  6 09:56:43 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Fri, 6 Sep 2019 09:56:43 -0300
+Subject: [R-br] 
+	=?utf-8?q?gr=C3=A1ficos_com_bandas_de_confian=C3=A7a_no_R?=
+	=?utf-8?q?_-_com_sombra?=
+In-Reply-To: <CAAPK02B0VC8yqrnwmDMCQi6ux71zESrkJVFCUXbjm9+aSFJURA@mail.gmail.com>
+References: <CAKZWzEGhZBrpOZowO4+ckB_28E8ffbfWESGqSys-Bd-eNebRCw@mail.gmail.com>
+ <CAAPK02B0VC8yqrnwmDMCQi6ux71zESrkJVFCUXbjm9+aSFJURA@mail.gmail.com>
+Message-ID: <CAFU=EkYFP4tbAKSUvXwZB+V8hL_wZ876GMn1pf9NX72y546Vsw@mail.gmail.com>
+
+Considere esses exemplos
+
+lattice: http://leg.ufpr.br/~walmes/cursoR/mgest/1medidas-influen.html
+ggplot2: http://leg.ufpr.br/~walmes/analises/CECarducci/cafe_pedotrans.html
+
+Usando a graphics com *código reproduzível*
+
+m0 <- lm(dist ~ poly(speed, degree = 2), data = cars)
+
+grid <- with(cars,
+             data.frame(speed = seq(min(speed),
+                                    max(speed),
+                                    length.out = 31)))
+
+mat <- predict(m0, newdata = grid, interval = "confidence")
+
+grid <- cbind(grid, as.data.frame(mat))
+str(grid)
+
+plot(dist ~ speed, data = cars, type = "n")
+with(grid, polygon(x = c(speed, rev(speed)),
+                   y = c(lwr, rev(upr)),
+                   col = "gray",
+                   border = NA))
+lines(fit ~ speed, data = grid)
+points(dist ~ speed, data = cars)
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190906/d6be6a1f/attachment.html>
+
+From datascience em uol.com.br  Thu Sep 12 06:16:46 2019
+From: datascience em uol.com.br (Juliana DS)
+Date: Thu, 12 Sep 2019 06:16:46 -0300
+Subject: [R-br] Ajuda com Knn Cross Validation
+In-Reply-To: <RO1P152MB11965C6A9482667AFE7E42E0CDBF0@RO1P152MB1196.LAMP152.PROD.OUTLOOK.COM>
+References: <961903059.659010.1567380852137.ref@mail.yahoo.com>
+ <961903059.659010.1567380852137@mail.yahoo.com>
+ <RO1P152MB11965C6A9482667AFE7E42E0CDBF0@RO1P152MB1196.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <5d7a0cfe13cc7_6e112acc8db5b114969bd@ip-10-81-19-41.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190912/5f5dae32/attachment.html>
+
+From marcus.nunes em gmail.com  Thu Sep 12 07:36:25 2019
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Thu, 12 Sep 2019 07:36:25 -0300
+Subject: [R-br] Ajuda com Knn Cross Validation
+In-Reply-To: <5d7a0cfe13cc7_6e112acc8db5b114969bd@ip-10-81-19-41.ec2.internal.mail>
+References: <961903059.659010.1567380852137.ref@mail.yahoo.com>
+ <961903059.659010.1567380852137@mail.yahoo.com>
+ <RO1P152MB11965C6A9482667AFE7E42E0CDBF0@RO1P152MB1196.LAMP152.PROD.OUTLOOK.COM>
+ <5d7a0cfe13cc7_6e112acc8db5b114969bd@ip-10-81-19-41.ec2.internal.mail>
+Message-ID: <CA+QGQvs4uNe-EoTeMaaOvp0Nj+AsFusz_spca=Rvfvj-LAFokg@mail.gmail.com>
+
+Eu não entendi duas coisas:
+
+1. Por que utilizar "repeatedcv" como method se a ideia é fazer apenas a
+validação cruzada simples? Basta usar "cv" se a validação cruzada não for
+repetida.
+
+2. Particularmente, nunca vi ninguém fazer validação cruzada com mais de 10
+folds. No teu caso, tu está usando 683. Desconfio que, ao rodar o algoritmo
+e fazer as reamostragens para criar os conjuntos de treinamento e validação
+intermediários, acabem faltando observações justamente para estas etapas de
+validação intermediárias. Estude um pouco mais sobre validação cruzada e
+utilize number = 5 que o teu algoritmo deve rodar satisfatoriamente.
+
+
+
+
+On Thu, Sep 12, 2019, 06:17 Juliana DS por (R-br) <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Olá pessoal, bom dia!
+>
+> Preciso rodar um código, mas estou com um erro.
+> Poderiam me ajudar,por favor?
+>
+>
+> library(MASS)
+> library(class)
+> library(caret)
+> library(e1071)
+>
+> biopsyX = na.omit(biopsy[,-c(1)]) # Removi a coluna ID
+> is.na(biopsyX$V6)
+> biopsyX <- na.omit(biopsyX)    # Omitir os valores NA
+> str(biopsyX)
+>
+>
+> set.seed(1984)
+>
+> ctrl <- trainControl(method="repeatedcv", number=683)
+> nn_grid <- expand.grid(k=c(1:12))
+> best_knn <- train(class ~ ., data=biopsyX, method="knn", trControl=ctrl,
+> preProcess = c("center", "scale"), tuneGrid=nn_grid)
+> print(best_knn)
+>
+>
+> O meu código trava na linha de treinar o modelo, e me retorna o seguinte
+> erro:
+> "Warning message:
+> In nominalTrainWorkflow(x = x, y = y, wts = weights, info = trainInfo,  :
+>   There were missing values in resampled performance measures."
+>
+> Eu não tenho valores NA na minha base... não estou entendendo o erro.
+>
+> Outra dúvida: Está correto o ordem do código? O seed deveria ficar após a
+> linha do ctrl?
+>
+> Obrigada
+> Juliana
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190912/dd984682/attachment.html>
+
+From emmanuel.brasil em gmail.com  Thu Sep 12 09:36:57 2019
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Thu, 12 Sep 2019 09:36:57 -0300
+Subject: [R-br] 
+	=?utf-8?q?gr=C3=A1ficos_com_bandas_de_confian=C3=A7a_no_R?=
+	=?utf-8?q?_-_com_sombra?=
+In-Reply-To: <CAFU=EkYFP4tbAKSUvXwZB+V8hL_wZ876GMn1pf9NX72y546Vsw@mail.gmail.com>
+References: <CAKZWzEGhZBrpOZowO4+ckB_28E8ffbfWESGqSys-Bd-eNebRCw@mail.gmail.com>
+ <CAAPK02B0VC8yqrnwmDMCQi6ux71zESrkJVFCUXbjm9+aSFJURA@mail.gmail.com>
+ <CAFU=EkYFP4tbAKSUvXwZB+V8hL_wZ876GMn1pf9NX72y546Vsw@mail.gmail.com>
+Message-ID: <CAFfGvy+s4aNG5ra29860PezfawojP1o6bG_csuQM-xqbmxYB=g@mail.gmail.com>
+
+Tenta Hmisc::rm.boot
+
+Pedro Brasil
+
+
+Em sex, 6 de set de 2019 às 09:57, Walmes Zeviani por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Considere esses exemplos
+>
+> lattice: http://leg.ufpr.br/~walmes/cursoR/mgest/1medidas-influen.html
+> ggplot2:
+> http://leg.ufpr.br/~walmes/analises/CECarducci/cafe_pedotrans.html
+>
+> Usando a graphics com *código reproduzível*
+>
+> m0 <- lm(dist ~ poly(speed, degree = 2), data = cars)
+>
+> grid <- with(cars,
+>              data.frame(speed = seq(min(speed),
+>                                     max(speed),
+>                                     length.out = 31)))
+>
+> mat <- predict(m0, newdata = grid, interval = "confidence")
+>
+> grid <- cbind(grid, as.data.frame(mat))
+> str(grid)
+>
+> plot(dist ~ speed, data = cars, type = "n")
+> with(grid, polygon(x = c(speed, rev(speed)),
+>                    y = c(lwr, rev(upr)),
+>                    col = "gray",
+>                    border = NA))
+> lines(fit ~ speed, data = grid)
+> points(dist ~ speed, data = cars)
+>
+> À disposição.
+> Walmes.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190912/6e8b47b8/attachment.html>
+
+From walmeszeviani em gmail.com  Fri Sep 13 14:27:49 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Fri, 13 Sep 2019 14:27:49 -0300
+Subject: [R-br] Ajuda com Knn Cross Validation
+In-Reply-To: <CA+QGQvs4uNe-EoTeMaaOvp0Nj+AsFusz_spca=Rvfvj-LAFokg@mail.gmail.com>
+References: <961903059.659010.1567380852137.ref@mail.yahoo.com>
+ <961903059.659010.1567380852137@mail.yahoo.com>
+ <RO1P152MB11965C6A9482667AFE7E42E0CDBF0@RO1P152MB1196.LAMP152.PROD.OUTLOOK.COM>
+ <5d7a0cfe13cc7_6e112acc8db5b114969bd@ip-10-81-19-41.ec2.internal.mail>
+ <CA+QGQvs4uNe-EoTeMaaOvp0Nj+AsFusz_spca=Rvfvj-LAFokg@mail.gmail.com>
+Message-ID: <CAFU=EkZyRReK8Hn9oEj8rAkgRXpL5Sa1uP428A4RTfE6Aw22sw@mail.gmail.com>
+
+De fato, usar 683 é não usual. Por outro lado, fiquei intrigado e vi que
+esse é o tamanho da amostra. Então creio que você esteja buscando fazer o
+LOOCV (leave one out cross validation), só que de uma forma subótima. É
+melhor que você passe o argumento "LOOCV" para o parâmetro `method`. Dessa
+forma eu não observei mensagens de erro nem aviso. Mais um detalhe, usar
+número par de vizinhos é não aconselhável porque gera empates no
+classificador binário (um vizinho positivo e outro negativo) o que acredito
+ser desempatado por chance. Então use apenas números ímpares no grid de
+busca.
+
+ctrl <- trainControl(method = "LOOCV")
+nn_grid <- expand.grid(k = seq(1, by = 2, length.out = 7))
+best_knn <- train(class ~ .,
+                  data = biopsyX,
+                  method = "knn",
+                  trControl = ctrl,
+                  preProcess = c("center", "scale"),
+                  tuneGrid = nn_grid)
+print(best_knn)
+plot(best_knn)
+
+-----------------------------------------------------
+k-Nearest Neighbors
+
+683 samples
+  9 predictors
+  2 classes: 'benign', 'malignant'
+
+Pre-processing: centered (9), scaled (9)
+Resampling: Leave-One-Out Cross-Validation
+Summary of sample sizes: 682, 682, 682, 682, 682, 682, ...
+Resampling results across tuning parameters:
+
+  k   Accuracy   Kappa
+   1  0.9531479  0.8962164
+   3  0.9619327  0.9163274
+   5  0.9677892  0.9293366
+   7  0.9707174  0.9356365
+   9  0.9677892  0.9292001
+  11  0.9692533  0.9323530
+  13  0.9707174  0.9356365
+
+Accuracy was used to select the optimal model using the largest value.
+The final value used for the model was k = 13.
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190913/256f5a9a/attachment.html>
+
+From zecojls em gmail.com  Fri Sep 20 11:08:17 2019
+From: zecojls em gmail.com (=?UTF-8?Q?Jos=C3=A9_Lucas_Safanelli?=)
+Date: Fri, 20 Sep 2019 11:08:17 -0300
+Subject: [R-br] =?utf-8?q?Ajuda_com_an=C3=A1lise_conjunta_de_dois_experim?=
+	=?utf-8?q?entos_com_parcelas_subdividas?=
+Message-ID: <CADni8G5Pp35B8GMaKqO5d6PcRW_mvESLZszadmQ05X0ydaD03Q@mail.gmail.com>
+
+Caros colegas,
+
+Peço ajuda a vocês para conseguir entender e analisar o seguinte
+experimento:
+- são dois experimentos feitos lado a lado: um com plantio direto, outro
+com convencional.
+- em cada local, existe um experimento de parcelas subdividades, sendo o
+fator manejo na parcela e dose de nitrogenio na subparcela.
+
+Diante disso, gostaria de saber como expressar o modelo da ANOVA no R, a
+fim de fazer comparação de médias, e mais pra frente, análise multivariada
+via discriminante canonica.
+
+Sei que são necessárias duas coisas:
+- Dividir o erro dentro da abordagem da análise conjunta.
+- Dividir o erro na parcela subdividida.
+
+Tenho utilizado a seguinte expressão, mas não estou confiante quanto a
+expressão. Infelizmente nunca trabalhei com experimento mais complexos como
+este.
+
+aov_N <- aov(N_kg_ha ~ Manejo * Rotacao * Nitrogenio + Bloco +
+               Error(Nitrogenio/Bloco/Manejo), data = dados)
+summary(aov_N)
+
+Tanto o croqui quanto os dados estão neste link:
+https://drive.google.com/drive/folders/1rjVv9KwtE5A7y-VPXTV9Y2GlilKLXK2F?usp=sharing
+
+Agradeço se alguém puder me ajudar com alguma orientação.
+José Lucas.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190920/947415c4/attachment.html>
+
+From andrea em ufrb.edu.br  Fri Sep 20 13:44:11 2019
+From: andrea em ufrb.edu.br (ANDREA VITA REIS MENDONCA)
+Date: Fri, 20 Sep 2019 13:44:11 -0300 (BRT)
+Subject: [R-br] dic parcela subdividida no tempo
+Message-ID: <1006953198.614782.1568997851056.JavaMail.root@ufrb.edu.br>
+
+
+Trata-se de um experimento deduzas temperaturas e seis períodos de avaliação, em DIC. Resolvi conforme mostrado a seguir. 
+Gostaria de saber se está correto. As analises ficaram boas. 
+
+
+
+
+pkg= c("lattice", "latticeExtra", "doBy", "multcomp", "reshape", "plyr", "nlme") 
+
+sapply(pkg, require, character.only=TRUE) 
+
+source("http://dl.dropboxusercontent.com/u/48140237/bandas.R") 
+
+sessionInfo() 
+
+trellis.device(color=FALSE) 
+
+ang=read.csv("ang.csv") 
+str(ang) 
+dh=melt(subset(ang, select=1:8), id.vars=1:2) 
+d=diff(as.Date(c("2017-01-01","2017-01-16", "2017-01-31","2017-02-15", "2017-03-02","2017-03-17"))); d 
+d =cumsum(c(15, d)); d 
+dh$dia=d[as.integer(dh$variable)] 
+levels(dh$variable) 
+xyplot(value~dia|Temperatura, groups=Temperatura, data=dh, type=c("p","a"), auto.key=TRUE) 
+
+
+dh1=transform(dh, D=factor(dia), parc=interaction(Rep, Temperatura), subp=interaction(Rep, Temperatura)) 
+str(dh1) 
+
+m2=lme(value~Temperatura*D, random=~1|parc/subp, data=dh1, method="ML") 
+m3=lme(value~Temperatura*D, random=~1|parc/subp, data=dh1, method="REML") 
+-- 
+
+Andrea Vita Reis Mendonça 
+Profa. Associado I 
+UFRB/CCAAB 
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190920/0200beef/attachment.html>
+
+From walmeszeviani em gmail.com  Fri Sep 20 17:40:17 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Fri, 20 Sep 2019 17:40:17 -0300
+Subject: [R-br] 
+	=?utf-8?q?Ajuda_com_an=C3=A1lise_conjunta_de_dois_experim?=
+	=?utf-8?q?entos_com_parcelas_subdividas?=
+In-Reply-To: <CADni8G5Pp35B8GMaKqO5d6PcRW_mvESLZszadmQ05X0ydaD03Q@mail.gmail.com>
+References: <CADni8G5Pp35B8GMaKqO5d6PcRW_mvESLZszadmQ05X0ydaD03Q@mail.gmail.com>
+Message-ID: <CAFU=EkYRa4on9pvEt-PXEtLLm7bZFqRLP8u3q8SPpP_Sce4WGA@mail.gmail.com>
+
+Lucas,
+
+Que bom que forneceu os dados e croqui.
+O seu croqui indica que você está usando blocos incompletos balanceados,
+pelo menos se considerar que o bloco é o retângulo 4 x 4 parcelas. É isso
+mesmo? Interessante.
+No entanto, a tabela de dados que você mandou parece estar considerando
+como bloco a linha que contém 24 parcelas.
+No meu modo de ver, o bloco com essas dimensões (tão comprido), não deve
+apresentar a homogeneidade que se espera.
+É bem provável que a parcela 1C tenha mais semelhança em condições com as
+parcelas 4B e 8D, por exemplo, do que com as parcelas 33C e 41D.
+Talvez você possa analisar das duas formas.
+
+De qualquer forma, o modelo para o seu experimento fica conforme código a
+seguir.
+
+> library(lattice)
+>
+> url <- "Dados_Conj_2ExpSub.csv"
+> tb <- read.csv2(url)
+> str(tb)
+'data.frame': 96 obs. of  6 variables:
+ $ FID       : Factor w/ 96 levels "12A","12C","13A",..: 9 43 53 87 95 1 3
+5 7 11 ...
+ $ Manejo    : Factor w/ 2 levels "PC","PD": 2 2 2 2 2 2 2 2 2 2 ...
+ $ Rotacao   : Factor w/ 6 levels "A","CJ","CO",..: 2 3 5 4 3 6 2 5 1 5 ...
+ $ Nitrogenio: Factor w/ 2 levels "Com","Sem": 2 2 2 2 2 2 2 2 2 2 ...
+ $ Bloco     : int  1 2 3 4 1 2 3 4 1 2 ...
+ $ N_kg_ha   : int  209 234 209 158 101 96 46 118 130 162 ...
+>
+> tb <- transform(tb,
++                 Bloco = factor(Bloco))
+>
+> xtabs(~Manejo + Rotacao, data = tb)
+      Rotacao
+Manejo A CJ CO CS P S
+    PC 8  8  8  8 8 8
+    PD 8  8  8  8 8 8
+> ftable(xtabs(~Manejo + Bloco + Rotacao, data = tb))
+             Rotacao A CJ CO CS P S
+Manejo Bloco
+PC     1             2  2  2  2 2 2
+       2             2  2  2  2 2 2
+       3             2  2  2  2 2 2
+       4             2  2  2  2 2 2
+PD     1             2  2  2  2 2 2
+       2             2  2  2  2 2 2
+       3             2  2  2  2 2 2
+       4             2  2  2  2 2 2
+>
+> xyplot(N_kg_ha ~ Rotacao | Manejo,
++        groups = Nitrogenio,
++        type = c("p", "a"),
++        auto.key = TRUE,
++        data = tb)
+>
+> # Modelo para DBC em diferentes locais:
+> #  ~ Local + Error(Local/Bloco) + Trat + Local:Trat.
+> # Modelo de parcela subdividida em DBC:
+> #  ~ Bloco + Trat + Error(Bloco:Trat) + Subtrat + Trat:Subtrat
+> #
+> # Juntanto os dois termos de erro:
+> #  ~ Error(Local/Bloco) + Error(Bloco:Trat) = Error(Local/Bloco:Trat)
+> #
+> # Juntanto os termos sistemáticos.
+> #  ~ Local + Trat + Local:Trat + Subtrat + Trat:Subtrat +
+> #    Error(Local/Bloco:Trat)
+>
+> m0 <- aov(N_kg_ha ~
++               Manejo +
++               Manejo/Bloco +
++               Rotacao +
++               Manejo:Rotacao +
++               Nitrogenio +
++               Rotacao:Nitrogenio +
++               Error(Manejo/Bloco:Rotacao),
++           data = tb)
+Warning message:
+In aov(N_kg_ha ~ Manejo + Manejo/Bloco + Rotacao + Manejo:Rotacao +  :
+  Error() model is singular
+>
+> summary(m0)
+
+Error: Manejo
+       Df Sum Sq Mean Sq
+Manejo  1  504.2   504.2
+
+Error: Manejo:Bloco:Rotacao
+               Df Sum Sq Mean Sq F value Pr(>F)
+Rotacao         5  16367    3273   1.521  0.213
+Manejo:Bloco    6  16966    2828   1.314  0.281
+Manejo:Rotacao  5   6213    1243   0.577  0.717
+Residuals      30  64567    2152
+
+Error: Within
+                   Df Sum Sq Mean Sq F value Pr(>F)
+Nitrogenio          1  13728   13728   6.561 0.0141 *
+Rotacao:Nitrogenio  5   5636    1127   0.539 0.7457
+Residuals          42  87874    2092
+---
+Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1
+>
+> # NOTE: não haverá uma estatística F apropriada para testar o efeito de
+> # Manejo já que não existe repetição genuína para os níveis desse fator,
+> # assim não existe um erro de extrato para ser o denominador da
+> # estatística F.
+>
+> # Trocando Manejo/Bloco por Manejo:Bloco no termo de Error().
+> m0 <- aov(N_kg_ha ~
++               Manejo +
++               Manejo/Bloco +
++               Rotacao +
++               Manejo:Rotacao +
++               Nitrogenio +
++               Rotacao:Nitrogenio +
++               Error(Manejo:Bloco:Rotacao),
++           data = tb)
+Warning message:
+In aov(N_kg_ha ~ Manejo + Manejo/Bloco + Rotacao + Manejo:Rotacao +  :
+  Error() model is singular
+>
+> summary(m0)
+
+Error: Manejo:Bloco:Rotacao
+               Df Sum Sq Mean Sq F value Pr(>F)
+Manejo          1    504     504   0.234  0.632
+Rotacao         5  16367    3273   1.521  0.213
+Manejo:Bloco    6  16966    2828   1.314  0.281
+Manejo:Rotacao  5   6213    1243   0.577  0.717
+Residuals      30  64567    2152
+
+Error: Within
+                   Df Sum Sq Mean Sq F value Pr(>F)
+Nitrogenio          1  13728   13728   6.561 0.0141 *
+Rotacao:Nitrogenio  5   5636    1127   0.539 0.7457
+Residuals          42  87874    2092
+---
+Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1
+>
+> # NOTE: com uma mudança sutil na fórmula, muda-se para uma forma não
+> # condizente com a realidade, o delineamento que passa a indicar que as
+> # combinações Manejo x Rotação foram casualizados às parcelas dos blocos
+> # (fatorial completo na parcela) e dessa forma tem-se uma estatística F
+> # para Manejo, mas que não é condizente com a forma como o experimento
+> # foi de fato feito. Então está errada essa especificação.
+>
+> # Declarando o primeiro modelo com a `lme4`.
+> library(lme4)
+>
+> mm0 <- lmer(N_kg_ha ~
++                 Manejo +
++                 Manejo/Bloco +
++                 Rotacao +
++                 Manejo:Rotacao +
++                 Nitrogenio +
++                 Rotacao:Nitrogenio +
++                 (1 | Manejo/Bloco:Rotacao),
++           data = tb)
+Warning messages:
+1: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
+  unable to evaluate scaled gradient
+2: In checkConv(attr(opt, "derivs"), opt$par, ctrl = control$checkConv,  :
+   Hessian is numerically singular: parameters are not uniquely determined
+>
+> anova(mm0)
+Analysis of Variance Table
+                   Df  Sum Sq Mean Sq F value
+Manejo              1   391.0   391.0  0.1869
+Rotacao             5 15911.7  3182.3  1.5210
+Nitrogenio          1 13728.2 13728.2  6.5613
+Manejo:Bloco        6 16494.0  2749.0  1.3139
+Manejo:Rotacao      5  6040.2  1208.0  0.5774
+Rotacao:Nitrogenio  5  5636.1  1127.2  0.5387
+> VarCorr(mm0)
+ Groups               Name        Std.Dev.
+ Bloco:Rotacao:Manejo (Intercept)  5.4722
+ Manejo               (Intercept)  3.3708
+ Residual                         45.7415
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190920/e5f9a950/attachment.html>
+
+From walmeszeviani em gmail.com  Fri Sep 20 17:42:11 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Fri, 20 Sep 2019 17:42:11 -0300
+Subject: [R-br] dic parcela subdividida no tempo
+In-Reply-To: <1006953198.614782.1568997851056.JavaMail.root@ufrb.edu.br>
+References: <1006953198.614782.1568997851056.JavaMail.root@ufrb.edu.br>
+Message-ID: <CAFU=Ekbvz6gHBY7oHyKL+cEEyJ1npVh-EpUcZ6i3ibF4uW8aRQ@mail.gmail.com>
+
+Seu exemplo não é reproduzível.
+Sua pergunta não está clara.
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190920/5cb41b3f/attachment.html>
+
+From lubichchiara em gmail.com  Mon Sep 30 12:49:25 2019
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Mon, 30 Sep 2019 11:49:25 -0400
+Subject: [R-br] =?utf-8?q?Ajuda=3A_Escolha_de_distribui=C3=A7=C3=A3o_de_p?=
+	=?utf-8?q?robabilidade_=28GLM=29?=
+Message-ID: <CAH-ZE+Cp976t5wcwG+C9HLQ5J_K0tVSi3fWKdoV9PHVym9Gnvw@mail.gmail.com>
+
+Oi,
+Estou tendo dificuldade para achar uma distribuição certa para minha
+análise (GLM)... Mesmo dados não são normais e também não apresentam
+homoscedasticidade, mesmo após realizar transformação (log). Qual família
+devo escolher?
+Estava trabalhando com binomial negativa, é a correta?
+
+Obrigada e aguardo retorno
+
+-- 
+*Chiara Lubich Cardoso Furtado*
+Mestranda em Biologia de Água Doce e Pesca Interior - INPA
+Engenheira de Pesca - UFAM
+Telefone: (92) 99110-6657
+e-mail: lubichchiara em gmail.com
+Lattes: http://lattes.cnpq.br/0673892253719514
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190930/0f12d210/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Sep 30 16:00:30 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 30 Sep 2019 16:00:30 -0300
+Subject: [R-br] 
+	=?utf-8?q?Ajuda=3A_Escolha_de_distribui=C3=A7=C3=A3o_de_p?=
+	=?utf-8?q?robabilidade_=28GLM=29?=
+In-Reply-To: <CAH-ZE+Cp976t5wcwG+C9HLQ5J_K0tVSi3fWKdoV9PHVym9Gnvw@mail.gmail.com>
+References: <CAH-ZE+Cp976t5wcwG+C9HLQ5J_K0tVSi3fWKdoV9PHVym9Gnvw@mail.gmail.com>
+Message-ID: <CAKrF98mFU33==BgCn6sHJZJ+=pOPnUdb2rFUDnGy-DOCxTeLUA@mail.gmail.com>
+
+Chiara,
+
+A escolha da "melhor" distribuição deve ser sempre feita considerando o
+*processo* de geração dos seus dados e menos usando informações obtidas dos
+próprios dados « ...  dados não são normais e também não apresentam
+homoscedasticidade, mesmo após realizar transformação (log) ... ».
+
+Outrossim, já que você cita a GLM, numa regressão o mais importante não é
+que os *dados* "sejam normais" mas sim que a distribuição dos *resíduos* da
+regressão tenham uma distribuição Normal com média zero, e o melhor a fazer
+é examinar esses resíduos usando os gráficos de diagnóstico, que atualmente
+estão já programados no R.
+
+Responder se "Binomial Negativa" é correta sem mais informações sobre seu
+experimento tem a mesma chance de acertar a pergunta "qual vai ser a taxa
+de câmbio da Lira klingoniana por dólar da Federação em 2129" ?!
+
+Se você quiser mais assertividade, conte-nos um pouco mais sobre o
+problema, a variável modelada e as independentes, nº de amostras, etc.
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Mon, Sep 30, 2019 at 12:49 PM Chiara Lubich por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Oi,
+> Estou tendo dificuldade para achar uma distribuição certa para minha
+> análise (GLM)... Mesmo dados não são normais e também não apresentam
+> homoscedasticidade, mesmo após realizar transformação (log). Qual família
+> devo escolher?
+> Estava trabalhando com binomial negativa, é a correta?
+>
+> Obrigada e aguardo retorno
+>
+> --
+> *Chiara Lubich Cardoso Furtado*
+> Mestranda em Biologia de Água Doce e Pesca Interior - INPA
+> Engenheira de Pesca - UFAM
+> Telefone: (92) 99110-6657
+> e-mail: lubichchiara em gmail.com
+> Lattes: http://lattes.cnpq.br/0673892253719514
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190930/60de8fcd/attachment.html>
+

@@ -1,0 +1,1270 @@
+From apcmadeira em hotmail.com  Tue Sep 22 09:06:31 2020
+From: apcmadeira em hotmail.com (ana paula coelho madeira)
+Date: Tue, 22 Sep 2020 12:06:31 +0000
+Subject: [R-br] Assimetria
+Message-ID: <BL0PR08MB4577738C087B63FC3092B26FCA3B0@BL0PR08MB4577.namprd08.prod.outlook.com>
+
+Prezados,
+
+Bom dia! Gostaria de sugestões de como plotar uma densidade com assimetria negativa.
+
+Desde já agradeço!
+
+At.te
+
+Ana Paula
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200922/30e9c744/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Sep 24 14:31:12 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 24 Sep 2020 14:31:12 -0300
+Subject: [R-br] Assimetria
+In-Reply-To: <BL0PR08MB4577738C087B63FC3092B26FCA3B0@BL0PR08MB4577.namprd08.prod.outlook.com>
+References: <BL0PR08MB4577738C087B63FC3092B26FCA3B0@BL0PR08MB4577.namprd08.prod.outlook.com>
+Message-ID: <CAKrF98nZ+mCyuT4p5fjLR9kJcsi6hLkYKNxff_VjN5sANiF_sQ@mail.gmail.com>
+
+Sem mais informações, a sugestão geral seria: plote usando escalas que não
+comprimam demais os dados na parte mais à direita do eixo das abscissas, ou
+se o domínio do problema permite usar uma transformação nessa escala.
+
+HTH
+--
+Cesar Rabak
+
+
+On Tue, Sep 22, 2020 at 9:07 AM ana paula coelho madeira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados,
+>
+> Bom dia! Gostaria de sugestões de como plotar uma densidade com assimetria
+> negativa.
+>
+> Desde já agradeço!
+>
+> At.te
+>
+> Ana Paula
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200924/110df820/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Mon Sep 28 18:18:45 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Mon, 28 Sep 2020 17:18:45 -0400
+Subject: [R-br] =?utf-8?q?D=C3=BAvida_para_convers=C3=A3o_de_um_output_em?=
+ =?utf-8?q?_*txt_para_data=2Eframe_usando_tidyverse?=
+Message-ID: <57f54a1d-e7ec-59bb-5616-f605843d782f@cas.ifmt.edu.br>
+
+Estoucomumproblemaparacriarumdataframeapartirdeumconjuntodeduaslinhasdeinteresse, 
+sendo:
+library(tidyverse)
+myfile<-read_lines("https://raw.githubusercontent.com/Leprechault/yolov3ants/master/yolov3-lca_416_conv81_sub_8_log.txt")
+head(myfile)
+Emalgumaspartedomeuarquivoeutenhotrechosquequeroextrairquesão:
+#Last accuracy mAP em 0.5 = 73.10 %
+#1585: 0.299288, 0.423193 avg loss, 0.001000 rate, 3.927486 seconds, 101440 images
+Nessespontoseuqueroremoverasinformações:mAP em 0.5 = 
+73.10 % (naprimeiralinha), 1585:e0.423193avgloss (dalinhaseguinte) 
+ecriarumdata.framefinalqueseria:
+#  iteration avg_loss mAP
+#  1585      0.423193  73.10
+# ...
+masquandotentoremoverainformaçãodeinteresseeporserbeginnernotidyverse, 
+nãotenhosucesso, sendoaminhatentativana seguinte direção:
+names_col2 <- c("iteration", "avg_loss", "mAP")
+mydf <- myfile %>%
+str_subset("Last accuracy mAP em 0.5 =") %>%
+enframe(name = NULL) %>%
+separate(col = value, into = names_col2, sep = "[=,]") %>%
+mutate_all(parse_number)
+head(as.data.frame(mydf))
+Alguémpoderiamedarumaluz?
+Obrigado,
+Alexandre
+
+-- 
+Alexandre dos Santos
+Geotechnologies and Spatial Statistics applied to Forest Entomology
+Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+Caixa Postal 244 (PO Box)
+Avenida dos Ramires, s/n - Vila Real
+Caceres - MT - CEP 78201-380 (ZIP code)
+Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+Lattes CV: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722
+ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+--
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200928/242a563a/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Mon Sep 28 18:45:30 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Mon, 28 Sep 2020 17:45:30 -0400
+Subject: [R-br] =?utf-8?q?D=C3=BAvida_para_convers=C3=A3o_de_um_output_em?=
+ =?utf-8?q?_*txt_para_data=2Eframe_usando_tidyverse_=5BN=C3=83O_FORMATADO?=
+ =?utf-8?q?=5D?=
+In-Reply-To: <8ccdcc09-e7a4-07d6-eed6-45c0144d86f6@gmail.com>
+References: <8ccdcc09-e7a4-07d6-eed6-45c0144d86f6@gmail.com>
+Message-ID: <0b26b631-29ed-f305-dfb6-f9b40803eb20@cas.ifmt.edu.br>
+
+
+Estou com um problema para criar um dataframe a partir de um conjunto de 
+duas linhas de interesse, sendo:
+
+library(tidyverse)
+myfile<-read_lines("https://raw.githubusercontent.com/Leprechault/yolov3ants/master/yolov3-lca_416_conv81_sub_8_log.txt")
+head(myfile)
+
+Em algumas parte do meu arquivo eu tenho trechos que quero extrair que são:
+
+#Last accuracy mAP em 0.5 = 73.10 %
+#1585: 0.299288, 0.423193 avg loss, 0.001000 rate, 3.927486 seconds, 
+101440 images
+
+Nesses pontos eu quero remover as informações: mAP em 0.5 = 73.10 % (na 
+primeira linha), 1585: e 0.423193 avg loss (da linha seguinte) e criar 
+um dataframe final que seria:
+
+#  iteration avg_loss mAP
+#  1585      0.423193  73.10
+
+mas quando tento remover a informação de interesse e por ser beginner no 
+tidyverse, não tenho sucesso, sendo a minha tentativa no sentido de:
+
+names_col2 <- c("iteration", "avg_loss", "mAP")
+
+mydf <- myfile %>%
+   str_subset("Last accuracy mAP em 0.5 =") %>%
+   enframe(name = NULL) %>%
+   separate(col = value, into = names_col2, sep = "[=,]") %>%
+   mutate_all(parse_number)
+head(as.data.frame(mydf))
+
+
+Alguém poderia me dar uma luz?
+
+Obrigado e abraços,
+
+Alexandre
+
+-- 
+Alexandre dos Santos
+Geotechnologies and Spatial Statistics applied to Forest Entomology
+Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+Caixa Postal 244 (PO Box)
+Avenida dos Ramires, s/n - Vila Real
+Caceres - MT - CEP 78201-380 (ZIP code)
+Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+Lattes CV: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722
+ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+--
+
+
+From cidedson em gmail.com  Tue Sep 29 08:24:37 2020
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Tue, 29 Sep 2020 08:24:37 -0300
+Subject: [R-br] 
+	=?utf-8?q?D=C3=BAvida_para_convers=C3=A3o_de_um_output_em?=
+	=?utf-8?q?_*txt_para_data=2Eframe_usando_tidyverse?=
+In-Reply-To: <57f54a1d-e7ec-59bb-5616-f605843d782f@cas.ifmt.edu.br>
+References: <57f54a1d-e7ec-59bb-5616-f605843d782f@cas.ifmt.edu.br>
+Message-ID: <CAAmR27-kqpHE7=V_CZYSzwcyFgR-T7y48Z38yo5R1n7uUYF9ig@mail.gmail.com>
+
+library(vroom)
+library(tidyverse)
+myfile <- vroom("
+https://raw.githubusercontent.com/Leprechault/yolov3ants/master/yolov3-lca_416_conv81_sub_8_log.txt",
+delim = "\t")
+head(myfile)
+str(myfile)
+
+myfile <- myfile %>% rename(dados = `Prepare additional network for mAP
+calculation...`)
+
+myfile <- myfile %>% filter(str_detect(dados, c("avg", "Last accuracy")))
+
+dim(myfile)
+dim(myfile)
+
+even_indexes <- seq(2, dim(myfile)[1], 2)
+odd_indexes <- seq(1, dim(myfile)[1], 2)
+
+
+x.dados <- tibble(x = myfile$dados[odd_indexes])
+y.dados <- tibble(x = myfile$dados[even_indexes])
+
+dim(x.dados)
+dim(y.dados)
+
+x.dados <- x.dados %>%
+  separate(x, c("Last accuracy", "mAP"), sep = "=") %>%
+  mutate_all(parse_number) %>%
+  select("mAP") %>%
+  as.data.frame()
+
+
+y.dados <- y.dados %>%
+  separate(x, c("interation", "avg_loss", "rate", "sec", "imgs"), sep =
+c(",", ":")) %>%
+  mutate_all(parse_number) %>%
+  as.data.frame()
+
+y.dados$id <- 1:dim(y.dados)[1]
+x.dados$id <- 1:dim(x.dados)[1]
+
+mydf <- merge(x.dados, y.dados, by="id")
+
+mydf %>% filter(imgs == "101440")
+
+mydf2 <- mydf %>% select(interation, avg_loss, mAP)
+
+
+*Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+
+*Engenheiro **Agrônomo*
+
+*Analista de dados *
+
+*Técnico em Segurança do Trabalho *
+
+*LinkedIn: **http://br.linkedin.com/in/cidedson/
+<http://br.linkedin.com/in/cidedson/>*
+
+*Lattes: **http://lattes.cnpq.br/2303498368142537
+<http://lattes.cnpq.br/2303498368142537>*
+
+
+
+
+Em seg., 28 de set. de 2020 às 18:19, ASANTOS por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Estou com um problema para criar um dataframe a partir de um conjunto de
+> duas linhas de interesse, sendo:
+> library(tidyverse)
+> myfile<-read_lines(
+> "https://raw.githubusercontent.com/Leprechault/yolov3ants/master/yolov3-lca_416_conv81_sub_8_log.txt"
+> <https://raw.githubusercontent.com/Leprechault/yolov3ants/master/yolov3-lca_416_conv81_sub_8_log.txt>
+> )
+> head(myfile)
+> Em algumas parte do meu arquivo eu tenho trechos que quero extrair que são
+> :
+> #Last accuracy mAP em 0.5 = 73.10 %
+>
+> #1585: 0.299288, 0.423193 avg loss, 0.001000 rate, 3.927486 seconds, 101440 images
+> Nesses pontos eu quero remover as informações: mAP em 0.5 = 73.10 % (na
+> primeira linha), 1585: e 0.423193 avg loss (da linha seguinte) e criar um
+> data.frame final que seria:
+> #  iteration avg_loss mAP
+> #  1585      0.423193  73.10
+> # ...
+> mas quando tento remover a informação de interesse e por ser beginner no
+> tidyverse, não tenho sucesso, sendo a minha tentativa na seguinte direção:
+> names_col2 <- c("iteration", "avg_loss", "mAP")
+> mydf <- myfile %>%
+>   str_subset("Last accuracy mAP em 0.5 ="
+> <Last%C2%A0accuracy%C2%A0mAP em 0.5%C2%A0=>) %>%
+>   enframe(name = NULL) %>%
+>   separate(col = value, into = names_col2, sep = "[=,]") %>%
+>   mutate_all(parse_number)
+> head(as.data.frame(mydf))
+> Alguém poderia me dar uma luz?
+> Obrigado,
+> Alexandre
+>
+> --
+> Alexandre dos Santos
+> Geotechnologies and Spatial Statistics applied to Forest Entomology
+> Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+> Caixa Postal 244 (PO Box)
+> Avenida dos Ramires, s/n - Vila Real
+> Caceres - MT - CEP 78201-380 (ZIP code)
+> Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+> Lattes CV: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722
+> ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+> Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+> --
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200929/6ff9b996/attachment.html>
+
+From cidedson em gmail.com  Tue Sep 29 08:27:43 2020
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Tue, 29 Sep 2020 08:27:43 -0300
+Subject: [R-br] 
+	=?utf-8?q?D=C3=BAvida_para_convers=C3=A3o_de_um_output_em?=
+	=?utf-8?q?_*txt_para_data=2Eframe_usando_tidyverse_=5BN=C3=83O_FOR?=
+	=?utf-8?q?MATADO=5D?=
+In-Reply-To: <0b26b631-29ed-f305-dfb6-f9b40803eb20@cas.ifmt.edu.br>
+References: <8ccdcc09-e7a4-07d6-eed6-45c0144d86f6@gmail.com>
+ <0b26b631-29ed-f305-dfb6-f9b40803eb20@cas.ifmt.edu.br>
+Message-ID: <CAAmR278xg1wk4EBe7OAYTf1JNoD=EY-da9JTMwNQDgJwQeED5Q@mail.gmail.com>
+
+library(vroom)
+library(tidyverse)
+myfile <- vroom("
+https://raw.githubusercontent.com/Leprechault/yolov3ants/master/yolov3-lca_416_conv81_sub_8_log.txt",
+delim = "\t")
+head(myfile)
+str(myfile)
+
+myfile <- myfile %>% rename(dados = `Prepare additional network for mAP
+calculation...`)
+
+myfile <- myfile %>% filter(str_detect(dados, c("avg", "Last accuracy")))
+
+dim(myfile)
+dim(myfile)
+
+even_indexes <- seq(2, dim(myfile)[1], 2)
+odd_indexes <- seq(1, dim(myfile)[1], 2)
+
+
+x.dados <- tibble(x = myfile$dados[odd_indexes])
+y.dados <- tibble(x = myfile$dados[even_indexes])
+
+dim(x.dados)
+dim(y.dados)
+
+x.dados <- x.dados %>%
+  separate(x, c("Last accuracy", "mAP"), sep = "=") %>%
+  mutate_all(parse_number) %>%
+  select("mAP") %>%
+  as.data.frame()
+
+
+y.dados <- y.dados %>%
+  separate(x, c("interation", "avg_loss", "rate", "sec", "imgs"), sep =
+c(",", ":")) %>%
+  mutate_all(parse_number) %>%
+  as.data.frame()
+
+y.dados$id <- 1:dim(y.dados)[1]
+x.dados$id <- 1:dim(x.dados)[1]
+
+mydf <- merge(x.dados, y.dados, by="id")
+
+mydf %>% filter(imgs == "101440")
+
+mydf2 <- mydf %>% select(interation, avg_loss, mAP)
+
+
+*Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+
+*Engenheiro **Agrônomo*
+
+*Analista de dados *
+
+*Técnico em Segurança do Trabalho *
+
+*LinkedIn: **http://br.linkedin.com/in/cidedson/
+<http://br.linkedin.com/in/cidedson/>*
+
+*Lattes: **http://lattes.cnpq.br/2303498368142537
+<http://lattes.cnpq.br/2303498368142537>*
+
+
+
+
+Em seg., 28 de set. de 2020 às 18:45, ASANTOS por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+>
+> Estou com um problema para criar um dataframe a partir de um conjunto de
+> duas linhas de interesse, sendo:
+>
+> library(tidyverse)
+> myfile<-read_lines("
+> https://raw.githubusercontent.com/Leprechault/yolov3ants/master/yolov3-lca_416_conv81_sub_8_log.txt
+> ")
+> head(myfile)
+>
+> Em algumas parte do meu arquivo eu tenho trechos que quero extrair que são:
+>
+> #Last accuracy mAP em 0.5 = 73.10 %
+> #1585: 0.299288, 0.423193 avg loss, 0.001000 rate, 3.927486 seconds,
+> 101440 images
+>
+> Nesses pontos eu quero remover as informações: mAP em 0.5 = 73.10 % (na
+> primeira linha), 1585: e 0.423193 avg loss (da linha seguinte) e criar
+> um dataframe final que seria:
+>
+> #  iteration avg_loss mAP
+> #  1585      0.423193  73.10
+>
+> mas quando tento remover a informação de interesse e por ser beginner no
+> tidyverse, não tenho sucesso, sendo a minha tentativa no sentido de:
+>
+> names_col2 <- c("iteration", "avg_loss", "mAP")
+>
+> mydf <- myfile %>%
+>    str_subset("Last accuracy mAP em 0.5 =") %>%
+>    enframe(name = NULL) %>%
+>    separate(col = value, into = names_col2, sep = "[=,]") %>%
+>    mutate_all(parse_number)
+> head(as.data.frame(mydf))
+>
+>
+> Alguém poderia me dar uma luz?
+>
+> Obrigado e abraços,
+>
+> Alexandre
+>
+> --
+> Alexandre dos Santos
+> Geotechnologies and Spatial Statistics applied to Forest Entomology
+> Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+> Caixa Postal 244 (PO Box)
+> Avenida dos Ramires, s/n - Vila Real
+> Caceres - MT - CEP 78201-380 (ZIP code)
+> Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+> Lattes CV: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722
+> ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+> Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+> --
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200929/b3104eca/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Tue Sep 29 09:00:56 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Tue, 29 Sep 2020 08:00:56 -0400
+Subject: [R-br] 
+ =?utf-8?q?D=C3=BAvida_para_convers=C3=A3o_de_um_output_em?=
+ =?utf-8?q?_*txt_para_data=2Eframe_usando_tidyverse_=5BRESOLVIDO=5D?=
+In-Reply-To: <0b26b631-29ed-f305-dfb6-f9b40803eb20@cas.ifmt.edu.br>
+References: <8ccdcc09-e7a4-07d6-eed6-45c0144d86f6@gmail.com>
+ <0b26b631-29ed-f305-dfb6-f9b40803eb20@cas.ifmt.edu.br>
+Message-ID: <8690075e-90aa-5f3d-3f48-5b82acf05de1@cas.ifmt.edu.br>
+
+Obrigado Cid, problema perfeitamente resolvido!!!
+
+head(mydf2)
+
+interation avg_loss mAP 1 1001 0.523133 58.6 2 1003 0.496871 58.6 3 1005 
+0.523653 58.6 4 1007 0.535484 58.6 5 1009 0.530135 58.6 6 1011 0.524369 
+58.6 tail(mydf2) interation avg_loss mAP 1495 3989 0.371550 79.49 1496 
+3991 0.358697 79.49 1497 3993 0.352938 79.49 1498 3995 0.352469 79.49 
+1499 3997 0.359153 79.49 1500 3999 0.343659 79.49
+
+-- 
+Alexandre dos Santos
+Geotechnologies and Spatial Statistics applied to Forest Entomology
+Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+Caixa Postal 244 (PO Box)
+Avenida dos Ramires, s/n - Vila Real
+Caceres - MT - CEP 78201-380 (ZIP code)
+Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+Lattes CV: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722
+ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+--
+
+Em 28/09/2020 17:45, ASANTOS escreveu:
+>
+> Estou com um problema para criar um dataframe a partir de um conjunto 
+> de duas linhas de interesse, sendo:
+>
+> library(tidyverse)
+> myfile<-read_lines("https://raw.githubusercontent.com/Leprechault/yolov3ants/master/yolov3-lca_416_conv81_sub_8_log.txt") 
+>
+> head(myfile)
+>
+> Em algumas parte do meu arquivo eu tenho trechos que quero extrair que 
+> são:
+>
+> #Last accuracy mAP em 0.5 = 73.10 %
+> #1585: 0.299288, 0.423193 avg loss, 0.001000 rate, 3.927486 seconds, 
+> 101440 images
+>
+> Nesses pontos eu quero remover as informações: mAP em 0.5 = 73.10 % (na 
+> primeira linha), 1585: e 0.423193 avg loss (da linha seguinte) e criar 
+> um dataframe final que seria:
+>
+> #  iteration avg_loss mAP
+> #  1585      0.423193  73.10
+>
+> mas quando tento remover a informação de interesse e por ser beginner 
+> no tidyverse, não tenho sucesso, sendo a minha tentativa no sentido de:
+>
+> names_col2 <- c("iteration", "avg_loss", "mAP")
+>
+> mydf <- myfile %>%
+>   str_subset("Last accuracy mAP em 0.5 =") %>%
+>   enframe(name = NULL) %>%
+>   separate(col = value, into = names_col2, sep = "[=,]") %>%
+>   mutate_all(parse_number)
+> head(as.data.frame(mydf))
+>
+>
+> Alguém poderia me dar uma luz?
+>
+> Obrigado e abraços,
+>
+> Alexandre
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200929/66ceb926/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Tue Sep 29 10:57:22 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Tue, 29 Sep 2020 09:57:22 -0400
+Subject: [R-br] =?utf-8?q?tidyverse_e_vroom=3A_Leitura_de_informa=C3=A7?=
+ =?utf-8?q?=C3=B5es_alvo_em_um_arquivo_*txt_e_tamb=C3=A9m_computo_de_infor?=
+ =?utf-8?b?bWHDp8OjbyBhdXNlbnRl?=
+Message-ID: <c4df2f20-4871-b950-a6a3-b3e8b482871b@cas.ifmt.edu.br>
+
+Prezados membros,
+
+Surgiu um novo problema para a extração de informações em um arquivo 
+*txt quando eu tenho que computar também quando eu não tenho determinada 
+informação (lca) e preciso considerar isso no meu data.frame final.
+
+Em meu exemplo:
+
+#Pacotes
+library(vroom)
+library(tidyverse)
+
+#Download dos dados
+myfile <- 
+vroom("https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt")
+
+As informações alvo são:
+
+1) No caso quando ocorreu o evento lca o padrão das linhas é:
+
+imgval/sample_21915.jpg: Predicted in 7337.147000 milli-seconds.
+lca: 65.648048%    left_x:    0    top_y:   18    width:   13 height:   27
+lca: 45.191948%    left_x:   71    top_y:   31    width:    7 height:   12
+End
+
+Então meu data.frame precisa receber a informação:
+
+image             lca
+sample_21915.jpg  1
+sample_21915.jpg  1
+
+2) Quando não ocorrer o evento lca, o padrão das linhas será diferente:
+
+Start processing imgval/sample_3908.jpg
+imgval/sample_3908.jpg: Predicted in 7282.433000 milli-seconds.
+End
+
+E nesse caso o meu data.frame precisa receber a seguinte informação:
+image             lca
+sample_3908.jpg   0
+
+Gostaria de saber ideias de como filtrar essa informação e especialmente 
+do que fazer para gerar os zeros, se o meu data.frame final que preciso, 
+após a análise da informação de 100 imagens deve ser:
+
+image        lca
+sample_14715 1
+sample_3101 0
+sample_5769 0
+sample_21884 1
+sample_4163 0
+sample_20368 0
+sample_20371 0
+sample_3370 0
+sample_4434 0
+sample_20888 1
+sample_19295 1
+sample_22196 0
+...
+sample_20314.jpg 0
+
+Antecipadamente agradeço,
+
+Alexandre
+
+-- 
+Alexandre dos Santos
+Geotechnologies and Spatial Statistics applied to Forest Entomology
+Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+Caixa Postal 244 (PO Box)
+Avenida dos Ramires, s/n - Vila Real
+Caceres - MT - CEP 78201-380 (ZIP code)
+Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+Lattes CV: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722
+ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+--
+
+
+From cidedson em gmail.com  Tue Sep 29 14:41:17 2020
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Tue, 29 Sep 2020 14:41:17 -0300
+Subject: [R-br] 
+	=?utf-8?q?tidyverse_e_vroom=3A_Leitura_de_informa=C3=A7?=
+	=?utf-8?q?=C3=B5es_alvo_em_um_arquivo_*txt_e_tamb=C3=A9m_computo_d?=
+	=?utf-8?q?e_informa=C3=A7=C3=A3o_ausente?=
+In-Reply-To: <c4df2f20-4871-b950-a6a3-b3e8b482871b@cas.ifmt.edu.br>
+References: <c4df2f20-4871-b950-a6a3-b3e8b482871b@cas.ifmt.edu.br>
+Message-ID: <CAAmR27-c=mJ6DkJBD14tf6dDnuJM56g2pp7hV8f9FfeYSYqLgw@mail.gmail.com>
+
+library(vroom)
+library(tidyverse)
+
+#Download dos dados
+myfile <-
+  vroom("
+https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt",
+delim = "\t", skip = 5)
+
+myfile <- myfile %>% rename(dados = `folder input=imgval/ and
+output=backup/`)
+
+
+myfile <- myfile %>% filter(str_detect(dados, c("Start","sample","lca:")))
+%>% as.data.frame() %>% filter(!str_detect(dados, c("Predicted")))
+
+
+dim(myfile)
+
+
+myfile2 <- myfile %>%
+  separate(dados, c("Start", "sample"), sep = "/") %>%
+  select("sample")
+
+
+myfile2[is.na(myfile2)] <- 1
+
+
+
+myfile3 <- myfile2 %>% mutate(lca = ifelse(sample == "1", "1", "0"),
+                   lca = lead(lca, default = "0")) %>% filter(!sample ==
+"1")
+
+
+
+*Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+
+*Engenheiro **Agrônomo*
+
+*Analista de dados *
+
+*Técnico em Segurança do Trabalho *
+
+*LinkedIn: **http://br.linkedin.com/in/cidedson/
+<http://br.linkedin.com/in/cidedson/>*
+
+*Lattes: **http://lattes.cnpq.br/2303498368142537
+<http://lattes.cnpq.br/2303498368142537>*
+
+
+
+
+Em ter., 29 de set. de 2020 às 10:57, ASANTOS por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados membros,
+>
+> Surgiu um novo problema para a extração de informações em um arquivo
+> *txt quando eu tenho que computar também quando eu não tenho determinada
+> informação (lca) e preciso considerar isso no meu data.frame final.
+>
+> Em meu exemplo:
+>
+> #Pacotes
+> library(vroom)
+> library(tidyverse)
+>
+> #Download dos dados
+> myfile <-
+> vroom("
+> https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt
+> ")
+>
+> As informações alvo são:
+>
+> 1) No caso quando ocorreu o evento lca o padrão das linhas é:
+>
+> imgval/sample_21915.jpg: Predicted in 7337.147000 milli-seconds.
+> lca: 65.648048%    left_x:    0    top_y:   18    width:   13 height:   27
+> lca: 45.191948%    left_x:   71    top_y:   31    width:    7 height:   12
+> End
+>
+> Então meu data.frame precisa receber a informação:
+>
+> image             lca
+> sample_21915.jpg  1
+> sample_21915.jpg  1
+>
+> 2) Quando não ocorrer o evento lca, o padrão das linhas será diferente:
+>
+> Start processing imgval/sample_3908.jpg
+> imgval/sample_3908.jpg: Predicted in 7282.433000 milli-seconds.
+> End
+>
+> E nesse caso o meu data.frame precisa receber a seguinte informação:
+> image             lca
+> sample_3908.jpg   0
+>
+> Gostaria de saber ideias de como filtrar essa informação e especialmente
+> do que fazer para gerar os zeros, se o meu data.frame final que preciso,
+> após a análise da informação de 100 imagens deve ser:
+>
+> image        lca
+> sample_14715 1
+> sample_3101 0
+> sample_5769 0
+> sample_21884 1
+> sample_4163 0
+> sample_20368 0
+> sample_20371 0
+> sample_3370 0
+> sample_4434 0
+> sample_20888 1
+> sample_19295 1
+> sample_22196 0
+> ...
+> sample_20314.jpg 0
+>
+> Antecipadamente agradeço,
+>
+> Alexandre
+>
+> --
+> Alexandre dos Santos
+> Geotechnologies and Spatial Statistics applied to Forest Entomology
+> Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+> Caixa Postal 244 (PO Box)
+> Avenida dos Ramires, s/n - Vila Real
+> Caceres - MT - CEP 78201-380 (ZIP code)
+> Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+> Lattes CV: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722
+> ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+> Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+> --
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200929/39e9983c/attachment.html>
+
+From cidedson em gmail.com  Tue Sep 29 15:04:22 2020
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Tue, 29 Sep 2020 15:04:22 -0300
+Subject: [R-br] 
+	=?utf-8?q?tidyverse_e_vroom=3A_Leitura_de_informa=C3=A7?=
+	=?utf-8?q?=C3=B5es_alvo_em_um_arquivo_*txt_e_tamb=C3=A9m_computo_d?=
+	=?utf-8?q?e_informa=C3=A7=C3=A3o_ausente?=
+In-Reply-To: <c4df2f20-4871-b950-a6a3-b3e8b482871b@cas.ifmt.edu.br>
+References: <c4df2f20-4871-b950-a6a3-b3e8b482871b@cas.ifmt.edu.br>
+Message-ID: <CAAmR27-t2vXvpxNDGOaj8USj51+NpVxTqMqgqN7do8eSKB50og@mail.gmail.com>
+
+Desconsidera o outro, tinha um erro
+
+library(vroom)
+library(tidyverse)
+
+#Download dos dados
+myfile <-
+  vroom("
+https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt",
+delim = "\t", skip = 5)
+
+myfile <- myfile %>% rename(dados = `folder input=imgval/ and
+output=backup/`)
+
+
+myfile <- myfile %>% filter(str_detect(dados, c("lca:","sample"))) %>%
+as.data.frame()
+
+myfile2 <- myfile %>%
+  separate(dados, c("Start", "sample"), sep = "/") %>%
+  select("sample") %>% mutate_all(parse_number)
+
+
+myfile2[is.na(myfile2)] <- 1
+
+myfile3 <- myfile2 %>% mutate(lca = ifelse(sample == "1", "1", "0"),
+                              lca = lead(lca, default = "0")) %>%
+filter(!sample == "1") %>% mutate(sample = paste0("sample_",sample))
+
+myfile3 %>% filter(sample == "sample_5769" | sample =="sample_21884")
+
+
+tail(myfile3)
+View(myfile)
+
+
+*Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+
+*Engenheiro **Agrônomo*
+
+*Analista de dados *
+
+*Técnico em Segurança do Trabalho *
+
+*LinkedIn: **http://br.linkedin.com/in/cidedson/
+<http://br.linkedin.com/in/cidedson/>*
+
+*Lattes: **http://lattes.cnpq.br/2303498368142537
+<http://lattes.cnpq.br/2303498368142537>*
+
+
+
+
+Em ter., 29 de set. de 2020 às 10:57, ASANTOS por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados membros,
+>
+> Surgiu um novo problema para a extração de informações em um arquivo
+> *txt quando eu tenho que computar também quando eu não tenho determinada
+> informação (lca) e preciso considerar isso no meu data.frame final.
+>
+> Em meu exemplo:
+>
+> #Pacotes
+> library(vroom)
+> library(tidyverse)
+>
+> #Download dos dados
+> myfile <-
+> vroom("
+> https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt
+> ")
+>
+> As informações alvo são:
+>
+> 1) No caso quando ocorreu o evento lca o padrão das linhas é:
+>
+> imgval/sample_21915.jpg: Predicted in 7337.147000 milli-seconds.
+> lca: 65.648048%    left_x:    0    top_y:   18    width:   13 height:   27
+> lca: 45.191948%    left_x:   71    top_y:   31    width:    7 height:   12
+> End
+>
+> Então meu data.frame precisa receber a informação:
+>
+> image             lca
+> sample_21915.jpg  1
+> sample_21915.jpg  1
+>
+> 2) Quando não ocorrer o evento lca, o padrão das linhas será diferente:
+>
+> Start processing imgval/sample_3908.jpg
+> imgval/sample_3908.jpg: Predicted in 7282.433000 milli-seconds.
+> End
+>
+> E nesse caso o meu data.frame precisa receber a seguinte informação:
+> image             lca
+> sample_3908.jpg   0
+>
+> Gostaria de saber ideias de como filtrar essa informação e especialmente
+> do que fazer para gerar os zeros, se o meu data.frame final que preciso,
+> após a análise da informação de 100 imagens deve ser:
+>
+> image        lca
+> sample_14715 1
+> sample_3101 0
+> sample_5769 0
+> sample_21884 1
+> sample_4163 0
+> sample_20368 0
+> sample_20371 0
+> sample_3370 0
+> sample_4434 0
+> sample_20888 1
+> sample_19295 1
+> sample_22196 0
+> ...
+> sample_20314.jpg 0
+>
+> Antecipadamente agradeço,
+>
+> Alexandre
+>
+> --
+> Alexandre dos Santos
+> Geotechnologies and Spatial Statistics applied to Forest Entomology
+> Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+> Caixa Postal 244 (PO Box)
+> Avenida dos Ramires, s/n - Vila Real
+> Caceres - MT - CEP 78201-380 (ZIP code)
+> Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+> Lattes CV: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722
+> ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+> Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+> --
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200929/78c7d95b/attachment.html>
+
+From cidedson em gmail.com  Tue Sep 29 15:21:54 2020
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Tue, 29 Sep 2020 15:21:54 -0300
+Subject: [R-br] 
+	=?utf-8?q?tidyverse_e_vroom=3A_Leitura_de_informa=C3=A7?=
+	=?utf-8?q?=C3=B5es_alvo_em_um_arquivo_*txt_e_tamb=C3=A9m_computo_d?=
+	=?utf-8?q?e_informa=C3=A7=C3=A3o_ausente?=
+In-Reply-To: <CAAmR27-t2vXvpxNDGOaj8USj51+NpVxTqMqgqN7do8eSKB50og@mail.gmail.com>
+References: <c4df2f20-4871-b950-a6a3-b3e8b482871b@cas.ifmt.edu.br>
+ <CAAmR27-t2vXvpxNDGOaj8USj51+NpVxTqMqgqN7do8eSKB50og@mail.gmail.com>
+Message-ID: <CAAmR278VX-m=ZhrJTvXfyUZ6dG4G0fW8c89-BBcQEeZB7AiGqw@mail.gmail.com>
+
+Parece q ainda tinha um erro no método de seleção do  str_detect, agora ta
+100%
+
+
+library(vroom)
+> library(tidyverse)
+> #Download dos dados
+> myfile <-
+>   vroom("
+> https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt",
+> delim = "\t", skip = 5)
+> myfile <- myfile %>% rename(dados = `folder input=imgval/ and
+> output=backup/`)
+>
+> myfile <- myfile %>% filter(str_detect(dados, "lca:|sample")) %>%
+> as.data.frame() %>% filter(!str_detect(dados, "Predict"))
+> myfile2 <- myfile %>%
+>   separate(dados, c("Start", "sample"), sep = "/") %>%
+>   select("sample") %>% mutate_all(parse_number)
+>
+>
+> myfile2[is.na(myfile2)] <- 1
+> myfile3 <- myfile2 %>% mutate(lca = ifelse(sample == "1", "1", "0"),
+>                               lca = lead(lca, default = "0")) %>%
+> filter(!sample == "1") %>% mutate(sample = paste0("sample_",sample))
+> myfile3 %>% filter(sample == "sample_5769" | sample =="sample_21884" |
+> sample == "sample_20371" | sample == "sample_19295")
+
+
+
+*Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+
+*Engenheiro **Agrônomo*
+
+*Analista de dados *
+
+*Técnico em Segurança do Trabalho *
+
+*LinkedIn: **http://br.linkedin.com/in/cidedson/
+<http://br.linkedin.com/in/cidedson/>*
+
+*Lattes: **http://lattes.cnpq.br/2303498368142537
+<http://lattes.cnpq.br/2303498368142537>*
+
+
+
+
+Em ter., 29 de set. de 2020 às 15:04, Cid Póvoas <cidedson em gmail.com>
+escreveu:
+
+> Desconsidera o outro, tinha um erro
+>
+> library(vroom)
+> library(tidyverse)
+>
+> #Download dos dados
+> myfile <-
+>   vroom("
+> https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt",
+> delim = "\t", skip = 5)
+>
+> myfile <- myfile %>% rename(dados = `folder input=imgval/ and
+> output=backup/`)
+>
+>
+> myfile <- myfile %>% filter(str_detect(dados, c("lca:","sample"))) %>%
+> as.data.frame()
+>
+> myfile2 <- myfile %>%
+>   separate(dados, c("Start", "sample"), sep = "/") %>%
+>   select("sample") %>% mutate_all(parse_number)
+>
+>
+> myfile2[is.na(myfile2)] <- 1
+>
+> myfile3 <- myfile2 %>% mutate(lca = ifelse(sample == "1", "1", "0"),
+>                               lca = lead(lca, default = "0")) %>%
+> filter(!sample == "1") %>% mutate(sample = paste0("sample_",sample))
+>
+> myfile3 %>% filter(sample == "sample_5769" | sample =="sample_21884")
+>
+>
+> tail(myfile3)
+> View(myfile)
+>
+>
+> *Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+>
+> *Engenheiro **Agrônomo*
+>
+> *Analista de dados *
+>
+> *Técnico em Segurança do Trabalho *
+>
+> *LinkedIn: **http://br.linkedin.com/in/cidedson/
+> <http://br.linkedin.com/in/cidedson/>*
+>
+> *Lattes: **http://lattes.cnpq.br/2303498368142537
+> <http://lattes.cnpq.br/2303498368142537>*
+>
+>
+>
+>
+> Em ter., 29 de set. de 2020 às 10:57, ASANTOS por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Prezados membros,
+>>
+>> Surgiu um novo problema para a extração de informações em um arquivo
+>> *txt quando eu tenho que computar também quando eu não tenho determinada
+>> informação (lca) e preciso considerar isso no meu data.frame final.
+>>
+>> Em meu exemplo:
+>>
+>> #Pacotes
+>> library(vroom)
+>> library(tidyverse)
+>>
+>> #Download dos dados
+>> myfile <-
+>> vroom("
+>> https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt
+>> ")
+>>
+>> As informações alvo são:
+>>
+>> 1) No caso quando ocorreu o evento lca o padrão das linhas é:
+>>
+>> imgval/sample_21915.jpg: Predicted in 7337.147000 milli-seconds.
+>> lca: 65.648048%    left_x:    0    top_y:   18    width:   13 height:   27
+>> lca: 45.191948%    left_x:   71    top_y:   31    width:    7 height:   12
+>> End
+>>
+>> Então meu data.frame precisa receber a informação:
+>>
+>> image             lca
+>> sample_21915.jpg  1
+>> sample_21915.jpg  1
+>>
+>> 2) Quando não ocorrer o evento lca, o padrão das linhas será diferente:
+>>
+>> Start processing imgval/sample_3908.jpg
+>> imgval/sample_3908.jpg: Predicted in 7282.433000 milli-seconds.
+>> End
+>>
+>> E nesse caso o meu data.frame precisa receber a seguinte informação:
+>> image             lca
+>> sample_3908.jpg   0
+>>
+>> Gostaria de saber ideias de como filtrar essa informação e especialmente
+>> do que fazer para gerar os zeros, se o meu data.frame final que preciso,
+>> após a análise da informação de 100 imagens deve ser:
+>>
+>> image        lca
+>> sample_14715 1
+>> sample_3101 0
+>> sample_5769 0
+>> sample_21884 1
+>> sample_4163 0
+>> sample_20368 0
+>> sample_20371 0
+>> sample_3370 0
+>> sample_4434 0
+>> sample_20888 1
+>> sample_19295 1
+>> sample_22196 0
+>> ...
+>> sample_20314.jpg 0
+>>
+>> Antecipadamente agradeço,
+>>
+>> Alexandre
+>>
+>> --
+>> Alexandre dos Santos
+>> Geotechnologies and Spatial Statistics applied to Forest Entomology
+>> Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+>> Caixa Postal 244 (PO Box)
+>> Avenida dos Ramires, s/n - Vila Real
+>> Caceres - MT - CEP 78201-380 (ZIP code)
+>> Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+>> Lattes CV: http://lattes.cnpq.br/1360403201088680
+>> OrcID: orcid.org/0000-0001-8232-6722
+>> ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+>> Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+>> --
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200929/c1f06dcf/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Tue Sep 29 16:18:00 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Tue, 29 Sep 2020 15:18:00 -0400
+Subject: [R-br] 
+ =?utf-8?q?tidyverse_e_vroom=3A_Leitura_de_informa=C3=A7?=
+ =?utf-8?q?=C3=B5es_alvo_em_um_arquivo_*txt_e_tamb=C3=A9m_computo_de_infor?=
+ =?utf-8?b?bWHDp8OjbyBhdXNlbnRl?=
+In-Reply-To: <CAAmR27-c=mJ6DkJBD14tf6dDnuJM56g2pp7hV8f9FfeYSYqLgw@mail.gmail.com>
+References: <c4df2f20-4871-b950-a6a3-b3e8b482871b@cas.ifmt.edu.br>
+ <CAAmR27-c=mJ6DkJBD14tf6dDnuJM56g2pp7hV8f9FfeYSYqLgw@mail.gmail.com>
+Message-ID: <f5565f1c-9b90-4c2f-5fcc-2f0620761e78@cas.ifmt.edu.br>
+
+Muito obrigado pela ajuda Cid, mas ainda tem alguma informação que está 
+sendo perdida, pois:
+
+myfile <-
+vroom("https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt", 
+delim = "\t", skip = 5)
+
+myfile <- myfile %>% rename(dados = `folder input=imgval/ and 
+output=backup/`)
+
+
+myfile <- myfile %>% filter(str_detect(dados, 
+c("Start","sample","lca:"))) %>% as.data.frame() %>% 
+filter(!str_detect(dados, c("Predicted")))
+
+
+dim(myfile)
+[1] 73  1
+
+Eu sei por contagem direta no arquvo result_imgval.txt  que tem 52 lca 
+no output do result_imgval.txt do myfile só aparecem 18.
+
+Seguindo o seu caminho, se eu tento selecionar todos os lca, faço:
+
+myfile <-
+vroom("https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt", 
+delim = "\t", skip = 5)
+
+myfile <- myfile %>% rename(dados = `folder input=imgval/ and 
+output=backup/`)
+myfile <- myfile %>% filter(str_detect(dados, c("lca:"))) %>% 
+as.data.frame()
+
+dim(myfile)
+#[1] 73  1
+
+Mais então eu perco a informação dos arquivos *jpg e todo arranjo que 
+modifico nos filtros não consigo recuperar a informação. Eu sei que tudo 
+estará OK, quando no final:
+
+unique(myfile3$sample)
+#[1] 100
+
+
+-- 
+Alexandre dos Santos
+Geotechnologies and Spatial Statistics applied to Forest Entomology
+Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+Caixa Postal 244 (PO Box)
+Avenida dos Ramires, s/n - Vila Real
+Caceres - MT - CEP 78201-380 (ZIP code)
+Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+Lattes CV: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722
+ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+--
+
+Em 29/09/2020 13:41, Cid Póvoas escreveu:
+> #Download dos dados
+> myfile <-
+>   
+> vroom("https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt 
+> <https://raw.githubusercontent.com/Leprechault/yolov3ants/master/result_imgval.txt>", 
+> delim = "\t", skip = 5)
+>
+> myfile <- myfile %>% rename(dados = `folder input=imgval/ and 
+> output=backup/`)
+>
+>
+> myfile <- myfile %>% filter(str_detect(dados, 
+> c("Start","sample","lca:"))) %>% as.data.frame() %>% 
+> filter(!str_detect(dados, c("Predicted")))
+>
+>
+> dim(myfile)
+>
+>
+> myfile2 <- myfile %>%
+>   separate(dados, c("Start", "sample"), sep = "/") %>%
+>   select("sample")
+>
+>
+> myfile2[is.na <http://is.na>(myfile2)] <- 1
+>
+>
+>
+> myfile3 <- myfile2 %>% mutate(lca = ifelse(sample == "1", "1", "0"),
+>                    lca = lead(lca, default = "0")) %>% filter(!sample 
+> == "1") 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200929/a23dc5a3/attachment.html>
+

@@ -1,0 +1,142 @@
+{
+  "list": "r-br",
+  "description": "",
+  "month": "2023-11",
+  "messages": [
+    {
+      "id": "msg-017dab7d5dde",
+      "message_id": "<CAMgS91xYLNv0ug9_xvMCg60C6WpPgRTzFT=1R3u6YPgSi_QoYg@mail.gmail.com>",
+      "from_name": "Amiko Bh",
+      "from_email_hash": "469fdab61793e027624ae867dd6c0225cfd336b6b563ed2519c6bb55c7f046c0",
+      "date": "2023-11-28T04:06:09Z",
+      "subject": "[R-br] Erro codificação datas",
+      "subject_clean": "[R-br] Erro codificação datas",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Pessoal:\n\nVotos de Paz e Bem!\n\nEstou tendo problemas ao converter datas:\n\n*NASCIMENTO* *NASCIMENTO2*\n06-09-99 1999-09-06\n25-10-31 2031-10-25\n07-01-76 1976-01-07\n10-12-50 2050-12-10\nPara criar a coluna NASCIMENTO2 usei\ndf$NASCIMENTO2 = dmy(df$NASCIMENTO)\n\nlinhas 1 e 3, certo = 1999 e 1976\nlinhas 2 e 4, errado = 2031 ao invés de 1931 e 2050 ao invés de 1950.\nNão consegui encontrar auxílio pesquisando no fórum.\nSolicito ajuda.\nMuito obrigado.\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20231128/288262bb/attachment.htm>",
+      "body_snippet": "Pessoal:\n\nVotos de Paz e Bem!\n\nEstou tendo problemas ao converter datas:\n\n*NASCIMENTO* *NASCIMENTO2*\n06-09-99 1999-09-06\n25-10-31 2031-10-25\n07-01-76 1976-01-07\n10-12-50 2050-12-10\nPara criar a coluna",
+      "thread_id": "thread-017dab7d5dde",
+      "thread_depth": 0,
+      "month": "2023-11"
+    },
+    {
+      "id": "msg-2c192e347b1b",
+      "message_id": "<CAAreKV8CQbZ+4gF1F6YYe7-9ifbk62XPi7K4f9Y=hvLAgi2_8A@mail.gmail.com>",
+      "from_name": "Ronaldo Alves",
+      "from_email_hash": "ab46661f725ab056f5545f08d559a0580674d1a32cd8b559e70048bd50f8b273",
+      "date": "2023-11-28T12:14:52Z",
+      "subject": "[R-br] Erro codificação datas",
+      "subject_clean": "[R-br] Erro codificação datas",
+      "in_reply_to": "<CAMgS91xYLNv0ug9_xvMCg60C6WpPgRTzFT=1R3u6YPgSi_QoYg@mail.gmail.com>",
+      "references": [
+        "<CAMgS91xYLNv0ug9_xvMCg60C6WpPgRTzFT=1R3u6YPgSi_QoYg@mail.gmail.com>"
+      ],
+      "body_plain": "Bom dia!\n\nTente isso:\n\nlibrary(tidyverse)\nlibrary(lubridate)\n\ndf <- data.frame(\"NASCIMENTO\" = c(\"06-09-99\", \"25-10-31\", \"07-01-76\",\n\"10-12-50\"))\ndf\n\ndf <-\n  df %>%\n  mutate(NASCIMENTO2 = dmy(NASCIMENTO)) %>%\n  mutate(NASCIMENTO2 = case_when(NASCIMENTO2 > Sys.Date() ~\nformat(NASCIMENTO2, \"19%y-%m-%d\"),\n                                                                TRUE ~\nformat(NASCIMENTO2)))\ndf\n\nAbs,\n\nRonaldo Alves\n\nEm ter., 28 de nov. de 2023 às 01:16, Amiko Bh por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Pessoal:\n>\n> Votos de Paz e Bem!\n>\n> Estou tendo problemas ao converter datas:\n>\n> *NASCIMENTO* *NASCIMENTO2*\n> 06-09-99 1999-09-06\n> 25-10-31 2031-10-25\n> 07-01-76 1976-01-07\n> 10-12-50 2050-12-10\n> Para criar a coluna NASCIMENTO2 usei\n> df$NASCIMENTO2 = dmy(df$NASCIMENTO)\n>\n> linhas 1 e 3, certo = 1999 e 1976\n> linhas 2 e 4, errado = 2031 ao invés de 1931 e 2050 ao invés de 1950.\n> Não consegui encontrar auxílio pesquisando no fórum.\n> Solicito ajuda.\n> Muito obrigado.\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20231128/8346f212/attachment.htm>",
+      "body_snippet": "Bom dia!\n\nTente isso:\n\nlibrary(tidyverse)\nlibrary(lubridate)\n\ndf <- data.frame(\"NASCIMENTO\" = c(\"06-09-99\", \"25-10-31\", \"07-01-76\",\n\"10-12-50\"))\ndf\n\ndf <-\n  df %>%\n  mutate(NASCIMENTO2 = dmy(NASCIMENT",
+      "thread_id": "thread-017dab7d5dde",
+      "thread_depth": 1,
+      "month": "2023-11"
+    },
+    {
+      "id": "msg-09b484edb521",
+      "message_id": "<CAFrWFs=b=tfrcfYp2cDs8Gfj2O8eH9j8-5MexgqOHcyZyCbd1w@mail.gmail.com>",
+      "from_name": "Fernando Souza",
+      "from_email_hash": "20a4f3b0067eec3c8b02e85b26d30ed5599dccca8b20dde74d129e4024bdb63f",
+      "date": "2023-11-28T12:27:55Z",
+      "subject": "[R-br] Erro codificação datas",
+      "subject_clean": "[R-br] Erro codificação datas",
+      "in_reply_to": "<CAAreKV8CQbZ+4gF1F6YYe7-9ifbk62XPi7K4f9Y=hvLAgi2_8A@mail.gmail.com>",
+      "references": [
+        "<CAMgS91xYLNv0ug9_xvMCg60C6WpPgRTzFT=1R3u6YPgSi_QoYg@mail.gmail.com>",
+        "<CAAreKV8CQbZ+4gF1F6YYe7-9ifbk62XPi7K4f9Y=hvLAgi2_8A@mail.gmail.com>"
+      ],
+      "body_plain": "Encontrei essa discussão aqui pode ser que lhe ajude:\nhttps://stackoverflow.com/questions/33221603/r-lubridate-returns-unwanted-century-when-given-two-digit-year\n\nEm ter., 28 de nov. de 2023 às 09:15, Ronaldo Alves por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Bom dia!\n>\n> Tente isso:\n>\n> library(tidyverse)\n> library(lubridate)\n>\n> df <- data.frame(\"NASCIMENTO\" = c(\"06-09-99\", \"25-10-31\", \"07-01-76\",\n> \"10-12-50\"))\n> df\n>\n> df <-\n>   df %>%\n>   mutate(NASCIMENTO2 = dmy(NASCIMENTO)) %>%\n>   mutate(NASCIMENTO2 = case_when(NASCIMENTO2 > Sys.Date() ~\n> format(NASCIMENTO2, \"19%y-%m-%d\"),\n>                                                                 TRUE ~\n> format(NASCIMENTO2)))\n> df\n>\n> Abs,\n>\n> Ronaldo Alves\n>\n> Em ter., 28 de nov. de 2023 às 01:16, Amiko Bh por (R-br) <\n> r-br em listas.c3sl.ufpr.br> escreveu:\n>\n>> Pessoal:\n>>\n>> Votos de Paz e Bem!\n>>\n>> Estou tendo problemas ao converter datas:\n>>\n>> *NASCIMENTO* *NASCIMENTO2*\n>> 06-09-99 1999-09-06\n>> 25-10-31 2031-10-25\n>> 07-01-76 1976-01-07\n>> 10-12-50 2050-12-10\n>> Para criar a coluna NASCIMENTO2 usei\n>> df$NASCIMENTO2 = dmy(df$NASCIMENTO)\n>>\n>> linhas 1 e 3, certo = 1999 e 1976\n>> linhas 2 e 4, errado = 2031 ao invés de 1931 e 2050 ao invés de 1950.\n>> Não consegui encontrar auxílio pesquisando no fórum.\n>> Solicito ajuda.\n>> Muito obrigado.\n>> _______________________________________________\n>> R-br mailing list\n>> R-br em listas.c3sl.ufpr.br\n>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>> código mínimo reproduzível.\n>>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20231128/dbb3fbdf/attachment.htm>",
+      "body_snippet": "Encontrei essa discussão aqui pode ser que lhe ajude:\nhttps://stackoverflow.com/questions/33221603/r-lubridate-returns-unwanted-century-when-given-two-digit-year\n\nEm ter., 28 de nov. de 2023 às 09:15,",
+      "thread_id": "thread-017dab7d5dde",
+      "thread_depth": 2,
+      "month": "2023-11"
+    },
+    {
+      "id": "msg-434d9a22bc14",
+      "message_id": "<CAFrWFsm1tBNFH=5FWhYi6LOCzr35wWCMv1+ZbpXHqqdmx34a3g@mail.gmail.com>",
+      "from_name": "Fernando Souza",
+      "from_email_hash": "20a4f3b0067eec3c8b02e85b26d30ed5599dccca8b20dde74d129e4024bdb63f",
+      "date": "2023-11-28T12:33:39Z",
+      "subject": "[R-br] Erro codificação datas",
+      "subject_clean": "[R-br] Erro codificação datas",
+      "in_reply_to": "<CAFrWFs=b=tfrcfYp2cDs8Gfj2O8eH9j8-5MexgqOHcyZyCbd1w@mail.gmail.com>",
+      "references": [
+        "<CAMgS91xYLNv0ug9_xvMCg60C6WpPgRTzFT=1R3u6YPgSi_QoYg@mail.gmail.com>",
+        "<CAAreKV8CQbZ+4gF1F6YYe7-9ifbk62XPi7K4f9Y=hvLAgi2_8A@mail.gmail.com>",
+        "<CAFrWFs=b=tfrcfYp2cDs8Gfj2O8eH9j8-5MexgqOHcyZyCbd1w@mail.gmail.com>"
+      ],
+      "body_plain": "Aqui também pode lhe ajudar\n\nhttps://github.com/tidyverse/lubridate/issues/795\nhttps://lubridate.tidyverse.org/reference/parse_date_time.html\n\nEm ter., 28 de nov. de 2023 às 09:27, Fernando Souza <nandodesouza em gmail.com>\nescreveu:\n\n> Encontrei essa discussão aqui pode ser que lhe ajude:\n> https://stackoverflow.com/questions/33221603/r-lubridate-returns-unwanted-century-when-given-two-digit-year\n>\n> Em ter., 28 de nov. de 2023 às 09:15, Ronaldo Alves por (R-br) <\n> r-br em listas.c3sl.ufpr.br> escreveu:\n>\n>> Bom dia!\n>>\n>> Tente isso:\n>>\n>> library(tidyverse)\n>> library(lubridate)\n>>\n>> df <- data.frame(\"NASCIMENTO\" = c(\"06-09-99\", \"25-10-31\", \"07-01-76\",\n>> \"10-12-50\"))\n>> df\n>>\n>> df <-\n>>   df %>%\n>>   mutate(NASCIMENTO2 = dmy(NASCIMENTO)) %>%\n>>   mutate(NASCIMENTO2 = case_when(NASCIMENTO2 > Sys.Date() ~\n>> format(NASCIMENTO2, \"19%y-%m-%d\"),\n>>                                                                 TRUE ~\n>> format(NASCIMENTO2)))\n>> df\n>>\n>> Abs,\n>>\n>> Ronaldo Alves\n>>\n>> Em ter., 28 de nov. de 2023 às 01:16, Amiko Bh por (R-br) <\n>> r-br em listas.c3sl.ufpr.br> escreveu:\n>>\n>>> Pessoal:\n>>>\n>>> Votos de Paz e Bem!\n>>>\n>>> Estou tendo problemas ao converter datas:\n>>>\n>>> *NASCIMENTO* *NASCIMENTO2*\n>>> 06-09-99 1999-09-06\n>>> 25-10-31 2031-10-25\n>>> 07-01-76 1976-01-07\n>>> 10-12-50 2050-12-10\n>>> Para criar a coluna NASCIMENTO2 usei\n>>> df$NASCIMENTO2 = dmy(df$NASCIMENTO)\n>>>\n>>> linhas 1 e 3, certo = 1999 e 1976\n>>> linhas 2 e 4, errado = 2031 ao invés de 1931 e 2050 ao invés de 1950.\n>>> Não consegui encontrar auxílio pesquisando no fórum.\n>>> Solicito ajuda.\n>>> Muito obrigado.\n>>> _______________________________________________\n>>> R-br mailing list\n>>> R-br em listas.c3sl.ufpr.br\n>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>>> código mínimo reproduzível.\n>>>\n>> _______________________________________________\n>> R-br mailing list\n>> R-br em listas.c3sl.ufpr.br\n>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>> código mínimo reproduzível.\n>>\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20231128/246c54d4/attachment.htm>",
+      "body_snippet": "Aqui também pode lhe ajudar\n\nhttps://github.com/tidyverse/lubridate/issues/795\nhttps://lubridate.tidyverse.org/reference/parse_date_time.html\n\nEm ter., 28 de nov. de 2023 às 09:27, Fernando Souza <nan",
+      "thread_id": "thread-017dab7d5dde",
+      "thread_depth": 3,
+      "month": "2023-11"
+    },
+    {
+      "id": "msg-44da1f288337",
+      "message_id": "<CAMgS91x3BVjUkvRLLr-qXgkEpiX8R6M_r0pMxHtMS2Skq+9Hnw@mail.gmail.com>",
+      "from_name": "Amiko Bh",
+      "from_email_hash": "469fdab61793e027624ae867dd6c0225cfd336b6b563ed2519c6bb55c7f046c0",
+      "date": "2023-11-28T21:09:39Z",
+      "subject": "[R-br] Erro codificação datas",
+      "subject_clean": "[R-br] Erro codificação datas",
+      "in_reply_to": "<CAFrWFs=b=tfrcfYp2cDs8Gfj2O8eH9j8-5MexgqOHcyZyCbd1w@mail.gmail.com>",
+      "references": [
+        "<CAMgS91xYLNv0ug9_xvMCg60C6WpPgRTzFT=1R3u6YPgSi_QoYg@mail.gmail.com>",
+        "<CAAreKV8CQbZ+4gF1F6YYe7-9ifbk62XPi7K4f9Y=hvLAgi2_8A@mail.gmail.com>",
+        "<CAFrWFs=b=tfrcfYp2cDs8Gfj2O8eH9j8-5MexgqOHcyZyCbd1w@mail.gmail.com>"
+      ],
+      "body_plain": "Prezado Fernando:\nMuito obrigado pela ajuda. Não testei a solução do links enviados,\ngentilmente, por você tendo em vista que o script sugerido pelo sr Ronaldo\nAlves, resolveu meu problema.\nAgradeço a atenção.\n\nEm ter., 28 de nov. de 2023 às 09:28, Fernando Souza por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Encontrei essa discussão aqui pode ser que lhe ajude:\n> https://stackoverflow.com/questions/33221603/r-lubridate-returns-unwanted-century-when-given-two-digit-year\n>\n> Em ter., 28 de nov. de 2023 às 09:15, Ronaldo Alves por (R-br) <\n> r-br em listas.c3sl.ufpr.br> escreveu:\n>\n>> Bom dia!\n>>\n>> Tente isso:\n>>\n>> library(tidyverse)\n>> library(lubridate)\n>>\n>> df <- data.frame(\"NASCIMENTO\" = c(\"06-09-99\", \"25-10-31\", \"07-01-76\",\n>> \"10-12-50\"))\n>> df\n>>\n>> df <-\n>>   df %>%\n>>   mutate(NASCIMENTO2 = dmy(NASCIMENTO)) %>%\n>>   mutate(NASCIMENTO2 = case_when(NASCIMENTO2 > Sys.Date() ~\n>> format(NASCIMENTO2, \"19%y-%m-%d\"),\n>>                                                                 TRUE ~\n>> format(NASCIMENTO2)))\n>> df\n>>\n>> Abs,\n>>\n>> Ronaldo Alves\n>>\n>> Em ter., 28 de nov. de 2023 às 01:16, Amiko Bh por (R-br) <\n>> r-br em listas.c3sl.ufpr.br> escreveu:\n>>\n>>> Pessoal:\n>>>\n>>> Votos de Paz e Bem!\n>>>\n>>> Estou tendo problemas ao converter datas:\n>>>\n>>> *NASCIMENTO* *NASCIMENTO2*\n>>> 06-09-99 1999-09-06\n>>> 25-10-31 2031-10-25\n>>> 07-01-76 1976-01-07\n>>> 10-12-50 2050-12-10\n>>> Para criar a coluna NASCIMENTO2 usei\n>>> df$NASCIMENTO2 = dmy(df$NASCIMENTO)\n>>>\n>>> linhas 1 e 3, certo = 1999 e 1976\n>>> linhas 2 e 4, errado = 2031 ao invés de 1931 e 2050 ao invés de 1950.\n>>> Não consegui encontrar auxílio pesquisando no fórum.\n>>> Solicito ajuda.\n>>> Muito obrigado.\n>>> _______________________________________________\n>>> R-br mailing list\n>>> R-br em listas.c3sl.ufpr.br\n>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>>> código mínimo reproduzível.\n>>>\n>> _______________________________________________\n>> R-br mailing list\n>> R-br em listas.c3sl.ufpr.br\n>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>> código mínimo reproduzível.\n>>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20231128/0bd42638/attachment.htm>",
+      "body_snippet": "Prezado Fernando:\nMuito obrigado pela ajuda. Não testei a solução do links enviados,\ngentilmente, por você tendo em vista que o script sugerido pelo sr Ronaldo\nAlves, resolveu meu problema.\nAgradeço a",
+      "thread_id": "thread-017dab7d5dde",
+      "thread_depth": 3,
+      "month": "2023-11"
+    },
+    {
+      "id": "msg-3b878d71e77b",
+      "message_id": "<CAFfGvyLgVNHjPDFaf_jnFnaPuN2w7rwQmkJmOaE8vcboB7sUgg@mail.gmail.com>",
+      "from_name": "Pedro Emmanuel Alvarenga Americano do Brasil",
+      "from_email_hash": "8e2efeaf7fd699e0c233894cbc5197bc359976c2f9e8f1056deea185a651244a",
+      "date": "2023-11-30T19:44:47Z",
+      "subject": "[R-br] Desempenho de modelo geepcak::geeglm",
+      "subject_clean": "[R-br] Desempenho de modelo geepcak::geeglm",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Salve irmaos de R,\n\nEstou aqui pra perguntar para os que tem alguma familiaridade com modelos\nlongitudinais o seguinte:\n\n1-Tenho lido alguns relatórios de pesquisa em que são apresentados modelos\nlongitudinais mas medidas de desempenho (qualidade do ajuste, erros de\nprevisão, calibração, etc) não são apresentados. Há alguma discussão de\nfazer ou não fazer estimativas de ajuste em modelos longitudinais (algo\ncomo R2, slope e intercepto)? Alguem recomenda alguma literatura pra isso?\n\n2-Acabei ajustando um modelo com os meus dados como modelo_final <-\ngeeglm(...), fucei mas não encontrei nada dentro do geepack que consiga\nextrair alguma medida de qualidade de ajuste a partir do objeto do modelo.\nAlguém consegue me recomendar alguma função que faria esse esforço se for\npertinente (dúvida da pergunta 1, lembrando que o modelo é linear, ou seja,\no desfecho é uma escala contínua)?\n\nAbraço forte e que a força esteja sempre com todos.\n\nPedro Brasil\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20231130/0c90a67d/attachment.htm>",
+      "body_snippet": "Salve irmaos de R,\n\nEstou aqui pra perguntar para os que tem alguma familiaridade com modelos\nlongitudinais o seguinte:\n\n1-Tenho lido alguns relatórios de pesquisa em que são apresentados modelos\nlong",
+      "thread_id": "thread-3b878d71e77b",
+      "thread_depth": 0,
+      "month": "2023-11"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-017dab7d5dde",
+      "subject": "[R-br] Erro codificação datas",
+      "message_count": 5,
+      "participants": [
+        "Amiko Bh",
+        "Fernando Souza",
+        "Ronaldo Alves"
+      ],
+      "started": "2023-11-28T04:06:09Z",
+      "last_reply": "2023-11-28T21:09:39Z",
+      "root_message_id": "msg-017dab7d5dde"
+    },
+    {
+      "id": "thread-3b878d71e77b",
+      "subject": "[R-br] Desempenho de modelo geepcak::geeglm",
+      "message_count": 1,
+      "participants": [
+        "Pedro Emmanuel Alvarenga Americano do Brasil"
+      ],
+      "started": "2023-11-30T19:44:47Z",
+      "last_reply": "2023-11-30T19:44:47Z",
+      "root_message_id": "msg-3b878d71e77b"
+    }
+  ]
+}

@@ -1,0 +1,1047 @@
+From brucekellys em hotmail.com  Tue Sep 13 15:15:08 2022
+From: brucekellys em hotmail.com (Bruce Kelly)
+Date: Tue, 13 Sep 2022 18:15:08 +0000
+Subject: [R-br] =?windows-1252?q?Ajuda_com_manipula=E7=E3o_de_dados_hor?=
+ =?windows-1252?q?=E1rios?=
+Message-ID: <ROAP284MB0525764F9BC012C17D75F70EA8479@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+
+Boa tarde listeiros,
+
+
+Estou uma base de dados que tem a coluna TIMESTAMP em ymd_hms, estou criando as colunas meses, dia e hora. Da seguinte forma:
+
+
+input$Year<-format(input2$TIMESTAMP, '%Y')
+
+input$Month<-format(input2$TIMESTAMP, '%m')
+
+input$Day<-format(input2$TIMESTAMP, '%d')
+
+input$Hour.S<-formart(input$TIMESTAMP, ?%H?)
+
+No entanto, a coluna da hora aparece zerada. Lembrando que fiz a conversão de string para data:
+
+input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+
+input2$TIMESTAMP<- as.Date(input$TIMESTAMP)
+
+Ambas meu resultado é 00. Eu preciso que minha saída seja de 00-24, por exemplo, 0.5;1;1.5;...23.5
+
+Muito Obrigados a todos(@s)
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220913/51d9cede/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue Sep 13 17:13:05 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 13 Sep 2022 17:13:05 -0300
+Subject: [R-br] =?utf-8?q?Ajuda_com_manipula=C3=A7=C3=A3o_de_dados_hor?=
+	=?utf-8?b?w6FyaW9z?=
+In-Reply-To: <ROAP284MB0525764F9BC012C17D75F70EA8479@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+References: <ROAP284MB0525764F9BC012C17D75F70EA8479@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+Message-ID: <CAKrF98kvjUyuWAthJVGF1KQHEtUFE+Ty0mAxPFs=v76M=DF_yg@mail.gmail.com>
+
+Por favor envie um CMR para que se possa identificar o problema.
+
+O código acima não é reproduzível . . .
+
+Como se vê no rodapé de todas as postagens neste grupo, o guia indica como
+fazê-lo caso lhe sobre alguma dúvida.
+
+
+
+On Tue, Sep 13, 2022 at 3:15 PM Bruce Kelly por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde listeiros,
+>
+>
+> Estou uma base de dados que tem a coluna TIMESTAMP em ymd_hms, estou
+> criando as colunas meses, dia e hora. Da seguinte forma:
+>
+>
+> input$Year<-format(input2$TIMESTAMP, '%Y')
+>
+> input$Month<-format(input2$TIMESTAMP, '%m')
+>
+> input$Day<-format(input2$TIMESTAMP, '%d')
+>
+> input$Hour.S<-formart(input$TIMESTAMP, ?%H?)
+>
+> No entanto, a coluna da hora aparece zerada. Lembrando que fiz a conversão
+> de string para data:
+>
+> input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+>
+> input2$TIMESTAMP<- as.Date(input$TIMESTAMP)
+>
+> Ambas meu resultado é 00. Eu preciso que minha saída seja de 00-24, por
+> exemplo, 0.5;1;1.5;...23.5
+>
+> Muito Obrigados a todos(@s)
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220913/1e66d4f0/attachment.htm>
+
+From brucekellys em hotmail.com  Tue Sep 13 21:39:14 2022
+From: brucekellys em hotmail.com (Bruce Kelly)
+Date: Wed, 14 Sep 2022 00:39:14 +0000
+Subject: [R-br] =?iso-8859-1?q?Ajudar_com_organiza=E7=E3o_de_dados_hor=E1?=
+ =?iso-8859-1?q?rios?=
+Message-ID: <ROAP284MB05251BEE6632BBB770F07C90A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+
+Boa noite pessoal,
+Estou com dúvida de como acrescentar a coluna horaria de algumas. Estou usando as seguintes scritp:
+
+rm(list=ls())
+#
+library(lubridate)
+library(tidyverse)
+library(dplyr)
+library(hrbrthemes)
+library(GGally)
+library(ggplot2)
+
+# Dados -------------------------------------------------------------------
+# Chuva
+input<- read.table('Rain_1.txt', header = T, sep = ',', dec = '.',
+                   na.strings = c('NAN', 'NaN', 'Inf', 'NA'))
+#
+                   dec = '.', na.strings = c('NAN', 'NaN', 'Inf'))
+# Organizar os dados ------------------------------------------------------
+# converter o TIMESTEP em data
+input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+#tentei
+input$TIMESTAMP<- as.Date(input$TIMESTAMP))
+#
+#
+#Adicionado os meses e anos nas observações
+#### a saída é em um caracter converter para numerico
+input$Year<-format(input$TIMESTAMP, '%Y')
+input$Month<-format(input$TIMESTAMP, '%m')
+input$Day<-format(input$TIMESTAMP, '%d')
+input$Doy<-format(input$TIMESTAMP, '%J')
+input$Hour.s<-format(input$TIMESTAMP, '%H')
+
+Quando executo a coluna Hour.s fica zerada como mostra a figura. E preciso que essa coluna horaria com mediação a cada 30min, fique na variação de 0-23h (0.5, 1, 1.5,...23,5)
+[cid:66d78bc1-f1a2-49bc-a0c7-85bb36bcd032]
+
+estrutura do TIMESTAMP antes de ser convertido em data
+
+[cid:b17558fa-d648-4fbd-afb0-24424c5586e8]
+
+Obrigado pela ajuda e atenção de todo (@s)
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220914/8fe66420/attachment.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 21834 bytes
+Descrição: image.png
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220914/8fe66420/attachment.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 25024 bytes
+Descrição: image.png
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220914/8fe66420/attachment-0001.png>
+
+From sznelwar em uol.com.br  Tue Sep 13 22:29:17 2022
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Tue, 13 Sep 2022 22:29:17 -0300
+Subject: [R-br] 
+ =?utf-8?q?Ajudar_com_organiza=C3=A7=C3=A3o_de_dados_hor?=
+ =?utf-8?b?w6FyaW9z?=
+In-Reply-To: <ROAP284MB05251BEE6632BBB770F07C90A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+References: <ROAP284MB05251BEE6632BBB770F07C90A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+Message-ID: <63212e6d831f_10eb2b0f9badd1148024c@ip-10-81-19-10.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220913/acc686dc/attachment.htm>
+
+From brucekellys em hotmail.com  Tue Sep 13 23:09:02 2022
+From: brucekellys em hotmail.com (Bruce Kelly)
+Date: Wed, 14 Sep 2022 02:09:02 +0000
+Subject: [R-br] 
+ =?iso-8859-1?q?Ajudar_com_organiza=E7=E3o_de_dados_hor=E1?=
+ =?iso-8859-1?q?rios?=
+In-Reply-To: <63212e6d831f_10eb2b0f9badd1148024c@ip-10-81-19-10.ec2.internal.mail>
+References: <ROAP284MB05251BEE6632BBB770F07C90A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <63212e6d831f_10eb2b0f9badd1148024c@ip-10-81-19-10.ec2.internal.mail>
+Message-ID: <ROAP284MB05253516B7661FAEF9CA7700A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+
+Segue o arquivo =)
+
+
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de sznelwar--- por (R-br) <r-br em listas.c3sl.ufpr.br>
+Enviado: quarta-feira, 14 de setembro de 2022 01:29
+Para: r-br em listas.c3sl.ufpr.br <r-br em listas.c3sl.ufpr.br>
+Cc: sznelwar em uol.com.br <sznelwar em uol.com.br>
+Assunto: Re: [R-br] Ajudar com organização de dados horários
+
+Não foi enviado o arquivo Rain_1.txt.
+Boa noite pessoal,
+Estou com dúvida de como acrescentar a coluna horaria de algumas. Estou usando as seguintes scritp:
+
+rm(list=ls())
+#
+library(lubridate)
+library(tidyverse)
+library(dplyr)
+library(hrbrthemes)
+library(GGally)
+library(ggplot2)
+
+# Dados -------------------------------------------------------------------
+# Chuva
+input<- read.table('Rain_1.txt', header = T, sep = ',', dec = '.',
+                   na.strings = c('NAN', 'NaN', 'Inf', 'NA'))
+#
+                   dec = '.', na.strings = c('NAN', 'NaN', 'Inf'))
+# Organizar os dados ------------------------------------------------------
+# converter o TIMESTEP em data
+input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+#tentei
+input$TIMESTAMP<- as.Date(input$TIMESTAMP))
+#
+#
+#Adicionado os meses e anos nas observações
+#### a saída é em um caracter converter para numerico
+input$Year<-format(input$TIMESTAMP, '%Y')
+input$Month<-format(input$TIMESTAMP, '%m')
+input$Day<-format(input$TIMESTAMP, '%d')
+input$Doy<-format(input$TIMESTAMP, '%J')
+input$Hour.s<-format(input$TIMESTAMP, '%H')
+
+Quando executo a coluna Hour.s fica zerada como mostra a figura. E preciso que essa coluna horaria com mediação a cada 30min, fique na variação de 0-23h (0.5, 1, 1.5,...23,5)
+[X]
+
+estrutura do TIMESTAMP antes de ser convertido em data
+
+[X]
+
+Obrigado pela ajuda e atenção de todo (@s)
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220914/1adf5670/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: Rain_1.txt
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220914/1adf5670/attachment-0001.txt>
+
+From cesar.rabak em gmail.com  Wed Sep 14 12:46:05 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 14 Sep 2022 12:46:05 -0300
+Subject: [R-br] 
+	=?utf-8?q?Ajudar_com_organiza=C3=A7=C3=A3o_de_dados_hor?=
+	=?utf-8?b?w6FyaW9z?=
+In-Reply-To: <ROAP284MB05253516B7661FAEF9CA7700A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+References: <ROAP284MB05251BEE6632BBB770F07C90A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <63212e6d831f_10eb2b0f9badd1148024c@ip-10-81-19-10.ec2.internal.mail>
+ <ROAP284MB05253516B7661FAEF9CA7700A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+Message-ID: <CAKrF98=eVCyK6nOGLU5+m6eWgMGwn=_7_9D_QmYhPn0arZW66A@mail.gmail.com>
+
+Quando você executa esta linha:
+> input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+
+Você destrói o conteúdo da coluna TIMESTAMP e a substitui pela parte da
+data calendário apenas, efetivamente perdendo a parte fracionária do dia.
+
+Compare o resultado das seguintes linhas:
+> head(ymd_hms(input$TIMESTAMP))
+[1] "2021-02-23 10:00:00 UTC" "2021-03-10 11:00:00 UTC"
+[3] "2021-03-10 11:30:00 UTC" "2021-03-10 12:00:00 UTC"
+[5] "2021-03-10 12:30:00 UTC" "2021-03-10 13:00:00 UTC"
+> head(as.Date(ymd_hms(input$TIMESTAMP)))
+[1] "2021-02-23" "2021-03-10" "2021-03-10" "2021-03-10" "2021-03-10"
+[6] "2021-03-10"
+
+Se vc só precisa da data no formato POSIX para usar com lubridate e afins,
+então a substituição deve ser sem o as.Date e somente depois processar
+esses valores.
+
+HTH
+
+--
+Cesar Rabak
+
+
+
+On Tue, Sep 13, 2022 at 11:09 PM Bruce Kelly por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Segue o arquivo =)
+>
+>
+>
+> ------------------------------
+> *De:* R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de sznelwar--- por
+> (R-br) <r-br em listas.c3sl.ufpr.br>
+> *Enviado:* quarta-feira, 14 de setembro de 2022 01:29
+> *Para:* r-br em listas.c3sl.ufpr.br <r-br em listas.c3sl.ufpr.br>
+> *Cc:* sznelwar em uol.com.br <sznelwar em uol.com.br>
+> *Assunto:* Re: [R-br] Ajudar com organização de dados horários
+>
+> Não foi enviado o arquivo Rain_1.txt.
+> Boa noite pessoal,
+> Estou com dúvida de como acrescentar a coluna horaria de algumas. Estou
+> usando as seguintes scritp:
+>
+> rm(list=ls())
+> #
+> library(lubridate)
+> library(tidyverse)
+> library(dplyr)
+> library(hrbrthemes)
+> library(GGally)
+> library(ggplot2)
+>
+> # Dados -------------------------------------------------------------------
+> # Chuva
+> input<- read.table('Rain_1.txt', header = T, sep = ',', dec = '.',
+>                    na.strings = c('NAN', 'NaN', 'Inf', 'NA'))
+> #
+>                    dec = '.', na.strings = c('NAN', 'NaN', 'Inf'))
+> # Organizar os dados ------------------------------------------------------
+> # converter o TIMESTEP em data
+> input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+> #tentei
+> input$TIMESTAMP<- as.Date(input$TIMESTAMP))
+> #
+> #
+> #Adicionado os meses e anos nas observações
+> #### a saída é em um caracter converter para numerico
+> input$Year<-format(input$TIMESTAMP, '%Y')
+> input$Month<-format(input$TIMESTAMP, '%m')
+> input$Day<-format(input$TIMESTAMP, '%d')
+> input$Doy<-format(input$TIMESTAMP, '%J')
+> input$Hour.s<-format(input$TIMESTAMP, '%H')
+>
+> Quando executo a coluna Hour.s fica zerada como mostra a figura. E preciso
+> que essa coluna horaria com mediação a cada 30min, fique na variação de
+> 0-23h (0.5, 1, 1.5,...23,5)
+>
+> estrutura do TIMESTAMP antes de ser convertido em data
+>
+>
+> Obrigado pela ajuda e atenção de todo (@s)
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220914/3a41f098/attachment.htm>
+
+From brucekellys em hotmail.com  Wed Sep 14 13:11:57 2022
+From: brucekellys em hotmail.com (Bruce Kelly)
+Date: Wed, 14 Sep 2022 16:11:57 +0000
+Subject: [R-br] 
+ =?iso-8859-1?q?Ajudar_com_organiza=E7=E3o_de_dados_hor=E1?=
+ =?iso-8859-1?q?rios?=
+In-Reply-To: <CAKrF98=eVCyK6nOGLU5+m6eWgMGwn=_7_9D_QmYhPn0arZW66A@mail.gmail.com>
+References: <ROAP284MB05251BEE6632BBB770F07C90A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <63212e6d831f_10eb2b0f9badd1148024c@ip-10-81-19-10.ec2.internal.mail>
+ <ROAP284MB05253516B7661FAEF9CA7700A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <CAKrF98=eVCyK6nOGLU5+m6eWgMGwn=_7_9D_QmYhPn0arZW66A@mail.gmail.com>
+Message-ID: <ROAP284MB0525CE986A0807B34EF66490A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+
+Muito obrigado Cesar, estava fazendo mais do mesmo...agora a variação (00-23h) não está como imaginei tipo 11, 11.5 ele está repetindo a hora, ver se no lubridate tem algo sobre...,mas uma vez obrigado.
+
+[cid:12bc6c4a-aad6-460c-a80d-cc83373bbad5]
+
+
+
+
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br>
+Enviado: quarta-feira, 14 de setembro de 2022 15:46
+Para: a lista Brasileira oficial de discussão do programa R. <r-br em listas.c3sl.ufpr.br>
+Cc: Cesar Rabak <cesar.rabak em gmail.com>
+Assunto: Re: [R-br] Ajudar com organização de dados horários
+
+Quando você executa esta linha:
+> input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+
+Você destrói o conteúdo da coluna TIMESTAMP e a substitui pela parte da data calendário apenas, efetivamente perdendo a parte fracionária do dia.
+
+Compare o resultado das seguintes linhas:
+> head(ymd_hms(input$TIMESTAMP))
+[1] "2021-02-23 10:00:00 UTC" "2021-03-10 11:00:00 UTC"
+[3] "2021-03-10 11:30:00 UTC" "2021-03-10 12:00:00 UTC"
+[5] "2021-03-10 12:30:00 UTC" "2021-03-10 13:00:00 UTC"
+> head(as.Date(ymd_hms(input$TIMESTAMP)))
+[1] "2021-02-23" "2021-03-10" "2021-03-10" "2021-03-10" "2021-03-10"
+[6] "2021-03-10"
+
+Se vc só precisa da data no formato POSIX para usar com lubridate e afins, então a substituição deve ser sem o as.Date e somente depois processar esses valores.
+
+HTH
+
+--
+Cesar Rabak
+
+
+
+On Tue, Sep 13, 2022 at 11:09 PM Bruce Kelly por (R-br) <r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+Segue o arquivo =)
+
+
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br<mailto:r-br-bounces em listas.c3sl.ufpr.br>> em nome de sznelwar--- por (R-br) <r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br>>
+Enviado: quarta-feira, 14 de setembro de 2022 01:29
+Para: r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br> <r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br>>
+Cc: sznelwar em uol.com.br<mailto:sznelwar em uol.com.br> <sznelwar em uol.com.br<mailto:sznelwar em uol.com.br>>
+Assunto: Re: [R-br] Ajudar com organização de dados horários
+
+Não foi enviado o arquivo Rain_1.txt.
+Boa noite pessoal,
+Estou com dúvida de como acrescentar a coluna horaria de algumas. Estou usando as seguintes scritp:
+
+rm(list=ls())
+#
+library(lubridate)
+library(tidyverse)
+library(dplyr)
+library(hrbrthemes)
+library(GGally)
+library(ggplot2)
+
+# Dados -------------------------------------------------------------------
+# Chuva
+input<- read.table('Rain_1.txt', header = T, sep = ',', dec = '.',
+                   na.strings = c('NAN', 'NaN', 'Inf', 'NA'))
+#
+                   dec = '.', na.strings = c('NAN', 'NaN', 'Inf'))
+# Organizar os dados ------------------------------------------------------
+# converter o TIMESTEP em data
+input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+#tentei
+input$TIMESTAMP<- as.Date(input$TIMESTAMP))
+#
+#
+#Adicionado os meses e anos nas observações
+#### a saída é em um caracter converter para numerico
+input$Year<-format(input$TIMESTAMP, '%Y')
+input$Month<-format(input$TIMESTAMP, '%m')
+input$Day<-format(input$TIMESTAMP, '%d')
+input$Doy<-format(input$TIMESTAMP, '%J')
+input$Hour.s<-format(input$TIMESTAMP, '%H')
+
+Quando executo a coluna Hour.s fica zerada como mostra a figura. E preciso que essa coluna horaria com mediação a cada 30min, fique na variação de 0-23h (0.5, 1, 1.5,...23,5)
+[http:///content_id?msg_id=MzI0MTY&cid=66d78bc1-f1a2-49bc-a0c7-85bb36bcd032&folder=JUNK]
+
+estrutura do TIMESTAMP antes de ser convertido em data
+
+[http:///content_id?msg_id=MzI0MTY&cid=b17558fa-d648-4fbd-afb0-24424c5586e8&folder=JUNK]
+
+Obrigado pela ajuda e atenção de todo (@s)
+
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br<mailto:R-br em listas.c3sl.ufpr.br>
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220914/e9b955e0/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 177442 bytes
+Descrição: image.png
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220914/e9b955e0/attachment-0001.png>
+
+From sznelwar em uol.com.br  Fri Sep 16 01:40:57 2022
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Fri, 16 Sep 2022 01:40:57 -0300
+Subject: [R-br] 
+ =?utf-8?q?Ajudar_com_organiza=C3=A7=C3=A3o_de_dados_hor?=
+ =?utf-8?b?w6FyaW9z?=
+In-Reply-To: <_7_9D_QmYhPn0arZW66A@mail.gmail.com>
+References: <ROAP284MB05251BEE6632BBB770F07C90A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <63212e6d831f_10eb2b0f9badd1148024c@ip-10-81-19-10.ec2.internal.mail>
+ <ROAP284MB05253516B7661FAEF9CA7700A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <_7_9D_QmYhPn0arZW66A@mail.gmail.com>
+Message-ID: <6323fe59dff_394b2af2a1abb0f87174@ip-10-81-19-6.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220916/79f662ce/attachment.htm>
+
+From cesar.rabak em gmail.com  Fri Sep 16 20:26:34 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 16 Sep 2022 20:26:34 -0300
+Subject: [R-br] 
+	=?utf-8?q?Ajudar_com_organiza=C3=A7=C3=A3o_de_dados_hor?=
+	=?utf-8?b?w6FyaW9z?=
+In-Reply-To: <6323fe59dff_394b2af2a1abb0f87174@ip-10-81-19-6.ec2.internal.mail>
+References: <ROAP284MB05251BEE6632BBB770F07C90A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <63212e6d831f_10eb2b0f9badd1148024c@ip-10-81-19-10.ec2.internal.mail>
+ <ROAP284MB05253516B7661FAEF9CA7700A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <_7_9D_QmYhPn0arZW66A@mail.gmail.com>
+ <6323fe59dff_394b2af2a1abb0f87174@ip-10-81-19-6.ec2.internal.mail>
+Message-ID: <CAKrF98nLZVfUmfvZAYp=PD7DFFqo-+vW8YW4XjScj+AkTr3MZQ@mail.gmail.com>
+
+Ao mencionar "o mesmo resultado" você está discutindo as linhas que eu
+analiso ou  a postagem inicial ?
+
+On Fri, Sep 16, 2022 at 1:41 AM sznelwar--- por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Eu não consegui chegar no mesmo resultado com este script:
+>
+> rm(list=ls())
+> library(lubridate)
+> library(tidyverse)
+> library(dplyr)
+> library(hrbrthemes)
+> library(GGally)
+> library(ggplot2)
+>
+> # Dados -------------------------------------------------------------------
+> # Chuva
+> input<- read.table('Rain_1.txt', header = T, sep = ',', dec = '.')
+> #
+> # Organizar os dados ------------------------------------------------------
+> # converter o TIMESTEP em data
+> input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+> #tentei
+> input$TIMESTAMP<- as.Date(input$TIMESTAMP)
+> #
+> #
+> #Adicionado os meses e anos nas observações
+> #### a saída é em um caracter converter para numerico
+> input$Year<-format(input$TIMESTAMP, '%Y')
+> input$Month<-format(input$TIMESTAMP, '%m')
+> input$Day<-format(input$TIMESTAMP, '%d')
+> input$Doy<-format(input$TIMESTAMP, '%J')
+> input$Hour.s<-format(input$TIMESTAMP, '%H')
+> E não cheguei no vosso resultado. Com este comando abaixo só abri com NaN
+> input<- read.table('Rain_1.txt', header = T, sep = ',', dec = '.',
+>                    na.strings = c('NAN', 'NaN', 'Inf', 'NA'))
+> #
+>
+> Quando você executa esta linha:
+> > input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+>
+> Você destrói o conteúdo da coluna TIMESTAMP e a substitui pela parte da
+> data calendário apenas, efetivamente perdendo a parte fracionária do dia.
+>
+> Compare o resultado das seguintes linhas:
+> > head(ymd_hms(input$TIMESTAMP))
+> [1] "2021-02-23 10:00:00 UTC" "2021-03-10 11:00:00 UTC"
+> [3] "2021-03-10 11:30:00 UTC" "2021-03-10 12:00:00 UTC"
+> [5] "2021-03-10 12:30:00 UTC" "2021-03-10 13:00:00 UTC"
+> > head(as.Date(ymd_hms(input$TIMESTAMP)))
+> [1] "2021-02-23" "2021-03-10" "2021-03-10" "2021-03-10" "2021-03-10"
+> [6] "2021-03-10"
+>
+> Se vc só precisa da data no formato POSIX para usar com lubridate e
+> afins, então a substituição deve ser sem o as.Date e somente depois
+> processar esses valores.
+>
+> HTH
+>
+> --
+> Cesar Rabak
+>
+>
+>
+> On Tue, Sep 13, 2022 at 11:09 PM Bruce Kelly por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Segue o arquivo =)
+>>
+>>
+>>
+>>
+>>
+>> ------------------------------
+>> *De:* R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de sznelwar--- por
+>> (R-br) <r-br em listas.c3sl.ufpr.br>
+>> *Enviado:* quarta-feira, 14 de setembro de 2022 01:29
+>> *Para:* r-br em listas.c3sl.ufpr.br <r-br em listas.c3sl.ufpr.br>
+>> *Cc:* sznelwar em uol.com.br <sznelwar em uol.com.br>
+>> *Assunto:* Re: [R-br] Ajudar com organização de dados horários
+>>
+>> Não foi enviado o arquivo Rain_1.txt.
+>> Boa noite pessoal,
+>> Estou com dúvida de como acrescentar a coluna horaria de algumas. Estou
+>> usando as seguintes scritp:
+>>
+>> rm(list=ls())
+>> #
+>> library(lubridate)
+>> library(tidyverse)
+>> library(dplyr)
+>> library(hrbrthemes)
+>> library(GGally)
+>> library(ggplot2)
+>>
+>> # Dados
+>> -------------------------------------------------------------------
+>> # Chuva
+>> input<- read.table('Rain_1.txt', header = T, sep = ',', dec = '.',
+>>                    na.strings = c('NAN', 'NaN', 'Inf', 'NA'))
+>> #
+>>                    dec = '.', na.strings = c('NAN', 'NaN', 'Inf'))
+>> # Organizar os dados
+>> ------------------------------------------------------
+>> # converter o TIMESTEP em data
+>> input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+>> #tentei
+>> input$TIMESTAMP<- as.Date(input$TIMESTAMP))
+>> #
+>> #
+>> #Adicionado os meses e anos nas observações
+>> #### a saída é em um caracter converter para numerico
+>> input$Year<-format(input$TIMESTAMP, '%Y')
+>> input$Month<-format(input$TIMESTAMP, '%m')
+>> input$Day<-format(input$TIMESTAMP, '%d')
+>> input$Doy<-format(input$TIMESTAMP, '%J')
+>> input$Hour.s<-format(input$TIMESTAMP, '%H')
+>>
+>> Quando executo a coluna Hour.s fica zerada como mostra a figura. E
+>> preciso que essa coluna horaria com mediação a cada 30min, fique na
+>> variação de 0-23h (0.5, 1, 1.5,...23,5)
+>>
+>> estrutura do TIMESTAMP antes de ser convertido em data
+>>
+>>
+>> Obrigado pela ajuda e atenção de todo (@s)
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível._______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220916/08fe7003/attachment.htm>
+
+From sznelwar em uol.com.br  Fri Sep 16 22:21:40 2022
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Fri, 16 Sep 2022 22:21:40 -0300
+Subject: [R-br] 
+ =?utf-8?q?Ajudar_com_organiza=C3=A7=C3=A3o_de_dados_hor?=
+ =?utf-8?b?w6FyaW9z?=
+In-Reply-To: <AkTr3MZQ@mail.gmail.com>
+References: <ROAP284MB05251BEE6632BBB770F07C90A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <63212e6d831f_10eb2b0f9badd1148024c@ip-10-81-19-10.ec2.internal.mail>
+ <ROAP284MB05253516B7661FAEF9CA7700A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <_7_9D_QmYhPn0arZW66A@mail.gmail.com>
+ <6323fe59dff_394b2af2a1abb0f87174@ip-10-81-19-6.ec2.internal.mail>
+ <AkTr3MZQ@mail.gmail.com>
+Message-ID: <6325212498240_4ae12b189778310884499@ip-10-81-19-66.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220916/2d89f604/attachment.htm>
+
+From cesar.rabak em gmail.com  Sat Sep 17 17:17:52 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 17 Sep 2022 17:17:52 -0300
+Subject: [R-br] 
+	=?utf-8?q?Ajudar_com_organiza=C3=A7=C3=A3o_de_dados_hor?=
+	=?utf-8?b?w6FyaW9z?=
+In-Reply-To: <6325212498240_4ae12b189778310884499@ip-10-81-19-66.ec2.internal.mail>
+References: <ROAP284MB05251BEE6632BBB770F07C90A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <63212e6d831f_10eb2b0f9badd1148024c@ip-10-81-19-10.ec2.internal.mail>
+ <ROAP284MB05253516B7661FAEF9CA7700A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <_7_9D_QmYhPn0arZW66A@mail.gmail.com>
+ <6323fe59dff_394b2af2a1abb0f87174@ip-10-81-19-6.ec2.internal.mail>
+ <AkTr3MZQ@mail.gmail.com>
+ <6325212498240_4ae12b189778310884499@ip-10-81-19-66.ec2.internal.mail>
+Message-ID: <CAKrF98=38zv_yFgM0B30b19S46Pt7J0i0HD9TtyHq487Z4GkOw@mail.gmail.com>
+
+Vou postar minha sessão aqui para vermos onde pode estar a diferença...
+~/Downloads$ R
+
+R version 4.2.1 (2022-06-23) -- "Funny-Looking Kid"
+Copyright (C) 2022 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R é um software livre e vem sem GARANTIA ALGUMA.
+Você pode redistribuí-lo sob certas circunstâncias.
+Digite 'license()' ou 'licence()' para detalhes de distribuição.
+
+R é um projeto colaborativo com muitos contribuidores.
+Digite 'contributors()' para obter mais informações e
+'citation()' para saber como citar o R ou pacotes do R em publicações.
+
+Digite 'demo()' para demonstrações, 'help()' para o sistema on-line de
+ajuda,
+ou 'help.start()' para abrir o sistema de ajuda em HTML no seu navegador.
+Digite 'q()' para sair do R.
+
+[Área de trabalho anterior carregada]
+
+> rm(list=ls())
+> #
+> library(lubridate)
+
+Attaching package: ?lubridate?
+
+The following objects are masked from ?package:base?:
+
+    date, intersect, setdiff, union
+
+> library(tidyverse)
+?? Attaching packages ??????????????????????????????????????? tidyverse
+1.3.1 ??
+? ggplot2 3.3.6      ? purrr   0.3.4
+? tibble  3.1.7      ? dplyr   1.0.10
+? tidyr   1.2.1      ? stringr 1.4.1
+? readr   2.1.2      ? forcats 0.5.2
+?? Conflicts ??????????????????????????????????????????
+tidyverse_conflicts() ??
+? lubridate::as.difftime() masks base::as.difftime()
+? lubridate::date()        masks base::date()
+? dplyr::filter()          masks stats::filter()
+? lubridate::intersect()   masks base::intersect()
+? dplyr::lag()             masks stats::lag()
+? lubridate::setdiff()     masks base::setdiff()
+? lubridate::union()       masks base::union()
+> library(dplyr)
+> library(hrbrthemes)
+NOTE: Either Arial Narrow or Roboto Condensed fonts are required to use
+these themes.
+      Please use hrbrthemes::import_roboto_condensed() to install Roboto
+Condensed and
+      if Arial Narrow is not on your system, please see
+https://bit.ly/arialnarrow
+> library(GGally)
+Registered S3 method overwritten by 'GGally':
+  method from
+  +.gg   ggplot2
+> library(ggplot2)
+> # Dados
+-------------------------------------------------------------------
+> # Chuva
+> input<- read.table('Rain_1.txt', header = T, sep = ',', dec = '.',
++                    na.strings = c('NAN', 'NaN', 'Inf', 'NA'))
+> head(ymd_hms(input$TIMESTAMP))
+[1] "2021-02-23 10:00:00 UTC" "2021-03-10 11:00:00 UTC"
+[3] "2021-03-10 11:30:00 UTC" "2021-03-10 12:00:00 UTC"
+[5] "2021-03-10 12:30:00 UTC" "2021-03-10 13:00:00 UTC"
+> head(as.Date(ymd_hms(input$TIMESTAMP)))
+[1] "2021-02-23" "2021-03-10" "2021-03-10" "2021-03-10" "2021-03-10"
+[6] "2021-03-10"
+>
+
+SE sua diferença está com as definições nos 'NA', note que eu estou usando
+o script do OP. . .
+
+HTH
+
+On Fri, Sep 16, 2022 at 10:21 PM sznelwar--- por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> As linhas que analisa.
+> Ao mencionar "o mesmo resultado" você está discutindo as linhas que eu
+> analiso ou  a postagem inicial ?
+>
+> On Fri, Sep 16, 2022 at 1:41 AM sznelwar--- por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Eu não consegui chegar no mesmo resultado com este script:
+>>
+>> rm(list=ls())
+>> library(lubridate)
+>> library(tidyverse)
+>> library(dplyr)
+>> library(hrbrthemes)
+>> library(GGally)
+>> library(ggplot2)
+>>
+>> # Dados
+>> -------------------------------------------------------------------
+>> # Chuva
+>> input<- read.table('Rain_1.txt', header = T, sep = ',', dec = '.')
+>> #
+>> # Organizar os dados
+>> ------------------------------------------------------
+>> # converter o TIMESTEP em data
+>> input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+>> #tentei
+>> input$TIMESTAMP<- as.Date(input$TIMESTAMP)
+>> #
+>> #
+>> #Adicionado os meses e anos nas observações
+>> #### a saída é em um caracter converter para numerico
+>> input$Year<-format(input$TIMESTAMP, '%Y')
+>> input$Month<-format(input$TIMESTAMP, '%m')
+>> input$Day<-format(input$TIMESTAMP, '%d')
+>> input$Doy<-format(input$TIMESTAMP, '%J')
+>> input$Hour.s<-format(input$TIMESTAMP, '%H')
+>> E não cheguei no vosso resultado. Com este comando abaixo só abri com NaN
+>> input<- read.table('Rain_1.txt', header = T, sep = ',', dec = '.',
+>>                    na.strings = c('NAN', 'NaN', 'Inf', 'NA'))
+>> #
+>>
+>> Quando você executa esta linha:
+>> > input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+>>
+>> Você destrói o conteúdo da coluna TIMESTAMP e a substitui pela parte da
+>> data calendário apenas, efetivamente perdendo a parte fracionária do dia.
+>>
+>> Compare o resultado das seguintes linhas:
+>> > head(ymd_hms(input$TIMESTAMP))
+>> [1] "2021-02-23 10:00:00 UTC" "2021-03-10 11:00:00 UTC"
+>> [3] "2021-03-10 11:30:00 UTC" "2021-03-10 12:00:00 UTC"
+>> [5] "2021-03-10 12:30:00 UTC" "2021-03-10 13:00:00 UTC"
+>> > head(as.Date(ymd_hms(input$TIMESTAMP)))
+>> [1] "2021-02-23" "2021-03-10" "2021-03-10" "2021-03-10" "2021-03-10"
+>> [6] "2021-03-10"
+>>
+>> Se vc só precisa da data no formato POSIX para usar com lubridate e
+>> afins, então a substituição deve ser sem o as.Date e somente depois
+>> processar esses valores.
+>>
+>> HTH
+>>
+>> --
+>> Cesar Rabak
+>>
+>>
+>>
+>> On Tue, Sep 13, 2022 at 11:09 PM Bruce Kelly por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Segue o arquivo =)
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> ------------------------------
+>>> *De:* R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de sznelwar---
+>>> por (R-br) <r-br em listas.c3sl.ufpr.br>
+>>> *Enviado:* quarta-feira, 14 de setembro de 2022 01:29
+>>> *Para:* r-br em listas.c3sl.ufpr.br <r-br em listas.c3sl.ufpr.br>
+>>> *Cc:* sznelwar em uol.com.br <sznelwar em uol.com.br>
+>>> *Assunto:* Re: [R-br] Ajudar com organização de dados horários
+>>>
+>>> Não foi enviado o arquivo Rain_1.txt.
+>>> Boa noite pessoal,
+>>> Estou com dúvida de como acrescentar a coluna horaria de algumas. Estou
+>>> usando as seguintes scritp:
+>>>
+>>> rm(list=ls())
+>>> #
+>>> library(lubridate)
+>>> library(tidyverse)
+>>> library(dplyr)
+>>> library(hrbrthemes)
+>>> library(GGally)
+>>> library(ggplot2)
+>>>
+>>> # Dados
+>>> -------------------------------------------------------------------
+>>> # Chuva
+>>> input<- read.table('Rain_1.txt', header = T, sep = ',', dec = '.',
+>>>                    na.strings = c('NAN', 'NaN', 'Inf', 'NA'))
+>>> #
+>>>                    dec = '.', na.strings = c('NAN', 'NaN', 'Inf'))
+>>> # Organizar os dados
+>>> ------------------------------------------------------
+>>> # converter o TIMESTEP em data
+>>> input$TIMESTAMP<- as.Date(ymd_hms(input$TIMESTAMP))
+>>> #tentei
+>>> input$TIMESTAMP<- as.Date(input$TIMESTAMP))
+>>> #
+>>> #
+>>> #Adicionado os meses e anos nas observações
+>>> #### a saída é em um caracter converter para numerico
+>>> input$Year<-format(input$TIMESTAMP, '%Y')
+>>> input$Month<-format(input$TIMESTAMP, '%m')
+>>> input$Day<-format(input$TIMESTAMP, '%d')
+>>> input$Doy<-format(input$TIMESTAMP, '%J')
+>>> input$Hour.s<-format(input$TIMESTAMP, '%H')
+>>>
+>>> Quando executo a coluna Hour.s fica zerada como mostra a figura. E
+>>> preciso que essa coluna horaria com mediação a cada 30min, fique na
+>>> variação de 0-23h (0.5, 1, 1.5,...23,5)
+>>>
+>>> estrutura do TIMESTAMP antes de ser convertido em data
+>>>
+>>>
+>>> Obrigado pela ajuda e atenção de todo (@s)
+>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível._______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível. _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220917/25389369/attachment.htm>
+
+From sznelwar em uol.com.br  Sun Sep 18 23:11:29 2022
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Sun, 18 Sep 2022 23:11:29 -0300
+Subject: [R-br] 
+ =?utf-8?q?Ajudar_com_organiza=C3=A7=C3=A3o_de_dados_hor?=
+ =?utf-8?b?w6FyaW9z?=
+In-Reply-To: <38zv_yFgM0B30b19S46Pt7J0i0HD9TtyHq487Z4GkOw@mail.gmail.com>
+References: <ROAP284MB05251BEE6632BBB770F07C90A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <63212e6d831f_10eb2b0f9badd1148024c@ip-10-81-19-10.ec2.internal.mail>
+ <ROAP284MB05253516B7661FAEF9CA7700A8469@ROAP284MB0525.BRAP284.PROD.OUTLOOK.COM>
+ <_7_9D_QmYhPn0arZW66A@mail.gmail.com>
+ <6323fe59dff_394b2af2a1abb0f87174@ip-10-81-19-6.ec2.internal.mail>
+ <AkTr3MZQ@mail.gmail.com>
+ <6325212498240_4ae12b189778310884499@ip-10-81-19-66.ec2.internal.mail>
+ <38zv_yFgM0B30b19S46Pt7J0i0HD9TtyHq487Z4GkOw@mail.gmail.com>
+Message-ID: <6327cfd14365d_68382aac60e0f1289871c@ip-10-81-19-114.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220918/38f934ab/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Tue Sep 27 12:05:34 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Tue, 27 Sep 2022 15:05:34 +0000 (UTC)
+Subject: [R-br] Importar formato json para o R
+References: <220495293.721468.1664291135028.ref@mail.yahoo.com>
+Message-ID: <220495293.721468.1664291135028@mail.yahoo.com>
+
+Prezados, bom dia!!! Novamente o chato rs. De forma direta, eu tenho essa consulta que eu fiz com essas packages:
+library("httr")library("jsonlite")library("data.table")
+
+url<-str_c("https://servicodados.ibge.gov.br/api/v1/localidades/estados/RJ/regioes-metropolitanas")r<-GET(url)
+r_text<-content(r, as="text")
+data_json<-fromJSON(r_text, flatten=TRUE)data_json<-as.data.frame(data_json)
+Em resumo, dessa API do IBGE, busquei as informações das regiões metropolitanas, e as importei para dentro do R em dataframe, para realizar uma análise.
+Problema: quando ele vêm, ele está com a seguinte cara:
+
+Sendo que em municipios, está a informação dos municipios. Eu até consigo (via comando rbindlist) "quebrar" esse info de municipios assim: data_json_municipios<-rbindlist(data_json$municipios)
+
+Mas eu queria, no mesmo banco de origem (chamado aqui de data_json), expandir para o banco essa informações dos municípios.
+
+Alguém poderia me ajudar nessa? Obrigado!!!    
+Diogo Jerônimo
+Bacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220927/15ec7d3b/attachment.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: 1664290863025blob.jpg
+Tipo: image/png
+Tamanho: 9124 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220927/15ec7d3b/attachment.png>
+
+From sznelwar em uol.com.br  Wed Sep 28 22:31:42 2022
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Thu, 29 Sep 2022 01:31:42 -0000
+Subject: [R-br] Importar formato json para o R
+In-Reply-To: <220495293.721468.1664291135028@mail.yahoo.com>
+References: <220495293.721468.1664291135028.ref@mail.yahoo.com>
+ <220495293.721468.1664291135028@mail.yahoo.com>
+Message-ID: <6334f57b3d234_31d42b094eabf10830113@ip-10-81-19-73.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220929/fe64d6b6/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Thu Sep 29 14:03:48 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Thu, 29 Sep 2022 17:03:48 -0000
+Subject: [R-br] =?utf-8?q?d=C3=BAvida_gr=C3=A1fico_ggplot2?=
+References: <394146286.1354904.1664471020838.ref@mail.yahoo.com>
+Message-ID: <394146286.1354904.1664471020838@mail.yahoo.com>
+
+Boa tarde grupo, acho que é uma dúvida boba, mas não estou conseguindo resolver. Segue o exemplo desse gráfico que sai via ggplot2:
+grupo<-rep(c(1,2,3),8)nível<-rep(c(rep("I",3),rep("II",3),rep("III",3),rep("IV",3)),2)lote<-c(rep("L1",12),rep("L2",12))res<-rnorm(24,100,30)datos<-data.frame(cbind(grupo,nível,lote,res))datos$res<-as.numeric(datos$res)
+
+ggplot(datos,aes(y=res,x=nível))+  geom_point(aes(colour=grupo))+  facet_wrap(~lote)
+O resultado gráfico é algo assim:
+
+Eu gostaria de passar uma linha que ligasse as médias dos dados de cada nível, segundo cada lote, ou seja ligando a média do nível I a média do nível II... Teriam como me dar uma ajuda?
+Muito obrigado!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220929/62d6eb44/attachment.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: 1664471010866blob.jpg
+Tipo: image/png
+Tamanho: 5914 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220929/62d6eb44/attachment.png>
+

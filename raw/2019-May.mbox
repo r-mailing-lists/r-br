@@ -1,0 +1,2226 @@
+From ab_souza em outlook.com  Sat May 11 21:10:48 2019
+From: ab_souza em outlook.com (Ana Beatriz Souza Souza)
+Date: Sun, 12 May 2019 00:10:48 +0000
+Subject: [R-br] =?utf-8?q?Pressuposi=C3=A7=C3=B5es_da_ANOVA_de_um_modelo_e?=
+ =?utf-8?q?m_faixas?=
+Message-ID: <RO1P152MB08598E80F48C97807AC59160F20E0@RO1P152MB0859.LAMP152.PROD.OUTLOOK.COM>
+
+Prezados colegas,
+
+Boa noite! Estou analisando um experimento em DBC com  2 fatores arranjados no esquema de faixas. Estou em dúvida em relação a verificação dos pressupostos do modelo.
+
+Em uma material do professor Euclides  encontrei que para um fatorial (2 fatores) ele define o fator "tratamento" como a combinação dos níveis dos fatores em estudo e faz o teste das pressuposições considerando apenas o delineamento experimental.
+
+> # Teste de Bartlett
+> bartlett.test(Y~FTR)​ ## Em que FTR é o fator Tratamento
+> # Teste de Levene​
+> #require(lawstat)​
+> levene.test(Y, FTR)
+
+Considerando que tenho também dois fatores, porem arranjados em faixas, posso usar a mesma ideia ou os erros adicionais que compõem o modelo de faixas inviabilizam essa ideia?
+
+Desde já agradeço
+Att
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190512/9c33670b/attachment.html>
+
+From prf.cantonio em gmail.com  Tue May 14 00:47:46 2019
+From: prf.cantonio em gmail.com (Carlos Andrade)
+Date: Tue, 14 May 2019 00:47:46 -0300
+Subject: [R-br] =?utf-8?q?Importar_dados_de_s=C3=A9rie_temporal_de_planilh?=
+ =?utf-8?q?a=2E?=
+Message-ID: <CA+_U+LwSbP2Yi2OVp=ZK8qArGVeTK0mXYutNsaa2oK4jJqbYMg@mail.gmail.com>
+
+Olá, prezados amigos da lista.
+
+Baixei do site do IBGE uma planilha .ods com a série histórica da
+variação do Índice do Volume de Vendas da Pesquisa Mensal do Comércio
+(PMC). Só que veio no formato indicando os meses na primeira coluna
+(janeiro a dezembro) e os anos nas colunas(2000 a 2019). Não consegui
+recuperar das minhas anotações como se faz a importação para o R.
+Solicito a algum colega que me informe o comando para isto ou o
+código.
+Agradeço antecipadamente.
+-- 
+Atenciosamente,
+
+Prof. Carlos A. S. de Andrade
+LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de Produção
+Universidade Federal de Campina Grande.
+Centro de Humanidades
+Unidade Acadêmica de Economia
+
+From assis.leonard em gmail.com  Tue May 14 05:59:29 2019
+From: assis.leonard em gmail.com (Leonard Assis)
+Date: Tue, 14 May 2019 05:59:29 -0300
+Subject: [R-br] 
+	=?utf-8?q?Importar_dados_de_s=C3=A9rie_temporal_de_planil?=
+	=?utf-8?b?aGEu?=
+In-Reply-To: <CA+_U+LwSbP2Yi2OVp=ZK8qArGVeTK0mXYutNsaa2oK4jJqbYMg@mail.gmail.com>
+References: <CA+_U+LwSbP2Yi2OVp=ZK8qArGVeTK0mXYutNsaa2oK4jJqbYMg@mail.gmail.com>
+Message-ID: <CAEG0FK8_DDhi_iYdJ5+HWOJjCq-7eZ-DkJCZrSQh5JxRPUijrA@mail.gmail.com>
+
+não entendi a dúvida.
+você sequer consegue ler a planilha? ou não está lendo como precisa?
+
+Em ter, 14 de mai de 2019 00:48, Carlos Andrade por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá, prezados amigos da lista.
+>
+> Baixei do site do IBGE uma planilha .ods com a série histórica da
+> variação do Índice do Volume de Vendas da Pesquisa Mensal do Comércio
+> (PMC). Só que veio no formato indicando os meses na primeira coluna
+> (janeiro a dezembro) e os anos nas colunas(2000 a 2019). Não consegui
+> recuperar das minhas anotações como se faz a importação para o R.
+> Solicito a algum colega que me informe o comando para isto ou o
+> código.
+> Agradeço antecipadamente.
+> --
+> Atenciosamente,
+>
+> Prof. Carlos A. S. de Andrade
+> LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de
+> Produção
+> Universidade Federal de Campina Grande.
+> Centro de Humanidades
+> Unidade Acadêmica de Economia
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190514/00c8a4fd/attachment.html>
+
+From prf.cantonio em gmail.com  Tue May 14 09:49:04 2019
+From: prf.cantonio em gmail.com (Carlos Andrade)
+Date: Tue, 14 May 2019 09:49:04 -0300
+Subject: [R-br] 
+	=?utf-8?q?Importar_dados_de_s=C3=A9rie_temporal_de_planil?=
+	=?utf-8?b?aGEu?=
+In-Reply-To: <CAEG0FK8_DDhi_iYdJ5+HWOJjCq-7eZ-DkJCZrSQh5JxRPUijrA@mail.gmail.com>
+References: <CA+_U+LwSbP2Yi2OVp=ZK8qArGVeTK0mXYutNsaa2oK4jJqbYMg@mail.gmail.com>
+ <CAEG0FK8_DDhi_iYdJ5+HWOJjCq-7eZ-DkJCZrSQh5JxRPUijrA@mail.gmail.com>
+Message-ID: <CA+_U+Lx+27dH-Dw45ThHuLX89FRnbH-WCVDnU7AczSuwDZs23g@mail.gmail.com>
+
+Olá, Leonardo,
+
+Vai anexada a planilha, não fui muito claro.
+
+Em ter, 14 de mai de 2019 às 05:59, Leonard Assis por (R-br)
+<r-br em listas.c3sl.ufpr.br> escreveu:
+>
+> não entendi a dúvida.
+> você sequer consegue ler a planilha? ou não está lendo como precisa?
+>
+> Em ter, 14 de mai de 2019 00:48, Carlos Andrade por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>> Olá, prezados amigos da lista.
+>>
+>> Baixei do site do IBGE uma planilha .ods com a série histórica da
+>> variação do Índice do Volume de Vendas da Pesquisa Mensal do Comércio
+>> (PMC). Só que veio no formato indicando os meses na primeira coluna
+>> (janeiro a dezembro) e os anos nas colunas(2000 a 2019). Não consegui
+>> recuperar das minhas anotações como se faz a importação para o R.
+>> Solicito a algum colega que me informe o comando para isto ou o
+>> código.
+>> Agradeço antecipadamente.
+>> --
+>> Atenciosamente,
+>>
+>> Prof. Carlos A. S. de Andrade
+>> LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de Produção
+>> Universidade Federal de Campina Grande.
+>> Centro de Humanidades
+>> Unidade Acadêmica de Economia
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+
+-- 
+Atenciosamente,
+
+Prof. Carlos A. S. de Andrade
+LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de Produção
+Universidade Federal de Campina Grande.
+Centro de Humanidades
+Unidade Acadêmica de Economia
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: serie_IVV.ods
+Tipo: application/vnd.oasis.opendocument.spreadsheet
+Tamanho: 17104 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190514/c35b5f80/attachment.ods>
+
+From pjobenil em gmail.com  Tue May 14 14:22:06 2019
+From: pjobenil em gmail.com (=?utf-8?Q?Jobenil_Luiz_Magalh=C3=A3es_J=C3=BAnior?=)
+Date: Tue, 14 May 2019 14:22:06 -0300
+Subject: [R-br] =?utf-8?q?RES=3A__Importar_dados_de_s=C3=A9rie_temporal_de?=
+ =?utf-8?q?_planilha=2E?=
+In-Reply-To: <CA+_U+LwSbP2Yi2OVp=ZK8qArGVeTK0mXYutNsaa2oK4jJqbYMg@mail.gmail.com>
+References: <CA+_U+LwSbP2Yi2OVp=ZK8qArGVeTK0mXYutNsaa2oK4jJqbYMg@mail.gmail.com>
+Message-ID: <5cdaf93d.1c69fb81.e013f.422d@mx.google.com>
+
+Prezado,
+
+Há um pacote readODS (não testado por mim) que deve ajuda-lo nessa tarefa.
+Att.
+Jobenil Júnior
+
+
+Enviado do Email para Windows 10
+
+De: Carlos Andrade por (R-br)
+Enviado:terça-feira, 14 de maio de 2019 00:48
+Para: a lista Brasileira oficial de discussão do programa R.
+Cc:Carlos Andrade
+Assunto: [R-br] Importar dados de série temporal de planilha.
+
+Olá, prezados amigos da lista.
+
+Baixei do site do IBGE uma planilha .ods com a série histórica da
+variação do Índice do Volume de Vendas da Pesquisa Mensal do Comércio
+(PMC). Só que veio no formato indicando os meses na primeira coluna
+(janeiro a dezembro) e os anos nas colunas(2000 a 2019). Não consegui
+recuperar das minhas anotações como se faz a importação para o R.
+Solicito a algum colega que me informe o comando para isto ou o
+código.
+Agradeço antecipadamente.
+-- 
+Atenciosamente,
+
+Prof. Carlos A. S. de Andrade
+LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de Produção
+Universidade Federal de Campina Grande.
+Centro de Humanidades
+Unidade Acadêmica de Economia
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190514/6e5ccafb/attachment.html>
+
+From zhushazang em gmail.com  Tue May 14 14:40:39 2019
+From: zhushazang em gmail.com (Zhu Sha Zang)
+Date: Tue, 14 May 2019 13:40:39 -0400
+Subject: [R-br] 
+ =?iso-8859-1?q?RES=3A__Importar_dados_de_s=E9rie__tempora?=
+ =?iso-8859-1?q?l_de_planilha=2E?=
+In-Reply-To: <5cdaf93d.1c69fb81.e013f.422d@mx.google.com>
+References: <CA+_U+LwSbP2Yi2OVp=ZK8qArGVeTK0mXYutNsaa2oK4jJqbYMg@mail.gmail.com>
+ <5cdaf93d.1c69fb81.e013f.422d@mx.google.com>
+Message-ID: <99c9573eaba778508d8fa2182bf30a2240b44cbd.camel@gmail.com>
+
+Se entendi bem, a questão não é a extensão do arquivo em si, mas o
+formato. Como seria tipo TS, as colunas deveriam ser conjugadas como
+uma só, de forma a ter uma continuidade dos dados. Acredito que exista
+um meio de fazer esta leitura. Mas posso estar enganado. Se estiver, ,
+desculpas antecipadas por me intrometer na "thread", como faria isso?
+
+Atenciosamente
+
+Em ter, 2019-05-14 às 14:22 -0300, Jobenil Luiz Magalhães Júnior por
+(R-br) escreveu:
+> Prezado,
+>  
+> Há um pacote readODS (não testado por mim) que deve ajuda-lo nessa
+> tarefa.
+> Att.
+> Jobenil Júnior
+>  
+>  
+> Enviado do Email para Windows 10
+>  
+> De: Carlos Andrade por (R-br)
+> Enviado:terça-feira, 14 de maio de 2019 00:48
+> Para: a lista Brasileira oficial de discussão do programa R.
+> Cc:Carlos Andrade
+> Assunto: [R-br] Importar dados de série temporal de planilha.
+>  
+> Olá, prezados amigos da lista.
+>  
+> Baixei do site do IBGE uma planilha .ods com a série histórica da
+> variação do Índice do Volume de Vendas da Pesquisa Mensal do Comércio
+> (PMC). Só que veio no formato indicando os meses na primeira coluna
+> (janeiro a dezembro) e os anos nas colunas(2000 a 2019). Não consegui
+> recuperar das minhas anotações como se faz a importação para o R.
+> Solicito a algum colega que me informe o comando para isto ou o
+> código.
+> Agradeço antecipadamente.
+> --
+> Atenciosamente,
+>  
+> Prof. Carlos A. S. de Andrade
+> LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de
+> Produção
+> Universidade Federal de Campina Grande.
+> Centro de Humanidades
+> Unidade Acadêmica de Economia
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+> cdigo mnimo reproduzvel.
+>  
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+> cdigo mnimo reproduzvel.
+-- 
+
+--
+Rodolfo Timóteo da Silva
+Engenheiro de Produção - UFGD
+Mestrando em Engenharia Agrícola - UFGD
+Especialista em Gestão de Organizações - IFMS
+
+
+From tropicalnet em gmail.com  Wed May 15 09:18:13 2019
+From: tropicalnet em gmail.com (Tropicalnet)
+Date: Wed, 15 May 2019 09:18:13 -0300
+Subject: [R-br] =?utf-8?q?Duvida_sobre_tipos_de_categoria_e_an=C3=A1lise_e?=
+	=?utf-8?q?stat=C3=ADstica_aplic=C3=A1vel?=
+Message-ID: <CAFpM4dU4qWoi-D+hvWuGR6owY9PEy9cB-u0JnGsR50OZ6hgpUw@mail.gmail.com>
+
+Prezados
+Tenho formatado pesquisas na empresa. Elaboro questionários e formulários,
+aprendi a usar R, R-Studio e tenho alguma noção de banco de dados e SPSS.
+Tenho alguma familiaridade no emprego de testes estatísticos.
+Entretanto, persiste uma dúvida sobre os tipos de testes que podem ser
+consistentemente aplicados as categorias de análise conforme estas sejam
+Nominais, Ordinais, Intervalares ou Racionais.
+Por favor, alguém poderia indicar um texto acadêmico, ou livro de
+estatística que fundamente teórica e tecnicamente esta correspondência
+entre tipo de categoria e tipo de análise aplicável?
+Obrigado
+Alexandre
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190515/9467df84/attachment.html>
+
+From lul.rafaelbarbosa em gmail.com  Wed May 15 09:39:57 2019
+From: lul.rafaelbarbosa em gmail.com (Rafael Barbosa)
+Date: Wed, 15 May 2019 09:39:57 -0300
+Subject: [R-br] 
+	=?utf-8?q?Importar_dados_de_s=C3=A9rie_temporal_de_planil?=
+	=?utf-8?b?aGEu?=
+Message-ID: <CACc-AohnrocbfPGoK=rVkoh4peZCVSUn1vU7iE_cFrSOLMzDfQ@mail.gmail.com>
+
+Segue um jeito de como consegui recentemente algo do gênero e tentei
+reproduzir para o seu código:
+
+require(tidyverse)
+require(readODS)
+
+banco <-
+  read_ods(path = "attachment.ods") %>%
+  gather %>%
+  slice(13:n()) %>%
+  set_names(c("Ano", "Valor")) %>%
+  mutate_all(as.numeric)
+
+banco_ts <- ts(data = banco$Valor, start = c(2000, 1), end = c(2019, 3),
+frequency = 12)
+
+banco_ts
+
+
+-- 
+Rafael Barbosa da Silva
+
+*Graduando |* Estatística (7º semestre) - Universidade Federal do Pará
+(UFPA)
+*Estagiário | *Secretaria Estadual da Fazenda (SEFA) - *DAIF *(Diretoria de
+Arrecadação e Informações Fazendárias) - *ASTEC *(Assessoria Técnica)
+
+Telefone: (91) 98400-4440
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190515/7b7979bb/attachment.html>
+
+From yurynepomuceno em gmail.com  Fri May 17 09:24:50 2019
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Fri, 17 May 2019 09:24:50 -0300
+Subject: [R-br] Shapefile para Raster
+Message-ID: <CADFS6E5ifJfTUTEkYLv5i7OXLw=SpxY0exwuiKkaYa=Xb4g0mA@mail.gmail.com>
+
+Bom dia colegas listeiros, como vão?
+
+Estou com dificuldades em criar um objeto raster a partir de um shapefile
+ou a partir de um dataframe, mas mantendo os valores associados aos pontos
+após a transformação.
+Tentei as seguintes abordagens:
+
+r1 = rasterize(shapefile, raster_vazio)
+r1[!is.na(r1)] = value
+r1 = mask(merge(r1, raster_vazio), raster_vazio, filename = label, format =
+"GTiff", overwrite = T)
+
+r2 = rasterFromXYZ(data.frame(coordenadas_pontos, dados_alvo))
+
+modelo = gstat(formula =  shapefile$dados_alvo ~ 1,
+                 locations = shapefile,
+                 nmax = 1,
+                 set = list(idp = 0)
+                 )
+
+r3 = raster(predict(modelo, as(raster_vazio, 'SpatialPixels')))
+
+Dessas abordagens, r1 me retorna um raster vazio; r2 está dando erro, mesmo
+eu passando um dataframe de grade regular (um ponto a cada 20m) e em r3, o
+modelo deveria sempre atribuir ao pixel exatamente o valor do ponto mais
+próximo,
+mas isso não está ocorrendo.
+Caso algum colega possa me elucidar uma nova solução ou apontar qual o erro
+estou cometendo numa das abordagens listadas, seria de grande ajuda.
+
+Desde já, agradeço pelo auxilio de todos!
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190517/070df904/attachment.html>
+
+From diogojose21 em yahoo.com.br  Fri May 17 15:30:15 2019
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Fri, 17 May 2019 18:30:15 +0000 (UTC)
+Subject: [R-br] Localizar texto num banco de dados.
+References: <1494847870.3926523.1558117815057.ref@mail.yahoo.com>
+Message-ID: <1494847870.3926523.1558117815057@mail.yahoo.com>
+
+
+Boa tarde a todos!!! 
+
+Eu gostaria de selecionar num banco de dados, as linhas que tivessem umtexto em comum. Por exemplo:
+
+a="Diogo é Brasileiro"
+
+
+b="Leticia é alemã"
+
+c="Por que Diogo viajou?" 
+
+teste=rbind(a,b,c)
+
+Tipo, em “teste”, gostaria de selecionar apenas as linhas que tem a palavra “Diogo”, de preferência, usando o "subset". 
+
+Grato pela ajuda, 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIEmail: diogojose21 em yahoo.com.br
+http://lattes.cnpq.br/8996149312896520
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190517/4c0e94ce/attachment.html>
+
+From marcus.nunes em gmail.com  Fri May 17 15:41:04 2019
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Fri, 17 May 2019 15:41:04 -0300
+Subject: [R-br] Localizar texto num banco de dados.
+In-Reply-To: <1494847870.3926523.1558117815057@mail.yahoo.com>
+References: <1494847870.3926523.1558117815057.ref@mail.yahoo.com>
+ <1494847870.3926523.1558117815057@mail.yahoo.com>
+Message-ID: <CA+QGQvvLKzf51XykM6z=3CZ0kMgDVJ++X6WVmyuuu6EJnS76EQ@mail.gmail.com>
+
+Tente rodar
+
+grep("Diogo", teste, value = TRUE)
+
+
+--
+Marcus Nunes
+Professor Adjunto
+Universidade Federal do Rio Grande do Norte
+Centro de Ciências Exatas e da Terra
+Departamento de Estatística
+Laboratório de Estatística Aplicada
+marcus em marcusnunes.me
+https://marcusnunes.me/
+http://shiny.estatistica.ccet.ufrn.br
+https://tinyletter.com/mnunes
+
+
+
+On Fri, May 17, 2019 at 3:30 PM Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde a todos!!!
+>
+> Eu gostaria de selecionar num banco de dados, as linhas que tivessem um
+> texto em comum. Por exemplo:
+>
+>
+> *a="Diogo é Brasileiro"*
+>
+> *b="Leticia é alemã"*
+>
+> *c="Por que Diogo viajou?" *
+>
+> teste=rbind(a,b,c)
+>
+> Tipo, em “teste”, gostaria de selecionar apenas as linhas que tem a
+> palavra “Diogo”, de preferência, usando o "subset".
+>
+> Grato pela ajuda,
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *Email: diogojose21 em yahoo.com.br <diogojose21 em yahoo.com.br>*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190517/d0e2791d/attachment.html>
+
+From diogojose21 em yahoo.com.br  Fri May 17 15:58:19 2019
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Fri, 17 May 2019 18:58:19 +0000 (UTC)
+Subject: [R-br] Localizar texto num banco de dados.
+In-Reply-To: <CA+QGQvvLKzf51XykM6z=3CZ0kMgDVJ++X6WVmyuuu6EJnS76EQ@mail.gmail.com>
+References: <1494847870.3926523.1558117815057.ref@mail.yahoo.com>
+ <1494847870.3926523.1558117815057@mail.yahoo.com>
+ <CA+QGQvvLKzf51XykM6z=3CZ0kMgDVJ++X6WVmyuuu6EJnS76EQ@mail.gmail.com>
+Message-ID: <514525678.3940926.1558119499985@mail.yahoo.com>
+
+Olá Marcus, obrigado, ainda não é o que preciso. Esqueci de falar que "teste" não é um elemento "matrix", é "data.frame", peço desculpas. Seria assim:
+a="Diogo é Brasileiro"
+b="Leticia é alemã"
+c="Por que Diogo viajou?"
+teste=as.data.frame(rbind(a,b,c))
+
+e desse "data.frame" eu seleciono linha com o subset.
+Obrigado novamente!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE AEmail: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520 
+
+    Em sexta-feira, 17 de maio de 2019 15:41:16 BRT, Marcus Nunes <marcus.nunes em gmail.com> escreveu:  
+ 
+ Tente rodar
+grep("Diogo", teste, value = TRUE)
+
+--Marcus NunesProfessor AdjuntoUniversidade Federal do Rio Grande do NorteCentro de Ciências Exatas e da TerraDepartamento de EstatísticaLaboratório de Estatística Aplicadamarcus em marcusnunes.mehttps://marcusnunes.me/http://shiny.estatistica.ccet.ufrn.brhttps://tinyletter.com/mnunes
+
+
+
+On Fri, May 17, 2019 at 3:30 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+
+Boa tarde a todos!!! 
+
+Eu gostaria de selecionar num banco de dados, as linhas que tivessem umtexto em comum. Por exemplo:
+
+a="Diogo é Brasileiro"
+
+
+b="Leticia é alemã"
+
+c="Por que Diogo viajou?" 
+
+teste=rbind(a,b,c)
+
+Tipo, em “teste”, gostaria de selecionar apenas as linhas que tem a palavra “Diogo”, de preferência, usando o "subset". 
+
+Grato pela ajuda, 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIEmail: diogojose21 em yahoo.com.br
+http://lattes.cnpq.br/8996149312896520_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190517/6c5c6e0e/attachment.html>
+
+From cesar.rabak em gmail.com  Fri May 17 21:40:17 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 17 May 2019 21:40:17 -0300
+Subject: [R-br] 
+	=?utf-8?q?Duvida_sobre_tipos_de_categoria_e_an=C3=A1lise_?=
+	=?utf-8?q?estat=C3=ADstica_aplic=C3=A1vel?=
+In-Reply-To: <CAFpM4dU4qWoi-D+hvWuGR6owY9PEy9cB-u0JnGsR50OZ6hgpUw@mail.gmail.com>
+References: <CAFpM4dU4qWoi-D+hvWuGR6owY9PEy9cB-u0JnGsR50OZ6hgpUw@mail.gmail.com>
+Message-ID: <CAKrF98nxeoUdn-5PaKQDFNfj5bQvk+Bor4iqJw4zAwTLA3RQiw@mail.gmail.com>
+
+Alexandre,
+
+A teoria sobre tipos ou categorias de dados não tem uma fundamentação
+teórica muito sólida, e é frequentemente desafiada por textos fora do
+*mainstream* dos livros texto de estatística, que noves fora uma ou outra
+minúcia ainda seguem muito do proposto por Stevens há mais de 50 anos.
+
+Fora os dados obtidos a partir de medidas diretas onde os seus tipos
+correspondem à tipificação devido ao processo de obtenção do dado, e ainda
+assim há casos rebartivos. . . nas outras ciências que se servem da
+Estatística há uma maior elasticidade no uso dos conceitos com certas
+*premissas* serem quase axiomáticas posto que não se consegue provar e
+testar não leva a conclusão alguma.
+
+Um exemplo de uma medida que seria racional (usando a sua nomenclatura)
+pressão arterial em mm de Hg, falha quando aplicada no corpo humano, pois
+10 mm de Hg numa certa faixa de pressão pode significar um dano a um órgão
+interno (por exemplo rim) enquanto no extremo oposto essa diferença não
+significaria nada...
+
+No atual estado do conhecimento do assunto costuma-se estudar essas escalas
+com um olho na Estatística (por causa do problema que você cita de usar a
+técnica apropriada [para não tirar média de categorias por exemplo]) e
+outro no domínio do problema, por exemplo em geoestatítica há todo um
+conjunto de problemas que precisam ser acomodados com outras classificações
+de escalas.
+
+Tukey ofereceu um conjunto mais rico de escalas que a proposta por Stevens.
+
+Como você citou três ferramentas mas não o campo de aplicação, é o melhor
+comentário que posso fazer antes de ter mais dados.
+
+HTH
+--
+Cesar Rabak
+
+
+On Wed, May 15, 2019 at 9:18 AM Tropicalnet por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados
+> Tenho formatado pesquisas na empresa. Elaboro questionários e formulários,
+> aprendi a usar R, R-Studio e tenho alguma noção de banco de dados e SPSS.
+> Tenho alguma familiaridade no emprego de testes estatísticos.
+> Entretanto, persiste uma dúvida sobre os tipos de testes que podem ser
+> consistentemente aplicados as categorias de análise conforme estas sejam
+> Nominais, Ordinais, Intervalares ou Racionais.
+> Por favor, alguém poderia indicar um texto acadêmico, ou livro de
+> estatística que fundamente teórica e tecnicamente esta correspondência
+> entre tipo de categoria e tipo de análise aplicável?
+> Obrigado
+> Alexandre
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190517/75326481/attachment.html>
+
+From nandodesouza em gmail.com  Sat May 18 15:35:07 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sat, 18 May 2019 15:35:07 -0300
+Subject: [R-br] Localizar texto num banco de dados.
+In-Reply-To: <514525678.3940926.1558119499985@mail.yahoo.com>
+References: <514525678.3940926.1558119499985@mail.yahoo.com>
+Message-ID: <9F2CB300-A20F-4DB7-8FB3-42435124E0D4@getmailspring.com>
+
+teste[grepl("Diogo",teste$V1),]
+
+On May 17 2019, at 3:58 pm, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Olá Marcus, obrigado, ainda não é o que preciso. Esqueci de falar que "teste" não é um elemento "matrix", é "data.frame", peço desculpas. Seria assim:
+>
+> a="Diogo é Brasileiro"
+> b="Leticia é alemã"
+>
+> c="Por que Diogo viajou?"
+>
+> teste=as.data.frame(rbind(a,b,c))
+>
+>
+>
+> e desse "data.frame" eu seleciono linha com o subset.
+>
+> Obrigado novamente!!!
+>
+> Diogo Jerônimo
+> Bacharel em Ciências Estatísticas - ENCE/IBGE
+> Mestre em Metrologia - PUC-Rio/PósMQI
+> CONRE: 8514 - SÉRIE A
+> Email: diogojose21 em yahoo.com.br
+> http://lattes.cnpq.br/8996149312896520
+>
+>
+>
+>
+>
+> Em sexta-feira, 17 de maio de 2019 15:41:16 BRT, Marcus Nunes <marcus.nunes em gmail.com> escreveu:
+>
+>
+> Tente rodar
+>
+> grep("Diogo", teste, value = TRUE)
+>
+>
+> --
+> Marcus Nunes
+> Professor Adjunto
+> Universidade Federal do Rio Grande do Norte
+> Centro de Ciências Exatas e da Terra
+> Departamento de Estatística
+> Laboratório de Estatística Aplicada
+> marcus em marcusnunes.me (https://link.getmailspring.com/link/9F2CB300-A20F-4DB7-8FB3-42435124E0D4 em getmailspring.com/0?redirect=mailto%3Amarcus%40marcusnunes.me&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> https://marcusnunes.me/ (https://link.getmailspring.com/link/9F2CB300-A20F-4DB7-8FB3-42435124E0D4 em getmailspring.com/1?redirect=https%3A%2F%2Fmarcusnunes.me%2F&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> http://shiny.estatistica.ccet.ufrn.br (https://link.getmailspring.com/link/9F2CB300-A20F-4DB7-8FB3-42435124E0D4 em getmailspring.com/2?redirect=http%3A%2F%2Fshiny.estatistica.ccet.ufrn.br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> https://tinyletter.com/mnunes (https://link.getmailspring.com/link/9F2CB300-A20F-4DB7-8FB3-42435124E0D4 em getmailspring.com/3?redirect=https%3A%2F%2Ftinyletter.com%2Fmnunes&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+>
+>
+>
+>
+>
+> On Fri, May 17, 2019 at 3:30 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br (https://link.getmailspring.com/link/9F2CB300-A20F-4DB7-8FB3-42435124E0D4 em getmailspring.com/4?redirect=mailto%3Ar-br%40listas.c3sl.ufpr.br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)> wrote:
+> > Boa tarde a todos!!!
+> >
+> > Eu gostaria de selecionar num banco de dados, as linhas que tivessem um texto em comum. Por exemplo:
+> > a="Diogo é Brasileiro"
+> > b="Leticia é alemã"
+> > c="Por que Diogo viajou?"
+> > teste=rbind(a,b,c)
+> > Tipo, em “teste”, gostaria de selecionar apenas as linhas que tem a palavra “Diogo”, de preferência, usando o "subset".
+> > Grato pela ajuda,
+> > Diogo Jerônimo
+> > Bacharel em Ciências Estatísticas - ENCE/IBGE
+> > Mestre em Metrologia - PUC-Rio/PósMQI
+> > Email: diogojose21 em yahoo.com.br (https://link.getmailspring.com/link/9F2CB300-A20F-4DB7-8FB3-42435124E0D4 em getmailspring.com/5?redirect=mailto%3Adiogojose21%40yahoo.com.br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> >
+> > http://lattes.cnpq.br/8996149312896520 (https://link.getmailspring.com/link/9F2CB300-A20F-4DB7-8FB3-42435124E0D4 em getmailspring.com/6?redirect=http%3A%2F%2Flattes.cnpq.br%2F8996149312896520&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> >
+> >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (https://link.getmailspring.com/link/9F2CB300-A20F-4DB7-8FB3-42435124E0D4 em getmailspring.com/7?redirect=mailto%3AR-br%40listas.c3sl.ufpr.br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br (https://link.getmailspring.com/link/9F2CB300-A20F-4DB7-8FB3-42435124E0D4 em getmailspring.com/8?redirect=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia (https://link.getmailspring.com/link/9F2CB300-A20F-4DB7-8FB3-42435124E0D4 em getmailspring.com/9?redirect=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)) e forneça código mínimo reproduzível.
+>
+>
+>
+>
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190518/9748df8f/attachment.html>
+
+From tropicalnet em gmail.com  Mon May 20 09:48:37 2019
+From: tropicalnet em gmail.com (Tropicalnet)
+Date: Mon, 20 May 2019 09:48:37 -0300
+Subject: [R-br] =?utf-8?q?Duvida_sobre_tipos_de_categoria_e_an=C3=A1lise_e?=
+	=?utf-8?q?stat=C3=ADstica_aplic=C3=A1vel_2?=
+Message-ID: <CAFpM4dVvXsvME=LEXgJ9_cTM91Dde-LxKGV0M9KZ3SQC0XqFZA@mail.gmail.com>
+
+Prezado Cesar
+Obrigado pelo esclarecimento.
+Abordar a questão como você fez é a melhor resposta que podia ter tido.
+
+Sou da área de humanas, tenho trabalhado com o texto:
+PADUA, Jorge. Tecnicas de investigacion aplicadas a las ciencias sociales.
+6a reimpressão - Cidade do Mexico: FCE, 1979.
+É um livro bem exaustivo para as tecnicas aplicáveis no âmbito das Ciências
+Humanas. Em seu capítulo IX o autor correlaciona categorias e testes
+estatisticos.
+Entretanto, dada a idade do texto, eu procurava algum embasamento mais
+atualizado.
+Agora acredito que continua um bom guia para orientar nossas atividades.
+Att.
+Alexandre
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190520/10a48520/attachment.html>
+
+From kabuloso em gmail.com  Wed May 22 11:18:39 2019
+From: kabuloso em gmail.com (Kabuloso)
+Date: Wed, 22 May 2019 11:18:39 -0300
+Subject: [R-br] Processamento em paralelo
+Message-ID: <CAB_kneg55D6b-CPma3iiDD0FT2_Nt-+ZFgtYeUdu7KEdiTO+Qg@mail.gmail.com>
+
+Bom dia pessoal, como estão? Recentemente adquiri um computador novo com
+CPU de 6 core e 12 threads (uma grande vantagem sobre meu antigo
+computador).
+Gostaria de saber se podem me recomendar algum material para aprender a
+trabalhar e tirar melhor proveito no R desse processamento multi-thread.
+
+Muito obrigado e ótimo trabalho a todos.
+
+Abraços,
+
+Diego
+
+
+---
+Go Slowly, Sand Of Times!
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190522/f759958f/attachment.html>
+
+From felipe.e.barletta em gmail.com  Wed May 22 12:23:49 2019
+From: felipe.e.barletta em gmail.com (Felipe Barletta)
+Date: Wed, 22 May 2019 12:23:49 -0300
+Subject: [R-br] Processamento em paralelo
+In-Reply-To: <CAB_kneg55D6b-CPma3iiDD0FT2_Nt-+ZFgtYeUdu7KEdiTO+Qg@mail.gmail.com>
+References: <CAB_kneg55D6b-CPma3iiDD0FT2_Nt-+ZFgtYeUdu7KEdiTO+Qg@mail.gmail.com>
+Message-ID: <CAJz4ZjGxzj2ZSryjc5b=wSbcDx1Z+6b=4MnoHqBsEWtSGJJLaw@mail.gmail.com>
+
+Dá uma olhada na *library*  doSNOW
+
+http://biostat.mc.vanderbilt.edu/wiki/pub/Main/MinchunZhou/HPC_SNOW.rwn.pdf
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190522/8f0841c6/attachment.html>
+
+From cesar.rabak em gmail.com  Fri May 24 14:05:51 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 24 May 2019 14:05:51 -0300
+Subject: [R-br] 
+	=?utf-8?q?Duvida_sobre_tipos_de_categoria_e_an=C3=A1lise_?=
+	=?utf-8?q?estat=C3=ADstica_aplic=C3=A1vel_2?=
+In-Reply-To: <CAFpM4dVvXsvME=LEXgJ9_cTM91Dde-LxKGV0M9KZ3SQC0XqFZA@mail.gmail.com>
+References: <CAFpM4dVvXsvME=LEXgJ9_cTM91Dde-LxKGV0M9KZ3SQC0XqFZA@mail.gmail.com>
+Message-ID: <CAKrF98n-vRync=F_6+YV6GHMU92CCrYx_+dvNpV77Eiyu7Fyaw@mail.gmail.com>
+
+Prezado Alexandre,
+
+De fato, frente à idade do texto, é prudente observar se algo de mais novo
+pode aplicar-se à sua área de conhecimento.
+
+SE sua obra tiver apenas quatro *escalas* (nominal, ordinal, intervalar, e
+razão [racional]), pode ser que os questionamentos modernos lhe venham a
+ajudar quando enfrentando o mundo real. Por exemplo: a contagem de itens se
+encaixa em qual das quatro escalas acima?
+
+Note que durante muitos anos houve debate se o número de filhos [média de]
+podia ou não ser um número fracionário!
+
+Ainda hoje profissionais de saúde relutam e calcular o número de batimentos
+cardíacos por minuto com frações. . .¹
+
+Em Ciências Sociais há um segundo aspecto, a saber, que algumas "medidas"
+são feitas por *instrumentos* (questionários e critério de pontuação) onde
+mesmo a variável parecendo de uma classe ela pode não ter sentido quando
+aplicada as classificações de Stevens e as "operações permitidas" nelas.
+
+Numa hipotética escala de "angústia" com aquecimento global, onde 1 seria
+pouco ou nada e 5 muito ou totalmente preocupado, qual seria a
+interpretação que uma amostra da população X tem um escore médio de
+Angústia de 3,21 ± 0,17 ?
+
+Ainda nessa questão de instrumentos há aqueles que após chegar a um escore
+o classificam dando nomes a faixas de valores, destarte dando mesmo valor a
+questões do instrumento (pergunta do questionário) diferentes. . .
+
+Os textos sobre esse assunto já se espraiam por um século, com referências
+de 1924 ao presente!
+
+Alguns títulos mostram bem os limites da discussão : « Measurement Scales
+and Statistics: Resurgence of an Old Misconception », Gaito,
+J., Psychological Bulletin 87(3):564-567, maio de 1980. « Measurement
+Scales and Statistics: A clash of paradigms. », MIchell. J., Psychological
+Bulletin 100(3), 398-407, novembro de 1986.
+
+Em resumo, há mais que apenas o *tipo* percebido da escala e os testes
+estatísticos aplicáveis e mais no processo de onde os dados são gerados e a
+modelagem estatística do fenômeno em estudo.
+
+HTH
+--
+Cesar Rabak
+
+
+
+[1] Comunicação pessoal, Curso de Bioestatística Unifesp.
+
+On Mon, May 20, 2019 at 9:48 AM Tropicalnet por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezado Cesar
+> Obrigado pelo esclarecimento.
+> Abordar a questão como você fez é a melhor resposta que podia ter tido.
+>
+> Sou da área de humanas, tenho trabalhado com o texto:
+> PADUA, Jorge. Tecnicas de investigacion aplicadas a las ciencias sociales.
+> 6a reimpressão - Cidade do Mexico: FCE, 1979.
+> É um livro bem exaustivo para as tecnicas aplicáveis no âmbito das
+> Ciências Humanas. Em seu capítulo IX o autor correlaciona categorias e
+> testes estatisticos.
+> Entretanto, dada a idade do texto, eu procurava algum embasamento mais
+> atualizado.
+> Agora acredito que continua um bom guia para orientar nossas atividades.
+> Att.
+> Alexandre
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190524/da817613/attachment.html>
+
+From bodevan.ec em gmail.com  Fri May 24 15:14:19 2019
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Fri, 24 May 2019 15:14:19 -0300
+Subject: [R-br] Converter dados
+Message-ID: <CAP5i-syM5f_0Ps2=FhTCmbhzg888N6spP9CDx2uWJRJMG0czcQ@mail.gmail.com>
+
+Preados, boa tarde.
+
+Tenho um data frame em que uma das variáveis representa tempo de
+tartamento. Mas ela se encontra assim:
+
+*Tempo*
+22m15d
+10m10d
+...
+
+Gostaria de converter e trabalhar apenas com meses (por exemplo):
+
+*Tempo*
+22,50
+10,33
+...
+
+Como fazer?
+
+Agradeço qualquer ajuda.
+
+*Emerson*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190524/77bd3cd9/attachment.html>
+
+From bodevan.ec em gmail.com  Fri May 24 15:23:18 2019
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Fri, 24 May 2019 15:23:18 -0300
+Subject: [R-br] Como extrair ano de data
+Message-ID: <CAP5i-sxQhVV9PmutoFi8iq5GMtAjjpzS_qouJjwbmYOB6NKfpg@mail.gmail.com>
+
+Prezados, boa tarde.
+
+Outra dúvida. Como extrair o ano de uma data?
+
+Por exemplo: de 03/12/2013 quero ficar apenas com 2013
+
+Novamente agradeço qualquer ajuda.
+
+Atenciosamente,
+
+*Emerson*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190524/e0a2d6fa/attachment.html>
+
+From cesar.rabak em gmail.com  Fri May 24 15:37:26 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 24 May 2019 15:37:26 -0300
+Subject: [R-br] Converter dados
+In-Reply-To: <CAP5i-syM5f_0Ps2=FhTCmbhzg888N6spP9CDx2uWJRJMG0czcQ@mail.gmail.com>
+References: <CAP5i-syM5f_0Ps2=FhTCmbhzg888N6spP9CDx2uWJRJMG0czcQ@mail.gmail.com>
+Message-ID: <CAKrF98mq6mmn9OTT2POtZOWUNKevpA97baE=YyO49=ZY8aUMtA@mail.gmail.com>
+
+Pelo seu exemplo, você vai considerar um mês como trinta dias *sempre*.
+Correto?
+
+Esse erro não atrapalhará sua análise quando um período de tratamento
+inclua (ou não) o mês de fevereiro, por exemplo?
+
+
+
+On Fri, May 24, 2019 at 3:14 PM Emerson Cotta Bodevan por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Preados, boa tarde.
+>
+> Tenho um data frame em que uma das variáveis representa tempo de
+> tartamento. Mas ela se encontra assim:
+>
+> *Tempo*
+> 22m15d
+> 10m10d
+> ...
+>
+> Gostaria de converter e trabalhar apenas com meses (por exemplo):
+>
+> *Tempo*
+> 22,50
+> 10,33
+> ...
+>
+> Como fazer?
+>
+> Agradeço qualquer ajuda.
+>
+> *Emerson*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190524/35c3f26b/attachment.html>
+
+From gonferreirarenan em gmail.com  Fri May 24 15:53:01 2019
+From: gonferreirarenan em gmail.com (Renan Gon Ferreira)
+Date: Fri, 24 May 2019 15:53:01 -0300
+Subject: [R-br] =?utf-8?q?=5BLoop_em_An=C3=A1lise_de_Tend=C3=AAncia_sobre_?=
+	=?utf-8?b?c8OpcmllIGhpc3TDs3JpY2Fd?=
+Message-ID: <CAGKUfA594n8AKxCZ8=gKwQQWwYsH0CaFvtFtwTStyvmUZCbUZg@mail.gmail.com>
+
+Prezados, boa tarde!
+
+Tenho numa planilha a série histórica de 56 estações pluviométricas. A
+primeira coluna refere-se à data (mês/ano) do evento e as demais colunas
+são as estações (cada coluna para uma estação da bacia hidrográfica). Quero
+analisar se existe tendência ou não na série de cada estação. Pra isso,
+estou isolando cada coluna (pra trabalhar separadamente com cada estação),
+excluindo os NA e aplicando o comando Pettitt.test (que pertence ao pacote
+"trend"). Mas apesar das colunas isoladas estarem com valores consistentes,
+sem problemas, o resultado final que estou obtendo não está fazendo
+sentido.
+
+Alguém conhece este pacote, ou outro de tendência com teste de Pettitt que
+poderia me indicar?
+
+Além disso, alguém teria um script com loop (utilização do for?) pra que eu
+possa obter o* p-value* e o *ano de mudança de tendência *referente a cada
+estação, caso contrário eu teria que realizar separadamente esta análise
+para 56 estações. A ideia seria fazer para isso pra primeira estação e
+automatizar a análise e exportação dos resultados para as demais estações.
+
+Muito obrigado, pessoal.
+*_______________*
+*Renan Gon Ferreira*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190524/9586ffc1/attachment.html>
+
+From cesar.rabak em gmail.com  Fri May 24 16:25:02 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 24 May 2019 16:25:02 -0300
+Subject: [R-br] Como extrair ano de data
+In-Reply-To: <CAP5i-sxQhVV9PmutoFi8iq5GMtAjjpzS_qouJjwbmYOB6NKfpg@mail.gmail.com>
+References: <CAP5i-sxQhVV9PmutoFi8iq5GMtAjjpzS_qouJjwbmYOB6NKfpg@mail.gmail.com>
+Message-ID: <CAKrF98mG1Z=OjZ=W3qg5zTxJy31-nOijJjFQ2=pXX3+1JKNq3g@mail.gmail.com>
+
+A resposta exata depende de como essa " 03/12/2013"  está sendo vista na
+imagem do seu R.
+
+Se for uma cadeia de caracteres, veja a função gsub(), se for um tipo Date,
+user *format()* para obter apenas o ano.
+
+Frente às questões que você já postou, recomendaria a leitura da sua
+referência favorita o capítulo/seção sobre datas e tempo (*Dates and Times*)
+no R.
+
+HTH
+--
+Cesar Rabak
+
+
+
+On Fri, May 24, 2019 at 3:23 PM Emerson Cotta Bodevan por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados, boa tarde.
+>
+> Outra dúvida. Como extrair o ano de uma data?
+>
+> Por exemplo: de 03/12/2013 quero ficar apenas com 2013
+>
+> Novamente agradeço qualquer ajuda.
+>
+> Atenciosamente,
+>
+> *Emerson*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190524/595cb774/attachment.html>
+
+From cesar.rabak em gmail.com  Fri May 24 16:40:02 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 24 May 2019 16:40:02 -0300
+Subject: [R-br] 
+	=?utf-8?q?=5BLoop_em_An=C3=A1lise_de_Tend=C3=AAncia_sobre?=
+	=?utf-8?b?IHPDqXJpZSBoaXN0w7NyaWNhXQ==?=
+In-Reply-To: <CAGKUfA594n8AKxCZ8=gKwQQWwYsH0CaFvtFtwTStyvmUZCbUZg@mail.gmail.com>
+References: <CAGKUfA594n8AKxCZ8=gKwQQWwYsH0CaFvtFtwTStyvmUZCbUZg@mail.gmail.com>
+Message-ID: <CAKrF98mOywwjRVx4x6fO7gqSiMzoz_02ATMxv5H1b_Prgn1bvA@mail.gmail.com>
+
+Com relação à sua segunda questão, talvez valha a pena você considerar em
+vez de usar um *for loop*, o uso da função *apply()* com a margem escolhida
+adequadamente (pelo que entendi no seu caso seria as colunas).
+
+HTH
+--
+Cesar Rabak
+
+PS.: Via de regra o uso de laços em vez do uso das capacidades vetoriais da
+linguagem do R indica uma solução menos adequada e mais complicada que o
+necessário para 99% dos problemas...
+
+
+On Fri, May 24, 2019 at 3:53 PM Renan Gon Ferreira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados, boa tarde!
+>
+> Tenho numa planilha a série histórica de 56 estações pluviométricas. A
+> primeira coluna refere-se à data (mês/ano) do evento e as demais colunas
+> são as estações (cada coluna para uma estação da bacia hidrográfica). Quero
+> analisar se existe tendência ou não na série de cada estação. Pra isso,
+> estou isolando cada coluna (pra trabalhar separadamente com cada estação),
+> excluindo os NA e aplicando o comando Pettitt.test (que pertence ao pacote
+> "trend"). Mas apesar das colunas isoladas estarem com valores consistentes,
+> sem problemas, o resultado final que estou obtendo não está fazendo
+> sentido.
+>
+> Alguém conhece este pacote, ou outro de tendência com teste de Pettitt que
+> poderia me indicar?
+>
+> Além disso, alguém teria um script com loop (utilização do for?) pra que
+> eu possa obter o* p-value* e o *ano de mudança de tendência *referente a
+> cada estação, caso contrário eu teria que realizar separadamente esta
+> análise para 56 estações. A ideia seria fazer para isso pra primeira
+> estação e automatizar a análise e exportação dos resultados para as demais
+> estações.
+>
+> Muito obrigado, pessoal.
+> *_______________*
+> *Renan Gon Ferreira*
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190524/ff656a25/attachment.html>
+
+From gonferreirarenan em gmail.com  Fri May 24 16:43:44 2019
+From: gonferreirarenan em gmail.com (Renan Gon Ferreira)
+Date: Fri, 24 May 2019 16:43:44 -0300
+Subject: [R-br] 
+	=?utf-8?q?=5BLoop_em_An=C3=A1lise_de_Tend=C3=AAncia_sobre?=
+	=?utf-8?b?IHPDqXJpZSBoaXN0w7NyaWNhXQ==?=
+In-Reply-To: <CAKrF98mOywwjRVx4x6fO7gqSiMzoz_02ATMxv5H1b_Prgn1bvA@mail.gmail.com>
+References: <CAGKUfA594n8AKxCZ8=gKwQQWwYsH0CaFvtFtwTStyvmUZCbUZg@mail.gmail.com>
+ <CAKrF98mOywwjRVx4x6fO7gqSiMzoz_02ATMxv5H1b_Prgn1bvA@mail.gmail.com>
+Message-ID: <CAGKUfA7KEyB1oAcXR8XFNovj5X2=PTz34pOaM8sTkz=ExSrLVA@mail.gmail.com>
+
+Ok. Muito obrigado, Cesar.
+*_______________*
+*Renan Gon Ferreira*
+
+
+
+Em sex, 24 de mai de 2019 às 16:40, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Com relação à sua segunda questão, talvez valha a pena você considerar em
+> vez de usar um *for loop*, o uso da função *apply()* com a margem
+> escolhida adequadamente (pelo que entendi no seu caso seria as colunas).
+>
+> HTH
+> --
+> Cesar Rabak
+>
+> PS.: Via de regra o uso de laços em vez do uso das capacidades vetoriais
+> da linguagem do R indica uma solução menos adequada e mais complicada que o
+> necessário para 99% dos problemas...
+>
+>
+> On Fri, May 24, 2019 at 3:53 PM Renan Gon Ferreira por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Prezados, boa tarde!
+>>
+>> Tenho numa planilha a série histórica de 56 estações pluviométricas. A
+>> primeira coluna refere-se à data (mês/ano) do evento e as demais colunas
+>> são as estações (cada coluna para uma estação da bacia hidrográfica). Quero
+>> analisar se existe tendência ou não na série de cada estação. Pra isso,
+>> estou isolando cada coluna (pra trabalhar separadamente com cada estação),
+>> excluindo os NA e aplicando o comando Pettitt.test (que pertence ao pacote
+>> "trend"). Mas apesar das colunas isoladas estarem com valores consistentes,
+>> sem problemas, o resultado final que estou obtendo não está fazendo
+>> sentido.
+>>
+>> Alguém conhece este pacote, ou outro de tendência com teste de Pettitt
+>> que poderia me indicar?
+>>
+>> Além disso, alguém teria um script com loop (utilização do for?) pra que
+>> eu possa obter o* p-value* e o *ano de mudança de tendência *referente a
+>> cada estação, caso contrário eu teria que realizar separadamente esta
+>> análise para 56 estações. A ideia seria fazer para isso pra primeira
+>> estação e automatizar a análise e exportação dos resultados para as demais
+>> estações.
+>>
+>> Muito obrigado, pessoal.
+>> *_______________*
+>> *Renan Gon Ferreira*
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190524/6e45176d/attachment.html>
+
+From bodevan.ec em gmail.com  Fri May 24 17:09:35 2019
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Fri, 24 May 2019 17:09:35 -0300
+Subject: [R-br] Como extrair ano de data
+In-Reply-To: <CAKrF98mG1Z=OjZ=W3qg5zTxJy31-nOijJjFQ2=pXX3+1JKNq3g@mail.gmail.com>
+References: <CAP5i-sxQhVV9PmutoFi8iq5GMtAjjpzS_qouJjwbmYOB6NKfpg@mail.gmail.com>
+ <CAKrF98mG1Z=OjZ=W3qg5zTxJy31-nOijJjFQ2=pXX3+1JKNq3g@mail.gmail.com>
+Message-ID: <CAP5i-sweePMhgDagrJiYLvjH=LARgkx0DZnWPAPCz=phSOD3CA@mail.gmail.com>
+
+Obrigado Cesar pelo retorno.
+
+Vou tentar suas sugestões.
+
+Atenciosamente,
+
+*Emerson*
+
+
+Em sex, 24 de mai de 2019 às 16:25, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> A resposta exata depende de como essa " 03/12/2013"  está sendo vista na
+> imagem do seu R.
+>
+> Se for uma cadeia de caracteres, veja a função gsub(), se for um tipo
+> Date, user *format()* para obter apenas o ano.
+>
+> Frente às questões que você já postou, recomendaria a leitura da sua
+> referência favorita o capítulo/seção sobre datas e tempo (*Dates and
+> Times*) no R.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+>
+> On Fri, May 24, 2019 at 3:23 PM Emerson Cotta Bodevan por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Prezados, boa tarde.
+>>
+>> Outra dúvida. Como extrair o ano de uma data?
+>>
+>> Por exemplo: de 03/12/2013 quero ficar apenas com 2013
+>>
+>> Novamente agradeço qualquer ajuda.
+>>
+>> Atenciosamente,
+>>
+>> *Emerson*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190524/4b0cd61b/attachment.html>
+
+From mslordelo em gmail.com  Sun May 26 23:31:48 2019
+From: mslordelo em gmail.com (=?UTF-8?B?TWF1csOtY2lvIExvcmTDqmxv?=)
+Date: Sun, 26 May 2019 23:31:48 -0300
+Subject: [R-br] =?utf-8?q?xyplot=3A_incluir_equa=C3=A7=C3=A3o_e_r2_no_gr?=
+ =?utf-8?b?w6FmaWNv?=
+Message-ID: <CAGUUkAv4ievrU2bs+06JZT4K3Kh9pxAfj0QUcOW6QrGpQ9Yt4Q@mail.gmail.com>
+
+Caros,
+Preciso incluir as equações do modelo ajustado e o R2 no gráfico construído
+usando a função "xyplot" do pacote "lattice". Usei para o código mínimo
+reproduzível os dados do próprio pacote mas não deu certo.
+Agradeço quem puder auxiliar.
+Maurício
+
+library(lattice)
+str(iris)
+table(iris$Species)
+iris_setosa = subset(iris, Species =="setosa")
+mod1 = lm(Sepal.Length ~ Petal.Length, data=iris_setosa)
+iris_versicolor = subset(iris, Species =="versicolor")
+mod2 = lm(Sepal.Length ~ Petal.Length, data=iris_versicolor)
+iris_virginica = subset(iris, Species =="virginica")
+mod3 = lm(Sepal.Length ~ Petal.Length, data=iris_virginica)
+
+tp_mod1 = sprintf("%s = %.2f + %.2f%s", "Y",
+                  coef(mod1)[1], coef(mod1)[2], "X")
+r2_mod1 = cor(iris_setosa$Sepal.Length, fitted(mod1))^2
+
+tp_mod2 = sprintf("%s = %.1f + %.2f %s", "Y",
+                  coef(mod2)[1], coef(mod2)[2], "X")
+r2_mod2 = cor(iris_versicolor$Sepal.Length, fitted(mod2))^2
+
+tp_mod3 = sprintf("%s = %.1f + %.2f %s", "Y",
+                  coef(mod3)[1], coef(mod3)[2], "X")
+r2_mod3 = cor(iris_virginica$Sepal.Length, fitted(mod3))^2
+
+tp_mod1;r2_mod1
+tp_mod2;r2_mod2
+tp_mod3;r2_mod3
+##Necessito em cada "tp_mod" incluir o r2 logo abaixo da respectiva
+equação###
+
+mypanel<-function(x,y,...)
+{
+  panel.xyplot(x, y, ...)
+  panel.abline(mod1)
+  panel.abline(mod2)
+  panel.abline(mod3)
+  panel.text(4,7,labels=tp_mod1)
+  panel.text(3,8,labels=tp_mod2)
+  panel.text(2,7,labels=tp_mod3)
+}
+#O gráfico gerado:
+xyplot(Sepal.Length ~ Petal.Length | Species,panel = mypanel,
+       data = iris,
+       strip = strip.custom(par.strip.text = list(font = 3)))
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190526/4a84f0f8/attachment.html>
+
+From lucasguilhermemo em hotmail.com  Mon May 27 14:46:03 2019
+From: lucasguilhermemo em hotmail.com (Lucas Oliveira)
+Date: Mon, 27 May 2019 17:46:03 +0000
+Subject: [R-br] =?windows-1252?q?Adequa=E7=E3o_modelo_linear_misto?=
+Message-ID: <MN2PR02MB5885908AD0A76172350BAC1FC51D0@MN2PR02MB5885.namprd02.prod.outlook.com>
+
+[OFF-TOPIC]
+
+Boa tarde a todos!
+
+Estou analisando um experimento onde quero avaliar a adaptabilidade e estabilidade de  alguns clones em diferentes espaçamentos de plantio. O experimento foi montado em DBC (6 blocos) e com arranjo em parcelas sub-divididas.
+
+O modelo em questão é apresentado para delineamento em blocos completos em vários locais e várias observações por parcela – Método MHPRVG: Modelo 51 do software Selegen REML/BLUP.
+
+Modelo:  Xb + Za + Wc + Tp + e.
+
+Onde, y é o vetor de dados, b é o vetor dos efeitos de repetição (assumidos como fixos) somados à média geral, a é o vetor dos efeitos genotípicos (assumidos como aleatórios), c é o vetor dos efeitos de parcela (aleatórios), p é vetor dos efeitos da interação genótipos x ambientes (aleatórios) e e é o vetor de erros ou resíduos (aleatórios). As letras maiúsculas representam as matrizes de incidência para os referidos efeitos.
+
+O experimento é em apenas um local, onde os diferentes espaçamentos testados foram considerados como locais/ambientes, blocos como repetições e as sub-parcelas foram consideradas como parcelas e desta forma não sendo aleatorizadas.
+
+Assim, ficaram os seguintes questionamentos:
+
+  *   Este modelo pode ser utilizado nesta situação?
+
+  *   Qual a implicação de utilizar este modelo para o referido experimento?
+
+  *   Qual a implicação da não aleatorização das parcelas?
+
+  *   É possível criar um modelo adequado para este experimento? Como processar os dados utilizando um modelo mais adequado no R?
+
+Agradeço a atenção!
+
+Lucas Guilherme Moura Oliveira
+Engenheiro Florestal - UFMG
+Mestrando Ciência Florestal - UFVJM
+Diamantina - MG (31) 96274633 / (31) 73521293
+Lattes<http://lattes.cnpq.br/3332942776537748>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190527/17c58748/attachment.html>
+
+From jonatan.oliveira em unesp.br  Tue May 28 01:41:04 2019
+From: jonatan.oliveira em unesp.br (Jonatan Alexandre De Oliveira)
+Date: Tue, 28 May 2019 01:41:04 -0300
+Subject: [R-br] importar dados do Sistema IOS macbook para o R
+Message-ID: <CACAmgxJ=HF4vFq-fX1UDXdGNRj=urwBzNzAauFqZJZ0v5NTatA@mail.gmail.com>
+
+Caros,
+
+Estou tentando importar dados txt para o R, destaco que meu sistema é o
+IOS, o arquivo encontra-se numa pasta dentro do desktop. Tentei o seguinte
+comando.
+
+dados<read.table("desktop:/teste/arquivo.txt",h=T)
+
+
+O arquivo encontra-se no Desktop, pasta R, arquivo jonatanm.txt.
+
+
+ENTRETANTO, não obtive sucesso, alguém sabe como solucionar este caso?
+
+
+Agradeço desde já pela atenção
+
+jonatan
+-- 
+
+
+
+
+
+
+
+*JONATAN OLIVEIRA | Phd Candidate Research Group - Food Security and
+Institutional ActionsFaculty of Agrarian and Veterinary Sciences
+of Jaboticabal - UNESP+5516996251552Institute of Geosciences and Exact
+Sciences of - UNESP/Rio Claro+551935269149*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190528/d1221575/attachment.html>
+
+From dtiezzi em usp.br  Tue May 28 02:14:52 2019
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 28 May 2019 02:14:52 -0300
+Subject: [R-br] importar dados do Sistema IOS macbook para o R
+In-Reply-To: <CACAmgxJ=HF4vFq-fX1UDXdGNRj=urwBzNzAauFqZJZ0v5NTatA@mail.gmail.com>
+References: <CACAmgxJ=HF4vFq-fX1UDXdGNRj=urwBzNzAauFqZJZ0v5NTatA@mail.gmail.com>
+Message-ID: <525E8133-66C8-42DF-8846-3A4B70C72355@usp.br>
+
+Boa noite Jonatan
+
+Seria uma boa idéia você dar uma lida sobre a estrutura de diretórios do Mac OS. Ele é bem parecido com o Linux, visto que ambos os sistemas são derivados do Unix.
+
+O caminho para o Desktop é "/Users/nomedousuario/Desktop”. O nomedousuario é o que você está utilizando no seu sistema.
+
+Desta forma, em R ficaria:
+
+Dados <- read.table(“/Users/nomedousuario/Desktop/teste/arquivo.txt, sep=“\t”). # para arquivos separados por tabulação. 
+
+
+Daniel
+
+
+
+Daniel Tiezzi, MD, PhD
+Professor Associado
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em fmrp.usp.br
+
+
+
+> On 28 May 2019, at 01:41, Jonatan Alexandre De Oliveira por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Caros,
+> 
+> Estou tentando importar dados txt para o R, destaco que meu sistema é o IOS, o arquivo encontra-se numa pasta dentro do desktop. Tentei o seguinte comando.
+> 
+> dados<read.table("desktop:/teste/arquivo.txt",h=T)
+> 
+> O arquivo encontra-se no Desktop, pasta R, arquivo jonatanm.txt.
+> 
+> ENTRETANTO, não obtive sucesso, alguém sabe como solucionar este caso?
+> 
+> Agradeço desde já pela atenção
+> 
+> jonatan
+> -- 
+> JONATAN OLIVEIRA | Phd Candidate 
+> 
+> Research Group - Food Security and Institutional Actions
+> Faculty of Agrarian and Veterinary Sciences of Jaboticabal - UNESP
+> +5516996251552
+> 
+> Institute of Geosciences and Exact Sciences of - UNESP/Rio Claro
+> +551935269149
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190528/60e32598/attachment.html>
+
+From pjobenil em gmail.com  Tue May 28 10:50:43 2019
+From: pjobenil em gmail.com (=?utf-8?Q?Jobenil_Luiz_Magalh=C3=A3es_J=C3=BAnior?=)
+Date: Tue, 28 May 2019 10:50:43 -0300
+Subject: [R-br] RES:  importar dados do Sistema IOS macbook para o R
+In-Reply-To: <CACAmgxJ=HF4vFq-fX1UDXdGNRj=urwBzNzAauFqZJZ0v5NTatA@mail.gmail.com>
+References: <CACAmgxJ=HF4vFq-fX1UDXdGNRj=urwBzNzAauFqZJZ0v5NTatA@mail.gmail.com>
+Message-ID: <5ced3cb9.1c69fb81.e7618.d156@mx.google.com>
+
+Jonatan, bom dia.
+
+Note que você está usando o sinal < e não <- para instanciar o objeto data. Desse jeito a linguagem deve “pensar” que o objeto data é menor do que o objeto data.table.
+Da próxima vez envie também a mensagem de erro que você recebeu, isso pode ajudar a comunidade a dar um direcionamento melhor.
+Atenciosamente
+Jobenil Júnior
+
+
+Enviado do Email para Windows 10
+
+De: Jonatan Alexandre De Oliveira por (R-br)
+Enviado:terça-feira, 28 de maio de 2019 01:41
+Para: r-br em listas.c3sl.ufpr.br
+Cc:Jonatan Alexandre De Oliveira
+Assunto: [R-br] importar dados do Sistema IOS macbook para o R
+
+Caros,
+
+Estou tentando importar dados txt para o R, destaco que meu sistema é o IOS, o arquivo encontra-se numa pasta dentro do desktop. Tentei o seguinte comando.
+
+dados<read.table("desktop:/teste/arquivo.txt",h=T)
+
+O arquivo encontra-se no Desktop, pasta R, arquivo jonatanm.txt.
+
+ENTRETANTO, não obtive sucesso, alguém sabe como solucionar este caso?
+
+
+Agradeço desde já pela atenção
+
+jonatan
+-- 
+JONATAN OLIVEIRA | Phd Candidate 
+
+Research Group - Food Security and Institutional Actions
+Faculty of Agrarian and Veterinary Sciences of Jaboticabal - UNESP
++5516996251552
+
+Institute of Geosciences and Exact Sciences of - UNESP/Rio Claro
++551935269149
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190528/d9677320/attachment.html>
+
+From renatorochabatista em gmail.com  Tue May 28 13:24:53 2019
+From: renatorochabatista em gmail.com (Renato Rocha Batista)
+Date: Tue, 28 May 2019 13:24:53 -0300
+Subject: [R-br] =?utf-8?q?Aplica=C3=A7=C3=A3o_de_m=C3=A9todos_de_dados_fal?=
+	=?utf-8?q?tantes_no_ambiente_R?=
+Message-ID: <CACjJ0mezmDfdXGgEdf2PgVm-BY1sw0i9T7LU14hiF26Cq80mZQ@mail.gmail.com>
+
+Boa tarde Prezados.
+
+Estou a tratar dados experimentais em excel, sendo que alguns dados estão
+em falta em relação a algumas variáveis e objetos (entradas em Excel).
+
+Vou realizar a análise multivariada com dados de uma planilha (40 objetos
+versus 24 colunas de dados), mas antes, eu tenho que prever os dados em
+falta de algumas células.
+
+Por gentileza alguém teria recomendação de script no R com a implementação
+dos métodos?
+
+- Método do algoritmo E-M (Expectativa-Maximização) que pressupõe a
+normalidade dos dados referentes às variáveis de resposta
+
+e
+
+- Modelo de regressão logística. A equação gerada permitiria estimar os
+valores dos dados perdidos. Não assume uma distribuição normal das
+variáveis de resposta. Ao contrário da regressão linear cujos dados variam
+de - ∞ a + ∞, na regressão logística eles variam de 0 a 1 e, portanto, são
+apropriados para variáveis cujos valores variam de 0 a 1.
+
+Em vista do exposto, alguém poderia me ajudar ou recomendar alguém que
+saiba implementar esses métodos no R?
+
+
+Grato pela atenção.
+
+Obrigado
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190528/a7ca1d48/attachment.html>
+
+From paulomesquita7 em gmail.com  Tue May 28 17:08:36 2019
+From: paulomesquita7 em gmail.com (Paulo Eduardo de Mesquita)
+Date: Tue, 28 May 2019 17:08:36 -0300
+Subject: [R-br] =?utf-8?q?Solu=C3=A7=C3=A3o_alternativa_evitando_uso_de_lo?=
+ =?utf-8?q?op?=
+Message-ID: <CABODYa5oDrr7vY8sK-rH73Lgdu0e_K8YSbdcVMuq23mx1aBmMQ@mail.gmail.com>
+
+Prezado(a)s colegas da lista,
+
+Peço a vossa ajuda nessa questão. Embora eu já tenha uma solução, gostaria
+de explorar eventuais alternativas que evitem o uso do loop for.
+
+Eu tenho um vetor  de números inteiros v1 com 10 elementos.
+
+Eu preciso de um código que produza um outro vetor numérico v2, também com
+10 elementos, em que:
+- o valor do primeiro elemento seja igual ao valor do primeiro elemento de
+v1;
+- o valor do segundo elemento seja igual a soma do primeiro e do segundo
+elemento de v1;
+- o valor do terceiro elemento seja igual a soma do primeiro, do segundo e
+do terceiro elementos de v1;
+- todos os demais elementos (do 4o ao 10o) sejam iguais a soma dele e dos
+três elementos imediatamente anteriores a ele.
+
+Tentei soluções aplicando as funções da familia apply, mas acaba caindo no
+loop.
+
+Eu imagino que seja possível uma solução utilizando a função cumsum ou
+alguma variante que restrinja a soma aos últimos 4 elementos e defina uma
+regra para a exceção representada pelos 03 primeiros elementos. Qualquer
+ajuda nessa implementação é muito benvinda.
+
+Grato pela atenção,
+
+Código:
+
+v1 <- c(1,2,3,4,5,6,7,8,9,10)
+v2 <- numeric(length = length(v1))
+for (i in seq_along(v1)) {
+   v2[i] <- ifelse(i < 2, v1[i],
+                   ifelse(i < 3, v1[i - 1] + v1[i],
+                     ifelse(i < 4, v1[i - 2] + v1[i - 1] + v1[i], v1[i - 3]
++ v1[i - 2] + v1[i - 1] + v1[i])))
+}
+v2
+data.frame(v1, v2)
+
+-- 
+Paulo Eduardo de Mesquita
+Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+Paulista Presidente Prudente - São Paulo - Brasil
+telefone: 5518 97718261
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190528/61c2c304/attachment.html>
+
+From dtiezzi em usp.br  Tue May 28 17:37:06 2019
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 28 May 2019 17:37:06 -0300
+Subject: [R-br] 
+ =?utf-8?q?Solu=C3=A7=C3=A3o_alternativa_evitando_uso_de_l?=
+ =?utf-8?q?oop?=
+In-Reply-To: <CABODYa5oDrr7vY8sK-rH73Lgdu0e_K8YSbdcVMuq23mx1aBmMQ@mail.gmail.com>
+References: <CABODYa5oDrr7vY8sK-rH73Lgdu0e_K8YSbdcVMuq23mx1aBmMQ@mail.gmail.com>
+Message-ID: <0D98A377-EC9D-4113-9542-E50219C28261@usp.br>
+
+Boa tarde Paulo
+
+Acredito que uma função recursiva utilizando o cumsum() seria uma solução. Algo assim:
+
+f <- function(v) cumsum(v)
+
+v1 <- c(1,2,3,4,5,6,7,8,9,10)
+f(v1)
+
+Saída: 
+[1]  1  3  6 10 15 21 28 36 45 55
+
+
+daniel
+
+
+Daniel Tiezzi
+Professor Associado
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em usp.br
+
+> On May 28, 2019, at 5:08 PM, Paulo Eduardo de Mesquita por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Prezado(a)s colegas da lista,
+> 
+> Peço a vossa ajuda nessa questão. Embora eu já tenha uma solução, gostaria de explorar eventuais alternativas que evitem o uso do loop for.
+> 
+> Eu tenho um vetor  de números inteiros v1 com 10 elementos.
+> 
+> Eu preciso de um código que produza um outro vetor numérico v2, também com 10 elementos, em que:
+> - o valor do primeiro elemento seja igual ao valor do primeiro elemento de v1;
+> - o valor do segundo elemento seja igual a soma do primeiro e do segundo elemento de v1;
+> - o valor do terceiro elemento seja igual a soma do primeiro, do segundo e do terceiro elementos de v1;
+> - todos os demais elementos (do 4o ao 10o) sejam iguais a soma dele e dos três elementos imediatamente anteriores a ele.
+> 
+> Tentei soluções aplicando as funções da familia apply, mas acaba caindo no loop.
+> 
+> Eu imagino que seja possível uma solução utilizando a função cumsum ou alguma variante que restrinja a soma aos últimos 4 elementos e defina uma regra para a exceção representada pelos 03 primeiros elementos. Qualquer ajuda nessa implementação é muito benvinda.
+> 
+> Grato pela atenção,
+> 
+> Código:
+> 
+> v1 <- c(1,2,3,4,5,6,7,8,9,10)
+> v2 <- numeric(length = length(v1))
+> for (i in seq_along(v1)) {
+>    v2[i] <- ifelse(i < 2, v1[i],
+>                    ifelse(i < 3, v1[i - 1] + v1[i],
+>                      ifelse(i < 4, v1[i - 2] + v1[i - 1] + v1[i], v1[i - 3] + v1[i - 2] + v1[i - 1] + v1[i])))
+> }
+> v2
+> data.frame(v1, v2)
+> 
+> -- 
+> Paulo Eduardo de Mesquita
+> Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste Paulista Presidente Prudente - São Paulo - Brasil
+> telefone: 5518 97718261
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+From marcus.nunes em gmail.com  Tue May 28 17:51:46 2019
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Tue, 28 May 2019 17:51:46 -0300
+Subject: [R-br] 
+	=?utf-8?q?Solu=C3=A7=C3=A3o_alternativa_evitando_uso_de_l?=
+	=?utf-8?q?oop?=
+In-Reply-To: <CABODYa5oDrr7vY8sK-rH73Lgdu0e_K8YSbdcVMuq23mx1aBmMQ@mail.gmail.com>
+References: <CABODYa5oDrr7vY8sK-rH73Lgdu0e_K8YSbdcVMuq23mx1aBmMQ@mail.gmail.com>
+Message-ID: <CA+QGQvvEqmt8=znf8B46Sfx4g5LLHX0xc_K8vF_2i=4W+2-2wQ@mail.gmail.com>
+
+Uma possível solução é a seguinte:
+
+####
+v1 <- c(1,2,3,4,5,6,7,8,9,10)
+v2 <- numeric(length = length(v1))
+
+for (j in 1:length(v1)){
+  if(j <= 3){
+    v2[j] <- tail(cumsum(v1[1:j]), 1)
+  } else {
+  v2[j] <- tail(cumsum(v1[(j-3):j]), 1)
+  }
+}
+
+v2
+####
+
+Se o comprimento de v1 for menor ou igual a 3, toma-se o último elemento de
+cumsum(v1) através da função tail().
+
+Se o comprimento de v1 não for menor ou igual a 3, toma-se o último
+elemento de cumsum(v1[(j-3):j]), que é justamente a janela dos 4 últimos
+elementos da soma cumulativa.
+--
+Marcus Nunes
+Professor Adjunto
+Universidade Federal do Rio Grande do Norte
+Centro de Ciências Exatas e da Terra
+Departamento de Estatística
+Laboratório de Estatística Aplicada
+marcus em marcusnunes.me
+https://marcusnunes.me/
+http://shiny.estatistica.ccet.ufrn.br
+
+
+
+On Tue, May 28, 2019 at 5:06 PM Paulo Eduardo de Mesquita por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezado(a)s colegas da lista,
+>
+> Peço a vossa ajuda nessa questão. Embora eu já tenha uma solução, gostaria
+> de explorar eventuais alternativas que evitem o uso do loop for.
+>
+> Eu tenho um vetor  de números inteiros v1 com 10 elementos.
+>
+> Eu preciso de um código que produza um outro vetor numérico v2, também com
+> 10 elementos, em que:
+> - o valor do primeiro elemento seja igual ao valor do primeiro elemento de
+> v1;
+> - o valor do segundo elemento seja igual a soma do primeiro e do segundo
+> elemento de v1;
+> - o valor do terceiro elemento seja igual a soma do primeiro, do segundo e
+> do terceiro elementos de v1;
+> - todos os demais elementos (do 4o ao 10o) sejam iguais a soma dele e dos
+> três elementos imediatamente anteriores a ele.
+>
+> Tentei soluções aplicando as funções da familia apply, mas acaba caindo no
+> loop.
+>
+> Eu imagino que seja possível uma solução utilizando a função cumsum ou
+> alguma variante que restrinja a soma aos últimos 4 elementos e defina uma
+> regra para a exceção representada pelos 03 primeiros elementos. Qualquer
+> ajuda nessa implementação é muito benvinda.
+>
+> Grato pela atenção,
+>
+> Código:
+>
+> v1 <- c(1,2,3,4,5,6,7,8,9,10)
+> v2 <- numeric(length = length(v1))
+> for (i in seq_along(v1)) {
+>    v2[i] <- ifelse(i < 2, v1[i],
+>                    ifelse(i < 3, v1[i - 1] + v1[i],
+>                      ifelse(i < 4, v1[i - 2] + v1[i - 1] + v1[i], v1[i -
+> 3] + v1[i - 2] + v1[i - 1] + v1[i])))
+> }
+> v2
+> data.frame(v1, v2)
+>
+> --
+> Paulo Eduardo de Mesquita
+> Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+> Paulista Presidente Prudente - São Paulo - Brasil
+> telefone: 5518 97718261
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190528/c792ed5e/attachment.html>
+
+From jhguilhen em gmail.com  Wed May 29 12:04:53 2019
+From: jhguilhen em gmail.com (Ze Henrique)
+Date: Wed, 29 May 2019 12:04:53 -0300
+Subject: [R-br] =?utf-8?q?Problema_na_importa=C3=A7=C3=A3o_dos_dados?=
+Message-ID: <CAHi1An8Twdgvg31fBMoZ6oOJLaKASJsdr+RtQx5RQM-YKzqUHw@mail.gmail.com>
+
+Bom dia senhores,
+
+estou com problema para importar dados.
+
+Estou utilizando o pacote R "RcppCNPy", pois o arqui está na extensão
+".npy".
+
+Dos 3 arquivos que tenho, apenas 1 importar os outros dois quando vou
+importar o R fecha.
+
+Alguém sabe o motivo e como poderia resolver este problema?
+
+Obs: Arquivo que importa tem 103 KB e os que não consigo importar tem 106
+KB e 465.000 KB.
+
+Desde já agradeço pela ajuda.
+
+-- 
+*José Henrique Soler Guilhen*
+Doutorando em Genética e Melhoramento
+Universidade Federal do Espírito Santo - CCAUFES
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190529/a3c7aaed/attachment.html>
+
+From yurynepomuceno em gmail.com  Wed May 29 12:06:11 2019
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Wed, 29 May 2019 12:06:11 -0300
+Subject: [R-br] =?utf-8?q?Problema_na_importa=C3=A7=C3=A3o_dos_dados?=
+In-Reply-To: <CAHi1An8Twdgvg31fBMoZ6oOJLaKASJsdr+RtQx5RQM-YKzqUHw@mail.gmail.com>
+References: <CAHi1An8Twdgvg31fBMoZ6oOJLaKASJsdr+RtQx5RQM-YKzqUHw@mail.gmail.com>
+Message-ID: <CADFS6E5EXJFjytZ4CfXm4Qo8Sejcc-TeUmWig3wYa10hw+NmSw@mail.gmail.com>
+
+Zé, não sei o que você precisa fazer no R, mas, já que você gerou os dados
+com a biblioteca numpy do Python, não seria mais prático você construir em
+R uma função que atenda a sua necessidade e chamar essa função via Python?
+Sendo que, nessa função, o parâmetro que você iria exigir é uma matriz de
+dados, gerada pela biblioteca numpy.
+
+Abs
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+
+Em qua, 29 de mai de 2019 às 11:57, Ze Henrique por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia senhores,
+>
+> estou com problema para importar dados.
+>
+> Estou utilizando o pacote R "RcppCNPy", pois o arqui está na extensão
+> ".npy".
+>
+> Dos 3 arquivos que tenho, apenas 1 importar os outros dois quando vou
+> importar o R fecha.
+>
+> Alguém sabe o motivo e como poderia resolver este problema?
+>
+> Obs: Arquivo que importa tem 103 KB e os que não consigo importar tem 106
+> KB e 465.000 KB.
+>
+> Desde já agradeço pela ajuda.
+>
+> --
+> *José Henrique Soler Guilhen*
+> Doutorando em Genética e Melhoramento
+> Universidade Federal do Espírito Santo - CCAUFES
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190529/c9e2fd9c/attachment.html>
+
+From jhguilhen em gmail.com  Wed May 29 12:19:13 2019
+From: jhguilhen em gmail.com (Ze Henrique)
+Date: Wed, 29 May 2019 12:19:13 -0300
+Subject: [R-br] =?utf-8?q?Problema_na_importa=C3=A7=C3=A3o_dos_dados?=
+In-Reply-To: <CADFS6E5EXJFjytZ4CfXm4Qo8Sejcc-TeUmWig3wYa10hw+NmSw@mail.gmail.com>
+References: <CAHi1An8Twdgvg31fBMoZ6oOJLaKASJsdr+RtQx5RQM-YKzqUHw@mail.gmail.com>
+ <CADFS6E5EXJFjytZ4CfXm4Qo8Sejcc-TeUmWig3wYa10hw+NmSw@mail.gmail.com>
+Message-ID: <CAHi1An8pC9x_vR2qYRaaE4aB19OMKPDR8eNcM3m8LUn6pAS0VA@mail.gmail.com>
+
+Na verdade Yury, eu recebi este banco de dados não fui eu que gerei.
+
+Mas obrigado pela dica.
+
+
+Em qua, 29 de mai de 2019 às 12:06, Yury Duarte por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Zé, não sei o que você precisa fazer no R, mas, já que você gerou os dados
+> com a biblioteca numpy do Python, não seria mais prático você construir em
+> R uma função que atenda a sua necessidade e chamar essa função via Python?
+> Sendo que, nessa função, o parâmetro que você iria exigir é uma matriz de
+> dados, gerada pela biblioteca numpy.
+>
+> Abs
+>
+> Yury Duarte
+> Engenheiro Agrônomo - ESALQ/USP
+>
+>
+> Em qua, 29 de mai de 2019 às 11:57, Ze Henrique por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Bom dia senhores,
+>>
+>> estou com problema para importar dados.
+>>
+>> Estou utilizando o pacote R "RcppCNPy", pois o arqui está na extensão
+>> ".npy".
+>>
+>> Dos 3 arquivos que tenho, apenas 1 importar os outros dois quando vou
+>> importar o R fecha.
+>>
+>> Alguém sabe o motivo e como poderia resolver este problema?
+>>
+>> Obs: Arquivo que importa tem 103 KB e os que não consigo importar tem 106
+>> KB e 465.000 KB.
+>>
+>> Desde já agradeço pela ajuda.
+>>
+>> --
+>> *José Henrique Soler Guilhen*
+>> Doutorando em Genética e Melhoramento
+>> Universidade Federal do Espírito Santo - CCAUFES
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+
+
+
+-- 
+*José Henrique Soler Guilhen*
+Doutorando em Genética e Melhoramento
+Universidade Federal do Espírito Santo - CCAUFES
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190529/e20bd2c2/attachment.html>
+
+From caiocagronomo em gmail.com  Wed May 29 14:06:47 2019
+From: caiocagronomo em gmail.com (caiocagronomo em gmail.com)
+Date: Wed, 29 May 2019 12:06:47 -0500 (CDT)
+Subject: [R-br] =?utf-8?q?_Aplica=C3=A7=C3=A3o_de_m=C3=A9todos_de_dados_fa?=
+ =?utf-8?q?ltantes_no_ambiente_R?=
+Message-ID: <943205649.514208.1559149607409.JavaMail.administrator@n4.nabble.com>
+
+<quote author='R-br mailing list'>
+Boa tarde Prezados.
+
+Estou a tratar dados experimentais em excel, sendo que alguns dados estão
+em falta em relação a algumas variáveis e objetos (entradas em Excel).
+
+Vou realizar a análise multivariada com dados de uma planilha (40 objetos
+versus 24 colunas de dados), mas antes, eu tenho que prever os dados em
+falta de algumas células.
+
+Por gentileza alguém teria recomendação de script no R com a implementação
+dos métodos?
+
+- Método do algoritmo E-M (Expectativa-Maximização) que pressupõe a
+normalidade dos dados referentes às variáveis de resposta
+
+e
+
+- Modelo de regressão logística. A equação gerada permitiria estimar os
+valores dos dados perdidos. Não assume uma distribuição normal das
+variáveis de resposta. Ao contrário da regressão linear cujos dados variam
+de - ∞ a + ∞, na regressão logística eles variam de 0 a 1 e, portanto, são
+apropriados para variáveis cujos valores variam de 0 a 1.
+
+Em vista do exposto, alguém poderia me ajudar ou recomendar alguém que
+saiba implementar esses métodos no R?
+
+
+Grato pela atenção.
+
+Obrigado
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo
+m�nimo reproduz�vel.
+</quote>
+Quoted from: 
+http://r-br.2285057.n4.nabble.com/R-br-Aplicacao-de-metodos-de-dados-faltantes-no-ambiente-R-tp4668543.html
+
+
+Dê uma olhada nesse post...
+https://towardsdatascience.com/6-different-ways-to-compensate-for-missing-values-data-imputation-with-examples-6022d9ca0779
+
+_____________________________________
+Sent from http://r-br.2285057.n4.nabble.com
+
+
+From cesar.rabak em gmail.com  Fri May 31 11:23:40 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 31 May 2019 11:23:40 -0300
+Subject: [R-br] 
+	=?utf-8?q?Aplica=C3=A7=C3=A3o_de_m=C3=A9todos_de_dados_fa?=
+	=?utf-8?q?ltantes_no_ambiente_R?=
+In-Reply-To: <943205649.514208.1559149607409.JavaMail.administrator@n4.nabble.com>
+References: <943205649.514208.1559149607409.JavaMail.administrator@n4.nabble.com>
+Message-ID: <CAKrF98m31TmZKYkNz=QrDAL-MMGRPm_Lqtt4LVRqZCJp-TdMnA@mail.gmail.com>
+
+Rapaz!
+
+Com 24 variáveis e apenas 40 objetos, que entendo aqui como número de
+dados, amostras ou "linhas" do banco de dados, você se arrisca a fazer um
+sobreajuste (*overfitting*)¹ e não uma análise estatística!
+
+Ademais, com dados faltantes em alguns casos você ainda vai uma nova
+questão do que esses dados imputados poderia significar se essa for a saída
+encontrada ou se a alternativa for descartar casos com dados faltantes. . .
+
+HTH
+--
+Cesar Rabak
+
+[1] V. também a respeito da "one in ten rule", embora o número dez pode
+precisar ser maior como no seu caso que além de multivariada tem dados
+faltantes.
+
+
+On Wed, May 29, 2019 at 2:06 PM Caio Correa por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> <quote author='R-br mailing list'>
+> Boa tarde Prezados.
+>
+> Estou a tratar dados experimentais em excel, sendo que alguns dados estão
+> em falta em relação a algumas variáveis e objetos (entradas em Excel).
+>
+> Vou realizar a análise multivariada com dados de uma planilha (40 objetos
+> versus 24 colunas de dados), mas antes, eu tenho que prever os dados em
+> falta de algumas células.
+>
+> Por gentileza alguém teria recomendação de script no R com a implementação
+> dos métodos?
+>
+> - Método do algoritmo E-M (Expectativa-Maximização) que pressupõe a
+> normalidade dos dados referentes às variáveis de resposta
+>
+> e
+>
+> - Modelo de regressão logística. A equação gerada permitiria estimar os
+> valores dos dados perdidos. Não assume uma distribuição normal das
+> variáveis de resposta. Ao contrário da regressão linear cujos dados variam
+> de - ∞ a + ∞, na regressão logística eles variam de 0 a 1 e, portanto, são
+> apropriados para variáveis cujos valores variam de 0 a 1.
+>
+> Em vista do exposto, alguém poderia me ajudar ou recomendar alguém que
+> saiba implementar esses métodos no R?
+>
+>
+> Grato pela atenção.
+>
+> Obrigado
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo
+> m�nimo reproduz�vel.
+> </quote>
+> Quoted from:
+>
+> http://r-br.2285057.n4.nabble.com/R-br-Aplicacao-de-metodos-de-dados-faltantes-no-ambiente-R-tp4668543.html
+>
+>
+> Dê uma olhada nesse post...
+>
+> https://towardsdatascience.com/6-different-ways-to-compensate-for-missing-values-data-imputation-with-examples-6022d9ca0779
+>
+> _____________________________________
+> Sent from http://r-br.2285057.n4.nabble.com
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190531/b51d3e2a/attachment.html>
+
+From cesar.rabak em gmail.com  Fri May 31 11:29:40 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 31 May 2019 11:29:40 -0300
+Subject: [R-br] 
+	=?utf-8?q?Aplica=C3=A7=C3=A3o_de_m=C3=A9todos_de_dados_fa?=
+	=?utf-8?q?ltantes_no_ambiente_R?=
+In-Reply-To: <CACjJ0mezmDfdXGgEdf2PgVm-BY1sw0i9T7LU14hiF26Cq80mZQ@mail.gmail.com>
+References: <CACjJ0mezmDfdXGgEdf2PgVm-BY1sw0i9T7LU14hiF26Cq80mZQ@mail.gmail.com>
+Message-ID: <CAKrF98m25cphDqBFYcvp9KJy1yXJ_-HsLGnq=xkYi_74LRNLAA@mail.gmail.com>
+
+Caio,
+
+Neste parágrafo acho que é necessário esclarecer se você se expressou mal
+ou é problema de entendimento:
+
+- Modelo de regressão logística. A equação gerada permitiria estimar os
+> valores dos dados perdidos. Não assume uma distribuição normal das
+> variáveis de resposta. Ao contrário da regressão linear cujos dados variam
+> de - ∞ a + ∞, na regressão logística eles variam de 0 a 1 e, portanto, são
+> apropriados para variáveis cujos valores variam de 0 a 1.
+>
+
+Na RL os dados (a variável resposta) *não* *variam *de 0 a 1 mas sim são *ou
+zero ou um.* A RL é apropriada quando a resposta é binária, e a variável
+independente é contínua (ou pode ser modelada como tal).
+
+Ou escrito doutra forma: na RL a variável resposta é discreta binária.
+
+HTH
+--
+Cesar Rabak
+
+
+
+On Tue, May 28, 2019 at 1:25 PM Renato Rocha Batista por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde Prezados.
+>
+> Estou a tratar dados experimentais em excel, sendo que alguns dados estão
+> em falta em relação a algumas variáveis e objetos (entradas em Excel).
+>
+> Vou realizar a análise multivariada com dados de uma planilha (40 objetos
+> versus 24 colunas de dados), mas antes, eu tenho que prever os dados em
+> falta de algumas células.
+>
+> Por gentileza alguém teria recomendação de script no R com a implementação
+> dos métodos?
+>
+> - Método do algoritmo E-M (Expectativa-Maximização) que pressupõe a
+> normalidade dos dados referentes às variáveis de resposta
+>
+> e
+>
+> - Modelo de regressão logística. A equação gerada permitiria estimar os
+> valores dos dados perdidos. Não assume uma distribuição normal das
+> variáveis de resposta. Ao contrário da regressão linear cujos dados variam
+> de - ∞ a + ∞, na regressão logística eles variam de 0 a 1 e, portanto, são
+> apropriados para variáveis cujos valores variam de 0 a 1.
+>
+> Em vista do exposto, alguém poderia me ajudar ou recomendar alguém que
+> saiba implementar esses métodos no R?
+>
+>
+> Grato pela atenção.
+>
+> Obrigado
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190531/6dea9890/attachment.html>
+

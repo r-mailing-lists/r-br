@@ -1,0 +1,1857 @@
+From ecacarva em gmail.com  Tue Jun 18 10:34:52 2024
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Tue, 18 Jun 2024 10:34:52 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+Message-ID: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+
+Bom dia pessoal
+Alguém sabe se há algum pacote do R que extraia dados de atendimentos do
+SUS ?
+
+
+
+-- 
+
+
+*In Jesu et Maria*
+
+*Obrigado / Thank you*
+*Prof. Dr. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240618/afcbe9a3/attachment.htm>
+
+From rfsaldanha em gmail.com  Tue Jun 18 10:40:15 2024
+From: rfsaldanha em gmail.com (Raphael Saldanha)
+Date: Tue, 18 Jun 2024 15:40:15 +0200
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+Message-ID: <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+
+Olá Elias,
+
+Os dados de atendimentos ambulatoriais da dimensão pública do SUS são 
+registrados em um sistema de informações em saúde denominado Sistema de 
+Informações Ambulatoriais.
+
+Você consegue acessar esses dados com o R usando o pacote {microdatasus}
+
+https://rfsaldanha.github.io/microdatasus/
+
+Posso te ajudar com mais detalhes se precisar.
+
+
+Abraços,
+
+Raphael Saldanha
+
+
+On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+> Bom dia pessoal
+> Alguém sabe se há algum pacote do R que extraia dados de atendimentos 
+> do SUS ?
+>
+>
+>
+> -- 
+> /In Jesu et Maria
+>
+> /
+> /Obrigado / Thank you
+> /
+> /Prof. Dr. Elias Carvalho/
+> /
+> /
+> /
+> "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed is he who has been able to understand the cause of things"
+> /
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240618/3b5d3969/attachment.htm>
+
+From ecacarva em gmail.com  Tue Jun 18 10:57:16 2024
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Tue, 18 Jun 2024 10:57:16 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+Message-ID: <CAH8E6Ut02vj4uQZh66T+FR=Q2STttqZ2Cax2tStVPd5nzBhrJA@mail.gmail.com>
+
+Excelente Rafael ! Muito bom seu pacote.
+Vou dar uma olhada, no momento eu preciso extrair informações de um
+hospital público específico
+
+Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá Elias,
+>
+> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+> registrados em um sistema de informações em saúde denominado Sistema de
+> Informações Ambulatoriais.
+>
+> Você consegue acessar esses dados com o R usando o pacote {microdatasus}
+>
+> https://rfsaldanha.github.io/microdatasus/
+>
+> Posso te ajudar com mais detalhes se precisar.
+>
+>
+> Abraços,
+>
+> Raphael Saldanha
+>
+>
+> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>
+> Bom dia pessoal
+> Alguém sabe se há algum pacote do R que extraia dados de atendimentos do
+> SUS ?
+>
+>
+>
+> --
+>
+>
+> *In Jesu et Maria *
+>
+> *Obrigado / Thank you *
+> *Prof. Dr. Elias Carvalho*
+>
+> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+> he who has been able to understand the cause of things" *
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+
+
+*In Jesu et Maria*
+
+*Obrigado / Thank you*
+*Prof. Dr. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240618/f63aad43/attachment.htm>
+
+From rfsaldanha em gmail.com  Tue Jun 18 10:59:44 2024
+From: rfsaldanha em gmail.com (Raphael Saldanha)
+Date: Tue, 18 Jun 2024 15:59:44 +0200
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CAH8E6Ut02vj4uQZh66T+FR=Q2STttqZ2Cax2tStVPd5nzBhrJA@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CAH8E6Ut02vj4uQZh66T+FR=Q2STttqZ2Cax2tStVPd5nzBhrJA@mail.gmail.com>
+Message-ID: <fd13148f-7e82-4fb4-9f36-bb8a4d8a723b@gmail.com>
+
+Obrigado! Para filtrar por um hospital específico, você precisa saber o 
+código CNES da unidade de saúde. Você pode procurar o código aqui: 
+cnes.datasus.gov.br
+
+On 2024-06-18 15:57, Elias Carvalho wrote:
+> Excelente Rafael ! Muito bom seu pacote.
+> Vou dar uma olhada, no momento eu preciso extrair informações de um 
+> hospital público específico
+>
+> Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por (R-br) 
+> <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>     Olá Elias,
+>
+>     Os dados de atendimentos ambulatoriais da dimensão pública do SUS
+>     são registrados em um sistema de informações em saúde denominado
+>     Sistema de Informações Ambulatoriais.
+>
+>     Você consegue acessar esses dados com o R usando o pacote
+>     {microdatasus}
+>
+>     https://rfsaldanha.github.io/microdatasus/
+>
+>     Posso te ajudar com mais detalhes se precisar.
+>
+>
+>     Abraços,
+>
+>     Raphael Saldanha
+>
+>
+>     On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>     Bom dia pessoal
+>>     Alguém sabe se há algum pacote do R que extraia dados de
+>>     atendimentos do SUS ?
+>>
+>>
+>>
+>>     -- 
+>>     /In Jesu et Maria
+>>
+>>     /
+>>     /Obrigado / Thank you
+>>     /
+>>     /Prof. Dr. Elias Carvalho/
+>>     /
+>>     /
+>>     /
+>>     "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>>     "Blessed is he who has been able to understand the cause of things"
+>>     /
+>>
+>>     _______________________________________________
+>>     R-br mailing list
+>>     R-br em listas.c3sl.ufpr.br
+>>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+>
+>
+> -- 
+> /In Jesu et Maria
+>
+> /
+> /Obrigado / Thank you
+> /
+> /Prof. Dr. Elias Carvalho/
+> /
+> /
+> /
+> "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed is he who has been able to understand the cause of things"
+> /
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240618/9485e02f/attachment.htm>
+
+From ecacarva em gmail.com  Tue Jun 18 15:04:24 2024
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Tue, 18 Jun 2024 15:04:24 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <fd13148f-7e82-4fb4-9f36-bb8a4d8a723b@gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CAH8E6Ut02vj4uQZh66T+FR=Q2STttqZ2Cax2tStVPd5nzBhrJA@mail.gmail.com>
+ <fd13148f-7e82-4fb4-9f36-bb8a4d8a723b@gmail.com>
+Message-ID: <CAH8E6UufcVJkD9=u=WKYvgG_qiUjm8goeUmD7jrJijdN3CDVwQ@mail.gmail.com>
+
+Procurei aqui mas não achei, pelo fetch_datasus, dá para extrair dados de
+um CNES específico Rafael ?
+
+Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha <rfsaldanha em gmail.com>
+escreveu:
+
+> Obrigado! Para filtrar por um hospital específico, você precisa saber o
+> código CNES da unidade de saúde. Você pode procurar o código aqui:
+> cnes.datasus.gov.br
+> On 2024-06-18 15:57, Elias Carvalho wrote:
+>
+> Excelente Rafael ! Muito bom seu pacote.
+> Vou dar uma olhada, no momento eu preciso extrair informações de um
+> hospital público específico
+>
+> Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Olá Elias,
+>>
+>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+>> registrados em um sistema de informações em saúde denominado Sistema de
+>> Informações Ambulatoriais.
+>>
+>> Você consegue acessar esses dados com o R usando o pacote {microdatasus}
+>>
+>> https://rfsaldanha.github.io/microdatasus/
+>>
+>> Posso te ajudar com mais detalhes se precisar.
+>>
+>>
+>> Abraços,
+>>
+>> Raphael Saldanha
+>>
+>>
+>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>
+>> Bom dia pessoal
+>> Alguém sabe se há algum pacote do R que extraia dados de atendimentos do
+>> SUS ?
+>>
+>>
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria *
+>>
+>> *Obrigado / Thank you *
+>> *Prof. Dr. Elias Carvalho*
+>>
+>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>> he who has been able to understand the cause of things" *
+>>
+>> _______________________________________________
+>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+>
+>
+> *In Jesu et Maria *
+>
+> *Obrigado / Thank you *
+> *Prof. Dr. Elias Carvalho*
+>
+> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+> he who has been able to understand the cause of things" *
+>
+>
+
+-- 
+
+
+*In Jesu et Maria*
+
+*Obrigado / Thank you*
+*Prof. Dr. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240618/b2ad45b1/attachment.htm>
+
+From ecacarva em gmail.com  Tue Jun 18 15:19:40 2024
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Tue, 18 Jun 2024 15:19:40 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CAH8E6UufcVJkD9=u=WKYvgG_qiUjm8goeUmD7jrJijdN3CDVwQ@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CAH8E6Ut02vj4uQZh66T+FR=Q2STttqZ2Cax2tStVPd5nzBhrJA@mail.gmail.com>
+ <fd13148f-7e82-4fb4-9f36-bb8a4d8a723b@gmail.com>
+ <CAH8E6UufcVJkD9=u=WKYvgG_qiUjm8goeUmD7jrJijdN3CDVwQ@mail.gmail.com>
+Message-ID: <CAH8E6Uv5Bx1EH5zRV4m9ShnosnDujRp+Bm28GRLSY12SrhRhuA@mail.gmail.com>
+
+Outra coisa, consigo extrair dados da BPA-I (*Boletim de Produção
+Ambulatorial ? Individualizado*) ?
+
+Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho <ecacarva em gmail.com>
+escreveu:
+
+> Procurei aqui mas não achei, pelo fetch_datasus, dá para extrair dados de
+> um CNES específico Rafael ?
+>
+> Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha <
+> rfsaldanha em gmail.com> escreveu:
+>
+>> Obrigado! Para filtrar por um hospital específico, você precisa saber o
+>> código CNES da unidade de saúde. Você pode procurar o código aqui:
+>> cnes.datasus.gov.br
+>> On 2024-06-18 15:57, Elias Carvalho wrote:
+>>
+>> Excelente Rafael ! Muito bom seu pacote.
+>> Vou dar uma olhada, no momento eu preciso extrair informações de um
+>> hospital público específico
+>>
+>> Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Olá Elias,
+>>>
+>>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+>>> registrados em um sistema de informações em saúde denominado Sistema de
+>>> Informações Ambulatoriais.
+>>>
+>>> Você consegue acessar esses dados com o R usando o pacote {microdatasus}
+>>>
+>>> https://rfsaldanha.github.io/microdatasus/
+>>>
+>>> Posso te ajudar com mais detalhes se precisar.
+>>>
+>>>
+>>> Abraços,
+>>>
+>>> Raphael Saldanha
+>>>
+>>>
+>>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>>
+>>> Bom dia pessoal
+>>> Alguém sabe se há algum pacote do R que extraia dados de atendimentos do
+>>> SUS ?
+>>>
+>>>
+>>>
+>>> --
+>>>
+>>>
+>>> *In Jesu et Maria *
+>>>
+>>> *Obrigado / Thank you *
+>>> *Prof. Dr. Elias Carvalho*
+>>>
+>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>>> he who has been able to understand the cause of things" *
+>>>
+>>> _______________________________________________
+>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria *
+>>
+>> *Obrigado / Thank you *
+>> *Prof. Dr. Elias Carvalho*
+>>
+>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>> he who has been able to understand the cause of things" *
+>>
+>>
+>
+> --
+>
+>
+> *In Jesu et Maria*
+>
+> *Obrigado / Thank you*
+> *Prof. Dr. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+>
+
+
+-- 
+
+
+*In Jesu et Maria*
+
+*Obrigado / Thank you*
+*Prof. Dr. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240618/93fc7973/attachment.htm>
+
+From dtiezzi em usp.br  Tue Jun 18 16:00:56 2024
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 18 Jun 2024 16:00:56 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CAH8E6Uv5Bx1EH5zRV4m9ShnosnDujRp+Bm28GRLSY12SrhRhuA@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CAH8E6Ut02vj4uQZh66T+FR=Q2STttqZ2Cax2tStVPd5nzBhrJA@mail.gmail.com>
+ <fd13148f-7e82-4fb4-9f36-bb8a4d8a723b@gmail.com>
+ <CAH8E6UufcVJkD9=u=WKYvgG_qiUjm8goeUmD7jrJijdN3CDVwQ@mail.gmail.com>
+ <CAH8E6Uv5Bx1EH5zRV4m9ShnosnDujRp+Bm28GRLSY12SrhRhuA@mail.gmail.com>
+Message-ID: <CA+RL3DPd2DfMk-55gD96_gWz+Gky9rYUuJStWkb5UKoc+59yLA@mail.gmail.com>
+
+Todos os dados ficam disponíveis neste servidor ftp:
+
+ftp://ftp.datasus.gov.br/dissemin/publicos/
+
+daniel
+
+Em ter., 18 de jun. de 2024 às 15:20, Elias Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Outra coisa, consigo extrair dados da BPA-I (*Boletim de Produção
+> Ambulatorial ? Individualizado*) ?
+>
+> Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho <ecacarva em gmail.com>
+> escreveu:
+>
+>> Procurei aqui mas não achei, pelo fetch_datasus, dá para extrair dados de
+>> um CNES específico Rafael ?
+>>
+>> Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha <
+>> rfsaldanha em gmail.com> escreveu:
+>>
+>>> Obrigado! Para filtrar por um hospital específico, você precisa saber o
+>>> código CNES da unidade de saúde. Você pode procurar o código aqui:
+>>> cnes.datasus.gov.br
+>>> On 2024-06-18 15:57, Elias Carvalho wrote:
+>>>
+>>> Excelente Rafael ! Muito bom seu pacote.
+>>> Vou dar uma olhada, no momento eu preciso extrair informações de um
+>>> hospital público específico
+>>>
+>>> Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>
+>>>> Olá Elias,
+>>>>
+>>>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+>>>> registrados em um sistema de informações em saúde denominado Sistema de
+>>>> Informações Ambulatoriais.
+>>>>
+>>>> Você consegue acessar esses dados com o R usando o pacote {microdatasus}
+>>>>
+>>>> https://rfsaldanha.github.io/microdatasus/
+>>>>
+>>>> Posso te ajudar com mais detalhes se precisar.
+>>>>
+>>>>
+>>>> Abraços,
+>>>>
+>>>> Raphael Saldanha
+>>>>
+>>>>
+>>>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>>>
+>>>> Bom dia pessoal
+>>>> Alguém sabe se há algum pacote do R que extraia dados de atendimentos
+>>>> do SUS ?
+>>>>
+>>>>
+>>>>
+>>>> --
+>>>>
+>>>>
+>>>> *In Jesu et Maria *
+>>>>
+>>>> *Obrigado / Thank you *
+>>>> *Prof. Dr. Elias Carvalho*
+>>>>
+>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+>>>> is he who has been able to understand the cause of things" *
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>>
+>>>
+>>> --
+>>>
+>>>
+>>> *In Jesu et Maria *
+>>>
+>>> *Obrigado / Thank you *
+>>> *Prof. Dr. Elias Carvalho*
+>>>
+>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>>> he who has been able to understand the cause of things" *
+>>>
+>>>
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria*
+>>
+>> *Obrigado / Thank you*
+>> *Prof. Dr. Elias Carvalho*
+>>
+>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+>> who has been able to understand the cause of things"*
+>>
+>
+>
+> --
+>
+>
+> *In Jesu et Maria*
+>
+> *Obrigado / Thank you*
+> *Prof. Dr. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+Daniel Tiezzi, MD, PhD
+Associate Professor
+Breast Disease and Gynecologic Oncology Division
+Department of Gynecology and Obstetrics
+University of São Paulo
+https://github.com/dtiezzi
+https://lab-tds.github.io/
+
+Brazil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240618/b6c68632/attachment.htm>
+
+From roberval.pinheiro em ufrn.br  Tue Jun 18 17:56:49 2024
+From: roberval.pinheiro em ufrn.br (ROBERVAL LIMA)
+Date: Tue, 18 Jun 2024 17:56:49 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+Message-ID: <CAGFF37F1rCWiA38L_3O2xY+SNdDBOO1QQPbP_LNop77Vd7NzCg@mail.gmail.com>
+
+Este canal do YouTube "Análise de Dados" (RStudio 018 | Estatística
+descritiva de variáveis categóricas e numéricas (youtube.com)
+<https://www.youtube.com/watch?v=ZHQkF1jrhNw>) possui vídeos com uso do
+pacote microdatasus... muito interessante.
+
+Em ter., 18 de jun. de 2024 às 10:35, Elias Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia pessoal
+> Alguém sabe se há algum pacote do R que extraia dados de atendimentos do
+> SUS ?
+>
+>
+>
+> --
+>
+>
+> *In Jesu et Maria*
+>
+> *Obrigado / Thank you*
+> *Prof. Dr. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240618/5ab9189a/attachment.htm>
+
+From professorhidelbrando em gmail.com  Tue Jun 18 20:05:50 2024
+From: professorhidelbrando em gmail.com (Hidelbrando Rodrigues)
+Date: Tue, 18 Jun 2024 20:05:50 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+Message-ID: <CA+49qTQRbok95JbipkE1EZh=PMgPnNgKjWBCB+UfwS8U05Y1Pw@mail.gmail.com>
+
+Boa noite .
+
+Tenta o Micro Data Sus.
+
+Att
+
+Em ter., 18 de jun. de 2024 10:40, Raphael Saldanha por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá Elias,
+>
+> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+> registrados em um sistema de informações em saúde denominado Sistema de
+> Informações Ambulatoriais.
+>
+> Você consegue acessar esses dados com o R usando o pacote {microdatasus}
+>
+> https://rfsaldanha.github.io/microdatasus/
+>
+> Posso te ajudar com mais detalhes se precisar.
+>
+>
+> Abraços,
+>
+> Raphael Saldanha
+>
+>
+> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>
+> Bom dia pessoal
+> Alguém sabe se há algum pacote do R que extraia dados de atendimentos do
+> SUS ?
+>
+>
+>
+> --
+>
+>
+> *In Jesu et Maria *
+>
+> *Obrigado / Thank you *
+> *Prof. Dr. Elias Carvalho*
+>
+> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+> he who has been able to understand the cause of things" *
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240618/68e099ef/attachment.htm>
+
+From marcelejc.marinho em gmail.com  Fri Jun 21 23:05:57 2024
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Fri, 21 Jun 2024 23:05:57 -0300
+Subject: [R-br] Pacote reshape2
+Message-ID: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+
+Boa noite, comunidade R.
+
+Eu fiz uma conversão de dados de ampla (horizontal, figura 1) para longa
+(vertical, figura 2).
+Figura 1
+[image: image.png]
+
+Figura 2
+[image: image.png]
+
+A figura 2 mostra os dados da forma como quero trabalhar. Entretanto,
+gostaria da separar os dias por mês para cada ano, conforme a Figura 3
+abaixo:
+[image: image.png]
+
+Alguém poderia me ajudar a fazer isso, por favor?
+
+*Atenciosamente**,*
+*Marcele Correa*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240621/7c98f1a1/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 67164 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240621/7c98f1a1/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 47379 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240621/7c98f1a1/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 16347 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240621/7c98f1a1/attachment-0005.png>
+
+From marcosfs2006 em gmail.com  Sat Jun 22 00:36:07 2024
+From: marcosfs2006 em gmail.com (Marcos F. Silva)
+Date: Sat, 22 Jun 2024 00:36:07 -0300
+Subject: [R-br] Pacote reshape2
+In-Reply-To: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+References: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+Message-ID: <CAHKdobwZxFpJ6tnHg7L-gBKu_1qwOPCiJYAMXz7n_397z7Ad1g@mail.gmail.com>
+
+Olá. Acho que uma possibilidade seria usar a função "gsub()" ou "sub()"
+para extrair da variável "variable" a string "dia_" e deixar só o número.
+Algo como:
+dados2$variable <- gsub("dia_", "", dados2$variable)
+Não testei, mas acho que deve funcionar.
+
+Em sex., 21 de jun. de 2024 23:04, Marcele de Jesus Correa por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa noite, comunidade R.
+>
+> Eu fiz uma conversão de dados de ampla (horizontal, figura 1) para longa
+> (vertical, figura 2).
+> Figura 1
+> [image: image.png]
+>
+> Figura 2
+> [image: image.png]
+>
+> A figura 2 mostra os dados da forma como quero trabalhar. Entretanto,
+> gostaria da separar os dias por mês para cada ano, conforme a Figura 3
+> abaixo:
+> [image: image.png]
+>
+> Alguém poderia me ajudar a fazer isso, por favor?
+>
+> *Atenciosamente**,*
+> *Marcele Correa*
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/945a62f8/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 67164 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/945a62f8/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 47379 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/945a62f8/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 16347 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/945a62f8/attachment-0005.png>
+
+From marcelejc.marinho em gmail.com  Sat Jun 22 08:45:37 2024
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Sat, 22 Jun 2024 08:45:37 -0300
+Subject: [R-br] Pacote reshape2
+In-Reply-To: <CAHKdobwZxFpJ6tnHg7L-gBKu_1qwOPCiJYAMXz7n_397z7Ad1g@mail.gmail.com>
+References: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+ <CAHKdobwZxFpJ6tnHg7L-gBKu_1qwOPCiJYAMXz7n_397z7Ad1g@mail.gmail.com>
+Message-ID: <CABAKcsC6VYyqWds=+Ee8S+UdJovY7o4qgUzUCQcS-Y6Oia3xFg@mail.gmail.com>
+
+Bom dia.
+
+Obrigada, Marcos.
+Vou testar a função.
+*Atenciosamente**,*
+*Marcele Correa*
+
+
+
+
+
+
+On Sat, Jun 22, 2024 at 12:36?AM Marcos F. Silva por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá. Acho que uma possibilidade seria usar a função "gsub()" ou "sub()"
+> para extrair da variável "variable" a string "dia_" e deixar só o número.
+> Algo como:
+> dados2$variable <- gsub("dia_", "", dados2$variable)
+> Não testei, mas acho que deve funcionar.
+>
+> Em sex., 21 de jun. de 2024 23:04, Marcele de Jesus Correa por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Boa noite, comunidade R.
+>>
+>> Eu fiz uma conversão de dados de ampla (horizontal, figura 1) para longa
+>> (vertical, figura 2).
+>> Figura 1
+>> [image: image.png]
+>>
+>> Figura 2
+>> [image: image.png]
+>>
+>> A figura 2 mostra os dados da forma como quero trabalhar. Entretanto,
+>> gostaria da separar os dias por mês para cada ano, conforme a Figura 3
+>> abaixo:
+>> [image: image.png]
+>>
+>> Alguém poderia me ajudar a fazer isso, por favor?
+>>
+>> *Atenciosamente**,*
+>> *Marcele Correa*
+>>
+>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/fd7d7a6a/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 67164 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/fd7d7a6a/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 47379 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/fd7d7a6a/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 16347 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/fd7d7a6a/attachment-0005.png>
+
+From cesar.rabak em gmail.com  Sat Jun 22 17:18:32 2024
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 22 Jun 2024 17:18:32 -0300
+Subject: [R-br] Pacote reshape2
+In-Reply-To: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+References: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+Message-ID: <CAKrF98k+h_--gh7gN2aDgLHE0JYLAK13wPvWA=bopoUCuxSjwQ@mail.gmail.com>
+
+Se eu entendi corretamente, vc gostaria de ter a nova tabela de dados com
+os dados temporais "crescentes".
+
+Como o R não cansa, mesmo fazendo várias vezes a operação, acho que
+conceitualmente chegar-se-ia ao resultado que deseja com a elaboração da
+conversão para colunas sub selecionando o ano e mês, e se necessário
+ordenando o *dataframe* resultante por dia do mês, e concatenar esses
+dataframes parciais (empilhando-os seja cronologicamente ou na ordem
+inversa).
+
+On Fri, Jun 21, 2024 at 11:04?PM Marcele de Jesus Correa por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa noite, comunidade R.
+>
+> Eu fiz uma conversão de dados de ampla (horizontal, figura 1) para longa
+> (vertical, figura 2).
+> Figura 1
+> [image: image.png]
+>
+> Figura 2
+> [image: image.png]
+>
+> A figura 2 mostra os dados da forma como quero trabalhar. Entretanto,
+> gostaria da separar os dias por mês para cada ano, conforme a Figura 3
+> abaixo:
+> [image: image.png]
+>
+> Alguém poderia me ajudar a fazer isso, por favor?
+>
+> *Atenciosamente**,*
+> *Marcele Correa*
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/8358c1ef/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 67164 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/8358c1ef/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 47379 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/8358c1ef/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 16347 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/8358c1ef/attachment-0005.png>
+
+From marcelejc.marinho em gmail.com  Sat Jun 22 19:39:04 2024
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Sat, 22 Jun 2024 19:39:04 -0300
+Subject: [R-br] Pacote reshape2
+In-Reply-To: <CAKrF98k+h_--gh7gN2aDgLHE0JYLAK13wPvWA=bopoUCuxSjwQ@mail.gmail.com>
+References: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+ <CAKrF98k+h_--gh7gN2aDgLHE0JYLAK13wPvWA=bopoUCuxSjwQ@mail.gmail.com>
+Message-ID: <CABAKcsAZNzua6hyeOgs4VFkxcVMZszzGBC+XW5cSzyTALTd70Q@mail.gmail.com>
+
+Boa noite.
+
+Isso mesmo, Cesar.
+Fiz desta forma mesmo, porque não deu certo com a função "gsub". Utilizei o
+filtro para separar os dias pelo meses, para os respectivos anos e por fim
+a união final para série temporal.
+
+Estou quase finalizando a organização para rodar as demais estações.
+
+Obrigada.
+
+Att,
+Marcele Correa.
+
+
+Em sáb., 22 de jun. de 2024, 17:18, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Se eu entendi corretamente, vc gostaria de ter a nova tabela de dados com
+> os dados temporais "crescentes".
+>
+> Como o R não cansa, mesmo fazendo várias vezes a operação, acho que
+> conceitualmente chegar-se-ia ao resultado que deseja com a elaboração da
+> conversão para colunas sub selecionando o ano e mês, e se necessário
+> ordenando o *dataframe* resultante por dia do mês, e concatenar esses
+> dataframes parciais (empilhando-os seja cronologicamente ou na ordem
+> inversa).
+>
+> On Fri, Jun 21, 2024 at 11:04?PM Marcele de Jesus Correa por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Boa noite, comunidade R.
+>>
+>> Eu fiz uma conversão de dados de ampla (horizontal, figura 1) para longa
+>> (vertical, figura 2).
+>> Figura 1
+>> [image: image.png]
+>>
+>> Figura 2
+>> [image: image.png]
+>>
+>> A figura 2 mostra os dados da forma como quero trabalhar. Entretanto,
+>> gostaria da separar os dias por mês para cada ano, conforme a Figura 3
+>> abaixo:
+>> [image: image.png]
+>>
+>> Alguém poderia me ajudar a fazer isso, por favor?
+>>
+>> *Atenciosamente**,*
+>> *Marcele Correa*
+>>
+>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/f7e8a8cb/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 67164 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/f7e8a8cb/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 47379 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/f7e8a8cb/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 16347 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/f7e8a8cb/attachment-0005.png>
+
+From marcosfs2006 em gmail.com  Sat Jun 22 22:00:37 2024
+From: marcosfs2006 em gmail.com (Marcos F. Silva)
+Date: Sat, 22 Jun 2024 22:00:37 -0300
+Subject: [R-br] Pacote reshape2
+In-Reply-To: <CABAKcsAZNzua6hyeOgs4VFkxcVMZszzGBC+XW5cSzyTALTd70Q@mail.gmail.com>
+References: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+ <CAKrF98k+h_--gh7gN2aDgLHE0JYLAK13wPvWA=bopoUCuxSjwQ@mail.gmail.com>
+ <CABAKcsAZNzua6hyeOgs4VFkxcVMZszzGBC+XW5cSzyTALTd70Q@mail.gmail.com>
+Message-ID: <CAHKdobz=BZBsNCQE2hU_9ukYOGTAbSPpY=NUpRFOcR6tHncP7g@mail.gmail.com>
+
+Hummm....
+Será que assim ajudaria:
+
+## Extração da string "dia_"
+dados2$variable <- gsub("dia_", "", dados2$variable)
+
+# Com os valores das variáveis ano, mes e variable, cria uma nova coluna
+com formato de data
+dados2$data <- with(dados2, as.Date(paste(ano, mes, variable, sep = "-"),
+"%Y-%b-%d"))
+
+Agora é só ordenar a base de dados com base nessa nova coluna.
+Se ainda não for isso, é só falar.
+
+
+
+
+
+
+Em sáb., 22 de jun. de 2024 às 19:37, Marcele de Jesus Correa por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa noite.
+>
+> Isso mesmo, Cesar.
+> Fiz desta forma mesmo, porque não deu certo com a função "gsub". Utilizei
+> o filtro para separar os dias pelo meses, para os respectivos anos e por
+> fim a união final para série temporal.
+>
+> Estou quase finalizando a organização para rodar as demais estações.
+>
+> Obrigada.
+>
+> Att,
+> Marcele Correa.
+>
+>
+> Em sáb., 22 de jun. de 2024, 17:18, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Se eu entendi corretamente, vc gostaria de ter a nova tabela de dados com
+>> os dados temporais "crescentes".
+>>
+>> Como o R não cansa, mesmo fazendo várias vezes a operação, acho que
+>> conceitualmente chegar-se-ia ao resultado que deseja com a elaboração da
+>> conversão para colunas sub selecionando o ano e mês, e se necessário
+>> ordenando o *dataframe* resultante por dia do mês, e concatenar esses
+>> dataframes parciais (empilhando-os seja cronologicamente ou na ordem
+>> inversa).
+>>
+>> On Fri, Jun 21, 2024 at 11:04?PM Marcele de Jesus Correa por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Boa noite, comunidade R.
+>>>
+>>> Eu fiz uma conversão de dados de ampla (horizontal, figura 1) para longa
+>>> (vertical, figura 2).
+>>> Figura 1
+>>> [image: image.png]
+>>>
+>>> Figura 2
+>>> [image: image.png]
+>>>
+>>> A figura 2 mostra os dados da forma como quero trabalhar. Entretanto,
+>>> gostaria da separar os dias por mês para cada ano, conforme a Figura 3
+>>> abaixo:
+>>> [image: image.png]
+>>>
+>>> Alguém poderia me ajudar a fazer isso, por favor?
+>>>
+>>> *Atenciosamente**,*
+>>> *Marcele Correa*
+>>>
+>>>
+>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+
+Marcos F. Silva | audinalytics.netlify.app
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/bf54c594/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 67164 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/bf54c594/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 47379 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/bf54c594/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 16347 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240622/bf54c594/attachment-0005.png>
+
+From marcelejc.marinho em gmail.com  Sun Jun 23 00:41:18 2024
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Sun, 23 Jun 2024 00:41:18 -0300
+Subject: [R-br] Pacote reshape2
+In-Reply-To: <CAHKdobz=BZBsNCQE2hU_9ukYOGTAbSPpY=NUpRFOcR6tHncP7g@mail.gmail.com>
+References: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+ <CAKrF98k+h_--gh7gN2aDgLHE0JYLAK13wPvWA=bopoUCuxSjwQ@mail.gmail.com>
+ <CABAKcsAZNzua6hyeOgs4VFkxcVMZszzGBC+XW5cSzyTALTd70Q@mail.gmail.com>
+ <CAHKdobz=BZBsNCQE2hU_9ukYOGTAbSPpY=NUpRFOcR6tHncP7g@mail.gmail.com>
+Message-ID: <CABAKcsCaU+nmJggQJZCnYAQkKvff+frSBG_dtTWuds0g8qmaHw@mail.gmail.com>
+
+Marcos, obrigada.
+
+Vou testar novamente, conforme sugerido.
+
+*Atenciosamente**,*
+*Marcele Correa*
+
+
+
+
+
+
+On Sat, Jun 22, 2024 at 10:00?PM Marcos F. Silva <marcosfs2006 em gmail.com>
+wrote:
+
+> Hummm....
+> Será que assim ajudaria:
+>
+> ## Extração da string "dia_"
+> dados2$variable <- gsub("dia_", "", dados2$variable)
+>
+> # Com os valores das variáveis ano, mes e variable, cria uma nova coluna
+> com formato de data
+> dados2$data <- with(dados2, as.Date(paste(ano, mes, variable, sep = "-"),
+> "%Y-%b-%d"))
+>
+> Agora é só ordenar a base de dados com base nessa nova coluna.
+> Se ainda não for isso, é só falar.
+>
+>
+>
+>
+>
+>
+> Em sáb., 22 de jun. de 2024 às 19:37, Marcele de Jesus Correa por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Boa noite.
+>>
+>> Isso mesmo, Cesar.
+>> Fiz desta forma mesmo, porque não deu certo com a função "gsub". Utilizei
+>> o filtro para separar os dias pelo meses, para os respectivos anos e por
+>> fim a união final para série temporal.
+>>
+>> Estou quase finalizando a organização para rodar as demais estações.
+>>
+>> Obrigada.
+>>
+>> Att,
+>> Marcele Correa.
+>>
+>>
+>> Em sáb., 22 de jun. de 2024, 17:18, Cesar Rabak por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Se eu entendi corretamente, vc gostaria de ter a nova tabela de dados
+>>> com os dados temporais "crescentes".
+>>>
+>>> Como o R não cansa, mesmo fazendo várias vezes a operação, acho que
+>>> conceitualmente chegar-se-ia ao resultado que deseja com a elaboração da
+>>> conversão para colunas sub selecionando o ano e mês, e se necessário
+>>> ordenando o *dataframe* resultante por dia do mês, e concatenar esses
+>>> dataframes parciais (empilhando-os seja cronologicamente ou na ordem
+>>> inversa).
+>>>
+>>> On Fri, Jun 21, 2024 at 11:04?PM Marcele de Jesus Correa por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Boa noite, comunidade R.
+>>>>
+>>>> Eu fiz uma conversão de dados de ampla (horizontal, figura 1) para
+>>>> longa (vertical, figura 2).
+>>>> Figura 1
+>>>> [image: image.png]
+>>>>
+>>>> Figura 2
+>>>> [image: image.png]
+>>>>
+>>>> A figura 2 mostra os dados da forma como quero trabalhar. Entretanto,
+>>>> gostaria da separar os dias por mês para cada ano, conforme a Figura 3
+>>>> abaixo:
+>>>> [image: image.png]
+>>>>
+>>>> Alguém poderia me ajudar a fazer isso, por favor?
+>>>>
+>>>> *Atenciosamente**,*
+>>>> *Marcele Correa*
+>>>>
+>>>>
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+>
+> Marcos F. Silva | audinalytics.netlify.app
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240623/b40f0bf7/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 67164 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240623/b40f0bf7/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 47379 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240623/b40f0bf7/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 16347 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240623/b40f0bf7/attachment-0005.png>
+
+From cesar.rabak em gmail.com  Tue Jun 25 11:39:48 2024
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 25 Jun 2024 11:39:48 -0300
+Subject: [R-br] Pacote reshape2
+In-Reply-To: <CABAKcsAZNzua6hyeOgs4VFkxcVMZszzGBC+XW5cSzyTALTd70Q@mail.gmail.com>
+References: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+ <CAKrF98k+h_--gh7gN2aDgLHE0JYLAK13wPvWA=bopoUCuxSjwQ@mail.gmail.com>
+ <CABAKcsAZNzua6hyeOgs4VFkxcVMZszzGBC+XW5cSzyTALTd70Q@mail.gmail.com>
+Message-ID: <CAKrF98m7CZd5UW=qL9tHDCBVp4zn+X_5DzVpGymm3BJZxoDzPg@mail.gmail.com>
+
+Uma outra abordagem, em princípio mais sofisticada, mas na minha opinião
+mais útil, seria transformar as colunas "ano", "mês" e "dia" num tipo de
+dado de data (POSIX), que lhe permitiria ordenar os dados de forma
+cronológica, etc., atuando na nova coluna "data" (digamos).
+
+A mecânica para essa operação pode ser encontrada nos manuais de referência
+sobre conversão de cadeias de caracteres em datas.
+
+HTH
+
+On Sat, Jun 22, 2024 at 7:37?PM Marcele de Jesus Correa <
+marcelejc.marinho em gmail.com> wrote:
+
+> Boa noite.
+>
+> Isso mesmo, Cesar.
+> Fiz desta forma mesmo, porque não deu certo com a função "gsub". Utilizei
+> o filtro para separar os dias pelo meses, para os respectivos anos e por
+> fim a união final para série temporal.
+>
+> Estou quase finalizando a organização para rodar as demais estações.
+>
+> Obrigada.
+>
+> Att,
+> Marcele Correa.
+>
+>
+> Em sáb., 22 de jun. de 2024, 17:18, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Se eu entendi corretamente, vc gostaria de ter a nova tabela de dados com
+>> os dados temporais "crescentes".
+>>
+>> Como o R não cansa, mesmo fazendo várias vezes a operação, acho que
+>> conceitualmente chegar-se-ia ao resultado que deseja com a elaboração da
+>> conversão para colunas sub selecionando o ano e mês, e se necessário
+>> ordenando o *dataframe* resultante por dia do mês, e concatenar esses
+>> dataframes parciais (empilhando-os seja cronologicamente ou na ordem
+>> inversa).
+>>
+>> On Fri, Jun 21, 2024 at 11:04?PM Marcele de Jesus Correa por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Boa noite, comunidade R.
+>>>
+>>> Eu fiz uma conversão de dados de ampla (horizontal, figura 1) para longa
+>>> (vertical, figura 2).
+>>> Figura 1
+>>> [image: image.png]
+>>>
+>>> Figura 2
+>>> [image: image.png]
+>>>
+>>> A figura 2 mostra os dados da forma como quero trabalhar. Entretanto,
+>>> gostaria da separar os dias por mês para cada ano, conforme a Figura 3
+>>> abaixo:
+>>> [image: image.png]
+>>>
+>>> Alguém poderia me ajudar a fazer isso, por favor?
+>>>
+>>> *Atenciosamente**,*
+>>> *Marcele Correa*
+>>>
+>>>
+>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/273f1787/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 67164 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/273f1787/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 47379 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/273f1787/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 16347 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/273f1787/attachment-0005.png>
+
+From marcelejc.marinho em gmail.com  Tue Jun 25 16:16:43 2024
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Tue, 25 Jun 2024 16:16:43 -0300
+Subject: [R-br] Pacote reshape2
+In-Reply-To: <CAKrF98m7CZd5UW=qL9tHDCBVp4zn+X_5DzVpGymm3BJZxoDzPg@mail.gmail.com>
+References: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+ <CAKrF98k+h_--gh7gN2aDgLHE0JYLAK13wPvWA=bopoUCuxSjwQ@mail.gmail.com>
+ <CABAKcsAZNzua6hyeOgs4VFkxcVMZszzGBC+XW5cSzyTALTd70Q@mail.gmail.com>
+ <CAKrF98m7CZd5UW=qL9tHDCBVp4zn+X_5DzVpGymm3BJZxoDzPg@mail.gmail.com>
+Message-ID: <CABAKcsAymo0RtE3LiEvj93ChuZfoGkMY4ZABK_syH4SeTA7WLg@mail.gmail.com>
+
+A organização da primeira base de dados foi finalizada. Vou organizar outra
+base com a função que Marcos sugeriu
+# Com os valores das variáveis ano, mes e variable, cria uma nova coluna
+com formato de data
+dados2$data <- with(dados2, as.Date(paste(ano, mes, variable, sep = "-"),
+"%Y-%b-%d")).
+E testar essa outra abordagem (POSIX).
+
+Obrigada.
+
+*Atenciosamente**,*
+*Marcele Correa*
+
+
+
+
+
+
+On Tue, Jun 25, 2024 at 11:40?AM Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Uma outra abordagem, em princípio mais sofisticada, mas na minha opinião
+> mais útil, seria transformar as colunas "ano", "mês" e "dia" num tipo de
+> dado de data (POSIX), que lhe permitiria ordenar os dados de forma
+> cronológica, etc., atuando na nova coluna "data" (digamos).
+>
+> A mecânica para essa operação pode ser encontrada nos manuais de
+> referência sobre conversão de cadeias de caracteres em datas.
+>
+> HTH
+>
+> On Sat, Jun 22, 2024 at 7:37?PM Marcele de Jesus Correa <
+> marcelejc.marinho em gmail.com> wrote:
+>
+>> Boa noite.
+>>
+>> Isso mesmo, Cesar.
+>> Fiz desta forma mesmo, porque não deu certo com a função "gsub". Utilizei
+>> o filtro para separar os dias pelo meses, para os respectivos anos e por
+>> fim a união final para série temporal.
+>>
+>> Estou quase finalizando a organização para rodar as demais estações.
+>>
+>> Obrigada.
+>>
+>> Att,
+>> Marcele Correa.
+>>
+>>
+>> Em sáb., 22 de jun. de 2024, 17:18, Cesar Rabak por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Se eu entendi corretamente, vc gostaria de ter a nova tabela de dados
+>>> com os dados temporais "crescentes".
+>>>
+>>> Como o R não cansa, mesmo fazendo várias vezes a operação, acho que
+>>> conceitualmente chegar-se-ia ao resultado que deseja com a elaboração da
+>>> conversão para colunas sub selecionando o ano e mês, e se necessário
+>>> ordenando o *dataframe* resultante por dia do mês, e concatenar esses
+>>> dataframes parciais (empilhando-os seja cronologicamente ou na ordem
+>>> inversa).
+>>>
+>>> On Fri, Jun 21, 2024 at 11:04?PM Marcele de Jesus Correa por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Boa noite, comunidade R.
+>>>>
+>>>> Eu fiz uma conversão de dados de ampla (horizontal, figura 1) para
+>>>> longa (vertical, figura 2).
+>>>> Figura 1
+>>>> [image: image.png]
+>>>>
+>>>> Figura 2
+>>>> [image: image.png]
+>>>>
+>>>> A figura 2 mostra os dados da forma como quero trabalhar. Entretanto,
+>>>> gostaria da separar os dias por mês para cada ano, conforme a Figura 3
+>>>> abaixo:
+>>>> [image: image.png]
+>>>>
+>>>> Alguém poderia me ajudar a fazer isso, por favor?
+>>>>
+>>>> *Atenciosamente**,*
+>>>> *Marcele Correa*
+>>>>
+>>>>
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/0d5e00e8/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 67164 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/0d5e00e8/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 47379 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/0d5e00e8/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 16347 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/0d5e00e8/attachment-0005.png>
+
+From marcelejc.marinho em gmail.com  Tue Jun 25 16:18:23 2024
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Tue, 25 Jun 2024 16:18:23 -0300
+Subject: [R-br] Pacote reshape2
+In-Reply-To: <CAHKdobz=BZBsNCQE2hU_9ukYOGTAbSPpY=NUpRFOcR6tHncP7g@mail.gmail.com>
+References: <CABAKcsCFpcfaH7tb1ZYNrKLT1V8tgvuDZQ35X88TUNrRvr7tZA@mail.gmail.com>
+ <CAKrF98k+h_--gh7gN2aDgLHE0JYLAK13wPvWA=bopoUCuxSjwQ@mail.gmail.com>
+ <CABAKcsAZNzua6hyeOgs4VFkxcVMZszzGBC+XW5cSzyTALTd70Q@mail.gmail.com>
+ <CAHKdobz=BZBsNCQE2hU_9ukYOGTAbSPpY=NUpRFOcR6tHncP7g@mail.gmail.com>
+Message-ID: <CABAKcsAxvt9XD24v5zBBGG27ftMkRAmR_U8hrrhJYV1iVSotfg@mail.gmail.com>
+
+Oi, Marcos.
+
+Vou testar a função acima na nova base de dados.
+Obrigada.
+*Atenciosamente**,*
+*Marcele Correa*
+
+
+
+
+
+
+On Sat, Jun 22, 2024 at 10:00?PM Marcos F. Silva <marcosfs2006 em gmail.com>
+wrote:
+
+> Hummm....
+> Será que assim ajudaria:
+>
+> ## Extração da string "dia_"
+> dados2$variable <- gsub("dia_", "", dados2$variable)
+>
+> # Com os valores das variáveis ano, mes e variable, cria uma nova coluna
+> com formato de data
+> dados2$data <- with(dados2, as.Date(paste(ano, mes, variable, sep = "-"),
+> "%Y-%b-%d"))
+>
+> Agora é só ordenar a base de dados com base nessa nova coluna.
+> Se ainda não for isso, é só falar.
+>
+>
+>
+>
+>
+>
+> Em sáb., 22 de jun. de 2024 às 19:37, Marcele de Jesus Correa por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Boa noite.
+>>
+>> Isso mesmo, Cesar.
+>> Fiz desta forma mesmo, porque não deu certo com a função "gsub". Utilizei
+>> o filtro para separar os dias pelo meses, para os respectivos anos e por
+>> fim a união final para série temporal.
+>>
+>> Estou quase finalizando a organização para rodar as demais estações.
+>>
+>> Obrigada.
+>>
+>> Att,
+>> Marcele Correa.
+>>
+>>
+>> Em sáb., 22 de jun. de 2024, 17:18, Cesar Rabak por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Se eu entendi corretamente, vc gostaria de ter a nova tabela de dados
+>>> com os dados temporais "crescentes".
+>>>
+>>> Como o R não cansa, mesmo fazendo várias vezes a operação, acho que
+>>> conceitualmente chegar-se-ia ao resultado que deseja com a elaboração da
+>>> conversão para colunas sub selecionando o ano e mês, e se necessário
+>>> ordenando o *dataframe* resultante por dia do mês, e concatenar esses
+>>> dataframes parciais (empilhando-os seja cronologicamente ou na ordem
+>>> inversa).
+>>>
+>>> On Fri, Jun 21, 2024 at 11:04?PM Marcele de Jesus Correa por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Boa noite, comunidade R.
+>>>>
+>>>> Eu fiz uma conversão de dados de ampla (horizontal, figura 1) para
+>>>> longa (vertical, figura 2).
+>>>> Figura 1
+>>>> [image: image.png]
+>>>>
+>>>> Figura 2
+>>>> [image: image.png]
+>>>>
+>>>> A figura 2 mostra os dados da forma como quero trabalhar. Entretanto,
+>>>> gostaria da separar os dias por mês para cada ano, conforme a Figura 3
+>>>> abaixo:
+>>>> [image: image.png]
+>>>>
+>>>> Alguém poderia me ajudar a fazer isso, por favor?
+>>>>
+>>>> *Atenciosamente**,*
+>>>> *Marcele Correa*
+>>>>
+>>>>
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+>
+> Marcos F. Silva | audinalytics.netlify.app
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/8787597b/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 67164 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/8787597b/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 47379 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/8787597b/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 16347 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240625/8787597b/attachment-0005.png>
+

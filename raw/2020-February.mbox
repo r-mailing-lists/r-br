@@ -1,0 +1,2113 @@
+From barbaramnascimento em gmail.com  Sun Feb  2 16:28:45 2020
+From: barbaramnascimento em gmail.com (=?UTF-8?Q?B=C3=A1rbara_Mazetti_Nascimento?=)
+Date: Sun, 2 Feb 2020 15:28:45 -0300
+Subject: [R-br] =?utf-8?q?Criar_numera=C3=A7=C3=A3o_=C3=BAnica_para_dados?=
+ =?utf-8?q?_iguais?=
+Message-ID: <CAGbfnVM0bQA4y-=ik0Fpqp587WvNx=rWVhZj3kGD6vhMW_wVKg@mail.gmail.com>
+
+Boa tarde pessoal!
+
+Sou nova no R e estou me batendo um pouco com algumas edições de banco de
+dados que era acostumada a fazer no SAS.
+
+Preciso criar uma coluna com uma nova identificação para uma variável que
+eu criei agrupando outras variáveis. Eu trabalho com dados de bovinos e
+criei o que chamamos de grupo de contemporâneos: animais que vivenciaram o
+mesmo ambiente. Então geralmente são animais nascidos no mesmo ano, no
+mesmo mês e na mesma propriedade. Então, por exemplo, temos os seguintes
+animais:
+
+Animal     Ano de nascimento     Mês de nascimento     Fazenda
+A              2018                            Oct
+     1
+B              2018                            Oct
+     1
+C              2018                            Oct
+     1
+D              2018                            Oct
+     2
+E              2018                            Oct
+     2
+F              2018                            Oct
+     2
+G              2018                           Nov
+     1
+H              2018                           Nov
+     1
+I                2018                           Nov
+       1
+J               2018                           Nov
+     1
+
+Eu agrupei essas variáveis em uma que eu chamei de Grupo:
+
+Animal     Grupo
+A              2018 Oct 1
+B              2018 Oct 1
+C              2018 Oct 1
+D              2018 Oct 2
+E               2018 Oct 2
+F               2018 Oct 2
+G              2018 Nov 1
+H              2018 Nov 1
+I               2018 Nov 1
+J               2018 Nov 1
+
+Agora preciso criar essa nova numeração, para que os animais que tenham o
+mesmo Grupo sejam chamados pelo mesmo número (GC). A saída que eu espero é
+a seguinte:
+
+Animal     Grupo          GC
+A              2018 Oct 1    1
+B              2018 Oct 1    1
+C              2018 Oct 1    1
+D              2018 Oct 2    2
+E              2018 Oct 2    2
+F              2018 Oct 2    2
+G             2018 Nov 1    3
+H             2018 Nov 1    3
+I              2018 Nov 1    3
+J             2018 Nov 1    3
+
+Será que vocês poderiam me ajudar em como eu consigo criar essa nova
+numeração?
+
+Muito obrigada!!
+Bárbara
+
+-- 
+_____________________________________________________
+MSc. Bárbara Mazetti Nascimento
+PhD student in Animal Science
+Genetic Applied to Animal Breeding Group - GAMA
+UFPR - Curitiba - PR - Brazil
++55 41 99142-9495
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200202/5f4c9851/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Feb  3 18:29:49 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 3 Feb 2020 17:29:49 -0300
+Subject: [R-br] 
+	=?utf-8?q?Criar_numera=C3=A7=C3=A3o_=C3=BAnica_para_dados?=
+	=?utf-8?q?_iguais?=
+In-Reply-To: <CAGbfnVM0bQA4y-=ik0Fpqp587WvNx=rWVhZj3kGD6vhMW_wVKg@mail.gmail.com>
+References: <CAGbfnVM0bQA4y-=ik0Fpqp587WvNx=rWVhZj3kGD6vhMW_wVKg@mail.gmail.com>
+Message-ID: <CAKrF98nwF0RPNK72uZXUCU96yyL5ZF4JZKWfALbg0qhFaiid_g@mail.gmail.com>
+
+Admitindo que você gerou a classificação na variável grupo por meios
+adequados, ou seja *você já disponha *dessa coluna, minha sugestão é que
+você crie a variável GC pela conversão em inteiro do grupo :
+
+Código não testado:
+
+seu_dataframe$GC <-  as.integer(seu_dataframe$grupo)
+
+Dependendo como a foi feita a geração da variável *grupo* talvez para isso
+funcionar você tenha que primeiro converter para *factor*:
+
+  seu_dataframe$GC <-  as.integer(as.factor(seu_dataframe$grupo))
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Mon, Feb 3, 2020 at 9:32 AM Bárbara Mazetti Nascimento por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde pessoal!
+>
+> Sou nova no R e estou me batendo um pouco com algumas edições de banco de
+> dados que era acostumada a fazer no SAS.
+>
+> Preciso criar uma coluna com uma nova identificação para uma variável que
+> eu criei agrupando outras variáveis. Eu trabalho com dados de bovinos e
+> criei o que chamamos de grupo de contemporâneos: animais que vivenciaram o
+> mesmo ambiente. Então geralmente são animais nascidos no mesmo ano, no
+> mesmo mês e na mesma propriedade. Então, por exemplo, temos os seguintes
+> animais:
+>
+> Animal     Ano de nascimento     Mês de nascimento     Fazenda
+> A              2018                            Oct
+>        1
+> B              2018                            Oct
+>        1
+> C              2018                            Oct
+>        1
+> D              2018                            Oct
+>        2
+> E              2018                            Oct
+>        2
+> F              2018                            Oct
+>        2
+> G              2018                           Nov
+>      1
+> H              2018                           Nov
+>      1
+> I                2018                           Nov
+>        1
+> J               2018                           Nov
+>        1
+>
+> Eu agrupei essas variáveis em uma que eu chamei de Grupo:
+>
+> Animal     Grupo
+> A              2018 Oct 1
+> B              2018 Oct 1
+> C              2018 Oct 1
+> D              2018 Oct 2
+> E               2018 Oct 2
+> F               2018 Oct 2
+> G              2018 Nov 1
+> H              2018 Nov 1
+> I               2018 Nov 1
+> J               2018 Nov 1
+>
+> Agora preciso criar essa nova numeração, para que os animais que tenham o
+> mesmo Grupo sejam chamados pelo mesmo número (GC). A saída que eu espero é
+> a seguinte:
+>
+> Animal     Grupo          GC
+> A              2018 Oct 1    1
+> B              2018 Oct 1    1
+> C              2018 Oct 1    1
+> D              2018 Oct 2    2
+> E              2018 Oct 2    2
+> F              2018 Oct 2    2
+> G             2018 Nov 1    3
+> H             2018 Nov 1    3
+> I              2018 Nov 1    3
+> J             2018 Nov 1    3
+>
+> Será que vocês poderiam me ajudar em como eu consigo criar essa nova
+> numeração?
+>
+> Muito obrigada!!
+> Bárbara
+>
+> --
+> _____________________________________________________
+> MSc. Bárbara Mazetti Nascimento
+> PhD student in Animal Science
+> Genetic Applied to Animal Breeding Group - GAMA
+> UFPR - Curitiba - PR - Brazil
+> +55 41 99142-9495
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200203/88cb6e34/attachment.html>
+
+From juracyjunio- em hotmail.com  Tue Feb  4 12:32:43 2020
+From: juracyjunio- em hotmail.com (juraci sampaio)
+Date: Tue, 4 Feb 2020 14:32:43 +0000
+Subject: [R-br] Digest R-br, volume 110, assunto 2
+In-Reply-To: <mailman.1.1580824801.890.r-br@listas.c3sl.ufpr.br>
+References: <mailman.1.1580824801.890.r-br@listas.c3sl.ufpr.br>
+Message-ID: <RO1PR80MB4249FF39972E9B499B6A487583030@RO1PR80MB4249.lamprd80.prod.outlook.com>
+
+Bom dia como posso aumentar a fonte dos números do correlograma? Usando a função:
+
+library(corrplot)
+library(Boruta)
+library(car)
+library(PerformanceAnalytics)
+library(caret)
+library(Rcmdr)
+library(corrgram)
+
+
+#Definindo os genótipos como nome dos casos:
+row.names(dados) <- as.character(dados$genotipos)
+dados$genotipos <- NULL
+
+#Gerando o correlograma
+dados<-as.matrix(dados)
+chart.Correlation(dados, histogram=TRUE, pch=19, main= "Moderately Resistante")  # plot correlogram (com histograma)
+chart.Correlation(dados, histogram=FALSE, pch=19)  # plot correlogram (sem histograma)
+
+At.te
+
+
+
+                                                            Juraci Souza Sampaio Filho
+                                                            Eng Agrônomo-UFRB
+                                                            Msc Ciências Agrárias -UFRB
+                                                            Doutorando em Ciências Agrárias- UFRB
+                                                            Tel: (75) 981722995
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de r-br-request em listas.c3sl.ufpr.br <r-br-request em listas.c3sl.ufpr.br>
+Enviado: terça-feira, 4 de fevereiro de 2020 12:00
+Para: r-br em listas.c3sl.ufpr.br <r-br em listas.c3sl.ufpr.br>
+Assunto: Digest R-br, volume 110, assunto 2
+
+Enviar submissões para a lista de discussão R-br para
+        r-br em listas.c3sl.ufpr.br
+
+Para se cadastrar ou descadastrar via WWW, visite o endereço
+        https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+corpo da mensagem para
+        r-br-request em listas.c3sl.ufpr.br
+
+Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+endereço
+        r-br-owner em listas.c3sl.ufpr.br
+
+Quando responder, por favor edite sua linha Assunto assim ela será
+mais específica que "Re: Contents of R-br digest..."
+
+
+Tópicos de Hoje:
+
+   1. Re:  Criar numeração única para dados iguais (Cesar Rabak)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Mon, 3 Feb 2020 17:29:49 -0300
+From: Cesar Rabak <cesar.rabak em gmail.com>
+To: a lista Brasileira oficial de discussão do programa R.
+        <r-br em listas.c3sl.ufpr.br>
+Subject: Re: [R-br]  Criar numeração única para dados iguais
+Message-ID:
+        <CAKrF98nwF0RPNK72uZXUCU96yyL5ZF4JZKWfALbg0qhFaiid_g em mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+
+Admitindo que você gerou a classificação na variável grupo por meios
+adequados, ou seja *você já disponha *dessa coluna, minha sugestão é que
+você crie a variável GC pela conversão em inteiro do grupo :
+
+Código não testado:
+
+seu_dataframe$GC <-  as.integer(seu_dataframe$grupo)
+
+Dependendo como a foi feita a geração da variável *grupo* talvez para isso
+funcionar você tenha que primeiro converter para *factor*:
+
+  seu_dataframe$GC <-  as.integer(as.factor(seu_dataframe$grupo))
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Mon, Feb 3, 2020 at 9:32 AM Bárbara Mazetti Nascimento por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde pessoal!
+>
+> Sou nova no R e estou me batendo um pouco com algumas edições de banco de
+> dados que era acostumada a fazer no SAS.
+>
+> Preciso criar uma coluna com uma nova identificação para uma variável que
+> eu criei agrupando outras variáveis. Eu trabalho com dados de bovinos e
+> criei o que chamamos de grupo de contemporâneos: animais que vivenciaram o
+> mesmo ambiente. Então geralmente são animais nascidos no mesmo ano, no
+> mesmo mês e na mesma propriedade. Então, por exemplo, temos os seguintes
+> animais:
+>
+> Animal     Ano de nascimento     Mês de nascimento     Fazenda
+> A              2018                            Oct
+>        1
+> B              2018                            Oct
+>        1
+> C              2018                            Oct
+>        1
+> D              2018                            Oct
+>        2
+> E              2018                            Oct
+>        2
+> F              2018                            Oct
+>        2
+> G              2018                           Nov
+>      1
+> H              2018                           Nov
+>      1
+> I                2018                           Nov
+>        1
+> J               2018                           Nov
+>        1
+>
+> Eu agrupei essas variáveis em uma que eu chamei de Grupo:
+>
+> Animal     Grupo
+> A              2018 Oct 1
+> B              2018 Oct 1
+> C              2018 Oct 1
+> D              2018 Oct 2
+> E               2018 Oct 2
+> F               2018 Oct 2
+> G              2018 Nov 1
+> H              2018 Nov 1
+> I               2018 Nov 1
+> J               2018 Nov 1
+>
+> Agora preciso criar essa nova numeração, para que os animais que tenham o
+> mesmo Grupo sejam chamados pelo mesmo número (GC). A saída que eu espero é
+> a seguinte:
+>
+> Animal     Grupo          GC
+> A              2018 Oct 1    1
+> B              2018 Oct 1    1
+> C              2018 Oct 1    1
+> D              2018 Oct 2    2
+> E              2018 Oct 2    2
+> F              2018 Oct 2    2
+> G             2018 Nov 1    3
+> H             2018 Nov 1    3
+> I              2018 Nov 1    3
+> J             2018 Nov 1    3
+>
+> Será que vocês poderiam me ajudar em como eu consigo criar essa nova
+> numeração?
+>
+> Muito obrigada!!
+> Bárbara
+>
+> --
+> _____________________________________________________
+> MSc. Bárbara Mazetti Nascimento
+> PhD student in Animal Science
+> Genetic Applied to Animal Breeding Group - GAMA
+> UFPR - Curitiba - PR - Brazil
+> +55 41 99142-9495
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200203/88cb6e34/attachment-0001.html>
+
+------------------------------
+
+Subject: Legenda do Digest
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+
+
+------------------------------
+
+Fim da Digest R-br, volume 110, assunto 2
+*****************************************
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200204/88754b16/attachment.html>
+
+From rddsouzaoliveira em gmail.com  Wed Feb  5 15:03:21 2020
+From: rddsouzaoliveira em gmail.com (Rodrigo de Souza Oliveira)
+Date: Wed, 5 Feb 2020 13:03:21 -0400
+Subject: [R-br] Rodar RScript.exe especificando o encoding do arquivo
+Message-ID: <CABbTeZPL0tbd+oKRTFCG=izP_N7=rgpXH4C0_1jTMdzCBhjnEw@mail.gmail.com>
+
+Olá pessoal,
+
+Me deparei com um problema aqui, gostaria de saber se existe alguma solução
+mais sutil.
+
+Criei um arquivo "script.r" e o salvei com a codificação UTF-8 (padrão do
+MAC). Esse script recebe parâmetros através do terminal, então sempre
+executo ele pelo terminal com a rotina "Rscript script.r parametro"
+Acontece que preciso automatizar essa rotina em uma máquina virtual
+Windows, mas quando executo o Rscript.exe ele usa a codificação padrão do
+windows (ISO-8859-1), mesmo alterando a codificação do prompt (comando chcp
+65001).
+
+Único jeito que consegui resolver foi salvando o arquivo "script.r" na
+codificação do Windows.
+
+Existe alguma outra forma, de passar um parâmetro no prompt para executar
+essa ação?
+
+Obrigado.
+
+-- 
+
+
+Rodrigo Oliveira
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200205/1a0dbe46/attachment.html>
+
+From sarahfontesr em gmail.com  Fri Feb  7 16:15:13 2020
+From: sarahfontesr em gmail.com (Sarah Reis)
+Date: Fri, 7 Feb 2020 15:15:13 -0300
+Subject: [R-br] Script Entropia Bidimensional Padronizada
+Message-ID: <CAFes0Egk+sKvM6_PZ=D+fEZx9_ObH6c1ou=yuqa3YSQnZ-h6Hw@mail.gmail.com>
+
+Olá pessoal,
+
+Estou realizando análises em uma matriz de frequência de interações entre
+duas variáveis (ectoparasitas e hospedeiros). Com base em artigos de
+referência da área, li que a análise de Entropia Bidimensional Padronizada
+é utilizada para calcular essas interações no nível da rede. Porém, ainda
+estou no processo inicial de aprendizagem do R. Alguém já realizou esse
+tipo de análise e teria o script para fornecer?
+
+Desde já, muito obrigada pela tenção.
+
+Att.,
+
+
+-- 
+Sarah Fontes Reis
+Mestranda em Biologia Animal - UFV
+Bacharela em Ciências Biológicas - UFV
+Museu de Zoologia João Moojen
+Contato: (31)9-98993346 (wpp)
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200207/0bf2c0e7/attachment.html>
+
+From paulomesquita7 em gmail.com  Fri Feb  7 18:15:46 2020
+From: paulomesquita7 em gmail.com (Paulo Eduardo de Mesquita)
+Date: Fri, 7 Feb 2020 17:15:46 -0300
+Subject: [R-br] knitr::kable() para pdf como aumentar o tamanho da fonte do
+ caption?
+Message-ID: <CABODYa4ZkPBY-Fc+9w11M4s82yARw-TRnhUpJNLsBMosodZmyQ@mail.gmail.com>
+
+Olá pessoal,
+
+Paz e bem,
+
+O arquivo Rmd que segue anexo (e abaixo); produz um documento no formato
+pdf que contém a tabela exemplo ilustrada abaixo.
+
+Eu utilizei um template do pacote "rticles" que possui uma formatação
+esteticamente agradável.
+
+[image: T1.png]
+Contudo, o tamanho da fonte do caption da tabela é menor do que o tamanho
+da fonte no corpo da tabela o que, a meu ver, quebra a harmonia do
+documento e gera um desconforto cognitivo apreciável.
+
+Eu não sei onde é definido o tamanho da fonte do caption, talvez no
+template que eu utilizei (arquivo csl também segue anexo).  Apesar de ter
+pesquisado bastante, não consegui encontrar solução que me permitisse
+realizar dois ajustes: (1) Trocar o "Table 1" por "Tabela 1" e aumentar o
+tamanho da fonte do caption.
+
+Agradeço as orientações que vocês possam me passar.
+
+Muito obrigado.
+
+-- 
+
+Paulo Eduardo de Mesquita
+
+Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+Paulista Presidente Prudente - São Paulo - Brasil
+
+telefone: 5518 97718261
+
+
+---
+title: Planetary Statistics
+author:
+  - name: Alice Anonymous
+    email: alice em example.com
+    affiliation: Some Institute of Technology
+    footnote: 1
+  - name: Bob Security
+    email: bob em example.com
+    affiliation: Another University
+address:
+  - code: Some Institute of Technology
+    address: Department, Street, City, State, Zip
+  - code: Another University
+    address: Department, Street, City, State, Zip
+footnote:
+  - code: 1
+    text: "Corresponding Author"
+  - code: 2
+    text: "Equal contribution"
+journal: "An awesome journal"
+date: "`r Sys.Date()`"
+csl: elsevier-harvard.csl
+output: rticles::elsevier_article
+geometry: "left=3cm,right=2cm,top=2cm,bottom=2cm"
+---
+
+```{r 1, include = TRUE, message=FALSE, warning=FALSE}
+require(dplyr)
+require(knitr)
+require(kableExtra)
+require(rticles)
+
+Mercury <- c(57900000, 4878, 1416, 88, 0.38, 100, 0)
+Venus <- c(108160000, 12104, 5832, 224, 0.9, 480, 0)
+Earth <- c(149600000, 12756, 24, 365, 1, 14, 1)
+Mars <- c(227936640, 6794, 24, 687, 0.38, -63, 2)
+Jupiter <- c(778369000, 142984, 10, 4380, 2.64, -130, 79)
+Saturn <- c(1427034000, 120536, 11, 10585, 1.16, -130, 62)
+Uranus <- c(2870658186, 51118, 17, 30660, 1.11, -200, 27)
+Neptune <- c(4496976000, 49532, 16, 60225, 1.21, -200, 14)
+
+df <- rbind(Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune)
+
+colnames(df) <- c("DFS",
+"Diameter","Day","Year","Gravity","Temperature","Moons")
+
+kable(df, caption = "Planetary Statistics.",
+            booktabs = T, linesep = "", align = "lcccccc", format =
+"latex") %>%
+kable_styling(bootstrap_options = "condensed", latex_options = "striped",
+              stripe_color = "#D9D8D8") %>%
+kable_styling(font_size = 10) %>%
+kable_styling(latex_options = "HOLD_position") %>%
+footnote(alphabet = "https://www.bobthealien.co.uk/solarsystem/table.htm",
+         alphabet_title = "Source:", footnote_as_chunk = T) %>%
+footnote(alphabet = "average temperature in oC",
+         alphabet_title = "Temperature:", footnote_as_chunk = T) %>%
+footnote(alphabet = "ratio to Earth's gravity",
+         alphabet_title = "Gravity:", footnote_as_chunk = T) %>%
+footnote(alphabet = "time to complete a full rotation around the sun in
+days",
+         alphabet_title = "Year:", footnote_as_chunk = T) %>%
+footnote(alphabet = "time to complete a full rotation over its axis in
+hours",
+         alphabet_title = "Day:", footnote_as_chunk = T) %>%
+footnote(alphabet = "in km",
+         alphabet_title = "Diameter:", footnote_as_chunk = T) %>%
+footnote(alphabet = "distance from the sun in km",
+         alphabet_title = "DFS:",  footnote_as_chunk = T)
+```
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200207/e4e356ca/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: T1.png
+Tipo: image/png
+Tamanho: 49206 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200207/e4e356ca/attachment.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: elsevier-harvard.csl
+Tipo: application/octet-stream
+Tamanho: 8089 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200207/e4e356ca/attachment.obj>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Planetary_statistics.Rmd
+Tipo: application/octet-stream
+Tamanho: 2723 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200207/e4e356ca/attachment-0001.obj>
+
+From sznelwar em uol.com.br  Fri Feb  7 22:03:38 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Fri, 07 Feb 2020 22:03:38 -0200
+Subject: [R-br] knitr::kable() para pdf como aumentar o tamanho da fonte
+ do caption?
+In-Reply-To: ["CABODYa4ZkPBY-Fc+9w11M4s82yARw-TRnhUpJNLsBMosodZmyQ@mail.gmail.com"]
+References: ["CABODYa4ZkPBY-Fc+9w11M4s82yARw-TRnhUpJNLsBMosodZmyQ@mail.gmail.com"]
+Message-ID: <5e3dfada23f12_1c392b0d84db3118715a6@ip-10-81-19-23.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200207/f24a1540/attachment.html>
+
+From nandodesouza em gmail.com  Sat Feb  8 03:25:09 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sat, 8 Feb 2020 02:25:09 -0300
+Subject: [R-br] Criar =?utf-8?Q?numera=C3=A7=C3=A3o_=C3=BAnica_?=para
+ dados iguais
+In-Reply-To: <CAKrF98nwF0RPNK72uZXUCU96yyL5ZF4JZKWfALbg0qhFaiid_g@mail.gmail.com>
+References: <CAKrF98nwF0RPNK72uZXUCU96yyL5ZF4JZKWfALbg0qhFaiid_g@mail.gmail.com>
+Message-ID: <655BF1E2-C661-473A-9610-BCFD55C23F3B@getmailspring.com>
+
+Um solução viável
+
+Animal<-LETTERS[1:10]
+ANO<-c("2018","2019")
+MES<-month.name[10:11]
+FAZENDA<-rep(1:3,each=3)
+dados<-expand.grid(Animal=Animal,Ano=ANO,Mes=MES,Fazenda=as.factor(FAZENDA))
+head(dados)
+#install.packages("dplyr")
+library(dplyr)
+options(dplyr.print_max = 400) #permite ver a tabela completa
+
+novodados<-dados%>%group_by(Ano,Mes,Fazenda)%>%mutate(grupo=interaction(Ano,Mes,Fazenda))
+
+novodados%>%mutate(grupo=recode_factor(grupo,"2018.October.1"='1',
+"2019.October.1"='2',"2018.November.1"='3',
+"2019.November.1"='4',"2018.October.2"='5',
+"2019.October.2"='6',"2018.November.2"='7',
+"2019.November.2"='8',"2018.October.3"='9',
+"2019.October.3"='10',"2018.November.3"='11',
+"2019.November.3"='12'))
+
+On Feb 3 2020, at 6:29 pm, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Admitindo que você gerou a classificação na variável grupo por meios adequados, ou seja você já disponha dessa coluna, minha sugestão é que você crie a variável GC pela conversão em inteiro do grupo :
+>
+> Código não testado:
+>
+> seu_dataframe$GC <- as.integer(seu_dataframe$grupo)
+>
+> Dependendo como a foi feita a geração da variável grupo talvez para isso funcionar você tenha que primeiro converter para factor:
+>
+> seu_dataframe$GC <- as.integer(as.factor(seu_dataframe$grupo))
+>
+> HTH
+>
+> --
+> Cesar Rabak
+>
+>
+>
+>
+> On Mon, Feb 3, 2020 at 9:32 AM Bárbara Mazetti Nascimento por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > Boa tarde pessoal!
+> >
+> > Sou nova no R e estou me batendo um pouco com algumas edições de banco de dados que era acostumada a fazer no SAS.
+> >
+> > Preciso criar uma coluna com uma nova identificação para uma variável que eu criei agrupando outras variáveis. Eu trabalho com dados de bovinos e criei o que chamamos de grupo de contemporâneos: animais que vivenciaram o mesmo ambiente. Então geralmente são animais nascidos no mesmo ano, no mesmo mês e na mesma propriedade. Então, por exemplo, temos os seguintes animais:
+> >
+> > Animal Ano de nascimento Mês de nascimento Fazenda
+> > A 2018 Oct 1
+> > B 2018 Oct 1
+> > C 2018 Oct 1
+> > D 2018 Oct 2
+> > E 2018 Oct 2
+> > F 2018 Oct 2
+> > G 2018 Nov 1
+> > H 2018 Nov 1
+> > I 2018 Nov 1
+> > J 2018 Nov 1
+> >
+> >
+> > Eu agrupei essas variáveis em uma que eu chamei de Grupo:
+> >
+> > Animal Grupo
+> > A 2018 Oct 1
+> > B 2018 Oct 1
+> > C 2018 Oct 1
+> > D 2018 Oct 2
+> > E 2018 Oct 2
+> > F 2018 Oct 2
+> > G 2018 Nov 1
+> > H 2018 Nov 1
+> > I 2018 Nov 1
+> > J 2018 Nov 1
+> >
+> >
+> > Agora preciso criar essa nova numeração, para que os animais que tenham o mesmo Grupo sejam chamados pelo mesmo número (GC). A saída que eu espero é a seguinte:
+> >
+> > Animal Grupo GC
+> > A 2018 Oct 1 1
+> > B 2018 Oct 1 1
+> > C 2018 Oct 1 1
+> > D 2018 Oct 2 2
+> > E 2018 Oct 2 2
+> > F 2018 Oct 2 2
+> > G 2018 Nov 1 3
+> > H 2018 Nov 1 3
+> > I 2018 Nov 1 3
+> > J 2018 Nov 1 3
+> >
+> >
+> > Será que vocês poderiam me ajudar em como eu consigo criar essa nova numeração?
+> >
+> > Muito obrigada!!
+> > Bárbara
+> >
+> > --
+> > _____________________________________________________
+> > MSc. Bárbara Mazetti Nascimento
+> > PhD student in Animal Science
+> >
+> > Genetic Applied to Animal Breeding Group - GAMA
+> > UFPR - Curitiba - PR - Brazil
+> >
+> > +55 41 99142-9495
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200208/241c2b99/attachment.html>
+
+From cesar.rabak em gmail.com  Sat Feb  8 14:44:34 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 8 Feb 2020 13:44:34 -0300
+Subject: [R-br] knitr::kable() para pdf como aumentar o tamanho da fonte
+ do caption?
+In-Reply-To: <CABODYa4ZkPBY-Fc+9w11M4s82yARw-TRnhUpJNLsBMosodZmyQ@mail.gmail.com>
+References: <CABODYa4ZkPBY-Fc+9w11M4s82yARw-TRnhUpJNLsBMosodZmyQ@mail.gmail.com>
+Message-ID: <CAKrF98mO3Hziur1mOE8tO-LXibjGJkEfEJa1phVSRoqeqsGRrQ@mail.gmail.com>
+
+*Qual* dos modelos você usou?
+
+Veja o modelo do artigo (eventualmente no *site* dele) e observe onde o
+*caption* é estabelecido.
+
+SE vc vai fazer um número pequeno de vezes isso, então outra alternativa
+seria pegar o .TeX intermediário e compilar com outra classe de documento.
+
+HTH
+
+On Fri, Feb 7, 2020 at 6:14 PM Paulo Eduardo de Mesquita por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá pessoal,
+>
+> Paz e bem,
+>
+> O arquivo Rmd que segue anexo (e abaixo); produz um documento no formato
+> pdf que contém a tabela exemplo ilustrada abaixo.
+>
+> Eu utilizei um template do pacote "rticles" que possui uma formatação
+> esteticamente agradável.
+>
+> [image: T1.png]
+> Contudo, o tamanho da fonte do caption da tabela é menor do que o tamanho
+> da fonte no corpo da tabela o que, a meu ver, quebra a harmonia do
+> documento e gera um desconforto cognitivo apreciável.
+>
+> Eu não sei onde é definido o tamanho da fonte do caption, talvez no
+> template que eu utilizei (arquivo csl também segue anexo).  Apesar de ter
+> pesquisado bastante, não consegui encontrar solução que me permitisse
+> realizar dois ajustes: (1) Trocar o "Table 1" por "Tabela 1" e aumentar o
+> tamanho da fonte do caption.
+>
+> Agradeço as orientações que vocês possam me passar.
+>
+> Muito obrigado.
+>
+> --
+>
+> Paulo Eduardo de Mesquita
+>
+> Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+> Paulista Presidente Prudente - São Paulo - Brasil
+>
+> telefone: 5518 97718261
+>
+>
+> ---
+> title: Planetary Statistics
+> author:
+>   - name: Alice Anonymous
+>     email: alice em example.com
+>     affiliation: Some Institute of Technology
+>     footnote: 1
+>   - name: Bob Security
+>     email: bob em example.com
+>     affiliation: Another University
+> address:
+>   - code: Some Institute of Technology
+>     address: Department, Street, City, State, Zip
+>   - code: Another University
+>     address: Department, Street, City, State, Zip
+> footnote:
+>   - code: 1
+>     text: "Corresponding Author"
+>   - code: 2
+>     text: "Equal contribution"
+> journal: "An awesome journal"
+> date: "`r Sys.Date()`"
+> csl: elsevier-harvard.csl
+> output: rticles::elsevier_article
+> geometry: "left=3cm,right=2cm,top=2cm,bottom=2cm"
+> ---
+>
+> ```{r 1, include = TRUE, message=FALSE, warning=FALSE}
+> require(dplyr)
+> require(knitr)
+> require(kableExtra)
+> require(rticles)
+>
+> Mercury <- c(57900000, 4878, 1416, 88, 0.38, 100, 0)
+> Venus <- c(108160000, 12104, 5832, 224, 0.9, 480, 0)
+> Earth <- c(149600000, 12756, 24, 365, 1, 14, 1)
+> Mars <- c(227936640, 6794, 24, 687, 0.38, -63, 2)
+> Jupiter <- c(778369000, 142984, 10, 4380, 2.64, -130, 79)
+> Saturn <- c(1427034000, 120536, 11, 10585, 1.16, -130, 62)
+> Uranus <- c(2870658186, 51118, 17, 30660, 1.11, -200, 27)
+> Neptune <- c(4496976000, 49532, 16, 60225, 1.21, -200, 14)
+>
+> df <- rbind(Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune)
+>
+> colnames(df) <- c("DFS",
+> "Diameter","Day","Year","Gravity","Temperature","Moons")
+>
+> kable(df, caption = "Planetary Statistics.",
+>             booktabs = T, linesep = "", align = "lcccccc", format =
+> "latex") %>%
+> kable_styling(bootstrap_options = "condensed", latex_options = "striped",
+>               stripe_color = "#D9D8D8") %>%
+> kable_styling(font_size = 10) %>%
+> kable_styling(latex_options = "HOLD_position") %>%
+> footnote(alphabet = "https://www.bobthealien.co.uk/solarsystem/table.htm",
+>
+>          alphabet_title = "Source:", footnote_as_chunk = T) %>%
+> footnote(alphabet = "average temperature in oC",
+>          alphabet_title = "Temperature:", footnote_as_chunk = T) %>%
+> footnote(alphabet = "ratio to Earth's gravity",
+>          alphabet_title = "Gravity:", footnote_as_chunk = T) %>%
+> footnote(alphabet = "time to complete a full rotation around the sun in
+> days",
+>          alphabet_title = "Year:", footnote_as_chunk = T) %>%
+> footnote(alphabet = "time to complete a full rotation over its axis in
+> hours",
+>          alphabet_title = "Day:", footnote_as_chunk = T) %>%
+> footnote(alphabet = "in km",
+>          alphabet_title = "Diameter:", footnote_as_chunk = T) %>%
+> footnote(alphabet = "distance from the sun in km",
+>          alphabet_title = "DFS:",  footnote_as_chunk = T)
+> ```
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200208/5400f9f3/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: T1.png
+Tipo: image/png
+Tamanho: 49206 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200208/5400f9f3/attachment.png>
+
+From richfield1974 em yahoo.com  Sat Feb  8 22:58:24 2020
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Sun, 9 Feb 2020 00:58:24 +0000 (UTC)
+Subject: [R-br] Identificar valores fora da elipse
+References: <976543848.232243.1581209904168.ref@mail.yahoo.com>
+Message-ID: <976543848.232243.1581209904168@mail.yahoo.com>
+
+
+Prezados, como faço para criar um script que identifique que os laboratórios 7042 e 9541 estão fora da elipse.Os dados seguem em anexo.Desde já agradeço.Luiz
+
+# Dados
+  setwd("F:\\")
+  library(xlsx)
+  dados=read.xlsx("Lab.xlsx" , sheetIndex=1,encoding="UTF-8")
+  elipse=read.xlsx("elipse.xlsx" , sheetIndex=1,encoding="UTF-8")
+  x=dados$x
+  y=dados$y
+  # Graph
+  limitex = c( min(c(x,elipse[,1])), max(c(x,elipse[,1])) )
+  limitey = c( min(c(y,elipse[,2])), max(c(y,elipse[,2])) )
+  plot(x, y, type = "n", xlab = "", xlim = limitex, ylim = limitey, ylab = "", cex.axis = 1.3, cex.lab = 1.3)
+  text(x, y, dados$Lab, font = 2, cex = 0.8)
+  points(elipse, type = "l", col = "red")
+
+
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200209/7df1ce3a/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: elipse.xlsx
+Tipo: application/x-zip-compressed
+Tamanho: 11417 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200209/7df1ce3a/attachment.bin>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Lab.xlsx
+Tipo: application/x-zip-compressed
+Tamanho: 9002 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200209/7df1ce3a/attachment-0001.bin>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: 1581209735054blob.jpg
+Tipo: image/png
+Tamanho: 9729 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200209/7df1ce3a/attachment.png>
+
+From cesar.rabak em gmail.com  Mon Feb 10 21:38:08 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 10 Feb 2020 20:38:08 -0300
+Subject: [R-br] Identificar valores fora da elipse
+In-Reply-To: <976543848.232243.1581209904168@mail.yahoo.com>
+References: <976543848.232243.1581209904168.ref@mail.yahoo.com>
+ <976543848.232243.1581209904168@mail.yahoo.com>
+Message-ID: <CAKrF98mQpzJDq_Uh6e2T3hnrLpDy=VnHa_nkmiNyNRaV8e=+XA@mail.gmail.com>
+
+Veja a *vignette* do pacote SIBER.
+
+On Sat, Feb 8, 2020 at 9:58 PM Luiz Leal por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+>
+> Prezados, como faço para criar um script que identifique que os
+> laboratórios 7042 e 9541 estão fora da elipse.
+> Os dados seguem em anexo.
+> Desde já agradeço.
+> Luiz
+>
+>
+> # Dados
+>   setwd("F:\\")
+>   library(xlsx)
+>   dados=read.xlsx("Lab.xlsx" , sheetIndex=1,encoding="UTF-8")
+>   elipse=read.xlsx("elipse.xlsx" , sheetIndex=1,encoding="UTF-8")
+>   x=dados$x
+>   y=dados$y
+>
+> # Graph
+>   limitex = c( min(c(x,elipse[,1])), max(c(x,elipse[,1])) )
+>   limitey = c( min(c(y,elipse[,2])), max(c(y,elipse[,2])) )
+>   plot(x, y, type = "n", xlab = "", xlim = limitex, ylim = limitey, ylab =
+> "", cex.axis = 1.3, cex.lab = 1.3)
+>   text(x, y, dados$Lab, font = 2, cex = 0.8)
+>   points(elipse, type = "l", col = "red")
+>
+>
+> [image: Inline image]
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200210/3fc08cb3/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: 1581209735054blob.jpg
+Tipo: image/jpeg
+Tamanho: 9729 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200210/3fc08cb3/attachment.jpg>
+
+From dayanaalvesdasilva em gmail.com  Fri Feb 14 17:26:13 2020
+From: dayanaalvesdasilva em gmail.com (Dayana Alves da Silva)
+Date: Fri, 14 Feb 2020 15:26:13 -0400
+Subject: [R-br] ajuda com o R
+Message-ID: <CAELuiJT5Q6s+FOwq6Na9ypPpNwiMEhzstsh+TK39Fo+EhMpaHw@mail.gmail.com>
+
+Estou tentando rodar uma analise discriminante com meus dados (Rodando uma
+LDA)
+
+e da o seguinte erro:
+
+in qr.default(D %*% ss[[nt]] %*% D, tol = tol) :
+  NA/NaN/Inf em chamada de função externa (argumento 1)
+
+precisava ver se alguém no forum poderia me esclarecer isso
+
+Obrigada!
+
+-- 
+
+
+Dayana Alves da Silva Cunha
+Universidade Estadual do Mato Grosso do Sul - UEMS
+Programa de Pós-graduação em Recursos Naturais - PGRN
+Rod. Dourados-Itaum, KM 12 ? Bairro Aeroporto
+http://lattes.cnpq.br/3746386393452470
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200214/612b6055/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Feb 14 22:47:40 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 14 Feb 2020 21:47:40 -0300
+Subject: [R-br] ajuda com o R
+In-Reply-To: <CAELuiJT5Q6s+FOwq6Na9ypPpNwiMEhzstsh+TK39Fo+EhMpaHw@mail.gmail.com>
+References: <CAELuiJT5Q6s+FOwq6Na9ypPpNwiMEhzstsh+TK39Fo+EhMpaHw@mail.gmail.com>
+Message-ID: <CAKrF98=UW1FNDABHFHos41aAyH6FmuBqu-4Jhjp=c2=2pJweUw@mail.gmail.com>
+
+Os seus dados geram um "  NA/NaN/Inf " quando a chamada a qr( D %*%
+ss[[nt]] %*% D, tol = tol) é executada. . .
+
+Veja se vc consegue ver o que há de errado com eles.
+
+On Fri, Feb 14, 2020 at 4:26 PM Dayana Alves da Silva por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Estou tentando rodar uma analise discriminante com meus dados (Rodando uma
+> LDA)
+>
+> e da o seguinte erro:
+>
+> in qr.default(D %*% ss[[nt]] %*% D, tol = tol) :
+>   NA/NaN/Inf em chamada de função externa (argumento 1)
+>
+> precisava ver se alguém no forum poderia me esclarecer isso
+>
+> Obrigada!
+>
+> --
+>
+>
+> Dayana Alves da Silva Cunha
+> Universidade Estadual do Mato Grosso do Sul - UEMS
+> Programa de Pós-graduação em Recursos Naturais - PGRN
+> Rod. Dourados-Itaum, KM 12 ? Bairro Aeroporto
+> http://lattes.cnpq.br/3746386393452470
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200214/e7c99ecd/attachment.html>
+
+From richfield1974 em yahoo.com  Wed Feb 19 20:51:58 2020
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Wed, 19 Feb 2020 23:51:58 +0000 (UTC)
+Subject: [R-br] =?utf-8?b?U2NyaXB0IGRlIGZ1bsOnw6Nv?=
+References: <1242704394.3954830.1582156318258.ref@mail.yahoo.com>
+Message-ID: <1242704394.3954830.1582156318258@mail.yahoo.com>
+
+
+Prezados, boa noite.Como faço pra acessar o script desta função?
+> library(ellipse)
+> ellipse
+function (x, ...) 
+UseMethod("ellipse")
+<bytecode: 0x00000000169e4040>
+<environment: namespace:ellipse>
+Desde já agradeço
+Luiz
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200219/42343407/attachment.html>
+
+From fernandomayer em gmail.com  Wed Feb 19 21:49:35 2020
+From: fernandomayer em gmail.com (Fernando Mayer)
+Date: Wed, 19 Feb 2020 21:49:35 -0300
+Subject: [R-br] =?utf-8?b?U2NyaXB0IGRlIGZ1bsOnw6Nv?=
+In-Reply-To: <1242704394.3954830.1582156318258@mail.yahoo.com>
+References: <1242704394.3954830.1582156318258.ref@mail.yahoo.com>
+ <1242704394.3954830.1582156318258@mail.yahoo.com>
+Message-ID: <CAO4bAdM8+75kwfpwB1PZmsf4TOpQkg44rvHPDBibS-0ZkSFQ+A@mail.gmail.com>
+
+library(ellipse)
+methods(ellipse)
+
+getAnywhere(ellipse.default)
+getAnywhere(ellipse.lm)
+
+etc...
+
+---
+Fernando de Pol Mayer
+Laboratório de Estatística e Geoinformação - LEG
+Departamento de Estatística - DEST
+Universidade Federal do Paraná - UFPR
+URL: http://leg.ufpr.br/~fernandomayer
+e-mail: fernando.mayer [@] {gmail.com, ufpr.br}
+
+
+On Wed, Feb 19, 2020 at 8:52 PM Luiz Leal por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+>
+> Prezados, boa noite.
+> Como faço pra acessar o script desta função?
+>
+> > library(ellipse)
+> > ellipse
+> function (x, ...)
+> UseMethod("ellipse")
+> <bytecode: 0x00000000169e4040>
+> <environment: namespace:ellipse>
+>
+> Desde já agradeço
+>
+> Luiz
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200219/c8d72e65/attachment.html>
+
+From bodevan.ec em gmail.com  Thu Feb 27 16:43:24 2020
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Thu, 27 Feb 2020 16:43:24 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+Message-ID: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+
+Pessoal não estou obtendo sucesso para manter o R atualizado no linux mint
+9.3.
+
+O que estou fazendo:
+
+Adicionei o repositório
+
+deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu bionic-cran35/
+
+pelo synaptic
+
+Quando pedi para recarregar aconteceu o seguinte erro
+#####
+Não foi possível baixar todos os índices de repositórios
+
+O repositório pode não estar mais disponível ou pode não ter sido possível
+entrar em contato com o mesmo devido a problemas de rede. Caso esteja
+disponível, uma versão mais antiga do índice que falhou será usada. Senão o
+repositório será ignorado. Verifique sua conexão de rede e certifique-se de
+que o endereço do repositório esteja correto nas preferências.
+
+The repository 'https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu bionic-cran35/
+Release' does not have a Release file.
+######
+
+Depois disso minha intenção é instalar o pacote Rcmdr, pois com a versão
+atual do R 3.4.4 está ocorrendo o seguinte erro:
+####
+> install.packages("Rcmdr")
+Installing package into ?/home/ecbodevan/R/x86_64-pc-linux-gnu-library/3.4?
+(as ?lib? is unspecified)
+Warning message:
+package ?Rcmdr? is not available (for R version 3.4.4)
+####
+
+Alguém poderia me ajudar?
+
+
+*Emerson*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200227/c1468dcd/attachment.html>
+
+From zhushazang em gmail.com  Thu Feb 27 17:00:53 2020
+From: zhushazang em gmail.com (Rodolfo Silva)
+Date: Thu, 27 Feb 2020 16:00:53 -0400
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+References: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+Message-ID: <dc864b5b-62a8-8632-c1d8-7b5fb5b533ed@gmail.com>
+
+Minha experiência com Debian me levou a manter o R atualizado, alheio ao
+sistema de pacotes da distribuição.
+
+Compile:
+
+./configure --with-blas --with-lapack --with-readline --with-tcltk
+--with-cairo --with-libpng --with-jpeglib --with-libtiff LI64=lib
+--enable-R-shlib --prefix=/usr
+
+Mantenha atualizado os pacotes do sistema utilizando o R com o root:
+
+update.packages(ask = FALSE,
+repos="http://cran.r-project.org",checkBuilt=TRUE)
+
+Instale e mantenha os pacotes de seu usuário:
+
+install.packages('lattice', repos="http://cran.r-project.org")
+
+E atualize com o usuário utilizando o mesmo comando do root.
+
+
+Você vai ter seu R sempre atualizado. Infelizmente, ou felizmente, isto
+te leva a ter que instalar o rstudio também por fora do sistema de
+pacotes. Mas aqui funcionaram ambos muito bem.
+
+
+Atenciosamente
+
+
+
+Em 27/02/2020 15:43, Emerson Cotta Bodevan por (R-br) escreveu:
+> Pessoal não estou obtendo sucesso para manter o R atualizado no linux
+> mint 9.3.
+>
+> O que estou fazendo:
+>
+> Adicionei o repositório
+>
+> deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu bionic-cran35/
+>
+> pelo synaptic
+> *
+> *
+> Quando pedi para recarregar aconteceu o seguinte erro
+> #####
+> Não foi possível baixar todos os índices de repositórios
+>
+> O repositório pode não estar mais disponível ou pode não ter sido
+> possível entrar em contato com o mesmo devido a problemas de rede.
+> Caso esteja disponível, uma versão mais antiga do índice que falhou
+> será usada. Senão o repositório será ignorado. Verifique sua conexão
+> de rede e certifique-se de que o endereço do repositório esteja
+> correto nas preferências.
+>
+> The repository 'https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu
+> bionic-cran35/ Release' does not have a Release file.
+> ######
+>
+> Depois disso minha intenção é instalar o pacote Rcmdr, pois com a
+> versão atual do R 3.4.4 está ocorrendo o seguinte erro:
+> ####
+> > install.packages("Rcmdr")
+> Installing package into
+> ?/home/ecbodevan/R/x86_64-pc-linux-gnu-library/3.4?
+> (as ?lib? is unspecified)
+> Warning message:
+> package ?Rcmdr? is not available (for R version 3.4.4)
+> ####
+>
+> Alguém poderia me ajudar?
+> *
+> *
+> *
+> *
+> /*Emerson*/
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200227/0dfa3251/attachment.html>
+
+From marcelolaia em gmail.com  Thu Feb 27 19:11:14 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Thu, 27 Feb 2020 19:11:14 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <dc864b5b-62a8-8632-c1d8-7b5fb5b533ed@gmail.com>
+References: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+ <dc864b5b-62a8-8632-c1d8-7b5fb5b533ed@gmail.com>
+Message-ID: <CAEEYVUBptGwfMNcqi2-rVLPx6JN-EWWut_EjKvaYmNM_iJ82aQ@mail.gmail.com>
+
+Uma vez, na lista de discussão do R-USER eu fui recomendado não utilizar os
+comandos update.packages e install.packages no modo root. Desde então, não
+utilizo.
+
+O amigo já tentou os repositórios oficiais do CRAN para Debian?
+
+Por exemplo:
+
+https://cran.fiocruz.br/bin/linux/
+
+Basta inserir o item abaixo no /etc/apt/sources.list
+
+deb http://<favourite-cran-mirror>/bin/linux/debian buster-cran35/
+
+
+E substituir "<favourite-cran-mirror>" por  "
+https://cran.fiocruz.br/bin/linux" sem as aspas.
+
+Para mais detalhes, visite:
+
+https://cran.r-project.org/bin/linux/debian/#debian-buster-stable
+
+Laia ML
+
+> Adicionei o repositório
+>
+> deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu bionic-cran35/
+>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200227/ac3ad1a6/attachment.html>
+
+From zhushazang em gmail.com  Thu Feb 27 20:52:15 2020
+From: zhushazang em gmail.com (Rodolfo Silva)
+Date: Thu, 27 Feb 2020 19:52:15 -0400
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <CAEEYVUBptGwfMNcqi2-rVLPx6JN-EWWut_EjKvaYmNM_iJ82aQ@mail.gmail.com>
+References: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+ <dc864b5b-62a8-8632-c1d8-7b5fb5b533ed@gmail.com>
+ <CAEEYVUBptGwfMNcqi2-rVLPx6JN-EWWut_EjKvaYmNM_iJ82aQ@mail.gmail.com>
+Message-ID: <b173fb96-cef2-8af5-882a-d1cd7d610713@gmail.com>
+
+Misturar repositório de distros distintas (Debian -> Ubuntu -> Mint) não
+é uma boa idéia.
+
+Quanto ao uso do comando como root, se da na necessidade em se ter
+permissão de escrita no diretório /usr/lib/R/library enquanto o usuário
+grava apenas em ~/R/x86_64-pc-linux-gnu-library/3.X/ evitando qualquer
+tipo de conflito, tendo dois ambientes de bibliotecas. Até então não
+tive problemas. Atualmente migrei de Debian para Arch e permanece
+funcionando satisfatoriamente.
+
+Atenciosamente
+
+Em 27/02/2020 18:11, Marcelo Laia escreveu:
+> Uma vez, na lista de discussão do R-USER eu fui recomendado não
+> utilizar os comandos update.packages e install.packages no modo root.
+> Desde então, não utilizo.
+>
+> O amigo já tentou os repositórios oficiais do CRAN para Debian?
+>
+> Por exemplo:
+>
+> https://cran.fiocruz.br/bin/linux/
+>
+> Basta inserir o item abaixo no /etc/apt/sources.list
+>
+> |deb http://<favourite-cran-mirror>/bin/linux/debian buster-cran35/|
+>
+> E substituir "<favourite-cran-mirror>" por 
+> "https://cran.fiocruz.br/bin/linux" sem as aspas.
+>
+> Para mais detalhes, visite:
+>
+> https://cran.r-project.org/bin/linux/debian/#debian-buster-stable
+>
+> Laia ML
+>
+>>     Adicionei o repositório
+>>
+>>     deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu bionic-cran35/
+>>
+>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200227/320af9b9/attachment.html>
+
+From bodevan.ec em gmail.com  Fri Feb 28 17:43:41 2020
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Fri, 28 Feb 2020 17:43:41 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <b173fb96-cef2-8af5-882a-d1cd7d610713@gmail.com>
+References: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+ <dc864b5b-62a8-8632-c1d8-7b5fb5b533ed@gmail.com>
+ <CAEEYVUBptGwfMNcqi2-rVLPx6JN-EWWut_EjKvaYmNM_iJ82aQ@mail.gmail.com>
+ <b173fb96-cef2-8af5-882a-d1cd7d610713@gmail.com>
+Message-ID: <CAP5i-swUNQyMB9E3iSg620LLMJUDghYQOqfBbfv=WPeQVDeu_Q@mail.gmail.com>
+
+Prezados Rodolfo e Marcelo, boa tarde.
+
+Obrigado pelas dicas. Vou tentar resolver utilizando-as.
+
+Postarei aqui como consegui resolver.
+
+Obrigado mais uma vez.
+
+*Emerson*
+
+
+Em qui., 27 de fev. de 2020 às 20:52, Rodolfo Silva por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Misturar repositório de distros distintas (Debian -> Ubuntu -> Mint) não é
+> uma boa idéia.
+>
+> Quanto ao uso do comando como root, se da na necessidade em se ter
+> permissão de escrita no diretório /usr/lib/R/library enquanto o usuário
+> grava apenas em ~/R/x86_64-pc-linux-gnu-library/3.X/ evitando qualquer tipo
+> de conflito, tendo dois ambientes de bibliotecas. Até então não tive
+> problemas. Atualmente migrei de Debian para Arch e permanece funcionando
+> satisfatoriamente.
+>
+> Atenciosamente
+> Em 27/02/2020 18:11, Marcelo Laia escreveu:
+>
+> Uma vez, na lista de discussão do R-USER eu fui recomendado não utilizar
+> os comandos update.packages e install.packages no modo root. Desde então,
+> não utilizo.
+>
+> O amigo já tentou os repositórios oficiais do CRAN para Debian?
+>
+> Por exemplo:
+>
+> https://cran.fiocruz.br/bin/linux/
+>
+> Basta inserir o item abaixo no /etc/apt/sources.list
+>
+> deb http://<favourite-cran-mirror>/bin/linux/debian buster-cran35/
+>
+>
+> E substituir "<favourite-cran-mirror>" por  "
+> https://cran.fiocruz.br/bin/linux" sem as aspas.
+>
+> Para mais detalhes, visite:
+>
+> https://cran.r-project.org/bin/linux/debian/#debian-buster-stable
+>
+> Laia ML
+>
+>> Adicionei o repositório
+>>
+>> deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu bionic-cran35/
+>>
+>>
+>> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200228/81f426ff/attachment.html>
+
+From bodevan.ec em gmail.com  Fri Feb 28 18:04:41 2020
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Fri, 28 Feb 2020 18:04:41 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <CAP5i-swUNQyMB9E3iSg620LLMJUDghYQOqfBbfv=WPeQVDeu_Q@mail.gmail.com>
+References: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+ <dc864b5b-62a8-8632-c1d8-7b5fb5b533ed@gmail.com>
+ <CAEEYVUBptGwfMNcqi2-rVLPx6JN-EWWut_EjKvaYmNM_iJ82aQ@mail.gmail.com>
+ <b173fb96-cef2-8af5-882a-d1cd7d610713@gmail.com>
+ <CAP5i-swUNQyMB9E3iSg620LLMJUDghYQOqfBbfv=WPeQVDeu_Q@mail.gmail.com>
+Message-ID: <CAP5i-syEPE=Dbh067L6MP3W=Qe5XzB6CBvs7bPMwYwKzVCbx=Q@mail.gmail.com>
+
+Prezado Rodolfo... executando no terminal o comando
+
+./configure --with-blas --with-lapack --with-readline --with-tcltk
+--with-cairo --with-libpng --with-jpeglib --with-libtiff LI64=lib
+--enable-R-shlib --prefix=/usr
+
+a resposta foi
+
+diretório inexistente.
+
+
+Prezado Marcelo... adicionando o repositório
+
+deb http://cran.fiocruz.br/bin/linux/debian buster-cran35/
+
+obtive o mesmo erro anterior adicionado de uma mensagem falando sobre uma
+chave pública.
+
+Tentei variações como
+deb http://cran.fiocruz.br/bin/linux/debian bionic-cran35/
+deb http://cran.fiocruz.br/bin/linux/ubuntu buster-cran35/
+deb http://cran.fiocruz.br/bin/linux/ubuntu bionic-cran35/
+deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu buster-cran35/
+deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu bionic-cran35/
+deb https://cran-r.c3sl.ufpr.br/bin/linux/debian buster-cran35/
+deb https://cran-r.c3sl.ufpr.br/bin/linux/debian bionic-cran35/
+
+Continua com mesmo erro.
+
+Alguma idéia do que pode estar errado?
+
+Obrigado pela atenção.
+
+*Emerson*
+
+
+Em sex., 28 de fev. de 2020 às 17:43, Emerson Cotta Bodevan <
+bodevan.ec em gmail.com> escreveu:
+
+> Prezados Rodolfo e Marcelo, boa tarde.
+>
+> Obrigado pelas dicas. Vou tentar resolver utilizando-as.
+>
+> Postarei aqui como consegui resolver.
+>
+> Obrigado mais uma vez.
+>
+> *Emerson*
+>
+>
+> Em qui., 27 de fev. de 2020 às 20:52, Rodolfo Silva por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Misturar repositório de distros distintas (Debian -> Ubuntu -> Mint) não
+>> é uma boa idéia.
+>>
+>> Quanto ao uso do comando como root, se da na necessidade em se ter
+>> permissão de escrita no diretório /usr/lib/R/library enquanto o usuário
+>> grava apenas em ~/R/x86_64-pc-linux-gnu-library/3.X/ evitando qualquer tipo
+>> de conflito, tendo dois ambientes de bibliotecas. Até então não tive
+>> problemas. Atualmente migrei de Debian para Arch e permanece funcionando
+>> satisfatoriamente.
+>>
+>> Atenciosamente
+>> Em 27/02/2020 18:11, Marcelo Laia escreveu:
+>>
+>> Uma vez, na lista de discussão do R-USER eu fui recomendado não utilizar
+>> os comandos update.packages e install.packages no modo root. Desde então,
+>> não utilizo.
+>>
+>> O amigo já tentou os repositórios oficiais do CRAN para Debian?
+>>
+>> Por exemplo:
+>>
+>> https://cran.fiocruz.br/bin/linux/
+>>
+>> Basta inserir o item abaixo no /etc/apt/sources.list
+>>
+>> deb http://<favourite-cran-mirror>/bin/linux/debian buster-cran35/
+>>
+>>
+>> E substituir "<favourite-cran-mirror>" por  "
+>> https://cran.fiocruz.br/bin/linux" sem as aspas.
+>>
+>> Para mais detalhes, visite:
+>>
+>> https://cran.r-project.org/bin/linux/debian/#debian-buster-stable
+>>
+>> Laia ML
+>>
+>>> Adicionei o repositório
+>>>
+>>> deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu bionic-cran35/
+>>>
+>>>
+>>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200228/cfde5faf/attachment.html>
+
+From marcelolaia em gmail.com  Fri Feb 28 18:09:01 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Fri, 28 Feb 2020 18:09:01 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <CAP5i-syEPE=Dbh067L6MP3W=Qe5XzB6CBvs7bPMwYwKzVCbx=Q@mail.gmail.com>
+References: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+ <dc864b5b-62a8-8632-c1d8-7b5fb5b533ed@gmail.com>
+ <CAEEYVUBptGwfMNcqi2-rVLPx6JN-EWWut_EjKvaYmNM_iJ82aQ@mail.gmail.com>
+ <b173fb96-cef2-8af5-882a-d1cd7d610713@gmail.com>
+ <CAP5i-swUNQyMB9E3iSg620LLMJUDghYQOqfBbfv=WPeQVDeu_Q@mail.gmail.com>
+ <CAP5i-syEPE=Dbh067L6MP3W=Qe5XzB6CBvs7bPMwYwKzVCbx=Q@mail.gmail.com>
+Message-ID: <CAEEYVUC_nSYPR89ga2KJZ2OmERFs074h7DhYWPxx0hviRf8EqA@mail.gmail.com>
+
+Emerson,
+
+Em sex, 28 de fev de 2020 18:05, Emerson Cotta Bodevan por (R-br) <
+r-br em listas.c3sl.ufpr.br>
+
+>
+> Prezado Marcelo... adicionando o repositório
+>
+> deb http://cran.fiocruz.br/bin/linux/debian buster-cran35/
+>
+> obtive o mesmo erro anterior adicionado de uma mensagem falando sobre uma
+> chave pública.
+>
+>
+Muito bom!
+
+Você só tem que adicionar a chave pública para o apt acreditar nela.
+
+Estou fora de casa, mas, na mensagem que eu lhe enviei tem o link para a
+página do CRAN com as informações e lá tem como incluir a chave pública!
+
+Assim que chegar em casa, caso ainda não tenha conseguido, lhe envio o como
+fazer.
+
+Laia, ML
+
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200228/e5da0f32/attachment.html>
+
+From dtiezzi em usp.br  Fri Feb 28 18:15:05 2020
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Fri, 28 Feb 2020 18:15:05 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <CAP5i-syEPE=Dbh067L6MP3W=Qe5XzB6CBvs7bPMwYwKzVCbx=Q@mail.gmail.com>
+References: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+ <dc864b5b-62a8-8632-c1d8-7b5fb5b533ed@gmail.com>
+ <CAEEYVUBptGwfMNcqi2-rVLPx6JN-EWWut_EjKvaYmNM_iJ82aQ@mail.gmail.com>
+ <b173fb96-cef2-8af5-882a-d1cd7d610713@gmail.com>
+ <CAP5i-swUNQyMB9E3iSg620LLMJUDghYQOqfBbfv=WPeQVDeu_Q@mail.gmail.com>
+ <CAP5i-syEPE=Dbh067L6MP3W=Qe5XzB6CBvs7bPMwYwKzVCbx=Q@mail.gmail.com>
+Message-ID: <CA+RL3DPctSxFMF=b8W5ZxgtD-qaQSR_tGEsB7Sn2N_eqqv9BGA@mail.gmail.com>
+
+https://cran.r-project.org/bin/linux/ubuntu/#installation
+
+On Fri, 28 Feb 2020, 18:05 Emerson Cotta Bodevan por (R-br), <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezado Rodolfo... executando no terminal o comando
+>
+> ./configure --with-blas --with-lapack --with-readline --with-tcltk
+> --with-cairo --with-libpng --with-jpeglib --with-libtiff LI64=lib
+> --enable-R-shlib --prefix=/usr
+>
+> a resposta foi
+>
+> diretório inexistente.
+>
+>
+> Prezado Marcelo... adicionando o repositório
+>
+> deb http://cran.fiocruz.br/bin/linux/debian buster-cran35/
+>
+> obtive o mesmo erro anterior adicionado de uma mensagem falando sobre uma
+> chave pública.
+>
+> Tentei variações como
+> deb http://cran.fiocruz.br/bin/linux/debian bionic-cran35/
+> deb http://cran.fiocruz.br/bin/linux/ubuntu buster-cran35/
+> deb http://cran.fiocruz.br/bin/linux/ubuntu bionic-cran35/
+> deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu buster-cran35/
+> deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu bionic-cran35/
+> deb https://cran-r.c3sl.ufpr.br/bin/linux/debian buster-cran35/
+> deb https://cran-r.c3sl.ufpr.br/bin/linux/debian bionic-cran35/
+>
+> Continua com mesmo erro.
+>
+> Alguma idéia do que pode estar errado?
+>
+> Obrigado pela atenção.
+>
+> *Emerson*
+>
+>
+> Em sex., 28 de fev. de 2020 às 17:43, Emerson Cotta Bodevan <
+> bodevan.ec em gmail.com> escreveu:
+>
+>> Prezados Rodolfo e Marcelo, boa tarde.
+>>
+>> Obrigado pelas dicas. Vou tentar resolver utilizando-as.
+>>
+>> Postarei aqui como consegui resolver.
+>>
+>> Obrigado mais uma vez.
+>>
+>> *Emerson*
+>>
+>>
+>> Em qui., 27 de fev. de 2020 às 20:52, Rodolfo Silva por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Misturar repositório de distros distintas (Debian -> Ubuntu -> Mint) não
+>>> é uma boa idéia.
+>>>
+>>> Quanto ao uso do comando como root, se da na necessidade em se ter
+>>> permissão de escrita no diretório /usr/lib/R/library enquanto o usuário
+>>> grava apenas em ~/R/x86_64-pc-linux-gnu-library/3.X/ evitando qualquer tipo
+>>> de conflito, tendo dois ambientes de bibliotecas. Até então não tive
+>>> problemas. Atualmente migrei de Debian para Arch e permanece funcionando
+>>> satisfatoriamente.
+>>>
+>>> Atenciosamente
+>>> Em 27/02/2020 18:11, Marcelo Laia escreveu:
+>>>
+>>> Uma vez, na lista de discussão do R-USER eu fui recomendado não utilizar
+>>> os comandos update.packages e install.packages no modo root. Desde então,
+>>> não utilizo.
+>>>
+>>> O amigo já tentou os repositórios oficiais do CRAN para Debian?
+>>>
+>>> Por exemplo:
+>>>
+>>> https://cran.fiocruz.br/bin/linux/
+>>>
+>>> Basta inserir o item abaixo no /etc/apt/sources.list
+>>>
+>>> deb http://<favourite-cran-mirror>/bin/linux/debian buster-cran35/
+>>>
+>>>
+>>> E substituir "<favourite-cran-mirror>" por  "
+>>> https://cran.fiocruz.br/bin/linux" sem as aspas.
+>>>
+>>> Para mais detalhes, visite:
+>>>
+>>> https://cran.r-project.org/bin/linux/debian/#debian-buster-stable
+>>>
+>>> Laia ML
+>>>
+>>>> Adicionei o repositório
+>>>>
+>>>> deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu bionic-cran35/
+>>>>
+>>>>
+>>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200228/04e6c7d4/attachment.html>
+
+From zhushazang em gmail.com  Fri Feb 28 18:41:31 2020
+From: zhushazang em gmail.com (Rodolfo Silva)
+Date: Fri, 28 Feb 2020 17:41:31 -0400
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <CA+RL3DPctSxFMF=b8W5ZxgtD-qaQSR_tGEsB7Sn2N_eqqv9BGA@mail.gmail.com>
+References: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+ <dc864b5b-62a8-8632-c1d8-7b5fb5b533ed@gmail.com>
+ <CAEEYVUBptGwfMNcqi2-rVLPx6JN-EWWut_EjKvaYmNM_iJ82aQ@mail.gmail.com>
+ <b173fb96-cef2-8af5-882a-d1cd7d610713@gmail.com>
+ <CAP5i-swUNQyMB9E3iSg620LLMJUDghYQOqfBbfv=WPeQVDeu_Q@mail.gmail.com>
+ <CAP5i-syEPE=Dbh067L6MP3W=Qe5XzB6CBvs7bPMwYwKzVCbx=Q@mail.gmail.com>
+ <CA+RL3DPctSxFMF=b8W5ZxgtD-qaQSR_tGEsB7Sn2N_eqqv9BGA@mail.gmail.com>
+Message-ID: <48c9075b-a3e5-d3bb-a832-1f6ca593a033@gmail.com>
+
+Bom, não sei o que você fez antes de iniciar a configuração dos sources,
+mas para compilar o caminho inteiro seria algo como:
+
+/
+/
+
+/wget -c https://cran.r-project.org/src/base/R-3/R-3.6.2.tar.gz/
+
+/tar -axvf R-3.6.2.tar.gz/
+
+/cd R-3.6.2/
+
+/./configure --with-blas --with-lapack --with-readline --with-tcltk
+--with-cairo --with-libpng --with-jpeglib --with-libtiff LI64=lib
+--enable-R-shlib --prefix=/usr/
+
+/make/
+
+/make install/
+
+
+Você precisa ter as bibliotecas de desenvolvimento de cada um dos itens
+"with" pré-instaladas se não ocorrerão novos erros. Dê uma olhada na
+documentação também.
+
+
+Atenciosamente
+
+Em 28/02/2020 17:15, Daniel Guimarães Tiezzi por (R-br) escreveu:
+> https://cran.r-project.org/bin/linux/ubuntu/#installation
+>
+> On Fri, 28 Feb 2020, 18:05 Emerson Cotta Bodevan por (R-br),
+> <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+>
+>     Prezado Rodolfo... executando no terminal o comando
+>
+>     ./configure --with-blas --with-lapack --with-readline --with-tcltk
+>     --with-cairo --with-libpng --with-jpeglib --with-libtiff LI64=lib
+>     --enable-R-shlib --prefix=/usr
+>
+>     a resposta foi
+>
+>     diretório inexistente.
+>
+>
+>     Prezado Marcelo... adicionando o repositório
+>
+>     |deb http://cran.fiocruz.br/bin/linux/debian buster-cran35/ |
+>
+>     obtive o mesmo erro anterior adicionado de uma mensagem falando
+>     sobre uma chave pública.
+>
+>     Tentei variações como
+>     deb http://cran.fiocruz.br/bin/linux/debian bionic-cran35/
+>     deb http://cran.fiocruz.br/bin/linux/ubuntu buster-cran35/
+>     deb http://cran.fiocruz.br/bin/linux/ubuntu bionic-cran35/
+>     deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu buster-cran35/
+>     deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu bionic-cran35/
+>     deb https://cran-r.c3sl.ufpr.br/bin/linux/debian buster-cran35/
+>     deb https://cran-r.c3sl.ufpr.br/bin/linux/debian bionic-cran35/
+>     *
+>     *
+>     Continua com mesmo erro.
+>
+>     Alguma idéia do que pode estar errado?
+>
+>     Obrigado pela atenção.
+>     *
+>     *
+>     /*Emerson*/
+>
+>
+>     Em sex., 28 de fev. de 2020 às 17:43, Emerson Cotta Bodevan
+>     <bodevan.ec em gmail.com <mailto:bodevan.ec em gmail.com>> escreveu:
+>
+>         Prezados Rodolfo e Marcelo, boa tarde.
+>
+>         Obrigado pelas dicas. Vou tentar resolver utilizando-as.
+>
+>         Postarei aqui como consegui resolver.
+>
+>         Obrigado mais uma vez.
+>         *
+>         *
+>         /*Emerson*/
+>
+>
+>         Em qui., 27 de fev. de 2020 às 20:52, Rodolfo Silva por (R-br)
+>         <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>>
+>         escreveu:
+>
+>             Misturar repositório de distros distintas (Debian ->
+>             Ubuntu -> Mint) não é uma boa idéia.
+>
+>             Quanto ao uso do comando como root, se da na necessidade
+>             em se ter permissão de escrita no diretório
+>             /usr/lib/R/library enquanto o usuário grava apenas em
+>             ~/R/x86_64-pc-linux-gnu-library/3.X/ evitando qualquer
+>             tipo de conflito, tendo dois ambientes de bibliotecas. Até
+>             então não tive problemas. Atualmente migrei de Debian para
+>             Arch e permanece funcionando satisfatoriamente.
+>
+>             Atenciosamente
+>
+>             Em 27/02/2020 18:11, Marcelo Laia escreveu:
+>>             Uma vez, na lista de discussão do R-USER eu fui
+>>             recomendado não utilizar os comandos update.packages e
+>>             install.packages no modo root. Desde então, não utilizo.
+>>
+>>             O amigo já tentou os repositórios oficiais do CRAN para
+>>             Debian?
+>>
+>>             Por exemplo:
+>>
+>>             https://cran.fiocruz.br/bin/linux/
+>>
+>>             Basta inserir o item abaixo no /etc/apt/sources.list
+>>
+>>             |deb http://<favourite-cran-mirror>/bin/linux/debian
+>>             buster-cran35/|
+>>
+>>             E substituir "<favourite-cran-mirror>" por 
+>>             "https://cran.fiocruz.br/bin/linux" sem as aspas.
+>>
+>>             Para mais detalhes, visite:
+>>
+>>             https://cran.r-project.org/bin/linux/debian/#debian-buster-stable
+>>
+>>             Laia ML
+>>
+>>>                 Adicionei o repositório
+>>>
+>>>                 deb https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu
+>>>                 bionic-cran35/
+>>>
+>>>
+>             _______________________________________________
+>             R-br mailing list
+>             R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>             https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>             Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia)
+>             e forneça código mínimo reproduzível.
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200228/6d57aeb2/attachment.html>
+
+From marcelolaia em gmail.com  Fri Feb 28 18:42:03 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Fri, 28 Feb 2020 18:42:03 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <CAEEYVUC_nSYPR89ga2KJZ2OmERFs074h7DhYWPxx0hviRf8EqA@mail.gmail.com>
+References: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+ <dc864b5b-62a8-8632-c1d8-7b5fb5b533ed@gmail.com>
+ <CAEEYVUBptGwfMNcqi2-rVLPx6JN-EWWut_EjKvaYmNM_iJ82aQ@mail.gmail.com>
+ <b173fb96-cef2-8af5-882a-d1cd7d610713@gmail.com>
+ <CAP5i-swUNQyMB9E3iSg620LLMJUDghYQOqfBbfv=WPeQVDeu_Q@mail.gmail.com>
+ <CAP5i-syEPE=Dbh067L6MP3W=Qe5XzB6CBvs7bPMwYwKzVCbx=Q@mail.gmail.com>
+ <CAEEYVUC_nSYPR89ga2KJZ2OmERFs074h7DhYWPxx0hviRf8EqA@mail.gmail.com>
+Message-ID: <CAEEYVUA2_u3TALc5eLTBcPykoQhAQJmQRS+7H3PXjuFbF2aCew@mail.gmail.com>
+
+Emerson,
+
+Para adicionar a chave, rode o seguinte comando como root (ou sudo antes do
+comando):
+
+apt-key adv --keyserver keys.gnupg.net --recv-key
+'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
+
+Tudo em uma única linha.
+
+Qualquer coisa, posta aqui!
+
+Laia, ML
+
+
+
+
+
+
+
+Em sex, 28 de fev de 2020 18:09, Marcelo Laia <marcelolaia em gmail.com>
+escreveu:
+
+> Emerson,
+>
+> Em sex, 28 de fev de 2020 18:05, Emerson Cotta Bodevan por (R-br) <
+> r-br em listas.c3sl.ufpr.br>
+>
+>>
+>> Prezado Marcelo... adicionando o repositório
+>>
+>> deb http://cran.fiocruz.br/bin/linux/debian buster-cran35/
+>>
+>> obtive o mesmo erro anterior adicionado de uma mensagem falando sobre uma
+>> chave pública.
+>>
+>>
+> Muito bom!
+>
+> Você só tem que adicionar a chave pública para o apt acreditar nela.
+>
+> Estou fora de casa, mas, na mensagem que eu lhe enviei tem o link para a
+> página do CRAN com as informações e lá tem como incluir a chave pública!
+>
+> Assim que chegar em casa, caso ainda não tenha conseguido, lhe envio o
+> como fazer.
+>
+> Laia, ML
+>
+>>
+>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200228/7bd0738c/attachment.html>
+
+From marcelolaia em gmail.com  Fri Feb 28 19:13:27 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Fri, 28 Feb 2020 19:13:27 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <CAEEYVUA2_u3TALc5eLTBcPykoQhAQJmQRS+7H3PXjuFbF2aCew@mail.gmail.com>
+References: <CAP5i-swL30S_3_zQopZPVD+TUsqBsNg7_+x1o_Z5NPUHY75tpA@mail.gmail.com>
+ <dc864b5b-62a8-8632-c1d8-7b5fb5b533ed@gmail.com>
+ <CAEEYVUBptGwfMNcqi2-rVLPx6JN-EWWut_EjKvaYmNM_iJ82aQ@mail.gmail.com>
+ <b173fb96-cef2-8af5-882a-d1cd7d610713@gmail.com>
+ <CAP5i-swUNQyMB9E3iSg620LLMJUDghYQOqfBbfv=WPeQVDeu_Q@mail.gmail.com>
+ <CAP5i-syEPE=Dbh067L6MP3W=Qe5XzB6CBvs7bPMwYwKzVCbx=Q@mail.gmail.com>
+ <CAEEYVUC_nSYPR89ga2KJZ2OmERFs074h7DhYWPxx0hviRf8EqA@mail.gmail.com>
+ <CAEEYVUA2_u3TALc5eLTBcPykoQhAQJmQRS+7H3PXjuFbF2aCew@mail.gmail.com>
+Message-ID: <CAEEYVUDb366Gt9ABUE+q40C15ww_W+amQrwtK5UtVTtkejDn-Q@mail.gmail.com>
+
+Emerson,
+
+Esqueci de escrever que, após adicionar a chave do apt, você tem que
+adicionar o repositório deb http://cran.fiocruz.br/bin/linux/debian
+buster-cran35/ e rodar apt update e apt upgrade
+
+Laia, ML
+
+Em sex, 28 de fev de 2020 18:42, Marcelo Laia <marcelolaia em gmail.com>
+escreveu:
+
+> Emerson,
+>
+> Para adicionar a chave, rode o seguinte comando como root (ou sudo antes
+> do comando):
+>
+> apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
+>
+> Tudo em uma única linha.
+>
+> Qualquer coisa, posta aqui!
+>
+> Laia, ML
+>
+>
+>
+>
+>
+>
+>
+> Em sex, 28 de fev de 2020 18:09, Marcelo Laia <marcelolaia em gmail.com>
+> escreveu:
+>
+>> Emerson,
+>>
+>> Em sex, 28 de fev de 2020 18:05, Emerson Cotta Bodevan por (R-br) <
+>> r-br em listas.c3sl.ufpr.br>
+>>
+>>>
+>>> Prezado Marcelo... adicionando o repositório
+>>>
+>>> deb http://cran.fiocruz.br/bin/linux/debian buster-cran35/
+>>>
+>>> obtive o mesmo erro anterior adicionado de uma mensagem falando sobre
+>>> uma chave pública.
+>>>
+>>>
+>> Muito bom!
+>>
+>> Você só tem que adicionar a chave pública para o apt acreditar nela.
+>>
+>> Estou fora de casa, mas, na mensagem que eu lhe enviei tem o link para a
+>> página do CRAN com as informações e lá tem como incluir a chave pública!
+>>
+>> Assim que chegar em casa, caso ainda não tenha conseguido, lhe envio o
+>> como fazer.
+>>
+>> Laia, ML
+>>
+>>>
+>>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200228/66334b6f/attachment.html>
+

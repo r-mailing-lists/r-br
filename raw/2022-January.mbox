@@ -1,0 +1,932 @@
+From emmanuel.brasil em gmail.com  Tue Jan  4 12:23:19 2022
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 4 Jan 2022 12:23:19 -0300
+Subject: [R-br] =?utf-8?b?QWxvY2HDp8OjbyBhbGVhdMOzcmlhIG7Do28gYmFsYW5j?=
+	=?utf-8?q?eada_3=3A1=3A1_por_blocos?=
+Message-ID: <CAFfGvyKREzGpNeFuU2FjG3Oc-sJOHqeBgqG8JCr7k6EH0Dvwgg@mail.gmail.com>
+
+Aigos de R,
+
+Estou aqui no esforço de fazer um tabela de alocação aleatória para um
+ensaio clínico. Eu já fiz muito isso antes usando o pacote blockrand. Fucei
+por aí e acabei achando outros pacotes interessantes como o randomizr e
+randomizeR. Todos fazem alocação por blocos, ou seja, defino tamanhos de
+blocos variáveis como 6, 12 e 18 e a função aloca, por exemplo, 3
+tratamentos garantindo que ao final de cada bloco haja um número
+equilibrado de tratamentos. A minha questão é que após uma discussão
+interna decidiu-se que um dos braços deveria ter mais participantes que
+outros, por exemplo, numa proporção de 3:1:1. Neste caso, os blocos
+deveriam ser múltiplos de 5. Mas a minha questão é que eu achei funções de
+alocação que aceitam probabilidades diferentes de alocação e achei funções
+que determinam tamanhos de blocos para alocação, mas não achei qualquer
+função que faça as duas coisas ao mesmo tempo. Comecei inclusive a me
+perguntar se isso faz sentido na prática porque olhando os livros que tenho
+aqui não consegui achar nenhum exemplo ou considerações a respeito de
+blocos com alocação de probabilidades diferentes.
+
+Alguém conhece alguma função que executa esta operação ou consegue fazer
+alguma consideração a esse respeito? Recomenda alguma leitura?
+
+Abraço forte,
+
+Pedro Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220104/4e8de6cb/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue Jan  4 18:01:52 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 4 Jan 2022 18:01:52 -0300
+Subject: [R-br] =?utf-8?b?QWxvY2HDp8OjbyBhbGVhdMOzcmlhIG7Do28gYmFsYW5j?=
+	=?utf-8?q?eada_3=3A1=3A1_por_blocos?=
+In-Reply-To: <CAFfGvyKREzGpNeFuU2FjG3Oc-sJOHqeBgqG8JCr7k6EH0Dvwgg@mail.gmail.com>
+References: <CAFfGvyKREzGpNeFuU2FjG3Oc-sJOHqeBgqG8JCr7k6EH0Dvwgg@mail.gmail.com>
+Message-ID: <CAKrF98ndfUccpn7+h1Zu8Hjq11SNxrdJ30f+ANyHyRymJ1eS8g@mail.gmail.com>
+
+Pedro,
+
+Sua questão enseja algumas dúvidas.
+
+Se houve uma decisão de haver três braços no ensaio clínico, e os braços
+não são balanceados, os braços já não são os tratamentos (eventualmente, um
+deles até pode ser a ausência de tratamento)¹?
+
+Aí eu entendo que a blocagem que se busca é aquela que reduz variância nos
+sujeitos para poder diminuir o número de casos necessários permitindo
+efetuar o ensaio com menos custo e mais rápido.
+
+É isso ou você está pensando em alguma outra coisa?
+
+Como leitura, se minhas primeiras considerações estiverem corretas como
+premissas, recomendaria a busca em português e em inglês por amostragem
+estratificada com blocagem, mas no âmbito de estudos clínicos, que tem umas
+especificidades.
+
+HTH e Feliz 2022 a todos os leitores desta lista!
+
+--
+Cesar Rabak
+
+
+[1] Minha experiência indica que via de regra o braço com mais casos é o de
+pacientes "mais abundante" que sói ser o de não tratamento.
+
+On Tue, Jan 4, 2022 at 12:23 PM Pedro Emmanuel Alvarenga Americano do
+Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+> Aigos de R,
+>
+> Estou aqui no esforço de fazer um tabela de alocação aleatória para um
+> ensaio clínico. Eu já fiz muito isso antes usando o pacote blockrand. Fucei
+> por aí e acabei achando outros pacotes interessantes como o randomizr e
+> randomizeR. Todos fazem alocação por blocos, ou seja, defino tamanhos de
+> blocos variáveis como 6, 12 e 18 e a função aloca, por exemplo, 3
+> tratamentos garantindo que ao final de cada bloco haja um número
+> equilibrado de tratamentos. A minha questão é que após uma discussão
+> interna decidiu-se que um dos braços deveria ter mais participantes que
+> outros, por exemplo, numa proporção de 3:1:1. Neste caso, os blocos
+> deveriam ser múltiplos de 5. Mas a minha questão é que eu achei funções de
+> alocação que aceitam probabilidades diferentes de alocação e achei funções
+> que determinam tamanhos de blocos para alocação, mas não achei qualquer
+> função que faça as duas coisas ao mesmo tempo. Comecei inclusive a me
+> perguntar se isso faz sentido na prática porque olhando os livros que tenho
+> aqui não consegui achar nenhum exemplo ou considerações a respeito de
+> blocos com alocação de probabilidades diferentes.
+>
+> Alguém conhece alguma função que executa esta operação ou consegue fazer
+> alguma consideração a esse respeito? Recomenda alguma leitura?
+>
+> Abraço forte,
+>
+> Pedro Brasil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220104/6ce2f96e/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Tue Jan  4 23:05:42 2022
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 4 Jan 2022 23:05:42 -0300
+Subject: [R-br] =?utf-8?b?QWxvY2HDp8OjbyBhbGVhdMOzcmlhIG7Do28gYmFsYW5j?=
+	=?utf-8?q?eada_3=3A1=3A1_por_blocos?=
+In-Reply-To: <CAKrF98ndfUccpn7+h1Zu8Hjq11SNxrdJ30f+ANyHyRymJ1eS8g@mail.gmail.com>
+References: <CAFfGvyKREzGpNeFuU2FjG3Oc-sJOHqeBgqG8JCr7k6EH0Dvwgg@mail.gmail.com>
+ <CAKrF98ndfUccpn7+h1Zu8Hjq11SNxrdJ30f+ANyHyRymJ1eS8g@mail.gmail.com>
+Message-ID: <CAFfGvyKoG79fLHbvEwFwQN0mYfHyjE2t+L4fz8g6w_CCWdJ+5Q@mail.gmail.com>
+
+Cesar,
+
+Sim o numero de braços é o numero de intervençoes. No caso sao 3 vacinas
+diferentes.
+
+Mas os blocos nao sao estratos. Os blocos sao sequencias curtas da alocaçao
+para garatir de tempos em tempos que a quantidades de participantes
+alocados estejam dentro do esperado do balanceamento. Exemplo simples de
+dois tratamentos/vacinas... Eu criaria blocos de 8 10 e 12 de tal forma que
+ao final de cada bloco 8 ou 10 ou 12 alocados haveria uma garantia que 50%
+dos incluidos esteja em um tratamento e outros 50% no outro tratamento.
+Isso faria com que caso o ensaio fosse interrompido precocemente, que nao
+houvesse desbalanceamento que comprometesse a atribuiçao do efeito do
+tratamento. Isso é diferente de alocar por estratos por exemplo 50% dos
+incluidos sejam com 60 anos ou mais e 50% com 59 ou menos.
+
+De qualquer forma, vou dar uma olhada na literatura indicada.
+
+Abraços,
+
+Pedro Emmanuel Brasil
+(:)=
+
+Em ter, 4 de jan de 2022 18:02, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Pedro,
+>
+> Sua questão enseja algumas dúvidas.
+>
+> Se houve uma decisão de haver três braços no ensaio clínico, e os braços
+> não são balanceados, os braços já não são os tratamentos (eventualmente, um
+> deles até pode ser a ausência de tratamento)¹?
+>
+> Aí eu entendo que a blocagem que se busca é aquela que reduz variância nos
+> sujeitos para poder diminuir o número de casos necessários permitindo
+> efetuar o ensaio com menos custo e mais rápido.
+>
+> É isso ou você está pensando em alguma outra coisa?
+>
+> Como leitura, se minhas primeiras considerações estiverem corretas como
+> premissas, recomendaria a busca em português e em inglês por amostragem
+> estratificada com blocagem, mas no âmbito de estudos clínicos, que tem umas
+> especificidades.
+>
+> HTH e Feliz 2022 a todos os leitores desta lista!
+>
+> --
+> Cesar Rabak
+>
+>
+> [1] Minha experiência indica que via de regra o braço com mais casos é o
+> de pacientes "mais abundante" que sói ser o de não tratamento.
+>
+> On Tue, Jan 4, 2022 at 12:23 PM Pedro Emmanuel Alvarenga Americano do
+> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Aigos de R,
+>>
+>> Estou aqui no esforço de fazer um tabela de alocação aleatória para um
+>> ensaio clínico. Eu já fiz muito isso antes usando o pacote blockrand. Fucei
+>> por aí e acabei achando outros pacotes interessantes como o randomizr e
+>> randomizeR. Todos fazem alocação por blocos, ou seja, defino tamanhos de
+>> blocos variáveis como 6, 12 e 18 e a função aloca, por exemplo, 3
+>> tratamentos garantindo que ao final de cada bloco haja um número
+>> equilibrado de tratamentos. A minha questão é que após uma discussão
+>> interna decidiu-se que um dos braços deveria ter mais participantes que
+>> outros, por exemplo, numa proporção de 3:1:1. Neste caso, os blocos
+>> deveriam ser múltiplos de 5. Mas a minha questão é que eu achei funções de
+>> alocação que aceitam probabilidades diferentes de alocação e achei funções
+>> que determinam tamanhos de blocos para alocação, mas não achei qualquer
+>> função que faça as duas coisas ao mesmo tempo. Comecei inclusive a me
+>> perguntar se isso faz sentido na prática porque olhando os livros que tenho
+>> aqui não consegui achar nenhum exemplo ou considerações a respeito de
+>> blocos com alocação de probabilidades diferentes.
+>>
+>> Alguém conhece alguma função que executa esta operação ou consegue fazer
+>> alguma consideração a esse respeito? Recomenda alguma leitura?
+>>
+>> Abraço forte,
+>>
+>> Pedro Brasil
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220104/db87a98e/attachment.htm>
+
+From cesar.rabak em gmail.com  Wed Jan  5 10:44:51 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 5 Jan 2022 10:44:51 -0300
+Subject: [R-br] =?utf-8?b?QWxvY2HDp8OjbyBhbGVhdMOzcmlhIG7Do28gYmFsYW5j?=
+	=?utf-8?q?eada_3=3A1=3A1_por_blocos?=
+In-Reply-To: <CAFfGvyKoG79fLHbvEwFwQN0mYfHyjE2t+L4fz8g6w_CCWdJ+5Q@mail.gmail.com>
+References: <CAFfGvyKREzGpNeFuU2FjG3Oc-sJOHqeBgqG8JCr7k6EH0Dvwgg@mail.gmail.com>
+ <CAKrF98ndfUccpn7+h1Zu8Hjq11SNxrdJ30f+ANyHyRymJ1eS8g@mail.gmail.com>
+ <CAFfGvyKoG79fLHbvEwFwQN0mYfHyjE2t+L4fz8g6w_CCWdJ+5Q@mail.gmail.com>
+Message-ID: <CAKrF98kMsYAghJiGB3FadEw+V36=BHqj=20TEG6c=-v8QsbZjw@mail.gmail.com>
+
+Braços == tratamentos. OK
+
+A descrição do que você deseja almejar com a blocagem me parece redundante
+à separação nos braços.
+
+Como seu estudo é intervencional, esperar-se-ia que apenas no caso de *drop
+outs* houvesse desbalanceamento e que um sorteio dos voluntários, *a priori*,
+já estabelecesse a qual tratamento seriam submetidos (malgrado nem o
+sujeito, nem o aplicador deveriam poder dizê-lo, para assegurar o *maximum
+maximorum* em qualidade do estudo pelo, assim denominado, duplo cego): mais
+fácil falar que fazer, pois as vacinas teriam que ser transferidas para
+*vials* idênticos com marcação "aleatória" e isso é complicado do ponto de
+vista logístico e clínico.
+
+O sorteio anterior à campanha poderia ser feito de forma a efetuar
+balanceamentos outros, como assegurar um certo paralelismo nos braços do
+estudo, como sexo, distribuição de idades, comorbidades (ou ausência de),
+etc. Há, é claro, ainda, verificações específicas sobre se para alguma das
+tecnologias de alguma das vacinas haveria vedações adicionais em relação ao
+sujeito, mas isso tem que ser resolvido na pré-seleção dos voluntários.
+
+HTH
+--
+Cesar Rabak
+
+
+On Tue, Jan 4, 2022 at 11:05 PM Pedro Emmanuel Alvarenga Americano do
+Brasil <emmanuel.brasil em gmail.com> wrote:
+
+> Cesar,
+>
+> Sim o numero de braços é o numero de intervençoes. No caso sao 3 vacinas
+> diferentes.
+>
+> Mas os blocos nao sao estratos. Os blocos sao sequencias curtas da
+> alocaçao para garatir de tempos em tempos que a quantidades de
+> participantes alocados estejam dentro do esperado do balanceamento. Exemplo
+> simples de dois tratamentos/vacinas... Eu criaria blocos de 8 10 e 12 de
+> tal forma que ao final de cada bloco 8 ou 10 ou 12 alocados haveria uma
+> garantia que 50% dos incluidos esteja em um tratamento e outros 50% no
+> outro tratamento. Isso faria com que caso o ensaio fosse interrompido
+> precocemente, que nao houvesse desbalanceamento que comprometesse a
+> atribuiçao do efeito do tratamento. Isso é diferente de alocar por estratos
+> por exemplo 50% dos incluidos sejam com 60 anos ou mais e 50% com 59 ou
+> menos.
+>
+> De qualquer forma, vou dar uma olhada na literatura indicada.
+>
+> Abraços,
+>
+> Pedro Emmanuel Brasil
+> (:)=
+>
+> Em ter, 4 de jan de 2022 18:02, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Pedro,
+>>
+>> Sua questão enseja algumas dúvidas.
+>>
+>> Se houve uma decisão de haver três braços no ensaio clínico, e os braços
+>> não são balanceados, os braços já não são os tratamentos (eventualmente, um
+>> deles até pode ser a ausência de tratamento)¹?
+>>
+>> Aí eu entendo que a blocagem que se busca é aquela que reduz variância
+>> nos sujeitos para poder diminuir o número de casos necessários permitindo
+>> efetuar o ensaio com menos custo e mais rápido.
+>>
+>> É isso ou você está pensando em alguma outra coisa?
+>>
+>> Como leitura, se minhas primeiras considerações estiverem corretas como
+>> premissas, recomendaria a busca em português e em inglês por amostragem
+>> estratificada com blocagem, mas no âmbito de estudos clínicos, que tem umas
+>> especificidades.
+>>
+>> HTH e Feliz 2022 a todos os leitores desta lista!
+>>
+>> --
+>> Cesar Rabak
+>>
+>>
+>> [1] Minha experiência indica que via de regra o braço com mais casos é o
+>> de pacientes "mais abundante" que sói ser o de não tratamento.
+>>
+>> On Tue, Jan 4, 2022 at 12:23 PM Pedro Emmanuel Alvarenga Americano do
+>> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Aigos de R,
+>>>
+>>> Estou aqui no esforço de fazer um tabela de alocação aleatória para um
+>>> ensaio clínico. Eu já fiz muito isso antes usando o pacote blockrand. Fucei
+>>> por aí e acabei achando outros pacotes interessantes como o randomizr e
+>>> randomizeR. Todos fazem alocação por blocos, ou seja, defino tamanhos de
+>>> blocos variáveis como 6, 12 e 18 e a função aloca, por exemplo, 3
+>>> tratamentos garantindo que ao final de cada bloco haja um número
+>>> equilibrado de tratamentos. A minha questão é que após uma discussão
+>>> interna decidiu-se que um dos braços deveria ter mais participantes que
+>>> outros, por exemplo, numa proporção de 3:1:1. Neste caso, os blocos
+>>> deveriam ser múltiplos de 5. Mas a minha questão é que eu achei funções de
+>>> alocação que aceitam probabilidades diferentes de alocação e achei funções
+>>> que determinam tamanhos de blocos para alocação, mas não achei qualquer
+>>> função que faça as duas coisas ao mesmo tempo. Comecei inclusive a me
+>>> perguntar se isso faz sentido na prática porque olhando os livros que tenho
+>>> aqui não consegui achar nenhum exemplo ou considerações a respeito de
+>>> blocos com alocação de probabilidades diferentes.
+>>>
+>>> Alguém conhece alguma função que executa esta operação ou consegue fazer
+>>> alguma consideração a esse respeito? Recomenda alguma leitura?
+>>>
+>>> Abraço forte,
+>>>
+>>> Pedro Brasil
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220105/fd526285/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Tue Jan 18 11:03:33 2022
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 18 Jan 2022 11:03:33 -0300
+Subject: [R-br] Usando objetos do .GlobalEnv no rmarkdown para pdf
+Message-ID: <CAFfGvyJMpH3v6FZdp4nZ--Aet62BuMu4an-07Sh+1AedrbhKgg@mail.gmail.com>
+
+Caros amigos de R,
+
+Estou trabalhando num relatório de um projeto para gerar um pdf e um html
+periodicamente no final de cada semana. O passos são os seguintes: 1 -
+importar os dados; 2 - aplicar as etiquetas; 3 - editar os dados; 4 - Fazer
+o grafico 1; 5 - fazer o grafico 2; bla bla etc. 10 - gerar o relatório; 11
+- mandar por email periodicamente. Pra cada passo eu tenho um script
+separado e um script principal que chama todos eles em sequência e assim
+consigo me organizar.
+
+A minha questão é que já trabalhei diversas vezes com o Sweave e nunca
+passei por este problema, e agora começando com o rmarkdown estou batendo
+cabeça. A minha questão é que no script do primeiro gráfico eu gero um
+objeto "fluxp" que está salvo no disco ("meusdados.RData") e tambem está no
+.GlobalEnv. Quando eu renderizo para html dá certo. Mas quando renderizo
+para pdf, o arquivo vem sem a figura. Depois de pedir pra retornar os
+erros, vem que ele não acha o objeto do grafico. Fuçando por ai, entendi
+que a renderização abre uma sessão nova no segundo plano e por isso não
+consegue achar o objeto. Mas não estou conseguindo contornar a situação.
+Alguma luz?
+
+---
+title: "Resultado do projeto"
+author: "Pedro Brasil"
+date:
+output:
+always_allow_html: true
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+```
+
+## Fluxograma de inclusão e exclusão
+
+```{r fluxograma, echo=FALSE, message=TRUE, warning=TRUE, paged.print=TRUE}
+DiagrammeR::grViz(fluxp)
+```
+Error in DiagrammeR::grViz(fluxp): objeto 'fluxp' não encontrado
+
+Pedro Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220118/c49aaebb/attachment.htm>
+
+From dtiezzi em usp.br  Tue Jan 18 11:14:04 2022
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 18 Jan 2022 11:14:04 -0300
+Subject: [R-br] Usando objetos do .GlobalEnv no rmarkdown para pdf
+In-Reply-To: <CAFfGvyJMpH3v6FZdp4nZ--Aet62BuMu4an-07Sh+1AedrbhKgg@mail.gmail.com>
+References: <CAFfGvyJMpH3v6FZdp4nZ--Aet62BuMu4an-07Sh+1AedrbhKgg@mail.gmail.com>
+Message-ID: <CA+RL3DOb6xKoZAOX_i4pKjLaHPZJBgW=QvsP08MABWXE9qGaMQ@mail.gmail.com>
+
+Bom dia
+
+E se você salvar o gráfico em PNG e incluir com html (<img src="img.png"
+alt="image", >) ou mesmo o markdown (![Image](img.png))?
+
+daniel
+
+
+
+Em ter., 18 de jan. de 2022 às 11:04, Pedro Emmanuel Alvarenga Americano do
+Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Caros amigos de R,
+>
+> Estou trabalhando num relatório de um projeto para gerar um pdf e um html
+> periodicamente no final de cada semana. O passos são os seguintes: 1 -
+> importar os dados; 2 - aplicar as etiquetas; 3 - editar os dados; 4 - Fazer
+> o grafico 1; 5 - fazer o grafico 2; bla bla etc. 10 - gerar o relatório; 11
+> - mandar por email periodicamente. Pra cada passo eu tenho um script
+> separado e um script principal que chama todos eles em sequência e assim
+> consigo me organizar.
+>
+> A minha questão é que já trabalhei diversas vezes com o Sweave e nunca
+> passei por este problema, e agora começando com o rmarkdown estou batendo
+> cabeça. A minha questão é que no script do primeiro gráfico eu gero um
+> objeto "fluxp" que está salvo no disco ("meusdados.RData") e tambem está no
+> .GlobalEnv. Quando eu renderizo para html dá certo. Mas quando renderizo
+> para pdf, o arquivo vem sem a figura. Depois de pedir pra retornar os
+> erros, vem que ele não acha o objeto do grafico. Fuçando por ai, entendi
+> que a renderização abre uma sessão nova no segundo plano e por isso não
+> consegue achar o objeto. Mas não estou conseguindo contornar a situação.
+> Alguma luz?
+>
+> ---
+> title: "Resultado do projeto"
+> author: "Pedro Brasil"
+> date:
+> output:
+> always_allow_html: true
+> ---
+>
+> ```{r setup, include = FALSE}
+> knitr::opts_chunk$set(echo = FALSE)
+> knitr::opts_chunk$set(cache = TRUE)
+> knitr::opts_chunk$set(error = TRUE)
+> ```
+>
+> ## Fluxograma de inclusão e exclusão
+>
+> ```{r fluxograma, echo=FALSE, message=TRUE, warning=TRUE, paged.print=TRUE}
+> DiagrammeR::grViz(fluxp)
+> ```
+> Error in DiagrammeR::grViz(fluxp): objeto 'fluxp' não encontrado
+>
+> Pedro Brasil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+Daniel Tiezzi, MD, PhD
+Associate Professor
+Breast Disease and Gynecologic Oncology Division
+Department of Gynecology and Obstetrics
+University of São Paulo
+Brazil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220118/b1769c10/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Tue Jan 18 12:11:17 2022
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 18 Jan 2022 12:11:17 -0300
+Subject: [R-br] Usando objetos do .GlobalEnv no rmarkdown para pdf
+In-Reply-To: <CA+RL3DOb6xKoZAOX_i4pKjLaHPZJBgW=QvsP08MABWXE9qGaMQ@mail.gmail.com>
+References: <CAFfGvyJMpH3v6FZdp4nZ--Aet62BuMu4an-07Sh+1AedrbhKgg@mail.gmail.com>
+ <CA+RL3DOb6xKoZAOX_i4pKjLaHPZJBgW=QvsP08MABWXE9qGaMQ@mail.gmail.com>
+Message-ID: <CAFfGvy+=Mk0qA0V1pqv6esrkHDWmWrGREa1GxNhwU0HLfuNC1g@mail.gmail.com>
+
+Ei Daniel,
+
+Eu já tinha pensado nesta alternativa mas eu cairia em outro problema. Eu
+salvo os arquivos com as datas nos nomes por exemplo
+
+png(paste0("Meugrafico_",Sys.Date(),".png"))
+bla bla bla
+dev.off()
+
+Então pra chamar o grafico precisaria ser dentro do chunk do R. Eu tentei
+
+```{r fluxograma, include=TRUE}
+knitr::include_graphics(here("resultados",paste0("Fluxograma_exclusao_",Sys.Date(),".png")))
+```
+Mas de novo o html está ok e o pdf retorna que não encontra o arquivo.
+Engraçado é que dentro do .Rmd sempre funciona quando peço pra executar
+somente este chunk.
+
+Eu também tentei ...
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(error = TRUE)
+library(here)
+library(DiagrammeR)
+load(here("dados",paste0("Meusdados_",Sys.Date(),".Rdata")))
+```
+Pra ver se carregar os dados na sessão do rmarkdown resolve... só que não!
+
+Pedro Brasil
+
+
+Em ter., 18 de jan. de 2022 às 11:14, Daniel Guimarães Tiezzi <
+dtiezzi em usp.br> escreveu:
+
+> Bom dia
+>
+> E se você salvar o gráfico em PNG e incluir com html (<img src="img.png"
+> alt="image", >) ou mesmo o markdown (![Image](img.png))?
+>
+> daniel
+>
+>
+>
+> Em ter., 18 de jan. de 2022 às 11:04, Pedro Emmanuel Alvarenga Americano
+> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Caros amigos de R,
+>>
+>> Estou trabalhando num relatório de um projeto para gerar um pdf e um html
+>> periodicamente no final de cada semana. O passos são os seguintes: 1 -
+>> importar os dados; 2 - aplicar as etiquetas; 3 - editar os dados; 4 - Fazer
+>> o grafico 1; 5 - fazer o grafico 2; bla bla etc. 10 - gerar o relatório; 11
+>> - mandar por email periodicamente. Pra cada passo eu tenho um script
+>> separado e um script principal que chama todos eles em sequência e assim
+>> consigo me organizar.
+>>
+>> A minha questão é que já trabalhei diversas vezes com o Sweave e nunca
+>> passei por este problema, e agora começando com o rmarkdown estou batendo
+>> cabeça. A minha questão é que no script do primeiro gráfico eu gero um
+>> objeto "fluxp" que está salvo no disco ("meusdados.RData") e tambem está no
+>> .GlobalEnv. Quando eu renderizo para html dá certo. Mas quando renderizo
+>> para pdf, o arquivo vem sem a figura. Depois de pedir pra retornar os
+>> erros, vem que ele não acha o objeto do grafico. Fuçando por ai, entendi
+>> que a renderização abre uma sessão nova no segundo plano e por isso não
+>> consegue achar o objeto. Mas não estou conseguindo contornar a situação.
+>> Alguma luz?
+>>
+>> ---
+>> title: "Resultado do projeto"
+>> author: "Pedro Brasil"
+>> date:
+>> output:
+>> always_allow_html: true
+>> ---
+>>
+>> ```{r setup, include = FALSE}
+>> knitr::opts_chunk$set(echo = FALSE)
+>> knitr::opts_chunk$set(cache = TRUE)
+>> knitr::opts_chunk$set(error = TRUE)
+>> ```
+>>
+>> ## Fluxograma de inclusão e exclusão
+>>
+>> ```{r fluxograma, echo=FALSE, message=TRUE, warning=TRUE,
+>> paged.print=TRUE}
+>> DiagrammeR::grViz(fluxp)
+>> ```
+>> Error in DiagrammeR::grViz(fluxp): objeto 'fluxp' não encontrado
+>>
+>> Pedro Brasil
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+> Daniel Tiezzi, MD, PhD
+> Associate Professor
+> Breast Disease and Gynecologic Oncology Division
+> Department of Gynecology and Obstetrics
+> University of São Paulo
+> Brazil
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220118/36966948/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue Jan 18 13:18:18 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 18 Jan 2022 13:18:18 -0300
+Subject: [R-br] Usando objetos do .GlobalEnv no rmarkdown para pdf
+In-Reply-To: <CAFfGvy+=Mk0qA0V1pqv6esrkHDWmWrGREa1GxNhwU0HLfuNC1g@mail.gmail.com>
+References: <CAFfGvyJMpH3v6FZdp4nZ--Aet62BuMu4an-07Sh+1AedrbhKgg@mail.gmail.com>
+ <CA+RL3DOb6xKoZAOX_i4pKjLaHPZJBgW=QvsP08MABWXE9qGaMQ@mail.gmail.com>
+ <CAFfGvy+=Mk0qA0V1pqv6esrkHDWmWrGREa1GxNhwU0HLfuNC1g@mail.gmail.com>
+Message-ID: <CAKrF98=niFsR-k1UtSk6ewQP7hXsd752Wx7Tv3qOkHt7bB8Zxw@mail.gmail.com>
+
+Exclusivamente durante a fase de geração do relatório corrente "copie" o
+arquivo para um nome fixo, corra todo o processo e no fim exclua apenas
+esse "arquivo temporário de nome fixo" para fazer de novo no seu "... bla
+bla blá..."
+
+
+
+On Tue, Jan 18, 2022 at 12:11 PM Pedro Emmanuel Alvarenga Americano do
+Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+> Ei Daniel,
+>
+> Eu já tinha pensado nesta alternativa mas eu cairia em outro problema. Eu
+> salvo os arquivos com as datas nos nomes por exemplo
+>
+> png(paste0("Meugrafico_",Sys.Date(),".png"))
+> bla bla bla
+> dev.off()
+>
+> Então pra chamar o grafico precisaria ser dentro do chunk do R. Eu tentei
+>
+> ```{r fluxograma, include=TRUE}
+>
+> knitr::include_graphics(here("resultados",paste0("Fluxograma_exclusao_",Sys.Date(),".png")))
+> ```
+> Mas de novo o html está ok e o pdf retorna que não encontra o arquivo.
+> Engraçado é que dentro do .Rmd sempre funciona quando peço pra executar
+> somente este chunk.
+>
+> Eu também tentei ...
+>
+>
+> ```{r setup, include = FALSE}
+> knitr::opts_chunk$set(echo = FALSE)
+> knitr::opts_chunk$set(cache = TRUE)
+> knitr::opts_chunk$set(error = TRUE)
+> library(here)
+> library(DiagrammeR)
+> load(here("dados",paste0("Meusdados_",Sys.Date(),".Rdata")))
+> ```
+> Pra ver se carregar os dados na sessão do rmarkdown resolve... só que não!
+>
+> Pedro Brasil
+>
+>
+> Em ter., 18 de jan. de 2022 às 11:14, Daniel Guimarães Tiezzi <
+> dtiezzi em usp.br> escreveu:
+>
+>> Bom dia
+>>
+>> E se você salvar o gráfico em PNG e incluir com html (<img src="img.png"
+>> alt="image", >) ou mesmo o markdown (![Image](img.png))?
+>>
+>> daniel
+>>
+>>
+>>
+>> Em ter., 18 de jan. de 2022 às 11:04, Pedro Emmanuel Alvarenga Americano
+>> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Caros amigos de R,
+>>>
+>>> Estou trabalhando num relatório de um projeto para gerar um pdf e um
+>>> html periodicamente no final de cada semana. O passos são os seguintes: 1 -
+>>> importar os dados; 2 - aplicar as etiquetas; 3 - editar os dados; 4 - Fazer
+>>> o grafico 1; 5 - fazer o grafico 2; bla bla etc. 10 - gerar o relatório; 11
+>>> - mandar por email periodicamente. Pra cada passo eu tenho um script
+>>> separado e um script principal que chama todos eles em sequência e assim
+>>> consigo me organizar.
+>>>
+>>> A minha questão é que já trabalhei diversas vezes com o Sweave e nunca
+>>> passei por este problema, e agora começando com o rmarkdown estou batendo
+>>> cabeça. A minha questão é que no script do primeiro gráfico eu gero um
+>>> objeto "fluxp" que está salvo no disco ("meusdados.RData") e tambem está no
+>>> .GlobalEnv. Quando eu renderizo para html dá certo. Mas quando renderizo
+>>> para pdf, o arquivo vem sem a figura. Depois de pedir pra retornar os
+>>> erros, vem que ele não acha o objeto do grafico. Fuçando por ai, entendi
+>>> que a renderização abre uma sessão nova no segundo plano e por isso não
+>>> consegue achar o objeto. Mas não estou conseguindo contornar a situação.
+>>> Alguma luz?
+>>>
+>>> ---
+>>> title: "Resultado do projeto"
+>>> author: "Pedro Brasil"
+>>> date:
+>>> output:
+>>> always_allow_html: true
+>>> ---
+>>>
+>>> ```{r setup, include = FALSE}
+>>> knitr::opts_chunk$set(echo = FALSE)
+>>> knitr::opts_chunk$set(cache = TRUE)
+>>> knitr::opts_chunk$set(error = TRUE)
+>>> ```
+>>>
+>>> ## Fluxograma de inclusão e exclusão
+>>>
+>>> ```{r fluxograma, echo=FALSE, message=TRUE, warning=TRUE,
+>>> paged.print=TRUE}
+>>> DiagrammeR::grViz(fluxp)
+>>> ```
+>>> Error in DiagrammeR::grViz(fluxp): objeto 'fluxp' não encontrado
+>>>
+>>> Pedro Brasil
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>>
+>> --
+>> Daniel Tiezzi, MD, PhD
+>> Associate Professor
+>> Breast Disease and Gynecologic Oncology Division
+>> Department of Gynecology and Obstetrics
+>> University of São Paulo
+>> Brazil
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220118/4d0e97ca/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Wed Jan 19 10:48:57 2022
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Wed, 19 Jan 2022 10:48:57 -0300
+Subject: [R-br] Usando objetos do .GlobalEnv no rmarkdown para pdf
+In-Reply-To: <CAKrF98=niFsR-k1UtSk6ewQP7hXsd752Wx7Tv3qOkHt7bB8Zxw@mail.gmail.com>
+References: <CAFfGvyJMpH3v6FZdp4nZ--Aet62BuMu4an-07Sh+1AedrbhKgg@mail.gmail.com>
+ <CA+RL3DOb6xKoZAOX_i4pKjLaHPZJBgW=QvsP08MABWXE9qGaMQ@mail.gmail.com>
+ <CAFfGvy+=Mk0qA0V1pqv6esrkHDWmWrGREa1GxNhwU0HLfuNC1g@mail.gmail.com>
+ <CAKrF98=niFsR-k1UtSk6ewQP7hXsd752Wx7Tv3qOkHt7bB8Zxw@mail.gmail.com>
+Message-ID: <CAFfGvy+n30JygHtu6Zteba75p7zFqyGciDJ0jZmno9k5-4pG4A@mail.gmail.com>
+
+Ei turma,
+
+Obrigado pela ajuda aqui. Revendo o código eu descobri alguns erros bobos
+nos nomes do Meusdados.RData. Mesmo assim, executar o plot dentrdo do *.Rmd
+não estava dando certo. Então eu dei uma fuçada no include_graphics e ficou
+assim (dando certo). Nao tenho certeza absoluta se foi so isso que fez a
+diferença mas...
+
+```{r fluxograma, warning=TRUE, paged.print=TRUE}
+knitr::include_graphics(here("resultados",paste0("Fluxograma_exclusao_",Sys.Date(),".png")),
+auto_pdf = TRUE)
+```
+Esse auto_pdf significa se houver um pdf de mesmo nome que o arquivo png no
+mesmo diretório, ele carrega o pdf no lugar do png. De fato essa figura
+tinha um pdf no mesmo diretório. Veremos se nas próximas figuras haverá o
+mesmo problema.
+
+Pedro Brasil
+
+
+Em ter., 18 de jan. de 2022 às 13:18, Cesar Rabak <cesar.rabak em gmail.com>
+escreveu:
+
+> Exclusivamente durante a fase de geração do relatório corrente "copie" o
+> arquivo para um nome fixo, corra todo o processo e no fim exclua apenas
+> esse "arquivo temporário de nome fixo" para fazer de novo no seu "... bla
+> bla blá..."
+>
+>
+>
+> On Tue, Jan 18, 2022 at 12:11 PM Pedro Emmanuel Alvarenga Americano do
+> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Ei Daniel,
+>>
+>> Eu já tinha pensado nesta alternativa mas eu cairia em outro problema. Eu
+>> salvo os arquivos com as datas nos nomes por exemplo
+>>
+>> png(paste0("Meugrafico_",Sys.Date(),".png"))
+>> bla bla bla
+>> dev.off()
+>>
+>> Então pra chamar o grafico precisaria ser dentro do chunk do R. Eu tentei
+>>
+>> ```{r fluxograma, include=TRUE}
+>>
+>> knitr::include_graphics(here("resultados",paste0("Fluxograma_exclusao_",Sys.Date(),".png")))
+>> ```
+>> Mas de novo o html está ok e o pdf retorna que não encontra o arquivo.
+>> Engraçado é que dentro do .Rmd sempre funciona quando peço pra executar
+>> somente este chunk.
+>>
+>> Eu também tentei ...
+>>
+>>
+>> ```{r setup, include = FALSE}
+>> knitr::opts_chunk$set(echo = FALSE)
+>> knitr::opts_chunk$set(cache = TRUE)
+>> knitr::opts_chunk$set(error = TRUE)
+>> library(here)
+>> library(DiagrammeR)
+>> load(here("dados",paste0("Meusdados_",Sys.Date(),".Rdata")))
+>> ```
+>> Pra ver se carregar os dados na sessão do rmarkdown resolve... só que não!
+>>
+>> Pedro Brasil
+>>
+>>
+>> Em ter., 18 de jan. de 2022 às 11:14, Daniel Guimarães Tiezzi <
+>> dtiezzi em usp.br> escreveu:
+>>
+>>> Bom dia
+>>>
+>>> E se você salvar o gráfico em PNG e incluir com html (<img src="img.png"
+>>> alt="image", >) ou mesmo o markdown (![Image](img.png))?
+>>>
+>>> daniel
+>>>
+>>>
+>>>
+>>> Em ter., 18 de jan. de 2022 às 11:04, Pedro Emmanuel Alvarenga Americano
+>>> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>>
+>>>> Caros amigos de R,
+>>>>
+>>>> Estou trabalhando num relatório de um projeto para gerar um pdf e um
+>>>> html periodicamente no final de cada semana. O passos são os seguintes: 1 -
+>>>> importar os dados; 2 - aplicar as etiquetas; 3 - editar os dados; 4 - Fazer
+>>>> o grafico 1; 5 - fazer o grafico 2; bla bla etc. 10 - gerar o relatório; 11
+>>>> - mandar por email periodicamente. Pra cada passo eu tenho um script
+>>>> separado e um script principal que chama todos eles em sequência e assim
+>>>> consigo me organizar.
+>>>>
+>>>> A minha questão é que já trabalhei diversas vezes com o Sweave e nunca
+>>>> passei por este problema, e agora começando com o rmarkdown estou batendo
+>>>> cabeça. A minha questão é que no script do primeiro gráfico eu gero um
+>>>> objeto "fluxp" que está salvo no disco ("meusdados.RData") e tambem está no
+>>>> .GlobalEnv. Quando eu renderizo para html dá certo. Mas quando renderizo
+>>>> para pdf, o arquivo vem sem a figura. Depois de pedir pra retornar os
+>>>> erros, vem que ele não acha o objeto do grafico. Fuçando por ai, entendi
+>>>> que a renderização abre uma sessão nova no segundo plano e por isso não
+>>>> consegue achar o objeto. Mas não estou conseguindo contornar a situação.
+>>>> Alguma luz?
+>>>>
+>>>> ---
+>>>> title: "Resultado do projeto"
+>>>> author: "Pedro Brasil"
+>>>> date:
+>>>> output:
+>>>> always_allow_html: true
+>>>> ---
+>>>>
+>>>> ```{r setup, include = FALSE}
+>>>> knitr::opts_chunk$set(echo = FALSE)
+>>>> knitr::opts_chunk$set(cache = TRUE)
+>>>> knitr::opts_chunk$set(error = TRUE)
+>>>> ```
+>>>>
+>>>> ## Fluxograma de inclusão e exclusão
+>>>>
+>>>> ```{r fluxograma, echo=FALSE, message=TRUE, warning=TRUE,
+>>>> paged.print=TRUE}
+>>>> DiagrammeR::grViz(fluxp)
+>>>> ```
+>>>> Error in DiagrammeR::grViz(fluxp): objeto 'fluxp' não encontrado
+>>>>
+>>>> Pedro Brasil
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>>
+>>>
+>>> --
+>>> Daniel Tiezzi, MD, PhD
+>>> Associate Professor
+>>> Breast Disease and Gynecologic Oncology Division
+>>> Department of Gynecology and Obstetrics
+>>> University of São Paulo
+>>> Brazil
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220119/cbb23d11/attachment.htm>
+

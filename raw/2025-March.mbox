@@ -1,0 +1,2002 @@
+From bodevan.ec em gmail.com  Thu Mar 27 15:08:01 2025
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Thu, 27 Mar 2025 15:08:01 -0300
+Subject: [R-br] TukeyHSD
+Message-ID: <CAP5i-sz5LFs-N3EeJtrsshNWenjQeJngPmBn3C5vLCkOVkOXog@mail.gmail.com>
+
+Prezados, boa tarde.
+
+Fiz um teste de Tukey, usando o comando
+
+resultado<-TukeyHSD(resultado de uma anova)
+
+O arquivo tem 276 linhas (24 tratamentos diferentes).
+
+Como faço para ver todas as comparações?
+
+Pergunto porque o R da a mensagem
+
+[ reached getOption("max.print") -- omitted 26 rows ]
+
+
+Entendo que ele omitiu 26 linhas.
+
+OBS.: Preciso dos resultados para preencher as letras que diferenciam as
+linhas na tabela de resultados.
+
+
+
+Agradeço qualquer ajuda.
+
+*Emerson*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250327/6f7e9fb8/attachment.htm>
+
+From marcelolaia em gmail.com  Thu Mar 27 16:05:42 2025
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Thu, 27 Mar 2025 16:05:42 -0300
+Subject: [R-br] TukeyHSD
+In-Reply-To: <CAP5i-sz5LFs-N3EeJtrsshNWenjQeJngPmBn3C5vLCkOVkOXog@mail.gmail.com>
+References: <CAP5i-sz5LFs-N3EeJtrsshNWenjQeJngPmBn3C5vLCkOVkOXog@mail.gmail.com>
+Message-ID: <CAEEYVUAYQPnVLkow3=89KcRJwx6kfY6azMw7gxw_ekrk03OTZQ@mail.gmail.com>
+
+Oi Emerson, você já testou uma das três opções abaixo?
+
+Opção 1: Aumentar o limite de impressão
+
+options(max.print = 10000)  # ou qualquer valor maior que o número de linhas
+print(resultado)
+
+Opção 2: Acessar diretamente os resultados
+
+resultado$`nome_do_fator`  # substitua pelo nome real do fator
+
+Exemplo:
+
+resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+View(resultado$tratamento)  # abrir em visualização tabular
+
+Opção 3: Exportar para Excel ou CSV
+
+write.csv(resultado$tratamento, "tukey_resultados.csv")
+
+Teoricamente, essas abordagens permitirão acessar todas as comparações,
+inclusive as omitidas.
+
+Marcelo
+
+Enviado a partir de dispositivo móvel
+https://linktr.ee/marcelolaia
+
+Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados, boa tarde.
+>
+> Fiz um teste de Tukey, usando o comando
+>
+> resultado<-TukeyHSD(resultado de uma anova)
+>
+> O arquivo tem 276 linhas (24 tratamentos diferentes).
+>
+> Como faço para ver todas as comparações?
+>
+> Pergunto porque o R da a mensagem
+>
+> [ reached getOption("max.print") -- omitted 26 rows ]
+>
+>
+> Entendo que ele omitiu 26 linhas.
+>
+> OBS.: Preciso dos resultados para preencher as letras que diferenciam as
+> linhas na tabela de resultados.
+>
+>
+>
+> Agradeço qualquer ajuda.
+>
+> *Emerson*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250327/4464251a/attachment.htm>
+
+From peternelli em ufv.br  Thu Mar 27 18:01:29 2025
+From: peternelli em ufv.br (Luiz Peternelli)
+Date: Thu, 27 Mar 2025 18:01:29 -0300
+Subject: [R-br] TukeyHSD
+In-Reply-To: <CAEEYVUAYQPnVLkow3=89KcRJwx6kfY6azMw7gxw_ekrk03OTZQ@mail.gmail.com>
+References: <CAP5i-sz5LFs-N3EeJtrsshNWenjQeJngPmBn3C5vLCkOVkOXog@mail.gmail.com>
+ <CAEEYVUAYQPnVLkow3=89KcRJwx6kfY6azMw7gxw_ekrk03OTZQ@mail.gmail.com>
+Message-ID: <CAE4+P9L9Zk2X6en-ySz59hfK1ewCkOoAikunTnrMcGCS5bfeCA@mail.gmail.com>
+
+Olá.
+Você precisa fazer isso no R? Fará essa análise comparativa de maneira
+recorrente, ou somente uma vez e apresentará os resultados num paper?
+Se fará somente uma vez e se todos os tratamentos tiverem o mesmo número de
+repetições, fazer à mão é extremamente simples, já q o delta da diferença
+mínima significativa será único.
+
+Outro ponto importante: na prática usar esse teste quando se tem muito
+tratamentos é inadequado. Só vai trazer mais confusão interpretativa do que
+auxílio em tomada de decisão.
+
+Abraços
+
+?Luiz Alexandre Peternelli
+
+
+
+
+
+On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Oi Emerson, você já testou uma das três opções abaixo?
+>
+> Opção 1: Aumentar o limite de impressão
+>
+> options(max.print = 10000)  # ou qualquer valor maior que o número de
+> linhas
+> print(resultado)
+>
+> Opção 2: Acessar diretamente os resultados
+>
+> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+>
+> Exemplo:
+>
+> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+> View(resultado$tratamento)  # abrir em visualização tabular
+>
+> Opção 3: Exportar para Excel ou CSV
+>
+> write.csv(resultado$tratamento, "tukey_resultados.csv")
+>
+> Teoricamente, essas abordagens permitirão acessar todas as comparações,
+> inclusive as omitidas.
+>
+> Marcelo
+>
+> Enviado a partir de dispositivo móvel
+> https://linktr.ee/marcelolaia
+>
+> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Prezados, boa tarde.
+>>
+>> Fiz um teste de Tukey, usando o comando
+>>
+>> resultado<-TukeyHSD(resultado de uma anova)
+>>
+>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+>>
+>> Como faço para ver todas as comparações?
+>>
+>> Pergunto porque o R da a mensagem
+>>
+>> [ reached getOption("max.print") -- omitted 26 rows ]
+>>
+>>
+>> Entendo que ele omitiu 26 linhas.
+>>
+>> OBS.: Preciso dos resultados para preencher as letras que diferenciam as
+>> linhas na tabela de resultados.
+>>
+>>
+>>
+>> Agradeço qualquer ajuda.
+>>
+>> *Emerson*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250327/06e38c57/attachment.htm>
+
+From nandodesouza em gmail.com  Thu Mar 27 20:06:46 2025
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 27 Mar 2025 20:06:46 -0300
+Subject: [R-br] TukeyHSD
+In-Reply-To: <CAE4+P9L9Zk2X6en-ySz59hfK1ewCkOoAikunTnrMcGCS5bfeCA@mail.gmail.com>
+References: <CAP5i-sz5LFs-N3EeJtrsshNWenjQeJngPmBn3C5vLCkOVkOXog@mail.gmail.com>
+ <CAEEYVUAYQPnVLkow3=89KcRJwx6kfY6azMw7gxw_ekrk03OTZQ@mail.gmail.com>
+ <CAE4+P9L9Zk2X6en-ySz59hfK1ewCkOoAikunTnrMcGCS5bfeCA@mail.gmail.com>
+Message-ID: <CAFrWFsniyoRyJ4N_g7mCNdbV7P5wSj=ewWtaJaQA8tN1jiO3=w@mail.gmail.com>
+
+Vc pode fazer plot ( resultado) para ver os intervalos de confiança.
+
+Vc pode utilizar o HSDtest do pacote agricolae para ver as comparações  com
+as letras.
+
+Em qui., 27 de mar. de 2025, 18:01, Luiz Peternelli por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá.
+> Você precisa fazer isso no R? Fará essa análise comparativa de maneira
+> recorrente, ou somente uma vez e apresentará os resultados num paper?
+> Se fará somente uma vez e se todos os tratamentos tiverem o mesmo número
+> de repetições, fazer à mão é extremamente simples, já q o delta da
+> diferença mínima significativa será único.
+>
+> Outro ponto importante: na prática usar esse teste quando se tem muito
+> tratamentos é inadequado. Só vai trazer mais confusão interpretativa do que
+> auxílio em tomada de decisão.
+>
+> Abraços
+>
+> ?Luiz Alexandre Peternelli
+>
+>
+>
+>
+>
+> On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Oi Emerson, você já testou uma das três opções abaixo?
+>>
+>> Opção 1: Aumentar o limite de impressão
+>>
+>> options(max.print = 10000)  # ou qualquer valor maior que o número de
+>> linhas
+>> print(resultado)
+>>
+>> Opção 2: Acessar diretamente os resultados
+>>
+>> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+>>
+>> Exemplo:
+>>
+>> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+>> View(resultado$tratamento)  # abrir em visualização tabular
+>>
+>> Opção 3: Exportar para Excel ou CSV
+>>
+>> write.csv(resultado$tratamento, "tukey_resultados.csv")
+>>
+>> Teoricamente, essas abordagens permitirão acessar todas as comparações,
+>> inclusive as omitidas.
+>>
+>> Marcelo
+>>
+>> Enviado a partir de dispositivo móvel
+>> https://linktr.ee/marcelolaia
+>>
+>> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Prezados, boa tarde.
+>>>
+>>> Fiz um teste de Tukey, usando o comando
+>>>
+>>> resultado<-TukeyHSD(resultado de uma anova)
+>>>
+>>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+>>>
+>>> Como faço para ver todas as comparações?
+>>>
+>>> Pergunto porque o R da a mensagem
+>>>
+>>> [ reached getOption("max.print") -- omitted 26 rows ]
+>>>
+>>>
+>>> Entendo que ele omitiu 26 linhas.
+>>>
+>>> OBS.: Preciso dos resultados para preencher as letras que diferenciam as
+>>> linhas na tabela de resultados.
+>>>
+>>>
+>>>
+>>> Agradeço qualquer ajuda.
+>>>
+>>> *Emerson*
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250327/7e8c6c9a/attachment.htm>
+
+From cesar.rabak em gmail.com  Thu Mar 27 23:50:31 2025
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 27 Mar 2025 23:50:31 -0300
+Subject: [R-br] TukeyHSD
+In-Reply-To: <CAE4+P9L9Zk2X6en-ySz59hfK1ewCkOoAikunTnrMcGCS5bfeCA@mail.gmail.com>
+References: <CAP5i-sz5LFs-N3EeJtrsshNWenjQeJngPmBn3C5vLCkOVkOXog@mail.gmail.com>
+ <CAEEYVUAYQPnVLkow3=89KcRJwx6kfY6azMw7gxw_ekrk03OTZQ@mail.gmail.com>
+ <CAE4+P9L9Zk2X6en-ySz59hfK1ewCkOoAikunTnrMcGCS5bfeCA@mail.gmail.com>
+Message-ID: <CAKrF98ks_+-7+3m_Yo99G7HyqPFaLyHuk8XzDFHw0m_uot8x5w@mail.gmail.com>
+
+Pegando carona na resposta do Luiz Alexandre sobre a inadequação do número
+de tratamentos, que eu concordo, gostaria de acrescentar que parece-me que
+há poucos casos para o número de tratamentos (a divisão do nº de casos pelo
+dos tratamentos não dá nem inteiro, o que me leva a pensar que ANOVA pode
+estar desbalanceada, também...).
+
+Uma outra questão mais prática é por que a ANOVA precisa de tantas linhas,
+a menos que sua formulação inclua interações entre os tratamentos.
+
+HTH
+
+On Thu, Mar 27, 2025 at 6:01?PM Luiz Peternelli por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá.
+> Você precisa fazer isso no R? Fará essa análise comparativa de maneira
+> recorrente, ou somente uma vez e apresentará os resultados num paper?
+> Se fará somente uma vez e se todos os tratamentos tiverem o mesmo número
+> de repetições, fazer à mão é extremamente simples, já q o delta da
+> diferença mínima significativa será único.
+>
+> Outro ponto importante: na prática usar esse teste quando se tem muito
+> tratamentos é inadequado. Só vai trazer mais confusão interpretativa do que
+> auxílio em tomada de decisão.
+>
+> Abraços
+>
+> ?Luiz Alexandre Peternelli
+>
+>
+>
+>
+>
+> On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Oi Emerson, você já testou uma das três opções abaixo?
+>>
+>> Opção 1: Aumentar o limite de impressão
+>>
+>> options(max.print = 10000)  # ou qualquer valor maior que o número de
+>> linhas
+>> print(resultado)
+>>
+>> Opção 2: Acessar diretamente os resultados
+>>
+>> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+>>
+>> Exemplo:
+>>
+>> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+>> View(resultado$tratamento)  # abrir em visualização tabular
+>>
+>> Opção 3: Exportar para Excel ou CSV
+>>
+>> write.csv(resultado$tratamento, "tukey_resultados.csv")
+>>
+>> Teoricamente, essas abordagens permitirão acessar todas as comparações,
+>> inclusive as omitidas.
+>>
+>> Marcelo
+>>
+>> Enviado a partir de dispositivo móvel
+>> https://linktr.ee/marcelolaia
+>>
+>> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Prezados, boa tarde.
+>>>
+>>> Fiz um teste de Tukey, usando o comando
+>>>
+>>> resultado<-TukeyHSD(resultado de uma anova)
+>>>
+>>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+>>>
+>>> Como faço para ver todas as comparações?
+>>>
+>>> Pergunto porque o R da a mensagem
+>>>
+>>> [ reached getOption("max.print") -- omitted 26 rows ]
+>>>
+>>>
+>>> Entendo que ele omitiu 26 linhas.
+>>>
+>>> OBS.: Preciso dos resultados para preencher as letras que diferenciam as
+>>> linhas na tabela de resultados.
+>>>
+>>>
+>>>
+>>> Agradeço qualquer ajuda.
+>>>
+>>> *Emerson*
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250327/f26ea601/attachment.htm>
+
+From bodevan.ec em gmail.com  Fri Mar 28 08:49:20 2025
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Fri, 28 Mar 2025 08:49:20 -0300
+Subject: [R-br] TukeyHSD
+In-Reply-To: <CAKrF98ks_+-7+3m_Yo99G7HyqPFaLyHuk8XzDFHw0m_uot8x5w@mail.gmail.com>
+References: <CAP5i-sz5LFs-N3EeJtrsshNWenjQeJngPmBn3C5vLCkOVkOXog@mail.gmail.com>
+ <CAEEYVUAYQPnVLkow3=89KcRJwx6kfY6azMw7gxw_ekrk03OTZQ@mail.gmail.com>
+ <CAE4+P9L9Zk2X6en-ySz59hfK1ewCkOoAikunTnrMcGCS5bfeCA@mail.gmail.com>
+ <CAKrF98ks_+-7+3m_Yo99G7HyqPFaLyHuk8XzDFHw0m_uot8x5w@mail.gmail.com>
+Message-ID: <CAP5i-swpE7yrG7ChAhTMUOv0bG3b7yx77OUWKquZkXU4MGNv2w@mail.gmail.com>
+
+Prezados, bom dia.
+
+Primeiramente, obrigado a todos pelo rápido retorno.
+
+Marcelo e Fernando... todas as soluções apresentadas funcionaram
+direitinho. Obrigado.
+
+Luiz e Cesar... obrigado pelas considerações. São 24 tratamentos, o que nos
+leva a 276 comparações dois a dois. Mas consigo separar em blocos de 8
+tratamentos. Acredito que as discussões serão mais ricas e o teste mais
+adequado. Obrigado mais uma vez.
+
+Abraços.
+
+*Emerson*
+
+
+Em qui., 27 de mar. de 2025 às 23:50, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Pegando carona na resposta do Luiz Alexandre sobre a inadequação do número
+> de tratamentos, que eu concordo, gostaria de acrescentar que parece-me que
+> há poucos casos para o número de tratamentos (a divisão do nº de casos pelo
+> dos tratamentos não dá nem inteiro, o que me leva a pensar que ANOVA pode
+> estar desbalanceada, também...).
+>
+> Uma outra questão mais prática é por que a ANOVA precisa de tantas linhas,
+> a menos que sua formulação inclua interações entre os tratamentos.
+>
+> HTH
+>
+> On Thu, Mar 27, 2025 at 6:01?PM Luiz Peternelli por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Olá.
+>> Você precisa fazer isso no R? Fará essa análise comparativa de maneira
+>> recorrente, ou somente uma vez e apresentará os resultados num paper?
+>> Se fará somente uma vez e se todos os tratamentos tiverem o mesmo número
+>> de repetições, fazer à mão é extremamente simples, já q o delta da
+>> diferença mínima significativa será único.
+>>
+>> Outro ponto importante: na prática usar esse teste quando se tem muito
+>> tratamentos é inadequado. Só vai trazer mais confusão interpretativa do que
+>> auxílio em tomada de decisão.
+>>
+>> Abraços
+>>
+>> ?Luiz Alexandre Peternelli
+>>
+>>
+>>
+>>
+>>
+>> On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Oi Emerson, você já testou uma das três opções abaixo?
+>>>
+>>> Opção 1: Aumentar o limite de impressão
+>>>
+>>> options(max.print = 10000)  # ou qualquer valor maior que o número de
+>>> linhas
+>>> print(resultado)
+>>>
+>>> Opção 2: Acessar diretamente os resultados
+>>>
+>>> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+>>>
+>>> Exemplo:
+>>>
+>>> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+>>> View(resultado$tratamento)  # abrir em visualização tabular
+>>>
+>>> Opção 3: Exportar para Excel ou CSV
+>>>
+>>> write.csv(resultado$tratamento, "tukey_resultados.csv")
+>>>
+>>> Teoricamente, essas abordagens permitirão acessar todas as comparações,
+>>> inclusive as omitidas.
+>>>
+>>> Marcelo
+>>>
+>>> Enviado a partir de dispositivo móvel
+>>> https://linktr.ee/marcelolaia
+>>>
+>>> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>
+>>>> Prezados, boa tarde.
+>>>>
+>>>> Fiz um teste de Tukey, usando o comando
+>>>>
+>>>> resultado<-TukeyHSD(resultado de uma anova)
+>>>>
+>>>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+>>>>
+>>>> Como faço para ver todas as comparações?
+>>>>
+>>>> Pergunto porque o R da a mensagem
+>>>>
+>>>> [ reached getOption("max.print") -- omitted 26 rows ]
+>>>>
+>>>>
+>>>> Entendo que ele omitiu 26 linhas.
+>>>>
+>>>> OBS.: Preciso dos resultados para preencher as letras que diferenciam
+>>>> as linhas na tabela de resultados.
+>>>>
+>>>>
+>>>>
+>>>> Agradeço qualquer ajuda.
+>>>>
+>>>> *Emerson*
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250328/2a4a0e5e/attachment.htm>
+
+From cesar.rabak em gmail.com  Fri Mar 28 13:13:15 2025
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 28 Mar 2025 13:13:15 -0300
+Subject: [R-br] TukeyHSD
+In-Reply-To: <CAP5i-swpE7yrG7ChAhTMUOv0bG3b7yx77OUWKquZkXU4MGNv2w@mail.gmail.com>
+References: <CAP5i-sz5LFs-N3EeJtrsshNWenjQeJngPmBn3C5vLCkOVkOXog@mail.gmail.com>
+ <CAEEYVUAYQPnVLkow3=89KcRJwx6kfY6azMw7gxw_ekrk03OTZQ@mail.gmail.com>
+ <CAE4+P9L9Zk2X6en-ySz59hfK1ewCkOoAikunTnrMcGCS5bfeCA@mail.gmail.com>
+ <CAKrF98ks_+-7+3m_Yo99G7HyqPFaLyHuk8XzDFHw0m_uot8x5w@mail.gmail.com>
+ <CAP5i-swpE7yrG7ChAhTMUOv0bG3b7yx77OUWKquZkXU4MGNv2w@mail.gmail.com>
+Message-ID: <CAKrF98=K6E0MCv_mYZiMLagQHvUXDxH3_gOdNXD3AX=N2F2=2w@mail.gmail.com>
+
+@Emerson:
+
+Considere adicionar às suas análises uma medida e discussão sobre os
+tamanhos dos efeitos observados.
+
+Ademais, além da diferença mínima detectável dada pelo teste *post
+hoc* utilizado,
+aconselho a verificar qual a acurácia (ou pensando estatisticamente, o
+intervalo de confiança) das medidas da variável resposta, que tendo sido
+feito a ANOVA, pressuponho  seja contínua, pelo menos intervalar.
+
+HTH
+
+--
+Cesar Rabak
+
+
+
+On Fri, Mar 28, 2025 at 8:49?AM Emerson Cotta Bodevan <bodevan.ec em gmail.com>
+wrote:
+
+> Prezados, bom dia.
+>
+> Primeiramente, obrigado a todos pelo rápido retorno.
+>
+> Marcelo e Fernando... todas as soluções apresentadas funcionaram
+> direitinho. Obrigado.
+>
+> Luiz e Cesar... obrigado pelas considerações. São 24 tratamentos, o que
+> nos leva a 276 comparações dois a dois. Mas consigo separar em blocos de 8
+> tratamentos. Acredito que as discussões serão mais ricas e o teste mais
+> adequado. Obrigado mais uma vez.
+>
+> Abraços.
+>
+> *Emerson*
+>
+>
+> Em qui., 27 de mar. de 2025 às 23:50, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Pegando carona na resposta do Luiz Alexandre sobre a inadequação do
+>> número de tratamentos, que eu concordo, gostaria de acrescentar que
+>> parece-me que há poucos casos para o número de tratamentos (a divisão do nº
+>> de casos pelo dos tratamentos não dá nem inteiro, o que me leva a pensar
+>> que ANOVA pode estar desbalanceada, também...).
+>>
+>> Uma outra questão mais prática é por que a ANOVA precisa de tantas
+>> linhas, a menos que sua formulação inclua interações entre os tratamentos.
+>>
+>> HTH
+>>
+>> On Thu, Mar 27, 2025 at 6:01?PM Luiz Peternelli por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Olá.
+>>> Você precisa fazer isso no R? Fará essa análise comparativa de maneira
+>>> recorrente, ou somente uma vez e apresentará os resultados num paper?
+>>> Se fará somente uma vez e se todos os tratamentos tiverem o mesmo número
+>>> de repetições, fazer à mão é extremamente simples, já q o delta da
+>>> diferença mínima significativa será único.
+>>>
+>>> Outro ponto importante: na prática usar esse teste quando se tem muito
+>>> tratamentos é inadequado. Só vai trazer mais confusão interpretativa do que
+>>> auxílio em tomada de decisão.
+>>>
+>>> Abraços
+>>>
+>>> ?Luiz Alexandre Peternelli
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Oi Emerson, você já testou uma das três opções abaixo?
+>>>>
+>>>> Opção 1: Aumentar o limite de impressão
+>>>>
+>>>> options(max.print = 10000)  # ou qualquer valor maior que o número de
+>>>> linhas
+>>>> print(resultado)
+>>>>
+>>>> Opção 2: Acessar diretamente os resultados
+>>>>
+>>>> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+>>>>
+>>>> Exemplo:
+>>>>
+>>>> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+>>>> View(resultado$tratamento)  # abrir em visualização tabular
+>>>>
+>>>> Opção 3: Exportar para Excel ou CSV
+>>>>
+>>>> write.csv(resultado$tratamento, "tukey_resultados.csv")
+>>>>
+>>>> Teoricamente, essas abordagens permitirão acessar todas as comparações,
+>>>> inclusive as omitidas.
+>>>>
+>>>> Marcelo
+>>>>
+>>>> Enviado a partir de dispositivo móvel
+>>>> https://linktr.ee/marcelolaia
+>>>>
+>>>> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br) <
+>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>
+>>>>> Prezados, boa tarde.
+>>>>>
+>>>>> Fiz um teste de Tukey, usando o comando
+>>>>>
+>>>>> resultado<-TukeyHSD(resultado de uma anova)
+>>>>>
+>>>>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+>>>>>
+>>>>> Como faço para ver todas as comparações?
+>>>>>
+>>>>> Pergunto porque o R da a mensagem
+>>>>>
+>>>>> [ reached getOption("max.print") -- omitted 26 rows ]
+>>>>>
+>>>>>
+>>>>> Entendo que ele omitiu 26 linhas.
+>>>>>
+>>>>> OBS.: Preciso dos resultados para preencher as letras que diferenciam
+>>>>> as linhas na tabela de resultados.
+>>>>>
+>>>>>
+>>>>>
+>>>>> Agradeço qualquer ajuda.
+>>>>>
+>>>>> *Emerson*
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250328/353d2be8/attachment.htm>
+
+From cesar.rabak em gmail.com  Fri Mar 28 13:37:14 2025
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 28 Mar 2025 13:37:14 -0300
+Subject: [R-br] TukeyHSD
+In-Reply-To: <CAKrF98=K6E0MCv_mYZiMLagQHvUXDxH3_gOdNXD3AX=N2F2=2w@mail.gmail.com>
+References: <CAP5i-sz5LFs-N3EeJtrsshNWenjQeJngPmBn3C5vLCkOVkOXog@mail.gmail.com>
+ <CAEEYVUAYQPnVLkow3=89KcRJwx6kfY6azMw7gxw_ekrk03OTZQ@mail.gmail.com>
+ <CAE4+P9L9Zk2X6en-ySz59hfK1ewCkOoAikunTnrMcGCS5bfeCA@mail.gmail.com>
+ <CAKrF98ks_+-7+3m_Yo99G7HyqPFaLyHuk8XzDFHw0m_uot8x5w@mail.gmail.com>
+ <CAP5i-swpE7yrG7ChAhTMUOv0bG3b7yx77OUWKquZkXU4MGNv2w@mail.gmail.com>
+ <CAKrF98=K6E0MCv_mYZiMLagQHvUXDxH3_gOdNXD3AX=N2F2=2w@mail.gmail.com>
+Message-ID: <CAKrF98=5mSpVF215PPJeey+QRF820r+VBtE4WYVHAZwkdmsJ3w@mail.gmail.com>
+
+Como apoio à minha última observação cito dois autores, que eu coloco nos
+meus relatórios quando é feita uma análise estatística: HTH
+
+ ?*Always present effect sizes for primary outcomes ? If the units of
+measurement are meaningful on a practical level ?, then we usually prefer
+an unstardardized measurement to a standardized measure*.?
+
+? *(Wilkison, L., 1999)**.*
+
+ ?*In the post p <0.05 era, scientific argumentation is not based on
+whether a p-value is small enough or not. Attention is paid to effect sizes
+and confidence intervals. Evidence is thought of as being continuous rather
+than some sort of dichotomy*.?
+
+? *Ron Wasserstein, executive director of the American Statistical
+Association**, 2016.*
+
+
+HTH
+
+--
+
+Cesar Rabak
+
+On Fri, Mar 28, 2025 at 1:13?PM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+
+> @Emerson:
+>
+> Considere adicionar às suas análises uma medida e discussão sobre os
+> tamanhos dos efeitos observados.
+>
+> Ademais, além da diferença mínima detectável dada pelo teste *post hoc* utilizado,
+> aconselho a verificar qual a acurácia (ou pensando estatisticamente, o
+> intervalo de confiança) das medidas da variável resposta, que tendo sido
+> feito a ANOVA, pressuponho  seja contínua, pelo menos intervalar.
+>
+> HTH
+>
+> --
+> Cesar Rabak
+>
+>
+>
+> On Fri, Mar 28, 2025 at 8:49?AM Emerson Cotta Bodevan <
+> bodevan.ec em gmail.com> wrote:
+>
+>> Prezados, bom dia.
+>>
+>> Primeiramente, obrigado a todos pelo rápido retorno.
+>>
+>> Marcelo e Fernando... todas as soluções apresentadas funcionaram
+>> direitinho. Obrigado.
+>>
+>> Luiz e Cesar... obrigado pelas considerações. São 24 tratamentos, o que
+>> nos leva a 276 comparações dois a dois. Mas consigo separar em blocos de 8
+>> tratamentos. Acredito que as discussões serão mais ricas e o teste mais
+>> adequado. Obrigado mais uma vez.
+>>
+>> Abraços.
+>>
+>> *Emerson*
+>>
+>>
+>> Em qui., 27 de mar. de 2025 às 23:50, Cesar Rabak por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Pegando carona na resposta do Luiz Alexandre sobre a inadequação do
+>>> número de tratamentos, que eu concordo, gostaria de acrescentar que
+>>> parece-me que há poucos casos para o número de tratamentos (a divisão do nº
+>>> de casos pelo dos tratamentos não dá nem inteiro, o que me leva a pensar
+>>> que ANOVA pode estar desbalanceada, também...).
+>>>
+>>> Uma outra questão mais prática é por que a ANOVA precisa de tantas
+>>> linhas, a menos que sua formulação inclua interações entre os tratamentos.
+>>>
+>>> HTH
+>>>
+>>> On Thu, Mar 27, 2025 at 6:01?PM Luiz Peternelli por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Olá.
+>>>> Você precisa fazer isso no R? Fará essa análise comparativa de maneira
+>>>> recorrente, ou somente uma vez e apresentará os resultados num paper?
+>>>> Se fará somente uma vez e se todos os tratamentos tiverem o mesmo
+>>>> número de repetições, fazer à mão é extremamente simples, já q o delta da
+>>>> diferença mínima significativa será único.
+>>>>
+>>>> Outro ponto importante: na prática usar esse teste quando se tem muito
+>>>> tratamentos é inadequado. Só vai trazer mais confusão interpretativa do que
+>>>> auxílio em tomada de decisão.
+>>>>
+>>>> Abraços
+>>>>
+>>>> ?Luiz Alexandre Peternelli
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>> On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+>>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>>
+>>>>> Oi Emerson, você já testou uma das três opções abaixo?
+>>>>>
+>>>>> Opção 1: Aumentar o limite de impressão
+>>>>>
+>>>>> options(max.print = 10000)  # ou qualquer valor maior que o número de
+>>>>> linhas
+>>>>> print(resultado)
+>>>>>
+>>>>> Opção 2: Acessar diretamente os resultados
+>>>>>
+>>>>> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+>>>>>
+>>>>> Exemplo:
+>>>>>
+>>>>> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+>>>>> View(resultado$tratamento)  # abrir em visualização tabular
+>>>>>
+>>>>> Opção 3: Exportar para Excel ou CSV
+>>>>>
+>>>>> write.csv(resultado$tratamento, "tukey_resultados.csv")
+>>>>>
+>>>>> Teoricamente, essas abordagens permitirão acessar todas as
+>>>>> comparações, inclusive as omitidas.
+>>>>>
+>>>>> Marcelo
+>>>>>
+>>>>> Enviado a partir de dispositivo móvel
+>>>>> https://linktr.ee/marcelolaia
+>>>>>
+>>>>> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br) <
+>>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>>
+>>>>>> Prezados, boa tarde.
+>>>>>>
+>>>>>> Fiz um teste de Tukey, usando o comando
+>>>>>>
+>>>>>> resultado<-TukeyHSD(resultado de uma anova)
+>>>>>>
+>>>>>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+>>>>>>
+>>>>>> Como faço para ver todas as comparações?
+>>>>>>
+>>>>>> Pergunto porque o R da a mensagem
+>>>>>>
+>>>>>> [ reached getOption("max.print") -- omitted 26 rows ]
+>>>>>>
+>>>>>>
+>>>>>> Entendo que ele omitiu 26 linhas.
+>>>>>>
+>>>>>> OBS.: Preciso dos resultados para preencher as letras que diferenciam
+>>>>>> as linhas na tabela de resultados.
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>> Agradeço qualquer ajuda.
+>>>>>>
+>>>>>> *Emerson*
+>>>>>> _______________________________________________
+>>>>>> R-br mailing list
+>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>>> código mínimo reproduzível.
+>>>>>>
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250328/1552f22b/attachment.htm>
+
+From ms_sangiogo em hotmail.com  Sun Mar 30 01:34:36 2025
+From: ms_sangiogo em hotmail.com (=?iso-8859-1?Q?Maur=EDcio_Sangiogo?=)
+Date: Sun, 30 Mar 2025 04:34:36 +0000
+Subject: [R-br] Digest R-br, volume 160, assunto 2
+In-Reply-To: <mailman.1.1743260402.30563.r-br@listas.c3sl.ufpr.br>
+References: <mailman.1.1743260402.30563.r-br@listas.c3sl.ufpr.br>
+Message-ID: <CPWPR80MB640454BA73A48BDF73E7CBC69BA22@CPWPR80MB6404.lamprd80.prod.outlook.com>
+
+Emerson, estude a possibilidade de uso de teste mais adequado, talvez o teste de agrupamento de médias de Skot Knott. Terá mais objetividade já separação dos grupos.
+
+Atenciosamente,
+
+Maurício Sangiogo
+
+Obter o Outlook para Android<https://aka.ms/AAb9ysg>
+________________________________
+From: R-br <r-br-bounces em listas.c3sl.ufpr.br> on behalf of r-br-request em listas.c3sl.ufpr.br <r-br-request em listas.c3sl.ufpr.br>
+Sent: Saturday, March 29, 2025 12:00:02 PM
+To: r-br em listas.c3sl.ufpr.br <r-br em listas.c3sl.ufpr.br>
+Subject: Digest R-br, volume 160, assunto 2
+
+Enviar submissões para a lista de discussão R-br para
+        r-br em listas.c3sl.ufpr.br
+
+Para se cadastrar ou descadastrar via WWW, visite o endereço
+        https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198528281%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=3mYSBG46TRoe6ZB1Bsptm3BXCzWDIbABtfQTvyHZU9A%3D&reserved=0<https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+corpo da mensagem para
+        r-br-request em listas.c3sl.ufpr.br
+
+Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+endereço
+        r-br-owner em listas.c3sl.ufpr.br
+
+Quando responder, por favor edite sua linha Assunto assim ela será
+mais específica que "Re: Contents of R-br digest..."
+
+
+Tópicos de Hoje:
+
+   1. Re: TukeyHSD (Cesar Rabak)
+   2. Re: TukeyHSD (Cesar Rabak)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Fri, 28 Mar 2025 13:13:15 -0300
+From: Cesar Rabak <cesar.rabak em gmail.com>
+To: Emerson Cotta Bodevan <bodevan.ec em gmail.com>
+Cc: a lista Brasileira oficial de discussão do programa R.
+        <r-br em listas.c3sl.ufpr.br>
+Subject: Re: [R-br] TukeyHSD
+Message-ID:
+        <CAKrF98=K6E0MCv_mYZiMLagQHvUXDxH3_gOdNXD3AX=N2F2=2w em mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+
+@Emerson:
+
+Considere adicionar às suas análises uma medida e discussão sobre os
+tamanhos dos efeitos observados.
+
+Ademais, além da diferença mínima detectável dada pelo teste *post
+hoc* utilizado,
+aconselho a verificar qual a acurácia (ou pensando estatisticamente, o
+intervalo de confiança) das medidas da variável resposta, que tendo sido
+feito a ANOVA, pressuponho  seja contínua, pelo menos intervalar.
+
+HTH
+
+--
+Cesar Rabak
+
+
+
+On Fri, Mar 28, 2025 at 8:49?AM Emerson Cotta Bodevan <bodevan.ec em gmail.com>
+wrote:
+
+> Prezados, bom dia.
+>
+> Primeiramente, obrigado a todos pelo rápido retorno.
+>
+> Marcelo e Fernando... todas as soluções apresentadas funcionaram
+> direitinho. Obrigado.
+>
+> Luiz e Cesar... obrigado pelas considerações. São 24 tratamentos, o que
+> nos leva a 276 comparações dois a dois. Mas consigo separar em blocos de 8
+> tratamentos. Acredito que as discussões serão mais ricas e o teste mais
+> adequado. Obrigado mais uma vez.
+>
+> Abraços.
+>
+> *Emerson*
+>
+>
+> Em qui., 27 de mar. de 2025 às 23:50, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Pegando carona na resposta do Luiz Alexandre sobre a inadequação do
+>> número de tratamentos, que eu concordo, gostaria de acrescentar que
+>> parece-me que há poucos casos para o número de tratamentos (a divisão do nº
+>> de casos pelo dos tratamentos não dá nem inteiro, o que me leva a pensar
+>> que ANOVA pode estar desbalanceada, também...).
+>>
+>> Uma outra questão mais prática é por que a ANOVA precisa de tantas
+>> linhas, a menos que sua formulação inclua interações entre os tratamentos.
+>>
+>> HTH
+>>
+>> On Thu, Mar 27, 2025 at 6:01?PM Luiz Peternelli por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Olá.
+>>> Você precisa fazer isso no R? Fará essa análise comparativa de maneira
+>>> recorrente, ou somente uma vez e apresentará os resultados num paper?
+>>> Se fará somente uma vez e se todos os tratamentos tiverem o mesmo número
+>>> de repetições, fazer à mão é extremamente simples, já q o delta da
+>>> diferença mínima significativa será único.
+>>>
+>>> Outro ponto importante: na prática usar esse teste quando se tem muito
+>>> tratamentos é inadequado. Só vai trazer mais confusão interpretativa do que
+>>> auxílio em tomada de decisão.
+>>>
+>>> Abraços
+>>>
+>>> ?Luiz Alexandre Peternelli
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Oi Emerson, você já testou uma das três opções abaixo?
+>>>>
+>>>> Opção 1: Aumentar o limite de impressão
+>>>>
+>>>> options(max.print = 10000)  # ou qualquer valor maior que o número de
+>>>> linhas
+>>>> print(resultado)
+>>>>
+>>>> Opção 2: Acessar diretamente os resultados
+>>>>
+>>>> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+>>>>
+>>>> Exemplo:
+>>>>
+>>>> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+>>>> View(resultado$tratamento)  # abrir em visualização tabular
+>>>>
+>>>> Opção 3: Exportar para Excel ou CSV
+>>>>
+>>>> write.csv(resultado$tratamento, "tukey_resultados.csv")
+>>>>
+>>>> Teoricamente, essas abordagens permitirão acessar todas as comparações,
+>>>> inclusive as omitidas.
+>>>>
+>>>> Marcelo
+>>>>
+>>>> Enviado a partir de dispositivo móvel
+>>>> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flinktr.ee%2Fmarcelolaia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198568510%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=L13gSj%2FOXCh%2BB1G2hYQ7XO0kzWB0%2Fhb7LmLwTrGwe2A%3D&reserved=0<https://linktr.ee/marcelolaia>
+>>>>
+>>>> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br) <
+>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>
+>>>>> Prezados, boa tarde.
+>>>>>
+>>>>> Fiz um teste de Tukey, usando o comando
+>>>>>
+>>>>> resultado<-TukeyHSD(resultado de uma anova)
+>>>>>
+>>>>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+>>>>>
+>>>>> Como faço para ver todas as comparações?
+>>>>>
+>>>>> Pergunto porque o R da a mensagem
+>>>>>
+>>>>> [ reached getOption("max.print") -- omitted 26 rows ]
+>>>>>
+>>>>>
+>>>>> Entendo que ele omitiu 26 linhas.
+>>>>>
+>>>>> OBS.: Preciso dos resultados para preencher as letras que diferenciam
+>>>>> as linhas na tabela de resultados.
+>>>>>
+>>>>>
+>>>>>
+>>>>> Agradeço qualquer ajuda.
+>>>>>
+>>>>> *Emerson*
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198588277%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=p5CtDgDDxVzbtt9FZRUHH56RduPaNKr6dqwP7WwL1Ug%3D&reserved=0<https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>>>>> Leia o guia de postagem (https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198603572%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=BNX2JsoEvVvziyYTqARpqC5%2BV1Fr%2FNO3inYy%2FtyWGZA%3D&reserved=0<http://www.leg.ufpr.br/r-br-guia>) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198616875%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=qUR4fLFZnE71BQ%2FZbnKARCv3gY2AP4%2FrIv0vs1Ywygw%3D&reserved=0<https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>>>> Leia o guia de postagem (https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198629118%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=NQ0jPWqSi%2FxoWsRUhc8dQakWYVKMOMvlMrHkIDWDn0I%3D&reserved=0<http://www.leg.ufpr.br/r-br-guia>) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198641453%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=nKNchmRBTvMNCqKPfxF23tuUrVo8PAW1wynCH2wHZk0%3D&reserved=0<https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>>> Leia o guia de postagem (https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198653061%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=K%2Bg%2FA0jsYMmmpWe4UblgGUHKnj%2FNcRTBUPNT9aJIpyM%3D&reserved=0<http://www.leg.ufpr.br/r-br-guia>) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198664461%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=3VUziT1Ekbf1GG7fVQF%2B0KcCAwBRSDrpNUVQNZ4PKyc%3D&reserved=0<https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>> Leia o guia de postagem (https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198675614%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=4m%2FELAqzO23w1BpP%2BkYHcRGE%2B9XsvG5uobb1RieNWns%3D&reserved=0<http://www.leg.ufpr.br/r-br-guia>) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Flistas.inf.ufpr.br%2Fpipermail%2Fr-br%2Fattachments%2F20250328%2F353d2be8%2Fattachment-0001.htm&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198686930%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=vaDJxbnaEY%2BiTFf1qnA1eaEPoy%2BhJpRlWVcLnOUVPMw%3D&reserved=0<http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250328/353d2be8/attachment-0001.htm>>
+
+------------------------------
+
+Message: 2
+Date: Fri, 28 Mar 2025 13:37:14 -0300
+From: Cesar Rabak <cesar.rabak em gmail.com>
+To: Emerson Cotta Bodevan <bodevan.ec em gmail.com>
+Cc: a lista Brasileira oficial de discussão do programa R.
+        <r-br em listas.c3sl.ufpr.br>
+Subject: Re: [R-br] TukeyHSD
+Message-ID:
+        <CAKrF98=5mSpVF215PPJeey+QRF820r+VBtE4WYVHAZwkdmsJ3w em mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+
+Como apoio à minha última observação cito dois autores, que eu coloco nos
+meus relatórios quando é feita uma análise estatística: HTH
+
+ ?*Always present effect sizes for primary outcomes ? If the units of
+measurement are meaningful on a practical level ?, then we usually prefer
+an unstardardized measurement to a standardized measure*.?
+
+? *(Wilkison, L., 1999)**.*
+
+ ?*In the post p <0.05 era, scientific argumentation is not based on
+whether a p-value is small enough or not. Attention is paid to effect sizes
+and confidence intervals. Evidence is thought of as being continuous rather
+than some sort of dichotomy*.?
+
+? *Ron Wasserstein, executive director of the American Statistical
+Association**, 2016.*
+
+
+HTH
+
+--
+
+Cesar Rabak
+
+On Fri, Mar 28, 2025 at 1:13?PM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+
+> @Emerson:
+>
+> Considere adicionar às suas análises uma medida e discussão sobre os
+> tamanhos dos efeitos observados.
+>
+> Ademais, além da diferença mínima detectável dada pelo teste *post hoc* utilizado,
+> aconselho a verificar qual a acurácia (ou pensando estatisticamente, o
+> intervalo de confiança) das medidas da variável resposta, que tendo sido
+> feito a ANOVA, pressuponho  seja contínua, pelo menos intervalar.
+>
+> HTH
+>
+> --
+> Cesar Rabak
+>
+>
+>
+> On Fri, Mar 28, 2025 at 8:49?AM Emerson Cotta Bodevan <
+> bodevan.ec em gmail.com> wrote:
+>
+>> Prezados, bom dia.
+>>
+>> Primeiramente, obrigado a todos pelo rápido retorno.
+>>
+>> Marcelo e Fernando... todas as soluções apresentadas funcionaram
+>> direitinho. Obrigado.
+>>
+>> Luiz e Cesar... obrigado pelas considerações. São 24 tratamentos, o que
+>> nos leva a 276 comparações dois a dois. Mas consigo separar em blocos de 8
+>> tratamentos. Acredito que as discussões serão mais ricas e o teste mais
+>> adequado. Obrigado mais uma vez.
+>>
+>> Abraços.
+>>
+>> *Emerson*
+>>
+>>
+>> Em qui., 27 de mar. de 2025 às 23:50, Cesar Rabak por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Pegando carona na resposta do Luiz Alexandre sobre a inadequação do
+>>> número de tratamentos, que eu concordo, gostaria de acrescentar que
+>>> parece-me que há poucos casos para o número de tratamentos (a divisão do nº
+>>> de casos pelo dos tratamentos não dá nem inteiro, o que me leva a pensar
+>>> que ANOVA pode estar desbalanceada, também...).
+>>>
+>>> Uma outra questão mais prática é por que a ANOVA precisa de tantas
+>>> linhas, a menos que sua formulação inclua interações entre os tratamentos.
+>>>
+>>> HTH
+>>>
+>>> On Thu, Mar 27, 2025 at 6:01?PM Luiz Peternelli por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Olá.
+>>>> Você precisa fazer isso no R? Fará essa análise comparativa de maneira
+>>>> recorrente, ou somente uma vez e apresentará os resultados num paper?
+>>>> Se fará somente uma vez e se todos os tratamentos tiverem o mesmo
+>>>> número de repetições, fazer à mão é extremamente simples, já q o delta da
+>>>> diferença mínima significativa será único.
+>>>>
+>>>> Outro ponto importante: na prática usar esse teste quando se tem muito
+>>>> tratamentos é inadequado. Só vai trazer mais confusão interpretativa do que
+>>>> auxílio em tomada de decisão.
+>>>>
+>>>> Abraços
+>>>>
+>>>> ?Luiz Alexandre Peternelli
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>> On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+>>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>>
+>>>>> Oi Emerson, você já testou uma das três opções abaixo?
+>>>>>
+>>>>> Opção 1: Aumentar o limite de impressão
+>>>>>
+>>>>> options(max.print = 10000)  # ou qualquer valor maior que o número de
+>>>>> linhas
+>>>>> print(resultado)
+>>>>>
+>>>>> Opção 2: Acessar diretamente os resultados
+>>>>>
+>>>>> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+>>>>>
+>>>>> Exemplo:
+>>>>>
+>>>>> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+>>>>> View(resultado$tratamento)  # abrir em visualização tabular
+>>>>>
+>>>>> Opção 3: Exportar para Excel ou CSV
+>>>>>
+>>>>> write.csv(resultado$tratamento, "tukey_resultados.csv")
+>>>>>
+>>>>> Teoricamente, essas abordagens permitirão acessar todas as
+>>>>> comparações, inclusive as omitidas.
+>>>>>
+>>>>> Marcelo
+>>>>>
+>>>>> Enviado a partir de dispositivo móvel
+>>>>> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flinktr.ee%2Fmarcelolaia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198699516%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=aQEGdKskupy%2BHtfg5Av6DEz47CaF29C3DGxhHGtGnYo%3D&reserved=0<https://linktr.ee/marcelolaia>
+>>>>>
+>>>>> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br) <
+>>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>>
+>>>>>> Prezados, boa tarde.
+>>>>>>
+>>>>>> Fiz um teste de Tukey, usando o comando
+>>>>>>
+>>>>>> resultado<-TukeyHSD(resultado de uma anova)
+>>>>>>
+>>>>>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+>>>>>>
+>>>>>> Como faço para ver todas as comparações?
+>>>>>>
+>>>>>> Pergunto porque o R da a mensagem
+>>>>>>
+>>>>>> [ reached getOption("max.print") -- omitted 26 rows ]
+>>>>>>
+>>>>>>
+>>>>>> Entendo que ele omitiu 26 linhas.
+>>>>>>
+>>>>>> OBS.: Preciso dos resultados para preencher as letras que diferenciam
+>>>>>> as linhas na tabela de resultados.
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>> Agradeço qualquer ajuda.
+>>>>>>
+>>>>>> *Emerson*
+>>>>>> _______________________________________________
+>>>>>> R-br mailing list
+>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198713181%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=LFEA597r5QMpACgoK7hD%2BmUnfdMsVJHAUgFS%2BUaYVTA%3D&reserved=0<https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>>>>>> Leia o guia de postagem (https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198728080%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=aJWkHfBySzzqI43OAHGL8I9%2Bn7v24RrS5szK4Vmw5AA%3D&reserved=0<http://www.leg.ufpr.br/r-br-guia>) e forneça
+>>>>>> código mínimo reproduzível.
+>>>>>>
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198741264%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=DEA5L1h34p4m5OIFrMtCt32GmFX5jQHN%2BWomnZfjagU%3D&reserved=0<https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>>>>> Leia o guia de postagem (https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198752824%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=wD4wM%2F1KldrSvUVLDT%2FciN2v5895CIxsoZ5I6bF%2B6KY%3D&reserved=0<http://www.leg.ufpr.br/r-br-guia>) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198765631%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=6HdVX6woFWrjgMIhM8fSlo0JA9%2BbXlHeuE%2BsnOZVUnk%3D&reserved=0<https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>>>> Leia o guia de postagem (https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198777816%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=HXNRqkBOHemvGOJLNdVPsp4mzlBllh37AHchPmFLd2Q%3D&reserved=0<http://www.leg.ufpr.br/r-br-guia>) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198790317%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=vUpe0WGbvFWEHMfG70olnKKUoJSCBevnhxoKOMauqvM%3D&reserved=0<https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>>> Leia o guia de postagem (https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198802409%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=pwHabKHQIlGWEUNUic07pyUsmjBEdto5Z321q4PfyKE%3D&reserved=0<http://www.leg.ufpr.br/r-br-guia>) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Flistas.inf.ufpr.br%2Fpipermail%2Fr-br%2Fattachments%2F20250328%2F1552f22b%2Fattachment-0001.htm&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198814074%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=kktgAXAT37MKOkvCnEUrLuCa2LtYM1ZoOn%2Bsvpx6dk0%3D&reserved=0<http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250328/1552f22b/attachment-0001.htm>>
+
+------------------------------
+
+Subject: Legenda do Digest
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198826436%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=qbBASl%2BaL8sEfVWh4vodL8jrXp2O0FinHcFMyGHLxWk%3D&reserved=0<https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+
+
+------------------------------
+
+Fim da Digest R-br, volume 160, assunto 2
+*****************************************
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250330/703b3a4d/attachment.htm>
+
+From cesar.rabak em gmail.com  Sun Mar 30 17:41:12 2025
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 30 Mar 2025 17:41:12 -0300
+Subject: [R-br] Digest R-br, volume 160, assunto 2
+In-Reply-To: <CPWPR80MB640454BA73A48BDF73E7CBC69BA22@CPWPR80MB6404.lamprd80.prod.outlook.com>
+References: <mailman.1.1743260402.30563.r-br@listas.c3sl.ufpr.br>
+ <CPWPR80MB640454BA73A48BDF73E7CBC69BA22@CPWPR80MB6404.lamprd80.prod.outlook.com>
+Message-ID: <CAKrF98=iMrV_TVP6+5JjGbRquHuB6dfvcWMS9n2RDxXs1HBa9g@mail.gmail.com>
+
+Sem divergir do Maurício Sangiogo, adiciono que se o teste *post hoc*
+proposto por Scott-Knott parecer-lhe adequado (após examinar os
+pressupostos e exigências para que ele seja aplicável), que veja a
+aplicação da extensão dele para tamanhos de efeito (embora ele vá para o
+lado dos efeitos "padronizados") o ScottKnotESD:
+The ScottKnott Effect Size Difference (ESD) test
+HTH
+--
+Cesar Rabak
+
+
+On Sun, Mar 30, 2025 at 1:34?AM Maurício Sangiogo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Emerson, estude a possibilidade de uso de teste mais adequado, talvez o
+> teste de agrupamento de médias de Skot Knott. Terá mais objetividade já
+> separação dos grupos.
+>
+> Atenciosamente,
+>
+> Maurício Sangiogo
+>
+> Obter o Outlook para Android <https://aka.ms/AAb9ysg>
+> ------------------------------
+> *From:* R-br <r-br-bounces em listas.c3sl.ufpr.br> on behalf of
+> r-br-request em listas.c3sl.ufpr.br <r-br-request em listas.c3sl.ufpr.br>
+> *Sent:* Saturday, March 29, 2025 12:00:02 PM
+> *To:* r-br em listas.c3sl.ufpr.br <r-br em listas.c3sl.ufpr.br>
+> *Subject:* Digest R-br, volume 160, assunto 2
+>
+> Enviar submissões para a lista de discussão R-br para
+>         r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198528281%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=3mYSBG46TRoe6ZB1Bsptm3BXCzWDIbABtfQTvyHZU9A%3D&reserved=0
+> <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+>         r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+>         r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+>    1. Re: TukeyHSD (Cesar Rabak)
+>    2. Re: TukeyHSD (Cesar Rabak)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Fri, 28 Mar 2025 13:13:15 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: Emerson Cotta Bodevan <bodevan.ec em gmail.com>
+> Cc: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] TukeyHSD
+> Message-ID:
+>         <CAKrF98=K6E0MCv_mYZiMLagQHvUXDxH3_gOdNXD3AX=N2F2=
+> 2w em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> @Emerson:
+>
+> Considere adicionar às suas análises uma medida e discussão sobre os
+> tamanhos dos efeitos observados.
+>
+> Ademais, além da diferença mínima detectável dada pelo teste *post
+> hoc* utilizado,
+> aconselho a verificar qual a acurácia (ou pensando estatisticamente, o
+> intervalo de confiança) das medidas da variável resposta, que tendo sido
+> feito a ANOVA, pressuponho  seja contínua, pelo menos intervalar.
+>
+> HTH
+>
+> --
+> Cesar Rabak
+>
+>
+>
+> On Fri, Mar 28, 2025 at 8:49?AM Emerson Cotta Bodevan <
+> bodevan.ec em gmail.com>
+> wrote:
+>
+> > Prezados, bom dia.
+> >
+> > Primeiramente, obrigado a todos pelo rápido retorno.
+> >
+> > Marcelo e Fernando... todas as soluções apresentadas funcionaram
+> > direitinho. Obrigado.
+> >
+> > Luiz e Cesar... obrigado pelas considerações. São 24 tratamentos, o que
+> > nos leva a 276 comparações dois a dois. Mas consigo separar em blocos de
+> 8
+> > tratamentos. Acredito que as discussões serão mais ricas e o teste mais
+> > adequado. Obrigado mais uma vez.
+> >
+> > Abraços.
+> >
+> > *Emerson*
+> >
+> >
+> > Em qui., 27 de mar. de 2025 às 23:50, Cesar Rabak por (R-br) <
+> > r-br em listas.c3sl.ufpr.br> escreveu:
+> >
+> >> Pegando carona na resposta do Luiz Alexandre sobre a inadequação do
+> >> número de tratamentos, que eu concordo, gostaria de acrescentar que
+> >> parece-me que há poucos casos para o número de tratamentos (a divisão
+> do nº
+> >> de casos pelo dos tratamentos não dá nem inteiro, o que me leva a pensar
+> >> que ANOVA pode estar desbalanceada, também...).
+> >>
+> >> Uma outra questão mais prática é por que a ANOVA precisa de tantas
+> >> linhas, a menos que sua formulação inclua interações entre os
+> tratamentos.
+> >>
+> >> HTH
+> >>
+> >> On Thu, Mar 27, 2025 at 6:01?PM Luiz Peternelli por (R-br) <
+> >> r-br em listas.c3sl.ufpr.br> wrote:
+> >>
+> >>> Olá.
+> >>> Você precisa fazer isso no R? Fará essa análise comparativa de maneira
+> >>> recorrente, ou somente uma vez e apresentará os resultados num paper?
+> >>> Se fará somente uma vez e se todos os tratamentos tiverem o mesmo
+> número
+> >>> de repetições, fazer à mão é extremamente simples, já q o delta da
+> >>> diferença mínima significativa será único.
+> >>>
+> >>> Outro ponto importante: na prática usar esse teste quando se tem muito
+> >>> tratamentos é inadequado. Só vai trazer mais confusão interpretativa
+> do que
+> >>> auxílio em tomada de decisão.
+> >>>
+> >>> Abraços
+> >>>
+> >>> ?Luiz Alexandre Peternelli
+> >>>
+> >>>
+> >>>
+> >>>
+> >>>
+> >>> On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+> >>> r-br em listas.c3sl.ufpr.br> wrote:
+> >>>
+> >>>> Oi Emerson, você já testou uma das três opções abaixo?
+> >>>>
+> >>>> Opção 1: Aumentar o limite de impressão
+> >>>>
+> >>>> options(max.print = 10000)  # ou qualquer valor maior que o número de
+> >>>> linhas
+> >>>> print(resultado)
+> >>>>
+> >>>> Opção 2: Acessar diretamente os resultados
+> >>>>
+> >>>> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+> >>>>
+> >>>> Exemplo:
+> >>>>
+> >>>> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+> >>>> View(resultado$tratamento)  # abrir em visualização tabular
+> >>>>
+> >>>> Opção 3: Exportar para Excel ou CSV
+> >>>>
+> >>>> write.csv(resultado$tratamento, "tukey_resultados.csv")
+> >>>>
+> >>>> Teoricamente, essas abordagens permitirão acessar todas as
+> comparações,
+> >>>> inclusive as omitidas.
+> >>>>
+> >>>> Marcelo
+> >>>>
+> >>>> Enviado a partir de dispositivo móvel
+> >>>>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flinktr.ee%2Fmarcelolaia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198568510%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=L13gSj%2FOXCh%2BB1G2hYQ7XO0kzWB0%2Fhb7LmLwTrGwe2A%3D&reserved=0
+> <https://linktr.ee/marcelolaia>
+> >>>>
+> >>>> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br) <
+> >>>> r-br em listas.c3sl.ufpr.br> escreveu:
+> >>>>
+> >>>>> Prezados, boa tarde.
+> >>>>>
+> >>>>> Fiz um teste de Tukey, usando o comando
+> >>>>>
+> >>>>> resultado<-TukeyHSD(resultado de uma anova)
+> >>>>>
+> >>>>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+> >>>>>
+> >>>>> Como faço para ver todas as comparações?
+> >>>>>
+> >>>>> Pergunto porque o R da a mensagem
+> >>>>>
+> >>>>> [ reached getOption("max.print") -- omitted 26 rows ]
+> >>>>>
+> >>>>>
+> >>>>> Entendo que ele omitiu 26 linhas.
+> >>>>>
+> >>>>> OBS.: Preciso dos resultados para preencher as letras que diferenciam
+> >>>>> as linhas na tabela de resultados.
+> >>>>>
+> >>>>>
+> >>>>>
+> >>>>> Agradeço qualquer ajuda.
+> >>>>>
+> >>>>> *Emerson*
+> >>>>> _______________________________________________
+> >>>>> R-br mailing list
+> >>>>> R-br em listas.c3sl.ufpr.br
+> >>>>>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198588277%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=p5CtDgDDxVzbtt9FZRUHH56RduPaNKr6dqwP7WwL1Ug%3D&reserved=0
+> <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> >>>>> Leia o guia de postagem (
+> https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198603572%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=BNX2JsoEvVvziyYTqARpqC5%2BV1Fr%2FNO3inYy%2FtyWGZA%3D&reserved=0
+> <http://www.leg.ufpr.br/r-br-guia>) e forneça
+> >>>>> código mínimo reproduzível.
+> >>>>>
+> >>>> _______________________________________________
+> >>>> R-br mailing list
+> >>>> R-br em listas.c3sl.ufpr.br
+> >>>>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198616875%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=qUR4fLFZnE71BQ%2FZbnKARCv3gY2AP4%2FrIv0vs1Ywygw%3D&reserved=0
+> <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> >>>> Leia o guia de postagem (
+> https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198629118%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=NQ0jPWqSi%2FxoWsRUhc8dQakWYVKMOMvlMrHkIDWDn0I%3D&reserved=0
+> <http://www.leg.ufpr.br/r-br-guia>) e forneça
+> >>>> código mínimo reproduzível.
+> >>>>
+> >>> _______________________________________________
+> >>> R-br mailing list
+> >>> R-br em listas.c3sl.ufpr.br
+> >>>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198641453%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=nKNchmRBTvMNCqKPfxF23tuUrVo8PAW1wynCH2wHZk0%3D&reserved=0
+> <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> >>> Leia o guia de postagem (
+> https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198653061%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=K%2Bg%2FA0jsYMmmpWe4UblgGUHKnj%2FNcRTBUPNT9aJIpyM%3D&reserved=0
+> <http://www.leg.ufpr.br/r-br-guia>) e forneça
+> >>> código mínimo reproduzível.
+> >>>
+> >> _______________________________________________
+> >> R-br mailing list
+> >> R-br em listas.c3sl.ufpr.br
+> >>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198664461%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=3VUziT1Ekbf1GG7fVQF%2B0KcCAwBRSDrpNUVQNZ4PKyc%3D&reserved=0
+> <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> >> Leia o guia de postagem (
+> https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198675614%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=4m%2FELAqzO23w1BpP%2BkYHcRGE%2B9XsvG5uobb1RieNWns%3D&reserved=0
+> <http://www.leg.ufpr.br/r-br-guia>) e forneça
+> >> código mínimo reproduzível.
+> >>
+> >
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Flistas.inf.ufpr.br%2Fpipermail%2Fr-br%2Fattachments%2F20250328%2F353d2be8%2Fattachment-0001.htm&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198686930%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=vaDJxbnaEY%2BiTFf1qnA1eaEPoy%2BhJpRlWVcLnOUVPMw%3D&reserved=0
+> <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250328/353d2be8/attachment-0001.htm>
+> >
+>
+> ------------------------------
+>
+> Message: 2
+> Date: Fri, 28 Mar 2025 13:37:14 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: Emerson Cotta Bodevan <bodevan.ec em gmail.com>
+> Cc: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] TukeyHSD
+> Message-ID:
+>         <CAKrF98=
+> 5mSpVF215PPJeey+QRF820r+VBtE4WYVHAZwkdmsJ3w em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Como apoio à minha última observação cito dois autores, que eu coloco nos
+> meus relatórios quando é feita uma análise estatística: HTH
+>
+>  ?*Always present effect sizes for primary outcomes ? If the units of
+> measurement are meaningful on a practical level ?, then we usually prefer
+> an unstardardized measurement to a standardized measure*.?
+>
+> ? *(Wilkison, L., 1999)**.*
+>
+>  ?*In the post p <0.05 era, scientific argumentation is not based on
+> whether a p-value is small enough or not. Attention is paid to effect sizes
+> and confidence intervals. Evidence is thought of as being continuous rather
+> than some sort of dichotomy*.?
+>
+> ? *Ron Wasserstein, executive director of the American Statistical
+> Association**, 2016.*
+>
+>
+> HTH
+>
+> --
+>
+> Cesar Rabak
+>
+> On Fri, Mar 28, 2025 at 1:13?PM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+>
+> > @Emerson:
+> >
+> > Considere adicionar às suas análises uma medida e discussão sobre os
+> > tamanhos dos efeitos observados.
+> >
+> > Ademais, além da diferença mínima detectável dada pelo teste *post hoc*
+> utilizado,
+> > aconselho a verificar qual a acurácia (ou pensando estatisticamente, o
+> > intervalo de confiança) das medidas da variável resposta, que tendo sido
+> > feito a ANOVA, pressuponho  seja contínua, pelo menos intervalar.
+> >
+> > HTH
+> >
+> > --
+> > Cesar Rabak
+> >
+> >
+> >
+> > On Fri, Mar 28, 2025 at 8:49?AM Emerson Cotta Bodevan <
+> > bodevan.ec em gmail.com> wrote:
+> >
+> >> Prezados, bom dia.
+> >>
+> >> Primeiramente, obrigado a todos pelo rápido retorno.
+> >>
+> >> Marcelo e Fernando... todas as soluções apresentadas funcionaram
+> >> direitinho. Obrigado.
+> >>
+> >> Luiz e Cesar... obrigado pelas considerações. São 24 tratamentos, o que
+> >> nos leva a 276 comparações dois a dois. Mas consigo separar em blocos
+> de 8
+> >> tratamentos. Acredito que as discussões serão mais ricas e o teste mais
+> >> adequado. Obrigado mais uma vez.
+> >>
+> >> Abraços.
+> >>
+> >> *Emerson*
+> >>
+> >>
+> >> Em qui., 27 de mar. de 2025 às 23:50, Cesar Rabak por (R-br) <
+> >> r-br em listas.c3sl.ufpr.br> escreveu:
+> >>
+> >>> Pegando carona na resposta do Luiz Alexandre sobre a inadequação do
+> >>> número de tratamentos, que eu concordo, gostaria de acrescentar que
+> >>> parece-me que há poucos casos para o número de tratamentos (a divisão
+> do nº
+> >>> de casos pelo dos tratamentos não dá nem inteiro, o que me leva a
+> pensar
+> >>> que ANOVA pode estar desbalanceada, também...).
+> >>>
+> >>> Uma outra questão mais prática é por que a ANOVA precisa de tantas
+> >>> linhas, a menos que sua formulação inclua interações entre os
+> tratamentos.
+> >>>
+> >>> HTH
+> >>>
+> >>> On Thu, Mar 27, 2025 at 6:01?PM Luiz Peternelli por (R-br) <
+> >>> r-br em listas.c3sl.ufpr.br> wrote:
+> >>>
+> >>>> Olá.
+> >>>> Você precisa fazer isso no R? Fará essa análise comparativa de maneira
+> >>>> recorrente, ou somente uma vez e apresentará os resultados num paper?
+> >>>> Se fará somente uma vez e se todos os tratamentos tiverem o mesmo
+> >>>> número de repetições, fazer à mão é extremamente simples, já q o
+> delta da
+> >>>> diferença mínima significativa será único.
+> >>>>
+> >>>> Outro ponto importante: na prática usar esse teste quando se tem muito
+> >>>> tratamentos é inadequado. Só vai trazer mais confusão interpretativa
+> do que
+> >>>> auxílio em tomada de decisão.
+> >>>>
+> >>>> Abraços
+> >>>>
+> >>>> ?Luiz Alexandre Peternelli
+> >>>>
+> >>>>
+> >>>>
+> >>>>
+> >>>>
+> >>>> On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+> >>>> r-br em listas.c3sl.ufpr.br> wrote:
+> >>>>
+> >>>>> Oi Emerson, você já testou uma das três opções abaixo?
+> >>>>>
+> >>>>> Opção 1: Aumentar o limite de impressão
+> >>>>>
+> >>>>> options(max.print = 10000)  # ou qualquer valor maior que o número de
+> >>>>> linhas
+> >>>>> print(resultado)
+> >>>>>
+> >>>>> Opção 2: Acessar diretamente os resultados
+> >>>>>
+> >>>>> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+> >>>>>
+> >>>>> Exemplo:
+> >>>>>
+> >>>>> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+> >>>>> View(resultado$tratamento)  # abrir em visualização tabular
+> >>>>>
+> >>>>> Opção 3: Exportar para Excel ou CSV
+> >>>>>
+> >>>>> write.csv(resultado$tratamento, "tukey_resultados.csv")
+> >>>>>
+> >>>>> Teoricamente, essas abordagens permitirão acessar todas as
+> >>>>> comparações, inclusive as omitidas.
+> >>>>>
+> >>>>> Marcelo
+> >>>>>
+> >>>>> Enviado a partir de dispositivo móvel
+> >>>>>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flinktr.ee%2Fmarcelolaia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198699516%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=aQEGdKskupy%2BHtfg5Av6DEz47CaF29C3DGxhHGtGnYo%3D&reserved=0
+> <https://linktr.ee/marcelolaia>
+> >>>>>
+> >>>>> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br)
+> <
+> >>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+> >>>>>
+> >>>>>> Prezados, boa tarde.
+> >>>>>>
+> >>>>>> Fiz um teste de Tukey, usando o comando
+> >>>>>>
+> >>>>>> resultado<-TukeyHSD(resultado de uma anova)
+> >>>>>>
+> >>>>>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+> >>>>>>
+> >>>>>> Como faço para ver todas as comparações?
+> >>>>>>
+> >>>>>> Pergunto porque o R da a mensagem
+> >>>>>>
+> >>>>>> [ reached getOption("max.print") -- omitted 26 rows ]
+> >>>>>>
+> >>>>>>
+> >>>>>> Entendo que ele omitiu 26 linhas.
+> >>>>>>
+> >>>>>> OBS.: Preciso dos resultados para preencher as letras que
+> diferenciam
+> >>>>>> as linhas na tabela de resultados.
+> >>>>>>
+> >>>>>>
+> >>>>>>
+> >>>>>> Agradeço qualquer ajuda.
+> >>>>>>
+> >>>>>> *Emerson*
+> >>>>>> _______________________________________________
+> >>>>>> R-br mailing list
+> >>>>>> R-br em listas.c3sl.ufpr.br
+> >>>>>>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198713181%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=LFEA597r5QMpACgoK7hD%2BmUnfdMsVJHAUgFS%2BUaYVTA%3D&reserved=0
+> <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> >>>>>> Leia o guia de postagem (
+> https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198728080%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=aJWkHfBySzzqI43OAHGL8I9%2Bn7v24RrS5szK4Vmw5AA%3D&reserved=0
+> <http://www.leg.ufpr.br/r-br-guia>) e forneça
+> >>>>>> código mínimo reproduzível.
+> >>>>>>
+> >>>>> _______________________________________________
+> >>>>> R-br mailing list
+> >>>>> R-br em listas.c3sl.ufpr.br
+> >>>>>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198741264%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=DEA5L1h34p4m5OIFrMtCt32GmFX5jQHN%2BWomnZfjagU%3D&reserved=0
+> <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> >>>>> Leia o guia de postagem (
+> https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198752824%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=wD4wM%2F1KldrSvUVLDT%2FciN2v5895CIxsoZ5I6bF%2B6KY%3D&reserved=0
+> <http://www.leg.ufpr.br/r-br-guia>) e forneça
+> >>>>> código mínimo reproduzível.
+> >>>>>
+> >>>> _______________________________________________
+> >>>> R-br mailing list
+> >>>> R-br em listas.c3sl.ufpr.br
+> >>>>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198765631%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=6HdVX6woFWrjgMIhM8fSlo0JA9%2BbXlHeuE%2BsnOZVUnk%3D&reserved=0
+> <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> >>>> Leia o guia de postagem (
+> https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198777816%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=HXNRqkBOHemvGOJLNdVPsp4mzlBllh37AHchPmFLd2Q%3D&reserved=0
+> <http://www.leg.ufpr.br/r-br-guia>) e forneça
+> >>>> código mínimo reproduzível.
+> >>>>
+> >>> _______________________________________________
+> >>> R-br mailing list
+> >>> R-br em listas.c3sl.ufpr.br
+> >>>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198790317%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=vUpe0WGbvFWEHMfG70olnKKUoJSCBevnhxoKOMauqvM%3D&reserved=0
+> <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> >>> Leia o guia de postagem (
+> https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198802409%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=pwHabKHQIlGWEUNUic07pyUsmjBEdto5Z321q4PfyKE%3D&reserved=0
+> <http://www.leg.ufpr.br/r-br-guia>) e forneça
+> >>> código mínimo reproduzível.
+> >>>
+> >>
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> https://na01.safelinks.protection.outlook.com/?url=http%3A%2F%2Flistas.inf.ufpr.br%2Fpipermail%2Fr-br%2Fattachments%2F20250328%2F1552f22b%2Fattachment-0001.htm&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198814074%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=kktgAXAT37MKOkvCnEUrLuCa2LtYM1ZoOn%2Bsvpx6dk0%3D&reserved=0
+> <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250328/1552f22b/attachment-0001.htm>
+> >
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+>
+> https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&data=05%7C02%7C%7Cd53889822bd340c03db608dd6ed266fe%7C84df9e7fe9f640afb435aaaaaaaaaaaa%7C1%7C0%7C638788572198826436%7CUnknown%7CTWFpbGZsb3d8eyJFbXB0eU1hcGkiOnRydWUsIlYiOiIwLjAuMDAwMCIsIlAiOiJXaW4zMiIsIkFOIjoiTWFpbCIsIldUIjoyfQ%3D%3D%7C0%7C%7C%7C&sdata=qbBASl%2BaL8sEfVWh4vodL8jrXp2O0FinHcFMyGHLxWk%3D&reserved=0
+> <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 160, assunto 2
+> *****************************************
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250330/b531ae5d/attachment.htm>
+
+From jcazuzajr em gmail.com  Mon Mar 31 14:33:10 2025
+From: jcazuzajr em gmail.com (=?utf-8?Q? Jos=C3=A9_Cazuza_de_Farias_J=C3=BAnior_=28Farias_J?=
+ =?utf-8?Q?=C3=BAnior=29 ?=)
+Date: Mon, 31 Mar 2025 14:33:10 -0300
+Subject: [R-br] =?utf-8?q?Efeitos_marginais_ap=C3=B3s_GLMM?=
+Message-ID: <C420AD4E-636C-47D4-85C4-3BCD66B6050F@gmail.com>
+
+Boa tarde. Estou tentando realizar estimativa de efeitos marginais após o uso de GLMM, mas não estou tendo sucesso? Qual a pacote e comandos?
+José Farias
+
+
+Enviado do meu iPhone
+

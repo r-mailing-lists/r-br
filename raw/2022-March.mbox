@@ -1,0 +1,3398 @@
+From toni.arb em gmail.com  Tue Mar  8 10:42:39 2022
+From: toni.arb em gmail.com (Toni)
+Date: Tue, 8 Mar 2022 10:42:39 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+Message-ID: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+
+Olá Pessoal!!!
+
+Agradeço pelo aceite na lista, estou começando os estudos com o R e
+utilizando o Rstudio para compor as necessidades gráficas sobre as
+discussões que venho tendo nas pesquisas mas estou tentando instalar o
+pacote *factoextra* para obter resultados sobre clusterização mas não estou
+conseguindo instalar, tentei:
+
+install.packages("factoextra")
+Erro:
+  installation of package ?factoextra? had non-zero exit status
+
+Ao carregar o pacote:
+
+library(factoextra)
+Error in library(factoextra) : there is no package called ?factoextra?
+
+Ao tentar instalar por Tools -> Install Packages:
+Aparece o mesmo erro.
+
+Peguei o arquivo tar.gz em:
+?/tmp/RtmpPqouSy/downloaded_packages?
+E tento instalar pelo Rstudio e nada
+
+E para finalizar, baixei o pacote *r-cran-factoextra_1.0.7-2_all.deb*
+Quando tento instalar aparece um erro com várias dependências
+
+Problemas com dependências impedem a configuração de r-cran-factoextra:
+ r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+  Pacote r-cran-ggplot2 não está instalado.
+ r-cran-factoextra depende de r-cran-abind; porém:
+  Pacote r-cran-abind não está instalado.
+ r-cran-factoextra depende de r-cran-dendextend; porém:
+  Pacote r-cran-dendextend não está instalado.
+ r-cran-factoextra depende de r-cran-factominer; porém:
+  Pacote r-cran-factominer não está instalado.
+ r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+  Pacote r-cran-ggpubr não está instalado.
+ r-cran-factoextra depende de r-cran-reshape2; porém:
+  Pacote r-cran-reshape2 não está instalado.
+ r-cran-factoextra depende de r-cran-ggrepel; porém:
+  Pacote r-cran-ggrepel não está instalado.
+ r-cran-factoextra depende de r-cran-tidyr; porém:
+  Pacote r-cran-tidyr não está instalado.
+
+Estou usando:
+SO Debian 10
+R version 4.1.2 (2021-11-01)
+RStudio 2022.02.0 Build 443
+
+Alguma sugestão de como posso resolver esse problema?
+Algum repositório que eu possa adicionar para contornar esse problema de
+dependência?
+Já fiz várias pesquisas mas ainda não consegui encontrar uma solução.
+
+Grato!!!
+Toni
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/3fb68855/attachment.htm>
+
+From zhushazang em gmail.com  Tue Mar  8 12:16:29 2022
+From: zhushazang em gmail.com (Rodolfo Silva)
+Date: Tue, 8 Mar 2022 11:16:29 -0400
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+References: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+Message-ID: <44c10dcd-ce69-f771-37ee-aa7c3a5befec@gmail.com>
+
+Por favor, qual o erro completo da tentativa de instalação. Este aviso 
+final, "non-zero exit" não nos diz muito.
+
+Atenciosamente
+
+
+
+On 08/03/2022 09:42, Toni por (R-br) wrote:
+> Olá Pessoal!!!
+>
+> Agradeço pelo aceite na lista, estou começando os estudos com o R e 
+> utilizando o Rstudio para compor as necessidades gráficas sobre as 
+> discussões que venho tendo nas pesquisas mas estou tentando instalar o 
+> pacote *factoextra* para obter resultados sobre clusterização mas não 
+> estou conseguindo instalar, tentei:
+>
+> install.packages("factoextra")
+> Erro:
+>   installation of package ?factoextra? had non-zero exit status
+>
+> Ao carregar o pacote:
+> library(factoextra)
+> Error in library(factoextra) : there is no package called ?factoextra?
+>
+> Ao tentar instalar por Tools -> Install Packages:
+> Aparece o mesmo erro.
+>
+> Peguei o arquivo tar.gz em:
+> ?/tmp/RtmpPqouSy/downloaded_packages?
+> E tento instalar pelo Rstudio e nada
+>
+> E para finalizar, baixei o pacote *r-cran-factoextra_1.0.7-2_all.deb*
+> Quando tento instalar aparece um erro com várias dependências
+>
+> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>   Pacote r-cran-ggplot2 não está instalado.
+>  r-cran-factoextra depende de r-cran-abind; porém:
+>   Pacote r-cran-abind não está instalado.
+>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>   Pacote r-cran-dendextend não está instalado.
+>  r-cran-factoextra depende de r-cran-factominer; porém:
+>   Pacote r-cran-factominer não está instalado.
+>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>   Pacote r-cran-ggpubr não está instalado.
+>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>   Pacote r-cran-reshape2 não está instalado.
+>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>   Pacote r-cran-ggrepel não está instalado.
+>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>   Pacote r-cran-tidyr não está instalado.
+>
+> Estou usando:
+> SO Debian 10
+> R version 4.1.2 (2021-11-01)
+> RStudio 2022.02.0 Build 443
+>
+> Alguma sugestão de como posso resolver esse problema?
+> Algum repositório que eu possa adicionar para contornar esse problema 
+> de dependência?
+> Já fiz várias pesquisas mas ainda não consegui encontrar uma solução.
+>
+> Grato!!!
+> Toni
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-- 
+---
+Rodolfo Timoteo da Silva
+Mestre em Engenharia Agrícola
+Especialista em Engenharia de Segurança do Trabalho
+Especialista em Gestão de Organizações
+Engenheiro de Produção
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/15db8b5e/attachment.htm>
+
+From nandodesouza em gmail.com  Tue Mar  8 13:39:24 2022
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Tue, 8 Mar 2022 13:39:24 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+References: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+Message-ID: <4F560C1A-2578-4036-8603-29D5CB9EB4A7@getmailspring.com>
+
+Você já tentou desinstalar e reinstalar seu R? Parece está havendo algum problema com sua instalação.
+
+On Mar 8 2022, at 10:42 am, Toni por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Olá Pessoal!!!
+>
+> Agradeço pelo aceite na lista, estou começando os estudos com o R e utilizando o Rstudio para compor as necessidades gráficas sobre as discussões que venho tendo nas pesquisas mas estou tentando instalar o pacote factoextra para obter resultados sobre clusterização mas não estou conseguindo instalar, tentei:
+> install.packages("factoextra")
+> Erro:
+>
+> installation of package ?factoextra? had non-zero exit status
+>
+> Ao carregar o pacote:
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+> library(factoextra)
+> Error in library(factoextra) : there is no package called ?factoextra?
+>
+> Ao tentar instalar por Tools -> Install Packages:
+> Aparece o mesmo erro.
+>
+> Peguei o arquivo tar.gz em:
+> ?/tmp/RtmpPqouSy/downloaded_packages?
+>
+> E tento instalar pelo Rstudio e nada
+>
+> E para finalizar, baixei o pacote r-cran-factoextra_1.0.7-2_all.deb
+> Quando tento instalar aparece um erro com várias dependências
+>
+> Problemas com dependências impedem a configuração de r-cran-factoextra:
+> r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+> Pacote r-cran-ggplot2 não está instalado.
+> r-cran-factoextra depende de r-cran-abind; porém:
+> Pacote r-cran-abind não está instalado.
+> r-cran-factoextra depende de r-cran-dendextend; porém:
+> Pacote r-cran-dendextend não está instalado.
+> r-cran-factoextra depende de r-cran-factominer; porém:
+> Pacote r-cran-factominer não está instalado.
+> r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+> Pacote r-cran-ggpubr não está instalado.
+> r-cran-factoextra depende de r-cran-reshape2; porém:
+> Pacote r-cran-reshape2 não está instalado.
+> r-cran-factoextra depende de r-cran-ggrepel; porém:
+> Pacote r-cran-ggrepel não está instalado.
+> r-cran-factoextra depende de r-cran-tidyr; porém:
+> Pacote r-cran-tidyr não está instalado.
+>
+>
+> Estou usando:
+> SO Debian 10
+> R version 4.1.2 (2021-11-01)
+>
+> RStudio 2022.02.0 Build 443
+>
+>
+> Alguma sugestão de como posso resolver esse problema?
+> Algum repositório que eu possa adicionar para contornar esse problema de dependência?
+> Já fiz várias pesquisas mas ainda não consegui encontrar uma solução.
+>
+> Grato!!!
+> Toni
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/dab45db9/attachment.htm>
+
+From dtiezzi em usp.br  Tue Mar  8 14:26:50 2022
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 8 Mar 2022 14:26:50 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+References: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+Message-ID: <F1B0CCFB-5879-415F-B4D8-0AB01F38A272@usp.br>
+
+Problemas com dependências impedem a configuração de r-cran-factoextra:
+ r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+  Pacote r-cran-ggplot2 não está instalado.
+ r-cran-factoextra depende de r-cran-abind; porém:
+  Pacote r-cran-abind não está instalado.
+ r-cran-factoextra depende de r-cran-dendextend; porém:
+  Pacote r-cran-dendextend não está instalado.
+ r-cran-factoextra depende de r-cran-factominer; porém:
+  Pacote r-cran-factominer não está instalado.
+ r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+  Pacote r-cran-ggpubr não está instalado.
+ r-cran-factoextra depende de r-cran-reshape2; porém:
+  Pacote r-cran-reshape2 não está instalado.
+ r-cran-factoextra depende de r-cran-ggrepel; porém:
+  Pacote r-cran-ggrepel não está instalado.
+ r-cran-factoextra depende de r-cran-tidyr; porém:
+  Pacote r-cran-tidyr não está instalado.
+
+Segundo estas informações é necessário a instalação prévia desses pacotes. Geralmente ele instala automaticamente. No entanto, pode haver alguma biblioteca do GNU/Linux que seja  necessária para instalar um ou mais pacotes. Geralmente, este erro aparece no console. Como o colega Rodolfo disse, é necessário verificar todo o log de erro da instalação.
+
+daniel
+
+
+
+> On Mar 8, 2022, at 10:42 AM, Toni por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>   Pacote r-cran-ggplot2 não está instalado.
+>  r-cran-factoextra depende de r-cran-abind; porém:
+>   Pacote r-cran-abind não está instalado.
+>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>   Pacote r-cran-dendextend não está instalado.
+>  r-cran-factoextra depende de r-cran-factominer; porém:
+>   Pacote r-cran-factominer não está instalado.
+>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>   Pacote r-cran-ggpubr não está instalado.
+>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>   Pacote r-cran-reshape2 não está instalado.
+>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>   Pacote r-cran-ggrepel não está instalado.
+>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>   Pacote r-cran-tidyr não está instalado.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/c6be29fa/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue Mar  8 15:54:38 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 8 Mar 2022 15:54:38 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <F1B0CCFB-5879-415F-B4D8-0AB01F38A272@usp.br>
+References: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+ <F1B0CCFB-5879-415F-B4D8-0AB01F38A272@usp.br>
+Message-ID: <CAKrF98k+SS5i0NT4--PHNiGuqFnLodEhBcCRjwNzze1oy0ryJA@mail.gmail.com>
+
+Como a questão roda em volta de uma tentativa de instalação numa distro que
+usa o gerenciador de pacotes Debian, sugiro que se coloque na linha de
+comando da instalação (via o gerenciador de pacotes) as chaves que façam a
+instalação automática das dependências.
+
+Caso alguma entre em *deadlock* (atualmente mais raro, mas ainda não
+afastado como impossível) será necessário examinar qual conflito existe com
+algo externo ao R em si, pode ser bibliotecas de runtime do gcc, etc.
+
+HTH
+
+
+On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães Tiezzi por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>   Pacote r-cran-ggplot2 não está instalado.
+>  r-cran-factoextra depende de r-cran-abind; porém:
+>   Pacote r-cran-abind não está instalado.
+>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>   Pacote r-cran-dendextend não está instalado.
+>  r-cran-factoextra depende de r-cran-factominer; porém:
+>   Pacote r-cran-factominer não está instalado.
+>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>   Pacote r-cran-ggpubr não está instalado.
+>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>   Pacote r-cran-reshape2 não está instalado.
+>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>   Pacote r-cran-ggrepel não está instalado.
+>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>   Pacote r-cran-tidyr não está instalado.
+>
+> Segundo estas informações é necessário a instalação prévia desses pacotes.
+> Geralmente ele instala automaticamente. No entanto, pode haver alguma
+> biblioteca do GNU/Linux que seja  necessária para instalar um ou mais
+> pacotes. Geralmente, este erro aparece no console. Como o colega Rodolfo
+> disse, é necessário verificar todo o log de erro da instalação.
+>
+> daniel
+>
+>
+>
+> On Mar 8, 2022, at 10:42 AM, Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>   Pacote r-cran-ggplot2 não está instalado.
+>  r-cran-factoextra depende de r-cran-abind; porém:
+>   Pacote r-cran-abind não está instalado.
+>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>   Pacote r-cran-dendextend não está instalado.
+>  r-cran-factoextra depende de r-cran-factominer; porém:
+>   Pacote r-cran-factominer não está instalado.
+>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>   Pacote r-cran-ggpubr não está instalado.
+>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>   Pacote r-cran-reshape2 não está instalado.
+>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>   Pacote r-cran-ggrepel não está instalado.
+>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>   Pacote r-cran-tidyr não está instalado.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/0821a7b4/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue Mar  8 16:01:01 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 8 Mar 2022 16:01:01 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <CAKrF98k+SS5i0NT4--PHNiGuqFnLodEhBcCRjwNzze1oy0ryJA@mail.gmail.com>
+References: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+ <F1B0CCFB-5879-415F-B4D8-0AB01F38A272@usp.br>
+ <CAKrF98k+SS5i0NT4--PHNiGuqFnLodEhBcCRjwNzze1oy0ryJA@mail.gmail.com>
+Message-ID: <CAKrF98=_D7J5UuCm47TOhW4CqkBwddt6u3+LwiugaV0hQvkzVw@mail.gmail.com>
+
+Aditamento:
+
+Na minha instalação:
+GNU/Linux 20.04.1-Ubuntu SMP 5.13.0-30-generic x86_64
+
+Uma tentativa de instalar o factoextra via o gerenciador de pacotes
+synaptic mostra-me 37 dependências.
+
+
+
+
+On Tue, Mar 8, 2022 at 3:54 PM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+
+> Como a questão roda em volta de uma tentativa de instalação numa distro
+> que usa o gerenciador de pacotes Debian, sugiro que se coloque na linha de
+> comando da instalação (via o gerenciador de pacotes) as chaves que façam a
+> instalação automática das dependências.
+>
+> Caso alguma entre em *deadlock* (atualmente mais raro, mas ainda não
+> afastado como impossível) será necessário examinar qual conflito existe com
+> algo externo ao R em si, pode ser bibliotecas de runtime do gcc, etc.
+>
+> HTH
+>
+>
+> On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães Tiezzi por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>>   Pacote r-cran-ggplot2 não está instalado.
+>>  r-cran-factoextra depende de r-cran-abind; porém:
+>>   Pacote r-cran-abind não está instalado.
+>>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>>   Pacote r-cran-dendextend não está instalado.
+>>  r-cran-factoextra depende de r-cran-factominer; porém:
+>>   Pacote r-cran-factominer não está instalado.
+>>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>>   Pacote r-cran-ggpubr não está instalado.
+>>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>>   Pacote r-cran-reshape2 não está instalado.
+>>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>>   Pacote r-cran-ggrepel não está instalado.
+>>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>>   Pacote r-cran-tidyr não está instalado.
+>>
+>> Segundo estas informações é necessário a instalação prévia desses
+>> pacotes. Geralmente ele instala automaticamente. No entanto, pode haver
+>> alguma biblioteca do GNU/Linux que seja  necessária para instalar um ou
+>> mais pacotes. Geralmente, este erro aparece no console. Como o colega
+>> Rodolfo disse, é necessário verificar todo o log de erro da instalação.
+>>
+>> daniel
+>>
+>>
+>>
+>> On Mar 8, 2022, at 10:42 AM, Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+>> wrote:
+>>
+>> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>>   Pacote r-cran-ggplot2 não está instalado.
+>>  r-cran-factoextra depende de r-cran-abind; porém:
+>>   Pacote r-cran-abind não está instalado.
+>>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>>   Pacote r-cran-dendextend não está instalado.
+>>  r-cran-factoextra depende de r-cran-factominer; porém:
+>>   Pacote r-cran-factominer não está instalado.
+>>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>>   Pacote r-cran-ggpubr não está instalado.
+>>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>>   Pacote r-cran-reshape2 não está instalado.
+>>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>>   Pacote r-cran-ggrepel não está instalado.
+>>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>>   Pacote r-cran-tidyr não está instalado.
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/d89e398a/attachment.htm>
+
+From toni.arb em gmail.com  Tue Mar  8 16:50:13 2022
+From: toni.arb em gmail.com (Toni)
+Date: Tue, 8 Mar 2022 16:50:13 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <CAKrF98=_D7J5UuCm47TOhW4CqkBwddt6u3+LwiugaV0hQvkzVw@mail.gmail.com>
+References: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+ <F1B0CCFB-5879-415F-B4D8-0AB01F38A272@usp.br>
+ <CAKrF98k+SS5i0NT4--PHNiGuqFnLodEhBcCRjwNzze1oy0ryJA@mail.gmail.com>
+ <CAKrF98=_D7J5UuCm47TOhW4CqkBwddt6u3+LwiugaV0hQvkzVw@mail.gmail.com>
+Message-ID: <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+
+Olá Pessoal!!!
+Obrigado pelas respostas, vou tentar compilar tudo em um e-mail só:
+
+Daniel / César :
+Sim, ele instala mas quando é pacote ".deb" ele não busca no repositório a
+menos que eu force, normalmente, eu faço a dpkg e em caso de dependência,
+faço a instalação de tudo que faltou depois com <apt -f install> que aí ele
+instala sem problemas mas precisa ter um repositório com os pacotes.
+
+Rodolfo:
+Esse erro é resultado da compilação do pacote através do Rstudio, ao tentar
+rodar o <install.packages>, depois que ele terminar de compilar tudo é essa
+a mensagem que aparece no final.
+
+Fernando:
+Essa possibilidade ainda não fiz, acredito que pode ser um problema de
+versão sim, vou tentar e posto aqui o resultado mas queria saber se alguém
+conseguiu rodar esse pacote e, se sim, qual a versão do R utilizada.
+Acredito que essA grande quantidade de dependências tem alguma coisa haver
+com isso, por isso, seria bom ver se alguém tem esse pacote instalado e
+qual a versão do R utilizada porque eu já ia na versão certa.
+
+A questão é que pelo site:
+https://cran.r-project.org/web/packages/factoextra/index.html
+Os requisitos são:
+Depends: R (? 3.1.2), ggplot2 (? 2.2.0)
+
+E o que eu tenho aqui é:
+> packageVersion("ggplot2")
+[1] ?3.3.5?
+R version 4.1.2
+
+Mas vou tentar reinstalar tudo aqui novamente para ver.
+Vlw Pessoal!!!
+
+Toni
+
+
+On Tue, Mar 8, 2022 at 4:01 PM Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Aditamento:
+>
+> Na minha instalação:
+> GNU/Linux 20.04.1-Ubuntu SMP 5.13.0-30-generic x86_64
+>
+> Uma tentativa de instalar o factoextra via o gerenciador de pacotes
+> synaptic mostra-me 37 dependências.
+>
+>
+>
+>
+> On Tue, Mar 8, 2022 at 3:54 PM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+>
+>> Como a questão roda em volta de uma tentativa de instalação numa distro
+>> que usa o gerenciador de pacotes Debian, sugiro que se coloque na linha de
+>> comando da instalação (via o gerenciador de pacotes) as chaves que façam a
+>> instalação automática das dependências.
+>>
+>> Caso alguma entre em *deadlock* (atualmente mais raro, mas ainda não
+>> afastado como impossível) será necessário examinar qual conflito existe com
+>> algo externo ao R em si, pode ser bibliotecas de runtime do gcc, etc.
+>>
+>> HTH
+>>
+>>
+>> On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães Tiezzi por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>>>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>>>   Pacote r-cran-ggplot2 não está instalado.
+>>>  r-cran-factoextra depende de r-cran-abind; porém:
+>>>   Pacote r-cran-abind não está instalado.
+>>>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>>>   Pacote r-cran-dendextend não está instalado.
+>>>  r-cran-factoextra depende de r-cran-factominer; porém:
+>>>   Pacote r-cran-factominer não está instalado.
+>>>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>>>   Pacote r-cran-ggpubr não está instalado.
+>>>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>>>   Pacote r-cran-reshape2 não está instalado.
+>>>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>>>   Pacote r-cran-ggrepel não está instalado.
+>>>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>>>   Pacote r-cran-tidyr não está instalado.
+>>>
+>>> Segundo estas informações é necessário a instalação prévia desses
+>>> pacotes. Geralmente ele instala automaticamente. No entanto, pode haver
+>>> alguma biblioteca do GNU/Linux que seja  necessária para instalar um ou
+>>> mais pacotes. Geralmente, este erro aparece no console. Como o colega
+>>> Rodolfo disse, é necessário verificar todo o log de erro da instalação.
+>>>
+>>> daniel
+>>>
+>>>
+>>>
+>>> On Mar 8, 2022, at 10:42 AM, Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+>>> wrote:
+>>>
+>>> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>>>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>>>   Pacote r-cran-ggplot2 não está instalado.
+>>>  r-cran-factoextra depende de r-cran-abind; porém:
+>>>   Pacote r-cran-abind não está instalado.
+>>>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>>>   Pacote r-cran-dendextend não está instalado.
+>>>  r-cran-factoextra depende de r-cran-factominer; porém:
+>>>   Pacote r-cran-factominer não está instalado.
+>>>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>>>   Pacote r-cran-ggpubr não está instalado.
+>>>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>>>   Pacote r-cran-reshape2 não está instalado.
+>>>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>>>   Pacote r-cran-ggrepel não está instalado.
+>>>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>>>   Pacote r-cran-tidyr não está instalado.
+>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/333e14ea/attachment.htm>
+
+From zhushazang em gmail.com  Tue Mar  8 16:55:21 2022
+From: zhushazang em gmail.com (Rodolfo Silva)
+Date: Tue, 8 Mar 2022 15:55:21 -0400
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+References: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+ <F1B0CCFB-5879-415F-B4D8-0AB01F38A272@usp.br>
+ <CAKrF98k+SS5i0NT4--PHNiGuqFnLodEhBcCRjwNzze1oy0ryJA@mail.gmail.com>
+ <CAKrF98=_D7J5UuCm47TOhW4CqkBwddt6u3+LwiugaV0hQvkzVw@mail.gmail.com>
+ <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+Message-ID: <71945161-6832-fdeb-f505-6f3ad27a91ef@gmail.com>
+
+Quanto a mim, novamente, esta mensagem no final como pode ver não nos 
+diz nada. Envia todo o processo de compilação via txt ou coloque em um 
+pastebin.com da vida enviando o link aqui. Como já comentaram, pode 
+estar faltando algum pacote no sistema para terminar de compilar (um 
+header, uma lib, etc) e durante a compilação, se não o nome completo é 
+dado pistas sobre o que está faltando.
+
+Atenciosamente
+
+On 08/03/2022 15:50, Toni por (R-br) wrote:
+> Olá Pessoal!!!
+> Obrigado pelas respostas, vou tentar compilar tudo em um e-mail só:
+>
+> Daniel / César :
+> Sim, ele instala mas quando é pacote ".deb" ele não busca no 
+> repositório a menos que eu force, normalmente, eu faço a dpkg e em 
+> caso de dependência, faço a instalação de tudo que faltou depois com 
+> <apt -f install> que aí ele instala sem problemas mas precisa ter um 
+> repositório com os pacotes.
+>
+> Rodolfo:
+> Esse erro é resultado da compilação do pacote através do Rstudio, ao 
+> tentar rodar o <install.packages>, depois que ele terminar de compilar 
+> tudo é essa a mensagem que aparece no final.
+>
+> Fernando:
+> Essa possibilidade ainda não fiz, acredito que pode ser um problema de 
+> versão sim, vou tentar e posto aqui o resultado mas queria saber se 
+> alguém conseguiu rodar esse pacote e, se sim, qual a versão do R 
+> utilizada.
+> Acredito que essA grande quantidade de dependências tem alguma coisa 
+> haver com isso, por isso, seria bom ver se alguém tem esse pacote 
+> instalado e qual a versão do R utilizada porque eu já ia na versão certa.
+>
+> A questão é que pelo site:
+> https://cran.r-project.org/web/packages/factoextra/index.html
+> Os requisitos são:
+> Depends: R (? 3.1.2), ggplot2 (? 2.2.0)
+>
+> E o que eu tenho aqui é:
+> > packageVersion("ggplot2")
+> [1] ?3.3.5?
+> R version 4.1.2
+>
+> Mas vou tentar reinstalar tudo aqui novamente para ver.
+> Vlw Pessoal!!!
+>
+> Toni
+>
+>
+> On Tue, Mar 8, 2022 at 4:01 PM Cesar Rabak por (R-br) 
+> <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>     Aditamento:
+>
+>     Na minha instalação:
+>     GNU/Linux 20.04.1-Ubuntu SMP 5.13.0-30-generic x86_64
+>
+>     Uma tentativa de instalar o factoextra via o gerenciador de
+>     pacotes synaptic mostra-me 37 dependências.
+>
+>
+>
+>
+>     On Tue, Mar 8, 2022 at 3:54 PM Cesar Rabak <cesar.rabak em gmail.com>
+>     wrote:
+>
+>         Como a questão roda em volta de uma tentativa de instalação
+>         numa distro que usa o gerenciador de pacotes Debian, sugiro
+>         que se coloque na linha de comando da instalação (via o
+>         gerenciador de pacotes) as chaves que façam a instalação
+>         automática das dependências.
+>
+>         Caso alguma entre em /deadlock/ (atualmente mais raro, mas
+>         ainda não afastado como impossível) será necessário examinar
+>         qual conflito existe com algo externo ao R em si, pode ser
+>         bibliotecas de runtime do gcc, etc.
+>
+>         HTH
+>
+>
+>         On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães Tiezzi por
+>         (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>             Problemas com dependências impedem a configuração de
+>             r-cran-factoextra:
+>              r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0);
+>             porém:
+>               Pacote r-cran-ggplot2 não está instalado.
+>              r-cran-factoextra depende de r-cran-abind; porém:
+>               Pacote r-cran-abind não está instalado.
+>              r-cran-factoextra depende de r-cran-dendextend; porém:
+>               Pacote r-cran-dendextend não está instalado.
+>              r-cran-factoextra depende de r-cran-factominer; porém:
+>               Pacote r-cran-factominer não está instalado.
+>              r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>               Pacote r-cran-ggpubr não está instalado.
+>              r-cran-factoextra depende de r-cran-reshape2; porém:
+>               Pacote r-cran-reshape2 não está instalado.
+>              r-cran-factoextra depende de r-cran-ggrepel; porém:
+>               Pacote r-cran-ggrepel não está instalado.
+>              r-cran-factoextra depende de r-cran-tidyr; porém:
+>               Pacote r-cran-tidyr não está instalado.
+>
+>             Segundo estas informações é necessário a instalação prévia
+>             desses pacotes. Geralmente ele instala automaticamente. No
+>             entanto, pode haver alguma biblioteca do GNU/Linux que
+>             seja  necessária para instalar um ou mais pacotes.
+>             Geralmente, este erro aparece no console. Como o colega
+>             Rodolfo disse, é necessário verificar todo o log de erro
+>             da instalação.
+>
+>             daniel
+>
+>
+>
+>>             On Mar 8, 2022, at 10:42 AM, Toni por (R-br)
+>>             <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>             Problemas com dependências impedem a configuração de
+>>             r-cran-factoextra:
+>>              r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0);
+>>             porém:
+>>             Pacote r-cran-ggplot2 não está instalado.
+>>              r-cran-factoextra depende de r-cran-abind; porém:
+>>             Pacote r-cran-abind não está instalado.
+>>              r-cran-factoextra depende de r-cran-dendextend; porém:
+>>             Pacote r-cran-dendextend não está instalado.
+>>              r-cran-factoextra depende de r-cran-factominer; porém:
+>>             Pacote r-cran-factominer não está instalado.
+>>              r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5);
+>>             porém:
+>>             Pacote r-cran-ggpubr não está instalado.
+>>              r-cran-factoextra depende de r-cran-reshape2; porém:
+>>             Pacote r-cran-reshape2 não está instalado.
+>>              r-cran-factoextra depende de r-cran-ggrepel; porém:
+>>             Pacote r-cran-ggrepel não está instalado.
+>>              r-cran-factoextra depende de r-cran-tidyr; porém:
+>>             Pacote r-cran-tidyr não está instalado.
+>
+>             _______________________________________________
+>             R-br mailing list
+>             R-br em listas.c3sl.ufpr.br
+>             https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>             Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia)
+>             e forneça código mínimo reproduzível.
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-- 
+---
+Rodolfo Timoteo da Silva
+Mestre em Engenharia Agrícola
+Especialista em Engenharia de Segurança do Trabalho
+Especialista em Gestão de Organizações
+Engenheiro de Produção
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/c2864a95/attachment-0001.htm>
+
+From nandodesouza em gmail.com  Tue Mar  8 17:15:59 2022
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Tue, 8 Mar 2022 17:15:59 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+References: <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+Message-ID: <E33B9402-2AC2-422A-9E49-C66EF4D482A0@getmailspring.com>
+
+Toni eu utilizo o Debian 11, e R 4.1.2 e não tenho nenhum problema. Acredito que você deve estar com algum problema de configuração da sua instalação. No debian quando tenho problemas com as instalações geralmente é devido a alguma biblioteca que não é disponível no CRAN , porém resolvo com um apt get install, pois está no repositório do débian. Para isso você precisa ir avaliando todos os logs gerados durante o processo de instalação e ver onde surgiu o erro, geralmente é devido a falta de uma biblioteca instale a biblioteca e faça a instalação novamente, repita até da certo.
+
+Att
+
+On Mar 8 2022, at 4:50 pm, Toni por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Olá Pessoal!!!
+> Obrigado pelas respostas, vou tentar compilar tudo em um e-mail só:
+>
+> Daniel / César :
+> Sim, ele instala mas quando é pacote ".deb" ele não busca no repositório a menos que eu force, normalmente, eu faço a dpkg e em caso de dependência, faço a instalação de tudo que faltou depois com <apt -f install> que aí ele instala sem problemas mas precisa ter um repositório com os pacotes.
+>
+>
+> Rodolfo:
+> Esse erro é resultado da compilação do pacote através do Rstudio, ao tentar rodar o <install.packages>, depois que ele terminar de compilar tudo é essa a mensagem que aparece no final.
+>
+> Fernando:
+> Essa possibilidade ainda não fiz, acredito que pode ser um problema de versão sim, vou tentar e posto aqui o resultado mas queria saber se alguém conseguiu rodar esse pacote e, se sim, qual a versão do R utilizada.
+> Acredito que essA grande quantidade de dependências tem alguma coisa haver com isso, por isso, seria bom ver se alguém tem esse pacote instalado e qual a versão do R utilizada porque eu já ia na versão certa.
+>
+> A questão é que pelo site:
+> https://cran.r-project.org/web/packages/factoextra/index.html (https://link.getmailspring.com/link/E33B9402-2AC2-422A-9E49-C66EF4D482A0 em getmailspring.com/0?redirect=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Ffactoextra%2Findex.html&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> Os requisitos são:
+>
+> Depends: R (? 3.1.2), ggplot2 (? 2.2.0)
+>
+> E o que eu tenho aqui é:
+> > packageVersion("ggplot2")
+> [1] ?3.3.5?
+> R version 4.1.2
+>
+>
+> Mas vou tentar reinstalar tudo aqui novamente para ver.
+> Vlw Pessoal!!!
+>
+> Toni
+>
+>
+> On Tue, Mar 8, 2022 at 4:01 PM Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > Aditamento:
+> >
+> > Na minha instalação:
+> > GNU/Linux 20.04.1-Ubuntu SMP 5.13.0-30-generic x86_64
+> >
+> > Uma tentativa de instalar o factoextra via o gerenciador de pacotes synaptic mostra-me 37 dependências.
+> >
+> >
+> >
+> >
+> > On Tue, Mar 8, 2022 at 3:54 PM Cesar Rabak <cesar.rabak em gmail.com (mailto:cesar.rabak em gmail.com)> wrote:
+> > > Como a questão roda em volta de uma tentativa de instalação numa distro que usa o gerenciador de pacotes Debian, sugiro que se coloque na linha de comando da instalação (via o gerenciador de pacotes) as chaves que façam a instalação automática das dependências.
+> > >
+> > > Caso alguma entre em deadlock (atualmente mais raro, mas ainda não afastado como impossível) será necessário examinar qual conflito existe com algo externo ao R em si, pode ser bibliotecas de runtime do gcc, etc.
+> > >
+> > > HTH
+> > >
+> > >
+> > > On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > > > Problemas com dependências impedem a configuração de r-cran-factoextra:
+> > > > r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+> > > > Pacote r-cran-ggplot2 não está instalado.
+> > > > r-cran-factoextra depende de r-cran-abind; porém:
+> > > > Pacote r-cran-abind não está instalado.
+> > > > r-cran-factoextra depende de r-cran-dendextend; porém:
+> > > > Pacote r-cran-dendextend não está instalado.
+> > > > r-cran-factoextra depende de r-cran-factominer; porém:
+> > > > Pacote r-cran-factominer não está instalado.
+> > > > r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+> > > > Pacote r-cran-ggpubr não está instalado.
+> > > > r-cran-factoextra depende de r-cran-reshape2; porém:
+> > > > Pacote r-cran-reshape2 não está instalado.
+> > > > r-cran-factoextra depende de r-cran-ggrepel; porém:
+> > > > Pacote r-cran-ggrepel não está instalado.
+> > > > r-cran-factoextra depende de r-cran-tidyr; porém:
+> > > > Pacote r-cran-tidyr não está instalado.
+> > > >
+> > > > Segundo estas informações é necessário a instalação prévia desses pacotes. Geralmente ele instala automaticamente. No entanto, pode haver alguma biblioteca do GNU/Linux que seja necessária para instalar um ou mais pacotes. Geralmente, este erro aparece no console. Como o colega Rodolfo disse, é necessário verificar todo o log de erro da instalação.
+> > > >
+> > > > daniel
+> > > >
+> > > >
+> > > >
+> > > > > On Mar 8, 2022, at 10:42 AM, Toni por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > > > > Problemas com dependências impedem a configuração de r-cran-factoextra:
+> > > > > r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+> > > > > Pacote r-cran-ggplot2 não está instalado.
+> > > > > r-cran-factoextra depende de r-cran-abind; porém:
+> > > > > Pacote r-cran-abind não está instalado.
+> > > > > r-cran-factoextra depende de r-cran-dendextend; porém:
+> > > > > Pacote r-cran-dendextend não está instalado.
+> > > > > r-cran-factoextra depende de r-cran-factominer; porém:
+> > > > > Pacote r-cran-factominer não está instalado.
+> > > > > r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+> > > > > Pacote r-cran-ggpubr não está instalado.
+> > > > > r-cran-factoextra depende de r-cran-reshape2; porém:
+> > > > > Pacote r-cran-reshape2 não está instalado.
+> > > > > r-cran-factoextra depende de r-cran-ggrepel; porém:
+> > > > > Pacote r-cran-ggrepel não está instalado.
+> > > > > r-cran-factoextra depende de r-cran-tidyr; porém:
+> > > > > Pacote r-cran-tidyr não está instalado.
+> > > > >
+> > > >
+> > > >
+> > > >
+> > > > _______________________________________________
+> > > > R-br mailing list
+> > > > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > > > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> > >
+> > >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/bc14d86f/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue Mar  8 19:04:44 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 8 Mar 2022 19:04:44 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+References: <CAKA6cOsqGb-Ok8OX96DhTYZzTZjJQLvCOhbGMRKfKMQ2JmQhSQ@mail.gmail.com>
+ <F1B0CCFB-5879-415F-B4D8-0AB01F38A272@usp.br>
+ <CAKrF98k+SS5i0NT4--PHNiGuqFnLodEhBcCRjwNzze1oy0ryJA@mail.gmail.com>
+ <CAKrF98=_D7J5UuCm47TOhW4CqkBwddt6u3+LwiugaV0hQvkzVw@mail.gmail.com>
+ <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+Message-ID: <CAKrF98=MFVRp55uNTdz0_zr8MHV+Qg+L3tmsXFFrv6jTQV-tBQ@mail.gmail.com>
+
+Toni,
+
+Há duas formas de dependências a ser atendidas se você deseja instalar um
+pacote no R.
+
+A que vc cita seria aquela a ser respeitada quando uma instalação do R foi
+toda atualizada e seus pacotes sempre instalados "por dentro" do R via
+install.packages(), a outra é a que o sistema de empacotamento do Debian da
+sua distro reconhece como as dependências que os empacotadores decidiram
+fazer.
+
+Assim, no caso do r-cran-factoextra, num Ubuntu Focal Fossa tem-se:
+$ apt show r-cran-factoextra
+Package: r-cran-factoextra
+Version: 1.0.7-1cran1.2004.0
+Priority: optional
+Section: gnu-r
+Source: factoextra
+Maintainer: cran2deb4ubuntu <cran2deb4ubuntu em gmail.com>
+Installed-Size: 470 kB
+Depends: r-base-core, r-cran-ggplot2, r-cran-abind, r-cran-cluster,
+r-cran-dendextend, r-cran-factominer, r-cran-ggpubr, r-cran-reshape2,
+r-cran-ggrepel, r-cran-tidyr
+.
+.
+.
+$
+
+O busílis é que essas dez dependências multiplicam-se e no caso da
+instalação nesta máquina chegam a 37.
+
+A dica está na continuação, além das dependências há também as
+"importações" e por óbvio se a funcionalidade dessas importações
+inexistirem, o pacote não carrega a contento...
+
+Da página do link
+<https://cran.r-project.org/web/packages/factoextra/index.html> apontado
+por vc tem-se:
+Imports: abind, cluster, dendextend, FactoMineR, ggpubr(>= 0.1.5), grid,
+stats, reshape2, ggrepel, tidyr
+e
+Suggests: ade4, ca, igraph, MASS, knitr, mclust
+
+A versão do meu R é também a "Bird Hippie" por isso, suspeito que a
+reinstalação vai deixar tudo OK.
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Tue, Mar 8, 2022 at 4:50 PM Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Olá Pessoal!!!
+> Obrigado pelas respostas, vou tentar compilar tudo em um e-mail só:
+>
+> Daniel / César :
+> Sim, ele instala mas quando é pacote ".deb" ele não busca no repositório a
+> menos que eu force, normalmente, eu faço a dpkg e em caso de dependência,
+> faço a instalação de tudo que faltou depois com <apt -f install> que aí ele
+> instala sem problemas mas precisa ter um repositório com os pacotes.
+>
+> Rodolfo:
+> Esse erro é resultado da compilação do pacote através do Rstudio, ao
+> tentar rodar o <install.packages>, depois que ele terminar de compilar tudo
+> é essa a mensagem que aparece no final.
+>
+> Fernando:
+> Essa possibilidade ainda não fiz, acredito que pode ser um problema de
+> versão sim, vou tentar e posto aqui o resultado mas queria saber se alguém
+> conseguiu rodar esse pacote e, se sim, qual a versão do R utilizada.
+> Acredito que essA grande quantidade de dependências tem alguma coisa haver
+> com isso, por isso, seria bom ver se alguém tem esse pacote instalado e
+> qual a versão do R utilizada porque eu já ia na versão certa.
+>
+> A questão é que pelo site:
+> https://cran.r-project.org/web/packages/factoextra/index.html
+> Os requisitos são:
+> Depends: R (? 3.1.2), ggplot2 (? 2.2.0)
+>
+> E o que eu tenho aqui é:
+> > packageVersion("ggplot2")
+> [1] ?3.3.5?
+> R version 4.1.2
+>
+> Mas vou tentar reinstalar tudo aqui novamente para ver.
+> Vlw Pessoal!!!
+>
+> Toni
+>
+>
+> On Tue, Mar 8, 2022 at 4:01 PM Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Aditamento:
+>>
+>> Na minha instalação:
+>> GNU/Linux 20.04.1-Ubuntu SMP 5.13.0-30-generic x86_64
+>>
+>> Uma tentativa de instalar o factoextra via o gerenciador de pacotes
+>> synaptic mostra-me 37 dependências.
+>>
+>>
+>>
+>>
+>> On Tue, Mar 8, 2022 at 3:54 PM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+>>
+>>> Como a questão roda em volta de uma tentativa de instalação numa distro
+>>> que usa o gerenciador de pacotes Debian, sugiro que se coloque na linha de
+>>> comando da instalação (via o gerenciador de pacotes) as chaves que façam a
+>>> instalação automática das dependências.
+>>>
+>>> Caso alguma entre em *deadlock* (atualmente mais raro, mas ainda não
+>>> afastado como impossível) será necessário examinar qual conflito existe com
+>>> algo externo ao R em si, pode ser bibliotecas de runtime do gcc, etc.
+>>>
+>>> HTH
+>>>
+>>>
+>>> On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães Tiezzi por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>>>>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>>>>   Pacote r-cran-ggplot2 não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-abind; porém:
+>>>>   Pacote r-cran-abind não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>>>>   Pacote r-cran-dendextend não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-factominer; porém:
+>>>>   Pacote r-cran-factominer não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>>>>   Pacote r-cran-ggpubr não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>>>>   Pacote r-cran-reshape2 não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>>>>   Pacote r-cran-ggrepel não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>>>>   Pacote r-cran-tidyr não está instalado.
+>>>>
+>>>> Segundo estas informações é necessário a instalação prévia desses
+>>>> pacotes. Geralmente ele instala automaticamente. No entanto, pode haver
+>>>> alguma biblioteca do GNU/Linux que seja  necessária para instalar um ou
+>>>> mais pacotes. Geralmente, este erro aparece no console. Como o colega
+>>>> Rodolfo disse, é necessário verificar todo o log de erro da instalação.
+>>>>
+>>>> daniel
+>>>>
+>>>>
+>>>>
+>>>> On Mar 8, 2022, at 10:42 AM, Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+>>>> wrote:
+>>>>
+>>>> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>>>>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>>>>   Pacote r-cran-ggplot2 não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-abind; porém:
+>>>>   Pacote r-cran-abind não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>>>>   Pacote r-cran-dendextend não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-factominer; porém:
+>>>>   Pacote r-cran-factominer não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>>>>   Pacote r-cran-ggpubr não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>>>>   Pacote r-cran-reshape2 não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>>>>   Pacote r-cran-ggrepel não está instalado.
+>>>>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>>>>   Pacote r-cran-tidyr não está instalado.
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/10d0776f/attachment.htm>
+
+From toni.arb em gmail.com  Tue Mar  8 19:30:14 2022
+From: toni.arb em gmail.com (Toni)
+Date: Tue, 8 Mar 2022 19:30:14 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <E33B9402-2AC2-422A-9E49-C66EF4D482A0@getmailspring.com>
+References: <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+ <E33B9402-2AC2-422A-9E49-C66EF4D482A0@getmailspring.com>
+Message-ID: <CAKA6cOtZwpp26zc=AAcxa_kCPV_jA3FMJC7GOawxcO0fXfQ49g@mail.gmail.com>
+
+Ok Fernando!!!
+
+Muito obrigado pelas informações, vou subir uma VM aqui para testar e
+qualquer coisa eu atualizo o meu Debian para 11, já estava querendo fazer
+essa atualização mesmo kkkk ...
+Vai ser mais um motivo.
+
+Aproveito para agradecer as contribuições, vou fazer alguns testes ainda
+porque fiz algumas modificações aqui e agora ele apresenta a seguinte
+mensagem:
+
+Warning in install.packages :
+  package ?factorextra? is not available for this version of R
+
+A version of this package for your version of R might be available
+elsewhere,
+see the ideas at
+https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
+
+Interessante que o meu R é a mesma versão que a sua mas enfim vou fazer uns
+testes antes.
+
+Abraço a todos!!!
+Toni
+
+On Tue, Mar 8, 2022 at 5:16 PM Fernando Souza <nandodesouza em gmail.com>
+wrote:
+
+> Toni eu utilizo o Debian 11, e R 4.1.2 e não tenho nenhum problema.
+> Acredito que você deve estar com algum problema de configuração da sua
+> instalação.  No debian quando tenho problemas com as instalações geralmente
+> é devido a alguma biblioteca que não é disponível no CRAN , porém resolvo
+> com um apt get install, pois está no repositório do débian. Para isso você
+> precisa ir avaliando todos os logs gerados durante o processo de instalação
+> e ver onde surgiu  o erro, geralmente é devido a falta de uma biblioteca
+> instale a biblioteca e faça a instalação novamente, repita até da certo.
+>
+> Att
+>
+>
+>
+>
+> On Mar 8 2022, at 4:50 pm, Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+> Olá Pessoal!!!
+> Obrigado pelas respostas, vou tentar compilar tudo em um e-mail só:
+>
+> Daniel / César :
+> Sim, ele instala mas quando é pacote ".deb" ele não busca no repositório a
+> menos que eu force, normalmente, eu faço a dpkg e em caso de dependência,
+> faço a instalação de tudo que faltou depois com <apt -f install> que aí ele
+> instala sem problemas mas precisa ter um repositório com os pacotes.
+>
+> Rodolfo:
+> Esse erro é resultado da compilação do pacote através do Rstudio, ao
+> tentar rodar o <install.packages>, depois que ele terminar de compilar tudo
+> é essa a mensagem que aparece no final.
+>
+> Fernando:
+> Essa possibilidade ainda não fiz, acredito que pode ser um problema de
+> versão sim, vou tentar e posto aqui o resultado mas queria saber se alguém
+> conseguiu rodar esse pacote e, se sim, qual a versão do R utilizada.
+> Acredito que essA grande quantidade de dependências tem alguma coisa haver
+> com isso, por isso, seria bom ver se alguém tem esse pacote instalado e
+> qual a versão do R utilizada porque eu já ia na versão certa.
+>
+> A questão é que pelo site:
+> https://cran.r-project.org/web/packages/factoextra/index.html
+> <https://link.getmailspring.com/link/E33B9402-2AC2-422A-9E49-C66EF4D482A0 em getmailspring.com/0?redirect=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Ffactoextra%2Findex.html&recipient=dG9uaS5hcmJAZ21haWwuY29t>
+> Os requisitos são:
+> Depends: R (? 3.1.2), ggplot2 (? 2.2.0)
+>
+> E o que eu tenho aqui é:
+> > packageVersion("ggplot2")
+> [1] ?3.3.5?
+> R version 4.1.2
+>
+> Mas vou tentar reinstalar tudo aqui novamente para ver.
+> Vlw Pessoal!!!
+>
+> Toni
+>
+>
+> On Tue, Mar 8, 2022 at 4:01 PM Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Aditamento:
+>
+> Na minha instalação:
+> GNU/Linux 20.04.1-Ubuntu SMP 5.13.0-30-generic x86_64
+>
+> Uma tentativa de instalar o factoextra via o gerenciador de pacotes
+> synaptic mostra-me 37 dependências.
+>
+>
+>
+>
+> On Tue, Mar 8, 2022 at 3:54 PM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+>
+> Como a questão roda em volta de uma tentativa de instalação numa distro
+> que usa o gerenciador de pacotes Debian, sugiro que se coloque na linha de
+> comando da instalação (via o gerenciador de pacotes) as chaves que façam a
+> instalação automática das dependências.
+>
+> Caso alguma entre em *deadlock* (atualmente mais raro, mas ainda não
+> afastado como impossível) será necessário examinar qual conflito existe com
+> algo externo ao R em si, pode ser bibliotecas de runtime do gcc, etc.
+>
+> HTH
+>
+>
+> On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães Tiezzi por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>   Pacote r-cran-ggplot2 não está instalado.
+>  r-cran-factoextra depende de r-cran-abind; porém:
+>   Pacote r-cran-abind não está instalado.
+>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>   Pacote r-cran-dendextend não está instalado.
+>  r-cran-factoextra depende de r-cran-factominer; porém:
+>   Pacote r-cran-factominer não está instalado.
+>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>   Pacote r-cran-ggpubr não está instalado.
+>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>   Pacote r-cran-reshape2 não está instalado.
+>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>   Pacote r-cran-ggrepel não está instalado.
+>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>   Pacote r-cran-tidyr não está instalado.
+>
+> Segundo estas informações é necessário a instalação prévia desses pacotes.
+> Geralmente ele instala automaticamente. No entanto, pode haver alguma
+> biblioteca do GNU/Linux que seja  necessária para instalar um ou mais
+> pacotes. Geralmente, este erro aparece no console. Como o colega Rodolfo
+> disse, é necessário verificar todo o log de erro da instalação.
+>
+> daniel
+>
+>
+>
+> On Mar 8, 2022, at 10:42 AM, Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>   Pacote r-cran-ggplot2 não está instalado.
+>  r-cran-factoextra depende de r-cran-abind; porém:
+>   Pacote r-cran-abind não está instalado.
+>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>   Pacote r-cran-dendextend não está instalado.
+>  r-cran-factoextra depende de r-cran-factominer; porém:
+>   Pacote r-cran-factominer não está instalado.
+>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>   Pacote r-cran-ggpubr não está instalado.
+>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>   Pacote r-cran-reshape2 não está instalado.
+>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>   Pacote r-cran-ggrepel não está instalado.
+>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>   Pacote r-cran-tidyr não está instalado.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/c4fcc8c9/attachment.htm>
+
+From zhushazang em gmail.com  Tue Mar  8 19:54:34 2022
+From: zhushazang em gmail.com (Rodolfo Silva)
+Date: Tue, 8 Mar 2022 18:54:34 -0400
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <CAKA6cOtZwpp26zc=AAcxa_kCPV_jA3FMJC7GOawxcO0fXfQ49g@mail.gmail.com>
+References: <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+ <E33B9402-2AC2-422A-9E49-C66EF4D482A0@getmailspring.com>
+ <CAKA6cOtZwpp26zc=AAcxa_kCPV_jA3FMJC7GOawxcO0fXfQ49g@mail.gmail.com>
+Message-ID: <67a9ad89-9c80-35e7-0a3b-bdedfa529581@gmail.com>
+
+Repare que "factorextra" não é "factoextra".
+
+Atenciosamente
+
+
+On 08/03/2022 18:30, Toni por (R-br) wrote:
+> Ok Fernando!!!
+>
+> Muito obrigado pelas informações, vou subir uma VM aqui para testar e 
+> qualquer coisa eu atualizo o meu Debian para 11, já estava querendo 
+> fazer essa atualização mesmo kkkk ...
+> Vai ser mais um motivo.
+>
+> Aproveito para agradecer as contribuições, vou fazer alguns testes 
+> ainda porque fiz algumas modificações aqui e agora ele apresenta a 
+> seguinte mensagem:
+>
+> Warning in install.packages :
+>   package ?factorextra? is not available for this version of R
+>
+> A version of this package for your version of R might be available 
+> elsewhere,
+> see the ideas at
+> https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
+>
+> Interessante que o meu R é a mesma versão que a sua mas enfim vou 
+> fazer uns testes antes.
+>
+> Abraço a todos!!!
+> Toni
+>
+> On Tue, Mar 8, 2022 at 5:16 PM Fernando Souza <nandodesouza em gmail.com> 
+> wrote:
+>
+>     Toni eu utilizo o Debian 11, e R 4.1.2 e não tenho nenhum
+>     problema. Acredito que você deve estar com algum problema de
+>     configuração da sua instalação.  No debian quando tenho problemas
+>     com as instalações geralmente é devido a alguma biblioteca que não
+>     é disponível no CRAN , porém resolvo com um apt get install, pois
+>     está no repositório do débian. Para isso você precisa ir avaliando
+>     todos os logs gerados durante o processo de instalação e ver onde
+>     surgiu  o erro, geralmente é devido a falta de uma biblioteca
+>     instale a biblioteca e faça a instalação novamente, repita até da
+>     certo.
+>
+>     Att
+>
+>
+>
+>
+>     On Mar 8 2022, at 4:50 pm, Toni por (R-br)
+>     <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>         Olá Pessoal!!!
+>         Obrigado pelas respostas, vou tentar compilar tudo em um
+>         e-mail só:
+>
+>         Daniel / César :
+>         Sim, ele instala mas quando é pacote ".deb" ele não busca no
+>         repositório a menos que eu force, normalmente, eu faço a dpkg
+>         e em caso de dependência, faço a instalação de tudo que faltou
+>         depois com <apt -f install> que aí ele instala sem problemas
+>         mas precisa ter um repositório com os pacotes.
+>
+>         Rodolfo:
+>         Esse erro é resultado da compilação do pacote através do
+>         Rstudio, ao tentar rodar o <install.packages>, depois que ele
+>         terminar de compilar tudo é essa a mensagem que aparece no final.
+>
+>         Fernando:
+>         Essa possibilidade ainda não fiz, acredito que pode ser um
+>         problema de versão sim, vou tentar e posto aqui o resultado
+>         mas queria saber se alguém conseguiu rodar esse pacote e, se
+>         sim, qual a versão do R utilizada.
+>         Acredito que essA grande quantidade de dependências tem alguma
+>         coisa haver com isso, por isso, seria bom ver se alguém tem
+>         esse pacote instalado e qual a versão do R utilizada porque eu
+>         já ia na versão certa.
+>
+>         A questão é que pelo site:
+>         https://cran.r-project.org/web/packages/factoextra/index.html
+>         <https://link.getmailspring.com/link/E33B9402-2AC2-422A-9E49-C66EF4D482A0 em getmailspring.com/0?redirect=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Ffactoextra%2Findex.html&recipient=dG9uaS5hcmJAZ21haWwuY29t>
+>         Os requisitos são:
+>         Depends: R (? 3.1.2), ggplot2 (? 2.2.0)
+>
+>         E o que eu tenho aqui é:
+>         > packageVersion("ggplot2")
+>         [1] ?3.3.5?
+>         R version 4.1.2
+>
+>         Mas vou tentar reinstalar tudo aqui novamente para ver.
+>         Vlw Pessoal!!!
+>
+>         Toni
+>
+>
+>         On Tue, Mar 8, 2022 at 4:01 PM Cesar Rabak por (R-br)
+>         <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>             Aditamento:
+>
+>             Na minha instalação:
+>             GNU/Linux 20.04.1-Ubuntu SMP 5.13.0-30-generic x86_64
+>
+>             Uma tentativa de instalar o factoextra via o gerenciador
+>             de pacotes synaptic mostra-me 37 dependências.
+>
+>
+>
+>
+>             On Tue, Mar 8, 2022 at 3:54 PM Cesar Rabak
+>             <cesar.rabak em gmail.com> wrote:
+>
+>                 Como a questão roda em volta de uma tentativa de
+>                 instalação numa distro que usa o gerenciador de
+>                 pacotes Debian, sugiro que se coloque na linha de
+>                 comando da instalação (via o gerenciador de pacotes)
+>                 as chaves que façam a instalação automática das
+>                 dependências.
+>
+>                 Caso alguma entre em /deadlock/ (atualmente mais raro,
+>                 mas ainda não afastado como impossível) será
+>                 necessário examinar qual conflito existe com algo
+>                 externo ao R em si, pode ser bibliotecas de runtime do
+>                 gcc, etc.
+>
+>                 HTH
+>
+>
+>                 On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães Tiezzi
+>                 por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>                     Problemas com dependências impedem a configuração
+>                     de r-cran-factoextra:
+>                      r-cran-factoextra depende de r-cran-ggplot2 (>=
+>                     2.2.0); porém:
+>                       Pacote r-cran-ggplot2 não está instalado.
+>                      r-cran-factoextra depende de r-cran-abind; porém:
+>                       Pacote r-cran-abind não está instalado.
+>                      r-cran-factoextra depende de r-cran-dendextend;
+>                     porém:
+>                       Pacote r-cran-dendextend não está instalado.
+>                      r-cran-factoextra depende de r-cran-factominer;
+>                     porém:
+>                       Pacote r-cran-factominer não está instalado.
+>                      r-cran-factoextra depende de r-cran-ggpubr (>=
+>                     0.1.5); porém:
+>                       Pacote r-cran-ggpubr não está instalado.
+>                      r-cran-factoextra depende de r-cran-reshape2; porém:
+>                       Pacote r-cran-reshape2 não está instalado.
+>                      r-cran-factoextra depende de r-cran-ggrepel; porém:
+>                       Pacote r-cran-ggrepel não está instalado.
+>                      r-cran-factoextra depende de r-cran-tidyr; porém:
+>                       Pacote r-cran-tidyr não está instalado.
+>
+>                     Segundo estas informações é necessário a
+>                     instalação prévia desses pacotes. Geralmente ele
+>                     instala automaticamente. No entanto, pode haver
+>                     alguma biblioteca do GNU/Linux que seja
+>                      necessária para instalar um ou mais pacotes.
+>                     Geralmente, este erro aparece no console. Como o
+>                     colega Rodolfo disse, é necessário verificar todo
+>                     o log de erro da instalação.
+>
+>                     daniel
+>
+>
+>
+>                         On Mar 8, 2022, at 10:42 AM, Toni por (R-br)
+>                         <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>                         Problemas com dependências impedem a
+>                         configuração de r-cran-factoextra:
+>                          r-cran-factoextra depende de r-cran-ggplot2
+>                         (>= 2.2.0); porém:
+>                           Pacote r-cran-ggplot2 não está instalado.
+>                          r-cran-factoextra depende de r-cran-abind; porém:
+>                           Pacote r-cran-abind não está instalado.
+>                          r-cran-factoextra depende de
+>                         r-cran-dendextend; porém:
+>                           Pacote r-cran-dendextend não está instalado.
+>                          r-cran-factoextra depende de
+>                         r-cran-factominer; porém:
+>                           Pacote r-cran-factominer não está instalado.
+>                          r-cran-factoextra depende de r-cran-ggpubr
+>                         (>= 0.1.5); porém:
+>                           Pacote r-cran-ggpubr não está instalado.
+>                          r-cran-factoextra depende de r-cran-reshape2;
+>                         porém:
+>                           Pacote r-cran-reshape2 não está instalado.
+>                          r-cran-factoextra depende de r-cran-ggrepel;
+>                         porém:
+>                           Pacote r-cran-ggrepel não está instalado.
+>                          r-cran-factoextra depende de r-cran-tidyr; porém:
+>                           Pacote r-cran-tidyr não está instalado.
+>
+>
+>                     _______________________________________________
+>                     R-br mailing list
+>                     R-br em listas.c3sl.ufpr.br
+>                     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>                     Leia o guia de postagem
+>                     (http://www.leg.ufpr.br/r-br-guia) e forneça
+>                     código mínimo reproduzível.
+>
+>             _______________________________________________
+>             R-br mailing list
+>             R-br em listas.c3sl.ufpr.br
+>             https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>             Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia)
+>             e forneça código mínimo reproduzível.
+>
+>         _______________________________________________
+>         R-br mailing list
+>         R-br em listas.c3sl.ufpr.br
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>         forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-- 
+---
+Rodolfo Timoteo da Silva
+Mestre em Engenharia Agrícola
+Especialista em Engenharia de Segurança do Trabalho
+Especialista em Gestão de Organizações
+Engenheiro de Produção
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/e21238cd/attachment.htm>
+
+From marciomidon em gmail.com  Tue Mar  8 21:26:41 2022
+From: marciomidon em gmail.com (=?UTF-8?Q?M=c3=a1rcio_Midon?=)
+Date: Tue, 8 Mar 2022 21:26:41 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <67a9ad89-9c80-35e7-0a3b-bdedfa529581@gmail.com>
+References: <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+ <E33B9402-2AC2-422A-9E49-C66EF4D482A0@getmailspring.com>
+ <CAKA6cOtZwpp26zc=AAcxa_kCPV_jA3FMJC7GOawxcO0fXfQ49g@mail.gmail.com>
+ <67a9ad89-9c80-35e7-0a3b-bdedfa529581@gmail.com>
+Message-ID: <ce27aab9-12cc-7bee-c578-3cd8f59c7f94@gmail.com>
+
+Pessoal,
+
+Depois de tentativas e erros consegui instalar o R Commander....não sei 
+que fiz...por varias vezes chamei o comando e não ia adiante...agora 
+deu...mas com a seguinte chamada:
+
+library(Rcmdr)
+Carregando pacotes exigidos: splines
+Carregando pacotes exigidos: RcmdrMisc
+Carregando pacotes exigidos: car
+Carregando pacotes exigidos: carData
+Carregando pacotes exigidos: sandwich
+Carregando pacotes exigidos: effects
+lattice theme set by effectsTheme()
+See ?effectsTheme for details.
+
+Versão do Rcmdr 2.7-2
+
+
+Attaching package: 'Rcmdr'
+
+The following object is masked from 'package:base':
+
+     errorCondition
+
+ >
+
+Em 08/03/2022 19:54, Rodolfo Silva por (R-br) escreveu:
+>
+> Repare que "factorextra" não é "factoextra".
+>
+> Atenciosamente
+>
+>
+> On 08/03/2022 18:30, Toni por (R-br) wrote:
+>> Ok Fernando!!!
+>>
+>> Muito obrigado pelas informações, vou subir uma VM aqui para testar e 
+>> qualquer coisa eu atualizo o meu Debian para 11, já estava querendo 
+>> fazer essa atualização mesmo kkkk ...
+>> Vai ser mais um motivo.
+>>
+>> Aproveito para agradecer as contribuições, vou fazer alguns testes 
+>> ainda porque fiz algumas modificações aqui e agora ele apresenta a 
+>> seguinte mensagem:
+>>
+>> Warning in install.packages :
+>>   package ?factorextra? is not available for this version of R
+>>
+>> A version of this package for your version of R might be available 
+>> elsewhere,
+>> see the ideas at
+>> https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
+>>
+>> Interessante que o meu R é a mesma versão que a sua mas enfim vou 
+>> fazer uns testes antes.
+>>
+>> Abraço a todos!!!
+>> Toni
+>>
+>> On Tue, Mar 8, 2022 at 5:16 PM Fernando Souza 
+>> <nandodesouza em gmail.com> wrote:
+>>
+>>     Toni eu utilizo o Debian 11, e R 4.1.2 e não tenho nenhum
+>>     problema. Acredito que você deve estar com algum problema de
+>>     configuração da sua instalação.  No debian quando tenho problemas
+>>     com as instalações geralmente é devido a alguma biblioteca que
+>>     não é disponível no CRAN , porém resolvo com um apt get install,
+>>     pois está no repositório do débian. Para isso você precisa ir
+>>     avaliando todos os logs gerados durante o processo de instalação
+>>     e ver onde surgiu  o erro, geralmente é devido a falta de uma
+>>     biblioteca instale a biblioteca e faça a instalação novamente,
+>>     repita até da certo.
+>>
+>>     Att
+>>
+>>
+>>
+>>
+>>     On Mar 8 2022, at 4:50 pm, Toni por (R-br)
+>>     <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>         Olá Pessoal!!!
+>>         Obrigado pelas respostas, vou tentar compilar tudo em um
+>>         e-mail só:
+>>
+>>         Daniel / César :
+>>         Sim, ele instala mas quando é pacote ".deb" ele não busca no
+>>         repositório a menos que eu force, normalmente, eu faço a dpkg
+>>         e em caso de dependência, faço a instalação de tudo que
+>>         faltou depois com <apt -f install> que aí ele instala sem
+>>         problemas mas precisa ter um repositório com os pacotes.
+>>
+>>         Rodolfo:
+>>         Esse erro é resultado da compilação do pacote através do
+>>         Rstudio, ao tentar rodar o <install.packages>, depois que ele
+>>         terminar de compilar tudo é essa a mensagem que aparece no final.
+>>
+>>         Fernando:
+>>         Essa possibilidade ainda não fiz, acredito que pode ser um
+>>         problema de versão sim, vou tentar e posto aqui o resultado
+>>         mas queria saber se alguém conseguiu rodar esse pacote e, se
+>>         sim, qual a versão do R utilizada.
+>>         Acredito que essA grande quantidade de dependências tem
+>>         alguma coisa haver com isso, por isso, seria bom ver se
+>>         alguém tem esse pacote instalado e qual a versão do R
+>>         utilizada porque eu já ia na versão certa.
+>>
+>>         A questão é que pelo site:
+>>         https://cran.r-project.org/web/packages/factoextra/index.html
+>>         <https://link.getmailspring.com/link/E33B9402-2AC2-422A-9E49-C66EF4D482A0 em getmailspring.com/0?redirect=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Ffactoextra%2Findex.html&recipient=dG9uaS5hcmJAZ21haWwuY29t>
+>>         Os requisitos são:
+>>         Depends: R (? 3.1.2), ggplot2 (? 2.2.0)
+>>
+>>         E o que eu tenho aqui é:
+>>         > packageVersion("ggplot2")
+>>         [1] ?3.3.5?
+>>         R version 4.1.2
+>>
+>>         Mas vou tentar reinstalar tudo aqui novamente para ver.
+>>         Vlw Pessoal!!!
+>>
+>>         Toni
+>>
+>>
+>>         On Tue, Mar 8, 2022 at 4:01 PM Cesar Rabak por (R-br)
+>>         <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>             Aditamento:
+>>
+>>             Na minha instalação:
+>>             GNU/Linux 20.04.1-Ubuntu SMP 5.13.0-30-generic x86_64
+>>
+>>             Uma tentativa de instalar o factoextra via o gerenciador
+>>             de pacotes synaptic mostra-me 37 dependências.
+>>
+>>
+>>
+>>
+>>             On Tue, Mar 8, 2022 at 3:54 PM Cesar Rabak
+>>             <cesar.rabak em gmail.com> wrote:
+>>
+>>                 Como a questão roda em volta de uma tentativa de
+>>                 instalação numa distro que usa o gerenciador de
+>>                 pacotes Debian, sugiro que se coloque na linha de
+>>                 comando da instalação (via o gerenciador de pacotes)
+>>                 as chaves que façam a instalação automática das
+>>                 dependências.
+>>
+>>                 Caso alguma entre em /deadlock/ (atualmente mais
+>>                 raro, mas ainda não afastado como impossível) será
+>>                 necessário examinar qual conflito existe com algo
+>>                 externo ao R em si, pode ser bibliotecas de runtime
+>>                 do gcc, etc.
+>>
+>>                 HTH
+>>
+>>
+>>                 On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães
+>>                 Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>                     Problemas com dependências impedem a configuração
+>>                     de r-cran-factoextra:
+>>                      r-cran-factoextra depende de r-cran-ggplot2 (>=
+>>                     2.2.0); porém:
+>>                       Pacote r-cran-ggplot2 não está instalado.
+>>                      r-cran-factoextra depende de r-cran-abind; porém:
+>>                       Pacote r-cran-abind não está instalado.
+>>                      r-cran-factoextra depende de r-cran-dendextend;
+>>                     porém:
+>>                       Pacote r-cran-dendextend não está instalado.
+>>                      r-cran-factoextra depende de r-cran-factominer;
+>>                     porém:
+>>                       Pacote r-cran-factominer não está instalado.
+>>                      r-cran-factoextra depende de r-cran-ggpubr (>=
+>>                     0.1.5); porém:
+>>                       Pacote r-cran-ggpubr não está instalado.
+>>                      r-cran-factoextra depende de r-cran-reshape2; porém:
+>>                       Pacote r-cran-reshape2 não está instalado.
+>>                      r-cran-factoextra depende de r-cran-ggrepel; porém:
+>>                       Pacote r-cran-ggrepel não está instalado.
+>>                      r-cran-factoextra depende de r-cran-tidyr; porém:
+>>                       Pacote r-cran-tidyr não está instalado.
+>>
+>>                     Segundo estas informações é necessário a
+>>                     instalação prévia desses pacotes. Geralmente ele
+>>                     instala automaticamente. No entanto, pode haver
+>>                     alguma biblioteca do GNU/Linux que seja
+>>                      necessária para instalar um ou mais pacotes.
+>>                     Geralmente, este erro aparece no console. Como o
+>>                     colega Rodolfo disse, é necessário verificar todo
+>>                     o log de erro da instalação.
+>>
+>>                     daniel
+>>
+>>
+>>
+>>                         On Mar 8, 2022, at 10:42 AM, Toni por (R-br)
+>>                         <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>                         Problemas com dependências impedem a
+>>                         configuração de r-cran-factoextra:
+>>                          r-cran-factoextra depende de r-cran-ggplot2
+>>                         (>= 2.2.0); porém:
+>>                           Pacote r-cran-ggplot2 não está instalado.
+>>                          r-cran-factoextra depende de r-cran-abind;
+>>                         porém:
+>>                           Pacote r-cran-abind não está instalado.
+>>                          r-cran-factoextra depende de
+>>                         r-cran-dendextend; porém:
+>>                           Pacote r-cran-dendextend não está instalado.
+>>                          r-cran-factoextra depende de
+>>                         r-cran-factominer; porém:
+>>                           Pacote r-cran-factominer não está instalado.
+>>                          r-cran-factoextra depende de r-cran-ggpubr
+>>                         (>= 0.1.5); porém:
+>>                           Pacote r-cran-ggpubr não está instalado.
+>>                          r-cran-factoextra depende de
+>>                         r-cran-reshape2; porém:
+>>                           Pacote r-cran-reshape2 não está instalado.
+>>                          r-cran-factoextra depende de r-cran-ggrepel;
+>>                         porém:
+>>                           Pacote r-cran-ggrepel não está instalado.
+>>                          r-cran-factoextra depende de r-cran-tidyr;
+>>                         porém:
+>>                           Pacote r-cran-tidyr não está instalado.
+>>
+>>
+>>                     _______________________________________________
+>>                     R-br mailing list
+>>                     R-br em listas.c3sl.ufpr.br
+>>                     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>                     Leia o guia de postagem
+>>                     (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>                     código mínimo reproduzível.
+>>
+>>             _______________________________________________
+>>             R-br mailing list
+>>             R-br em listas.c3sl.ufpr.br
+>>             https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>             Leia o guia de postagem
+>>             (http://www.leg.ufpr.br/r-br-guia) e forneça código
+>>             mínimo reproduzível.
+>>
+>>         _______________________________________________
+>>         R-br mailing list
+>>         R-br em listas.c3sl.ufpr.br
+>>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>         forneça código mínimo reproduzível.
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> -- 
+> ---
+> Rodolfo Timoteo da Silva
+> Mestre em Engenharia Agrícola
+> Especialista em Engenharia de Segurança do Trabalho
+> Especialista em Gestão de Organizações
+> Engenheiro de Produção
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-- 
+
+
+-- 
+Matrícula Aluno Especial
+Cordialmente,
+
+*Márcio Midon*Arquiteto e Urbanista UFPel Especialista Geoprocessamento 
+UFPR Mestre Geomática UFSM Doutorando Geografia UFSM Tel 53 3305 7075 | 
+Cel 53 98100 2020 SKYPE marcio_midon
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/40aa309c/attachment-0001.htm>
+
+From marciomidon em gmail.com  Tue Mar  8 21:31:41 2022
+From: marciomidon em gmail.com (=?UTF-8?Q?M=c3=a1rcio_Midon?=)
+Date: Tue, 8 Mar 2022 21:31:41 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <67a9ad89-9c80-35e7-0a3b-bdedfa529581@gmail.com>
+References: <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+ <E33B9402-2AC2-422A-9E49-C66EF4D482A0@getmailspring.com>
+ <CAKA6cOtZwpp26zc=AAcxa_kCPV_jA3FMJC7GOawxcO0fXfQ49g@mail.gmail.com>
+ <67a9ad89-9c80-35e7-0a3b-bdedfa529581@gmail.com>
+Message-ID: <060d4ff2-ae5b-7661-356a-69954d812e21@gmail.com>
+
+Só sei que atualizei o ubuntu 20.04x64 hj e vendo os posts do grupo fui 
+tentar novamente e até o RStudio que não estava instalando deu certo agora.
+
+Será que é este o problema do colega?
+
+Em 08/03/2022 19:54, Rodolfo Silva por (R-br) escreveu:
+>
+> Repare que "factorextra" não é "factoextra".
+>
+> Atenciosamente
+>
+>
+> On 08/03/2022 18:30, Toni por (R-br) wrote:
+>> Ok Fernando!!!
+>>
+>> Muito obrigado pelas informações, vou subir uma VM aqui para testar e 
+>> qualquer coisa eu atualizo o meu Debian para 11, já estava querendo 
+>> fazer essa atualização mesmo kkkk ...
+>> Vai ser mais um motivo.
+>>
+>> Aproveito para agradecer as contribuições, vou fazer alguns testes 
+>> ainda porque fiz algumas modificações aqui e agora ele apresenta a 
+>> seguinte mensagem:
+>>
+>> Warning in install.packages :
+>>   package ?factorextra? is not available for this version of R
+>>
+>> A version of this package for your version of R might be available 
+>> elsewhere,
+>> see the ideas at
+>> https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
+>>
+>> Interessante que o meu R é a mesma versão que a sua mas enfim vou 
+>> fazer uns testes antes.
+>>
+>> Abraço a todos!!!
+>> Toni
+>>
+>> On Tue, Mar 8, 2022 at 5:16 PM Fernando Souza 
+>> <nandodesouza em gmail.com> wrote:
+>>
+>>     Toni eu utilizo o Debian 11, e R 4.1.2 e não tenho nenhum
+>>     problema. Acredito que você deve estar com algum problema de
+>>     configuração da sua instalação.  No debian quando tenho problemas
+>>     com as instalações geralmente é devido a alguma biblioteca que
+>>     não é disponível no CRAN , porém resolvo com um apt get install,
+>>     pois está no repositório do débian. Para isso você precisa ir
+>>     avaliando todos os logs gerados durante o processo de instalação
+>>     e ver onde surgiu  o erro, geralmente é devido a falta de uma
+>>     biblioteca instale a biblioteca e faça a instalação novamente,
+>>     repita até da certo.
+>>
+>>     Att
+>>
+>>
+>>
+>>
+>>     On Mar 8 2022, at 4:50 pm, Toni por (R-br)
+>>     <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>         Olá Pessoal!!!
+>>         Obrigado pelas respostas, vou tentar compilar tudo em um
+>>         e-mail só:
+>>
+>>         Daniel / César :
+>>         Sim, ele instala mas quando é pacote ".deb" ele não busca no
+>>         repositório a menos que eu force, normalmente, eu faço a dpkg
+>>         e em caso de dependência, faço a instalação de tudo que
+>>         faltou depois com <apt -f install> que aí ele instala sem
+>>         problemas mas precisa ter um repositório com os pacotes.
+>>
+>>         Rodolfo:
+>>         Esse erro é resultado da compilação do pacote através do
+>>         Rstudio, ao tentar rodar o <install.packages>, depois que ele
+>>         terminar de compilar tudo é essa a mensagem que aparece no final.
+>>
+>>         Fernando:
+>>         Essa possibilidade ainda não fiz, acredito que pode ser um
+>>         problema de versão sim, vou tentar e posto aqui o resultado
+>>         mas queria saber se alguém conseguiu rodar esse pacote e, se
+>>         sim, qual a versão do R utilizada.
+>>         Acredito que essA grande quantidade de dependências tem
+>>         alguma coisa haver com isso, por isso, seria bom ver se
+>>         alguém tem esse pacote instalado e qual a versão do R
+>>         utilizada porque eu já ia na versão certa.
+>>
+>>         A questão é que pelo site:
+>>         https://cran.r-project.org/web/packages/factoextra/index.html
+>>         <https://link.getmailspring.com/link/E33B9402-2AC2-422A-9E49-C66EF4D482A0 em getmailspring.com/0?redirect=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Ffactoextra%2Findex.html&recipient=dG9uaS5hcmJAZ21haWwuY29t>
+>>         Os requisitos são:
+>>         Depends: R (? 3.1.2), ggplot2 (? 2.2.0)
+>>
+>>         E o que eu tenho aqui é:
+>>         > packageVersion("ggplot2")
+>>         [1] ?3.3.5?
+>>         R version 4.1.2
+>>
+>>         Mas vou tentar reinstalar tudo aqui novamente para ver.
+>>         Vlw Pessoal!!!
+>>
+>>         Toni
+>>
+>>
+>>         On Tue, Mar 8, 2022 at 4:01 PM Cesar Rabak por (R-br)
+>>         <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>             Aditamento:
+>>
+>>             Na minha instalação:
+>>             GNU/Linux 20.04.1-Ubuntu SMP 5.13.0-30-generic x86_64
+>>
+>>             Uma tentativa de instalar o factoextra via o gerenciador
+>>             de pacotes synaptic mostra-me 37 dependências.
+>>
+>>
+>>
+>>
+>>             On Tue, Mar 8, 2022 at 3:54 PM Cesar Rabak
+>>             <cesar.rabak em gmail.com> wrote:
+>>
+>>                 Como a questão roda em volta de uma tentativa de
+>>                 instalação numa distro que usa o gerenciador de
+>>                 pacotes Debian, sugiro que se coloque na linha de
+>>                 comando da instalação (via o gerenciador de pacotes)
+>>                 as chaves que façam a instalação automática das
+>>                 dependências.
+>>
+>>                 Caso alguma entre em /deadlock/ (atualmente mais
+>>                 raro, mas ainda não afastado como impossível) será
+>>                 necessário examinar qual conflito existe com algo
+>>                 externo ao R em si, pode ser bibliotecas de runtime
+>>                 do gcc, etc.
+>>
+>>                 HTH
+>>
+>>
+>>                 On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães
+>>                 Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>                     Problemas com dependências impedem a configuração
+>>                     de r-cran-factoextra:
+>>                      r-cran-factoextra depende de r-cran-ggplot2 (>=
+>>                     2.2.0); porém:
+>>                       Pacote r-cran-ggplot2 não está instalado.
+>>                      r-cran-factoextra depende de r-cran-abind; porém:
+>>                       Pacote r-cran-abind não está instalado.
+>>                      r-cran-factoextra depende de r-cran-dendextend;
+>>                     porém:
+>>                       Pacote r-cran-dendextend não está instalado.
+>>                      r-cran-factoextra depende de r-cran-factominer;
+>>                     porém:
+>>                       Pacote r-cran-factominer não está instalado.
+>>                      r-cran-factoextra depende de r-cran-ggpubr (>=
+>>                     0.1.5); porém:
+>>                       Pacote r-cran-ggpubr não está instalado.
+>>                      r-cran-factoextra depende de r-cran-reshape2; porém:
+>>                       Pacote r-cran-reshape2 não está instalado.
+>>                      r-cran-factoextra depende de r-cran-ggrepel; porém:
+>>                       Pacote r-cran-ggrepel não está instalado.
+>>                      r-cran-factoextra depende de r-cran-tidyr; porém:
+>>                       Pacote r-cran-tidyr não está instalado.
+>>
+>>                     Segundo estas informações é necessário a
+>>                     instalação prévia desses pacotes. Geralmente ele
+>>                     instala automaticamente. No entanto, pode haver
+>>                     alguma biblioteca do GNU/Linux que seja
+>>                      necessária para instalar um ou mais pacotes.
+>>                     Geralmente, este erro aparece no console. Como o
+>>                     colega Rodolfo disse, é necessário verificar todo
+>>                     o log de erro da instalação.
+>>
+>>                     daniel
+>>
+>>
+>>
+>>                         On Mar 8, 2022, at 10:42 AM, Toni por (R-br)
+>>                         <r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>                         Problemas com dependências impedem a
+>>                         configuração de r-cran-factoextra:
+>>                          r-cran-factoextra depende de r-cran-ggplot2
+>>                         (>= 2.2.0); porém:
+>>                           Pacote r-cran-ggplot2 não está instalado.
+>>                          r-cran-factoextra depende de r-cran-abind;
+>>                         porém:
+>>                           Pacote r-cran-abind não está instalado.
+>>                          r-cran-factoextra depende de
+>>                         r-cran-dendextend; porém:
+>>                           Pacote r-cran-dendextend não está instalado.
+>>                          r-cran-factoextra depende de
+>>                         r-cran-factominer; porém:
+>>                           Pacote r-cran-factominer não está instalado.
+>>                          r-cran-factoextra depende de r-cran-ggpubr
+>>                         (>= 0.1.5); porém:
+>>                           Pacote r-cran-ggpubr não está instalado.
+>>                          r-cran-factoextra depende de
+>>                         r-cran-reshape2; porém:
+>>                           Pacote r-cran-reshape2 não está instalado.
+>>                          r-cran-factoextra depende de r-cran-ggrepel;
+>>                         porém:
+>>                           Pacote r-cran-ggrepel não está instalado.
+>>                          r-cran-factoextra depende de r-cran-tidyr;
+>>                         porém:
+>>                           Pacote r-cran-tidyr não está instalado.
+>>
+>>
+>>                     _______________________________________________
+>>                     R-br mailing list
+>>                     R-br em listas.c3sl.ufpr.br
+>>                     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>                     Leia o guia de postagem
+>>                     (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>                     código mínimo reproduzível.
+>>
+>>             _______________________________________________
+>>             R-br mailing list
+>>             R-br em listas.c3sl.ufpr.br
+>>             https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>             Leia o guia de postagem
+>>             (http://www.leg.ufpr.br/r-br-guia) e forneça código
+>>             mínimo reproduzível.
+>>
+>>         _______________________________________________
+>>         R-br mailing list
+>>         R-br em listas.c3sl.ufpr.br
+>>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>         forneça código mínimo reproduzível.
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> -- 
+> ---
+> Rodolfo Timoteo da Silva
+> Mestre em Engenharia Agrícola
+> Especialista em Engenharia de Segurança do Trabalho
+> Especialista em Gestão de Organizações
+> Engenheiro de Produção
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-- 
+
+
+-- 
+Matrícula Aluno Especial
+Cordialmente,
+
+*Márcio Midon*Arquiteto e Urbanista UFPel Especialista Geoprocessamento 
+UFPR Mestre Geomática UFSM Doutorando Geografia UFSM Tel 53 3305 7075 | 
+Cel 53 98100 2020 SKYPE marcio_midon
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220308/789d862e/attachment.htm>
+
+From marciomidon em gmail.com  Wed Mar  9 02:08:50 2022
+From: marciomidon em gmail.com (=?UTF-8?Q?M=c3=a1rcio_Midon?=)
+Date: Wed, 9 Mar 2022 02:08:50 -0300
+Subject: [R-br] =?utf-8?q?Correla=C3=A7=C3=A3o_e_Chi_Squared?=
+Message-ID: <6012e699-20f4-670b-b272-b21945091824@gmail.com>
+
+Pessoal...
+
+Alguém pode me ajudar neste teste? Preciso ajustar dados para um artigo.
+
+Matrícula Aluno Especial
+Cordialmente,
+
+*Márcio Midon*Arquiteto e Urbanista UFPel Especialista Geoprocessamento 
+UFPR Mestre Geomática UFSM Doutorando Geografia UFSM Tel 53 3305 7075 | 
+Cel 53 98100 2020 SKYPE marcio_midon
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220309/ff863638/attachment.htm>
+
+From toni.arb em gmail.com  Wed Mar  9 08:47:48 2022
+From: toni.arb em gmail.com (Toni)
+Date: Wed, 9 Mar 2022 08:47:48 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <67a9ad89-9c80-35e7-0a3b-bdedfa529581@gmail.com>
+References: <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+ <E33B9402-2AC2-422A-9E49-C66EF4D482A0@getmailspring.com>
+ <CAKA6cOtZwpp26zc=AAcxa_kCPV_jA3FMJC7GOawxcO0fXfQ49g@mail.gmail.com>
+ <67a9ad89-9c80-35e7-0a3b-bdedfa529581@gmail.com>
+Message-ID: <CAKA6cOszWDGBajyoa-b=AY7DXLjMpxLCsegDLK_bjD0DaA1a4A@mail.gmail.com>
+
+Valeu Rodolfo,
+Obrigado pela dica aí, depois de tanta mudança, terminei me passando aqui
+nisso.
+Att,
+Toni
+
+...
+
+Att,
+
+Toni Borges
+Enviado por Mobile
+
+On Tue, Mar 8, 2022, 7:54 PM Rodolfo Silva por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Repare que "factorextra" não é "factoextra".
+>
+> Atenciosamente
+>
+>
+> On 08/03/2022 18:30, Toni por (R-br) wrote:
+>
+> Ok Fernando!!!
+>
+> Muito obrigado pelas informações, vou subir uma VM aqui para testar e
+> qualquer coisa eu atualizo o meu Debian para 11, já estava querendo fazer
+> essa atualização mesmo kkkk ...
+> Vai ser mais um motivo.
+>
+> Aproveito para agradecer as contribuições, vou fazer alguns testes ainda
+> porque fiz algumas modificações aqui e agora ele apresenta a seguinte
+> mensagem:
+>
+> Warning in install.packages :
+>   package ?factorextra? is not available for this version of R
+>
+> A version of this package for your version of R might be available
+> elsewhere,
+> see the ideas at
+>
+> https://cran.r-project.org/doc/manuals/r-patched/R-admin.html#Installing-packages
+>
+> Interessante que o meu R é a mesma versão que a sua mas enfim vou fazer
+> uns testes antes.
+>
+> Abraço a todos!!!
+> Toni
+>
+> On Tue, Mar 8, 2022 at 5:16 PM Fernando Souza <nandodesouza em gmail.com>
+> wrote:
+>
+>> Toni eu utilizo o Debian 11, e R 4.1.2 e não tenho nenhum problema.
+>> Acredito que você deve estar com algum problema de configuração da sua
+>> instalação.  No debian quando tenho problemas com as instalações geralmente
+>> é devido a alguma biblioteca que não é disponível no CRAN , porém resolvo
+>> com um apt get install, pois está no repositório do débian. Para isso você
+>> precisa ir avaliando todos os logs gerados durante o processo de instalação
+>> e ver onde surgiu  o erro, geralmente é devido a falta de uma biblioteca
+>> instale a biblioteca e faça a instalação novamente, repita até da certo.
+>>
+>> Att
+>>
+>>
+>>
+>>
+>> On Mar 8 2022, at 4:50 pm, Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+>> wrote:
+>>
+>> Olá Pessoal!!!
+>> Obrigado pelas respostas, vou tentar compilar tudo em um e-mail só:
+>>
+>> Daniel / César :
+>> Sim, ele instala mas quando é pacote ".deb" ele não busca no repositório
+>> a menos que eu force, normalmente, eu faço a dpkg e em caso de dependência,
+>> faço a instalação de tudo que faltou depois com <apt -f install> que aí ele
+>> instala sem problemas mas precisa ter um repositório com os pacotes.
+>>
+>> Rodolfo:
+>> Esse erro é resultado da compilação do pacote através do Rstudio, ao
+>> tentar rodar o <install.packages>, depois que ele terminar de compilar tudo
+>> é essa a mensagem que aparece no final.
+>>
+>> Fernando:
+>> Essa possibilidade ainda não fiz, acredito que pode ser um problema de
+>> versão sim, vou tentar e posto aqui o resultado mas queria saber se alguém
+>> conseguiu rodar esse pacote e, se sim, qual a versão do R utilizada.
+>> Acredito que essA grande quantidade de dependências tem alguma coisa
+>> haver com isso, por isso, seria bom ver se alguém tem esse pacote instalado
+>> e qual a versão do R utilizada porque eu já ia na versão certa.
+>>
+>> A questão é que pelo site:
+>> https://cran.r-project.org/web/packages/factoextra/index.html
+>> <https://link.getmailspring.com/link/E33B9402-2AC2-422A-9E49-C66EF4D482A0 em getmailspring.com/0?redirect=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Ffactoextra%2Findex.html&recipient=dG9uaS5hcmJAZ21haWwuY29t>
+>> Os requisitos são:
+>> Depends: R (? 3.1.2), ggplot2 (? 2.2.0)
+>>
+>> E o que eu tenho aqui é:
+>> > packageVersion("ggplot2")
+>> [1] ?3.3.5?
+>> R version 4.1.2
+>>
+>> Mas vou tentar reinstalar tudo aqui novamente para ver.
+>> Vlw Pessoal!!!
+>>
+>> Toni
+>>
+>>
+>> On Tue, Mar 8, 2022 at 4:01 PM Cesar Rabak por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>> Aditamento:
+>>
+>> Na minha instalação:
+>> GNU/Linux 20.04.1-Ubuntu SMP 5.13.0-30-generic x86_64
+>>
+>> Uma tentativa de instalar o factoextra via o gerenciador de pacotes
+>> synaptic mostra-me 37 dependências.
+>>
+>>
+>>
+>>
+>> On Tue, Mar 8, 2022 at 3:54 PM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+>>
+>> Como a questão roda em volta de uma tentativa de instalação numa distro
+>> que usa o gerenciador de pacotes Debian, sugiro que se coloque na linha de
+>> comando da instalação (via o gerenciador de pacotes) as chaves que façam a
+>> instalação automática das dependências.
+>>
+>> Caso alguma entre em *deadlock* (atualmente mais raro, mas ainda não
+>> afastado como impossível) será necessário examinar qual conflito existe com
+>> algo externo ao R em si, pode ser bibliotecas de runtime do gcc, etc.
+>>
+>> HTH
+>>
+>>
+>> On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães Tiezzi por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>>   Pacote r-cran-ggplot2 não está instalado.
+>>  r-cran-factoextra depende de r-cran-abind; porém:
+>>   Pacote r-cran-abind não está instalado.
+>>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>>   Pacote r-cran-dendextend não está instalado.
+>>  r-cran-factoextra depende de r-cran-factominer; porém:
+>>   Pacote r-cran-factominer não está instalado.
+>>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>>   Pacote r-cran-ggpubr não está instalado.
+>>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>>   Pacote r-cran-reshape2 não está instalado.
+>>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>>   Pacote r-cran-ggrepel não está instalado.
+>>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>>   Pacote r-cran-tidyr não está instalado.
+>>
+>> Segundo estas informações é necessário a instalação prévia desses
+>> pacotes. Geralmente ele instala automaticamente. No entanto, pode haver
+>> alguma biblioteca do GNU/Linux que seja  necessária para instalar um ou
+>> mais pacotes. Geralmente, este erro aparece no console. Como o colega
+>> Rodolfo disse, é necessário verificar todo o log de erro da instalação.
+>>
+>> daniel
+>>
+>>
+>>
+>> On Mar 8, 2022, at 10:42 AM, Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+>> wrote:
+>>
+>> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>>   Pacote r-cran-ggplot2 não está instalado.
+>>  r-cran-factoextra depende de r-cran-abind; porém:
+>>   Pacote r-cran-abind não está instalado.
+>>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>>   Pacote r-cran-dendextend não está instalado.
+>>  r-cran-factoextra depende de r-cran-factominer; porém:
+>>   Pacote r-cran-factominer não está instalado.
+>>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>>   Pacote r-cran-ggpubr não está instalado.
+>>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>>   Pacote r-cran-reshape2 não está instalado.
+>>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>>   Pacote r-cran-ggrepel não está instalado.
+>>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>>   Pacote r-cran-tidyr não está instalado.
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+> --
+> ---
+> Rodolfo Timoteo da Silva
+> Mestre em Engenharia Agrícola
+> Especialista em Engenharia de Segurança do Trabalho
+> Especialista em Gestão de Organizações
+> Engenheiro de Produção
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220309/8a6de835/attachment.htm>
+
+From toni.arb em gmail.com  Wed Mar  9 12:08:00 2022
+From: toni.arb em gmail.com (Toni)
+Date: Wed, 9 Mar 2022 12:08:00 -0300
+Subject: [R-br] =?utf-8?q?factoextra_-_Erro_na_instala=C3=A7=C3=A3o?=
+In-Reply-To: <E33B9402-2AC2-422A-9E49-C66EF4D482A0@getmailspring.com>
+References: <CAKA6cOsO_JGO=rP=YqwZVfYoSg=0C2sRbrknvLrQnozPJqh2YA@mail.gmail.com>
+ <E33B9402-2AC2-422A-9E49-C66EF4D482A0@getmailspring.com>
+Message-ID: <CAKA6cOs2AGXr4HC8VH0dObKEqjV=gecutCnojgMog_EEnHbSZw@mail.gmail.com>
+
+Fernando!!!
+Obrigado pela dica, rodei aqui no Debian 11 e instalou tudo.
+Abraço!!!
+Toni
+
+On Tue, Mar 8, 2022 at 5:16 PM Fernando Souza <nandodesouza em gmail.com>
+wrote:
+
+> Toni eu utilizo o Debian 11, e R 4.1.2 e não tenho nenhum problema.
+> Acredito que você deve estar com algum problema de configuração da sua
+> instalação.  No debian quando tenho problemas com as instalações geralmente
+> é devido a alguma biblioteca que não é disponível no CRAN , porém resolvo
+> com um apt get install, pois está no repositório do débian. Para isso você
+> precisa ir avaliando todos os logs gerados durante o processo de instalação
+> e ver onde surgiu  o erro, geralmente é devido a falta de uma biblioteca
+> instale a biblioteca e faça a instalação novamente, repita até da certo.
+>
+> Att
+>
+>
+>
+>
+> On Mar 8 2022, at 4:50 pm, Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+> Olá Pessoal!!!
+> Obrigado pelas respostas, vou tentar compilar tudo em um e-mail só:
+>
+> Daniel / César :
+> Sim, ele instala mas quando é pacote ".deb" ele não busca no repositório a
+> menos que eu force, normalmente, eu faço a dpkg e em caso de dependência,
+> faço a instalação de tudo que faltou depois com <apt -f install> que aí ele
+> instala sem problemas mas precisa ter um repositório com os pacotes.
+>
+> Rodolfo:
+> Esse erro é resultado da compilação do pacote através do Rstudio, ao
+> tentar rodar o <install.packages>, depois que ele terminar de compilar tudo
+> é essa a mensagem que aparece no final.
+>
+> Fernando:
+> Essa possibilidade ainda não fiz, acredito que pode ser um problema de
+> versão sim, vou tentar e posto aqui o resultado mas queria saber se alguém
+> conseguiu rodar esse pacote e, se sim, qual a versão do R utilizada.
+> Acredito que essA grande quantidade de dependências tem alguma coisa haver
+> com isso, por isso, seria bom ver se alguém tem esse pacote instalado e
+> qual a versão do R utilizada porque eu já ia na versão certa.
+>
+> A questão é que pelo site:
+> https://cran.r-project.org/web/packages/factoextra/index.html
+> <https://link.getmailspring.com/link/E33B9402-2AC2-422A-9E49-C66EF4D482A0 em getmailspring.com/0?redirect=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Ffactoextra%2Findex.html&recipient=dG9uaS5hcmJAZ21haWwuY29t>
+> Os requisitos são:
+> Depends: R (? 3.1.2), ggplot2 (? 2.2.0)
+>
+> E o que eu tenho aqui é:
+> > packageVersion("ggplot2")
+> [1] ?3.3.5?
+> R version 4.1.2
+>
+> Mas vou tentar reinstalar tudo aqui novamente para ver.
+> Vlw Pessoal!!!
+>
+> Toni
+>
+>
+> On Tue, Mar 8, 2022 at 4:01 PM Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Aditamento:
+>
+> Na minha instalação:
+> GNU/Linux 20.04.1-Ubuntu SMP 5.13.0-30-generic x86_64
+>
+> Uma tentativa de instalar o factoextra via o gerenciador de pacotes
+> synaptic mostra-me 37 dependências.
+>
+>
+>
+>
+> On Tue, Mar 8, 2022 at 3:54 PM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+>
+> Como a questão roda em volta de uma tentativa de instalação numa distro
+> que usa o gerenciador de pacotes Debian, sugiro que se coloque na linha de
+> comando da instalação (via o gerenciador de pacotes) as chaves que façam a
+> instalação automática das dependências.
+>
+> Caso alguma entre em *deadlock* (atualmente mais raro, mas ainda não
+> afastado como impossível) será necessário examinar qual conflito existe com
+> algo externo ao R em si, pode ser bibliotecas de runtime do gcc, etc.
+>
+> HTH
+>
+>
+> On Tue, Mar 8, 2022 at 2:09 PM Daniel Guimarães Tiezzi por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>   Pacote r-cran-ggplot2 não está instalado.
+>  r-cran-factoextra depende de r-cran-abind; porém:
+>   Pacote r-cran-abind não está instalado.
+>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>   Pacote r-cran-dendextend não está instalado.
+>  r-cran-factoextra depende de r-cran-factominer; porém:
+>   Pacote r-cran-factominer não está instalado.
+>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>   Pacote r-cran-ggpubr não está instalado.
+>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>   Pacote r-cran-reshape2 não está instalado.
+>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>   Pacote r-cran-ggrepel não está instalado.
+>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>   Pacote r-cran-tidyr não está instalado.
+>
+> Segundo estas informações é necessário a instalação prévia desses pacotes.
+> Geralmente ele instala automaticamente. No entanto, pode haver alguma
+> biblioteca do GNU/Linux que seja  necessária para instalar um ou mais
+> pacotes. Geralmente, este erro aparece no console. Como o colega Rodolfo
+> disse, é necessário verificar todo o log de erro da instalação.
+>
+> daniel
+>
+>
+>
+> On Mar 8, 2022, at 10:42 AM, Toni por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+> Problemas com dependências impedem a configuração de r-cran-factoextra:
+>  r-cran-factoextra depende de r-cran-ggplot2 (>= 2.2.0); porém:
+>   Pacote r-cran-ggplot2 não está instalado.
+>  r-cran-factoextra depende de r-cran-abind; porém:
+>   Pacote r-cran-abind não está instalado.
+>  r-cran-factoextra depende de r-cran-dendextend; porém:
+>   Pacote r-cran-dendextend não está instalado.
+>  r-cran-factoextra depende de r-cran-factominer; porém:
+>   Pacote r-cran-factominer não está instalado.
+>  r-cran-factoextra depende de r-cran-ggpubr (>= 0.1.5); porém:
+>   Pacote r-cran-ggpubr não está instalado.
+>  r-cran-factoextra depende de r-cran-reshape2; porém:
+>   Pacote r-cran-reshape2 não está instalado.
+>  r-cran-factoextra depende de r-cran-ggrepel; porém:
+>   Pacote r-cran-ggrepel não está instalado.
+>  r-cran-factoextra depende de r-cran-tidyr; porém:
+>   Pacote r-cran-tidyr não está instalado.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220309/a54fb80f/attachment.htm>
+
+From cesar.rabak em gmail.com  Wed Mar  9 15:17:59 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 9 Mar 2022 15:17:59 -0300
+Subject: [R-br] =?utf-8?q?Correla=C3=A7=C3=A3o_e_Chi_Squared?=
+In-Reply-To: <6012e699-20f4-670b-b272-b21945091824@gmail.com>
+References: <6012e699-20f4-670b-b272-b21945091824@gmail.com>
+Message-ID: <CAKrF98n1-hMok-zhw5som0nEKqBWdo1hn9ypqpacNEehn2dd2w@mail.gmail.com>
+
+E qual é a dúvida, exatamente?
+
+
+On Wed, Mar 9, 2022 at 2:09 AM Márcio Midon por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Pessoal...
+>
+> Alguém pode me ajudar neste teste? Preciso ajustar dados para um artigo.
+> Cordialmente,
+>
+> *Márcio Midon*
+> Arquiteto e Urbanista UFPel
+> Especialista Geoprocessamento UFPR
+> Mestre Geomática UFSM
+> Doutorando Geografia UFSM
+> Tel 53 3305 7075 | Cel 53 98100 2020
+> SKYPE marcio_midon
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220309/b6c6a649/attachment.htm>
+
+From marciomidon em gmail.com  Wed Mar  9 15:53:02 2022
+From: marciomidon em gmail.com (=?UTF-8?Q?M=c3=a1rcio_Midon?=)
+Date: Wed, 9 Mar 2022 15:53:02 -0300
+Subject: [R-br] =?utf-8?q?Correla=C3=A7=C3=A3o_e_Chi_Squared?=
+In-Reply-To: <CAKrF98n1-hMok-zhw5som0nEKqBWdo1hn9ypqpacNEehn2dd2w@mail.gmail.com>
+References: <6012e699-20f4-670b-b272-b21945091824@gmail.com>
+ <CAKrF98n1-hMok-zhw5som0nEKqBWdo1hn9ypqpacNEehn2dd2w@mail.gmail.com>
+Message-ID: <c4a24464-c589-45a2-82c3-4857339a7ae7@gmail.com>
+
+Cesar,
+
+Estou trabalhando na tese com modelo probabilístico de análise urbana. 
+Um dos resultados é a potencialidade para alocação de novos usos do tipo 
+comercial/serviço. A análise se da por trecho de rua e nos resultados 
+obtidos foram agregados em ambiente SIG (QGIS) os usos + resultados. 
+Porém tem muitos valores com potencial zero e picos de valores altos 
+também. Minha dúvida é como organizar os dados para análise no R;
+
+Obrigado pela atenção.
+
+Cordialmente,
+
+Marcio Midon.
+
+Em 09/03/2022 15:17, Cesar Rabak por (R-br) escreveu:
+> E qual é a dúvida, exatamente?
+>
+>
+> On Wed, Mar 9, 2022 at 2:09 AM Márcio Midon por (R-br) 
+> <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>     Pessoal...
+>
+>     Alguém pode me ajudar neste teste? Preciso ajustar dados para um
+>     artigo.
+>
+>     Cordialmente,
+>
+>     *Márcio Midon*Arquiteto e Urbanista UFPel Especialista
+>     Geoprocessamento UFPR Mestre Geomática UFSM Doutorando Geografia
+>     UFSM Tel 53 3305 7075 | Cel 53 98100 2020 SKYPE marcio_midon
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-- 
+
+
+-- 
+Matrícula Aluno Especial
+Cordialmente,
+
+*Márcio Midon*Arquiteto e Urbanista UFPel Especialista Geoprocessamento 
+UFPR Mestre Geomática UFSM Doutorando Geografia UFSM Tel 53 3305 7075 | 
+Cel 53 98100 2020 SKYPE marcio_midon
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220309/2946c5aa/attachment.htm>
+
+From cesar.rabak em gmail.com  Wed Mar  9 21:15:15 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 9 Mar 2022 21:15:15 -0300
+Subject: [R-br] =?utf-8?q?Correla=C3=A7=C3=A3o_e_Chi_Squared?=
+In-Reply-To: <c4a24464-c589-45a2-82c3-4857339a7ae7@gmail.com>
+References: <6012e699-20f4-670b-b272-b21945091824@gmail.com>
+ <CAKrF98n1-hMok-zhw5som0nEKqBWdo1hn9ypqpacNEehn2dd2w@mail.gmail.com>
+ <c4a24464-c589-45a2-82c3-4857339a7ae7@gmail.com>
+Message-ID: <CAKrF98mi4um_qBFZnnSDP8vprSTZAyF9jknEZu8QaLdCrrgM4Q@mail.gmail.com>
+
+Márcio,
+
+Para determinar o que você deseja, como escrito na última linha, temos que
+dar um passo atrás e entender o seguinte:
+
+Seu modelo probabilístico tem embutido qual hipótese?
+
+O quê dividido por qual *todo*  produziria a probalidade a modelar?
+
+O uso da palavra "potencialidade" me faz entender que o desejo é chegar a
+algum modelo preditivo. É isso mesmo? Se sim, quais seriam as variáveis que
+dariam (e de que forma seria indicada/calculada essa potencialidade¹)?
+
+Ademais, na linha de assunto menciona-se "correlação" e "qui quadrado".
+Pergunto então:
+
+Qual(is) variável(eis) seriam correlacionadas e para que se empregaria a
+estatística qui quadrado?
+
+HTH
+--
+Cesar Rabak
+
+
+[1]  Quer me parecer que seria uma probabilidade, mas não quero conduzir o
+discurso. . .
+
+On Wed, Mar 9, 2022 at 3:53 PM Márcio Midon por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Cesar,
+>
+> Estou trabalhando na tese com modelo probabilístico de análise urbana. Um
+> dos resultados é a potencialidade para alocação de novos usos do tipo
+> comercial/serviço. A análise se da por trecho de rua e nos resultados
+> obtidos foram agregados em ambiente SIG (QGIS) os usos + resultados. Porém
+> tem muitos valores com potencial zero e picos de valores altos também.
+> Minha dúvida é como organizar os dados para análise no R;
+>
+> Obrigado pela atenção.
+>
+> Cordialmente,
+>
+> Marcio Midon.
+> Em 09/03/2022 15:17, Cesar Rabak por (R-br) escreveu:
+>
+> E qual é a dúvida, exatamente?
+>
+>
+> On Wed, Mar 9, 2022 at 2:09 AM Márcio Midon por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Pessoal...
+>>
+>> Alguém pode me ajudar neste teste? Preciso ajustar dados para um artigo.
+>> Cordialmente,
+>>
+>> *Márcio Midon*
+>> Arquiteto e Urbanista UFPel
+>> Especialista Geoprocessamento UFPR
+>> Mestre Geomática UFSM
+>> Doutorando Geografia UFSM
+>> Tel 53 3305 7075 | Cel 53 98100 2020
+>> SKYPE marcio_midon
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+> --
+>
+>
+> --
+> Cordialmente,
+>
+> *Márcio Midon*
+> Arquiteto e Urbanista UFPel
+> Especialista Geoprocessamento UFPR
+> Mestre Geomática UFSM
+> Doutorando Geografia UFSM
+> Tel 53 3305 7075 | Cel 53 98100 2020
+> SKYPE marcio_midon
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220309/5b886048/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Fri Mar 18 14:45:38 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Fri, 18 Mar 2022 17:45:38 +0000 (UTC)
+Subject: [R-br] Renomear arquivo dentro do R
+References: <1313151514.195985.1647625538177.ref@mail.yahoo.com>
+Message-ID: <1313151514.195985.1647625538177@mail.yahoo.com>
+
+Prezados boa tarde!!! Lá vou eu incomodar os amigos, rs... Estou fazendo uma macro para baixar dados "*.csv" de uma fonte URL, com um formato semelhante a esse (desculpa, não consegui fazer um reproduzível), onde k1 designa meses do ano e k2 é um conjunto de cinco (ou mais) substâncias: baixa_bancos<-function(k1,k2){
+dados<-read.csv2(paste('http://.../arquivo_m", k1 ,"_s", k2 ,".csv'",sep=""),
+header=T, sep="|", dec =".", encoding = "UTF-8")
+} 
+
+A chamada da macro fica algo assim:
+a<-seq(1:12);b<-seq(1:5)
+for(i in 1:length(a))
+for(j in 1:length(b))
+{
+k1<-a[[i]]
+k2<-b[[j]]
+baixa_bancos(k1,k2)
+}
+
+A dúvida: se eu executar assim a macro, dados vai sempre ser subscrito pelas informações de outro mês e outra substância. Assim, queria que o arquivo (tabela) fosse salvo no ambiente RStudio de forma similar abaixo (obs: sei que não está certo, é mais para entender o que estou precisando):paste("arquivo_m",k1,"_s",k2)<-dados
+
+E em seguida reunir todos eles via rbind ou outro comando. Consegui explicar certo? Se sim, alguém saberia como resolver?
+Obrigado e bom fim-de-semana!!!
+Diogo Jerônimo
+Bacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220318/a8da51c4/attachment.htm>
+
+From cesar.rabak em gmail.com  Fri Mar 18 18:23:18 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 18 Mar 2022 18:23:18 -0300
+Subject: [R-br] Renomear arquivo dentro do R
+In-Reply-To: <1313151514.195985.1647625538177@mail.yahoo.com>
+References: <1313151514.195985.1647625538177.ref@mail.yahoo.com>
+ <1313151514.195985.1647625538177@mail.yahoo.com>
+Message-ID: <CAKrF98k979iAn4Fr2gPLTqEhfpgYVR+7p8RSZnZo-x=f3do_Zg@mail.gmail.com>
+
+Diogo,
+
+Várias soluções parecem-me bater à sua porta, mas a mais simples, seguindo
+o estilo do seu código, parece-me ser de fazer a função, por você criada,
+baixa_bancos, receber um parâmetro que também seja variáveil em função dos
+elemento k1 e k2, ou fazer a função retornar os arquivos com os nomes
+criados dentro dela.
+
+
+On Fri, Mar 18, 2022 at 2:45 PM Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados boa tarde!!! Lá vou eu incomodar os amigos, rs... Estou fazendo
+> uma macro para baixar dados "*.csv" de uma fonte URL, com um formato
+> semelhante a esse (desculpa, não consegui fazer um reproduzível), onde k1
+> designa meses do ano e k2 é um conjunto de cinco (ou mais) substâncias:
+> baixa_bancos<-function(k1,k2){
+> dados<-read.csv2(paste('http://.../arquivo_m", k1
+> ,"_s", k2 ,".csv'",sep=""),
+> header=T, sep="|", dec =".", encoding = "UTF-8")
+> }
+>
+> A chamada da macro fica algo assim:
+> a<-seq(1:12);b<-seq(1:5)
+> for(i in 1:length(a))
+> for(j in 1:length(b))
+> {
+> k1<-a[[i]]
+> k2<-b[[j]]
+> baixa_bancos(k1,k2)
+> }
+>
+> A dúvida: se eu executar assim a macro, *dados* vai sempre ser subscrito
+> pelas informações de outro mês e outra substância. Assim, queria que o
+> arquivo (tabela) fosse salvo no ambiente RStudio de forma similar abaixo
+> (obs: sei que não está certo, é mais para entender o que estou precisando):
+> *paste("arquivo_m",k1,"_s",k2)<-dados*
+>
+> E em seguida *reunir todos eles via rbind* ou outro comando. Consegui
+> explicar certo? Se sim, alguém saberia como resolver?
+>
+> Obrigado e bom fim-de-semana!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220318/fc3aa841/attachment.htm>
+
+From nandodesouza em gmail.com  Sat Mar 19 16:38:36 2022
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sat, 19 Mar 2022 16:38:36 -0300
+Subject: [R-br] Renomear arquivo dentro do R
+In-Reply-To: <1313151514.195985.1647625538177@mail.yahoo.com>
+References: <1313151514.195985.1647625538177@mail.yahoo.com>
+Message-ID: <0F1FE3BA-FEA1-49FA-BD18-2D8671036615@getmailspring.com>
+
+Veja se assim te ajuda. Peguei um banco de dados público na rede para usar como exemplo. Neste código o nome dos arquivos terão o mesmo nome do banco de dados.
+
+##Configure o diretorio de trabalho de acordo com o seu sistema windows ou linux
+setwd("/home/fernando/Downloads/ajuda")
+
+##banco de dados exemplo: https://corgis-edu.github.io/corgis/csv/
+baixa_bancos<-function(k1,k2, namefile){
+dados<-read.csv(paste0('https://corgis-edu.github.io/corgis/datasets/csv/', k1 ,'/', k2 , ".csv",sep=""),
+header=T, sep=",", dec =".", encoding = "UTF-8")
+write.csv(dados,namefile)
+}
+
+bancoDados <- c("aids","broadway","cars","airlines","business_dynamics")
+for(i in bancoDados){
+baixa_bancos(i,i,i)
+
+}
+
+On Mar 18 2022, at 2:45 pm, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Prezados boa tarde!!! Lá vou eu incomodar os amigos, rs... Estou fazendo uma macro para baixar dados "*.csv" de uma fonte URL, com um formato semelhante a esse (desculpa, não consegui fazer um reproduzível), onde k1 designa meses do ano e k2 é um conjunto de cinco (ou mais) substâncias:
+> baixa_bancos<-function(k1,k2){
+> dados<-read.csv2(paste('http://.../arquivo_m", k1 ,"_s", k2 ,".csv'",sep=""),
+> header=T, sep="|", dec =".", encoding = "UTF-8")
+> }
+>
+> A chamada da macro fica algo assim:
+> a<-seq(1:12);b<-seq(1:5)
+> for(i in 1:length(a))
+> for(j in 1:length(b))
+> {
+> k1<-a[[i]]
+> k2<-b[[j]]
+> baixa_bancos(k1,k2)
+> }
+>
+> A dúvida: se eu executar assim a macro, dados vai sempre ser subscrito pelas informações de outro mês e outra substância. Assim, queria que o arquivo (tabela) fosse salvo no ambiente RStudio de forma similar abaixo (obs: sei que não está certo, é mais para entender o que estou precisando):
+> paste("arquivo_m",k1,"_s",k2)<-dados
+>
+>
+> E em seguida reunir todos eles via rbind ou outro comando. Consegui explicar certo? Se sim, alguém saberia como resolver?
+>
+> Obrigado e bom fim-de-semana!!!
+>
+> Diogo Jerônimo
+> Bacharel em Ciências Estatísticas - ENCE/IBGE
+> Mestre em Metrologia - PUC-Rio/PósMQI
+> http://lattes.cnpq.br/8996149312896520
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220319/9dd8841a/attachment.htm>
+
+From nandodesouza em gmail.com  Sat Mar 19 16:49:40 2022
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sat, 19 Mar 2022 16:49:40 -0300
+Subject: [R-br] Renomear arquivo dentro do R
+In-Reply-To: <0F1FE3BA-FEA1-49FA-BD18-2D8671036615@getmailspring.com>
+References: <0F1FE3BA-FEA1-49FA-BD18-2D8671036615@getmailspring.com>
+Message-ID: <744E3695-9730-4DC6-A94B-9451D8E119DA@getmailspring.com>
+
+Esqueci de esplicar, no código os arquivos serão salvos no diretorio de trabalho informado. O nome dos arquivos é passado por parametros na função baixa_bancos(). No exemplo configurei o nome para ser o mesmo do banco de dados. Para personalizar o banco de dados basta alterar a função baixa_bancos() para:
+
+baixa_bancos<-function(k1,k2, namefile){
+dados<-read.csv(paste0('https://corgis-edu.github.io/corgis/datasets/csv/', k1 ,'/', k2 , ".csv",sep=""),
+header=T, sep=",", dec =".", encoding = "UTF-8")
+write.csv(dados,paste0(namefile,"_",k1,"_s_",k2))
+}
+
+Altere a função paste0() para o formato no nome que desejar
+Espero ter ajudado.
+
+On Mar 19 2022, at 4:38 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+> Veja se assim te ajuda. Peguei um banco de dados público na rede para usar como exemplo. Neste código o nome dos arquivos terão o mesmo nome do banco de dados.
+>
+> ##Configure o diretorio de trabalho de acordo com o seu sistema windows ou linux
+> setwd("/home/fernando/Downloads/ajuda")
+>
+> ##banco de dados exemplo: https://corgis-edu.github.io/corgis/csv/
+> baixa_bancos<-function(k1,k2, namefile){
+> dados<-read.csv(paste0('https://corgis-edu.github.io/corgis/datasets/csv/', k1 ,'/', k2 , ".csv",sep=""),
+> header=T, sep=",", dec =".", encoding = "UTF-8")
+> write.csv(dados,namefile)
+> }
+>
+> bancoDados <- c("aids","broadway","cars","airlines","business_dynamics")
+> for(i in bancoDados){
+> baixa_bancos(i,i,i)
+>
+>
+> }
+>
+>
+> On Mar 18 2022, at 2:45 pm, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> > Prezados boa tarde!!! Lá vou eu incomodar os amigos, rs... Estou fazendo uma macro para baixar dados "*.csv" de uma fonte URL, com um formato semelhante a esse (desculpa, não consegui fazer um reproduzível), onde k1 designa meses do ano e k2 é um conjunto de cinco (ou mais) substâncias:
+> > baixa_bancos<-function(k1,k2){
+> > dados<-read.csv2(paste('http://.../arquivo_m", k1 ,"_s", k2 ,".csv'",sep=""),
+> > header=T, sep="|", dec =".", encoding = "UTF-8")
+> > }
+> >
+> > A chamada da macro fica algo assim:
+> > a<-seq(1:12);b<-seq(1:5)
+> > for(i in 1:length(a))
+> > for(j in 1:length(b))
+> > {
+> > k1<-a[[i]]
+> > k2<-b[[j]]
+> > baixa_bancos(k1,k2)
+> > }
+> >
+> > A dúvida: se eu executar assim a macro, dados vai sempre ser subscrito pelas informações de outro mês e outra substância. Assim, queria que o arquivo (tabela) fosse salvo no ambiente RStudio de forma similar abaixo (obs: sei que não está certo, é mais para entender o que estou precisando):
+> > paste("arquivo_m",k1,"_s",k2)<-dados
+> >
+> >
+> > E em seguida reunir todos eles via rbind ou outro comando. Consegui explicar certo? Se sim, alguém saberia como resolver?
+> >
+> > Obrigado e bom fim-de-semana!!!
+> >
+> > Diogo Jerônimo
+> > Bacharel em Ciências Estatísticas - ENCE/IBGE
+> > Mestre em Metrologia - PUC-Rio/PósMQI
+> > http://lattes.cnpq.br/8996149312896520
+> >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220319/0b47dab9/attachment.htm>
+
+From nandodesouza em gmail.com  Sat Mar 19 16:50:42 2022
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sat, 19 Mar 2022 16:50:42 -0300
+Subject: [R-br] Renomear arquivo dentro do R
+In-Reply-To: <744E3695-9730-4DC6-A94B-9451D8E119DA@getmailspring.com>
+References: <744E3695-9730-4DC6-A94B-9451D8E119DA@getmailspring.com>
+Message-ID: <6EA4ED57-E8BF-47DF-9EA8-17F2EA6EF5CB@getmailspring.com>
+
+putz, esplicar com "s" é foda!!!! Correção explicar. kkkkkk
+
+On Mar 19 2022, at 4:49 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+> Esqueci de esplicar, no código os arquivos serão salvos no diretorio de trabalho informado. O nome dos arquivos é passado por parametros na função baixa_bancos(). No exemplo configurei o nome para ser o mesmo do banco de dados. Para personalizar o banco de dados basta alterar a função baixa_bancos() para:
+>
+> baixa_bancos<-function(k1,k2, namefile){
+> dados<-read.csv(paste0('https://corgis-edu.github.io/corgis/datasets/csv/', k1 ,'/', k2 , ".csv",sep=""),
+> header=T, sep=",", dec =".", encoding = "UTF-8")
+> write.csv(dados,paste0(namefile,"_",k1,"_s_",k2))
+> }
+>
+> Altere a função paste0() para o formato no nome que desejar
+> Espero ter ajudado.
+>
+> On Mar 19 2022, at 4:38 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+> > Veja se assim te ajuda. Peguei um banco de dados público na rede para usar como exemplo. Neste código o nome dos arquivos terão o mesmo nome do banco de dados.
+> >
+> > ##Configure o diretorio de trabalho de acordo com o seu sistema windows ou linux
+> > setwd("/home/fernando/Downloads/ajuda")
+> >
+> > ##banco de dados exemplo: https://corgis-edu.github.io/corgis/csv/
+> > baixa_bancos<-function(k1,k2, namefile){
+> > dados<-read.csv(paste0('https://corgis-edu.github.io/corgis/datasets/csv/', k1 ,'/', k2 , ".csv",sep=""),
+> > header=T, sep=",", dec =".", encoding = "UTF-8")
+> > write.csv(dados,namefile)
+> > }
+> >
+> > bancoDados <- c("aids","broadway","cars","airlines","business_dynamics")
+> > for(i in bancoDados){
+> > baixa_bancos(i,i,i)
+> >
+> >
+> > }
+> >
+> >
+> > On Mar 18 2022, at 2:45 pm, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> > > Prezados boa tarde!!! Lá vou eu incomodar os amigos, rs... Estou fazendo uma macro para baixar dados "*.csv" de uma fonte URL, com um formato semelhante a esse (desculpa, não consegui fazer um reproduzível), onde k1 designa meses do ano e k2 é um conjunto de cinco (ou mais) substâncias:
+> > > baixa_bancos<-function(k1,k2){
+> > > dados<-read.csv2(paste('http://.../arquivo_m", k1 ,"_s", k2 ,".csv'",sep=""),
+> > > header=T, sep="|", dec =".", encoding = "UTF-8")
+> > > }
+> > >
+> > > A chamada da macro fica algo assim:
+> > > a<-seq(1:12);b<-seq(1:5)
+> > > for(i in 1:length(a))
+> > > for(j in 1:length(b))
+> > > {
+> > > k1<-a[[i]]
+> > > k2<-b[[j]]
+> > > baixa_bancos(k1,k2)
+> > > }
+> > >
+> > > A dúvida: se eu executar assim a macro, dados vai sempre ser subscrito pelas informações de outro mês e outra substância. Assim, queria que o arquivo (tabela) fosse salvo no ambiente RStudio de forma similar abaixo (obs: sei que não está certo, é mais para entender o que estou precisando):
+> > > paste("arquivo_m",k1,"_s",k2)<-dados
+> > >
+> > >
+> > > E em seguida reunir todos eles via rbind ou outro comando. Consegui explicar certo? Se sim, alguém saberia como resolver?
+> > >
+> > > Obrigado e bom fim-de-semana!!!
+> > >
+> > > Diogo Jerônimo
+> > > Bacharel em Ciências Estatísticas - ENCE/IBGE
+> > > Mestre em Metrologia - PUC-Rio/PósMQI
+> > > http://lattes.cnpq.br/8996149312896520
+> > >
+> > >
+> > >
+> > > _______________________________________________
+> > > R-br mailing list
+> > > R-br em listas.c3sl.ufpr.br
+> > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> >
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220319/9e78ef07/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Tue Mar 22 15:33:43 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Tue, 22 Mar 2022 18:33:43 +0000 (UTC)
+Subject: [R-br] Renomear arquivo dentro do R
+In-Reply-To: <CAKrF98k979iAn4Fr2gPLTqEhfpgYVR+7p8RSZnZo-x=f3do_Zg@mail.gmail.com>
+References: <1313151514.195985.1647625538177.ref@mail.yahoo.com>
+ <1313151514.195985.1647625538177@mail.yahoo.com>
+ <CAKrF98k979iAn4Fr2gPLTqEhfpgYVR+7p8RSZnZo-x=f3do_Zg@mail.gmail.com>
+Message-ID: <1226740583.789979.1647974023519@mail.yahoo.com>
+
+Obrigado a todos pelas dicas!!!
+
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520 
+
+    Em sexta-feira, 18 de março de 2022 18:23:31 BRT, Cesar Rabak <cesar.rabak em gmail.com> escreveu:  
+ 
+ Diogo,
+Várias soluções parecem-me bater à sua porta, mas a mais simples, seguindo o estilo do seu código, parece-me ser de fazer a função, por você criada, baixa_bancos, receber um parâmetro que também seja variáveil em função dos elemento k1 e k2, ou fazer a função retornar os arquivos com os nomes criados dentro dela.
+
+On Fri, Mar 18, 2022 at 2:45 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+Prezados boa tarde!!! Lá vou eu incomodar os amigos, rs... Estou fazendo uma macro para baixar dados "*.csv" de uma fonte URL, com um formato semelhante a esse (desculpa, não consegui fazer um reproduzível), onde k1 designa meses do ano e k2 é um conjunto de cinco (ou mais) substâncias: baixa_bancos<-function(k1,k2){
+dados<-read.csv2(paste('http://.../arquivo_m", k1 ,"_s", k2 ,".csv'",sep=""),
+header=T, sep="|", dec =".", encoding = "UTF-8")
+} 
+
+A chamada da macro fica algo assim:
+a<-seq(1:12);b<-seq(1:5)
+for(i in 1:length(a))
+for(j in 1:length(b))
+{
+k1<-a[[i]]
+k2<-b[[j]]
+baixa_bancos(k1,k2)
+}
+
+A dúvida: se eu executar assim a macro, dados vai sempre ser subscrito pelas informações de outro mês e outra substância. Assim, queria que o arquivo (tabela) fosse salvo no ambiente RStudio de forma similar abaixo (obs: sei que não está certo, é mais para entender o que estou precisando):paste("arquivo_m",k1,"_s",k2)<-dados
+
+E em seguida reunir todos eles via rbind ou outro comando. Consegui explicar certo? Se sim, alguém saberia como resolver?
+Obrigado e bom fim-de-semana!!!
+Diogo Jerônimo
+Bacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220322/6762ecc8/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Wed Mar 23 15:05:22 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Wed, 23 Mar 2022 18:05:22 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Buscar_conjunto_de_c=C3=B3digos_para_executar_r?=
+ =?utf-8?q?otina_no_R=2E?=
+References: <359393037.1179205.1648058722253.ref@mail.yahoo.com>
+Message-ID: <359393037.1179205.1648058722253@mail.yahoo.com>
+
+Boa tarde a todos!!! Novamente agradecido pela ajuda anterior, e já pedindo desculpas por nova perturbação, mas de novo apareceu uma situação que não sei resolver. Segue o código R parecido com o outro para baixar dados via URL, onde agora x1 representa o código de modulo de um serviço, x2 o ano e x3 o código da rodada trimestral de realização desse serviço:baixa_bancos<-function(x1,x2,x3){
+dados<-read.csv2(paste('http://.../arquivo_m", x1 ,"_a",x2,"_s", x3,".csv'",sep=""),header=T, sep="|", dec =".", encoding = "UTF-8")} 
+A chamada da macro fica algo assim:
+a<- vetor de código de módulos; b<-vetor de anos; c<-????
+for(i in 1:length(a)); for(j in 1:length(b)); for(k in 1:length(c)){x1<-a[[i]]; x2<-b[[j]]; x3<-c[[k]]baixa_bancos(x1,x2,x3)}
+Coloquei interrogação no vetor c em vermelho por causa da dúvida. Os códigos de módulo e ano (óbvio) são fixos, basta vetorizar. Mas os códigos de realização de serviços trimestrais, identificados por código numérico, podem por conveniência de atraso, não ser iguais, embora sejam sempre quatro. Assim por exemplo:
+Mód:108;Ano:2020;codserv:1,2,3,5 Mód:108;Ano:2021;codserv:1,2,3,4 Mód:429;Ano:2020;codserv:1,2,3,4Mód:429;Ano:2021;codserv:1,3,4,5
+
+Dessa forma o vetor c depende do código de serviço e do ano em que ele foi realizado. Para me ajudar nisso, o TI daqui me deu uma outra consulta que também baixo por URL, que após alguns ajustes, faço virar uma tabela dentro do RStudio, com essa cara: 
+
+
+
+Resumindo agora: o que eu queria é adaptar meu código da seguinte forma: se viu que o módulo é 108 e o ano é 2020, então ele deve ler como parâmetros para k3 o valores 1,2,3,5; se for módulo 108 e ano 2021, ele deve ler para k3 o valores 1,2,3,4. E assim sucessivamente, até finalizar o baixar das bases de dados requeridas.
+Eu consegui ser claro? Se sim, alguém saberia como se faz isso?
+Obrigado novamente pela disponibilidade do time!!! Att, 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220323/f9a2e6e9/attachment.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: 1648058377521blob.jpg
+Tipo: image/png
+Tamanho: 5659 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220323/f9a2e6e9/attachment.png>
+
+From cesar.rabak em gmail.com  Wed Mar 23 21:23:48 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 23 Mar 2022 21:23:48 -0300
+Subject: [R-br] 
+	=?utf-8?q?Buscar_conjunto_de_c=C3=B3digos_para_executar_r?=
+	=?utf-8?q?otina_no_R=2E?=
+In-Reply-To: <359393037.1179205.1648058722253@mail.yahoo.com>
+References: <359393037.1179205.1648058722253.ref@mail.yahoo.com>
+ <359393037.1179205.1648058722253@mail.yahoo.com>
+Message-ID: <CAKrF98=8L+RUyN38xojpyrQittjfhGZBzCZUEdfyR9Vu0n6_xQ@mail.gmail.com>
+
+Diogo,
+
+SE eu entendi corretamente a situação, quer me parecer que a forma mais
+rápida e segura de sempre baixar o material que vc deseja seria ou via um
+script externo (eventulmente gerado p/TI) seja internamente usando alguma
+chamada autorizada pelo provedor dos dados, obter uma lista dos nomes dos
+arquivos e baixá-los sem ter que ficar "computando" a partir de
+formulações, que, pelo visto, tenderão a ser cada vez mais *ad hoc* ficando
+um problema para manutenção e exigindo cada vez mais atenção a testes para
+assegurar que "tudo" foi baixado, etc.
+
+HTH
+
+
+On Wed, Mar 23, 2022 at 3:05 PM Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde a todos!!! Novamente agradecido pela ajuda anterior, e já
+> pedindo desculpas por nova perturbação, mas de novo apareceu uma situação
+> que não sei resolver. Segue o código R parecido com o outro para baixar
+> dados via URL, onde agora x1 representa o código de modulo de um serviço,
+> x2 o ano e x3 o código da rodada trimestral de realização desse serviço:
+> baixa_bancos<-function(x1,x2,x3){
+> dados<-read.csv2(paste('http://.../arquivo_m", x1 ,"_a",x2,"_s",
+> x3,".csv'",sep=""),header=T, sep="|", dec =".", encoding = "UTF-8")
+> }
+>
+> A chamada da macro fica algo assim:
+> a<- vetor de código de módulos; b<-vetor de anos; c<-*????*
+> for(i in 1:length(a)); for(j in 1:length(b)); for(k in 1:length(c))
+> {
+> x1<-a[[i]]; x2<-b[[j]]; x3<-c[[k]]
+> baixa_bancos(x1,x2,x3)
+> }
+>
+> Coloquei interrogação no vetor c em vermelho por causa da dúvida. Os
+> códigos de módulo e ano (óbvio) são fixos, basta vetorizar. Mas os códigos
+> de realização de serviços trimestrais, identificados por código numérico,
+> podem por conveniência de atraso, não ser iguais, embora sejam sempre
+> quatro. Assim por exemplo:
+>
+> Mód:108;Ano:2020;codserv:1,2,3,5
+> Mód:108;Ano:2021;codserv:1,2,3,4
+> Mód:429;Ano:2020;codserv:1,2,3,4
+> Mód:429;Ano:2021;codserv:1,3,4,5
+>
+> Dessa forma o vetor c depende do código de serviço e do ano em que ele foi
+> realizado. Para me ajudar nisso, o TI daqui me deu uma outra consulta que
+> também baixo por URL, que após alguns ajustes, faço virar uma tabela dentro
+> do RStudio, com essa cara:
+>
+> [image: Imagem incorporada]
+>
+> Resumindo agora: o que eu queria é adaptar meu código da seguinte forma:
+> se viu que o módulo é *108 *e o ano é *2020*, então ele deve ler como
+> parâmetros para k3 o valores *1,2,3,5*; se for módulo *108* e ano *2021*,
+> ele deve ler para k3 o valores *1,2,3,4*. E assim sucessivamente, até
+> finalizar o baixar das bases de dados requeridas.
+>
+> Eu consegui ser claro? Se sim, alguém saberia como se faz isso?
+>
+> Obrigado novamente pela disponibilidade do time!!! Att,
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220323/cacef1bf/attachment.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: 1648058377521blob.jpg
+Tipo: image/jpeg
+Tamanho: 5659 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220323/cacef1bf/attachment.jpg>
+
+From suelen.takano em blueshift.com.br  Wed Mar 30 09:42:58 2022
+From: suelen.takano em blueshift.com.br (Suelen Takano)
+Date: Wed, 30 Mar 2022 12:42:58 +0000
+Subject: [R-br] =?iso-8859-1?q?Ajuda_em_an=E1lise_de_cluster_p/_tese?=
+Message-ID: <CPTP215MB1687834F6D27D66DEF9FCE8FC11F9@CPTP215MB1687.LAMP215.PROD.OUTLOOK.COM>
+
+Bom dia pessoal, tudo bem?
+
+Gostaria de solicitar uma ajuda ao Luis Alberto, que está desenvolvendo uma tese e precisa de ajuda na replicação de algumas análises em R...
+O trabalho dele tem como base o objetivo o desenvolvimento de um índice composto para a Bioeconomia Circular, identificando de um conjunto aplicável de indicadores utilizando análise multicritério.
+É muito interessante, mas infelizmente não estou com disponibilidade para ajudá-lo.
+
+Alguém poderia auxiliá-lo?
+Ele segue em cópia aqui no email e tem total disponibilidade para falar esclarecer quaisquer dúvidas!
+
+Agradeço desde já!
+
+Att,
+Suelen Takano.
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220330/dd27a360/attachment.htm>
+

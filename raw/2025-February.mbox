@@ -1,0 +1,320 @@
+From ggaldino em gmail.com  Fri Feb  7 12:14:22 2025
+From: ggaldino em gmail.com (Graciliano Galdino)
+Date: Fri, 7 Feb 2025 12:14:22 -0300
+Subject: [R-br] =?utf-8?q?Dados_de_Vota=C3=A7=C3=A3o_dos_Deputados?=
+Message-ID: <CANgk37NMez3Opx9Z7SHYkEVZ04t=+J5Em4+ssE7nA-gc54pUUg@mail.gmail.com>
+
+Boa tarde gente, quero estudar os dados de votação dos deputados e estou
+pensando em usar uma análise de ordenação para ver as tendências de votos
+dos partidos.
+
+A primeira ideia que vem é codificar o tipo de voto (Sim, Não, Não votou)
+em números e rodar uma NMDS.
+
+Vocês teriam sugestões mais robustas para essa questão? Geralmente
+codificar em número não me agrada, mas nesse caso, para análises de
+ordenação, não enxergo outra solução.
+
+Abraços
+
+-- 
+Graciliano Galdino A. dos Santos
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250207/2fe8fe8b/attachment.htm>
+
+From e.leoni em gmail.com  Fri Feb  7 16:46:53 2025
+From: e.leoni em gmail.com (Eduardo Leoni)
+Date: Fri, 7 Feb 2025 16:46:53 -0300
+Subject: [R-br] =?utf-8?q?Dados_de_Vota=C3=A7=C3=A3o_dos_Deputados?=
+In-Reply-To: <CANgk37NMez3Opx9Z7SHYkEVZ04t=+J5Em4+ssE7nA-gc54pUUg@mail.gmail.com>
+References: <CANgk37NMez3Opx9Z7SHYkEVZ04t=+J5Em4+ssE7nA-gc54pUUg@mail.gmail.com>
+Message-ID: <CAEKuhtgO+EHme32jknJF4FkSuOWqfuqRK3dKx8VFdz4sb6sFkA@mail.gmail.com>
+
+Usei o WNominate no meu mestrado:
+https://www.scielo.br/j/dados/a/8x5JbKj8gmc4hTSKR4NGF8r/?lang=pt
+
+Se quer algo mais moderno, esse pacote parece interessante e permite
+analisar as abstenções. https://github.com/saudiwin/idealstan
+
+Boa sorte !
+
+
+
+
+
+
+
+
+On Fri, Feb 7, 2025 at 12:14?PM Graciliano Galdino por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde gente, quero estudar os dados de votação dos deputados e estou
+> pensando em usar uma análise de ordenação para ver as tendências de votos
+> dos partidos.
+>
+> A primeira ideia que vem é codificar o tipo de voto (Sim, Não, Não votou)
+> em números e rodar uma NMDS.
+>
+> Vocês teriam sugestões mais robustas para essa questão? Geralmente
+> codificar em número não me agrada, mas nesse caso, para análises de
+> ordenação, não enxergo outra solução.
+>
+> Abraços
+>
+> --
+> Graciliano Galdino A. dos Santos
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250207/983691c8/attachment.htm>
+
+From cesar.rabak em gmail.com  Fri Feb  7 23:49:57 2025
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 7 Feb 2025 23:49:57 -0300
+Subject: [R-br] =?utf-8?q?Dados_de_Vota=C3=A7=C3=A3o_dos_Deputados?=
+In-Reply-To: <CANgk37NMez3Opx9Z7SHYkEVZ04t=+J5Em4+ssE7nA-gc54pUUg@mail.gmail.com>
+References: <CANgk37NMez3Opx9Z7SHYkEVZ04t=+J5Em4+ssE7nA-gc54pUUg@mail.gmail.com>
+Message-ID: <CAKrF98mrjDG3cP62RHrsSKgGb4zSmZBRzcj+4PYWW6ZVe6F_8A@mail.gmail.com>
+
+Como a descrição do objetivo está muito aberta, é quase impossível dar uma
+opinião que não contenha premissas que podem não ser as que o OP tem em
+mente.
+
+Como as votações costumam ser sobre assuntos, cuja ordenação também é
+complicada, se não impossível, a menos que se aceite alguma classificação
+anterior sobre os temas, etc., eu acho que se tivesse que fazer algo nesse
+sentido recorreria à Análise de Correspondência, que é a técnica apropriada
+para examinar frequências e suas possíveis associações.
+
+Aliás, em material introdutório de língua inglesa encontra-se comentários
+que na França onde a técnica é mais desenvolvida (ensina-se na escola como
+aqui aprende-se a ler diagramas de pizza e barras) ela é usada para *mostrar
+resultados de votações* !!
+
+HTH
+
+On Fri, Feb 7, 2025 at 12:14?PM Graciliano Galdino por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde gente, quero estudar os dados de votação dos deputados e estou
+> pensando em usar uma análise de ordenação para ver as tendências de votos
+> dos partidos.
+>
+> A primeira ideia que vem é codificar o tipo de voto (Sim, Não, Não votou)
+> em números e rodar uma NMDS.
+>
+> Vocês teriam sugestões mais robustas para essa questão? Geralmente
+> codificar em número não me agrada, mas nesse caso, para análises de
+> ordenação, não enxergo outra solução.
+>
+> Abraços
+>
+> --
+> Graciliano Galdino A. dos Santos
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250207/c7dabdb2/attachment.htm>
+
+From enderlf em yahoo.com.br  Sat Feb  8 18:09:27 2025
+From: enderlf em yahoo.com.br (Ender Ferreira)
+Date: Sat, 8 Feb 2025 21:09:27 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Consulta_sobre_coleta_de_dados_para_an=C3=A1lis?=
+ =?utf-8?q?e_bibliom=C3=A9trica_de_revistas_n=C3=A3o_indexadas_pela_Scopus?=
+ =?utf-8?q?_ou_WOC?=
+References: <300414784.5581509.1739048967567.ref@mail.yahoo.com>
+Message-ID: <300414784.5581509.1739048967567@mail.yahoo.com>
+
+Prezados(as) pesquisadores(as),
+Estou realizando uma análise bibliométrica dos artigos publicados pela Revista História Econômica & História de Empresas utilizando o R-Studio e a interface Biblioshiny. No entanto, a revista não está indexada em bases como Scopus ou Web of Science (WOS), o que dificulta a coleta automatizada de metadados (citações, autores, palavras-chave etc.).
+Gostaria de pedir a ajuda de vocês com duas dúvidas:
+1. Como posso coletar os dados da revista de forma estruturada, já que não está indexada em bases como Scopus ou WOS? Existe alguma ferramenta ou método recomendado para isso?
+2. Há tutoriais ou materiais que possam indicar para manipulação de dados bibliométricos quando não se tem acesso a bases indexadas?
+Agradeço desde já pela atenção e por qualquer orientação que possam oferecer. Toda ajuda é bem-vinda!
+Atenciosamente,Ender L. Ferreira.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250208/b8e22936/attachment.htm>
+
+From e.leoni em gmail.com  Sat Feb  8 18:33:37 2025
+From: e.leoni em gmail.com (Eduardo Leoni)
+Date: Sat, 8 Feb 2025 18:33:37 -0300
+Subject: [R-br] =?utf-8?q?Dados_de_Vota=C3=A7=C3=A3o_dos_Deputados?=
+In-Reply-To: <CAKrF98mrjDG3cP62RHrsSKgGb4zSmZBRzcj+4PYWW6ZVe6F_8A@mail.gmail.com>
+References: <CANgk37NMez3Opx9Z7SHYkEVZ04t=+J5Em4+ssE7nA-gc54pUUg@mail.gmail.com>
+ <CAKrF98mrjDG3cP62RHrsSKgGb4zSmZBRzcj+4PYWW6ZVe6F_8A@mail.gmail.com>
+Message-ID: <CAEKuhthEAExaPrrXed7+ZKicDwZTN6pv8y+Vp1+YsNoDqUPO1A@mail.gmail.com>
+
+Analise de correspondência desperdiçaria as informações individuais dos
+votos. Por isso,  usualmente esses dados são analisados via IRT (item
+response theory) e métodos correlatos.
+
+Nada contra os escolares franceses, mas já que votação nominal de deputados
+é assunto clássico da ciência política, recomendaria começar por lá.
+
+On Fri, 7 Feb 2025 at 23:50 Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Como a descrição do objetivo está muito aberta, é quase impossível dar uma
+> opinião que não contenha premissas que podem não ser as que o OP tem em
+> mente.
+>
+> Como as votações costumam ser sobre assuntos, cuja ordenação também é
+> complicada, se não impossível, a menos que se aceite alguma classificação
+> anterior sobre os temas, etc., eu acho que se tivesse que fazer algo nesse
+> sentido recorreria à Análise de Correspondência, que é a técnica apropriada
+> para examinar frequências e suas possíveis associações.
+>
+> Aliás, em material introdutório de língua inglesa encontra-se comentários
+> que na França onde a técnica é mais desenvolvida (ensina-se na escola como
+> aqui aprende-se a ler diagramas de pizza e barras) ela é usada para *mostrar
+> resultados de votações* !!
+>
+> HTH
+>
+> On Fri, Feb 7, 2025 at 12:14?PM Graciliano Galdino por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Boa tarde gente, quero estudar os dados de votação dos deputados e estou
+>> pensando em usar uma análise de ordenação para ver as tendências de votos
+>> dos partidos.
+>>
+>> A primeira ideia que vem é codificar o tipo de voto (Sim, Não, Não votou)
+>> em números e rodar uma NMDS.
+>>
+>> Vocês teriam sugestões mais robustas para essa questão? Geralmente
+>> codificar em número não me agrada, mas nesse caso, para análises de
+>> ordenação, não enxergo outra solução.
+>>
+>> Abraços
+>>
+>> --
+>> Graciliano Galdino A. dos Santos
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250208/e6480753/attachment.htm>
+
+From cesar.rabak em gmail.com  Sun Feb  9 11:40:34 2025
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 9 Feb 2025 11:40:34 -0300
+Subject: [R-br] =?utf-8?q?Dados_de_Vota=C3=A7=C3=A3o_dos_Deputados?=
+In-Reply-To: <CAEKuhthEAExaPrrXed7+ZKicDwZTN6pv8y+Vp1+YsNoDqUPO1A@mail.gmail.com>
+References: <CANgk37NMez3Opx9Z7SHYkEVZ04t=+J5Em4+ssE7nA-gc54pUUg@mail.gmail.com>
+ <CAKrF98mrjDG3cP62RHrsSKgGb4zSmZBRzcj+4PYWW6ZVe6F_8A@mail.gmail.com>
+ <CAEKuhthEAExaPrrXed7+ZKicDwZTN6pv8y+Vp1+YsNoDqUPO1A@mail.gmail.com>
+Message-ID: <CAKrF98n3=2C2sxeDCM_aPqb_fNT0e_Pp4QVjfrYa8u9KJROmjA@mail.gmail.com>
+
+A IRT é tautológica na análise de votos, pois no fundo ela matematiza a
+"raridade" versus o consenso, e no fundo "desperdiça" os individuais, mas
+com viés diferente. . .
+
+Aliás, pergunto-me como a IRT poderia abordar "votos de liderança" ou
+assemelhados?
+
+Quanto à segundo sugestão, por óbvio, a menos que o OP não esteja
+interessado na Análise Política, mas sim outras frentes de análise, que
+somente ele pode nos esclarecer.
+
+HTH
+
+On Sat, Feb 8, 2025 at 6:33?PM Eduardo Leoni por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Analise de correspondência desperdiçaria as informações individuais dos
+> votos. Por isso,  usualmente esses dados são analisados via IRT (item
+> response theory) e métodos correlatos.
+>
+> Nada contra os escolares franceses, mas já que votação nominal de
+> deputados é assunto clássico da ciência política, recomendaria começar por
+> lá.
+>
+> On Fri, 7 Feb 2025 at 23:50 Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Como a descrição do objetivo está muito aberta, é quase impossível dar
+>> uma opinião que não contenha premissas que podem não ser as que o OP tem em
+>> mente.
+>>
+>> Como as votações costumam ser sobre assuntos, cuja ordenação também é
+>> complicada, se não impossível, a menos que se aceite alguma classificação
+>> anterior sobre os temas, etc., eu acho que se tivesse que fazer algo nesse
+>> sentido recorreria à Análise de Correspondência, que é a técnica apropriada
+>> para examinar frequências e suas possíveis associações.
+>>
+>> Aliás, em material introdutório de língua inglesa encontra-se comentários
+>> que na França onde a técnica é mais desenvolvida (ensina-se na escola como
+>> aqui aprende-se a ler diagramas de pizza e barras) ela é usada para *mostrar
+>> resultados de votações* !!
+>>
+>> HTH
+>>
+>> On Fri, Feb 7, 2025 at 12:14?PM Graciliano Galdino por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Boa tarde gente, quero estudar os dados de votação dos deputados e estou
+>>> pensando em usar uma análise de ordenação para ver as tendências de votos
+>>> dos partidos.
+>>>
+>>> A primeira ideia que vem é codificar o tipo de voto (Sim, Não, Não
+>>> votou) em números e rodar uma NMDS.
+>>>
+>>> Vocês teriam sugestões mais robustas para essa questão? Geralmente
+>>> codificar em número não me agrada, mas nesse caso, para análises de
+>>> ordenação, não enxergo outra solução.
+>>>
+>>> Abraços
+>>>
+>>> --
+>>> Graciliano Galdino A. dos Santos
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250209/f9401d74/attachment.htm>
+

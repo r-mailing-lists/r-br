@@ -1,0 +1,2450 @@
+From jose-wellingthon.santos em embrapa.br  Fri Nov  1 07:36:14 2019
+From: jose-wellingthon.santos em embrapa.br (Jose Wellingthon Dos Santos)
+Date: Fri, 1 Nov 2019 08:36:14 -0200 (BRST)
+Subject: [R-br] Analise conjunta R
+In-Reply-To: <CAFU=Ekbny2+bVG1L7PS_Wzmv2Zu10NphdSw-ns-d4u5GY=creg@mail.gmail.com>
+Message-ID: <597030875.5010100.1572604574190.JavaMail.root@embrapa.br>
+
+Prof. Walmes, bom dia! 
+Muito obrigado pelos excelentes esclarecimentos. 
+Att 
+
+
+-- 
+José Wellingthon dos Santos 
+Pesquisador - Métodos Quantitativos 
+Embrapa Algodão 
+Empresa Brasileira de Pesquisa Agropecuária (Embrapa) 
+Campina Grande, PB 
+
+jose-wellingthon.santos em embrapa.br 
+Telefone: +55 (83) 3182-4401 | Fax: +55 (83) 3182-4367 
+www.embrapa.br/algodao | https://twitter.com/embrapa_algodao 
+Confira também: www.facebook.com/agrosustentavel 
+
+
+----- Mensagem original -----
+
+De: "Walmes Zeviani" <walmeszeviani em gmail.com> 
+Para: "Jose Wellingthon Dos Santos" <jose-wellingthon.santos em embrapa.br> 
+Cc: "a lista Brasileira oficial de discussão do programa R." <r-br em listas.c3sl.ufpr.br> 
+Enviadas: Quinta-feira, 31 de outubro de 2019 20:21:06 
+Assunto: Re: Analise conjunta R 
+
+
+
+José Wellingthon, 
+
+
+Devo assumir que você declarou um modelo de efeitos aleatórios (lme4, nlme)? 
+Se sim, não conheço implementação de Scott Knott para essa classe de modelos no R. 
+
+
+Apesar de muito popular, no meu entendimento a aplicação do teste de Scott Knott é muitas vezes mal interpretada. Não é um teste de comparações múltiplas mas, devido ao hábito dos usu?ios é interpretado como se fosse. De qualquer forma, não é o cerne da sua questão. 
+
+
+O pacote ScottKnott (que foi desenvolvido por membros dessa lista: Enio Jelihovschi, José Cláudio Faria e Ivan Bezerra Allaman) tem a função SK.nest() para ser usada em modelos de classe `aovList`, que representa modelos de mais de um estrato quando se usa o termo Error() na fórmula da aov(). Se usa muito para delineamentos em parcela subdivida e serve para análise conjunta de experimentos também. Mas o requisito é balanceamento. Aqui você tem exemplos que podem ser adaptados: http://leg.ufpr.br/~walmes/mpaer/analise-conjunta-de-experimentos.html . 
+
+
+Se você declarar o modelo de efeitos mistos com a lme4 ou nlme, aí pode usar a combinação de pacotes `lsmeans` e `multcomp` para sair com comparações múltiplas, sejam por contrastes planejados, todas duas a duas, todos contra testemunha, etc. O uso desses pacotes com modelos de efeitos mistos você encontra exemplos aqui: http://leg.ufpr.br/~walmes/mpaer/delineamento-em-latice.html . 
+
+
+
+
+======================================================================== 
+Walmes Marques Zeviani 
+LEG - Laboratório de Estatística e Geoinformação [25.450418S 49.231759W] 
+Departamento de Estatística - Universidade Federal do Paraná 
+fone: (+55) 41 3361 3573 linux user number: 531218 
+pages & profiles: 
+http://www.leg.ufpr.br/~walmes | http://lattes.cnpq.br/4410617539281650 
+http://git.leg.ufpr.br/walmes | https://github.com/walmes 
+https://www.mendeley.com/profiles/walmes-zeviani1/ 
+======================================================================== 
+
+
+
+
+On Fri, Oct 25, 2019 at 7:37 AM Jose Wellingthon Dos Santos < jose-wellingthon.santos em embrapa.br > wrote: 
+
+
+
+
+Prezado prof Walmes, bom dia. 
+Em uma análise conjunta que fiz, a interação Cultivar x Local foi significativa. Precisa desdobrá-la e aplicar o teste Skott-Knott nas medias de cultivar dentro de cada Local. Como fazê-lo? 
+Att 
+
+
+-- 
+José Wellingthon dos Santos 
+Pesquisador - Métodos Quantitativos 
+Embrapa Algodão 
+Empresa Brasileira de Pesquisa Agropecuária (Embrapa) 
+Campina Grande, PB 
+
+jose-wellingthon.santos em embrapa.br 
+Telefone: +55 (83) 3182-4401 | Fax: +55 (83) 3182-4367 
+www.embrapa.br/algodao | https://twitter.com/embrapa_algodao 
+Confira também: www.facebook.com/agrosustentavel 
+
+
+____________________________________________________________________________ 
+Aviso de confidencialidade 
+
+Esta mensagem da Empresa Brasileira de Pesquisa Agropecuaria (Embrapa), empresa publica federal regida pelo disposto na Lei Federal no. 5.851, de 7 de dezembro de 1972, e enviada exclusivamente a seu destinatario e pode conter informacoes confidenciais, protegidas por sigilo profissional. Sua utilizacao desautorizada e ilegal e sujeita o infrator as penas da lei. Se voce a recebeu indevidamente, queira, por gentileza, reenvia-la ao emitente, esclarecendo o equivoco. 
+Confidentiality note 
+
+This message from Empresa Brasileira de Pesquisa Agropecuaria (Embrapa), a government company established under Brazilian law (5.851/72), is directed exclusively to its addressee and may contain confidential data, protected under professional secrecy rules. Its unauthorized use is illegal and may subject the transgressor to the law's penalties. If you are not the addressee, please send it back, elucidating the failure. 
+
+
+
+____________________________________________________________________________
+Aviso de confidencialidade
+
+Esta mensagem da Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+empresa publica federal  regida pelo disposto  na Lei Federal no. 5.851,  de
+7 de dezembro de 1972,  e  enviada exclusivamente  a seu destinatario e pode
+conter informacoes  confidenciais, protegidas  por sigilo profissional.  Sua
+utilizacao desautorizada  e ilegal e  sujeita o infrator as penas da lei. Se
+voce  a recebeu indevidamente, queira, por gentileza, reenvia-la ao
+emitente, esclarecendo o equivoco.
+
+Confidentiality note
+
+This message from Empresa  Brasileira de Pesquisa  Agropecuaria (Embrapa),
+a government company  established under  Brazilian law (5.851/72), is
+directed exclusively to  its addressee  and may contain confidential data, 
+protected under  professional secrecy  rules. Its unauthorized  use is
+illegal and  may subject the transgressor to the law's penalties. If you are
+not the addressee, please send it back, elucidating the failure.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191101/d1a86f5a/attachment.html>
+
+From nguiotoku2017 em gmail.com  Fri Nov  1 20:51:27 2019
+From: nguiotoku2017 em gmail.com (Nilson Guiotoku)
+Date: Fri, 1 Nov 2019 20:51:27 -0300
+Subject: [R-br] derivada da densidade de probabilidade
+Message-ID: <CAKZWzEE5DZfabVHBz8vxwzfXDxFr9HMeNO_2GRbROurCQgatQA@mail.gmail.com>
+
+Pessoal,
+
+eu tenho uma variável que segue uma distribuição bimodal, e eu preciso
+encontrar o melhor ponto que separa essas bimodais, de forma lógica
+matematicamente.
+
+Então eu pensei em gerar a curva de densidade e encontrar a derivada dessa
+curva. O local em que a derivada for zero eu teria o valor critico e também
+o ponto de mínimo, portanto, o melhor valor para determinar o corte e
+encontrar os dois grupos distintos.
+
+Como encontrar a derivada primeira e segunda da densidade?
+
+# Código mínimo executável:
+
+X = c(rnorm(100, 10, 3), rnorm(50, 40, 5))  # Variável bimodal
+hist(X, freq = F)
+denfuncao = density(X)
+lines(denfuncao, lwd = 2)
+  # como encontrar a derivada de uma curva se não conheço a função de
+  # densidade?
+deriv(expr = denfuncao$x, namevec = denfuncao$x)
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191101/39957b58/attachment.html>
+
+From cesar.rabak em gmail.com  Sat Nov  2 17:08:56 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 2 Nov 2019 17:08:56 -0300
+Subject: [R-br] derivada da densidade de probabilidade
+In-Reply-To: <CAKZWzEE5DZfabVHBz8vxwzfXDxFr9HMeNO_2GRbROurCQgatQA@mail.gmail.com>
+References: <CAKZWzEE5DZfabVHBz8vxwzfXDxFr9HMeNO_2GRbROurCQgatQA@mail.gmail.com>
+Message-ID: <CAKrF98=k9Zrt5skh=Q+PcnzvPUXA-7PA1aQyoab69Yx47gS9pQ@mail.gmail.com>
+
+Nilson,
+
+O que você deseja fazer tem um nome que nossos antepassados que já
+enfrentaram esse problema deram: "construção da ROC pelo método bi-normal".
+
+Por transitividade matemática, você pode descobrir a curva logística que
+identifica o valor da sua variável que discrimina melhor as duas condições.
+
+Note que embora do ponto de vista *matemático* esses procedimentos todos
+podem ser interpretados e compreensíveis (*in extremis* você poderia fazer
+uma busca do valor da variável que maximize ou um alfa ou um beta de um
+teste de hipótese versus as duas subdistribuições), usar isso como busca *post
+hoc* nos seus dados para provar uma hipótese pode ser considerado inválido.
+
+Se seu problema for de classificação, você precisa se proteger usando as
+técnicas desse campo de estudo, como separação de parte dos dados para
+treino e outra para teste, etc.
+
+HTH
+--
+Cesar Rabak
+
+
+On Fri, Nov 1, 2019 at 8:50 PM Nilson Guiotoku por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Pessoal,
+>
+> eu tenho uma variável que segue uma distribuição bimodal, e eu preciso
+> encontrar o melhor ponto que separa essas bimodais, de forma lógica
+> matematicamente.
+>
+> Então eu pensei em gerar a curva de densidade e encontrar a derivada dessa
+> curva. O local em que a derivada for zero eu teria o valor critico e também
+> o ponto de mínimo, portanto, o melhor valor para determinar o corte e
+> encontrar os dois grupos distintos.
+>
+> Como encontrar a derivada primeira e segunda da densidade?
+>
+> # Código mínimo executável:
+>
+> X = c(rnorm(100, 10, 3), rnorm(50, 40, 5))  # Variável bimodal
+> hist(X, freq = F)
+> denfuncao = density(X)
+> lines(denfuncao, lwd = 2)
+>   # como encontrar a derivada de uma curva se não conheço a função de
+>   # densidade?
+> deriv(expr = denfuncao$x, namevec = denfuncao$x)
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191102/1a6c5d9a/attachment.html>
+
+From c2o.pro.br em gmail.com  Sat Nov  2 22:33:31 2019
+From: c2o.pro.br em gmail.com (Nei)
+Date: Sat, 2 Nov 2019 22:33:31 -0300
+Subject: [R-br] =?utf-8?q?Design_of_Experiments=3A_replicatas_no_ponto_ce?=
+ =?utf-8?q?ntral_e_intervalo_de_confian=C3=A7a?=
+Message-ID: <a7fe6ff2-6aaa-88a6-c9e5-2e9943d57529@gmail.com>
+
+Prezados e Prezadas,
+
+Estou estudando Planejamento Fatorial Completo de 2 níveis.
+
+Fiz um planejamento completo para 4 fatores em 2 níveis e para isso fiz 
+16 experimentos (2^4), sem replicatas.
+
+Agora pretendo fazer 3 replicatas no ponto central para estimar o desvio 
+padrão e a partir daí calcular o intervalo de confiança e avaliar a 
+significância dos parâmetros  do modelo.
+
+Mas estou com dificuldades para encontrar um tutorial explicando como 
+calcular o erro padrão e como definir o número de graus de liberdade 
+para o valor de t para poder calcular o intervalo de confiança.
+
+Alguém saberia me dar uma dica?
+
+Obrigado,
+
+Nei
+
+
+
+From cesar.rabak em gmail.com  Sun Nov  3 12:08:38 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 3 Nov 2019 11:08:38 -0300
+Subject: [R-br] 
+	=?utf-8?q?Design_of_Experiments=3A_replicatas_no_ponto_ce?=
+	=?utf-8?q?ntral_e_intervalo_de_confian=C3=A7a?=
+In-Reply-To: <a7fe6ff2-6aaa-88a6-c9e5-2e9943d57529@gmail.com>
+References: <a7fe6ff2-6aaa-88a6-c9e5-2e9943d57529@gmail.com>
+Message-ID: <CAKrF98=4YwSF=OqJVnsb2OGfmx03zU0DxXHoB6P6ZNRa=66DzQ@mail.gmail.com>
+
+Esse assunto está menos para tutorial e mais para livro texto.
+
+Qual obra de referência você está usando para consultar sobre Planejamento
+de Experimentos?
+
+
+On Sat, Nov 2, 2019 at 10:33 PM Nei por (R-br) <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Prezados e Prezadas,
+>
+> Estou estudando Planejamento Fatorial Completo de 2 níveis.
+>
+> Fiz um planejamento completo para 4 fatores em 2 níveis e para isso fiz
+> 16 experimentos (2^4), sem replicatas.
+>
+> Agora pretendo fazer 3 replicatas no ponto central para estimar o desvio
+> padrão e a partir daí calcular o intervalo de confiança e avaliar a
+> significância dos parâmetros  do modelo.
+>
+> Mas estou com dificuldades para encontrar um tutorial explicando como
+> calcular o erro padrão e como definir o número de graus de liberdade
+> para o valor de t para poder calcular o intervalo de confiança.
+>
+> Alguém saberia me dar uma dica?
+>
+> Obrigado,
+>
+> Nei
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191103/fd6db8b6/attachment.html>
+
+From c2o.pro.br em gmail.com  Sun Nov  3 14:07:18 2019
+From: c2o.pro.br em gmail.com (Nei)
+Date: Sun, 3 Nov 2019 14:07:18 -0200
+Subject: [R-br] 
+ =?utf-8?q?Design_of_Experiments=3A_replicatas_no_ponto_ce?=
+ =?utf-8?q?ntral_e_intervalo_de_confian=C3=A7a?=
+In-Reply-To: <CAKrF98=4YwSF=OqJVnsb2OGfmx03zU0DxXHoB6P6ZNRa=66DzQ@mail.gmail.com>
+References: <a7fe6ff2-6aaa-88a6-c9e5-2e9943d57529@gmail.com>
+ <CAKrF98=4YwSF=OqJVnsb2OGfmx03zU0DxXHoB6P6ZNRa=66DzQ@mail.gmail.com>
+Message-ID: <fc670598-a8db-3343-bd31-f126c5d15e5a@gmail.com>
+
+Bom Dia Cesar,
+
+Você tem razão.
+
+Foi o que eu percebi.
+
+Depois de procurar muito consegui encontrar algumas orientações apenas 
+em livros.
+
+Mas estou usando como principal referência o livro:
+
+[Como fazer experimentos, 2001] Benício de Barros Neto, Ieda Spacino 
+Scarminio, e Roy Edward Bruns. Copyright © 2001. 85-268-0544-4. Editora 
+da Unicamp. /Como fazer experimentos: pesquisa e desenvolvimento na 
+ciência e na indústria, 2001/.
+
+Vou explicar a estratégia que estou usando com um exemplo simples: um 
+experimento com os fatores Temperatura (T) e Agitação (A) visando 
+otimizar como resposta o Rendimento R.
+
+Depois eu comento minhas dúvidas com o planejamento que já tenho.
+
+1 - monto a matriz de planejamento com variáveis codificadas
+
+
+T   A    R
+1   1
+1  -1
+-1  1
+-1 -1
+
+2 - Depois a ?Tabela de Planejamento com Variáveis Codificadas? é 
+convertida na ?Tabela de Coeficientes de Contraste? acrescentando uma 
+coluna de ?uns? à esquerda para o cálculo da média das respostas (M), e 
+à direita é acrescentada a coluna correspondente à interação entre 
+Temperatura e Agitação (interação TA) que corresponde aos produtos, 
+elemento a elemento, dos códigos das colunas T e A:
+
+M T A  TA
+1  1   1   1
+1  1  -1  -1
+1  -1  1  -1
+1  -1 -1   1
+
+3 - Depois de fazer os experimentos tenho a matriz X (Tabela de 
+Coeficientes de Contraste) e a matriz linha Y com os Rendimentos e 
+calculo a matriz B com os coeficientes do modelo usando a equação:
+
+B = (X^t X)^-1 X^t Y
+
+4 - A próxima etapa é avaliar a significância estatística dos 
+coeficientes do modelo para identificar quais efeitos principais e 
+interações são significativas.
+Nessa etapa eu prefiro usar o "intervalo de confianção" para fazer essa 
+avaliação com a equação:
+
+b_i ± t_n ? p × (///Erro Padrão/ de b_i )
+
+  Mas preciso estimar o "erro padrão" para cada coeficiente.
+
+5 - Então eu uso a matriz de covariância com a equação:**
+
+V(b) = (X^t X)^?1 ?^2
+
+Reutilizo a matriz (X^t X)^?1 que já foi usada para o cálculo dos 
+coeficientes do modelo.
+
+E ?^2 (erro experimental) é substituída pela estimativa da variância s^2 
+dos rendimentos obtidos, por exemplo, em 3 replicatas no ponto central.
+
+E a matriz de planejamento fica:
+
+T   A    R
+1   1
+1  -1
+-1  1
+-1 -1
+
+0   0
+
+0   0
+
+0   0
+
+Multiplicando a matriz (X^t X)^?1 pela pela estimativa do erro 
+experimental s^2 dos rendimentos obtidos, por exemplo, em 3 replicatas 
+no ponto central, e tirando a raiz quadrada dos elementos da diagonal 
+principal da matriz V(b), obtenho os erros padrão dos parâmetros (sb_0 , 
+sb_1 ...).
+
+Mas para o cálculo do intervalo de confiança para cada parâmetro usamos 
+o valor de t para n-p graus de liberdade:
+
+Onde onde n = número de linhas da matriz X (experimentos) e p = número 
+de parâmetros do modelo
+
+Com a equação:
+
+b_i ± t_n ? p × sb_i
+
+E verifico se inclui ou não o zero.
+
+Pelo que entendi eu poderia estimar a variância das observações (?^2 - 
+erro experimental) de três maneiras diferentes:
+
+1 - Através da Média Quadrática dos Resíduos da tabela Anova
+
+2 - Considerando os efeitos de interação de mais alta ordem (Ex: 
+interações de três ou mais fatores) como flutuações (ruídos) embutidos 
+nas respostas e utilizá-los para estimar o erro experimental nos valores 
+dos modelos
+
+3 - Usando o desvio padrão das replicatas no ponto central.
+
+Mas  no meu caso concreto, tenho um planejamento com 4 variáveis que 
+geraram 16 experimentos que já foram realizados "sem replicatas".
+
+Portanto eu não tenho como usar a Média Quadrática dos Resíduos da 
+tabela Anova porque os experimentos não foram feitos em replicatas e 
+portanto não tenho como calcular os resíduos.
+
+E os valores das interações de mais alta ordem dos 16 experimentos que 
+já fiz não são muito diferentes dos valores de alguns efeitos principais 
+ou de segunda ordem.
+
+Por isso a minha decisão de fazer alguns experimentos no ponto central.
+
+Você teria algum comentário a fazer sobre a estratégia que estou seguindo?
+
+Poderia usar os resultados do ponto central e refazer o cálculo do 
+modelo com a matriz X no formato?
+
+M T A  TA
+1  1   1   1
+1  1  -1  -1
+1  -1  1  -1
+1  -1 -1   1
+1   0   0   0
+1   0   0   0
+1   0   0   0
+
+Obrigado pela atenção,
+Nei
+
+
+Em 03-11-2019 12:08, Cesar Rabak por (R-br) escreveu:
+> Esse assunto está menos para tutorial e mais para livro texto.
+>
+> Qual obra de referência você está usando para consultar sobre 
+> Planejamento de Experimentos?
+>
+>
+> On Sat, Nov 2, 2019 at 10:33 PM Nei por (R-br) 
+> <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+>
+>     Prezados e Prezadas,
+>
+>     Estou estudando Planejamento Fatorial Completo de 2 níveis.
+>
+>     Fiz um planejamento completo para 4 fatores em 2 níveis e para
+>     isso fiz
+>     16 experimentos (2^4), sem replicatas.
+>
+>     Agora pretendo fazer 3 replicatas no ponto central para estimar o
+>     desvio
+>     padrão e a partir daí calcular o intervalo de confiança e avaliar a
+>     significância dos parâmetros  do modelo.
+>
+>     Mas estou com dificuldades para encontrar um tutorial explicando como
+>     calcular o erro padrão e como definir o número de graus de liberdade
+>     para o valor de t para poder calcular o intervalo de confiança.
+>
+>     Alguém saberia me dar uma dica?
+>
+>     Obrigado,
+>
+>     Nei
+>
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191103/ecdeb6ac/attachment.html>
+
+From jersitonmattos em hotmail.com  Sun Nov  3 14:12:58 2019
+From: jersitonmattos em hotmail.com (Jersiton Tiago Pereira Matos)
+Date: Sun, 3 Nov 2019 16:12:58 +0000
+Subject: [R-br] =?iso-8859-1?q?=28sem_assunto=29?=
+Message-ID: <RO1P152MB11969A3B3B7323140BDC6718CD7C0@RO1P152MB1196.LAMP152.PROD.OUTLOOK.COM>
+
+Bom dia, prezados.
+
+Tenho uma dúvida, é possível remover valores repetidos em uma coluna dado um critério de uma outra coluna do mesmo dataframe?
+
+att.
+Jersiton Mattos
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191103/3f70914f/attachment.html>
+
+From nandodesouza em gmail.com  Sun Nov  3 20:20:47 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sun, 3 Nov 2019 19:20:47 -0300
+Subject: [R-br] (sem assunto)
+In-Reply-To: <RO1P152MB11969A3B3B7323140BDC6718CD7C0@RO1P152MB1196.LAMP152.PROD.OUTLOOK.COM>
+References: <RO1P152MB11969A3B3B7323140BDC6718CD7C0@RO1P152MB1196.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <CAFrWFsmv+jcOxfEpLwDEDUgeDen8KHX8DmPZxZJjV5GY3Dgw+g@mail.gmail.com>
+
+É possível sim. Porém descreva melhor sua dúvida para q possamos ser mais
+efetivo em lhe ajudar. Se possível crie um dataframe com as características
+de sua dúvida. Faça um dput(dataframe) e compartilhe a saída.
+
+Att
+
+
+Em dom, 3 de nov de 2019 13:13, Jersiton Tiago Pereira Matos por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia, prezados.
+>
+> Tenho uma dúvida, é possível remover valores repetidos em uma coluna dado
+> um critério de uma outra coluna do mesmo dataframe?
+>
+> att.
+> Jersiton Mattos
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191103/0cf9795b/attachment.html>
+
+From jersitonmattos em hotmail.com  Sun Nov  3 21:57:26 2019
+From: jersitonmattos em hotmail.com (Jersiton Tiago Pereira Matos)
+Date: Sun, 3 Nov 2019 23:57:26 +0000
+Subject: [R-br] (sem assunto)
+In-Reply-To: <CAFrWFsmv+jcOxfEpLwDEDUgeDen8KHX8DmPZxZJjV5GY3Dgw+g@mail.gmail.com>
+References: <RO1P152MB11969A3B3B7323140BDC6718CD7C0@RO1P152MB1196.LAMP152.PROD.OUTLOOK.COM>,
+ <CAFrWFsmv+jcOxfEpLwDEDUgeDen8KHX8DmPZxZJjV5GY3Dgw+g@mail.gmail.com>
+Message-ID: <SC1P152MB1198599D6E155A631E678F15CD7C0@SC1P152MB1198.LAMP152.PROD.OUTLOOK.COM>
+
+é semelhante a isto:
+
+|individuos | ocorrencia |
+|-----------------|-------------------|
+|        a         |          x         |
+|        b         |          z         |
+|        b         |          x         |
+|        c         |          x         |
+
+eliminar os indivíduos repetidos (no caso "b"), dado que "x" ocorre.
+
+obrigado pela compreensão!
+
+att.
+Jersiton Matos
+
+
+-------- Original message --------
+From: "Fernando Souza por (R-br)" <r-br em listas.c3sl.ufpr.br>
+Date: 11/3/19 19:21 (GMT-03:00)
+To: "a lista Brasileira oficial de discussão do programa R." <r-br em listas.c3sl.ufpr.br>
+Cc: Fernando Souza <nandodesouza em gmail.com>
+Subject: Re: [R-br] (sem assunto)
+
+É possível sim. Porém descreva melhor sua dúvida para q possamos ser mais efetivo em lhe ajudar. Se possível crie um dataframe com as características de sua dúvida. Faça um dput(dataframe) e compartilhe a saída.
+
+Att
+
+
+Em dom, 3 de nov de 2019 13:13, Jersiton Tiago Pereira Matos por (R-br) <r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br>> escreveu:
+Bom dia, prezados.
+
+Tenho uma dúvida, é possível remover valores repetidos em uma coluna dado um critério de uma outra coluna do mesmo dataframe?
+
+att.
+Jersiton Mattos
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br<mailto:R-br em listas.c3sl.ufpr.br>
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191103/1c3ed2f8/attachment.html>
+
+From nandodesouza em gmail.com  Mon Nov  4 13:27:52 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Mon, 4 Nov 2019 12:27:52 -0300
+Subject: [R-br] (sem assunto)
+In-Reply-To: <SC1P152MB1198599D6E155A631E678F15CD7C0@SC1P152MB1198.LAMP152.PROD.OUTLOOK.COM>
+References: <SC1P152MB1198599D6E155A631E678F15CD7C0@SC1P152MB1198.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <2B9BBC9A-B49C-4C51-80A3-BD042580D9E2@getmailspring.com>
+
+dados <- data.frame(individuos=factor(rep(letters[1:3],c(1,2,1))),ocorrencia=c(1,2,3,4));str(dados)
+str(dados)
+
+repetidosID<-which(duplicated(dados$individuos)|duplicated(dados$individuos, fromLast = TRUE))
+if(3 %in% dados[,"ocorrencia"]){
+dados2<-dados[-repetidosID,]
+
+}
+
+dados
+On Nov 3 2019, at 9:57 pm, Jersiton Tiago Pereira Matos por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> é semelhante a isto:
+>
+> |individuos | ocorrencia |
+> |-----------------|-------------------|
+> | a | x |
+> | b | z |
+> | b | x |
+> | c | x |
+>
+> eliminar os indivíduos repetidos (no caso "b"), dado que "x" ocorre.
+>
+> obrigado pela compreensão!
+>
+> att.
+> Jersiton Matos
+>
+>
+> -------- Original message --------
+> From: "Fernando Souza por (R-br)" <r-br em listas.c3sl.ufpr.br>
+> Date: 11/3/19 19:21 (GMT-03:00)
+> To: "a lista Brasileira oficial de discussão do programa R." <r-br em listas.c3sl.ufpr.br>
+> Cc: Fernando Souza <nandodesouza em gmail.com>
+> Subject: Re: [R-br] (sem assunto)
+>
+> É possível sim. Porém descreva melhor sua dúvida para q possamos ser mais efetivo em lhe ajudar. Se possível crie um dataframe com as características de sua dúvida. Faça um dput(dataframe) e compartilhe a saída.
+>
+> Att
+>
+>
+> Em dom, 3 de nov de 2019 13:13, Jersiton Tiago Pereira Matos por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> escreveu:
+> > Bom dia, prezados.
+> >
+> > Tenho uma dúvida, é possível remover valores repetidos em uma coluna dado um critério de uma outra coluna do mesmo dataframe?
+> >
+> > att.
+> > Jersiton Mattos
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191104/43324999/attachment.html>
+
+From vanessamatosgomes em gmail.com  Wed Nov  6 04:07:24 2019
+From: vanessamatosgomes em gmail.com (Vanessa Gomes)
+Date: Wed, 6 Nov 2019 14:07:24 +0800
+Subject: [R-br] =?utf-8?q?D=C3=BAvida_de_=27warning_message=27?=
+Message-ID: <CABuNurrd7JrcqEXZ9mL01N1T55R3k7JsA7et24i97eMvVsQDmQ@mail.gmail.com>
+
+Olá pessoal,
+
+após rodar correlação de Spearman no R, recebi a seguinte warning message: In
+cor.test.default(EEG, DP, method = "spearman") : Impossível calcular o
+valor exato de p com empates
+
+Alguém sabe me dizer o que isso significa?
+
+Obrigada.
+
+*O que rodei foi:*
+
+> plot(EEG,DP)
+> cor(EEG,DP,method = "spearman")
+[1] 0.3688426
+> cor.test(EEG,DP,method = "spearman")
+
+Spearman's rank correlation rho
+
+data:  EEG and DP
+S = 6728.1, p-value = 0.01918
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+      rho
+0.3688426
+
+Warning message:
+In cor.test.default(EEG, DP, method = "spearman") :
+  Impossível calcular o valor exato de p com empates
+
+
+*Vanessa Matos Gomes*
+
+*Laboratório de Ecologia Evolutiva e Biodiversidade*
+Departamento de Ecologia, Genética e Evolução
+Instituto de Ciências Biológicas
+UFMG - Brasil
+*Ecosystem Restoration and Intervention Ecology *
+School of Biological Science
+University of Western Australia
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191106/046772ec/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Nov  6 16:00:53 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 6 Nov 2019 15:00:53 -0300
+Subject: [R-br] =?utf-8?q?D=C3=BAvida_de_=27warning_message=27?=
+In-Reply-To: <CABuNurrd7JrcqEXZ9mL01N1T55R3k7JsA7et24i97eMvVsQDmQ@mail.gmail.com>
+References: <CABuNurrd7JrcqEXZ9mL01N1T55R3k7JsA7et24i97eMvVsQDmQ@mail.gmail.com>
+Message-ID: <CAKrF98nhAu8hnzfXocqKyY5Jgnrvfz=UG0hK96vnoMLaBfFx9A@mail.gmail.com>
+
+Você entende o mecanismo de criação de "postos" (*ranks* em inglês)?
+
+Quando dois ou mais deles têm a mesma posição devido ao cálculo como é
+feito, você tem o *empate*.
+
+Caso você precise aprofundar, um livro texto de Estatística tem o material
+para esclarecer esse assunto.
+
+HTH
+--
+Cesar Rabak
+
+
+On Wed, Nov 6, 2019 at 3:08 AM Vanessa Gomes por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá pessoal,
+>
+> após rodar correlação de Spearman no R, recebi a seguinte warning message: In
+> cor.test.default(EEG, DP, method = "spearman") : Impossível calcular o
+> valor exato de p com empates
+>
+> Alguém sabe me dizer o que isso significa?
+>
+> Obrigada.
+>
+> *O que rodei foi:*
+>
+> > plot(EEG,DP)
+> > cor(EEG,DP,method = "spearman")
+> [1] 0.3688426
+> > cor.test(EEG,DP,method = "spearman")
+>
+> Spearman's rank correlation rho
+>
+> data:  EEG and DP
+> S = 6728.1, p-value = 0.01918
+> alternative hypothesis: true rho is not equal to 0
+> sample estimates:
+>       rho
+> 0.3688426
+>
+> Warning message:
+> In cor.test.default(EEG, DP, method = "spearman") :
+>   Impossível calcular o valor exato de p com empates
+>
+>
+> *Vanessa Matos Gomes*
+>
+> *Laboratório de Ecologia Evolutiva e Biodiversidade*
+> Departamento de Ecologia, Genética e Evolução
+> Instituto de Ciências Biológicas
+> UFMG - Brasil
+> *Ecosystem Restoration and Intervention Ecology *
+> School of Biological Science
+> University of Western Australia
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191106/808f721a/attachment.html>
+
+From vanessamatosgomes em gmail.com  Thu Nov  7 13:45:52 2019
+From: vanessamatosgomes em gmail.com (Vanessa Gomes)
+Date: Thu, 7 Nov 2019 23:45:52 +0800
+Subject: [R-br] Digest R-br, volume 107, assunto 7
+In-Reply-To: <mailman.3.1573135201.1960.r-br@listas.c3sl.ufpr.br>
+References: <mailman.3.1573135201.1960.r-br@listas.c3sl.ufpr.br>
+Message-ID: <CABuNurqP49+KaWuaEqgQu_Vkwf3pXnHELqRZCEoDVnyHj+HeLA@mail.gmail.com>
+
+ah ótimo! Já deu pra entender.
+
+Muito obrigada.
+
+
+*Vanessa Matos Gomes*
+
+*Laboratório de Ecologia Evolutiva e Biodiversidade*
+Departamento de Ecologia, Genética e Evolução
+Instituto de Ciências Biológicas
+UFMG - Brasil
+*Ecosystem Restoration and Intervention Ecology *
+School of Biological Science
+University of Western Australia
+
+
+Em qui., 7 de nov. de 2019 às 22:00, <r-br-request em listas.c3sl.ufpr.br>
+escreveu:
+
+> Enviar submissões para a lista de discussão R-br para
+>         r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+>         r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+>         r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+>    1. Re: Dúvida de 'warning message' (Cesar Rabak)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Wed, 6 Nov 2019 15:00:53 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Dúvida de 'warning message'
+> Message-ID:
+>         <CAKrF98nhAu8hnzfXocqKyY5Jgnrvfz=
+> UG0hK96vnoMLaBfFx9A em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Você entende o mecanismo de criação de "postos" (*ranks* em inglês)?
+>
+> Quando dois ou mais deles têm a mesma posição devido ao cálculo como é
+> feito, você tem o *empate*.
+>
+> Caso você precise aprofundar, um livro texto de Estatística tem o material
+> para esclarecer esse assunto.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Wed, Nov 6, 2019 at 3:08 AM Vanessa Gomes por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> > Olá pessoal,
+> >
+> > após rodar correlação de Spearman no R, recebi a seguinte warning
+> message: In
+> > cor.test.default(EEG, DP, method = "spearman") : Impossível calcular o
+> > valor exato de p com empates
+> >
+> > Alguém sabe me dizer o que isso significa?
+> >
+> > Obrigada.
+> >
+> > *O que rodei foi:*
+> >
+> > > plot(EEG,DP)
+> > > cor(EEG,DP,method = "spearman")
+> > [1] 0.3688426
+> > > cor.test(EEG,DP,method = "spearman")
+> >
+> > Spearman's rank correlation rho
+> >
+> > data:  EEG and DP
+> > S = 6728.1, p-value = 0.01918
+> > alternative hypothesis: true rho is not equal to 0
+> > sample estimates:
+> >       rho
+> > 0.3688426
+> >
+> > Warning message:
+> > In cor.test.default(EEG, DP, method = "spearman") :
+> >   Impossível calcular o valor exato de p com empates
+> >
+> >
+> > *Vanessa Matos Gomes*
+> >
+> > *Laboratório de Ecologia Evolutiva e Biodiversidade*
+> > Departamento de Ecologia, Genética e Evolução
+> > Instituto de Ciências Biológicas
+> > UFMG - Brasil
+> > *Ecosystem Restoration and Intervention Ecology *
+> > School of Biological Science
+> > University of Western Australia
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> > código mínimo reproduzível.
+> >
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191106/808f721a/attachment-0001.html
+> >
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 107, assunto 7
+> *****************************************
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191107/137c1391/attachment.html>
+
+From mslordelo em gmail.com  Mon Nov 11 11:28:18 2019
+From: mslordelo em gmail.com (=?UTF-8?B?TWF1csOtY2lvIExvcmTDqmxv?=)
+Date: Mon, 11 Nov 2019 10:28:18 -0300
+Subject: [R-br] Desdobramento de um fatorial triplo
+Message-ID: <CAGUUkAtSsJ7D5J5uRs4_E4FgoQyZZZDZHBC5BKEnhiYwZybOBw@mail.gmail.com>
+
+Caros,
+Peço auxilio para um problema de um fatorial em que há um problema em
+atender aos pressupostos.
+
+Agradeço alguma sugestão.
+
+Maurício
+
+m_seca_raiz = c(0.000000000, 0.000000000, 0.000460000, 0.000000000,
+0.000000000, 0.000140000,
+                0.000000000, 0.000300000, 0.000150000, 0.000000000,
+0.000120000, 0.000500000,
+                0.000560000, 0.000300000, 0.000000000, 0.000160000,
+0.000160000, 0.000600000,
+                0.000200000, 0.000200000, 0.000440000, 0.000000000,
+0.000080000, 0.000240000,
+                0.000380000, 0.000080000, 0.000000000, 0.000250000,
+0.000960000, 0.000800000,
+                0.000320000, 0.000760000, 0.000920000, 0.000366667,
+0.000720000, 0.000540000,
+                0.000440000, 0.000620000, 0.000100000, 0.000600000,
+0.000200000, 0.000280000,
+                0.000000000, 0.000520000, 0.000480000, 0.000000000,
+0.000280000, 0.000280000,
+                0.000800000, 0.000280000, 0.000000000, 0.000680000,
+0.000700000, 0.000380000,
+                0.000000000, 0.000360000, 0.000300000, 0.000340000,
+0.000280000, 0.000360000,
+                0.000340000, 0.001780000, 0.000250000, 0.000260000,
+0.000300000, 0.000280000,
+                0.000160000, 0.000120000, 0.000125000, 0.000080000,
+0.000220000, 0.000320000)
+meio = factor((rep(c("m2","m3"),each=12, times=3)))
+sacarose = factor(rep(c("7,5","15,0","30,0"), each=24))
+carvão = factor((rep(c("c1","c2"),each=6, times=6)))
+tratamento = meio:sacarose:carvão
+head(data.frame(m_seca_raiz, meio, sacarose, carvão, tratamento),18)
+
+
+hist(m_seca_raiz)
+boxplot(m_seca_raiz ~ tratamento,ylab="Massa seca da raiz",
+xlab="Tratamento",
+        cex.axis=0.85 )
+
+max(m_seca_raiz)
+
+modelo_m_seca_raiz = aov(m_seca_raiz ~ tratamento)
+summary(modelo_m_seca_raiz)
+
+hist(modelo_m_seca_raiz$residuals)
+shapiro.test(modelo_m_seca_raiz$residuals)
+require(car)
+leveneTest(modelo_m_seca_raiz$residuals ~ tratamento)
+
+anova(modelo_m_seca_raiz)$'Mean Sq'[2]
+res_pad_m_seca_raiz =
+modelo_m_seca_raiz$residuals/sqrt(anova(modelo_m_seca_raiz)$'Mean Sq'[2])
+plot(modelo_m_seca_raiz$fitted.values,  res_pad_m_seca_raiz, ylim = c(-5,5))
+abline(h=c(-3,3),lty=3)
+
+#Elimando a observação 62
+shapiro.test(modelo_m_seca_raiz$residuals[-62])
+leveneTest(modelo_m_seca_raiz$residuals[-62] ~ tratamento[-62])
+
+#Transformação Box-Cox
+require(forecast)
+#require(fpp)
+BoxCox.lambda(m_seca_raiz+0.5, method = "guerrero", lower=-3,upper = 3)
+BoxCox.lambda(m_seca_raiz+0.5, method = "loglik", lower=-3,upper = 3)
+#lambda = BoxCox.lambda(m_seca_raiz,lower=-3)
+#lambda
+m_seca_raizt = BoxCox(m_seca_raiz+0.5, lambda=-3)
+
+hist(m_seca_raizt)
+boxplot(m_seca_raizt ~ tratamento, ylab="m_seca_raiz (transformada)",
+xlab="Tratamentos")
+modelo_m_seca_raizt = aov(m_seca_raizt ~ tratamento)
+summary(modelo_m_seca_raizt)
+hist(modelo_m_seca_raizt$residuals)
+plot(modelo_m_seca_raizt$residuals)
+plot(modelo_m_seca_raizt$fitted.values,  modelo_m_seca_raizt$residuals)
+shapiro.test(modelo_m_seca_raizt$residuals)
+leveneTest(modelo_m_seca_raizt$residuals ~tratamento)
+
+
+anova(modelo_m_seca_raizt)$'Mean Sq'[2]
+res_pad_m_seca_raizt =
+modelo_m_seca_raizt$residuals/sqrt(anova(modelo_m_seca_raizt)$'Mean Sq'[2])
+plot(modelo_m_seca_raizt$fitted.values,  res_pad_m_seca_raizt, ylim =
+c(-6,6))
+abline(h=c(-3,3),lty=3)
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191111/b888a191/attachment.html>
+
+From nguiotoku2017 em gmail.com  Mon Nov 11 19:33:54 2019
+From: nguiotoku2017 em gmail.com (Nilson Guiotoku)
+Date: Mon, 11 Nov 2019 18:33:54 -0300
+Subject: [R-br] =?utf-8?q?densidade_de_uma_vari=C3=A1vel?=
+Message-ID: <CAKZWzEGOEW8kFhrA8w2Jcsh81pu60_EcJXJWRuuKxf=nkswG8Q@mail.gmail.com>
+
+Pessoal,
+
+Estou com uma dúvida sobre a aplicação da função density, em um banco de
+dados de uma distribuição normal. Após fazer uma transformação encontrando
+o score (componente principal), ao aplicar a função density, eu esperava
+que os valores deveriam variar de 0 a 1. Plotei até o histograma da
+densidade. Por que a densidade não está no intervalo 0 a 1?
+
+Gerei um código reproduzível, porém, minha variável que estou aplicando,
+não necessariamente é exatamente uma variável normal.
+
+
+set.seed(23)
+
+X = cbind( 1:230, rnorm(230, 450, 20))
+
+X[,2] <- (X[,2] - min(X[,2]))/(max(X[,2])-min(X[,2]))
+#plot(X)
+X[,1] <- X[,1]-mean(X[,1])
+X[,2] <- X[,2]-mean(X[,2])
+C <- cov(X)
+E <- eigen(C)
+score <- X %*% E$vectors
+densidade = density(score[,2], n=100)  # os valores da densidade não estão
+dentro do intervalo [0,1]
+
+a = hist(score[,2], freq = F)
+lines(densidade)
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191111/5d8c58bb/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Nov 11 20:41:48 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 11 Nov 2019 19:41:48 -0300
+Subject: [R-br] =?utf-8?q?densidade_de_uma_vari=C3=A1vel?=
+In-Reply-To: <CAKZWzEGOEW8kFhrA8w2Jcsh81pu60_EcJXJWRuuKxf=nkswG8Q@mail.gmail.com>
+References: <CAKZWzEGOEW8kFhrA8w2Jcsh81pu60_EcJXJWRuuKxf=nkswG8Q@mail.gmail.com>
+Message-ID: <CAKrF98=oMYFThN3a-BSLHrcSB6SGXCq1TTxKSEHzyb-Y4FwK-A@mail.gmail.com>
+
+Nilson,
+
+Qual é a razão de você ter expectativa de uma variável normal ter intervalo
+[0,1] e não 0±d.p.?
+
+
+On Mon, Nov 11, 2019 at 6:33 PM Nilson Guiotoku por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Pessoal,
+>
+> Estou com uma dúvida sobre a aplicação da função density, em um banco de
+> dados de uma distribuição normal. Após fazer uma transformação encontrando
+> o score (componente principal), ao aplicar a função density, eu esperava
+> que os valores deveriam variar de 0 a 1. Plotei até o histograma da
+> densidade. Por que a densidade não está no intervalo 0 a 1?
+>
+> Gerei um código reproduzível, porém, minha variável que estou aplicando,
+> não necessariamente é exatamente uma variável normal.
+>
+>
+> set.seed(23)
+>
+> X = cbind( 1:230, rnorm(230, 450, 20))
+>
+> X[,2] <- (X[,2] - min(X[,2]))/(max(X[,2])-min(X[,2]))
+> #plot(X)
+> X[,1] <- X[,1]-mean(X[,1])
+> X[,2] <- X[,2]-mean(X[,2])
+> C <- cov(X)
+> E <- eigen(C)
+> score <- X %*% E$vectors
+> densidade = density(score[,2], n=100)  # os valores da densidade não estão
+> dentro do intervalo [0,1]
+>
+> a = hist(score[,2], freq = F)
+> lines(densidade)
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191111/8f1c5d91/attachment.html>
+
+From marcus.nunes em gmail.com  Mon Nov 11 20:42:21 2019
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Mon, 11 Nov 2019 19:42:21 -0300
+Subject: [R-br] =?utf-8?q?densidade_de_uma_vari=C3=A1vel?=
+In-Reply-To: <CAKZWzEGOEW8kFhrA8w2Jcsh81pu60_EcJXJWRuuKxf=nkswG8Q@mail.gmail.com>
+References: <CAKZWzEGOEW8kFhrA8w2Jcsh81pu60_EcJXJWRuuKxf=nkswG8Q@mail.gmail.com>
+Message-ID: <CA+QGQvt5PQiz3nrbVMvzxtVF-5-=65xA_KOC235D_nwd_QM-Lg@mail.gmail.com>
+
+A imagem da função densidade de uma variável aleatória não está limitada
+entre 0 e 1. Ela deve ser não-negativa, mas não há nenhum limite superior
+para ela, desde que sua integral seja igual a 1.
+
+Para ilustrar, imagine o seguinte caso, mais simples do que uma normal.
+Suponha que X seja uma variável aleatória uniforme, definida no intervalo
+(0, 1/2). Qual o valor da sua densidade f(x) neste intervalo? Claramente é
+igual a 2, pois este é o único valor tal que a integral de f(x) em (0, 1/2)
+é exatamente igual a 1.
+
+Já a imagem da função distribuição acumulada, por outro lado, está sim
+limitada entre 0 e 1.
+--
+Marcus Nunes
+Professor Adjunto
+Universidade Federal do Rio Grande do Norte
+Centro de Ciências Exatas e da Terra
+Departamento de Estatística
+Laboratório de Estatística Aplicada
+marcus em marcusnunes.me
+https://marcusnunes.me/
+http://shiny.estatistica.ccet.ufrn.br
+
+
+
+On Mon, Nov 11, 2019 at 6:33 PM Nilson Guiotoku por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Pessoal,
+>
+> Estou com uma dúvida sobre a aplicação da função density, em um banco de
+> dados de uma distribuição normal. Após fazer uma transformação encontrando
+> o score (componente principal), ao aplicar a função density, eu esperava
+> que os valores deveriam variar de 0 a 1. Plotei até o histograma da
+> densidade. Por que a densidade não está no intervalo 0 a 1?
+>
+> Gerei um código reproduzível, porém, minha variável que estou aplicando,
+> não necessariamente é exatamente uma variável normal.
+>
+>
+> set.seed(23)
+>
+> X = cbind( 1:230, rnorm(230, 450, 20))
+>
+> X[,2] <- (X[,2] - min(X[,2]))/(max(X[,2])-min(X[,2]))
+> #plot(X)
+> X[,1] <- X[,1]-mean(X[,1])
+> X[,2] <- X[,2]-mean(X[,2])
+> C <- cov(X)
+> E <- eigen(C)
+> score <- X %*% E$vectors
+> densidade = density(score[,2], n=100)  # os valores da densidade não estão
+> dentro do intervalo [0,1]
+>
+> a = hist(score[,2], freq = F)
+> lines(densidade)
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191111/c5bc8950/attachment.html>
+
+From edbearzoti em yahoo.com.br  Mon Nov 11 23:56:08 2019
+From: edbearzoti em yahoo.com.br (Eduardo Bearzoti)
+Date: Tue, 12 Nov 2019 01:56:08 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?=C3=9Altima_Vers=C3=A3o_do_R_em_ambiente_Linux?=
+References: <87505795.3082640.1573523768094.ref@mail.yahoo.com>
+Message-ID: <87505795.3082640.1573523768094@mail.yahoo.com>
+
+Prezados colegas:
+Utilizo o sistema operacional linux (Linux Mint 18.3), e gostaria (precisaria) muito de utilizar o R mais novo, versão 3.6.
+Embora use o Mint 18.3, tentei seguir as instruções deste link sugeridas para instalar o R no Mint 19, mas não deu certo. Após seguir as instruções, ao rodar:
+sudo apt-get install r-baseobtive:
+Os pacotes a seguir têm dependências desencontradas:
+ r-base : Depende: r-base-core (>= 3.6.1-3bionic) mas não será instalado
+          Depende: r-recommended (= 3.6.1-3bionic) mas não será instalado
+E: Impossível corrigir problemas, você manteve (hold) pacotes quebrados.
+E ao tentar rodar, por exemplo:sudo apt-get install r-base-coreobtive:
+Os pacotes a seguir têm dependências desencontradas: r-base-core : Depende: libc6 (>= 2.27) mas 2.23-0ubuntu11 está para ser instalado
+               Depende: libcurl4 (>= 7.28.0) mas não é instalável
+               Depende: libicu60 (>= 60.1-1~) mas não é instalável
+               Depende: libreadline7 (>= 6.0) mas não é instalável
+E: Impossível corrigir problemas, você manteve (hold) pacotes quebrados.
+Parece-me assim que instalar a versão mais nova do R não é trivial, pois dependeria de bibliotecas que não estão disponíveis em minha versão do Mint.
+Como acredito que haja colegas aqui que também têm o Linux como sistema operacional, gostaria de consultá-los, se têm conseguido utilizar a versão mais nova do R, ou se isto realmente não é possível.  Qualquer dica/informação será muito bem vinda.
+Abraços a todos,Eduardo.
+
+
+
+
+| 
+| 
+| 
+|  |  |
+
+ |
+
+ |
+| 
+|  | 
+How to Install R on Linux Mint 19 | Linux4one
+
+Table of ContentsPrerequisitesInstalling R on Linux MintRun Simple Hello World Program In RConclusion Install R ...
+ |
+
+ |
+
+ |
+
+
+
+
+********************************************
+ Prof. Eduardo Bearzoti
+Universidade Federal de Ouro Preto
+Departamento de Estatística - ICEB 
+Campus Morro do Cruzeiro, s/n 
+35400-000 - Ouro Preto, MG, Brasil 
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191112/b772269c/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Nov 12 00:12:18 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 11 Nov 2019 23:12:18 -0300
+Subject: [R-br] 
+ =?utf-8?q?=C3=9Altima_Vers=C3=A3o_do_R_em_ambiente_Linux?=
+In-Reply-To: <87505795.3082640.1573523768094@mail.yahoo.com>
+References: <87505795.3082640.1573523768094.ref@mail.yahoo.com>
+ <87505795.3082640.1573523768094@mail.yahoo.com>
+Message-ID: <CAKrF98nA3fSXnTtE_4BLAdL3-23d=4fvQfH6TbMBHoDRWrs76g@mail.gmail.com>
+
+Malgrado meu Linux seja Ubuntu, as instruções acima citadas valem para
+ambos, e posso lhe assegurar que *funcionam*:
+
+csrabak em salsicha:~$ R --version
+R version 3.6.1 (2019-07-05) -- "Action of the Toes"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under the terms of the
+GNU General Public License versions 2 or 3.
+For more information about these matters see
+https://www.gnu.org/licenses/.
+
+HTH
+--
+Cesar Rabak
+
+On Mon, Nov 11, 2019 at 10:59 PM Eduardo Bearzoti por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados colegas:
+>
+> Utilizo o sistema operacional linux (Linux Mint 18.3), e gostaria
+> (precisaria) muito de utilizar o R mais novo, versão 3.6.
+>
+> Embora use o Mint 18.3, tentei seguir as instruções deste link
+> <https://linux4one.com/how-to-install-r-on-linux-mint-19/> sugeridas para
+> instalar o R no Mint 19, mas não deu certo. Após seguir as instruções, ao
+> rodar:
+>
+> sudo apt-get install r-base
+> obtive:
+>
+> Os pacotes a seguir têm dependências desencontradas:
+>  r-base : Depende: r-base-core (>= 3.6.1-3bionic) mas não será instalado
+>           Depende: r-recommended (= 3.6.1-3bionic) mas não será instalado
+> E: Impossível corrigir problemas, você manteve (hold) pacotes quebrados.
+>
+> E ao tentar rodar, por exemplo:
+> sudo apt-get install r-base-core
+> obtive:
+>
+> Os pacotes a seguir têm dependências desencontradas:
+>  r-base-core : Depende: libc6 (>= 2.27) mas 2.23-0ubuntu11 está para ser
+> instalado
+>                Depende: libcurl4 (>= 7.28.0) mas não é instalável
+>                Depende: libicu60 (>= 60.1-1~) mas não é instalável
+>                Depende: libreadline7 (>= 6.0) mas não é instalável
+> E: Impossível corrigir problemas, você manteve (hold) pacotes quebrados.
+>
+> Parece-me assim que instalar a versão mais nova do R não é trivial, pois
+> dependeria de bibliotecas que não estão disponíveis em minha versão do Mint.
+>
+> Como acredito que haja colegas aqui que também têm o Linux como sistema
+> operacional, gostaria de consultá-los, se têm conseguido utilizar a versão
+> mais nova do R, ou se isto realmente não é possível.  Qualquer
+> dica/informação será muito bem vinda.
+>
+> Abraços a todos,
+> Eduardo.
+>
+>
+>
+> How to Install R on Linux Mint 19 | Linux4one
+>
+> Table of ContentsPrerequisitesInstalling R on Linux MintRun Simple Hello
+> World Program In RConclusion Install R ...
+> <https://linux4one.com/how-to-install-r-on-linux-mint-19/>
+>
+>
+>
+> ********************************************
+> Prof. Eduardo Bearzoti
+> Universidade Federal de Ouro Preto
+> Departamento de Estatística - ICEB
+> Campus Morro do Cruzeiro, s/n
+> 35400-000 - Ouro Preto, MG, Brasil
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191111/de20fae6/attachment.html>
+
+From dtiezzi em usp.br  Tue Nov 12 00:42:35 2019
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Mon, 11 Nov 2019 23:42:35 -0300
+Subject: [R-br] 
+ =?utf-8?q?=C3=9Altima_Vers=C3=A3o_do_R_em_ambiente_Linux?=
+In-Reply-To: <87505795.3082640.1573523768094@mail.yahoo.com>
+References: <87505795.3082640.1573523768094.ref@mail.yahoo.com>
+ <87505795.3082640.1573523768094@mail.yahoo.com>
+Message-ID: <839C7D64-B4D7-4F64-9C02-FE114B1C62AE@usp.br>
+
+Tente isso:
+
+
+$ sudo nano /etc/apt/sources.list
+
+Copie a linha abaixo dentro do documento e salve (control+x  y):
+
+deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/
+
+Isto irá atualizar o repositório do R no sua source.list
+
+
+$ sudo apt update
+$ sudo apt install r-base-core
+
+Se houver um problema com uma chave de autenticação, rode isso
+
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+
+Espero que dê certo
+
+Abraço
+
+
+daniel
+
+
+
+Daniel Tiezzi, MD, PhD
+Professor Associado
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em fmrp.usp.br
+
+
+
+> On 11 Nov 2019, at 22:56, Eduardo Bearzoti por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> r-base : Depende: r-base-core (>= 3.6.1-3bionic) mas não será instalado
+>           Depende: r-recommended (= 3.6.1-3bionic) mas não será instalado
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191111/7c31bbce/attachment.html>
+
+From jhguilhen em gmail.com  Wed Nov 13 14:47:19 2019
+From: jhguilhen em gmail.com (Ze Henrique)
+Date: Wed, 13 Nov 2019 10:47:19 -0600
+Subject: [R-br] =?utf-8?q?Dados_clim=C3=A1ticos?=
+Message-ID: <CAHi1An9FxeiN6k_hKCa43GdAqUPd=sVkM2cL9ciMcJS+FHYy4w@mail.gmail.com>
+
+Bom doa Srs.
+
+alguém poderia me ajudar onde consigo achar a série histórica de dados
+climáticos do Brasil para alguns municípios entre 2000 e 2018, para uso no
+R.
+
+verifiquei que tem o pacote install "inmetr". Mas não to conseguindo baixar
+ele.
+
+Desde já agradeço.
+
+-- 
+*José Henrique Soler Guilhen*
+Doutorando em Genética e Melhoramento
+Universidade Federal do Espírito Santo - CCAUFES
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191113/a60d9738/attachment.html>
+
+From ricardo.acosta em gmail.com  Wed Nov 13 15:16:11 2019
+From: ricardo.acosta em gmail.com (Ricardo Acosta)
+Date: Wed, 13 Nov 2019 14:16:11 -0300
+Subject: [R-br] =?utf-8?q?Dados_clim=C3=A1ticos?=
+In-Reply-To: <CAHi1An9FxeiN6k_hKCa43GdAqUPd=sVkM2cL9ciMcJS+FHYy4w@mail.gmail.com>
+References: <CAHi1An9FxeiN6k_hKCa43GdAqUPd=sVkM2cL9ciMcJS+FHYy4w@mail.gmail.com>
+Message-ID: <CABGrhAbro4pUvGmHVutHyS9hr_aRkGrO_L=hpYjo61cBeCUqhA@mail.gmail.com>
+
+Olá,
+acabei de testar e consegui baixar o pacote.
+Segui as instruções do site: https://github.com/lhmet/inmetr
+
+Funcionando normalmente.
+*Tem que ter o cadastro no BDMEP
+
+[]s,
+R
+____
+RICARDO ACOSTA
+
+Em qua., 13 de nov. de 2019 às 13:49, Ze Henrique por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom doa Srs.
+>
+> alguém poderia me ajudar onde consigo achar a série histórica de dados
+> climáticos do Brasil para alguns municípios entre 2000 e 2018, para uso no
+> R.
+>
+> verifiquei que tem o pacote install "inmetr". Mas não to conseguindo
+> baixar ele.
+>
+> Desde já agradeço.
+>
+> --
+> *José Henrique Soler Guilhen*
+> Doutorando em Genética e Melhoramento
+> Universidade Federal do Espírito Santo - CCAUFES
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191113/e6e5ec2c/attachment.html>
+
+From coroasolaris em gmail.com  Wed Nov 13 17:29:29 2019
+From: coroasolaris em gmail.com (Elielson P Barbosa)
+Date: Wed, 13 Nov 2019 16:29:29 -0300
+Subject: [R-br] Modelos lineares generalizados multivariados -literatura
+In-Reply-To: <1889187931.11565119.1570646800406.JavaMail.root@embrapa.br>
+References: <20191009152826.GC25795@localhost>
+ <1889187931.11565119.1570646800406.JavaMail.root@embrapa.br>
+Message-ID: <CAL6xZMqftHBWyQbdM3ApaqL7YgjrkBS2J40O8bJr2BpVm92Jpw@mail.gmail.com>
+
+Prezado Wellington, a Professora Clarice Garcia Borges Demétrio e o
+Professor Gauss Moutinho Cordeiro tem uma publicação disponíveis.
+
+foi.www.inpe.br
+
+Modelos Lineares Generalizados
+
+Em qua, 9 de out de 2019 15:52, Jose Wellingthon Dos Santos por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Oi pessoal,
+> Alguém conhece literatura para modelos lineares generalizados
+> multivariados?
+> Att
+> --
+> *José Wellingthon dos Santos*
+> Pesquisador - Métodos Quantitativos
+> Embrapa Algodão
+> Empresa Brasileira de Pesquisa Agropecuária (Embrapa)
+> Campina Grande, PB
+>
+> jose-wellingthon.santos em embrapa.br
+> Telefone: +55 (83) 3182-4401 | Fax: +55 (83) 3182-4367
+> www.embrapa.br/algodao | https://twitter.com/embrapa_algodao
+> Confira também: www.facebook.com/agrosustentavel
+>
+>
+> ------------------------------
+> *De: *"Marcelo Laia por (R-br)" <r-br em listas.c3sl.ufpr.br>
+> *Para: *"a lista Brasileira oficial de discussão do programa R." <
+> r-br em listas.c3sl.ufpr.br>
+> *Cc: *"Marcelo Laia" <marcelolaia em gmail.com>
+> *Enviadas: *Quarta-feira, 9 de outubro de 2019 12:28:26
+> *Assunto: *[R-br] Organizar data.frame e sumarizar dados em transposição
+>
+> Caro(a),
+>
+> Aqui na Universidade nós temos que sumarizar e organizar os dados dos
+> discentes
+> bolsistas por mês e valor recebido de bolsa.
+>
+> Os dados estão assim:
+>
+> CPF             Nome           Descrição         Data       Valor
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/02/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Permanência 01/03/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/04/2018 200,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Integração  01/07/2018 400,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Manutenção  01/08/2018 400,00
+> xxx.xxx.xxx-xx  Fulano de Tal  Bolsa Emergencial 01/06/2018 200,00
+>
+>
+> Nós precisamos da seguinte saída:
+>
+> CPF             Nome           Quantidade Parcelas       Valor Mês Valor
+> Ano
+> xxx.xxx.xxx-xx  Fulano de Tal  6                         266,67    1600,00
+>
+> Se puder ajudar, agradeço!
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> ____________________________________________________________________________
+>
+> Aviso de confidencialidade
+>
+> Esta mensagem da Empresa Brasileira de Pesquisa Agropecuaria (Embrapa),
+> empresa publica federal regida pelo disposto na Lei Federal no. 5.851, de 7
+> de dezembro de 1972, e enviada exclusivamente a seu destinatario e pode
+> conter informacoes confidenciais, protegidas por sigilo profissional. Sua
+> utilizacao desautorizada e ilegal e sujeita o infrator as penas da lei. Se
+> voce a recebeu indevidamente, queira, por gentileza, reenvia-la ao
+> emitente, esclarecendo o equivoco.
+>
+> Confidentiality note
+>
+> This message from Empresa Brasileira de Pesquisa Agropecuaria (Embrapa), a
+> government company established under Brazilian law (5.851/72), is directed
+> exclusively to its addressee and may contain confidential data, protected
+> under professional secrecy rules. Its unauthorized use is illegal and may
+> subject the transgressor to the law's penalties. If you are not the
+> addressee, please send it back, elucidating the failure.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191113/5f7e76ea/attachment.html>
+
+From coroasolaris em gmail.com  Wed Nov 13 17:33:56 2019
+From: coroasolaris em gmail.com (Elielson P Barbosa)
+Date: Wed, 13 Nov 2019 16:33:56 -0300
+Subject: [R-br] Applied Linear Statistical Models
+In-Reply-To: <CAM-sWA2VEmrsixH_oPBw+eirguqgY9NpCOAjvooSqPzBCDPHqQ@mail.gmail.com>
+References: <CAM-sWA2VEmrsixH_oPBw+eirguqgY9NpCOAjvooSqPzBCDPHqQ@mail.gmail.com>
+Message-ID: <CAL6xZMpy-7j3EuxHhTpaDf9x0g=vYPv_dDYgs96cecRD9uzMdg@mail.gmail.com>
+
+Cleber, de quem?
+Wichern & Johnson?
+
+Em sex, 25 de out de 2019 11:48, Cleber Iack por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa noite, eu estou escrevendo um artigo utilizando o R. Mas a minha
+> formulação teórica para embasar a aplicação dos dados  está faltando uma
+> informação que necessito. Algum dos senhores teriam o Apêndice  A do livro
+> "Applied Linear Statistical Models", O pdf que eu tenho está com o
+> Apêndice  incompleto. Nao apresenta o inicio da Apendice A. Passa da pagina
+> 1289 para a pagina 1306. Obrigado..
+>
+> Ceber Iack
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191113/65cf24ec/attachment.html>
+
+From ecacarva em gmail.com  Thu Nov 14 08:55:53 2019
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Thu, 14 Nov 2019 08:55:53 -0200
+Subject: [R-br] Tamanho do efeito para Wilcoxon
+Message-ID: <CAH8E6Ut6Q1+3njwrWt9vAGno20DFm9GN_knEev4UG=8akVwDpw@mail.gmail.com>
+
+Boa tarde
+
+Tenho duas amostras independentes com distribuição nao-normal e usei  o
+método abaixo para ver a diferença entre elas:
+
+coin::wilcoxsign_test(data.amostra1 ~ data.amostra2, distribution="exact")
+
+Alguem pode me ajudar a calcular o tamanho do efeito?
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191114/25ae5c3f/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Nov 14 18:01:14 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 14 Nov 2019 17:01:14 -0300
+Subject: [R-br] Tamanho do efeito para Wilcoxon
+In-Reply-To: <CAH8E6Ut6Q1+3njwrWt9vAGno20DFm9GN_knEev4UG=8akVwDpw@mail.gmail.com>
+References: <CAH8E6Ut6Q1+3njwrWt9vAGno20DFm9GN_knEev4UG=8akVwDpw@mail.gmail.com>
+Message-ID: <CAKrF98=+_hxCWb9XkK9+mO_6810N5fEgf6v1B9vJSkEkHxHb4g@mail.gmail.com>
+
+Elias,
+
+Tua pergunta enseja a oportunidade de discutir duas coisas:
+
+
+   1. O quê é efeito, e como pode ser medido; e
+   2. a confusão das pessoas sobre esse assunto devido à, desastrosa
+   IMNSHO, introdução do conceito de [*tamanho de] efeito padronizado*, que
+   um dos próprios autores da ideia (Cohen) se arrepende (*por escrito*!)
+   justamente porque a ideia dele era evitar o "o tamanho único serve para
+   todos" e findou que as tais padronizações ficaram mais "populares" que o
+   raciocínio subjacente.
+
+Como você não dá mais informações sobre seus dados e o quê eles medem, a
+discussão sobre '1' é impossível.
+
+Sobre uma forma de obter um tamanho de efeito padronizado para duas
+distribuições não normais e que o teste de postos de Wilcoxon foi
+apropriado a resposta é depende da fonte que você consulta!
+
+Pode-se usar a fórmula de Rosenthal¹ ; o *delta *de Cliff, a diferença de
+proporção de casos de cada amostra para os postos, talvez as medianas
+normalizadas em relação a uma delas[?], etc.
+
+Você precisa verificar na área de conhecimento do seu estudo qual[is]
+é[são] o[s] costume[s] e daí seguir.
+
+MAS  *eu* me atrevo a oferecer um conselho: *se você puder fugir de usar um
+efeito padronizado **não use*! É melhor discutir o efeito na forma do
+domínio do problema (a plantinha cresceu mais, o peso dos pintinhos
+aumentou x gramas, o consumo por km diminui para y litros, etc.)!!
+
+HTH
+--
+Cesar Rabak
+
+
+[1] Rosenthal, R. (1994). "Parametric measures of effect size", *in* H.
+Cooper & L. V. Hedges (Eds.), *The Handbook of Research Synthesis*.  New
+York: Russell Sage Foundation.
+
+On Thu, Nov 14, 2019 at 7:56 AM Elias Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde
+>
+> Tenho duas amostras independentes com distribuição nao-normal e usei  o
+> método abaixo para ver a diferença entre elas:
+>
+> coin::wilcoxsign_test(data.amostra1 ~ data.amostra2, distribution="exact")
+>
+> Alguem pode me ajudar a calcular o tamanho do efeito?
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191114/4bb067f0/attachment.html>
+
+From walmeszeviani em gmail.com  Mon Nov 18 15:36:14 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Mon, 18 Nov 2019 14:36:14 -0300
+Subject: [R-br] Desdobramento de um fatorial triplo
+In-Reply-To: <CAGUUkAtSsJ7D5J5uRs4_E4FgoQyZZZDZHBC5BKEnhiYwZybOBw@mail.gmail.com>
+References: <CAGUUkAtSsJ7D5J5uRs4_E4FgoQyZZZDZHBC5BKEnhiYwZybOBw@mail.gmail.com>
+Message-ID: <CAFU=EkaWGGPxO7iYczz4fH7eeCd2okdUetbsAV4hbzky9vBeSA@mail.gmail.com>
+
+Sem maiores esclarecimentos sobre os dados, análise, etc, o problema parece
+ser apenas uma observação com valor extremo se comparado com as demais. Ela
+salta aos olhos já na análise exploratória. Daí a importância de uma boa
+análise exploratória. Ainda que seja composta de gráficos simples, negar a
+sua utilidade e partir para a análise sem ver de fato os dados pode gerar
+preocupações e escrita de código desnecessários.
+
+Aproveitando o ensejo, eu tenho uma posição de reserva com relação a
+aplicação de sequencias de testes para a avaliação dos pressupostos. Eu
+tenho preferência pela análise visual porque ela dá um panorama amplo e
+detalhado da condição dos pressupostos com sugestões de curso de ação (é um
+outlier? é relação média variância? é assimetria?). Eu considero a análise
+de dados uma tarefa artesanal, por isso não se pode deixar de aplicar no
+olhar clínico do analista. Por outro lado, se fosse para automatizar a
+análise de dados como análise em fluxo contínuo de várias respostas, ou
+análise diária, grande volume de dados, pouco tempo disponível, extrema
+necessidade de eliminar subjetividade (como se estivesse diante de uma
+corte), etc etc, aí eu usaria tais testes como pré-teste para que não seja
+necessário correr a todo momento a análise diagnóstico pente fino.
+
+da <- data.frame(m_seca_raiz, meio, sacarose, carvão, tratamento)
+
+# Ocorrência dos pontos experimentais.
+ftable(xtabs(~meio + sacarose + carvão, data = da))
+
+library(lattice)
+
+# Inspeção dos dados antes da análise.
+xyplot(m_seca_raiz ~ sacarose | carvão,
+       groups = meio,
+       auto.key = TRUE,
+       data = da,
+       type = c("p", "a"))
+
+# ATTENTION: Análise exploratória revela um ponto suspeito na cela
+# c1:30,0:m3. Existe conhecimento de algo que tenha provocado um valor
+# maior? E.g. parcela comprometida, erro de dosagem, erro de mensuração,
+# etc?
+
+# Valor extremo será eliminado. Isso não complica a análise.
+m0 <- lm(m_seca_raiz ~ sacarose * carvão * meio,
+         data = da,
+         subset = m_seca_raiz < 0.0015)
+
+par(mfrow = c(2, 2))
+plot(m0)
+layout(1)
+
+# NOTE: Pressupostos OK! Apenas uma muito sutil indicação de relação
+# média variância mas que não é alarmante.
+
+# Verifica sugestão de transformação.
+range(m0$model[, 1])
+MASS::boxcox(update(m0, . + 0.00001 ~ .))
+abline(v = 0.5, col = "red")
+
+# Transformar por raíz deve melhorar quase nada, todavia, vamos
+# experimentar.
+m1 <- lm((m_seca_raiz + 0.00001)^0.5 ~ sacarose * carvão * meio,
+         data = da,
+         subset = m_seca_raiz < 0.0015)
+
+par(mfrow = c(2, 2))
+plot(m1)
+layout(1)
+
+# NOTE: leve melhoria na relação média-variância.
+
+# Médias marginais (erros padrões diferentes pelo desbalanceamento).
+emm <- emmeans::emmeans(m1, specs = "sacarose")
+emm
+
+# Contrastes entre média marginais.
+emmeans::contrast(emm, method = "pairwise")
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191118/7009a0a2/attachment.html>
+
+From nguiotoku2017 em gmail.com  Tue Nov 19 12:25:02 2019
+From: nguiotoku2017 em gmail.com (Nilson Guiotoku)
+Date: Tue, 19 Nov 2019 11:25:02 -0300
+Subject: [R-br] Erro no pacote RWeka
+Message-ID: <CAKZWzEFb97mAH2cCU2YrQ4Ln8e9QYPCp+0kOuVt5BNwqqTVwqA@mail.gmail.com>
+
+Pessoal,
+
+boa tarde, não estou conseguindo instalar o pacote RWeka. O que devo fazer?
+
+>* install.packages("RWeka")*
+WARNING: Rtools is required to build R packages but is not currently
+installed. Please download and install the appropriate version of Rtools
+before proceeding:
+
+https://cran.rstudio.com/bin/windows/Rtools/
+Installing package into ?C:/Users/usuario/Documents/R/win-library/3.6?
+(as ?lib? is unspecified)
+trying URL '
+https://cran.rstudio.com/bin/windows/contrib/3.6/RWeka_0.4-41.zip'
+Content type 'application/zip' length 632650 bytes (617 KB)
+downloaded 617 KB
+
+package ?RWeka? successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+C:\Users\usuario\AppData\Local\Temp\Rtmp0w0FBo\downloaded_packages
+
+
+Então peguei a versão recomentada do Rtool35.exe (
+https://cran.rstudio.com/bin/windows/Rtools/) e instalei dentro da pasta
+(C:/Users/usuario/Documents/R/win-library/3.6) do meu computador.
+
+E depois instalei o RWeka, usando o zip  (
+https://cran.rstudio.com/bin/windows/contrib/3.6/RWeka_0.4-41.zip) e também
+usando o comando como  mencionei acima.
+
+As pastas Rtools e Rweka aparecem dentro de (
+C:/Users/usuario/Documents/R/win-library/3.6) como se já tivesse instalado.
+
+Porém, quando chamo a biblioteca RWeka, aparece o seguinte erro.
+> *library(RWeka)*
+Error: package or namespace load failed for ?RWeka?:
+ .onLoad falhou em loadNamespace() para 'rJava', detalhes:
+  chamada: fun(libname, pkgname)
+  erro: JAVA_HOME cannot be determined from the Registry
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191119/9460b3fc/attachment.html>
+
+From walmeszeviani em gmail.com  Tue Nov 19 15:52:30 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Tue, 19 Nov 2019 14:52:30 -0300
+Subject: [R-br] Desdobramento de um fatorial triplo
+In-Reply-To: <CAGUUkAsfPL1n3qAsxk+Dw2fB5QjoQftbCw2-=pxWuWXit-xW3A@mail.gmail.com>
+References: <CAGUUkAtSsJ7D5J5uRs4_E4FgoQyZZZDZHBC5BKEnhiYwZybOBw@mail.gmail.com>
+ <CAFU=EkaWGGPxO7iYczz4fH7eeCd2okdUetbsAV4hbzky9vBeSA@mail.gmail.com>
+ <CAGUUkAsfPL1n3qAsxk+Dw2fB5QjoQftbCw2-=pxWuWXit-xW3A@mail.gmail.com>
+Message-ID: <CAFU=EkY4mS7QUs6Lm+mOgd=TPWbJcK8iGU2fExP0_K8P8HGx-g@mail.gmail.com>
+
+Respostas dentro da mensagem.
+
+À disposição.
+Walmes.
+
+On Mon, Nov 18, 2019 at 7:19 PM Maurício Lordêlo <mslordelo em gmail.com>
+wrote:
+
+> Obrigado Walmes!
+> Tenho feito bastante esta análise exploratória por achar fundamental
+> conhecer os dados. A questão que como dou muito suporte para trabalhos de
+> mestrado e doutorado, eles cobram os testes de normalidade e homogeneidade
+> de variâncias.
+>
+
+É uma cultura a ser mudada. Hábitos que de uma época com pouco recursos de
+visualização e do uso precedural da estatística (faça o texte X, se
+rejeitar H0, faça Y, caso contrário faça Z, etc). Também tenho contato com
+público assim, mas tô sempre argumentando, redijo a leitura dos gráficos,
+não reporto CV nas minhas análises (apenas quando o revisor não aceita as
+justificativas dadas para omissão).
+
+
+> Confesso que tenho muita dificuldade em explicar algumas funções e
+> resultados do R para os pesquisadores da área de Agrárias e Biológicas.
+> Muitas vezes é uma tarefa árdua pelos vícios que adquirem.
+>
+
+É uma cultura. Mudá-la leva tempo.
+
+
+> Tenho feito o uso do pacote ExpDes, devido ao fato de muitos já terem
+> utilizado o SisVar.
+> Rodei esta transformação proposta [(m_seca_raiz + 0.00001)^0.5] usando a
+> função a fat3dic deste pacote.
+> Aproveitando a oportunidade, como o coeficiente de variação deu bem alto
+> neste caso, qual a sua sugestão para convencer estes pesquisadores que esta
+> medida não é "a medida"?
+> Eles "idolatram" este coeficiente...rs rs rs.
+>
+
+Primeiro ponto é argumentar que não existe vínculo entre CV alto/baixo e
+não atendimento ou não dos pressupostos.
+Pode-se ter CV baixo com sérios afastamentos. Pode-se ter CV alto com total
+conformidade com as suposições.
+As pessoas criaram a regra no sentido inverso. Por exemplo, sempre viam que
+dados de contagem tem alto CV e geralmente não atendem os pressupostos. Aí
+entenderam que CV alto implica em falta de pressupostos, o que não é
+fundamentalmente verdade. Sempre que se usava uma transformação
+estabilizadora da variância, o CV era grande, mas porque a distribuição
+assumida para aplicações das funções estabilizadoras mais comuns é Poisson
+(contagem) ou proporção (Binomial), que não atendem os pressupostos.
+Portanto, a prática sem muita reflexão ou esclarecimento criou uma regra ao
+contrário, a de que CV alto é sinal de problema.
+
+O segundo ponto são as faixas para classificação do CV em baixo, médio e
+alto. Elas são arbitrárias. Aí os pesquisadores querem comparar um CV de 8%
+para produtividade de grãos em experimentos em vários locais com um CV de
+38% de crescimento radicular em cultivo in vitro avaliando o efeito de
+doses homeopáticas de hormônio. Não tem como comparar isso. Uma coisa é
+feita em macro escala, grandes parcelas, variável resposta controlada por
+muitos genes e condições ambientais. O outro é micro escala. Um é
+produtividade de grãos (kg/ha) o outro é comprimento (mm de raíz). Como que
+uma estatística adquiriu tamanha e desproporcional importância?
+
+Se você pensar o que o CV está medindo, fica claro que ele não deveria ser
+usado em uma análise de experimentos. É o quociente entre desvio padrão
+residual e média amostral do experimento (CV 100 · DP/M). Mas se o
+experimento é feito com a premissa de existência de diferença entre médias
+(efeito dos tratamentos), que valor tem uma estatística que usa uma média
+global? Em alguns poucos contextos haverá justificativa (i.e. efeitos
+aleatórios). Outro ponto é que pressupõe uma relação 1:1 entre média e
+desvio padrão, justamente se contrapondo a suposição de ausência de relação
+entre média e variância.
+
+Existem muitos pontos frágeis sobre o CV. Eu poderia prosseguir aqui por
+muitas linhas. Mas eu geralmente me atenho ao primeiro: não existe relação
+entre valor do CV com atendimento dos pressupostos (a menos se for
+conhecida a distribuição dos dados). O CV estando alto ou não, se os
+pressupostos forem atendidos, a parte inferencial está assegurada
+(distribuições das estatísticas de teste conforme esperado, cobertura dos
+intervalos de confiança conforme esperado, níveis de significância conforme
+esperado, etc). Mas se ainda o sujeito quiser olhar pro CV alto e dizer que
+o experimento foi mal conduzido (é a coisa mais comum de ouvir), o que é
+lamentável, veja se consegue dialogar e desfazer a cultura aos poucos.
+
+
+>
+> Outro pedido é que gostaria de uma função diferente destas (do pacote
+> ExpDes) para obter estes resultados do desdobramento. Você tem alguma
+> sugestão cujas sintaxe e resultado
+> são mais ou menos fáceis de serem entendidas por este público?
+>
+
+Não tenho opções que sejam mais fáceis que o respostado pelo ExpDes ou
+SISVAR.
+Tenho apenas alternativas mais gerais para casos não gaussianos,
+balanceados, etc. O que posso recomendar para fazer o desdobramento no caso
+no glm(), survreg() e outros modelos paramétricos ou delineamentos mais
+completos é `emmeans` e `multcomp`. Veja alguns exemplos a seguir.
+
+GLM: http://leg.ufpr.br/~walmes/analises/WAALima/caiuae/caiuae.html
+Survreg: http://leg.ufpr.br/~walmes/analises/CCastellar/frutosmaduros.html
+LM:
+http://leg.ufpr.br/~walmes/analises/PSFLichtemberg/Colletotrichum/phy-gf.html
+Ancova: http://leg.ufpr.br/~walmes/mpaer/analise-de-covariancia.html
+
+
+>
+> Agradeço mais uma vez caso possa ajudar.
+>
+> Abraço,
+>
+> Maurício
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191119/5ce4963a/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Nov 19 22:04:01 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 19 Nov 2019 21:04:01 -0300
+Subject: [R-br] Desdobramento de um fatorial triplo
+In-Reply-To: <CAFU=EkY4mS7QUs6Lm+mOgd=TPWbJcK8iGU2fExP0_K8P8HGx-g@mail.gmail.com>
+References: <CAGUUkAtSsJ7D5J5uRs4_E4FgoQyZZZDZHBC5BKEnhiYwZybOBw@mail.gmail.com>
+ <CAFU=EkaWGGPxO7iYczz4fH7eeCd2okdUetbsAV4hbzky9vBeSA@mail.gmail.com>
+ <CAGUUkAsfPL1n3qAsxk+Dw2fB5QjoQftbCw2-=pxWuWXit-xW3A@mail.gmail.com>
+ <CAFU=EkY4mS7QUs6Lm+mOgd=TPWbJcK8iGU2fExP0_K8P8HGx-g@mail.gmail.com>
+Message-ID: <CAKrF98kZVF1z==GkiR_q5XiCJ=ssyBjRmMSLAnaB6zOyro_4-w@mail.gmail.com>
+
+Prez em dos,
+
+Quero dar um pitaco nessa conversa sobre CV e *pressupostos* (que são um
+eufemismo para *normalidade*):
+
+Considerando que o importante são os resíduos, que quando são hígidos têm
+média zero, pela definição de CV seria indeterminado (tendendo ao infinito)!
+
+Por transitividade, se a média estiver no entorno de zero e os desvios
+puderem oscilar ao redor de zero, mesmo para os dados "brutos" ter-se-ia a
+mesma situação. . .
+
+Apenas para ajudar pois partilho a ideia que certas práticas do passado
+precisam ser banidas, mas parafraseando J. K. Galbraith "Todo o revisor
+anônimo é um cara que estudou Estatística com um livro de um autor que já
+morreu há muitos anos...." ?
+
+HTH
+
+On Tue, Nov 19, 2019 at 2:53 PM Walmes Zeviani por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Respostas dentro da mensagem.
+>
+> À disposição.
+> Walmes.
+>
+> On Mon, Nov 18, 2019 at 7:19 PM Maurício Lordêlo <mslordelo em gmail.com>
+> wrote:
+>
+>> Obrigado Walmes!
+>> Tenho feito bastante esta análise exploratória por achar fundamental
+>> conhecer os dados. A questão que como dou muito suporte para trabalhos de
+>> mestrado e doutorado, eles cobram os testes de normalidade e homogeneidade
+>> de variâncias.
+>>
+>
+> É uma cultura a ser mudada. Hábitos que de uma época com pouco recursos de
+> visualização e do uso precedural da estatística (faça o texte X, se
+> rejeitar H0, faça Y, caso contrário faça Z, etc). Também tenho contato com
+> público assim, mas tô sempre argumentando, redijo a leitura dos gráficos,
+> não reporto CV nas minhas análises (apenas quando o revisor não aceita as
+> justificativas dadas para omissão).
+>
+>
+>> Confesso que tenho muita dificuldade em explicar algumas funções e
+>> resultados do R para os pesquisadores da área de Agrárias e Biológicas.
+>> Muitas vezes é uma tarefa árdua pelos vícios que adquirem.
+>>
+>
+> É uma cultura. Mudá-la leva tempo.
+>
+>
+>> Tenho feito o uso do pacote ExpDes, devido ao fato de muitos já terem
+>> utilizado o SisVar.
+>> Rodei esta transformação proposta [(m_seca_raiz + 0.00001)^0.5] usando a
+>> função a fat3dic deste pacote.
+>> Aproveitando a oportunidade, como o coeficiente de variação deu bem alto
+>> neste caso, qual a sua sugestão para convencer estes pesquisadores que esta
+>> medida não é "a medida"?
+>> Eles "idolatram" este coeficiente...rs rs rs.
+>>
+>
+> Primeiro ponto é argumentar que não existe vínculo entre CV alto/baixo e
+> não atendimento ou não dos pressupostos.
+> Pode-se ter CV baixo com sérios afastamentos. Pode-se ter CV alto com
+> total conformidade com as suposições.
+> As pessoas criaram a regra no sentido inverso. Por exemplo, sempre viam
+> que dados de contagem tem alto CV e geralmente não atendem os pressupostos.
+> Aí entenderam que CV alto implica em falta de pressupostos, o que não é
+> fundamentalmente verdade. Sempre que se usava uma transformação
+> estabilizadora da variância, o CV era grande, mas porque a distribuição
+> assumida para aplicações das funções estabilizadoras mais comuns é Poisson
+> (contagem) ou proporção (Binomial), que não atendem os pressupostos.
+> Portanto, a prática sem muita reflexão ou esclarecimento criou uma regra ao
+> contrário, a de que CV alto é sinal de problema.
+>
+> O segundo ponto são as faixas para classificação do CV em baixo, médio e
+> alto. Elas são arbitrárias. Aí os pesquisadores querem comparar um CV de 8%
+> para produtividade de grãos em experimentos em vários locais com um CV de
+> 38% de crescimento radicular em cultivo in vitro avaliando o efeito de
+> doses homeopáticas de hormônio. Não tem como comparar isso. Uma coisa é
+> feita em macro escala, grandes parcelas, variável resposta controlada por
+> muitos genes e condições ambientais. O outro é micro escala. Um é
+> produtividade de grãos (kg/ha) o outro é comprimento (mm de raíz). Como que
+> uma estatística adquiriu tamanha e desproporcional importância?
+>
+> Se você pensar o que o CV está medindo, fica claro que ele não deveria ser
+> usado em uma análise de experimentos. É o quociente entre desvio padrão
+> residual e média amostral do experimento (CV 100 · DP/M). Mas se o
+> experimento é feito com a premissa de existência de diferença entre médias
+> (efeito dos tratamentos), que valor tem uma estatística que usa uma média
+> global? Em alguns poucos contextos haverá justificativa (i.e. efeitos
+> aleatórios). Outro ponto é que pressupõe uma relação 1:1 entre média e
+> desvio padrão, justamente se contrapondo a suposição de ausência de relação
+> entre média e variância.
+>
+> Existem muitos pontos frágeis sobre o CV. Eu poderia prosseguir aqui por
+> muitas linhas. Mas eu geralmente me atenho ao primeiro: não existe relação
+> entre valor do CV com atendimento dos pressupostos (a menos se for
+> conhecida a distribuição dos dados). O CV estando alto ou não, se os
+> pressupostos forem atendidos, a parte inferencial está assegurada
+> (distribuições das estatísticas de teste conforme esperado, cobertura dos
+> intervalos de confiança conforme esperado, níveis de significância conforme
+> esperado, etc). Mas se ainda o sujeito quiser olhar pro CV alto e dizer que
+> o experimento foi mal conduzido (é a coisa mais comum de ouvir), o que é
+> lamentável, veja se consegue dialogar e desfazer a cultura aos poucos.
+>
+>
+>>
+>> Outro pedido é que gostaria de uma função diferente destas (do pacote
+>> ExpDes) para obter estes resultados do desdobramento. Você tem alguma
+>> sugestão cujas sintaxe e resultado
+>> são mais ou menos fáceis de serem entendidas por este público?
+>>
+>
+> Não tenho opções que sejam mais fáceis que o respostado pelo ExpDes ou
+> SISVAR.
+> Tenho apenas alternativas mais gerais para casos não gaussianos,
+> balanceados, etc. O que posso recomendar para fazer o desdobramento no caso
+> no glm(), survreg() e outros modelos paramétricos ou delineamentos mais
+> completos é `emmeans` e `multcomp`. Veja alguns exemplos a seguir.
+>
+> GLM: http://leg.ufpr.br/~walmes/analises/WAALima/caiuae/caiuae.html
+> Survreg: http://leg.ufpr.br/~walmes/analises/CCastellar/frutosmaduros.html
+> LM:
+> http://leg.ufpr.br/~walmes/analises/PSFLichtemberg/Colletotrichum/phy-gf.html
+> Ancova: http://leg.ufpr.br/~walmes/mpaer/analise-de-covariancia.html
+>
+>
+>>
+>> Agradeço mais uma vez caso possa ajudar.
+>>
+>> Abraço,
+>>
+>> Maurício
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191119/8d185893/attachment.html>
+
+From walmeszeviani em gmail.com  Thu Nov 21 15:03:45 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Thu, 21 Nov 2019 14:03:45 -0300
+Subject: [R-br] Desdobramento de um fatorial triplo
+In-Reply-To: <CAKrF98kZVF1z==GkiR_q5XiCJ=ssyBjRmMSLAnaB6zOyro_4-w@mail.gmail.com>
+References: <CAGUUkAtSsJ7D5J5uRs4_E4FgoQyZZZDZHBC5BKEnhiYwZybOBw@mail.gmail.com>
+ <CAFU=EkaWGGPxO7iYczz4fH7eeCd2okdUetbsAV4hbzky9vBeSA@mail.gmail.com>
+ <CAGUUkAsfPL1n3qAsxk+Dw2fB5QjoQftbCw2-=pxWuWXit-xW3A@mail.gmail.com>
+ <CAFU=EkY4mS7QUs6Lm+mOgd=TPWbJcK8iGU2fExP0_K8P8HGx-g@mail.gmail.com>
+ <CAKrF98kZVF1z==GkiR_q5XiCJ=ssyBjRmMSLAnaB6zOyro_4-w@mail.gmail.com>
+Message-ID: <CAFU=EkaWf5T1E75RHcT+QHPyDcd9PQHKMobTK45WX0xT=pj2rA@mail.gmail.com>
+
+Cesar,
+
+Seus apontamentos são muito bem vindos.
+Complementos na mensagem.
+
+À disposição.
+Walmes.
+
+
+On Tue, Nov 19, 2019 at 9:04 PM Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prez em dos,
+>
+> Quero dar um pitaco nessa conversa sobre CV e *pressupostos* (que são um
+> eufemismo para *normalidade*):
+>
+
+Talvez não necessariamente. Quando me refiro a análise dos pressupostos
+estou considerando a abordagem gráfica da inspeção dos 4 gráficos padrões
+do R para o objeto de classe lm. Lá você está avaliando os pressupostos em
+propriedades que vão além da questão apenas relacionada a normalidade. Mas
+entendo que para a maioria pressupostos e normalidade são praticamente a
+mesma coisa.
+
+
+> Considerando que o importante são os resíduos, que quando são hígidos têm
+> média zero, pela definição de CV seria indeterminado (tendendo ao infinito)!
+>
+
+Exatamente! Outro ponto é que coeficiente de variação é uma medida
+descritiva que introduzimos nos cursos de estatística básica quando
+analisamos a distribuição de uma variável aleatória, etc. No caso de um
+experimento, temos amostras de potencialmente diferentes populações
+(tratamentos), então esse CV coletivo está estimando uma única média quando
+podem haver várias. Na minha humilde opinião, essa maldição do CV (R²
+talvez seja o mesmo caso) provavelmente surgiu do senso de dever que o
+pesquisador sentia de discutir todos os números reportados pela maioria dos
+softwares e quase que todos eles colocam o CV na saída acompanhando um
+quadro de anova. Aí como é porcentagem, adimensional, etc, fácil de
+interpretar, ficou convidativo sempre discuti-lo até o ponto de se tornar
+exagerado, desproporcional e distorcido.
+
+
+>
+> Por transitividade, se a média estiver no entorno de zero e os desvios
+> puderem oscilar ao redor de zero, mesmo para os dados "brutos" ter-se-ia a
+> mesma situação. . .
+>
+> Apenas para ajudar pois partilho a ideia que certas práticas do passado
+> precisam ser banidas, mas parafraseando J. K. Galbraith "Todo o revisor
+> anônimo é um cara que estudou Estatística com um livro de um autor que já
+> morreu há muitos anos...." ?
+>
+
+> HTH
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191121/8c2a125c/attachment.html>
+
+From richfield1974 em yahoo.com  Wed Nov 27 16:55:14 2019
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Wed, 27 Nov 2019 18:55:14 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?componente_da_vari=C3=A2ncia_no_modelo_de_efeit?=
+ =?utf-8?q?os_aleat=C3=B3rios?=
+References: <1862425820.4003365.1574880914987.ref@mail.yahoo.com>
+Message-ID: <1862425820.4003365.1574880914987@mail.yahoo.com>
+
+Prezados, boa tarde.
+No modelo de efeitos aleatórios estimamos a componente da variância conforme abaixo.
+
+y <-c(2370, 1687, 2592, 2283, 2910, 3020, 1282, 1527,  871, 1025,  825,  920,  562,  321,  636,  317,  485,  842,  173,  127,  132,  150,  129,  227,  193,   71,   82,   62,   96,   44)x <- as.factor(c("A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "D", "D", "D", "D", "D", "D", "E", "E", "E", "E", "E", "E"))summary(aov(y~x))
+
+
+Mas não sei como calcular quando utilizo mínimos quadrados generalizados.
+y <-c(2370, 1687, 2592, 2283, 2910, 3020, 1282, 1527,  871, 1025,  825,  920,  562,  321,  636,  317,  485,  842,  173,  127,  132,  150,  129,  227,  193,   71,   82,   62,   96,   44)
+x <- as.factor(c("A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "B", "B", "C", "C", "C", "C", "C", "C", "D", "D", "D", "D", "D", "D", "E", "E", "E", "E", "E", "E"))library(nlme)
+modelo <- gls(y~x, weights = varExp()           , method = "ML")
+Alguém sabe como calculo as componentes da variância neste caso?
+Desde já agradeço
+Luiz
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191127/9bf1298e/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: 1574880488033blob.jpg
+Tipo: image/png
+Tamanho: 8829 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191127/9bf1298e/attachment.png>
+
+From walmeszeviani em gmail.com  Wed Nov 27 19:13:24 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 27 Nov 2019 18:13:24 -0300
+Subject: [R-br] 
+	=?utf-8?q?componente_da_vari=C3=A2ncia_no_modelo_de_efeit?=
+	=?utf-8?q?os_aleat=C3=B3rios?=
+In-Reply-To: <1862425820.4003365.1574880914987@mail.yahoo.com>
+References: <1862425820.4003365.1574880914987.ref@mail.yahoo.com>
+ <1862425820.4003365.1574880914987@mail.yahoo.com>
+Message-ID: <CAFU=EkYGD1o-impZwaLdYdQT0natwm9o7xLbwCHt0CZnQTzZ7g@mail.gmail.com>
+
+Luiz,
+
+Você terá que mudar a função que está usando.
+
+library(nlme)
+
+table(x)
+
+lattice::xyplot(y ~ x)
+
+modelo0 <- aov(y ~ x)
+a <- anova(modelo0)
+a
+
+# Componentes de variância pelo método ANOVA.
+c("sigma^2_b" = (a["x", "Mean Sq"] - a["Residuals", "Mean Sq"])/6,
+  "sigma^2_e" = a["Residuals", "Mean Sq"])
+
+modelo1 <- lme(y ~ 1,
+               random = ~1 | x,
+               method = "REML")
+modelo1
+
+# Componentes de variância pelo método REML.
+VarCorr(modelo1)
+
+modelo2 <- lme(y ~ 1,
+               random = ~1 | x,
+               weights = varExp(),
+               method = "ML")
+modelo2
+
+# Componentes de variância pelo método REML.
+# ATTENTION: não são imediatamente comparáveis com os anteriores.
+VarCorr(modelo2)
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191127/91f6c284/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: 1574880488033blob.jpg
+Tipo: image/jpeg
+Tamanho: 8829 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191127/91f6c284/attachment.jpg>
+
+From richfield1974 em yahoo.com  Thu Nov 28 15:49:11 2019
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Thu, 28 Nov 2019 17:49:11 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?componente_da_vari=C3=A2ncia_no_modelo_de_efeit?=
+ =?utf-8?q?os_aleat=C3=B3rios?=
+In-Reply-To: <CAFU=EkYGD1o-impZwaLdYdQT0natwm9o7xLbwCHt0CZnQTzZ7g@mail.gmail.com>
+References: <1862425820.4003365.1574880914987.ref@mail.yahoo.com>
+ <1862425820.4003365.1574880914987@mail.yahoo.com>
+ <CAFU=EkYGD1o-impZwaLdYdQT0natwm9o7xLbwCHt0CZnQTzZ7g@mail.gmail.com>
+Message-ID: <454570619.4281883.1574963351411@mail.yahoo.com>
+
+ Prezado Walmes, muito obrigado.
+
+Pelo que entendi não é possível "sigma^2_b" e "sigma^2_e" utilizando a função gls().
+A função VarCorr(modelo2) fornece "sigma^2_b" e "sigma^2_e", correto?
+                        Variance          StdDev   
+(Intercept)   667641.149     817.09311
+Residual        6041.696       77.72834
+Tenho uma dúvida: a variância do intercepto é "sigma^2_b"?
+
+Muito obrigado. Sua contribuição está sendo muito válida no meu trabalho.Luiz
+    On Wednesday, November 27, 2019, 07:13:37 PM GMT-2, Walmes Zeviani <walmeszeviani em gmail.com> wrote:  
+ 
+ Luiz,
+Você terá que mudar a função que está usando.
+library(nlme)
+
+table(x)
+
+lattice::xyplot(y ~ x)
+
+modelo0 <- aov(y ~ x)
+a <- anova(modelo0)
+a
+
+# Componentes de variância pelo método ANOVA.
+c("sigma^2_b" = (a["x", "Mean Sq"] - a["Residuals", "Mean Sq"])/6,
+  "sigma^2_e" = a["Residuals", "Mean Sq"])
+
+modelo1 <- lme(y ~ 1,
+               random = ~1 | x,
+               method = "REML")
+modelo1
+
+# Componentes de variância pelo método REML.
+VarCorr(modelo1)
+
+modelo2 <- lme(y ~ 1,
+               random = ~1 | x,
+               weights = varExp(),
+               method = "ML")
+modelo2
+
+# Componentes de variância pelo método REML.
+# ATTENTION: não são imediatamente comparáveis com os anteriores.
+VarCorr(modelo2)
+
+À disposição.Walmes.
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191128/0704109d/attachment.html>
+

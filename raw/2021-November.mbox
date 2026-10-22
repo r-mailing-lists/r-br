@@ -1,0 +1,327 @@
+From luzia.trinca em unesp.br  Wed Nov  3 10:48:38 2021
+From: luzia.trinca em unesp.br (Luzia Aparecida Trinca)
+Date: Wed, 3 Nov 2021 10:48:38 -0300
+Subject: [R-br] Digest R-br, volume 129, assunto 3
+In-Reply-To: <mailman.5.1635519603.722.r-br@listas.c3sl.ufpr.br>
+References: <mailman.5.1635519603.722.r-br@listas.c3sl.ufpr.br>
+Message-ID: <CA+rQDHyGMP6_Xch1jxzLGHC0_90c0_yzNeXdDieB6KzUL6QB-A@mail.gmail.com>
+
+Re:  Pacote R antigo (em arquivo zip) para versão nova R
+
+Bom dia!
+Obrigada Fernando e César pelas dicas.
+Como previsto a alternativa via dump() não funcionou...
+Tentarei o contato com o grupo que desenvolveu (embora já vislumbro
+dificuldades pois o autor já não trabalha mais no grupo).
+O pacote é de 2013 e estava publicado há anos. A data de 2020 que aparece
+no site é devido a uma reorganização da página deles.
+Abraços,
+Luzia Trinca
+Depto de Bioestatística, IBB
+Rua Prof. Dr. Celso Wagner Zanin, 250
+Unesp, Campus de Botucatu
+18618-689 Botucatu, SP
+Brasil
+
+
+Em sex., 29 de out. de 2021 às 12:00, <r-br-request em listas.c3sl.ufpr.br>
+escreveu:
+
+> Enviar submissões para a lista de discussão R-br para
+>         r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+>         r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+>         r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+>    1. Pacote R antigo (em arquivo zip) para versão nova R
+>       (Luzia Aparecida Trinca)
+>    2. Re:  Pacote R antigo (em arquivo zip) para versão nova R
+>       (Fernando Mayer)
+>    3. Re:  Pacote R antigo (em arquivo zip) para versão nova R
+>       (Cesar Rabak)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Thu, 28 Oct 2021 17:20:50 -0300
+> From: Luzia Aparecida Trinca <luzia.trinca em unesp.br>
+> To: r-br em listas.c3sl.ufpr.br
+> Subject: [R-br] Pacote R antigo (em arquivo zip) para versão nova R
+> Message-ID:
+>         <CA+rQDHwQuE9J_bSaC=ukgTWCde311sjdBQ=
+> ab8G85tY4BkT2tQ em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Boa tarde pessoal
+>
+> Uso muito o pacote lcca (não está no CRAN e nem github, ets), seu zip está
+> disponível em:
+>
+>
+> https://scholarsphere.psu.edu/catalog?button=&page=3&q=methodology+center&search_field=creator
+>
+> Mas ele foi criado em 2013 para uma versão bem antiga do R. Ainda não
+> encontrei nada similar no R (lida com covariáveis e delineamento amostral
+> complexo).
+>
+> Alguém saberia me dizer se, tendo o zip,  é possível reconstruir/atualizar
+> o pacote para uma versão mais recente do R?
+> Estou com o problema de que não consigo abrir o banco de dados na versão
+> antiga do R e não consigo executar o lcca na versão atual do R...
+>
+> Agradeço caso tenham qualquer dica.
+> abs
+> Luzia Trinca
+> Depto de Bioestatística, IBB
+> Rua Prof. Dr. Celso Wagner Zanin, 250
+> Unesp, Campus de Botucatu
+> 18618-689 Botucatu, SP
+> Brasil
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211028/3baf8de5/attachment-0001.htm
+> >
+>
+> ------------------------------
+>
+> Message: 2
+> Date: Thu, 28 Oct 2021 19:16:23 -0300
+> From: Fernando Mayer <fernandomayer em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br]  Pacote R antigo (em arquivo zip) para versão nova
+>         R
+> Message-ID:
+>         <
+> CAO4bAdOyTTu7QtPPEH-pxxHRP2cKiRyE3hgW-4iFcOuySG5zeQ em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Olá Luzia,
+>
+> eu vi que o pacote só foi disponibilizado já no formato binário do Windows.
+> Se tivesse o código fonte seria  mais fácil. No entanto o que eu sugiro
+> fazer é:
+>
+> 1. Instalar o pacote em uma versão do R que ele funcione
+> 2. Fazer um dump() de todas as funções do pacote:
+>
+> library(lcca)
+> dump("package:lcca", file = "lcca.R")
+>
+> Depois disso, vc pode voltar para a versão mais recente do R e  fazer
+>
+> source("lcca.R")
+>
+> Isso funcionaria em teoria, mas como o pacote é antigo é muito provável que
+> possa dar problema (além disso acho que ele tem uma dll que precisa ser
+> copiada também).
+>
+> Se isso não funcionar, a solução seria escrever para o autor e pedir o
+> código fonte.
+>
+>
+> ---
+> Fernando de Pol Mayer
+> Laboratório de Estatística e Geoinformação - LEG
+> Departamento de Estatística - DEST
+> Universidade Federal do Paraná - UFPR
+> URL: http://leg.ufpr.br/~fernandomayer
+> e-mail: fernando.mayer [@] {gmail.com, ufpr.br}
+>
+>
+> On Thu, Oct 28, 2021 at 5:21 PM Luzia Aparecida Trinca por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> > Boa tarde pessoal
+> >
+> > Uso muito o pacote lcca (não está no CRAN e nem github, ets), seu zip
+> está
+> > disponível em:
+> >
+> >
+> >
+> https://scholarsphere.psu.edu/catalog?button=&page=3&q=methodology+center&search_field=creator
+> >
+> > Mas ele foi criado em 2013 para uma versão bem antiga do R. Ainda não
+> > encontrei nada similar no R (lida com covariáveis e delineamento amostral
+> > complexo).
+> >
+> > Alguém saberia me dizer se, tendo o zip,  é possível
+> reconstruir/atualizar
+> > o pacote para uma versão mais recente do R?
+> > Estou com o problema de que não consigo abrir o banco de dados na versão
+> > antiga do R e não consigo executar o lcca na versão atual do R...
+> >
+> > Agradeço caso tenham qualquer dica.
+> > abs
+> > Luzia Trinca
+> > Depto de Bioestatística, IBB
+> > Rua Prof. Dr. Celso Wagner Zanin, 250
+> > Unesp, Campus de Botucatu
+> > 18618-689 Botucatu, SP
+> > Brasil
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> > código mínimo reproduzível.
+> >
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211028/a48704ec/attachment-0001.htm
+> >
+>
+> ------------------------------
+>
+> Message: 3
+> Date: Fri, 29 Oct 2021 11:37:49 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br]  Pacote R antigo (em arquivo zip) para versão nova
+>         R
+> Message-ID:
+>         <CAKrF98nu2L45g3oRoFrOy+TyvKmdPzr=
+> GgWtLgvBuoiNdVWbZg em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Esse procedimento só seria totalmente aplicável se o pacote não tiver
+> nenhuma parte compilada em binário nativa do Windows, como uma DLL, por
+> exemplo.
+>
+> O pacote parece ter sido criado em 2013 mas foi colocado no *site* do
+> *link*
+> acima em 2020.
+>
+> Um contato com os autores pode ser apropriado para acelerar o trabalho,
+> evitando desnecessária "engª reversa".
+>
+> HTH
+>
+> --
+> Cesar Rabak
+>
+>
+> On Thu, Oct 28, 2021 at 7:16 PM Fernando Mayer por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> > Olá Luzia,
+> >
+> > eu vi que o pacote só foi disponibilizado já no formato binário do
+> > Windows. Se tivesse o código fonte seria  mais fácil. No entanto o que eu
+> > sugiro fazer é:
+> >
+> > 1. Instalar o pacote em uma versão do R que ele funcione
+> > 2. Fazer um dump() de todas as funções do pacote:
+> >
+> > library(lcca)
+> > dump("package:lcca", file = "lcca.R")
+> >
+> > Depois disso, vc pode voltar para a versão mais recente do R e  fazer
+> >
+> > source("lcca.R")
+> >
+> > Isso funcionaria em teoria, mas como o pacote é antigo é muito provável
+> > que possa dar problema (além disso acho que ele tem uma dll que precisa
+> ser
+> > copiada também).
+> >
+> > Se isso não funcionar, a solução seria escrever para o autor e pedir o
+> > código fonte.
+> >
+> >
+> > ---
+> > Fernando de Pol Mayer
+> > Laboratório de Estatística e Geoinformação - LEG
+> > Departamento de Estatística - DEST
+> > Universidade Federal do Paraná - UFPR
+> > URL: http://leg.ufpr.br/~fernandomayer
+> > e-mail: fernando.mayer [@] {gmail.com, ufpr.br}
+> >
+> >
+> > On Thu, Oct 28, 2021 at 5:21 PM Luzia Aparecida Trinca por (R-br) <
+> > r-br em listas.c3sl.ufpr.br> wrote:
+> >
+> >> Boa tarde pessoal
+> >>
+> >> Uso muito o pacote lcca (não está no CRAN e nem github, ets), seu zip
+> >> está disponível em:
+> >>
+> >>
+> >>
+> https://scholarsphere.psu.edu/catalog?button=&page=3&q=methodology+center&search_field=creator
+> >>
+> >> Mas ele foi criado em 2013 para uma versão bem antiga do R. Ainda não
+> >> encontrei nada similar no R (lida com covariáveis e delineamento
+> amostral
+> >> complexo).
+> >>
+> >> Alguém saberia me dizer se, tendo o zip,  é possível
+> >> reconstruir/atualizar o pacote para uma versão mais recente do R?
+> >> Estou com o problema de que não consigo abrir o banco de dados na versão
+> >> antiga do R e não consigo executar o lcca na versão atual do R...
+> >>
+> >> Agradeço caso tenham qualquer dica.
+> >> abs
+> >> Luzia Trinca
+> >> Depto de Bioestatística, IBB
+> >> Rua Prof. Dr. Celso Wagner Zanin, 250
+> >> Unesp, Campus de Botucatu
+> >> 18618-689 Botucatu, SP
+> >> Brasil
+> >> _______________________________________________
+> >> R-br mailing list
+> >> R-br em listas.c3sl.ufpr.br
+> >> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> >> código mínimo reproduzível.
+> >>
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> > código mínimo reproduzível.
+> >
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211029/8662ca2f/attachment-0001.htm
+> >
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 129, assunto 3
+> *****************************************
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211103/36f4990f/attachment.htm>
+

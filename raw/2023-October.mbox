@@ -1,0 +1,943 @@
+From emmanuel.brasil em gmail.com  Mon Oct  9 19:15:22 2023
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Mon, 9 Oct 2023 19:15:22 -0300
+Subject: [R-br] shiny app com erro de encoding utf-8
+Message-ID: <CAFfGvy+gcwebsdPm9p7MCac_mGhxHbALxLfXW2anvNnGMQYYpg@mail.gmail.com>
+
+Salve queridos irmãos de R,
+
+Eu não estou conseguindo reproduzir o erro, porque não estou conseguindo
+achá-lo. Se alguém me der uma luz como acha-lo eu agradeço.
+
+Há muito venho trabalhando num app que tem uma versão funcionando no
+seguinte edereço
+https://pedrobrasil.shinyapps.io/INDWELL/
+
+Há algumas semanas eu fui atualizar o app com novas opções e após fazer
+algumas pequenas modificações na descrição e um commit, testei o app que já
+retornou esse erro...
+
+> runApp()
+
+Listening on http://127.0.0.1:6263
+Warning: Error in sub: input string 1 is invalid UTF-8
+  1: runApp
+
+A primeira coisa que fiz foi um revert do último commit e não funcionou.
+Então eu pensei em retornar a versão do último push, mas não há diferenças
+no histórico. Achei alguns poucos posts por aí a respeito e alguns
+recomendam "scanear" todos os arquivos do app com algo como
+xfun::read_utf8(). Eu fiz isso. Somente os arquivos *.RData e um *.png
+retornou erro de encoding utf-8. Esperado. A minha próxima tentativa seria
+apagar o app e fazer um pull do git. Mas antes eu queria tentar um irmão
+mago me tira da vale das sombras...
+
+Abraço forte e que a força esteja sempre com todos,
+
+Pedro Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20231009/66244d31/attachment.htm>
+
+From jpahenrique em gmail.com  Mon Oct  9 19:16:59 2023
+From: jpahenrique em gmail.com (henrique jose de paula alves paula alves)
+Date: Mon, 9 Oct 2023 19:16:59 -0300
+Subject: [R-br] shiny app com erro de encoding utf-8
+In-Reply-To: <CAFfGvy+gcwebsdPm9p7MCac_mGhxHbALxLfXW2anvNnGMQYYpg@mail.gmail.com>
+References: <CAFfGvy+gcwebsdPm9p7MCac_mGhxHbALxLfXW2anvNnGMQYYpg@mail.gmail.com>
+Message-ID: <CAEfjKJTe+0CXN-+B236SL3fLLQPBP_y5yb7q428Vuvm_frMjWw@mail.gmail.com>
+
+Eu resolvo assim
+
+tmp.enc <- options()$encoding
+options(encoding = "UTF-8")
+rsconnect:: deployApp()
+
+Em seg., 9 de out. de 2023 às 19:15, Pedro Emmanuel Alvarenga Americano do
+Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Salve queridos irmãos de R,
+>
+> Eu não estou conseguindo reproduzir o erro, porque não estou conseguindo
+> achá-lo. Se alguém me der uma luz como acha-lo eu agradeço.
+>
+> Há muito venho trabalhando num app que tem uma versão funcionando no
+> seguinte edereço
+> https://pedrobrasil.shinyapps.io/INDWELL/
+>
+> Há algumas semanas eu fui atualizar o app com novas opções e após fazer
+> algumas pequenas modificações na descrição e um commit, testei o app que já
+> retornou esse erro...
+>
+> > runApp()
+>
+> Listening on http://127.0.0.1:6263
+> Warning: Error in sub: input string 1 is invalid UTF-8
+>   1: runApp
+>
+> A primeira coisa que fiz foi um revert do último commit e não funcionou.
+> Então eu pensei em retornar a versão do último push, mas não há diferenças
+> no histórico. Achei alguns poucos posts por aí a respeito e alguns
+> recomendam "scanear" todos os arquivos do app com algo como
+> xfun::read_utf8(). Eu fiz isso. Somente os arquivos *.RData e um *.png
+> retornou erro de encoding utf-8. Esperado. A minha próxima tentativa seria
+> apagar o app e fazer um pull do git. Mas antes eu queria tentar um irmão
+> mago me tira da vale das sombras...
+>
+> Abraço forte e que a força esteja sempre com todos,
+>
+> Pedro Brasil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+Henrique José de Paula Alves
+PhD. em Estatística e Experimentação Agropecuária - 15-99760-0280
+UFOP - OURO PRETO -  MG
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20231009/59a66dbc/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Tue Oct 10 14:43:59 2023
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 10 Oct 2023 14:43:59 -0300
+Subject: [R-br] shiny app com erro de encoding utf-8
+In-Reply-To: <CAEfjKJTe+0CXN-+B236SL3fLLQPBP_y5yb7q428Vuvm_frMjWw@mail.gmail.com>
+References: <CAFfGvy+gcwebsdPm9p7MCac_mGhxHbALxLfXW2anvNnGMQYYpg@mail.gmail.com>
+ <CAEfjKJTe+0CXN-+B236SL3fLLQPBP_y5yb7q428Vuvm_frMjWw@mail.gmail.com>
+Message-ID: <CAFfGvyJiAm=zE541qqXk3tY4eKu71JoV_ApUUiECHaL53MV_Pw@mail.gmail.com>
+
+Henrique,
+
+Esta abordagem não funcionou. Acho até que piorou a minha situação. Com o
+runApp() ele dava um erro de UTF-8, mesmo forçando nas opções com o UTF-8.
+Foi tentar fazer um deploy na sem especificar o destino achando que o
+RStudio fosse fazer na pasta local mas ele tentou carregar no shinyapps.io,
+e agora nem o app remoto nem o local funcionam. Mas nessa situação o erro
+mudou. No entanto, não diz qual é, somente informa que preciso verificar os
+logs. Olhei o log abaixo e so achei exatamente o mesmo erro. Mas não fala
+aonde é que o encoding está errado.
+
+2023-10-10T17:24:38.202033+00:00 shinyapps[4280696]: Container event from
+container-8716233: start
+2023-10-10T17:24:39.193842+00:00 shinyapps[4280696]: Running on host:
+71d2e5e56cda
+2023-10-10T17:24:39.200943+00:00 shinyapps[4280696]: Running as user:
+uid=10001(shiny) gid=10001(shiny) groups=10001(shiny)
+2023-10-10T17:24:39.205579+00:00 shinyapps[4280696]: Connect version:
+2023.03.0
+2023-10-10T17:24:39.213134+00:00 shinyapps[4280696]: LANG: C.UTF-8
+2023-10-10T17:24:39.217828+00:00 shinyapps[4280696]: Working directory:
+/srv/connect/apps/INDWELL
+2023-10-10T17:24:39.221831+00:00 shinyapps[4280696]: Using R 4.3.1
+2023-10-10T17:24:39.225724+00:00 shinyapps[4280696]: R.home():
+/opt/R/4.3.1/lib/R
+2023-10-10T17:24:39.229915+00:00 shinyapps[4280696]: Content will use
+current R environment
+2023-10-10T17:24:39.234046+00:00 shinyapps[4280696]: R_LIBS: (unset)
+2023-10-10T17:24:39.238046+00:00 shinyapps[4280696]: .libPaths():
+/opt/R/4.3.1/lib/R/library
+2023-10-10T17:24:39.242525+00:00 shinyapps[4280696]: shiny version: 1.7.5
+2023-10-10T17:24:39.246360+00:00 shinyapps[4280696]: httpuv version: 1.6.11
+2023-10-10T17:24:39.250228+00:00 shinyapps[4280696]: rmarkdown version: 2.25
+2023-10-10T17:24:39.257067+00:00 shinyapps[4280696]: knitr version: 1.44
+2023-10-10T17:24:39.261220+00:00 shinyapps[4280696]: jsonlite version: 1.8.7
+2023-10-10T17:24:39.265097+00:00 shinyapps[4280696]: RJSONIO version: (none)
+2023-10-10T17:24:39.269594+00:00 shinyapps[4280696]: htmltools version:
+0.5.6.1
+2023-10-10T17:24:39.273575+00:00 shinyapps[4280696]: reticulate version:
+(none)
+2023-10-10T17:24:39.277787+00:00 shinyapps[4280696]: Using pandoc:
+/opt/connect/ext/pandoc/2.16
+2023-10-10T17:24:39.282499+00:00 shinyapps[4280696]:
+2023-10-10T17:24:39.286787+00:00 shinyapps[4280696]: Starting R with
+process ID: '35'
+2023-10-10T17:24:39.290933+00:00 shinyapps[4280696]: Shiny application
+starting ...
+2023-10-10T17:24:39.295300+00:00 shinyapps[4280696]: Loading required
+package: shinydashboard
+2023-10-10T17:24:39.299199+00:00 shinyapps[4280696]:
+2023-10-10T17:24:39.302957+00:00 shinyapps[4280696]: Attaching package:
+?shinydashboard?
+2023-10-10T17:24:39.306732+00:00 shinyapps[4280696]:
+2023-10-10T17:24:39.310441+00:00 shinyapps[4280696]: The following object
+is masked from ?package:graphics?:
+2023-10-10T17:24:39.314448+00:00 shinyapps[4280696]:
+2023-10-10T17:24:39.318172+00:00 shinyapps[4280696]:     box
+2023-10-10T17:24:39.321919+00:00 shinyapps[4280696]:
+2023-10-10T17:24:39.325890+00:00 shinyapps[4280696]: Loading required
+package: shinydashboardPlus
+2023-10-10T17:24:39.329544+00:00 shinyapps[4280696]:
+2023-10-10T17:24:39.333678+00:00 shinyapps[4280696]: Attaching package:
+?shinydashboardPlus?
+2023-10-10T17:24:39.337435+00:00 shinyapps[4280696]:
+2023-10-10T17:24:39.341339+00:00 shinyapps[4280696]: The following objects
+are masked from ?package:shinydashboard?:
+2023-10-10T17:24:39.345342+00:00 shinyapps[4280696]:
+2023-10-10T17:24:39.350570+00:00 shinyapps[4280696]:     box,
+dashboardHeader, dashboardPage, dashboardSidebar, messageItem,
+2023-10-10T17:24:39.354646+00:00 shinyapps[4280696]:     notificationItem,
+taskItem
+2023-10-10T17:24:39.358459+00:00 shinyapps[4280696]:
+2023-10-10T17:24:39.362501+00:00 shinyapps[4280696]: The following object
+is masked from ?package:graphics?:
+2023-10-10T17:24:39.366530+00:00 shinyapps[4280696]:
+2023-10-10T17:24:39.370413+00:00 shinyapps[4280696]:     box
+2023-10-10T17:24:39.375187+00:00 shinyapps[4280696]:
+2023-10-10T17:24:39.379290+00:00 shinyapps[4280696]: Loading required
+package: shinythemes
+2023-10-10T17:24:39.383464+00:00 shinyapps[4280696]: Loading required
+package: shinyWidgets
+2023-10-10T17:24:40.194592+00:00 shinyapps[4280696]:
+2023-10-10T17:24:40.199471+00:00 shinyapps[4280696]: Attaching package:
+?shinyWidgets?
+2023-10-10T17:24:40.203881+00:00 shinyapps[4280696]:
+2023-10-10T17:24:40.208241+00:00 shinyapps[4280696]: The following object
+is masked from ?package:shinydashboardPlus?:
+2023-10-10T17:24:40.212926+00:00 shinyapps[4280696]:
+2023-10-10T17:24:40.217344+00:00 shinyapps[4280696]:     progressBar
+2023-10-10T17:24:40.221817+00:00 shinyapps[4280696]:
+2023-10-10T17:24:40.225836+00:00 shinyapps[4280696]: Loading required
+package: DT
+2023-10-10T17:24:40.229684+00:00 shinyapps[4280696]:
+2023-10-10T17:24:40.233359+00:00 shinyapps[4280696]: Attaching package: ?DT?
+2023-10-10T17:24:40.237219+00:00 shinyapps[4280696]:
+2023-10-10T17:24:40.241030+00:00 shinyapps[4280696]: The following objects
+are masked from ?package:shiny?:
+2023-10-10T17:24:40.245274+00:00 shinyapps[4280696]:
+2023-10-10T17:24:40.249628+00:00 shinyapps[4280696]:     dataTableOutput,
+renderDataTable
+2023-10-10T17:24:40.253547+00:00 shinyapps[4280696]:
+2023-10-10T17:24:40.257780+00:00 shinyapps[4280696]: Loading required
+package: splines
+2023-10-10T17:24:40.262053+00:00 shinyapps[4280696]: Loading required
+package: geepack
+2023-10-10T17:24:40.266074+00:00 shinyapps[4280696]: Loading required
+package: glmnetUtils
+2023-10-10T17:24:41.193806+00:00 shinyapps[4280696]: Loading required
+package: rms
+2023-10-10T17:24:41.198037+00:00 shinyapps[4280696]: Loading required
+package: Hmisc
+2023-10-10T17:24:42.194382+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.198886+00:00 shinyapps[4280696]: Attaching package:
+?Hmisc?
+2023-10-10T17:24:42.203266+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.207983+00:00 shinyapps[4280696]: The following objects
+are masked from ?package:base?:
+2023-10-10T17:24:42.211888+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.216052+00:00 shinyapps[4280696]:     format.pval, units
+2023-10-10T17:24:42.238762+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.243787+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.247738+00:00 shinyapps[4280696]: Attaching package:
+?rms?
+2023-10-10T17:24:42.251992+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.256107+00:00 shinyapps[4280696]: The following object
+is masked from ?package:shiny?:
+2023-10-10T17:24:42.260172+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.264377+00:00 shinyapps[4280696]:     validate
+2023-10-10T17:24:42.268427+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.272133+00:00 shinyapps[4280696]: Loading required
+package: plotly
+2023-10-10T17:24:42.276338+00:00 shinyapps[4280696]: Loading required
+package: ggplot2
+2023-10-10T17:24:42.280511+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.284512+00:00 shinyapps[4280696]: Attaching package:
+?plotly?
+2023-10-10T17:24:42.288233+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.295438+00:00 shinyapps[4280696]: The following object
+is masked from ?package:ggplot2?:
+2023-10-10T17:24:42.305737+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.309897+00:00 shinyapps[4280696]:     last_plot
+2023-10-10T17:24:42.314096+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.318313+00:00 shinyapps[4280696]: The following object
+is masked from ?package:Hmisc?:
+2023-10-10T17:24:42.322167+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.325979+00:00 shinyapps[4280696]:     subplot
+2023-10-10T17:24:42.329752+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.333554+00:00 shinyapps[4280696]: The following object
+is masked from ?package:stats?:
+2023-10-10T17:24:42.337869+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.341971+00:00 shinyapps[4280696]:     filter
+2023-10-10T17:24:42.346614+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.350562+00:00 shinyapps[4280696]: The following object
+is masked from ?package:graphics?:
+2023-10-10T17:24:42.354701+00:00 shinyapps[4280696]:
+2023-10-10T17:24:42.360180+00:00 shinyapps[4280696]:     layout
+2023-10-10T17:24:42.367017+00:00 shinyapps[4280696]:
+2023-10-10T17:24:43.201244+00:00 shinyapps[4280696]:
+2023-10-10T17:24:43.205652+00:00 shinyapps[4280696]: Listening on
+http://127.0.0.1:43779
+2023-10-10T17:24:45.215919+00:00 shinyapps[4280696]: Container event from
+container-8716174: stop
+2023-10-10T17:24:56.194451+00:00 shinyapps[4280696]: Running on host:
+71d2e5e56cda
+2023-10-10T17:24:56.201060+00:00 shinyapps[4280696]: Running as user:
+uid=10001(shiny) gid=10001(shiny) groups=10001(shiny)
+2023-10-10T17:24:56.205041+00:00 shinyapps[4280696]: Connect version:
+2023.03.0
+2023-10-10T17:24:56.208923+00:00 shinyapps[4280696]: LANG: C.UTF-8
+2023-10-10T17:24:56.213659+00:00 shinyapps[4280696]: Working directory:
+/srv/connect/apps/INDWELL
+2023-10-10T17:24:56.217596+00:00 shinyapps[4280696]: Using R 4.3.1
+2023-10-10T17:24:56.221323+00:00 shinyapps[4280696]: R.home():
+/opt/R/4.3.1/lib/R
+2023-10-10T17:24:56.225011+00:00 shinyapps[4280696]: Content will use
+current R environment
+2023-10-10T17:24:56.235067+00:00 shinyapps[4280696]: R_LIBS: (unset)
+2023-10-10T17:24:56.241725+00:00 shinyapps[4280696]: .libPaths():
+/opt/R/4.3.1/lib/R/library
+2023-10-10T17:24:56.246154+00:00 shinyapps[4280696]: shiny version: 1.7.5
+2023-10-10T17:24:56.249906+00:00 shinyapps[4280696]: httpuv version: 1.6.11
+2023-10-10T17:24:56.253516+00:00 shinyapps[4280696]: rmarkdown version: 2.25
+2023-10-10T17:24:56.257729+00:00 shinyapps[4280696]: knitr version: 1.44
+2023-10-10T17:24:56.261518+00:00 shinyapps[4280696]: jsonlite version: 1.8.7
+2023-10-10T17:24:56.265852+00:00 shinyapps[4280696]: RJSONIO version: (none)
+2023-10-10T17:24:56.270713+00:00 shinyapps[4280696]: htmltools version:
+0.5.6.1
+2023-10-10T17:24:56.274739+00:00 shinyapps[4280696]: reticulate version:
+(none)
+2023-10-10T17:24:56.278524+00:00 shinyapps[4280696]: Using pandoc:
+/opt/connect/ext/pandoc/2.16
+2023-10-10T17:24:57.193814+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.198004+00:00 shinyapps[4280696]: Starting R with
+process ID: '54'
+2023-10-10T17:24:57.201744+00:00 shinyapps[4280696]: Shiny application
+starting ...
+2023-10-10T17:24:57.205489+00:00 shinyapps[4280696]: Loading required
+package: shinydashboard
+2023-10-10T17:24:57.209362+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.212990+00:00 shinyapps[4280696]: Attaching package:
+?shinydashboard?
+2023-10-10T17:24:57.216972+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.220788+00:00 shinyapps[4280696]: The following object
+is masked from ?package:graphics?:
+2023-10-10T17:24:57.224756+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.228685+00:00 shinyapps[4280696]:     box
+2023-10-10T17:24:57.232578+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.236300+00:00 shinyapps[4280696]: Loading required
+package: shinydashboardPlus
+2023-10-10T17:24:57.240738+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.244557+00:00 shinyapps[4280696]: Attaching package:
+?shinydashboardPlus?
+2023-10-10T17:24:57.248230+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.252307+00:00 shinyapps[4280696]: The following objects
+are masked from ?package:shinydashboard?:
+2023-10-10T17:24:57.256171+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.260269+00:00 shinyapps[4280696]:     box,
+dashboardHeader, dashboardPage, dashboardSidebar, messageItem,
+2023-10-10T17:24:57.263902+00:00 shinyapps[4280696]:     notificationItem,
+taskItem
+2023-10-10T17:24:57.268414+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.272538+00:00 shinyapps[4280696]: The following object
+is masked from ?package:graphics?:
+2023-10-10T17:24:57.276383+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.280172+00:00 shinyapps[4280696]:     box
+2023-10-10T17:24:57.283790+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.287653+00:00 shinyapps[4280696]: Loading required
+package: shinythemes
+2023-10-10T17:24:57.291553+00:00 shinyapps[4280696]: Loading required
+package: shinyWidgets
+2023-10-10T17:24:57.295442+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.299295+00:00 shinyapps[4280696]: Attaching package:
+?shinyWidgets?
+2023-10-10T17:24:57.303220+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.306999+00:00 shinyapps[4280696]: The following object
+is masked from ?package:shinydashboardPlus?:
+2023-10-10T17:24:57.311163+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.314848+00:00 shinyapps[4280696]:     progressBar
+2023-10-10T17:24:57.318981+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.322866+00:00 shinyapps[4280696]: Loading required
+package: DT
+2023-10-10T17:24:57.327089+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.331280+00:00 shinyapps[4280696]: Attaching package: ?DT?
+2023-10-10T17:24:57.335298+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.339279+00:00 shinyapps[4280696]: The following objects
+are masked from ?package:shiny?:
+2023-10-10T17:24:57.343619+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.347562+00:00 shinyapps[4280696]:     dataTableOutput,
+renderDataTable
+2023-10-10T17:24:57.352244+00:00 shinyapps[4280696]:
+2023-10-10T17:24:57.356295+00:00 shinyapps[4280696]: Loading required
+package: splines
+2023-10-10T17:24:57.361049+00:00 shinyapps[4280696]: Loading required
+package: geepack
+2023-10-10T17:24:57.365360+00:00 shinyapps[4280696]: Loading required
+package: glmnetUtils
+2023-10-10T17:24:59.193843+00:00 shinyapps[4280696]: Loading required
+package: rms
+2023-10-10T17:24:59.202810+00:00 shinyapps[4280696]: Loading required
+package: Hmisc
+2023-10-10T17:24:59.207983+00:00 shinyapps[4280696]:
+2023-10-10T17:24:59.211999+00:00 shinyapps[4280696]: Attaching package:
+?Hmisc?
+2023-10-10T17:24:59.216135+00:00 shinyapps[4280696]:
+2023-10-10T17:24:59.219809+00:00 shinyapps[4280696]: The following objects
+are masked from ?package:base?:
+2023-10-10T17:24:59.225366+00:00 shinyapps[4280696]:
+2023-10-10T17:24:59.229325+00:00 shinyapps[4280696]:     format.pval, units
+2023-10-10T17:24:59.233257+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.194421+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.199441+00:00 shinyapps[4280696]: Attaching package:
+?rms?
+2023-10-10T17:25:00.203235+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.208158+00:00 shinyapps[4280696]: The following object
+is masked from ?package:shiny?:
+2023-10-10T17:25:00.212703+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.219775+00:00 shinyapps[4280696]:     validate
+2023-10-10T17:25:00.224696+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.228477+00:00 shinyapps[4280696]: Loading required
+package: plotly
+2023-10-10T17:25:00.232199+00:00 shinyapps[4280696]: Loading required
+package: ggplot2
+2023-10-10T17:25:00.239420+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.246298+00:00 shinyapps[4280696]: Attaching package:
+?plotly?
+2023-10-10T17:25:00.250090+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.254946+00:00 shinyapps[4280696]: The following object
+is masked from ?package:ggplot2?:
+2023-10-10T17:25:00.259160+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.266149+00:00 shinyapps[4280696]:     last_plot
+2023-10-10T17:25:00.269975+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.273823+00:00 shinyapps[4280696]: The following object
+is masked from ?package:Hmisc?:
+2023-10-10T17:25:00.277596+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.282257+00:00 shinyapps[4280696]:     subplot
+2023-10-10T17:25:00.286402+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.291521+00:00 shinyapps[4280696]: The following object
+is masked from ?package:stats?:
+2023-10-10T17:25:00.295442+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.299391+00:00 shinyapps[4280696]:     filter
+2023-10-10T17:25:00.304013+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.308530+00:00 shinyapps[4280696]: The following object
+is masked from ?package:graphics?:
+2023-10-10T17:25:00.312284+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.316045+00:00 shinyapps[4280696]:     layout
+2023-10-10T17:25:00.319625+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.326206+00:00 shinyapps[4280696]:
+2023-10-10T17:25:00.330280+00:00 shinyapps[4280696]: Listening on
+http://127.0.0.1:37809
+2023-10-10T17:25:01.193824+00:00 shinyapps[4280696]: Warning: Error in sub:
+input string 1 is invalid UTF-8
+2023-10-10T17:25:01.197832+00:00 shinyapps[4280696]:   15: <Anonymous>
+2023-10-10T17:25:01.204927+00:00 shinyapps[4280696]:   13: fn
+2023-10-10T17:25:01.208795+00:00 shinyapps[4280696]:    8: retry
+2023-10-10T17:25:01.212788+00:00 shinyapps[4280696]:    7:
+connect$retryingStartServer
+2023-10-10T17:25:01.216641+00:00 shinyapps[4280696]:    6: eval
+2023-10-10T17:25:01.220690+00:00 shinyapps[4280696]:    5: eval
+2023-10-10T17:25:01.224632+00:00 shinyapps[4280696]:    4: eval
+2023-10-10T17:25:01.230277+00:00 shinyapps[4280696]:    3: eval
+2023-10-10T17:25:01.235382+00:00 shinyapps[4280696]:    2: eval.parent
+2023-10-10T17:25:01.239276+00:00 shinyapps[4280696]:    1: local
+
+
+
+Pedro Brasil
+
+
+Em seg., 9 de out. de 2023 às 19:18, henrique jose de paula alves paula
+alves por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Eu resolvo assim
+>
+> tmp.enc <- options()$encoding
+> options(encoding = "UTF-8")
+> rsconnect:: deployApp()
+>
+> Em seg., 9 de out. de 2023 às 19:15, Pedro Emmanuel Alvarenga Americano do
+> Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Salve queridos irmãos de R,
+>>
+>> Eu não estou conseguindo reproduzir o erro, porque não estou conseguindo
+>> achá-lo. Se alguém me der uma luz como acha-lo eu agradeço.
+>>
+>> Há muito venho trabalhando num app que tem uma versão funcionando no
+>> seguinte edereço
+>> https://pedrobrasil.shinyapps.io/INDWELL/
+>>
+>> Há algumas semanas eu fui atualizar o app com novas opções e após fazer
+>> algumas pequenas modificações na descrição e um commit, testei o app que já
+>> retornou esse erro...
+>>
+>> > runApp()
+>>
+>> Listening on http://127.0.0.1:6263
+>> Warning: Error in sub: input string 1 is invalid UTF-8
+>>   1: runApp
+>>
+>> A primeira coisa que fiz foi um revert do último commit e não funcionou.
+>> Então eu pensei em retornar a versão do último push, mas não há diferenças
+>> no histórico. Achei alguns poucos posts por aí a respeito e alguns
+>> recomendam "scanear" todos os arquivos do app com algo como
+>> xfun::read_utf8(). Eu fiz isso. Somente os arquivos *.RData e um *.png
+>> retornou erro de encoding utf-8. Esperado. A minha próxima tentativa seria
+>> apagar o app e fazer um pull do git. Mas antes eu queria tentar um irmão
+>> mago me tira da vale das sombras...
+>>
+>> Abraço forte e que a força esteja sempre com todos,
+>>
+>> Pedro Brasil
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+> Henrique José de Paula Alves
+> PhD. em Estatística e Experimentação Agropecuária - 15-99760-0280
+> UFOP - OURO PRETO -  MG
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20231010/12ed0ede/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Wed Oct 11 15:42:55 2023
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Wed, 11 Oct 2023 15:42:55 -0300
+Subject: [R-br] shiny app com erro de encoding utf-8
+In-Reply-To: <CAFfGvyJiAm=zE541qqXk3tY4eKu71JoV_ApUUiECHaL53MV_Pw@mail.gmail.com>
+References: <CAFfGvy+gcwebsdPm9p7MCac_mGhxHbALxLfXW2anvNnGMQYYpg@mail.gmail.com>
+ <CAEfjKJTe+0CXN-+B236SL3fLLQPBP_y5yb7q428Vuvm_frMjWw@mail.gmail.com>
+ <CAFfGvyJiAm=zE541qqXk3tY4eKu71JoV_ApUUiECHaL53MV_Pw@mail.gmail.com>
+Message-ID: <CAFfGvy+xn8YuLEbWaFC84xBucJaaW7k6MVpcZM+TRLnQ3NfNDw@mail.gmail.com>
+
+Turminha,
+
+Achei o erro. Fui removendo e reinserido seções do app até achar. Por
+incrivel que pareça não acredito que seja uma questão relacionada ao
+encoding. Um dos arquivos ui que faz a pagina de uma das abas tinha um
+tag$style() com alguns códigos de HTML. Removi esta seção e o app voltou a
+funcionar como antes sem essas configurações de estilo. Não consegui achar
+nada nesse pedaço que justifique, mas o que fica é que algum código html
+parece não ser mais compatível no app.
+
+Eu tenho dificuldades com html então não sei ao certo como fazer um
+juizo alem desse.
+
+Pedro Brasil
+
+
+Em ter., 10 de out. de 2023 às 14:43, Pedro Emmanuel Alvarenga Americano do
+Brasil <emmanuel.brasil em gmail.com> escreveu:
+
+> Henrique,
+>
+> Esta abordagem não funcionou. Acho até que piorou a minha situação. Com o
+> runApp() ele dava um erro de UTF-8, mesmo forçando nas opções com o UTF-8.
+> Foi tentar fazer um deploy na sem especificar o destino achando que o
+> RStudio fosse fazer na pasta local mas ele tentou carregar no shinyapps.io,
+> e agora nem o app remoto nem o local funcionam. Mas nessa situação o erro
+> mudou. No entanto, não diz qual é, somente informa que preciso verificar os
+> logs. Olhei o log abaixo e so achei exatamente o mesmo erro. Mas não fala
+> aonde é que o encoding está errado.
+>
+> 2023-10-10T17:24:38.202033+00:00 shinyapps[4280696]: Container event from
+> container-8716233: start
+> 2023-10-10T17:24:39.193842+00:00 shinyapps[4280696]: Running on host:
+> 71d2e5e56cda
+> 2023-10-10T17:24:39.200943+00:00 shinyapps[4280696]: Running as user:
+> uid=10001(shiny) gid=10001(shiny) groups=10001(shiny)
+> 2023-10-10T17:24:39.205579+00:00 shinyapps[4280696]: Connect version:
+> 2023.03.0
+> 2023-10-10T17:24:39.213134+00:00 shinyapps[4280696]: LANG: C.UTF-8
+> 2023-10-10T17:24:39.217828+00:00 shinyapps[4280696]: Working directory:
+> /srv/connect/apps/INDWELL
+> 2023-10-10T17:24:39.221831+00:00 shinyapps[4280696]: Using R 4.3.1
+> 2023-10-10T17:24:39.225724+00:00 shinyapps[4280696]: R.home():
+> /opt/R/4.3.1/lib/R
+> 2023-10-10T17:24:39.229915+00:00 shinyapps[4280696]: Content will use
+> current R environment
+> 2023-10-10T17:24:39.234046+00:00 shinyapps[4280696]: R_LIBS: (unset)
+> 2023-10-10T17:24:39.238046+00:00 shinyapps[4280696]: .libPaths():
+> /opt/R/4.3.1/lib/R/library
+> 2023-10-10T17:24:39.242525+00:00 shinyapps[4280696]: shiny version: 1.7.5
+> 2023-10-10T17:24:39.246360+00:00 shinyapps[4280696]: httpuv version: 1.6.11
+> 2023-10-10T17:24:39.250228+00:00 shinyapps[4280696]: rmarkdown version:
+> 2.25
+> 2023-10-10T17:24:39.257067+00:00 shinyapps[4280696]: knitr version: 1.44
+> 2023-10-10T17:24:39.261220+00:00 shinyapps[4280696]: jsonlite version:
+> 1.8.7
+> 2023-10-10T17:24:39.265097+00:00 shinyapps[4280696]: RJSONIO version:
+> (none)
+> 2023-10-10T17:24:39.269594+00:00 shinyapps[4280696]: htmltools version:
+> 0.5.6.1
+> 2023-10-10T17:24:39.273575+00:00 shinyapps[4280696]: reticulate version:
+> (none)
+> 2023-10-10T17:24:39.277787+00:00 shinyapps[4280696]: Using pandoc:
+> /opt/connect/ext/pandoc/2.16
+> 2023-10-10T17:24:39.282499+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:39.286787+00:00 shinyapps[4280696]: Starting R with
+> process ID: '35'
+> 2023-10-10T17:24:39.290933+00:00 shinyapps[4280696]: Shiny application
+> starting ...
+> 2023-10-10T17:24:39.295300+00:00 shinyapps[4280696]: Loading required
+> package: shinydashboard
+> 2023-10-10T17:24:39.299199+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:39.302957+00:00 shinyapps[4280696]: Attaching package:
+> ?shinydashboard?
+> 2023-10-10T17:24:39.306732+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:39.310441+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:graphics?:
+> 2023-10-10T17:24:39.314448+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:39.318172+00:00 shinyapps[4280696]:     box
+> 2023-10-10T17:24:39.321919+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:39.325890+00:00 shinyapps[4280696]: Loading required
+> package: shinydashboardPlus
+> 2023-10-10T17:24:39.329544+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:39.333678+00:00 shinyapps[4280696]: Attaching package:
+> ?shinydashboardPlus?
+> 2023-10-10T17:24:39.337435+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:39.341339+00:00 shinyapps[4280696]: The following objects
+> are masked from ?package:shinydashboard?:
+> 2023-10-10T17:24:39.345342+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:39.350570+00:00 shinyapps[4280696]:     box,
+> dashboardHeader, dashboardPage, dashboardSidebar, messageItem,
+> 2023-10-10T17:24:39.354646+00:00 shinyapps[4280696]:     notificationItem,
+> taskItem
+> 2023-10-10T17:24:39.358459+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:39.362501+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:graphics?:
+> 2023-10-10T17:24:39.366530+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:39.370413+00:00 shinyapps[4280696]:     box
+> 2023-10-10T17:24:39.375187+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:39.379290+00:00 shinyapps[4280696]: Loading required
+> package: shinythemes
+> 2023-10-10T17:24:39.383464+00:00 shinyapps[4280696]: Loading required
+> package: shinyWidgets
+> 2023-10-10T17:24:40.194592+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:40.199471+00:00 shinyapps[4280696]: Attaching package:
+> ?shinyWidgets?
+> 2023-10-10T17:24:40.203881+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:40.208241+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:shinydashboardPlus?:
+> 2023-10-10T17:24:40.212926+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:40.217344+00:00 shinyapps[4280696]:     progressBar
+> 2023-10-10T17:24:40.221817+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:40.225836+00:00 shinyapps[4280696]: Loading required
+> package: DT
+> 2023-10-10T17:24:40.229684+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:40.233359+00:00 shinyapps[4280696]: Attaching package:
+> ?DT?
+> 2023-10-10T17:24:40.237219+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:40.241030+00:00 shinyapps[4280696]: The following objects
+> are masked from ?package:shiny?:
+> 2023-10-10T17:24:40.245274+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:40.249628+00:00 shinyapps[4280696]:     dataTableOutput,
+> renderDataTable
+> 2023-10-10T17:24:40.253547+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:40.257780+00:00 shinyapps[4280696]: Loading required
+> package: splines
+> 2023-10-10T17:24:40.262053+00:00 shinyapps[4280696]: Loading required
+> package: geepack
+> 2023-10-10T17:24:40.266074+00:00 shinyapps[4280696]: Loading required
+> package: glmnetUtils
+> 2023-10-10T17:24:41.193806+00:00 shinyapps[4280696]: Loading required
+> package: rms
+> 2023-10-10T17:24:41.198037+00:00 shinyapps[4280696]: Loading required
+> package: Hmisc
+> 2023-10-10T17:24:42.194382+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.198886+00:00 shinyapps[4280696]: Attaching package:
+> ?Hmisc?
+> 2023-10-10T17:24:42.203266+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.207983+00:00 shinyapps[4280696]: The following objects
+> are masked from ?package:base?:
+> 2023-10-10T17:24:42.211888+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.216052+00:00 shinyapps[4280696]:     format.pval, units
+> 2023-10-10T17:24:42.238762+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.243787+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.247738+00:00 shinyapps[4280696]: Attaching package:
+> ?rms?
+> 2023-10-10T17:24:42.251992+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.256107+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:shiny?:
+> 2023-10-10T17:24:42.260172+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.264377+00:00 shinyapps[4280696]:     validate
+> 2023-10-10T17:24:42.268427+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.272133+00:00 shinyapps[4280696]: Loading required
+> package: plotly
+> 2023-10-10T17:24:42.276338+00:00 shinyapps[4280696]: Loading required
+> package: ggplot2
+> 2023-10-10T17:24:42.280511+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.284512+00:00 shinyapps[4280696]: Attaching package:
+> ?plotly?
+> 2023-10-10T17:24:42.288233+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.295438+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:ggplot2?:
+> 2023-10-10T17:24:42.305737+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.309897+00:00 shinyapps[4280696]:     last_plot
+> 2023-10-10T17:24:42.314096+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.318313+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:Hmisc?:
+> 2023-10-10T17:24:42.322167+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.325979+00:00 shinyapps[4280696]:     subplot
+> 2023-10-10T17:24:42.329752+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.333554+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:stats?:
+> 2023-10-10T17:24:42.337869+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.341971+00:00 shinyapps[4280696]:     filter
+> 2023-10-10T17:24:42.346614+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.350562+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:graphics?:
+> 2023-10-10T17:24:42.354701+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:42.360180+00:00 shinyapps[4280696]:     layout
+> 2023-10-10T17:24:42.367017+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:43.201244+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:43.205652+00:00 shinyapps[4280696]: Listening on
+> http://127.0.0.1:43779
+> 2023-10-10T17:24:45.215919+00:00 shinyapps[4280696]: Container event from
+> container-8716174: stop
+> 2023-10-10T17:24:56.194451+00:00 shinyapps[4280696]: Running on host:
+> 71d2e5e56cda
+> 2023-10-10T17:24:56.201060+00:00 shinyapps[4280696]: Running as user:
+> uid=10001(shiny) gid=10001(shiny) groups=10001(shiny)
+> 2023-10-10T17:24:56.205041+00:00 shinyapps[4280696]: Connect version:
+> 2023.03.0
+> 2023-10-10T17:24:56.208923+00:00 shinyapps[4280696]: LANG: C.UTF-8
+> 2023-10-10T17:24:56.213659+00:00 shinyapps[4280696]: Working directory:
+> /srv/connect/apps/INDWELL
+> 2023-10-10T17:24:56.217596+00:00 shinyapps[4280696]: Using R 4.3.1
+> 2023-10-10T17:24:56.221323+00:00 shinyapps[4280696]: R.home():
+> /opt/R/4.3.1/lib/R
+> 2023-10-10T17:24:56.225011+00:00 shinyapps[4280696]: Content will use
+> current R environment
+> 2023-10-10T17:24:56.235067+00:00 shinyapps[4280696]: R_LIBS: (unset)
+> 2023-10-10T17:24:56.241725+00:00 shinyapps[4280696]: .libPaths():
+> /opt/R/4.3.1/lib/R/library
+> 2023-10-10T17:24:56.246154+00:00 shinyapps[4280696]: shiny version: 1.7.5
+> 2023-10-10T17:24:56.249906+00:00 shinyapps[4280696]: httpuv version: 1.6.11
+> 2023-10-10T17:24:56.253516+00:00 shinyapps[4280696]: rmarkdown version:
+> 2.25
+> 2023-10-10T17:24:56.257729+00:00 shinyapps[4280696]: knitr version: 1.44
+> 2023-10-10T17:24:56.261518+00:00 shinyapps[4280696]: jsonlite version:
+> 1.8.7
+> 2023-10-10T17:24:56.265852+00:00 shinyapps[4280696]: RJSONIO version:
+> (none)
+> 2023-10-10T17:24:56.270713+00:00 shinyapps[4280696]: htmltools version:
+> 0.5.6.1
+> 2023-10-10T17:24:56.274739+00:00 shinyapps[4280696]: reticulate version:
+> (none)
+> 2023-10-10T17:24:56.278524+00:00 shinyapps[4280696]: Using pandoc:
+> /opt/connect/ext/pandoc/2.16
+> 2023-10-10T17:24:57.193814+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.198004+00:00 shinyapps[4280696]: Starting R with
+> process ID: '54'
+> 2023-10-10T17:24:57.201744+00:00 shinyapps[4280696]: Shiny application
+> starting ...
+> 2023-10-10T17:24:57.205489+00:00 shinyapps[4280696]: Loading required
+> package: shinydashboard
+> 2023-10-10T17:24:57.209362+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.212990+00:00 shinyapps[4280696]: Attaching package:
+> ?shinydashboard?
+> 2023-10-10T17:24:57.216972+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.220788+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:graphics?:
+> 2023-10-10T17:24:57.224756+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.228685+00:00 shinyapps[4280696]:     box
+> 2023-10-10T17:24:57.232578+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.236300+00:00 shinyapps[4280696]: Loading required
+> package: shinydashboardPlus
+> 2023-10-10T17:24:57.240738+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.244557+00:00 shinyapps[4280696]: Attaching package:
+> ?shinydashboardPlus?
+> 2023-10-10T17:24:57.248230+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.252307+00:00 shinyapps[4280696]: The following objects
+> are masked from ?package:shinydashboard?:
+> 2023-10-10T17:24:57.256171+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.260269+00:00 shinyapps[4280696]:     box,
+> dashboardHeader, dashboardPage, dashboardSidebar, messageItem,
+> 2023-10-10T17:24:57.263902+00:00 shinyapps[4280696]:     notificationItem,
+> taskItem
+> 2023-10-10T17:24:57.268414+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.272538+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:graphics?:
+> 2023-10-10T17:24:57.276383+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.280172+00:00 shinyapps[4280696]:     box
+> 2023-10-10T17:24:57.283790+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.287653+00:00 shinyapps[4280696]: Loading required
+> package: shinythemes
+> 2023-10-10T17:24:57.291553+00:00 shinyapps[4280696]: Loading required
+> package: shinyWidgets
+> 2023-10-10T17:24:57.295442+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.299295+00:00 shinyapps[4280696]: Attaching package:
+> ?shinyWidgets?
+> 2023-10-10T17:24:57.303220+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.306999+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:shinydashboardPlus?:
+> 2023-10-10T17:24:57.311163+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.314848+00:00 shinyapps[4280696]:     progressBar
+> 2023-10-10T17:24:57.318981+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.322866+00:00 shinyapps[4280696]: Loading required
+> package: DT
+> 2023-10-10T17:24:57.327089+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.331280+00:00 shinyapps[4280696]: Attaching package:
+> ?DT?
+> 2023-10-10T17:24:57.335298+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.339279+00:00 shinyapps[4280696]: The following objects
+> are masked from ?package:shiny?:
+> 2023-10-10T17:24:57.343619+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.347562+00:00 shinyapps[4280696]:     dataTableOutput,
+> renderDataTable
+> 2023-10-10T17:24:57.352244+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:57.356295+00:00 shinyapps[4280696]: Loading required
+> package: splines
+> 2023-10-10T17:24:57.361049+00:00 shinyapps[4280696]: Loading required
+> package: geepack
+> 2023-10-10T17:24:57.365360+00:00 shinyapps[4280696]: Loading required
+> package: glmnetUtils
+> 2023-10-10T17:24:59.193843+00:00 shinyapps[4280696]: Loading required
+> package: rms
+> 2023-10-10T17:24:59.202810+00:00 shinyapps[4280696]: Loading required
+> package: Hmisc
+> 2023-10-10T17:24:59.207983+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:59.211999+00:00 shinyapps[4280696]: Attaching package:
+> ?Hmisc?
+> 2023-10-10T17:24:59.216135+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:59.219809+00:00 shinyapps[4280696]: The following objects
+> are masked from ?package:base?:
+> 2023-10-10T17:24:59.225366+00:00 shinyapps[4280696]:
+> 2023-10-10T17:24:59.229325+00:00 shinyapps[4280696]:     format.pval, units
+> 2023-10-10T17:24:59.233257+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.194421+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.199441+00:00 shinyapps[4280696]: Attaching package:
+> ?rms?
+> 2023-10-10T17:25:00.203235+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.208158+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:shiny?:
+> 2023-10-10T17:25:00.212703+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.219775+00:00 shinyapps[4280696]:     validate
+> 2023-10-10T17:25:00.224696+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.228477+00:00 shinyapps[4280696]: Loading required
+> package: plotly
+> 2023-10-10T17:25:00.232199+00:00 shinyapps[4280696]: Loading required
+> package: ggplot2
+> 2023-10-10T17:25:00.239420+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.246298+00:00 shinyapps[4280696]: Attaching package:
+> ?plotly?
+> 2023-10-10T17:25:00.250090+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.254946+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:ggplot2?:
+> 2023-10-10T17:25:00.259160+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.266149+00:00 shinyapps[4280696]:     last_plot
+> 2023-10-10T17:25:00.269975+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.273823+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:Hmisc?:
+> 2023-10-10T17:25:00.277596+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.282257+00:00 shinyapps[4280696]:     subplot
+> 2023-10-10T17:25:00.286402+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.291521+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:stats?:
+> 2023-10-10T17:25:00.295442+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.299391+00:00 shinyapps[4280696]:     filter
+> 2023-10-10T17:25:00.304013+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.308530+00:00 shinyapps[4280696]: The following object
+> is masked from ?package:graphics?:
+> 2023-10-10T17:25:00.312284+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.316045+00:00 shinyapps[4280696]:     layout
+> 2023-10-10T17:25:00.319625+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.326206+00:00 shinyapps[4280696]:
+> 2023-10-10T17:25:00.330280+00:00 shinyapps[4280696]: Listening on
+> http://127.0.0.1:37809
+> 2023-10-10T17:25:01.193824+00:00 shinyapps[4280696]: Warning: Error in
+> sub: input string 1 is invalid UTF-8
+> 2023-10-10T17:25:01.197832+00:00 shinyapps[4280696]:   15: <Anonymous>
+> 2023-10-10T17:25:01.204927+00:00 shinyapps[4280696]:   13: fn
+> 2023-10-10T17:25:01.208795+00:00 shinyapps[4280696]:    8: retry
+> 2023-10-10T17:25:01.212788+00:00 shinyapps[4280696]:    7:
+> connect$retryingStartServer
+> 2023-10-10T17:25:01.216641+00:00 shinyapps[4280696]:    6: eval
+> 2023-10-10T17:25:01.220690+00:00 shinyapps[4280696]:    5: eval
+> 2023-10-10T17:25:01.224632+00:00 shinyapps[4280696]:    4: eval
+> 2023-10-10T17:25:01.230277+00:00 shinyapps[4280696]:    3: eval
+> 2023-10-10T17:25:01.235382+00:00 shinyapps[4280696]:    2: eval.parent
+> 2023-10-10T17:25:01.239276+00:00 shinyapps[4280696]:    1: local
+>
+>
+>
+> Pedro Brasil
+>
+>
+> Em seg., 9 de out. de 2023 às 19:18, henrique jose de paula alves paula
+> alves por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Eu resolvo assim
+>>
+>> tmp.enc <- options()$encoding
+>> options(encoding = "UTF-8")
+>> rsconnect:: deployApp()
+>>
+>> Em seg., 9 de out. de 2023 às 19:15, Pedro Emmanuel Alvarenga Americano
+>> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Salve queridos irmãos de R,
+>>>
+>>> Eu não estou conseguindo reproduzir o erro, porque não estou conseguindo
+>>> achá-lo. Se alguém me der uma luz como acha-lo eu agradeço.
+>>>
+>>> Há muito venho trabalhando num app que tem uma versão funcionando no
+>>> seguinte edereço
+>>> https://pedrobrasil.shinyapps.io/INDWELL/
+>>>
+>>> Há algumas semanas eu fui atualizar o app com novas opções e após fazer
+>>> algumas pequenas modificações na descrição e um commit, testei o app que já
+>>> retornou esse erro...
+>>>
+>>> > runApp()
+>>>
+>>> Listening on http://127.0.0.1:6263
+>>> Warning: Error in sub: input string 1 is invalid UTF-8
+>>>   1: runApp
+>>>
+>>> A primeira coisa que fiz foi um revert do último commit e não funcionou.
+>>> Então eu pensei em retornar a versão do último push, mas não há diferenças
+>>> no histórico. Achei alguns poucos posts por aí a respeito e alguns
+>>> recomendam "scanear" todos os arquivos do app com algo como
+>>> xfun::read_utf8(). Eu fiz isso. Somente os arquivos *.RData e um *.png
+>>> retornou erro de encoding utf-8. Esperado. A minha próxima tentativa seria
+>>> apagar o app e fazer um pull do git. Mas antes eu queria tentar um irmão
+>>> mago me tira da vale das sombras...
+>>>
+>>> Abraço forte e que a força esteja sempre com todos,
+>>>
+>>> Pedro Brasil
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>>
+>> --
+>> Henrique José de Paula Alves
+>> PhD. em Estatística e Experimentação Agropecuária - 15-99760-0280
+>> UFOP - OURO PRETO -  MG
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20231011/93c000dc/attachment.htm>
+

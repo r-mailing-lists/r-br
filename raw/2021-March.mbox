@@ -1,0 +1,853 @@
+From felipe.e.barletta em gmail.com  Fri Mar  5 17:45:55 2021
+From: felipe.e.barletta em gmail.com (Felipe Barletta)
+Date: Fri, 5 Mar 2021 17:45:55 -0300
+Subject: [R-br] =?utf-8?q?Identificando_e_criando_nova_vari=C3=A1vel_por_?=
+	=?utf-8?q?uma_express=C3=A3o_regular?=
+Message-ID: <CAJz4ZjEZ-usCdPJ61o+CBNjffDm5bhArX0MixMcN+wD2GistpQ@mail.gmail.com>
+
+Prezados,
+
+Preciso de uma ajuda para resolver a seguinte questão:
+
+Possuo uma lista de nomes de medicamentos. Preciso identificar seus nomes
+em um vetor em que há informações de medicamentos preescritos.
+Para isso estou usando a função grep().
+Após identificar, quero incluir no data frame uma nova coluna contendo o
+nome do medicamento da primeira lista.
+Segue um código reproduzível
+
+##### Lista de medicamentos que guardei em um objeto chamado patterns
+patterns <-
+structure(c(1L, 2L, 3L, 4L, 6L, 7L, 5L, 8L, 9L, 10L, 11L), .Label =
+c("Oritavancina",
+"Oxacilina", "Pefloxacino", "Penicilina", "Pexiganan", "Piperacilina",
+"Piperacilina-tazobactam", "Pirazinamida", "Plazomicina", "Polimixina B",
+"Posilozid"), class = "factor")
+
+### Amostra do Data frame em que preciso encontrar os nomes da lista acima
+
+df <-
+structure(list(nome = structure(c(9L, 11L, 3L, 3L, 7L, 2L, 4L,
+5L, 8L, 6L, 10L, 1L), .Label = c("CLORETO DE POTASSIO DRAGEA 600MG",
+"CLORETO DE SODIO 0,9% SERINGA PREENCHIDA 5ML", "CLORETO DE SODIO SOLUCAO
+INJETAVEL 0,9% 10ML",
+"CODEINA FOSFATO SOLUCAO ORAL 3MGML 10ML ISCMPA @", "CODEINA FOSFATO
+SOLUCAO ORAL 3MGML 5ML ISCMPA @",
+"DipiRONA SOLUCAO INJETAVEL 500MGML 2ML", "FUROSEMIDA SOLUCAO INJETAVEL
+10MGML 2ML",
+"HIDROCORTISONA SUCCINATO SODICO PO LIOFILO INJETAVEL 100MG",
+"ONDANSETRONA CLORIDRATO SOLUCAO INJETAVEL 2MGML 4ML", "Penicilina G
+BENZATINA PO LIOFILO INJETAVEL 1200000UI",
+"PIPERACILINA SODICA 4G + TAZOBACTAM SODICA 0,5G PO LIOFILO INJETAVEL"
+), class = "factor"), ID = c(13750598L, 13797248L, 13797248L,
+13797248L, 13727853L, 13727853L, 13922033L, 13922033L, 13923030L,
+13923030L, 13923030L, 13877978L), date = structure(c(1L, 2L,
+2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 5L, 6L), .Label = c("2021-01-01 00:08:14",
+"2021-01-01 00:20:39", "2021-01-01 00:22:18", "2021-01-31 23:53:48",
+"2021-01-31 23:58:50", "2021-01-31 23:59:47"), class = "factor")),
+row.names = c(1L,
+2L, 3L, 4L, 5L, 6L, 583867L, 583868L, 583869L, 583870L, 583871L,
+583872L), class = "data.frame")
+
+### Usei esse código para identificar os medicamentos
+matches  <- unlist(sapply(patterns, function(p) grep(p, df$nome,
+                                                     value = FALSE,
+                                                     ignore.case = TRUE)
+                          )
+                   )
+encontrados <- df[matches,]
+
+Porém além de identificar, quero incluir no df uma nova variável
+identificando o nome do medicamento que consta na lista (patterns) -  como
+segue exemplo Abaixo:
+dados
+                                                                       nome
+1                       ONDANSETRONA CLORIDRATO SOLUCAO INJETAVEL 2MGML 4ML
+2      PIPERACILINA SODICA 4G + TAZOBACTAM SODICA 0,5G PO LIOFILO INJETAVEL
+3                              CLORETO DE SODIO SOLUCAO INJETAVEL 0,9% 10ML
+4                              CLORETO DE SODIO SOLUCAO INJETAVEL 0,9% 10ML
+5                                   FUROSEMIDA SOLUCAO INJETAVEL 10MGML 2ML
+6                              CLORETO DE SODIO 0,9% SERINGA PREENCHIDA 5ML
+583867                     CODEINA FOSFATO SOLUCAO ORAL 3MGML 10ML ISCMPA @
+583868                      CODEINA FOSFATO SOLUCAO ORAL 3MGML 5ML ISCMPA @
+583869           HIDROCORTISONA SUCCINATO SODICO PO LIOFILO INJETAVEL 100MG
+583870                               DipiRONA SOLUCAO INJETAVEL 500MGML 2ML
+583871                Penicilina G BENZATINA PO LIOFILO INJETAVEL 1200000UI
+583872                                     CLORETO DE POTASSIO DRAGEA 600MG
+                          ID                date             Medicamento
+1            13750598 2021-01-01 00:08:14 Não consta na lista
+2            13797248 2021-01-01 00:20:39       *Piperacilina*
+3            13797248 2021-01-01 00:20:39 Não consta na lista
+4            13797248 2021-01-01 00:20:39 Não consta na lista
+5            13727853 2021-01-01 00:22:18 Não consta na lista
+6            13727853 2021-01-01 00:22:18 Não consta na lista
+583867       13922033 2021-01-31 23:53:48 Não consta na lista
+583868       13922033 2021-01-31 23:53:48 Não consta na lista
+583869       13923030 2021-01-31 23:58:50 Não consta na lista
+583870       13923030 2021-01-31 23:58:50 Não consta na lista
+583871       13923030 2021-01-31 23:58:50       *Penicilina*
+583872       13877978 2021-01-31 23:59:47 Outro medicamento
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210305/d35e9c94/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Mar  5 18:03:35 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 5 Mar 2021 18:03:35 -0300
+Subject: [R-br] 
+	=?utf-8?q?Identificando_e_criando_nova_vari=C3=A1vel_por_?=
+	=?utf-8?q?uma_express=C3=A3o_regular?=
+In-Reply-To: <CAJz4ZjEZ-usCdPJ61o+CBNjffDm5bhArX0MixMcN+wD2GistpQ@mail.gmail.com>
+References: <CAJz4ZjEZ-usCdPJ61o+CBNjffDm5bhArX0MixMcN+wD2GistpQ@mail.gmail.com>
+Message-ID: <CAKrF98kCjC-_+28KJXBypS8wYKhKWNyu4TGKh+vh=z1LEGu2-Q@mail.gmail.com>
+
+A primeira modificação que faria no seu *script* seria mudar a chamada a
+grep passando value para TRUE.
+
+Depois  tratar os casos conforme sua nova especificação, que me parece muda
+a ordem da impressão do medicamento e coloca a substância à direita.
+
+*caveat lector* : conceito não testado?
+
+HTH
+--
+Cesar Rabak
+
+
+On Fri, Mar 5, 2021 at 5:46 PM Felipe Barletta por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados,
+>
+> Preciso de uma ajuda para resolver a seguinte questão:
+>
+> Possuo uma lista de nomes de medicamentos. Preciso identificar seus nomes
+> em um vetor em que há informações de medicamentos preescritos.
+> Para isso estou usando a função grep().
+> Após identificar, quero incluir no data frame uma nova coluna contendo o
+> nome do medicamento da primeira lista.
+> Segue um código reproduzível
+>
+> ##### Lista de medicamentos que guardei em um objeto chamado patterns
+> patterns <-
+> structure(c(1L, 2L, 3L, 4L, 6L, 7L, 5L, 8L, 9L, 10L, 11L), .Label =
+> c("Oritavancina",
+> "Oxacilina", "Pefloxacino", "Penicilina", "Pexiganan", "Piperacilina",
+> "Piperacilina-tazobactam", "Pirazinamida", "Plazomicina", "Polimixina B",
+> "Posilozid"), class = "factor")
+>
+> ### Amostra do Data frame em que preciso encontrar os nomes da lista acima
+>
+> df <-
+> structure(list(nome = structure(c(9L, 11L, 3L, 3L, 7L, 2L, 4L,
+> 5L, 8L, 6L, 10L, 1L), .Label = c("CLORETO DE POTASSIO DRAGEA 600MG",
+> "CLORETO DE SODIO 0,9% SERINGA PREENCHIDA 5ML", "CLORETO DE SODIO SOLUCAO
+> INJETAVEL 0,9% 10ML",
+> "CODEINA FOSFATO SOLUCAO ORAL 3MGML 10ML ISCMPA @", "CODEINA FOSFATO
+> SOLUCAO ORAL 3MGML 5ML ISCMPA @",
+> "DipiRONA SOLUCAO INJETAVEL 500MGML 2ML", "FUROSEMIDA SOLUCAO INJETAVEL
+> 10MGML 2ML",
+> "HIDROCORTISONA SUCCINATO SODICO PO LIOFILO INJETAVEL 100MG",
+> "ONDANSETRONA CLORIDRATO SOLUCAO INJETAVEL 2MGML 4ML", "Penicilina G
+> BENZATINA PO LIOFILO INJETAVEL 1200000UI",
+> "PIPERACILINA SODICA 4G + TAZOBACTAM SODICA 0,5G PO LIOFILO INJETAVEL"
+> ), class = "factor"), ID = c(13750598L, 13797248L, 13797248L,
+> 13797248L, 13727853L, 13727853L, 13922033L, 13922033L, 13923030L,
+> 13923030L, 13923030L, 13877978L), date = structure(c(1L, 2L,
+> 2L, 2L, 3L, 3L, 4L, 4L, 5L, 5L, 5L, 6L), .Label = c("2021-01-01 00:08:14",
+> "2021-01-01 00:20:39", "2021-01-01 00:22:18", "2021-01-31 23:53:48",
+> "2021-01-31 23:58:50", "2021-01-31 23:59:47"), class = "factor")),
+> row.names = c(1L,
+> 2L, 3L, 4L, 5L, 6L, 583867L, 583868L, 583869L, 583870L, 583871L,
+> 583872L), class = "data.frame")
+>
+> ### Usei esse código para identificar os medicamentos
+> matches  <- unlist(sapply(patterns, function(p) grep(p, df$nome,
+>                                                      value = FALSE,
+>                                                      ignore.case = TRUE)
+>                           )
+>                    )
+> encontrados <- df[matches,]
+>
+> Porém além de identificar, quero incluir no df uma nova variável
+> identificando o nome do medicamento que consta na lista (patterns) -  como
+> segue exemplo Abaixo:
+> dados
+>                                                                        nome
+> 1                       ONDANSETRONA CLORIDRATO SOLUCAO INJETAVEL 2MGML 4ML
+> 2      PIPERACILINA SODICA 4G + TAZOBACTAM SODICA 0,5G PO LIOFILO INJETAVEL
+> 3                              CLORETO DE SODIO SOLUCAO INJETAVEL 0,9% 10ML
+> 4                              CLORETO DE SODIO SOLUCAO INJETAVEL 0,9% 10ML
+> 5                                   FUROSEMIDA SOLUCAO INJETAVEL 10MGML 2ML
+> 6                              CLORETO DE SODIO 0,9% SERINGA PREENCHIDA 5ML
+> 583867                     CODEINA FOSFATO SOLUCAO ORAL 3MGML 10ML ISCMPA @
+> 583868                      CODEINA FOSFATO SOLUCAO ORAL 3MGML 5ML ISCMPA @
+> 583869           HIDROCORTISONA SUCCINATO SODICO PO LIOFILO INJETAVEL 100MG
+> 583870                               DipiRONA SOLUCAO INJETAVEL 500MGML 2ML
+> 583871                Penicilina G BENZATINA PO LIOFILO INJETAVEL 1200000UI
+> 583872                                     CLORETO DE POTASSIO DRAGEA 600MG
+>                           ID                date             Medicamento
+> 1            13750598 2021-01-01 00:08:14 Não consta na lista
+> 2            13797248 2021-01-01 00:20:39       *Piperacilina*
+> 3            13797248 2021-01-01 00:20:39 Não consta na lista
+> 4            13797248 2021-01-01 00:20:39 Não consta na lista
+> 5            13727853 2021-01-01 00:22:18 Não consta na lista
+> 6            13727853 2021-01-01 00:22:18 Não consta na lista
+> 583867       13922033 2021-01-31 23:53:48 Não consta na lista
+> 583868       13922033 2021-01-31 23:53:48 Não consta na lista
+> 583869       13923030 2021-01-31 23:58:50 Não consta na lista
+> 583870       13923030 2021-01-31 23:58:50 Não consta na lista
+> 583871       13923030 2021-01-31 23:58:50       *Penicilina*
+> 583872       13877978 2021-01-31 23:59:47 Outro medicamento
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210305/1c9fa082/attachment.html>
+
+From walmeszeviani em gmail.com  Mon Mar 15 10:59:56 2021
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Mon, 15 Mar 2021 10:59:56 -0300
+Subject: [R-br] 
+	=?utf-8?q?Identificando_e_criando_nova_vari=C3=A1vel_por_?=
+	=?utf-8?q?uma_express=C3=A3o_regular?=
+In-Reply-To: <CAKrF98kCjC-_+28KJXBypS8wYKhKWNyu4TGKh+vh=z1LEGu2-Q@mail.gmail.com>
+References: <CAJz4ZjEZ-usCdPJ61o+CBNjffDm5bhArX0MixMcN+wD2GistpQ@mail.gmail.com>
+ <CAKrF98kCjC-_+28KJXBypS8wYKhKWNyu4TGKh+vh=z1LEGu2-Q@mail.gmail.com>
+Message-ID: <CAFU=Ekavs-YipxL7rK32k=ZKt0fQjrCph=+rhsu9MN1ddDdxug@mail.gmail.com>
+
+Você pode combinar sapply, grepl e apply.
+
+# Lista de medicamentos que guardei em um objeto chamado patterns.
+patterns <- c("Oritavancina", "Oxacilina", "Pefloxacino", "Penicilina",
+              "Pexiganan", "Piperacilina", "Piperacilina-tazobactam",
+              "Pirazinamida", "Plazomicina", "Polimixina B",
+              "Posilozid")
+
+# Amostra do Data frame em que preciso encontrar os nomes da lista acima.
+df <- data.frame(nome =
+                     c("CLORETO DE POTASSIO DRAGEA 600MG",
+                       "CLORETO DE SODIO 0,9% SERINGA PREENCHIDA 5ML",
+                       "CLORETO DE SODIO SOLUCAO INJETAVEL 0,9% 10ML",
+                       "CODEINA FOSFATO SOLUCAO ORAL 3MGML 10ML ISCMPA @",
+                       "CODEINA FOSFATO SOLUCAO ORAL 3MGML 5ML ISCMPA @",
+                       "DipiRONA SOLUCAO INJETAVEL 500MGML 2ML",
+                       "DipiRONA SOLUCAO INJETAVEL 500MGML 2ML",
+                       "FUROSEMIDA SOLUCAO INJETAVEL 10MGML 2ML",
+                       "HIDROCORTISONA SUCCINATO SODICO PO LIOFILO
+INJETAVEL 100MG",
+                       "ONDANSETRONA CLORIDRATO SOLUCAO INJETAVEL 2MGML
+4ML",
+                       "ONDANSETRONA CLORIDRATO SOLUCAO INJETAVEL 2MGML
+4ML",
+                       "Penicilina G BENZATINA PO LIOFILO INJETAVEL
+1200000UI",
+                       "Penicilina G BENZATINA PO LIOFILO INJETAVEL
+1200000UI",
+                       "PIPERACILINA SODICA 4G + TAZOBACTAM SODICA 0,5G PO
+LIOFILO INJETAVEL"))
+
+u <- sapply(patterns, FUN = grepl, x = df$nome)
+df$medicamento <-
+    apply(u,
+          MARGIN = 1,
+          FUN = function(x) {
+              # Tá sendo assumido que apenas 1 match ocorre.
+              index <- head(which(x), n = 1)
+              ifelse(length(index),
+                     names(index),
+                     NA_character_)
+          })
+
+Atenção!
+Se você tiver que fazer isso para muitos itens e muitos medicamentos onde
+no máximo um match é esperado, esse código tá caro porque ele avalia o
+match de cada produto (p produtos) com cada item (n itens) e retorna uma
+matriz n * p de valores lógicos. Você pode escrever a instrução de forma
+condicional: quando encontrar o primeiro match, passar para o próximo item.
+Vai ter que fazer um benchmark porque as instruções vetorizadas são rápidas
+e colocar condicionais em loops é um pouco lento. Tudo vai depender do p e
+n do seu problema.
+
+Outra opção é verificar se não tem como usar um "inner join with
+approximate matching". Confere o que tem no {stringdist} e {fuzzyjoin}.
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210315/1cc94ace/attachment.html>
+
+From felipe.e.barletta em gmail.com  Mon Mar 15 15:42:39 2021
+From: felipe.e.barletta em gmail.com (Felipe Barletta)
+Date: Mon, 15 Mar 2021 15:42:39 -0300
+Subject: [R-br] 
+	=?utf-8?q?Identificando_e_criando_nova_vari=C3=A1vel_por_?=
+	=?utf-8?q?uma_express=C3=A3o_regular?=
+In-Reply-To: <CAFU=Ekavs-YipxL7rK32k=ZKt0fQjrCph=+rhsu9MN1ddDdxug@mail.gmail.com>
+References: <CAJz4ZjEZ-usCdPJ61o+CBNjffDm5bhArX0MixMcN+wD2GistpQ@mail.gmail.com>
+ <CAKrF98kCjC-_+28KJXBypS8wYKhKWNyu4TGKh+vh=z1LEGu2-Q@mail.gmail.com>
+ <CAFU=Ekavs-YipxL7rK32k=ZKt0fQjrCph=+rhsu9MN1ddDdxug@mail.gmail.com>
+Message-ID: <CAJz4ZjGSHbydO+HHUGYqPU4yaRppQ_W1=UCUjJ5n1EFv0b=byA@mail.gmail.com>
+
+Oi Walmes,
+
+Obrigado por postar sua solução. Achei bem interessante.
+Como disse tem um custo computacional alto, comparada a
+função fuzzyjoin::regex_left_join():
+Apliquei ambas soluções em um conjunto de 583872 linhas:
+
+################################################################################
+
+ system.time(
+ u <- sapply(patterns, FUN = grepl, x = df$nome)
+ ) +
+ system.time(
+ df$medicamento <-
+     apply(u,
+           MARGIN = 1,
+           FUN = function(x) {
+               # Tá sendo assumido que apenas 1 match ocorre.
+               index <- head(which(x), n = 1)
+               ifelse(length(index),
+                      names(index),
+                      NA_character_)
+           })
+ )
+  usuário   sistema decorrido
+  275.638     0.649   276.237
+> system.time(
+ r <- fuzzyjoin::regex_left_join(df,
+                                 Tabela_Antibiótico,
+                                 by = "nome",
+                                 ignore_case = TRUE)
+ )
+  usuário   sistema decorrido
+    2.579     0.000     2.578
+> dim(df)
+[1] 583872     11
+
+
+
+Após aplicar ambas soluções notei que ainda há um problema quando o nome do
+medicamento é composto.
+Por exemplo, o Antibiótico de nome *PIPERACILINA-TAZOBACTAM* teve como
+resultado apenas o primeiro nome, veja a saída abaixo:
+
+[image: image.png]
+
+Tem alguma sugestão de como fazer o match quando o nome é composto?
+
+Em seg., 15 de mar. de 2021 às 11:00, Walmes Zeviani por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Você pode combinar sapply, grepl e apply.
+>
+> # Lista de medicamentos que guardei em um objeto chamado patterns.
+> patterns <- c("Oritavancina", "Oxacilina", "Pefloxacino", "Penicilina",
+>               "Pexiganan", "Piperacilina", "Piperacilina-tazobactam",
+>               "Pirazinamida", "Plazomicina", "Polimixina B",
+>               "Posilozid")
+>
+> # Amostra do Data frame em que preciso encontrar os nomes da lista acima.
+> df <- data.frame(nome =
+>                      c("CLORETO DE POTASSIO DRAGEA 600MG",
+>                        "CLORETO DE SODIO 0,9% SERINGA PREENCHIDA 5ML",
+>                        "CLORETO DE SODIO SOLUCAO INJETAVEL 0,9% 10ML",
+>                        "CODEINA FOSFATO SOLUCAO ORAL 3MGML 10ML ISCMPA @",
+>                        "CODEINA FOSFATO SOLUCAO ORAL 3MGML 5ML ISCMPA @",
+>                        "DipiRONA SOLUCAO INJETAVEL 500MGML 2ML",
+>                        "DipiRONA SOLUCAO INJETAVEL 500MGML 2ML",
+>                        "FUROSEMIDA SOLUCAO INJETAVEL 10MGML 2ML",
+>                        "HIDROCORTISONA SUCCINATO SODICO PO LIOFILO
+> INJETAVEL 100MG",
+>                        "ONDANSETRONA CLORIDRATO SOLUCAO INJETAVEL 2MGML
+> 4ML",
+>                        "ONDANSETRONA CLORIDRATO SOLUCAO INJETAVEL 2MGML
+> 4ML",
+>                        "Penicilina G BENZATINA PO LIOFILO INJETAVEL
+> 1200000UI",
+>                        "Penicilina G BENZATINA PO LIOFILO INJETAVEL
+> 1200000UI",
+>                        "PIPERACILINA SODICA 4G + TAZOBACTAM SODICA 0,5G PO
+> LIOFILO INJETAVEL"))
+>
+> u <- sapply(patterns, FUN = grepl, x = df$nome)
+> df$medicamento <-
+>     apply(u,
+>           MARGIN = 1,
+>           FUN = function(x) {
+>               # Tá sendo assumido que apenas 1 match ocorre.
+>               index <- head(which(x), n = 1)
+>               ifelse(length(index),
+>                      names(index),
+>                      NA_character_)
+>           })
+>
+> Atenção!
+> Se você tiver que fazer isso para muitos itens e muitos medicamentos onde
+> no máximo um match é esperado, esse código tá caro porque ele avalia o
+> match de cada produto (p produtos) com cada item (n itens) e retorna uma
+> matriz n * p de valores lógicos. Você pode escrever a instrução de forma
+> condicional: quando encontrar o primeiro match, passar para o próximo item.
+> Vai ter que fazer um benchmark porque as instruções vetorizadas são rápidas
+> e colocar condicionais em loops é um pouco lento. Tudo vai depender do p e
+> n do seu problema.
+>
+> Outra opção é verificar se não tem como usar um "inner join with
+> approximate matching". Confere o que tem no {stringdist} e {fuzzyjoin}.
+>
+> À disposição.
+> Walmes.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210315/d31c881a/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 40501 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210315/d31c881a/attachment.png>
+
+From sznelwar em uol.com.br  Mon Mar 15 19:03:20 2021
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Mon, 15 Mar 2021 19:03:20 -0300
+Subject: [R-br] Recuperar mensagens
+Message-ID: <604fd9a8f1ad2_12252ab3c50351088108b@ip-10-81-19-55.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210315/e35473c0/attachment.html>
+
+From zhushazang em gmail.com  Mon Mar 15 19:10:15 2021
+From: zhushazang em gmail.com (Rodolfo Silva)
+Date: Mon, 15 Mar 2021 18:10:15 -0400
+Subject: [R-br] Recuperar mensagens
+In-Reply-To: <604fd9a8f1ad2_12252ab3c50351088108b@ip-10-81-19-55.ec2.internal.mail>
+References: <604fd9a8f1ad2_12252ab3c50351088108b@ip-10-81-19-55.ec2.internal.mail>
+Message-ID: <e0bff340-c689-d63e-9da7-f72a8ba0a39c@gmail.com>
+
+https://listas.inf.ufpr.br/pipermail/r-br/
+
+Atenciosamente
+
+On 15/03/2021 18:03, sznelwar--- por (R-br) wrote:
+> Recebi hoje duas mensagens do grupo, mas infelizmente apaguei sem 
+> querer e queria saber onde posso lê-las.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-- 
+---
+Rodolfo Timoteo da Silva
+Mestrando em Engenharia Agrícula
+Especialista em Gestão de Organizações
+Engenheiro de Produção
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210315/b27af8d1/attachment.html>
+
+From norydaniel em gmail.com  Wed Mar 17 17:48:22 2021
+From: norydaniel em gmail.com (Nory)
+Date: Wed, 17 Mar 2021 16:48:22 -0400
+Subject: [R-br] Limpar console!
+Message-ID: <CAFYwixr7mZvpZ3d4GEaXSymVQzV8eQe6k4OdskE6Sdhw9QbXtg@mail.gmail.com>
+
+Olá pessoal,
+Uso o R dentro do Emacs no meu macbook. Gostaria de saber se alguém tem
+alguma dica para limpar o console? O "Ctrl + L" no RStudio funciona, mas
+não para o R dentro do Emacs.
+
+-- 
+Nory Daniel de Carvalho Erazo
+
+Técnico em Sistemática Vegetal/Herbário INPA
+Coordenação de Biodiversidade - CBio
+Instituto Nacional de Pesquisas da Amazônia - INPA
+Ministério da Ciência, Tecnologia e Inovação - MCTI
+
+Av. André Araújo, 2.936
+Bairro: Petrópolis, CEP: 69067-375
+Manaus - AM, Brasil
+
+Telefone: (92) 3643-3125
+Celular: (92) 99378-7592
+nory em inpa.gov.br
+norydaniel em gmail.com
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210317/bdfdcae0/attachment.html>
+
+From felipe.e.barletta em gmail.com  Wed Mar 17 21:31:08 2021
+From: felipe.e.barletta em gmail.com (Felipe Barletta)
+Date: Wed, 17 Mar 2021 21:31:08 -0300
+Subject: [R-br] Limpar console!
+In-Reply-To: <CAFYwixr7mZvpZ3d4GEaXSymVQzV8eQe6k4OdskE6Sdhw9QbXtg@mail.gmail.com>
+References: <CAFYwixr7mZvpZ3d4GEaXSymVQzV8eQe6k4OdskE6Sdhw9QbXtg@mail.gmail.com>
+Message-ID: <CAJz4ZjEpOdrRyb9SnbYQOjvjDs_KpQtwqo+UP_qXirD=d3QUgg@mail.gmail.com>
+
+Tenta Crtl c + Alt o
+
+Em qua., 17 de mar. de 2021 às 17:48, Nory por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá pessoal,
+> Uso o R dentro do Emacs no meu macbook. Gostaria de saber se alguém tem
+> alguma dica para limpar o console? O "Ctrl + L" no RStudio funciona, mas
+> não para o R dentro do Emacs.
+>
+> --
+> Nory Daniel de Carvalho Erazo
+>
+> Técnico em Sistemática Vegetal/Herbário INPA
+> Coordenação de Biodiversidade - CBio
+> Instituto Nacional de Pesquisas da Amazônia - INPA
+> Ministério da Ciência, Tecnologia e Inovação - MCTI
+>
+> Av. André Araújo, 2.936
+> Bairro: Petrópolis, CEP: 69067-375
+> Manaus - AM, Brasil
+>
+> Telefone: (92) 3643-3125
+> Celular: (92) 99378-7592
+> nory em inpa.gov.br
+> norydaniel em gmail.com
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210317/fb58ce60/attachment.html>
+
+From norydaniel em gmail.com  Wed Mar 17 22:01:56 2021
+From: norydaniel em gmail.com (Nory)
+Date: Wed, 17 Mar 2021 21:01:56 -0400
+Subject: [R-br] Limpar console!
+In-Reply-To: <CAJz4ZjEpOdrRyb9SnbYQOjvjDs_KpQtwqo+UP_qXirD=d3QUgg@mail.gmail.com>
+References: <CAFYwixr7mZvpZ3d4GEaXSymVQzV8eQe6k4OdskE6Sdhw9QbXtg@mail.gmail.com>
+ <CAJz4ZjEpOdrRyb9SnbYQOjvjDs_KpQtwqo+UP_qXirD=d3QUgg@mail.gmail.com>
+Message-ID: <CAFYwixrt-2j_xJQGG47=dn_x3AbbuAgBBxw08XgoQNMGXErQUw@mail.gmail.com>
+
+Funcionou Felipe....muito obrigado!!!
+
+
+Em qua., 17 de mar. de 2021 às 20:32, Felipe Barletta por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Tenta Crtl c + Alt o
+>
+> Em qua., 17 de mar. de 2021 às 17:48, Nory por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Olá pessoal,
+>> Uso o R dentro do Emacs no meu macbook. Gostaria de saber se alguém tem
+>> alguma dica para limpar o console? O "Ctrl + L" no RStudio funciona, mas
+>> não para o R dentro do Emacs.
+>>
+>> --
+>> Nory Daniel de Carvalho Erazo
+>>
+>> Técnico em Sistemática Vegetal/Herbário INPA
+>> Coordenação de Biodiversidade - CBio
+>> Instituto Nacional de Pesquisas da Amazônia - INPA
+>> Ministério da Ciência, Tecnologia e Inovação - MCTI
+>>
+>> Av. André Araújo, 2.936
+>> Bairro: Petrópolis, CEP: 69067-375
+>> Manaus - AM, Brasil
+>>
+>> Telefone: (92) 3643-3125
+>> Celular: (92) 99378-7592
+>> nory em inpa.gov.br
+>> norydaniel em gmail.com
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+Nory Daniel de Carvalho Erazo
+
+Técnico em Sistemática Vegetal/Herbário INPA
+Coordenação de Biodiversidade - CBio
+Instituto Nacional de Pesquisas da Amazônia - INPA
+Ministério da Ciência, Tecnologia e Inovação - MCTI
+
+Av. André Araújo, 2.936
+Bairro: Petrópolis, CEP: 69067-375
+Manaus - AM, Brasil
+
+Telefone: (92) 3643-3125
+Celular: (92) 99378-7592
+nory em inpa.gov.br
+norydaniel em gmail.com
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210317/9823e740/attachment.html>
+
+From michele.breton20 em gmail.com  Tue Mar 30 05:29:29 2021
+From: michele.breton20 em gmail.com (Michele Claire Breton)
+Date: Tue, 30 Mar 2021 09:29:29 +0100
+Subject: [R-br] Erro no gap.boxplot
+Message-ID: <CACTXoEYHyM49+xv2=rxB496nWaXT8U30=gZMGHdmUfHa_FL9ww@mail.gmail.com>
+
+Caros(as) senhores(as),
+
+Estou com dificuldade para usar o gap.boxplot. Eu fiz o dowload do pacote
+Plotrix e não consigo rodar nem o exemplo da documentação da sintaxe, volta
+como erro:
+Error in gap.boxplot(vec, gap = list(topo = c(20, 60)), principal =
+"Mostrar valores discrepantes separadamente") :
+  could not find function "gap.boxplot"
+Para o gráfico de barras e o gráfico de linha, rodei o exemplo
+perfeitamente. Também gerei o boxplot sem o gap no eixo, aí sim, com meus
+dados.
+O que estou fazendo de errado?
+Muito obrigada pela ajuda.
+
+
+
+
+-- 
+Com os melhores cumprimentos,
+
+*Dra. Michèle Claire Breton*
+Investigadora auxiliar
+Faculdade de Ciências da Saúde
+Universidade da Beira Interior
+Covilhã - Portugal
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210330/263a8ed2/attachment.html>
+
+From vl.alexandro em yahoo.com.br  Tue Mar 30 08:53:18 2021
+From: vl.alexandro em yahoo.com.br (Alexandro (Yahoo))
+Date: Tue, 30 Mar 2021 11:53:18 +0000 (UTC)
+Subject: [R-br] Erro no gap.boxplot
+In-Reply-To: <CACTXoEYHyM49+xv2=rxB496nWaXT8U30=gZMGHdmUfHa_FL9ww@mail.gmail.com>
+References: <CACTXoEYHyM49+xv2=rxB496nWaXT8U30=gZMGHdmUfHa_FL9ww@mail.gmail.com>
+Message-ID: <1478385441.998070.1617105198881@mail.yahoo.com>
+
+########################################################
+#Oie, baixei o pacote:#plotrix#com p minúsculo.
+#Depois fiz:help(package="plotrix")
+#e entrei em:http://127.0.0.1:16593/library/plotrix/html/gap.boxplot.html#Para ver quais são os comandos.
+#Em seguida, executei o comando abaixo da documentação:require(plotrix)twovec<-list(vec1=c(rnorm(30),-6),vec2=c(sample(1:10,40,TRUE),20))gap.boxplot(twovec,gap=list(top=c(12,18),bottom=c(-5,-3)),  main="Show outliers separately")  #e deu certo.#Seria interessante você mandar o CMR (código mínimo reproduzível) para verificar se falta algum parâmentro,#erro em virgulas, parentesis, aspas duplas, ....#Espero ter ajudado.
+
+
+#Alexandro Vieira Lopes ########################################################
+
+
+
+
+
+
+
+
+
+
+
+    Em terça-feira, 30 de março de 2021 05:29:35 GMT-3, Michele Claire Breton por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Caros(as) senhores(as),
+Estou com dificuldade para usar o gap.boxplot. Eu fiz o dowload do pacote Plotrix e não consigo rodar nem o exemplo da documentação da sintaxe, volta como erro:Error in gap.boxplot(vec, gap = list(topo = c(20, 60)), principal = "Mostrar valores discrepantes separadamente") : 
+  could not find function "gap.boxplot"
+Para o gráfico de barras e o gráfico de linha, rodei o exemplo perfeitamente. Também gerei o boxplot sem o gap no eixo, aí sim, com meus dados.O que estou fazendo de errado?Muito obrigada pela ajuda.
+
+
+
+-- 
+Com os melhores cumprimentos,
+Dra. Michèle Claire BretonInvestigadora auxiliarFaculdade de Ciências da SaúdeUniversidade da Beira InteriorCovilhã - Portugal_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210330/22bebf7a/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Mar 30 14:38:04 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 30 Mar 2021 14:38:04 -0300
+Subject: [R-br] Erro no gap.boxplot
+In-Reply-To: <CACTXoEYHyM49+xv2=rxB496nWaXT8U30=gZMGHdmUfHa_FL9ww@mail.gmail.com>
+References: <CACTXoEYHyM49+xv2=rxB496nWaXT8U30=gZMGHdmUfHa_FL9ww@mail.gmail.com>
+Message-ID: <CAKrF98kX7mB1uifDFdTpFv2cDk+TisEj1edzL9CfA_CyOJw67Q@mail.gmail.com>
+
+Olá Michele!
+
+Qual é o comportamento se você rodar:
+> example(gap.boxplot)
+?
+
+Ressalto a questão:
+
+A mensagem de erro apresentada não parece advir de dados do exemplo
+indicado no documento de ajuda.
+
+Se o exemplo obtido pela chamada acima funcionar, mas seu problema
+persistir, então considere enviar a esta lista um CMR como o *link* do guia
+de postagem indica.
+
+HTH
+--
+Cesar Rabak
+
+
+
+On Tue, Mar 30, 2021 at 5:29 AM Michele Claire Breton por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Caros(as) senhores(as),
+>
+> Estou com dificuldade para usar o gap.boxplot. Eu fiz o dowload do pacote
+> Plotrix e não consigo rodar nem o exemplo da documentação da sintaxe, volta
+> como erro:
+> Error in gap.boxplot(vec, gap = list(topo = c(20, 60)), principal =
+> "Mostrar valores discrepantes separadamente") :
+>   could not find function "gap.boxplot"
+> Para o gráfico de barras e o gráfico de linha, rodei o exemplo
+> perfeitamente. Também gerei o boxplot sem o gap no eixo, aí sim, com meus
+> dados.
+> O que estou fazendo de errado?
+> Muito obrigada pela ajuda.
+>
+>
+>
+>
+> --
+> Com os melhores cumprimentos,
+>
+> *Dra. Michèle Claire Breton*
+> Investigadora auxiliar
+> Faculdade de Ciências da Saúde
+> Universidade da Beira Interior
+> Covilhã - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210330/5743ecc8/attachment.html>
+
+From dtiezzi em usp.br  Tue Mar 30 14:44:39 2021
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 30 Mar 2021 14:44:39 -0300
+Subject: [R-br] Erro no gap.boxplot
+In-Reply-To: <CACTXoEYHyM49+xv2=rxB496nWaXT8U30=gZMGHdmUfHa_FL9ww@mail.gmail.com>
+References: <CACTXoEYHyM49+xv2=rxB496nWaXT8U30=gZMGHdmUfHa_FL9ww@mail.gmail.com>
+Message-ID: <01E1C5D4-68A9-4D05-AD68-EC0D85BF1EB7@usp.br>
+
+O erro é o mesmo se você rodar o seguinte código?
+
+plotrix::gap.boxplot(vec, gap = list(topo = c(20, 60)
+
+daniel
+
+
+
+> On Mar 30, 2021, at 5:29 AM, Michele Claire Breton por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Plotrix
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210330/d09423ee/attachment.html>
+
+From felipe.e.barletta em gmail.com  Tue Mar 30 15:08:55 2021
+From: felipe.e.barletta em gmail.com (Felipe Barletta)
+Date: Tue, 30 Mar 2021 15:08:55 -0300
+Subject: [R-br] Erro no gap.boxplot
+In-Reply-To: <CACTXoEYHyM49+xv2=rxB496nWaXT8U30=gZMGHdmUfHa_FL9ww@mail.gmail.com>
+References: <CACTXoEYHyM49+xv2=rxB496nWaXT8U30=gZMGHdmUfHa_FL9ww@mail.gmail.com>
+Message-ID: <CAJz4ZjFH3ZeSjxajoKoBPMU30pmennEgiws1dtqRBLPV_NsqGQ@mail.gmail.com>
+
+Pela mensagem de erro, não encontrou a função
+Tenta chamar a função declarando o pacote
+plotrix::gap.boxplot(vec, gap = list(top = c(20, 60)), main = "Mostrar
+valores discrepantes separadamente")
+
+Ah notei agora que seus argumentos da função estão em português?? top e main
+
+Em ter., 30 de mar. de 2021 às 05:29, Michele Claire Breton por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Caros(as) senhores(as),
+>
+> Estou com dificuldade para usar o gap.boxplot. Eu fiz o dowload do pacote
+> Plotrix e não consigo rodar nem o exemplo da documentação da sintaxe, volta
+> como erro:
+> Error in gap.boxplot(vec, gap = list(topo = c(20, 60)), principal =
+> "Mostrar valores discrepantes separadamente") :
+>   could not find function "gap.boxplot"
+> Para o gráfico de barras e o gráfico de linha, rodei o exemplo
+> perfeitamente. Também gerei o boxplot sem o gap no eixo, aí sim, com meus
+> dados.
+> O que estou fazendo de errado?
+> Muito obrigada pela ajuda.
+>
+>
+>
+>
+> --
+> Com os melhores cumprimentos,
+>
+> *Dra. Michèle Claire Breton*
+> Investigadora auxiliar
+> Faculdade de Ciências da Saúde
+> Universidade da Beira Interior
+> Covilhã - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210330/fbe91e2f/attachment.html>
+

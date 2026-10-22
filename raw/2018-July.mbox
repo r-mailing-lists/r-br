@@ -1,0 +1,2726 @@
+From carlos.eggos em gmail.com  Mon Jul  9 02:57:09 2018
+From: carlos.eggos em gmail.com (Carlos Peixoto Neto)
+Date: Mon, 9 Jul 2018 02:57:09 -0300
+Subject: [R-br] =?utf-8?q?Constru=C3=A7=C3=A3o_de_gr=C3=A1fico_em_ggplot2?=
+Message-ID: <CA+ZXmSgdoXK+y+HLOtwmwzsoqJ5WTv_J2sVLHYrEG7JmQLSyhg@mail.gmail.com>
+
+Olá, busco um auxílio para aprimorar um script em R. Tenho alguns erros de
+execução que apresento logo abaixo. No estudo, avalio o efeito da interação
+entre girinos, var. preditora "INT", no uso de recurso espacial através de
+duas variáveis resposta: deslocamento em Posição Vertical (PV) e Posição
+Horizontal (PH).
+
+Erros:
+
+   -
+
+   Na execução da função summarySE: "/Warning message:In qt(conf.interval/2
+   + 0.5, datac$N - 1) : NaNs produced"
+   -
+
+   Na execução de legend.title=element_blank(): Error: unexpected symbol
+   in:"legend.title=element_blank() legend.title"
+
+#Importar dados. Pacotes para o gráfico
+pmed<-read.table("https://drive.google.com/open?id=1cET5cROSb-_D-cZYud3yKBHGR-qamind",header=T,
+sep=',')
+require(Rmisc)
+require(ggplot2)
+require(EnvStats)
+require(sciplot)
+require(dplyr)
+summarypmed <- summarySE(pmed, measurevar="PV",
+groupvars=c("ID","INT"),na.rm=T)# gráfico 1
+                graf1 <- ggplot(summarypmed, aes(x=INT, y= PV,
+fill=INT)+ facet_wrap(~INT) +
+                geom_dotplot(binwidth=0.05,binaxis="y",stackdir =
+"center") +
+                geom_errorbar(aes (ymin=PV.y-se,ymax=PV.y+se),width =
+0.25,size=0.25)+
+                  xlab("Tratamentos") +
+                  ylab(" Posição Vertical (cm)") +
+                  geom_text(aes(label = paste("N", "==",N,sep = "")),
+                                              parse = TRUE, y=-0.15) +
+                  geom_point(aes(y=PV.y), size=1,show.legend = F) +
+                  theme_bw () +
+                  scale_fill_manual(values=c("grey85","grey30")) +
+                    theme(axis.ticks.x=element_blank(),
+                    axis.title.x=element_blank(),
+                    axis.text=element_text(size=7),
+                    axis.text.y=element_text(size=10),
+                    axis.text.x=element_blank(),
+                    axis.title.y=element_text(size=11),
+                    plot.title=element_text(size=12, hjust = 0.5),
+                    panel.grid=element_blank(),
+                    plot.title=element_text(vjust=2),
+                    legend.title=element_blank())
+
+
+*Carlos Alberto Algarves Peixoto Neto*
+Biólogo | Universidade Federal do Maranhão - UFMA
+Lattes: http://buscatextual.cnpq.br/buscatextual/visualizacv.do?
+id=K4303028A6
+___
+"O amor de Deus: Cristo morrer em nosso favor quando ainda éramos
+pecadores."
+Romanos cap. 5: vers. 8 (NVI)
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180709/3b77bf9f/attachment.html>
+
+From fulcris em yahoo.com.br  Tue Jul 10 00:05:40 2018
+From: fulcris em yahoo.com.br (=?UTF-8?Q?f=C3=BAlvia_cristina_oliveira?=)
+Date: Tue, 10 Jul 2018 03:05:40 +0000 (UTC)
+Subject: [R-br] Dados DIC
+References: <862691634.1800402.1531191940935.ref@mail.yahoo.com>
+Message-ID: <862691634.1800402.1531191940935@mail.yahoo.com>
+
+Boa noite, estou rodando uns dados em DIC, onde tenho dois tratamentos (dietas) e algumas variáveis a saída saiu assim:O que tenho que fazer?
+> crd(TRAT, Hemoglobina, quali = FALSE, mcomp = "tukey", sigT = 0.05, sigF = 0.05)------------------------------------------------------------------------Analysis of Variance Table------------------------------------------------------------------------           DF      SS     MS     Fc      Pr>FcTreatament  1  59.806 59.806 14.495 0.00081149Residuals  25 103.150  4.126                  Total      26 162.956                         ------------------------------------------------------------------------CV = 25.89 %
+------------------------------------------------------------------------Shapiro-Wilk normality testp-value:  0.07082243 According to Shapiro-Wilk normality test at 5% of significance, residuals can be considered normal.------------------------------------------------------------------------
+Adjustment of polynomial models of regression------------------------------------------------------------------------Error in treat^2 : non-numeric argument to binary operator> 
+
+
+
+
+
+Fúlvia Cristina Oliveira Bióloga - UFMS  Mestre em Zootecnia - UEMSDoutoranda em Ciência Animal - UFMS(67) 99610-2812 / 99129-6612
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180710/1eb2f1b6/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Jul 10 08:52:20 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 10 Jul 2018 08:52:20 -0300
+Subject: [R-br] Dados DIC
+In-Reply-To: <862691634.1800402.1531191940935@mail.yahoo.com>
+References: <862691634.1800402.1531191940935.ref@mail.yahoo.com>
+ <862691634.1800402.1531191940935@mail.yahoo.com>
+Message-ID: <CAKrF98noCtqrS33T7rGuMFyZQyi-xEpCvk973oOyfbroa9-CSQ@mail.gmail.com>
+
+Fúlvia,
+
+Sua pergunta extrapola dúvidas sobre o R e o pacote que você utilizou e vai
+direto para a Estatística, no seu caso Análise de Experimentos [DIC?].
+
+Não nem foro nem do escopo deste grupo discutir esse tipo de questão, que
+lhe recomendo você consulte uma obra de referência sobre o assunto, e se
+você tiver tempo (sua assinatura indica *doutoranda* o que me leva a crer
+que está estudando ainda) assistir vídeos sobre o assunto, malgrado me
+parece que os mais completos e interessantes são em língua estrangeira.
+
+Para não deixá-la no vácuo:
+
+Em relação à sua pergunta: «  O que tenho que fazer? »  A resposta é:
+"analise os resultados em função do problema que você está estudando".
+
+Se você tem apenas um tratamento com dois níveis (que é o que resultado que
+você postou mostra) as comparações da sua ANOVA se equivale a uma
+comparação entre as médias para esses dois níveis, sendo desnecessário usar
+comparações *post hoc* (o « " mcomp = "tukey", » na sua chamada a crd).
+
+Hoje em dia se considera deprecado o uso do coeficiente de variação (o "CV"
+dos seus resultados), para detalhes leia postagens antigas neste grupo.
+
+Embora eu pessoalmente prefira ver os gráficos de diagnóstico após uma
+regressão ou ANOVA¹, a função que você usou entrega automaticamente um
+diagnóstico sobre a normalidade dos resíduos que ajudam a defender que essa
+hipótese (necessária para a análise ser válida) "não teria sido violada".
+
+De novo, aconselhando-a a ir às referências sobre o assunto, lhe faltará
+descrever e analisar o tamanho do efeito que essa ANOVA calcula, e se você
+quiser uma representação gráfica que eu considero particularmente
+interessante é o uso da função plot.design() do R.
+
+HTH
+--
+Cesar Rabak
+
+
+[1] Mas eu admito que se você não estiver acostumada a avaliá-los podem se
+tornar um óbice em vez de uma ferramenta.
+
+On Tue, Jul 10, 2018 at 12:05 AM, fúlvia cristina oliveira via R-br <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa noite, estou rodando uns dados em DIC, onde tenho dois tratamentos
+> (dietas) e algumas variáveis a saída saiu assim:
+> O que tenho que fazer?
+>
+> > crd(TRAT, Hemoglobina, quali = FALSE, mcomp = "tukey", sigT = 0.05, sigF
+> = 0.05)
+> ------------------------------------------------------------------------
+> Analysis of Variance Table
+> ------------------------------------------------------------------------
+>            DF      SS     MS     Fc      Pr>Fc
+> Treatament  1  59.806 59.806 14.495 0.00081149
+> Residuals  25 103.150  4.126
+> Total      26 162.956
+> ------------------------------------------------------------------------
+> CV = 25.89 %
+>
+> ------------------------------------------------------------------------
+> Shapiro-Wilk normality test
+> p-value:  0.07082243
+> According to Shapiro-Wilk normality test at 5% of significance, residuals
+> can be considered normal.
+> ------------------------------------------------------------------------
+>
+> Adjustment of polynomial models of regression
+> ------------------------------------------------------------------------
+> Error in treat^2 : non-numeric argument to binary operator
+> >
+>
+>
+>
+>
+>
+>
+> Fúlvia Cristina Oliveira
+> Bióloga - UFMS
+> Mestre em Zootecnia - UEMS
+> Doutoranda em Ciência Animal - UFMS
+> (67) 99610-2812 / 99129-6612
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180710/0d71bec5/attachment.html>
+
+From ecacarva em gmail.com  Tue Jul 10 20:38:21 2018
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Tue, 10 Jul 2018 20:38:21 -0300
+Subject: [R-br] =?utf-8?q?An=C3=A1lise_de_amostra_pequena?=
+Message-ID: <CAH8E6UtASWFweAvz21SDj3rOv5Ht7o_kg0S_1DE89vELAHhHpA@mail.gmail.com>
+
+Prezados
+
+Tenho uma amostra pequena com apenas 17 registros, e 7 variáveis
+dicotômicas, cujo resumo é:
+
+ A      B      C      D      E      F      G
+ 0: 7   0:10   0: 6   0:11   0: 2   0: 1   0:15
+ 1:10   1: 7   1:11   1: 6   1:15   1:16   1: 2
+
+
+A variável G seria meu desfecho e o resto possíveis preditores
+
+
+Para veficiar a associação entre o desfecho e as outras
+variáveisexecutei o teste exato de fisher por ser uma amostra pequena,
+mas o resutados mostraram que o desfecho não depende de nenhuma
+variável:
+
+
+> fisher.test(data.to.work$G, data.to.work$A)
+	Fisher's Exact Test for Count Data
+
+data:  data.to.work$G and data.to.work$A
+p-value = 0.4853
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.1311443       Inf
+sample estimates:
+odds ratio
+       Inf
+> fisher.test(data.to.work$G, data.to.work$B)
+	Fisher's Exact Test for Count Data
+
+data:  data.to.work$G and data.to.work$B
+p-value = 0.4853
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.000000 7.625189
+sample estimates:
+odds ratio
+         0
+> fisher.test(data.to.work$G, data.to.work$C)
+	Fisher's Exact Test for Count Data
+
+data:  data.to.work$G and data.to.work$C
+p-value = 0.5147
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.1003871       Inf
+sample estimates:
+odds ratio
+       Inf
+> fisher.test(data.to.work$G, data.to.work$D)
+	Fisher's Exact Test for Count Data
+
+data:  data.to.work$G and data.to.work$D
+p-value = 0.5147
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.00000 9.96144
+sample estimates:
+odds ratio
+         0
+> fisher.test(data.to.work$G, data.to.work$E)
+	Fisher's Exact Test for Count Data
+
+data:  data.to.work$G and data.to.work$E
+p-value = 1
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.01971228        Inf
+sample estimates:
+odds ratio
+       Inf
+> fisher.test(data.to.work$G, data.to.work$F)
+	Fisher's Exact Test for Count Data
+
+data:  data.to.work$G and data.to.work$F
+p-value = 1
+alternative hypothesis: true odds ratio is not equal to 1
+95 percent confidence interval:
+ 0.003434375         Inf
+sample estimates:
+odds ratio
+
+       Inf
+
+
+Em seguida calculei o V de Cramer, Coeficiente de Contingência e phi e
+todos mostram independência e associação fraca.
+
+
+summary(assocstats(tab_cont_G_A)) # Resultado: # X^2 df P(> X^2) #
+Likelihood Ratio 2.3071 1 0.12878 # P-Valor > 0.05 - independentes #
+Pearson 1.5867 1 0.20780 # P-Valor > 0.05 - independentes # #
+Phi-Coefficient : 0.306 # Coef de Phi - Associação fraca # Contingency
+Coeff.: 0.292 # Coef de Cont - Associação fraca # Cramer's V : 0.306 # V de
+Crammer - Associação fraca
+
+ Pelo que pesquisei este seriam os métodos mais adequados para este
+tipo de análise
+
+
+Há um método melhor para avaliar esse tipo de dado?
+
+
+
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180710/5b7a90ad/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Jul 11 09:27:19 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 11 Jul 2018 09:27:19 -0300
+Subject: [R-br] =?utf-8?q?An=C3=A1lise_de_amostra_pequena?=
+In-Reply-To: <CAH8E6UtASWFweAvz21SDj3rOv5Ht7o_kg0S_1DE89vELAHhHpA@mail.gmail.com>
+References: <CAH8E6UtASWFweAvz21SDj3rOv5Ht7o_kg0S_1DE89vELAHhHpA@mail.gmail.com>
+Message-ID: <CAKrF98mTh_SrON8-9LmCNSnbDMy=RABRYsEidmEeguNiXeGPjg@mail.gmail.com>
+
+Elias,
+
+Há vários possíveis comentários a fazer, embora, de antemão aviso-o, que
+pelo fato de você ter dezessete casos apenas, não há muito a melhorar.
+
+
+   1. Calcular os coeficientes de associação quando a hipótese de
+   independência não pode ser descartada tende a ser um exercício equivalente
+   a tentar ler folhas de chá numa xícara após a merenda;
+   2. Ao você fazer múltiplas comparações *nos mesmos dados* você ainda
+   teria que fazer uma correção para assegurar que seu Erro Tipo I não seria
+   inflacionado;
+   3. A alternativa de fazer um *omnibus test*, por exemplo via uma
+   regressão logística com G como desfecho e as outras como VI, esbarra no
+   fato de que se precisaria muito mais casos¹.
+
+Então no seu caso a única coisa que a Estatística o autorizaria é dizer que
+as hipóteses de independências não podem ser descartadas e que devido ao
+tamanho da amostra mais nada pode ser dito (do ponto de vista de
+inferência).
+
+Com o conhecimento do domínio do problema e a Descritiva você pode
+especular mais um pouco, mas irremediavelmente teria que propor um estudo
+com maior potências estatística se quiser alguma constatação do fenômeno
+que está estudando.
+
+
+HTH
+--
+Cesar Rabak
+
+
+[1] A discussão sobre assunto é vasta com concordância apenas que é "um
+problema complexo", mas para colocar a bola em campo, Peduzzi et al. 1996,
+costuma ser citado como melhor referência. A fórmula seria N = 10∙k / p; N
+:: mínimo tamanho da amostra, k :: número de covariáveis; p :: mínimo da
+proporção casos ou não casos.
+
+
+Peduzzi P, Concato J, Kemper E, Holford TR, Feinstein AR (1996) A
+simulation study of the number of events per variable in logistic
+regression analysis. Journal of Clinical Epidemiology 49:1373-1379.
+
+On Tue, Jul 10, 2018 at 8:38 PM, Elias Carvalho via R-br <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados
+>
+> Tenho uma amostra pequena com apenas 17 registros, e 7 variáveis
+> dicotômicas, cujo resumo é:
+>
+>  A      B      C      D      E      F      G
+>  0: 7   0:10   0: 6   0:11   0: 2   0: 1   0:15
+>  1:10   1: 7   1:11   1: 6   1:15   1:16   1: 2
+>
+>
+> A variável G seria meu desfecho e o resto possíveis preditores
+>
+>
+> Para veficiar a associação entre o desfecho e as outras variáveisexecutei o teste exato de fisher por ser uma amostra pequena, mas o resutados mostraram que o desfecho não depende de nenhuma variável:
+>
+>
+> > fisher.test(data.to.work$G, data.to.work$A)
+> 	Fisher's Exact Test for Count Data
+>
+> data:  data.to.work$G and data.to.work$A
+> p-value = 0.4853
+> alternative hypothesis: true odds ratio is not equal to 1
+> 95 percent confidence interval:
+>  0.1311443       Inf
+> sample estimates:
+> odds ratio
+>        Inf
+> > fisher.test(data.to.work$G, data.to.work$B)
+> 	Fisher's Exact Test for Count Data
+>
+> data:  data.to.work$G and data.to.work$B
+> p-value = 0.4853
+> alternative hypothesis: true odds ratio is not equal to 1
+> 95 percent confidence interval:
+>  0.000000 7.625189
+> sample estimates:
+> odds ratio
+>          0
+> > fisher.test(data.to.work$G, data.to.work$C)
+> 	Fisher's Exact Test for Count Data
+>
+> data:  data.to.work$G and data.to.work$C
+> p-value = 0.5147
+> alternative hypothesis: true odds ratio is not equal to 1
+> 95 percent confidence interval:
+>  0.1003871       Inf
+> sample estimates:
+> odds ratio
+>        Inf
+> > fisher.test(data.to.work$G, data.to.work$D)
+> 	Fisher's Exact Test for Count Data
+>
+> data:  data.to.work$G and data.to.work$D
+> p-value = 0.5147
+> alternative hypothesis: true odds ratio is not equal to 1
+> 95 percent confidence interval:
+>  0.00000 9.96144
+> sample estimates:
+> odds ratio
+>          0
+> > fisher.test(data.to.work$G, data.to.work$E)
+> 	Fisher's Exact Test for Count Data
+>
+> data:  data.to.work$G and data.to.work$E
+> p-value = 1
+> alternative hypothesis: true odds ratio is not equal to 1
+> 95 percent confidence interval:
+>  0.01971228        Inf
+> sample estimates:
+> odds ratio
+>        Inf
+> > fisher.test(data.to.work$G, data.to.work$F)
+> 	Fisher's Exact Test for Count Data
+>
+> data:  data.to.work$G and data.to.work$F
+> p-value = 1
+> alternative hypothesis: true odds ratio is not equal to 1
+> 95 percent confidence interval:
+>  0.003434375         Inf
+> sample estimates:
+> odds ratio
+>
+>        Inf
+>
+>
+> Em seguida calculei o V de Cramer, Coeficiente de Contingência e phi e todos mostram independência e associação fraca.
+>
+>
+> summary(assocstats(tab_cont_G_A)) # Resultado: # X^2 df P(> X^2) #
+> Likelihood Ratio 2.3071 1 0.12878 # P-Valor > 0.05 - independentes #
+> Pearson 1.5867 1 0.20780 # P-Valor > 0.05 - independentes # #
+> Phi-Coefficient : 0.306 # Coef de Phi - Associação fraca # Contingency
+> Coeff.: 0.292 # Coef de Cont - Associação fraca # Cramer's V : 0.306 # V de
+> Crammer - Associação fraca
+>
+>  Pelo que pesquisei este seriam os métodos mais adequados para este tipo de análise
+>
+>
+> Há um método melhor para avaliar esse tipo de dado?
+>
+>
+>
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180711/fcb8630f/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Wed Jul 11 15:03:23 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Wed, 11 Jul 2018 18:03:23 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Soma_duas_colunas_pela_fun=C3=A7=C3=A3o_apply?=
+References: <191009723.2862717.1531332203111.ref@mail.yahoo.com>
+Message-ID: <191009723.2862717.1531332203111@mail.yahoo.com>
+
+Boa Tarde!
+Estou tentando somar duas colunas e coloca-lá na variável soma_debitos e não estou conseguindo. Não pretendo usar função!
+> Banco$soma_debitos <-apply(Banco$cartao_credito,Banco$emprestimos,2,sum)Error in match.fun(FUN) : '2' não é uma função, caracter ou símbolo
+
+Edmar
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180711/1a488aa5/attachment.html>
+
+From nandodesouza em gmail.com  Wed Jul 11 15:28:20 2018
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 11 Jul 2018 15:28:20 -0300
+Subject: [R-br] Soma duas colunas pela =?utf-8?Q?fun=C3=A7=C3=A3o_?=apply
+In-Reply-To: <191009723.2862717.1531332203111@mail.yahoo.com>
+References: <191009723.2862717.1531332203111@mail.yahoo.com>
+Message-ID: <1531333642.local-0358ac25-fd7a-v1.2.2-96fb3a99@getmailspring.com>
+
+Uma solução simples
+
+BANCO<- data.frame(cartao=c(1,2,3,4,5),emprestimo=c(6,7,8,9,10))
+variavel<-DADOS$cartao +DADOS$emprestimo
+variavel
+
+Sent from Mailspring (https://link.getmailspring.com/link/1531333642.local-0358ac25-fd7a-v1.2.2-96fb3a99 em getmailspring.com/0?redirect=https%3A%2F%2Fgetmailspring.com%2F&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy), the best free email app for work
+On Jul 11 2018, at 3:03 pm, Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Boa Tarde!
+>
+> Estou tentando somar duas colunas e coloca-lá na variável soma_debitos e não estou conseguindo. Não pretendo usar função!
+>
+> > Banco$soma_debitos <-apply(Banco$cartao_credito,Banco$emprestimos,2,sum)
+> Error in match.fun(FUN) : '2' não é uma função, caracter ou símbolo
+>
+>
+> Edmar
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180711/b38b9082/attachment.html>
+
+From nandodesouza em gmail.com  Wed Jul 11 15:31:30 2018
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 11 Jul 2018 15:31:30 -0300
+Subject: [R-br] Soma duas colunas pela =?utf-8?Q?fun=C3=A7=C3=A3o_?=apply
+In-Reply-To: <1531333642.local-0358ac25-fd7a-v1.2.2-96fb3a99@getmailspring.com>
+References: <1531333642.local-0358ac25-fd7a-v1.2.2-96fb3a99@getmailspring.com>
+Message-ID: <1531333852.local-7c031b20-c273-v1.2.2-96fb3a99@getmailspring.com>
+
+Usando apply fica assim
+
+variavel=apply(DADOS,1,sum)
+
+Sent from Mailspring (https://link.getmailspring.com/link/1531333852.local-7c031b20-c273-v1.2.2-96fb3a99 em getmailspring.com/0?redirect=https%3A%2F%2Fgetmailspring.com%2F&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy), the best free email app for work
+On Jul 11 2018, at 3:28 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+>
+> Uma solução simples
+> BANCO<- data.frame(cartao=c(1,2,3,4,5),emprestimo=c(6,7,8,9,10))
+> variavel<-DADOS$cartao +DADOS$emprestimo
+> variavel
+>
+>
+> Sent from Mailspring (https://link.getmailspring.com/link/1531333852.local-7c031b20-c273-v1.2.2-96fb3a99 em getmailspring.com/1?redirect=https%3A%2F%2Fgetmailspring.com%2F&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy), the best free email app for work
+> On Jul 11 2018, at 3:03 pm, Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+> >
+> > Boa Tarde!
+> >
+> > Estou tentando somar duas colunas e coloca-lá na variável soma_debitos e não estou conseguindo. Não pretendo usar função!
+> >
+> > > Banco$soma_debitos <-apply(Banco$cartao_credito,Banco$emprestimos,2,sum)
+> > Error in match.fun(FUN) : '2' não é uma função, caracter ou símbolo
+> >
+> >
+> > Edmar
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+> >
+>
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180711/464a3b08/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Wed Jul 11 15:58:00 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Wed, 11 Jul 2018 18:58:00 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Soma_duas_colunas_pela_fun=C3=A7=C3=A3o_apply?=
+In-Reply-To: <1531333852.local-7c031b20-c273-v1.2.2-96fb3a99@getmailspring.com>
+References: <1531333642.local-0358ac25-fd7a-v1.2.2-96fb3a99@getmailspring.com>
+ <1531333852.local-7c031b20-c273-v1.2.2-96fb3a99@getmailspring.com>
+Message-ID: <969848663.2896269.1531335480531@mail.yahoo.com>
+
+Obrigado Fernando, mas não funcionou vou continuar tentando. 
+Preciso usar a função apply, eu até consigo de outra forma.
+Edmar 
+
+    Em quarta-feira, 11 de julho de 2018 15:31:34 BRT, Fernando Souza <nandodesouza em gmail.com> escreveu:  
+ 
+ Usando apply fica assim
+variavel=apply(DADOS,1,sum)
+
+Sent from Mailspring, the best free email app for workOn Jul 11 2018, at 3:28 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+
+Uma solução simples
+BANCO<- data.frame(cartao=c(1,2,3,4,5),emprestimo=c(6,7,8,9,10))variavel<-DADOS$cartao +DADOS$emprestimovariavel
+
+Sent from Mailspring, the best free email app for workOn Jul 11 2018, at 3:03 pm, Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+
+Boa Tarde!
+Estou tentando somar duas colunas e coloca-lá na variável soma_debitos e não estou conseguindo. Não pretendo usar função!
+> Banco$soma_debitos <-apply(Banco$cartao_credito,Banco$emprestimos,2,sum)Error in match.fun(FUN) : '2' não é uma função, caracter ou símbolo
+
+Edmar_______________________________________________R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-brLeia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180711/526fd59d/attachment.html>
+
+From nandodesouza em gmail.com  Wed Jul 11 17:04:09 2018
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 11 Jul 2018 17:04:09 -0300
+Subject: [R-br] Soma duas colunas pela =?utf-8?Q?fun=C3=A7=C3=A3o_?=apply
+In-Reply-To: <969848663.2896269.1531335480531@mail.yahoo.com>
+References: <969848663.2896269.1531335480531@mail.yahoo.com>
+Message-ID: <1531339324.local-6b6c30bb-5988-v1.2.2-96fb3a99@getmailspring.com>
+
+Mande um código mínimo reproduzível, ou compartilhe parte dos seus dados para que possamos ver qual é o problema.
+Para somar duas colunas os comandos que lhe passei resolvem. Se há algo mais específico aí só você pode dizer.
+
+abcs
+
+Sent from Mailspring (https://getmailspring.com/), the best free email app for work
+On Jul 11 2018, at 3:58 pm, Edmar Caldas <edmar_caldas em yahoo.com.br> wrote:
+>
+> Obrigado Fernando, mas não funcionou vou continuar tentando.
+>
+> Preciso usar a função apply, eu até consigo de outra forma.
+>
+> Edmar
+>
+>
+> Em quarta-feira, 11 de julho de 2018 15:31:34 BRT, Fernando Souza <nandodesouza em gmail.com> escreveu:
+>
+>
+> Usando apply fica assim
+> variavel=apply(DADOS,1,sum)
+>
+> Sent from Mailspring (https://link.getmailspring.com/link/1531333852.local-7c031b20-c273-v1.2.2-96fb3a99 em getmailspring.com/0?redirect=https%3A%2F%2Fgetmailspring.com%2F&recipient=ZWRtYXJfY2FsZGFzQHlhaG9vLmNvbS5icg%3D%3D), the best free email app for work
+> On Jul 11 2018, at 3:28 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+> >
+> > Uma solução simples
+> > BANCO<- data.frame(cartao=c(1,2,3,4,5),emprestimo=c(6,7,8,9,10))
+> > variavel<-DADOS$cartao +DADOS$emprestimo
+> > variavel
+> >
+> >
+> > Sent from Mailspring (https://link.getmailspring.com/link/1531333852.local-7c031b20-c273-v1.2.2-96fb3a99 em getmailspring.com/1?redirect=https%3A%2F%2Fgetmailspring.com%2F&recipient=ZWRtYXJfY2FsZGFzQHlhaG9vLmNvbS5icg%3D%3D), the best free email app for work
+> > On Jul 11 2018, at 3:03 pm, Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+> > >
+> > > Boa Tarde!
+> > >
+> > > Estou tentando somar duas colunas e coloca-lá na variável soma_debitos e não estou conseguindo. Não pretendo usar função!
+> > >
+> > > > Banco$soma_debitos <-apply(Banco$cartao_credito,Banco$emprestimos,2,sum)
+> > > Error in match.fun(FUN) : '2' não é uma função, caracter ou símbolo
+> > >
+> > >
+> > > Edmar
+> > > _______________________________________________
+> > > R-br mailing list
+> > > R-br em listas.c3sl.ufpr.br
+> > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+> > >
+> >
+> >
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180711/18af3996/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Wed Jul 11 17:09:34 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Wed, 11 Jul 2018 20:09:34 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Assunto=3A_Re=3A__Soma_duas_colunas_pela_fun?=
+ =?utf-8?b?w6fDo28gYXBwbHk=?=
+In-Reply-To: <1531339324.local-6b6c30bb-5988-v1.2.2-96fb3a99@getmailspring.com>
+References: <969848663.2896269.1531335480531@mail.yahoo.com>
+ <1531339324.local-6b6c30bb-5988-v1.2.2-96fb3a99@getmailspring.com>
+Message-ID: <1575346730.2945625.1531339774923@mail.yahoo.com>
+
+Funcionou. 
+Obrigado!
+
+Enviado do Yahoo Mail no Android 
+ 
+  <div>Em Qua, 11 11e jul 11e 2018 às 17:04, Fernando Souza</div><div><nandodesouza em gmail.com> escreveu:</div>   Mande um código mínimo reproduzível, ou compartilhe parte dos seus dados para que possamos ver qual é o problema.Para somar duas colunas os comandos que lhe passei resolvem. Se há algo mais específico aí só você pode dizer.
+abcs
+
+Sent from Mailspring, the best free email app for workOn Jul 11 2018, at 3:58 pm, Edmar Caldas <edmar_caldas em yahoo.com.br> wrote:
+
+Obrigado Fernando, mas não funcionou vou continuar tentando. 
+Preciso usar a função apply, eu até consigo de outra forma.
+Edmar
+
+Em quarta-feira, 11 de julho de 2018 15:31:34 BRT, Fernando Souza <nandodesouza em gmail.com> escreveu:
+
+Usando apply fica assim
+variavel=apply(DADOS,1,sum)
+
+Sent from Mailspring, the best free email app for workOn Jul 11 2018, at 3:28 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+
+Uma solução simples
+BANCO<- data.frame(cartao=c(1,2,3,4,5),emprestimo=c(6,7,8,9,10))variavel<-DADOS$cartao +DADOS$emprestimovariavel
+
+Sent from Mailspring, the best free email app for workOn Jul 11 2018, at 3:03 pm, Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+
+Boa Tarde!
+Estou tentando somar duas colunas e coloca-lá na variável soma_debitos e não estou conseguindo. Não pretendo usar função!
+> Banco$soma_debitos <-apply(Banco$cartao_credito,Banco$emprestimos,2,sum)Error in match.fun(FUN) : '2' não é uma função, caracter ou símbolo
+
+Edmar_______________________________________________R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-brLeia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180711/4699d304/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180711/4699d304/attachment-0001.html>
+
+From dtiezzi em usp.br  Wed Jul 11 23:13:19 2018
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Wed, 11 Jul 2018 23:13:19 -0300
+Subject: [R-br] =?utf-8?q?Soma_duas_colunas_pela_fun=C3=A7=C3=A3o_apply?=
+In-Reply-To: <191009723.2862717.1531332203111@mail.yahoo.com>
+References: <191009723.2862717.1531332203111.ref@mail.yahoo.com>
+ <191009723.2862717.1531332203111@mail.yahoo.com>
+Message-ID: <CA+RL3DPNL5Gt=HLzdGf2baCt7b7prp4mg1yHfQSDXWcC7j6ADw@mail.gmail.com>
+
+Banco$soma <- Banco$cartao_credito + Banco$emprestimos
+
+On Wed, 11 Jul 2018, 15:03 Edmar Caldas via R-br, <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Boa Tarde!
+>
+> Estou tentando somar duas colunas e coloca-lá na variável soma_debitos e
+> não estou conseguindo. Não pretendo usar função!
+>
+> > Banco$soma_debitos <-apply(Banco$cartao_credito,Banco$emprestimos,2,sum)
+> Error in match.fun(FUN) : '2' não é uma função, caracter ou símbolo
+>
+>
+> Edmar
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180711/abfb1846/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Thu Jul 12 11:58:22 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Thu, 12 Jul 2018 14:58:22 +0000 (UTC)
+Subject: [R-br] Uniao por coluna - chave
+References: <146647803.3368600.1531407502218.ref@mail.yahoo.com>
+Message-ID: <146647803.3368600.1531407502218@mail.yahoo.com>
+
+Bom Dia!
+Preciso de outra ajuda. Estou tentando unir 3 arquivo usando a variavel chave id e não estou conseguindo, ele só uni e arquivos.
+chave<-merge(Apend_A,Apend_B,Apend_C,       by.x=c("id"), by.y=c("id"), by.z=c("id"),       all.x=TRUE, all.y=FALSE, all.z=FALSE)
+chave
+
+Edmar
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180712/d0b95765/attachment.html>
+
+From vanessa.felix.est em gmail.com  Thu Jul 12 15:54:02 2018
+From: vanessa.felix.est em gmail.com (Vanessa Felix)
+Date: Thu, 12 Jul 2018 15:54:02 -0300
+Subject: [R-br] =?utf-8?q?Ajuda_com_Realoca=C3=A7=C3=A3o_de_Inteiros?=
+Message-ID: <CAJAeJpuruu7APVwyV9Z55McvCNcTkLrxVH3BjPU7-h-HGZ0wBg@mail.gmail.com>
+
+ Pessoal,
+   Será que podem me ajudar a pensar em um problema. Tenho um grupo de
+pessoas que preciso redistribuir de acordo com uma porcentagem, mas não
+estou conseguindo distribui-las de forma mais justa e que não desequilibre
+muito a relevância.
+   Segue um exemplo da minha base de dados:
+
+Relevância Total Grupo Nova Redistribuição Arredondamento Arredondamento
+para baixo Arredondamento para cima
+0,90% 80         0,721           1,0            -             1,0
+1,80% 80         1,441           1,0            1,0           2,0
+25,23% 80        20,180          20,0           20,0          21,0
+27,93% 80        22,342          22,0           22,0          23,0
+44,14% 80        35,315          35,0           35,0          36,0
+SOMA 100%   80 79 78 83
+
+relev=c(0.009009009,0.018018018,0.252252252,0.279279279,0.441441441)
+n=80
+relev*n
+sum(relev*n)
+
+ceiling(relev*n)
+sum(ceiling(relev*n))
+
+floor(relev*n)
+sum(floor(relev*n))
+
+round(relev*n)
+sum(round(relev*n))
+
+
+
+-- 
+
+------------------------------------------------------------------------------------------
+Vanessa Felix do Nascimento Sergio
+Graduada em Estatística - ICE/UFJF
+Mestre em Saúde Coletiva - IMS/UERJ
+http://lattes.cnpq.br/2516291371035474
+(21) 97557-3956
+-------------------------------------------------------------------------------------------
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180712/7bfa37e4/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Fri Jul 13 11:50:42 2018
+From: eliaskrainski em yahoo.com.br (Elias T Krainski)
+Date: Fri, 13 Jul 2018 11:50:42 -0300
+Subject: [R-br] =?utf-8?q?Ajuda_com_Realoca=C3=A7=C3=A3o_de_Inteiros?=
+In-Reply-To: <CAJAeJpuruu7APVwyV9Z55McvCNcTkLrxVH3BjPU7-h-HGZ0wBg@mail.gmail.com>
+References: <CAJAeJpuruu7APVwyV9Z55McvCNcTkLrxVH3BjPU7-h-HGZ0wBg@mail.gmail.com>
+Message-ID: <76cb4687-fd87-68f7-1fb0-31325d8f0ef0@yahoo.com.br>
+
+sum(c(1,2,20,22,35))
+
+
+On 12/07/2018 15:54, Vanessa Felix via R-br wrote:
+> Pessoal,
+>    Será que podem me ajudar a pensar em um problema. Tenho um grupo de 
+> pessoas que preciso redistribuir de acordo com uma porcentagem, mas 
+> não estou conseguindo distribui-las de forma mais justa e que não 
+> desequilibre muito a relevância.
+>    Segue um exemplo da minha base de dados:
+>
+>
+> 	Relevância 	Total Grupo 	Nova Redistribuição 	Arredondamento 
+> Arredondamento para baixo 	Arredondamento para cima
+>
+> 	0,90% 	80 	0,721 	1,0 	-	1,0
+>
+> 	1,80% 	80 	1,441 	1,0 	1,0 	2,0
+>
+> 	25,23% 	80 	20,180 	20,0 	20,0 	21,0
+>
+> 	27,93% 	80 	22,342 	22,0 	22,0 	23,0
+>
+> 	44,14% 	80 	35,315 	35,0 	35,0 	36,0
+> SOMA 	100% 		80 	79 	78 	83
+>
+>
+>
+> relev=c(0.009009009,0.018018018,0.252252252,0.279279279,0.441441441)
+> n=80
+> relev*n
+> sum(relev*n)
+>
+> ceiling(relev*n)
+> sum(ceiling(relev*n))
+>
+> floor(relev*n)
+> sum(floor(relev*n))
+>
+> round(relev*n)
+> sum(round(relev*n))
+>
+>
+>
+> -- 
+>
+> ------------------------------------------------------------------------------------------
+> Vanessa Felix do Nascimento Sergio
+> Graduada em Estatística - ICE/UFJF
+> Mestre em Saúde Coletiva - IMS/UERJ
+> http://lattes.cnpq.br/2516291371035474
+> (21) 97557-3956
+> -------------------------------------------------------------------------------------------
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180713/6fc52073/attachment.html>
+
+From nandodesouza em gmail.com  Fri Jul 13 17:48:04 2018
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Fri, 13 Jul 2018 17:48:04 -0300
+Subject: [R-br] =?utf-8?q?Modelos_Mistos_e_Lattice_=28Grafico_de_predi?=
+ =?utf-8?b?w6fDtWVzKQ==?=
+Message-ID: <1531513912.local-726cac4d-a419-v1.2.2-96fb3a99@getmailspring.com>
+
+Caros colegas
+
+Desejo fazer um gráfico, semelhante ao retornado pela função augPred{nlme}, contendo os valores observados, os valores preditos pelo modelo fixo, e os valores individuais preditos. como esse exemplo (Só que para modelo não linear)
+https://rdrr.io/cran/nlme/man/plot.augPred.html
+por algum motivo a função augPred() não está funcionando com o meu modelo (Acredito por ser desbalanceado )
+A função predict.nlme {nlme}, me retorna um dataframe com as informação que quero, porém como transformá-los em gráfico?
+Sei que é possível faze-lo através do xyplot{lattice} porém não estou conseguindo, devido a minha limitação no uso desse pacote.
+Alguém poderia me ajudar?
+segue CMR
+
+packages <- c("tidyr", "nlme""latticeExtra","lattice")
+#Instala pacotes necessários, se ja tiver instalado ativa-o
+for(p in packages){
+if(!require(p,character.only = TRUE)) install.packages(p)
+library(p,character.only = TRUE)
+}
+
+##====================================================================================================
+## **Preparação do banco de dados**
+##====================================================================================================
+DADOS.CURTO <- read.csv("https://www.dropbox.com/s/b4cckybgrcg86me/galinhas.csv?raw=1",head = TRUE)
+colnames(DADOS.CURTO) <- c("0","1","2","3","4","5","6","TRAT")
+DADOS.CURTO <-DADOS.CURTO[with(DADOS.CURTO,order(TRAT)),]
+DADOS.CURTO$ID <- c(1:93,94:280,281:370)
+DADOS<- DADOS.CURTO %>% gather('0','1','2','3','4','5','6',key ="SEMANA",value = "PESO", -TRAT,-ID)
+DADOS <- transform(DADOS, SEMANA = as.numeric(SEMANA),ID=factor(ID))
+DADOS
+##--------------------------------------------------------------------
+GALINHA <- groupedData(PESO~SEMANA |ID,order.groups=FALSE,data = DADOS)
+##-------------------------------------------------------------------------------------------
+modelo1.list <- nlsList(PESO ~ a * exp(-b * exp( -c * SEMANA)),start = c(a = 4.10,b = 4.53,c = 0.37 ),na.action=na.omit,data =GALINHA)
+##--------------Definição do modelo de efeito Fixo--------------------------------
+controle2<-nlmeControl(maxIter=300,msMaxIter = 300,niterEM= 100)
+modelo.nlme.0<-nlme(modelo1.list)
+modelo.nlme.2<-update(modelo.nlme.0,fixed=list(a~TRAT,b + c~1),start=c(4.10,0,0,4.77,0.34),control=controle2)
+##------------------------------------------------------------------------------------------------------
+controle3<-nlmeControl(maxIter=300,msMaxIter=1000)
+MM3.3<- update(modelo.nlme.2,weights = varExp(form = ~fitted(.)|SEMANA),control=controle3,correlation = corARMA(form = ~SEMANA |ID,q = 4))
+summary(MM3.3)
+##-----------------------------------------------------------------
+DADOS.ORIGINAL <- getData(MM3.3)
+predito<-predict(MM3.3)
+##------------------------------------------------------------------
+
+Sent from Mailspring (https://getmailspring.com/), the best free email app for work
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180713/4490ae06/attachment.html>
+
+From cesar.rabak em gmail.com  Sat Jul 14 14:05:01 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 14 Jul 2018 14:05:01 -0300
+Subject: [R-br] =?utf-8?q?Modelos_Mistos_e_Lattice_=28Grafico_de_predi?=
+	=?utf-8?b?w6fDtWVzKQ==?=
+In-Reply-To: <1531513912.local-726cac4d-a419-v1.2.2-96fb3a99@getmailspring.com>
+References: <1531513912.local-726cac4d-a419-v1.2.2-96fb3a99@getmailspring.com>
+Message-ID: <CAKrF98kn0Hpx5_v+2pX=dO0nFH=gQt762bd_5JyzHoAaFsAbaA@mail.gmail.com>
+
+> packages <- c("tidyr", "nlme""latticeExtra","lattice")
+Erro: unexpected string constant in "packages <- c("tidyr",
+"nlme""latticeExtra""
+>
+> #Instala pacotes necessários, se ja tiver instalado ativa-o
+> for(p in packages){
++ if(!require(p,character.only = TRUE)) install.packages(p)
++ library(p,character.only = TRUE)
++ }
+Error in packages : objeto 'packages' não encontrado
+>
+
+
+2018-07-13 17:48 GMT-03:00 Fernando Souza via R-br <r-br em listas.c3sl.ufpr.br
+>:
+
+> Caros colegas
+>
+> Desejo fazer um gráfico, semelhante ao retornado pela função
+> augPred{nlme}, contendo os valores observados, os valores preditos pelo
+> modelo fixo, e os valores individuais preditos. como esse exemplo (Só que
+> para modelo não linear)
+> https://rdrr.io/cran/nlme/man/plot.augPred.html
+> por algum motivo a função augPred() não está funcionando com o meu modelo
+> (Acredito por ser desbalanceado )
+>
+> A função predict.nlme {nlme}, me retorna um dataframe com as informação
+> que quero, porém como transformá-los em gráfico?
+>
+> Sei que é possível faze-lo através do xyplot{lattice} porém não estou
+> conseguindo, devido a minha limitação no uso desse pacote.
+>
+> Alguém poderia me ajudar?
+>
+> segue CMR
+>
+>
+>
+>
+> packages <- c("tidyr", "nlme""latticeExtra","lattice")
+>
+> #Instala pacotes necessários, se ja tiver instalado ativa-o
+> for(p in packages){
+> if(!require(p,character.only = TRUE)) install.packages(p)
+> library(p,character.only = TRUE)
+> }
+>
+> ##==========================================================
+> ==========================================
+> ## **Preparação do banco de dados**
+> ##==========================================================
+> ==========================================
+> DADOS.CURTO <- read.csv("https://www.dropbox.com/s/b4cckybgrcg86me/
+> galinhas.csv?raw=1",head = TRUE)
+> colnames(DADOS.CURTO) <- c("0","1","2","3","4","5","6","TRAT")
+> DADOS.CURTO <-DADOS.CURTO[with(DADOS.CURTO,order(TRAT)),]
+> DADOS.CURTO$ID <- c(1:93,94:280,281:370)
+> DADOS<- DADOS.CURTO %>% gather('0','1','2','3','4','5','6',key
+> ="SEMANA",value = "PESO", -TRAT,-ID)
+> DADOS <- transform(DADOS, SEMANA = as.numeric(SEMANA),ID=factor(ID))
+> DADOS
+> ##--------------------------------------------------------------------
+> GALINHA <- groupedData(PESO~SEMANA |ID,order.groups=FALSE,data = DADOS)
+> ##----------------------------------------------------------
+> ---------------------------------
+> modelo1.list <- nlsList(PESO ~ a * exp(-b * exp( -c * SEMANA)),start = c(a
+> = 4.10,b = 4.53,c = 0.37 ),na.action=na.omit,data =GALINHA)
+> ##--------------Definição do modelo de efeito
+> Fixo--------------------------------
+> controle2<-nlmeControl(maxIter=300,msMaxIter = 300,niterEM= 100)
+> modelo.nlme.0<-nlme(modelo1.list)
+> modelo.nlme.2<-update(modelo.nlme.0,fixed=list(a~TRAT,b +
+> c~1),start=c(4.10,0,0,4.77,0.34),control=controle2)
+> ##----------------------------------------------------------
+> --------------------------------------------
+> controle3<-nlmeControl(maxIter=300,msMaxIter=1000)
+> MM3.3<- update(modelo.nlme.2,weights = varExp(form =
+> ~fitted(.)|SEMANA),control=controle3,correlation = corARMA(form = ~SEMANA
+> |ID,q = 4))
+> summary(MM3.3)
+> ##-----------------------------------------------------------------
+> DADOS.ORIGINAL <- getData(MM3.3)
+> predito<-predict(MM3.3)
+> ##------------------------------------------------------------------
+>
+> Sent from Mailspring <https://getmailspring.com/>, the best free email
+> app for work
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180714/162f0c93/attachment.html>
+
+From ecacarva em gmail.com  Sun Jul 15 21:42:16 2018
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Sun, 15 Jul 2018 21:42:16 -0300
+Subject: [R-br] =?utf-8?q?An=C3=A1lise_de_amostra_pequena?=
+In-Reply-To: <CAKrF98mTh_SrON8-9LmCNSnbDMy=RABRYsEidmEeguNiXeGPjg@mail.gmail.com>
+References: <CAH8E6UtASWFweAvz21SDj3rOv5Ht7o_kg0S_1DE89vELAHhHpA@mail.gmail.com>
+ <CAKrF98mTh_SrON8-9LmCNSnbDMy=RABRYsEidmEeguNiXeGPjg@mail.gmail.com>
+Message-ID: <CAH8E6UvoL7_SpbGWM4k9EeQ=9pdqwx7K24xvDsTupgEyUs0D1g@mail.gmail.com>
+
+Caro César, obrigado pela didática resposta.
+
+Como se diz por ai, eu concordo em numéro, gênero e grau com você, no
+entanto busco por alternativas seria viável usar alguma técnica de
+oversampling para aumentar a amostra?
+
+
+
+
+Em qua, 11 de jul de 2018 às 09:27, Cesar Rabak <cesar.rabak em gmail.com>
+escreveu:
+
+> Elias,
+>
+> Há vários possíveis comentários a fazer, embora, de antemão aviso-o, que
+> pelo fato de você ter dezessete casos apenas, não há muito a melhorar.
+>
+>
+>    1. Calcular os coeficientes de associação quando a hipótese de
+>    independência não pode ser descartada tende a ser um exercício equivalente
+>    a tentar ler folhas de chá numa xícara após a merenda;
+>    2. Ao você fazer múltiplas comparações *nos mesmos dados* você ainda
+>    teria que fazer uma correção para assegurar que seu Erro Tipo I não seria
+>    inflacionado;
+>    3. A alternativa de fazer um *omnibus test*, por exemplo via uma
+>    regressão logística com G como desfecho e as outras como VI, esbarra no
+>    fato de que se precisaria muito mais casos¹.
+>
+> Então no seu caso a única coisa que a Estatística o autorizaria é dizer
+> que as hipóteses de independências não podem ser descartadas e que devido
+> ao tamanho da amostra mais nada pode ser dito (do ponto de vista de
+> inferência).
+>
+> Com o conhecimento do domínio do problema e a Descritiva você pode
+> especular mais um pouco, mas irremediavelmente teria que propor um estudo
+> com maior potências estatística se quiser alguma constatação do fenômeno
+> que está estudando.
+>
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> [1] A discussão sobre assunto é vasta com concordância apenas que é "um
+> problema complexo", mas para colocar a bola em campo, Peduzzi et al. 1996,
+> costuma ser citado como melhor referência. A fórmula seria N = 10∙k / p; N
+> :: mínimo tamanho da amostra, k :: número de covariáveis; p :: mínimo da
+> proporção casos ou não casos.
+>
+>
+> Peduzzi P, Concato J, Kemper E, Holford TR, Feinstein AR (1996) A
+> simulation study of the number of events per variable in logistic
+> regression analysis. Journal of Clinical Epidemiology 49:1373-1379.
+>
+> On Tue, Jul 10, 2018 at 8:38 PM, Elias Carvalho via R-br <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Prezados
+>>
+>> Tenho uma amostra pequena com apenas 17 registros, e 7 variáveis
+>> dicotômicas, cujo resumo é:
+>>
+>>  A      B      C      D      E      F      G
+>>  0: 7   0:10   0: 6   0:11   0: 2   0: 1   0:15
+>>  1:10   1: 7   1:11   1: 6   1:15   1:16   1: 2
+>>
+>>
+>> A variável G seria meu desfecho e o resto possíveis preditores
+>>
+>>
+>> Para veficiar a associação entre o desfecho e as outras variáveisexecutei o teste exato de fisher por ser uma amostra pequena, mas o resutados mostraram que o desfecho não depende de nenhuma variável:
+>>
+>>
+>> > fisher.test(data.to.work$G, data.to.work$A)
+>> 	Fisher's Exact Test for Count Data
+>>
+>> data:  data.to.work$G and data.to.work$A
+>> p-value = 0.4853
+>> alternative hypothesis: true odds ratio is not equal to 1
+>> 95 percent confidence interval:
+>>  0.1311443       Inf
+>> sample estimates:
+>> odds ratio
+>>        Inf
+>> > fisher.test(data.to.work$G, data.to.work$B)
+>> 	Fisher's Exact Test for Count Data
+>>
+>> data:  data.to.work$G and data.to.work$B
+>> p-value = 0.4853
+>> alternative hypothesis: true odds ratio is not equal to 1
+>> 95 percent confidence interval:
+>>  0.000000 7.625189
+>> sample estimates:
+>> odds ratio
+>>          0
+>> > fisher.test(data.to.work$G, data.to.work$C)
+>> 	Fisher's Exact Test for Count Data
+>>
+>> data:  data.to.work$G and data.to.work$C
+>> p-value = 0.5147
+>> alternative hypothesis: true odds ratio is not equal to 1
+>> 95 percent confidence interval:
+>>  0.1003871       Inf
+>> sample estimates:
+>> odds ratio
+>>        Inf
+>> > fisher.test(data.to.work$G, data.to.work$D)
+>> 	Fisher's Exact Test for Count Data
+>>
+>> data:  data.to.work$G and data.to.work$D
+>> p-value = 0.5147
+>> alternative hypothesis: true odds ratio is not equal to 1
+>> 95 percent confidence interval:
+>>  0.00000 9.96144
+>> sample estimates:
+>> odds ratio
+>>          0
+>> > fisher.test(data.to.work$G, data.to.work$E)
+>> 	Fisher's Exact Test for Count Data
+>>
+>> data:  data.to.work$G and data.to.work$E
+>> p-value = 1
+>> alternative hypothesis: true odds ratio is not equal to 1
+>> 95 percent confidence interval:
+>>  0.01971228        Inf
+>> sample estimates:
+>> odds ratio
+>>        Inf
+>> > fisher.test(data.to.work$G, data.to.work$F)
+>> 	Fisher's Exact Test for Count Data
+>>
+>> data:  data.to.work$G and data.to.work$F
+>> p-value = 1
+>> alternative hypothesis: true odds ratio is not equal to 1
+>> 95 percent confidence interval:
+>>  0.003434375         Inf
+>> sample estimates:
+>> odds ratio
+>>
+>>        Inf
+>>
+>>
+>> Em seguida calculei o V de Cramer, Coeficiente de Contingência e phi e todos mostram independência e associação fraca.
+>>
+>>
+>> summary(assocstats(tab_cont_G_A)) # Resultado: # X^2 df P(> X^2) #
+>> Likelihood Ratio 2.3071 1 0.12878 # P-Valor > 0.05 - independentes #
+>> Pearson 1.5867 1 0.20780 # P-Valor > 0.05 - independentes # #
+>> Phi-Coefficient : 0.306 # Coef de Phi - Associação fraca # Contingency
+>> Coeff.: 0.292 # Coef de Cont - Associação fraca # Cramer's V : 0.306 # V de
+>> Crammer - Associação fraca
+>>
+>>  Pelo que pesquisei este seriam os métodos mais adequados para este tipo de análise
+>>
+>>
+>> Há um método melhor para avaliar esse tipo de dado?
+>>
+>>
+>>
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria*
+>> *Obrigado*
+>> *Prof. Elias Carvalho*
+>>
+>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+>> who has been able to understand the cause of things"*
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180715/7e243f89/attachment.html>
+
+From fabibarbos em gmail.com  Mon Jul 16 13:19:05 2018
+From: fabibarbos em gmail.com (Fabiana Goncalves Barbosa)
+Date: Mon, 16 Jul 2018 13:19:05 -0300
+Subject: [R-br] Eixo x
+Message-ID: <CAFLo1Xo0Dnem8wgP=3f8HZ0tyyxCtwjjFzHRXBf4m+0ie2-ksw@mail.gmail.com>
+
+Olá Pessoal
+
+Fiz um gráfico (plot) com os dados abaixo, porém no eixo x só apareceram
+alguns anos. Quero que apareçam todos os anos no eixo x. Como faço?
+
+qtidade=c(61,53,44,35,24,17,15,16,18,12,8,3,3,4,2,2,1,2,1,1,1,1,1)
+Anos=c(2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2003,2002,2001,1999,1998,1997,1992,1991,1981)
+
+plot(Anos,qtidade)
+
+Grata
+Fabiana
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180716/fd55e43c/attachment.html>
+
+From marcelolaia em gmail.com  Mon Jul 16 13:38:27 2018
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Mon, 16 Jul 2018 13:38:27 -0300
+Subject: [R-br] Eixo x
+In-Reply-To: <CAFLo1Xo0Dnem8wgP=3f8HZ0tyyxCtwjjFzHRXBf4m+0ie2-ksw@mail.gmail.com>
+References: <CAFLo1Xo0Dnem8wgP=3f8HZ0tyyxCtwjjFzHRXBf4m+0ie2-ksw@mail.gmail.com>
+Message-ID: <CAEEYVUDsmQGQksUo=bPVkszthRLcLdVif_tfSs_4gM+ft51Tjw@mail.gmail.com>
+
+Você tentou diminuir a fonte ou rotacionar os nomes?
+
+Tente: axis.cex = 0.5 e las = 2
+
+Há o comando par, também.
+
+Marcelo
+
+A seg, 16/07/2018, 13:19, Fabiana Goncalves Barbosa via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá Pessoal
+>
+> Fiz um gráfico (plot) com os dados abaixo, porém no eixo x só apareceram
+> alguns anos. Quero que apareçam todos os anos no eixo x. Como faço?
+>
+> qtidade=c(61,53,44,35,24,17,15,16,18,12,8,3,3,4,2,2,1,2,1,1,1,1,1)
+>
+> Anos=c(2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2003,2002,2001,1999,1998,1997,1992,1991,1981)
+>
+> plot(Anos,qtidade)
+>
+> Grata
+> Fabiana
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180716/7dec3aaa/attachment.html>
+
+From salah3.1416 em gmail.com  Mon Jul 16 14:00:10 2018
+From: salah3.1416 em gmail.com (salah)
+Date: Mon, 16 Jul 2018 14:00:10 -0300
+Subject: [R-br] Eixo x
+In-Reply-To: <CAFLo1Xo0Dnem8wgP=3f8HZ0tyyxCtwjjFzHRXBf4m+0ie2-ksw@mail.gmail.com>
+References: <CAFLo1Xo0Dnem8wgP=3f8HZ0tyyxCtwjjFzHRXBf4m+0ie2-ksw@mail.gmail.com>
+Message-ID: <b8cc2e30-fdf4-dbd2-7683-458ff8200121@gmail.com>
+
+segue sugestões
+
+qtidade=c(61,53,44,35,24,17,15,16,18,12,8,3,3,4,2,2,1,2,1,1,1,1,1)
+Anos=c(2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2003,2002,2001,1999,1998,1997,1992,1991,1981)
+
+plot(Anos, qtidade, xaxt = "n")
+axis(1, at=Anos, labels=Anos, las=2)
+
+## 1980-2018 = 19
+plot(Anos, qtidade, xaxt = "n")
+axis(1, xaxp=c(1980, 2018, 19), las=2)
+
+
+Em 16/07/2018 13:19, Fabiana Goncalves Barbosa via R-br escreveu:
+> Olá Pessoal
+>
+> Fiz um gráfico (plot) com os dados abaixo, porém no eixo x só 
+> apareceram alguns anos. Quero que apareçam todos os anos no eixo x. 
+> Como faço?
+>
+> qtidade=c(61,53,44,35,24,17,15,16,18,12,8,3,3,4,2,2,1,2,1,1,1,1,1)
+> Anos=c(2018,2017,2016,2015,2014,2013,2012,2011,2010,2009,2008,2007,2006,2005,2003,2002,2001,1999,1998,1997,1992,1991,1981)
+>
+> plot(Anos,qtidade)
+>
+> Grata
+> Fabiana
+>
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180716/f0f84b9f/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Mon Jul 16 14:06:00 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Mon, 16 Jul 2018 17:06:00 +0000 (UTC)
+Subject: [R-br] Pacote Chaid
+References: <2058522248.5156882.1531760760921.ref@mail.yahoo.com>
+Message-ID: <2058522248.5156882.1531760760921@mail.yahoo.com>
+
+Boa Tarde!
+Pessoal, não estou conseguindo executar esse código, podem me ajudar por favor?
+
+attach(credito1)str(credito1)
+
+install.packages("partykit")install.packages("CHAID", repos="http://R-Forge.R-project.org")
+library(partykit)library(CHAID)
+credit_rank<-as.factor(credit_rank)age <-as.factor(age)amex<-as.factor(amex)pay_week <-as.factor(pay_week)class <-as.factor(class)
+is.factor(credit_rank)is.factor(age)is.factor(class)is.factor(pay_week)is.factor(amex)
+
+  > modelo <-chaid(credit_rank ~ ., data = credito1)Error: is.factor(x) is not TRUE
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180716/d3444531/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: credito1.xlsx
+Tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Tamanho: 22349 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180716/d3444531/attachment.xlsx>
+
+From marcus.nunes em gmail.com  Mon Jul 16 14:25:15 2018
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Mon, 16 Jul 2018 14:25:15 -0300
+Subject: [R-br] Pacote Chaid
+In-Reply-To: <2058522248.5156882.1531760760921@mail.yahoo.com>
+References: <2058522248.5156882.1531760760921.ref@mail.yahoo.com>
+ <2058522248.5156882.1531760760921@mail.yahoo.com>
+Message-ID: <CA+QGQvvkCqE_jw9Ws-8YbReUXWneN9kMfBEM2V-jwNsyUpx5YQ@mail.gmail.com>
+
+Uma dica que eu te dou: nunca, em hipótese alguma, use attach em seus
+códigos. É algo completamente desnecessário e que pode, em algumas vezes,
+servir apenas para gerar confusões em nosso código, fazendo a gente achar
+que fizemos algo quando, na verdade, não o fizemos.
+
+Tome o teu código, por exemplo. Ao rodar os comandos
+
+credit_rank<-as.factor(credit_rank)
+age <-as.factor(age)
+amex<-as.factor(amex)
+pay_week <-as.factor(pay_week)
+class <-as.factor(class)
+
+cada uma das variáveis consideradas acima foram transformadas em fator.
+Entretanto, esta transformação se deu apenas nas versões atachadas (?)
+destas variáveis. As versões originais, dentro do data frame credito1,
+continuaram em suas versões originais.
+
+Assim, ao rodar o código
+
+modelo <-chaid(credit_rank ~ ., data = credito1)
+
+a função chaid está procurando as variáveis preditoras desta regressão
+dentro do conjunto de dados credito1, mas não as está encontrando. Limpe
+seu workspace, feche o R e abra ele novamente. Agora rode o código abaixo e
+seja feliz.
+
+library(readxl)
+library(partykit)
+library(CHAID)
+
+credito1 <- read_excel(path="credito1.xlsx")
+
+credito1 <- as.data.frame(lapply(credito1, as.factor)) # converte todas as
+colunas para fator
+
+modelo <-chaid(credit_rank ~ ., data = credito1)
+
+modelo
+--
+Marcus Nunes
+Professor Adjunto
+Universidade Federal do Rio Grande do Norte
+Centro de Ciências Exatas e da Terra
+Departamento de Estatística
+Laboratório de Estatística Aplicada
+marcus.nunes em ccet.ufrn.br
+http://marcusnunes.me/
+
+
+
+On Mon, Jul 16, 2018 at 2:06 PM Edmar Caldas via R-br <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa Tarde!
+>
+> Pessoal, não estou conseguindo executar esse código, podem me ajudar por
+> favor?
+>
+>
+> attach(credito1)
+> str(credito1)
+>
+>
+> install.packages("partykit")
+> install.packages("CHAID", repos="http://R-Forge.R-project.org")
+>
+> library(partykit)
+> library(CHAID)
+>
+> credit_rank<-as.factor(credit_rank)
+> age <-as.factor(age)
+> amex<-as.factor(amex)
+> pay_week <-as.factor(pay_week)
+> class <-as.factor(class)
+>
+> is.factor(credit_rank)
+> is.factor(age)
+> is.factor(class)
+> is.factor(pay_week)
+> is.factor(amex)
+>
+>
+> > modelo <-chaid(credit_rank ~ ., data = credito1)
+> Error: is.factor(x) is not TRUE
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180716/d3de1697/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Mon Jul 16 14:32:48 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Mon, 16 Jul 2018 17:32:48 +0000 (UTC)
+Subject: [R-br] Pacote Chaid
+In-Reply-To: <CA+QGQvvkCqE_jw9Ws-8YbReUXWneN9kMfBEM2V-jwNsyUpx5YQ@mail.gmail.com>
+References: <2058522248.5156882.1531760760921.ref@mail.yahoo.com>
+ <2058522248.5156882.1531760760921@mail.yahoo.com>
+ <CA+QGQvvkCqE_jw9Ws-8YbReUXWneN9kMfBEM2V-jwNsyUpx5YQ@mail.gmail.com>
+Message-ID: <1676893712.5188880.1531762368875@mail.yahoo.com>
+
+Perfeito,
+Obrigado, funcionou.
+Edmar 
+
+    Em segunda-feira, 16 de julho de 2018 14:25:29 BRT, Marcus Nunes <marcus.nunes em gmail.com> escreveu:  
+ 
+ Uma dica que eu te dou: nunca, em hipótese alguma, use attach em seus códigos. É algo completamente desnecessário e que pode, em algumas vezes, servir apenas para gerar confusões em nosso código, fazendo a gente achar que fizemos algo quando, na verdade, não o fizemos.
+Tome o teu código, por exemplo. Ao rodar os comandos 
+credit_rank<-as.factor(credit_rank)age <-as.factor(age)amex<-as.factor(amex)pay_week <-as.factor(pay_week)class <-as.factor(class)
+cada uma das variáveis consideradas acima foram transformadas em fator. Entretanto, esta transformação se deu apenas nas versões atachadas (?) destas variáveis. As versões originais, dentro do data frame credito1, continuaram em suas versões originais. 
+Assim, ao rodar o código
+modelo <-chaid(credit_rank ~ ., data = credito1)
+
+a função chaid está procurando as variáveis preditoras desta regressão dentro do conjunto de dados credito1, mas não as está encontrando. Limpe seu workspace, feche o R e abra ele novamente. Agora rode o código abaixo e seja feliz.
+library(readxl)library(partykit)library(CHAID)
+credito1 <- read_excel(path="credito1.xlsx")
+credito1 <- as.data.frame(lapply(credito1, as.factor)) # converte todas as colunas para fator
+modelo <-chaid(credit_rank ~ ., data = credito1)
+modelo--
+Marcus NunesProfessor AdjuntoUniversidade Federal do Rio Grande do NorteCentro de Ciências Exatas e da TerraDepartamento de EstatísticaLaboratório de Estatística Aplicadamarcus.nunes em ccet.ufrn.brhttp://marcusnunes.me/
+
+
+On Mon, Jul 16, 2018 at 2:06 PM Edmar Caldas via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+
+Boa Tarde!
+Pessoal, não estou conseguindo executar esse código, podem me ajudar por favor?
+
+attach(credito1)str(credito1)
+
+install.packages("partykit")install.packages("CHAID", repos="http://R-Forge.R-project.org")
+library(partykit)library(CHAID)
+credit_rank<-as.factor(credit_rank)age <-as.factor(age)amex<-as.factor(amex)pay_week <-as.factor(pay_week)class <-as.factor(class)
+is.factor(credit_rank)is.factor(age)is.factor(class)is.factor(pay_week)is.factor(amex)
+
+  > modelo <-chaid(credit_rank ~ ., data = credito1)Error: is.factor(x) is not TRUE
+
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180716/65b2833c/attachment.html>
+
+From sznelwar em uol.com.br  Mon Jul 16 22:03:35 2018
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Mon, 16 Jul 2018 22:03:35 -0300
+Subject: [R-br] Pacote Chaid
+In-Reply-To: ["CA+QGQvvkCqE_jw9Ws-8YbReUXWneN9kMfBEM2V-jwNsyUpx5YQ@mail.gmail.com"]
+References: ["2058522248.5156882.1531760760921.ref@mail.yahoo.com",
+ "2058522248.5156882.1531760760921@mail.yahoo.com",
+ "CA+QGQvvkCqE_jw9Ws-8YbReUXWneN9kMfBEM2V-jwNsyUpx5YQ@mail.gmail.com"]
+Message-ID: <5b4d40671c088_17982b1662d3713077937@a4-weasel3.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180716/82d939d1/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Jul 17 18:07:58 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 17 Jul 2018 18:07:58 -0300
+Subject: [R-br] =?utf-8?q?An=C3=A1lise_de_amostra_pequena?=
+In-Reply-To: <CAH8E6UvoL7_SpbGWM4k9EeQ=9pdqwx7K24xvDsTupgEyUs0D1g@mail.gmail.com>
+References: <CAH8E6UtASWFweAvz21SDj3rOv5Ht7o_kg0S_1DE89vELAHhHpA@mail.gmail.com>
+ <CAKrF98mTh_SrON8-9LmCNSnbDMy=RABRYsEidmEeguNiXeGPjg@mail.gmail.com>
+ <CAH8E6UvoL7_SpbGWM4k9EeQ=9pdqwx7K24xvDsTupgEyUs0D1g@mail.gmail.com>
+Message-ID: <CAKrF98kUcVq_1N0UBeihC2HCHGc0wXgtiEdEFOV_=rrfDOQx1w@mail.gmail.com>
+
+Elias, não consigo ver como você poderia usar qualquer técnica para obter
+mais informação a respeito do fenômeno em questão usando esses artifícios,
+como o que você citou e outro muito em voga o* bootstraping*, etc.
+
+Nesses casos, o melhor a fazer é tentar identificar apenas via a
+estatística descritiva se o que se observa vale a pena investir em amostra
+maior...
+
+
+2018-07-15 21:42 GMT-03:00 Elias Carvalho via R-br <r-br em listas.c3sl.ufpr.br
+>:
+
+> Caro César, obrigado pela didática resposta.
+>
+> Como se diz por ai, eu concordo em numéro, gênero e grau com você, no
+> entanto busco por alternativas seria viável usar alguma técnica de
+> oversampling para aumentar a amostra?
+>
+>
+>
+>
+> Em qua, 11 de jul de 2018 às 09:27, Cesar Rabak <cesar.rabak em gmail.com>
+> escreveu:
+>
+>> Elias,
+>>
+>> Há vários possíveis comentários a fazer, embora, de antemão aviso-o, que
+>> pelo fato de você ter dezessete casos apenas, não há muito a melhorar.
+>>
+>>
+>>    1. Calcular os coeficientes de associação quando a hipótese de
+>>    independência não pode ser descartada tende a ser um exercício equivalente
+>>    a tentar ler folhas de chá numa xícara após a merenda;
+>>    2. Ao você fazer múltiplas comparações *nos mesmos dados* você ainda
+>>    teria que fazer uma correção para assegurar que seu Erro Tipo I não seria
+>>    inflacionado;
+>>    3. A alternativa de fazer um *omnibus test*, por exemplo via uma
+>>    regressão logística com G como desfecho e as outras como VI, esbarra no
+>>    fato de que se precisaria muito mais casos¹.
+>>
+>> Então no seu caso a única coisa que a Estatística o autorizaria é dizer
+>> que as hipóteses de independências não podem ser descartadas e que devido
+>> ao tamanho da amostra mais nada pode ser dito (do ponto de vista de
+>> inferência).
+>>
+>> Com o conhecimento do domínio do problema e a Descritiva você pode
+>> especular mais um pouco, mas irremediavelmente teria que propor um estudo
+>> com maior potências estatística se quiser alguma constatação do fenômeno
+>> que está estudando.
+>>
+>>
+>> HTH
+>> --
+>> Cesar Rabak
+>>
+>>
+>> [1] A discussão sobre assunto é vasta com concordância apenas que é "um
+>> problema complexo", mas para colocar a bola em campo, Peduzzi et al. 1996,
+>> costuma ser citado como melhor referência. A fórmula seria N = 10∙k / p; N
+>> :: mínimo tamanho da amostra, k :: número de covariáveis; p :: mínimo da
+>> proporção casos ou não casos.
+>>
+>>
+>> Peduzzi P, Concato J, Kemper E, Holford TR, Feinstein AR (1996) A
+>> simulation study of the number of events per variable in logistic
+>> regression analysis. Journal of Clinical Epidemiology 49:1373-1379.
+>>
+>> On Tue, Jul 10, 2018 at 8:38 PM, Elias Carvalho via R-br <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Prezados
+>>>
+>>> Tenho uma amostra pequena com apenas 17 registros, e 7 variáveis
+>>> dicotômicas, cujo resumo é:
+>>>
+>>>  A      B      C      D      E      F      G
+>>>  0: 7   0:10   0: 6   0:11   0: 2   0: 1   0:15
+>>>  1:10   1: 7   1:11   1: 6   1:15   1:16   1: 2
+>>>
+>>>
+>>> A variável G seria meu desfecho e o resto possíveis preditores
+>>>
+>>>
+>>> Para veficiar a associação entre o desfecho e as outras variáveisexecutei o teste exato de fisher por ser uma amostra pequena, mas o resutados mostraram que o desfecho não depende de nenhuma variável:
+>>>
+>>>
+>>> > fisher.test(data.to.work$G, data.to.work$A)
+>>> 	Fisher's Exact Test for Count Data
+>>>
+>>> data:  data.to.work$G and data.to.work$A
+>>> p-value = 0.4853
+>>> alternative hypothesis: true odds ratio is not equal to 1
+>>> 95 percent confidence interval:
+>>>  0.1311443       Inf
+>>> sample estimates:
+>>> odds ratio
+>>>        Inf
+>>> > fisher.test(data.to.work$G, data.to.work$B)
+>>> 	Fisher's Exact Test for Count Data
+>>>
+>>> data:  data.to.work$G and data.to.work$B
+>>> p-value = 0.4853
+>>> alternative hypothesis: true odds ratio is not equal to 1
+>>> 95 percent confidence interval:
+>>>  0.000000 7.625189
+>>> sample estimates:
+>>> odds ratio
+>>>          0
+>>> > fisher.test(data.to.work$G, data.to.work$C)
+>>> 	Fisher's Exact Test for Count Data
+>>>
+>>> data:  data.to.work$G and data.to.work$C
+>>> p-value = 0.5147
+>>> alternative hypothesis: true odds ratio is not equal to 1
+>>> 95 percent confidence interval:
+>>>  0.1003871       Inf
+>>> sample estimates:
+>>> odds ratio
+>>>        Inf
+>>> > fisher.test(data.to.work$G, data.to.work$D)
+>>> 	Fisher's Exact Test for Count Data
+>>>
+>>> data:  data.to.work$G and data.to.work$D
+>>> p-value = 0.5147
+>>> alternative hypothesis: true odds ratio is not equal to 1
+>>> 95 percent confidence interval:
+>>>  0.00000 9.96144
+>>> sample estimates:
+>>> odds ratio
+>>>          0
+>>> > fisher.test(data.to.work$G, data.to.work$E)
+>>> 	Fisher's Exact Test for Count Data
+>>>
+>>> data:  data.to.work$G and data.to.work$E
+>>> p-value = 1
+>>> alternative hypothesis: true odds ratio is not equal to 1
+>>> 95 percent confidence interval:
+>>>  0.01971228        Inf
+>>> sample estimates:
+>>> odds ratio
+>>>        Inf
+>>> > fisher.test(data.to.work$G, data.to.work$F)
+>>> 	Fisher's Exact Test for Count Data
+>>>
+>>> data:  data.to.work$G and data.to.work$F
+>>> p-value = 1
+>>> alternative hypothesis: true odds ratio is not equal to 1
+>>> 95 percent confidence interval:
+>>>  0.003434375         Inf
+>>> sample estimates:
+>>> odds ratio
+>>>
+>>>        Inf
+>>>
+>>>
+>>> Em seguida calculei o V de Cramer, Coeficiente de Contingência e phi e todos mostram independência e associação fraca.
+>>>
+>>>
+>>> summary(assocstats(tab_cont_G_A)) # Resultado: # X^2 df P(> X^2) #
+>>> Likelihood Ratio 2.3071 1 0.12878 # P-Valor > 0.05 - independentes #
+>>> Pearson 1.5867 1 0.20780 # P-Valor > 0.05 - independentes # #
+>>> Phi-Coefficient : 0.306 # Coef de Phi - Associação fraca # Contingency
+>>> Coeff.: 0.292 # Coef de Cont - Associação fraca # Cramer's V : 0.306 # V de
+>>> Crammer - Associação fraca
+>>>
+>>>  Pelo que pesquisei este seriam os métodos mais adequados para este tipo de análise
+>>>
+>>>
+>>> Há um método melhor para avaliar esse tipo de dado?
+>>>
+>>>
+>>>
+>>>
+>>> --
+>>>
+>>>
+>>> *In Jesu et Maria*
+>>> *Obrigado*
+>>> *Prof. Elias Carvalho*
+>>>
+>>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is
+>>> he who has been able to understand the cause of things"*
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>>
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180717/1051af32/attachment.html>
+
+From psp.paulosergio em gmail.com  Tue Jul 24 20:46:48 2018
+From: psp.paulosergio em gmail.com (=?UTF-8?Q?Paulo_S=C3=A9rgio_Pereira_de_Amorim?=)
+Date: Tue, 24 Jul 2018 20:46:48 -0300
+Subject: [R-br] Heatmaps para genes
+Message-ID: <CAEff9AiemRP5ukddei3iXaG+AzKQB7PPwxgrXBuJC4S4xP0DKw@mail.gmail.com>
+
+Boa noite! Quais as etapas para elaboração de um Heatmaps para genes. Estou
+com dificuldades na utilização da função heatmap(  ).
+
+Abraços.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180724/ba1dee53/attachment.html>
+
+From dtiezzi em usp.br  Tue Jul 24 20:49:19 2018
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 24 Jul 2018 20:49:19 -0300
+Subject: [R-br] Heatmaps para genes
+In-Reply-To: <CAEff9AiemRP5ukddei3iXaG+AzKQB7PPwxgrXBuJC4S4xP0DKw@mail.gmail.com>
+References: <CAEff9AiemRP5ukddei3iXaG+AzKQB7PPwxgrXBuJC4S4xP0DKw@mail.gmail.com>
+Message-ID: <9AD03347-A73C-434E-AF7C-2A8878B05BB1@usp.br>
+
+Boa noite Paulo
+
+O que vc precisa? Qual é o seu input e porque quer fazer o heatmap?
+
+Daniel
+
+
+
+Daniel Tiezzi, MD, PhD
+Professor Associado
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em fmrp.usp.br
+
+
+
+> On 24 Jul 2018, at 20:46, Paulo Sérgio Pereira de Amorim via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Boa noite! Quais as etapas para elaboração de um Heatmaps para genes. Estou com dificuldades na utilização da função heatmap(  ). 
+> 
+> Abraços.
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180724/79619527/attachment.html>
+
+From marcelolaia em gmail.com  Tue Jul 24 21:23:43 2018
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Tue, 24 Jul 2018 21:23:43 -0300
+Subject: [R-br] Heatmaps para genes
+In-Reply-To: <CAEff9AiemRP5ukddei3iXaG+AzKQB7PPwxgrXBuJC4S4xP0DKw@mail.gmail.com>
+References: <CAEff9AiemRP5ukddei3iXaG+AzKQB7PPwxgrXBuJC4S4xP0DKw@mail.gmail.com>
+Message-ID: <20180725002343.GD21059@localhost>
+
+On 24/07/18 at 08:46, Paulo Sérgio Pereira de Amorim via R-br wrote:
+> Boa noite! Quais as etapas para elaboração de um Heatmaps para genes. Estou
+> com dificuldades na utilização da função heatmap(  ).
+
+Você já olhou pacotes do Bioconductor?
+
+http://www.bioconductor.org/
+
+http://www.bioconductor.org/packages/release/BiocViews.html#___Software
+
+O seu input é o quê? Affymetrix? microarray de cDNA? ??
+
+Dê uma olhada no pacote limma, vsn e affy.
+
+-- 
+Marcelo
+
+From dtiezzi em usp.br  Wed Jul 25 08:16:06 2018
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Wed, 25 Jul 2018 08:16:06 -0300
+Subject: [R-br] Heatmaps para genes
+In-Reply-To: <CAEff9AiemRP5ukddei3iXaG+AzKQB7PPwxgrXBuJC4S4xP0DKw@mail.gmail.com>
+References: <CAEff9AiemRP5ukddei3iXaG+AzKQB7PPwxgrXBuJC4S4xP0DKw@mail.gmail.com>
+Message-ID: <AA11267C-1910-4CDB-91F5-CED1CEF4F094@usp.br>
+
+Seria algo assim?
+
+Daniel
+
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: heatmap.R
+Tipo: application/octet-stream
+Tamanho: 292 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180725/6448dbcb/attachment.obj>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: hm.csv
+Tipo: text/csv
+Tamanho: 335 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180725/6448dbcb/attachment.csv>
+-------------- Próxima Parte ----------
+
+
+
+> On 24 Jul 2018, at 20:46, Paulo Sérgio Pereira de Amorim via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Boa noite! Quais as etapas para elaboração de um Heatmaps para genes. Estou com dificuldades na utilização da função heatmap(  ). 
+> 
+> Abraços.
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+From aolinto.lst em gmail.com  Sat Jul 28 11:08:10 2018
+From: aolinto.lst em gmail.com (Antonio Silva)
+Date: Sat, 28 Jul 2018 11:08:10 -0300
+Subject: [R-br] subset a dataframe
+Message-ID: <CAE8g1gNTeQbJ2RQW=LX8YPzysFwM1J40+tj0CNk_3hs1uuVCyw@mail.gmail.com>
+
+Olá,
+
+Algo que deve ser simples mas no qual empaquei.
+
+Tenho um vetor com o nome de algumas linhas com dados suspeitos:
+
+a <- c(1,2,3,4,5)
+b <- c(2,8,6,4,10)
+dat <- data.frame(a,b)
+out <- c("2","4") # linhas com dados suspeitos
+
+Com dat[out,] eu consigo selecionar as linhas do dataframe com dados
+suspeitos.
+
+Mas eu quero selecionar as linhas sem dados suspeitos. Tentei dat[!out,]
+dat[-out,] e algumas outras coisas sem sucesso.
+
+Agradeço sugestões, obrigado.
+
+-- 
+Antônio Olinto Ávila da Silva
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180728/4ef31490/attachment.html>
+
+From marcus.nunes em gmail.com  Sat Jul 28 11:11:48 2018
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Sat, 28 Jul 2018 11:11:48 -0300
+Subject: [R-br] subset a dataframe
+In-Reply-To: <CAE8g1gNTeQbJ2RQW=LX8YPzysFwM1J40+tj0CNk_3hs1uuVCyw@mail.gmail.com>
+References: <CAE8g1gNTeQbJ2RQW=LX8YPzysFwM1J40+tj0CNk_3hs1uuVCyw@mail.gmail.com>
+Message-ID: <CA+QGQvshJc3bSnyc6VpPQ9b4J2mEgJDrZJbwtBc8doFmP6ywSg@mail.gmail.com>
+
+Ao fazer
+
+out <- c("2","4")
+
+o vetor out deixou de ser numérico:
+
+is.numeric(out)
+
+Faça
+
+out <- c(2,4)
+
+que o comando
+
+dat[-out,]
+
+vai funcionar.
+
+
+
+
+
+--
+Marcus Nunes
+Professor Adjunto
+Universidade Federal do Rio Grande do Norte
+Centro de Ciências Exatas e da Terra
+Departamento de Estatística
+Laboratório de Estatística Aplicada
+marcus.nunes em ccet.ufrn.br
+http://marcusnunes.me/
+
+
+
+On Sat, Jul 28, 2018 at 11:08 AM Antonio Silva via R-br <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá,
+>
+> Algo que deve ser simples mas no qual empaquei.
+>
+> Tenho um vetor com o nome de algumas linhas com dados suspeitos:
+>
+> a <- c(1,2,3,4,5)
+> b <- c(2,8,6,4,10)
+> dat <- data.frame(a,b)
+> out <- c("2","4") # linhas com dados suspeitos
+>
+> Com dat[out,] eu consigo selecionar as linhas do dataframe com dados
+> suspeitos.
+>
+> Mas eu quero selecionar as linhas sem dados suspeitos. Tentei dat[!out,]
+> dat[-out,] e algumas outras coisas sem sucesso.
+>
+> Agradeço sugestões, obrigado.
+>
+> --
+> Antônio Olinto Ávila da Silva
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180728/d791a380/attachment.html>
+
+From aolinto.lst em gmail.com  Sat Jul 28 12:17:21 2018
+From: aolinto.lst em gmail.com (Antonio Silva)
+Date: Sat, 28 Jul 2018 12:17:21 -0300
+Subject: [R-br] subset a dataframe
+In-Reply-To: <CA+QGQvshJc3bSnyc6VpPQ9b4J2mEgJDrZJbwtBc8doFmP6ywSg@mail.gmail.com>
+References: <CAE8g1gNTeQbJ2RQW=LX8YPzysFwM1J40+tj0CNk_3hs1uuVCyw@mail.gmail.com>
+ <CA+QGQvshJc3bSnyc6VpPQ9b4J2mEgJDrZJbwtBc8doFmP6ywSg@mail.gmail.com>
+Message-ID: <CAE8g1gN2_pFn4LpQDEc+AgXLuoK8UcQhm-MDxKZhrFDsFpbWOQ@mail.gmail.com>
+
+Caro Marcus
+
+Dentre a combinação de coisas que tentei essa me escapou.
+
+Muito obrigado,
+
+Antônio Olinto
+
+Em 28 de julho de 2018 11:11, Marcus Nunes <marcus.nunes em gmail.com>
+escreveu:
+
+> Ao fazer
+>
+> out <- c("2","4")
+>
+> o vetor out deixou de ser numérico:
+>
+> is.numeric(out)
+>
+> Faça
+>
+> out <- c(2,4)
+>
+> que o comando
+>
+> dat[-out,]
+>
+> vai funcionar.
+>
+> --
+> Marcus Nunes
+> Professor Adjunto
+> Universidade Federal do Rio Grande do Norte
+> Centro de Ciências Exatas e da Terra
+> Departamento de Estatística
+> Laboratório de Estatística Aplicada
+> marcus.nunes em ccet.ufrn.br
+> http://marcusnunes.me/
+>
+>
+>
+> On Sat, Jul 28, 2018 at 11:08 AM Antonio Silva via R-br <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Olá,
+>>
+>> Algo que deve ser simples mas no qual empaquei.
+>>
+>> Tenho um vetor com o nome de algumas linhas com dados suspeitos:
+>>
+>> a <- c(1,2,3,4,5)
+>> b <- c(2,8,6,4,10)
+>> dat <- data.frame(a,b)
+>> out <- c("2","4") # linhas com dados suspeitos
+>>
+>> Com dat[out,] eu consigo selecionar as linhas do dataframe com dados
+>> suspeitos.
+>>
+>> Mas eu quero selecionar as linhas sem dados suspeitos. Tentei dat[!out,]
+>> dat[-out,] e algumas outras coisas sem sucesso.
+>>
+>> Agradeço sugestões, obrigado.
+>>
+>> --
+>> Antônio Olinto Ávila da Silva
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180728/56531537/attachment.html>
+
+From fragoso2718 em gmail.com  Sat Jul 28 13:07:05 2018
+From: fragoso2718 em gmail.com (Tiago Fragoso)
+Date: Sat, 28 Jul 2018 13:07:05 -0300
+Subject: [R-br] subset a dataframe
+In-Reply-To: <CAE8g1gN2_pFn4LpQDEc+AgXLuoK8UcQhm-MDxKZhrFDsFpbWOQ@mail.gmail.com>
+References: <CAE8g1gNTeQbJ2RQW=LX8YPzysFwM1J40+tj0CNk_3hs1uuVCyw@mail.gmail.com>
+ <CA+QGQvshJc3bSnyc6VpPQ9b4J2mEgJDrZJbwtBc8doFmP6ywSg@mail.gmail.com>
+ <CAE8g1gN2_pFn4LpQDEc+AgXLuoK8UcQhm-MDxKZhrFDsFpbWOQ@mail.gmail.com>
+Message-ID: <CAAkfs-vC+dG60=EJrKH2RU0BNW2NNfitfVk8UJbeoEEtT7zZGQ@mail.gmail.com>
+
+Olá,
+
+Primeiramente, como já foi mencionado seus tipos estão errados. As
+colunas do df são numéricas, o seu 'out' não. Então, se vc quer
+comparar elementos, melhor que esteja todo mundo no mesmo tipo.
+
+Dito isso, você pode se referir aos nomes das linhas. Nesse caso, '2'
+e '4' são os nomes na dimensão das linhas (os rownames) do dat que vc
+quer eliminar. Nesse caso, o comando
+
+subset(dat,!rownames(dat) %in% out)
+
+faz isso de forma um pouco mais explícita
+On Sat, Jul 28, 2018 at 12:17 PM Antonio Silva via R-br
+<r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Caro Marcus
+>
+> Dentre a combinação de coisas que tentei essa me escapou.
+>
+> Muito obrigado,
+>
+> Antônio Olinto
+>
+> Em 28 de julho de 2018 11:11, Marcus Nunes <marcus.nunes em gmail.com> escreveu:
+>>
+>> Ao fazer
+>>
+>> out <- c("2","4")
+>>
+>> o vetor out deixou de ser numérico:
+>>
+>> is.numeric(out)
+>>
+>> Faça
+>>
+>> out <- c(2,4)
+>>
+>> que o comando
+>>
+>> dat[-out,]
+>>
+>> vai funcionar.
+>>
+>> --
+>> Marcus Nunes
+>> Professor Adjunto
+>> Universidade Federal do Rio Grande do Norte
+>> Centro de Ciências Exatas e da Terra
+>> Departamento de Estatística
+>> Laboratório de Estatística Aplicada
+>> marcus.nunes em ccet.ufrn.br
+>> http://marcusnunes.me/
+>>
+>>
+>>
+>> On Sat, Jul 28, 2018 at 11:08 AM Antonio Silva via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>> Olá,
+>>>
+>>> Algo que deve ser simples mas no qual empaquei.
+>>>
+>>> Tenho um vetor com o nome de algumas linhas com dados suspeitos:
+>>>
+>>> a <- c(1,2,3,4,5)
+>>> b <- c(2,8,6,4,10)
+>>> dat <- data.frame(a,b)
+>>> out <- c("2","4") # linhas com dados suspeitos
+>>>
+>>> Com dat[out,] eu consigo selecionar as linhas do dataframe com dados suspeitos.
+>>>
+>>> Mas eu quero selecionar as linhas sem dados suspeitos. Tentei dat[!out,] dat[-out,] e algumas outras coisas sem sucesso.
+>>>
+>>> Agradeço sugestões, obrigado.
+>>>
+>>> --
+>>> Antônio Olinto Ávila da Silva
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+From nandodesouza em gmail.com  Sat Jul 28 13:12:23 2018
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sat, 28 Jul 2018 13:12:23 -0300
+Subject: [R-br] subset a dataframe
+In-Reply-To: <CAE8g1gNTeQbJ2RQW=LX8YPzysFwM1J40+tj0CNk_3hs1uuVCyw@mail.gmail.com>
+References: <CAE8g1gNTeQbJ2RQW=LX8YPzysFwM1J40+tj0CNk_3hs1uuVCyw@mail.gmail.com>
+Message-ID: <1532794243.local-e25a9e5e-da25-v1.3.0-fd741eb7@getmailspring.com>
+
+Acho que isso resolve
+
+a <- c(1,2,3,4,5)
+b <- c(2,8,6,4,10)
+dat <- data.frame(a,b)
+dat[-c(2,4),]
+
+ou
+out<-c(2,4) # sem aspas
+dat[-out,]
+
+On Jul 28 2018, at 11:08 am, Antonio Silva via R-br <r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Olá,
+>
+> Algo que deve ser simples mas no qual empaquei.
+>
+> Tenho um vetor com o nome de algumas linhas com dados suspeitos:
+>
+> a <- c(1,2,3,4,5)
+> b <- c(2,8,6,4,10)
+>
+> dat <- data.frame(a,b)
+>
+> out <- c("2","4") # linhas com dados suspeitos
+>
+>
+> Com dat[out,] eu consigo selecionar as linhas do dataframe com dados suspeitos.
+>
+> Mas eu quero selecionar as linhas sem dados suspeitos. Tentei dat[!out,] dat[-out,] e algumas outras coisas sem sucesso.
+>
+> Agradeço sugestões, obrigado.
+>
+> --
+> Antônio Olinto Ávila da Silva
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180728/bb95fc60/attachment.html>
+
+From aolinto.lst em gmail.com  Sat Jul 28 13:14:25 2018
+From: aolinto.lst em gmail.com (Antonio Silva)
+Date: Sat, 28 Jul 2018 13:14:25 -0300
+Subject: [R-br] subset a dataframe
+In-Reply-To: <CAAkfs-vC+dG60=EJrKH2RU0BNW2NNfitfVk8UJbeoEEtT7zZGQ@mail.gmail.com>
+References: <CAE8g1gNTeQbJ2RQW=LX8YPzysFwM1J40+tj0CNk_3hs1uuVCyw@mail.gmail.com>
+ <CA+QGQvshJc3bSnyc6VpPQ9b4J2mEgJDrZJbwtBc8doFmP6ywSg@mail.gmail.com>
+ <CAE8g1gN2_pFn4LpQDEc+AgXLuoK8UcQhm-MDxKZhrFDsFpbWOQ@mail.gmail.com>
+ <CAAkfs-vC+dG60=EJrKH2RU0BNW2NNfitfVk8UJbeoEEtT7zZGQ@mail.gmail.com>
+Message-ID: <CAE8g1gPVzk-TXmR6zporF7Y28qOFYVCkdgGy+vTVsWi=_9wfmg@mail.gmail.com>
+
+Obrigado Tiago,
+
+Ótima forma de utilizar o subset.
+
+Saudações!
+
+Antonio Olinto
+
+Em Sáb, 28 de jul de 2018 1:07 PM, Tiago Fragoso <fragoso2718 em gmail.com>
+escreveu:
+
+> Olá,
+>
+> Primeiramente, como já foi mencionado seus tipos estão errados. As
+> colunas do df são numéricas, o seu 'out' não. Então, se vc quer
+> comparar elementos, melhor que esteja todo mundo no mesmo tipo.
+>
+> Dito isso, você pode se referir aos nomes das linhas. Nesse caso, '2'
+> e '4' são os nomes na dimensão das linhas (os rownames) do dat que vc
+> quer eliminar. Nesse caso, o comando
+>
+> subset(dat,!rownames(dat) %in% out)
+>
+> faz isso de forma um pouco mais explícita
+> On Sat, Jul 28, 2018 at 12:17 PM Antonio Silva via R-br
+> <r-br em listas.c3sl.ufpr.br> wrote:
+> >
+> > Caro Marcus
+> >
+> > Dentre a combinação de coisas que tentei essa me escapou.
+> >
+> > Muito obrigado,
+> >
+> > Antônio Olinto
+> >
+> > Em 28 de julho de 2018 11:11, Marcus Nunes <marcus.nunes em gmail.com>
+> escreveu:
+> >>
+> >> Ao fazer
+> >>
+> >> out <- c("2","4")
+> >>
+> >> o vetor out deixou de ser numérico:
+> >>
+> >> is.numeric(out)
+> >>
+> >> Faça
+> >>
+> >> out <- c(2,4)
+> >>
+> >> que o comando
+> >>
+> >> dat[-out,]
+> >>
+> >> vai funcionar.
+> >>
+> >> --
+> >> Marcus Nunes
+> >> Professor Adjunto
+> >> Universidade Federal do Rio Grande do Norte
+> >> Centro de Ciências Exatas e da Terra
+> >> Departamento de Estatística
+> >> Laboratório de Estatística Aplicada
+> >> marcus.nunes em ccet.ufrn.br
+> >> http://marcusnunes.me/
+> >>
+> >>
+> >>
+> >> On Sat, Jul 28, 2018 at 11:08 AM Antonio Silva via R-br <
+> r-br em listas.c3sl.ufpr.br> wrote:
+> >>>
+> >>> Olá,
+> >>>
+> >>> Algo que deve ser simples mas no qual empaquei.
+> >>>
+> >>> Tenho um vetor com o nome de algumas linhas com dados suspeitos:
+> >>>
+> >>> a <- c(1,2,3,4,5)
+> >>> b <- c(2,8,6,4,10)
+> >>> dat <- data.frame(a,b)
+> >>> out <- c("2","4") # linhas com dados suspeitos
+> >>>
+> >>> Com dat[out,] eu consigo selecionar as linhas do dataframe com dados
+> suspeitos.
+> >>>
+> >>> Mas eu quero selecionar as linhas sem dados suspeitos. Tentei
+> dat[!out,] dat[-out,] e algumas outras coisas sem sucesso.
+> >>>
+> >>> Agradeço sugestões, obrigado.
+> >>>
+> >>> --
+> >>> Antônio Olinto Ávila da Silva
+> >>> _______________________________________________
+> >>> R-br mailing list
+> >>> R-br em listas.c3sl.ufpr.br
+> >>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180728/3a81f36c/attachment.html>
+
+From wwolff7 em gmail.com  Tue Jul 31 11:12:03 2018
+From: wwolff7 em gmail.com (Wagner Wolff)
+Date: Tue, 31 Jul 2018 16:12:03 +0200
+Subject: [R-br] =?utf-8?q?Decomposi=C3=A7=C3=A3o_de_Cholesky_para_matriz_n?=
+	=?utf-8?q?=C3=A3o_positiva_definida=2E_Exemplo_geoestat=C3=ADstico?=
+Message-ID: <CAFJ348-xn+FqYeTucDcd3VdDkq5bh=MZ9ouwFoUgsADtv9hp0Q@mail.gmail.com>
+
+Olá pessoal da lista!
+
+Estou tentando estimar os parâmetros de um modelo geoestatistico no qual a
+matriz de covariancia é obtida por meio de uma matriz de distância entre
+linhas. Ou seja, linhas interceptadas tem distância zero, assim não somente
+a diagonal da matriz de distância é zero. Isso acaba acarretando em
+problema na hora de decompor a matriz de covariância usando Cholesky.
+Alguém tem alguma solucão ou dica? Já tentei algumas coisas como
+aproximacões para ser positiva definida, entre outras, mas na hora de
+estimar os parâmetros nada converge.
+
+Abraco
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180731/ea5254f1/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Tue Jul 31 11:22:05 2018
+From: eliaskrainski em yahoo.com.br (Elias T Krainski)
+Date: Tue, 31 Jul 2018 11:22:05 -0300
+Subject: [R-br]
+ =?utf-8?q?Decomposi=C3=A7=C3=A3o_de_Cholesky_para_matriz_n?=
+ =?utf-8?q?=C3=A3o_positiva_definida=2E_Exemplo_geoestat=C3=ADstico?=
+In-Reply-To: <CAFJ348-xn+FqYeTucDcd3VdDkq5bh=MZ9ouwFoUgsADtv9hp0Q@mail.gmail.com>
+References: <CAFJ348-xn+FqYeTucDcd3VdDkq5bh=MZ9ouwFoUgsADtv9hp0Q@mail.gmail.com>
+Message-ID: <2a725a7f-a2c3-cf15-5e62-0bb4ea269e69@yahoo.com.br>
+
+Escreva
+
+  y = X\beta + As + erro
+
+em que A e' uma matriz de projecao do efeito espacial s. Disso temos que
+
+Cov(Y) = Cov(Ax + erro) = A'Cov(s)A + Cov(Erro)
+
+Elias.
+
+On 31/07/2018 11:12, Wagner Wolff via R-br wrote:
+> Olá pessoal da lista!
+>
+> Estou tentando estimar os parâmetros de um modelo geoestatistico no 
+> qual a matriz de covariancia é obtida por meio de uma matriz de 
+> distância entre linhas. Ou seja, linhas interceptadas tem distância 
+> zero, assim não somente a diagonal da matriz de distância é zero. Isso 
+> acaba acarretando em problema na hora de decompor a matriz de 
+> covariância usando Cholesky. Alguém tem alguma solucão ou dica? Já 
+> tentei algumas coisas como aproximacões para ser positiva definida, 
+> entre outras, mas na hora de estimar os parâmetros nada converge.
+>
+> Abraco
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180731/f64b3635/attachment.html>
+
+From wwolff em usp.br  Tue Jul 31 11:37:19 2018
+From: wwolff em usp.br (Wagner Wolff)
+Date: Tue, 31 Jul 2018 16:37:19 +0200
+Subject: [R-br]
+	=?utf-8?q?Decomposi=C3=A7=C3=A3o_de_Cholesky_para_matriz_n?=
+	=?utf-8?q?=C3=A3o_positiva_definida=2E_Exemplo_geoestat=C3=ADstico?=
+In-Reply-To: <2a725a7f-a2c3-cf15-5e62-0bb4ea269e69@yahoo.com.br>
+References: <CAFJ348-xn+FqYeTucDcd3VdDkq5bh=MZ9ouwFoUgsADtv9hp0Q@mail.gmail.com>
+ <2a725a7f-a2c3-cf15-5e62-0bb4ea269e69@yahoo.com.br>
+Message-ID: <CAOyzcy=Yk0dfuC82JP6+ZBGGuXCOSTQ9_qNW9=fO51VYYOxgXA@mail.gmail.com>
+
+O que seria essa matrix de projecao? Como eu mudaria na funcao
+log.verossimilhancao, abaixo:
+
+montaSigma <- function(s2, t2, phi, Umat){
+    Sigma <- as.matrix(s2 * exp(-Umat/phi))
+    Sigma <- ifelse(Umat==0, diag(Sigma)+t2, Sigma)
+    return(Sigma)
+}
+
+
+ll.geo <- function(s2, t2, phi, modelo, Umat, dados, logpars = F) {
+    if (logpars) {
+        s2 <- exp(s2)
+        t2 <- exp(t2)
+        phi <- exp(phi)
+    }
+    mf <- model.frame(modelo, dados)
+    y <- model.response(mf)
+    D <- model.matrix(modelo, mf)
+    Sigma <- montaSigma(s2 = s2, t2 = t2, phi = phi, Umat = Umat)
+    R <- chol(Sigma)
+    invRD <- backsolve(R, D, transpose = TRUE)
+    invRy <- backsolve(R, y, transpose = TRUE)
+    bhat <- solve(crossprod(invRD), crossprod(invRD, invRy))
+    invRe <- invRy - invRD %*% bhat
+    nll <- drop(length(y) * log(2 * pi)/2 + sum(log(diag(R))) +
+crossprod(invRe)/2)
+    return(nll)
+
+Abraco
+
+Em 31 de julho de 2018 16:22, Elias T Krainski via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Escreva
+>
+>  y = X\beta + As + erro
+>
+> em que A e' uma matriz de projecao do efeito espacial s. Disso temos que
+>
+> Cov(Y) = Cov(Ax + erro) = A'Cov(s)A + Cov(Erro)
+> Elias.
+>
+> On 31/07/2018 11:12, Wagner Wolff via R-br wrote:
+>
+> Olá pessoal da lista!
+>
+> Estou tentando estimar os parâmetros de um modelo geoestatistico no qual a
+> matriz de covariancia é obtida por meio de uma matriz de distância entre
+> linhas. Ou seja, linhas interceptadas tem distância zero, assim não somente
+> a diagonal da matriz de distância é zero. Isso acaba acarretando em
+> problema na hora de decompor a matriz de covariância usando Cholesky.
+> Alguém tem alguma solucão ou dica? Já tentei algumas coisas como
+> aproximacões para ser positiva definida, entre outras, mas na hora de
+> estimar os parâmetros nada converge.
+>
+> Abraco
+>
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+*Wagner Wolff, **PhD*
+"*Luiz de Queiroz**" College of Agriculture,*
+University of São Paulo
+Pádua Dias avenue11 | 13418-900| Piracicaba-SP| Brazil
+Phone:  +55 19 982385582 <+55%2019%2098238-5582>
+http://orcid.org/0000-0003-3426-308X
+https://github.com/wwolff7
+http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4463141A1
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180731/376ea8ec/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Tue Jul 31 14:07:49 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Tue, 31 Jul 2018 17:07:49 +0000 (UTC)
+Subject: [R-br] Analise Fatorial - Componentes Principais
+References: <181186418.1488490.1533056869026.ref@mail.yahoo.com>
+Message-ID: <181186418.1488490.1533056869026@mail.yahoo.com>
+
+Boa Tarde!
+Preciso de uma ajuda na Análise Fatorial, estou tentando salvar os scores dos fatores para colocar no aquirvo que estou trabalhando, mas não está rolando,estou comparando com outra ferramenta estatística SPSS e os valores são diferentes, somente os scores. Estou tentando salvar pelo método de regression.
+
+
+# AF pelo método componentes principais
+library(readxl)Olimpiadas <- read_excel("C:/Users/edmar/Desktop/FIAP Atualização BDT/Data Mining/Olimpiadas.xlsx")View(Olimpiadas)dim(Olimpiadas)CP <-Olimpiadas[,-11]CPdim(CP)
+View(CP)
+#Pedir as estatisticas descritivas e a matriz de correlação.
+cor(CP)sapply(CP,summary)sapply(CP,sd)
+# AF package psychinstall.packages("psych")library(psych)
+
+# kmoKMO(CP)
+
+# teste de esfericidade de Bartlettcortest.bartlett(CP)
+
+
+install.packages("GPArotation") library(GPArotation)
+
+# Tabela de variancia total explicad do spss pelos componentes principaisfit <-princomp(CP, cor=TRUE)fitsummary(fit)
+
+
+# Grafico scrren plotloadings(fit)plot(fit,type="lines")
+
+# extrair os fatores sem rotação - component matrix spssfit <-principal(CP,nfactors = 2, rotate = "none", scores = TRUE)fit
+
+# rotated componetn matrix spss fit <-principal(CP,nfactors=2,rotate="varimax",scores = TRUE, method = "regression")# EXTRAÇÃO PELO METODO VARIMAX.print(fit,digits = 3,cutoff=.0,sort = TRUE)
+
+#comunalidadesfit$communality
+#Grafico componentes espaço rotacionadoplot(load, type = "n")text(load, labels = names(CP),cex = .7)#nome nas variaveisabline(h=0)abline(v=0)
+
+Agora salvar os scores no arquivo não estou conseguindo. Os demais resultados batem todos.
+estou tentando: Mas sai diferente do SPSS?Tem algum segredo aqui?????
+> fit$scores              RC1          RC2 [1,] -0.42227707  0.967455985 [2,] -1.08912141  0.462360637 [3,] -0.86924034  0.225857490 [4,] -0.53780514  0.919581430 [5,] -1.63914712 -0.616829273 [6,] -1.44129573 -0.088363255 [7,] -0.15298741  0.849870177 [8,] -0.73360090  0.216111850 [9,] -0.38707353  0.452628647[10,]  0.06303505  1.118762527[11,]  0.01554309  1.128912314[12,] -0.54253297  0.038456484[13,] -1.24977051 -0.689280878[14,] -0.83306807  0.006922647[15,] -0.48684252  0.033011053[16,] -0.25825680  0.210099942[17,]  2.08127102  2.190927462[18,]  0.86484820  1.186320909[19,] -0.82669302 -0.930504761[20,]  0.27811485  0.665010689[21,]  0.22335228 -0.092869066[22,]  0.20287071 -0.206901381[23,]  0.36309453  0.240739372[24,]  0.12631659 -0.329892015[25,] -0.17699769 -0.401440678[26,] -0.37557882 -1.074277378[27,] -0.60432737 -1.290110113[28,]  1.44661663  0.853691289[29,] -0.16292001 -1.175375590[30,]  0.78399429 -0.250845135[31,]  1.92828660  0.654161779[32,]  1.13276765 -0.405341447[33,]  0.51556035 -1.656032055[34,]  2.76386458 -3.212819656
+
+
+
+
+
+
+
+
+
+Edmar
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180731/0616b246/attachment.html>
+
+From sznelwar em uol.com.br  Tue Jul 31 19:16:33 2018
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Tue, 31 Jul 2018 19:16:33 -0300
+Subject: [R-br] Analise Fatorial - Componentes Principais
+In-Reply-To: ["181186418.1488490.1533056869026@mail.yahoo.com"]
+References: ["181186418.1488490.1533056869026.ref@mail.yahoo.com",
+ "181186418.1488490.1533056869026@mail.yahoo.com"]
+Message-ID: <5b60dfc132e85_1f5c2aef7ea2f13c97288@a4-weasel4.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180731/780313e0/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Tue Jul 31 20:10:51 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Tue, 31 Jul 2018 23:10:51 +0000 (UTC)
+Subject: [R-br] Assunto: Re:  Analise Fatorial - Componentes Principais
+In-Reply-To: <5b60dfc132e85_1f5c2aef7ea2f13c97288@a4-weasel4.mail>
+References: <5b60dfc132e85_1f5c2aef7ea2f13c97288@a4-weasel4.mail>
+Message-ID: <712655228.94456.1533078651543@mail.yahoo.com>
+
+Boa Noite!Ja consegui resolver. O codigo esta certo e o resultado tambem. Estava comparando com outro resultado. Peco desculpa erro foi meu. 
+
+Enviado do Yahoo Mail no Android 
+ 
+  <div>Em Ter, 31 31e jul 31e 2018 às 19:16, sznelwar em uol.com.br</div><div><sznelwar em uol.com.br> escreveu:</div>   Tem o dataset para rodar? Boa Tarde! Preciso de uma ajuda na Análise Fatorial, estou tentando salvar os scores dos fatores para colocar no aquirvo que estou trabalhando, mas não está rolando,estou comparando com outra ferramenta estatística SPSS e os valores são diferentes, somente os scores. Estou tentando salvar pelo método de regression.   # AF pelo método componentes principais library(readxl)Olimpiadas <- read_excel("C:/Users/edmar/Desktop/FIAP Atualização BDT/Data Mining/Olimpiadas.xlsx")View(Olimpiadas)dim(Olimpiadas)CP <-Olimpiadas[,-11]CPdim(CP) View(CP) #Pedir as estatisticas descritivas e a matriz de correlação. cor(CP)sapply(CP,summary)sapply(CP,sd) # AF package psychinstall.packages("psych")library(psych)  # kmoKMO(CP)  # teste de esfericidade de Bartlettcortest.bartlett(CP)  install.packages("GPArotation") library(GPArotation)  # Tabela de variancia total explicad do spss pelos componentes principaisfit <-princomp(CP, cor=TRUE)fitsummary(fit)   # Grafico scrren plotloadings(fit)plot(fit,type="lines")  # extrair os fatores sem rotação - component matrix spssfit <-principal(CP,nfactors = 2, rotate = "none", scores = TRUE)fit  # rotated componetn matrix spss fit <-principal(CP,nfactors=2,rotate="varimax",scores = TRUE, method = "regression")# EXTRAÇÃO PELO METODO VARIMAX.print(fit,digits = 3,cutoff=.0,sort = TRUE)  #comunalidadesfit$communality #Grafico componentes espaço rotacionadoplot(load, type = "n")text(load, labels = names(CP),cex = .7)#nome nas variaveisabline(h=0)abline(v=0)  Agora salvar os scores no arquivo não estou conseguindo. Os demais resultados batem todos. estou tentando: Mas sai diferente do SPSS?Tem algum segredo aqui????? > fit$scores              RC1          RC2 [1,] -0.42227707  0.967455985 [2,] -1.08912141  0.462360637 [3,] -0.86924034  0.225857490 [4,] -0.53780514  0.919581430 [5,] -1.63914712 -0.616829273 [6,] -1.44129573 -0.088363255 [7,] -0.15298741  0.849870177 [8,] -0.73360090  0.216111850 [9,] -0.38707353  0.452628647[10,]  0.06303505  1.118762527[11,]  0.01554309  1.128912314[12,] -0.54253297  0.038456484[13,] -1.24977051 -0.689280878[14,] -0.83306807  0.006922647[15,] -0.48684252  0.033011053[16,] -0.25825680  0.210099942[17,]  2.08127102  2.190927462[18,]  0.86484820  1.186320909[19,] -0.82669302 -0.930504761[20,]  0.27811485  0.665010689[21,]  0.22335228 -0.092869066[22,]  0.20287071 -0.206901381[23,]  0.36309453  0.240739372[24,]  0.12631659 -0.329892015[25,] -0.17699769 -0.401440678[26,] -0.37557882 -1.074277378[27,] -0.60432737 -1.290110113[28,]  1.44661663  0.853691289[29,] -0.16292001 -1.175375590[30,]  0.78399429 -0.250845135[31,]  1.92828660  0.654161779[32,]  1.13276765 -0.405341447[33,]  0.51556035 -1.656032055[34,]  2.76386458 -3.212819656      Edmar_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180731/2a076810/attachment.html>
+
+From andreolsouza em yahoo.com.br  Tue Jul 31 23:21:41 2018
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Wed, 1 Aug 2018 02:21:41 +0000 (UTC)
+Subject: [R-br] Erro na leitura de dados
+References: <1672983751.169552.1533090101806.ref@mail.yahoo.com>
+Message-ID: <1672983751.169552.1533090101806@mail.yahoo.com>
+
+ 
+Boa noite! 
+
+tenho feito a leitura de dados usando a função fread. Hoje rodei o script e deu este aviso abaixo. Parece ser memória, mas não mudei nada na máquina.
+
+
+
+System errno 22 unmapping file: Argumento inválido
+
+Error in fread("dados.csv", header = TRUE, select = c("ESCOLA", : Opened 4.917GB (5279747593 bytes) file ok but could not memory map it. This is a 64bit process. There is probably not enough contiguous virtual memory available.
+Se alguém puder ajudar ficarei grato! 
+obg
+
+
+
+obgAndré 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180801/19f288bc/attachment.html>
+

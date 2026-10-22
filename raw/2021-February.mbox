@@ -1,0 +1,1645 @@
+From otnetobr em gmail.com  Tue Feb  2 12:07:18 2021
+From: otnetobr em gmail.com (Olympio Neto)
+Date: Tue, 2 Feb 2021 11:07:18 -0300
+Subject: [R-br] =?utf-8?q?Dificuldade_com_gr=C3=A1fico_em_ggplot2?=
+Message-ID: <CA+8s2wTwsT0kEbr4aOvv3ZiyaTGA8O0-FPRdwJtLQ3kHnkCSzw@mail.gmail.com>
+
+Pessoal, bom dia
+
+Preciso fazer um gráfico que envolve o total acumulado anual dos anos de
+2016-2020 em gráfico de barras e somente o resultado mensal de 2020 somente
+como gráfico de linhas no ggplot2. Não consegui fazer isso.  Alguém pode me
+dar uma luz?
+
+Seria parecido com aqueles gráficos climatológicos, só que as barras
+representam o acumulado dos anos e a linha o resultado mensal de 2020.
+Aqui está do dataframe:
+
+structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+"Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L,
+3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L,
+6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,
+2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L,
+3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L,
+6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L,
+493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L,
+2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L,
+17293L)), class = "data.frame", row.names = c(NA, -13L))
+
+Alguém pode me ajudar?
+
+Muito obrigado.
+
+Olympio
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210202/2c41f718/attachment.html>
+
+From dtiezzi em usp.br  Tue Feb  2 12:59:02 2021
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 2 Feb 2021 11:59:02 -0300
+Subject: [R-br] =?utf-8?q?Dificuldade_com_gr=C3=A1fico_em_ggplot2?=
+In-Reply-To: <CA+8s2wTwsT0kEbr4aOvv3ZiyaTGA8O0-FPRdwJtLQ3kHnkCSzw@mail.gmail.com>
+References: <CA+8s2wTwsT0kEbr4aOvv3ZiyaTGA8O0-FPRdwJtLQ3kHnkCSzw@mail.gmail.com>
+Message-ID: <63EA2FF6-F6C6-4A8B-B999-F130F5F26355@usp.br>
+
+Bom dia
+
+Seria algo assim?
+
+df <- structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L, 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L, 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,  2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L, 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L, 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L, 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L, 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L, 17293L)), class = "data.frame", row.names = c(NA, -13L)) 
+df
+
+df_s <- as.data.frame(t(df[nrow(df),-1]))
+colnames(df_s) <- 'total'
+df_s$ano <- seq(2016, 2020)
+df_s
+library(ggplot2)
+p0 <- ggplot(data = df_s, aes(y=stat(total), x = ano)) + geom_bar() + theme_minimal()
+p0
+
+df_l <- df[-nrow(df), c(1,6)]
+colnames(df_l) <- c('m', 'val')
+df_l
+p1 <- ggplot(data = df_l, aes(x = m, y = val, group = 1)) + geom_line() + theme_minimal()
+p1
+
+----------------------------------------------------------------
+Daniel Tiezzi, MD, PhD
+Oncologia / Mastologia
+Professor Associado - Livre Docente
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+https://github.com/dtiezzi <https://github.com/dtiezzi>
+http://danieltiezzi.pro.br <http://danieltiezzi.pro.br/>e-mail: dtiezzi em usp.br
+
+
+> On 2 Feb 2021, at 11:07, Olympio Neto por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", 
+> "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L, 
+> 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L, 
+> 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L, 
+> 2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L, 
+> 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L, 
+> 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L, 
+> 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L, 
+> 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L, 
+> 17293L)), class = "data.frame", row.names = c(NA, -13L)) 
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210202/b5df65a5/attachment.html>
+
+From otnetobr em gmail.com  Tue Feb  2 13:55:59 2021
+From: otnetobr em gmail.com (Olympio Neto)
+Date: Tue, 2 Feb 2021 12:55:59 -0300
+Subject: [R-br] =?utf-8?q?Dificuldade_com_gr=C3=A1fico_em_ggplot2?=
+In-Reply-To: <63EA2FF6-F6C6-4A8B-B999-F130F5F26355@usp.br>
+References: <CA+8s2wTwsT0kEbr4aOvv3ZiyaTGA8O0-FPRdwJtLQ3kHnkCSzw@mail.gmail.com>
+ <63EA2FF6-F6C6-4A8B-B999-F130F5F26355@usp.br>
+Message-ID: <CA+8s2wQ8Rwg_ZisKqaYnAxBW+yt2sbLjZra0cW2Oi-=fDO4LvQ@mail.gmail.com>
+
+[image: image.png]
+
+Mas no fim, estou achando muito confuso. Talvez separados representem
+melhor o objetivo.
+
+De qualquer forma, obrigado!
+
+Olympio
+
+Em ter., 2 de fev. de 2021 às 11:59, Daniel Guimarães Tiezzi <dtiezzi em usp.br>
+escreveu:
+
+> Bom dia
+>
+> Seria algo assim?
+>
+> df <- structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+> "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L, 3959L,
+> 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L, 6036L, 352L,
+> 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,  2030L, 280L, 4552L,
+> 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L, 3968L, 3092L, 2357L,
+> 1333L, 895L, 5489L, 3598L, 4072L, 5562L, 6218L, 115L, 37477L), `2019` =
+> c(246L, 2353L, 2905L, 4563L, 2791L, 493L, 3197L, 6463L, 1375L, 5626L,
+> 10443L, 138L, 40593L), `2020` = c(76L, 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L,
+> 1554L, 3831L, 4573L, 1104L, 17293L)), class = "data.frame", row.names =
+> c(NA, -13L))
+> df
+>
+> df_s <- as.data.frame(t(df[nrow(df),-1]))
+> colnames(df_s) <- 'total'
+> df_s$ano <- seq(2016, 2020)
+> df_s
+> library(ggplot2)
+> p0 <- ggplot(data = df_s, aes(y=stat(total), x = ano)) + geom_bar() +
+> theme_minimal()
+> p0
+>
+> df_l <- df[-nrow(df), c(1,6)]
+> colnames(df_l) <- c('m', 'val')
+> df_l
+> p1 <- ggplot(data = df_l, aes(x = m, y = val, group = 1)) + geom_line() +
+> theme_minimal()
+> p1
+>
+> ----------------------------------------------------------------
+> Daniel Tiezzi, MD, PhD
+> Oncologia / Mastologia
+> Professor Associado - Livre Docente
+> Departamento de Ginecologia e Obstetrícia
+> Setor de Mastologia e Oncologia Ginecológica
+> Faculdade de Medicina de Ribeirão Preto - USP
+> Tel.: 16 3602-2488
+> https://github.com/dtiezzi
+> http://danieltiezzi.pro.br
+> e-mail: dtiezzi em usp.br <dtiezzi em usp.br>
+>
+>
+> On 2 Feb 2021, at 11:07, Olympio Neto por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+> structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+> "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L,
+> 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L,
+> 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,
+> 2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L,
+> 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L,
+> 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L,
+> 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L,
+> 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L,
+> 17293L)), class = "data.frame", row.names = c(NA, -13L))
+>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210202/ab290a81/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 30229 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210202/ab290a81/attachment.png>
+
+From dtiezzi em usp.br  Tue Feb  2 18:47:39 2021
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Tue, 2 Feb 2021 17:47:39 -0300
+Subject: [R-br] =?utf-8?q?Dificuldade_com_gr=C3=A1fico_em_ggplot2?=
+In-Reply-To: <CA+8s2wQ8Rwg_ZisKqaYnAxBW+yt2sbLjZra0cW2Oi-=fDO4LvQ@mail.gmail.com>
+References: <CA+8s2wTwsT0kEbr4aOvv3ZiyaTGA8O0-FPRdwJtLQ3kHnkCSzw@mail.gmail.com>
+ <63EA2FF6-F6C6-4A8B-B999-F130F5F26355@usp.br>
+ <CA+8s2wQ8Rwg_ZisKqaYnAxBW+yt2sbLjZra0cW2Oi-=fDO4LvQ@mail.gmail.com>
+Message-ID: <92745660-60A1-45CD-8963-EDF9FDADC53F@usp.br>
+
+Vc teria que apresentar algo assim então:
+
+
+
+png("mybarchart.png", width = 12, height = 8, units = 'in', res = 300)
+par(mar=c(5.1, 4.1, 4.1, 6.1), xpd=TRUE)
+barplot(t(as.matrix(df[-nrow(df),c(-1,-6)])), col = c('cornflowerblue', "hotpink", 'lightgoldenrodyellow', 'aquamarine3'), space = 0, ylim = c(0,30000), border = NA, xlab = 'Mês')
+lines(seq(0.5,11.5),df$`2020`[-13], col = 'red', lwd = 3)
+points(seq(0.5,11.5),df$`2020`[-13], col = 'red', cex = 1.45, pch = '+')
+legend("topright", inset=c(-0.1,0), legend=c(colnames(df)[-1]), title="Ano", pch = c(15,15,15,15,3), col = c('cornflowerblue', "hotpink", 'lightgoldenrodyellow', 'aquamarine3', 'red'), bty = 'n', lwd=c(0,0,0,0,1.5), pt.cex=c(2,2,2,2,1))
+dev.off()
+
+----------------------------------------------------------------
+Daniel Tiezzi, MD, PhD
+Oncologia / Mastologia
+Professor Associado - Livre Docente
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+https://github.com/dtiezzi <https://github.com/dtiezzi>
+http://danieltiezzi.pro.br <http://danieltiezzi.pro.br/>e-mail: dtiezzi em usp.br
+
+> On 2 Feb 2021, at 12:55, Olympio Neto por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> <image.png>
+> 
+> Mas no fim, estou achando muito confuso. Talvez separados representem melhor o objetivo.
+> 
+> De qualquer forma, obrigado!
+> 
+> Olympio
+> 
+> Em ter., 2 de fev. de 2021 às 11:59, Daniel Guimarães Tiezzi <dtiezzi em usp.br <mailto:dtiezzi em usp.br>> escreveu:
+> Bom dia
+> 
+> Seria algo assim?
+> 
+> df <- structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L, 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L, 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,  2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L, 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L, 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L, 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L, 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L, 17293L)), class = "data.frame", row.names = c(NA, -13L)) 
+> df
+> 
+> df_s <- as.data.frame(t(df[nrow(df),-1]))
+> colnames(df_s) <- 'total'
+> df_s$ano <- seq(2016, 2020)
+> df_s
+> library(ggplot2)
+> p0 <- ggplot(data = df_s, aes(y=stat(total), x = ano)) + geom_bar() + theme_minimal()
+> p0
+> 
+> df_l <- df[-nrow(df), c(1,6)]
+> colnames(df_l) <- c('m', 'val')
+> df_l
+> p1 <- ggplot(data = df_l, aes(x = m, y = val, group = 1)) + geom_line() + theme_minimal()
+> p1
+> 
+> ----------------------------------------------------------------
+> Daniel Tiezzi, MD, PhD
+> Oncologia / Mastologia
+> Professor Associado - Livre Docente
+> Departamento de Ginecologia e Obstetrícia
+> Setor de Mastologia e Oncologia Ginecológica
+> Faculdade de Medicina de Ribeirão Preto - USP
+> Tel.: 16 3602-2488
+> https://github.com/dtiezzi <https://github.com/dtiezzi>
+> http://danieltiezzi.pro.br <http://danieltiezzi.pro.br/>e-mail: dtiezzi em usp.br <mailto:dtiezzi em usp.br>
+> 
+> 
+>> On 2 Feb 2021, at 11:07, Olympio Neto por (R-br) <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+>> 
+>> structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", 
+>> "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L, 
+>> 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L, 
+>> 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L, 
+>> 2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L, 
+>> 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L, 
+>> 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L, 
+>> 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L, 
+>> 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L, 
+>> 17293L)), class = "data.frame", row.names = c(NA, -13L)) 
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210202/a4d0dde7/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: mybarchart.png
+Tipo: image/png
+Tamanho: 57474 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210202/a4d0dde7/attachment-0001.png>
+
+From sznelwar em uol.com.br  Wed Feb  3 20:12:01 2021
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Wed, 03 Feb 2021 20:12:01 -0200
+Subject: [R-br] =?utf-8?q?Dificuldade_com_gr=C3=A1fico_em_ggplot2?=
+In-Reply-To: <92745660-60A1-45CD-8963-EDF9FDADC53F@usp.br>
+References: <8s2wTwsT0kEbr4aOvv3ZiyaTGA8O0-FPRdwJtLQ3kHnkCSzw@mail.gmail.com>
+ <63EA2FF6-F6C6-4A8B-B999-F130F5F26355@usp.br>
+ <fDO4LvQ@mail.gmail.com>
+ <92745660-60A1-45CD-8963-EDF9FDADC53F@usp.br>
+Message-ID: <601b1fb1cb63d_64c42b21afa9d1102097b@ip-10-81-19-29.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210203/ae10ed7a/attachment.html>
+
+From dtiezzi em usp.br  Wed Feb  3 20:17:42 2021
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Wed, 3 Feb 2021 19:17:42 -0300
+Subject: [R-br] =?utf-8?q?Dificuldade_com_gr=C3=A1fico_em_ggplot2?=
+In-Reply-To: <601b1fb1cb63d_64c42b21afa9d1102097b@ip-10-81-19-29.ec2.internal.mail>
+References: <8s2wTwsT0kEbr4aOvv3ZiyaTGA8O0-FPRdwJtLQ3kHnkCSzw@mail.gmail.com>
+ <63EA2FF6-F6C6-4A8B-B999-F130F5F26355@usp.br> <fDO4LvQ@mail.gmail.com>
+ <92745660-60A1-45CD-8963-EDF9FDADC53F@usp.br>
+ <601b1fb1cb63d_64c42b21afa9d1102097b@ip-10-81-19-29.ec2.internal.mail>
+Message-ID: <CA+RL3DP2zogwQg+K2hwPKTOUi6xihDVEX3Z_W=v2ew2=_DsqOQ@mail.gmail.com>
+
+Sim, é só remover a função png() que gera a figura e o dev.off() que fecha
+o plot.
+
+Em qua., 3 de fev. de 2021 às 19:12, sznelwar--- por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Não tem como visualizar isto na área do R, no lugar deste dev.off()?
+>
+> Vc teria que apresentar algo assim então:
+>
+>
+> png("mybarchart.png", width = 12, height = 8, units = 'in', res = 300)
+> par(mar=c(5.1, 4.1, 4.1, 6.1), xpd=TRUE)
+> barplot(t(as.matrix(df[-nrow(df),c(-1,-6)])), col = c('cornflowerblue',
+> "hotpink", 'lightgoldenrodyellow', 'aquamarine3'), space = 0, ylim =
+> c(0,30000), border = NA, xlab = 'Mês')
+> lines(seq(0.5,11.5),df$`2020`[-13], col = 'red', lwd = 3)
+> points(seq(0.5,11.5),df$`2020`[-13], col = 'red', cex = 1.45, pch = '+')
+> legend("topright", inset=c(-0.1,0), legend=c(colnames(df)[-1]),
+> title="Ano", pch = c(15,15,15,15,3), col = c('cornflowerblue', "hotpink",
+> 'lightgoldenrodyellow', 'aquamarine3', 'red'), bty = 'n',
+> lwd=c(0,0,0,0,1.5), pt.cex=c(2,2,2,2,1))
+> dev.off()
+>
+> ----------------------------------------------------------------
+> Daniel Tiezzi, MD, PhD
+> Oncologia / Mastologia
+> Professor Associado - Livre Docente
+> Departamento de Ginecologia e Obstetrícia
+> Setor de Mastologia e Oncologia Ginecológica
+> Faculdade de Medicina de Ribeirão Preto - USP
+> Tel.: 16 3602-2488
+> https://github.com/dtiezzi
+> http://danieltiezzi.pro.br
+> e-mail: dtiezzi em usp.br
+>
+>
+> On 2 Feb 2021, at 12:55, Olympio Neto por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+> <image.png>
+>
+> Mas no fim, estou achando muito confuso. Talvez separados representem
+> melhor o objetivo.
+>
+> De qualquer forma, obrigado!
+>
+> Olympio
+>
+> Em ter., 2 de fev. de 2021 às 11:59, Daniel Guimarães Tiezzi <
+> dtiezzi em usp.br> escreveu:
+>
+>> Bom dia
+>>
+>> Seria algo assim?
+>>
+>> df <- structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+>> "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L, 3959L,
+>> 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L, 6036L, 352L,
+>> 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,  2030L, 280L, 4552L,
+>> 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L, 3968L, 3092L, 2357L,
+>> 1333L, 895L, 5489L, 3598L, 4072L, 5562L, 6218L, 115L, 37477L), `2019` =
+>> c(246L, 2353L, 2905L, 4563L, 2791L, 493L, 3197L, 6463L, 1375L, 5626L,
+>> 10443L, 138L, 40593L), `2020` = c(76L, 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L,
+>> 1554L, 3831L, 4573L, 1104L, 17293L)), class = "data.frame", row.names =
+>> c(NA, -13L))
+>> df
+>>
+>> df_s <- as.data.frame(t(df[nrow(df),-1]))
+>> colnames(df_s) <- 'total'
+>> df_s$ano <- seq(2016, 2020)
+>> df_s
+>> library(ggplot2)
+>> p0 <- ggplot(data = df_s, aes(y=stat(total), x = ano)) + geom_bar() +
+>> theme_minimal()
+>> p0
+>>
+>> df_l <- df[-nrow(df), c(1,6)]
+>> colnames(df_l) <- c('m', 'val')
+>> df_l
+>> p1 <- ggplot(data = df_l, aes(x = m, y = val, group = 1)) + geom_line() +
+>> theme_minimal()
+>> p1
+>>
+>> ----------------------------------------------------------------
+>> Daniel Tiezzi, MD, PhD
+>> Oncologia / Mastologia
+>> Professor Associado - Livre Docente
+>> Departamento de Ginecologia e Obstetrícia
+>> Setor de Mastologia e Oncologia Ginecológica
+>> Faculdade de Medicina de Ribeirão Preto - USP
+>> Tel.: 16 3602-2488
+>> https://github.com/dtiezzi
+>> http://danieltiezzi.pro.br
+>> e-mail: dtiezzi em usp.br
+>>
+>>
+>>
+>> On 2 Feb 2021, at 11:07, Olympio Neto por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>> structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+>> "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L,
+>> 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L,
+>> 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,
+>> 2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L,
+>> 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L,
+>> 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L,
+>> 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L,
+>> 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L,
+>> 17293L)), class = "data.frame", row.names = c(NA, -13L))
+>>
+>> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível. _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+Daniel Tiezzi, MD, PhD
+Breast Disease and Gynecologic Oncology Division
+Department of Gynecology and Obstetrics
+University of São Paulo
+Brazil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210203/53a7267a/attachment.html>
+
+From lubichchiara em gmail.com  Thu Feb  4 00:35:05 2021
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Wed, 3 Feb 2021 22:35:05 -0400
+Subject: [R-br] =?utf-8?q?Como_fazer_an=C3=A1lise_de_rela=C3=A7=C3=A3o_pe?=
+	=?utf-8?q?so-comprimento_usando_o_R?=
+Message-ID: <CAH-ZE+AtGiWUJ1D8acddpk3h3P+6=o414deERizVamHPGZP2Kw@mail.gmail.com>
+
+Boa noite,
+
+Gostaria de saber como fazer a relação peso-comprimento para peixes
+utilizando o R. Normalmente, faço essa análise utilizando o Statistica e
+estou tentando atualmente fazer no R.
+Logaritmizei mesmo dados de peso e comprimento e fiz análise utilizando o
+seguinte comando (conforme um colega me passou):
+lwr<-read.table("clipboard",sep="\t", header=T, dec=".")
+attach(lwr)
+lwr
+lpeso<-log(peso)
+lcomprimento<-log(comprimento)
+lmlwr<-lm(lpeso~lcomprimento)
+summary(lmlwr)
+
+e obtive o seguinte resultado:
+Call:
+lm(formula = lpeso ~ lcomp)
+
+Residuals:
+    Min      1Q  Median      3Q     Max
+-0.5495 -0.1027 -0.0046  0.1154  0.3636
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)
+(Intercept) -3.73920    0.06033  -61.98   <2e-16 ***
+lcomp        3.18886    0.03571   89.31   <2e-16 ***
+---
+Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1
+
+Residual standard error: 0.1874 on 46 degrees of freedom
+Multiple R-squared:  0.9943, Adjusted R-squared:  0.9941
+F-statistic:  7975 on 1 and 46 DF,  p-value: < 2.2e-16
+
+No entanto, onde vejo a variação (mínimo - máximo) dos valores de a e b?
+Acredito que esteja usando o comando errado.
+
+Se puderem ajudar, agradeço
+
+Muito obrigada desde já
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210203/1af90f21/attachment.html>
+
+From dtiezzi em usp.br  Thu Feb  4 00:51:06 2021
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Wed, 3 Feb 2021 23:51:06 -0300
+Subject: [R-br] 
+ =?utf-8?q?Como_fazer_an=C3=A1lise_de_rela=C3=A7=C3=A3o_pe?=
+ =?utf-8?q?so-comprimento_usando_o_R?=
+In-Reply-To: <CAH-ZE+AtGiWUJ1D8acddpk3h3P+6=o414deERizVamHPGZP2Kw@mail.gmail.com>
+References: <CAH-ZE+AtGiWUJ1D8acddpk3h3P+6=o414deERizVamHPGZP2Kw@mail.gmail.com>
+Message-ID: <C2A87BC5-4166-4037-9FD6-6EB787AF8286@usp.br>
+
+Você quer estimar o índice de correlação entre o peso e comprimento e quer o IC95%, isso?
+ A função lm() que você usou ajusta um modelo linear entre as duas variáveis.
+
+Daniel
+
+----------------------------------------------------------------
+Daniel Tiezzi, MD, PhD
+Oncologia / Mastologia
+Professor Associado - Livre Docente
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+https://github.com/dtiezzi <https://github.com/dtiezzi>
+http://danieltiezzi.pro.br <http://danieltiezzi.pro.br/>e-mail: dtiezzi em usp.br
+
+> On 3 Feb 2021, at 23:35, Chiara Lubich por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Boa noite, 
+> 
+> Gostaria de saber como fazer a relação peso-comprimento para peixes utilizando o R. Normalmente, faço essa análise utilizando o Statistica e estou tentando atualmente fazer no R.
+> Logaritmizei mesmo dados de peso e comprimento e fiz análise utilizando o seguinte comando (conforme um colega me passou):
+> lwr<-read.table("clipboard",sep="\t", header=T, dec=".")
+> attach(lwr)
+> lwr 
+> lpeso<-log(peso)
+> lcomprimento<-log(comprimento)
+> lmlwr<-lm(lpeso~lcomprimento)
+> summary(lmlwr)
+> 
+> e obtive o seguinte resultado:
+> Call:
+> lm(formula = lpeso ~ lcomp)
+> 
+> Residuals:
+>     Min      1Q  Median      3Q     Max 
+> -0.5495 -0.1027 -0.0046  0.1154  0.3636 
+> 
+> Coefficients:
+>             Estimate Std. Error t value Pr(>|t|)    
+> (Intercept) -3.73920    0.06033  -61.98   <2e-16 ***
+> lcomp        3.18886    0.03571   89.31   <2e-16 ***
+> ---
+> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1
+> 
+> Residual standard error: 0.1874 on 46 degrees of freedom
+> Multiple R-squared:  0.9943,	Adjusted R-squared:  0.9941 
+> F-statistic:  7975 on 1 and 46 DF,  p-value: < 2.2e-16
+> 
+> No entanto, onde vejo a variação (mínimo - máximo) dos valores de a e b?
+> Acredito que esteja usando o comando errado. 
+> 
+> Se puderem ajudar, agradeço
+> 
+> Muito obrigada desde já
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210203/fb7891f8/attachment.html>
+
+From nobrega.manasses em gmail.com  Thu Feb  4 10:26:36 2021
+From: nobrega.manasses em gmail.com (=?UTF-8?B?TWFuYXNzw6lzIFAgTsOzYnJlZ2E=?=)
+Date: Thu, 4 Feb 2021 09:26:36 -0300
+Subject: [R-br] 
+	=?utf-8?q?Como_fazer_an=C3=A1lise_de_rela=C3=A7=C3=A3o_pe?=
+	=?utf-8?q?so-comprimento_usando_o_R?=
+In-Reply-To: <C2A87BC5-4166-4037-9FD6-6EB787AF8286@usp.br>
+References: <CAH-ZE+AtGiWUJ1D8acddpk3h3P+6=o414deERizVamHPGZP2Kw@mail.gmail.com>
+ <C2A87BC5-4166-4037-9FD6-6EB787AF8286@usp.br>
+Message-ID: <CAEVGS=KSK+L5-ntyKLj62EhR9C4n=YV3XaAMK0JBPXp=7ZcPOg@mail.gmail.com>
+
+Bom dia, Chiara.
+
+Como o Daniel comentou, você ajustou um modelo de regressão linear aos seus
+dados.
+
+Se sua pergunta: "onde vejo a variação (mínimo - máximo) dos valores de a e
+b?", significa que você quer construir um intervalo de confiança para os
+parâmetros do seu modelo de regressão, basta usar o comando  confint(lmlwr
+).
+
+Um abraço,
+Manassés
+
+Em qua., 3 de fev. de 2021 às 23:51, Daniel Guimarães Tiezzi por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Você quer estimar o índice de correlação entre o peso e comprimento e quer
+> o IC95%, isso?
+>  A função lm() que você usou ajusta um modelo linear entre as duas
+> variáveis.
+>
+> Daniel
+>
+> ----------------------------------------------------------------
+> Daniel Tiezzi, MD, PhD
+> Oncologia / Mastologia
+> Professor Associado - Livre Docente
+> Departamento de Ginecologia e Obstetrícia
+> Setor de Mastologia e Oncologia Ginecológica
+> Faculdade de Medicina de Ribeirão Preto - USP
+> Tel.: 16 3602-2488
+> https://github.com/dtiezzi
+> http://danieltiezzi.pro.br
+> e-mail: dtiezzi em usp.br <dtiezzi em usp.br>
+>
+> On 3 Feb 2021, at 23:35, Chiara Lubich por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Boa noite,
+>
+> Gostaria de saber como fazer a relação peso-comprimento para peixes
+> utilizando o R. Normalmente, faço essa análise utilizando o Statistica e
+> estou tentando atualmente fazer no R.
+> Logaritmizei mesmo dados de peso e comprimento e fiz análise utilizando o
+> seguinte comando (conforme um colega me passou):
+> lwr<-read.table("clipboard",sep="\t", header=T, dec=".")
+> attach(lwr)
+> lwr
+> lpeso<-log(peso)
+> lcomprimento<-log(comprimento)
+> lmlwr<-lm(lpeso~lcomprimento)
+> summary(lmlwr)
+>
+> e obtive o seguinte resultado:
+> Call:
+> lm(formula = lpeso ~ lcomp)
+>
+> Residuals:
+>     Min      1Q  Median      3Q     Max
+> -0.5495 -0.1027 -0.0046  0.1154  0.3636
+>
+> Coefficients:
+>             Estimate Std. Error t value Pr(>|t|)
+> (Intercept) -3.73920    0.06033  -61.98   <2e-16 ***
+> lcomp        3.18886    0.03571   89.31   <2e-16 ***
+> ---
+> Signif. codes:  0 ?***? 0.001 ?**? 0.01 ?*? 0.05 ?.? 0.1 ? ? 1
+>
+> Residual standard error: 0.1874 on 46 degrees of freedom
+> Multiple R-squared:  0.9943, Adjusted R-squared:  0.9941
+> F-statistic:  7975 on 1 and 46 DF,  p-value: < 2.2e-16
+>
+> No entanto, onde vejo a variação (mínimo - máximo) dos valores de a e b?
+> Acredito que esteja usando o comando errado.
+>
+> Se puderem ajudar, agradeço
+>
+> Muito obrigada desde já
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210204/5423314e/attachment.html>
+
+From lubichchiara em gmail.com  Thu Feb  4 12:07:12 2021
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Thu, 4 Feb 2021 10:07:12 -0400
+Subject: [R-br] 
+	=?utf-8?q?Como_fazer_an=C3=A1lise_de_rela=C3=A7=C3=A3o_pe?=
+	=?utf-8?q?so-comprimento_usando_o_R?=
+Message-ID: <CAH-ZE+B=XGatZ62RRE_jiAKfuJ09MpEQpUL+x9an=+q99P5eMQ@mail.gmail.com>
+
+Oi, Daniel e Manassés, tudo bem?
+
+Primeiramente muito obrigada pelas respostas.
+
+Respondendo a pergunta do Daniel: Sim, gostaria de estimar o índice de
+correlação entre o peso e comprimento com Intervalo de confiança de 95%.
+
+Obrigada pela ajuda de vocês
+
+Abraços
+
+Se cuidem
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210204/1bfa5247/attachment.html>
+
+From dtiezzi em usp.br  Thu Feb  4 12:22:56 2021
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Thu, 4 Feb 2021 11:22:56 -0300
+Subject: [R-br] 
+ =?utf-8?q?Como_fazer_an=C3=A1lise_de_rela=C3=A7=C3=A3o_pe?=
+ =?utf-8?q?so-comprimento_usando_o_R?=
+In-Reply-To: <CAH-ZE+B=XGatZ62RRE_jiAKfuJ09MpEQpUL+x9an=+q99P5eMQ@mail.gmail.com>
+References: <CAH-ZE+B=XGatZ62RRE_jiAKfuJ09MpEQpUL+x9an=+q99P5eMQ@mail.gmail.com>
+Message-ID: <B20283F6-241B-4DEB-97A3-7FD26BDE82FD@usp.br>
+
+Bom dia Chiara
+
+Para o índice de correlação e o IC95% pode usar a função cor.test()
+
+Ou seja:
+
+cor.test(lpeso, lcomprimento)
+
+
+Daniel
+
+
+> On 4 Feb 2021, at 11:07, Chiara Lubich por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Oi, Daniel e Manassés, tudo bem?
+> 
+> Primeiramente muito obrigada pelas respostas. 
+> 
+> Respondendo a pergunta do Daniel: Sim, gostaria de estimar o índice de correlação entre o peso e comprimento com Intervalo de confiança de 95%.
+> 
+> Obrigada pela ajuda de vocês
+> 
+> Abraços 
+> 
+> Se cuidem
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210204/57fe3e6d/attachment.html>
+
+From otnetobr em gmail.com  Thu Feb  4 12:33:23 2021
+From: otnetobr em gmail.com (Olympio Neto)
+Date: Thu, 4 Feb 2021 11:33:23 -0300
+Subject: [R-br] =?utf-8?q?Dificuldade_com_gr=C3=A1fico_em_ggplot2?=
+In-Reply-To: <92745660-60A1-45CD-8963-EDF9FDADC53F@usp.br>
+References: <CA+8s2wTwsT0kEbr4aOvv3ZiyaTGA8O0-FPRdwJtLQ3kHnkCSzw@mail.gmail.com>
+ <63EA2FF6-F6C6-4A8B-B999-F130F5F26355@usp.br>
+ <CA+8s2wQ8Rwg_ZisKqaYnAxBW+yt2sbLjZra0cW2Oi-=fDO4LvQ@mail.gmail.com>
+ <92745660-60A1-45CD-8963-EDF9FDADC53F@usp.br>
+Message-ID: <CA+8s2wSXnD+y9GVaFYA97AWW+m2_a2GC5ggYfmgxjNBLs8YSdg@mail.gmail.com>
+
+Daniel, muito obrigado. A ideia é ótima. Vou fazer aqui.
+
+Muito obrigado!
+
+Em ter., 2 de fev. de 2021 às 17:47, Daniel Guimarães Tiezzi <dtiezzi em usp.br>
+escreveu:
+
+> Vc teria que apresentar algo assim então:
+>
+>
+> png("mybarchart.png", width = 12, height = 8, units = 'in', res = 300)
+> par(mar=c(5.1, 4.1, 4.1, 6.1), xpd=TRUE)
+> barplot(t(as.matrix(df[-nrow(df),c(-1,-6)])), col = c('cornflowerblue',
+> "hotpink", 'lightgoldenrodyellow', 'aquamarine3'), space = 0, ylim =
+> c(0,30000), border = NA, xlab = 'Mês')
+> lines(seq(0.5,11.5),df$`2020`[-13], col = 'red', lwd = 3)
+> points(seq(0.5,11.5),df$`2020`[-13], col = 'red', cex = 1.45, pch = '+')
+> legend("topright", inset=c(-0.1,0), legend=c(colnames(df)[-1]),
+> title="Ano", pch = c(15,15,15,15,3), col = c('cornflowerblue', "hotpink",
+> 'lightgoldenrodyellow', 'aquamarine3', 'red'), bty = 'n',
+> lwd=c(0,0,0,0,1.5), pt.cex=c(2,2,2,2,1))
+> dev.off()
+>
+> ----------------------------------------------------------------
+> Daniel Tiezzi, MD, PhD
+> Oncologia / Mastologia
+> Professor Associado - Livre Docente
+> Departamento de Ginecologia e Obstetrícia
+> Setor de Mastologia e Oncologia Ginecológica
+> Faculdade de Medicina de Ribeirão Preto - USP
+> Tel.: 16 3602-2488
+> https://github.com/dtiezzi
+> http://danieltiezzi.pro.br
+> e-mail: dtiezzi em usp.br <dtiezzi em usp.br>
+>
+> On 2 Feb 2021, at 12:55, Olympio Neto por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+> <image.png>
+>
+> Mas no fim, estou achando muito confuso. Talvez separados representem
+> melhor o objetivo.
+>
+> De qualquer forma, obrigado!
+>
+> Olympio
+>
+> Em ter., 2 de fev. de 2021 às 11:59, Daniel Guimarães Tiezzi <
+> dtiezzi em usp.br> escreveu:
+>
+>> Bom dia
+>>
+>> Seria algo assim?
+>>
+>> df <- structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+>> "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L, 3959L,
+>> 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L, 6036L, 352L,
+>> 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,  2030L, 280L, 4552L,
+>> 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L, 3968L, 3092L, 2357L,
+>> 1333L, 895L, 5489L, 3598L, 4072L, 5562L, 6218L, 115L, 37477L), `2019` =
+>> c(246L, 2353L, 2905L, 4563L, 2791L, 493L, 3197L, 6463L, 1375L, 5626L,
+>> 10443L, 138L, 40593L), `2020` = c(76L, 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L,
+>> 1554L, 3831L, 4573L, 1104L, 17293L)), class = "data.frame", row.names =
+>> c(NA, -13L))
+>> df
+>>
+>> df_s <- as.data.frame(t(df[nrow(df),-1]))
+>> colnames(df_s) <- 'total'
+>> df_s$ano <- seq(2016, 2020)
+>> df_s
+>> library(ggplot2)
+>> p0 <- ggplot(data = df_s, aes(y=stat(total), x = ano)) + geom_bar() +
+>> theme_minimal()
+>> p0
+>>
+>> df_l <- df[-nrow(df), c(1,6)]
+>> colnames(df_l) <- c('m', 'val')
+>> df_l
+>> p1 <- ggplot(data = df_l, aes(x = m, y = val, group = 1)) + geom_line() +
+>> theme_minimal()
+>> p1
+>>
+>> ----------------------------------------------------------------
+>> Daniel Tiezzi, MD, PhD
+>> Oncologia / Mastologia
+>> Professor Associado - Livre Docente
+>> Departamento de Ginecologia e Obstetrícia
+>> Setor de Mastologia e Oncologia Ginecológica
+>> Faculdade de Medicina de Ribeirão Preto - USP
+>> Tel.: 16 3602-2488
+>> https://github.com/dtiezzi
+>> http://danieltiezzi.pro.br
+>> e-mail: dtiezzi em usp.br <dtiezzi em usp.br>
+>>
+>>
+>> On 2 Feb 2021, at 11:07, Olympio Neto por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>> structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+>> "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L,
+>> 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L,
+>> 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,
+>> 2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L,
+>> 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L,
+>> 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L,
+>> 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L,
+>> 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L,
+>> 17293L)), class = "data.frame", row.names = c(NA, -13L))
+>>
+>>
+>> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210204/a67b3516/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: mybarchart.png
+Tipo: image/png
+Tamanho: 57474 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210204/a67b3516/attachment.png>
+
+From nandodesouza em gmail.com  Thu Feb  4 17:58:36 2021
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 4 Feb 2021 16:58:36 -0300
+Subject: [R-br] =?utf-8?q?Dificuldade_com_gr=C3=A1fico_em_ggplot2?=
+In-Reply-To: <CA+8s2wQ8Rwg_ZisKqaYnAxBW+yt2sbLjZra0cW2Oi-=fDO4LvQ@mail.gmail.com>
+References: <CA+8s2wTwsT0kEbr4aOvv3ZiyaTGA8O0-FPRdwJtLQ3kHnkCSzw@mail.gmail.com>
+ <63EA2FF6-F6C6-4A8B-B999-F130F5F26355@usp.br>
+ <CA+8s2wQ8Rwg_ZisKqaYnAxBW+yt2sbLjZra0cW2Oi-=fDO4LvQ@mail.gmail.com>
+Message-ID: <CAFrWFsnh+qHevd=e-Knh3X5a5kgHusqMCOPTY=fzoPcu-zefUQ@mail.gmail.com>
+
+O problema com esse seu gráfico é que as colunas coloridas representam anos
+e estão sobre o eixo x, que indica meses, ficando confuso a representação.
+
+Uma dica é vc colocar as barras com os valores dos meses e as.linhas com os
+valores dos anos.
+
+Att
+
+Em ter, 2 de fev de 2021 12:56, Olympio Neto por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> [image: image.png]
+>
+> Mas no fim, estou achando muito confuso. Talvez separados representem
+> melhor o objetivo.
+>
+> De qualquer forma, obrigado!
+>
+> Olympio
+>
+> Em ter., 2 de fev. de 2021 às 11:59, Daniel Guimarães Tiezzi <
+> dtiezzi em usp.br> escreveu:
+>
+>> Bom dia
+>>
+>> Seria algo assim?
+>>
+>> df <- structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+>> "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L, 3959L,
+>> 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L, 6036L, 352L,
+>> 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,  2030L, 280L, 4552L,
+>> 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L, 3968L, 3092L, 2357L,
+>> 1333L, 895L, 5489L, 3598L, 4072L, 5562L, 6218L, 115L, 37477L), `2019` =
+>> c(246L, 2353L, 2905L, 4563L, 2791L, 493L, 3197L, 6463L, 1375L, 5626L,
+>> 10443L, 138L, 40593L), `2020` = c(76L, 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L,
+>> 1554L, 3831L, 4573L, 1104L, 17293L)), class = "data.frame", row.names =
+>> c(NA, -13L))
+>> df
+>>
+>> df_s <- as.data.frame(t(df[nrow(df),-1]))
+>> colnames(df_s) <- 'total'
+>> df_s$ano <- seq(2016, 2020)
+>> df_s
+>> library(ggplot2)
+>> p0 <- ggplot(data = df_s, aes(y=stat(total), x = ano)) + geom_bar() +
+>> theme_minimal()
+>> p0
+>>
+>> df_l <- df[-nrow(df), c(1,6)]
+>> colnames(df_l) <- c('m', 'val')
+>> df_l
+>> p1 <- ggplot(data = df_l, aes(x = m, y = val, group = 1)) + geom_line() +
+>> theme_minimal()
+>> p1
+>>
+>> ----------------------------------------------------------------
+>> Daniel Tiezzi, MD, PhD
+>> Oncologia / Mastologia
+>> Professor Associado - Livre Docente
+>> Departamento de Ginecologia e Obstetrícia
+>> Setor de Mastologia e Oncologia Ginecológica
+>> Faculdade de Medicina de Ribeirão Preto - USP
+>> Tel.: 16 3602-2488
+>> https://github.com/dtiezzi
+>> http://danieltiezzi.pro.br
+>> e-mail: dtiezzi em usp.br <dtiezzi em usp.br>
+>>
+>>
+>> On 2 Feb 2021, at 11:07, Olympio Neto por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>> structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+>> "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L,
+>> 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L,
+>> 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,
+>> 2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L,
+>> 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L,
+>> 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L,
+>> 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L,
+>> 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L,
+>> 17293L)), class = "data.frame", row.names = c(NA, -13L))
+>>
+>>
+>> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210204/bf4b7dd2/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 30229 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210204/bf4b7dd2/attachment-0001.png>
+
+From nandodesouza em gmail.com  Thu Feb  4 17:59:11 2021
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 4 Feb 2021 16:59:11 -0300
+Subject: [R-br] Dificuldade com =?utf-8?Q?gr=C3=A1fico_?=em ggplot2
+In-Reply-To: <CA+8s2wQ8Rwg_ZisKqaYnAxBW+yt2sbLjZra0cW2Oi-=fDO4LvQ@mail.gmail.com>
+References: <CA+8s2wQ8Rwg_ZisKqaYnAxBW+yt2sbLjZra0cW2Oi-=fDO4LvQ@mail.gmail.com>
+Message-ID: <CAFrWFsnOgDNfo+-XBRKQEBp3=0do2vxbzzCYSme0obu9gWRc+A@mail.gmail.com>
+
+O problema com esse seu gráfico é que as colunas coloridas representam anos e estão sobre o eixo x, que indica meses, ficando confuso a representação.
+
+Uma dica é vc colocar as barras com os valores dos meses e as.linhas com os valores dos anos.
+
+Em ter, 2 de fev de 2021 12:56, Olympio Neto por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> escreveu:
+>
+>
+>
+> Mas no fim, estou achando muito confuso. Talvez separados representem melhor o objetivo.
+>
+> De qualquer forma, obrigado!
+>
+> Olympio
+> Em ter., 2 de fev. de 2021 às 11:59, Daniel Guimarães Tiezzi <dtiezzi em usp.br (mailto:dtiezzi em usp.br)> escreveu:
+> > Bom dia
+> >
+> > Seria algo assim?
+> >
+> > df <- structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L, 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L, 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L, 2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L, 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L, 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L, 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L, 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L, 17293L)), class = "data.frame", row.names = c(NA, -13L))
+> > df
+> >
+> > df_s <- as.data.frame(t(df[nrow(df),-1]))
+> > colnames(df_s) <- 'total'
+> > df_s$ano <- seq(2016, 2020)
+> > df_s
+> > library(ggplot2)
+> > p0 <- ggplot(data = df_s, aes(y=stat(total), x = ano)) + geom_bar() + theme_minimal()
+> > p0
+> >
+> > df_l <- df[-nrow(df), c(1,6)]
+> > colnames(df_l) <- c('m', 'val')
+> > df_l
+> > p1 <- ggplot(data = df_l, aes(x = m, y = val, group = 1)) + geom_line() + theme_minimal()
+> > p1
+> >
+> > ----------------------------------------------------------------
+> > Daniel Tiezzi, MD, PhD
+> > Oncologia / Mastologia
+> > Professor Associado - Livre Docente
+> > Departamento de Ginecologia e Obstetrícia
+> > Setor de Mastologia e Oncologia Ginecológica
+> > Faculdade de Medicina de Ribeirão Preto - USP
+> > Tel.: 16 3602-2488
+> >
+> > https://github.com/dtiezzi
+> > http://danieltiezzi.pro.br (http://danieltiezzi.pro.br/)
+> > e-mail: dtiezzi em usp.br (mailto:dtiezzi em usp.br)
+> >
+> >
+> >
+> >
+> > > On 2 Feb 2021, at 11:07, Olympio Neto por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > > structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+> > > "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L,
+> > > 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L,
+> > > 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,
+> > > 2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L,
+> > > 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L,
+> > > 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L,
+> > > 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L,
+> > > 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L,
+> > > 17293L)), class = "data.frame", row.names = c(NA, -13L))
+> > >
+> >
+> >
+> >
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210204/619427c4/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 30229 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210204/619427c4/attachment.png>
+
+From nandodesouza em gmail.com  Thu Feb  4 19:01:01 2021
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 4 Feb 2021 18:01:01 -0300
+Subject: [R-br] Dificuldade com =?utf-8?Q?gr=C3=A1fico_?=em ggplot2
+In-Reply-To: <CA+8s2wTwsT0kEbr4aOvv3ZiyaTGA8O0-FPRdwJtLQ3kHnkCSzw@mail.gmail.com>
+References: <CA+8s2wTwsT0kEbr4aOvv3ZiyaTGA8O0-FPRdwJtLQ3kHnkCSzw@mail.gmail.com>
+Message-ID: <6C5EB32A-E4BD-41C2-A643-8C659B640E4A@getmailspring.com>
+
+Isto é o que acredito que da para fazer utilisando toda a informação.
+
+df <- structure(list(Mes = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L, 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L, 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L, 2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L, 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L, 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L, 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L, 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L, 17293L)), class = "data.frame", row.names = c(NA, -13L))
+df[-13,]
+
+#install.packages(tidyr)
+#install.packaes(ggplot2)
+#install.packages(dplyr)
+
+library(tidyr)
+library(ggplot2)
+library(dplyr)
+
+dados<-gather(df,key='Ano',value = 'Resp',-Mes)
+dados1 <- dados%>%group_by(Mes,Ano)%>%summarize(Total=sum(Resp));
+print(dados1,n=Inf)
+ggplot(dados1, aes( fill=Ano,y=Total, x=Mes)) +
+geom_bar(position=position_dodge(), stat="identity")+
+theme_bw(base_size = 14,base_family = 'Sans' )+ylab("Resposta")+theme(legend.position="bottom",axis.text = element_text(colour = "black"))+ labs(fill="")+xlab("Cultivar")+scale_fill_grey(start=0.3,end=0.8)
+
+On Feb 2 2021, at 12:07 pm, Olympio Neto por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Pessoal, bom dia
+>
+> Preciso fazer um gráfico que envolve o total acumulado anual dos anos de 2016-2020 em gráfico de barras e somente o resultado mensal de 2020 somente como gráfico de linhas no ggplot2. Não consegui fazer isso. Alguém pode me dar uma luz?
+>
+> Seria parecido com aqueles gráficos climatológicos, só que as barras representam o acumulado dos anos e a linha o resultado mensal de 2020.
+> Aqui está do dataframe:
+>
+> structure(list(Mês = c("Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+> "Jul", "Ago", "Set", "Out", "Nov", "Dez", "Total"), `2016` = c(209L,
+> 3959L, 8668L, 5448L, 4198L, 4042L, 4602L, 6969L, 3336L, 8580L,
+> 6036L, 352L, 56399L), `2017` = c(314L, 2740L, 2758L, 2424L, 4138L,
+> 2030L, 280L, 4552L, 2509L, 2847L, 6322L, 179L, 31093L), `2018` = c(778L,
+> 3968L, 3092L, 2357L, 1333L, 895L, 5489L, 3598L, 4072L, 5562L,
+> 6218L, 115L, 37477L), `2019` = c(246L, 2353L, 2905L, 4563L, 2791L,
+> 493L, 3197L, 6463L, 1375L, 5626L, 10443L, 138L, 40593L), `2020` = c(76L,
+> 2685L, 2062L, 0L, 0L, 0L, 0L, 1408L, 1554L, 3831L, 4573L, 1104L,
+> 17293L)), class = "data.frame", row.names = c(NA, -13L))
+>
+> Alguém pode me ajudar?
+>
+> Muito obrigado.
+>
+> Olympio
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210204/5c78503f/attachment.html>
+
+From ggaldino em gmail.com  Fri Feb  5 18:47:30 2021
+From: ggaldino em gmail.com (Graciliano Galdino)
+Date: Fri, 5 Feb 2021 17:47:30 -0300
+Subject: [R-br] Classificando novas amostras
+Message-ID: <CANgk37MwFKTRrmucfpf7m_GbwUX47qUHBamkfJPiUFtnWgs-8g@mail.gmail.com>
+
+Olá a todos,
+
+Tenho uns dados de solo, que classificamos as amostras em grupo A e grupo B
+a partir de uma análise de ordenação de algumas variáveis fisico-quimicas.
+Eu queria saber se existe algum método onde eu consiga classificar as novas
+amostras em A ou B, sem precisar rodar os dados todos novamente. A ideia
+seria criar um modelo onde a nova amostra, a partir das características já
+estabelecidas dos grupos, fosse classificada em A ou B.
+
+Ces podem indicar algum caminho para seguir?
+
+Obrigado!
+-- 
+Graciliano Galdino A. dos Santos
+Biólogo
+Doutor em Ciências Florestais
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210205/55702722/attachment.html>
+
+From marcus.nunes em gmail.com  Fri Feb  5 19:01:19 2021
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Fri, 5 Feb 2021 18:01:19 -0300
+Subject: [R-br] Classificando novas amostras
+In-Reply-To: <CANgk37MwFKTRrmucfpf7m_GbwUX47qUHBamkfJPiUFtnWgs-8g@mail.gmail.com>
+References: <CANgk37MwFKTRrmucfpf7m_GbwUX47qUHBamkfJPiUFtnWgs-8g@mail.gmail.com>
+Message-ID: <CA+QGQvts3525oc64VMjdaGz0notoTqOTmnOG=kh8+5xpuOzhaA@mail.gmail.com>
+
+Olá, Graciliano
+
+Qualquer modelo de classificação é, em teoria, capaz de fazer isso.
+Regressão logística, naive bayes, random forest, SVM e similares servirão a
+esse propósito. Só tome cuidado com o tamanho amostral mínimo que cada um
+desses métodos exige.
+
+Atenciosamente,
+--
+Marcus Nunes
+Professor Adjunto
+https://marcusnunes.me/
+Universidade Federal do Rio Grande do Norte
+Departamento de Estatística
+Laboratório de Estatística Aplicada - http://lea.estatistica.ccet.ufrn.br
+Curso de Big Data - https://introbigdata.org
+Aplicações em Shiny - http://shiny.estatistica.ccet.ufrn.br
+
+
+On Fri, Feb 5, 2021 at 5:47 PM Graciliano Galdino por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá a todos,
+>
+> Tenho uns dados de solo, que classificamos as amostras em grupo A e grupo
+> B a partir de uma análise de ordenação de algumas variáveis
+> fisico-quimicas. Eu queria saber se existe algum método onde eu consiga
+> classificar as novas amostras em A ou B, sem precisar rodar os dados todos
+> novamente. A ideia seria criar um modelo onde a nova amostra, a partir das
+> características já estabelecidas dos grupos, fosse classificada em A ou B.
+>
+> Ces podem indicar algum caminho para seguir?
+>
+> Obrigado!
+> --
+> Graciliano Galdino A. dos Santos
+> Biólogo
+> Doutor em Ciências Florestais
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210205/0d39f0b5/attachment.html>
+
+From cesar.rabak em gmail.com  Sat Feb  6 20:01:22 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 6 Feb 2021 19:01:22 -0300
+Subject: [R-br] 
+	=?utf-8?q?Como_fazer_an=C3=A1lise_de_rela=C3=A7=C3=A3o_pe?=
+	=?utf-8?q?so-comprimento_usando_o_R?=
+In-Reply-To: <CAH-ZE+B=XGatZ62RRE_jiAKfuJ09MpEQpUL+x9an=+q99P5eMQ@mail.gmail.com>
+References: <CAH-ZE+B=XGatZ62RRE_jiAKfuJ09MpEQpUL+x9an=+q99P5eMQ@mail.gmail.com>
+Message-ID: <CAKrF98=m23BfMrVQTWS3ScNdOk4Gx==RTf23qV_DtnO8uzySnQ@mail.gmail.com>
+
+Só para a gente entender direitinho.
+
+A modelagem do problema propõe que essa relação seja linear?
+
+Se ñ for, precisará fazer passos antecedentes ao teste proposto p/Daniel.
+
+
+On Thu, Feb 4, 2021 at 11:08 AM Chiara Lubich por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Oi, Daniel e Manassés, tudo bem?
+>
+> Primeiramente muito obrigada pelas respostas.
+>
+> Respondendo a pergunta do Daniel: Sim, gostaria de estimar o índice de
+> correlação entre o peso e comprimento com Intervalo de confiança de 95%.
+>
+> Obrigada pela ajuda de vocês
+>
+> Abraços
+>
+> Se cuidem
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210206/c1165d66/attachment.html>
+
+From lubichchiara em gmail.com  Sun Feb  7 16:14:53 2021
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Sun, 7 Feb 2021 14:14:53 -0400
+Subject: [R-br] 
+	=?utf-8?q?Como_fazer_an=C3=A1lise_de_rela=C3=A7=C3=A3o_pe?=
+	=?utf-8?q?so-comprimento_usando_o_R?=
+In-Reply-To: <CAH-ZE+B=XGatZ62RRE_jiAKfuJ09MpEQpUL+x9an=+q99P5eMQ@mail.gmail.com>
+References: <CAH-ZE+B=XGatZ62RRE_jiAKfuJ09MpEQpUL+x9an=+q99P5eMQ@mail.gmail.com>
+Message-ID: <CAH-ZE+B8eCoYOYEQF-yySFJwaaPrG4vgRP2pMUPeRV3+DhRzTA@mail.gmail.com>
+
+Oi, Cesar, tudo bem?
+
+O modelo pode ser linear e não linear.
+Depende de qual se escolhe. A minha pergunta a princípio era para um modelo
+linear, mas estava testando agora usar a função nls para fazer um modelo
+não linear.
+
+Abraço
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210207/62cf5f13/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Feb  8 00:10:34 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 7 Feb 2021 23:10:34 -0300
+Subject: [R-br] 
+	=?utf-8?q?Como_fazer_an=C3=A1lise_de_rela=C3=A7=C3=A3o_pe?=
+	=?utf-8?q?so-comprimento_usando_o_R?=
+In-Reply-To: <CAH-ZE+B8eCoYOYEQF-yySFJwaaPrG4vgRP2pMUPeRV3+DhRzTA@mail.gmail.com>
+References: <CAH-ZE+B=XGatZ62RRE_jiAKfuJ09MpEQpUL+x9an=+q99P5eMQ@mail.gmail.com>
+ <CAH-ZE+B8eCoYOYEQF-yySFJwaaPrG4vgRP2pMUPeRV3+DhRzTA@mail.gmail.com>
+Message-ID: <CAKrF98nitaTfaAKE-1rEyMpJ3Ge8WBdY4gDTVKhKRthmvFa-yg@mail.gmail.com>
+
+OK Chiara!
+
+Se o modelo for linear, você estaria admitindo que os espécimes teriam
+seção (densidade também) constante e o comprimento indicador do peso, como
+se fossem, digamos barras de material homogêneo ou um lápis.
+
+O cálculo do IC 95% como indicado já é solução para esse modelo.
+
+Para as nls dependendo de qual maneira elas são calculadas os IC precisam
+ser estimados por *bootstraping*, etc.
+
+HTH
+
+
+On Sun, Feb 7, 2021 at 3:14 PM Chiara Lubich por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Oi, Cesar, tudo bem?
+>
+> O modelo pode ser linear e não linear.
+> Depende de qual se escolhe. A minha pergunta a princípio era para um
+> modelo linear, mas estava testando agora usar a função nls para fazer um
+> modelo não linear.
+>
+> Abraço
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210207/fd5832f3/attachment.html>
+
+From andrea em ufrb.edu.br  Mon Feb  8 10:36:46 2021
+From: andrea em ufrb.edu.br (Andrea Vita Reis Mendonca)
+Date: Mon, 8 Feb 2021 09:36:46 -0300
+Subject: [R-br] Digest R-br, volume 122, assunto 6
+In-Reply-To: <mailman.3.1612706402.3475.r-br@listas.c3sl.ufpr.br>
+References: <mailman.3.1612706402.3475.r-br@listas.c3sl.ufpr.br>
+Message-ID: <CAPYGFB7ghpGkMqfT0EGk44jQXBgKjqetRUNu_B1Fh7m+vh=avg@mail.gmail.com>
+
+Importa as duas variáveis (exemplo a=peso; b=comprimento)
+
+depois utiliza:
+
+cor.test(a,b,method="pearson",alternative="two.sided")
+
+Em dom., 7 de fev. de 2021 às 11:00, <r-br-request em listas.c3sl.ufpr.br>
+escreveu:
+
+> Enviar submissões para a lista de discussão R-br para
+>         r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+>         r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+>         r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+>    1. Re:  Como fazer análise de relação peso-comprimento usando o
+>       R (Cesar Rabak)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Sat, 6 Feb 2021 19:01:22 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br]  Como fazer análise de relação peso-comprimento
+>         usando o R
+> Message-ID:
+>         <CAKrF98=m23BfMrVQTWS3ScNdOk4Gx==
+> RTf23qV_DtnO8uzySnQ em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Só para a gente entender direitinho.
+>
+> A modelagem do problema propõe que essa relação seja linear?
+>
+> Se ñ for, precisará fazer passos antecedentes ao teste proposto p/Daniel.
+>
+>
+> On Thu, Feb 4, 2021 at 11:08 AM Chiara Lubich por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> > Oi, Daniel e Manassés, tudo bem?
+> >
+> > Primeiramente muito obrigada pelas respostas.
+> >
+> > Respondendo a pergunta do Daniel: Sim, gostaria de estimar o índice de
+> > correlação entre o peso e comprimento com Intervalo de confiança de 95%.
+> >
+> > Obrigada pela ajuda de vocês
+> >
+> > Abraços
+> >
+> > Se cuidem
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> > código mínimo reproduzível.
+> >
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210206/c1165d66/attachment-0001.html
+> >
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 122, assunto 6
+> *****************************************
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210208/76f34ecb/attachment.html>
+
+From lubichchiara em gmail.com  Mon Feb  8 17:47:51 2021
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Mon, 8 Feb 2021 15:47:51 -0400
+Subject: [R-br] 
+	=?utf-8?q?Como_fazer_an=C3=A1lise_de_rela=C3=A7=C3=A3o_pe?=
+	=?utf-8?q?so-comprimento_usando_o_R?=
+In-Reply-To: <CAH-ZE+AtGiWUJ1D8acddpk3h3P+6=o414deERizVamHPGZP2Kw@mail.gmail.com>
+References: <CAH-ZE+AtGiWUJ1D8acddpk3h3P+6=o414deERizVamHPGZP2Kw@mail.gmail.com>
+Message-ID: <CAH-ZE+DbZVsaTBBjnmSa7y-wNjKsTy+70+UDyzgmRiJ-EPHdhg@mail.gmail.com>
+
+Cesar, muito obrigada pelos esclarecimentos.
+
+Farei o cálculo do IC (pro modelo não linear) por *bootstraping, *como você
+indicou.
+
+Obrigada!
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210208/8c148107/attachment.html>
+
+From emmanuel.brasil em gmail.com  Thu Feb 18 17:04:35 2021
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Thu, 18 Feb 2021 16:04:35 -0300
+Subject: [R-br] Ajuda na interpretando dos coeficientes de glmnet
+Message-ID: <CAFfGvyJEtyAr-7tAHwOY=H_60T6dNT-u2cr4RWeZ=Z1vDpK=8w@mail.gmail.com>
+
+Saudações amigos de R,
+
+Depois de muito tempo sem interagir na lista venho pedir uma luz. Estou
+tentando montar um modelo de previsão penalizado. Eu já tinha usado no
+passado remoto o pacote glmpath que regulariza/penaliza modelos glm.
+Recentemente me deparei com a função glmnet - glmnetUtils - que faz o mesmo
+trabalho de forma mais automatizada, inclusive com validação cruzada já
+implementada. Porém, ao olhar a saída do modelo fiquei com dúvidas. Fui
+olhar a bibliografia original do pacote e não adiantou muito. Acho que é
+uma expectativa equivocada de minha parte que está me impedindo de entender
+corretamente.
+
+Então ajustei o seguinte modelo:
+
+cva.glmnet(hav ~ ano_nasc_trunc60 + idade + indicacao_outras + sexo, data =
+bi[setD,],alpha = seq(0, 1, len = 11), family="binomial", nfolds = 1000,
+grouped = FALSE, trace.it = TRUE, outerParallel = makeCluster(4))
+
+(Inntercept)
+                                   113.55782297
+ano_nasc_trunc60
+                                   -0.05781642
+idade
+                                   0.04359743
+indicacao_outrasViajante
+                                   -0.85226169
+indicacao_outrasOTHER
+                                  -0.53550446
+indicacao_outrasHIV/AIDS
+                                    0.49319132
+indicacao_outrasAsplenia anatômica ou funcional e doenças relacionadas
+(anemia falciforme, talassemia maior)   .
+indicacao_outrasPneumopatias crônicas (DPOC, Bronquiectasia, Asma etc)
+                                    .
+indicacao_outrasCandidatos a transplante de órgão sólido
+                                    0.13338936
+indicacao_outrasCardiopatias crônicas
+                                  -0.05086300
+indicacao_outrasHepatopatias crônicas, Cirrose e portadores de HCV
+                                    .
+indicacao_outrasComunicantes domiciliares de imunodeprimidos
+                                   -0.24283444
+indicacao_outrasImunodeficiência/Imunodepressão outras (adquirida ou
+congênita)                                .
+indicacao_outrasImunodepressão terapêutica ou devido ao câncer
+                                    0.15478292
+indicacao_outrasNão informado
+                                  -0.18649749
+indicacao_outrasNefropatias crônicas/hemodialisados/sindrome nefrótica
+                                    .
+indicacao_outrasProfissional de saúde
+                                  -0.51745839
+indicacao_outrasTransplante de órgão sólido
+                                   .
+sexoFeminino
+                                    0.03089234
+sexoMasculino
+                                  -0.01749610
+
+Reparem que há dois coeficientes para o sexo, um pra masculino e outro para
+Feminino. Eu esperaria que houvesse somente 1, sendo que a referencia (no
+caso o masculino) não apareceria ou deveria ser zero. A mesma dúvida no
+preditor indicação, onde a categoria Viajantes deveria ser a referência e
+eu não esperaria que esta aparecesse ou fosse zero. É claro que as
+categorias são mutuamente exclusivas, então quando um está presente, ou
+outro necessariamente é zero. Mas no glm, até a minha memória vai, o efeito
+de uma categoria deveria ser o efeito adicional ao efeito da referência
+quando a categoria está presente, mas na saída como está não consigo fazer
+esta interpretação. Alguem pode me dar uma luz de como interpretar
+corretamente ester aspecto?
+
+Em análises alternativas eu explorei interações e faz sentido que a idade
+tivesse efeitos diferentes para diferentes anos de nascimento, sendo que
+efeitos não lineares não foram detectados. Quando faço um ajuste com
+interação a saída fica ainda mais esquisita
+
+cva.glmnet(hav ~
+ano_nasc_trunc60+idade+indicacao_outras+sexo+ano_nasc_trunc60*idade, data =
+bi[setD,],alpha = seq(0, 1, len = 11), family="binomial", nfolds = 1000,
+grouped = FALSE, trace.it = TRUE, outerParallel = makeCluster(4))
+
+(Intercept)
+                                  1.056153e+02
+ano_nasc_trunc60
+                                  -2.736619e-02
+idade
+                                  1.656760e-02
+indicacao_outrasViajante
+                                  -8.345313e-01
+indicacao_outrasOTHER
+                                 -4.632827e-01
+indicacao_outrasHIV/AIDS
+                                   4.927235e-01
+indicacao_outrasAsplenia anatômica ou funcional e doenças relacionadas
+(anemia falciforme, talassemia maior)  .
+indicacao_outrasPneumopatias crônicas (DPOC, Bronquiectasia, Asma etc)
+                                   .
+indicacao_outrasCandidatos a transplante de órgão sólido
+                                   1.358595e-01
+indicacao_outrasCardiopatias crônicas
+                                  .
+indicacao_outrasHepatopatias crônicas, Cirrose e portadores de HCV
+                                   .
+indicacao_outrasComunicantes domiciliares de imunodeprimidos
+                                  -2.076846e-01
+indicacao_outrasImunodeficiência/Imunodepressão outras (adquirida ou
+congênita)                               .
+indicacao_outrasImunodepressão terapêutica ou devido ao câncer
+                                   1.432945e-01
+indicacao_outrasNão informado
+                                 -1.616079e-01
+indicacao_outrasNefropatias crônicas/hemodialisados/sindrome nefrótica
+                                   .
+indicacao_outrasProfissional de saúde
+                                 -4.942054e-01
+indicacao_outrasTransplante de órgão sólido
+                                  .
+sexoFeminino
+                                   3.024890e-02
+sexoMasculino
+                                 -1.611223e-02
+ano_nasc_trunc60
+                                  -2.651105e-02
+idade
+                                  1.603003e-02
+ano_nasc_trunc60:idade
+                                   7.512202e-06
+
+Reparem que agora, além do sexo, o ano de nascimento e a idade têm cada
+uma, além do coeficiente da interação, dois coeficientes diferentes de
+zero, quando eu esperava que houvesse somente o coeficiente da interação.
+Talvez entendendo os porques da primeira questão eu consiga achar o porque
+da segunda. Se puderem indicar alguma leitura, eu agradeço.
+
+Olhando o desempenho do ajuste com e sem a interação, a discriminação é bem
+pareceida, mas a calibração é um tanto melhor no ajuste com a interação.
+
+Abraços fraternos a todos.
+
+Pedro Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210218/0fdfee22/attachment.html>
+

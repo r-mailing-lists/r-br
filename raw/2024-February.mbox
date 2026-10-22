@@ -1,0 +1,148 @@
+From amikobh em gmail.com  Thu Feb 29 15:09:24 2024
+From: amikobh em gmail.com (Amiko Bh)
+Date: Thu, 29 Feb 2024 15:09:24 -0300
+Subject: [R-br] Criar novas colunas a partir de df
+Message-ID: <CAMgS91wzwzhEV72ixUsj_FgrJ7dmmovjZ57LReia7Lo68MSn3g@mail.gmail.com>
+
+Pessoal:
+para o seguinte df:
+
+df <- data.frame(nome = c("NOME_1", "NOME_1", "NOME_1",
+                             "NOME_2", "NOME_2", "NOME_2", "NOME_2",
+"NOME_2",
+                             "NOME_3", "NOME_3", "NOME_3", "NOME_3",
+"NOME_3"),
+curso = c("INFORMÁTICA INICIAL", "INFORMÁTICA_NÍVEL_2", "PIZZAS
+TRADICIONAIS",
+          "DESIGN DE SOBRANCELHA", "INFORMÁTICA INICIAL",
+"INFORMÁTICA_NÍVEL_1", "INFORMÁTICA_NÍVEL_2", "PIZZAS TRADICIONAIS",
+          "DESIGN DE SOBRANCELHA", "INFORMÁTICA INICIAL",
+"INFORMÁTICA_NÍVEL_1", "INFORMÁTICA_NÍVEL_2", "BARBEARIA"))
+
+
+*nome* *curso*
+NOME_1 INFORMÁTICA INICIAL
+NOME_1 INFORMÁTICA_NÍVEL_2
+NOME_1 PIZZAS TRADICIONAIS
+NOME_2 DESIGN DE SOBRANCELHA
+NOME_2 INFORMÁTICA INICIAL
+NOME_2 INFORMÁTICA_NÍVEL_1
+NOME_2 INFORMÁTICA_NÍVEL_2
+NOME_2 PIZZAS TRADICIONAIS
+NOME_3 DESIGN DE SOBRANCELHA
+NOME_3 INFORMÁTICA INICIAL
+NOME_3 INFORMÁTICA_NÍVEL_1
+NOME_3 PIZZAS TRADICIONAIS
+NOME_3 BARBEARIA
+
+Preciso desmembrar as linhas do curso, por nome, em colunas, respeitando os
+nomes dos alunos, de tal forma que resulte em:
+
+
+*aluno* *curso* *curso_1* *curso_2* *curso_3* *curso_4*
+NOME_1 INFORMÁTICA INICIAL INFORMÁTICA_NÍVEL_2 PIZZAS TRADICIONAIS
+
+NOME_2 DESIGN DE SOBRANCELHA INFORMÁTICA INICIAL INFORMÁTICA_NÍVEL_1
+INFORMÁTICA_NÍVEL_2 PIZZAS TRADICIONAIS
+NOME_3 DESIGN DE SOBRANCELHA INFORMÁTICA INICIAL INFORMÁTICA_NÍVEL_1 PIZZAS
+TRADICIONAIS BARBEARIA
+
+O banco que tenho é enorme e  um mesmo aluno pode ter realizado mais de 15
+cursos.
+
+Desde já agradeço.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240229/a3fa6ea8/attachment.htm>
+
+From marcosfs2006 em gmail.com  Thu Feb 29 17:19:55 2024
+From: marcosfs2006 em gmail.com (Marcos F. Silva)
+Date: Thu, 29 Feb 2024 17:19:55 -0300
+Subject: [R-br] Criar novas colunas a partir de df
+In-Reply-To: <CAMgS91wzwzhEV72ixUsj_FgrJ7dmmovjZ57LReia7Lo68MSn3g@mail.gmail.com>
+References: <CAMgS91wzwzhEV72ixUsj_FgrJ7dmmovjZ57LReia7Lo68MSn3g@mail.gmail.com>
+Message-ID: <CAHKdobwzQrRZZ2VsPKcowQALVZh2VXn890ds5Wb_RpvQDi5vmQ@mail.gmail.com>
+
+Oi,
+
+Veja se isso funciona:
+
+library(dplyr)
+library(tidyr)
+
+df2 <- df %>%
+         mutate(id_curso = "id_curso") %>%
+         pivot_wider(id_cols = nome,
+                   names_from = id_curso,
+                   values_from = curso) %>%
+               unnest_wider(col = id_curso)
+
+
+
+Em qui., 29 de fev. de 2024 às 15:09, Amiko Bh por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Pessoal:
+> para o seguinte df:
+>
+> df <- data.frame(nome = c("NOME_1", "NOME_1", "NOME_1",
+>                              "NOME_2", "NOME_2", "NOME_2", "NOME_2",
+> "NOME_2",
+>                              "NOME_3", "NOME_3", "NOME_3", "NOME_3",
+> "NOME_3"),
+> curso = c("INFORMÁTICA INICIAL", "INFORMÁTICA_NÍVEL_2", "PIZZAS
+> TRADICIONAIS",
+>           "DESIGN DE SOBRANCELHA", "INFORMÁTICA INICIAL",
+> "INFORMÁTICA_NÍVEL_1", "INFORMÁTICA_NÍVEL_2", "PIZZAS TRADICIONAIS",
+>           "DESIGN DE SOBRANCELHA", "INFORMÁTICA INICIAL",
+> "INFORMÁTICA_NÍVEL_1", "INFORMÁTICA_NÍVEL_2", "BARBEARIA"))
+>
+>
+> *nome* *curso*
+> NOME_1 INFORMÁTICA INICIAL
+> NOME_1 INFORMÁTICA_NÍVEL_2
+> NOME_1 PIZZAS TRADICIONAIS
+> NOME_2 DESIGN DE SOBRANCELHA
+> NOME_2 INFORMÁTICA INICIAL
+> NOME_2 INFORMÁTICA_NÍVEL_1
+> NOME_2 INFORMÁTICA_NÍVEL_2
+> NOME_2 PIZZAS TRADICIONAIS
+> NOME_3 DESIGN DE SOBRANCELHA
+> NOME_3 INFORMÁTICA INICIAL
+> NOME_3 INFORMÁTICA_NÍVEL_1
+> NOME_3 PIZZAS TRADICIONAIS
+> NOME_3 BARBEARIA
+>
+> Preciso desmembrar as linhas do curso, por nome, em colunas, respeitando
+> os nomes dos alunos, de tal forma que resulte em:
+>
+>
+> *aluno* *curso* *curso_1* *curso_2* *curso_3* *curso_4*
+> NOME_1 INFORMÁTICA INICIAL INFORMÁTICA_NÍVEL_2 PIZZAS TRADICIONAIS
+>
+> NOME_2 DESIGN DE SOBRANCELHA INFORMÁTICA INICIAL INFORMÁTICA_NÍVEL_1
+> INFORMÁTICA_NÍVEL_2 PIZZAS TRADICIONAIS
+> NOME_3 DESIGN DE SOBRANCELHA INFORMÁTICA INICIAL INFORMÁTICA_NÍVEL_1 PIZZAS
+> TRADICIONAIS BARBEARIA
+>
+> O banco que tenho é enorme e  um mesmo aluno pode ter realizado mais de 15
+> cursos.
+>
+> Desde já agradeço.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+
+Marcos F. Silva | audinalytics.netlify.app
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240229/478b6cd4/attachment.htm>
+

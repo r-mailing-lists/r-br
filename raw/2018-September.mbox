@@ -1,0 +1,1268 @@
+From alex_brito em yahoo.com  Sun Sep  2 22:53:10 2018
+From: alex_brito em yahoo.com (Alex Brito)
+Date: Mon, 3 Sep 2018 01:53:10 +0000 (UTC)
+Subject: [R-br] erro: funcao autoplot (ggplot2)
+References: <246009513.119565.1535939590719.ref@mail.yahoo.com>
+Message-ID: <246009513.119565.1535939590719@mail.yahoo.com>
+
+Prezados, 
+sou iniciante no R, e ao elaborar uma apresentação com o pacote ggplot2, através da função autoplot, apareceu esta mensagem  "Error: Objects of type ts not supported by autoplot." Achei estranho pq esse erro. Segue abaixo descrição do script e também o aquivo anexo que pode ser executado em qualquer RStudio. Agradeço, de antemão, a ajuda de vocês!!
+# Extrair dados do SIDRA-IBGE, a partir do API - Pequisa contas trimestrais - CNT ### tabelas 1621(c/ajuste sazonal) #
+library(sidrar)
+
+tabela1621=get_sidra(api = "/t/1621/n1/all/v/all/p/all/c11255/90687,90691,90696,90707,93404,93405,93406,93407,93408/d/v584%202")
+# criar vetores para as séries coletadas #
+series = c(90687,90691,90696,90707,93404,93405,93406,93407,93408)names = c("Agro", "Ind", "Serv", "PIB", "Consumo", "Governo", "FBKF", "Exportacao", "Importacao")
+# construir uma matriz onde as variáveis dispostas em linhas nas tabelas correspondam a colunas na matriz e os valores das linhas correspondam às observações#
+pib_sa = matrix(NA, ncol = length(series),                 nrow = nrow(tabela1621)/length(series))
+## fazer loop para levar as observações de cada série da tabela para a matriz ##
+
+for (i in 1:length(series)) {  pib_sa[,i]<- tabela1621$Valor[tabela1621$`Setores e subsetores (Código)`                                ==series[i]]  }
+# dar nomes às colunas #
+
+colnames(pib_sa) = names
+## transformar em séries temporais ##
+
+pib_sa <- ts(pib_sa, start=c(1996,01), freq=4)
+## apresentação gráfico ##
+library("ggplot2")autoplot(pib_sa[,4])
+ "Error: Objects of type ts not supported by autoplot." ##
+
+Alex BritoDepartamento de Economia - UFMAGrupo de Estudos e Pesquisa em Macroeconomia - GRAMMACidade Universitária Dom Delgado,
+Av. dos Portugueses, 1966, Bacanga,São Luís - MA, 65065-545
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180903/61461abc/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: meuescript.R
+Tipo: application/octet-stream
+Tamanho: 1308 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180903/61461abc/attachment.obj>
+
+From jasmine.moreira.2013 em gmail.com  Mon Sep  3 00:09:48 2018
+From: jasmine.moreira.2013 em gmail.com (Jasmine Moreira)
+Date: Mon, 3 Sep 2018 00:09:48 -0300
+Subject: [R-br] erro: funcao autoplot (ggplot2)
+In-Reply-To: <246009513.119565.1535939590719@mail.yahoo.com>
+References: <246009513.119565.1535939590719.ref@mail.yahoo.com>
+ <246009513.119565.1535939590719@mail.yahoo.com>
+Message-ID: <8288DEB7-2B10-449A-ABF3-00AC8009A70F@gmail.com>
+
+Oi Alex,
+
+O formato ts (time series) não é suportado diretamente pelo ggplot2. Instale o pacote ggfortify e tente o código abaixo:
+
+
+library(ggfortify)
+autoplot(pib_sa[,4])
+
+Abraço,
+Jasmine
+
+
+> Em 2 de set de 2018, à(s) 22:53, Alex Brito via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+> 
+> Prezados, 
+> 
+> sou iniciante no R, e ao elaborar uma apresentação com o pacote ggplot2, através da função autoplot, apareceu esta mensagem  "Error: Objects of type ts not supported by autoplot." Achei estranho pq esse erro. Segue abaixo descrição do script e também o aquivo anexo que pode ser executado em qualquer RStudio. Agradeço, de antemão, a ajuda de vocês!!
+> 
+> # Extrair dados do SIDRA-IBGE, a partir do API - Pequisa contas trimestrais - CNT ##
+> # tabelas 1621(c/ajuste sazonal) #
+> 
+> library(sidrar)
+> 
+> 
+> tabela1621=get_sidra(api = "/t/1621/n1/all/v/all/p/all/c11255/90687,90691,90696,90707,93404,93405,93406,93407,93408/d/v584%202")
+> 
+> # criar vetores para as séries coletadas #
+> 
+> series = c(90687,90691,90696,90707,93404,93405,93406,93407,93408)
+> names = c("Agro", "Ind", "Serv", "PIB", "Consumo", "Governo", "FBKF", "Exportacao", "Importacao")
+> 
+> # construir uma matriz onde as variáveis dispostas em linhas nas tabelas correspondam a colunas na matriz e os valores das linhas correspondam às observações#
+> 
+> pib_sa = matrix(NA, ncol = length(series), 
+>                 nrow = nrow(tabela1621)/length(series))
+> 
+> ## fazer loop para levar as observações de cada série da tabela para a matriz ##
+> 
+> 
+> for (i in 1:length(series)) {
+>   pib_sa[,i]<- tabela1621$Valor[tabela1621$`Setores e subsetores (Código)`
+>                                 ==series[i]]
+>   
+> }
+> 
+> # dar nomes às colunas #
+> 
+> 
+> colnames(pib_sa) = names
+> 
+> ## transformar em séries temporais ##
+> 
+> 
+> pib_sa <- ts(pib_sa, start=c(1996,01), freq=4)
+> 
+> ## apresentação gráfico ##
+> 
+> library("ggplot2")
+> autoplot(pib_sa[,4])
+> 
+>  "Error: Objects of type ts not supported by autoplot." ##
+> 
+> 
+> Alex Brito
+> Departamento de Economia - UFMA
+> Grupo de Estudos e Pesquisa em Macroeconomia - GRAMMA
+> Cidade Universitária Dom Delgado,
+> Av. dos Portugueses, 1966, Bacanga,
+> São Luís - MA, 65065-545
+> <meuescript.R>_______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180903/d7228d33/attachment.html>
+
+From yurynepomuceno em gmail.com  Mon Sep  3 14:20:27 2018
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Mon, 3 Sep 2018 14:20:27 -0300
+Subject: [R-br] =?utf-8?q?D=C3=BAvidas_de_SIG_no_R?=
+Message-ID: <CADFS6E73MwmRT8JPJdgdavNdtc2HfdTjZtbLh3oGDQr49v_EDg@mail.gmail.com>
+
+Boa tarde colegas listeiros, como vão?
+
+Há algum tempo atras recorri a lista com algumas duvidas de manipulação do
+SIG com o R e me levaram bem longe, mas ainda sigo com algumas dificuldades.
+Estou fazendo uma analise de agrupamento para um local com base em
+informações georreferenciadas e espacializadas numa grade de 20x20 metros.
+Inicialmente tenho essas informações num shape de pontos e também tenho o
+shape do contorno da minha área. O resultado da minha analise de
+agrupamento é uma lista indicando o cluster de cada conjunto lat;long.
+Após esse passo, gostaria de criar um filtro que fosse capaz de identificar
+e substituir o valor de um pixel caso ele estiver cercado por valores de
+cluster diferente. existe alguma ferramenta que faça algo do tipo?
+
+Paralelo a isso, gerei um shape de polígonos com a mesma dimensão da grade
+de pontos (20x20 metros). Nesse momento ocorre a quebra do script, pois o
+número de polígonos gerado é menor do que o número de informações que eu
+tenho no meu shape de pontos original e na minha lista de clusters.
+Minha ideia foi de fazer um merge (ou coisa do tipo) entre minha lista de
+cluster e uma lista com os centroides de cada polígono, assim, eu
+eliminaria os pontos "excedentes" em relação aos polígonos, mas não
+consegui fazer com que funcionasse. Segue script ao final da mensagem.
+
+Desde já, agradeço pela ajuda de todos!
+
+library(spatstat)
+library(maptools)
+library(shapefiles)
+library(foreign)
+library(magrittr)
+library(formattable)
+library(e1071)
+library(rgeos)
+library(rgdal)
+library(rgeos)
+library(raster)
+library(sp)
+library(RcppCNPy)
+library(deldir)
+library(dismo)
+library(dplyr)
+library(ggplot2)
+library(gstat)
+
+#------Ler shape de contorno e shape de dados + transformar coordenadas em
+UTM------#
+#-----Lendo shape de dados------#
+shapefile_dados_das_camadas_utilizadas = readOGR(paste0('diretorio',
+'dados.shp'))
+
+#-----Lendo shape de contorno------#
+shapefile_contorno_do_talhao = readOGR(paste0('diretorio', 'contorno.shp'))
+
+#------Clusterizacao------#
+shapefile_dados_padronizados =
+scale(shapefile_dados_das_camadas_utilizadas em data)
+shapefile_dados_geolocalizacao =
+shapefile_dados_das_camadas_utilizadas em coords
+wss =
+(nrow(shapefile_dados_padronizados)-1)*sum(apply(shapefile_dados_padronizados,2,var))
+cluster_maximo = 30
+for (i in 1:cluster_maximo) wss[i] =
+sum(kmeans(shapefile_dados_padronizados,
+                                     centers=i)$withinss)
+plot(1:cluster_maximo, wss, type="b", xlab="Número of Clusters",
+     ylab="Soma dos quadrados dentro dos clusteres")
+
+#dendograma = shapefile_dados_padronizados %>% dist %>% hclust
+#plot(dendograma)
+#rect.hclust(dendograma, k = 3, border = "blue")
+#rect.hclust(dendograma, k = 4, border = "red")
+
+escolher_num_cluster = 6
+lista_clusteres = data.frame((kmeans(shapefile_dados_padronizados, centers
+= escolher_num_cluster)$cluster),shapefile_dados_geolocalizacao)
+
+#------Transformando em poligono------#
+x = shapefile_dados_das_camadas_utilizadas em coords[,1]
+y = shapefile_dados_das_camadas_utilizadas em coords[,2]
+df_xy = data.frame(shapefile_dados_das_camadas_utilizadas em coords
+[,1],shapefile_dados_das_camadas_utilizadas em coords[,2])
+#coordinates(df_xy) <- ~x+y
+z = deldir(x,y,plot=TRUE,wl='triang',wp="none")
+w = tile.list(z)
+polys = vector(mode="list", length=length(w))
+for (i in seq(along=polys)) {
+  pcrds = cbind(w[[i]]$x, w[[i]]$y)
+  pcrds = rbind(pcrds, pcrds[1,])
+  polys[[i]] = Polygons(list(Polygon(pcrds)), ID=as.character(i))
+}
+SP = SpatialPolygons(polys)
+plot(SP)
+celulas_dentro_do_talhao = raster::intersect(SP,
+shapefile_contorno_do_talhao)
+plot(celulas_dentro_do_talhao)
+
+#------Adicionando Informacao de cluster ao poligono------#
+length(celulas_dentro_do_talhao)
+confirmando_pontos_dentro_da_area =
+data.frame(coordinates(celulas_dentro_do_talhao))
+length(lista_clusteres[,1])
+colnames(lista_clusteres) = c('Cluster', 'Long', 'Lat')
+colnames(confirmando_pontos_dentro_da_area) = c('Long', 'Latitude')
+#confirmando_pontos_dentro_da_area$Long =
+round(confirmando_pontos_dentro_da_area$Long, 5)
+#lista_clusteres$Long = round(lista_clusteres$Long, 5)
+#teste = merge(confirmando_pontos_dentro_da_area, lista_final, all.x = TRUE)
+#celulas_dentro_do_talhao em data$Cluster = '???'
+plot(celulas_dentro_do_talhao)
+writeOGR(celulas_dentro_do_talhao,
+'C:\\Users\\Yury\\Desktop\\InCeres\\UGD', layer = 'sss', driver = 'ESRI
+Shapefile')
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180903/b8ea62d6/attachment.html>
+
+From yurynepomuceno em gmail.com  Thu Sep  6 14:27:37 2018
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Thu, 6 Sep 2018 14:27:37 -0300
+Subject: [R-br] =?utf-8?q?D=C3=BAvidas_de_SIG_no_R?=
+In-Reply-To: <CADFS6E73MwmRT8JPJdgdavNdtc2HfdTjZtbLh3oGDQr49v_EDg@mail.gmail.com>
+References: <CADFS6E73MwmRT8JPJdgdavNdtc2HfdTjZtbLh3oGDQr49v_EDg@mail.gmail.com>
+Message-ID: <CADFS6E6PkSz451+iWOaJ8ArQhdbvy=7y-GJ5V7h+f1EGsxzJyA@mail.gmail.com>
+
+Boa tarde colegas listeiros, como vão?
+
+Em relação a minha ultima dúvida, consegui bolar uma lógica que me
+retornasse o que eu estava buscando no e-mail encaminhado acima e gostaria
+de compartilha-la com vocês.
+Logo após fazer a clusterização e gerar uma lista com valores de cluster,
+adicionei essa camada de informação diretamente ao meu shapefile de pontos
+original:
+ > shapefile_dados_das_camadas_utilizadas em dados$Cluster = lista_clusteres
+
+Em seguida, gerei um arquivo raster com as informações de cluster e de
+dimensões 20x20 m:
+ > modelo_interpolador = gstat(formula =
+shapefile_dados_das_camadas_utilizadas$Cluster ~ 1,
+                          locations =
+shapefile_dados_das_camadas_utilizadas,
+                          nmax = 1, set = list(idp = 0))
+  > raster_Cluster = raster(predict( modelo_interpolador,
+as(celulas_dentro_do_talhao, 'SpatialPixels')))
+
+Por fim, transformei o arquivo raster em um shape de poligonos e passei
+TRUE no argumento dissolve, para unir os polígonos de acordo com o ID
+'Cluster'
+> shapefile_poligonos = rasterToPolygons(raster_Cluster  , n = 4, dissolve
+= TRUE)
+
+E essa foi a forma com que contornei o problema proposto no inicio da
+mensagem.
+Caso alguém tenha bolado um outro caminho e quiser compartilhar, tenho
+muito interesse em ver logicas diferentes de se trabalhar com dados
+espacializados no R!
+
+Aproveito para deixar aqui uma dúvida que surgiu ao final dessa tarefa.
+Seria possível suavizar os contornos dos polígonos gerados, assim como no
+ArcGis, ao utilizar as funções spline ou smooth, sem que buracos e/ou
+sobreposições de polígonos ocorram?
+No R, ao utilizar a função smooth(), do pacote smoothr, acontece sempre de
+aparecerem buracos entre polígonos e também sobreposições de polígonos no
+meu resultado final, o que não é desejado.
+
+Mais uma vez, agradeço pela atenção de todos!
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+
+Em seg, 3 de set de 2018 às 14:20, Yury Duarte <yurynepomuceno em gmail.com>
+escreveu:
+
+> Boa tarde colegas listeiros, como vão?
+>
+> Há algum tempo atras recorri a lista com algumas duvidas de manipulação do
+> SIG com o R e me levaram bem longe, mas ainda sigo com algumas dificuldades.
+> Estou fazendo uma analise de agrupamento para um local com base em
+> informações georreferenciadas e espacializadas numa grade de 20x20 metros.
+> Inicialmente tenho essas informações num shape de pontos e também tenho o
+> shape do contorno da minha área. O resultado da minha analise de
+> agrupamento é uma lista indicando o cluster de cada conjunto lat;long.
+> Após esse passo, gostaria de criar um filtro que fosse capaz de
+> identificar e substituir o valor de um pixel caso ele estiver cercado por
+> valores de cluster diferente. existe alguma ferramenta que faça algo do
+> tipo?
+>
+> Paralelo a isso, gerei um shape de polígonos com a mesma dimensão da grade
+> de pontos (20x20 metros). Nesse momento ocorre a quebra do script, pois o
+> número de polígonos gerado é menor do que o número de informações que eu
+> tenho no meu shape de pontos original e na minha lista de clusters.
+> Minha ideia foi de fazer um merge (ou coisa do tipo) entre minha lista de
+> cluster e uma lista com os centroides de cada polígono, assim, eu
+> eliminaria os pontos "excedentes" em relação aos polígonos, mas não
+> consegui fazer com que funcionasse. Segue script ao final da mensagem.
+>
+> Desde já, agradeço pela ajuda de todos!
+>
+> library(spatstat)
+> library(maptools)
+> library(shapefiles)
+> library(foreign)
+> library(magrittr)
+> library(formattable)
+> library(e1071)
+> library(rgeos)
+> library(rgdal)
+> library(rgeos)
+> library(raster)
+> library(sp)
+> library(RcppCNPy)
+> library(deldir)
+> library(dismo)
+> library(dplyr)
+> library(ggplot2)
+> library(gstat)
+>
+> #------Ler shape de contorno e shape de dados + transformar coordenadas em
+> UTM------#
+> #-----Lendo shape de dados------#
+> shapefile_dados_das_camadas_utilizadas = readOGR(paste0('diretorio',
+> 'dados.shp'))
+>
+> #-----Lendo shape de contorno------#
+> shapefile_contorno_do_talhao = readOGR(paste0('diretorio', 'contorno.shp'))
+>
+> #------Clusterizacao------#
+> shapefile_dados_padronizados =
+> scale(shapefile_dados_das_camadas_utilizadas em data)
+> shapefile_dados_geolocalizacao =
+> shapefile_dados_das_camadas_utilizadas em coords
+> wss =
+> (nrow(shapefile_dados_padronizados)-1)*sum(apply(shapefile_dados_padronizados,2,var))
+> cluster_maximo = 30
+> for (i in 1:cluster_maximo) wss[i] =
+> sum(kmeans(shapefile_dados_padronizados,
+>                                      centers=i)$withinss)
+> plot(1:cluster_maximo, wss, type="b", xlab="Número of Clusters",
+>      ylab="Soma dos quadrados dentro dos clusteres")
+>
+> #dendograma = shapefile_dados_padronizados %>% dist %>% hclust
+> #plot(dendograma)
+> #rect.hclust(dendograma, k = 3, border = "blue")
+> #rect.hclust(dendograma, k = 4, border = "red")
+>
+> escolher_num_cluster = 6
+> lista_clusteres = data.frame((kmeans(shapefile_dados_padronizados, centers
+> = escolher_num_cluster)$cluster),shapefile_dados_geolocalizacao)
+>
+> #------Transformando em poligono------#
+> x = shapefile_dados_das_camadas_utilizadas em coords[,1]
+> y = shapefile_dados_das_camadas_utilizadas em coords[,2]
+> df_xy = data.frame(shapefile_dados_das_camadas_utilizadas em coords
+> [,1],shapefile_dados_das_camadas_utilizadas em coords[,2])
+> #coordinates(df_xy) <- ~x+y
+> z = deldir(x,y,plot=TRUE,wl='triang',wp="none")
+> w = tile.list(z)
+> polys = vector(mode="list", length=length(w))
+> for (i in seq(along=polys)) {
+>   pcrds = cbind(w[[i]]$x, w[[i]]$y)
+>   pcrds = rbind(pcrds, pcrds[1,])
+>   polys[[i]] = Polygons(list(Polygon(pcrds)), ID=as.character(i))
+> }
+> SP = SpatialPolygons(polys)
+> plot(SP)
+> celulas_dentro_do_talhao = raster::intersect(SP,
+> shapefile_contorno_do_talhao)
+> plot(celulas_dentro_do_talhao)
+>
+> #------Adicionando Informacao de cluster ao poligono------#
+> length(celulas_dentro_do_talhao)
+> confirmando_pontos_dentro_da_area =
+> data.frame(coordinates(celulas_dentro_do_talhao))
+> length(lista_clusteres[,1])
+> colnames(lista_clusteres) = c('Cluster', 'Long', 'Lat')
+> colnames(confirmando_pontos_dentro_da_area) = c('Long', 'Latitude')
+> #confirmando_pontos_dentro_da_area$Long =
+> round(confirmando_pontos_dentro_da_area$Long, 5)
+> #lista_clusteres$Long = round(lista_clusteres$Long, 5)
+> #teste = merge(confirmando_pontos_dentro_da_area, lista_final, all.x =
+> TRUE)
+> #celulas_dentro_do_talhao em data$Cluster = '???'
+> plot(celulas_dentro_do_talhao)
+> writeOGR(celulas_dentro_do_talhao,
+> 'C:\\Users\\Yury\\Desktop\\InCeres\\UGD', layer = 'sss', driver = 'ESRI
+> Shapefile')
+>
+> Yury Duarte
+> Engenheiro Agrônomo - ESALQ/USP
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180906/228cec0c/attachment.html>
+
+From richfield1974 em yahoo.com  Tue Sep 11 10:25:21 2018
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Tue, 11 Sep 2018 13:25:21 +0000 (UTC)
+Subject: [R-br] Generelized least squares - Random effects model
+References: <555132931.843024.1536672321043.ref@mail.yahoo.com>
+Message-ID: <555132931.843024.1536672321043@mail.yahoo.com>
+
+PrezadosEstou usando o pacote nlme e estimando o modelo utilizando a função gls().O modelo é de efeitos aleatórios e preciso estimar as componentes de variância (variance between treatments e variance within treatments), mas não sei como.Alguém poderia me ajudar?Desde já agradeçoLuiz
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180911/9cffada3/attachment.html>
+
+From jacksonmrodrigues em gmail.com  Mon Sep 17 09:08:50 2018
+From: jacksonmrodrigues em gmail.com (Jackson Rodrigues)
+Date: Mon, 17 Sep 2018 09:08:50 -0300
+Subject: [R-br] Aplicar msm intervalos para 2 rasters
+Message-ID: <CAPL76w_VYDxTmA9xz+wU41YEMXiukEn52ojPL-CjqTTf7L2iHA@mail.gmail.com>
+
+Bom dia pessoal!
+
+
+Estou gerando mapas de temperaturas mínimas e máximas e gostaria de usar
+apenas 1 intervalo de valores/escala de cores que se aplique tanto a às
+mínimas quanto às máximas.
+O problema é que raster é S4 e o intervalo (que criei) é vetor.
+
+A menor temperatura é 3 e a maior é 31.
+
+Alguém pode me ajudar associar os valores do raster ao intervalo que criei?
+
+cols<-colorRampPalette(c("royalblue","springgreen","yellow","orange","red"))(29)
+
+intervalo = seq(from=3, to=31)
+
+# criando o vetor de cores
+cores1 <- cols[findInterval(TMin_masked, vec = intervalo)]
+
+Error in as.double(x) :
+  cannot coerce type 'S4' to vector of type 'double'
+
+Obrigado
+
+Jackson
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180917/83a310ef/attachment.html>
+
+From jdtatsch em gmail.com  Mon Sep 17 10:50:33 2018
+From: jdtatsch em gmail.com (=?UTF-8?B?SsO0bmF0YW4=?=)
+Date: Mon, 17 Sep 2018 10:50:33 -0300
+Subject: [R-br] Aplicar msm intervalos para 2 rasters
+In-Reply-To: <CAPL76w_VYDxTmA9xz+wU41YEMXiukEn52ojPL-CjqTTf7L2iHA@mail.gmail.com>
+References: <CAPL76w_VYDxTmA9xz+wU41YEMXiukEn52ojPL-CjqTTf7L2iHA@mail.gmail.com>
+Message-ID: <CAEiHnvOAgpLWYLsDVWiqdq1bmbj7Oo=pzOG-wqYugE720eNRLg@mail.gmail.com>
+
+?findInterval
+Arguments
+x
+
+numeric.
+is.numeric(TMin_masked)
+class(TMin_masked)
+is.numeric(TMin_masked[])
+
+On Mon, Sep 17, 2018 at 9:08 AM Jackson Rodrigues via R-br <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Bom dia pessoal!
+>
+>
+> Estou gerando mapas de temperaturas mínimas e máximas e gostaria de usar
+> apenas 1 intervalo de valores/escala de cores que se aplique tanto a às
+> mínimas quanto às máximas.
+> O problema é que raster é S4 e o intervalo (que criei) é vetor.
+>
+> A menor temperatura é 3 e a maior é 31.
+>
+> Alguém pode me ajudar associar os valores do raster ao intervalo que criei?
+>
+>
+> cols<-colorRampPalette(c("royalblue","springgreen","yellow","orange","red"))(29)
+>
+> intervalo = seq(from=3, to=31)
+>
+> # criando o vetor de cores
+> cores1 <- cols[findInterval(TMin_masked, vec = intervalo)]
+>
+> Error in as.double(x) :
+>   cannot coerce type 'S4' to vector of type 'double'
+>
+> Obrigado
+>
+> Jackson
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+
+
+
+-- 
+###############################################################
+##  Jônatan Dupont Tatsch
+##  Professor do Departamento de Física
+##  Centro de Ciências Exatas e Naturais (CCNE)
+##  Universidade Federal de Santa Maria - UFSM
+##  Faixa de Camobi, Prédio 13 - Campus UFSM - Santa Maria, RS, Brasil -
+97105-900
+##  Telefone: +55(55)33012083
+##  www.ufsm.br/meteorologia
+###############################################################
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180917/89639514/attachment.html>
+
+From thi_veloso em yahoo.com.br  Mon Sep 17 10:59:30 2018
+From: thi_veloso em yahoo.com.br (Thiago V. dos Santos)
+Date: Mon, 17 Sep 2018 13:59:30 +0000 (UTC)
+Subject: [R-br] Aplicar msm intervalos para 2 rasters
+In-Reply-To: <CAPL76w_VYDxTmA9xz+wU41YEMXiukEn52ojPL-CjqTTf7L2iHA@mail.gmail.com>
+References: <CAPL76w_VYDxTmA9xz+wU41YEMXiukEn52ojPL-CjqTTf7L2iHA@mail.gmail.com>
+Message-ID: <1309757680.3784028.1537192770093@mail.yahoo.com>
+
+Você pode resgatar o intervalo de valores de um raster usando o "cellStats", que já desconsidera os NA's:
+ran <- cellStats(Tmin_masked, range)
+Depois, pegue o mínimo e o máximo:
+min <- min(ran)max <- max(ran)
+Greetings, -- Thiago V. dos Santos
+Postdoctoral Research FellowDepartment of Climate and Space Science and EngineeringUniversity of Michigan 
+
+    On Monday, September 17, 2018, 8:09:12 AM EDT, Jackson Rodrigues via R-br <r-br em listas.c3sl.ufpr.br> wrote:  
+ 
+ Bom dia pessoal!
+
+Estou gerando mapas de temperaturas mínimas e máximas e gostaria de usar apenas 1 intervalo de valores/escala de cores que se aplique tanto a às mínimas quanto às máximas. O problema é que raster é S4 e o intervalo (que criei) é vetor.
+A menor temperatura é 3 e a maior é 31.
+Alguém pode me ajudar associar os valores do raster ao intervalo que criei?
+cols<-colorRampPalette(c("royalblue","springgreen","yellow","orange","red"))(29)
+intervalo = seq(from=3, to=31)
+# criando o vetor de corescores1 <- cols[findInterval(TMin_masked, vec = intervalo)]
+Error in as.double(x) :   cannot coerce type 'S4' to vector of type 'double'
+Obrigado
+Jackson_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180917/7d06a54b/attachment.html>
+
+From luizroberto.uesc em gmail.com  Tue Sep 18 10:45:39 2018
+From: luizroberto.uesc em gmail.com (Luiz Roberto Martins Pinto)
+Date: Tue, 18 Sep 2018 10:45:39 -0300
+Subject: [R-br] Perdoem-me. Preciso do e-mail de Benilton Carvalho
+Message-ID: <CAK4=-FBfkjZto2C4Y_iNsMszPHe5QdJqre2Wy3HrYQfAx-ikxA@mail.gmail.com>
+
+Caros amigos,
+
+Perdoem-me solicitar este favor, mas preciso do e-mail do Benilton Carvalho.
+Já enviei vários e-mails mas parece que ele não utiliza mais os que conheço.
+
+Abraços,
+
+
+Luiz Roberto Martins Pinto
+Prof. Pleno/DCET/UESC
+Laboratório de Estatística Computacional
+Universidade Estadual de Santa Cruz
+Ilhéus-Bahia-Brasil
+
+luizroberto.uesc em gmail.com
+skype: lrmpinto
+http://lattes.cnpq.br/2732314327604831
+
+"*The s**cience exists because there are patterns. *
+* The patterns exist because God created them*.
+* The statistic exists to research the patterns that God created.*"
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180918/13745c12/attachment.html>
+
+From richfield1974 em yahoo.com  Tue Sep 18 14:35:55 2018
+From: richfield1974 em yahoo.com (Luiz Leal)
+Date: Tue, 18 Sep 2018 17:35:55 +0000 (UTC)
+Subject: [R-br] "variance function coefficient" pacote nlme
+References: <466463064.7019852.1537292155437.ref@mail.yahoo.com>
+Message-ID: <466463064.7019852.1537292155437@mail.yahoo.com>
+
+Prezados, boa tardeAlguém sabe como se estima o "variance function coefficient" no pacote nlme?Desde já agradeçoLuiz
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180918/c1de8db5/attachment.html>
+
+From yurynepomuceno em gmail.com  Fri Sep 21 16:47:58 2018
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Fri, 21 Sep 2018 16:47:58 -0300
+Subject: [R-br] Unir Shapefiles
+Message-ID: <CADFS6E7r8vqubUkrizUro2QsUehYu4LA-wudng9GBi9oWR_XwQ@mail.gmail.com>
+
+Boa tarde colegas listeiros!
+
+Gostaria de uma ajuda para unir diferentes objetos espaciais num único
+objeto, afim de salvar um único shapefile ao final do meu processamento.
+Estou trabalhando com dois objetos do tipo 'SpatialPolygonsDataFrame' e
+gostaria de uni-los num único 'SpatialPolygonsDataFrame', sem perder as
+informações setadas no campo '@data'.
+Se alguém souber uma forma de fazer isso, ajudaria imensamente!
+
+Obrigado!
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180921/05ea531b/attachment.html>
+
+From thi_veloso em yahoo.com.br  Sat Sep 22 23:24:57 2018
+From: thi_veloso em yahoo.com.br (Thiago V. dos Santos)
+Date: Sun, 23 Sep 2018 02:24:57 +0000 (UTC)
+Subject: [R-br] Unir Shapefiles
+In-Reply-To: <CADFS6E7r8vqubUkrizUro2QsUehYu4LA-wudng9GBi9oWR_XwQ@mail.gmail.com>
+References: <CADFS6E7r8vqubUkrizUro2QsUehYu4LA-wudng9GBi9oWR_XwQ@mail.gmail.com>
+Message-ID: <799943471.930222.1537669497251@mail.yahoo.com>
+
+Existem vários caminhos, mas a maneira mais simples que eu conheço é usando a função raster::bind:
+unidos <- bind(shapefile1, shapefile2)
+Se precisar *salvar* o shapefile resultante, um camingo pode ser o rgdal:
+rgdal::writeOGR(unidos, "~/Desktop/shapefile_unido.shp", "Meu-shapefile", driver="ESRI Shapefile")
+
+Caso suas necessidades sejam mais específicas (por exemplo unir shapefiles que se sobreponham e etc), você poder dar uma olhada na função raster::union
+Greetings, -- Thiago V. dos Santos
+Postdoctoral Research FellowDepartment of Climate and Space Science and EngineeringUniversity of Michigan 
+
+    On Friday, September 21, 2018, 3:48:28 PM EDT, Yury Duarte via R-br <r-br em listas.c3sl.ufpr.br> wrote:  
+ 
+ Boa tarde colegas listeiros!
+Gostaria de uma ajuda para unir diferentes objetos espaciais num único objeto, afim de salvar um único shapefile ao final do meu processamento.Estou trabalhando com dois objetos do tipo 'SpatialPolygonsDataFrame' e gostaria de uni-los num único 'SpatialPolygonsDataFrame', sem perder as informações setadas no campo '@data'.Se alguém souber uma forma de fazer isso, ajudaria imensamente!
+Obrigado!
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180923/073a5234/attachment.html>
+
+From edinhoestat em yahoo.com.br  Wed Sep 26 12:52:21 2018
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Wed, 26 Sep 2018 15:52:21 +0000 (UTC)
+Subject: [R-br] SOMA DE LINHAS
+References: <512530284.331931.1537977141351.ref@mail.yahoo.com>
+Message-ID: <512530284.331931.1537977141351@mail.yahoo.com>
+
+Bom dia a todos!  Tenho um banco aonde da coluna 19 a coluna 29 tenho respostas do tipo: Concordância, Indiferente e Discordância, com um banco de  29 linhas.
+O meu objetivo é somar por linha (por cada indivíduo, a quantidade e o percentual de Concordância), ou seja acrescentar mais duas colunas por indivíduo. 
+Abaixo as respostas de um indivíduo (uma linha).
+
+ Concordância Concordância Concordância Concordância Concordância Concordância  Concordância Discordância Concordância   Concordância     Concordância Discordância  Indiferente Indiferente Indiferente       Concordância Concordância Discordância     Indiferente     Indiferente     Indiferente
+
+
+
+
+[  ]'sProf. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180926/aeeb3e38/attachment.html>
+
+From nandodesouza em gmail.com  Wed Sep 26 17:54:25 2018
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 26 Sep 2018 17:54:25 -0300
+Subject: [R-br] SOMA DE LINHAS
+In-Reply-To: <512530284.331931.1537977141351@mail.yahoo.com>
+References: <512530284.331931.1537977141351.ref@mail.yahoo.com>
+ <512530284.331931.1537977141351@mail.yahoo.com>
+Message-ID: <CAFrWFsmrcpAqbC-f9qkTRLsLU-9bXhe8U9-cTQyKyvn4osSQ9A@mail.gmail.com>
+
+Mande um CMR porque montar uma tabela baseada em sua descrição ou criar
+soluções de cabeça é isso. Bom mínimo de um dput dos dados ou parte
+representativa deles, copie e cole aqui
+
+Em qua, 26 de set de 2018 12:52, Edson Lira via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia a todos!  Tenho um banco aonde da coluna 19 a coluna 29 tenho
+> respostas do tipo: Concordância, Indiferente e Discordância, com um banco
+> de  29 linhas.
+>
+> O meu objetivo é somar por linha (por cada indivíduo, a quantidade e o
+> percentual de Concordância), ou seja acrescentar mais duas colunas por
+> indivíduo.
+>
+> Abaixo as respostas de um indivíduo (uma linha).
+>
+>
+>  Concordância Concordância Concordância Concordância Concordância
+> Concordância  Concordância Discordância Concordância   Concordância
+>  Concordância Discordância  Indiferente
+> Indiferente Indiferente       Concordância Concordância Discordância
+>  Indiferente     Indiferente     Indiferente
+>
+>
+>
+>
+>
+> [  ]'s
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180926/03108685/attachment.html>
+
+From rddsouzaoliveira em gmail.com  Wed Sep 26 18:47:15 2018
+From: rddsouzaoliveira em gmail.com (Rodrigo de Souza Oliveira)
+Date: Wed, 26 Sep 2018 17:47:15 -0400
+Subject: [R-br] SOMA DE LINHAS
+In-Reply-To: <512530284.331931.1537977141351@mail.yahoo.com>
+References: <512530284.331931.1537977141351.ref@mail.yahoo.com>
+ <512530284.331931.1537977141351@mail.yahoo.com>
+Message-ID: <CABbTeZN476HFKsu0Ty0mdj=WgeMUtf2rdTPn4mFAhtFT+hRnuA@mail.gmail.com>
+
+Olá Edson,
+Veja se o exemplo abaixo resolve.
+
+
+library(dplyr)
+base <- data.frame(id = c(1,2,3),
+           c1 = c("concordancia", "concordancia", "discordancia"),
+           c2 = c("discordancia", "concordancia", "concordancia"),
+           c3 = c("discordancia", "concordancia", "discordancia"))
+base %>%
+  mutate(qtd = rowSums(base=="concordancia"),
+         perc = qtd/3)
+
+
+Abraços
+
+
+Em qua, 26 de set de 2018 às 11:52, Edson Lira via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia a todos!  Tenho um banco aonde da coluna 19 a coluna 29 tenho
+> respostas do tipo: Concordância, Indiferente e Discordância, com um banco
+> de  29 linhas.
+>
+> O meu objetivo é somar por linha (por cada indivíduo, a quantidade e o
+> percentual de Concordância), ou seja acrescentar mais duas colunas por
+> indivíduo.
+>
+> Abaixo as respostas de um indivíduo (uma linha).
+>
+>
+>  Concordância Concordância Concordância Concordância Concordância
+> Concordância  Concordância Discordância Concordância   Concordância
+>  Concordância Discordância  Indiferente
+> Indiferente Indiferente       Concordância Concordância Discordância
+>  Indiferente     Indiferente     Indiferente
+>
+>
+>
+>
+>
+> [  ]'s
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+
+
+
+-- 
+
+
+Rodrigo Oliveira
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180926/5851d287/attachment.html>
+
+From edinhoestat em yahoo.com.br  Thu Sep 27 11:37:07 2018
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Thu, 27 Sep 2018 14:37:07 +0000 (UTC)
+Subject: [R-br] SOMA DE LINHAS
+In-Reply-To: <CAFrWFsmrcpAqbC-f9qkTRLsLU-9bXhe8U9-cTQyKyvn4osSQ9A@mail.gmail.com>
+References: <512530284.331931.1537977141351.ref@mail.yahoo.com>
+ <512530284.331931.1537977141351@mail.yahoo.com>
+ <CAFrWFsmrcpAqbC-f9qkTRLsLU-9bXhe8U9-cTQyKyvn4osSQ9A@mail.gmail.com>
+Message-ID: <605178529.932015.1538059027384@mail.yahoo.com>
+
+Fernando Souza, abaixo o link de um banco para vc avaliar. 
+https://www.datafilehost.com/d/e570a703
+
+[  ]'sProf. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em quarta-feira, 26 de setembro de 2018 16:54:42 AMT, Fernando Souza <nandodesouza em gmail.com> escreveu:  
+ 
+ Mande um CMR porque montar uma tabela baseada em sua descrição ou criar soluções de cabeça é isso. Bom mínimo de um dput dos dados ou parte representativa deles, copie e cole aqui
+Em qua, 26 de set de 2018 12:52, Edson Lira via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+
+Bom dia a todos!  Tenho um banco aonde da coluna 19 a coluna 29 tenho respostas do tipo: Concordância, Indiferente e Discordância, com um banco de  29 linhas.
+O meu objetivo é somar por linha (por cada indivíduo, a quantidade e o percentual de Concordância), ou seja acrescentar mais duas colunas por indivíduo. 
+Abaixo as respostas de um indivíduo (uma linha).
+
+ Concordância Concordância Concordância Concordância Concordância Concordância  Concordância Discordância Concordância   Concordância     Concordância Discordância  Indiferente Indiferente Indiferente       Concordância Concordância Discordância     Indiferente     Indiferente     Indiferente
+
+
+
+
+[  ]'sProf. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180927/5565014a/attachment.html>
+
+From nandodesouza em gmail.com  Thu Sep 27 15:55:49 2018
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 27 Sep 2018 15:55:49 -0300
+Subject: [R-br] SOMA DE LINHAS
+In-Reply-To: <605178529.932015.1538059027384@mail.yahoo.com>
+References: <605178529.932015.1538059027384@mail.yahoo.com>
+Message-ID: <1538074215.local-fffc2a2c-44f5-v1.4.2-f587b7b7@getmailspring.com>
+
+Edson,
+
+Segue uma possível solução. Deixo a conferência dos resultados com você.
+Tive que fazer algumas correções na tabela devido a forma como os dados estão armazenados. Evite utilizar pontuação nas palavras (ex: Discordância, prefira Discordancia ) e acredito que o nome das colunas podem ser melhor escolhido para facilitar o entendimento.
+Segue um dput da planilha editada que utilizei.
+dados <-structure(list(id = 1:30, entrevistado = structure(c(NA, NA,
+22L, 20L, 18L, 7L, 10L, 21L, 28L, 6L, 19L, 3L, 9L, 15L, 26L,
+13L, 4L, 5L, 16L, 1L, 24L, 27L, 17L, 25L, 11L, 8L, 2L, 12L, 23L,
+14L), .Label = c("agenorsantos01 em gmail.com", "andreavieira.am em gmail.com",
+"anymargareth em gmail.com", "aruana em acritica.com", "byjuniorbrasil em gmail.com",
+"cardoso.orlando em gmail.com", "carlos.bonatelli em redeamazonica.com.br",
+"cassiadiaslima.ap em gmail.com", "contato em correiodenoticia.com.br",
+"czarwanderley em gmail.com", "daniwalen em gmail.com", "dantegraca em gmail.com",
+"elissanpaula em gmail.com", "faber.teixeira em yahoo.com", "geisy.negreiros em redeamazonica.com.br",
+"gilvancostarr em gmail.com", "hc.cintia em gmail.com", "hiellevy em gmail.com",
+"irineia.barbosa em redeamazonica.com.br ", "luciano.falbo em acritica.com",
+"machristina.imprensa em gmail.com", "marioadolfoemtempo em gmail.com",
+"rascunhoserascunhos em yahoo.com.br", "ricardoamaral.roraima em gmail.com",
+"rodineyjornalista76 em gmail.com", "sergiobartholo em hotmail.com",
+"shirleyfolha em hotmail.com", "thiago.cabral em redeamazonica.com.br"
+), class = "factor"), v_ist_presr = structure(c(1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("Concordancia",
+"Indiferente"), class = "factor"), v_ist_gov_fed = structure(c(1L,
+1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L), .Label = c("Concordancia",
+"Discordancia"), class = "factor"), v_ist_gov_est = structure(c(1L,
+1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("Concordancia",
+"Discordancia"), class = "factor"), v_ist_gov_mun = structure(c(1L,
+1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 2L, 3L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("Concordancia",
+"Discordancia", "Indiferente"), class = "factor"), v_prev_temvida = structure(c(1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("Concordancia",
+"Indiferente"), class = "factor"), v_soc_con_ac = structure(c(1L,
+2L, 2L, 2L, 2L, 2L, 1L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 2L,
+2L, 2L, 1L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 2L, 2L), .Label = c("Concordancia",
+"Discordancia"), class = "factor"), v_ores_div_mcom = structure(c(1L,
+2L, 1L, 1L, 2L, 1L, 1L, 2L, 2L, 2L, 2L, 1L, 2L, 1L, 1L, 1L, 2L,
+2L, 2L, 1L, 1L, 1L, 2L, 1L, 1L, 2L, 2L, 1L, 2L, 2L), .Label = c("Concordancia",
+"Discordancia"), class = "factor"), v_mveic_diss = structure(c(2L,
+1L, 1L, 1L, 1L, 1L, 2L, 1L, 2L, 1L, 3L, 1L, 1L, 1L, 1L, 1L, 1L,
+2L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 2L), .Label = c("Concordancia",
+"Discordancia", "Indiferente"), class = "factor"), o_ap_auto_impc = structure(c(1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("Concordancia",
+"Indiferente"), class = "factor"), o_ap_continuadas = structure(c(1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("Concordancia",
+"Indiferente"), class = "factor"), o_ind_fund_meiocom = structure(c(1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("Concordancia",
+"Indiferente"), class = "factor"), c_com_prtrab = structure(c(2L,
+1L, 1L, 1L, 1L, 1L, 2L, 2L, 1L, 2L, 3L, 1L, 1L, 2L, 1L, 3L, 1L,
+1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 2L, 1L), .Label = c("Concordancia",
+"Discordancia", "Indiferente"), class = "factor"), c_con_atr_site = structure(c(3L,
+1L, 1L, 1L, 2L, 2L, 1L, 1L, 3L, 2L, 3L, 1L, 1L, 1L, 1L, 3L, 1L,
+1L, 2L, 1L, 3L, 1L, 3L, 1L, 1L, 1L, 2L, 2L, 1L, 2L), .Label = c("Concordancia",
+"Discordancia", "Indiferente"), class = "factor"), c_be_inf_ist = structure(c(3L,
+1L, 1L, 1L, 3L, 1L, 3L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 3L,
+1L, 1L, 1L, 3L, 1L, 1L, 3L, 1L, 2L, 1L, 1L, 1L, 1L), .Label = c("Concordancia",
+"Discordancia", "Indiferente"), class = "factor"), c_mat_edicao = structure(c(3L,
+1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 3L, 1L, 1L, 1L, 1L, 2L), .Label = c("Concordancia",
+"Discordancia", "Indiferente"), class = "factor"), c_camp_div_meiocomun = structure(c(1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = "Concordancia", class = "factor"),
+c_gt_imp_enfr = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = "Concordancia", class = "factor"),
+c_acomp_div = structure(c(2L, 1L, 1L, 1L, 1L, 1L, 2L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 1L, 3L, 1L, 3L,
+1L, 1L, 1L, 1L, 1L, 2L, 2L), .Label = c("Concordancia", "Discordancia",
+"Indiferente"), class = "factor"), c_inf_rep_gov_fed = structure(c(3L,
+1L, 1L, 1L, 2L, 1L, 2L, 1L, 1L, 1L, 3L, 1L, 2L, 1L, 1L, 2L,
+1L, 1L, 2L, 1L, 2L, 1L, 1L, 1L, 3L, 1L, 2L, 1L, 1L, 1L), .Label = c("Concordancia",
+"Discordancia", "Indiferente"), class = "factor"), c_inf_rep_gov_est = structure(c(3L,
+3L, 1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 3L, 1L, 2L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 3L, 1L, 2L, 1L, 2L, 1L), .Label = c("Concordancia",
+"Discordancia", "Indiferente"), class = "factor"), c_inf_rep_gov_mun = structure(c(3L,
+2L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 1L, 3L, 1L, 2L, 1L, 1L, 2L,
+1L, 1L, 1L, 1L, 2L, 1L, 1L, 1L, 3L, 1L, 1L, 1L, 2L, 2L), .Label = c("Concordancia",
+"Discordancia", "Indiferente"), class = "factor")), class = "data.frame", row.names = c(NA,
+-30L))
+
+head(dados)
+#install.packages(tidyr)
+library(tidyr)
+#Organiza a tabela em formato longo
+corrigido <- dados%>% gather('v_ist_presr','v_ist_gov_fed','v_ist_gov_est','v_ist_gov_mun','v_prev_temvida','v_soc_con_ac','v_ores_div_mcom','v_mveic_diss','o_ap_auto_impc','o_ap_continuadas','o_ind_fund_meiocom','c_com_prtrab','c_con_atr_site','c_be_inf_ist','c_mat_edicao','c_camp_div_meiocomun','c_gt_imp_enfr','c_acomp_div','c_inf_rep_gov_fed','c_inf_rep_gov_est','c_inf_rep_gov_mun',key= "Perguntas",value="Respostas")
+#Transforma o tipo dos dados para fator
+corrigido <-transform(corrigido,entrevistado=factor(entrevistado),Perguntas=factor(Perguntas),Respostas=factor(Respostas))
+#install.packages("dplyr")
+library(dplyr)
+#Tabela final agrupada por Perguntas e Resposta
+tabela_final <- as.data.frame(corrigido%>%group_by(Perguntas,Respostas)%>% summarize(n=n()))
+tabela_final
+
+On Sep 27 2018, at 11:37 am, Edson Lira <edinhoestat em yahoo.com.br> wrote:
+>
+> Fernando Souza, abaixo o link de um banco para vc avaliar.
+>
+> https://www.datafilehost.com/d/e570a703
+>
+> [ ]'s
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+>
+>
+>
+> Em quarta-feira, 26 de setembro de 2018 16:54:42 AMT, Fernando Souza <nandodesouza em gmail.com> escreveu:
+>
+>
+> Mande um CMR porque montar uma tabela baseada em sua descrição ou criar soluções de cabeça é isso. Bom mínimo de um dput dos dados ou parte representativa deles, copie e cole aqui
+> Em qua, 26 de set de 2018 12:52, Edson Lira via R-br <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> escreveu:
+> > Bom dia a todos! Tenho um banco aonde da coluna 19 a coluna 29 tenho respostas do tipo: Concordância, Indiferente e Discordância, com um banco de 29 linhas.
+> >
+> > O meu objetivo é somar por linha (por cada indivíduo, a quantidade e o percentual de Concordância), ou seja acrescentar mais duas colunas por indivíduo.
+> >
+> > Abaixo as respostas de um indivíduo (uma linha).
+> >
+> >
+> > Concordância Concordância Concordância Concordância Concordância Concordância Concordância Discordância Concordância Concordância Concordância Discordância Indiferente
+> > Indiferente Indiferente Concordância Concordância Discordância Indiferente Indiferente Indiferente
+> >
+> >
+> >
+> >
+> >
+> > [ ]'s
+> > Prof. Edson Lira, Me
+> > Estatístico
+> > Manaus-Amazonas
+> >
+> >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>
+>
+>
+>
+>
+>
+>
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180927/4182f351/attachment.html>
+
+From patriota.alexandre em gmail.com  Thu Sep 27 15:58:49 2018
+From: patriota.alexandre em gmail.com (=?UTF-8?Q?Alexandre_Galv=C3=A3o_Patriota?=)
+Date: Thu, 27 Sep 2018 15:58:49 -0300
+Subject: [R-br] =?utf-8?q?Inscri=C3=A7=C3=B5es_abertas_para_mestrado_e_dou?=
+	=?utf-8?q?torado_em_Estat=C3=ADstica_na_USP?=
+Message-ID: <CAB6kaCHE2i+f1mB-Yn8GaZXtX-DhFf8reLmrU-gT=26+ctgJjg@mail.gmail.com>
+
+Prezados,
+
+*Inscrições abertas para mestrado e doutorado em Estatística na USP*
+
+Segue link para anúncio veiculado pelo Jornal da USP:
+
+https://jornal.usp.br/universidade/inscricoes-abertas-para-mestrado-e-doutorado-em-estatistica-na-usp/
+
+att
+Prof. Dr. Alexandre G. Patriota,
+Department of Statistics,
+Institute of Mathematics and Statistics,
+University of São Paulo, Brazil.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180927/1869347f/attachment.html>
+
+From economatistica em yahoo.com.br  Thu Sep 27 18:45:21 2018
+From: economatistica em yahoo.com.br (Edimeire Alexandra Pinto)
+Date: Thu, 27 Sep 2018 21:45:21 +0000 (UTC)
+Subject: [R-br] Rmarkdown
+References: <852252633.614103.1538084721158.ref@mail.yahoo.com>
+Message-ID: <852252633.614103.1538084721158@mail.yahoo.com>
+
+Oi gente.
+Para aqueles que usam o rmarkdown:
+ Existe algum alguma função que leia um arquivo em word? O que eu quero é o seguinte: a pessoa com um click consiga baixar um doc ( que não está na rede e sim no computador) para leitura, por exemplo, coloco um link ou crio um botão (como no shiny) e quando a pessoa da o click se consegue baixar um arquivo em word, sem desformatá-lo, que está numa pasta local no computador.  Quero como se fosse uma função read.table que importa arquivos em csv, mas no meu caso é docx.
+
+Valeu gente!!!
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180927/d8793d81/attachment.html>
+
+From yurynepomuceno em gmail.com  Fri Sep 28 08:28:41 2018
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Fri, 28 Sep 2018 08:28:41 -0300
+Subject: [R-br] Unir Shapefiles
+In-Reply-To: <799943471.930222.1537669497251@mail.yahoo.com>
+References: <CADFS6E7r8vqubUkrizUro2QsUehYu4LA-wudng9GBi9oWR_XwQ@mail.gmail.com>
+ <799943471.930222.1537669497251@mail.yahoo.com>
+Message-ID: <CADFS6E62oZTEjYqEn4inB+jZm5gZ0acciy8hrqnFFxA_YaLiZg@mail.gmail.com>
+
+Bom dia Thiago!
+
+Muito obrigado! Sua ajuda foi providencial.
+Consegui utilizar essa função dentro de um loop e salvar todos os polígonos
+que eu estava precisando.
+
+Grande abraço!
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+
+Em sáb, 22 de set de 2018 às 23:24, Thiago V. dos Santos <
+thi_veloso em yahoo.com.br> escreveu:
+
+> Existem vários caminhos, mas a maneira mais simples que eu conheço é
+> usando a função raster::bind:
+>
+> unidos <- bind(shapefile1, shapefile2)
+>
+> Se precisar *salvar* o shapefile resultante, um camingo pode ser o rgdal:
+>
+> rgdal::writeOGR(unidos, "~/Desktop/shapefile_unido.shp", "Meu-shapefile",
+> driver="ESRI Shapefile")
+>
+> Caso suas necessidades sejam mais específicas (por exemplo unir shapefiles
+> que se sobreponham e etc), você poder dar uma olhada na função raster::union
+>
+> Greetings,
+>  -- Thiago V. dos Santos
+>
+> Postdoctoral Research Fellow
+> Department of Climate and Space Science and Engineering
+> University of Michigan
+>
+>
+> On Friday, September 21, 2018, 3:48:28 PM EDT, Yury Duarte via R-br <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>
+> Boa tarde colegas listeiros!
+>
+> Gostaria de uma ajuda para unir diferentes objetos espaciais num único
+> objeto, afim de salvar um único shapefile ao final do meu processamento.
+> Estou trabalhando com dois objetos do tipo 'SpatialPolygonsDataFrame' e
+> gostaria de uni-los num único 'SpatialPolygonsDataFrame', sem perder as
+> informações setadas no campo '@data'.
+> Se alguém souber uma forma de fazer isso, ajudaria imensamente!
+>
+> Obrigado!
+>
+> Yury Duarte
+> Engenheiro Agrônomo - ESALQ/USP
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180928/a298f496/attachment.html>
+
+From tomas.barcellos em gmail.com  Fri Sep 28 09:24:22 2018
+From: tomas.barcellos em gmail.com (=?UTF-8?Q?Tom=C3=A1s_Barcellos?=)
+Date: Fri, 28 Sep 2018 09:24:22 -0300
+Subject: [R-br] Rmarkdown
+In-Reply-To: <852252633.614103.1538084721158@mail.yahoo.com>
+References: <852252633.614103.1538084721158.ref@mail.yahoo.com>
+ <852252633.614103.1538084721158@mail.yahoo.com>
+Message-ID: <CAMr-yZi7vv09sd_CaJASre8zsH2cUpvcY4Agp7X23j0NJhQGCg@mail.gmail.com>
+
+É só para baixar o word ou importar ele para dentro do R e fazer uso de
+suas informações?
+
+Sendo o primeiro acaso, é possível:
+1) Rscript:
+download.file("file://"camminho/para/original/meuarquivo.docx",
+"meunovoarquivo.docx")
+ou
+file.copy("camminho/para/original/meuarquivo.docx", "meunovoarquivo.docx")
+
+2) shiny:
+Aqui <http://shiny.rstudio.com/articles/generating-reports.html> tem uma
+solução para qualquer tipo de arquivo. A "sacada" é usar a função "
+file.copy()" dentro do "downloadHandler()"
+
+Sendo o segundo caso, dê uma olhada no pacote "officer"
+
+Att,
+
+Tomás de Siervi Barcellos
+
+
+Em qui, 27 de set de 2018 às 18:45, Edimeire Alexandra Pinto via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Oi gente.
+>
+> Para aqueles que usam o rmarkdown:
+>
+>  Existe algum alguma função que leia um arquivo em word? O que eu quero é
+> o seguinte: a pessoa com um click consiga baixar um doc ( que não está na
+> rede e sim no computador) para leitura, por exemplo, coloco um link ou crio
+> um botão (como no shiny) e quando a pessoa da o click se consegue baixar um
+> arquivo em word, sem desformatá-lo, que está numa pasta local no
+> computador.  Quero como se fosse uma função read.table que importa arquivos
+> em csv, mas no meu caso é docx.
+>
+>
+> Valeu gente!!!
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180928/885b1c08/attachment.html>
+
+From diegovieir4 em gmail.com  Sat Sep 29 13:49:59 2018
+From: diegovieir4 em gmail.com (Diego Vieira)
+Date: Sat, 29 Sep 2018 13:49:59 -0300
+Subject: [R-br] =?utf-8?q?COMPARANDO_CURVAS_=5BD=C3=9AVIDA=5D?=
+Message-ID: <CAKnQR80att9eyh7bp8=BbRHgzCZg5LFGwfo=a=kYh6z_G_vhqg@mail.gmail.com>
+
+Boa tarde pessoal,
+
+Estou querendo fazer a comparação de duas curvas ajustadas utilizando a
+função "nlsLM" do pacote "minpack.lm". No entanto, não consigo ajustar as
+duas curvas em um único nlsLM, para depois usar a anova para realizar um
+teste da razão de verossimilhança para testar a restrição em A, B e C.
+Alguém pode me ajudar a solucionar esse problema. Desde já agradeço muito a
+todas as sugestões. Além disso, preciso usar esse pacote por causa do
+algoritmo de Levenberg-Marquardt.  Segue o script reproduzível.
+
+if(!require("minpack.lm")){install.packages("minpack.lm",dependencies=T);require("minpack.lm")}
+if(!require("lattice")){install.packages("lattice",dependencies=T);require("lattice")}
+
+d <- expand.grid(parA=c(1,1.99,3,4,5,6,6), sistema =
+factor(c("TRAT1","TRAT2")))
+d$diversidade <- c(55.000, 19.572, 10.231, 7.225, 6.004, 5.4022, 5.0566,
+                   62.000, 31.6952, 21.4178, 17.6125, 15.7654, 14.7072,
+14.0334)
+
+#ajusta as duas curvas em um unico nlsLM
+n0 <- nlsLM(diversidade ~ A[sistema]/(1+B[sistema]*exp(-C[sistema]*parA)),
+            data = d, start = list(A = c(-2.790,11.106), B =
+c(-1.050,-0.821),
+                                       C = c(-0.090, 0.248)))
+#Mensagem de erro:
+# Error in dimnames(x) <- dn :
+# length of 'dimnames' [2] not equal to array extent
+# In addition: Warning message:
+# In matrix(out$hessian, nrow = length(unlist(par))) :
+# data length [9] is not a sub-multiple or multiple of the number of rows
+[6]
+
+
+#ajusta o modelo em que A, B e C seja comum aos dois tratamentos
+n1 <- nlsLM(diversidade ~ A/(1+B*exp(-C*parA)),
+            data = d, start = list(A = 4.158, B = -0.9355, C = 0.079))
+
+anova(n0,n1)
+
+
+
+-- 
+Diego dos Santos Vieira
+Engenheiro Florestal - UFRA
+Mestre em Ciência Florestal - UFVJM
+Doutorando em Ciência Florestal - UFVJM
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180929/72b8a803/attachment.html>
+

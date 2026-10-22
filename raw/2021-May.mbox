@@ -1,0 +1,1322 @@
+From acarvalhocosta em gmail.com  Mon May 17 22:06:11 2021
+From: acarvalhocosta em gmail.com (Adriano Carvalho Costa)
+Date: Mon, 17 May 2021 22:06:11 -0300
+Subject: [R-br] =?utf-8?q?Superf=C3=ADcie_resposta?=
+Message-ID: <CACXQWK29HLUx51B0Bx=mUaKtkUXGWd8UsoTmSRPxjGPccrqwRw@mail.gmail.com>
+
+Boa noite pessoal, estou com um artigo de aquaponia em que estamos fazendo
+a viabilidade econômica de acordo com o preço de venda dos produtos, sendo
+as variáveis respostas TIR, VPL entre outros. Estou precisando de um
+parceiro que interesse em participar como co-autor para fazer o gráfico.
+O trabalho faz parte de uma dissertação de mestrado. Quem tiver interesse
+meu whats 64 981186749.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210517/4e12e90e/attachment.html>
+
+From marcelolaia em gmail.com  Thu May 20 15:18:57 2021
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Thu, 20 May 2021 15:18:57 -0300
+Subject: [R-br] =?iso-8859-1?q?Dados_com_aus=EAncia_de_valores_para_deter?=
+ =?iso-8859-1?q?minadas_vari=E1veis_e_colineariade_entre?=
+Message-ID: <YKaoEQzGm6Fzxste@localhost>
+
+Colegas,
+
+Tenho um conjunto de dados conforme modelo abaixo:
+
+
+Genotipo	Tratamento	Repeticao	Composto1	Composto2	Composto3	Composto4
+C13	Resistente	SI	R1	0,04	8,77	0
+C13	Resistente	SI	R2	0	8,67	0
+C13	Resistente	SI	R3	0	7,99	0
+C13	Resistente	CI	R1	0,04	33,83	0
+C13	Resistente	CI	R2	0,02	6,68	0
+C13	Resistente	CI	R3	0	7,32	0
+C08	Resistente	SI	R1	0,01	30,48	0,04
+C08	Resistente	SI	R2	0	22,83	0
+C08	Resistente	SI	R3	0	30,66	0
+C08	Resistente	CI	R1	0	30,19	0
+C08	Resistente	CI	R2	0	26,69	0
+C08	Resistente	CI	R3	0	33,55	0
+C17	Suscetível	SI	R1	0,08	16,94	0
+C17	Suscetível	SI	R2	0,06	22,3	0
+C17	Suscetível	SI	R3	0,07	17,19	0
+C17	Suscetível	CI	R1	0,05	17,72	0
+C17	Suscetível	CI	R2	0,05	19,46	0
+C17	Suscetível	CI	R3	0,13	30,15	0
+C11	Suscetível	SI	R1	0,04	30,03	0
+C11	Suscetível	SI	R2	0	38,64	0
+C11	Suscetível	SI	R3	0,06	42,59	0
+C11	Suscetível	CI	R1	0,04	36,96	0
+C11	Suscetível	CI	R2	0	49,7	0
+C11	Suscetível	CI	R3	0	37,67	0,06
+
+
+
+Esse exemplo está disponível no endereço:
+https://www.dropbox.com/s/izccqoifwnjkdlu/Exemplo.csv
+
+Genotipo - diferentes genótipos, incluindo plantas resistentes e
+suscetíveis
+
+Tratamento - SI = sem inoculação; CI = com inoculação
+
+Repeticao - R1 = planta 1; R2 = planta 2; R3 = planta 3
+
+Composto1 a Composton = valor aferido (medido) nas folhas de cada
+planta para o respectivo composto
+
+Interesse:
+
+1. verificar quais compostos são produzidos em função da inoculação (CI
+vs SI)
+
+2. verificar quais compostos são produzidos em função do Estado
+(Resistente vs Suscetível)
+
+3. verificar se o Genotipo interfere na produção de determinado
+composto (composto específico a um dado Genotipo)
+
+4. verificar se os demais genótipos diferem do E. camaldulensis.
+
+O valor 0 (zero) para um determinado composto não significa zero, mas,
+significa que aquele composto não foi encontrado naquela planta
+(repetição). Logo, 0 significa NA.
+
+A minha ideia é analisar composto a composto separadamente. Tenho 117
+compostos.
+
+Modelo que tentei usar:
+
+dados02 <- read.table(url("https://www.dropbox.com/s/izccqoifwnjkdlu/Exemplo.csv?dl=1"), sep="\t", header=TRUE, dec=",")
+
+dados02
+
+fit02 <- lm(Composto1 ~ Genotipo * Estado * Tratamento, data=dados02)
+
+summary(fit02)
+
+Aparece o seguinte erro:
+
+Coefficients: (9 not defined because of singularities)
+
+Pelo que li, parece que a variável é colinear ou possui correlação. Não
+sei como resolver.
+
+Outras perguntas:
+
+A minha abordagem está apropriada? Terei que rodar as 117?
+
+Existe uma maneira mais adequada de responder às quatro perguntas
+acima? Principalmente a 1 e 2? Gráficos?
+
+Obrigado!
+
+-- 
+Marcelo
+
+From cesar.rabak em gmail.com  Fri May 21 22:59:03 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 21 May 2021 22:59:03 -0300
+Subject: [R-br] 
+	=?utf-8?q?Dados_com_aus=C3=AAncia_de_valores_para_determi?=
+	=?utf-8?q?nadas_vari=C3=A1veis_e_colineariade_entre?=
+In-Reply-To: <YKaoEQzGm6Fzxste@localhost>
+References: <YKaoEQzGm6Fzxste@localhost>
+Message-ID: <CAKrF98k_826gLkp9622eFUNL7qd1qJF_G_rArDG4h0i5Sf-msw@mail.gmail.com>
+
+Marcelo,
+
+Quantos casos você tem para conseguir estudar todos os compostos?
+
+Por que você acha que uma regressão linear seria um bom modelo para
+explicar a existência dos compostos?
+
+Na formulação você busca a interação entre o Genótipo,  o Estado e o
+Tratamento.
+
+Você viu na resposta da regressão quantas classes de fatores foram geradas?
+
+Você precisa olhar na documentação como coloca no modelo o fato que tem
+repetições.
+
+Por outro lado, se deseja-se estudar o 117 compostos com apenas um número
+pequeno de casos (p/m/entendimento oito com três repetições para cada) você
+terá que buscar outra abordagem, tipicamente usada em genômica.
+
+HTH
+
+On Thu, May 20, 2021 at 3:19 PM Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Colegas,
+>
+> Tenho um conjunto de dados conforme modelo abaixo:
+>
+>
+> Genotipo        Tratamento      Repeticao       Composto1       Composto2
+>      Composto3       Composto4
+> C13     Resistente      SI      R1      0,04    8,77    0
+> C13     Resistente      SI      R2      0       8,67    0
+> C13     Resistente      SI      R3      0       7,99    0
+> C13     Resistente      CI      R1      0,04    33,83   0
+> C13     Resistente      CI      R2      0,02    6,68    0
+> C13     Resistente      CI      R3      0       7,32    0
+> C08     Resistente      SI      R1      0,01    30,48   0,04
+> C08     Resistente      SI      R2      0       22,83   0
+> C08     Resistente      SI      R3      0       30,66   0
+> C08     Resistente      CI      R1      0       30,19   0
+> C08     Resistente      CI      R2      0       26,69   0
+> C08     Resistente      CI      R3      0       33,55   0
+> C17     Suscetível      SI      R1      0,08    16,94   0
+> C17     Suscetível      SI      R2      0,06    22,3    0
+> C17     Suscetível      SI      R3      0,07    17,19   0
+> C17     Suscetível      CI      R1      0,05    17,72   0
+> C17     Suscetível      CI      R2      0,05    19,46   0
+> C17     Suscetível      CI      R3      0,13    30,15   0
+> C11     Suscetível      SI      R1      0,04    30,03   0
+> C11     Suscetível      SI      R2      0       38,64   0
+> C11     Suscetível      SI      R3      0,06    42,59   0
+> C11     Suscetível      CI      R1      0,04    36,96   0
+> C11     Suscetível      CI      R2      0       49,7    0
+> C11     Suscetível      CI      R3      0       37,67   0,06
+>
+>
+>
+> Esse exemplo está disponível no endereço:
+> https://www.dropbox.com/s/izccqoifwnjkdlu/Exemplo.csv
+>
+> Genotipo - diferentes genótipos, incluindo plantas resistentes e
+> suscetíveis
+>
+> Tratamento - SI = sem inoculação; CI = com inoculação
+>
+> Repeticao - R1 = planta 1; R2 = planta 2; R3 = planta 3
+>
+> Composto1 a Composton = valor aferido (medido) nas folhas de cada
+> planta para o respectivo composto
+>
+> Interesse:
+>
+> 1. verificar quais compostos são produzidos em função da inoculação (CI
+> vs SI)
+>
+> 2. verificar quais compostos são produzidos em função do Estado
+> (Resistente vs Suscetível)
+>
+> 3. verificar se o Genotipo interfere na produção de determinado
+> composto (composto específico a um dado Genotipo)
+>
+> 4. verificar se os demais genótipos diferem do E. camaldulensis.
+>
+> O valor 0 (zero) para um determinado composto não significa zero, mas,
+> significa que aquele composto não foi encontrado naquela planta
+> (repetição). Logo, 0 significa NA.
+>
+> A minha ideia é analisar composto a composto separadamente. Tenho 117
+> compostos.
+>
+> Modelo que tentei usar:
+>
+> dados02 <- read.table(url("
+> https://www.dropbox.com/s/izccqoifwnjkdlu/Exemplo.csv?dl=1"), sep="\t",
+> header=TRUE, dec=",")
+>
+> dados02
+>
+> fit02 <- lm(Composto1 ~ Genotipo * Estado * Tratamento, data=dados02)
+>
+> summary(fit02)
+>
+> Aparece o seguinte erro:
+>
+> Coefficients: (9 not defined because of singularities)
+>
+> Pelo que li, parece que a variável é colinear ou possui correlação. Não
+> sei como resolver.
+>
+> Outras perguntas:
+>
+> A minha abordagem está apropriada? Terei que rodar as 117?
+>
+> Existe uma maneira mais adequada de responder às quatro perguntas
+> acima? Principalmente a 1 e 2? Gráficos?
+>
+> Obrigado!
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210521/0eaecf66/attachment.html>
+
+From marcelolaia em gmail.com  Sat May 22 12:06:34 2021
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Sat, 22 May 2021 12:06:34 -0300
+Subject: [R-br] 
+ =?iso-8859-1?q?Dados_com_aus=EAncia_de_valores_para_deter?=
+ =?iso-8859-1?q?minadas_vari=E1veis_e_colineariade_entre?=
+In-Reply-To: <CAKrF98k_826gLkp9622eFUNL7qd1qJF_G_rArDG4h0i5Sf-msw@mail.gmail.com>
+References: <YKaoEQzGm6Fzxste@localhost>
+ <CAKrF98k_826gLkp9622eFUNL7qd1qJF_G_rArDG4h0i5Sf-msw@mail.gmail.com>
+Message-ID: <YKkd+hc4TYsAvqwt@localhost>
+
+Olá César,
+
+Muito obrigado!
+
+Após ter enviado a mensagem para a lista, eu verifiquei algo óbvio:
+
+Genótipo e Estado (Resistente ou Suscetível) são a mesma coisa! kkkk
+Não faz o menor sentido incluir interação entre os dois. Aliás, é algo
+impossível! kkk
+
+Assim, estou trabalhando da seguinte maneira:
+
+fit01 <- lm(Composto1 ~ Genotipo * Tratamento, data=dados02)
+
+Eu somente não entendi o que você quis indicar-me com "Você precisa
+olhar na documentação como coloca no modelo o fato que tem repetições".
+
+Vou pesquisar.
+
+-- 
+Marcelo
+
+From cesar.rabak em gmail.com  Mon May 24 17:36:51 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 24 May 2021 17:36:51 -0300
+Subject: [R-br] 
+	=?utf-8?q?Dados_com_aus=C3=AAncia_de_valores_para_determi?=
+	=?utf-8?q?nadas_vari=C3=A1veis_e_colineariade_entre?=
+In-Reply-To: <YKkd+hc4TYsAvqwt@localhost>
+References: <YKaoEQzGm6Fzxste@localhost>
+ <CAKrF98k_826gLkp9622eFUNL7qd1qJF_G_rArDG4h0i5Sf-msw@mail.gmail.com>
+ <YKkd+hc4TYsAvqwt@localhost>
+Message-ID: <CAKrF98kNF7thtDLWE5GfJJboNVXnnPTKgnxyuuyiVBXr3KirYg@mail.gmail.com>
+
+OK!
+
+Numa leitura perfunctória a gente que não mergulha no assim denominado *domínio
+do problema* em contraponto ao domínio da Estatística (como disciplina
+matemática) obviamente não tem condições de detectar essas coisas que o
+interessado pode fazer com uma inspeção mais criteriosa.
+
+Ótimo que você detectou e resolveu esse problema.
+
+Alias, sem querer ser enfático demais nem quero parecer que estou colocando
+sapatos de chumbo nos pesquisadores que efetuam suas análises, gostaria de
+aproveitar o ensejo para indicar a vantagem de usar um processo de Análise
+Estatística em três fases (que por sinal, para ficar no tópico desta lista,
+o R oferece sobejas ferramentas para fazer de maneira expedita e completa):
+
+   1. Uma estatística descritiva, com ênfase em apresentação gráfica dos
+   dados.
+   2. Uma análise (estatística) exploratória como proposta, principalmente,
+   por Tukey.
+   3. Finalmente a inferencial, levando em conta que a modelagem deve
+   seguir as hipóteses e não o contrário, que seria uma abordagem lícita na
+   *exploratória* mas passível de ser tachada como *Questionable Research
+   Practice* ? QRP na *inferencial!*
+
+No caso da descritiva, um diagrama do tipo *Draftsman Draftsman's plot
+<https://www.oxfordreference.com/view/10.1093/oi/authority.20110803095729868>*
+mostraria a correlação "perfeita" entre as duas variáveis e já serviria de
+um aviso para a não inclusão no modelo.
+
+O plot.design é outro gráfico que permite explorar as possíveis respostas
+em função dos fatores que se manipularam no experimento.
+
+Por fim além da mecânica de como considerar as repetições, é importante
+entender a importância dessa correção para que os resultados sejam úteis no
+estudo do experimento.
+
+HTH
+--
+Cesar Rabak
+
+
+On Sat, May 22, 2021 at 12:06 PM Marcelo Laia <marcelolaia em gmail.com> wrote:
+
+> Olá César,
+>
+> Muito obrigado!
+>
+> Após ter enviado a mensagem para a lista, eu verifiquei algo óbvio:
+>
+> Genótipo e Estado (Resistente ou Suscetível) são a mesma coisa! kkkk
+> Não faz o menor sentido incluir interação entre os dois. Aliás, é algo
+> impossível! kkk
+>
+> Assim, estou trabalhando da seguinte maneira:
+>
+> fit01 <- lm(Composto1 ~ Genotipo * Tratamento, data=dados02)
+>
+> Eu somente não entendi o que você quis indicar-me com "Você precisa
+> olhar na documentação como coloca no modelo o fato que tem repetições".
+>
+> Vou pesquisar.
+>
+> --
+> Marcelo
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210524/8cd0694e/attachment.html>
+
+From smp10bmc em gmail.com  Sun May 30 20:33:13 2021
+From: smp10bmc em gmail.com (Sergio Pinto)
+Date: Sun, 30 May 2021 20:33:13 -0300
+Subject: [R-br] =?utf-8?q?Visualiza=C3=A7=C3=A3o_de_resposta_de_question?=
+ =?utf-8?b?w6FyaW8=?=
+Message-ID: <CALkxgdwnTuZmXTjncQ2iDwyZAOrRLhRiYOKNYk=V8wOCzyzCcg@mail.gmail.com>
+
+Prezados tenho um conjunto de dados que desejo apresentar de forma que
+fique semelhante a imagem abaixo.
+Entretanto não sei como plotar as frequências nas categorias das respostas.
+A imagem é do site:
+https://sebastiansauer.github.io/plotting_surveys/
+
+Envio o link dos meus conjuntos de dados.
+https://www.datafilehost.com/d/604da9ba
+
+Pelo que li a respeito eu preciso saber a frequência de respostas do tipo
+1, do tipo 2 , do tipo 3, etc, para conseguir plotar o valores no g?afico
+que desejo.
+ex: p01 20 resp do tipo 1;  4o respostas do tipo 2, 10 respostas do tipo 3
+etc.
+
+Agradeço desde já.
+
+[image: image.png]
+
+Uma amostra dos meus dados:
+id,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11
+1,  6,  6,  6,  5,  4,  6,  4,  5,  5,  5,  5
+2,  5,  5,  3,  3,  4,  3,  6,  5,  4,  4,  1
+3,  3,  5,  5,  4,  5,  3,  5,  6,  3,  4,  1
+4,  1,  1,  1,  8,  8,  8,  7,  7,  7,  7,  7
+
+
+p01 até p11 são as perguntas e os números  sob as perguntas são o s itens
+das respostas.
+
+> sessionInfo()
+R version 4.0.3 (2020-10-10)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Linux Mint 20.1
+
+Matrix products: default
+BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+
+locale:
+ [1] LC_CTYPE=pt_BR.UTF-8       LC_NUMERIC=C
+ [3] LC_TIME=pt_BR.UTF-8        LC_COLLATE=pt_BR.UTF-8
+ [5] LC_MONETARY=pt_BR.UTF-8    LC_MESSAGES=pt_BR.UTF-8
+ [7] LC_PAPER=pt_BR.UTF-8       LC_NAME=C
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C
+[11] LC_MEASUREMENT=pt_BR.UTF-8 LC_IDENTIFICATION=C
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base
+
+other attached packages:
+[1] forcats_0.5.1   stringr_1.4.0   dplyr_1.0.5     purrr_0.3.4
+[5] readr_1.4.0     tidyr_1.1.3     tibble_3.1.1    ggplot2_3.3.3
+[9] tidyverse_1.3.1
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.6       cellranger_1.1.0 pillar_1.6.0     compiler_4.0.3
+ [5] dbplyr_2.1.1     tools_4.0.3      digest_0.6.27    jsonlite_1.7.2
+ [9] lubridate_1.7.10 lifecycle_1.0.0  gtable_0.3.0     pkgconfig_2.0.3
+[13] rlang_0.4.10     reprex_2.0.0     cli_2.4.0        rstudioapi_0.13
+[17] DBI_1.1.1        haven_2.4.0      xml2_1.3.2       withr_2.4.2
+[21] httr_1.4.2       fs_1.5.0         generics_0.1.0   vctrs_0.3.7
+[25] hms_1.0.0        grid_4.0.3       tidyselect_1.1.0 glue_1.4.2
+[29] R6_2.5.0         fansi_0.4.2      readxl_1.3.1     farver_2.1.0
+[33] modelr_0.1.8     magrittr_2.0.1   backports_1.2.1  scales_1.1.1
+[37] ellipsis_0.3.1   rvest_1.0.0      assertthat_0.2.1 colorspace_2.0-0
+[41] labeling_0.4.2   utf8_1.2.1       stringi_1.5.3    munsell_0.5.0
+[45] broom_0.7.6      crayon_1.4.1
+
+
+
+-- 
+
+*_______________________________________*
+
+*Prof. Dr. SERGIO MEDEIROS PINTO*
+LABICOM/IEFD-UERJ
+FAMERC-RJ
+UNESA-RJ
+http://lattes.cnpq.br/5897044784217523
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210530/2ce8e8a2/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 21843 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210530/2ce8e8a2/attachment.png>
+
+From cesar.rabak em gmail.com  Sun May 30 21:04:36 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 30 May 2021 21:04:36 -0300
+Subject: [R-br] 
+	=?utf-8?q?Visualiza=C3=A7=C3=A3o_de_resposta_de_question?=
+	=?utf-8?b?w6FyaW8=?=
+In-Reply-To: <CALkxgdwnTuZmXTjncQ2iDwyZAOrRLhRiYOKNYk=V8wOCzyzCcg@mail.gmail.com>
+References: <CALkxgdwnTuZmXTjncQ2iDwyZAOrRLhRiYOKNYk=V8wOCzyzCcg@mail.gmail.com>
+Message-ID: <CAKrF98n1_uQFuxfbu7wgtTbqZwqEKKk5f3LkLo0wAfoijEgHTQ@mail.gmail.com>
+
+Prezado Sergio,
+
+A figura que mostras parece ser um *plot* de variáveis tratadas como
+escalas Likert.
+
+Há um pacote específico no R para tal.
+
+Adicionalmente, o "jeitão" do gráfico parece ser resultado do conjunto de
+pacotes do ggplot, que deve ter em uma das suas "estéticas" (*aesthetics*)
+o tipo de gráfico "likert" ou nome dele associado a essa representação.
+
+HTH
+--
+Cesar Rabak
+
+
+On Sun, May 30, 2021 at 8:33 PM Sergio Pinto por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados tenho um conjunto de dados que desejo apresentar de forma que
+> fique semelhante a imagem abaixo.
+> Entretanto não sei como plotar as frequências nas categorias das
+> respostas. A imagem é do site:
+> https://sebastiansauer.github.io/plotting_surveys/
+>
+> Envio o link dos meus conjuntos de dados.
+> https://www.datafilehost.com/d/604da9ba
+>
+> Pelo que li a respeito eu preciso saber a frequência de respostas do tipo
+> 1, do tipo 2 , do tipo 3, etc, para conseguir plotar o valores no g?afico
+> que desejo.
+> ex: p01 20 resp do tipo 1;  4o respostas do tipo 2, 10 respostas do tipo 3
+> etc.
+>
+> Agradeço desde já.
+>
+> [image: image.png]
+>
+> Uma amostra dos meus dados:
+> id,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11
+> 1,  6,  6,  6,  5,  4,  6,  4,  5,  5,  5,  5
+> 2,  5,  5,  3,  3,  4,  3,  6,  5,  4,  4,  1
+> 3,  3,  5,  5,  4,  5,  3,  5,  6,  3,  4,  1
+> 4,  1,  1,  1,  8,  8,  8,  7,  7,  7,  7,  7
+>
+>
+> p01 até p11 são as perguntas e os números  sob as perguntas são o s itens
+> das respostas.
+>
+> > sessionInfo()
+> R version 4.0.3 (2020-10-10)
+> Platform: x86_64-pc-linux-gnu (64-bit)
+> Running under: Linux Mint 20.1
+>
+> Matrix products: default
+> BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+> LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+>
+> locale:
+>  [1] LC_CTYPE=pt_BR.UTF-8       LC_NUMERIC=C
+>  [3] LC_TIME=pt_BR.UTF-8        LC_COLLATE=pt_BR.UTF-8
+>  [5] LC_MONETARY=pt_BR.UTF-8    LC_MESSAGES=pt_BR.UTF-8
+>  [7] LC_PAPER=pt_BR.UTF-8       LC_NAME=C
+>  [9] LC_ADDRESS=C               LC_TELEPHONE=C
+> [11] LC_MEASUREMENT=pt_BR.UTF-8 LC_IDENTIFICATION=C
+>
+> attached base packages:
+> [1] stats     graphics  grDevices utils     datasets  methods   base
+>
+> other attached packages:
+> [1] forcats_0.5.1   stringr_1.4.0   dplyr_1.0.5     purrr_0.3.4
+> [5] readr_1.4.0     tidyr_1.1.3     tibble_3.1.1    ggplot2_3.3.3
+> [9] tidyverse_1.3.1
+>
+> loaded via a namespace (and not attached):
+>  [1] Rcpp_1.0.6       cellranger_1.1.0 pillar_1.6.0     compiler_4.0.3
+>  [5] dbplyr_2.1.1     tools_4.0.3      digest_0.6.27    jsonlite_1.7.2
+>  [9] lubridate_1.7.10 lifecycle_1.0.0  gtable_0.3.0     pkgconfig_2.0.3
+> [13] rlang_0.4.10     reprex_2.0.0     cli_2.4.0        rstudioapi_0.13
+> [17] DBI_1.1.1        haven_2.4.0      xml2_1.3.2       withr_2.4.2
+> [21] httr_1.4.2       fs_1.5.0         generics_0.1.0   vctrs_0.3.7
+> [25] hms_1.0.0        grid_4.0.3       tidyselect_1.1.0 glue_1.4.2
+> [29] R6_2.5.0         fansi_0.4.2      readxl_1.3.1     farver_2.1.0
+> [33] modelr_0.1.8     magrittr_2.0.1   backports_1.2.1  scales_1.1.1
+> [37] ellipsis_0.3.1   rvest_1.0.0      assertthat_0.2.1 colorspace_2.0-0
+> [41] labeling_0.4.2   utf8_1.2.1       stringi_1.5.3    munsell_0.5.0
+> [45] broom_0.7.6      crayon_1.4.1
+>
+>
+>
+> --
+>
+> *_______________________________________*
+>
+> *Prof. Dr. SERGIO MEDEIROS PINTO*
+> LABICOM/IEFD-UERJ
+> FAMERC-RJ
+> UNESA-RJ
+> http://lattes.cnpq.br/5897044784217523
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210530/a6324981/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 21843 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210530/a6324981/attachment.png>
+
+From assis.leonard em gmail.com  Mon May 31 08:16:35 2021
+From: assis.leonard em gmail.com (Leonard Assis)
+Date: Mon, 31 May 2021 08:16:35 -0300
+Subject: [R-br] 
+	=?utf-8?q?Visualiza=C3=A7=C3=A3o_de_resposta_de_question?=
+	=?utf-8?b?w6FyaW8=?=
+In-Reply-To: <CAKrF98n1_uQFuxfbu7wgtTbqZwqEKKk5f3LkLo0wAfoijEgHTQ@mail.gmail.com>
+References: <CALkxgdwnTuZmXTjncQ2iDwyZAOrRLhRiYOKNYk=V8wOCzyzCcg@mail.gmail.com>
+ <CAKrF98n1_uQFuxfbu7wgtTbqZwqEKKk5f3LkLo0wAfoijEgHTQ@mail.gmail.com>
+Message-ID: <CAEG0FK-1PKUKq6pN-etj_qLnKBwB5sPffqaBj5_-7ROPzf000w@mail.gmail.com>
+
+Eu conheço os pacotes sjPlot e sjmisc. não lembro ao certo qual o comando,
+ele gera um likert bem parecido com o da figura.
+
+Deve ter algum tutorial na pagina dos pacotes.
+
+lmassis <at> yahoo <dot> com <dot> br
+assis.leonard <at> gmail <dot> com
+
+
+On Sun, May 30, 2021 at 9:04 PM Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezado Sergio,
+>
+> A figura que mostras parece ser um *plot* de variáveis tratadas como
+> escalas Likert.
+>
+> Há um pacote específico no R para tal.
+>
+> Adicionalmente, o "jeitão" do gráfico parece ser resultado do conjunto de
+> pacotes do ggplot, que deve ter em uma das suas "estéticas" (*aesthetics*)
+> o tipo de gráfico "likert" ou nome dele associado a essa representação.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Sun, May 30, 2021 at 8:33 PM Sergio Pinto por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Prezados tenho um conjunto de dados que desejo apresentar de forma que
+>> fique semelhante a imagem abaixo.
+>> Entretanto não sei como plotar as frequências nas categorias das
+>> respostas. A imagem é do site:
+>> https://sebastiansauer.github.io/plotting_surveys/
+>>
+>> Envio o link dos meus conjuntos de dados.
+>> https://www.datafilehost.com/d/604da9ba
+>>
+>> Pelo que li a respeito eu preciso saber a frequência de respostas do tipo
+>> 1, do tipo 2 , do tipo 3, etc, para conseguir plotar o valores no g?afico
+>> que desejo.
+>> ex: p01 20 resp do tipo 1;  4o respostas do tipo 2, 10 respostas do tipo
+>> 3 etc.
+>>
+>> Agradeço desde já.
+>>
+>> [image: image.png]
+>>
+>> Uma amostra dos meus dados:
+>> id,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11
+>> 1,  6,  6,  6,  5,  4,  6,  4,  5,  5,  5,  5
+>> 2,  5,  5,  3,  3,  4,  3,  6,  5,  4,  4,  1
+>> 3,  3,  5,  5,  4,  5,  3,  5,  6,  3,  4,  1
+>> 4,  1,  1,  1,  8,  8,  8,  7,  7,  7,  7,  7
+>>
+>>
+>> p01 até p11 são as perguntas e os números  sob as perguntas são o s itens
+>> das respostas.
+>>
+>> > sessionInfo()
+>> R version 4.0.3 (2020-10-10)
+>> Platform: x86_64-pc-linux-gnu (64-bit)
+>> Running under: Linux Mint 20.1
+>>
+>> Matrix products: default
+>> BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+>> LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+>>
+>> locale:
+>>  [1] LC_CTYPE=pt_BR.UTF-8       LC_NUMERIC=C
+>>  [3] LC_TIME=pt_BR.UTF-8        LC_COLLATE=pt_BR.UTF-8
+>>  [5] LC_MONETARY=pt_BR.UTF-8    LC_MESSAGES=pt_BR.UTF-8
+>>  [7] LC_PAPER=pt_BR.UTF-8       LC_NAME=C
+>>  [9] LC_ADDRESS=C               LC_TELEPHONE=C
+>> [11] LC_MEASUREMENT=pt_BR.UTF-8 LC_IDENTIFICATION=C
+>>
+>> attached base packages:
+>> [1] stats     graphics  grDevices utils     datasets  methods   base
+>>
+>> other attached packages:
+>> [1] forcats_0.5.1   stringr_1.4.0   dplyr_1.0.5     purrr_0.3.4
+>> [5] readr_1.4.0     tidyr_1.1.3     tibble_3.1.1    ggplot2_3.3.3
+>> [9] tidyverse_1.3.1
+>>
+>> loaded via a namespace (and not attached):
+>>  [1] Rcpp_1.0.6       cellranger_1.1.0 pillar_1.6.0     compiler_4.0.3
+>>  [5] dbplyr_2.1.1     tools_4.0.3      digest_0.6.27    jsonlite_1.7.2
+>>  [9] lubridate_1.7.10 lifecycle_1.0.0  gtable_0.3.0     pkgconfig_2.0.3
+>> [13] rlang_0.4.10     reprex_2.0.0     cli_2.4.0        rstudioapi_0.13
+>> [17] DBI_1.1.1        haven_2.4.0      xml2_1.3.2       withr_2.4.2
+>> [21] httr_1.4.2       fs_1.5.0         generics_0.1.0   vctrs_0.3.7
+>> [25] hms_1.0.0        grid_4.0.3       tidyselect_1.1.0 glue_1.4.2
+>> [29] R6_2.5.0         fansi_0.4.2      readxl_1.3.1     farver_2.1.0
+>> [33] modelr_0.1.8     magrittr_2.0.1   backports_1.2.1  scales_1.1.1
+>> [37] ellipsis_0.3.1   rvest_1.0.0      assertthat_0.2.1 colorspace_2.0-0
+>> [41] labeling_0.4.2   utf8_1.2.1       stringi_1.5.3    munsell_0.5.0
+>> [45] broom_0.7.6      crayon_1.4.1
+>>
+>>
+>>
+>> --
+>>
+>> *_______________________________________*
+>>
+>> *Prof. Dr. SERGIO MEDEIROS PINTO*
+>> LABICOM/IEFD-UERJ
+>> FAMERC-RJ
+>> UNESA-RJ
+>> http://lattes.cnpq.br/5897044784217523
+>>
+>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210531/d4879a4c/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 21843 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210531/d4879a4c/attachment.png>
+
+From dtiezzi em usp.br  Mon May 31 08:43:51 2021
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Mon, 31 May 2021 08:43:51 -0300
+Subject: [R-br] 
+	=?utf-8?q?Visualiza=C3=A7=C3=A3o_de_resposta_de_question?=
+	=?utf-8?b?w6FyaW8=?=
+In-Reply-To: <CAKrF98n1_uQFuxfbu7wgtTbqZwqEKKk5f3LkLo0wAfoijEgHTQ@mail.gmail.com>
+References: <CALkxgdwnTuZmXTjncQ2iDwyZAOrRLhRiYOKNYk=V8wOCzyzCcg@mail.gmail.com>
+ <CAKrF98n1_uQFuxfbu7wgtTbqZwqEKKk5f3LkLo0wAfoijEgHTQ@mail.gmail.com>
+Message-ID: <CA+RL3DO=bZuG3i9osoKBk6pCdYv0vT_gYHszttcMb4V=W-G1eg@mail.gmail.com>
+
+Concordo.
+
+Acho que esse documento deve ajudar:
+https://jtr13.github.io/cc19/how-to-plot-likert-data.html
+
+daniel
+
+
+
+Em dom., 30 de mai. de 2021 às 21:04, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezado Sergio,
+>
+> A figura que mostras parece ser um *plot* de variáveis tratadas como
+> escalas Likert.
+>
+> Há um pacote específico no R para tal.
+>
+> Adicionalmente, o "jeitão" do gráfico parece ser resultado do conjunto de
+> pacotes do ggplot, que deve ter em uma das suas "estéticas" (*aesthetics*)
+> o tipo de gráfico "likert" ou nome dele associado a essa representação.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Sun, May 30, 2021 at 8:33 PM Sergio Pinto por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Prezados tenho um conjunto de dados que desejo apresentar de forma que
+>> fique semelhante a imagem abaixo.
+>> Entretanto não sei como plotar as frequências nas categorias das
+>> respostas. A imagem é do site:
+>> https://sebastiansauer.github.io/plotting_surveys/
+>>
+>> Envio o link dos meus conjuntos de dados.
+>> https://www.datafilehost.com/d/604da9ba
+>>
+>> Pelo que li a respeito eu preciso saber a frequência de respostas do tipo
+>> 1, do tipo 2 , do tipo 3, etc, para conseguir plotar o valores no g?afico
+>> que desejo.
+>> ex: p01 20 resp do tipo 1;  4o respostas do tipo 2, 10 respostas do tipo
+>> 3 etc.
+>>
+>> Agradeço desde já.
+>>
+>> [image: image.png]
+>>
+>> Uma amostra dos meus dados:
+>> id,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11
+>> 1,  6,  6,  6,  5,  4,  6,  4,  5,  5,  5,  5
+>> 2,  5,  5,  3,  3,  4,  3,  6,  5,  4,  4,  1
+>> 3,  3,  5,  5,  4,  5,  3,  5,  6,  3,  4,  1
+>> 4,  1,  1,  1,  8,  8,  8,  7,  7,  7,  7,  7
+>>
+>>
+>> p01 até p11 são as perguntas e os números  sob as perguntas são o s itens
+>> das respostas.
+>>
+>> > sessionInfo()
+>> R version 4.0.3 (2020-10-10)
+>> Platform: x86_64-pc-linux-gnu (64-bit)
+>> Running under: Linux Mint 20.1
+>>
+>> Matrix products: default
+>> BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+>> LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+>>
+>> locale:
+>>  [1] LC_CTYPE=pt_BR.UTF-8       LC_NUMERIC=C
+>>  [3] LC_TIME=pt_BR.UTF-8        LC_COLLATE=pt_BR.UTF-8
+>>  [5] LC_MONETARY=pt_BR.UTF-8    LC_MESSAGES=pt_BR.UTF-8
+>>  [7] LC_PAPER=pt_BR.UTF-8       LC_NAME=C
+>>  [9] LC_ADDRESS=C               LC_TELEPHONE=C
+>> [11] LC_MEASUREMENT=pt_BR.UTF-8 LC_IDENTIFICATION=C
+>>
+>> attached base packages:
+>> [1] stats     graphics  grDevices utils     datasets  methods   base
+>>
+>> other attached packages:
+>> [1] forcats_0.5.1   stringr_1.4.0   dplyr_1.0.5     purrr_0.3.4
+>> [5] readr_1.4.0     tidyr_1.1.3     tibble_3.1.1    ggplot2_3.3.3
+>> [9] tidyverse_1.3.1
+>>
+>> loaded via a namespace (and not attached):
+>>  [1] Rcpp_1.0.6       cellranger_1.1.0 pillar_1.6.0     compiler_4.0.3
+>>  [5] dbplyr_2.1.1     tools_4.0.3      digest_0.6.27    jsonlite_1.7.2
+>>  [9] lubridate_1.7.10 lifecycle_1.0.0  gtable_0.3.0     pkgconfig_2.0.3
+>> [13] rlang_0.4.10     reprex_2.0.0     cli_2.4.0        rstudioapi_0.13
+>> [17] DBI_1.1.1        haven_2.4.0      xml2_1.3.2       withr_2.4.2
+>> [21] httr_1.4.2       fs_1.5.0         generics_0.1.0   vctrs_0.3.7
+>> [25] hms_1.0.0        grid_4.0.3       tidyselect_1.1.0 glue_1.4.2
+>> [29] R6_2.5.0         fansi_0.4.2      readxl_1.3.1     farver_2.1.0
+>> [33] modelr_0.1.8     magrittr_2.0.1   backports_1.2.1  scales_1.1.1
+>> [37] ellipsis_0.3.1   rvest_1.0.0      assertthat_0.2.1 colorspace_2.0-0
+>> [41] labeling_0.4.2   utf8_1.2.1       stringi_1.5.3    munsell_0.5.0
+>> [45] broom_0.7.6      crayon_1.4.1
+>>
+>>
+>>
+>> --
+>>
+>> *_______________________________________*
+>>
+>> *Prof. Dr. SERGIO MEDEIROS PINTO*
+>> LABICOM/IEFD-UERJ
+>> FAMERC-RJ
+>> UNESA-RJ
+>> http://lattes.cnpq.br/5897044784217523
+>>
+>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+Daniel Tiezzi, MD, PhD
+Breast Disease and Gynecologic Oncology Division
+Department of Gynecology and Obstetrics
+University of São Paulo
+Brazil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210531/0f8197ef/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 21843 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210531/0f8197ef/attachment-0001.png>
+
+From cidedson em gmail.com  Mon May 31 09:22:54 2021
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Mon, 31 May 2021 09:22:54 -0300
+Subject: [R-br] 
+	=?utf-8?q?Visualiza=C3=A7=C3=A3o_de_resposta_de_question?=
+	=?utf-8?b?w6FyaW8=?=
+In-Reply-To: <CA+RL3DO=bZuG3i9osoKBk6pCdYv0vT_gYHszttcMb4V=W-G1eg@mail.gmail.com>
+References: <CALkxgdwnTuZmXTjncQ2iDwyZAOrRLhRiYOKNYk=V8wOCzyzCcg@mail.gmail.com>
+ <CAKrF98n1_uQFuxfbu7wgtTbqZwqEKKk5f3LkLo0wAfoijEgHTQ@mail.gmail.com>
+ <CA+RL3DO=bZuG3i9osoKBk6pCdYv0vT_gYHszttcMb4V=W-G1eg@mail.gmail.com>
+Message-ID: <CAAmR27_LJpmRRk56kMMxEsUiCk9sQywHXg4+8x1oX4-A-YpO0A@mail.gmail.com>
+
+library(sjPlot)
+respsfum <- read.csv("respsfum.csv")[-1:-2]
+plot_likert(respsfum)
+
+*Cid Edson Mendonça Póvoas*
+
+*Engenheiro Agrônomo*
+
+*Técnico em Segurança do Trabalho *
+*CREA : 051984991-4*
+
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em seg., 31 de mai. de 2021 às 08:44, Daniel Guimarães Tiezzi por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Concordo.
+>
+> Acho que esse documento deve ajudar:
+> https://jtr13.github.io/cc19/how-to-plot-likert-data.html
+>
+> daniel
+>
+>
+>
+> Em dom., 30 de mai. de 2021 às 21:04, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Prezado Sergio,
+>>
+>> A figura que mostras parece ser um *plot* de variáveis tratadas como
+>> escalas Likert.
+>>
+>> Há um pacote específico no R para tal.
+>>
+>> Adicionalmente, o "jeitão" do gráfico parece ser resultado do conjunto de
+>> pacotes do ggplot, que deve ter em uma das suas "estéticas" (*aesthetics*)
+>> o tipo de gráfico "likert" ou nome dele associado a essa representação.
+>>
+>> HTH
+>> --
+>> Cesar Rabak
+>>
+>>
+>> On Sun, May 30, 2021 at 8:33 PM Sergio Pinto por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Prezados tenho um conjunto de dados que desejo apresentar de forma que
+>>> fique semelhante a imagem abaixo.
+>>> Entretanto não sei como plotar as frequências nas categorias das
+>>> respostas. A imagem é do site:
+>>> https://sebastiansauer.github.io/plotting_surveys/
+>>>
+>>> Envio o link dos meus conjuntos de dados.
+>>> https://www.datafilehost.com/d/604da9ba
+>>>
+>>> Pelo que li a respeito eu preciso saber a frequência de respostas do
+>>> tipo 1, do tipo 2 , do tipo 3, etc, para conseguir plotar o valores no
+>>> g?afico que desejo.
+>>> ex: p01 20 resp do tipo 1;  4o respostas do tipo 2, 10 respostas do tipo
+>>> 3 etc.
+>>>
+>>> Agradeço desde já.
+>>>
+>>> [image: image.png]
+>>>
+>>> Uma amostra dos meus dados:
+>>> id,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11
+>>> 1,  6,  6,  6,  5,  4,  6,  4,  5,  5,  5,  5
+>>> 2,  5,  5,  3,  3,  4,  3,  6,  5,  4,  4,  1
+>>> 3,  3,  5,  5,  4,  5,  3,  5,  6,  3,  4,  1
+>>> 4,  1,  1,  1,  8,  8,  8,  7,  7,  7,  7,  7
+>>>
+>>>
+>>> p01 até p11 são as perguntas e os números  sob as perguntas são o s
+>>> itens das respostas.
+>>>
+>>> > sessionInfo()
+>>> R version 4.0.3 (2020-10-10)
+>>> Platform: x86_64-pc-linux-gnu (64-bit)
+>>> Running under: Linux Mint 20.1
+>>>
+>>> Matrix products: default
+>>> BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+>>> LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+>>>
+>>> locale:
+>>>  [1] LC_CTYPE=pt_BR.UTF-8       LC_NUMERIC=C
+>>>  [3] LC_TIME=pt_BR.UTF-8        LC_COLLATE=pt_BR.UTF-8
+>>>  [5] LC_MONETARY=pt_BR.UTF-8    LC_MESSAGES=pt_BR.UTF-8
+>>>  [7] LC_PAPER=pt_BR.UTF-8       LC_NAME=C
+>>>  [9] LC_ADDRESS=C               LC_TELEPHONE=C
+>>> [11] LC_MEASUREMENT=pt_BR.UTF-8 LC_IDENTIFICATION=C
+>>>
+>>> attached base packages:
+>>> [1] stats     graphics  grDevices utils     datasets  methods   base
+>>>
+>>> other attached packages:
+>>> [1] forcats_0.5.1   stringr_1.4.0   dplyr_1.0.5     purrr_0.3.4
+>>> [5] readr_1.4.0     tidyr_1.1.3     tibble_3.1.1    ggplot2_3.3.3
+>>> [9] tidyverse_1.3.1
+>>>
+>>> loaded via a namespace (and not attached):
+>>>  [1] Rcpp_1.0.6       cellranger_1.1.0 pillar_1.6.0     compiler_4.0.3
+>>>  [5] dbplyr_2.1.1     tools_4.0.3      digest_0.6.27    jsonlite_1.7.2
+>>>  [9] lubridate_1.7.10 lifecycle_1.0.0  gtable_0.3.0     pkgconfig_2.0.3
+>>> [13] rlang_0.4.10     reprex_2.0.0     cli_2.4.0        rstudioapi_0.13
+>>> [17] DBI_1.1.1        haven_2.4.0      xml2_1.3.2       withr_2.4.2
+>>> [21] httr_1.4.2       fs_1.5.0         generics_0.1.0   vctrs_0.3.7
+>>> [25] hms_1.0.0        grid_4.0.3       tidyselect_1.1.0 glue_1.4.2
+>>> [29] R6_2.5.0         fansi_0.4.2      readxl_1.3.1     farver_2.1.0
+>>> [33] modelr_0.1.8     magrittr_2.0.1   backports_1.2.1  scales_1.1.1
+>>> [37] ellipsis_0.3.1   rvest_1.0.0      assertthat_0.2.1 colorspace_2.0-0
+>>> [41] labeling_0.4.2   utf8_1.2.1       stringi_1.5.3    munsell_0.5.0
+>>> [45] broom_0.7.6      crayon_1.4.1
+>>>
+>>>
+>>>
+>>> --
+>>>
+>>> *_______________________________________*
+>>>
+>>> *Prof. Dr. SERGIO MEDEIROS PINTO*
+>>> LABICOM/IEFD-UERJ
+>>> FAMERC-RJ
+>>> UNESA-RJ
+>>> http://lattes.cnpq.br/5897044784217523
+>>>
+>>>
+>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+> Daniel Tiezzi, MD, PhD
+> Breast Disease and Gynecologic Oncology Division
+> Department of Gynecology and Obstetrics
+> University of São Paulo
+> Brazil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210531/1abe7fe1/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 21843 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210531/1abe7fe1/attachment.png>
+
+From cidedson em gmail.com  Mon May 31 09:24:24 2021
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Mon, 31 May 2021 09:24:24 -0300
+Subject: [R-br] 
+	=?utf-8?q?Visualiza=C3=A7=C3=A3o_de_resposta_de_question?=
+	=?utf-8?b?w6FyaW8=?=
+In-Reply-To: <CAAmR27_LJpmRRk56kMMxEsUiCk9sQywHXg4+8x1oX4-A-YpO0A@mail.gmail.com>
+References: <CALkxgdwnTuZmXTjncQ2iDwyZAOrRLhRiYOKNYk=V8wOCzyzCcg@mail.gmail.com>
+ <CAKrF98n1_uQFuxfbu7wgtTbqZwqEKKk5f3LkLo0wAfoijEgHTQ@mail.gmail.com>
+ <CA+RL3DO=bZuG3i9osoKBk6pCdYv0vT_gYHszttcMb4V=W-G1eg@mail.gmail.com>
+ <CAAmR27_LJpmRRk56kMMxEsUiCk9sQywHXg4+8x1oX4-A-YpO0A@mail.gmail.com>
+Message-ID: <CAAmR279jjhaC5d8WTaRqoGZB3gzQ76tuKOaMcQi1+QtkGG+aKQ@mail.gmail.com>
+
+library(sjPlot)
+respsfum <- read.csv("respsfum.csv")[-1]
+plot_likert(respsfum)
+*Cid Edson Mendonça Póvoas*
+
+*Engenheiro Agrônomo*
+
+*Técnico em Segurança do Trabalho *
+*CREA : 051984991-4*
+
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em seg., 31 de mai. de 2021 às 09:22, Cid Póvoas <cidedson em gmail.com>
+escreveu:
+
+> library(sjPlot)
+> respsfum <- read.csv("respsfum.csv")[-1:-2]
+> plot_likert(respsfum)
+>
+> *Cid Edson Mendonça Póvoas*
+>
+> *Engenheiro Agrônomo*
+>
+> *Técnico em Segurança do Trabalho *
+> *CREA : 051984991-4*
+>
+> *Lattes : *http://lattes.cnpq.br/2303498368142537
+> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+> *Whatsapp :* https://wa.me/5573991519565
+>
+>
+> Em seg., 31 de mai. de 2021 às 08:44, Daniel Guimarães Tiezzi por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Concordo.
+>>
+>> Acho que esse documento deve ajudar:
+>> https://jtr13.github.io/cc19/how-to-plot-likert-data.html
+>>
+>> daniel
+>>
+>>
+>>
+>> Em dom., 30 de mai. de 2021 às 21:04, Cesar Rabak por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Prezado Sergio,
+>>>
+>>> A figura que mostras parece ser um *plot* de variáveis tratadas como
+>>> escalas Likert.
+>>>
+>>> Há um pacote específico no R para tal.
+>>>
+>>> Adicionalmente, o "jeitão" do gráfico parece ser resultado do conjunto
+>>> de pacotes do ggplot, que deve ter em uma das suas "estéticas" (
+>>> *aesthetics*) o tipo de gráfico "likert" ou nome dele associado a essa
+>>> representação.
+>>>
+>>> HTH
+>>> --
+>>> Cesar Rabak
+>>>
+>>>
+>>> On Sun, May 30, 2021 at 8:33 PM Sergio Pinto por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Prezados tenho um conjunto de dados que desejo apresentar de forma que
+>>>> fique semelhante a imagem abaixo.
+>>>> Entretanto não sei como plotar as frequências nas categorias das
+>>>> respostas. A imagem é do site:
+>>>> https://sebastiansauer.github.io/plotting_surveys/
+>>>>
+>>>> Envio o link dos meus conjuntos de dados.
+>>>> https://www.datafilehost.com/d/604da9ba
+>>>>
+>>>> Pelo que li a respeito eu preciso saber a frequência de respostas do
+>>>> tipo 1, do tipo 2 , do tipo 3, etc, para conseguir plotar o valores no
+>>>> g?afico que desejo.
+>>>> ex: p01 20 resp do tipo 1;  4o respostas do tipo 2, 10 respostas do
+>>>> tipo 3 etc.
+>>>>
+>>>> Agradeço desde já.
+>>>>
+>>>> [image: image.png]
+>>>>
+>>>> Uma amostra dos meus dados:
+>>>> id,p01,p02,p03,p04,p05,p06,p07,p08,p09,p10,p11
+>>>> 1,  6,  6,  6,  5,  4,  6,  4,  5,  5,  5,  5
+>>>> 2,  5,  5,  3,  3,  4,  3,  6,  5,  4,  4,  1
+>>>> 3,  3,  5,  5,  4,  5,  3,  5,  6,  3,  4,  1
+>>>> 4,  1,  1,  1,  8,  8,  8,  7,  7,  7,  7,  7
+>>>>
+>>>>
+>>>> p01 até p11 são as perguntas e os números  sob as perguntas são o s
+>>>> itens das respostas.
+>>>>
+>>>> > sessionInfo()
+>>>> R version 4.0.3 (2020-10-10)
+>>>> Platform: x86_64-pc-linux-gnu (64-bit)
+>>>> Running under: Linux Mint 20.1
+>>>>
+>>>> Matrix products: default
+>>>> BLAS:   /usr/lib/x86_64-linux-gnu/blas/libblas.so.3.9.0
+>>>> LAPACK: /usr/lib/x86_64-linux-gnu/lapack/liblapack.so.3.9.0
+>>>>
+>>>> locale:
+>>>>  [1] LC_CTYPE=pt_BR.UTF-8       LC_NUMERIC=C
+>>>>  [3] LC_TIME=pt_BR.UTF-8        LC_COLLATE=pt_BR.UTF-8
+>>>>  [5] LC_MONETARY=pt_BR.UTF-8    LC_MESSAGES=pt_BR.UTF-8
+>>>>  [7] LC_PAPER=pt_BR.UTF-8       LC_NAME=C
+>>>>  [9] LC_ADDRESS=C               LC_TELEPHONE=C
+>>>> [11] LC_MEASUREMENT=pt_BR.UTF-8 LC_IDENTIFICATION=C
+>>>>
+>>>> attached base packages:
+>>>> [1] stats     graphics  grDevices utils     datasets  methods   base
+>>>>
+>>>>
+>>>> other attached packages:
+>>>> [1] forcats_0.5.1   stringr_1.4.0   dplyr_1.0.5     purrr_0.3.4
+>>>> [5] readr_1.4.0     tidyr_1.1.3     tibble_3.1.1    ggplot2_3.3.3
+>>>> [9] tidyverse_1.3.1
+>>>>
+>>>> loaded via a namespace (and not attached):
+>>>>  [1] Rcpp_1.0.6       cellranger_1.1.0 pillar_1.6.0     compiler_4.0.3
+>>>>  [5] dbplyr_2.1.1     tools_4.0.3      digest_0.6.27    jsonlite_1.7.2
+>>>>  [9] lubridate_1.7.10 lifecycle_1.0.0  gtable_0.3.0     pkgconfig_2.0.3
+>>>> [13] rlang_0.4.10     reprex_2.0.0     cli_2.4.0        rstudioapi_0.13
+>>>> [17] DBI_1.1.1        haven_2.4.0      xml2_1.3.2       withr_2.4.2
+>>>> [21] httr_1.4.2       fs_1.5.0         generics_0.1.0   vctrs_0.3.7
+>>>> [25] hms_1.0.0        grid_4.0.3       tidyselect_1.1.0 glue_1.4.2
+>>>> [29] R6_2.5.0         fansi_0.4.2      readxl_1.3.1     farver_2.1.0
+>>>> [33] modelr_0.1.8     magrittr_2.0.1   backports_1.2.1  scales_1.1.1
+>>>> [37] ellipsis_0.3.1   rvest_1.0.0      assertthat_0.2.1 colorspace_2.0-0
+>>>> [41] labeling_0.4.2   utf8_1.2.1       stringi_1.5.3    munsell_0.5.0
+>>>> [45] broom_0.7.6      crayon_1.4.1
+>>>>
+>>>>
+>>>>
+>>>> --
+>>>>
+>>>> *_______________________________________*
+>>>>
+>>>> *Prof. Dr. SERGIO MEDEIROS PINTO*
+>>>> LABICOM/IEFD-UERJ
+>>>> FAMERC-RJ
+>>>> UNESA-RJ
+>>>> http://lattes.cnpq.br/5897044784217523
+>>>>
+>>>>
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>>
+>> --
+>> Daniel Tiezzi, MD, PhD
+>> Breast Disease and Gynecologic Oncology Division
+>> Department of Gynecology and Obstetrics
+>> University of São Paulo
+>> Brazil
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210531/6bd1d387/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 21843 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210531/6bd1d387/attachment.png>
+
+From sznelwar em uol.com.br  Mon May 31 20:50:09 2021
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Mon, 31 May 2021 20:50:09 -0300
+Subject: [R-br] 
+ =?utf-8?q?Visualiza=C3=A7=C3=A3o_de_resposta_de_question?=
+ =?utf-8?b?w6FyaW8=?=
+In-Reply-To: <8x1oX4-A-YpO0A@mail.gmail.com>
+References: <V8wOCzyzCcg@mail.gmail.com>
+ <CAKrF98n1_uQFuxfbu7wgtTbqZwqEKKk5f3LkLo0wAfoijEgHTQ@mail.gmail.com>
+ <W-G1eg@mail.gmail.com> <8x1oX4-A-YpO0A@mail.gmail.com>
+Message-ID: <60b576317a68c_39ff2ad25754310849c7@ip-10-81-19-110.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210531/e5fcd344/attachment.html>
+

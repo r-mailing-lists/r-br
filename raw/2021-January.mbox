@@ -1,0 +1,500 @@
+From alisson.lucrecio em ifgoiano.edu.br  Mon Jan 25 07:02:38 2021
+From: alisson.lucrecio em ifgoiano.edu.br (=?UTF-8?Q?Alisson_Lucr=C3=A9cio?=)
+Date: Mon, 25 Jan 2021 06:02:38 -0300
+Subject: [R-br] =?utf-8?q?An=C3=A1lise_de_crescimento_de_peixe_pelo_model?=
+	=?utf-8?q?o_de_Gompertz?=
+Message-ID: <CA+U6G8rdduX6kL68Vdm8YHkiv04Sq=iAHKystPe3AAPXaUBtrw@mail.gmail.com>
+
+Prezado colegas,
+
+Bom dia.
+
+O modelo de gompertz mais adequado para análise de crescimento de peixe é o
+disponibilizado pelo pacote *stats* na função *SSgompertz()* :
+
+*Asym*exp(-b2*b3^x)*
+
+ou é o modelo disponibilizado pelo pacote *FSA* na função *GompertzFuns()*:
+
+*Linf * exp(-exp(-gi * (t - ti)))*
+
+Os dois modelos apresentam bastante semelhança entre si, eles são iguais?
+
+Obrigado
+
+-- 
+Alisson Lucrecio da Costa
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210125/a5d3e01c/attachment.html>
+
+From ronaldca em outlook.com  Mon Jan 25 08:37:58 2021
+From: ronaldca em outlook.com (=?iso-8859-1?Q?Ronaldo_C=E2mara_de_Ara=FAjo?=)
+Date: Mon, 25 Jan 2021 10:37:58 +0000
+Subject: [R-br] =?iso-8859-1?q?RES=3A__An=E1lise_de_crescimento_de_peixe_?=
+ =?iso-8859-1?q?pelo_modelo_de_Gompertz?=
+In-Reply-To: <CA+U6G8rdduX6kL68Vdm8YHkiv04Sq=iAHKystPe3AAPXaUBtrw@mail.gmail.com>
+References: <CA+U6G8rdduX6kL68Vdm8YHkiv04Sq=iAHKystPe3AAPXaUBtrw@mail.gmail.com>
+Message-ID: <SC1PR80MB56307419C73D1365234AD470C4BD0@SC1PR80MB5630.lamprd80.prod.outlook.com>
+
+Bom dia,
+
+   Fiz meu TCC e usei o modelo de Ludwig von Bertalanffy, vc já usou ele?
+
+
+Enviado do Email<https://go.microsoft.com/fwlink/?LinkId=550986> para Windows 10
+
+De: Alisson Lucrécio por (R-br)<mailto:r-br em listas.c3sl.ufpr.br>
+Enviado:segunda-feira, 25 de janeiro de 2021 06:03
+Para: r-br<mailto:r-br em listas.c3sl.ufpr.br>
+Cc:Alisson Lucrécio<mailto:alisson.lucrecio em ifgoiano.edu.br>
+Assunto: [R-br] Análise de crescimento de peixe pelo modelo de Gompertz
+
+Prezado colegas,
+
+Bom dia.
+
+O modelo de gompertz mais adequado para análise de crescimento de peixe é o disponibilizado pelo pacote stats na função SSgompertz() :
+
+Asym*exp(-b2*b3^x)
+
+ou é o modelo disponibilizado pelo pacote FSA na função GompertzFuns():
+
+Linf * exp(-exp(-gi * (t - ti)))
+
+Os dois modelos apresentam bastante semelhança entre si, eles são iguais?
+
+Obrigado
+
+--
+Alisson Lucrecio da Costa
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210125/ffac5524/attachment.html>
+
+From wwolff em usp.br  Mon Jan 25 10:27:10 2021
+From: wwolff em usp.br (Wagner Wolff)
+Date: Mon, 25 Jan 2021 09:27:10 -0300
+Subject: [R-br] =?utf-8?q?AIC_vs_Teste_de_signific=C3=A2ncia?=
+Message-ID: <CAOyzcy=adFO5yRPUOiZ6aJLoLtp0DUuVN9bWtx3c7TJSs65XPA@mail.gmail.com>
+
+Olá pessoal,
+Fiz uma análise de escolha de modelos mistos (geoestatísticos) me baseando
+no valor de AIC. Fui questionado em uma revisão se eu deveria usar a
+significância dos parâmetros em conjunto com o AIC. Acredito que as duas
+coisas não batem, ou seja, um modelo com AIC menor (melhor modelo pelo AIC)
+às vezes tem parâmetros que sejam insignificantes e um modelo com AIC maior
+pode ter todos os parâmetros significativos (melhor modelo por teste de
+significância). Então minha pergunta é porque deve usar o AIC ao invés de
+testes de significância e qual a vantagem?  Tem alguma explicação da
+estatística teórica nisso? Não é minha praia e acabo ficando com muitas
+dúvidas.
+
+Abraços
+
+--
+*Wagner Wolff, **PhD*
+"*Luiz de Queiroz**" College of Agriculture,*
+University of São Paulo
+Pádua Dias avenue11 | 13418-900| Piracicaba-SP| Brazil
+Phone:  +55 19 982385582 <+55%2019%2098238-5582>
+http://orcid.org/0000-0003-3426-308X
+https://github.com/wwolff7
+http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4463141A1
+?
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210125/503bd414/attachment.html>
+
+From nandodesouza em gmail.com  Mon Jan 25 10:46:48 2021
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Mon, 25 Jan 2021 09:46:48 -0300
+Subject: [R-br] 
+	=?utf-8?q?An=C3=A1lise_de_crescimento_de_peixe_pelo_model?=
+	=?utf-8?q?o_de_Gompertz?=
+In-Reply-To: <CA+U6G8rdduX6kL68Vdm8YHkiv04Sq=iAHKystPe3AAPXaUBtrw@mail.gmail.com>
+References: <CA+U6G8rdduX6kL68Vdm8YHkiv04Sq=iAHKystPe3AAPXaUBtrw@mail.gmail.com>
+Message-ID: <CAFrWFs=iv1w9j2a=tQ-g3+Ppvzd5eQtyJEPjN7tNwpEirnWzAg@mail.gmail.com>
+
+Esse texto talvez lhe ajude a entender
+
+https://www.google.com/url?sa=t&source=web&rct=j&url=https://journals.plos.org/plosone/article/file%3Fid%3D10.1371/journal.pone.0178691%26type%3Dprintable&ved=2ahUKEwj4zLiojrfuAhWULLkGHfJ2DCIQFjABegQIARAB&usg=AOvVaw1GCVBb1DodIuPtLxV91DZ9
+
+Em seg, 25 de jan de 2021 06:03, Alisson Lucrécio por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezado colegas,
+>
+> Bom dia.
+>
+> O modelo de gompertz mais adequado para análise de crescimento de peixe é
+> o disponibilizado pelo pacote *stats* na função *SSgompertz()* :
+>
+> *Asym*exp(-b2*b3^x)*
+>
+> ou é o modelo disponibilizado pelo pacote *FSA* na função *GompertzFuns()*
+> :
+>
+> *Linf * exp(-exp(-gi * (t - ti)))*
+>
+> Os dois modelos apresentam bastante semelhança entre si, eles são iguais?
+>
+> Obrigado
+>
+> --
+> Alisson Lucrecio da Costa
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210125/3df031d5/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Jan 27 19:30:29 2021
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 27 Jan 2021 18:30:29 -0300
+Subject: [R-br] 
+	=?utf-8?q?An=C3=A1lise_de_crescimento_de_peixe_pelo_model?=
+	=?utf-8?q?o_de_Gompertz?=
+In-Reply-To: <CAFrWFs=iv1w9j2a=tQ-g3+Ppvzd5eQtyJEPjN7tNwpEirnWzAg@mail.gmail.com>
+References: <CA+U6G8rdduX6kL68Vdm8YHkiv04Sq=iAHKystPe3AAPXaUBtrw@mail.gmail.com>
+ <CAFrWFs=iv1w9j2a=tQ-g3+Ppvzd5eQtyJEPjN7tNwpEirnWzAg@mail.gmail.com>
+Message-ID: <CAFU=EkYqv8jbNeWWHt4-HFFjd3FJo5k3NtaDT6qK9KBGhjyUaw@mail.gmail.com>
+
+É possível que sejam duas parametrizações do mesmo modelo ou que tenham um
+ancestram comum.
+Por outro lado, eu não consegui determinar que são reparametrizações do
+mesmo modelo fazendo as contas aqui.
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210127/52466525/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Jan 27 19:38:17 2021
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 27 Jan 2021 18:38:17 -0300
+Subject: [R-br] =?utf-8?q?AIC_vs_Teste_de_signific=C3=A2ncia?=
+In-Reply-To: <CAOyzcy=adFO5yRPUOiZ6aJLoLtp0DUuVN9bWtx3c7TJSs65XPA@mail.gmail.com>
+References: <CAOyzcy=adFO5yRPUOiZ6aJLoLtp0DUuVN9bWtx3c7TJSs65XPA@mail.gmail.com>
+Message-ID: <CAFU=EkYpqogjO=K5objPrwW-Ss7f74W5uUuMdpJB+jyLDUys=Q@mail.gmail.com>
+
+Encaro como preferência pessoal ou falta de especificação mais detalhada de
+critério de seleção.
+1. Vou ficar com o modelo que der o menor AIC. É um critério de informação.
+Mesmo que hajam parâmetros não significativos, a remoção deles do modelo ou
+ajustar um modelo menor que seja encaixado, prejudica/viola outras coisas
+(interpretação, predição, etc).
+2. Vou adotar a abordagem de ter o modelo mais parcimonioso, ajustando o
+modelo encaixado conforme indicado pelo teste de hipótese sobre os
+parâmetros.
+
+Muitas vezes o teste aplicado é assintótico e a não rejeição da hipótese
+nula decorre que propriedades do teste em pequenas amostras. A gente
+percebe isso quando compara um teste de Wald contra o de razão de
+verossimilhanças. Os resultados podem ser bem diferentes para parâmetros da
+estrutura de covariância (como variância e correlações).
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210127/139e6280/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Jan 27 20:14:27 2021
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 27 Jan 2021 19:14:27 -0300
+Subject: [R-br] Iniciar no Pyton
+In-Reply-To: <CAKrF98ndn_VMgg2QHuRGNZG1rjRb3KsYoGGCge4n-3vgfqvqxw@mail.gmail.com>
+References: <5f8f5798cd8c2_56d42b0c859e711059576@ip-10-81-19-97.ec2.internal.mail>
+ <CAKrF98ndn_VMgg2QHuRGNZG1rjRb3KsYoGGCge4n-3vgfqvqxw@mail.gmail.com>
+Message-ID: <CAFU=EkaxoNOu8JxV+yEh_J1EBm6UPB4K=2vz+hBcfbGWObX6Zg@mail.gmail.com>
+
+A discussão R vs Python é recorrente e pode se tornar muito polêmica.
+Para evitar isso é importante reconhecer algumas coisas.
+
+O R é desde sua concepção, em 1993, uma linguagem voltada para computação
+estatística e gráficos (domain specific). Como tal, é essa sua espinha
+dorsal. Com o passar dos anos ela foi ganhando cada vez mais
+funcionalidades, mas sem perder essa característica ou ser adotada para
+outro propósito com adesão superior a essa. No ambiente de ciência de
+dados, o R está na caixa de ferramentas dos estatísticos.
+
+O Python é uma linguagem de propósito geral, surgiu em 1991. O aparato
+científico e para a análise de dados surgiu quase 15 anos depois (NumPy em
+2005, Sckit learn em 2007, Pandas em 2008). Hoje a linguagem tem ampla
+adoção em ambientes de ciência de dados porque ela tá na caixa de
+ferramentas do pessoal de TI que tá indo trabalhar com data science.
+
+Ainda tem um terceiro público, com formação em administração, economia,
+engenharias, etc, e também estatísticos, que fazem análise com SAS, SPSS,
+Stata, Minitab, e até mesmo o Excel e estão procurando aprender R e Python.
+
+Como em números há no mercado menos estatísticos, a prevalência do R também
+é menor. Não é uma questão de "competência da linguagem", até porque,
+muitas coisas no Python são declaradamente inspiradas no R, como o Pandas.
+O contrário também ocorre, como o rvest ser inspirado no BeatifulSoup. No
+fundo, existem mais similaridades do que diferenças. Para muitas coisas,
+essas linguagens chamam outras de baixo nível (C, fortram). Para web
+scraping, por exemplo, as linguagens têm pacotes que dependem das
+bibliotecas em C libxml e curl. Ambas tem "drivers" para bancos de dados
+também. Ambas são linguagens interpretadas, de alto nível, com os mesmos
+paradigmas, orientação a objetos, multiplataforma, etc. O que faz com que,
+tem termos de desempenho, não se tem um vitorioso absoluto. Veja aqui um
+benchmark com data.table, dplyr e pandas:
+https://github.com/Rdatatable/data.table/wiki/Benchmarks-:-Grouping.
+
+Pelo maior tempo de existência com o propósito de análise de dados, o R
+está na frente na corrida, com mais recursos disponíveis. No R, a parte de
+métodos estatísticos, gráficos, relatórios dinâmicos está bem consolidada e
+segue em desenvolvimento, o que não deve parecer surpresa, já que é uma
+linguagem para esse propósito. O Python certamente irá crescer nesses
+aspectos também. Tanto o R irá crescer no sentido de ser adotada cada vez
+mais com linguagem de propósito geral, quanto o Python ter um ramo
+especializado na análise de dados.
+
+Para o cientista de dados, é importante conhecer às duas linguagens e
+inclusive fazer uso simbiótico das duas, combinando as suas forças. No
+começo da carreira, focar em apenas uma delas, qualquer que seja, é limitar
+seu escopo de atuação. Quando você decidir no quer se especializar em
+termos de atuação profissional, dependendo do caso, aí você pode optar por
+uma só.
+
+Se você usa Emacs (como eu), pode trabalhar com as duas linguagens em
+buffers lado a lado. Basta configurar o editor propriamente.
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210127/40c7139a/attachment.html>
+
+From nandodesouza em gmail.com  Wed Jan 27 20:27:28 2021
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 27 Jan 2021 19:27:28 -0300
+Subject: [R-br] Iniciar no Pyton
+In-Reply-To: <CAFU=EkaxoNOu8JxV+yEh_J1EBm6UPB4K=2vz+hBcfbGWObX6Zg@mail.gmail.com>
+References: <CAFU=EkaxoNOu8JxV+yEh_J1EBm6UPB4K=2vz+hBcfbGWObX6Zg@mail.gmail.com>
+Message-ID: <26D98363-16DC-4753-87BA-DC5BF82BB943@getmailspring.com>
+
+Excelente observação!!!!
+
+Quanto mais linguagens aprender melhor, pois você aprende formas diferentes de resolver o mesmo problema. Eu acho a linguagem R legal demais.
+Acho bobagem ficar essa briga entre Python, R e Julia, se for possível aprenda todas e aproveite o melhor de cada uma.
+Att
+On Jan 27 2021, at 8:14 pm, Walmes Zeviani por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> A discussão R vs Python é recorrente e pode se tornar muito polêmica.
+> Para evitar isso é importante reconhecer algumas coisas.
+>
+> O R é desde sua concepção, em 1993, uma linguagem voltada para computação estatística e gráficos (domain specific). Como tal, é essa sua espinha dorsal. Com o passar dos anos ela foi ganhando cada vez mais funcionalidades, mas sem perder essa característica ou ser adotada para outro propósito com adesão superior a essa. No ambiente de ciência de dados, o R está na caixa de ferramentas dos estatísticos.
+>
+> O Python é uma linguagem de propósito geral, surgiu em 1991. O aparato científico e para a análise de dados surgiu quase 15 anos depois (NumPy em 2005, Sckit learn em 2007, Pandas em 2008). Hoje a linguagem tem ampla adoção em ambientes de ciência de dados porque ela tá na caixa de ferramentas do pessoal de TI que tá indo trabalhar com data science.
+>
+> Ainda tem um terceiro público, com formação em administração, economia, engenharias, etc, e também estatísticos, que fazem análise com SAS, SPSS, Stata, Minitab, e até mesmo o Excel e estão procurando aprender R e Python.
+>
+> Como em números há no mercado menos estatísticos, a prevalência do R também é menor. Não é uma questão de "competência da linguagem", até porque, muitas coisas no Python são declaradamente inspiradas no R, como o Pandas. O contrário também ocorre, como o rvest ser inspirado no BeatifulSoup. No fundo, existem mais similaridades do que diferenças. Para muitas coisas, essas linguagens chamam outras de baixo nível (C, fortram). Para web scraping, por exemplo, as linguagens têm pacotes que dependem das bibliotecas em C libxml e curl. Ambas tem "drivers" para bancos de dados também. Ambas são linguagens interpretadas, de alto nível, com os mesmos paradigmas, orientação a objetos, multiplataforma, etc. O que faz com que, tem termos de desempenho, não se tem um vitorioso absoluto. Veja aqui um benchmark com data.table, dplyr e pandas: https://github.com/Rdatatable/data.table/wiki/Benchmarks-:-Grouping (https://link.getmailspring.com/link/26D98363-16DC-4753-87BA-DC5BF82BB943 em getmailspring.com/0?redirect=https%3A%2F%2Fgithub.com%2FRdatatable%2Fdata.table%2Fwiki%2FBenchmarks-%3A-Grouping&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy).
+>
+> Pelo maior tempo de existência com o propósito de análise de dados, o R está na frente na corrida, com mais recursos disponíveis. No R, a parte de métodos estatísticos, gráficos, relatórios dinâmicos está bem consolidada e segue em desenvolvimento, o que não deve parecer surpresa, já que é uma linguagem para esse propósito. O Python certamente irá crescer nesses aspectos também. Tanto o R irá crescer no sentido de ser adotada cada vez mais com linguagem de propósito geral, quanto o Python ter um ramo especializado na análise de dados.
+>
+> Para o cientista de dados, é importante conhecer às duas linguagens e inclusive fazer uso simbiótico das duas, combinando as suas forças. No começo da carreira, focar em apenas uma delas, qualquer que seja, é limitar seu escopo de atuação. Quando você decidir no quer se especializar em termos de atuação profissional, dependendo do caso, aí você pode optar por uma só.
+>
+> Se você usa Emacs (como eu), pode trabalhar com as duas linguagens em buffers lado a lado. Basta configurar o editor propriamente.
+>
+> À disposição.
+> Walmes.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210127/467d7b21/attachment.html>
+
+From adlucio em ufsm.br  Thu Jan 28 12:34:00 2021
+From: adlucio em ufsm.br (=?UTF-8?Q?Alessandro_Dal_Col_L=C3=BAcio?=)
+Date: Thu, 28 Jan 2021 17:34:00 +0300
+Subject: [R-br] teste de dunnett
+Message-ID: <CAHVsyO5x9A6W1ZvFE0xx7MfUZnnL8fs5pZ-k0XGp+AVLqvL40g@mail.gmail.com>
+
+Bom dia a todos.
+
+Estou tentando fazer um teste de Dunnett pelo R e não consegui fazer pelo
+multcomp.
+
+Há algum outro pacote ou função?
+
+Desde já agradeço.
+Alessandro
+
+
+--
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210128/d5e84696/attachment.html>
+
+From eloi.igor em yandex.com  Thu Jan 28 13:50:35 2021
+From: eloi.igor em yandex.com (Igor Eloi)
+Date: Thu, 28 Jan 2021 12:50:35 -0300
+Subject: [R-br] teste de dunnett
+In-Reply-To: <CAHVsyO5x9A6W1ZvFE0xx7MfUZnnL8fs5pZ-k0XGp+AVLqvL40g@mail.gmail.com>
+References: <CAHVsyO5x9A6W1ZvFE0xx7MfUZnnL8fs5pZ-k0XGp+AVLqvL40g@mail.gmail.com>
+Message-ID: <87071611848999@mail.yandex.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210128/26fa9d82/attachment.html>
+
+From nandodesouza em gmail.com  Thu Jan 28 14:28:04 2021
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 28 Jan 2021 13:28:04 -0300
+Subject: [R-br] teste de dunnett
+In-Reply-To: <87071611848999@mail.yandex.com>
+References: <87071611848999@mail.yandex.com>
+Message-ID: <03225344-E64E-4081-AF91-69B7A911D481@getmailspring.com>
+
+Eu utilizo o pacote {emmeans}
+
+contrast(emmeans(model,~fator),method='trt.vs.ctrl',ref=" controle")
+veja a documentação para ver os modelos suportados
+https://cran.r-project.org/web/packages/emmeans/emmeans.pdf (https://link.getmailspring.com/link/03225344-E64E-4081-AF91-69B7A911D481 em getmailspring.com/0?redirect=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Femmeans%2Femmeans.pdf&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+https://cran.r-project.org/web/packages/emmeans/vignettes/comparisons.html (https://link.getmailspring.com/link/03225344-E64E-4081-AF91-69B7A911D481 em getmailspring.com/1?redirect=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Femmeans%2Fvignettes%2Fcomparisons.html&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+
+On Jan 28 2021, at 1:50 pm, Igor Eloi por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Olá Alessandro,
+>
+> você pode usar o pacote PMCMRplus também.
+>
+> https://cran.r-project.org/web/packages/PMCMRplus/vignettes/QuickReferenceGuide.html
+>
+>
+> Com estima,
+>
+> Igor
+>
+> 28.01.2021, 11:34, "Alessandro Dal Col Lúcio por (R-br)" <r-br em listas.c3sl.ufpr.br>:
+> > Bom dia a todos.
+> >
+> > Estou tentando fazer um teste de Dunnett pelo R e não consegui fazer pelo multcomp.
+> >
+> > Há algum outro pacote ou função?
+> >
+> > Desde já agradeço.
+> > Alessandro
+> >
+> >
+> > --
+> >
+> >
+> > ,
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (https://link.getmailspring.com/link/03225344-E64E-4081-AF91-69B7A911D481 em getmailspring.com/2?redirect=mailto%3AR-br%40listas.c3sl.ufpr.br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br (https://link.getmailspring.com/link/03225344-E64E-4081-AF91-69B7A911D481 em getmailspring.com/3?redirect=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia (https://link.getmailspring.com/link/03225344-E64E-4081-AF91-69B7A911D481 em getmailspring.com/4?redirect=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)) e forneça código mínimo reproduzível.
+> >
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210128/0781e2f4/attachment.html>
+
+From adlucio em ufsm.br  Thu Jan 28 13:39:30 2021
+From: adlucio em ufsm.br (=?UTF-8?Q?Alessandro_Dal_Col_L=C3=BAcio?=)
+Date: Thu, 28 Jan 2021 12:39:30 -0300
+Subject: [R-br] teste de dunnett
+In-Reply-To: <03225344-E64E-4081-AF91-69B7A911D481@getmailspring.com>
+References: <87071611848999@mail.yandex.com>
+ <03225344-E64E-4081-AF91-69B7A911D481@getmailspring.com>
+Message-ID: <CAHVsyO5e-EK18UVzCEKi06xr=9Q0V7osCUsaksJOizpd1a3RBg@mail.gmail.com>
+
+Obrigado pelas dicas Fernando e Igor.
+
+
+
+Em qui, 28 de jan de 2021 14:28, Fernando Souza por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Eu utilizo o pacote {emmeans}
+>
+> contrast(emmeans(model,~fator),method='trt.vs.ctrl',ref=" controle")
+>
+> veja a documentação para ver os modelos suportados
+>
+> https://cran.r-project.org/web/packages/emmeans/emmeans.pdf
+> <https://link.getmailspring.com/link/03225344-E64E-4081-AF91-69B7A911D481 em getmailspring.com/0?redirect=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Femmeans%2Femmeans.pdf&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>
+> https://cran.r-project.org/web/packages/emmeans/vignettes/comparisons.html
+> <https://link.getmailspring.com/link/03225344-E64E-4081-AF91-69B7A911D481 em getmailspring.com/1?redirect=https%3A%2F%2Fcran.r-project.org%2Fweb%2Fpackages%2Femmeans%2Fvignettes%2Fcomparisons.html&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>
+>
+>
+> On Jan 28 2021, at 1:50 pm, Igor Eloi por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+> Olá Alessandro,
+>
+> você pode usar o pacote PMCMRplus também.
+>
+>
+> https://cran.r-project.org/web/packages/PMCMRplus/vignettes/QuickReferenceGuide.html
+>
+> Com estima,
+>
+> Igor
+>
+> 28.01.2021, 11:34, "Alessandro Dal Col Lúcio por (R-br)" <
+> r-br em listas.c3sl.ufpr.br>:
+>
+> Bom dia a todos.
+>
+> Estou tentando fazer um teste de Dunnett pelo R e não consegui fazer pelo
+> multcomp.
+>
+> Há algum outro pacote ou função?
+>
+> Desde já agradeço.
+> Alessandro
+>
+>
+> --
+> ,
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> <https://link.getmailspring.com/link/03225344-E64E-4081-AF91-69B7A911D481 em getmailspring.com/2?redirect=mailto%3AR-br%40listas.c3sl.ufpr.br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> <https://link.getmailspring.com/link/03225344-E64E-4081-AF91-69B7A911D481 em getmailspring.com/3?redirect=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia
+> <https://link.getmailspring.com/link/03225344-E64E-4081-AF91-69B7A911D481 em getmailspring.com/4?redirect=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>)
+> e forneça código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210128/72b1774b/attachment.html>
+

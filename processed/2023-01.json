@@ -1,0 +1,190 @@
+{
+  "list": "r-br",
+  "description": "",
+  "month": "2023-01",
+  "messages": [
+    {
+      "id": "msg-20656cab2fef",
+      "message_id": "<CAH-ZE+D4ELQ+baWaLidYRHXCwNcJ+maJ+Cba8oFOezW=2JxPOA@mail.gmail.com>",
+      "from_name": "Chiara Lubich",
+      "from_email_hash": "e75d808439add9cba571ef0d0195282ef5bd8d89dc59e861544b4d44c1b47829",
+      "date": "2023-01-17T18:32:55Z",
+      "subject": "[R-br] Cluster - agrupar grupos de pessoas",
+      "subject_clean": "[R-br] Cluster - agrupar grupos de pessoas",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Boa tarde, pessoal\n\nEstou com dificuldade para entender como fazer para juntar os dados e\nformar grupos na análise e mostrar graficamente isso.\n\nEstou usando o seguinte banco de dados: encr.pw/Gs0ZK\n\nEstou usando o seguinte comando:\ndac<-read.table(\"clipboard\",sep=\"\\t\", header=T, dec=\".\", row.names=1)\ndac\nattach(dac)\n# Ward Hierarchical Clustering\nd<-vegdist(dac[,-1],distance=\"jaccard\")# distance matrix\nfit <- hclust(d, method=\"ward.D2\")\nplot(fit) # display dendogram\ngroups <- cutree(fit, k=5) # cut tree into 5 clusters\n# draw dendogram with red borders around the 5 clusters\nrect.hclust(fit, k=5, border=\"red\")\n\nque gera esse gráfico:\n[image: image.png]\nNo entanto, queria que formasse de acordo como nome dos grupos, semelhante\na esse gráfico, mas em função dos meus dois atores avaliados (pescador e\ncomunidade).\n[image: image.png]\nSó que no meu caso, ao invés de ser as cidades, são os grupos de pessoas.\n\nAos que puderem ajudar eu agradeço\n\nMuito obrigada\n\nAbraços,\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230117/2dce2fd2/attachment.htm>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: image.png\nTipo: image/png\nTamanho: 29119 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230117/2dce2fd2/attachment.png>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: image.png\nTipo: image/png\nTamanho: 20632 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230117/2dce2fd2/attachment-0001.png>",
+      "body_snippet": "Boa tarde, pessoal\n\nEstou com dificuldade para entender como fazer para juntar os dados e\nformar grupos na análise e mostrar graficamente isso.\n\nEstou usando o seguinte banco de dados: encr.pw/Gs0ZK\n\n",
+      "thread_id": "thread-20656cab2fef",
+      "thread_depth": 0,
+      "month": "2023-01"
+    },
+    {
+      "id": "msg-d04ed454e5d8",
+      "message_id": "<CA+RL3DMWHxFN=6FTH80Zz91Oxb8vejQWSL2OFWi9SL+Xg7F6zw@mail.gmail.com>",
+      "from_name": "Daniel Guimarães Tiezzi",
+      "from_email_hash": "96abb78a12030b8e1c79971799a2bcbc501b139ad57e24b6972db5c4575829d9",
+      "date": "2023-01-17T18:44:57Z",
+      "subject": "[R-br] Cluster - agrupar grupos de pessoas",
+      "subject_clean": "[R-br] Cluster - agrupar grupos de pessoas",
+      "in_reply_to": "<CAH-ZE+D4ELQ+baWaLidYRHXCwNcJ+maJ+Cba8oFOezW=2JxPOA@mail.gmail.com>",
+      "references": [
+        "<CAH-ZE+D4ELQ+baWaLidYRHXCwNcJ+maJ+Cba8oFOezW=2JxPOA@mail.gmail.com>"
+      ],
+      "body_plain": "Fazer a transposição da matrix\n\ndaniel\n\n\n\nOn Tue, Jan 17, 2023, 3:33 PM Chiara Lubich por (R-br) <\nr-br em listas.c3sl.ufpr.br> wrote:\n\n> Boa tarde, pessoal\n>\n> Estou com dificuldade para entender como fazer para juntar os dados e\n> formar grupos na análise e mostrar graficamente isso.\n>\n> Estou usando o seguinte banco de dados: encr.pw/Gs0ZK\n>\n> Estou usando o seguinte comando:\n> dac<-read.table(\"clipboard\",sep=\"\\t\", header=T, dec=\".\", row.names=1)\n> dac\n> attach(dac)\n> # Ward Hierarchical Clustering\n> d<-vegdist(dac[,-1],distance=\"jaccard\")# distance matrix\n> fit <- hclust(d, method=\"ward.D2\")\n> plot(fit) # display dendogram\n> groups <- cutree(fit, k=5) # cut tree into 5 clusters\n> # draw dendogram with red borders around the 5 clusters\n> rect.hclust(fit, k=5, border=\"red\")\n>\n> que gera esse gráfico:\n> [image: image.png]\n> No entanto, queria que formasse de acordo como nome dos grupos, semelhante\n> a esse gráfico, mas em função dos meus dois atores avaliados (pescador e\n> comunidade).\n> [image: image.png]\n> Só que no meu caso, ao invés de ser as cidades, são os grupos de pessoas.\n>\n> Aos que puderem ajudar eu agradeço\n>\n> Muito obrigada\n>\n> Abraços,\n>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230117/8b389582/attachment.htm>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: image.png\nTipo: image/png\nTamanho: 29119 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230117/8b389582/attachment.png>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: image.png\nTipo: image/png\nTamanho: 20632 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230117/8b389582/attachment-0001.png>",
+      "body_snippet": "Fazer a transposição da matrix\n\ndaniel\n\n\n\nOn Tue, Jan 17, 2023, 3:33 PM Chiara Lubich por (R-br) <\nr-br em listas.c3sl.ufpr.br> wrote:\n\n> Boa tarde, pessoal\n>\n> Estou com dificuldade para entender com",
+      "thread_id": "thread-20656cab2fef",
+      "thread_depth": 1,
+      "month": "2023-01"
+    },
+    {
+      "id": "msg-92bd8d6bd6d2",
+      "message_id": "<CAH-ZE+Azo9RpfTgMGxaKN1c68b+fw4LdSXacMEMwyZhC4At71g@mail.gmail.com>",
+      "from_name": "Chiara Lubich",
+      "from_email_hash": "e75d808439add9cba571ef0d0195282ef5bd8d89dc59e861544b4d44c1b47829",
+      "date": "2023-01-20T13:49:31Z",
+      "subject": "[R-br] Cluster - agrupar grupos de pessoas",
+      "subject_clean": "[R-br] Cluster - agrupar grupos de pessoas",
+      "in_reply_to": "<CA+RL3DMWHxFN=6FTH80Zz91Oxb8vejQWSL2OFWi9SL+Xg7F6zw@mail.gmail.com>",
+      "references": [
+        "<CAH-ZE+D4ELQ+baWaLidYRHXCwNcJ+maJ+Cba8oFOezW=2JxPOA@mail.gmail.com>",
+        "<CA+RL3DMWHxFN=6FTH80Zz91Oxb8vejQWSL2OFWi9SL+Xg7F6zw@mail.gmail.com>"
+      ],
+      "body_plain": "Oi, Daniel, obrigada pelo retorno\n\nEu fiz a transposição, no entanto a organização fica em função dos objetos\n(importância, recurso, etc). Ver imagem aqui-->acesse.one/dqXgX\nEu queria que ficasse em função de quem respondeu, ou seja, os atores que\nestou avaliando (pescador e comunidade). Pois quero ver se esses atores têm\na mesma opinião sobre o ambiente, visto que um é visitante e outro é\nresidente do local.\n\nComo você pode ver na tabela tenho 200 linhas de respostas (Pescador ->\nN=100 e Comunidade -> N=100). Minha tabela é essa -->encr.pw/Gs0ZK\n\nMas queria algo assim, mas ao invés de organizar por cidade (Barcelos,\nAusentes etc) como na imagem, quero organizar por ator (pescador e\ncomunidade) -->l1nk.dev/xHbST\n\nEspero ter explicado melhor!\n\nMuito obrigada e aguardo o retorno\n\nEm ter., 17 de jan. de 2023 às 14:45, Daniel Guimarães Tiezzi <\ndtiezzi em usp.br> escreveu:\n\n> Fazer a transposição da matrix\n>\n> daniel\n>\n>\n>\n> On Tue, Jan 17, 2023, 3:33 PM Chiara Lubich por (R-br) <\n> r-br em listas.c3sl.ufpr.br> wrote:\n>\n>> Boa tarde, pessoal\n>>\n>> Estou com dificuldade para entender como fazer para juntar os dados e\n>> formar grupos na análise e mostrar graficamente isso.\n>>\n>> Estou usando o seguinte banco de dados: encr.pw/Gs0ZK\n>>\n>> Estou usando o seguinte comando:\n>> dac<-read.table(\"clipboard\",sep=\"\\t\", header=T, dec=\".\", row.names=1)\n>> dac\n>> attach(dac)\n>> # Ward Hierarchical Clustering\n>> d<-vegdist(dac[,-1],distance=\"jaccard\")# distance matrix\n>> fit <- hclust(d, method=\"ward.D2\")\n>> plot(fit) # display dendogram\n>> groups <- cutree(fit, k=5) # cut tree into 5 clusters\n>> # draw dendogram with red borders around the 5 clusters\n>> rect.hclust(fit, k=5, border=\"red\")\n>>\n>> que gera esse gráfico:\n>> [image: image.png]\n>> No entanto, queria que formasse de acordo como nome dos grupos,\n>> semelhante a esse gráfico, mas em função dos meus dois atores avaliados\n>> (pescador e comunidade).\n>> [image: image.png]\n>> Só que no meu caso, ao invés de ser as cidades, são os grupos de pessoas.\n>>\n>> Aos que puderem ajudar eu agradeço\n>>\n>> Muito obrigada\n>>\n>> Abraços,\n>>\n>> _______________________________________________\n>> R-br mailing list\n>> R-br em listas.c3sl.ufpr.br\n>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>> código mínimo reproduzível.\n>>\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230120/4119e37e/attachment.htm>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: image.png\nTipo: image/png\nTamanho: 29119 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230120/4119e37e/attachment.png>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: image.png\nTipo: image/png\nTamanho: 20632 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230120/4119e37e/attachment-0001.png>",
+      "body_snippet": "Oi, Daniel, obrigada pelo retorno\n\nEu fiz a transposição, no entanto a organização fica em função dos objetos\n(importância, recurso, etc). Ver imagem aqui-->acesse.one/dqXgX\nEu queria que ficasse em f",
+      "thread_id": "thread-20656cab2fef",
+      "thread_depth": 2,
+      "month": "2023-01"
+    },
+    {
+      "id": "msg-17f29bbe26b0",
+      "message_id": "<B69B97D9-41AA-4EEA-9D1C-D06B3837FD21@usp.br>",
+      "from_name": "Daniel Guimarães Tiezzi",
+      "from_email_hash": "96abb78a12030b8e1c79971799a2bcbc501b139ad57e24b6972db5c4575829d9",
+      "date": "2023-01-20T17:34:39Z",
+      "subject": "[R-br] Cluster - agrupar grupos de pessoas",
+      "subject_clean": "[R-br] Cluster - agrupar grupos de pessoas",
+      "in_reply_to": "<CAH-ZE+Azo9RpfTgMGxaKN1c68b+fw4LdSXacMEMwyZhC4At71g@mail.gmail.com>",
+      "references": [
+        "<CAH-ZE+D4ELQ+baWaLidYRHXCwNcJ+maJ+Cba8oFOezW=2JxPOA@mail.gmail.com>",
+        "<CA+RL3DMWHxFN=6FTH80Zz91Oxb8vejQWSL2OFWi9SL+Xg7F6zw@mail.gmail.com>",
+        "<CAH-ZE+Azo9RpfTgMGxaKN1c68b+fw4LdSXacMEMwyZhC4At71g@mail.gmail.com>"
+      ],
+      "body_plain": "Boa tarde Chiara\n\nDesculpe por sugerir transpor a matriz. Eu interpretei de forma equivocada a sa questão.\n\nO tipo de organização que você está querendo fazer não vai acontecer. \nO algoritmo de clusterização que está usando é não supervisionado e ele irá agrupar cada pessoa que respondeu o questionário de acordo com a distância entre eles.\n\nNo caso da cidade o exemplo agrupou por cidades pois havia uma linha para cada cidade com vários atributos. Você têm uma linha com vários atributos para cada pessoa. \nAs pessoas pertencem ao mesmo grupo. O que você pode fazer é aplicar um algoritmo supervisionado, já que você sabe de qual grupo a pessoa pertence. Ou, como são dois grupos, verificar se a clusterização separa as pessoas nos dois grupos de forma eficaz.\n\nPor exemplo:\ndf <- read.csv('~/Downloads/Questionários cluster.xlsx - Agrupamento.csv')\nhead(df)\ndim(df)\ntable(df$X)\nhead(df[,-c(1,2)])\n# Ward Hierarchical Clustering\nd <- vegan::vegdist(df[,-c(1,2)],distance=\"jaccard\")# distance matrix\nfit <- hclust(d, method=\"ward.D2\")\ngroups <- cutree(fit, k=2) \n# draw dendogram with red borders around the 5 clusters\n\nplot(fit) # display dendogram\nplot.new()\nrect.hclust(fit, k=2, border=\"red\")\n\ntable(df$X, groups)\n\n\n                    groups\n                      1  2\n  COM_LOCAL          90 10\n  PESCADOR_ESPORTIVO 63 37\n\nEm porcentagens:\n\nround(prop.table(table(df$X, groups),2)*100,1)\ngroups\n                        1    2\n  COM_LOCAL          58.8 21.3\n  PESCADOR_ESPORTIVO 41.2 78.7\n\n\nVeja que o algoritmo, de uma forma não muito eficaz, é capaz de separar os grupos baseado na resposta.\n\nAgora, qual seria o seu teste de hipótese aqui?\n\nSe você aplicar um um teste para verificar que a distribuição dos casos na tabela é uniforme ou não:\n\nchisq.test(df$X, groups)\n\n\tPearson's Chi-squared test with Yates' continuity\n\tcorrection\n\ndata:  df$X and groups\nX-squared = 18.801, df = 1, p-value = 1.451e-05\n\nVai notar que você deveria rejeitar a H0.\n\n\nMas depende muito do que você está investigando e qual é a sua hipótese.\n\nOutra questão é verificar se o método de cálculo de distância é aplicável para as suas variável e se o Ward.D é o melhor método de agrupamento. Aparentemente as suas variáveis são categóricas. \n\nEspero ter ajudado.\n\nDaniel\n\n\n----------------------------------------------------------------\nDaniel Tiezzi, MD, PhD\nOncologia / Mastologia\nProfessor Associado - Livre Docente\nDepartamento de Ginecologia e Obstetrícia\nSetor de Mastologia e Oncologia Ginecológica\nFaculdade de Medicina de Ribeirão Preto - USP\nTel.: 16 3602-2488\nhttps://github.com/dtiezzi\nhttp://danieltiezzi.pro.br\ne-mail: dtiezzi em usp.br\n\n> On 20 Jan 2023, at 10:49, Chiara Lubich <lubichchiara em gmail.com> wrote:\n> \n> Oi, Daniel, obrigada pelo retorno\n> \n> Eu fiz a transposição, no entanto a organização fica em função dos objetos (importância, recurso, etc). Ver imagem aqui-->acesse.one/dqXgX\n> Eu queria que ficasse em função de quem respondeu, ou seja, os atores que estou avaliando (pescador e comunidade). Pois quero ver se esses atores têm a mesma opinião sobre o ambiente, visto que um é visitante e outro é residente do local.\n>  \n> Como você pode ver na tabela tenho 200 linhas de respostas (Pescador -> N=100 e Comunidade -> N=100). Minha tabela é essa -->encr.pw/Gs0ZK <http://encr.pw/Gs0ZK>\n> \n> Mas queria algo assim, mas ao invés de organizar por cidade (Barcelos, Ausentes etc) como na imagem, quero organizar por ator (pescador e comunidade) -->l1nk.dev/xHbST <http://l1nk.dev/xHbST>\n> \n> Espero ter explicado melhor!\n> \n> Muito obrigada e aguardo o retorno\n> \n> Em ter., 17 de jan. de 2023 às 14:45, Daniel Guimarães Tiezzi <dtiezzi em usp.br <mailto:dtiezzi em usp.br>> escreveu:\n> Fazer a transposição da matrix\n> \n> daniel\n> \n> \n> \n> On Tue, Jan 17, 2023, 3:33 PM Chiara Lubich por (R-br) <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:\n> Boa tarde, pessoal\n> \n> Estou com dificuldade para entender como fazer para juntar os dados e formar grupos na análise e mostrar graficamente isso.\n> \n> Estou usando o seguinte banco de dados: encr.pw/Gs0ZK <http://encr.pw/Gs0ZK>\n> \n> Estou usando o seguinte comando:\n> dac<-read.table(\"clipboard\",sep=\"\\t\", header=T, dec=\".\", row.names=1)\n> dac\n> attach(dac)\n> # Ward Hierarchical Clustering\n> d<-vegdist(dac[,-1],distance=\"jaccard\")# distance matrix\n> fit <- hclust(d, method=\"ward.D2\")\n> plot(fit) # display dendogram\n> groups <- cutree(fit, k=5) # cut tree into 5 clusters\n> # draw dendogram with red borders around the 5 clusters\n> rect.hclust(fit, k=5, border=\"red\")\n> \n> que gera esse gráfico:\n> <image.png>\n> No entanto, queria que formasse de acordo como nome dos grupos, semelhante a esse gráfico, mas em função dos meus dois atores avaliados (pescador e comunidade).\n> <image.png>\n> Só que no meu caso, ao invés de ser as cidades, são os grupos de pessoas.\n> \n> Aos que puderem ajudar eu agradeço\n> \n> Muito obrigada\n> \n> Abraços,\n> \n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo reproduzível.\n\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230120/f088fa00/attachment.htm>",
+      "body_snippet": "Boa tarde Chiara\n\nDesculpe por sugerir transpor a matriz. Eu interpretei de forma equivocada a sa questão.\n\nO tipo de organização que você está querendo fazer não vai acontecer. \nO algoritmo de cluste",
+      "thread_id": "thread-20656cab2fef",
+      "thread_depth": 3,
+      "month": "2023-01"
+    },
+    {
+      "id": "msg-efc40494d035",
+      "message_id": "<CAH-ZE+DaSx0xwenWz7BvYZ8j_stt0o5Fn5Vw0aWHS95JHm50Gg@mail.gmail.com>",
+      "from_name": "Chiara Lubich",
+      "from_email_hash": "e75d808439add9cba571ef0d0195282ef5bd8d89dc59e861544b4d44c1b47829",
+      "date": "2023-01-20T18:26:58Z",
+      "subject": "[R-br] Cluster - agrupar grupos de pessoas",
+      "subject_clean": "[R-br] Cluster - agrupar grupos de pessoas",
+      "in_reply_to": "<B69B97D9-41AA-4EEA-9D1C-D06B3837FD21@usp.br>",
+      "references": [
+        "<CAH-ZE+D4ELQ+baWaLidYRHXCwNcJ+maJ+Cba8oFOezW=2JxPOA@mail.gmail.com>",
+        "<CA+RL3DMWHxFN=6FTH80Zz91Oxb8vejQWSL2OFWi9SL+Xg7F6zw@mail.gmail.com>",
+        "<CAH-ZE+Azo9RpfTgMGxaKN1c68b+fw4LdSXacMEMwyZhC4At71g@mail.gmail.com>",
+        "<B69B97D9-41AA-4EEA-9D1C-D06B3837FD21@usp.br>"
+      ],
+      "body_plain": "Oi, Daniel\n\nMuito obrigada pela ajuda e seu tempo. Ajudou a esclarecer bastante coisa!\n\nIrei verificar outros métodos de agrupamento como você sugeriu.\n\nAbraçi\n\nEm sex., 20 de jan. de 2023 às 13:34, Daniel Guimarães Tiezzi <\ndtiezzi em usp.br> escreveu:\n\n> Boa tarde Chiara\n>\n> Desculpe por sugerir transpor a matriz. Eu interpretei de forma equivocada\n> a sa questão.\n>\n> O tipo de organização que você está querendo fazer não vai acontecer.\n> O algoritmo de clusterização que está usando é não supervisionado e ele\n> irá agrupar cada pessoa que respondeu o questionário de acordo com a\n> distância entre eles.\n>\n> No caso da cidade o exemplo agrupou por cidades pois havia uma linha para\n> cada cidade com vários atributos. Você têm uma linha com vários atributos\n> para cada pessoa.\n> As pessoas pertencem ao mesmo grupo. O que você pode fazer é aplicar um\n> algoritmo supervisionado, já que você sabe de qual grupo a pessoa pertence.\n> Ou, como são dois grupos, verificar se a clusterização separa as pessoas\n> nos dois grupos de forma eficaz.\n>\n> Por exemplo:\n> df <- read.csv('~/Downloads/Questionários cluster.xlsx - Agrupamento.csv')\n> head(df)\n> dim(df)\n> table(df$X)\n> head(df[,-c(1,2)])\n> # Ward Hierarchical Clustering\n> d <- vegan::vegdist(df[,-c(1,2)],distance=\"jaccard\")# distance matrix\n> fit <- hclust(d, method=\"ward.D2\")\n> groups <- cutree(fit, k=2)\n> # draw dendogram with red borders around the 5 clusters\n>\n> plot(fit) # display dendogram\n> plot.new()\n> rect.hclust(fit, k=2, border=\"red\")\n>\n> table(df$X, groups)\n>\n>\n>                     groups\n>                       1  2\n>   COM_LOCAL          90 10\n>   PESCADOR_ESPORTIVO 63 37\n>\n> Em porcentagens:\n>\n> round(prop.table(table(df$X, groups),2)*100,1)\n> groups\n>                         1    2\n>   COM_LOCAL          58.8 21.3\n>   PESCADOR_ESPORTIVO 41.2 78.7\n>\n>\n> Veja que o algoritmo, de uma forma não muito eficaz, é capaz de separar os\n> grupos baseado na resposta.\n>\n> Agora, qual seria o seu teste de hipótese aqui?\n>\n> Se você aplicar um um teste para verificar que a distribuição dos casos na\n> tabela é uniforme ou não:\n>\n> chisq.test(df$X, groups)\n>\n> Pearson's Chi-squared test with Yates' continuity\n> correction\n>\n> data:  df$X and groups\n> X-squared = 18.801, df = 1, p-value = 1.451e-05\n>\n> Vai notar que você deveria rejeitar a H0.\n>\n>\n> Mas depende muito do que você está investigando e qual é a sua hipótese.\n>\n> Outra questão é verificar se o método de cálculo de distância é aplicável\n> para as suas variável e se o Ward.D é o melhor método de agrupamento.\n> Aparentemente as suas variáveis são categóricas.\n>\n> Espero ter ajudado.\n>\n> Daniel\n>\n>\n> ----------------------------------------------------------------\n> Daniel Tiezzi, MD, PhD\n> Oncologia / Mastologia\n> Professor Associado - Livre Docente\n> Departamento de Ginecologia e Obstetrícia\n> Setor de Mastologia e Oncologia Ginecológica\n> Faculdade de Medicina de Ribeirão Preto - USP\n> Tel.: 16 3602-2488\n> https://github.com/dtiezzi\n> http://danieltiezzi.pro.br\n> e-mail: dtiezzi em usp.br\n>\n> On 20 Jan 2023, at 10:49, Chiara Lubich <lubichchiara em gmail.com> wrote:\n>\n> Oi, Daniel, obrigada pelo retorno\n>\n> Eu fiz a transposição, no entanto a organização fica em função dos objetos\n> (importância, recurso, etc). Ver imagem aqui-->acesse.one/dqXgX\n> Eu queria que ficasse em função de quem respondeu, ou seja, os atores que\n> estou avaliando (pescador e comunidade). Pois quero ver se esses atores têm\n> a mesma opinião sobre o ambiente, visto que um é visitante e outro é\n> residente do local.\n>\n> Como você pode ver na tabela tenho 200 linhas de respostas (Pescador ->\n> N=100 e Comunidade -> N=100). Minha tabela é essa -->encr.pw/Gs0ZK\n>\n> Mas queria algo assim, mas ao invés de organizar por cidade (Barcelos,\n> Ausentes etc) como na imagem, quero organizar por ator (pescador e\n> comunidade) -->l1nk.dev/xHbST\n>\n> Espero ter explicado melhor!\n>\n> Muito obrigada e aguardo o retorno\n>\n> Em ter., 17 de jan. de 2023 às 14:45, Daniel Guimarães Tiezzi <\n> dtiezzi em usp.br> escreveu:\n>\n>> Fazer a transposição da matrix\n>>\n>> daniel\n>>\n>>\n>>\n>> On Tue, Jan 17, 2023, 3:33 PM Chiara Lubich por (R-br) <\n>> r-br em listas.c3sl.ufpr.br> wrote:\n>>\n>>> Boa tarde, pessoal\n>>>\n>>> Estou com dificuldade para entender como fazer para juntar os dados e\n>>> formar grupos na análise e mostrar graficamente isso.\n>>>\n>>> Estou usando o seguinte banco de dados: encr.pw/Gs0ZK\n>>>\n>>> Estou usando o seguinte comando:\n>>> dac<-read.table(\"clipboard\",sep=\"\\t\", header=T, dec=\".\", row.names=1)\n>>> dac\n>>> attach(dac)\n>>> # Ward Hierarchical Clustering\n>>> d<-vegdist(dac[,-1],distance=\"jaccard\")# distance matrix\n>>> fit <- hclust(d, method=\"ward.D2\")\n>>> plot(fit) # display dendogram\n>>> groups <- cutree(fit, k=5) # cut tree into 5 clusters\n>>> # draw dendogram with red borders around the 5 clusters\n>>> rect.hclust(fit, k=5, border=\"red\")\n>>>\n>>> que gera esse gráfico:\n>>> <image.png>\n>>> No entanto, queria que formasse de acordo como nome dos grupos,\n>>> semelhante a esse gráfico, mas em função dos meus dois atores avaliados\n>>> (pescador e comunidade).\n>>> <image.png>\n>>> Só que no meu caso, ao invés de ser as cidades, são os grupos de pessoas.\n>>>\n>>> Aos que puderem ajudar eu agradeço\n>>>\n>>> Muito obrigada\n>>>\n>>> Abraços,\n>>>\n>>> _______________________________________________\n>>> R-br mailing list\n>>> R-br em listas.c3sl.ufpr.br\n>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>>> código mínimo reproduzível.\n>>>\n>>\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230120/14381727/attachment.htm>",
+      "body_snippet": "Oi, Daniel\n\nMuito obrigada pela ajuda e seu tempo. Ajudou a esclarecer bastante coisa!\n\nIrei verificar outros métodos de agrupamento como você sugeriu.\n\nAbraçi\n\nEm sex., 20 de jan. de 2023 às 13:34, D",
+      "thread_id": "thread-20656cab2fef",
+      "thread_depth": 4,
+      "month": "2023-01"
+    },
+    {
+      "id": "msg-45032d179424",
+      "message_id": "<CAKrF98mtB3+GHUxN+rE98HvuHyzzOKNPL+TuwnBYq9KT=ari_w@mail.gmail.com>",
+      "from_name": "Cesar Rabak",
+      "from_email_hash": "a6a76a30e7f42e9ffe22c166faa4b923f4a1dd242efac82d3ffc9e877bf9c16c",
+      "date": "2023-01-20T20:57:25Z",
+      "subject": "[R-br] Cluster - agrupar grupos de pessoas",
+      "subject_clean": "[R-br] Cluster - agrupar grupos de pessoas",
+      "in_reply_to": "<CAH-ZE+Azo9RpfTgMGxaKN1c68b+fw4LdSXacMEMwyZhC4At71g@mail.gmail.com>",
+      "references": [
+        "<CAH-ZE+D4ELQ+baWaLidYRHXCwNcJ+maJ+Cba8oFOezW=2JxPOA@mail.gmail.com>",
+        "<CA+RL3DMWHxFN=6FTH80Zz91Oxb8vejQWSL2OFWi9SL+Xg7F6zw@mail.gmail.com>",
+        "<CAH-ZE+Azo9RpfTgMGxaKN1c68b+fw4LdSXacMEMwyZhC4At71g@mail.gmail.com>"
+      ],
+      "body_plain": "Estou confuso:\n\nSe a ideia é obter a distância de Jaccard entre dois grupos vc não precisa\ndo dendrograma, mas sim o valor dessa distância, não é?\n\nAlgo na linha (ñ testado *caveat emptor*):\njccard(dac[1:100,-1], dac[101:200,-1)\n\nHTH\n--\nCesar Rabak\n\n\nOn Fri, Jan 20, 2023 at 10:50 AM Chiara Lubich por (R-br) <\nr-br em listas.c3sl.ufpr.br> wrote:\n\n> Oi, Daniel, obrigada pelo retorno\n>\n> Eu fiz a transposição, no entanto a organização fica em função dos objetos\n> (importância, recurso, etc). Ver imagem aqui-->acesse.one/dqXgX\n> Eu queria que ficasse em função de quem respondeu, ou seja, os atores que\n> estou avaliando (pescador e comunidade). Pois quero ver se esses atores têm\n> a mesma opinião sobre o ambiente, visto que um é visitante e outro é\n> residente do local.\n>\n> Como você pode ver na tabela tenho 200 linhas de respostas (Pescador ->\n> N=100 e Comunidade -> N=100). Minha tabela é essa -->encr.pw/Gs0ZK\n>\n> Mas queria algo assim, mas ao invés de organizar por cidade (Barcelos,\n> Ausentes etc) como na imagem, quero organizar por ator (pescador e\n> comunidade) -->l1nk.dev/xHbST\n>\n> Espero ter explicado melhor!\n>\n> Muito obrigada e aguardo o retorno\n>\n> Em ter., 17 de jan. de 2023 às 14:45, Daniel Guimarães Tiezzi <\n> dtiezzi em usp.br> escreveu:\n>\n>> Fazer a transposição da matrix\n>>\n>> daniel\n>>\n>>\n>>\n>> On Tue, Jan 17, 2023, 3:33 PM Chiara Lubich por (R-br) <\n>> r-br em listas.c3sl.ufpr.br> wrote:\n>>\n>>> Boa tarde, pessoal\n>>>\n>>> Estou com dificuldade para entender como fazer para juntar os dados e\n>>> formar grupos na análise e mostrar graficamente isso.\n>>>\n>>> Estou usando o seguinte banco de dados: encr.pw/Gs0ZK\n>>>\n>>> Estou usando o seguinte comando:\n>>> dac<-read.table(\"clipboard\",sep=\"\\t\", header=T, dec=\".\", row.names=1)\n>>> dac\n>>> attach(dac)\n>>> # Ward Hierarchical Clustering\n>>> d<-vegdist(dac[,-1],distance=\"jaccard\")# distance matrix\n>>> fit <- hclust(d, method=\"ward.D2\")\n>>> plot(fit) # display dendogram\n>>> groups <- cutree(fit, k=5) # cut tree into 5 clusters\n>>> # draw dendogram with red borders around the 5 clusters\n>>> rect.hclust(fit, k=5, border=\"red\")\n>>>\n>>> que gera esse gráfico:\n>>> [image: image.png]\n>>> No entanto, queria que formasse de acordo como nome dos grupos,\n>>> semelhante a esse gráfico, mas em função dos meus dois atores avaliados\n>>> (pescador e comunidade).\n>>> [image: image.png]\n>>> Só que no meu caso, ao invés de ser as cidades, são os grupos de pessoas.\n>>>\n>>> Aos que puderem ajudar eu agradeço\n>>>\n>>> Muito obrigada\n>>>\n>>> Abraços,\n>>>\n>>> _______________________________________________\n>>> R-br mailing list\n>>> R-br em listas.c3sl.ufpr.br\n>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>>> código mínimo reproduzível.\n>>>\n>> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230120/045306c7/attachment.htm>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: image.png\nTipo: image/png\nTamanho: 29119 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230120/045306c7/attachment.png>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: image.png\nTipo: image/png\nTamanho: 20632 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230120/045306c7/attachment-0001.png>",
+      "body_snippet": "Estou confuso:\n\nSe a ideia é obter a distância de Jaccard entre dois grupos vc não precisa\ndo dendrograma, mas sim o valor dessa distância, não é?\n\nAlgo na linha (ñ testado *caveat emptor*):\njccard(da",
+      "thread_id": "thread-20656cab2fef",
+      "thread_depth": 3,
+      "month": "2023-01"
+    },
+    {
+      "id": "msg-758c693863a5",
+      "message_id": "<CAFfGvyLNyos8hk7HUcT6ZsZT4BkuR92F4qs+=ida+eE7AkRzNg@mail.gmail.com>",
+      "from_name": "Pedro Emmanuel Alvarenga Americano do Brasil",
+      "from_email_hash": "8e2efeaf7fd699e0c233894cbc5197bc359976c2f9e8f1056deea185a651244a",
+      "date": "2023-01-27T18:31:55Z",
+      "subject": "[R-br] Simular sobrevivência por KM",
+      "subject_clean": "[R-br] Simular sobrevivência por KM",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Salve Amigos de R,\n\nEstou analisando dados intermediários de uma pesquisa que ainda está\nrecrutando participantes sobrevivência por Kaplan-Meier. Esses dados são\ndados incompletos de 3 anos de seguimento de um estudo com um dispositivo\nde saúde. Um dos questionamentos é se é razoável interromper o recrutamento\nagora e somente seguir os já em seguimento. Pra isso, o grupo acho\ninteressante que houvesse uma projeção do riscos e IC até 10 anos de\nseguimento.\n\nUm exemplo de tabela de resultado de interesse saída de um survival::survfit\n\nTime N at risk Events 1-Surv\n12   186       1      0.004\n24   85        1      0.010\n36   15        1      0.023\n\nOutro exemplo da saída de outro desfecho\nTime N at risk Events Cum Hazard\n12   213       3      0.014\n24   139       5      0.043\n36   11        1      0.051\n\nA pergunta é se há uma função que a partir desses resultados ou dos dados\nde onde vieram esses resultado que consigam projetar a sobrevivência e o\nHazard até 10 anos de seguimento. Olhei por ai mas não achei nada que me\najudasse. A maioria dos que achei simula comparações de curvas KM. Mas não\numa única curva e os ICs. Alguma luz?\n\nAbraço forte,\n\nPedro Brasil\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230127/fe8918e3/attachment.htm>",
+      "body_snippet": "Salve Amigos de R,\n\nEstou analisando dados intermediários de uma pesquisa que ainda está\nrecrutando participantes sobrevivência por Kaplan-Meier. Esses dados são\ndados incompletos de 3 anos de seguime",
+      "thread_id": "thread-758c693863a5",
+      "thread_depth": 0,
+      "month": "2023-01"
+    },
+    {
+      "id": "msg-32f5cb0c7203",
+      "message_id": "<7cf7e1d3-c85f-7037-f905-14552891b0ec@gmail.com>",
+      "from_name": "Ana Rita Saraiva",
+      "from_email_hash": "292439ba87eeb63aec006db16480d73e72f45ecfd6bd442880b6b21a18def2e7",
+      "date": "2023-01-27T19:42:24Z",
+      "subject": "[R-br] (sem assunto)",
+      "subject_clean": "[R-br] (sem assunto)",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Um anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230127/1a352399/attachment.htm>",
+      "body_snippet": "Um anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230127/1a352399/attachment.htm>",
+      "thread_id": "thread-32f5cb0c7203",
+      "thread_depth": 0,
+      "month": "2023-01"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-20656cab2fef",
+      "subject": "[R-br] Cluster - agrupar grupos de pessoas",
+      "message_count": 6,
+      "participants": [
+        "Cesar Rabak",
+        "Chiara Lubich",
+        "Daniel Guimarães Tiezzi"
+      ],
+      "started": "2023-01-17T18:32:55Z",
+      "last_reply": "2023-01-20T20:57:25Z",
+      "root_message_id": "msg-20656cab2fef"
+    },
+    {
+      "id": "thread-758c693863a5",
+      "subject": "[R-br] Simular sobrevivência por KM",
+      "message_count": 1,
+      "participants": [
+        "Pedro Emmanuel Alvarenga Americano do Brasil"
+      ],
+      "started": "2023-01-27T18:31:55Z",
+      "last_reply": "2023-01-27T18:31:55Z",
+      "root_message_id": "msg-758c693863a5"
+    },
+    {
+      "id": "thread-32f5cb0c7203",
+      "subject": "[R-br] (sem assunto)",
+      "message_count": 1,
+      "participants": [
+        "Ana Rita Saraiva"
+      ],
+      "started": "2023-01-27T19:42:24Z",
+      "last_reply": "2023-01-27T19:42:24Z",
+      "root_message_id": "msg-32f5cb0c7203"
+    }
+  ]
+}

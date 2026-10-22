@@ -1,0 +1,112 @@
+{
+  "list": "r-br",
+  "description": "",
+  "month": "2023-08",
+  "messages": [
+    {
+      "id": "msg-aa72c7a599dd",
+      "message_id": "<CAH8E6UtWk=43wZjDXmBjkEbbJYF_zZo4zBPZwWQVPscqDoKy5w@mail.gmail.com>",
+      "from_name": "Elias Carvalho",
+      "from_email_hash": "94c4d4ee5a2872549a27ba774786d6a377d6716e74d89bc81b42c01c2add89b9",
+      "date": "2023-08-25T13:00:19Z",
+      "subject": "[R-br] Leitura de valores no csv",
+      "subject_clean": "[R-br] Leitura de valores no csv",
+      "in_reply_to": null,
+      "references": [],
+      "body_plain": "Bom dia amigos\nTenho um arquivo .csv com uma variável chamada patrimônio que possui\nvalores acima de 100.000 reais, assim:\nPatrimonio\n100.000,00\n110.000,00\n120.000,00\n120.000,00\n120.000,00\n\nLeio no RStudio com o comando: read.csv(\"dados.csv\", sep = ',', dec = \",\",\nheader = TRUE), porém a variável vem sem casas decimais\n\n[image: Captura de tela de 2023-08-25 09-58-01.png]\nTentei converter com:\n\ndata.to.work$Patrimonio <- as.double(data.to.work$Patrimonio)\n\n\nPorém só mudou para num e sem casas decimais.\n\nOnde estou errando?\n\n-- \n\n\n*In Jesu et Maria*\n\n*Obrigado / Thank you*\n*Prof. Dr. Elias Carvalho*\n\n*\"Felix, qui potuit rerum cognoscere causas\" (Virgil 29 BC)\"Blessed is he\nwho has been able to understand the cause of things\"*\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230825/f4ca34d8/attachment.htm>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: Captura de tela de 2023-08-25 09-58-01.png\nTipo: image/png\nTamanho: 2944 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230825/f4ca34d8/attachment.png>",
+      "body_snippet": "Bom dia amigos\nTenho um arquivo .csv com uma variável chamada patrimônio que possui\nvalores acima de 100.000 reais, assim:\nPatrimonio\n100.000,00\n110.000,00\n120.000,00\n120.000,00\n120.000,00\n\nLeio no RS",
+      "thread_id": "thread-aa72c7a599dd",
+      "thread_depth": 0,
+      "month": "2023-08"
+    },
+    {
+      "id": "msg-1177108257e6",
+      "message_id": "<CAFrWFs=m=itEEjk8UaBOHBH1PVUT0bXFD4PWaVC4gca1EQ5zDA@mail.gmail.com>",
+      "from_name": "Fernando Souza",
+      "from_email_hash": "20a4f3b0067eec3c8b02e85b26d30ed5599dccca8b20dde74d129e4024bdb63f",
+      "date": "2023-08-25T13:12:52Z",
+      "subject": "[R-br] Leitura de valores no csv",
+      "subject_clean": "[R-br] Leitura de valores no csv",
+      "in_reply_to": "<CAH8E6UtWk=43wZjDXmBjkEbbJYF_zZo4zBPZwWQVPscqDoKy5w@mail.gmail.com>",
+      "references": [
+        "<CAH8E6UtWk=43wZjDXmBjkEbbJYF_zZo4zBPZwWQVPscqDoKy5w@mail.gmail.com>"
+      ],
+      "body_plain": "read.csv(\"dados.csv\", sep = '.', dec = \",\", header = TRUE)\n\nou\n\nread.csv2(\"dados.csv\")\n\n\n\nEm sex., 25 de ago. de 2023 10:01, Elias Carvalho por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Bom dia amigos\n> Tenho um arquivo .csv com uma variável chamada patrimônio que possui\n> valores acima de 100.000 reais, assim:\n> Patrimonio\n> 100.000,00\n> 110.000,00\n> 120.000,00\n> 120.000,00\n> 120.000,00\n>\n> Leio no RStudio com o comando: read.csv(\"dados.csv\", sep = ',', dec = \",\",\n> header = TRUE), porém a variável vem sem casas decimais\n>\n> [image: Captura de tela de 2023-08-25 09-58-01.png]\n> Tentei converter com:\n>\n> data.to.work$Patrimonio <- as.double(data.to.work$Patrimonio)\n>\n>\n> Porém só mudou para num e sem casas decimais.\n>\n> Onde estou errando?\n>\n> --\n>\n>\n> *In Jesu et Maria*\n>\n> *Obrigado / Thank you*\n> *Prof. Dr. Elias Carvalho*\n>\n> *\"Felix, qui potuit rerum cognoscere causas\" (Virgil 29 BC)\"Blessed is he\n> who has been able to understand the cause of things\"*\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230825/ce19a54e/attachment.htm>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: Captura de tela de 2023-08-25 09-58-01.png\nTipo: image/png\nTamanho: 2944 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230825/ce19a54e/attachment.png>",
+      "body_snippet": "read.csv(\"dados.csv\", sep = '.', dec = \",\", header = TRUE)\n\nou\n\nread.csv2(\"dados.csv\")\n\n\n\nEm sex., 25 de ago. de 2023 10:01, Elias Carvalho por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Bom d",
+      "thread_id": "thread-aa72c7a599dd",
+      "thread_depth": 1,
+      "month": "2023-08"
+    },
+    {
+      "id": "msg-a655a9c2eda5",
+      "message_id": "<CAFrWFsn5jq3U9+FxukgU-zpuPsQbr1UOoOju5oW4iqsqXeYD2g@mail.gmail.com>",
+      "from_name": "Fernando Souza",
+      "from_email_hash": "20a4f3b0067eec3c8b02e85b26d30ed5599dccca8b20dde74d129e4024bdb63f",
+      "date": "2023-08-25T13:18:15Z",
+      "subject": "[R-br] Leitura de valores no csv",
+      "subject_clean": "[R-br] Leitura de valores no csv",
+      "in_reply_to": "<CAFrWFs=m=itEEjk8UaBOHBH1PVUT0bXFD4PWaVC4gca1EQ5zDA@mail.gmail.com>",
+      "references": [
+        "<CAH8E6UtWk=43wZjDXmBjkEbbJYF_zZo4zBPZwWQVPscqDoKy5w@mail.gmail.com>",
+        "<CAFrWFs=m=itEEjk8UaBOHBH1PVUT0bXFD4PWaVC4gca1EQ5zDA@mail.gmail.com>"
+      ],
+      "body_plain": "Uma correção\n\nread.csv(\"dados.csv\", sep = ';', dec = \",\", header = TRUE)\n\nread.csv2(\"dados.csv\"),\n\nConsiderando  que ser arquivo csv utilize o ponto e virgula como separador.\nAbre ele no bloco de notas ou qualquer outro editor de texto plano para ver.\n\nCade seu csv use como separador  a virgula, vc tera de mudar o decimal de\nvirgula para ponto e  remover o ponto ( separafor de milhar). Use o\nlocalizar e substituir do excel. Ai fica assim\nread.csv(\"dados.csv\", sep = ',', dec = \".\", header = TRUE),\n\n\nEm sex., 25 de ago. de 2023 10:12, Fernando Souza <nandodesouza em gmail.com>\nescreveu:\n\n> read.csv(\"dados.csv\", sep = '.', dec = \",\", header = TRUE)\n>\n> ou\n>\n> read.csv2(\"dados.csv\")\n>\n>\n>\n> Em sex., 25 de ago. de 2023 10:01, Elias Carvalho por (R-br) <\n> r-br em listas.c3sl.ufpr.br> escreveu:\n>\n>> Bom dia amigos\n>> Tenho um arquivo .csv com uma variável chamada patrimônio que possui\n>> valores acima de 100.000 reais, assim:\n>> Patrimonio\n>> 100.000,00\n>> 110.000,00\n>> 120.000,00\n>> 120.000,00\n>> 120.000,00\n>>\n>> Leio no RStudio com o comando: read.csv(\"dados.csv\", sep = ',', dec =\n>> \",\", header = TRUE), porém a variável vem sem casas decimais\n>>\n>> [image: Captura de tela de 2023-08-25 09-58-01.png]\n>> Tentei converter com:\n>>\n>> data.to.work$Patrimonio <- as.double(data.to.work$Patrimonio)\n>>\n>>\n>> Porém só mudou para num e sem casas decimais.\n>>\n>> Onde estou errando?\n>>\n>> --\n>>\n>>\n>> *In Jesu et Maria*\n>>\n>> *Obrigado / Thank you*\n>> *Prof. Dr. Elias Carvalho*\n>>\n>> *\"Felix, qui potuit rerum cognoscere causas\" (Virgil 29 BC)\"Blessed is he\n>> who has been able to understand the cause of things\"*\n>> _______________________________________________\n>> R-br mailing list\n>> R-br em listas.c3sl.ufpr.br\n>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>> código mínimo reproduzível.\n>>\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230825/bb6e7a75/attachment.htm>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: Captura de tela de 2023-08-25 09-58-01.png\nTipo: image/png\nTamanho: 2944 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230825/bb6e7a75/attachment.png>",
+      "body_snippet": "Uma correção\n\nread.csv(\"dados.csv\", sep = ';', dec = \",\", header = TRUE)\n\nread.csv2(\"dados.csv\"),\n\nConsiderando  que ser arquivo csv utilize o ponto e virgula como separador.\nAbre ele no bloco de nota",
+      "thread_id": "thread-aa72c7a599dd",
+      "thread_depth": 2,
+      "month": "2023-08"
+    },
+    {
+      "id": "msg-7d7ac3ea55a1",
+      "message_id": "<CAKrF98mzW5a=OF_58Db-mkyaeHG4E06Oxi4fXM5v-LyCvE9ciQ@mail.gmail.com>",
+      "from_name": "Cesar Rabak",
+      "from_email_hash": "a6a76a30e7f42e9ffe22c166faa4b923f4a1dd242efac82d3ffc9e877bf9c16c",
+      "date": "2023-08-25T21:51:26Z",
+      "subject": "[R-br] Leitura de valores no csv",
+      "subject_clean": "[R-br] Leitura de valores no csv",
+      "in_reply_to": "<CAH8E6UtWk=43wZjDXmBjkEbbJYF_zZo4zBPZwWQVPscqDoKy5w@mail.gmail.com>",
+      "references": [
+        "<CAH8E6UtWk=43wZjDXmBjkEbbJYF_zZo4zBPZwWQVPscqDoKy5w@mail.gmail.com>"
+      ],
+      "body_plain": "Em 25 de Agosto de  2023 à 10h01 Elias Carvalho escreveu:\n\nOnde estou errando?\n>\n\nNão há *erro* per se na importação, o que há é uma expectativa não\ncumprida: o R ao receber os valores com duas casas decimais zeradas e por\nserem valores com seis dígitos significativos não mostra as \"casas decimais\"\n\nSe vc faz questão de que o R veja esses valores como dinheiro, e mantenha\nas casas dos centavos (e evite mostrar os valores em notação científica\nquando eles forem aos milhões. . .) use a função currency() do pacote\nformattable.\n\nOn Fri, Aug 25, 2023 at 10:01?AM Elias Carvalho por (R-br) <\nr-br em listas.c3sl.ufpr.br> wrote:\n\n> Bom dia amigos\n> Tenho um arquivo .csv com uma variável chamada patrimônio que possui\n> valores acima de 100.000 reais, assim:\n> Patrimonio\n> 100.000,00\n> 110.000,00\n> 120.000,00\n> 120.000,00\n> 120.000,00\n>\n> Leio no RStudio com o comando: read.csv(\"dados.csv\", sep = ',', dec = \",\",\n> header = TRUE), porém a variável vem sem casas decimais\n>\n> [image: Captura de tela de 2023-08-25 09-58-01.png]\n> Tentei converter com:\n>\n> data.to.work$Patrimonio <- as.double(data.to.work$Patrimonio)\n>\n>\n> Porém só mudou para num e sem casas decimais.\n>\n> Onde estou errando?\n>\n> --\n>\n>\n> *In Jesu et Maria*\n>\n> *Obrigado / Thank you*\n> *Prof. Dr. Elias Carvalho*\n>\n> *\"Felix, qui potuit rerum cognoscere causas\" (Virgil 29 BC)\"Blessed is he\n> who has been able to understand the cause of things\"*\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230825/df69b866/attachment.htm>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: Captura de tela de 2023-08-25 09-58-01.png\nTipo: image/png\nTamanho: 2944 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230825/df69b866/attachment.png>",
+      "body_snippet": "Em 25 de Agosto de  2023 à 10h01 Elias Carvalho escreveu:\n\nOnde estou errando?\n>\n\nNão há *erro* per se na importação, o que há é uma expectativa não\ncumprida: o R ao receber os valores com duas casas ",
+      "thread_id": "thread-aa72c7a599dd",
+      "thread_depth": 1,
+      "month": "2023-08"
+    },
+    {
+      "id": "msg-b32bb4b966cb",
+      "message_id": "<CAH8E6UtVkEVzhWnEOQxGLsD3pABwqGb1MUvHKh0=wxrx-iNypA@mail.gmail.com>",
+      "from_name": "Elias Carvalho",
+      "from_email_hash": "94c4d4ee5a2872549a27ba774786d6a377d6716e74d89bc81b42c01c2add89b9",
+      "date": "2023-08-28T11:07:08Z",
+      "subject": "[R-br] Leitura de valores no csv",
+      "subject_clean": "[R-br] Leitura de valores no csv",
+      "in_reply_to": "<CAKrF98mzW5a=OF_58Db-mkyaeHG4E06Oxi4fXM5v-LyCvE9ciQ@mail.gmail.com>",
+      "references": [
+        "<CAH8E6UtWk=43wZjDXmBjkEbbJYF_zZo4zBPZwWQVPscqDoKy5w@mail.gmail.com>",
+        "<CAKrF98mzW5a=OF_58Db-mkyaeHG4E06Oxi4fXM5v-LyCvE9ciQ@mail.gmail.com>"
+      ],
+      "body_plain": "Perfeitamente, muito obrigado pelas respostas pessoal\n\nEm sex., 25 de ago. de 2023 às 18:51, Cesar Rabak por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Em 25 de Agosto de  2023 à 10h01 Elias Carvalho escreveu:\n>\n> Onde estou errando?\n>>\n>\n> Não há *erro* per se na importação, o que há é uma expectativa não\n> cumprida: o R ao receber os valores com duas casas decimais zeradas e por\n> serem valores com seis dígitos significativos não mostra as \"casas decimais\"\n>\n> Se vc faz questão de que o R veja esses valores como dinheiro, e mantenha\n> as casas dos centavos (e evite mostrar os valores em notação científica\n> quando eles forem aos milhões. . .) use a função currency() do pacote\n> formattable.\n>\n> On Fri, Aug 25, 2023 at 10:01?AM Elias Carvalho por (R-br) <\n> r-br em listas.c3sl.ufpr.br> wrote:\n>\n>> Bom dia amigos\n>> Tenho um arquivo .csv com uma variável chamada patrimônio que possui\n>> valores acima de 100.000 reais, assim:\n>> Patrimonio\n>> 100.000,00\n>> 110.000,00\n>> 120.000,00\n>> 120.000,00\n>> 120.000,00\n>>\n>> Leio no RStudio com o comando: read.csv(\"dados.csv\", sep = ',', dec =\n>> \",\", header = TRUE), porém a variável vem sem casas decimais\n>>\n>> [image: Captura de tela de 2023-08-25 09-58-01.png]\n>> Tentei converter com:\n>>\n>> data.to.work$Patrimonio <- as.double(data.to.work$Patrimonio)\n>>\n>>\n>> Porém só mudou para num e sem casas decimais.\n>>\n>> Onde estou errando?\n>>\n>> --\n>>\n>>\n>> *In Jesu et Maria*\n>>\n>> *Obrigado / Thank you*\n>> *Prof. Dr. Elias Carvalho*\n>>\n>> *\"Felix, qui potuit rerum cognoscere causas\" (Virgil 29 BC)\"Blessed is he\n>> who has been able to understand the cause of things\"*\n>> _______________________________________________\n>> R-br mailing list\n>> R-br em listas.c3sl.ufpr.br\n>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n>> código mínimo reproduzível.\n>>\n> _______________________________________________\n> R-br mailing list\n> R-br em listas.c3sl.ufpr.br\n> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br\n> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça\n> código mínimo reproduzível.\n>\n\n\n-- \n\n\n*In Jesu et Maria*\n\n*Obrigado / Thank you*\n*Prof. Dr. Elias Carvalho*\n\n*\"Felix, qui potuit rerum cognoscere causas\" (Virgil 29 BC)\"Blessed is he\nwho has been able to understand the cause of things\"*\n-------------- Próxima Parte ----------\nUm anexo em HTML foi limpo...\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230828/a2711e7c/attachment.htm>\n-------------- Próxima Parte ----------\nUm anexo não-texto foi limpo...\nNome: Captura de tela de 2023-08-25 09-58-01.png\nTipo: image/png\nTamanho: 2944 bytes\nDescrição: não disponível\nURL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20230828/a2711e7c/attachment.png>",
+      "body_snippet": "Perfeitamente, muito obrigado pelas respostas pessoal\n\nEm sex., 25 de ago. de 2023 às 18:51, Cesar Rabak por (R-br) <\nr-br em listas.c3sl.ufpr.br> escreveu:\n\n> Em 25 de Agosto de  2023 à 10h01 Elias C",
+      "thread_id": "thread-aa72c7a599dd",
+      "thread_depth": 2,
+      "month": "2023-08"
+    }
+  ],
+  "threads": [
+    {
+      "id": "thread-aa72c7a599dd",
+      "subject": "[R-br] Leitura de valores no csv",
+      "message_count": 5,
+      "participants": [
+        "Cesar Rabak",
+        "Elias Carvalho",
+        "Fernando Souza"
+      ],
+      "started": "2023-08-25T13:00:19Z",
+      "last_reply": "2023-08-28T11:07:08Z",
+      "root_message_id": "msg-aa72c7a599dd"
+    }
+  ]
+}

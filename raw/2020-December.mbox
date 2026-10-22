@@ -1,0 +1,1275 @@
+From biafr8 em gmail.com  Thu Dec  3 15:19:46 2020
+From: biafr8 em gmail.com (Bia Rebelatto)
+Date: Thu, 3 Dec 2020 14:19:46 -0300
+Subject: [R-br] =?utf-8?q?Problema_na_convers=C3=A3o_de_datum=3A_SIRGAS20?=
+	=?utf-8?q?00_para_WGS84?=
+Message-ID: <CAEh+SM4MUC_BosBGE7mnOz0CMHWKr9BwP3KPk5GheGSwkpXVYQ@mail.gmail.com>
+
+Olá pessoal!
+
+Após a produção de shapefiles no R, eles apresentaram o seguinte datum:
+
+Geographic Coordinate System:
+GCS_WGS_84_with_axis_order_normalized_for_visualization
+Datum: D_WGS_1984
+
+Sendo que o que preciso seria:
+
+Geographic Coordinate System: GCS_WGS_1984
+Datum: D_WGS_1984
+
+Ou seja, preciso fazer a transformação sem gerar essa extensão de
+"with_axis_order_normalized_for_visualization", mas não consigo encontrar
+uma solução.
+
+Resumindo o que fiz:
+1. Download de dados municipais do IBGE (o datum deles é o SIRGAS2000)
+
+2. Transformação dos dados do IBGE para o datum que preciso (WGS84) com a
+função 'st_transform':
+
+dadosibge <- st_transform(dadosibge, 4326)
+
+3. União destes dados do IBGE com minha planilha de dados, mais a
+transformação de objeto st em sf:
+
+df <- inner_join(dadosibge, df, by="id") %>%
+    st_as_sf(coords=c("lon","lat"), crs=4326)
+
+4. Transformação do data frame em objeto espacial:
+
+df <- as(df, "Spatial")
+
+5. Exportação do shapefile:
+
+writeOGR(df, dsn = "diretorio", layer = i, driver = 'ESRI Shapefile')
+
+Obs.: fiz com múltiplas planilhas, então o código está em um loop.
+
+Segue o meu código:
+
+###Pacotes
+x<-c("geobr","ggplot2","dplyr","RColorBrewer","ggspatial","maps","mapdata","rworldmap","maptools","mapproj","ggmap","sf","raster","spData","spDataLarge",
+"rgdal")
+lapply(x, require, character.only=T)
+
+###Carregar dados IBGE
+##All municipalities limits of all states
+spatial <- read_municipality(code_muni = 'all', year = 2019)
+
+##Check CRS - If this fuction return "NA", the CRS is unknown
+st_is_longlat(spatial)
+
+##Verify the DATUM. In this case, shows SIRGAS 2000
+st_crs(spatial)
+
+##Transform SGC SIRGAS 2000 to WGS84
+###WGS84 EPSG code: 4326
+spatial <- st_transform(spatial, 4326)
+st_crs(spatial)
+class(spatial)
+
+###Carregar diretorio dos meus dados
+setwd('diretorio')
+list.files()
+alldata = list.files()
+
+###Loop para exportar varios shapefiles
+for (i in alldata) {
+  df = read.csv(i, sep = ";", stringsAsFactors = FALSE) %>%
+
+#Unindo meus dados com o df do IBGE
+  df <- inner_join(spatial_f, df, by="id") %>%
+    st_as_sf(coords=c("lon","lat"), crs=4326)
+
+#Transformando df em dados espaciais
+  df <- as(df, "Spatial")
+
+  #Exportando shapefile
+  writeOGR(df, dsn = "C:/Users/Bianca/Desktop/ipam_consult/shapes_test",
+layer = i, driver = 'ESRI Shapefile')
+
+}
+
+Agradeço desde já!
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201203/b2734d16/attachment.html>
+
+From dtiezzi em usp.br  Fri Dec  4 12:05:56 2020
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Fri, 4 Dec 2020 11:05:56 -0300
+Subject: [R-br] 
+ =?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+References: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+Message-ID: <6DF8CD68-B73A-4136-A2E2-B8F0774066D3@usp.br>
+
+Turma D ou A
+
+Daniel
+
+
+
+> On 22 Apr 2020, at 18:25, Fernando Souza por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Olá pessoal tudo bem
+> 
+> Estou realizando uma análise de componentes principais, com o objetivo de selecionar as melhores variáveis para uma análise multivariada. 
+> 
+> Gostaria de uma orientação sobre a  interpretação. Eu interpretei de forma correta? Variáveis que possuem alta correlação com um CP também estão correlacionadas entre si. Isso significa que posso utilizar somente uma das principais variáveis do CP1 (por exemplo) para incluir no modelo multivariado? No caso a variável que apresentar significado para o trabalho.
+> 
+> Os círculos de correlação, screem plot e corrplot geradas pelo Pca estão disponíveis no link
+> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks <https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks>
+> 
+> A interpretação que fiz foi a seguinte:
+> 
+> Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como variável suplementar quantitativa.  Baseado no ScreenPlot selecionei somente 5 CP para avaliação que explicaram 67,80% da variancia total. Pela minha interpretação cheguei as seguintes conclusões
+> 
+> Principais variáveis para cada componente:
+> 
+> Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+> 
+> Energia (CP2) : EB,ED,EM,EL
+> 
+> Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+> 
+> Composição do Leite(CP4) : Solido e DCNF
+> 
+> Variaveis sanguíneas (CP5): PT e ALBUMINA
+> 
+> 
+> 
+> Segue uma descrição do trabalho para compreensão. Aceito sugestões sobre a melhor forma trabalhar esses dados
+> 
+> O banco de dados é oriundo  dois estudos realizados pelo mesmo grupo de pesquisa nas mesmas condições experimentais (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+> Os fatores experimentais foram:
+> Raça: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 2 avaliou 13 animais (6 raça 1 e 7 raça 2)
+> Plano nutricional:  O estudo 1 avaliou os níveis (0,15,30) o estudo 2 avaliou os níveis (0,5,10,20)
+> Dias em lactação-DEL (medidas repetidas no tempo):  Estudo 1, dias dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram avaliados em dias entre 150 a 250 dias.
+> 
+> 
+> Eu realizei uma análise gráfica e não há indicações de haver diferenças entre estudos, o que era de certo modo esperado. Raça e DEL parecem ser os fatores que afetam as variáveis respostas.
+> 
+> 
+> 
+> -- 
+> =========================================
+> Fernando Souza
+> Zootecnista, DSc. Produção e Alimentação Animal
+> Celular: (31)99796-8781 (Vivo)
+> E-mail:nandodesouza em gmail.com <mailto:e-mail%3Anandodesouza em gmail.com>
+> Lattes: http://lattes.cnpq.br/6519538815038307 <http://lattes.cnpq.br/6519538815038307>
+> Blog: https://producaoanimalcomr.wordpress.com/ <https://producaoanimalcomr.wordpress.com/>
+> ==========================================
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201204/b075b2d6/attachment.html>
+
+From zecojls em gmail.com  Fri Dec  4 12:36:49 2020
+From: zecojls em gmail.com (=?UTF-8?Q?Jos=C3=A9_Lucas_Safanelli?=)
+Date: Fri, 4 Dec 2020 11:36:49 -0300
+Subject: [R-br] 
+	=?utf-8?q?Problema_na_convers=C3=A3o_de_datum=3A_SIRGAS20?=
+	=?utf-8?q?00_para_WGS84?=
+Message-ID: <CADni8G4yaUi3Mgs7wc+5U7KCfH3hMxLky7JF9RH3BxUbriTwZg@mail.gmail.com>
+
+Bia,
+
+Acredito que não seja um problema do R ou pacote 'sf'.
+
+Digo isso porque fazendo as mesmas operações que você, percebi que não
+houve nenhuma alteração do CRS. Você pode verificar isso utilizando a
+função st_crs().
+
+Além disso, você pode exportar teus dados espaciais usando o próprio pacote
+sf com o comando st_write.
+
+library(sf)
+
+dadosibge <- st_transform(municipios, 4326)
+st_crs(municipios)
+st_crs(dadosibge)
+
+df <- inner_join(dadosibge, df, by= c("geocodigo"="cod_municipio")) %>%
+st_as_sf(coords=c("lon","lat"), crs = 4326)
+
+st_crs(df)
+
+st_write(df, dsn = getwd(),
+         layer = "teste", driver = 'ESRI Shapefile')
+
+teste <- st_read(dsn = getwd(),
+                 layer = "teste")
+
+st_crs(teste)
+
+Gostaria de saber como você verificou essa inconsistência do CRS, foi
+utilizando um SIG externo? Penso que talvez tenha acontecido isso porque a
+nomenclatura descreve o termo visualization, então pode ser que teu SIG
+tenha trocado automático para talvez otimizar a visualização, não!? Acho
+que não somente o nome, mas seria bom conferir se os parâmetros elipsoidais
+se alteram com essa pequena mudança. Enfim, precisa investigar melhor.
+
+José Lucas Safanelli
+https://zecojls.netlify.app/
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201204/8347ae3b/attachment.html>
+
+From biafr8 em gmail.com  Mon Dec  7 09:47:29 2020
+From: biafr8 em gmail.com (Bia Rebelatto)
+Date: Mon, 7 Dec 2020 08:47:29 -0300
+Subject: [R-br] 
+	=?utf-8?q?Problema_na_convers=C3=A3o_de_datum=3A_SIRGAS20?=
+	=?utf-8?q?00_para_WGS84?=
+In-Reply-To: <CADni8G4yaUi3Mgs7wc+5U7KCfH3hMxLky7JF9RH3BxUbriTwZg@mail.gmail.com>
+References: <CADni8G4yaUi3Mgs7wc+5U7KCfH3hMxLky7JF9RH3BxUbriTwZg@mail.gmail.com>
+Message-ID: <CAEh+SM5M5k2HR9at=UqkTWYxwZjGh5Jqj7PWBzFJqF76kkQXMA@mail.gmail.com>
+
+Olá José,
+
+Agradeço pela contribuição.
+
+De fato, quando eu verifico o CRS tanto no R quanto no QGIS, é retornado o
+CRS que preciso, o WGS84.
+
+No entanto, este conflito de datum foi verificado ao abrir o shapefile no
+ArcGis em outro computador. Este foi um material que criei para outra
+pessoa, e ela relatou problemas ao realizar algumas análises por conta
+desta diferença que citei no primeiro e-mail, sendo que os arquivo que ela
+utiliza estão em WGS84.
+
+Após o envio deste e-mail aqui na lista, foi me aconselhado a não realizar
+a transformação de datum no R por conta de possíveis inconsistências. Como
+sou nova nisso, não sei o quanto isso realmente pode acontecer.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201207/8e2d974c/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Dec  7 11:13:22 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 7 Dec 2020 10:13:22 -0300
+Subject: [R-br] 
+	=?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <6e4b196e-db3a-ac8f-a191-aae99ec02263@gmail.com>
+References: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+ <6e4b196e-db3a-ac8f-a191-aae99ec02263@gmail.com>
+Message-ID: <CAKrF98=kTPwdjF9jJbeZ4nPG0XM1Zng0iTb-AmifySr4uPRPKQ@mail.gmail.com>
+
+Só agora pude dar uma vista d'olhos nas referências indicadas.
+
+Um senão (*caveat emptor*) precisa ser colocado: os exemplos usam Python e
+não R.
+
+HTH
+
+On Thu, Apr 23, 2020 at 11:10 PM Nei por (R-br) <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> http://www.c2o.pro.br/hackaguas/apx.html
+>
+> http://www.c2o.pro.br/hackaguas/apxs02.html
+>
+> Em 22-04-2020 18:25, Fernando Souza por (R-br) escreveu:
+>
+> Olá pessoal tudo bem
+>
+> Estou realizando uma análise de componentes principais, com o objetivo de
+> selecionar as melhores variáveis para uma análise multivariada.
+>
+> Gostaria de uma orientação sobre a  interpretação. Eu interpretei de forma
+> correta? Variáveis que possuem alta correlação com um CP também estão
+> correlacionadas entre si. Isso significa que posso utilizar somente uma das
+> principais variáveis do CP1 (por exemplo) para incluir no modelo
+> multivariado? No caso a variável que apresentar significado para o trabalho.
+>
+> Os círculos de correlação, screem plot e corrplot geradas pelo Pca estão
+> disponíveis no link
+> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>
+> A interpretação que fiz foi a seguinte:
+>
+> Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como variável
+> suplementar quantitativa.  Baseado no ScreenPlot selecionei somente 5 CP
+> para avaliação que explicaram 67,80% da variancia total. Pela minha
+> interpretação cheguei as seguintes conclusões
+>
+> Principais variáveis para cada componente:
+>
+> Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+>
+> Energia (CP2) : EB,ED,EM,EL
+>
+> Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+>
+> Composição do Leite(CP4) : Solido e DCNF
+>
+> Variaveis sanguíneas (CP5): PT e ALBUMINA
+>
+>
+>
+> Segue uma descrição do trabalho para compreensão. Aceito sugestões sobre a
+> melhor forma trabalhar esses dados
+>
+> O banco de dados é oriundo  dois estudos realizados pelo mesmo grupo de
+> pesquisa nas mesmas condições experimentais
+> (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+> Os fatores experimentais foram:
+> *Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 2
+> avaliou 13 animais (6 raça 1 e 7 raça 2)
+> *Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30) o estudo 2
+> avaliou os níveis (0,5,10,20)
+> *Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo 1, dias
+> dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram
+> avaliados em dias entre 150 a 250 dias.
+>
+>
+> Eu realizei uma análise gráfica e não há indicações de haver diferenças
+> entre estudos, o que era de certo modo esperado. Raça e DEL parecem ser os
+> fatores que afetam as variáveis respostas.
+>
+>
+>
+> --
+> =========================================
+> Fernando Souza
+> Zootecnista, DSc. Produção e Alimentação Animal
+> Celular: (31)99796-8781 (Vivo)
+> E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+> Lattes: http://lattes.cnpq.br/6519538815038307
+> Blog: https://producaoanimalcomr.wordpress.com/
+> ==========================================
+>
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201207/6695768e/attachment.html>
+
+From eucilenealves2012 em gmail.com  Mon Dec  7 12:10:35 2020
+From: eucilenealves2012 em gmail.com (Eucilene Alves Santana)
+Date: Mon, 7 Dec 2020 11:10:35 -0300
+Subject: [R-br] 
+	=?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <6DF8CD68-B73A-4136-A2E2-B8F0774066D3@usp.br>
+References: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+ <6DF8CD68-B73A-4136-A2E2-B8F0774066D3@usp.br>
+Message-ID: <CANuApLv21ODsg71Qah_6pvjdtGwnZ77cat70vLf8Sb2wgKytaw@mail.gmail.com>
+
+Olá Daniel pode compartilhar o Scrip dos gráficos que você fez?
+Da PCA.
+
+Coloque qual  a pergunta que a PCA está respondendo para poder ajudar
+melhor.
+
+ *Eucilene  Alves Santana*
+*Doutora em Ciências*
+*Pesquisadora Colaboradora*
+*Pós Graduação em Geografia*
+
+
+
+
+*Universidade de Brasília - UnBCampus Universitário Darcy
+RibeiroICC Norte|CEP 70910-900|Brasília-DFSite: http://lagas.unb.br
+<http://lagas.unb.br/>Telefone: +55 (61) 3107-7594 ou 3107-7251*
+*https://www.researchgate.net/profile/Eucilene_Alves_Santana
+<https://www.researchgate.net/profile/Eucilene_Alves_Santana>*
+*https://www.facebook.com/Eucilenealves2012?ref=tn_tnmn
+<https://www.facebook.com/Eucilenealves2012?ref=tn_tnmn>*
+*http://www.linkedin.com/profile/public-profile-settings
+<http://www.linkedin.com/profile/public-profile-settings>*
+
+
+
+
+
+
+Em sex., 4 de dez. de 2020 às 11:07, Daniel Guimarães Tiezzi por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Turma D ou A
+>
+> Daniel
+>
+>
+>
+> On 22 Apr 2020, at 18:25, Fernando Souza por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Olá pessoal tudo bem
+>
+> Estou realizando uma análise de componentes principais, com o objetivo de
+> selecionar as melhores variáveis para uma análise multivariada.
+>
+> Gostaria de uma orientação sobre a  interpretação. Eu interpretei de forma
+> correta? Variáveis que possuem alta correlação com um CP também estão
+> correlacionadas entre si. Isso significa que posso utilizar somente uma das
+> principais variáveis do CP1 (por exemplo) para incluir no modelo
+> multivariado? No caso a variável que apresentar significado para o trabalho.
+>
+> Os círculos de correlação, screem plot e corrplot geradas pelo Pca estão
+> disponíveis no link
+> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>
+> A interpretação que fiz foi a seguinte:
+>
+> Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como variável
+> suplementar quantitativa.  Baseado no ScreenPlot selecionei somente 5 CP
+> para avaliação que explicaram 67,80% da variancia total. Pela minha
+> interpretação cheguei as seguintes conclusões
+>
+> Principais variáveis para cada componente:
+>
+> Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+>
+> Energia (CP2) : EB,ED,EM,EL
+>
+> Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+>
+> Composição do Leite(CP4) : Solido e DCNF
+>
+> Variaveis sanguíneas (CP5): PT e ALBUMINA
+>
+>
+>
+> Segue uma descrição do trabalho para compreensão. Aceito sugestões sobre a
+> melhor forma trabalhar esses dados
+>
+> O banco de dados é oriundo  dois estudos realizados pelo mesmo grupo de
+> pesquisa nas mesmas condições experimentais
+> (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+> Os fatores experimentais foram:
+> *Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 2
+> avaliou 13 animais (6 raça 1 e 7 raça 2)
+> *Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30) o estudo 2
+> avaliou os níveis (0,5,10,20)
+> *Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo 1, dias
+> dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram
+> avaliados em dias entre 150 a 250 dias.
+>
+>
+> Eu realizei uma análise gráfica e não há indicações de haver diferenças
+> entre estudos, o que era de certo modo esperado. Raça e DEL parecem ser os
+> fatores que afetam as variáveis respostas.
+>
+>
+>
+> --
+> =========================================
+> Fernando Souza
+> Zootecnista, DSc. Produção e Alimentação Animal
+> Celular: (31)99796-8781 (Vivo)
+> E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+> Lattes: http://lattes.cnpq.br/6519538815038307
+> Blog: https://producaoanimalcomr.wordpress.com/
+> ==========================================
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201207/dcdca667/attachment.html>
+
+From c2o.pro.br em gmail.com  Mon Dec  7 12:33:54 2020
+From: c2o.pro.br em gmail.com (Nei)
+Date: Mon, 7 Dec 2020 11:33:54 -0300
+Subject: [R-br] 
+ =?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <CAKrF98=kTPwdjF9jJbeZ4nPG0XM1Zng0iTb-AmifySr4uPRPKQ@mail.gmail.com>
+References: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+ <6e4b196e-db3a-ac8f-a191-aae99ec02263@gmail.com>
+ <CAKrF98=kTPwdjF9jJbeZ4nPG0XM1Zng0iTb-AmifySr4uPRPKQ@mail.gmail.com>
+Message-ID: <f65be2d5-9d14-19d7-65f4-6bdf0eb15ad0@gmail.com>
+
+Oi Cesar,
+
+Você tem razão, os links apontam para tutoriais sobre PCA que utilizam o 
+Python como ferramenta computacional.
+
+Mas eu compartilhei os links pois a pergunta se referia à interpretação 
+dos resultados de PCA, e não ao uso da ferramenta R.
+
+E nesses tutoriais eu procurei discutir alguns conceitos sobre a técnica 
+estatística, independente da ferramenta computacional usada, e que 
+poderiam ser úteis para o Fernando.
+
+Obrigado pela expressão "caveat emptor". Aprendi mais uma.
+
+Entendi como um sinônimo de "disclaimer".
+
+Vou incluir no meu site pra ficar mais "chique". :-)
+
+Um Abraço,
+
+Markos
+
+
+Em 07-12-2020 10:13, Cesar Rabak por (R-br) escreveu:
+> Só agora pude dar uma vista d'olhos nas referências indicadas.
+>
+> Um senão (/caveat emptor/) precisa ser colocado: os exemplos usam 
+> Python e não R.
+>
+> HTH
+>
+> On Thu, Apr 23, 2020 at 11:10 PM Nei por (R-br) 
+> <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+>
+>     http://www.c2o.pro.br/hackaguas/apx.html
+>
+>     http://www.c2o.pro.br/hackaguas/apxs02.html
+>
+>
+>     Em 22-04-2020 18:25, Fernando Souza por (R-br) escreveu:
+>>     Olá pessoal tudo bem
+>>
+>>     Estou realizando uma análise de componentes principais, com o
+>>     objetivo de selecionar as melhores variáveis para uma análise
+>>     multivariada.
+>>
+>>     Gostaria de uma orientação sobre a  interpretação. Eu interpretei
+>>     de forma correta? Variáveis que possuem alta correlação com um CP
+>>     também estão correlacionadas entre si. Isso significa que posso
+>>     utilizar somente uma das principais variáveis do CP1 (por
+>>     exemplo) para incluir no modelo multivariado? No caso a variável
+>>     que apresentar significado para o trabalho.
+>>
+>>     Os círculos de correlação, screem plot e corrplot geradas pelo
+>>     Pca estão disponíveis no link
+>>     https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>>
+>>     A interpretação que fiz foi a seguinte:
+>>
+>>     Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como
+>>     variável suplementar quantitativa. Baseado no ScreenPlot
+>>     selecionei somente 5 CP para avaliação que explicaram 67,80% da
+>>     variancia total. Pela minha interpretação cheguei as seguintes
+>>     conclusões
+>>
+>>     Principais variáveis para cada componente:
+>>
+>>     Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+>>
+>>     Energia (CP2) : EB,ED,EM,EL
+>>
+>>     Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+>>
+>>     Composição do Leite(CP4) : Solido e DCNF
+>>
+>>     Variaveis sanguíneas (CP5): PT e ALBUMINA
+>>
+>>
+>>
+>>     Segue uma descrição do trabalho para compreensão. Aceito
+>>     sugestões sobre a melhor forma trabalhar esses dados
+>>
+>>     O banco de dados é oriundo  dois estudos realizados pelo mesmo
+>>     grupo de pesquisa nas mesmas condições experimentais
+>>     (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+>>     Os fatores experimentais foram:
+>>     *Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O
+>>     estudo 2 avaliou 13 animais (6 raça 1 e 7 raça 2)
+>>     *Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30) o
+>>     estudo 2 avaliou os níveis (0,5,10,20)
+>>     *Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo 1,
+>>     dias dispersos entre os períodos de 30 a 120 dias. No estudo 2 os
+>>     DEL foram avaliados em dias entre 150 a 250 dias.
+>>
+>>
+>>     Eu realizei uma análise gráfica e não há indicações de haver
+>>     diferenças entre estudos, o que era de certo modo esperado. Raça
+>>     e DEL parecem ser os fatores que afetam as variáveis respostas.
+>>
+>>
+>>
+>>     -- 
+>>     =========================================
+>>     Fernando Souza
+>>     Zootecnista, DSc. Produção e Alimentação Animal
+>>     Celular: (31)99796-8781 (Vivo)
+>>     E-mail:nandodesouza em gmail.com
+>>     <mailto:e-mail%3Anandodesouza em gmail.com>
+>>     Lattes: http://lattes.cnpq.br/6519538815038307
+>>     Blog: https://producaoanimalcomr.wordpress.com/
+>>     ==========================================
+>>
+>>
+>>     _______________________________________________
+>>     R-br mailing list
+>>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201207/7c091041/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Dec  7 17:08:04 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 7 Dec 2020 16:08:04 -0300
+Subject: [R-br] 
+	=?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <f65be2d5-9d14-19d7-65f4-6bdf0eb15ad0@gmail.com>
+References: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+ <6e4b196e-db3a-ac8f-a191-aae99ec02263@gmail.com>
+ <CAKrF98=kTPwdjF9jJbeZ4nPG0XM1Zng0iTb-AmifySr4uPRPKQ@mail.gmail.com>
+ <f65be2d5-9d14-19d7-65f4-6bdf0eb15ad0@gmail.com>
+Message-ID: <CAKrF98mES_0QO62vdcvGDVpPTuVA8WOFd3TNQ-3sQg++PVHhKA@mail.gmail.com>
+
+OK Nei!
+
+A interpretação, obviamente *não deveria* ser diferente em função da
+linguagem e implementação da técnica, mas na prática... há uns óbices que
+precisam ser levados em conta:
+
+1) O diagrama que indica as componentes principais pode ter os 'sinais
+trocados' nos eixos devido a forma como são calculados os autovetores e
+autovalores;
+2) No caso dos biplots há três maneiras de representá-los, com as "flechas"
+neles tendo significado métrico levemente diferente na hora de interpretar;
+3) Algumas implementações oferecem mais objetos de análise em adição às
+tabelas decorrentes dos cálculos das componentes principais.
+
+Essas diferenças podem ser vistas no próprio R com as várias funções para
+produzir a análise (number crunching) e os gráficos em pacotes diversos.
+
+OK quanto ao latim ?. Nos países de língua inglesa é muito usada porque
+nos contratos "padrão" de venda essa expressão advinda do jargão legal caiu
+no uso devido à repetição em contratos, avisos dos órgãos de proteção ao
+consumidor, etc. A própria palavra *caveat *sozinha às vezes é usada na
+conversa cotidiana.
+
+Qtº a ficar mais chique,  existe um aforismo, em latim é claro sobre isso¹:
+QUIDQUID LATINE DICTUM SIT ALTUM VIDETUR!!
+
+[]s
+--
+Cesar Rabak
+
+[1] ?O que é dito em latim soa profundo?.
+
+On Mon, Dec 7, 2020 at 11:34 AM Nei por (R-br) <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Oi Cesar,
+>
+> Você tem razão, os links apontam para tutoriais sobre PCA que utilizam o
+> Python como ferramenta computacional.
+>
+> Mas eu compartilhei os links pois a pergunta se referia à interpretação
+> dos resultados de PCA, e não ao uso da ferramenta R.
+>
+> E nesses tutoriais eu procurei discutir alguns conceitos sobre a técnica
+> estatística, independente da ferramenta computacional usada, e que poderiam
+> ser úteis para o Fernando.
+>
+> Obrigado pela expressão "caveat emptor". Aprendi mais uma.
+>
+> Entendi como um sinônimo de "disclaimer".
+>
+> Vou incluir no meu site pra ficar mais "chique". :-)
+>
+> Um Abraço,
+>
+> Markos
+>
+> Em 07-12-2020 10:13, Cesar Rabak por (R-br) escreveu:
+>
+> Só agora pude dar uma vista d'olhos nas referências indicadas.
+>
+> Um senão (*caveat emptor*) precisa ser colocado: os exemplos usam Python
+> e não R.
+>
+> HTH
+>
+> On Thu, Apr 23, 2020 at 11:10 PM Nei por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+>> http://www.c2o.pro.br/hackaguas/apx.html
+>>
+>> http://www.c2o.pro.br/hackaguas/apxs02.html
+>>
+>> Em 22-04-2020 18:25, Fernando Souza por (R-br) escreveu:
+>>
+>> Olá pessoal tudo bem
+>>
+>> Estou realizando uma análise de componentes principais, com o objetivo de
+>> selecionar as melhores variáveis para uma análise multivariada.
+>>
+>> Gostaria de uma orientação sobre a  interpretação. Eu interpretei de
+>> forma correta? Variáveis que possuem alta correlação com um CP também estão
+>> correlacionadas entre si. Isso significa que posso utilizar somente uma das
+>> principais variáveis do CP1 (por exemplo) para incluir no modelo
+>> multivariado? No caso a variável que apresentar significado para o trabalho.
+>>
+>> Os círculos de correlação, screem plot e corrplot geradas pelo Pca estão
+>> disponíveis no link
+>> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>>
+>> A interpretação que fiz foi a seguinte:
+>>
+>> Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como
+>> variável suplementar quantitativa.  Baseado no ScreenPlot selecionei
+>> somente 5 CP para avaliação que explicaram 67,80% da variancia total. Pela
+>> minha interpretação cheguei as seguintes conclusões
+>>
+>> Principais variáveis para cada componente:
+>>
+>> Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+>>
+>> Energia (CP2) : EB,ED,EM,EL
+>>
+>> Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+>>
+>> Composição do Leite(CP4) : Solido e DCNF
+>>
+>> Variaveis sanguíneas (CP5): PT e ALBUMINA
+>>
+>>
+>>
+>> Segue uma descrição do trabalho para compreensão. Aceito sugestões sobre
+>> a melhor forma trabalhar esses dados
+>>
+>> O banco de dados é oriundo  dois estudos realizados pelo mesmo grupo de
+>> pesquisa nas mesmas condições experimentais
+>> (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+>> Os fatores experimentais foram:
+>> *Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 2
+>> avaliou 13 animais (6 raça 1 e 7 raça 2)
+>> *Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30) o estudo 2
+>> avaliou os níveis (0,5,10,20)
+>> *Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo 1, dias
+>> dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram
+>> avaliados em dias entre 150 a 250 dias.
+>>
+>>
+>> Eu realizei uma análise gráfica e não há indicações de haver diferenças
+>> entre estudos, o que era de certo modo esperado. Raça e DEL parecem ser os
+>> fatores que afetam as variáveis respostas.
+>>
+>>
+>>
+>> --
+>> =========================================
+>> Fernando Souza
+>> Zootecnista, DSc. Produção e Alimentação Animal
+>> Celular: (31)99796-8781 (Vivo)
+>> E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+>> Lattes: http://lattes.cnpq.br/6519538815038307
+>> Blog: https://producaoanimalcomr.wordpress.com/
+>> ==========================================
+>>
+>>
+>> _______________________________________________
+>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201207/6d7fd6ae/attachment.html>
+
+From c2o.pro.br em gmail.com  Wed Dec  9 14:38:50 2020
+From: c2o.pro.br em gmail.com (Nei)
+Date: Wed, 9 Dec 2020 13:38:50 -0300
+Subject: [R-br] 
+ =?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <CAKrF98mES_0QO62vdcvGDVpPTuVA8WOFd3TNQ-3sQg++PVHhKA@mail.gmail.com>
+References: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+ <6e4b196e-db3a-ac8f-a191-aae99ec02263@gmail.com>
+ <CAKrF98=kTPwdjF9jJbeZ4nPG0XM1Zng0iTb-AmifySr4uPRPKQ@mail.gmail.com>
+ <f65be2d5-9d14-19d7-65f4-6bdf0eb15ad0@gmail.com>
+ <CAKrF98mES_0QO62vdcvGDVpPTuVA8WOFd3TNQ-3sQg++PVHhKA@mail.gmail.com>
+Message-ID: <1391c310-c9f0-95c8-5b07-c81976037cbc@gmail.com>
+
+Bom Dia Cesar,
+
+Obrigado pelas dicas sobre PCA.
+
+Eu já tinha percebido a questão dos "sinais trocados" quando se usa 
+Matlab ou Python.
+
+E obrigado por mais uma expressão latina para a minha coleção. :-)
+
+Um Abraço,
+
+Markos
+
+
+Em 07-12-2020 16:08, Cesar Rabak escreveu:
+> OK Nei!
+>
+> A interpretação, obviamente /não deveria/ ser diferente em função da 
+> linguagem e implementação da técnica, mas na prática... há uns óbices 
+> que precisam ser levados em conta:
+>
+> 1) O diagrama que indica as componentes principais pode ter os 'sinais 
+> trocados' nos eixos devido a forma como são calculados os autovetores 
+> e autovalores;
+> 2) No caso dos biplots há três maneiras de representá-los, com as 
+> "flechas" neles tendo significado métrico levemente diferente na hora 
+> de interpretar;
+> 3) Algumas implementações oferecem mais objetos de análise em adição 
+> às tabelas decorrentes dos cálculos das componentes principais.
+>
+> Essas diferenças podem ser vistas no próprio R com as várias funções 
+> para produzir a análise (number crunching) e os gráficos em pacotes 
+> diversos.
+>
+> OK quanto ao latim ?. Nos países de língua inglesa é muito usada 
+> porque nos contratos "padrão" de venda essa expressão advinda do 
+> jargão legal caiu no uso devido à repetição em contratos, avisos dos 
+> órgãos de proteção ao consumidor, etc. A própria palavra /caveat 
+> /sozinha às vezes é usada na conversa cotidiana.
+>
+> Qtº a ficar mais chique,  existe um aforismo, em latim é claro sobre 
+> isso¹: QUIDQUID LATINE DICTUM SIT ALTUM VIDETUR!!
+>
+> []s
+> --
+> Cesar Rabak
+>
+> [1] ?O que é dito em latim soa profundo?.
+>
+> On Mon, Dec 7, 2020 at 11:34 AM Nei por (R-br) 
+> <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+>
+>     Oi Cesar,
+>
+>     Você tem razão, os links apontam para tutoriais sobre PCA que
+>     utilizam o Python como ferramenta computacional.
+>
+>     Mas eu compartilhei os links pois a pergunta se referia à
+>     interpretação dos resultados de PCA, e não ao uso da ferramenta R.
+>
+>     E nesses tutoriais eu procurei discutir alguns conceitos sobre a
+>     técnica estatística, independente da ferramenta computacional
+>     usada, e que poderiam ser úteis para o Fernando.
+>
+>     Obrigado pela expressão "caveat emptor". Aprendi mais uma.
+>
+>     Entendi como um sinônimo de "disclaimer".
+>
+>     Vou incluir no meu site pra ficar mais "chique". :-)
+>
+>     Um Abraço,
+>
+>     Markos
+>
+>
+>     Em 07-12-2020 10:13, Cesar Rabak por (R-br) escreveu:
+>>     Só agora pude dar uma vista d'olhos nas referências indicadas.
+>>
+>>     Um senão (/caveat emptor/) precisa ser colocado: os exemplos usam
+>>     Python e não R.
+>>
+>>     HTH
+>>
+>>     On Thu, Apr 23, 2020 at 11:10 PM Nei por (R-br)
+>>     <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+>>
+>>         http://www.c2o.pro.br/hackaguas/apx.html
+>>
+>>         http://www.c2o.pro.br/hackaguas/apxs02.html
+>>
+>>
+>>         Em 22-04-2020 18:25, Fernando Souza por (R-br) escreveu:
+>>>         Olá pessoal tudo bem
+>>>
+>>>         Estou realizando uma análise de componentes principais, com
+>>>         o objetivo de selecionar as melhores variáveis para uma
+>>>         análise multivariada.
+>>>
+>>>         Gostaria de uma orientação sobre a interpretação. Eu
+>>>         interpretei de forma correta? Variáveis que possuem alta
+>>>         correlação com um CP também estão correlacionadas entre si.
+>>>         Isso significa que posso utilizar somente uma das principais
+>>>         variáveis do CP1 (por exemplo) para incluir no modelo
+>>>         multivariado? No caso a variável que apresentar significado
+>>>         para o trabalho.
+>>>
+>>>         Os círculos de correlação, screem plot e corrplot geradas
+>>>         pelo Pca estão disponíveis no link
+>>>         https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>>>
+>>>         A interpretação que fiz foi a seguinte:
+>>>
+>>>         Considerei as variáveis PC,IC e Prod leite (Azul no gráfico)
+>>>         como variável suplementar quantitativa.  Baseado no
+>>>         ScreenPlot selecionei somente 5 CP para avaliação que
+>>>         explicaram 67,80% da variancia total. Pela minha
+>>>         interpretação cheguei as seguintes conclusões
+>>>
+>>>         Principais variáveis para cada componente:
+>>>
+>>>         Consumos (CP1):
+>>>         CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+>>>
+>>>         Energia (CP2) : EB,ED,EM,EL
+>>>
+>>>         Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+>>>
+>>>         Composição do Leite(CP4) : Solido e DCNF
+>>>
+>>>         Variaveis sanguíneas (CP5): PT e ALBUMINA
+>>>
+>>>
+>>>
+>>>         Segue uma descrição do trabalho para compreensão. Aceito
+>>>         sugestões sobre a melhor forma trabalhar esses dados
+>>>
+>>>         O banco de dados é oriundo  dois estudos realizados pelo
+>>>         mesmo grupo de pesquisa nas mesmas condições experimentais
+>>>         (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+>>>         Os fatores experimentais foram:
+>>>         *Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2).
+>>>         O estudo 2 avaliou 13 animais (6 raça 1 e 7 raça 2)
+>>>         *Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30)
+>>>         o estudo 2 avaliou os níveis (0,5,10,20)
+>>>         *Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo
+>>>         1, dias dispersos entre os períodos de 30 a 120 dias. No
+>>>         estudo 2 os DEL foram avaliados em dias entre 150 a 250 dias.
+>>>
+>>>
+>>>         Eu realizei uma análise gráfica e não há indicações de haver
+>>>         diferenças entre estudos, o que era de certo modo esperado.
+>>>         Raça e DEL parecem ser os fatores que afetam as variáveis
+>>>         respostas.
+>>>
+>>>
+>>>
+>>>         -- 
+>>>         =========================================
+>>>         Fernando Souza
+>>>         Zootecnista, DSc. Produção e Alimentação Animal
+>>>         Celular: (31)99796-8781 (Vivo)
+>>>         E-mail:nandodesouza em gmail.com
+>>>         <mailto:e-mail%3Anandodesouza em gmail.com>
+>>>         Lattes: http://lattes.cnpq.br/6519538815038307
+>>>         Blog: https://producaoanimalcomr.wordpress.com/
+>>>         ==========================================
+>>>
+>>>
+>>>         _______________________________________________
+>>>         R-br mailing list
+>>>         R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>>>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>
+>>         _______________________________________________
+>>         R-br mailing list
+>>         R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>         forneça código mínimo reproduzível.
+>>
+>>
+>>
+>>     _______________________________________________
+>>     R-br mailing list
+>>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201209/03a1f5f3/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Dec  9 19:52:19 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 9 Dec 2020 18:52:19 -0300
+Subject: [R-br] 
+	=?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <1391c310-c9f0-95c8-5b07-c81976037cbc@gmail.com>
+References: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+ <6e4b196e-db3a-ac8f-a191-aae99ec02263@gmail.com>
+ <CAKrF98=kTPwdjF9jJbeZ4nPG0XM1Zng0iTb-AmifySr4uPRPKQ@mail.gmail.com>
+ <f65be2d5-9d14-19d7-65f4-6bdf0eb15ad0@gmail.com>
+ <CAKrF98mES_0QO62vdcvGDVpPTuVA8WOFd3TNQ-3sQg++PVHhKA@mail.gmail.com>
+ <1391c310-c9f0-95c8-5b07-c81976037cbc@gmail.com>
+Message-ID: <CAKrF98kexqb9XUbNaB5oCLcKdWcEC5xarmvuBJFtwzqZGaGXLA@mail.gmail.com>
+
+OK Nei!
+
+Veja que mesmo no *próprio* R, dependendo do "pacote" (*library*) a análise
+pode vir com sinais trocados, por exemplo princomp, prcomp, dão resultados
+diferentes das da ADE, FactoMiner, etc.
+
+[]
+
+On Wed, Dec 9, 2020 at 1:39 PM Nei por (R-br) <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Bom Dia Cesar,
+>
+> Obrigado pelas dicas sobre PCA.
+>
+> Eu já tinha percebido a questão dos "sinais trocados" quando se usa Matlab
+> ou Python.
+>
+> E obrigado por mais uma expressão latina para a minha coleção. :-)
+>
+> Um Abraço,
+>
+> Markos
+>
+> Em 07-12-2020 16:08, Cesar Rabak escreveu:
+>
+> OK Nei!
+>
+> A interpretação, obviamente *não deveria* ser diferente em função da
+> linguagem e implementação da técnica, mas na prática... há uns óbices que
+> precisam ser levados em conta:
+>
+> 1) O diagrama que indica as componentes principais pode ter os 'sinais
+> trocados' nos eixos devido a forma como são calculados os autovetores e
+> autovalores;
+> 2) No caso dos biplots há três maneiras de representá-los, com as
+> "flechas" neles tendo significado métrico levemente diferente na hora de
+> interpretar;
+> 3) Algumas implementações oferecem mais objetos de análise em adição às
+> tabelas decorrentes dos cálculos das componentes principais.
+>
+> Essas diferenças podem ser vistas no próprio R com as várias funções para
+> produzir a análise (number crunching) e os gráficos em pacotes diversos.
+>
+> OK quanto ao latim ?. Nos países de língua inglesa é muito usada porque
+> nos contratos "padrão" de venda essa expressão advinda do jargão legal caiu
+> no uso devido à repetição em contratos, avisos dos órgãos de proteção ao
+> consumidor, etc. A própria palavra *caveat *sozinha às vezes é usada na
+> conversa cotidiana.
+>
+> Qtº a ficar mais chique,  existe um aforismo, em latim é claro sobre
+> isso¹: QUIDQUID LATINE DICTUM SIT ALTUM VIDETUR!!
+>
+> []s
+> --
+> Cesar Rabak
+>
+> [1] ?O que é dito em latim soa profundo?.
+>
+> On Mon, Dec 7, 2020 at 11:34 AM Nei por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+>> Oi Cesar,
+>>
+>> Você tem razão, os links apontam para tutoriais sobre PCA que utilizam o
+>> Python como ferramenta computacional.
+>>
+>> Mas eu compartilhei os links pois a pergunta se referia à interpretação
+>> dos resultados de PCA, e não ao uso da ferramenta R.
+>>
+>> E nesses tutoriais eu procurei discutir alguns conceitos sobre a técnica
+>> estatística, independente da ferramenta computacional usada, e que poderiam
+>> ser úteis para o Fernando.
+>>
+>> Obrigado pela expressão "caveat emptor". Aprendi mais uma.
+>>
+>> Entendi como um sinônimo de "disclaimer".
+>>
+>> Vou incluir no meu site pra ficar mais "chique". :-)
+>>
+>> Um Abraço,
+>>
+>> Markos
+>>
+>> Em 07-12-2020 10:13, Cesar Rabak por (R-br) escreveu:
+>>
+>> Só agora pude dar uma vista d'olhos nas referências indicadas.
+>>
+>> Um senão (*caveat emptor*) precisa ser colocado: os exemplos usam Python
+>> e não R.
+>>
+>> HTH
+>>
+>> On Thu, Apr 23, 2020 at 11:10 PM Nei por (R-br) <r-br em listas.c3sl.ufpr.br>
+>> wrote:
+>>
+>>> http://www.c2o.pro.br/hackaguas/apx.html
+>>>
+>>> http://www.c2o.pro.br/hackaguas/apxs02.html
+>>>
+>>> Em 22-04-2020 18:25, Fernando Souza por (R-br) escreveu:
+>>>
+>>> Olá pessoal tudo bem
+>>>
+>>> Estou realizando uma análise de componentes principais, com o objetivo
+>>> de selecionar as melhores variáveis para uma análise multivariada.
+>>>
+>>> Gostaria de uma orientação sobre a  interpretação. Eu interpretei de
+>>> forma correta? Variáveis que possuem alta correlação com um CP também estão
+>>> correlacionadas entre si. Isso significa que posso utilizar somente uma das
+>>> principais variáveis do CP1 (por exemplo) para incluir no modelo
+>>> multivariado? No caso a variável que apresentar significado para o trabalho.
+>>>
+>>> Os círculos de correlação, screem plot e corrplot geradas pelo Pca estão
+>>> disponíveis no link
+>>> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>>>
+>>> A interpretação que fiz foi a seguinte:
+>>>
+>>> Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como
+>>> variável suplementar quantitativa.  Baseado no ScreenPlot selecionei
+>>> somente 5 CP para avaliação que explicaram 67,80% da variancia total. Pela
+>>> minha interpretação cheguei as seguintes conclusões
+>>>
+>>> Principais variáveis para cada componente:
+>>>
+>>> Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+>>>
+>>> Energia (CP2) : EB,ED,EM,EL
+>>>
+>>> Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+>>>
+>>> Composição do Leite(CP4) : Solido e DCNF
+>>>
+>>> Variaveis sanguíneas (CP5): PT e ALBUMINA
+>>>
+>>>
+>>>
+>>> Segue uma descrição do trabalho para compreensão. Aceito sugestões sobre
+>>> a melhor forma trabalhar esses dados
+>>>
+>>> O banco de dados é oriundo  dois estudos realizados pelo mesmo grupo de
+>>> pesquisa nas mesmas condições experimentais
+>>> (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+>>> Os fatores experimentais foram:
+>>> *Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 2
+>>> avaliou 13 animais (6 raça 1 e 7 raça 2)
+>>> *Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30) o estudo 2
+>>> avaliou os níveis (0,5,10,20)
+>>> *Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo 1, dias
+>>> dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram
+>>> avaliados em dias entre 150 a 250 dias.
+>>>
+>>>
+>>> Eu realizei uma análise gráfica e não há indicações de haver diferenças
+>>> entre estudos, o que era de certo modo esperado. Raça e DEL parecem ser os
+>>> fatores que afetam as variáveis respostas.
+>>>
+>>>
+>>>
+>>> --
+>>> =========================================
+>>> Fernando Souza
+>>> Zootecnista, DSc. Produção e Alimentação Animal
+>>> Celular: (31)99796-8781 (Vivo)
+>>> E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+>>> Lattes: http://lattes.cnpq.br/6519538815038307
+>>> Blog: https://producaoanimalcomr.wordpress.com/
+>>> ==========================================
+>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201209/482239cb/attachment.html>
+

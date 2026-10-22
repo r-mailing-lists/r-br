@@ -1,0 +1,371 @@
+From mslordelo em gmail.com  Tue Oct 15 12:48:59 2024
+From: mslordelo em gmail.com (=?UTF-8?B?TWF1csOtY2lvIExvcmTDqmxv?=)
+Date: Tue, 15 Oct 2024 12:48:59 -0300
+Subject: [R-br] Uso do ifelse
+Message-ID: <CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>
+
+#Olá,
+#saudações a tod em s!!!
+#Vou precisar várias comparações múltiplas usando o
+#teste de Scott Knott
+#Quero no final, capturar as letras e formar um único vetor
+
+#No exemplo abaixo, só serão formados dois "grupos"
+#Porém pode acontecer de formar um, três ou quatro
+#Não acontecerá de cinco ou mais
+
+#Usei o "ifelse" para isso, porém o retorno é um
+#vetor de tamanho 1
+library(ScottKnott)
+data(RCBD)
+sk1 <- with(RCBD,
+            SK(y ~ blk + tra,
+               data=dfm,
+               which='tra'))
+sk1$out$Result   #aqui eu verifico a formação de dois grupos
+
+#O objeto que vai ser gerado no final, deveria ser igual a este
+#aqui
+grupos = c(sk1$out$Result$G1,
+                  sk1$out$Result$G2)
+grupos[nzchar(grupos)]
+
+#Porém, isso não acontece quando eu uso o "ifelse"
+rm(grupos)
+grupos = ifelse(dim(sk1$out$Result)[2] == 5, c(sk1$out$Result$G1,
+                                               sk1$out$Result$G2,
+                                               sk1$out$Result$G3,
+                                               sk1$out$Result$G4),
+            ifelse(dim(sk1$out$Result)[2] == 4, c(sk1$out$Result$G1,
+                                                  sk1$out$Result$G2,
+                                                  sk1$out$Result$G3),
+                   ifelse(dim(sk1$out$Result)[2] == 3, c(sk1$out$Result$G1,
+
+ sk1$out$Result$G2),
+                          sk1$out$Result$G1)))
+grupos
+
+#O que há de errado?
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20241015/addf5973/attachment.htm>
+
+From mslordelo em gmail.com  Tue Oct 15 13:25:28 2024
+From: mslordelo em gmail.com (=?UTF-8?B?TWF1csOtY2lvIExvcmTDqmxv?=)
+Date: Tue, 15 Oct 2024 13:25:28 -0300
+Subject: [R-br] Uso do ifelse
+In-Reply-To: <CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>
+References: <CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>
+Message-ID: <CAGUUkAv0G7AxZZw8_6+Wf=gx2fgwH35nWTJxrPzybqb+TjBiaw@mail.gmail.com>
+
+Vi que "ifelse" não retorna vetor.
+Buscando alternativas para isso.
+
+
+
+
+Em ter., 15 de out. de 2024 às 12:48, Maurício Lordêlo <mslordelo em gmail.com>
+escreveu:
+
+> #Olá,
+> #saudações a tod em s!!!
+> #Vou precisar várias comparações múltiplas usando o
+> #teste de Scott Knott
+> #Quero no final, capturar as letras e formar um único vetor
+>
+> #No exemplo abaixo, só serão formados dois "grupos"
+> #Porém pode acontecer de formar um, três ou quatro
+> #Não acontecerá de cinco ou mais
+>
+> #Usei o "ifelse" para isso, porém o retorno é um
+> #vetor de tamanho 1
+> library(ScottKnott)
+> data(RCBD)
+> sk1 <- with(RCBD,
+>             SK(y ~ blk + tra,
+>                data=dfm,
+>                which='tra'))
+> sk1$out$Result   #aqui eu verifico a formação de dois grupos
+>
+> #O objeto que vai ser gerado no final, deveria ser igual a este
+> #aqui
+> grupos = c(sk1$out$Result$G1,
+>                   sk1$out$Result$G2)
+> grupos[nzchar(grupos)]
+>
+> #Porém, isso não acontece quando eu uso o "ifelse"
+> rm(grupos)
+> grupos = ifelse(dim(sk1$out$Result)[2] == 5, c(sk1$out$Result$G1,
+>                                                sk1$out$Result$G2,
+>                                                sk1$out$Result$G3,
+>                                                sk1$out$Result$G4),
+>             ifelse(dim(sk1$out$Result)[2] == 4, c(sk1$out$Result$G1,
+>                                                   sk1$out$Result$G2,
+>                                                   sk1$out$Result$G3),
+>                    ifelse(dim(sk1$out$Result)[2] == 3, c(sk1$out$Result$G1,
+>
+>  sk1$out$Result$G2),
+>                           sk1$out$Result$G1)))
+> grupos
+>
+> #O que há de errado?
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20241015/fb5ac7b0/attachment.htm>
+
+From cidedson em gmail.com  Tue Oct 15 13:30:23 2024
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Tue, 15 Oct 2024 13:30:23 -0300
+Subject: [R-br] Uso do ifelse
+In-Reply-To: <CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>
+References: <CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>
+Message-ID: <CAAmR2794AymfU+tGvXuyFLwgQw3m6S=+s+udOQ31SvONK41AxQ@mail.gmail.com>
+
+if (dim(sk1$out$Result)[2] == 5) {
+  grupos <- c(sk1$out$Result$G1,
+              sk1$out$Result$G2,
+              sk1$out$Result$G3,
+              sk1$out$Result$G4)
+} else if (dim(sk1$out$Result)[2] == 4) {
+  grupos <- c(sk1$out$Result$G1,
+              sk1$out$Result$G2,
+              sk1$out$Result$G3)
+} else if (dim(sk1$out$Result)[2] == 3) {
+  grupos <- c(sk1$out$Result$G1,
+              sk1$out$Result$G2)
+} else {
+  grupos <- sk1$out$Result$G1
+}
+
+grupos
+
+rm(grupos)
+
+library(dplyr)
+
+grupos <- case_when(
+  dim(sk1$out$Result)[2] == 5 ~ list(c(sk1$out$Result$G1,
+                                       sk1$out$Result$G2,
+                                       sk1$out$Result$G3,
+                                       sk1$out$Result$G4)),
+  dim(sk1$out$Result)[2] == 4 ~ list(c(sk1$out$Result$G1,
+                                       sk1$out$Result$G2,
+                                       sk1$out$Result$G3)),
+  dim(sk1$out$Result)[2] == 3 ~ list(c(sk1$out$Result$G1,
+                                       sk1$out$Result$G2)),
+  TRUE ~ list(sk1$out$Result$G1)
+)
+
+grupos <- unlist(grupos)
+
+rm(grupos)
+
+
+num_grupos <- min(dim(sk1$out$Result)[2], 10)
+
+# Criar dinamicamente a lista de grupos
+grupos <- unlist(lapply(1:num_grupos, function(i)
+sk1$out$Result[[paste0('G', i)]]))
+
+grupos
+
+*Cid Edson Mendonça Póvoas*
+*Agrônomo - **Data Analyst - Crop Protection & Seeds*
+*Tel: +55 73 99151-9565*
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em ter., 15 de out. de 2024 às 12:56, Maurício Lordêlo por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> #Olá,
+> #saudações a tod em s!!!
+> #Vou precisar várias comparações múltiplas usando o
+> #teste de Scott Knott
+> #Quero no final, capturar as letras e formar um único vetor
+>
+> #No exemplo abaixo, só serão formados dois "grupos"
+> #Porém pode acontecer de formar um, três ou quatro
+> #Não acontecerá de cinco ou mais
+>
+> #Usei o "ifelse" para isso, porém o retorno é um
+> #vetor de tamanho 1
+> library(ScottKnott)
+> data(RCBD)
+> sk1 <- with(RCBD,
+>             SK(y ~ blk + tra,
+>                data=dfm,
+>                which='tra'))
+> sk1$out$Result   #aqui eu verifico a formação de dois grupos
+>
+> #O objeto que vai ser gerado no final, deveria ser igual a este
+> #aqui
+> grupos = c(sk1$out$Result$G1,
+>                   sk1$out$Result$G2)
+> grupos[nzchar(grupos)]
+>
+> #Porém, isso não acontece quando eu uso o "ifelse"
+> rm(grupos)
+> grupos = ifelse(dim(sk1$out$Result)[2] == 5, c(sk1$out$Result$G1,
+>                                                sk1$out$Result$G2,
+>                                                sk1$out$Result$G3,
+>                                                sk1$out$Result$G4),
+>             ifelse(dim(sk1$out$Result)[2] == 4, c(sk1$out$Result$G1,
+>                                                   sk1$out$Result$G2,
+>                                                   sk1$out$Result$G3),
+>                    ifelse(dim(sk1$out$Result)[2] == 3, c(sk1$out$Result$G1,
+>
+>  sk1$out$Result$G2),
+>                           sk1$out$Result$G1)))
+> grupos
+>
+> #O que há de errado?
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20241015/1fa685cd/attachment.htm>
+
+From mslordelo em gmail.com  Tue Oct 15 17:49:15 2024
+From: mslordelo em gmail.com (=?UTF-8?B?TWF1csOtY2lvIExvcmTDqmxv?=)
+Date: Tue, 15 Oct 2024 17:49:15 -0300
+Subject: [R-br] Uso do ifelse
+In-Reply-To: <CAAmR2794AymfU+tGvXuyFLwgQw3m6S=+s+udOQ31SvONK41AxQ@mail.gmail.com>
+References: <CAGUUkAuErDQBQQKi7_o=zaz0CjEj4ZTsJXg7bAD=_DexPifCVw@mail.gmail.com>
+ <CAAmR2794AymfU+tGvXuyFLwgQw3m6S=+s+udOQ31SvONK41AxQ@mail.gmail.com>
+Message-ID: <CAGUUkAvphAkVAo6obf7x3zYZPKT05abBgZFvKGXJO8tcAah4rg@mail.gmail.com>
+
+Muito obrigado!
+
+Em ter., 15 de out. de 2024 às 13:30, Cid Póvoas por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+>
+> if (dim(sk1$out$Result)[2] == 5) {
+>   grupos <- c(sk1$out$Result$G1,
+>               sk1$out$Result$G2,
+>               sk1$out$Result$G3,
+>               sk1$out$Result$G4)
+> } else if (dim(sk1$out$Result)[2] == 4) {
+>   grupos <- c(sk1$out$Result$G1,
+>               sk1$out$Result$G2,
+>               sk1$out$Result$G3)
+> } else if (dim(sk1$out$Result)[2] == 3) {
+>   grupos <- c(sk1$out$Result$G1,
+>               sk1$out$Result$G2)
+> } else {
+>   grupos <- sk1$out$Result$G1
+> }
+>
+> grupos
+>
+> rm(grupos)
+>
+> library(dplyr)
+>
+> grupos <- case_when(
+>   dim(sk1$out$Result)[2] == 5 ~ list(c(sk1$out$Result$G1,
+>                                        sk1$out$Result$G2,
+>                                        sk1$out$Result$G3,
+>                                        sk1$out$Result$G4)),
+>   dim(sk1$out$Result)[2] == 4 ~ list(c(sk1$out$Result$G1,
+>                                        sk1$out$Result$G2,
+>                                        sk1$out$Result$G3)),
+>   dim(sk1$out$Result)[2] == 3 ~ list(c(sk1$out$Result$G1,
+>                                        sk1$out$Result$G2)),
+>   TRUE ~ list(sk1$out$Result$G1)
+> )
+>
+> grupos <- unlist(grupos)
+>
+> rm(grupos)
+>
+>
+> num_grupos <- min(dim(sk1$out$Result)[2], 10)
+>
+> # Criar dinamicamente a lista de grupos
+> grupos <- unlist(lapply(1:num_grupos, function(i)
+> sk1$out$Result[[paste0('G', i)]]))
+>
+> grupos
+>
+> *Cid Edson Mendonça Póvoas*
+> *Agrônomo - **Data Analyst - Crop Protection & Seeds*
+> *Tel: +55 73 99151-9565*
+> *Lattes : *http://lattes.cnpq.br/2303498368142537
+> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+> *Whatsapp :* https://wa.me/5573991519565
+>
+>
+> Em ter., 15 de out. de 2024 às 12:56, Maurício Lordêlo por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> #Olá,
+>> #saudações a tod em s!!!
+>> #Vou precisar várias comparações múltiplas usando o
+>> #teste de Scott Knott
+>> #Quero no final, capturar as letras e formar um único vetor
+>>
+>> #No exemplo abaixo, só serão formados dois "grupos"
+>> #Porém pode acontecer de formar um, três ou quatro
+>> #Não acontecerá de cinco ou mais
+>>
+>> #Usei o "ifelse" para isso, porém o retorno é um
+>> #vetor de tamanho 1
+>> library(ScottKnott)
+>> data(RCBD)
+>> sk1 <- with(RCBD,
+>>             SK(y ~ blk + tra,
+>>                data=dfm,
+>>                which='tra'))
+>> sk1$out$Result   #aqui eu verifico a formação de dois grupos
+>>
+>> #O objeto que vai ser gerado no final, deveria ser igual a este
+>> #aqui
+>> grupos = c(sk1$out$Result$G1,
+>>                   sk1$out$Result$G2)
+>> grupos[nzchar(grupos)]
+>>
+>> #Porém, isso não acontece quando eu uso o "ifelse"
+>> rm(grupos)
+>> grupos = ifelse(dim(sk1$out$Result)[2] == 5, c(sk1$out$Result$G1,
+>>                                                sk1$out$Result$G2,
+>>                                                sk1$out$Result$G3,
+>>                                                sk1$out$Result$G4),
+>>             ifelse(dim(sk1$out$Result)[2] == 4, c(sk1$out$Result$G1,
+>>                                                   sk1$out$Result$G2,
+>>                                                   sk1$out$Result$G3),
+>>                    ifelse(dim(sk1$out$Result)[2] == 3,
+>> c(sk1$out$Result$G1,
+>>
+>>  sk1$out$Result$G2),
+>>                           sk1$out$Result$G1)))
+>> grupos
+>>
+>> #O que há de errado?
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20241015/f273eb0c/attachment.htm>
+

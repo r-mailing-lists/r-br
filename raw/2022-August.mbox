@@ -1,0 +1,1107 @@
+From michele.breton20 em gmail.com  Thu Aug  4 07:06:14 2022
+From: michele.breton20 em gmail.com (Michele Claire Breton)
+Date: Thu, 4 Aug 2022 11:06:14 +0100
+Subject: [R-br] =?utf-8?q?Como_instalar_o_edgeR_no_Rstudio_vers=C3=A3o_3?=
+ =?utf-8?q?=2E6=2E3?=
+Message-ID: <CACTXoEaRKZ3Hfkv_v02awf800cVf8ebakPE2R8r6g=+pQue-RA@mail.gmail.com>
+
+Caríssimos(as) utilizadores do R, bom dia
+
+Espero que todos estejam bem.
+Preciso converter dados de expressão gênica de FPKM para CPM, a fim de
+comparar estes dados com outros bancos que estão em CPM. Para fazer a
+conversão, eu deveria usar o pacote edgeR, entretanto, não consigo
+instalá-lo no RStudio V.3.6.3. a seguinte mensagem aparece: "Warning in
+install.packages :   package ?edgeR? is not available (for R version
+3.6.3)".
+Por favor, como posso instalar o pacote? Ou então, há outro pacote que eu
+possa usar para fazer a conversão que seja compatível com esta versão do R?
+
+Muitíssimo obrigada!
+
+Michele
+
+-- 
+------------------------------------------------------------------------
+*Dra. Michele Claire Breton*
+Researcher in Bioinformatics
+PhD in Cellular and Molecular Biology
+CICS - Health Sciences Research Center
+Faculty of Health Sciences
+University of Beira Interior
+Covilhã - Castelo Branco - Portugal
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220804/0ef2edc0/attachment.htm>
+
+From marcus.nunes em gmail.com  Thu Aug  4 08:12:57 2022
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Thu, 4 Aug 2022 08:12:57 -0300
+Subject: [R-br] 
+	=?utf-8?q?Como_instalar_o_edgeR_no_Rstudio_vers=C3=A3o_3?=
+	=?utf-8?q?=2E6=2E3?=
+In-Reply-To: <CACTXoEaRKZ3Hfkv_v02awf800cVf8ebakPE2R8r6g=+pQue-RA@mail.gmail.com>
+References: <CACTXoEaRKZ3Hfkv_v02awf800cVf8ebakPE2R8r6g=+pQue-RA@mail.gmail.com>
+Message-ID: <CA+QGQvt1kJyR2DBTG9OhO60GNqmxC5pT05hwuQ6Hs-i5kqtQ9Q@mail.gmail.com>
+
+O edgeR não está disponível no CRAN. Ele faz parte do Bioconductor. Dê uma
+lida neste tutorial -
+https://bioconductor.org/packages/release/bioc/html/edgeR.html - para
+encontrar as instruções de intalação.
+--
+Marcus Nunes
+Professor Adjunto
+https://marcusnunes.me/
+Universidade Federal do Rio Grande do Norte
+Departamento de Estatística
+Laboratório de Estatística Aplicada - http://lea.estatistica.ccet.ufrn.br
+Curso de Big Data - https://introbigdata.org
+Aplicações em Shiny - http://shiny.estatistica.ccet.ufrn.br
+
+
+On Thu, Aug 4, 2022 at 7:06 AM Michele Claire Breton por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Caríssimos(as) utilizadores do R, bom dia
+>
+> Espero que todos estejam bem.
+> Preciso converter dados de expressão gênica de FPKM para CPM, a fim de
+> comparar estes dados com outros bancos que estão em CPM. Para fazer a
+> conversão, eu deveria usar o pacote edgeR, entretanto, não consigo
+> instalá-lo no RStudio V.3.6.3. a seguinte mensagem aparece: "Warning in
+> install.packages :   package ?edgeR? is not available (for R version
+> 3.6.3)".
+> Por favor, como posso instalar o pacote? Ou então, há outro pacote que eu
+> possa usar para fazer a conversão que seja compatível com esta versão do R?
+>
+> Muitíssimo obrigada!
+>
+> Michele
+>
+> --
+> ------------------------------------------------------------------------
+> *Dra. Michele Claire Breton*
+> Researcher in Bioinformatics
+> PhD in Cellular and Molecular Biology
+> CICS - Health Sciences Research Center
+> Faculty of Health Sciences
+> University of Beira Interior
+> Covilhã - Castelo Branco - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220804/bbfc594c/attachment.htm>
+
+From michele.breton20 em gmail.com  Thu Aug  4 10:52:09 2022
+From: michele.breton20 em gmail.com (Michele Claire Breton)
+Date: Thu, 4 Aug 2022 14:52:09 +0100
+Subject: [R-br] =?utf-8?q?N=C3=A3o_reconhecimento_do_data=2Eframe_como_nu?=
+ =?utf-8?q?m=C3=A9rico?=
+Message-ID: <CACTXoEbzvrOARPe7jjH6ZnSyW+c4McnLhmbY-+HxV7ksvQnveg@mail.gmail.com>
+
+Caríssimos(as) utilizadores(as) do R,
+
+Estou em outro nível de problema.
+Quero converter FPKM em log2CPM. Para tanto, fiz o seguinte:
+
+dados<-read.csv("/home/Genes interesse NePCa.csv")
+head(dados)
+class(dados)
+
+*[1] "data.frame"*
+
+geneLength <- rowMeans(dados)
+*Error in rowMeans(dados) : 'x' must be numeric*
+
+
+dadoslog2cpm <- convertCounts(dados,
+                        unit = "cpm",
+                        log = TRUE,
+                        normalize = "tmm")
+*Error: countsMatrix must be a numeric matrix or dataframe of N genes x M
+Samples. All columns must be numeric.*
+
+
+Não entendo o que possa estar errado. A tabela de dados está em anexo.
+Vocês podem me ajudar, por favor?
+
+Obrigada,
+
+Michele
+-- 
+------------------------------------------------------------------------
+*Dra. Michele Claire Breton*
+Researcher in Bioinformatics
+PhD in Cellular and Molecular Biology
+CICS - Health Sciences Research Center
+Faculty of Health Sciences
+University of Beira Interior
+Covilhã - Castelo Branco - Portugal
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220804/a84d5730/attachment.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Genes interesse NePCa.csv
+Tipo: text/csv
+Tamanho: 62454 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220804/a84d5730/attachment.csv>
+
+From dtiezzi em usp.br  Thu Aug  4 11:56:19 2022
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Thu, 4 Aug 2022 11:56:19 -0300
+Subject: [R-br] 
+	=?utf-8?q?N=C3=A3o_reconhecimento_do_data=2Eframe_como_nu?=
+	=?utf-8?q?m=C3=A9rico?=
+In-Reply-To: <CACTXoEbzvrOARPe7jjH6ZnSyW+c4McnLhmbY-+HxV7ksvQnveg@mail.gmail.com>
+References: <CACTXoEbzvrOARPe7jjH6ZnSyW+c4McnLhmbY-+HxV7ksvQnveg@mail.gmail.com>
+Message-ID: <CA+RL3DN=dLkPRaDw5=VwegNEEzbf4hK1qtkxqU6F1vgoemyBWA@mail.gmail.com>
+
+O objeto do tipo matrix em R somente aceita variáveis do mesmo tipo. Como
+você está lendo o CSV que contém caracteres (nomes dos genes) e valores
+numéricos (expressão), o R converte tudo para caracter.
+Você precisa colocar a coluna do nome dos genes no rownames, excluir a
+coluna de nome de genes e converter tudo em uma matriz numérica.
+
+Assim você poderá trabalhar com ela
+
+daniel
+
+
+
+Em qui., 4 de ago. de 2022 às 10:52, Michele Claire Breton por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Caríssimos(as) utilizadores(as) do R,
+>
+> Estou em outro nível de problema.
+> Quero converter FPKM em log2CPM. Para tanto, fiz o seguinte:
+>
+> dados<-read.csv("/home/Genes interesse NePCa.csv")
+> head(dados)
+> class(dados)
+>
+> *[1] "data.frame"*
+>
+> geneLength <- rowMeans(dados)
+> *Error in rowMeans(dados) : 'x' must be numeric*
+>
+>
+> dadoslog2cpm <- convertCounts(dados,
+>                         unit = "cpm",
+>                         log = TRUE,
+>                         normalize = "tmm")
+> *Error: countsMatrix must be a numeric matrix or dataframe of N genes x M
+> Samples. All columns must be numeric.*
+>
+>
+> Não entendo o que possa estar errado. A tabela de dados está em anexo.
+> Vocês podem me ajudar, por favor?
+>
+> Obrigada,
+>
+> Michele
+> --
+> ------------------------------------------------------------------------
+> *Dra. Michele Claire Breton*
+> Researcher in Bioinformatics
+> PhD in Cellular and Molecular Biology
+> CICS - Health Sciences Research Center
+> Faculty of Health Sciences
+> University of Beira Interior
+> Covilhã - Castelo Branco - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+Daniel Tiezzi, MD, PhD
+Associate Professor
+Breast Disease and Gynecologic Oncology Division
+Department of Gynecology and Obstetrics
+University of São Paulo
+Brazil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220804/60a26af4/attachment.htm>
+
+From psp.pauloamorim em gmail.com  Thu Aug  4 12:07:17 2022
+From: psp.pauloamorim em gmail.com (Paulo Amorim)
+Date: Thu, 4 Aug 2022 12:07:17 -0300
+Subject: [R-br] Cancelar assinatura
+Message-ID: <CAHBOmY8ZvxERqHwan5ZLuYk08KUE-FYcu6wx71a4RWBy0NVo8Q@mail.gmail.com>
+
+Olá, tudo bem?
+
+Como faço para cancelar a assinatura? já tentei pelo site, mas não tive
+sucesso.
+
+Abraços
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220804/35284597/attachment.htm>
+
+From cesar.rabak em gmail.com  Thu Aug  4 21:55:09 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 4 Aug 2022 21:55:09 -0300
+Subject: [R-br] 
+	=?utf-8?q?N=C3=A3o_reconhecimento_do_data=2Eframe_como_nu?=
+	=?utf-8?q?m=C3=A9rico?=
+In-Reply-To: <CACTXoEbzvrOARPe7jjH6ZnSyW+c4McnLhmbY-+HxV7ksvQnveg@mail.gmail.com>
+References: <CACTXoEbzvrOARPe7jjH6ZnSyW+c4McnLhmbY-+HxV7ksvQnveg@mail.gmail.com>
+Message-ID: <CAKrF98mV=wxc-DSeJ58ZszaVvrOwi36pc_a0O1qT+W2iOb728w@mail.gmail.com>
+
+Algumas sugestões dadas aqui são interessantes, *mas* a importação dos seus
+dados indica que tens as linhas 10 e 162 com mesmo nome de gene "AR".
+
+Isso perturba a importação da 1ª coluna como nome de linhas (*rownames*),
+tanto se fosse usada o parâmetro row.names=1 na chamada a read.csv() ou se
+a vírgula inicial da primeira linha do arq CSV fosse retirada...
+
+HTH
+
+On Thu, Aug 4, 2022 at 10:52 AM Michele Claire Breton por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Caríssimos(as) utilizadores(as) do R,
+>
+> Estou em outro nível de problema.
+> Quero converter FPKM em log2CPM. Para tanto, fiz o seguinte:
+>
+> dados<-read.csv("/home/Genes interesse NePCa.csv")
+> head(dados)
+> class(dados)
+>
+> *[1] "data.frame"*
+>
+> geneLength <- rowMeans(dados)
+> *Error in rowMeans(dados) : 'x' must be numeric*
+>
+>
+> dadoslog2cpm <- convertCounts(dados,
+>                         unit = "cpm",
+>                         log = TRUE,
+>                         normalize = "tmm")
+> *Error: countsMatrix must be a numeric matrix or dataframe of N genes x M
+> Samples. All columns must be numeric.*
+>
+>
+> Não entendo o que possa estar errado. A tabela de dados está em anexo.
+> Vocês podem me ajudar, por favor?
+>
+> Obrigada,
+>
+> Michele
+> --
+> ------------------------------------------------------------------------
+> *Dra. Michele Claire Breton*
+> Researcher in Bioinformatics
+> PhD in Cellular and Molecular Biology
+> CICS - Health Sciences Research Center
+> Faculty of Health Sciences
+> University of Beira Interior
+> Covilhã - Castelo Branco - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220804/cd77599a/attachment.htm>
+
+From dtiezzi em usp.br  Thu Aug  4 22:04:08 2022
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Thu, 4 Aug 2022 22:04:08 -0300
+Subject: [R-br] 
+ =?utf-8?q?N=C3=A3o_reconhecimento_do_data=2Eframe_como_nu?=
+ =?utf-8?q?m=C3=A9rico?=
+In-Reply-To: <CAKrF98mV=wxc-DSeJ58ZszaVvrOwi36pc_a0O1qT+W2iOb728w@mail.gmail.com>
+References: <CACTXoEbzvrOARPe7jjH6ZnSyW+c4McnLhmbY-+HxV7ksvQnveg@mail.gmail.com>
+ <CAKrF98mV=wxc-DSeJ58ZszaVvrOwi36pc_a0O1qT+W2iOb728w@mail.gmail.com>
+Message-ID: <36B30511-950E-4506-ABD3-3B5EB1DD0813@usp.br>
+
+Se existirem mais de uma linha referente ao mesmo gene é preciso agregar os valores de alguma forma. Usar a média ou o valor máximo. Precisa ver o que foi utilizado para a contagem. Geralmente os algoritmos de contagem utilizam a nomenclatura do Ensembl que vem dos arguis GTF. Neste caos, foi feito a conversão para o HUGO symbol. Isso acontece mesmo.
+
+Daniel
+
+
+
+> On 4 Aug 2022, at 21:55, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Algumas sugestões dadas aqui são interessantes, mas a importação dos seus dados indica que tens as linhas 10 e 162 com mesmo nome de gene "AR".
+> 
+> Isso perturba a importação da 1ª coluna como nome de linhas (rownames), tanto se fosse usada o parâmetro row.names=1 na chamada a read.csv() ou se a vírgula inicial da primeira linha do arq CSV fosse retirada...
+> 
+> HTH
+> 
+> On Thu, Aug 4, 2022 at 10:52 AM Michele Claire Breton por (R-br) <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+> Caríssimos(as) utilizadores(as) do R,
+> 
+> Estou em outro nível de problema.
+> Quero converter FPKM em log2CPM. Para tanto, fiz o seguinte: 
+> 
+> dados<-read.csv("/home/Genes interesse NePCa.csv")
+> head(dados)
+> class(dados)
+> 
+> [1] "data.frame"
+> 
+> geneLength <- rowMeans(dados)
+> Error in rowMeans(dados) : 'x' must be numeric
+> 
+> dadoslog2cpm <- convertCounts(dados,
+>                         unit = "cpm",
+>                         log = TRUE,
+>                         normalize = "tmm")
+> Error: countsMatrix must be a numeric matrix or dataframe of N genes x M Samples. All columns must be numeric.
+> 
+> Não entendo o que possa estar errado. A tabela de dados está em anexo. Vocês podem me ajudar, por favor?
+> 
+> Obrigada,
+> 
+> Michele
+> -- 
+> ------------------------------------------------------------------------
+> Dra. Michele Claire Breton
+> Researcher in Bioinformatics
+> PhD in Cellular and Molecular Biology
+> CICS - Health Sciences Research Center
+> Faculty of Health Sciences
+> University of Beira Interior
+> Covilhã - Castelo Branco - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo reproduzível.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220804/0b096c01/attachment.htm>
+
+From dtiezzi em usp.br  Thu Aug  4 22:05:21 2022
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Thu, 4 Aug 2022 22:05:21 -0300
+Subject: [R-br] 
+ =?utf-8?q?N=C3=A3o_reconhecimento_do_data=2Eframe_como_nu?=
+ =?utf-8?q?m=C3=A9rico?=
+In-Reply-To: <CAKrF98mV=wxc-DSeJ58ZszaVvrOwi36pc_a0O1qT+W2iOb728w@mail.gmail.com>
+References: <CACTXoEbzvrOARPe7jjH6ZnSyW+c4McnLhmbY-+HxV7ksvQnveg@mail.gmail.com>
+ <CAKrF98mV=wxc-DSeJ58ZszaVvrOwi36pc_a0O1qT+W2iOb728w@mail.gmail.com>
+Message-ID: <8DF06B78-0E96-4E49-A6DF-5273F7531C9A@usp.br>
+
+Arquivos GTF, eu quis dizer
+
+Daniel
+
+
+
+> On 4 Aug 2022, at 21:55, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Algumas sugestões dadas aqui são interessantes, mas a importação dos seus dados indica que tens as linhas 10 e 162 com mesmo nome de gene "AR".
+> 
+> Isso perturba a importação da 1ª coluna como nome de linhas (rownames), tanto se fosse usada o parâmetro row.names=1 na chamada a read.csv() ou se a vírgula inicial da primeira linha do arq CSV fosse retirada...
+> 
+> HTH
+> 
+> On Thu, Aug 4, 2022 at 10:52 AM Michele Claire Breton por (R-br) <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+> Caríssimos(as) utilizadores(as) do R,
+> 
+> Estou em outro nível de problema.
+> Quero converter FPKM em log2CPM. Para tanto, fiz o seguinte: 
+> 
+> dados<-read.csv("/home/Genes interesse NePCa.csv")
+> head(dados)
+> class(dados)
+> 
+> [1] "data.frame"
+> 
+> geneLength <- rowMeans(dados)
+> Error in rowMeans(dados) : 'x' must be numeric
+> 
+> dadoslog2cpm <- convertCounts(dados,
+>                         unit = "cpm",
+>                         log = TRUE,
+>                         normalize = "tmm")
+> Error: countsMatrix must be a numeric matrix or dataframe of N genes x M Samples. All columns must be numeric.
+> 
+> Não entendo o que possa estar errado. A tabela de dados está em anexo. Vocês podem me ajudar, por favor?
+> 
+> Obrigada,
+> 
+> Michele
+> -- 
+> ------------------------------------------------------------------------
+> Dra. Michele Claire Breton
+> Researcher in Bioinformatics
+> PhD in Cellular and Molecular Biology
+> CICS - Health Sciences Research Center
+> Faculty of Health Sciences
+> University of Beira Interior
+> Covilhã - Castelo Branco - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo reproduzível.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220804/27f547c1/attachment.htm>
+
+From dtiezzi em usp.br  Thu Aug  4 22:10:55 2022
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Thu, 4 Aug 2022 22:10:55 -0300
+Subject: [R-br] 
+ =?utf-8?q?N=C3=A3o_reconhecimento_do_data=2Eframe_como_nu?=
+ =?utf-8?q?m=C3=A9rico?=
+In-Reply-To: <CAKrF98mV=wxc-DSeJ58ZszaVvrOwi36pc_a0O1qT+W2iOb728w@mail.gmail.com>
+References: <CACTXoEbzvrOARPe7jjH6ZnSyW+c4McnLhmbY-+HxV7ksvQnveg@mail.gmail.com>
+ <CAKrF98mV=wxc-DSeJ58ZszaVvrOwi36pc_a0O1qT+W2iOb728w@mail.gmail.com>
+Message-ID: <819F4CD8-3710-40E5-8CE6-FFC5DC193EE3@usp.br>
+
+genes <- read.csv('~/Downloads/NePCa.csv')
+
+genes[1:4,1:4]
+
+g_max <- aggregate(. ~X, data = genes, max)
+g_max[1:4,1:4]
+
+rownames(g_max) <- g_max$X
+
+gene_matrix <- as.matrix(g_max[,-1])
+is.numeric(gene_matrix)
+gene_matrix[1:4,1:4]
+
+Daniel
+
+
+
+> On 4 Aug 2022, at 21:55, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Algumas sugestões dadas aqui são interessantes, mas a importação dos seus dados indica que tens as linhas 10 e 162 com mesmo nome de gene "AR".
+> 
+> Isso perturba a importação da 1ª coluna como nome de linhas (rownames), tanto se fosse usada o parâmetro row.names=1 na chamada a read.csv() ou se a vírgula inicial da primeira linha do arq CSV fosse retirada...
+> 
+> HTH
+> 
+> On Thu, Aug 4, 2022 at 10:52 AM Michele Claire Breton por (R-br) <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+> Caríssimos(as) utilizadores(as) do R,
+> 
+> Estou em outro nível de problema.
+> Quero converter FPKM em log2CPM. Para tanto, fiz o seguinte: 
+> 
+> dados<-read.csv("/home/Genes interesse NePCa.csv")
+> head(dados)
+> class(dados)
+> 
+> [1] "data.frame"
+> 
+> geneLength <- rowMeans(dados)
+> Error in rowMeans(dados) : 'x' must be numeric
+> 
+> dadoslog2cpm <- convertCounts(dados,
+>                         unit = "cpm",
+>                         log = TRUE,
+>                         normalize = "tmm")
+> Error: countsMatrix must be a numeric matrix or dataframe of N genes x M Samples. All columns must be numeric.
+> 
+> Não entendo o que possa estar errado. A tabela de dados está em anexo. Vocês podem me ajudar, por favor?
+> 
+> Obrigada,
+> 
+> Michele
+> -- 
+> ------------------------------------------------------------------------
+> Dra. Michele Claire Breton
+> Researcher in Bioinformatics
+> PhD in Cellular and Molecular Biology
+> CICS - Health Sciences Research Center
+> Faculty of Health Sciences
+> University of Beira Interior
+> Covilhã - Castelo Branco - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo reproduzível.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220804/51afad6b/attachment.htm>
+
+From michele.breton20 em gmail.com  Fri Aug  5 06:49:08 2022
+From: michele.breton20 em gmail.com (Michele Claire Breton)
+Date: Fri, 5 Aug 2022 10:49:08 +0100
+Subject: [R-br] 
+	=?utf-8?q?N=C3=A3o_reconhecimento_do_data=2Eframe_como_nu?=
+	=?utf-8?q?m=C3=A9rico?=
+In-Reply-To: <819F4CD8-3710-40E5-8CE6-FFC5DC193EE3@usp.br>
+References: <CACTXoEbzvrOARPe7jjH6ZnSyW+c4McnLhmbY-+HxV7ksvQnveg@mail.gmail.com>
+ <CAKrF98mV=wxc-DSeJ58ZszaVvrOwi36pc_a0O1qT+W2iOb728w@mail.gmail.com>
+ <819F4CD8-3710-40E5-8CE6-FFC5DC193EE3@usp.br>
+Message-ID: <CACTXoEbbTD3cxA_Dem2XH+RTUbZzETb_4hsDw5wxowTg_w8DEQ@mail.gmail.com>
+
+Muito bom dia Daniel Tiezzi e Cesar Rabak,
+
+Agradeço imensamente a ajuda e vocês.
+Ao Cesar, agradeço por ter observado a duplicidade dos valores de expressão
+do gene AR. É aquele velho ditado: "a pressa é inimiga da perfeição". Eu
+tenho 3 vias metabólicas de genes representados nesta tabela, e o gene AR
+participa de duas delas. Não tinha reparado nisto.
+Ao Daniel, agradeço as linhas de comando. Vou estudá-las para tentar
+perceber e assimilar este conhecimento. Já rodei aqui nos meus dados e
+funcionou perfeitamente.
+
+Tenham um excelente fim de semana!
+
+Michele
+
+Daniel Guimarães Tiezzi por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu no
+dia sexta, 5/08/2022 à(s) 02:11:
+
+> genes <- read.csv('~/Downloads/NePCa.csv')
+>
+> genes[1:4,1:4]
+>
+> g_max <- aggregate(. ~X, data = genes, max)
+> g_max[1:4,1:4]
+>
+> rownames(g_max) <- g_max$X
+>
+> gene_matrix <- as.matrix(g_max[,-1])
+> is.numeric(gene_matrix)
+> gene_matrix[1:4,1:4]
+>
+> Daniel
+>
+>
+>
+> On 4 Aug 2022, at 21:55, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br>
+> wrote:
+>
+> Algumas sugestões dadas aqui são interessantes, *mas* a importação dos
+> seus dados indica que tens as linhas 10 e 162 com mesmo nome de gene "AR".
+>
+> Isso perturba a importação da 1ª coluna como nome de linhas (*rownames*),
+> tanto se fosse usada o parâmetro row.names=1 na chamada a read.csv() ou
+> se a vírgula inicial da primeira linha do arq CSV fosse retirada...
+>
+> HTH
+>
+> On Thu, Aug 4, 2022 at 10:52 AM Michele Claire Breton por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Caríssimos(as) utilizadores(as) do R,
+>>
+>> Estou em outro nível de problema.
+>> Quero converter FPKM em log2CPM. Para tanto, fiz o seguinte:
+>>
+>> dados<-read.csv("/home/Genes interesse NePCa.csv")
+>> head(dados)
+>> class(dados)
+>>
+>> *[1] "data.frame"*
+>>
+>> geneLength <- rowMeans(dados)
+>> *Error in rowMeans(dados) : 'x' must be numeric*
+>>
+>>
+>> dadoslog2cpm <- convertCounts(dados,
+>>                         unit = "cpm",
+>>                         log = TRUE,
+>>                         normalize = "tmm")
+>> *Error: countsMatrix must be a numeric matrix or dataframe of N genes x M
+>> Samples. All columns must be numeric.*
+>>
+>>
+>> Não entendo o que possa estar errado. A tabela de dados está em anexo.
+>> Vocês podem me ajudar, por favor?
+>>
+>> Obrigada,
+>>
+>> Michele
+>> --
+>> ------------------------------------------------------------------------
+>> *Dra. Michele Claire Breton*
+>> Researcher in Bioinformatics
+>> PhD in Cellular and Molecular Biology
+>> CICS - Health Sciences Research Center
+>> Faculty of Health Sciences
+>> University of Beira Interior
+>> Covilhã - Castelo Branco - Portugal
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220805/bfc08e04/attachment.htm>
+
+From michele.breton20 em gmail.com  Fri Aug  5 06:49:57 2022
+From: michele.breton20 em gmail.com (Michele Claire Breton)
+Date: Fri, 5 Aug 2022 10:49:57 +0100
+Subject: [R-br] 
+	=?utf-8?q?Como_instalar_o_edgeR_no_Rstudio_vers=C3=A3o_3?=
+	=?utf-8?q?=2E6=2E3?=
+In-Reply-To: <CA+QGQvt1kJyR2DBTG9OhO60GNqmxC5pT05hwuQ6Hs-i5kqtQ9Q@mail.gmail.com>
+References: <CACTXoEaRKZ3Hfkv_v02awf800cVf8ebakPE2R8r6g=+pQue-RA@mail.gmail.com>
+ <CA+QGQvt1kJyR2DBTG9OhO60GNqmxC5pT05hwuQ6Hs-i5kqtQ9Q@mail.gmail.com>
+Message-ID: <CACTXoEZmGVyAP1nHLnwWUs1uFQ7Npy9=DGRzPxgqTr69UHj1Mw@mail.gmail.com>
+
+Bom dia Marcus Nunes,
+
+Obrigada por me orientar.
+
+Michele
+
+Marcus Nunes <marcus.nunes em gmail.com> escreveu no dia quinta, 4/08/2022
+à(s) 12:13:
+
+> O edgeR não está disponível no CRAN. Ele faz parte do Bioconductor. Dê uma
+> lida neste tutorial -
+> https://bioconductor.org/packages/release/bioc/html/edgeR.html - para
+> encontrar as instruções de intalação.
+> --
+> Marcus Nunes
+> Professor Adjunto
+> https://marcusnunes.me/
+> Universidade Federal do Rio Grande do Norte
+> Departamento de Estatística
+> Laboratório de Estatística Aplicada - http://lea.estatistica.ccet.ufrn.br
+> Curso de Big Data - https://introbigdata.org
+> Aplicações em Shiny - http://shiny.estatistica.ccet.ufrn.br
+>
+>
+> On Thu, Aug 4, 2022 at 7:06 AM Michele Claire Breton por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Caríssimos(as) utilizadores do R, bom dia
+>>
+>> Espero que todos estejam bem.
+>> Preciso converter dados de expressão gênica de FPKM para CPM, a fim de
+>> comparar estes dados com outros bancos que estão em CPM. Para fazer a
+>> conversão, eu deveria usar o pacote edgeR, entretanto, não consigo
+>> instalá-lo no RStudio V.3.6.3. a seguinte mensagem aparece: "Warning in
+>> install.packages :   package ?edgeR? is not available (for R version
+>> 3.6.3)".
+>> Por favor, como posso instalar o pacote? Ou então, há outro pacote que eu
+>> possa usar para fazer a conversão que seja compatível com esta versão do R?
+>>
+>> Muitíssimo obrigada!
+>>
+>> Michele
+>>
+>> --
+>> ------------------------------------------------------------------------
+>> *Dra. Michele Claire Breton*
+>> Researcher in Bioinformatics
+>> PhD in Cellular and Molecular Biology
+>> CICS - Health Sciences Research Center
+>> Faculty of Health Sciences
+>> University of Beira Interior
+>> Covilhã - Castelo Branco - Portugal
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220805/f46beecd/attachment.htm>
+
+From mariliatsm em yahoo.com.br  Thu Aug 11 14:57:50 2022
+From: mariliatsm em yahoo.com.br (=?UTF-8?Q?Mar=C3=ADlia_Teresinha?=)
+Date: Thu, 11 Aug 2022 17:57:50 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Exporta=C3=A7=C3=A3o_de_imagem_no_RStudio?=
+References: <181463096.282018.1660240670358.ref@mail.yahoo.com>
+Message-ID: <181463096.282018.1660240670358@mail.yahoo.com>
+
+Pessoal, boa tarde. Não estou conseguindo exportar um gráfico como imagem no RStudio. Aparece a seguinte mensagem:
+"TIFFOpen: C://Figura4.tiff: Cannot open."
+O mesmo acontece quando tento pelo comando tiff:
+tiff("Figura 4.tiff", units="in", width=10, height=5, res=150)dev.off()
+Aparece a mensagem:
+"Warning message:In dev.off() : unable to open TIFF file 'C://Figura4.tiff'
+O mesmo vale para qualquer formato de imagem (tiff, jpeg, png...).Esse problema começou depois da instalação da versão atual do RStudio. Alguém sabe o está acontecendo e alguma dica de como resolver?Obrigada.
+
+
+Marilia T. de S. Machado, Dra.
+Pesquisadora Colaboradora, Centro de Desenvolvimento Sustentável - CDS/UnB.Universidade de Brasília, Campus Universitário Darcy Ribeiro.
+CV Lattes: http://lattes.cnpq.br/4190451945124694
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220811/6088f337/attachment.htm>
+
+From cesar.rabak em gmail.com  Thu Aug 11 20:39:55 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 11 Aug 2022 20:39:55 -0300
+Subject: [R-br] =?utf-8?q?Exporta=C3=A7=C3=A3o_de_imagem_no_RStudio?=
+In-Reply-To: <181463096.282018.1660240670358@mail.yahoo.com>
+References: <181463096.282018.1660240670358.ref@mail.yahoo.com>
+ <181463096.282018.1660240670358@mail.yahoo.com>
+Message-ID: <CAKrF98n1CSk0gkbCa=LHoa5GJSmLmH79BGXe7dLagoiSjcWZ=Q@mail.gmail.com>
+
+Geralmente a escrita no diretório raiz de máquinas Windows é "proibida"
+para usuários comuns (ñ admins).
+
+Coloque o caminho de uma pasta ("diretório") que seguramente tenhas acesso,
+como por exemplo a sua pasta Documentos e tente de novo.
+
+No RStudio há um meio de escolher o caminho via a GUI para salvar o
+arquivo, simplificando essa tarefa.
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Thu, Aug 11, 2022 at 2:58 PM Marília Teresinha por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Pessoal, boa tarde. Não estou conseguindo exportar um gráfico como imagem
+> no RStudio. Aparece a seguinte mensagem:
+>
+> "TIFFOpen: C://Figura4.tiff: Cannot open."
+>
+> O mesmo acontece quando tento pelo comando tiff:
+>
+> tiff("Figura 4.tiff", units="in", width=10, height=5, res=150)
+> dev.off()
+>
+> Aparece a mensagem:
+>
+> "Warning message:
+> In dev.off() :
+> unable to open TIFF file 'C://Figura4.tiff'
+>
+> O mesmo vale para qualquer formato de imagem (tiff, jpeg, png...).
+> Esse problema começou depois da instalação da versão atual do RStudio.
+> Alguém sabe o está acontecendo e alguma dica de como resolver?
+> Obrigada.
+>
+>
+> *Marilia T. de S. Machado, Dra.*
+> Pesquisadora Colaboradora, Centro de Desenvolvimento Sustentável - CDS/UnB.
+> Universidade de Brasília, Campus Universitário Darcy Ribeiro.
+>
+> CV Lattes: http://lattes.cnpq.br/4190451945124694
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220811/c9cb7b7b/attachment.htm>
+
+From nandodesouza em gmail.com  Thu Aug 11 20:50:22 2022
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 11 Aug 2022 20:50:22 -0300
+Subject: [R-br] =?utf-8?Q?Exporta=C3=A7=C3=A3o_?=de imagem no RStudio
+In-Reply-To: <181463096.282018.1660240670358@mail.yahoo.com>
+References: <181463096.282018.1660240670358@mail.yahoo.com>
+Message-ID: <F74E0087-50F1-4861-8398-AB71D429FFF5@getmailspring.com>
+
+Boa noite
+
+tente configurar o work directory, tenho a impressao que você não tem permissão para salvar no diretório raiz.
+setwd("C:\\Users\\seuusuario\\Documentos\\")
+depois faça:
+
+tiff("Figura 4.tiff", units="in", width=10, height=5, res=150)
+dev.off()
+
+ou faça direto
+tiff(("C:\\Users\\seuusuario\\Documentos\\Figura 4.tiff", units="in", width=10, height=5, res=150)
+dev.off()
+
+On Aug 11 2022, at 2:57 pm, Marília Teresinha por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Pessoal, boa tarde. Não estou conseguindo exportar um gráfico como imagem no RStudio. Aparece a seguinte mensagem:
+>
+> "TIFFOpen: C://Figura4.tiff: Cannot open."
+>
+> O mesmo acontece quando tento pelo comando tiff:
+>
+> tiff("Figura 4.tiff", units="in", width=10, height=5, res=150)
+> dev.off()
+>
+> Aparece a mensagem:
+>
+> "Warning message:
+> In dev.off() :
+> unable to open TIFF file 'C://Figura4.tiff'
+>
+> O mesmo vale para qualquer formato de imagem (tiff, jpeg, png...).
+> Esse problema começou depois da instalação da versão atual do RStudio. Alguém sabe o está acontecendo e alguma dica de como resolver?
+> Obrigada.
+>
+>
+>
+> Marilia T. de S. Machado, Dra.
+> Pesquisadora Colaboradora, Centro de Desenvolvimento Sustentável - CDS/UnB.
+> Universidade de Brasília, Campus Universitário Darcy Ribeiro.
+>
+> CV Lattes: http://lattes.cnpq.br/4190451945124694
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220811/94ca29c3/attachment.htm>
+
+From mariliatsm em yahoo.com.br  Thu Aug 11 21:20:06 2022
+From: mariliatsm em yahoo.com.br (=?UTF-8?Q?Mar=C3=ADlia_Teresinha?=)
+Date: Fri, 12 Aug 2022 00:20:06 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Assunto=3A_Re=3A__Exporta=C3=A7=C3=A3o_de_image?=
+ =?utf-8?q?m_no_RStudio?=
+In-Reply-To: <F74E0087-50F1-4861-8398-AB71D429FFF5@getmailspring.com>
+References: <181463096.282018.1660240670358@mail.yahoo.com>
+ <F74E0087-50F1-4861-8398-AB71D429FFF5@getmailspring.com>
+Message-ID: <1118300391.370456.1660263606042@mail.yahoo.com>
+
+Boa noite. Eu não tentei salvar no diretório raiz, apenas encurtei a mensagem como mostram as duas barras. Eu fiz as duas tentativas salvando nos meus documentos e, nos dois casos, a imagem não foi aberta.
+ TIFFOpen: C:/Users/Usuario/Documents/ Figura4.tiff: Cannot open."
+O mesmo acontece quando tento fazer direto pelo comando tiff.
+Agradeço se vocês tiverem mais alguma sugestão.
+
+Enviado do Yahoo Mail no Android 
+ 
+  Em qui, 11 11e ago 11e 2022 às 20:50, Fernando Souza<nandodesouza em gmail.com> escreveu:   Boa noite
+tente configurar o work directory, tenho a impressao que você não tem permissão para salvar no diretório raiz.
+setwd("C:\\Users\\seuusuario\\Documentos\\")depois faça:
+tiff("Figura 4.tiff", units="in", width=10, height=5, res=150)dev.off()
+ou faça diretotiff(("C:\\Users\\seuusuario\\Documentos\\Figura 4.tiff", units="in", width=10, height=5, res=150)dev.off()
+
+On Aug 11 2022, at 2:57 pm, Marília Teresinha por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+Pessoal, boa tarde. Não estou conseguindo exportar um gráfico como imagem no RStudio. Aparece a seguinte mensagem:
+"TIFFOpen: C://Figura4.tiff: Cannot open."
+O mesmo acontece quando tento pelo comando tiff:
+tiff("Figura 4.tiff", units="in", width=10, height=5, res=150)dev.off()
+Aparece a mensagem:
+"Warning message:In dev.off() :unable to open TIFF file 'C://Figura4.tiff'
+O mesmo vale para qualquer formato de imagem (tiff, jpeg, png...).Esse problema começou depois da instalação da versão atual do RStudio. Alguém sabe o está acontecendo e alguma dica de como resolver?Obrigada.
+
+Marilia T. de S. Machado, Dra.Pesquisadora Colaboradora, Centro de Desenvolvimento Sustentável - CDS/UnB.Universidade de Brasília, Campus Universitário Darcy Ribeiro.
+CV Lattes: http://lattes.cnpq.br/4190451945124694_______________________________________________R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-brLeia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220812/c2be8d60/attachment.htm>
+
+From cesar.rabak em gmail.com  Fri Aug 12 14:03:13 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 12 Aug 2022 14:03:13 -0300
+Subject: [R-br] 
+	=?utf-8?q?Assunto=3A_Re=3A_Exporta=C3=A7=C3=A3o_de_imagem?=
+	=?utf-8?q?_no_RStudio?=
+In-Reply-To: <1118300391.370456.1660263606042@mail.yahoo.com>
+References: <181463096.282018.1660240670358@mail.yahoo.com>
+ <F74E0087-50F1-4861-8398-AB71D429FFF5@getmailspring.com>
+ <1118300391.370456.1660263606042@mail.yahoo.com>
+Message-ID: <CAKrF98=wmGOKxdacrSC=uk1=Mxyw=E44U2TbtYakJd_sw9A18g@mail.gmail.com>
+
+Marilia,
+
+Este espaço no nome existe na sua tentativa?
+
+ TIFFOpen: C:/Users/Usuario/Documents/ Figura4.tiff: Cannot open."
+                                     ^
+
+
+On Thu, Aug 11, 2022 at 9:20 PM Marília Teresinha por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa noite. Eu não tentei salvar no diretório raiz, apenas encurtei a
+> mensagem como mostram as duas barras. Eu fiz as duas tentativas salvando
+> nos meus documentos e, nos dois casos, a imagem não foi aberta.
+>
+>  TIFFOpen: C:/Users/Usuario/Documents/ Figura4.tiff: Cannot open."
+>
+> O mesmo acontece quando tento fazer direto pelo comando tiff.
+>
+> Agradeço se vocês tiverem mais alguma sugestão.
+>
+> Enviado do Yahoo Mail no Android
+> <https://go.onelink.me/107872968?pid=InProduct&c=Global_Internal_YGrowth_AndroidEmailSig__AndroidUsers&af_wl=ym&af_sub1=Internal&af_sub2=Global_YGrowth&af_sub3=EmailSignature>
+>
+> Em qui, 11 11e ago 11e 2022 às 20:50, Fernando Souza
+> <nandodesouza em gmail.com> escreveu:
+> Boa noite
+>
+> tente configurar o work directory, tenho a impressao que você não tem
+> permissão para salvar no diretório raiz.
+>
+> setwd("C:\\Users\\seuusuario\\Documentos\\")
+> depois faça:
+>
+> tiff("Figura 4.tiff", units="in", width=10, height=5, res=150)
+> dev.off()
+>
+> ou faça direto
+> tiff(("C:\\Users\\seuusuario\\Documentos\\Figura 4.tiff", units="in",
+> width=10, height=5, res=150)
+> dev.off()
+>
+>
+> On Aug 11 2022, at 2:57 pm, Marília Teresinha por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Pessoal, boa tarde. Não estou conseguindo exportar um gráfico como imagem
+> no RStudio. Aparece a seguinte mensagem:
+>
+> "TIFFOpen: C://Figura4.tiff: Cannot open."
+>
+> O mesmo acontece quando tento pelo comando tiff:
+>
+> tiff("Figura 4.tiff", units="in", width=10, height=5, res=150)
+> dev.off()
+>
+> Aparece a mensagem:
+>
+> "Warning message:
+> In dev.off() :
+> unable to open TIFF file 'C://Figura4.tiff'
+>
+> O mesmo vale para qualquer formato de imagem (tiff, jpeg, png...).
+> Esse problema começou depois da instalação da versão atual do RStudio.
+> Alguém sabe o está acontecendo e alguma dica de como resolver?
+> Obrigada.
+>
+>
+> *Marilia T. de S. Machado**, **Dra.*
+> Pesquisadora Colaboradora, Centro de Desenvolvimento Sustentável - CDS/UnB.
+> Universidade de Brasília, Campus Universitário Darcy Ribeiro.
+>
+> CV Lattes: http://lattes.cnpq.br/4190451945124694
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220812/b657af07/attachment.htm>
+
+From marcokasmin em hotmail.com  Fri Aug 26 11:31:24 2022
+From: marcokasmin em hotmail.com (marco aurelio kasmin)
+Date: Fri, 26 Aug 2022 14:31:24 +0000
+Subject: [R-br] apache arrow erro na instacao ubuntu 22
+Message-ID: <CY5PR10MB61202F6353AC7CF9B432625DAE759@CY5PR10MB6120.namprd10.prod.outlook.com>
+
+Por favor, alguém sabe resolver o erro de instalação do arrow no ubuntu 22?
+Eu olhei o site do apache arrow que fala sobre o erro mas não sei como resolver para o ubuntu.
+
+
+installing *source* package ?arrow? ...
+ ** package ?arrow? successfully unpacked and MD5 sums checked
+** using staged installation
+ *** Arrow C++ libraries found via pkg-config at
+/usr/lib/R/bin/config: 1: eval: make: not found
+------------------------- NOTE ---------------------------
+There was an issue preparing the Arrow C++ libraries.
+ See https://arrow.apache.org/docs/r/articles/install.html
+---------------------------------------------------------
+ERROR: configuration failed for package ?arrow?
+* removing ?/home/mak/R/x86_64-pc-linux-gnu-library/4.2/arrow?
+* restoring previous ?/home/mak/R/x86_64-pc-linux-gnu-library/4.2/arrow?
+ Warning in install.packages :
+  installation of package ?arrow? had non-zero exit status
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220826/8ee26fe6/attachment.htm>
+
+From zhushazang em gmail.com  Fri Aug 26 12:18:38 2022
+From: zhushazang em gmail.com (Rodolfo Silva)
+Date: Fri, 26 Aug 2022 11:18:38 -0400
+Subject: [R-br] apache arrow erro na instacao ubuntu 22
+In-Reply-To: <CY5PR10MB61202F6353AC7CF9B432625DAE759@CY5PR10MB6120.namprd10.prod.outlook.com>
+References: <CY5PR10MB61202F6353AC7CF9B432625DAE759@CY5PR10MB6120.namprd10.prod.outlook.com>
+Message-ID: <f480ec5e-fe8f-833f-505f-cf5b840ad9bf@gmail.com>
+
+Pelo erro abaixo, você precisa instalar os pacotes de compilação. 
+Antigamente, no debian, era via "apt install build-essential"
+
+Via Google: https://itsfoss.com/make-command-not-found-ubuntu/
+
+Atenciosamente
+
+On 26/08/2022 10:31, marco aurelio kasmin por (R-br) wrote:
+> make: not found
+
+-- 
+---
+Rodolfo Timoteo da Silva
+Mestre em Engenharia Agrícola
+Especialista em Engenharia de Segurança do Trabalho
+Especialista em Gestão de Organizações
+Engenheiro de Produção
+
+

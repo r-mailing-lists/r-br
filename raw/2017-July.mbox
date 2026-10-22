@@ -1,0 +1,4948 @@
+From f.fabiogama88 em gmail.com  Mon Jul  3 12:03:03 2017
+From: f.fabiogama88 em gmail.com (Fernando Gama)
+Date: Mon, 3 Jul 2017 12:03:03 -0300
+Subject: [R-br] =?utf-8?q?Duvida_estat=C3=ADstica_com_R?=
+Message-ID: <CAOwqRyv6M9DS9bx0hp-efuh7StuU0Z1sEuWYFpQGxS0eDKSPOg@mail.gmail.com>
+
+Pessoal estou com uma duvida, estou com dificuldades de recordar, tenho
+duas amostras A e B, para ilustrar:
+
+A <- length(216) # o tamanho é variável para cada laço for
+B <- length(87)
+
+Suponhamos que eu tenha um sample
+
+sample <- length(15)
+
+Gostaria de obter a proporção de acerto considerando o tamanho das amostra
+B, ou seja:
+
+sample (15) / B (216)  = 0.1724.
+
+Porém, talvez seja interessante (ou correto) levar em consideração o
+tamanho de A já que A varia de tamanho. E eis que surge a minha dúvida, se
+eu considerar o tamanho de A para medir a proporção a formula seria:
+
+sample (15) / A (216) - B(87) = 0.1162.
+
+Correto? Ou teria que considerar apenas a amostra B mesmo?
+
+Agradeço a ajuda.
+
+-- 
+Att,
+
+| Fernando Gama da Mata |
+| Database Specialist | Master's Degree UFPA |
+
+| Contacts: +55 91 99150 0365 | f.fabiogama88 em gmail.com |
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170703/e2b744d6/attachment.html>
+
+From assis.leonard em gmail.com  Mon Jul  3 22:09:05 2017
+From: assis.leonard em gmail.com (Leonard Assis)
+Date: Mon, 3 Jul 2017 22:09:05 -0300
+Subject: [R-br] =?utf-8?q?Duvida_estat=C3=ADstica_com_R?=
+In-Reply-To: <CAOwqRyv6M9DS9bx0hp-efuh7StuU0Z1sEuWYFpQGxS0eDKSPOg@mail.gmail.com>
+References: <CAOwqRyv6M9DS9bx0hp-efuh7StuU0Z1sEuWYFpQGxS0eDKSPOg@mail.gmail.com>
+Message-ID: <CAEG0FK_1smScVO=08OKAWGjkyAYqTb4zcpKikHQT3KF8uP+6Tg@mail.gmail.com>
+
+Não entendi o que você quer fazer.
+
+Em 3 de jul de 2017 12:03 PM, "Fernando Gama via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Pessoal estou com uma duvida, estou com dificuldades de recordar, tenho
+> duas amostras A e B, para ilustrar:
+>
+> A <- length(216) # o tamanho é variável para cada laço for
+> B <- length(87)
+>
+> Suponhamos que eu tenha um sample
+>
+> sample <- length(15)
+>
+> Gostaria de obter a proporção de acerto considerando o tamanho das amostra
+> B, ou seja:
+>
+> sample (15) / B (216)  = 0.1724.
+>
+> Porém, talvez seja interessante (ou correto) levar em consideração o
+> tamanho de A já que A varia de tamanho. E eis que surge a minha dúvida, se
+> eu considerar o tamanho de A para medir a proporção a formula seria:
+>
+> sample (15) / A (216) - B(87) = 0.1162.
+>
+> Correto? Ou teria que considerar apenas a amostra B mesmo?
+>
+> Agradeço a ajuda.
+>
+> --
+> Att,
+>
+> | Fernando Gama da Mata |
+> | Database Specialist | Master's Degree UFPA |
+>
+> | Contacts: +55 91 99150 0365 <(91)%2099150-0365> |
+> f.fabiogama88 em gmail.com |
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170703/70d610ec/attachment.html>
+
+From fabibarbos em gmail.com  Mon Jul  3 23:20:28 2017
+From: fabibarbos em gmail.com (Fabiana Goncalves Barbosa)
+Date: Mon, 3 Jul 2017 23:20:28 -0300
+Subject: [R-br] Anova para amostras de tamanhos diferentes
+In-Reply-To: <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
+References: <CAFLo1XpseRCLnBzpRqc30XCMutOGv=c7AK2-tdxXCYu3uRz5Tg@mail.gmail.com>
+ <CAFLo1XqCv3uSfO6P=BH+Nc7TdSpgeWYqbupwBTT4KrnwU_b0kg@mail.gmail.com>
+ <CAFLo1XqvCVZRDpE72gRvChY+-ssXfzH3o88EWNn5SvXH0wT3wQ@mail.gmail.com>
+ <CAFLo1XqGshPvXCD8=Z90wm0Ym01uQ29pR1htF9ZacdXkkgXu_w@mail.gmail.com>
+ <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
+Message-ID: <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
+
+Olá Pessoal
+
+Como faço uma ANOVA para amostras de tamanhos diferentes?
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170703/5d5d34f3/attachment.html>
+
+From nandodesouza em gmail.com  Tue Jul  4 07:52:21 2017
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Tue, 4 Jul 2017 07:52:21 -0300
+Subject: [R-br] Anova para amostras de tamanhos diferentes
+In-Reply-To: <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
+References: <CAFLo1XpseRCLnBzpRqc30XCMutOGv=c7AK2-tdxXCYu3uRz5Tg@mail.gmail.com>
+ <CAFLo1XqCv3uSfO6P=BH+Nc7TdSpgeWYqbupwBTT4KrnwU_b0kg@mail.gmail.com>
+ <CAFLo1XqvCVZRDpE72gRvChY+-ssXfzH3o88EWNn5SvXH0wT3wQ@mail.gmail.com>
+ <CAFLo1XqGshPvXCD8=Z90wm0Ym01uQ29pR1htF9ZacdXkkgXu_w@mail.gmail.com>
+ <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
+ <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
+Message-ID: <CAFrWFskWNEM0Ox0-tuR3ydRpQdk-GJVYSTBJj6Zuhropw+o05Q@mail.gmail.com>
+
+install.packages(car)
+library(car)
+Anova(modelo, type="lll")
+
+Em 03/07/2017 23:20, "Fabiana Goncalves Barbosa via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá Pessoal
+>
+> Como faço uma ANOVA para amostras de tamanhos diferentes?
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/368f332f/attachment.html>
+
+From edinhoestat em yahoo.com.br  Tue Jul  4 10:23:48 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 4 Jul 2017 13:23:48 +0000 (UTC)
+Subject: [R-br] Anova para amostras de tamanhos diferentes
+In-Reply-To: <CAFrWFskWNEM0Ox0-tuR3ydRpQdk-GJVYSTBJj6Zuhropw+o05Q@mail.gmail.com>
+References: <CAFLo1XpseRCLnBzpRqc30XCMutOGv=c7AK2-tdxXCYu3uRz5Tg@mail.gmail.com>
+ <CAFLo1XqCv3uSfO6P=BH+Nc7TdSpgeWYqbupwBTT4KrnwU_b0kg@mail.gmail.com>
+ <CAFLo1XqvCVZRDpE72gRvChY+-ssXfzH3o88EWNn5SvXH0wT3wQ@mail.gmail.com>
+ <CAFLo1XqGshPvXCD8=Z90wm0Ym01uQ29pR1htF9ZacdXkkgXu_w@mail.gmail.com>
+ <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
+ <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
+ <CAFrWFskWNEM0Ox0-tuR3ydRpQdk-GJVYSTBJj6Zuhropw+o05Q@mail.gmail.com>
+Message-ID: <801611493.5027898.1499174628826@mail.yahoo.com>
+
+Dá uma olha nesse material
+Posts sobre desbalanceado em Ridículas
+
+  
+|  
+|   |  
+Posts sobre desbalanceado em Ridículas
+ Posts sobre desbalanceado escritos por Walmes Zeviani  |  |
+
+  |
+
+ 
+
+ Bom dia a todos!
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em Terça-feira, 4 de Julho de 2017 6:52, Fernando Souza via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+ install.packages(car)library(car)Anova(modelo, type="lll")
+Em 03/07/2017 23:20, "Fabiana Goncalves Barbosa via R-br" <r-br em listas.c3sl.ufpr.br> escreveu:
+
+Olá Pessoal
+Como faço uma ANOVA para amostras de tamanhos diferentes?
+
+
+______________________________ _________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forneça código mínimo reproduzível.
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/e8dc8bf3/attachment.html>
+
+From edinhoestat em yahoo.com.br  Tue Jul  4 10:23:48 2017
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 4 Jul 2017 13:23:48 +0000 (UTC)
+Subject: [R-br] Anova para amostras de tamanhos diferentes
+In-Reply-To: <CAFrWFskWNEM0Ox0-tuR3ydRpQdk-GJVYSTBJj6Zuhropw+o05Q@mail.gmail.com>
+References: <CAFLo1XpseRCLnBzpRqc30XCMutOGv=c7AK2-tdxXCYu3uRz5Tg@mail.gmail.com>
+ <CAFLo1XqCv3uSfO6P=BH+Nc7TdSpgeWYqbupwBTT4KrnwU_b0kg@mail.gmail.com>
+ <CAFLo1XqvCVZRDpE72gRvChY+-ssXfzH3o88EWNn5SvXH0wT3wQ@mail.gmail.com>
+ <CAFLo1XqGshPvXCD8=Z90wm0Ym01uQ29pR1htF9ZacdXkkgXu_w@mail.gmail.com>
+ <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
+ <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
+ <CAFrWFskWNEM0Ox0-tuR3ydRpQdk-GJVYSTBJj6Zuhropw+o05Q@mail.gmail.com>
+Message-ID: <801611493.5027898.1499174628826@mail.yahoo.com>
+
+Dá uma olha nesse material
+Posts sobre desbalanceado em Ridículas
+
+  
+|  
+|   |  
+Posts sobre desbalanceado em Ridículas
+ Posts sobre desbalanceado escritos por Walmes Zeviani  |  |
+
+  |
+
+ 
+
+ Bom dia a todos!
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em Terça-feira, 4 de Julho de 2017 6:52, Fernando Souza via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+ install.packages(car)library(car)Anova(modelo, type="lll")
+Em 03/07/2017 23:20, "Fabiana Goncalves Barbosa via R-br" <r-br em listas.c3sl.ufpr.br> escreveu:
+
+Olá Pessoal
+Como faço uma ANOVA para amostras de tamanhos diferentes?
+
+
+______________________________ _________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forneça código mínimo reproduzível.
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/e8dc8bf3/attachment-0001.html>
+
+From walmeszeviani em gmail.com  Tue Jul  4 11:27:55 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Tue, 4 Jul 2017 11:27:55 -0300
+Subject: [R-br] Anova para amostras de tamanhos diferentes
+In-Reply-To: <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
+References: <CAFLo1XpseRCLnBzpRqc30XCMutOGv=c7AK2-tdxXCYu3uRz5Tg@mail.gmail.com>
+ <CAFLo1XqCv3uSfO6P=BH+Nc7TdSpgeWYqbupwBTT4KrnwU_b0kg@mail.gmail.com>
+ <CAFLo1XqvCVZRDpE72gRvChY+-ssXfzH3o88EWNn5SvXH0wT3wQ@mail.gmail.com>
+ <CAFLo1XqGshPvXCD8=Z90wm0Ym01uQ29pR1htF9ZacdXkkgXu_w@mail.gmail.com>
+ <CAFLo1Xp=+t57ifwgPbCdv8_T352ipqaVcqbQ=0iPvfjs70TqSA@mail.gmail.com>
+ <CAFLo1Xo17YK_NK_g0ojnQk3rK6FqpUMKKjAmA=AcndX6TurFQQ@mail.gmail.com>
+Message-ID: <CAFU=EkYO+vSt6++khxcfdcXURT_hPRo5Ep0QWsV+9DR1agjvTQ@mail.gmail.com>
+
+Fabiana,
+
+Também dê uma olhada nesse material aqui.
+
+http://leg.ufpr.br/~walmes/cursoR/geneticaEsalq/script10.html
+
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/df44c8c2/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Jul  4 18:13:18 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 4 Jul 2017 18:13:18 -0300
+Subject: [R-br] =?utf-8?q?Duvida_estat=C3=ADstica_com_R?=
+In-Reply-To: <CAEG0FK_1smScVO=08OKAWGjkyAYqTb4zcpKikHQT3KF8uP+6Tg@mail.gmail.com>
+References: <CAOwqRyv6M9DS9bx0hp-efuh7StuU0Z1sEuWYFpQGxS0eDKSPOg@mail.gmail.com>
+ <CAEG0FK_1smScVO=08OKAWGjkyAYqTb4zcpKikHQT3KF8uP+6Tg@mail.gmail.com>
+Message-ID: <CAKrF98=jUkcL4YdUYqxEwyUMB47tFuWqTynXMCZ1VWQnUkECQQ@mail.gmail.com>
+
+De fato, Fernando,
+
+Está difícil de entender o quê você deseja. . .
+
+Você fala que deseja saber "a proporção de acerto considerando a amostra B"
+mas usa o valor da amostra A. . .
+
+A razão da subtração na sua segunda questão é ainda mais obscura, pois
+algebricamente ela não pode dar o resultado indicado, e a mesmo que se
+considere um "parenteses não teclado", a subtração só faria sentido se B
+fosse subconjunto de A e a proporção de "acertos" que você estivesse
+interessado fossem os dos ¬B.
+
+Tente reapresentar sua dúvida com um exemplo menos abstrato, se possível
+com um subconjunto do seus dados.
+
+HTH
+
+2017-07-03 22:09 GMT-03:00 Leonard Assis via R-br <r-br em listas.c3sl.ufpr.br>
+:
+
+> Não entendi o que você quer fazer.
+>
+> Em 3 de jul de 2017 12:03 PM, "Fernando Gama via R-br" <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Pessoal estou com uma duvida, estou com dificuldades de recordar, tenho
+>> duas amostras A e B, para ilustrar:
+>>
+>> A <- length(216) # o tamanho é variável para cada laço for
+>> B <- length(87)
+>>
+>> Suponhamos que eu tenha um sample
+>>
+>> sample <- length(15)
+>>
+>> Gostaria de obter a proporção de acerto considerando o tamanho das
+>> amostra B, ou seja:
+>>
+>> sample (15) / B (216)  = 0.1724.
+>>
+>> Porém, talvez seja interessante (ou correto) levar em consideração o
+>> tamanho de A já que A varia de tamanho. E eis que surge a minha dúvida, se
+>> eu considerar o tamanho de A para medir a proporção a formula seria:
+>>
+>> sample (15) / A (216) - B(87) = 0.1162.
+>>
+>> Correto? Ou teria que considerar apenas a amostra B mesmo?
+>>
+>> Agradeço a ajuda.
+>>
+>> --
+>> Att,
+>>
+>> | Fernando Gama da Mata |
+>> | Database Specialist | Master's Degree UFPA |
+>>
+>> | Contacts: +55 91 99150 0365 <(91)%2099150-0365> |
+>> f.fabiogama88 em gmail.com |
+>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/e4ea3442/attachment.html>
+
+From f.fabiogama88 em gmail.com  Tue Jul  4 19:26:32 2017
+From: f.fabiogama88 em gmail.com (Fernando Gama)
+Date: Tue, 4 Jul 2017 19:26:32 -0300
+Subject: [R-br] =?utf-8?q?Duvida_estat=C3=ADstica_com_R?=
+In-Reply-To: <CAKrF98=jUkcL4YdUYqxEwyUMB47tFuWqTynXMCZ1VWQnUkECQQ@mail.gmail.com>
+References: <CAOwqRyv6M9DS9bx0hp-efuh7StuU0Z1sEuWYFpQGxS0eDKSPOg@mail.gmail.com>
+ <CAEG0FK_1smScVO=08OKAWGjkyAYqTb4zcpKikHQT3KF8uP+6Tg@mail.gmail.com>
+ <CAKrF98=jUkcL4YdUYqxEwyUMB47tFuWqTynXMCZ1VWQnUkECQQ@mail.gmail.com>
+Message-ID: <CAOwqRyt8A4sE0zLEqCeaXZoMfeaW+aYq-yHb+QTk328ABCmRtQ@mail.gmail.com>
+
+Perdão por não ter sido tão claro, mas já consegui resolver o problema.
+
+Obrigado pessoal :)
+
+
+
+
+Em 4 de julho de 2017 18:13, Cesar Rabak via R-br <r-br em listas.c3sl.ufpr.br>
+escreveu:
+
+> De fato, Fernando,
+>
+> Está difícil de entender o quê você deseja. . .
+>
+> Você fala que deseja saber "a proporção de acerto considerando a amostra
+> B" mas usa o valor da amostra A. . .
+>
+> A razão da subtração na sua segunda questão é ainda mais obscura, pois
+> algebricamente ela não pode dar o resultado indicado, e a mesmo que se
+> considere um "parenteses não teclado", a subtração só faria sentido se B
+> fosse subconjunto de A e a proporção de "acertos" que você estivesse
+> interessado fossem os dos ¬B.
+>
+> Tente reapresentar sua dúvida com um exemplo menos abstrato, se possível
+> com um subconjunto do seus dados.
+>
+> HTH
+>
+> 2017-07-03 22:09 GMT-03:00 Leonard Assis via R-br <
+> r-br em listas.c3sl.ufpr.br>:
+>
+>> Não entendi o que você quer fazer.
+>>
+>> Em 3 de jul de 2017 12:03 PM, "Fernando Gama via R-br" <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Pessoal estou com uma duvida, estou com dificuldades de recordar, tenho
+>>> duas amostras A e B, para ilustrar:
+>>>
+>>> A <- length(216) # o tamanho é variável para cada laço for
+>>> B <- length(87)
+>>>
+>>> Suponhamos que eu tenha um sample
+>>>
+>>> sample <- length(15)
+>>>
+>>> Gostaria de obter a proporção de acerto considerando o tamanho das
+>>> amostra B, ou seja:
+>>>
+>>> sample (15) / B (216)  = 0.1724.
+>>>
+>>> Porém, talvez seja interessante (ou correto) levar em consideração o
+>>> tamanho de A já que A varia de tamanho. E eis que surge a minha dúvida, se
+>>> eu considerar o tamanho de A para medir a proporção a formula seria:
+>>>
+>>> sample (15) / A (216) - B(87) = 0.1162.
+>>>
+>>> Correto? Ou teria que considerar apenas a amostra B mesmo?
+>>>
+>>> Agradeço a ajuda.
+>>>
+>>> --
+>>> Att,
+>>>
+>>> | Fernando Gama da Mata |
+>>> | Database Specialist | Master's Degree UFPA |
+>>>
+>>> | Contacts: +55 91 99150 0365 <(91)%2099150-0365> |
+>>> f.fabiogama88 em gmail.com |
+>>>
+>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+Att,
+
+| Fernando Gama da Mata |
+| Database Specialist | Master's Degree UFPA |
+
+| Contacts: +55 91 99150 0365 | f.fabiogama88 em gmail.com |
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170704/8d32e309/attachment.html>
+
+From aryserpa em terra.com.br  Tue Jul  4 22:41:59 2017
+From: aryserpa em terra.com.br (=?UTF-8?B?QXJ5IFNlcnBhIE5ldG8=?=)
+Date: Wed, 05 Jul 17 01:41:59 +0000
+Subject: [R-br] =?utf-8?q?Random_Forest?=
+Message-ID: <OID_149921887783291_0aryserpa@terra.com.br>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/27d83fbf/attachment.html>
+
+From andreolsouza em yahoo.com.br  Wed Jul  5 01:51:58 2017
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Wed, 5 Jul 2017 04:51:58 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
+Message-ID: <2029065061.4413736.1499230318857@mail.yahoo.com>
+
+ Bom dia, 
+alguém está com mesmo problema na instalação da lme4?
+compilation terminated.
+make: ** [external.o] Erro 1
+ERROR: compilation failed for package ‘lme4’
+* removing ‘/usr/local/lib/R/site-library/lme4’
+
+The downloaded source packages are in
+    ‘/tmp/RtmpRFLqvs/downloaded_packages’
+Warning message:
+In install.packages("lme4") :
+  installation of package ‘lme4’ had non-zero exit status
+> library(lme4)
+Error in library(lme4) : there is no package called ‘lme4’
+
+Grato
+André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito Santo.  IFES
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/801a14e4/attachment.html>
+
+From karina.rebuli em gmail.com  Wed Jul  5 08:29:12 2017
+From: karina.rebuli em gmail.com (Karina Rebuli)
+Date: Wed, 05 Jul 2017 11:29:12 +0000
+Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+In-Reply-To: <2029065061.4413736.1499230318857@mail.yahoo.com>
+References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
+ <2029065061.4413736.1499230318857@mail.yahoo.com>
+Message-ID: <CALfxEuVyOBZpO2nzfit53DT3fv2tHvbYSOCNbnS5kk3z-pYGLg@mail.gmail.com>
+
+Oi, André.
+
+É só com este pacote que dá o erro? Você testou instalar algum outro? Onde
+está executando o R (terminal, RStudio, Emacs etc.)? Qual o seu sistema
+operacional?
+
+
+
+
+On Wed, Jul 5, 2017 at 1:56 AM Andre Oliveira via R-br <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+>  Bom dia,
+> alguém está com mesmo problema na instalação da lme4?
+>
+> compilation terminated.
+> make: ** [external.o] Erro 1
+> ERROR: compilation failed for package ‘lme4’
+> * removing ‘/usr/local/lib/R/site-library/lme4’
+>
+> The downloaded source packages are in
+>     ‘/tmp/RtmpRFLqvs/downloaded_packages’
+> Warning message:
+> In install.packages("lme4") :
+>   installation of package ‘lme4’ had non-zero exit status
+> > library(lme4)
+> Error in library(lme4) : there is no package called ‘lme4’
+>
+>
+> Grato
+>
+> André Oliveira Souza. Graduação em Matemática, mestrado em estatística
+> aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito
+> Santo.  IFES
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/a107073d/attachment.html>
+
+From jecogeo em gmail.com  Wed Jul  5 12:26:15 2017
+From: jecogeo em gmail.com (Jefferson Ferreira-Ferreira)
+Date: Wed, 5 Jul 2017 11:26:15 -0400
+Subject: [R-br] Random Forest
+In-Reply-To: <OID_149921887783291_0aryserpa@terra.com.br>
+References: <OID_149921887783291_0aryserpa@terra.com.br>
+Message-ID: <CAFFT+Y5Cz=MJ4R2diR3BnsKnaVBJek5ZHy+w5ik37_rtyEFYGg@mail.gmail.com>
+
+Olá Ary. Eu trabalhei bastane com o randomForest e talvez pudesse ajudar
+mais efetivamente se tu pudesse fornecer um código mínimo reproduzível que
+represente teu problema.
+De qualquer maneira, quando me deparei com questão similar à que estás
+enfrentando, esta referência foi importante e pode te ajudar também (te
+repasso aqui):
+
+https://stats.stackexchange.com/questions/197827/how-to-interpret-mean-decrease-in-accuracy-and-mean-decrease-gini-in-random-fore
+
+
+Abraços
+
+
+
+*Jefferson Ferreira-Ferreira, **PhD (abd)*
+
+*Geographer*
+
+
+
+*Ecosystem Dynamics Observatory <http://tscanada.wix.com/ecodyn> -
+EcoDyn/UNESP*
+*Department of **Geography *
+*Institute of Geosciences and Exact Sciences** (IGCE)*
+*São Paulo State University (UNESP)*
+*Rio Claro, SP - Brazil*
+
+
+Em 4 de julho de 2017 21:41, Ary Serpa Neto via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Pessoal,
+>
+> Estou iniciando os estudos em Random Forest e gostaria de uma ajuda na
+> interpretação do modelo. Tenho um modelo com diversas variáveis tentando
+> predizer mortalidade hospitalar. Após rodar o random forest, ao verificar a
+> importância de cada uma das variáveis (usando o comando varImpPlot) obtive
+> resultados conflitantes. Uma variável por exemplo é a última no gráfico de
+> Mean Decrease Accuracy (8.079) e a terceira no gráfico de Mean Decrease
+> Gini (154.1359).
+>
+> Como interpretar e lidar com esta diferença? Neste cenário de predição de
+> mortalidade, qual levar em conta?
+>
+> Ary Serpa Neto, MD, MSc, PhD
+> Hospital Israelita Albert Einstein, São Paulo, Brazil (
+> http://www.einstein.br): Department of Critical Care Medicine & Jewish
+> Institute of Education and Research Albert Einstein (
+> http://www.einstein.br/pesquisa)
+> The PROtective VEntilation NETwork (www.provenet.eu)
+> Associate Editor: BMC Anesthesiology and BMC Pulmonary Medicine
+> http://publicationslist.org/a.serpa_neto
+> http://lattes.cnpq.br/0254664157557375
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/5d82e818/attachment.html>
+
+From vinynegrelli em gmail.com  Wed Jul  5 17:48:19 2017
+From: vinynegrelli em gmail.com (=?UTF-8?Q?Vin=c3=adcius_Lionel_Mateus?=)
+Date: Wed, 5 Jul 2017 17:48:19 -0300
+Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+In-Reply-To: <2029065061.4413736.1499230318857@mail.yahoo.com>
+References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
+ <2029065061.4413736.1499230318857@mail.yahoo.com>
+Message-ID: <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
+
+André,
+
+Já tive problemas similares com o lme4 usando o openSUSE.
+No meu caso, havia dependências não atendidas.
+
+Existe mais informação antes do output que você postou?
+
+Abs,
+Vinícius
+
+On 07/05/2017 01:51 AM, Andre Oliveira via R-br wrote:
+>  Bom dia,
+> alguém está com mesmo problema na instalação da lme4?
+>
+> compilation terminated.
+> make: ** [external.o] Erro 1
+> ERROR: compilation failed for package ‘lme4’
+> * removing ‘/usr/local/lib/R/site-library/lme4’
+>
+> The downloaded source packages are in
+>     ‘/tmp/RtmpRFLqvs/downloaded_packages’
+> Warning message:
+> In install.packages("lme4") :
+>   installation of package ‘lme4’ had non-zero exit status
+> > library(lme4)
+> Error in library(lme4) : there is no package called ‘lme4’
+>
+>
+> Grato
+>
+> André Oliveira Souza. Graduação em Matemática, mestrado em estatística 
+> aplicada.Instituto Federal de Educação, Ciência e Tecnologia do 
+> Espirito Santo.  IFES
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-- 
+Best regards,
+
+Vinícius Lionel Mateus, PhD (http://lattes.cnpq.br/6501001637020665)
+Atmospheric Chemistry Laboratory - Dep. Chemistry
+PUC-Rio - Pontifical Catholic University of Rio de Janeiro
+Marquês de São Vicente, 225, Gávea - Rio de Janeiro, RJ - Brazil CEP: 22451-900
+Phone:   (+55) (21) 982 - 889 - 221
+Skype: vinicius.lionel
+http://www.qui.puc-rio.br/index.html
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/29204a65/attachment.html>
+
+From andreolsouza em yahoo.com.br  Wed Jul  5 19:45:50 2017
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Wed, 5 Jul 2017 22:45:50 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+In-Reply-To: <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
+References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
+ <2029065061.4413736.1499230318857@mail.yahoo.com>
+ <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
+Message-ID: <664009366.5017347.1499294750613@mail.yahoo.com>
+
+Boa noite, estou usando o terminal Karina.Vinícius os avisos são estes! 
+
+> install.packages("lme4")
+Installing package into ‘/usr/local/lib/R/site-library’
+(as ‘lib’ is unspecified)
+tentando a URL 'https://cran.cnr.berkeley.edu/src/contrib/lme4_1.1-13.tar.gz'
+Content type 'application/x-gzip' length 3624472 bytes (3.5 MB)
+==================================================
+downloaded 3.5 MB
+
+* installing *source* package ‘lme4’ ...
+** package ‘lme4’ successfully unpacked and MD5 sums checked
+** libs
+g++  -I/usr/share/R/include -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include" -I"/usr/local/lib/R/site-library/RcppEigen/include"   -DNDEBUG -DEIGEN_DONT_VECTORIZE -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c external.cpp -o external.o
+In file included from external.cpp:8:0:
+predModule.h:12:23: fatal error: RcppEigen.h: Arquivo ou diretório não encontrado
+ #include <RcppEigen.h>
+                       ^
+compilation terminated.
+make: ** [external.o] Erro 1
+ERROR: compilation failed for package ‘lme4’
+* removing ‘/usr/local/lib/R/site-library/lme4’
+Warning in install.packages :
+  installation of package ‘lme4’ had non-zero exit status
+
+The downloaded source packages are in
+    ‘/tmp/RtmpNtJzRo/downloaded_packages’
+
+ André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito Santo.  IFES 
+
+    Em Quarta-feira, 5 de Julho de 2017 17:48, Vinícius Lionel Mateus via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+  André,
+ 
+ Já tive problemas similares com o lme4 usando o openSUSE.
+ No meu caso, havia dependências não atendidas.
+ 
+ Existe mais informação antes do output que você postou?
+ 
+ Abs,
+ Vinícius
+ 
+ On 07/05/2017 01:51 AM, Andre Oliveira via R-br wrote:
+  
+        Bom dia, 
+  alguém está com mesmo problema na instalação da lme4? 
+  compilation terminated.
+ make: ** [external.o] Erro 1
+ ERROR: compilation failed for package ‘lme4’
+ * removing ‘/usr/local/lib/R/site-library/lme4’
+ 
+ The downloaded source packages are in
+     ‘/tmp/RtmpRFLqvs/downloaded_packages’
+ Warning message:
+ In install.packages("lme4") :
+   installation of package ‘lme4’ had non-zero exit status
+ > library(lme4)
+ Error in library(lme4) : there is no package called ‘lme4’ 
+  
+  Grato 
+   André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito Santo.  IFES     
+  
+ _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel. 
+ 
+ -- 
+Best regards,
+
+Vinícius Lionel Mateus, PhD (http://lattes.cnpq.br/6501001637020665)
+Atmospheric Chemistry Laboratory - Dep. Chemistry
+PUC-Rio - Pontifical Catholic University of Rio de Janeiro
+Marquês de São Vicente, 225, Gávea - Rio de Janeiro, RJ - Brazil CEP: 22451-900
+Phone:   (+55) (21) 982 - 889 - 221
+Skype: vinicius.lionel
+http://www.qui.puc-rio.br/index.html _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/266e9eea/attachment.html>
+
+From nandodesouza em gmail.com  Wed Jul  5 20:23:23 2017
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 5 Jul 2017 20:23:23 -0300
+Subject: [R-br] Bug R in Debian 8,
+In-Reply-To: <CAFrWFsnCidWo8adyhgakFM0V7VgiWsy8C3J6Tuh0HCO4aHjmuQ@mail.gmail.com>
+References: <CAFrWFsnemEmuLkn5wyYvsxyq1gK4bS-NQUGV+w8v9ik35e9tow@mail.gmail.com>
+ <CAFrWFsm6V=GLVAnDUy--NdDErMVGdCjTDKS7_1tpQBj50CkBNQ@mail.gmail.com>
+ <CAFrWFs=fKxVvCSvQT2Zzvf=tVpcdB3k-qQBcXd-q0uo1L4vAeA@mail.gmail.com>
+ <CAFrWFs=o+L57VuNWODOLJTW9OR-KR6RBikScvmiLnjq3nyAbbg@mail.gmail.com>
+ <CAFrWFs=sUSAOQsQ7YEwEcz74487em7OKqOvUz0ZTC9gj4Cfx9A@mail.gmail.com>
+ <CAFrWFsmEGu2ZSG8L5Wp_kfdE++uQe66RS9=s3C32Ka0W6xmKgA@mail.gmail.com>
+ <CAFrWFskLWqs8g8rn9_Nsqz-p1h99VfMtqO2vFoP07VNO1xNkVQ@mail.gmail.com>
+ <CAFrWFsnCidWo8adyhgakFM0V7VgiWsy8C3J6Tuh0HCO4aHjmuQ@mail.gmail.com>
+Message-ID: <CAFrWFskHAkxiT8yr2VhO3uTR7VyQO0_vmQ8vRtwDvgT43AMG5g@mail.gmail.com>
+
+Caros colegas
+
+Possuo R instalado em uma máquina Debian 8. Recentemente ao utilizar o
+pacote nome recebi algumas mesgs estranhas de erro. Fui pesquisar e parece
+estar relacionado a falhas de compilação devido ao período de congelamento
+de debian8 para passaram para debian9. Já testei e o mesmo acontece com
+outros pacote s. O erro pare estar relacionado aos computadores c e fortran
+
+https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=861333
+
+Minha dúvida é. Como resolver isso? Consegui corrigir o nlme(não sei como)
+após reinstalar o r e após o nlme. Mas como saber quais são os pacotes
+problemáticos e como corrigir? As dicas do link acima não funcionaram para
+mim.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170705/949abf76/attachment.html>
+
+From fernandohtoledo em gmail.com  Thu Jul  6 11:09:48 2017
+From: fernandohtoledo em gmail.com (FHRB Toledo)
+Date: Thu, 6 Jul 2017 09:09:48 -0500
+Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+In-Reply-To: <664009366.5017347.1499294750613@mail.yahoo.com>
+References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
+ <2029065061.4413736.1499230318857@mail.yahoo.com>
+ <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
+ <664009366.5017347.1499294750613@mail.yahoo.com>
+Message-ID: <CAN55XP4RG7UsZJMPub4=UCZAWV1HAFuVGqxQBYi8ucRj4qGwEA@mail.gmail.com>
+
+Não sei sua distribuição qual é, mas se for alguma baseada em Debian (com
+aptitude), instale pelo terminal o pacote *.deb ao invés do pacote CRAN, ou
+seja:
+
+$ sudo apt-get install r-cran-lme4
+
+Pela mensagem de erro, o que te falta é a dependência do RcppEigen.
+
+HTH
+
+FH
+
+2017-07-05 17:45 GMT-05:00 Andre Oliveira via R-br <r-br em listas.c3sl.ufpr.br
+>:
+
+> Boa noite, estou usando o terminal Karina.Vinícius os avisos são estes!
+>
+> > install.packages("lme4")
+> Installing package into ‘/usr/local/lib/R/site-library’
+> (as ‘lib’ is unspecified)
+> tentando a URL 'https://cran.cnr.berkeley.edu/src/contrib/lme4_1.1-13.
+> tar.gz'
+> Content type 'application/x-gzip' length 3624472 bytes (3.5 MB)
+> ==================================================
+> downloaded 3.5 MB
+>
+> * installing *source* package ‘lme4’ ...
+> ** package ‘lme4’ successfully unpacked and MD5 sums checked
+> ** libs
+> g++  -I/usr/share/R/include -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"
+> -I"/usr/local/lib/R/site-library/RcppEigen/include"   -DNDEBUG
+> -DEIGEN_DONT_VECTORIZE -fpic  -g -O2 -fstack-protector
+> --param=ssp-buffer-size=4 -Wformat -Werror=format-security
+> -D_FORTIFY_SOURCE=2 -g  -c external.cpp -o external.o
+> In file included from external.cpp:8:0:
+> predModule.h:12:23: fatal error: RcppEigen.h: Arquivo ou diretório não
+> encontrado
+>  #include <RcppEigen.h>
+>                        ^
+> compilation terminated.
+> make: ** [external.o] Erro 1
+> ERROR: compilation failed for package ‘lme4’
+> * removing ‘/usr/local/lib/R/site-library/lme4’
+> Warning in install.packages :
+>   installation of package ‘lme4’ had non-zero exit status
+>
+> The downloaded source packages are in
+>     ‘/tmp/RtmpNtJzRo/downloaded_packages’
+>
+>
+> André Oliveira Souza. Graduação em Matemática, mestrado em estatística
+> aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito
+> Santo.  IFES
+>
+>
+> Em Quarta-feira, 5 de Julho de 2017 17:48, Vinícius Lionel Mateus via R-br
+> <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> André,
+>
+> Já tive problemas similares com o lme4 usando o openSUSE.
+> No meu caso, havia dependências não atendidas.
+>
+> Existe mais informação antes do output que você postou?
+>
+> Abs,
+> Vinícius
+>
+> On 07/05/2017 01:51 AM, Andre Oliveira via R-br wrote:
+>
+>  Bom dia,
+> alguém está com mesmo problema na instalação da lme4?
+>
+> compilation terminated.
+> make: ** [external.o] Erro 1
+> ERROR: compilation failed for package ‘lme4’
+> * removing ‘/usr/local/lib/R/site-library/lme4’
+>
+> The downloaded source packages are in
+>     ‘/tmp/RtmpRFLqvs/downloaded_packages’
+> Warning message:
+> In install.packages("lme4") :
+>   installation of package ‘lme4’ had non-zero exit status
+> > library(lme4)
+> Error in library(lme4) : there is no package called ‘lme4’
+>
+>
+> Grato
+>
+> André Oliveira Souza. Graduação em Matemática, mestrado em estatística
+> aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito
+> Santo.  IFES
+>
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+>
+> --
+> Best regards,
+>
+> Vinícius Lionel Mateus, PhD (http://lattes.cnpq.br/6501001637020665)
+> Atmospheric Chemistry Laboratory - Dep. Chemistry
+> PUC-Rio - Pontifical Catholic University of Rio de Janeiro
+> Marquês de São Vicente, 225, Gávea - Rio de Janeiro, RJ - Brazil CEP: 22451-900
+> Phone:   (+55) (21) 982 - 889 - 221
+> Skype: vinicius.lionelhttp://www.qui.puc-rio.br/index.html
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170706/dacd92cb/attachment.html>
+
+From fernandohtoledo em gmail.com  Thu Jul  6 11:12:27 2017
+From: fernandohtoledo em gmail.com (FHRB Toledo)
+Date: Thu, 6 Jul 2017 09:12:27 -0500
+Subject: [R-br] Bug R in Debian 8,
+In-Reply-To: <CAFrWFskHAkxiT8yr2VhO3uTR7VyQO0_vmQ8vRtwDvgT43AMG5g@mail.gmail.com>
+References: <CAFrWFsnemEmuLkn5wyYvsxyq1gK4bS-NQUGV+w8v9ik35e9tow@mail.gmail.com>
+ <CAFrWFsm6V=GLVAnDUy--NdDErMVGdCjTDKS7_1tpQBj50CkBNQ@mail.gmail.com>
+ <CAFrWFs=fKxVvCSvQT2Zzvf=tVpcdB3k-qQBcXd-q0uo1L4vAeA@mail.gmail.com>
+ <CAFrWFs=o+L57VuNWODOLJTW9OR-KR6RBikScvmiLnjq3nyAbbg@mail.gmail.com>
+ <CAFrWFs=sUSAOQsQ7YEwEcz74487em7OKqOvUz0ZTC9gj4Cfx9A@mail.gmail.com>
+ <CAFrWFsmEGu2ZSG8L5Wp_kfdE++uQe66RS9=s3C32Ka0W6xmKgA@mail.gmail.com>
+ <CAFrWFskLWqs8g8rn9_Nsqz-p1h99VfMtqO2vFoP07VNO1xNkVQ@mail.gmail.com>
+ <CAFrWFsnCidWo8adyhgakFM0V7VgiWsy8C3J6Tuh0HCO4aHjmuQ@mail.gmail.com>
+ <CAFrWFskHAkxiT8yr2VhO3uTR7VyQO0_vmQ8vRtwDvgT43AMG5g@mail.gmail.com>
+Message-ID: <CAN55XP6yrGd95TA80C_R5acheVGEgXnn7z7vSwF0HB7RhPHaNA@mail.gmail.com>
+
+Conforme o post relacionado "Instalação da lme4", e dependendo do pacote
+que queira instalar, você pode optar por instalar o pacte *.deb ao invés do
+CRAN, para isso (considerando ser o nlme) faça no terminal:
+
+$ sudo apt-get install r-cran-nlme
+
+HTH
+
+FH
+
+2017-07-05 18:23 GMT-05:00 Fernando Souza via R-br <r-br em listas.c3sl.ufpr.br
+>:
+
+> Caros colegas
+>
+> Possuo R instalado em uma máquina Debian 8. Recentemente ao utilizar o
+> pacote nome recebi algumas mesgs estranhas de erro. Fui pesquisar e parece
+> estar relacionado a falhas de compilação devido ao período de congelamento
+> de debian8 para passaram para debian9. Já testei e o mesmo acontece com
+> outros pacote s. O erro pare estar relacionado aos computadores c e fortran
+>
+> https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=861333
+>
+> Minha dúvida é. Como resolver isso? Consegui corrigir o nlme(não sei como)
+> após reinstalar o r e após o nlme. Mas como saber quais são os pacotes
+> problemáticos e como corrigir? As dicas do link acima não funcionaram para
+> mim.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170706/a4b03734/attachment.html>
+
+From brucekellys em hotmail.com  Thu Jul  6 15:30:48 2017
+From: brucekellys em hotmail.com (Bruce Kelly)
+Date: Thu, 6 Jul 2017 18:30:48 +0000
+Subject: [R-br] =?iso-8859-1?q?Equa=E7=E3o_do_modelo?=
+Message-ID: <CY4PR2001MB110934D041C970661305135BA8D50@CY4PR2001MB1109.namprd20.prod.outlook.com>
+
+Boa tarde listeiros (@s),
+
+
+Estou aplicando a análise fatorial e queria a ajuda para utilizar o pacote 'sem'.
+
+De acordo com o Quick-r (http://www.statmethods.net/advstats/factor.html).
+
+
+Segundo o script  apresentado no site os fatores F1 e F2 são descritos em função das variáveis X1, X2,...e as cargas lam1,lam2,...ect.
+
+
+Bem minha dúvida é: essas posições das cargas (lam1,lam2,...) são fixas e  como posso colocar na equação do modelo as mais significativas, tipo (lam3, lam7).
+
+E como posso retirar a equação usando meus dados. Segue minha rotina.
+
+
+af=factanal(dad, factors=8, scores=c('Bartlett'), rotation='varimax')
+> af
+
+Call:
+factanal(x = dad, factors = 8, scores = c("Bartlett"), rotation = "varimax")
+
+Uniquenesses:
+ï..s3    s7   s11   s15   s16   ad1   ad2   ad3   ad4   ad5   ad9  ad13  ad14  ad15  ad19
+0.341 0.005 0.484 0.079 0.005 0.103 0.308 0.098 0.005 0.090 0.108 0.015 0.200 0.005 0.436
+
+Loadings:
+      Factor1 Factor2 Factor3 Factor4 Factor5 Factor6 Factor7 Factor8
+ï..s3  0.295  -0.250   0.202   0.140           0.266           0.612
+s7            -0.407   0.865  -0.135           0.163  -0.153
+s11           -0.426   0.541                   0.118
+s15    0.930                          -0.164                  -0.139
+s16    0.247   0.561  -0.103           0.771
+ad1            0.910  -0.178           0.158
+ad2            0.781  -0.229   0.101          -0.101
+ad3            0.875  -0.202           0.134           0.248
+ad4   -0.134   0.538  -0.267                           0.777
+ad5    0.887  -0.156                                           0.295
+ad9            0.128           0.926
+ad13   0.894   0.258          -0.227   0.235
+ad14   0.813           0.183           0.103   0.256  -0.151
+ad15   0.389  -0.155   0.397                   0.744           0.305
+ad19   0.622   0.132  -0.123   0.138   0.149                   0.312
+
+               Factor1 Factor2 Factor3 Factor4 Factor5 Factor6 Factor7 Factor8
+SS loadings      3.832   3.365   1.507   0.997   0.772   0.771   0.751   0.722
+Proportion Var   0.255   0.224   0.100   0.066   0.051   0.051   0.050   0.048
+Cumulative Var   0.255   0.480   0.580   0.647   0.698   0.750   0.800   0.848
+
+Test of the hypothesis that 8 factors are sufficient.
+The chi square statistic is 12.7 on 13 degrees of freedom.
+The p-value is 0.471
+
+Muito obrigado a todos.
+
+
+Bruce
+
+
+Quick-R: Factor Analysis - Quick-R: Home Page<http://www.statmethods.net/advstats/factor.html>
+www.statmethods.net
+Learn principal components and factor analysis in R. Factor analysis includes both exploratory and confirmatory methods.
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170706/9c15ad1b/attachment.html>
+
+From vinynegrelli em gmail.com  Thu Jul  6 20:19:35 2017
+From: vinynegrelli em gmail.com (=?UTF-8?Q?Vin=C3=ADcius_Lionel_Mateus?=)
+Date: Thu, 6 Jul 2017 20:19:35 -0300
+Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+In-Reply-To: <664009366.5017347.1499294750613@mail.yahoo.com>
+References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
+ <2029065061.4413736.1499230318857@mail.yahoo.com>
+ <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
+ <664009366.5017347.1499294750613@mail.yahoo.com>
+Message-ID: <CAMJ4BpA4mfU5d8frsxZ5mpHLrx6yiMd5fo23PqVEORcUkbqEEg@mail.gmail.com>
+
+Andre,
+
+É como o FH respondeu.
+Parece que há problemas com o RccpEigen.
+
+O repositório da distro é uma opção que resolve, mas os pacotes podem estar
+desatualizados.
+
+Att,
+Vinícius
+
+Best regards,
+
+Vinícius Lionel Mateus, PhD (http://lattes.cnpq.br/6501001637020665)
+Atmospheric Chemistry Laboratory - Dep. Chemistry
+PUC-Rio - Pontifical Catholic University of Rio de Janeiro
+Marquês de São Vicente, 225, Gávea - Rio de Janeiro, RJ - Brazil CEP:
+22451-900
+Phone:   (+55) (21) 982 - 889 - 221
+Skype: vinicius.lionel
+http://www.qui.puc-rio.br/index.html
+
+2017-07-05 19:45 GMT-03:00 Andre Oliveira <andreolsouza em yahoo.com.br>:
+
+> Boa noite, estou usando o terminal Karina.Vinícius os avisos são estes!
+>
+> > install.packages("lme4")
+> Installing package into ‘/usr/local/lib/R/site-library’
+> (as ‘lib’ is unspecified)
+> tentando a URL 'https://cran.cnr.berkeley.edu/src/contrib/lme4_1.1-13.
+> tar.gz'
+> Content type 'application/x-gzip' length 3624472 bytes (3.5 MB)
+> ==================================================
+> downloaded 3.5 MB
+>
+> * installing *source* package ‘lme4’ ...
+> ** package ‘lme4’ successfully unpacked and MD5 sums checked
+> ** libs
+> g++  -I/usr/share/R/include -DNDEBUG  -I"/usr/local/lib/R/site-library/Rcpp/include"
+> -I"/usr/local/lib/R/site-library/RcppEigen/include"   -DNDEBUG
+> -DEIGEN_DONT_VECTORIZE -fpic  -g -O2 -fstack-protector
+> --param=ssp-buffer-size=4 -Wformat -Werror=format-security
+> -D_FORTIFY_SOURCE=2 -g  -c external.cpp -o external.o
+> In file included from external.cpp:8:0:
+> predModule.h:12:23: fatal error: RcppEigen.h: Arquivo ou diretório não
+> encontrado
+>  #include <RcppEigen.h>
+>                        ^
+> compilation terminated.
+> make: ** [external.o] Erro 1
+> ERROR: compilation failed for package ‘lme4’
+> * removing ‘/usr/local/lib/R/site-library/lme4’
+> Warning in install.packages :
+>   installation of package ‘lme4’ had non-zero exit status
+>
+> The downloaded source packages are in
+>     ‘/tmp/RtmpNtJzRo/downloaded_packages’
+>
+>
+> André Oliveira Souza. Graduação em Matemática, mestrado em estatística
+> aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito
+> Santo.  IFES
+>
+>
+> Em Quarta-feira, 5 de Julho de 2017 17:48, Vinícius Lionel Mateus via R-br
+> <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> André,
+>
+> Já tive problemas similares com o lme4 usando o openSUSE.
+> No meu caso, havia dependências não atendidas.
+>
+> Existe mais informação antes do output que você postou?
+>
+> Abs,
+> Vinícius
+>
+> On 07/05/2017 01:51 AM, Andre Oliveira via R-br wrote:
+>
+>  Bom dia,
+> alguém está com mesmo problema na instalação da lme4?
+>
+> compilation terminated.
+> make: ** [external.o] Erro 1
+> ERROR: compilation failed for package ‘lme4’
+> * removing ‘/usr/local/lib/R/site-library/lme4’
+>
+> The downloaded source packages are in
+>     ‘/tmp/RtmpRFLqvs/downloaded_packages’
+> Warning message:
+> In install.packages("lme4") :
+>   installation of package ‘lme4’ had non-zero exit status
+> > library(lme4)
+> Error in library(lme4) : there is no package called ‘lme4’
+>
+>
+> Grato
+>
+> André Oliveira Souza. Graduação em Matemática, mestrado em estatística
+> aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito
+> Santo.  IFES
+>
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+>
+> --
+> Best regards,
+>
+> Vinícius Lionel Mateus, PhD (http://lattes.cnpq.br/6501001637020665)
+> Atmospheric Chemistry Laboratory - Dep. Chemistry
+> PUC-Rio - Pontifical Catholic University of Rio de Janeiro
+> Marquês de São Vicente, 225, Gávea - Rio de Janeiro, RJ - Brazil CEP: 22451-900
+> Phone:   (+55) (21) 982 - 889 - 221
+> Skype: vinicius.lionelhttp://www.qui.puc-rio.br/index.html
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170706/5ed46ece/attachment.html>
+
+From andreolsouza em yahoo.com.br  Thu Jul  6 21:04:58 2017
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Fri, 7 Jul 2017 00:04:58 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_da_lme4?=
+In-Reply-To: <CAMJ4BpA4mfU5d8frsxZ5mpHLrx6yiMd5fo23PqVEORcUkbqEEg@mail.gmail.com>
+References: <2029065061.4413736.1499230318857.ref@mail.yahoo.com>
+ <2029065061.4413736.1499230318857@mail.yahoo.com>
+ <6ede403d-48e9-9557-1ea9-28f7251e99c4@gmail.com>
+ <664009366.5017347.1499294750613@mail.yahoo.com>
+ <CAMJ4BpA4mfU5d8frsxZ5mpHLrx6yiMd5fo23PqVEORcUkbqEEg@mail.gmail.com>
+Message-ID: <1289527576.195261.1499385898590@mail.yahoo.com>
+
+Resolvido. Obrigado!
+ André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito Santo.  IFES 
+
+    Em Quinta-feira, 6 de Julho de 2017 20:20, Vinícius Lionel Mateus <vinynegrelli em gmail.com> escreveu:
+ 
+
+ Andre,
+
+É como o FH respondeu.
+Parece que há problemas com o RccpEigen.
+
+O repositório da distro é uma opção que resolve, mas os pacotes podem estar 
+desatualizados.
+
+Att,
+Vinícius
+
+Best regards,
+
+Vinícius Lionel Mateus, PhD (http://lattes.cnpq.br/6501001637020665)
+Atmospheric Chemistry Laboratory - Dep. Chemistry
+PUC-Rio - Pontifical Catholic University of Rio de Janeiro
+Marquês de São Vicente, 225, Gávea - Rio de Janeiro, RJ - Brazil CEP: 22451-900
+Phone:   (+55) (21) 982 - 889 - 221
+Skype: vinicius.lionel
+http://www.qui.puc-rio.br/index.html
+
+2017-07-05 19:45 GMT-03:00 Andre Oliveira <andreolsouza em yahoo.com.br>:
+
+Boa noite, estou usando o terminal Karina.Vinícius os avisos são estes! 
+
+> install.packages("lme4")
+Installing package into ‘/usr/local/lib/R/site- library’
+(as ‘lib’ is unspecified)
+tentando a URL 'https://cran.cnr.berkeley. edu/src/contrib/lme4_1.1-13. tar.gz'
+Content type 'application/x-gzip' length 3624472 bytes (3.5 MB)
+============================== ====================
+downloaded 3.5 MB
+
+* installing *source* package ‘lme4’ ...
+** package ‘lme4’ successfully unpacked and MD5 sums checked
+** libs
+g++  -I/usr/share/R/include -DNDEBUG  -I"/usr/local/lib/R/site- library/Rcpp/include" -I"/usr/local/lib/R/site- library/RcppEigen/include"   -DNDEBUG -DEIGEN_DONT_VECTORIZE -fpic  -g -O2 -fstack-protector --param=ssp-buffer-size=4 -Wformat -Werror=format-security -D_FORTIFY_SOURCE=2 -g  -c external.cpp -o external.o
+In file included from external.cpp:8:0:
+predModule.h:12:23: fatal error: RcppEigen.h: Arquivo ou diretório não encontrado
+ #include <RcppEigen.h>
+                       ^
+compilation terminated.
+make: ** [external.o] Erro 1
+ERROR: compilation failed for package ‘lme4’
+* removing ‘/usr/local/lib/R/site- library/lme4’
+Warning in install.packages :
+  installation of package ‘lme4’ had non-zero exit status
+
+The downloaded source packages are in
+    ‘/tmp/RtmpNtJzRo/downloaded_ packages’
+
+ André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito Santo.  IFES 
+
+    Em Quarta-feira, 5 de Julho de 2017 17:48, Vinícius Lionel Mateus via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+  André,
+ 
+ Já tive problemas similares com o lme4 usando o openSUSE.
+ No meu caso, havia dependências não atendidas.
+ 
+ Existe mais informação antes do output que você postou?
+ 
+ Abs,
+ Vinícius
+ 
+ On 07/05/2017 01:51 AM, Andre Oliveira via R-br wrote:
+  
+        Bom dia, 
+  alguém está com mesmo problema na instalação da lme4? 
+  compilation terminated.
+ make: ** [external.o] Erro 1
+ ERROR: compilation failed for package ‘lme4’
+ * removing ‘/usr/local/lib/R/site- library/lme4’
+ 
+ The downloaded source packages are in
+     ‘/tmp/RtmpRFLqvs/downloaded_ packages’
+ Warning message:
+ In install.packages("lme4") :
+   installation of package ‘lme4’ had non-zero exit status
+ > library(lme4)
+ Error in library(lme4) : there is no package called ‘lme4’ 
+  
+  Grato 
+   André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito Santo.  IFES     
+  
+ ______________________________ _________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forne�a c�digo m�nimo reproduz�vel. 
+ 
+ -- 
+Best regards,
+
+Vinícius Lionel Mateus, PhD (http://lattes.cnpq.br/ 6501001637020665)
+Atmospheric Chemistry Laboratory - Dep. Chemistry
+PUC-Rio - Pontifical Catholic University of Rio de Janeiro
+Marquês de São Vicente, 225, Gávea - Rio de Janeiro, RJ - Brazil CEP: 22451-900
+Phone:   (+55) (21) 982 - 889 - 221
+Skype: vinicius.lionel
+http://www.qui.puc-rio.br/ index.html ______________________________ _________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forne�a c�digo m�nimo reproduz�vel.
+
+   
+
+
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170707/8daa508b/attachment.html>
+
+From rafaeltieppo em yahoo.com.br  Mon Jul 10 07:33:33 2017
+From: rafaeltieppo em yahoo.com.br (Rafael Tieppo)
+Date: Mon, 10 Jul 2017 10:33:33 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
+References: <1049780917.2376704.1499682813015.ref@mail.yahoo.com>
+Message-ID: <1049780917.2376704.1499682813015@mail.yahoo.com>
+
+
+Após consultar algumas referências (livros, apostila, papers, etc), não consegui a chegar a uma conclusão.
+
+O que encontrei de caso mais próximo foi uma solução do Walmes, que é o que tenho em mente até o momento. 
+
+http://r-br.2285057.n4.nabble.com/R-br-Repeticao-dentro-da-parcela-td4661875.html#a4661882
+
+Para acabar com as dúvidas, por favor, se alguém puder ajudar, segue a situação:
+
+No planejamento do experimento a ser realizado pretende-se verificar o espaçamento entre plantas em função do tipo de dosador de semente.
+
+- Var Dependente: espaçamento entre plantas (quantitativo)
+- Var Independente: tipo de dosador  (qualitativo)
+
+Pretende-se usar DBC. A ideia é utilizar 4 blocos, com 4 tratamentos (dosadores). Sendo assim, cada bloco teria quatro parcelas (uma com cada tipo de sistema dosador), totalizando 4 repetições. 
+
+Contudo, em cada parcela não pretende-se realizar apenas uma mensuração de distância entre plantas, deseja-se realizar pelo menos 10. 
+
+O que gera minha dúvida são dois casos:
+
+CASO 1
+
+O número de amostras é: 4 blocos * 4 tratamentos * 10 amostras (por parcela) = 160
+
+
+CASO 2
+
+Das 10 mensurações realizadas em uma parcela, calcula-se a média para a obtenção de uma única amostra por parcela, dessa forma tem-se:
+
+O número de amostras é 4 blocos * 4 tratamentos  1 amostra (por parcela)= 16
+
+obs: O CASO 2 é o mais comum em alguns trabalhos, contudo não estou convicto que é a melhor opção.
+###
+
+Perguntas:
+Há algum CASO correto?
+Se sim, em algum dos casos pode-se assumir como DBC ou DQL (quadrado latino)?
+Há outro delineamento que se enquadre melhor à situação?
+
+Obrigado.
+ Rafael Tieppo
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/9f55f1e4/attachment.html>
+
+From giseleemaia07 em gmail.com  Mon Jul 10 09:53:16 2017
+From: giseleemaia07 em gmail.com (Gisele de Oliveira Maia)
+Date: Mon, 10 Jul 2017 09:53:16 -0300
+Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
+In-Reply-To: <1049780917.2376704.1499682813015@mail.yahoo.com>
+References: <1049780917.2376704.1499682813015.ref@mail.yahoo.com>
+ <1049780917.2376704.1499682813015@mail.yahoo.com>
+Message-ID: <6B09F1CE-60D3-4389-A36F-349B6AD755EA@gmail.com>
+
+Rafael, tem o Delineamento Fatorial, em que você estuda a relação, no seu caso, do espaçamento e a dosagem. E se o terreno for heterogêneo usaria Fatorial em Blocos Casualizados, usando controle local no terreno. 
+Tem o livro Planejamento e Análise Estatística de Experimentos Agronômicos do Décio Barbin que explica tudo sobre Fatorial. 
+
+Gisele Maia 
+
+> Em 10 de jul de 2017, às 07:33, Rafael Tieppo via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+> 
+> 
+> Após consultar algumas referências (livros, apostila, papers, etc), não consegui a chegar a uma conclusão.
+> 
+> O que encontrei de caso mais próximo foi uma solução do Walmes, que é o que tenho em mente até o momento. 
+> 
+> http://r-br.2285057.n4.nabble.com/R-br-Repeticao-dentro-da-parcela-td4661875.html#a4661882
+> 
+> Para acabar com as dúvidas, por favor, se alguém puder ajudar, segue a situação:
+> 
+> No planejamento do experimento a ser realizado pretende-se verificar o espaçamento entre plantas em função do tipo de dosador de semente.
+> 
+> - Var Dependente: espaçamento entre plantas (quantitativo)
+> - Var Independente: tipo de dosador  (qualitativo)
+> 
+> Pretende-se usar DBC. A ideia é utilizar 4 blocos, com 4 tratamentos (dosadores). Sendo assim, cada bloco teria quatro parcelas (uma com cada tipo de sistema dosador), totalizando 4 repetições. 
+> 
+> Contudo, em cada parcela não pretende-se realizar apenas uma mensuração de distância entre plantas, deseja-se realizar pelo menos 10. 
+> 
+> O que gera minha dúvida são dois casos:
+> 
+> CASO 1
+> 
+> O número de amostras é: 4 blocos * 4 tratamentos * 10 amostras (por parcela) = 160
+> 
+> 
+> CASO 2
+> 
+> Das 10 mensurações realizadas em uma parcela, calcula-se a média para a obtenção de uma única amostra por parcela, dessa forma tem-se:
+> 
+> O número de amostras é 4 blocos * 4 tratamentos  1 amostra (por parcela)= 16
+> 
+> obs: O CASO 2 é o mais comum em alguns trabalhos, contudo não estou convicto que é a melhor opção.
+> ###
+> 
+> Perguntas:
+> Há algum CASO correto?
+> Se sim, em algum dos casos pode-se assumir como DBC ou DQL (quadrado latino)?
+> Há outro delineamento que se enquadre melhor à situação?
+> 
+> Obrigado.
+>  Rafael Tieppo
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/08edc6f1/attachment.html>
+
+From yurynepomuceno em gmail.com  Mon Jul 10 09:58:37 2017
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Mon, 10 Jul 2017 09:58:37 -0300
+Subject: [R-br] Ajuda com BoxPlot
+Message-ID: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
+
+Bom dia colegas listeiros, como vão?
+
+Nos últimos dias me vi com necessidade de elaborar gráficos do tipo BoxPlot
+pra poder representar a variabilidade da produção agrícola de cordo com a
+época de plantio.
+Não tive problemas em fazer o gráfico e visualizar ele no output do
+R-studio. Minha dúvida é em relação ao formato com que devo salvar a
+figura. Gostaria de salvar os gráficos em formato de imagem e com um
+tamanho pré definido, pois o default de salvamento das imagens fez com que
+eles ocupem toda uma pagina (quando salvei em PDF).
+Ao fim do email, segue parte do código que usei para gerar o BoxPlot.
+
+Desde já, agradeço pela ajuda de todos!
+
+a = read.table('sdesiderio.txt', header = T, sep = '\t')
+media = matrix(NA, nrow = 36, ncol = 4)
+colnames(media) = c('Desv.Pad', 'Media', 'M.mais', 'M.menos')
+
+for(i in 1:36){
+  d = sd(a[i,1:(ncol(a)-1)])
+  media[i,1] = d
+  m = rowMeans(a, na.rm = T, dims = 1)
+  media[i,2] = m[i]
+  media[i,3] = media[i,2]+media[i,1]
+  media[i,4] = media[i,2]-media[i,1]
+  ifelse(media[i,]<0, 0, media[i,])
+}
+a.box = t(a)
+colnames(a.box) =
+c('J1','J2','J3','F1','F2','F3','M1','M2','M3','A1','A2','A3','M1','M2','M3',
+
+'J1','J2','J3','J1','J2','J3','A1','A2','A3','S1','S2','S3','O1','O2','O3',
+                    'N1','N2','N3','D1','D2','D3')
+boxplot(a.box, las = 1, xlab = 'Semeadura', ylab = 'kg/ha', cex=0.5, pch=16)
+title('Variação de Ya de acordo com a data de semeadura')
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/d8dd1f9a/attachment.html>
+
+From jhcaviglione em gmail.com  Mon Jul 10 10:15:35 2017
+From: jhcaviglione em gmail.com (=?UTF-8?Q?Jo=C3=A3o_Henrique_Caviglione?=)
+Date: Mon, 10 Jul 2017 10:15:35 -0300
+Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
+In-Reply-To: <1049780917.2376704.1499682813015@mail.yahoo.com>
+References: <1049780917.2376704.1499682813015.ref@mail.yahoo.com>
+ <1049780917.2376704.1499682813015@mail.yahoo.com>
+Message-ID: <CAJ-oJz_GY7OS0srLkFh-hHOStvRjK8GaJ9q5dfpSVPSQSHPL+w@mail.gmail.com>
+
+Bom dia Rafael e lista,
+
+Rafael a média das amostras simples é o resultado da parcela. Da forma qua
+analisa o caso 1
+me parece mais pra parcela sub-dividida (ou até hieraquico), pois embora
+esteja dentro da parcela
+não há aleatoriedade, e isto diminui os GL na análise.
+Creio que esteja achando que as 16 média sejam muito pouco no seu caso 2.
+A minha sugestão é que aumente as repetição e diminua o numero de
+amostragem.
+com 8 repetições e 5 amostras teria o mesmo trabalho e 32 médias para suas
+análises.
+
+João Henrique
+
+
+Em 10 de julho de 2017 07:33, Rafael Tieppo via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+>
+> Após consultar algumas referências (livros, apostila, papers, etc), não
+> consegui a chegar a uma conclusão.
+>
+> O que encontrei de caso mais próximo foi uma solução do Walmes, que é o
+> que tenho em mente até o momento.
+>
+> http://r-br.2285057.n4.nabble.com/R-br-Repeticao-dentro-da-
+> parcela-td4661875.html#a4661882
+>
+> Para acabar com as dúvidas, por favor, se alguém puder ajudar, segue a
+> situação:
+>
+> No planejamento do experimento a ser realizado pretende-se verificar o
+> espaçamento entre plantas em função do tipo de dosador de semente.
+>
+> - Var Dependente: espaçamento entre plantas (quantitativo)
+> - Var Independente: tipo de dosador  (qualitativo)
+>
+> Pretende-se usar DBC. A ideia é utilizar 4 blocos, com 4 tratamentos
+> (dosadores). Sendo assim, cada bloco teria quatro parcelas (uma com cada
+> tipo de sistema dosador), totalizando 4 repetições.
+>
+> Contudo, em cada parcela não pretende-se realizar apenas uma mensuração de
+> distância entre plantas, deseja-se realizar pelo menos 10.
+>
+> O que gera minha dúvida são dois casos:
+>
+> CASO 1
+>
+> O número de amostras é: 4 blocos * 4 tratamentos * 10 amostras (por
+> parcela) = 160
+>
+>
+> CASO 2
+>
+> Das 10 mensurações realizadas em uma parcela, calcula-se a média para a
+> obtenção de uma única amostra por parcela, dessa forma tem-se:
+>
+> O número de amostras é 4 blocos * 4 tratamentos  1 amostra (por parcela)=
+> 16
+>
+> obs: O CASO 2 é o mais comum em alguns trabalhos, contudo não estou
+> convicto que é a melhor opção.
+> ###
+>
+> Perguntas:
+> Há algum CASO correto?
+> Se sim, em algum dos casos pode-se assumir como DBC ou DQL (quadrado
+> latino)?
+> Há outro delineamento que se enquadre melhor à situação?
+>
+> Obrigado.
+>  Rafael Tieppo
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/195bb9a0/attachment.html>
+
+From walmeszeviani em gmail.com  Mon Jul 10 10:51:36 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Mon, 10 Jul 2017 10:51:36 -0300
+Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
+In-Reply-To: <CAJ-oJz_GY7OS0srLkFh-hHOStvRjK8GaJ9q5dfpSVPSQSHPL+w@mail.gmail.com>
+References: <1049780917.2376704.1499682813015.ref@mail.yahoo.com>
+ <1049780917.2376704.1499682813015@mail.yahoo.com>
+ <CAJ-oJz_GY7OS0srLkFh-hHOStvRjK8GaJ9q5dfpSVPSQSHPL+w@mail.gmail.com>
+Message-ID: <CAFU=EkYLq5MncCQjYx2H_Ds7hxO9NTVhVRzctdEkZXeDH3qyRw@mail.gmail.com>
+
+Rafael, se entendi corretamente, você fará um experimento em DBC com
+(sub)-repetições dentro da parcela, certo? É o mesmo caso de quando se mede
+altura (da planta, da primeira espiga/vagen) em várias plantas na mesma
+parcela, ou conta-se o número de vagens, enfim. Parece que a sua dúvida é
+quanto a análise usando valores individuais (4 x 4 x 10 = 160 registros) ou
+com os valores agregados (4 x 4 = 16 registros). Se você usar uma agregação
+de soma ou média, para comparar os tratamentos o resultado é o mesmo (F e
+p-valor), como demonstra o código abaixo a partir de dados gerados.
+
+> # Tabela de dados artificiais (em inclusão de efeitos, só ruído branco).
+> da <- expand.grid(bloc = gl(4, 1),
++                   trt = gl(4, 1),
++                   rept = gl(10, 1))
+> da$parc <- with(da, interaction(bloc, trt))
+> set.seed(2017)
+> da$y <- rnorm(nrow(da))
+>
+> # Modelo com observações dentro de parcela (dois estratos).
+> m0 <- aov(y ~ bloc + trt + Error(parc/rept), data = da)
+> summary(m0)
+
+Error: parc
+          Df Sum Sq Mean Sq F value Pr(>F)
+bloc       3  0.945  0.3150   0.442  0.728
+trt        3  1.433  0.4776   0.671  0.591
+Residuals  9  6.408  0.7120
+
+Error: parc:rept
+           Df Sum Sq Mean Sq F value Pr(>F)
+Residuals 144  150.2   1.043
+>
+> # Redução com média por parcela.
+> db <- aggregate(y ~ bloc + trt, data = da, FUN = mean)
+>
+> # Modelo feito sobre as médias das parcelas.
+> m1 <- lm(y ~ bloc + trt, data = db)
+> anova(m1)
+Analysis of Variance Table
+
+Response: y
+          Df  Sum Sq  Mean Sq F value Pr(>F)
+bloc       3 0.09449 0.031496  0.4423 0.7285
+trt        3 0.14329 0.047764  0.6708 0.5911
+Residuals  9 0.64081 0.071201
+>
+
+Usando a média, o quadro de anova do estrato `parc` é igual ao quadro de
+anova utilizando a média como resposta. Portanto, em termos de inferência
+sobre os tratamentos, é a mesma coisa. A análise com estrato é mais
+informativa porque te permite compreender a maginitude das variância entre
+parcelas e dentro de parcelas quando você obtém os componentes de
+variância, o que é útil para decisões de planejamento e dimensionamento
+amostral. Por outro lado, é mais fácil trabalhar com objetos de classe lm
+(m1) do que aov.list (m0), então, depois de ver o resultado do m0 eu
+seguiria a análise com o objeto m1, onde posso facilmente aplicar uma série
+de métodos e outras funções.
+
+Se o número de observações for diferente em cada parcela, é necessário
+representar isso com peso na análise (lm(..., weigths)). Os pesos foram
+educadamente ignorados nessa análise que fiz porque o número de observações
+foi o mesmo. Veja alguns exemplos em:
+http://leg.ufpr.br/~walmes/cursoR/geneticaEsalq/script07.html.
+
+À diposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/a00826b1/attachment.html>
+
+From walmeszeviani em gmail.com  Mon Jul 10 10:57:00 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Mon, 10 Jul 2017 10:57:00 -0300
+Subject: [R-br] Ajuda com BoxPlot
+In-Reply-To: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
+References: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
+Message-ID: <CAFU=EkZgptuyUjD-q0=9z1y2+U=jfBD5eTPUuGfscou6PGsRxQ@mail.gmail.com>
+
+Prezado,
+
+O seu exemplo não é reproduzível. Todavia, se entendi corretamente sua
+dúvida, o código abaixo indica como usar as funções pdf() e png() para
+salvar os gráficos na dimensão que você desejar.
+
+# Conjunto de dados interno do R.
+str(iris)
+
+pdf("grafico1.pdf", width = 7, height = 6)
+boxplot(Sepal.Length ~ Species, data = iris)
+dev.off()
+
+png("grafico2.png", width = 1200, height = 900, res = 196)
+boxplot(Sepal.Length ~ Species, data = iris)
+dev.off()
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/68eaf389/attachment.html>
+
+From yurynepomuceno em gmail.com  Mon Jul 10 11:17:33 2017
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Mon, 10 Jul 2017 11:17:33 -0300
+Subject: [R-br] Ajuda com BoxPlot
+In-Reply-To: <CAFU=EkZgptuyUjD-q0=9z1y2+U=jfBD5eTPUuGfscou6PGsRxQ@mail.gmail.com>
+References: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
+ <CAFU=EkZgptuyUjD-q0=9z1y2+U=jfBD5eTPUuGfscou6PGsRxQ@mail.gmail.com>
+Message-ID: <CADFS6E7cixtmpLBQkH2X0Ggdurb+V01X2NCHu5rrH9X0Uyg4Fg@mail.gmail.com>
+
+Obrigado Walmes.
+
+Esqueci de anexar o arquivo com a base de dados para rodar o script. Acabo
+de anexar nessa mensagem.
+Tentei reproduzir o passo para salvar o arquivo em formato png, mas em
+todos os testes o arquivo saia em branco, com a informação de que é
+impossível de ser reproduzida a imagem.
+
+Mais uma vez, agradeço pela ajuda!
+
+rm(list = ls())
+setwd('C:\\Users\\Yury\\Desktop\\Mestrado\\1_TESE\\Model_Data\\Maize\\ENSEMBLE\\Simulacoes\\PA\\50')
+
+a = read.table('sdesiderio.txt', header = T, sep = '\t')
+media = matrix(NA, nrow = 36, ncol = 4)
+colnames(media) = c('Desv.Pad', 'Media', 'M.mais', 'M.menos')
+
+for(i in 1:36){
+  d = sd(a[i,1:(ncol(a)-1)])
+  media[i,1] = d
+  m = rowMeans(a, na.rm = T, dims = 1)
+  media[i,2] = m[i]
+  media[i,3] = media[i,2]+media[i,1]
+  media[i,4] = media[i,2]-media[i,1]
+  ifelse(media[i,]<0, 0, media[i,])
+}
+
+a.box = t(a)
+colnames(a.box) =
+c('J1','J2','J3','F1','F2','F3','M1','M2','M3','A1','A2','A3','M1','M2','M3',
+
+'J1','J2','J3','J1','J2','J3','A1','A2','A3','S1','S2','S3','O1','O2','O3',
+                    'N1','N2','N3','D1','D2','D3')
+
+png("grafico-b1.png", width = 1200, height = 900, res = 196)
+b1 = boxplot(a.box, las = 1, xlab = 'Semeadura', ylab = 'kg/ha', cex=0.5,
+pch=16)
+title('Variação de Ya de acordo com a data de semeadura')
+dev.off()
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+Em 10 de julho de 2017 10:57, Walmes Zeviani <walmeszeviani em gmail.com>
+escreveu:
+
+> Prezado,
+>
+> O seu exemplo não é reproduzível. Todavia, se entendi corretamente sua
+> dúvida, o código abaixo indica como usar as funções pdf() e png() para
+> salvar os gráficos na dimensão que você desejar.
+>
+> # Conjunto de dados interno do R.
+> str(iris)
+>
+> pdf("grafico1.pdf", width = 7, height = 6)
+> boxplot(Sepal.Length ~ Species, data = iris)
+> dev.off()
+>
+> png("grafico2.png", width = 1200, height = 900, res = 196)
+> boxplot(Sepal.Length ~ Species, data = iris)
+> dev.off()
+>
+> À disposição.
+> Walmes.
+> ​
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/3159a8fc/attachment.html>
+-------------- Próxima Parte ----------
+"V1"	"V2"	"V3"	"V4"	"V5"	"V6"	"V7"	"V8"	"V9"	"V10"	"V11"	"V12"	"V13"	"V14"	"V15"	"V16"	"V17"	"V18"	"V19"	"V20"	"V21"	"V22"	"V23"	"V24"	"V25"	"V26"	"V27"	"V28"	"V29"	"V30"	"V31"	"V32"	"V33"
+"1"	6198.8436197955	8073.61122720246	6972.2508096672	8189.26033372327	8417.2124376584	8670.04061853638	8503.35652043223	8053.51063235264	8270.82872435917	5609.59060528938	7071.46279579921	5432.80082263902	6134.44482149809	8269.33770383196	8803.69955817816	7616.15129486408	8129.44614505016	5356.24014301692	5801.82944758706	8303.91659635507	6102.67821610176	4999.18805646998	8381.68232994641	7730.45507875981	7292.39328478172	9024.53405237347	4946.38298266779	9185.48859990146	8241.10438345339	7692.33385789058	8688.05	6312.15	4911.05
+"2"	5647.11389777669	7751.4684910414	5818.56998550818	7472.29512452834	8186.07906720589	7767.97836583694	7238.93745645807	7194.18807419935	7031.3672677957	4615.91058521405	6735.98564428089	5776.5360268311	6145.71057282239	7881.13745589544	8372.84682361976	6868.3588078519	7350.21621133483	4466.16589877457	5276.30317638337	7922.44708884259	6131.90010480599	5040.1577056257	8036.56978094552	7698.25283587616	7280.22795004337	9203.23978972327	3873.50036853327	8831.13130564223	7902.55284020912	7032.05621734717	8288.1	5740.1	7503.8
+"3"	5603.73998308442	6962.3053048669	4866.60779106403	6589.25993917125	7242.06910710703	6927.62224431179	5312.35458298175	6644.60427277067	6624.25976963401	3711.48808442098	6814.01015910066	5348.88534286304	5750.86293588239	6319.49268433261	8170.19924101016	6042.51518571939	8599.00975879486	3483.91971335285	4768.03428987312	6972.75910048627	5732.81263624494	4823.61263795511	7172.9434291912	7478.83449422733	7133.46415909319	8682.9898173652	2887.78704352271	8022.46655006126	8558.25588979457	6021.87973417268	6717.4	5130	8204.75
+"4"	3905.11606922242	4475.47773526642	3795.98618084678	5228.45927119843	6339.33144653596	5742.11249745537	4815.82029702676	5454.61966179308	5748.39726416699	3519.29072665276	5262.53678073941	4410.35988071359	5556.38287446201	5205.2733257712	7960.28284048621	5011.96458735692	6644.57019106783	2552.30108751469	4053.6049518165	5750.41562669699	4699.04410269904	3923.27056702276	6447.86792739643	6242.31056132142	6195.25135233517	7818.08628569826	1792.30531270043	6731.44872055275	9160.67337504177	5012.4758632604	5185	3806.1	4807.25
+"5"	3908.46050807032	3961.73857591883	2695.82037075423	3934.74756890241	4902.3477861728	4622.9663852861	3520.50954420973	4567.18738648536	4587.86929914134	2723.65642617305	4334.63796305711	3773.3283771308	4678.01480309151	3831.12257374025	7477.24722918034	4600.80969063715	5889.59917678706	2065.17408955142	3265.57916510381	5012.03157392405	4126.5048340341	2693.12151225623	5254.55799544452	5688.77030165674	4828.77531254628	6679.6281184946	1198.73500867876	5209.72674780625	6576.19103872003	3665.42158429192	3746.25	2910.25	4005.75
+"6"	3169.27177451095	2781.50359087744	1834.3105582589	2982.13389797921	3445.74593812142	3781.77449651048	2640.19775109596	3529.45825199434	3673.67715159596	1669.26315778513	3327.78495625068	2702.16724858577	3437.46974666187	2587.14183788616	6216.17638642538	3538.07707463117	4891.01070350742	1204.96095449785	1929.45417567041	3581.42827725373	3285.24346935092	2263.56904055776	3756.67315675542	4772.43947698407	3915.20838627284	4971.965912161	856.816051865383	4059.10457643431	6314.20029387184	2546.57870274464	2620.05	1780.15	3127.3
+"7"	1543.62510462521	1932.54237648156	924.118733819757	1957.39354856801	2664.02455237573	3077.24575447956	2046.51407796176	2427.37054294414	3021.43066474109	1754.87628833451	2378.23454118164	2039.80204883369	2337.0293117886	2329.50393869428	5801.1824505957	2894.38628492552	3584.04201494383	930.06318742722	2007.25821799479	2611.99617975379	2535.27999328573	1220.88417747154	3079.23741779602	3309.3066307529	3086.62975723315	3838.04815124741	620.73065942363	2919.78786629923	5394.20507061767	2013.43213338547	854.65	834.15	1975.35
+"8"	941.989817982843	1148.81289106572	759.633359655177	1518.11604696345	2037.84220350034	1978.56361155905	1163.63679554638	1739.29110252318	2096.9871630705	1253.06621985845	1859.91629285572	1483.91017157646	2036.81510972971	1099.17462861289	4470.91657701335	1941.93200689315	2420.35172532486	574.28843344054	1772.07372320345	1712.93947688629	1876.10463411998	1149.52866711707	1555.28395233163	2560.7187523261	2336.60667024914	2950.80193741571	557.831423465327	1957.93278550954	4334.93517964937	1058.90120744271	710.05	1004.45	495.3
+"9"	1673.41032422988	743.962186889097	593.48403244241	819.384740674097	1093.73065661047	925.775709813373	890.92055308414	1329.75534198696	1577.80723660876	941.639667673123	1652.17943560258	682.091662973297	1240.20508608927	936.420493019643	3515.13470345207	1556.78622593096	1808.05217745265	506.928507722443	1370.86020754208	913.674510075833	1453.71903425854	766.382981554497	1768.99755327651	1835.70136689532	1850.22017984557	2089.06400715915	480.624199343043	1005.84244575635	3204.4838982502	892.98657400233	295.85	589.75	294.65
+"10"	1275.42530541223	750.825266821047	627.613885038657	707.301451930723	686.905407047687	689.716861177253	833.357999817763	768.2404872907	907.124258034083	725.31595932697	996.344473958727	644.46923515149	1217.77985278075	795.33988566774	2391.14149612282	867.421965692703	1038.46939827977	449.927885770547	1335.56398727779	616.967548212967	1094.46215501938	709.740335747293	1491.97416172347	1463.52799906785	1324.66107686442	1061.10132484824	444.659116731403	686.998141636713	2372.84443124235	797.039230382807	355.85	542.25	178.45
+"11"	1341.46459269282	589.441560524163	436.70748763925	561.066107240043	713.188183917033	507.727331208877	608.976226513197	560.39402426269	602.26713296525	559.63145862528	617.07988926132	554.732877720873	732.680248850147	786.599308623903	1713.40936034957	556.011537490193	831.67405411	410.368508817113	762.15245206447	543.827268965983	619.90249269059	644.91934853412	1469.44485636702	631.037777656827	898.623082394597	776.423598125337	400.691643524647	609.587665447057	1380.96227573944	614.458403751867	74.65	238.25	100.95
+"12"	916.361456014053	428.900786423793	377.02625997595	464.2672309758	551.94538603371	706.270911091413	592.949801603933	505.499684295487	535.25679069544	565.628462010267	491.016681303487	521.39284618827	601.449463110663	995.09719971602	851.518260381807	510.43912644676	712.878815325633	356.681055086027	629.379299344465	550.390072756943	461.691500632004	447.91851927754	776.196078045537	450.927187993443	621.515506963183	668.856589223983	363.492263062493	478.210782195117	819.579251810313	482.348094803607	16.3	295.7	0
+"13"	650.576031742412	429.897335956133	382.115864740851	421.595246847033	586.91249215693	442.414083314947	451.915846369497	412.291781463983	497.60377154292	549.16752438122	475.488251904223	439.427685640053	683.078932112157	634.988196404473	711.410028215707	395.22580351081	556.838437322223	352.815079571037	575.117237436367	423.950364718337	414.072511781375	483.73959431141	531.69398629723	463.08748954423	511.905848653747	620.7615681955	346.78350050052	362.27476927192	654.582657535287	428.814674273413	55.5	27.45	0
+"14"	451.87547437067	461.99112910943	376.488347356898	485.886118259917	504.101816749753	491.667101706843	459.52525981622	442.73413070085	671.674815335627	503.346826484217	336.653510101147	365.926612138927	582.04422400004	491.065098762467	609.97531656716	376.008544923923	541.364740888087	340.98514803636	408.98019755374	415.375173946093	372.074488997293	484.88660581665	483.255295040237	383.709380058078	454.00983452408	525.846029728937	343.338389320487	354.876024523513	591.08874360775	363.38232577025	45.6	13.7	0
+"15"	317.276570895403	368.512243157437	340.138976816987	382.358968515343	436.513241292023	538.343612017687	405.995173954773	378.651991777057	802.101903427237	551.29432824195	318.410453071997	362.895513683327	534.31525909663	429.083909255437	504.473144991847	355.592747910307	402.628888039423	357.40057104692	407.155861993487	380.03690808442	479.684449553253	425.510353382373	487.10704996747	378.986505062847	383.959199930017	487.09497510198	346.613149066523	346.699658418457	546.636405244263	338.57912354642	0	19.15	0
+"16"	461.348319651739	462.343055331137	370.745254148163	453.182786567067	449.688164882737	508.83296194138	363.572985341007	1123.96497432974	468.837975510137	375.693538125537	378.529833599965	1570.7608527114	528.77928817426	414.283364617517	476.450527859157	863.588104335243	428.466424889483	382.902725439673	401.04805342699	411.622394806357	373.31407100453	513.392386919547	642.99469287502	347.841492733653	378.93421592633	416.31484002119	369.007811655647	348.264801612423	559.427666321607	328.066270126069	0	120.75	0
+"17"	343.414528410671	447.3499551678	598.91552193048	699.034447990237	497.342880491017	561.329253262257	375.521403124587	1522.53705338522	591.38905585453	425.093148889777	340.298386766687	2218.43434507525	571.031440381113	380.63919205293	1212.08120405688	1250.17287989274	450.3619771988	414.894952175887	408.820032178367	460.654206192293	433.163692299987	423.813731719263	794.12091456162	405.953506629653	387.10964240459	444.972070203733	393.11718085377	365.66208295135	537.54506198896	333.334128180827	0	0	0
+"18"	427.253983066954	544.617733503227	966.10939681904	608.28692016629	596.638915326317	637.28372385845	422.452559150917	1996.35165287753	773.44287795701	1022.78683703635	385.853497002203	2592.7026212147	638.68627624284	411.025707607077	1942.84868690153	1758.12406004987	577.860452974937	472.96966430065	460.941032817387	1048.17743679963	493.361331837023	966.817870011157	879.04621281194	393.133554056127	444.08426906034	499.922176837863	417.136200517187	400.61809607574	574.685178189717	1884.97172617512	0	0	0
+"19"	307.521176413154	636.637712441963	1602.98407068432	2058.78332989118	2397.2773128487	719.224976620023	481.2041063519	2554.35364035032	1276.63419430258	1230.94284496528	1136.10928116695	2814.71957038379	780.90977425189	426.67955671227	2336.53243408659	2292.5258925481	1656.41147391214	532.142883883433	546.718686458217	1057.80487109824	2006.79735017497	1140.92765192231	735.216360578273	439.76463411116	1302.09505607646	2679.97274924954	451.241573213557	438.13291751303	663.49827570333	2276.84075219377	0	258.5	0
+"20"	277.750186062307	1169.71365473798	2140.72344426167	2399.90425337655	2880.92657329899	2471.11191507668	592.861453451913	3000.32175114518	1819.37859720577	2478.22928272288	1197.76638683321	2914.07172832688	1608.31387086279	556.12716344401	2766.17768755047	2740.6429212307	1752.48993525906	673.025834181273	1921.83964259513	1050.77261746071	2428.4116772773	819.751625709293	837.88574382861	484.879272289397	1294.14332740877	2853.45222494512	520.78215453686	498.056513597497	841.48533693877	2754.02314126887	0	486.7	0
+"21"	759.256683513522	1594.19340705402	2817.81071265348	2572.54570562993	3464.40750649661	2973.78285003609	902.120002546143	3097.00957713461	1682.31718924875	2586.68470985838	1269.39898801869	3139.27478871797	1904.57471425322	524.591907121703	3107.70019341384	3164.9864517256	1841.31514773752	848.806145122863	2168.4553028826	1175.46974669429	2553.85012623711	1138.77203329984	1403.10841600735	2850.51240709724	1315.718490014	3072.96093310372	592.092990932243	573.97687964148	1040.22605184617	2896.68036270713	606.95	483.5	0
+"22"	4292.84858461821	1735.4578945985	2972.99303784455	2915.41536374136	3852.90402650814	3419.06078187731	1212.34758442179	3325.63063401358	2138.53986173113	1186.4880102034	1362.97295340514	3513.43446266259	5282.95965670238	615.118600253637	3341.64927985369	3461.30680937498	2245.56738378363	1211.07568842567	2239.75309099645	1339.42651298785	2894.9443508978	1209.6047536754	1505.59999009151	3052.07114231721	1483.09012596128	3478.47777977792	738.55654030254	729.65346564384	3147.19060413372	2965.89744563628	3502.75	82.45	0
+"23"	5148.9911354185	2112.51261424371	3510.48278410192	6761.29874922551	4211.87286056682	3705.70197562043	1431.52525382469	3574.79266330324	4378.11301220495	4957.31958773483	1475.3025096394	4041.70357208354	4873.91092100963	878.897202942217	3665.6612430732	3888.33923742314	2533.72826778997	1588.31250708139	2693.92646859167	1641.80205692853	6682.23366109358	1348.95079126234	4490.77674154998	3129.88908169902	1336.71741442362	3910.40833157476	848.52306786663	964.594769908703	3530.54473842026	3064.38876470308	3800.4	604.5	0
+"24"	5486.98083205069	2501.40204732811	7379.36679045177	7231.93806682102	4528.25122901054	3974.6372965704	2012.61897907045	3821.60845334033	6527.67691239464	5763.39110187386	2328.58444575256	8124.91308658087	5150.72813963307	1351.42844064063	4071.42523327326	4246.7631241325	5809.3582663639	2009.26855224366	3505.47131671779	4645.50427498976	6976.79661381938	4421.23586654485	4711.22851033013	2527.90158514749	2212.52818967417	4819.18691005308	1049.46514292195	1317.2504410526	7202.30145482422	3057.48408205568	3862.7	321.5	0
+"25"	2458.82406300778	7334.50097757085	8171.55038301562	7398.09753727471	7790.08842223409	7437.98529423447	6281.84153102728	7601.34662687806	7452.18200049619	6705.1697215414	6814.04661305327	8765.69041620194	6504.26001831993	1264.90562500745	4599.02567028909	7133.86379169857	5205.78734278269	5071.43515417525	4598.57528609457	6053.36230354908	6567.06573904799	5064.17246180117	6635.09109842611	2822.34032839355	2830.66595819975	8008.01706481927	3790.78641036152	2263.61826324392	7985.07529338205	3828.0795871354	3928.75	5880.2	0
+"26"	6272.59192482323	7649.94710213723	8508.34069172261	7551.17608924631	8259.03185595137	7117.89547882629	7581.34647859354	8033.23641095623	8226.46077636947	6663.53681883423	7650.76418019541	8466.77003986889	7410.49657045788	5310.55409579122	4769.15110099969	7393.3937091265	5859.89954762481	5172.36931074903	7847.93336090189	7834.56147373751	7163.24354545116	5928.04047334562	7848.07197522769	1962.48624465779	5960.81327594068	8079.02229008807	6655.2361286139	5753.15248168988	8342.5583349517	7658.03027984205	4080.95	7437.1	4895
+"27"	6256.03760995369	7666.7328400897	8533.77338892279	8143.04768559224	9139.15011199607	7927.97202337443	7847.40471326075	8520.00600932233	7746.53287698809	7545.04424701073	7909.64862623601	8302.00782129292	8897.74483082689	6314.2752545689	8039.12846318443	7651.06556960641	6985.31412677349	8626.69332371415	8350.72726705013	7771.36501517964	7871.95533791522	6060.71687583546	8082.50100995752	6526.27517152491	6716.97050066615	8472.88640697889	6764.96485337213	7198.13588524401	8486.14667843199	8003.50618357647	8200.75	7220.45	4895
+"28"	6039.74182525753	7936.68832939987	8957.52333028275	8623.31345956088	9892.8235050174	8159.3789425067	7990.38238249041	8756.88508603332	6727.41144004065	8030.33634520454	7755.91662238696	8263.57406152309	8908.28185606471	7329.11294215193	8088.74283480916	8346.27782239178	7792.41850338522	8637.19294893929	9524.10659999917	7403.66647907717	8765.95054302587	6939.22212178888	8563.27992423666	7801.79845187702	7375.58018216934	8846.77774997176	7726.77396143545	8719.29496906887	8824.88196362549	8364.52821737284	8079.5	7588.1	3027
+"29"	6782.91231502615	8510.38170577038	9128.77827184206	9234.03836471931	8379.9728328457	8312.21614765178	7704.17819919009	8348.93678695626	6943.13557853881	8492.68790157003	8160.43708993777	8260.7112736417	8907.42950204667	8019.71230917254	8686.13510837611	8816.97612295942	7566.32710650506	8612.69696097211	8769.56093983837	7133.03602121824	8807.78928434337	7546.85858600113	8727.86671104673	7699.42541153414	7549.25408282026	9430.05434655374	7778.62510892682	9174.01646269175	8523.24921817144	9005.76693276535	9656.1	7115.35	757
+"30"	5751.01038007835	8283.45939372127	9020.99939532953	9155.08282589057	9654.22177604347	7610.31920716616	8737.42354893863	8397.78181398103	7022.05155621697	8576.94141300722	8484.69318000478	8696.17622250364	9569.64868743193	7926.7860449745	7775.74703740567	7863.76559812607	8016.29718606187	8046.50306904257	9065.67595822177	7734.60751857469	8129.0991441421	8594.3768485038	9179.81205259237	8223.6767520105	7444.78457107466	9457.16089795867	7853.65850881321	9681.3205576241	8281.4241457072	8715.74828477822	8180.4	6449.6	0
+"31"	6416.49443992739	8692.55192999147	9208.16097393858	8786.00231103493	9620.3373676615	6601.24182750866	8961.73795173444	9075.31649758619	6976.03662440146	8141.99637572053	7926.55458134042	8479.92269613759	8771.51031524826	8059.52345823036	7885.9680645125	8571.23893635644	8091.54177432258	7769.49308292134	9676.0378420297	7360.55689541757	7446.37378518629	9667.85976786387	10172.3823095296	8468.20661400564	7528.57901418717	9707.85842790827	8086.77879165084	9784.28892341053	7855.84347122594	9260.0974271668	9362.25	6302.4	0
+"32"	6529.99807465148	7994.40874924347	8715.33107388105	8182.36737767222	9926.38236168447	5855.1106820093	8867.5603735679	9291.95856068018	6428.46760496164	8519.1173164423	7461.47945860612	7230.51694367773	9422.52202801782	8871.64298533419	7480.51675200948	8297.47856968422	7576.39056591878	7606.03279623412	9635.8149216525	7254.74385317747	8187.3257973101	8494.1339919765	9634.74625614717	8526.37059583469	6807.7846993189	9217.75147152736	8148.8707122595	9436.51304051262	7553.25472943446	9524.87042685985	9274.4	7392.3	0
+"33"	7087.83568819713	7452.40752139851	9019.66264579242	9024.22644286938	9270.96225782088	6035.15706841736	8862.19216000974	9631.94427881166	5971.95052225176	8015.94756624384	6821.76595880368	7720.42228654216	9465.34500307621	8351.22566223841	7301.238122956	8720.29445696055	7796.3782847923	7366.78980978134	10034.0440957516	7312.58241720435	7563.83107004756	9297.40921644151	9412.9995436433	8576.21590359289	7169.60226937614	8710.62733627854	8791.24663174692	9457.40775204389	7127.45141390478	9873.01432802757	9637.75	7183.5	0
+"34"	7662.335523455	7687.25404351458	8764.90563925849	8947.80161862009	9856.19118160487	7150.62519130564	8707.553190495	9190.3722545152	5993.67546918533	8028.81338061725	5751.28987692921	6929.91891297212	9177.85905136688	8313.31361925265	6976.67190087578	9059.27536032286	7779.12645888942	6945.32428422675	9635.76862305327	7734.42624602199	7279.08350389113	9551.66972801031	9544.54198764593	8732.11895786719	7847.35772131201	8728.88290652459	9697.58910980976	9095.09113086169	7439.25373354	9130.02390571514	8977.9	7205.7	0
+"35"	7577.46098783894	8215.29887654863	8598.53756514495	9212.28427439013	9586.9696741146	8358.00631061864	9379.44810988923	9436.566297113	6568.40766762007	7943.37670954683	6796.05859805157	6957.91352009444	9208.73242690467	8638.28158981222	6882.72070572643	8920.27059104157	7077.59278102573	7315.48621368611	9401.54566630897	7720.90539076555	6798.80442688358	8934.48763604354	8733.63224819493	8450.86498978931	9198.07918997341	7385.65413245873	9811.90779603442	8638.03263879086	7321.10745897426	8579.43921222775	8381.15	6358.65	0
+"36"	7509.36505554264	7449.2327549848	8740.48376405162	8688.7291769115	8825.69577297735	8316.86501976388	8825.19550131347	8806.33321104908	6599.24104412815	7428.84834240439	6602.88037841754	6774.42019050786	8319.05747429849	8883.27320316593	7360.46387051363	8463.0472041843	6662.06505889869	5929.65223590118	8800.18359504924	7369.00773779312	5873.88775351135	9180.88199983187	9145.34148072844	8048.41521828244	9514.91868752477	6456.98813169512	9428.34084729152	8491.0952372646	7250.98634433257	8473.1219544843	8173.5	6195.4	NA
+
+From rafaeltieppo em yahoo.com.br  Mon Jul 10 11:19:25 2017
+From: rafaeltieppo em yahoo.com.br (Rafael Tieppo)
+Date: Mon, 10 Jul 2017 14:19:25 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
+References: <1272293183.2510811.1499696365464.ref@mail.yahoo.com>
+Message-ID: <1272293183.2510811.1499696365464@mail.yahoo.com>
+
+
+Prezad em s (Gisele, João Henrique e Walmes),
+Muito obrigado pelas considerações.
+Gisele, Sobre o Arranjo fatorial, é interessante, vamos ver a possibilidade da execução.
+João Henrique, o conceito "a média das amostras simples é o resultado da parcela", ajudou a elucidar a dúvida maior sobre a repetição.
+Walmes, te respondendo, vc entendeu corretamente. Obrigado pela aula, sua disposição é sinônimo de motivação para eu seguir na carreira universitária.
+
+Grato pelo tempo despendido.
+
+Boa semana à todos. Rafael Tieppo
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/1524872c/attachment.html>
+
+From assis.leonard em gmail.com  Mon Jul 10 11:59:50 2017
+From: assis.leonard em gmail.com (Leonard Assis)
+Date: Mon, 10 Jul 2017 11:59:50 -0300
+Subject: [R-br] Ajuda com BoxPlot
+In-Reply-To: <CADFS6E7cixtmpLBQkH2X0Ggdurb+V01X2NCHu5rrH9X0Uyg4Fg@mail.gmail.com>
+References: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
+ <CAFU=EkZgptuyUjD-q0=9z1y2+U=jfBD5eTPUuGfscou6PGsRxQ@mail.gmail.com>
+ <CADFS6E7cixtmpLBQkH2X0Ggdurb+V01X2NCHu5rrH9X0Uyg4Fg@mail.gmail.com>
+Message-ID: <CAEG0FK8xOg6YLPVAw7Zp2okPURfXDbf9DtH4+3nwuRG_oeD5RQ@mail.gmail.com>
+
+Execute normalmente, sem o png(...) É sem o dev.off()
+Observe o que acontece.
+
+Acredito que você verá, com isto, o que está acontecendo de errado.
+
+Leonard
+
+Em 10 de jul de 2017 11:17 AM, "Yury Duarte via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Obrigado Walmes.
+>
+> Esqueci de anexar o arquivo com a base de dados para rodar o script. Acabo
+> de anexar nessa mensagem.
+> Tentei reproduzir o passo para salvar o arquivo em formato png, mas em
+> todos os testes o arquivo saia em branco, com a informação de que é
+> impossível de ser reproduzida a imagem.
+>
+> Mais uma vez, agradeço pela ajuda!
+>
+> rm(list = ls())
+> setwd('C:\\Users\\Yury\\Desktop\\Mestrado\\1_TESE\\
+> Model_Data\\Maize\\ENSEMBLE\\Simulacoes\\PA\\50')
+>
+> a = read.table('sdesiderio.txt', header = T, sep = '\t')
+> media = matrix(NA, nrow = 36, ncol = 4)
+> colnames(media) = c('Desv.Pad', 'Media', 'M.mais', 'M.menos')
+>
+> for(i in 1:36){
+>   d = sd(a[i,1:(ncol(a)-1)])
+>   media[i,1] = d
+>   m = rowMeans(a, na.rm = T, dims = 1)
+>   media[i,2] = m[i]
+>   media[i,3] = media[i,2]+media[i,1]
+>   media[i,4] = media[i,2]-media[i,1]
+>   ifelse(media[i,]<0, 0, media[i,])
+> }
+>
+> a.box = t(a)
+> colnames(a.box) = c('J1','J2','J3','F1','F2','
+> F3','M1','M2','M3','A1','A2','A3','M1','M2','M3',
+>                     'J1','J2','J3','J1','J2','J3',
+> 'A1','A2','A3','S1','S2','S3','O1','O2','O3',
+>                     'N1','N2','N3','D1','D2','D3')
+>
+> png("grafico-b1.png", width = 1200, height = 900, res = 196)
+> b1 = boxplot(a.box, las = 1, xlab = 'Semeadura', ylab = 'kg/ha', cex=0.5,
+> pch=16)
+> title('Variação de Ya de acordo com a data de semeadura')
+> dev.off()
+>
+> Yury Duarte
+> Engenheiro Agrônomo - ESALQ/USP
+>
+> Em 10 de julho de 2017 10:57, Walmes Zeviani <walmeszeviani em gmail.com>
+> escreveu:
+>
+>> Prezado,
+>>
+>> O seu exemplo não é reproduzível. Todavia, se entendi corretamente sua
+>> dúvida, o código abaixo indica como usar as funções pdf() e png() para
+>> salvar os gráficos na dimensão que você desejar.
+>>
+>> # Conjunto de dados interno do R.
+>> str(iris)
+>>
+>> pdf("grafico1.pdf", width = 7, height = 6)
+>> boxplot(Sepal.Length ~ Species, data = iris)
+>> dev.off()
+>>
+>> png("grafico2.png", width = 1200, height = 900, res = 196)
+>> boxplot(Sepal.Length ~ Species, data = iris)
+>> dev.off()
+>>
+>> À disposição.
+>> Walmes.
+>> ​
+>>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/81e4d64f/attachment.html>
+
+From assis.leonard em gmail.com  Mon Jul 10 12:05:06 2017
+From: assis.leonard em gmail.com (Leonard Assis)
+Date: Mon, 10 Jul 2017 12:05:06 -0300
+Subject: [R-br] =?utf-8?q?delineamento_vs_repeti=C3=A7=C3=A3o?=
+In-Reply-To: <1049780917.2376704.1499682813015@mail.yahoo.com>
+References: <1049780917.2376704.1499682813015.ref@mail.yahoo.com>
+ <1049780917.2376704.1499682813015@mail.yahoo.com>
+Message-ID: <CAEG0FK-1jOYTmxwdm4HqWidm5BJrd0QYhWGA=uxZ6Ayh6XyHhQ@mail.gmail.com>
+
+As mensuracose são repetições da mesma medida ou métricas diferentes?
+
+O que eu chamo de "repetições da mesma medida" é você medir em t=0 é ir
+repetindo a medida de tempos em tempos.
+
+Métricas diferentes seria medir coisas diferentes ou, utilizando maneutmras
+diferentes de medir.
+
+O primeiro caso é um caso clássico de medidas repetidas. O segundo demanda
+melhor entendimento do problema, pois pode ou não se enquadrar em MANOVA
+
+Em 10 de jul de 2017 7:34 AM, "Rafael Tieppo via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+>
+> Após consultar algumas referências (livros, apostila, papers, etc), não
+> consegui a chegar a uma conclusão.
+>
+> O que encontrei de caso mais próximo foi uma solução do Walmes, que é o
+> que tenho em mente até o momento.
+>
+> http://r-br.2285057.n4.nabble.com/R-br-Repeticao-dentro-da-
+> parcela-td4661875.html#a4661882
+>
+> Para acabar com as dúvidas, por favor, se alguém puder ajudar, segue a
+> situação:
+>
+> No planejamento do experimento a ser realizado pretende-se verificar o
+> espaçamento entre plantas em função do tipo de dosador de semente.
+>
+> - Var Dependente: espaçamento entre plantas (quantitativo)
+> - Var Independente: tipo de dosador  (qualitativo)
+>
+> Pretende-se usar DBC. A ideia é utilizar 4 blocos, com 4 tratamentos
+> (dosadores). Sendo assim, cada bloco teria quatro parcelas (uma com cada
+> tipo de sistema dosador), totalizando 4 repetições.
+>
+> Contudo, em cada parcela não pretende-se realizar apenas uma mensuração de
+> distância entre plantas, deseja-se realizar pelo menos 10.
+>
+> O que gera minha dúvida são dois casos:
+>
+> CASO 1
+>
+> O número de amostras é: 4 blocos * 4 tratamentos * 10 amostras (por
+> parcela) = 160
+>
+>
+> CASO 2
+>
+> Das 10 mensurações realizadas em uma parcela, calcula-se a média para a
+> obtenção de uma única amostra por parcela, dessa forma tem-se:
+>
+> O número de amostras é 4 blocos * 4 tratamentos  1 amostra (por parcela)=
+> 16
+>
+> obs: O CASO 2 é o mais comum em alguns trabalhos, contudo não estou
+> convicto que é a melhor opção.
+> ###
+>
+> Perguntas:
+> Há algum CASO correto?
+> Se sim, em algum dos casos pode-se assumir como DBC ou DQL (quadrado
+> latino)?
+> Há outro delineamento que se enquadre melhor à situação?
+>
+> Obrigado.
+>  Rafael Tieppo
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/81ac8e5e/attachment.html>
+
+From economatistica em yahoo.com.br  Mon Jul 10 15:06:33 2017
+From: economatistica em yahoo.com.br (Edimeire Alexandra Pinto)
+Date: Mon, 10 Jul 2017 18:06:33 +0000 (UTC)
+Subject: [R-br] incompatibilidade entre Geoda e R
+References: <361094833.2411091.1499709993846.ref@mail.yahoo.com>
+Message-ID: <361094833.2411091.1499709993846@mail.yahoo.com>
+
+Boa tarde.
+Quem já tiver conhecimento sobre isso, ajudará muito no que puder colaborar.
+
+Alguém, por favor, que já mexeu com o pacote spdep, saberia me dizer o por que o R não faz o pesos da matriz de vizinhança, mesmo usando o argumento Zero.policy= TRUE.
+Tudo consiste em:
+1- Crio o arquivo municipios.gal no Geoda.2- importo esse arquivo em formato .gal para o R: este.nb<- read.gal("municipios.gal" , override.id=TRUE)
+3- tento criar a matriz de pesos de vizinhança : nb2listw(este.nb,style="W", zero.policy=TRUE)
+No entanto o R me retorna a mensagem abaixo, sendo que no Geoda eu consigo essa matriz de pesos. O fato é que não entendo por que o R não calcula essa matriz de pesos, já que todas as equações que terei de fazer serão no R, tendo o vista que o Geoda não tem essas equações, só o R
+
+Error in print.listw(x) : 
+  regions with no neighbours found, use zero.policy=TRUE
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/b285eeff/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Mon Jul 10 15:20:57 2017
+From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
+Date: Mon, 10 Jul 2017 15:20:57 -0300
+Subject: [R-br] incompatibilidade entre Geoda e R
+In-Reply-To: <361094833.2411091.1499709993846@mail.yahoo.com>
+References: <361094833.2411091.1499709993846.ref@mail.yahoo.com>
+ <361094833.2411091.1499709993846@mail.yahoo.com>
+Message-ID: <7bd9946f-11d4-33dc-cc98-75a116964858@yahoo.com.br>
+
+Oi Edimeire,
+
+Você chegou a conseguir criar a lista de vizinhanças poderada? A 
+mensagem de erro é da função que imprime. Qual o resultado de
+
+nbw <- nb2listw(este.nb,style="W", zero.policy=TRUE)
+
+Elias
+
+
+From eliaskrainski em yahoo.com.br  Mon Jul 10 15:22:32 2017
+From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
+Date: Mon, 10 Jul 2017 15:22:32 -0300
+Subject: [R-br] incompatibilidade entre Geoda e R
+In-Reply-To: <7bd9946f-11d4-33dc-cc98-75a116964858@yahoo.com.br>
+References: <361094833.2411091.1499709993846.ref@mail.yahoo.com>
+ <361094833.2411091.1499709993846@mail.yahoo.com>
+ <7bd9946f-11d4-33dc-cc98-75a116964858@yahoo.com.br>
+Message-ID: <76a7ad8f-866a-530a-1439-9fca23558168@yahoo.com.br>
+
+Complementando:
+
+On 10/07/2017 15:20, Elias T. Krainski wrote:
+> nbw <- nb2listw(este.nb,style="W", zero.policy=TRUE)
+print(nbw, zero.policy=TRUE)
+
+Elias
+
+
+From economatistica em yahoo.com.br  Mon Jul 10 15:32:10 2017
+From: economatistica em yahoo.com.br (Edimeire Alexandra Pinto)
+Date: Mon, 10 Jul 2017 18:32:10 +0000 (UTC)
+Subject: [R-br] incompatibilidade entre Geoda e R
+References: <913781826.2438200.1499711530813.ref@mail.yahoo.com>
+Message-ID: <913781826.2438200.1499711530813@mail.yahoo.com>
+
+ 
+Oi Elias. 
+
+Pois é, olha só o que aparece:
+
+
+este.nb= read.gal("municipios.gal" ,     override.id=TRUE)
+ print(este.nb)
+> print(este.nb)
+Neighbour list object:
+Number of regions: 5564 
+Number of nonzero links: 32228 
+Percentage nonzero weights: 0.104102 
+Average number of links: 5.792236 
+3 regions with no links:
+
+#########
+
+
+w.nb<-nb2listw(este.nb,style="W", zero.policy=TRUE)
+
+
+| > print(w.nb, zero.policy=TRUE)
+Characteristics of weights list object:
+Neighbour list object:
+Number of regions: 5564 
+Number of nonzero links: 32228 
+Percentage nonzero weights: 0.104102 
+Average number of links: 5.792236 
+3 regions with no links:
+3520400 5300108 2605459
+
+Weights style: W 
+Weights constants summary:
+     n       nn   S0       S1       S2
+W 5561 30924721 5561 2044.729 23174.73
+ |
+| 
+ |
+| 
+| >w.nb ###se peço para aparecer o executado da erro como se vê abaixo
+Error in print.listw(x) : 
+  regions with no neighbours found, use zero.policy=TRUE
+
+
+
+
+
+Preciso desses pesos para calcular o indice de Moran da variavel Y, que nada mais do que o Renda municipal, usando matriz de pesos w.nb
+
+
+dados<-read.table("res.csv",sep=";",dec=",",header = TRUE)
+
+head(dados)
+
+
+|     MUNICIPIO         Y     PIBa       PIB     cod
+1   MANCIO LIMA  591239.9 33426.61 150136.08 1200336
+2 MANOEL URBANO   58934.4 18044.54  80018.27 1200344
+3  ASSIS BRASIL 1978559.5 17371.21  64601.58 1200054
+4         FEIJO  285000.0 45966.75 267202.96 1200302
+5        XAPURI  355711.4 55298.02 168708.32 1200708
+6      TARAUACA 2852586.8 65297.63 335519.90 1200609
+ |
+| 
+ |
+| 
+| >  |
+
+ |
+
+summary(dados)
+
+
+moran.test(dados$Y, listw=w.nb, randomisation=FALSE, alternative="greater",zero.policy=TRUE) 
+
+
+Error in na.fail.default(x) : missing values in object
+ |
+
+ |
+
+    Em Segunda-feira, 10 de Julho de 2017 15:22, Elias T. Krainski via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+ Complementando:
+
+On 10/07/2017 15:20, Elias T. Krainski wrote:
+> nbw <- nb2listw(este.nb,style="W", zero.policy=TRUE)
+print(nbw, zero.policy=TRUE)
+
+Elias
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/7d720aab/attachment.html>
+
+From economatistica em yahoo.com.br  Mon Jul 10 15:32:10 2017
+From: economatistica em yahoo.com.br (Edimeire Alexandra Pinto)
+Date: Mon, 10 Jul 2017 18:32:10 +0000 (UTC)
+Subject: [R-br] incompatibilidade entre Geoda e R
+References: <913781826.2438200.1499711530813.ref@mail.yahoo.com>
+Message-ID: <913781826.2438200.1499711530813@mail.yahoo.com>
+
+ 
+Oi Elias. 
+
+Pois é, olha só o que aparece:
+
+
+este.nb= read.gal("municipios.gal" ,     override.id=TRUE)
+ print(este.nb)
+> print(este.nb)
+Neighbour list object:
+Number of regions: 5564 
+Number of nonzero links: 32228 
+Percentage nonzero weights: 0.104102 
+Average number of links: 5.792236 
+3 regions with no links:
+
+#########
+
+
+w.nb<-nb2listw(este.nb,style="W", zero.policy=TRUE)
+
+
+| > print(w.nb, zero.policy=TRUE)
+Characteristics of weights list object:
+Neighbour list object:
+Number of regions: 5564 
+Number of nonzero links: 32228 
+Percentage nonzero weights: 0.104102 
+Average number of links: 5.792236 
+3 regions with no links:
+3520400 5300108 2605459
+
+Weights style: W 
+Weights constants summary:
+     n       nn   S0       S1       S2
+W 5561 30924721 5561 2044.729 23174.73
+ |
+| 
+ |
+| 
+| >w.nb ###se peço para aparecer o executado da erro como se vê abaixo
+Error in print.listw(x) : 
+  regions with no neighbours found, use zero.policy=TRUE
+
+
+
+
+
+Preciso desses pesos para calcular o indice de Moran da variavel Y, que nada mais do que o Renda municipal, usando matriz de pesos w.nb
+
+
+dados<-read.table("res.csv",sep=";",dec=",",header = TRUE)
+
+head(dados)
+
+
+|     MUNICIPIO         Y     PIBa       PIB     cod
+1   MANCIO LIMA  591239.9 33426.61 150136.08 1200336
+2 MANOEL URBANO   58934.4 18044.54  80018.27 1200344
+3  ASSIS BRASIL 1978559.5 17371.21  64601.58 1200054
+4         FEIJO  285000.0 45966.75 267202.96 1200302
+5        XAPURI  355711.4 55298.02 168708.32 1200708
+6      TARAUACA 2852586.8 65297.63 335519.90 1200609
+ |
+| 
+ |
+| 
+| >  |
+
+ |
+
+summary(dados)
+
+
+moran.test(dados$Y, listw=w.nb, randomisation=FALSE, alternative="greater",zero.policy=TRUE) 
+
+
+Error in na.fail.default(x) : missing values in object
+ |
+
+ |
+
+    Em Segunda-feira, 10 de Julho de 2017 15:22, Elias T. Krainski via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+ 
+
+ Complementando:
+
+On 10/07/2017 15:20, Elias T. Krainski wrote:
+> nbw <- nb2listw(este.nb,style="W", zero.policy=TRUE)
+print(nbw, zero.policy=TRUE)
+
+Elias
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/7d720aab/attachment-0001.html>
+
+From eliaskrainski em yahoo.com.br  Mon Jul 10 15:48:05 2017
+From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
+Date: Mon, 10 Jul 2017 15:48:05 -0300
+Subject: [R-br] incompatibilidade entre Geoda e R
+In-Reply-To: <913781826.2438200.1499711530813@mail.yahoo.com>
+References: <913781826.2438200.1499711530813.ref@mail.yahoo.com>
+ <913781826.2438200.1499711530813@mail.yahoo.com>
+Message-ID: <e551bc2c-e6df-c47f-d289-9adfb0170cbd@yahoo.com.br>
+
+On 10/07/2017 15:32, Edimeire Alexandra Pinto wrote:
+> w.nb ###se peço para aparecer o executado da erro como se vê abaixo
+por isso que precisa usar
+print(w.nb, zero.policy=TRUE)
+
+Elias
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170710/4a113701/attachment.html>
+
+From yurynepomuceno em gmail.com  Tue Jul 11 09:09:05 2017
+From: yurynepomuceno em gmail.com (Yury Duarte)
+Date: Tue, 11 Jul 2017 09:09:05 -0300
+Subject: [R-br] Ajuda com BoxPlot
+In-Reply-To: <CAEG0FK8xOg6YLPVAw7Zp2okPURfXDbf9DtH4+3nwuRG_oeD5RQ@mail.gmail.com>
+References: <CADFS6E5FE2-Xaxv933gcqV=jd7x46ZAxVSiTtWq0pGyA+LUddQ@mail.gmail.com>
+ <CAFU=EkZgptuyUjD-q0=9z1y2+U=jfBD5eTPUuGfscou6PGsRxQ@mail.gmail.com>
+ <CADFS6E7cixtmpLBQkH2X0Ggdurb+V01X2NCHu5rrH9X0Uyg4Fg@mail.gmail.com>
+ <CAEG0FK8xOg6YLPVAw7Zp2okPURfXDbf9DtH4+3nwuRG_oeD5RQ@mail.gmail.com>
+Message-ID: <CADFS6E4g7Ztv9tKuHc_hwJNdr994iYO57FQYAC-Jmv8vr+uLNg@mail.gmail.com>
+
+Obrigado Leonard e Walmes!
+
+Consegui utilizar as dicas e comandos sugeridos para salvar as imagens.
+Muito Obrigado!
+
+Att
+
+Yury Duarte
+Engenheiro Agrônomo - ESALQ/USP
+
+Em 10 de julho de 2017 11:59, Leonard Assis via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Execute normalmente, sem o png(...) É sem o dev.off()
+> Observe o que acontece.
+>
+> Acredito que você verá, com isto, o que está acontecendo de errado.
+>
+> Leonard
+>
+> Em 10 de jul de 2017 11:17 AM, "Yury Duarte via R-br" <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Obrigado Walmes.
+>>
+>> Esqueci de anexar o arquivo com a base de dados para rodar o script.
+>> Acabo de anexar nessa mensagem.
+>> Tentei reproduzir o passo para salvar o arquivo em formato png, mas em
+>> todos os testes o arquivo saia em branco, com a informação de que é
+>> impossível de ser reproduzida a imagem.
+>>
+>> Mais uma vez, agradeço pela ajuda!
+>>
+>> rm(list = ls())
+>> setwd('C:\\Users\\Yury\\Desktop\\Mestrado\\1_TESE\\Model_
+>> Data\\Maize\\ENSEMBLE\\Simulacoes\\PA\\50')
+>>
+>> a = read.table('sdesiderio.txt', header = T, sep = '\t')
+>> media = matrix(NA, nrow = 36, ncol = 4)
+>> colnames(media) = c('Desv.Pad', 'Media', 'M.mais', 'M.menos')
+>>
+>> for(i in 1:36){
+>>   d = sd(a[i,1:(ncol(a)-1)])
+>>   media[i,1] = d
+>>   m = rowMeans(a, na.rm = T, dims = 1)
+>>   media[i,2] = m[i]
+>>   media[i,3] = media[i,2]+media[i,1]
+>>   media[i,4] = media[i,2]-media[i,1]
+>>   ifelse(media[i,]<0, 0, media[i,])
+>> }
+>>
+>> a.box = t(a)
+>> colnames(a.box) = c('J1','J2','J3','F1','F2','F3
+>> ','M1','M2','M3','A1','A2','A3','M1','M2','M3',
+>>                     'J1','J2','J3','J1','J2','J3',
+>> 'A1','A2','A3','S1','S2','S3','O1','O2','O3',
+>>                     'N1','N2','N3','D1','D2','D3')
+>>
+>> png("grafico-b1.png", width = 1200, height = 900, res = 196)
+>> b1 = boxplot(a.box, las = 1, xlab = 'Semeadura', ylab = 'kg/ha', cex=0.5,
+>> pch=16)
+>> title('Variação de Ya de acordo com a data de semeadura')
+>> dev.off()
+>>
+>> Yury Duarte
+>> Engenheiro Agrônomo - ESALQ/USP
+>>
+>> Em 10 de julho de 2017 10:57, Walmes Zeviani <walmeszeviani em gmail.com>
+>> escreveu:
+>>
+>>> Prezado,
+>>>
+>>> O seu exemplo não é reproduzível. Todavia, se entendi corretamente sua
+>>> dúvida, o código abaixo indica como usar as funções pdf() e png() para
+>>> salvar os gráficos na dimensão que você desejar.
+>>>
+>>> # Conjunto de dados interno do R.
+>>> str(iris)
+>>>
+>>> pdf("grafico1.pdf", width = 7, height = 6)
+>>> boxplot(Sepal.Length ~ Species, data = iris)
+>>> dev.off()
+>>>
+>>> png("grafico2.png", width = 1200, height = 900, res = 196)
+>>> boxplot(Sepal.Length ~ Species, data = iris)
+>>> dev.off()
+>>>
+>>> À disposição.
+>>> Walmes.
+>>> ​
+>>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170711/1c3c2dfb/attachment.html>
+
+From apcmadeira em hotmail.com  Tue Jul 11 09:21:19 2017
+From: apcmadeira em hotmail.com (ana paula coelho madeira)
+Date: Tue, 11 Jul 2017 12:21:19 +0000
+Subject: [R-br] GLM multivariado
+Message-ID: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
+
+Bom dia!
+
+
+Alguém tem alguma referência  de estudos com GLM multivariado para me passar?
+
+Desde já agradeço
+
+
+Ana Paula
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170711/e2b2a634/attachment.html>
+
+From wbonat em gmail.com  Tue Jul 11 09:41:45 2017
+From: wbonat em gmail.com (Wagner Bonat)
+Date: Tue, 11 Jul 2017 09:41:45 -0300
+Subject: [R-br] GLM multivariado
+In-Reply-To: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
+References: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <CANt=4MhmLE7G-=Cg8dHwoYstGQ=XjDk0XXNMjWtOTYCqkH0G_A@mail.gmail.com>
+
+Bom dia Ana,
+
+Você pode dar uma olha no McGLM referências abaixo.
+Tem o pacote mcglm para ajustar os models no R.
+
+http://onlinelibrary.wiley.com/doi/10.1111/rssc.12145/full (Artigo
+principal)
+https://link.springer.com/content/pdf/10.1007/s13253-017-0284-7.pdf
+(Aplicação em dados de contagem multivariado)
+https://www.ncbi.nlm.nih.gov/pubmed/28686573 (Aplicação em genética)
+
+https://cran.r-project.org/web/packages/mcglm/index.html
+
+Em breve terá um artigo na Journal of Statistical Software sobre o pacote.
+
+Se precisar de ajuda com o uso do pacote entre em contato.
+
+
+Em 11 de julho de 2017 09:21, ana paula coelho madeira via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia!
+>
+>
+> Alguém tem alguma referência  de estudos com GLM multivariado para me
+> passar?
+>
+> Desde já agradeço
+>
+>
+> Ana Paula
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+Wagner Hugo Bonat
+----------------------------------------------------------------------------------------------
+Department of Mathematics and Computer Science (IMADA)
+University of Southern Denmark (SDU) and
+Laboratório de Estatística e Geoinformação (LEG)
+Universidade Federal do Paraná (UFPR)
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170711/e52d7fd0/attachment.html>
+
+From coroasolaris em gmail.com  Tue Jul 11 14:21:51 2017
+From: coroasolaris em gmail.com (Elielson P Barbosa)
+Date: Tue, 11 Jul 2017 14:21:51 -0300
+Subject: [R-br] GLM multivariado
+In-Reply-To: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
+References: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <CAL6xZMr=iGhgqaH6zvuT6jWLp1YkiTLRTkOhfSeZ6VWo+0MVfA@mail.gmail.com>
+
+Ana, sugiro Multivariate GLM, Haase, Richard F., SAGE Publication/Amazon
+
+Em 11 de jul de 2017 09:21, "ana paula coelho madeira via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia!
+>
+>
+> Alguém tem alguma referência  de estudos com GLM multivariado para me
+> passar?
+>
+> Desde já agradeço
+>
+>
+> Ana Paula
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170711/b05474dc/attachment.html>
+
+From eucilene.alvessantana em gmail.com  Wed Jul 12 13:06:52 2017
+From: eucilene.alvessantana em gmail.com (Eucilene Alves Santana)
+Date: Wed, 12 Jul 2017 13:06:52 -0300
+Subject: [R-br] GLM multivariado
+In-Reply-To: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
+References: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <CANuApLsrk-r4fFs3xzZvtPMDUyLif6y3P56Ow8Lzg+4MYvEqtQ@mail.gmail.com>
+
+Também gostaria
+
+Abs
+
+Em 11 de julho de 2017 09:21, ana paula coelho madeira via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia!
+>
+>
+> Alguém tem alguma referência  de estudos com GLM multivariado para me
+> passar?
+>
+> Desde já agradeço
+>
+>
+> Ana Paula
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170712/027a3b2d/attachment.html>
+
+From diogojose21 em yahoo.com.br  Wed Jul 12 13:53:42 2017
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Wed, 12 Jul 2017 16:53:42 +0000 (UTC)
+Subject: [R-br] =?utf-8?b?T3DDp8O1ZXMgZG8gbGF0dGljZSAoaGlzdG9ncmFtYSku?=
+In-Reply-To: <790463125.1275871.1490977964378@mail.yahoo.com>
+References: <790463125.1275871.1490977964378.ref@mail.yahoo.com>
+ <790463125.1275871.1490977964378@mail.yahoo.com>
+Message-ID: <1427389292.518123.1499878422656@mail.yahoo.com>
+
+Prezados, boa tarde!!! 
+Estou empregando a library "lattice" para construir alguns histogramas, como no exemplo abaixo:
+###dados
+
+res=c(rnorm(1000,20,2),rnorm(1000,15,1.5),rnorm(1000,25,2.5),rnorm(1000,25,2.5))
+
+###fatores
+fac=c(rep("F1",1000),rep("F2",1000),rep("F3",1000),rep("F4",1000))
+fac=factor(fac,levels=c("F1","F2","F3","F4"),labels=c("F1","F2","F3","F4"))
+###gráfico em lattice
+require(lattice)
+histogram(~res|fac,xlab="Resultado",ylab="Freqüência",type=c("count"),layout=c(1,4),endpoints=c(0,40),nint=30,scales=list(x=list(at=c(0,10,20,30,40))),panel = function(x, ...) { panel.histogram(x,col=rgb(62,88,172,max=255),...) panel.abline(v=20,col=rgb(13,141,70,max=255),lwd=2)} )
+Alguém sabe como fazer para inserir a curva normal no gráfico do histograma, quando se tem no eixo y a frequência ("count") em vez da densidade ("density")?
+Obrigado, Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE ACel:(21)99680-8535Email: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520
+
+   
+
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170712/edf35e2e/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Jul 12 17:42:25 2017
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 12 Jul 2017 17:42:25 -0300
+Subject: [R-br] =?utf-8?b?T3DDp8O1ZXMgZG8gbGF0dGljZSAoaGlzdG9ncmFtYSku?=
+In-Reply-To: <1427389292.518123.1499878422656@mail.yahoo.com>
+References: <790463125.1275871.1490977964378.ref@mail.yahoo.com>
+ <790463125.1275871.1490977964378@mail.yahoo.com>
+ <1427389292.518123.1499878422656@mail.yahoo.com>
+Message-ID: <CAFU=EkYdmx-y=mOD_rTo=z3rpbb4yzoanKQdKvt9dyVOT48o1Q@mail.gmail.com>
+
+Diogo,
+
+Você vai ter que multiplicar a função densidade da normal pela área do
+histograma. Segue o código para você juntar as partes.
+
+# dados
+res <- c(rnorm(1000, 20, 2),
+         rnorm(1000, 15, 1.5),
+         rnorm(1000, 25, 2.5),
+         rnorm(1000, 25, 2.5))
+
+# fatores
+fac <- factor(gl(4, 1000, labels = c("F1", "F2", "F3", "F4")))
+
+library(lattice)
+
+histogram(~res | fac,
+          xlab = "Resultado",
+          ylab = "Frequência",
+          type = "density",
+          layout = c(1, 4),
+          endpoints = c(0, 40),
+          nint = 30,
+          scales = list(x = list(at = c(0, 10, 20, 30, 40))),
+          panel = function(x, ...) {
+              panel.histogram(x,
+                              col = rgb(62, 88, 172, max = 255),
+                              ...)
+              panel.mathdensity(n = 301,
+                                dmath = dnorm,
+                                args = list(mean = mean(x), sd = sd(x)),
+                                ...,
+                                col = rgb(13, 141, 70, max = 255),
+                                lwd = 2)
+          })
+
+# Fazendo usando a hist().
+y <- rnorm(100)
+ht <- hist(y, breaks = seq(-5, 5, by = 0.5))
+
+# Área do histograma.
+a <- sum(diff(ht$breaks) * ht$counts)
+a
+
+plot(ht)
+curve(a * dnorm(x, mean(y), sd(y)),
+      add = TRUE, col = 2)
+
+À diposição.
+Walmes.
+
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170712/fc6ad81b/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Jul 12 21:33:43 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 12 Jul 2017 21:33:43 -0300
+Subject: [R-br] GLM multivariado
+In-Reply-To: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
+References: <FR1P152MB1063DEFB2EFEB50ADDD0041DCAAE0@FR1P152MB1063.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <CAKrF98=N-THOV6kwCyZVUFcMgB=L+iN=ckxt6h5v4zfZ-aPmCg@mail.gmail.com>
+
+Ana Paula,
+
+Um texto bem completo que inclui o assunto de seu interesse está em
+https://www.ime.usp.br/~giapaula/textoregressao.htm
+
+2017-07-11 9:21 GMT-03:00 ana paula coelho madeira via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Bom dia!
+>
+>
+> Alguém tem alguma referência  de estudos com GLM multivariado para me
+> passar?
+>
+> Desde já agradeço
+>
+>
+> Ana Paula
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170712/fea93ad1/attachment.html>
+
+From diogojose21 em yahoo.com.br  Thu Jul 13 08:54:40 2017
+From: diogojose21 em yahoo.com.br (diogojose21 em yahoo.com.br)
+Date: Thu, 13 Jul 2017 11:54:40 -0000
+Subject: [R-br]  Maximizar plot window no RStudio
+Message-ID: <1156667304.98720.1499945730059.JavaMail.administrator@mjoe.nabble.com>
+
+Salve Maria professor!!!
+
+Apenas complementando os colegas: na função "par", existe uma série de parâmetros que, associados a essa função, permitem delimitar as margens do papel (parâmetro “oma”) e da área em que o gráfico está inserido (parâmetro “mar”). Irás definir as margens para baixo (“bottom”), à esquerda (“left”), acima (“top”) e à direita (“right”).
+
+Uma observação de quem já passou por isso: dependendo do número de painéis, pode não ser útil os gráficos da função “graphics”. Nesse caso, pode ter de apelar para packages alternativas, como “lattice”, “ggplot2” e “plotly”.
+
+Esperando ter ajudado...
+
+In corde Jesu semper!!!
+
+_____________________________________
+Sent from http://r-br.2285057.n4.nabble.com
+
+
+From adrielegbiase em gmail.com  Thu Jul 20 16:42:59 2017
+From: adrielegbiase em gmail.com (Adriele Giaretta Biase)
+Date: Thu, 20 Jul 2017 16:42:59 -0300
+Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
+Message-ID: <CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com>
+
+Boa tarde pessoal,
+
+
+
+estou trabalhando com um banco de dados que possuem várias coletas de pesos
+ao longo do tempo de vários bois.
+
+O meu objetivo é deixar um ajuste simples (pode até ser um modelo não-
+linear ao invés de uma regressão simples), porém, preciso remover os
+possíveis pontos discrepantes que atrapalham o ajuste, de forma recursiva
+(automática). O algoritmo será executado em vários momentos, enquanto
+acompanha o crescimento do animal. O mais importante  seria a remoção dos
+*outiliers* do banco de dados.  Eu criei um algoritmo para fazer isso.
+
+Gostaria de saber se alguém possui uma ideia melhor ou sugestão. Segue a
+função  criada.
+
+
+*OBS:* Muitos pontos discrepantes ainda ficam no banco, isso devido a um
+erro operacional da balança que pesa os animais. Precisaria de algo mais
+robusto para remover os pontos destoantes de forma recursiva para todos os
+animais.
+
+
+
+
+DADOS é um data.frame com as seguintes colunas: BRINCO (identificação ou
+numero do animal), DATA (dia da pesagem do peso do animal) e PESO (peso do
+animal correspondente ao dia)
+
+
+
+fit_linear <- function(DADOS){
+
+fit_aux = c()
+
+BRINCO = as.numeric(as.vector(levels( as.factor(DADOS[,"BRINCO"]))))
+
+pdf(file = "ajuste%03d.pdf")   # salvar os gráficos em pdf
+
+for (i in BRINCO){
+
+dados = subset(DADOS, BRINCO == i, selec =  c( BRINCO, DATA, PESO))
+
+j=1
+
+while (j<=30){
+
+dias =  as.vector(as.numeric(as.factor(dados[,"DATA"])))
+
+pesos = as.numeric(as.vector(dados$PESO))
+
+dad = cbind(dias, pesos)
+
+mod <- lm(pesos~dias)
+
+INFLUENTES = influence.measures(mod)
+
+dados_analise = cbind(INFLUENTES$is.inf, dad)
+
+dados_influentes = as.data.frame(dados_analise)
+
+colnames(dados_influentes) = c("x1", "x2", "x3", "x4", "x5", "x6", "DATA",
+"PESO")
+
+dados = subset(dados_influentes, (x1==FALSE & x2==FALSE & x3==FALSE &
+x4==FALSE & x5==FALSE & x6==FALSE),
+
+               selec =  c(x1, x2, x3, x4, x5, x6, DATA, PESO))
+
+j = j+1
+
+}
+
+res <- residuals(mod)
+
+h <- hatvalues(mod)
+
+P = length(mod$coefficient); N=length(peso); P; N; hc<-3*P/N;hc
+
+limt <- list(c(DFB=2/sqrt(N),FDFits=2*sqrt(P/N),cov.r=3*P/N,
+
+ Cook=qf(0.5,2,8, lower.tail = TRUE, log.p = FALSE),hat=3*P/N))
+
+N=length(peso); P=length(mod$coefficient)
+
+rs <- rstudent(mod)
+
+h <- lm.influence(mod)$hat; lc <- 3*P/N
+
+minrs=min(min(rs),-3)
+
+maxrs=max(max(rs),3)
+
+ymin=minrs-.1
+
+ymax=maxrs+.1
+
+maxh=max(max(h),lc)
+
+minh=min(h)
+
+xmin=minh-.1
+
+xmax=maxh+.1
+
+par(mfrow=c(1,1))
+
+plot(c(xmin,xmax),c(ymin,ymax), type="n", xlab="h - leverage",
+ylab="RStudent", main= i)
+
+abline(h=-2.5, col="red")
+
+abline(h=2.5,col="red"); abline(v=lc, col="blue")
+
+points(h,rs)
+
+plot(dad,  main= i)
+
+abline(mod,lty=2)
+
+}
+
+dev.off()
+
+}
+
+
+Agradeço,
+
+
+-- 
+Adriele Giaretta Biase.
+Mestre em  Estatística e Experimentação Agropecuária - UFLA.
+Doutora em Estatística e Experimentação Agronômica - ESALQ/ USP
+Contato: (19) 98861-0619.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170720/d9a94728/attachment.html>
+
+From sznelwar em uol.com.br  Thu Jul 20 18:17:26 2017
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Thu, 20 Jul 2017 18:17:26 -0300
+Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
+In-Reply-To: ["CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com"]
+References: ["CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com"]
+Message-ID: <59711de65b88_3b34156abb6bf3ec31816@a4-weasel18.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170720/5eb77a04/attachment.html>
+
+From jorgeluiscavalcanti em gmail.com  Thu Jul 20 19:04:48 2017
+From: jorgeluiscavalcanti em gmail.com (Jorge Cavalcanti)
+Date: Thu, 20 Jul 2017 19:04:48 -0300
+Subject: [R-br] =?utf-8?q?CFP_-_IV_WORKSHOP_DE_CI=C3=8ANCIA_DE_DADOS_EDUCA?=
+	=?utf-8?b?Q0lPTkFJUyAoV0NEReKAmTIwMTcp?=
+Message-ID: <CACftuwzM26NzSretKBtBtS-b5=HU6A8MOahrVYaN=6RHMHH-_g@mail.gmail.com>
+
+------------------------------------------------------------
+----------------------------------------------
+*IV WORKSHOP DE CIÊNCIA DE DADOS EDUCACIONAIS (WCDE’2017)*
+(antigo WORKSHOP DE MINERAÇÃO DE DADOS EDUCACIONAIS)
+
+VI Congresso Brasileiro de Informática em Educação (CBIE’2017)
+
+Recife, 30 de Outubro a 02 de Novembro de 2017
+
+https://sites.google.com/view/wcde/
+------------------------------------------------------------
+----------------------------------------------
+
+*Sobre o evento*
+
+A análise de dados educacionais, de uma maneira geral, representa uma área
+de pesquisa emergente em Informática em Educação para o desenvolvimento de
+métodos que exploram dados oriundos de ambientes educacionais e também
+administrativos com a finalidade de entender melhor os estudantes e os
+cenários em que eles aprendem.
+
+Dentro deste contexto, nas últimas três edições do Congresso Brasileiro de
+Informática em Educação (CBIE) esta temática estava sendo parcialmente
+tratada no Workshop de Mineração de Dados Educacionais (WMDE), por meio de
+tópicos de interesse que se restringem a dados gerados em ambientes de
+ensino-aprendizagem e com a aplicação de tarefas de mineração de dados como
+predição (regressão, séries temporais e classificação), agrupamento ou
+associação de dados, resultando em descobertas de conhecimento intrínseco
+nos dados. Contudo, ainda há outras áreas de pesquisa nesta temática como é
+o caso de Learning Analytics (LA) que faz uso de técnicas de análises de
+dados,incluindo tarefas de mineração de dados, para confirmar hipóteses
+colocadas em atividades de ensino que envolvem a aprendizagem do aluno,
+fomentando assim recursos analíticos ao tutor para entendimento e
+aprimoramento do ensino-aprendizagem. Por fim, existe também a temática de
+ Academic Analytics (AA) que tem na essência as mesmas abordagens de
+análise utilizadas em MDE e LA, porém com alteração na fonte de dados,
+nesse caso advindo de sistemas educacionais administrativos.
+
+Como proposta de englobar as três áreas de pesquisa, uma vez que o foco
+principal de todas estas é analisar dados educacionais para o aprimoramento
+do ensino e aprendizagem, neste ano se fez a alteração do nome do workshop
+para Ciência de Dados Educacionais, ampliando o escopo do evento para uma
+abordagem mais ampla da temática análise de dados e fomentando a Comunidade
+de Informática em Educação um fórum para atualização, discussão e aplicação
+de pesquisas que tem como premissa o uso de dados oriundos da educação.
+
+O WCDE é parte do Congresso Brasileiro de Informática da Educação (CBIE),
+um evento anual da SBC, que ocorrerá este ano em Recife entre os dias 30 de
+Outubro e 02 de Novembro. Informações adicionais sobre o CBIE estão em
+https://sabertecnologias.com.br/cbie/.
+
+
+
+*Tópicos de Interesse*
+
+A lista abaixo apresenta alguns tópicos iniciais de interesse deste
+workshop. Porém, ela não é estritamente limitante quanto aos assuntos que
+podem ser tratados em Ciência de Dados Educacionais.
+
+• Modelagem analítica de Bancos de Dados Educacionais e integração com
+Dados Abertos (Open Data);
+• Mineração de Dados Educacionais e Personalização da Aprendizagem;
+• Infra-estrutura para análise de dados educacionais;
+• Aplicação de análise de dados educacionais no ensino (Superior ou
+Educação Básica);
+• Integrando dados educacionais e Internet das Coisas (IoT);
+• Análise de dados em ambientes emergentes pedagógicos como jogos
+educacionais, MOOCs e Sistemas Tutores Inteligentes;
+• Análise de dados na aprendizagem social e colaborativa;
+• Melhores práticas para adaptar o estado da arte das técnicas analíticas
+de recuperação de informação, sistemas de recomendação, análise de redes
+sociais, mineração de opinião para o domínio educativo;
+• Abordagens, métodos, algoritmos e ferramentas de analítica;
+• Análise de dados em apoio a tarefas educacionais administrativas;
+• Uso de dados combinados com teorias para a compreensão da aprendizagem;
+• Métricas de aprendizagem e avaliação;
+• Aprendizagem adaptativa e personalizada;
+• Valores, éticas e leis sobre os dados educacionais;
+• Visualização de Dados Educacionais;
+• Processos e metodologias para análises de dados educacionais.
+
+ *Datas importantes*
+
+• Data limite para submissão de artigos:  *20/08/2017*
+• Notificação de artigos aceitos: *08/09/2017*
+• Entrega da versão final dos artigos (com copyright): *15/09/2017*
+• Data limite para inscrição de pelo menos um autor por trabalho:
+* 15/09/2017*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170720/90fed5fa/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Jul 20 22:05:56 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 20 Jul 2017 22:05:56 -0300
+Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
+In-Reply-To: <59711de65b88_3b34156abb6bf3ec31816@a4-weasel18.mail>
+References: <59711de65b88_3b34156abb6bf3ec31816@a4-weasel18.mail>
+Message-ID: <CAKrF98k6-TT7kXu8qyHYp=qc8o+dcUSsSggar2mm-0Lo4aXtXQ@mail.gmail.com>
+
+Prezada Adriele,
+
+A questão de "detecção", e mais ainda, a remoção de dados aberrantes em
+bancos de dados tem várias dimensões, dentre elas a puramente matemática.
+
+Como você menciona uma fonte desses dados aberrantes como erros de
+balança,imagino que os outros pontos seriam escrutinizados antes de se
+jogar fora para facilitar a análise matemática, "pontos de influência" me
+vêm à mente, mas para tornar curto este post:
+
+Há² um pacote no R para detecção de outliers, obviamente de forma
+"automática" usando técnicas de testes estatísticos e outro usando técnicas
+de *bootstrap* e detecção não paramétrica.
+
+Quanto ao seu algoritmo, que li de maneira perfunctoria, e portanto sujeito
+a erros de interpretação, quer me parecer que você usa a mesma regressão
+que vai ajustar seus dados para detectá-los, isso me parece inadequado: se
+essa fosse a ação almejada, bastaria você usar os dados da regressão os
+pontos de alavanca, influentes, etc. e retirá-los.
+
+Uma outra fonte que você pode se interessar é que existem l*ivros* inteiros
+dedicados a esse assunto, que podem colocar mais luz no seu problema (ou
+deixá-la com mais dúvidas!).
+
+HTH
+--
+Cesar Rabak
+
+
+
+[1] Para um tratamento jocoso, veja o *fortune* sobre *outliers* no R!
+[2] Que eu conheço, uma pesquisa mais aprofundada pode revelar uma miríade!
+
+2017-07-20 18:17 GMT-03:00 Mauro Sznelwar via R-br <r-br em listas.c3sl.ufpr.br
+>:
+
+> Não poderia disponilizar o Data Set, ou pelo menos parte dele para rodar?
+>
+>
+>
+>
+> Boa tarde pessoal,
+>
+>
+>
+> estou trabalhando com um banco de dados que possuem várias coletas de
+> pesos ao longo do tempo de vários bois.
+>
+> O meu objetivo é deixar um ajuste simples (pode até ser um modelo não-
+> linear ao invés de uma regressão simples), porém, preciso remover os
+> possíveis pontos discrepantes que atrapalham o ajuste, de forma recursiva
+> (automática). O algoritmo será executado em vários momentos, enquanto
+> acompanha o crescimento do animal. O mais importante  seria a remoção dos
+> *outiliers* do banco de dados.  Eu criei um algoritmo para fazer isso.
+>
+> Gostaria de saber se alguém possui uma ideia melhor ou sugestão. Segue a
+> função  criada.
+>
+>
+>
+> *OBS:* Muitos pontos discrepantes ainda ficam no banco, isso devido a um
+> erro operacional da balança que pesa os animais. Precisaria de algo mais
+> robusto para remover os pontos destoantes de forma recursiva para todos
+> os animais.
+>
+>
+>
+>
+>
+> DADOS é um data.frame com as seguintes colunas: BRINCO (identificação ou
+> numero do animal), DATA (dia da pesagem do peso do animal) e PESO (peso do
+> animal correspondente ao dia)
+>
+>
+>
+> fit_linear <- function(DADOS){
+>
+> fit_aux = c()
+>
+> BRINCO = as.numeric(as.vector(levels( as.factor(DADOS[,"BRINCO"]))))
+>
+> pdf(file = "ajuste%03d.pdf")   # salvar os gráficos em pdf
+>
+> for (i in BRINCO){
+>
+> dados = subset(DADOS, BRINCO == i, selec =  c( BRINCO, DATA, PESO))
+>
+> j=1
+>
+> while (j<=30){
+>
+> dias =  as.vector(as.numeric(as.factor(dados[,"DATA"])))
+>
+> pesos = as.numeric(as.vector(dados$PESO))
+>
+> dad = cbind(dias, pesos)
+>
+> mod <- lm(pesos~dias)
+>
+> INFLUENTES = influence.measures(mod)
+>
+> dados_analise = cbind(INFLUENTES$is.inf, dad)
+>
+> dados_influentes = as.data.frame(dados_analise)
+>
+> colnames(dados_influentes) = c("x1", "x2", "x3", "x4", "x5", "x6", "DATA",
+> "PESO")
+>
+> dados = subset(dados_influentes, (x1==FALSE & x2==FALSE & x3==FALSE &
+> x4==FALSE & x5==FALSE & x6==FALSE),
+>
+>                selec =  c(x1, x2, x3, x4, x5, x6, DATA, PESO))
+>
+> j = j+1
+>
+> }
+>
+> res <- residuals(mod)
+>
+> h <- hatvalues(mod)
+>
+> P = length(mod$coefficient); N=length(peso); P; N; hc<-3*P/N;hc
+>
+> limt <- list(c(DFB=2/sqrt(N),FDFits=2*sqrt(P/N),cov.r=3*P/N,
+>
+>  Cook=qf(0.5,2,8, lower.tail = TRUE, log.p = FALSE),hat=3*P/N))
+>
+> N=length(peso); P=length(mod$coefficient)
+>
+> rs <- rstudent(mod)
+>
+> h <- lm.influence(mod)$hat; lc <- 3*P/N
+>
+> minrs=min(min(rs),-3)
+>
+> maxrs=max(max(rs),3)
+>
+> ymin=minrs-.1
+>
+> ymax=maxrs+.1
+>
+> maxh=max(max(h),lc)
+>
+> minh=min(h)
+>
+> xmin=minh-.1
+>
+> xmax=maxh+.1
+>
+> par(mfrow=c(1,1))
+>
+> plot(c(xmin,xmax),c(ymin,ymax), type="n", xlab="h - leverage",
+> ylab="RStudent", main= i)
+>
+> abline(h=-2.5, col="red")
+>
+> abline(h=2.5,col="red"); abline(v=lc, col="blue")
+>
+> points(h,rs)
+>
+> plot(dad,  main= i)
+>
+> abline(mod,lty=2)
+>
+> }
+>
+> dev.off()
+>
+> }
+>
+>
+>
+> Agradeço,
+>
+>
+> --
+> Adriele Giaretta Biase.
+> Mestre em  Estatística e Experimentação Agropecuária - UFLA.
+> Doutora em Estatística e Experimentação Agronômica - ESALQ/ USP
+> Contato: (19) 98861-0619.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170720/08367212/attachment.html>
+
+From fabianidenise em gmail.com  Fri Jul 21 08:36:35 2017
+From: fabianidenise em gmail.com (fabianidenise em gmail.com)
+Date: Fri, 21 Jul 2017 11:36:35 -0000
+Subject: [R-br] geom_boxplot
+Message-ID: <1826656629.54373.1500635795562.JavaMail.administrator@mjoe.nabble.com>
+
+Bom dia listeiros, estou com uma dúvida, e talvez alguém possa me  indicar alguma maneira de resolver.
+
+Estou com uma série histórica de dados diários de chuva, e preciso fazer um boxplot dos valores agregados mensalmente.
+
+DATA	CHUVA
+01/01/1980	5
+02/01/1980	0
+03/01/1980	0
+04/01/1980	0
+05/01/1980	0
+06/01/1980	0
+07/01/1980	4,9
+08/01/1980	34
+09/01/1980	5,6
+10/01/1980	8
+11/01/1980	0
+.
+.
+.
+ Até  aí td bem, consegui executar pelas  linhas  de comando abaixo:
+P1 <- ggplot(dados,aes(format(as.Date(DATA), "%m"), CHUVA)) + geom_boxplot()
+P1
+
+No entanto, como para a  variável chuva esses valores  diários  não fazem muito  sentido para  a minha análise, preciso fazer um boxplot aggregando esses valores pela soma mensal.
+
+Alguém teria alguma dica de como posso fazer isso? 
+
+
+Muito obrigada,
+Fabiani
+
+_____________________________________
+Sent from http://r-br.2285057.n4.nabble.com
+
+
+From cesar.rabak em gmail.com  Fri Jul 21 13:19:36 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 21 Jul 2017 13:19:36 -0300
+Subject: [R-br] geom_boxplot
+In-Reply-To: <1826656629.54373.1500635795562.JavaMail.administrator@mjoe.nabble.com>
+References: <1826656629.54373.1500635795562.JavaMail.administrator@mjoe.nabble.com>
+Message-ID: <CAKrF98nN3cFdo17h=FB5dnyM396vNmoOqT3v3gqs4RxNdhf1Cw@mail.gmail.com>
+
+http://bfy.tw/CxnM
+
+HTH
+--
+Cesar Rabak
+
+
+2017-07-21 8:36 GMT-03:00 Fabiani via R-br <r-br em listas.c3sl.ufpr.br>:
+
+> Bom dia listeiros, estou com uma dúvida, e talvez alguém possa me  indicar
+> alguma maneira de resolver.
+>
+> Estou com uma série histórica de dados diários de chuva, e preciso fazer
+> um boxplot dos valores agregados mensalmente.
+>
+> DATA    CHUVA
+> 01/01/1980      5
+> 02/01/1980      0
+> 03/01/1980      0
+> 04/01/1980      0
+> 05/01/1980      0
+> 06/01/1980      0
+> 07/01/1980      4,9
+> 08/01/1980      34
+> 09/01/1980      5,6
+> 10/01/1980      8
+> 11/01/1980      0
+> .
+> .
+> .
+>  Até  aí td bem, consegui executar pelas  linhas  de comando abaixo:
+> P1 <- ggplot(dados,aes(format(as.Date(DATA), "%m"), CHUVA)) +
+> geom_boxplot()
+> P1
+>
+> No entanto, como para a  variável chuva esses valores  diários  não fazem
+> muito  sentido para  a minha análise, preciso fazer um boxplot aggregando
+> esses valores pela soma mensal.
+>
+> Alguém teria alguma dica de como posso fazer isso?
+>
+>
+> Muito obrigada,
+> Fabiani
+>
+> _____________________________________
+> Sent from http://r-br.2285057.n4.nabble.com
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170721/3c57231c/attachment.html>
+
+From lpbraga em geologia.ufrj.br  Sat Jul 22 17:03:35 2017
+From: lpbraga em geologia.ufrj.br (Luis Paulo Braga)
+Date: Sat, 22 Jul 2017 17:03:35 -0300
+Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
+In-Reply-To: <CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com>
+References: <CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com>
+Message-ID: <CAMqMvQV+7zV0zPnOQRn6uzFRyPM4UEOtcuXPioPdwWL52Zwc3A@mail.gmail.com>
+
+Especificamente nesse problema, alguns autores tem utilizado com sucesso
+regressão isotonica. Veja Rodrigues e Chaves, Revista Brasileira de
+Biometria, 2010, 28:85-101
+
+Em 20 de julho de 2017 16:42, Adriele Giaretta Biase via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+>
+> Boa tarde pessoal,
+>
+>
+>
+> estou trabalhando com um banco de dados que possuem várias coletas de
+> pesos ao longo do tempo de vários bois.
+>
+> O meu objetivo é deixar um ajuste simples (pode até ser um modelo não-
+> linear ao invés de uma regressão simples), porém, preciso remover os
+> possíveis pontos discrepantes que atrapalham o ajuste, de forma recursiva
+> (automática). O algoritmo será executado em vários momentos, enquanto
+> acompanha o crescimento do animal. O mais importante  seria a remoção dos
+> *outiliers* do banco de dados.  Eu criei um algoritmo para fazer isso.
+>
+> Gostaria de saber se alguém possui uma ideia melhor ou sugestão. Segue a
+> função  criada.
+>
+>
+> *OBS:* Muitos pontos discrepantes ainda ficam no banco, isso devido a um
+> erro operacional da balança que pesa os animais. Precisaria de algo mais
+> robusto para remover os pontos destoantes de forma recursiva para todos
+> os animais.
+>
+>
+>
+>
+> DADOS é um data.frame com as seguintes colunas: BRINCO (identificação ou
+> numero do animal), DATA (dia da pesagem do peso do animal) e PESO (peso do
+> animal correspondente ao dia)
+>
+>
+>
+> fit_linear <- function(DADOS){
+>
+> fit_aux = c()
+>
+> BRINCO = as.numeric(as.vector(levels( as.factor(DADOS[,"BRINCO"]))))
+>
+> pdf(file = "ajuste%03d.pdf")   # salvar os gráficos em pdf
+>
+> for (i in BRINCO){
+>
+> dados = subset(DADOS, BRINCO == i, selec =  c( BRINCO, DATA, PESO))
+>
+> j=1
+>
+> while (j<=30){
+>
+> dias =  as.vector(as.numeric(as.factor(dados[,"DATA"])))
+>
+> pesos = as.numeric(as.vector(dados$PESO))
+>
+> dad = cbind(dias, pesos)
+>
+> mod <- lm(pesos~dias)
+>
+> INFLUENTES = influence.measures(mod)
+>
+> dados_analise = cbind(INFLUENTES$is.inf, dad)
+>
+> dados_influentes = as.data.frame(dados_analise)
+>
+> colnames(dados_influentes) = c("x1", "x2", "x3", "x4", "x5", "x6", "DATA",
+> "PESO")
+>
+> dados = subset(dados_influentes, (x1==FALSE & x2==FALSE & x3==FALSE &
+> x4==FALSE & x5==FALSE & x6==FALSE),
+>
+>                selec =  c(x1, x2, x3, x4, x5, x6, DATA, PESO))
+>
+> j = j+1
+>
+> }
+>
+> res <- residuals(mod)
+>
+> h <- hatvalues(mod)
+>
+> P = length(mod$coefficient); N=length(peso); P; N; hc<-3*P/N;hc
+>
+> limt <- list(c(DFB=2/sqrt(N),FDFits=2*sqrt(P/N),cov.r=3*P/N,
+>
+>  Cook=qf(0.5,2,8, lower.tail = TRUE, log.p = FALSE),hat=3*P/N))
+>
+> N=length(peso); P=length(mod$coefficient)
+>
+> rs <- rstudent(mod)
+>
+> h <- lm.influence(mod)$hat; lc <- 3*P/N
+>
+> minrs=min(min(rs),-3)
+>
+> maxrs=max(max(rs),3)
+>
+> ymin=minrs-.1
+>
+> ymax=maxrs+.1
+>
+> maxh=max(max(h),lc)
+>
+> minh=min(h)
+>
+> xmin=minh-.1
+>
+> xmax=maxh+.1
+>
+> par(mfrow=c(1,1))
+>
+> plot(c(xmin,xmax),c(ymin,ymax), type="n", xlab="h - leverage",
+> ylab="RStudent", main= i)
+>
+> abline(h=-2.5, col="red")
+>
+> abline(h=2.5,col="red"); abline(v=lc, col="blue")
+>
+> points(h,rs)
+>
+> plot(dad,  main= i)
+>
+> abline(mod,lty=2)
+>
+> }
+>
+> dev.off()
+>
+> }
+>
+>
+> Agradeço,
+>
+>
+> --
+> Adriele Giaretta Biase.
+> Mestre em  Estatística e Experimentação Agropecuária - UFLA.
+> Doutora em Estatística e Experimentação Agronômica - ESALQ/ USP
+> Contato: (19) 98861-0619.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170722/5b4719a6/attachment.html>
+
+From sznelwar em uol.com.br  Sun Jul 23 18:03:01 2017
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Sun, 23 Jul 2017 18:03:01 -0300
+Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
+In-Reply-To: ["CAMqMvQV+7zV0zPnOQRn6uzFRyPM4UEOtcuXPioPdwWL52Zwc3A@mail.gmail.com"]
+References: ["CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com", 
+ "CAMqMvQV+7zV0zPnOQRn6uzFRyPM4UEOtcuXPioPdwWL52Zwc3A@mail.gmail.com"]
+Message-ID: <59750f05a821a_5f715a85bd7f3d42357f@a4-weasel17.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170723/0134399c/attachment.html>
+
+From assis.leonard em gmail.com  Sun Jul 23 22:15:15 2017
+From: assis.leonard em gmail.com (Leonard Assis)
+Date: Sun, 23 Jul 2017 22:15:15 -0300
+Subject: [R-br] tratamento de pontos discrepantes (pesos de bovinos)
+In-Reply-To: <CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com>
+References: <CANjWqYzun0iat=iGc=Sx23NFBZ52kk-SoALG5-ZWPXtv+BzkaQ@mail.gmail.com>
+Message-ID: <CAEG0FK-DXxwHtzq=qYruJowJnnkVSsa3YNM+rJEMzrA2D+LKnA@mail.gmail.com>
+
+Leia sobre medidas repetidas e modelos de efeitos mistos
+
+Em 20 de jul de 2017 4:43 PM, "Adriele Giaretta Biase via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+>
+> Boa tarde pessoal,
+>
+>
+>
+> estou trabalhando com um banco de dados que possuem várias coletas de
+> pesos ao longo do tempo de vários bois.
+>
+> O meu objetivo é deixar um ajuste simples (pode até ser um modelo não-
+> linear ao invés de uma regressão simples), porém, preciso remover os
+> possíveis pontos discrepantes que atrapalham o ajuste, de forma recursiva
+> (automática). O algoritmo será executado em vários momentos, enquanto
+> acompanha o crescimento do animal. O mais importante  seria a remoção dos
+> *outiliers* do banco de dados.  Eu criei um algoritmo para fazer isso.
+>
+> Gostaria de saber se alguém possui uma ideia melhor ou sugestão. Segue a
+> função  criada.
+>
+>
+> *OBS:* Muitos pontos discrepantes ainda ficam no banco, isso devido a um
+> erro operacional da balança que pesa os animais. Precisaria de algo mais
+> robusto para remover os pontos destoantes de forma recursiva para todos
+> os animais.
+>
+>
+>
+>
+> DADOS é um data.frame com as seguintes colunas: BRINCO (identificação ou
+> numero do animal), DATA (dia da pesagem do peso do animal) e PESO (peso do
+> animal correspondente ao dia)
+>
+>
+>
+> fit_linear <- function(DADOS){
+>
+> fit_aux = c()
+>
+> BRINCO = as.numeric(as.vector(levels( as.factor(DADOS[,"BRINCO"]))))
+>
+> pdf(file = "ajuste%03d.pdf")   # salvar os gráficos em pdf
+>
+> for (i in BRINCO){
+>
+> dados = subset(DADOS, BRINCO == i, selec =  c( BRINCO, DATA, PESO))
+>
+> j=1
+>
+> while (j<=30){
+>
+> dias =  as.vector(as.numeric(as.factor(dados[,"DATA"])))
+>
+> pesos = as.numeric(as.vector(dados$PESO))
+>
+> dad = cbind(dias, pesos)
+>
+> mod <- lm(pesos~dias)
+>
+> INFLUENTES = influence.measures(mod)
+>
+> dados_analise = cbind(INFLUENTES$is.inf, dad)
+>
+> dados_influentes = as.data.frame(dados_analise)
+>
+> colnames(dados_influentes) = c("x1", "x2", "x3", "x4", "x5", "x6", "DATA",
+> "PESO")
+>
+> dados = subset(dados_influentes, (x1==FALSE & x2==FALSE & x3==FALSE &
+> x4==FALSE & x5==FALSE & x6==FALSE),
+>
+>                selec =  c(x1, x2, x3, x4, x5, x6, DATA, PESO))
+>
+> j = j+1
+>
+> }
+>
+> res <- residuals(mod)
+>
+> h <- hatvalues(mod)
+>
+> P = length(mod$coefficient); N=length(peso); P; N; hc<-3*P/N;hc
+>
+> limt <- list(c(DFB=2/sqrt(N),FDFits=2*sqrt(P/N),cov.r=3*P/N,
+>
+>  Cook=qf(0.5,2,8, lower.tail = TRUE, log.p = FALSE),hat=3*P/N))
+>
+> N=length(peso); P=length(mod$coefficient)
+>
+> rs <- rstudent(mod)
+>
+> h <- lm.influence(mod)$hat; lc <- 3*P/N
+>
+> minrs=min(min(rs),-3)
+>
+> maxrs=max(max(rs),3)
+>
+> ymin=minrs-.1
+>
+> ymax=maxrs+.1
+>
+> maxh=max(max(h),lc)
+>
+> minh=min(h)
+>
+> xmin=minh-.1
+>
+> xmax=maxh+.1
+>
+> par(mfrow=c(1,1))
+>
+> plot(c(xmin,xmax),c(ymin,ymax), type="n", xlab="h - leverage",
+> ylab="RStudent", main= i)
+>
+> abline(h=-2.5, col="red")
+>
+> abline(h=2.5,col="red"); abline(v=lc, col="blue")
+>
+> points(h,rs)
+>
+> plot(dad,  main= i)
+>
+> abline(mod,lty=2)
+>
+> }
+>
+> dev.off()
+>
+> }
+>
+>
+> Agradeço,
+>
+>
+> --
+> Adriele Giaretta Biase.
+> Mestre em  Estatística e Experimentação Agropecuária - UFLA.
+> Doutora em Estatística e Experimentação Agronômica - ESALQ/ USP
+> Contato: (19) 98861-0619.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170723/9f3566ef/attachment.html>
+
+From brucekellys em hotmail.com  Tue Jul 25 10:41:03 2017
+From: brucekellys em hotmail.com (Bruce Kelly)
+Date: Tue, 25 Jul 2017 13:41:03 +0000
+Subject: [R-br] =?iso-8859-1?q?Altera=E7=F5es_no_Plot_=27extRemes=27?=
+Message-ID: <CY4PR2001MB1109935C696910C7519CB2B0A8B80@CY4PR2001MB1109.namprd20.prod.outlook.com>
+
+Bom dia listeiros(@)
+
+
+Estou utilizando o pacote 'extRemes', minha duvida é como posso melhorar o  Plot, já que ele disponibiliza 4 figuras em uma só. Como posso alterar legendas, inserir valores medios, etc
+ou trabalhar com cada gráfico separado.
+
+
+codigo
+
+AE2=fevd(EST1, dad1, type=c('GEV'), method=c('Bayesian'), time.units='months', period.basis='year')
+postmode(AE2)
+plot(AE2)
+plot(AE2, 'trace')
+ci(AE2)
+ci(AE2,type='parameter')
+
+
+[cid:9141c91f-0af9-4dec-8f9d-c83d492e9598]
+
+
+
+Bruce Kelly da N. Silva
+
+Dr. em Ciências Climáticas - UFRN
+Pesquisador - PPGCC/UFRN
+Lattes: http://lattes.cnpq.br/4323502426271751
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170725/aac05aad/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: exemplo.png
+Tipo: image/png
+Tamanho: 23446 bytes
+Descrição: exemplo.png
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170725/aac05aad/attachment.png>
+
+From marcelokmacho em gmail.com  Wed Jul 26 13:53:50 2017
+From: marcelokmacho em gmail.com (Marcelo Santana Camacho)
+Date: Wed, 26 Jul 2017 13:53:50 -0300
+Subject: [R-br] =?utf-8?q?Aggregate_com_fun=C3=A7=C3=A3o_de_dois_argumento?=
+	=?utf-8?q?s?=
+Message-ID: <CAO=fnV6=8TfYCW9VSxPC1btvucGv-2=T62aTCZ19qYUKJYDjLg@mail.gmail.com>
+
+Bom dia,
+
+Alguém poderia me dar uma dica com esse problema?
+
+Estou tentando agregar um conjunto de dados, calculando o gini (pacote
+reldist), que recebe a variável principal e uma variável de ponderação
+- gini(x,
+weights=rep(1,length=length(x))).
+
+Minha dificuldade é passar os dois argumentos para a função.
+
+
+library(reldist)
+ineq_df<-read.csv("amostra_input.csv")
+aggregate(c(qtd,renda)~cod_setor,data=ineq_df,gini)
+
+
+
+
+-- 
+
+
+*__________________________________Marcelo Santana Camacho*UNIFESSPA
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170726/b5cc8522/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: amostra_input.csv
+Tipo: text/csv
+Tamanho: 2131 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170726/b5cc8522/attachment.csv>
+
+From assis.leonard em gmail.com  Wed Jul 26 20:26:31 2017
+From: assis.leonard em gmail.com (Leonard Assis)
+Date: Wed, 26 Jul 2017 20:26:31 -0300
+Subject: [R-br]
+	=?utf-8?q?Aggregate_com_fun=C3=A7=C3=A3o_de_dois_argumento?=
+	=?utf-8?q?s?=
+In-Reply-To: <CAO=fnV6=8TfYCW9VSxPC1btvucGv-2=T62aTCZ19qYUKJYDjLg@mail.gmail.com>
+References: <CAO=fnV6=8TfYCW9VSxPC1btvucGv-2=T62aTCZ19qYUKJYDjLg@mail.gmail.com>
+Message-ID: <CAEG0FK_ya7vUNZvFyX9MEsMOksCBzNKMTp3X5-6qcpYTFYFOiw@mail.gmail.com>
+
+Cara, é embaçado resolver isto. Tive um problema uma vez com média
+ponderada, resolvi mudando a logica para usar dplyr
+
+Em 26 de jul de 2017 1:54 PM, "Marcelo Santana Camacho via R-br" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia,
+>
+> Alguém poderia me dar uma dica com esse problema?
+>
+> Estou tentando agregar um conjunto de dados, calculando o gini (pacote
+> reldist), que recebe a variável principal e uma variável de ponderação - gini(x,
+> weights=rep(1,length=length(x))).
+>
+> Minha dificuldade é passar os dois argumentos para a função.
+>
+>
+> library(reldist)
+> ineq_df<-read.csv("amostra_input.csv")
+> aggregate(c(qtd,renda)~cod_setor,data=ineq_df,gini)
+>
+>
+>
+>
+> --
+>
+>
+> *__________________________________Marcelo Santana Camacho*UNIFESSPA
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170726/8dd47b85/attachment.html>
+
+From marcelokmacho em gmail.com  Wed Jul 26 21:47:05 2017
+From: marcelokmacho em gmail.com (Marcelo Santana Camacho)
+Date: Wed, 26 Jul 2017 21:47:05 -0300
+Subject: [R-br]
+	=?utf-8?q?Aggregate_com_fun=C3=A7=C3=A3o_de_dois_argumento?=
+	=?utf-8?q?s?=
+In-Reply-To: <CAEG0FK_ya7vUNZvFyX9MEsMOksCBzNKMTp3X5-6qcpYTFYFOiw@mail.gmail.com>
+References: <CAO=fnV6=8TfYCW9VSxPC1btvucGv-2=T62aTCZ19qYUKJYDjLg@mail.gmail.com>
+ <CAEG0FK_ya7vUNZvFyX9MEsMOksCBzNKMTp3X5-6qcpYTFYFOiw@mail.gmail.com>
+Message-ID: <CAO=fnV4BovW87VWkn1yiqfgwgcdwXtpg+WdGCwZ_jLaeMptqrg@mail.gmail.com>
+
+Leonardo, muito obrigado.
+
+Realmente a média ponderada ilustra melhor o problema, pesquisei por esse
+tema e encontrei a solução com o ddplyr
+
+ddply(ineq_df,.(cod_setor), function(x)
+data.frame(gini=gini(x$qtd,x$renda)))
+
+https://stackoverflow.com/questions/3367190/aggregate-and-weighted-mean-in-r
+
+Em 26 de julho de 2017 20:26, Leonard Assis <assis.leonard em gmail.com>
+escreveu:
+
+> Cara, é embaçado resolver isto. Tive um problema uma vez com média
+> ponderada, resolvi mudando a logica para usar dplyr
+>
+> Em 26 de jul de 2017 1:54 PM, "Marcelo Santana Camacho via R-br" <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Bom dia,
+>>
+>> Alguém poderia me dar uma dica com esse problema?
+>>
+>> Estou tentando agregar um conjunto de dados, calculando o gini (pacote
+>> reldist), que recebe a variável principal e uma variável de ponderação - gini(x,
+>> weights=rep(1,length=length(x))).
+>>
+>> Minha dificuldade é passar os dois argumentos para a função.
+>>
+>>
+>> library(reldist)
+>> ineq_df<-read.csv("amostra_input.csv")
+>> aggregate(c(qtd,renda)~cod_setor,data=ineq_df,gini)
+>>
+>>
+>>
+>>
+>> --
+>>
+>>
+>> *__________________________________Marcelo Santana Camacho*UNIFESSPA
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+
+
+-- 
+
+
+*__________________________________Marcelo Santana CamachoEngenharia
+Elétrica - UFPA*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170726/ed45092a/attachment.html>
+
+From emmanuel.brasil em gmail.com  Fri Jul 28 09:42:01 2017
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Fri, 28 Jul 2017 09:42:01 -0300
+Subject: [R-br] =?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
+	=?utf-8?q?e_SQL?=
+Message-ID: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
+
+Amigos de R,
+
+Estou envolvido numa tarefa que importo um banco SQL de um servidor, faço
+uma modelagem, salvo o modelo no SQL através de uma seriliazação, e depois
+carrego esse modelo do SQL para fazer previsões em novos dados.
+
+Estou seguindo um exemplo disponível nessa página:
+https://docs.microsoft.com/pt-br/sql/advanced-analytics/tutorials/walkthrough-deploy-and-use-the-model
+
+Sei que esse exemplo não é reproduzível porque depende da conexão com o
+servidor e credenciais que não posso divulgar. Mas se alguem já passou por
+esse problema poderia pelo menos indicar aonde está o problema que não
+estou sabendo identificar? Acho que muito provavelmente seria uma
+configuração do SQL no servidor...
+
+library(RODBC)
+
+# define database connection string
+dbconn <- 'Driver={SQL
+Server};Server=BLABLABLA;Database=BLABLABLA;Trusted_Connection=yes;'
+
+# define a connection
+conn <- odbcDriverConnect(connection = dbconn)
+
+# Estou fazendo o exemplo com o objeto LETTERS só pra ter certeza que é um
+objeto pequeno e que não deveria ser um problema de memória do R.
+> LETTERS
+ [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q"
+"R" "S" "T" "U" "V" "W" "X"
+[25] "Y" "Z"
+> teste_pequeno <- serialize(LETTERS, connection = NULL)
+> teste_pequeno <- paste(teste_pequeno, collapse = "")
+
+# o EXEC PersistModel faz
+# insert into [tempo_permanencia_models] (model, [description]) values
+(convert(varbinary(max), em m,2), @description)
+# insere o modelo e uma descricao
+
+> p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description =
+'Teste de serialização objeto pequeno'", sep = "")
+> sqlQuery(conn, p)
+character(0)
+> rm(teste_pequeno)
+> p <- "SELECT model FROM [tempo_permanencia_models] WHERE id_model = 1022"
+> mod.teste.peq <- sqlQuery(conn, p)
+Error in odbcQuery(channel, query, rows_at_time) :
+  'Calloc' could not allocate memory (214748364800 of 1 bytes)
+> p <- paste0("SELECT id_model, description FROM [tempo_permanencia_models]
+WHERE id_model = 1022")
+> sqlQuery(conn, p) #
+   id_model                                              description
+1      1022                     Teste de serialização objeto pequeno
+
+Reparem que o objeto está salvo no servidor. Foi salvo a partir do R, mas
+não retorna para o R por conta do erro de memoria. Eu não estou sabendo nem
+por onde começar.
+
+Que a força esteja sempre com vocês e abraço forte.
+
+Pedro Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170728/d0e5db01/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Jul 28 16:59:39 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 28 Jul 2017 16:59:39 -0300
+Subject: [R-br]
+	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
+	=?utf-8?q?e_SQL?=
+In-Reply-To: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
+References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
+Message-ID: <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
+
+Pedro,
+
+Mesmo sem poder fazer uma tentativa, me parece que o erro é estranho demais
+para não ser notado: a chamada à primitiva da ling. C "calloc" está pedindo
+200 Gbytes, que falha e me parece algo grande demais para um "default" da
+chamada a sqlQuery().
+
+HTH
+
+
+2017-07-28 9:42 GMT-03:00 Pedro Emmanuel Alvarenga Americano do Brasil via
+R-br <r-br em listas.c3sl.ufpr.br>:
+
+> Amigos de R,
+>
+> Estou envolvido numa tarefa que importo um banco SQL de um servidor, faço
+> uma modelagem, salvo o modelo no SQL através de uma seriliazação, e depois
+> carrego esse modelo do SQL para fazer previsões em novos dados.
+>
+> Estou seguindo um exemplo disponível nessa página:
+> https://docs.microsoft.com/pt-br/sql/advanced-analytics/
+> tutorials/walkthrough-deploy-and-use-the-model
+>
+> Sei que esse exemplo não é reproduzível porque depende da conexão com o
+> servidor e credenciais que não posso divulgar. Mas se alguem já passou por
+> esse problema poderia pelo menos indicar aonde está o problema que não
+> estou sabendo identificar? Acho que muito provavelmente seria uma
+> configuração do SQL no servidor...
+>
+> library(RODBC)
+>
+> # define database connection string
+> dbconn <- 'Driver={SQL Server};Server=BLABLABLA;
+> Database=BLABLABLA;Trusted_Connection=yes;'
+>
+> # define a connection
+> conn <- odbcDriverConnect(connection = dbconn)
+>
+> # Estou fazendo o exemplo com o objeto LETTERS só pra ter certeza que é um
+> objeto pequeno e que não deveria ser um problema de memória do R.
+> > LETTERS
+>  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q"
+> "R" "S" "T" "U" "V" "W" "X"
+> [25] "Y" "Z"
+> > teste_pequeno <- serialize(LETTERS, connection = NULL)
+> > teste_pequeno <- paste(teste_pequeno, collapse = "")
+>
+> # o EXEC PersistModel faz
+> # insert into [tempo_permanencia_models] (model, [description]) values
+> (convert(varbinary(max), em m,2), @description)
+> # insere o modelo e uma descricao
+>
+> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description =
+> 'Teste de serialização objeto pequeno'", sep = "")
+> > sqlQuery(conn, p)
+> character(0)
+> > rm(teste_pequeno)
+> > p <- "SELECT model FROM [tempo_permanencia_models] WHERE id_model = 1022"
+> > mod.teste.peq <- sqlQuery(conn, p)
+> Error in odbcQuery(channel, query, rows_at_time) :
+>   'Calloc' could not allocate memory (214748364800 of 1 bytes)
+> > p <- paste0("SELECT id_model, description FROM
+> [tempo_permanencia_models] WHERE id_model = 1022")
+> > sqlQuery(conn, p) #
+>    id_model                                              description
+> 1      1022                     Teste de serialização objeto pequeno
+>
+> Reparem que o objeto está salvo no servidor. Foi salvo a partir do R, mas
+> não retorna para o R por conta do erro de memoria. Eu não estou sabendo nem
+> por onde começar.
+>
+> Que a força esteja sempre com vocês e abraço forte.
+>
+> Pedro Brasil
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170728/c0d0a25e/attachment.html>
+
+From emmanuel.brasil em gmail.com  Fri Jul 28 17:12:09 2017
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Fri, 28 Jul 2017 17:12:09 -0300
+Subject: [R-br]
+	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
+	=?utf-8?q?e_SQL?=
+In-Reply-To: <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
+References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
+ <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
+Message-ID: <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
+
+Ei Cesar,
+
+Eu tenho pouco familiaridade com SQL, e o amigo da TI que tem e faz
+manutenção do servidor diz que o erro é na minha estação com R. Eu acho que
+não, mas não tenho certeza porque eu não sei ao certo o que quer dizer esse
+erro. O que seria essa "Calloc"? É uma coisa natural do R?
+
+Abraço,
+
+Pedro Brasil
+
+Em 28 de julho de 2017 16:59, Cesar Rabak <cesar.rabak em gmail.com> escreveu:
+
+> Pedro,
+>
+> Mesmo sem poder fazer uma tentativa, me parece que o erro é estranho
+> demais para não ser notado: a chamada à primitiva da ling. C "calloc" está
+> pedindo 200 Gbytes, que falha e me parece algo grande demais para um
+> "default" da chamada a sqlQuery().
+>
+> HTH
+>
+>
+> 2017-07-28 9:42 GMT-03:00 Pedro Emmanuel Alvarenga Americano do Brasil via
+> R-br <r-br em listas.c3sl.ufpr.br>:
+>
+>> Amigos de R,
+>>
+>> Estou envolvido numa tarefa que importo um banco SQL de um servidor, faço
+>> uma modelagem, salvo o modelo no SQL através de uma seriliazação, e depois
+>> carrego esse modelo do SQL para fazer previsões em novos dados.
+>>
+>> Estou seguindo um exemplo disponível nessa página:
+>> https://docs.microsoft.com/pt-br/sql/advanced-analytics/tuto
+>> rials/walkthrough-deploy-and-use-the-model
+>>
+>> Sei que esse exemplo não é reproduzível porque depende da conexão com o
+>> servidor e credenciais que não posso divulgar. Mas se alguem já passou por
+>> esse problema poderia pelo menos indicar aonde está o problema que não
+>> estou sabendo identificar? Acho que muito provavelmente seria uma
+>> configuração do SQL no servidor...
+>>
+>> library(RODBC)
+>>
+>> # define database connection string
+>> dbconn <- 'Driver={SQL Server};Server=BLABLABLA;Datab
+>> ase=BLABLABLA;Trusted_Connection=yes;'
+>>
+>> # define a connection
+>> conn <- odbcDriverConnect(connection = dbconn)
+>>
+>> # Estou fazendo o exemplo com o objeto LETTERS só pra ter certeza que é
+>> um objeto pequeno e que não deveria ser um problema de memória do R.
+>> > LETTERS
+>>  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q"
+>> "R" "S" "T" "U" "V" "W" "X"
+>> [25] "Y" "Z"
+>> > teste_pequeno <- serialize(LETTERS, connection = NULL)
+>> > teste_pequeno <- paste(teste_pequeno, collapse = "")
+>>
+>> # o EXEC PersistModel faz
+>> # insert into [tempo_permanencia_models] (model, [description]) values
+>> (convert(varbinary(max), em m,2), @description)
+>> # insere o modelo e uma descricao
+>>
+>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description =
+>> 'Teste de serialização objeto pequeno'", sep = "")
+>> > sqlQuery(conn, p)
+>> character(0)
+>> > rm(teste_pequeno)
+>> > p <- "SELECT model FROM [tempo_permanencia_models] WHERE id_model =
+>> 1022"
+>> > mod.teste.peq <- sqlQuery(conn, p)
+>> Error in odbcQuery(channel, query, rows_at_time) :
+>>   'Calloc' could not allocate memory (214748364800 of 1 bytes)
+>> > p <- paste0("SELECT id_model, description FROM
+>> [tempo_permanencia_models] WHERE id_model = 1022")
+>> > sqlQuery(conn, p) #
+>>    id_model                                              description
+>> 1      1022                     Teste de serialização objeto pequeno
+>>
+>> Reparem que o objeto está salvo no servidor. Foi salvo a partir do R, mas
+>> não retorna para o R por conta do erro de memoria. Eu não estou sabendo nem
+>> por onde começar.
+>>
+>> Que a força esteja sempre com vocês e abraço forte.
+>>
+>> Pedro Brasil
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170728/931a8fab/attachment.html>
+
+From cesar.rabak em gmail.com  Sat Jul 29 20:45:44 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 29 Jul 2017 20:45:44 -0300
+Subject: [R-br]
+	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
+	=?utf-8?q?e_SQL?=
+In-Reply-To: <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
+References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
+ <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
+ <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
+Message-ID: <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
+
+Pedro,
+
+Calloc é uma chamada "primitiva" para o R, uma função da biblioteca C e é
+uma função feita para "alocar" (reservar) memória e zerá-la.
+
+O estranho, para mim, é a tentativa do aplicativo de reservar *tanta* memória
+assim na chamada da função do R.
+
+Essa função sqlQuery() pode ser testada fazendo:
+
+> example(sqlQuery)
+
+?
+
+Se o exemplo do próprio pacote funcionar, aí teremos que fazer uma busca
+para ver de onde vem esse comportamento.
+
+HTH
+--
+Cesar Rabak
+
+
+
+
+2017-07-28 17:12 GMT-03:00 Pedro Emmanuel Alvarenga Americano do Brasil <
+emmanuel.brasil em gmail.com>:
+
+> Ei Cesar,
+>
+> Eu tenho pouco familiaridade com SQL, e o amigo da TI que tem e faz
+> manutenção do servidor diz que o erro é na minha estação com R. Eu acho que
+> não, mas não tenho certeza porque eu não sei ao certo o que quer dizer esse
+> erro. O que seria essa "Calloc"? É uma coisa natural do R?
+>
+> Abraço,
+>
+> Pedro Brasil
+>
+> Em 28 de julho de 2017 16:59, Cesar Rabak <cesar.rabak em gmail.com>
+> escreveu:
+>
+>> Pedro,
+>>
+>> Mesmo sem poder fazer uma tentativa, me parece que o erro é estranho
+>> demais para não ser notado: a chamada à primitiva da ling. C "calloc" está
+>> pedindo 200 Gbytes, que falha e me parece algo grande demais para um
+>> "default" da chamada a sqlQuery().
+>>
+>> HTH
+>>
+>>
+>> 2017-07-28 9:42 GMT-03:00 Pedro Emmanuel Alvarenga Americano do Brasil
+>> via R-br <r-br em listas.c3sl.ufpr.br>:
+>>
+>>> Amigos de R,
+>>>
+>>> Estou envolvido numa tarefa que importo um banco SQL de um servidor,
+>>> faço uma modelagem, salvo o modelo no SQL através de uma seriliazação, e
+>>> depois carrego esse modelo do SQL para fazer previsões em novos dados.
+>>>
+>>> Estou seguindo um exemplo disponível nessa página:
+>>> https://docs.microsoft.com/pt-br/sql/advanced-analytics/tuto
+>>> rials/walkthrough-deploy-and-use-the-model
+>>>
+>>> Sei que esse exemplo não é reproduzível porque depende da conexão com o
+>>> servidor e credenciais que não posso divulgar. Mas se alguem já passou por
+>>> esse problema poderia pelo menos indicar aonde está o problema que não
+>>> estou sabendo identificar? Acho que muito provavelmente seria uma
+>>> configuração do SQL no servidor...
+>>>
+>>> library(RODBC)
+>>>
+>>> # define database connection string
+>>> dbconn <- 'Driver={SQL Server};Server=BLABLABLA;Datab
+>>> ase=BLABLABLA;Trusted_Connection=yes;'
+>>>
+>>> # define a connection
+>>> conn <- odbcDriverConnect(connection = dbconn)
+>>>
+>>> # Estou fazendo o exemplo com o objeto LETTERS só pra ter certeza que é
+>>> um objeto pequeno e que não deveria ser um problema de memória do R.
+>>> > LETTERS
+>>>  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q"
+>>> "R" "S" "T" "U" "V" "W" "X"
+>>> [25] "Y" "Z"
+>>> > teste_pequeno <- serialize(LETTERS, connection = NULL)
+>>> > teste_pequeno <- paste(teste_pequeno, collapse = "")
+>>>
+>>> # o EXEC PersistModel faz
+>>> # insert into [tempo_permanencia_models] (model, [description]) values
+>>> (convert(varbinary(max), em m,2), @description)
+>>> # insere o modelo e uma descricao
+>>>
+>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description =
+>>> 'Teste de serialização objeto pequeno'", sep = "")
+>>> > sqlQuery(conn, p)
+>>> character(0)
+>>> > rm(teste_pequeno)
+>>> > p <- "SELECT model FROM [tempo_permanencia_models] WHERE id_model =
+>>> 1022"
+>>> > mod.teste.peq <- sqlQuery(conn, p)
+>>> Error in odbcQuery(channel, query, rows_at_time) :
+>>>   'Calloc' could not allocate memory (214748364800 of 1 bytes)
+>>> > p <- paste0("SELECT id_model, description FROM
+>>> [tempo_permanencia_models] WHERE id_model = 1022")
+>>> > sqlQuery(conn, p) #
+>>>    id_model                                              description
+>>> 1      1022                     Teste de serialização objeto pequeno
+>>>
+>>> Reparem que o objeto está salvo no servidor. Foi salvo a partir do R,
+>>> mas não retorna para o R por conta do erro de memoria. Eu não estou sabendo
+>>> nem por onde começar.
+>>>
+>>> Que a força esteja sempre com vocês e abraço forte.
+>>>
+>>> Pedro Brasil
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170729/0c2075dc/attachment.html>
+
+From emmanuel.brasil em gmail.com  Mon Jul 31 10:32:18 2017
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Mon, 31 Jul 2017 10:32:18 -0300
+Subject: [R-br]
+	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
+	=?utf-8?q?e_SQL?=
+In-Reply-To: <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
+References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
+ <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
+ <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
+ <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
+Message-ID: <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
+
+Cesar,
+
+A função RODBC::sqlQuery não tem exemplo, mas já usei diversas vezes com
+outros scripts e funciona. Esse problema está acontecendo somente no
+exemplo dessa conexão em específico. Então estou entendendo a partir de
+agora que  alguma configuração da conexão está pedindo pra reservar memória
+mais do que o a máquina possui.
+
+Pedro Brasil
+
+Em 29 de julho de 2017 20:45, Cesar Rabak <cesar.rabak em gmail.com> escreveu:
+
+> Pedro,
+>
+> Calloc é uma chamada "primitiva" para o R, uma função da biblioteca C e é
+> uma função feita para "alocar" (reservar) memória e zerá-la.
+>
+> O estranho, para mim, é a tentativa do aplicativo de reservar *tanta* memória
+> assim na chamada da função do R.
+>
+> Essa função sqlQuery() pode ser testada fazendo:
+>
+> > example(sqlQuery)
+>
+> ?
+>
+> Se o exemplo do próprio pacote funcionar, aí teremos que fazer uma busca
+> para ver de onde vem esse comportamento.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+>
+>
+> 2017-07-28 17:12 GMT-03:00 Pedro Emmanuel Alvarenga Americano do Brasil <
+> emmanuel.brasil em gmail.com>:
+>
+>> Ei Cesar,
+>>
+>> Eu tenho pouco familiaridade com SQL, e o amigo da TI que tem e faz
+>> manutenção do servidor diz que o erro é na minha estação com R. Eu acho que
+>> não, mas não tenho certeza porque eu não sei ao certo o que quer dizer esse
+>> erro. O que seria essa "Calloc"? É uma coisa natural do R?
+>>
+>> Abraço,
+>>
+>> Pedro Brasil
+>>
+>> Em 28 de julho de 2017 16:59, Cesar Rabak <cesar.rabak em gmail.com>
+>> escreveu:
+>>
+>>> Pedro,
+>>>
+>>> Mesmo sem poder fazer uma tentativa, me parece que o erro é estranho
+>>> demais para não ser notado: a chamada à primitiva da ling. C "calloc" está
+>>> pedindo 200 Gbytes, que falha e me parece algo grande demais para um
+>>> "default" da chamada a sqlQuery().
+>>>
+>>> HTH
+>>>
+>>>
+>>> 2017-07-28 9:42 GMT-03:00 Pedro Emmanuel Alvarenga Americano do Brasil
+>>> via R-br <r-br em listas.c3sl.ufpr.br>:
+>>>
+>>>> Amigos de R,
+>>>>
+>>>> Estou envolvido numa tarefa que importo um banco SQL de um servidor,
+>>>> faço uma modelagem, salvo o modelo no SQL através de uma seriliazação, e
+>>>> depois carrego esse modelo do SQL para fazer previsões em novos dados.
+>>>>
+>>>> Estou seguindo um exemplo disponível nessa página:
+>>>> https://docs.microsoft.com/pt-br/sql/advanced-analytics/tuto
+>>>> rials/walkthrough-deploy-and-use-the-model
+>>>>
+>>>> Sei que esse exemplo não é reproduzível porque depende da conexão com o
+>>>> servidor e credenciais que não posso divulgar. Mas se alguem já passou por
+>>>> esse problema poderia pelo menos indicar aonde está o problema que não
+>>>> estou sabendo identificar? Acho que muito provavelmente seria uma
+>>>> configuração do SQL no servidor...
+>>>>
+>>>> library(RODBC)
+>>>>
+>>>> # define database connection string
+>>>> dbconn <- 'Driver={SQL Server};Server=BLABLABLA;Datab
+>>>> ase=BLABLABLA;Trusted_Connection=yes;'
+>>>>
+>>>> # define a connection
+>>>> conn <- odbcDriverConnect(connection = dbconn)
+>>>>
+>>>> # Estou fazendo o exemplo com o objeto LETTERS só pra ter certeza que é
+>>>> um objeto pequeno e que não deveria ser um problema de memória do R.
+>>>> > LETTERS
+>>>>  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P"
+>>>> "Q" "R" "S" "T" "U" "V" "W" "X"
+>>>> [25] "Y" "Z"
+>>>> > teste_pequeno <- serialize(LETTERS, connection = NULL)
+>>>> > teste_pequeno <- paste(teste_pequeno, collapse = "")
+>>>>
+>>>> # o EXEC PersistModel faz
+>>>> # insert into [tempo_permanencia_models] (model, [description]) values
+>>>> (convert(varbinary(max), em m,2), @description)
+>>>> # insere o modelo e uma descricao
+>>>>
+>>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description =
+>>>> 'Teste de serialização objeto pequeno'", sep = "")
+>>>> > sqlQuery(conn, p)
+>>>> character(0)
+>>>> > rm(teste_pequeno)
+>>>> > p <- "SELECT model FROM [tempo_permanencia_models] WHERE id_model =
+>>>> 1022"
+>>>> > mod.teste.peq <- sqlQuery(conn, p)
+>>>> Error in odbcQuery(channel, query, rows_at_time) :
+>>>>   'Calloc' could not allocate memory (214748364800 of 1 bytes)
+>>>> > p <- paste0("SELECT id_model, description FROM
+>>>> [tempo_permanencia_models] WHERE id_model = 1022")
+>>>> > sqlQuery(conn, p) #
+>>>>    id_model                                              description
+>>>> 1      1022                     Teste de serialização objeto pequeno
+>>>>
+>>>> Reparem que o objeto está salvo no servidor. Foi salvo a partir do R,
+>>>> mas não retorna para o R por conta do erro de memoria. Eu não estou sabendo
+>>>> nem por onde começar.
+>>>>
+>>>> Que a força esteja sempre com vocês e abraço forte.
+>>>>
+>>>> Pedro Brasil
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>>
+>>>
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170731/26c14eeb/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Jul 31 14:53:52 2017
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 31 Jul 2017 14:53:52 -0300
+Subject: [R-br]
+	=?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
+	=?utf-8?q?e_SQL?=
+In-Reply-To: <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
+References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
+ <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
+ <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
+ <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
+ <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
+Message-ID: <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
+
+Correto Pedro!
+
+Contudo, não entendo porque. . .
+
+Minha forma de atacar esse problema seria mandar os dados para o BD por
+outra maneira (que ñ via R) e tentar conectar apenas para puxar os dados:
+aí a gente vê se é na criação do BD via R que ele deixa em aberto um
+tamanho default muito grande ou se é a chamada que por alguma coincidência
+cria um default exigindo tanta memória (embora nos OSs modernos isso não
+deveria gerar problema porque existem os gerenciadores de memória virtual).
+
+HTH
+--
+Cesar Rabak
+
+
+2017-07-31 10:32 GMT-03:00 Pedro Emmanuel Alvarenga Americano do Brasil <
+emmanuel.brasil em gmail.com>:
+
+> Cesar,
+>
+> A função RODBC::sqlQuery não tem exemplo, mas já usei diversas vezes com
+> outros scripts e funciona. Esse problema está acontecendo somente no
+> exemplo dessa conexão em específico. Então estou entendendo a partir de
+> agora que  alguma configuração da conexão está pedindo pra reservar memória
+> mais do que o a máquina possui.
+>
+> Pedro Brasil
+>
+> Em 29 de julho de 2017 20:45, Cesar Rabak <cesar.rabak em gmail.com>
+> escreveu:
+>
+>> Pedro,
+>>
+>> Calloc é uma chamada "primitiva" para o R, uma função da biblioteca C e é
+>> uma função feita para "alocar" (reservar) memória e zerá-la.
+>>
+>> O estranho, para mim, é a tentativa do aplicativo de reservar *tanta* memória
+>> assim na chamada da função do R.
+>>
+>> Essa função sqlQuery() pode ser testada fazendo:
+>>
+>> > example(sqlQuery)
+>>
+>> ?
+>>
+>> Se o exemplo do próprio pacote funcionar, aí teremos que fazer uma busca
+>> para ver de onde vem esse comportamento.
+>>
+>> HTH
+>> --
+>> Cesar Rabak
+>>
+>>
+>>
+>>
+>> 2017-07-28 17:12 GMT-03:00 Pedro Emmanuel Alvarenga Americano do Brasil <
+>> emmanuel.brasil em gmail.com>:
+>>
+>>> Ei Cesar,
+>>>
+>>> Eu tenho pouco familiaridade com SQL, e o amigo da TI que tem e faz
+>>> manutenção do servidor diz que o erro é na minha estação com R. Eu acho que
+>>> não, mas não tenho certeza porque eu não sei ao certo o que quer dizer esse
+>>> erro. O que seria essa "Calloc"? É uma coisa natural do R?
+>>>
+>>> Abraço,
+>>>
+>>> Pedro Brasil
+>>>
+>>> Em 28 de julho de 2017 16:59, Cesar Rabak <cesar.rabak em gmail.com>
+>>> escreveu:
+>>>
+>>>> Pedro,
+>>>>
+>>>> Mesmo sem poder fazer uma tentativa, me parece que o erro é estranho
+>>>> demais para não ser notado: a chamada à primitiva da ling. C "calloc" está
+>>>> pedindo 200 Gbytes, que falha e me parece algo grande demais para um
+>>>> "default" da chamada a sqlQuery().
+>>>>
+>>>> HTH
+>>>>
+>>>>
+>>>> 2017-07-28 9:42 GMT-03:00 Pedro Emmanuel Alvarenga Americano do Brasil
+>>>> via R-br <r-br em listas.c3sl.ufpr.br>:
+>>>>
+>>>>> Amigos de R,
+>>>>>
+>>>>> Estou envolvido numa tarefa que importo um banco SQL de um servidor,
+>>>>> faço uma modelagem, salvo o modelo no SQL através de uma seriliazação, e
+>>>>> depois carrego esse modelo do SQL para fazer previsões em novos dados.
+>>>>>
+>>>>> Estou seguindo um exemplo disponível nessa página:
+>>>>> https://docs.microsoft.com/pt-br/sql/advanced-analytics/tuto
+>>>>> rials/walkthrough-deploy-and-use-the-model
+>>>>>
+>>>>> Sei que esse exemplo não é reproduzível porque depende da conexão com
+>>>>> o servidor e credenciais que não posso divulgar. Mas se alguem já passou
+>>>>> por esse problema poderia pelo menos indicar aonde está o problema que não
+>>>>> estou sabendo identificar? Acho que muito provavelmente seria uma
+>>>>> configuração do SQL no servidor...
+>>>>>
+>>>>> library(RODBC)
+>>>>>
+>>>>> # define database connection string
+>>>>> dbconn <- 'Driver={SQL Server};Server=BLABLABLA;Datab
+>>>>> ase=BLABLABLA;Trusted_Connection=yes;'
+>>>>>
+>>>>> # define a connection
+>>>>> conn <- odbcDriverConnect(connection = dbconn)
+>>>>>
+>>>>> # Estou fazendo o exemplo com o objeto LETTERS só pra ter certeza que
+>>>>> é um objeto pequeno e que não deveria ser um problema de memória do R.
+>>>>> > LETTERS
+>>>>>  [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P"
+>>>>> "Q" "R" "S" "T" "U" "V" "W" "X"
+>>>>> [25] "Y" "Z"
+>>>>> > teste_pequeno <- serialize(LETTERS, connection = NULL)
+>>>>> > teste_pequeno <- paste(teste_pequeno, collapse = "")
+>>>>>
+>>>>> # o EXEC PersistModel faz
+>>>>> # insert into [tempo_permanencia_models] (model, [description]) values
+>>>>> (convert(varbinary(max), em m,2), @description)
+>>>>> # insere o modelo e uma descricao
+>>>>>
+>>>>> > p <- paste("EXEC PersistModel @m='", teste_pequeno,"', @description
+>>>>> = 'Teste de serialização objeto pequeno'", sep = "")
+>>>>> > sqlQuery(conn, p)
+>>>>> character(0)
+>>>>> > rm(teste_pequeno)
+>>>>> > p <- "SELECT model FROM [tempo_permanencia_models] WHERE id_model =
+>>>>> 1022"
+>>>>> > mod.teste.peq <- sqlQuery(conn, p)
+>>>>> Error in odbcQuery(channel, query, rows_at_time) :
+>>>>>   'Calloc' could not allocate memory (214748364800 of 1 bytes)
+>>>>> > p <- paste0("SELECT id_model, description FROM
+>>>>> [tempo_permanencia_models] WHERE id_model = 1022")
+>>>>> > sqlQuery(conn, p) #
+>>>>>    id_model                                              description
+>>>>> 1      1022                     Teste de serialização objeto pequeno
+>>>>>
+>>>>> Reparem que o objeto está salvo no servidor. Foi salvo a partir do R,
+>>>>> mas não retorna para o R por conta do erro de memoria. Eu não estou sabendo
+>>>>> nem por onde começar.
+>>>>>
+>>>>> Que a força esteja sempre com vocês e abraço forte.
+>>>>>
+>>>>> Pedro Brasil
+>>>>>
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>>
+>>>>
+>>>
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170731/c7d2d33b/attachment.html>
+
+From zhushazang em gmail.com  Mon Jul 31 19:52:05 2017
+From: zhushazang em gmail.com (Zhu Sha Zang)
+Date: Mon, 31 Jul 2017 18:52:05 -0400
+Subject: [R-br]
+ =?utf-8?q?Erro_de_mem=C3=B3ria_importando_objeto_pequeno_d?=
+ =?utf-8?q?e_SQL?=
+In-Reply-To: <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
+References: <CAFfGvy+snb8kZLk5KV_oxG7D5we37kH57AtAAPECqziwDtg7Yg@mail.gmail.com>
+ <CAKrF98mN-mUa17QpetFdmKc7eHhrwmoe_mOozD-hc58pqgH0Sw@mail.gmail.com>
+ <CAFfGvyLch1VoBfAWVK5dKdVus0qZxgW6rfDASj8rL-nKDU-S4g@mail.gmail.com>
+ <CAKrF98=-4gQQEn=58r3=MArgi8XHRSSVhDFQbQbtoNDXjkUXSQ@mail.gmail.com>
+ <CAFfGvyKNmMDR9RuMow4VDCb7e+VaTHFVKHwBCt=6OGYJKTYS4w@mail.gmail.com>
+ <CAKrF98kS08K2r1H8CAvmDduhP9OmxN2+5mQceZta5vyGBqB-Ww@mail.gmail.com>
+Message-ID: <d3017e13-ee97-42cc-40d8-49a666d2d211@gmail.com>
+
+Parece que RODBC está "deprecated", tente usar o pacote RSQLServer.
+
+
+Atenciosamente
+
+
+On 07/31/2017 01:53 PM, Cesar Rabak via R-br wrote:
+> Correto Pedro!
+>
+> Contudo, não entendo porque. . .
+>
+> Minha forma de atacar esse problema seria mandar os dados para o BD 
+> por outra maneira (que ñ via R) e tentar conectar apenas para puxar os 
+> dados: aí a gente vê se é na criação do BD via R que ele deixa em 
+> aberto um tamanho default muito grande ou se é a chamada que por 
+> alguma coincidência cria um default exigindo tanta memória (embora nos 
+> OSs modernos isso não deveria gerar problema porque existem os 
+> gerenciadores de memória virtual).
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> 2017-07-31 10:32 GMT-03:00 Pedro Emmanuel Alvarenga Americano do 
+> Brasil <emmanuel.brasil em gmail.com <mailto:emmanuel.brasil em gmail.com>>:
+>
+>     Cesar,
+>
+>     A função RODBC::sqlQuery não tem exemplo, mas já usei diversas
+>     vezes com outros scripts e funciona. Esse problema está
+>     acontecendo somente no exemplo dessa conexão em específico. Então
+>     estou entendendo a partir de agora que  alguma configuração da
+>     conexão está pedindo pra reservar memória mais do que o a máquina
+>     possui.
+>
+>     Pedro Brasil
+>
+>     Em 29 de julho de 2017 20:45, Cesar Rabak <cesar.rabak em gmail.com
+>     <mailto:cesar.rabak em gmail.com>> escreveu:
+>
+>         Pedro,
+>
+>         Calloc é uma chamada "primitiva" para o R, uma função da
+>         biblioteca C e é uma função feita para "alocar" (reservar)
+>         memória e zerá-la.
+>
+>         O estranho, para mim, é a tentativa do aplicativo de reservar
+>         *tanta* memória assim na chamada da função do R.
+>
+>         Essa função sqlQuery() pode ser testada fazendo:
+>
+>         > example(sqlQuery)
+>
+>         ?
+>
+>         Se o exemplo do próprio pacote funcionar, aí teremos que fazer
+>         uma busca para ver de onde vem esse comportamento.
+>
+>         HTH
+>         --
+>         Cesar Rabak
+>
+>
+>
+>
+>         2017-07-28 17:12 GMT-03:00 Pedro Emmanuel Alvarenga Americano
+>         do Brasil <emmanuel.brasil em gmail.com
+>         <mailto:emmanuel.brasil em gmail.com>>:
+>
+>             Ei Cesar,
+>
+>             Eu tenho pouco familiaridade com SQL, e o amigo da TI que
+>             tem e faz manutenção do servidor diz que o erro é na minha
+>             estação com R. Eu acho que não, mas não tenho certeza
+>             porque eu não sei ao certo o que quer dizer esse erro. O
+>             que seria essa "Calloc"? É uma coisa natural do R?
+>
+>             Abraço,
+>
+>             Pedro Brasil
+>
+>             Em 28 de julho de 2017 16:59, Cesar Rabak
+>             <cesar.rabak em gmail.com <mailto:cesar.rabak em gmail.com>>
+>             escreveu:
+>
+>                 Pedro,
+>
+>                 Mesmo sem poder fazer uma tentativa, me parece que o
+>                 erro é estranho demais para não ser notado: a chamada
+>                 à primitiva da ling. C "calloc" está pedindo 200
+>                 Gbytes, que falha e me parece algo grande demais para
+>                 um "default" da chamada a sqlQuery().
+>
+>                 HTH
+>
+>
+>                 2017-07-28 9:42 GMT-03:00 Pedro Emmanuel Alvarenga
+>                 Americano do Brasil via R-br <r-br em listas.c3sl.ufpr.br
+>                 <mailto:r-br em listas.c3sl.ufpr.br>>:
+>
+>                     Amigos de R,
+>
+>                     Estou envolvido numa tarefa que importo um banco
+>                     SQL de um servidor, faço uma modelagem, salvo o
+>                     modelo no SQL através de uma seriliazação, e
+>                     depois carrego esse modelo do SQL para fazer
+>                     previsões em novos dados.
+>
+>                     Estou seguindo um exemplo disponível nessa página:
+>                     https://docs.microsoft.com/pt-br/sql/advanced-analytics/tutorials/walkthrough-deploy-and-use-the-model
+>                     <https://docs.microsoft.com/pt-br/sql/advanced-analytics/tutorials/walkthrough-deploy-and-use-the-model>
+>
+>                     Sei que esse exemplo não é reproduzível porque
+>                     depende da conexão com o servidor e credenciais
+>                     que não posso divulgar. Mas se alguem já passou
+>                     por esse problema poderia pelo menos indicar aonde
+>                     está o problema que não estou sabendo identificar?
+>                     Acho que muito provavelmente seria uma
+>                     configuração do SQL no servidor...
+>
+>                     library(RODBC)
+>
+>                     # define database connection string
+>                     dbconn <- 'Driver={SQL
+>                     Server};Server=BLABLABLA;Database=BLABLABLA;Trusted_Connection=yes;'
+>
+>
+>                     # define a connection
+>                     conn <- odbcDriverConnect(connection = dbconn)
+>
+>                     # Estou fazendo o exemplo com o objeto LETTERS só
+>                     pra ter certeza que é um objeto pequeno e que não
+>                     deveria ser um problema de memória do R.
+>                     > LETTERS
+>                      [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K"
+>                     "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U" "V" "W" "X"
+>                     [25] "Y" "Z"
+>                     > teste_pequeno <- serialize(LETTERS, connection =
+>                     NULL)
+>                     > teste_pequeno <- paste(teste_pequeno, collapse = "")
+>
+>                     # o EXEC PersistModel faz
+>                     # insert into [tempo_permanencia_models] (model,
+>                     [description]) values
+>                     (convert(varbinary(max), em m,2), @description)
+>                     # insere o modelo e uma descricao
+>
+>                     > p <- paste("EXEC PersistModel @m='",
+>                     teste_pequeno,"', @description = 'Teste de
+>                     serialização objeto pequeno'", sep = "")
+>                     > sqlQuery(conn, p)
+>                     character(0)
+>                     > rm(teste_pequeno)
+>                     > p <- "SELECT model FROM
+>                     [tempo_permanencia_models] WHERE id_model = 1022"
+>                     > mod.teste.peq <- sqlQuery(conn, p)
+>                     Error in odbcQuery(channel, query, rows_at_time) :
+>                     'Calloc' could not allocate memory (214748364800
+>                     of 1 bytes)
+>                     > p <- paste0("SELECT id_model, description FROM
+>                     [tempo_permanencia_models] WHERE id_model = 1022")
+>                     > sqlQuery(conn, p) #
+>                      id_model  description
+>                     1      1022   Teste de serialização objeto pequeno
+>
+>                     Reparem que o objeto está salvo no servidor. Foi
+>                     salvo a partir do R, mas não retorna para o R por
+>                     conta do erro de memoria. Eu não estou sabendo nem
+>                     por onde começar.
+>
+>                     Que a força esteja sempre com vocês e abraço forte.
+>
+>                     Pedro Brasil
+>
+>                     _______________________________________________
+>                     R-br mailing list
+>                     R-br em listas.c3sl.ufpr.br
+>                     <mailto:R-br em listas.c3sl.ufpr.br>
+>                     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>                     <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>                     Leia o guia de postagem
+>                     (http://www.leg.ufpr.br/r-br-guia
+>                     <http://www.leg.ufpr.br/r-br-guia>) e forneça
+>                     código mínimo reproduzível.
+>
+>
+>
+>
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20170731/677cb4bf/attachment.html>
+

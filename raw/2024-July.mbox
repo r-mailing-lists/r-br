@@ -1,0 +1,3991 @@
+From marco.goncalves em ifpr.edu.br  Tue Jul  9 11:15:37 2024
+From: marco.goncalves em ifpr.edu.br (=?UTF-8?Q?Marco_Tadeu_Gon=C3=A7alves?=)
+Date: Tue, 9 Jul 2024 11:15:37 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CA+49qTQRbok95JbipkE1EZh=PMgPnNgKjWBCB+UfwS8U05Y1Pw@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CA+49qTQRbok95JbipkE1EZh=PMgPnNgKjWBCB+UfwS8U05Y1Pw@mail.gmail.com>
+Message-ID: <CAGB2GpvUyCt1+YPc9K3=BjKMYbZtbObZ5pmh52aKWEXpv=jUew@mail.gmail.com>
+
+Bom dia,
+Alguém já conseguiu instalar o pacote microdatasus na versão 4.4 do R?
+Obrigado.
+
+Em ter., 18 de jun. de 2024 às 20:06, Hidelbrando Rodrigues por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa noite .
+>
+> Tenta o Micro Data Sus.
+>
+> Att
+>
+> Em ter., 18 de jun. de 2024 10:40, Raphael Saldanha por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Olá Elias,
+>>
+>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+>> registrados em um sistema de informações em saúde denominado Sistema de
+>> Informações Ambulatoriais.
+>>
+>> Você consegue acessar esses dados com o R usando o pacote {microdatasus}
+>>
+>> https://rfsaldanha.github.io/microdatasus/
+>>
+>> Posso te ajudar com mais detalhes se precisar.
+>>
+>>
+>> Abraços,
+>>
+>> Raphael Saldanha
+>>
+>>
+>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>
+>> Bom dia pessoal
+>> Alguém sabe se há algum pacote do R que extraia dados de atendimentos do
+>> SUS ?
+>>
+>>
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria *
+>>
+>> *Obrigado / Thank you *
+>> *Prof. Dr. Elias Carvalho*
+>>
+>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>> he who has been able to understand the cause of things" *
+>>
+>> _______________________________________________
+>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+
+*Marco Tadeu Gonçalves - Professor EBTT*
+*Área de atuação: Matemática*
+Instituto Federal do Paraná
+Campus Avançado de Goioerê
+Rodovia BR 180 - Trevo da UEM s/n CEP: 87360-000
+(44) 3522 - 5432
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/faa902b4/attachment.htm>
+
+From rfsaldanha em gmail.com  Tue Jul  9 11:17:21 2024
+From: rfsaldanha em gmail.com (Raphael Saldanha)
+Date: Tue, 9 Jul 2024 16:17:21 +0200
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CAGB2GpvUyCt1+YPc9K3=BjKMYbZtbObZ5pmh52aKWEXpv=jUew@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CA+49qTQRbok95JbipkE1EZh=PMgPnNgKjWBCB+UfwS8U05Y1Pw@mail.gmail.com>
+ <CAGB2GpvUyCt1+YPc9K3=BjKMYbZtbObZ5pmh52aKWEXpv=jUew@mail.gmail.com>
+Message-ID: <facfd8f9-0d41-41af-928c-f9204cfa77f1@gmail.com>
+
+Olá Marco,
+
+Eu atualizei o pacote hoje cedo e corrigi alguns problemas. Tente 
+instalar a versão de desenvolvimento.
+
+# install.packages("remotes")
+remotes::install_github("rfsaldanha/microdatasus")
+
+
+Abs,
+
+Raphael Saldanha
+
+On 2024-07-09 16:15, Marco Tadeu Gonçalves por (R-br) wrote:
+> Bom dia,
+> Alguém já conseguiu instalar o pacote microdatasus na versão 4.4 do R?
+> Obrigado.
+>
+> Em ter., 18 de jun. de 2024 às 20:06, Hidelbrando Rodrigues por (R-br) 
+> <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>     Boa noite .
+>
+>     Tenta o Micro Data Sus.
+>
+>     Att
+>
+>     Em ter., 18 de jun. de 2024 10:40, Raphael Saldanha por (R-br)
+>     <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>         Olá Elias,
+>
+>         Os dados de atendimentos ambulatoriais da dimensão pública do
+>         SUS são registrados em um sistema de informações em saúde
+>         denominado Sistema de Informações Ambulatoriais.
+>
+>         Você consegue acessar esses dados com o R usando o pacote
+>         {microdatasus}
+>
+>         https://rfsaldanha.github.io/microdatasus/
+>
+>         Posso te ajudar com mais detalhes se precisar.
+>
+>
+>         Abraços,
+>
+>         Raphael Saldanha
+>
+>
+>         On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>         Bom dia pessoal
+>>         Alguém sabe se há algum pacote do R que extraia dados de
+>>         atendimentos do SUS ?
+>>
+>>
+>>
+>>         -- 
+>>         /In Jesu et Maria
+>>
+>>         /
+>>         /Obrigado / Thank you
+>>         /
+>>         /Prof. Dr. Elias Carvalho/
+>>         /
+>>         /
+>>         /
+>>         "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>>         "Blessed is he who has been able to understand the cause of
+>>         things"
+>>         /
+>>
+>>         _______________________________________________
+>>         R-br mailing list
+>>         R-br em listas.c3sl.ufpr.br
+>>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>         _______________________________________________
+>         R-br mailing list
+>         R-br em listas.c3sl.ufpr.br
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>         forneça código mínimo reproduzível.
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+>
+>
+> -- 
+>
+> *Marco Tadeu Gonçalves - Professor EBTT*
+> *Área de atuação: Matemática*
+> Instituto Federal do Paraná
+> Campus Avançado de Goioerê
+> Rodovia BR 180 - Trevo da UEM s/n CEP: 87360-000
+> (44) 3522 - 5432
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/4bbbef70/attachment.htm>
+
+From ecacarva em gmail.com  Tue Jul  9 11:22:28 2024
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Tue, 9 Jul 2024 11:22:28 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <facfd8f9-0d41-41af-928c-f9204cfa77f1@gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CA+49qTQRbok95JbipkE1EZh=PMgPnNgKjWBCB+UfwS8U05Y1Pw@mail.gmail.com>
+ <CAGB2GpvUyCt1+YPc9K3=BjKMYbZtbObZ5pmh52aKWEXpv=jUew@mail.gmail.com>
+ <facfd8f9-0d41-41af-928c-f9204cfa77f1@gmail.com>
+Message-ID: <CAH8E6UtqSDO-nQuqATG4VfdE7X_bd1FJgtR=eGu=UKH7N_YMhQ@mail.gmail.com>
+
+Aproveitando a deixa Raphael
+Esse pacote extrai dados do BPA-I?
+
+Em ter., 9 de jul. de 2024 às 11:17, Raphael Saldanha por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá Marco,
+>
+> Eu atualizei o pacote hoje cedo e corrigi alguns problemas. Tente instalar
+> a versão de desenvolvimento.
+>
+> # install.packages("remotes")
+> remotes::install_github("rfsaldanha/microdatasus")
+>
+>
+> Abs,
+>
+> Raphael Saldanha
+> On 2024-07-09 16:15, Marco Tadeu Gonçalves por (R-br) wrote:
+>
+> Bom dia,
+> Alguém já conseguiu instalar o pacote microdatasus na versão 4.4 do R?
+> Obrigado.
+>
+> Em ter., 18 de jun. de 2024 às 20:06, Hidelbrando Rodrigues por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Boa noite .
+>>
+>> Tenta o Micro Data Sus.
+>>
+>> Att
+>>
+>> Em ter., 18 de jun. de 2024 10:40, Raphael Saldanha por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Olá Elias,
+>>>
+>>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+>>> registrados em um sistema de informações em saúde denominado Sistema de
+>>> Informações Ambulatoriais.
+>>>
+>>> Você consegue acessar esses dados com o R usando o pacote {microdatasus}
+>>>
+>>> https://rfsaldanha.github.io/microdatasus/
+>>>
+>>> Posso te ajudar com mais detalhes se precisar.
+>>>
+>>>
+>>> Abraços,
+>>>
+>>> Raphael Saldanha
+>>>
+>>>
+>>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>>
+>>> Bom dia pessoal
+>>> Alguém sabe se há algum pacote do R que extraia dados de atendimentos do
+>>> SUS ?
+>>>
+>>>
+>>>
+>>> --
+>>>
+>>>
+>>> *In Jesu et Maria *
+>>>
+>>> *Obrigado / Thank you *
+>>> *Prof. Dr. Elias Carvalho*
+>>>
+>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>>> he who has been able to understand the cause of things" *
+>>>
+>>> _______________________________________________
+>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+>
+> *Marco Tadeu Gonçalves - Professor EBTT*
+> *Área de atuação: Matemática*
+> Instituto Federal do Paraná
+> Campus Avançado de Goioerê
+> Rodovia BR 180 - Trevo da UEM s/n CEP: 87360-000
+> (44) 3522 - 5432
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+
+
+*In Jesu et Maria*
+
+*Obrigado / Thank you*
+*Prof. Dr. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/13fb73e7/attachment.htm>
+
+From marco.goncalves em ifpr.edu.br  Tue Jul  9 11:23:06 2024
+From: marco.goncalves em ifpr.edu.br (=?UTF-8?Q?Marco_Tadeu_Gon=C3=A7alves?=)
+Date: Tue, 9 Jul 2024 11:23:06 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <facfd8f9-0d41-41af-928c-f9204cfa77f1@gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CA+49qTQRbok95JbipkE1EZh=PMgPnNgKjWBCB+UfwS8U05Y1Pw@mail.gmail.com>
+ <CAGB2GpvUyCt1+YPc9K3=BjKMYbZtbObZ5pmh52aKWEXpv=jUew@mail.gmail.com>
+ <facfd8f9-0d41-41af-928c-f9204cfa77f1@gmail.com>
+Message-ID: <CAGB2Gptf_1=X1yzTFNxfq5DjGEbgv3AhMkzd_BaVwBGB+-BKow@mail.gmail.com>
+
+Instalou perfeitamente, Raphael.
+Muito obrigado, e parabéns pelo trabalho realizado!
+
+Em ter., 9 de jul. de 2024 às 11:17, Raphael Saldanha por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá Marco,
+>
+> Eu atualizei o pacote hoje cedo e corrigi alguns problemas. Tente instalar
+> a versão de desenvolvimento.
+>
+> # install.packages("remotes")
+> remotes::install_github("rfsaldanha/microdatasus")
+>
+>
+> Abs,
+>
+> Raphael Saldanha
+> On 2024-07-09 16:15, Marco Tadeu Gonçalves por (R-br) wrote:
+>
+> Bom dia,
+> Alguém já conseguiu instalar o pacote microdatasus na versão 4.4 do R?
+> Obrigado.
+>
+> Em ter., 18 de jun. de 2024 às 20:06, Hidelbrando Rodrigues por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Boa noite .
+>>
+>> Tenta o Micro Data Sus.
+>>
+>> Att
+>>
+>> Em ter., 18 de jun. de 2024 10:40, Raphael Saldanha por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Olá Elias,
+>>>
+>>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+>>> registrados em um sistema de informações em saúde denominado Sistema de
+>>> Informações Ambulatoriais.
+>>>
+>>> Você consegue acessar esses dados com o R usando o pacote {microdatasus}
+>>>
+>>> https://rfsaldanha.github.io/microdatasus/
+>>>
+>>> Posso te ajudar com mais detalhes se precisar.
+>>>
+>>>
+>>> Abraços,
+>>>
+>>> Raphael Saldanha
+>>>
+>>>
+>>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>>
+>>> Bom dia pessoal
+>>> Alguém sabe se há algum pacote do R que extraia dados de atendimentos do
+>>> SUS ?
+>>>
+>>>
+>>>
+>>> --
+>>>
+>>>
+>>> *In Jesu et Maria *
+>>>
+>>> *Obrigado / Thank you *
+>>> *Prof. Dr. Elias Carvalho*
+>>>
+>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>>> he who has been able to understand the cause of things" *
+>>>
+>>> _______________________________________________
+>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+>
+> *Marco Tadeu Gonçalves - Professor EBTT*
+> *Área de atuação: Matemática*
+> Instituto Federal do Paraná
+> Campus Avançado de Goioerê
+> Rodovia BR 180 - Trevo da UEM s/n CEP: 87360-000
+> (44) 3522 - 5432
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+
+*Marco Tadeu Gonçalves - Professor EBTT*
+*Área de atuação: Matemática*
+Instituto Federal do Paraná
+Campus Avançado de Goioerê
+Rodovia BR 180 - Trevo da UEM s/n CEP: 87360-000
+(44) 3522 - 5432
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/f0d9b372/attachment.htm>
+
+From rfsaldanha em gmail.com  Tue Jul  9 12:00:17 2024
+From: rfsaldanha em gmail.com (Raphael Saldanha)
+Date: Tue, 9 Jul 2024 17:00:17 +0200
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CAH8E6UtqSDO-nQuqATG4VfdE7X_bd1FJgtR=eGu=UKH7N_YMhQ@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CA+49qTQRbok95JbipkE1EZh=PMgPnNgKjWBCB+UfwS8U05Y1Pw@mail.gmail.com>
+ <CAGB2GpvUyCt1+YPc9K3=BjKMYbZtbObZ5pmh52aKWEXpv=jUew@mail.gmail.com>
+ <facfd8f9-0d41-41af-928c-f9204cfa77f1@gmail.com>
+ <CAH8E6UtqSDO-nQuqATG4VfdE7X_bd1FJgtR=eGu=UKH7N_YMhQ@mail.gmail.com>
+Message-ID: <57012e17-9353-44e9-87c6-025f544a2661@gmail.com>
+
+Oi Elias,
+
+O pacote consegue baixar os dados do SIA-PA (produção ambulatorial), 
+além de psicossocial, atenção domiciliar e as APACs. Creio que este seja 
+equivalente ao BPA-I (boletim de produção ambulatorial individual), certo?
+
+
+Abs,
+
+Raphael Saldanha
+
+On 2024-07-09 16:22, Elias Carvalho wrote:
+> Aproveitando a deixa Raphael
+> Esse pacote extrai dados do BPA-I?
+>
+> Em ter., 9 de jul. de 2024 às 11:17, Raphael Saldanha por (R-br) 
+> <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>     Olá Marco,
+>
+>     Eu atualizei o pacote hoje cedo e corrigi alguns problemas. Tente
+>     instalar a versão de desenvolvimento.
+>
+>     # install.packages("remotes")
+>     remotes::install_github("rfsaldanha/microdatasus")
+>
+>
+>     Abs,
+>
+>     Raphael Saldanha
+>
+>     On 2024-07-09 16:15, Marco Tadeu Gonçalves por (R-br) wrote:
+>>     Bom dia,
+>>     Alguém já conseguiu instalar o pacote microdatasus na versão 4.4
+>>     do R?
+>>     Obrigado.
+>>
+>>     Em ter., 18 de jun. de 2024 às 20:06, Hidelbrando Rodrigues por
+>>     (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>         Boa noite .
+>>
+>>         Tenta o Micro Data Sus.
+>>
+>>         Att
+>>
+>>         Em ter., 18 de jun. de 2024 10:40, Raphael Saldanha por
+>>         (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>             Olá Elias,
+>>
+>>             Os dados de atendimentos ambulatoriais da dimensão
+>>             pública do SUS são registrados em um sistema de
+>>             informações em saúde denominado Sistema de Informações
+>>             Ambulatoriais.
+>>
+>>             Você consegue acessar esses dados com o R usando o pacote
+>>             {microdatasus}
+>>
+>>             https://rfsaldanha.github.io/microdatasus/
+>>
+>>             Posso te ajudar com mais detalhes se precisar.
+>>
+>>
+>>             Abraços,
+>>
+>>             Raphael Saldanha
+>>
+>>
+>>             On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>>             Bom dia pessoal
+>>>             Alguém sabe se há algum pacote do R que extraia dados de
+>>>             atendimentos do SUS ?
+>>>
+>>>
+>>>
+>>>             -- 
+>>>             /In Jesu et Maria
+>>>
+>>>             /
+>>>             /Obrigado / Thank you
+>>>             /
+>>>             /Prof. Dr. Elias Carvalho/
+>>>             /
+>>>             /
+>>>             /
+>>>             "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>>>             "Blessed is he who has been able to understand the cause
+>>>             of things"
+>>>             /
+>>>
+>>>             _______________________________________________
+>>>             R-br mailing list
+>>>             R-br em listas.c3sl.ufpr.br
+>>>             https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>             Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>             _______________________________________________
+>>             R-br mailing list
+>>             R-br em listas.c3sl.ufpr.br
+>>             https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>             Leia o guia de postagem
+>>             (http://www.leg.ufpr.br/r-br-guia) e forneça código
+>>             mínimo reproduzível.
+>>
+>>         _______________________________________________
+>>         R-br mailing list
+>>         R-br em listas.c3sl.ufpr.br
+>>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>         forneça código mínimo reproduzível.
+>>
+>>
+>>
+>>     -- 
+>>
+>>     *Marco Tadeu Gonçalves - Professor EBTT*
+>>     *Área de atuação: Matemática*
+>>     Instituto Federal do Paraná
+>>     Campus Avançado de Goioerê
+>>     Rodovia BR 180 - Trevo da UEM s/n CEP: 87360-000
+>>     (44) 3522 - 5432
+>>
+>>     _______________________________________________
+>>     R-br mailing list
+>>     R-br em listas.c3sl.ufpr.br
+>>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+>
+>
+> -- 
+> /In Jesu et Maria
+>
+> /
+> /Obrigado / Thank you
+> /
+> /Prof. Dr. Elias Carvalho/
+> /
+> /
+> /
+> "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed is he who has been able to understand the cause of things"
+> /
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/5e3379e1/attachment.htm>
+
+From listasrtura em gmail.com  Tue Jul  9 12:27:32 2024
+From: listasrtura em gmail.com (Bernardo Rangel Tura)
+Date: Tue, 9 Jul 2024 12:27:32 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CAH8E6Uv5Bx1EH5zRV4m9ShnosnDujRp+Bm28GRLSY12SrhRhuA@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CAH8E6Ut02vj4uQZh66T+FR=Q2STttqZ2Cax2tStVPd5nzBhrJA@mail.gmail.com>
+ <fd13148f-7e82-4fb4-9f36-bb8a4d8a723b@gmail.com>
+ <CAH8E6UufcVJkD9=u=WKYvgG_qiUjm8goeUmD7jrJijdN3CDVwQ@mail.gmail.com>
+ <CAH8E6Uv5Bx1EH5zRV4m9ShnosnDujRp+Bm28GRLSY12SrhRhuA@mail.gmail.com>
+Message-ID: <2027f145-16a9-4c66-b66b-4752b27be255@gmail.com>
+
+Elias o pacote do Rafael é maravilhoso vivo sugerindo para as pessoas 
+usarem mas para algumas coisas às vezes não funciona, quase sempre 
+porque as bases são muito mal feitas.
+Como trabalho com elas a mais e 20 anos estou acostumando a resolver 
+esse tipo de encrenca.
+Que tal você descrever o que precisa e crio um script para você?
+
+Bernardo Tura
+NBB - INC/MS
+
+On 6/18/24 15:19, Elias Carvalho por (R-br) wrote:
+> Outra coisa, consigo extrair dados da BPA-I (*Boletim de Produção 
+> Ambulatorial ? Individualizado*) ?
+>
+> Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho 
+> <ecacarva em gmail.com> escreveu:
+>
+>     Procurei aqui mas não achei, pelo fetch_datasus, dá para extrair
+>     dados de um CNES específico Rafael ?
+>
+>     Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha
+>     <rfsaldanha em gmail.com> escreveu:
+>
+>         Obrigado! Para filtrar por um hospital específico, você
+>         precisa saber o código CNES da unidade de saúde. Você pode
+>         procurar o código aqui: cnes.datasus.gov.br
+>         <http://cnes.datasus.gov.br>
+>
+>         On 2024-06-18 15:57, Elias Carvalho wrote:
+>>         Excelente Rafael ! Muito bom seu pacote.
+>>         Vou dar uma olhada, no momento eu preciso extrair informações
+>>         de um hospital público específico
+>>
+>>         Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por
+>>         (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>             Olá Elias,
+>>
+>>             Os dados de atendimentos ambulatoriais da dimensão
+>>             pública do SUS são registrados em um sistema de
+>>             informações em saúde denominado Sistema de Informações
+>>             Ambulatoriais.
+>>
+>>             Você consegue acessar esses dados com o R usando o pacote
+>>             {microdatasus}
+>>
+>>             https://rfsaldanha.github.io/microdatasus/
+>>
+>>             Posso te ajudar com mais detalhes se precisar.
+>>
+>>
+>>             Abraços,
+>>
+>>             Raphael Saldanha
+>>
+>>
+>>             On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>>             Bom dia pessoal
+>>>             Alguém sabe se há algum pacote do R que extraia dados de
+>>>             atendimentos do SUS ?
+>>>
+>>>
+>>>
+>>>             -- 
+>>>             /In Jesu et Maria
+>>>
+>>>             /
+>>>             /Obrigado / Thank you
+>>>             /
+>>>             /Prof. Dr. Elias Carvalho/
+>>>             /
+>>>             /
+>>>             /
+>>>             "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>>>             "Blessed is he who has been able to understand the cause
+>>>             of things"
+>>>             /
+>>>
+>>>             _______________________________________________
+>>>             R-br mailing list
+>>>             R-br em listas.c3sl.ufpr.br
+>>>             https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>             Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>             _______________________________________________
+>>             R-br mailing list
+>>             R-br em listas.c3sl.ufpr.br
+>>             https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>             Leia o guia de postagem
+>>             (http://www.leg.ufpr.br/r-br-guia) e forneça código
+>>             mínimo reproduzível.
+>>
+>>
+>>
+>>         -- 
+>>         /In Jesu et Maria
+>>
+>>         /
+>>         /Obrigado / Thank you
+>>         /
+>>         /Prof. Dr. Elias Carvalho/
+>>         /
+>>         /
+>>         /
+>>         "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>>         "Blessed is he who has been able to understand the cause of
+>>         things"
+>>         /
+>
+>
+>
+>     -- 
+>     /In Jesu et Maria
+>
+>     /
+>     /Obrigado / Thank you
+>     /
+>     /Prof. Dr. Elias Carvalho/
+>     /
+>     /
+>     /
+>     "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>     "Blessed is he who has been able to understand the cause of things"
+>     /
+>
+>
+>
+> -- 
+> /In Jesu et Maria
+>
+> /
+> /Obrigado / Thank you
+> /
+> /Prof. Dr. Elias Carvalho/
+> /
+> /
+> /
+> "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed is he who has been able to understand the cause of things"
+> /
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/8ededeae/attachment.htm>
+
+From ecacarva em gmail.com  Tue Jul  9 13:51:21 2024
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Tue, 9 Jul 2024 13:51:21 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <57012e17-9353-44e9-87c6-025f544a2661@gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CA+49qTQRbok95JbipkE1EZh=PMgPnNgKjWBCB+UfwS8U05Y1Pw@mail.gmail.com>
+ <CAGB2GpvUyCt1+YPc9K3=BjKMYbZtbObZ5pmh52aKWEXpv=jUew@mail.gmail.com>
+ <facfd8f9-0d41-41af-928c-f9204cfa77f1@gmail.com>
+ <CAH8E6UtqSDO-nQuqATG4VfdE7X_bd1FJgtR=eGu=UKH7N_YMhQ@mail.gmail.com>
+ <57012e17-9353-44e9-87c6-025f544a2661@gmail.com>
+Message-ID: <CAH8E6UsH6cjOG4QWtLpSL2BqAMC_63HAL7ic561=xYdRfX70Ew@mail.gmail.com>
+
+Excelente Raphael ! Vou testar.}
+
+Parabéns pelo excelente trabalho, com certeza será muito útil
+
+
+Em ter., 9 de jul. de 2024 às 12:00, Raphael Saldanha <rfsaldanha em gmail.com>
+escreveu:
+
+> Oi Elias,
+>
+> O pacote consegue baixar os dados do SIA-PA (produção ambulatorial), além
+> de psicossocial, atenção domiciliar e as APACs. Creio que este seja
+> equivalente ao BPA-I (boletim de produção ambulatorial individual), certo?
+>
+>
+> Abs,
+>
+> Raphael Saldanha
+> On 2024-07-09 16:22, Elias Carvalho wrote:
+>
+> Aproveitando a deixa Raphael
+> Esse pacote extrai dados do BPA-I?
+>
+> Em ter., 9 de jul. de 2024 às 11:17, Raphael Saldanha por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Olá Marco,
+>>
+>> Eu atualizei o pacote hoje cedo e corrigi alguns problemas. Tente
+>> instalar a versão de desenvolvimento.
+>>
+>> # install.packages("remotes")
+>> remotes::install_github("rfsaldanha/microdatasus")
+>>
+>>
+>> Abs,
+>>
+>> Raphael Saldanha
+>> On 2024-07-09 16:15, Marco Tadeu Gonçalves por (R-br) wrote:
+>>
+>> Bom dia,
+>> Alguém já conseguiu instalar o pacote microdatasus na versão 4.4 do R?
+>> Obrigado.
+>>
+>> Em ter., 18 de jun. de 2024 às 20:06, Hidelbrando Rodrigues por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Boa noite .
+>>>
+>>> Tenta o Micro Data Sus.
+>>>
+>>> Att
+>>>
+>>> Em ter., 18 de jun. de 2024 10:40, Raphael Saldanha por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>
+>>>> Olá Elias,
+>>>>
+>>>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+>>>> registrados em um sistema de informações em saúde denominado Sistema de
+>>>> Informações Ambulatoriais.
+>>>>
+>>>> Você consegue acessar esses dados com o R usando o pacote {microdatasus}
+>>>>
+>>>> https://rfsaldanha.github.io/microdatasus/
+>>>>
+>>>> Posso te ajudar com mais detalhes se precisar.
+>>>>
+>>>>
+>>>> Abraços,
+>>>>
+>>>> Raphael Saldanha
+>>>>
+>>>>
+>>>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>>>
+>>>> Bom dia pessoal
+>>>> Alguém sabe se há algum pacote do R que extraia dados de atendimentos
+>>>> do SUS ?
+>>>>
+>>>>
+>>>>
+>>>> --
+>>>>
+>>>>
+>>>> *In Jesu et Maria *
+>>>>
+>>>> *Obrigado / Thank you *
+>>>> *Prof. Dr. Elias Carvalho*
+>>>>
+>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+>>>> is he who has been able to understand the cause of things" *
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>>
+>> --
+>>
+>> *Marco Tadeu Gonçalves - Professor EBTT*
+>> *Área de atuação: Matemática*
+>> Instituto Federal do Paraná
+>> Campus Avançado de Goioerê
+>> Rodovia BR 180 - Trevo da UEM s/n CEP: 87360-000
+>> (44) 3522 - 5432
+>>
+>> _______________________________________________
+>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+>
+>
+> *In Jesu et Maria *
+>
+> *Obrigado / Thank you *
+> *Prof. Dr. Elias Carvalho*
+>
+> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+> he who has been able to understand the cause of things" *
+>
+>
+
+-- 
+
+
+*In Jesu et Maria*
+
+*Obrigado / Thank you*
+*Prof. Dr. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/6d30c17b/attachment.htm>
+
+From ecacarva em gmail.com  Tue Jul  9 13:58:32 2024
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Tue, 9 Jul 2024 13:58:32 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <2027f145-16a9-4c66-b66b-4752b27be255@gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CAH8E6Ut02vj4uQZh66T+FR=Q2STttqZ2Cax2tStVPd5nzBhrJA@mail.gmail.com>
+ <fd13148f-7e82-4fb4-9f36-bb8a4d8a723b@gmail.com>
+ <CAH8E6UufcVJkD9=u=WKYvgG_qiUjm8goeUmD7jrJijdN3CDVwQ@mail.gmail.com>
+ <CAH8E6Uv5Bx1EH5zRV4m9ShnosnDujRp+Bm28GRLSY12SrhRhuA@mail.gmail.com>
+ <2027f145-16a9-4c66-b66b-4752b27be255@gmail.com>
+Message-ID: <CAH8E6Uu1tRM17KG_W0JaDYBDO90oh+LOB4=kL1R1Y7pG-+wa7w@mail.gmail.com>
+
+Caro Bernardo, eu agradeço antecipadamente
+Eu trabalho no TI de uma universidade estadual e temos nosso hospital
+universitário que atende muita gente, se não me engano além da cidade,
+atende mais de 100 municípios ao redor.
+Nosso problema é que o hospital usa o GSUS (prontuário do PR) e este não
+exporta dados, não tem API (pelo menos para nós).
+Gostaríamos de ter informações sobre prontuário, atendimento ambulatorial,
+prescrição de medicamentos, imagens e laudos de forma analítica, pois eu
+trabalho com BI (Qlik Sense) e gostaria de gerar gráficos e tabelas com
+esses dados, além de pedir para minha equipe desenvolver softwares de apoio
+com base nessas informações.
+Eu creio que todos esses dados são exportados para o SUS e daí uma
+tentativa seria extraí-los pelo R.
+
+Em ter., 9 de jul. de 2024 às 12:28, Bernardo Rangel Tura por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Elias o pacote do Rafael é maravilhoso vivo sugerindo para as pessoas
+> usarem mas para algumas coisas às vezes não funciona, quase sempre porque
+> as bases são muito mal feitas.
+> Como trabalho com elas a mais e 20 anos estou acostumando a resolver esse
+> tipo de encrenca.
+> Que tal você descrever o que precisa e crio um script para você?
+>
+> Bernardo Tura
+> NBB - INC/MS
+> On 6/18/24 15:19, Elias Carvalho por (R-br) wrote:
+>
+> Outra coisa, consigo extrair dados da BPA-I (*Boletim de Produção
+> Ambulatorial ? Individualizado*) ?
+>
+> Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho <ecacarva em gmail.com>
+> escreveu:
+>
+>> Procurei aqui mas não achei, pelo fetch_datasus, dá para extrair dados de
+>> um CNES específico Rafael ?
+>>
+>> Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha <
+>> rfsaldanha em gmail.com> escreveu:
+>>
+>>> Obrigado! Para filtrar por um hospital específico, você precisa saber o
+>>> código CNES da unidade de saúde. Você pode procurar o código aqui:
+>>> cnes.datasus.gov.br
+>>> On 2024-06-18 15:57, Elias Carvalho wrote:
+>>>
+>>> Excelente Rafael ! Muito bom seu pacote.
+>>> Vou dar uma olhada, no momento eu preciso extrair informações de um
+>>> hospital público específico
+>>>
+>>> Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>
+>>>> Olá Elias,
+>>>>
+>>>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+>>>> registrados em um sistema de informações em saúde denominado Sistema de
+>>>> Informações Ambulatoriais.
+>>>>
+>>>> Você consegue acessar esses dados com o R usando o pacote {microdatasus}
+>>>>
+>>>> https://rfsaldanha.github.io/microdatasus/
+>>>>
+>>>> Posso te ajudar com mais detalhes se precisar.
+>>>>
+>>>>
+>>>> Abraços,
+>>>>
+>>>> Raphael Saldanha
+>>>>
+>>>>
+>>>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>>>
+>>>> Bom dia pessoal
+>>>> Alguém sabe se há algum pacote do R que extraia dados de atendimentos
+>>>> do SUS ?
+>>>>
+>>>>
+>>>>
+>>>> --
+>>>>
+>>>>
+>>>> *In Jesu et Maria *
+>>>>
+>>>> *Obrigado / Thank you *
+>>>> *Prof. Dr. Elias Carvalho*
+>>>>
+>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+>>>> is he who has been able to understand the cause of things" *
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>>
+>>>
+>>> --
+>>>
+>>>
+>>> *In Jesu et Maria *
+>>>
+>>> *Obrigado / Thank you *
+>>> *Prof. Dr. Elias Carvalho*
+>>>
+>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>>> he who has been able to understand the cause of things" *
+>>>
+>>>
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria *
+>>
+>> *Obrigado / Thank you *
+>> *Prof. Dr. Elias Carvalho*
+>>
+>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>> he who has been able to understand the cause of things" *
+>>
+>
+>
+> --
+>
+>
+> *In Jesu et Maria *
+>
+> *Obrigado / Thank you *
+> *Prof. Dr. Elias Carvalho*
+>
+> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+> he who has been able to understand the cause of things" *
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+
+
+*In Jesu et Maria*
+
+*Obrigado / Thank you*
+*Prof. Dr. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/882ae8bb/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue Jul  9 14:34:16 2024
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 9 Jul 2024 14:34:16 -0300
+Subject: [R-br] =?utf-8?q?Acerca_de_testes_de_normalidade_antes_doutros_t?=
+	=?utf-8?q?estes_estat=C3=ADsticos?=
+Message-ID: <CAKrF98ngKTG4N65FvHjv2XToGjXHc3s8OpQ1MAdijnOVoyjU-g@mail.gmail.com>
+
+De vez em quando este tema aparece aqui, por vezes, perguntando
+lateralmente seja qual seria o *melhor* ou o "adequado" para alguma
+técnica¹.
+
+Além da citação dos gurus já trazidas aqui, esta me apareceu num
+*fortune* quando
+da partida do meu ambiente R, e acho instrutiva e partilho com vocês:
+
+« Usually (but not always) doing tests of normality reflect a lack of
+understanding of the power of rank tests, and an assumption of high power
+for
+the tests (qq plots don't always help with that because of their
+subjectivity).
+When possible it's good to choose a robust method. Also, doing pre-testing
+for
+normality can affect the type I error of the overall analysis. »
+? Frank Harrell, r-help 2005.
+
+Deixo o texto no original por tempestividade e evito assim discussões sobre
+a propriedade duma eventual tradução.
+
+--
+Cesar Rabak
+
+
+[1] sendo a ANOVA campeã nesse *ranking* de citações.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/874c83ae/attachment.htm>
+
+From professorhidelbrando em gmail.com  Tue Jul  9 21:06:51 2024
+From: professorhidelbrando em gmail.com (Hidelbrando Rodrigues)
+Date: Tue, 9 Jul 2024 20:06:51 -0400
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CAH8E6Uu1tRM17KG_W0JaDYBDO90oh+LOB4=kL1R1Y7pG-+wa7w@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CAH8E6Ut02vj4uQZh66T+FR=Q2STttqZ2Cax2tStVPd5nzBhrJA@mail.gmail.com>
+ <fd13148f-7e82-4fb4-9f36-bb8a4d8a723b@gmail.com>
+ <CAH8E6UufcVJkD9=u=WKYvgG_qiUjm8goeUmD7jrJijdN3CDVwQ@mail.gmail.com>
+ <CAH8E6Uv5Bx1EH5zRV4m9ShnosnDujRp+Bm28GRLSY12SrhRhuA@mail.gmail.com>
+ <2027f145-16a9-4c66-b66b-4752b27be255@gmail.com>
+ <CAH8E6Uu1tRM17KG_W0JaDYBDO90oh+LOB4=kL1R1Y7pG-+wa7w@mail.gmail.com>
+Message-ID: <CA+49qTTTdVw9R4R+JyxMX709C2rWCsuy7D+4r3U678ueLLFaFw@mail.gmail.com>
+
+Olá a todos.
+
+Permitam-me participar da conversa. Nosso laboratório LAMAPP (Laboratório
+de Monitoramento e Avaliação de Políticas Públicas), aqui da federal do
+Amazonas, tem parceria com o Centro de Estudos Estratégicos do FIOCRUZ.
+
+Nós criamos um curso de Ciência de Dados Aplicado à Saúde. Ele será
+hospedado em uma plataforma que ainda vamos definir. Ele será aberto e
+gratuito. Utilizamos como base, dados do SISAB, que não são tão amigáveis
+para baixar.
+
+Diante do exposto, seguem as questões:
+
+* Seria possível criar um código para extrair essa base diretamente do
+site??
+
+* Existem outros pacotes para baixar dados de saúde, além do mencionado
+nesta conversa?
+
+Att.
+
+Hidelbrando
+
+
+
+
+Em ter., 9 de jul. de 2024 12:59, Elias Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Caro Bernardo, eu agradeço antecipadamente
+> Eu trabalho no TI de uma universidade estadual e temos nosso hospital
+> universitário que atende muita gente, se não me engano além da cidade,
+> atende mais de 100 municípios ao redor.
+> Nosso problema é que o hospital usa o GSUS (prontuário do PR) e este não
+> exporta dados, não tem API (pelo menos para nós).
+> Gostaríamos de ter informações sobre prontuário, atendimento ambulatorial,
+> prescrição de medicamentos, imagens e laudos de forma analítica, pois eu
+> trabalho com BI (Qlik Sense) e gostaria de gerar gráficos e tabelas com
+> esses dados, além de pedir para minha equipe desenvolver softwares de apoio
+> com base nessas informações.
+> Eu creio que todos esses dados são exportados para o SUS e daí uma
+> tentativa seria extraí-los pelo R.
+>
+> Em ter., 9 de jul. de 2024 às 12:28, Bernardo Rangel Tura por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Elias o pacote do Rafael é maravilhoso vivo sugerindo para as pessoas
+>> usarem mas para algumas coisas às vezes não funciona, quase sempre porque
+>> as bases são muito mal feitas.
+>> Como trabalho com elas a mais e 20 anos estou acostumando a resolver esse
+>> tipo de encrenca.
+>> Que tal você descrever o que precisa e crio um script para você?
+>>
+>> Bernardo Tura
+>> NBB - INC/MS
+>> On 6/18/24 15:19, Elias Carvalho por (R-br) wrote:
+>>
+>> Outra coisa, consigo extrair dados da BPA-I (*Boletim de Produção
+>> Ambulatorial ? Individualizado*) ?
+>>
+>> Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho <ecacarva em gmail.com>
+>> escreveu:
+>>
+>>> Procurei aqui mas não achei, pelo fetch_datasus, dá para extrair dados
+>>> de um CNES específico Rafael ?
+>>>
+>>> Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha <
+>>> rfsaldanha em gmail.com> escreveu:
+>>>
+>>>> Obrigado! Para filtrar por um hospital específico, você precisa saber o
+>>>> código CNES da unidade de saúde. Você pode procurar o código aqui:
+>>>> cnes.datasus.gov.br
+>>>> On 2024-06-18 15:57, Elias Carvalho wrote:
+>>>>
+>>>> Excelente Rafael ! Muito bom seu pacote.
+>>>> Vou dar uma olhada, no momento eu preciso extrair informações de um
+>>>> hospital público específico
+>>>>
+>>>> Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por (R-br) <
+>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>
+>>>>> Olá Elias,
+>>>>>
+>>>>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+>>>>> registrados em um sistema de informações em saúde denominado Sistema de
+>>>>> Informações Ambulatoriais.
+>>>>>
+>>>>> Você consegue acessar esses dados com o R usando o pacote
+>>>>> {microdatasus}
+>>>>>
+>>>>> https://rfsaldanha.github.io/microdatasus/
+>>>>>
+>>>>> Posso te ajudar com mais detalhes se precisar.
+>>>>>
+>>>>>
+>>>>> Abraços,
+>>>>>
+>>>>> Raphael Saldanha
+>>>>>
+>>>>>
+>>>>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>>>>
+>>>>> Bom dia pessoal
+>>>>> Alguém sabe se há algum pacote do R que extraia dados de atendimentos
+>>>>> do SUS ?
+>>>>>
+>>>>>
+>>>>>
+>>>>> --
+>>>>>
+>>>>>
+>>>>> *In Jesu et Maria *
+>>>>>
+>>>>> *Obrigado / Thank you *
+>>>>> *Prof. Dr. Elias Carvalho*
+>>>>>
+>>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+>>>>> is he who has been able to understand the cause of things" *
+>>>>>
+>>>>> _______________________________________________
+>>>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>>>
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>>
+>>>>
+>>>> --
+>>>>
+>>>>
+>>>> *In Jesu et Maria *
+>>>>
+>>>> *Obrigado / Thank you *
+>>>> *Prof. Dr. Elias Carvalho*
+>>>>
+>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+>>>> is he who has been able to understand the cause of things" *
+>>>>
+>>>>
+>>>
+>>> --
+>>>
+>>>
+>>> *In Jesu et Maria *
+>>>
+>>> *Obrigado / Thank you *
+>>> *Prof. Dr. Elias Carvalho*
+>>>
+>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>>> he who has been able to understand the cause of things" *
+>>>
+>>
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria *
+>>
+>> *Obrigado / Thank you *
+>> *Prof. Dr. Elias Carvalho*
+>>
+>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>> he who has been able to understand the cause of things" *
+>>
+>> _______________________________________________
+>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+>
+>
+> *In Jesu et Maria*
+>
+> *Obrigado / Thank you*
+> *Prof. Dr. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/c3344262/attachment-0001.htm>
+
+From cesar.rabak em gmail.com  Tue Jul  9 23:49:28 2024
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 9 Jul 2024 23:49:28 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CA+49qTTTdVw9R4R+JyxMX709C2rWCsuy7D+4r3U678ueLLFaFw@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CAH8E6Ut02vj4uQZh66T+FR=Q2STttqZ2Cax2tStVPd5nzBhrJA@mail.gmail.com>
+ <fd13148f-7e82-4fb4-9f36-bb8a4d8a723b@gmail.com>
+ <CAH8E6UufcVJkD9=u=WKYvgG_qiUjm8goeUmD7jrJijdN3CDVwQ@mail.gmail.com>
+ <CAH8E6Uv5Bx1EH5zRV4m9ShnosnDujRp+Bm28GRLSY12SrhRhuA@mail.gmail.com>
+ <2027f145-16a9-4c66-b66b-4752b27be255@gmail.com>
+ <CAH8E6Uu1tRM17KG_W0JaDYBDO90oh+LOB4=kL1R1Y7pG-+wa7w@mail.gmail.com>
+ <CA+49qTTTdVw9R4R+JyxMX709C2rWCsuy7D+4r3U678ueLLFaFw@mail.gmail.com>
+Message-ID: <CAKrF98kbYG82aR9nF_qB4crhJMm9x2xJ6BG2cuzjNUTV4-=odA@mail.gmail.com>
+
+Se o formato do SISAB for documentada certamente é factível gerar um código
+para extrair os dados e colocá-los nas estruturas de dados convenientes
+para uso no R, provavelmente dataframes ou os mais modernos tibles.
+
+On Tue, Jul 9, 2024 at 9:07?PM Hidelbrando Rodrigues por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá a todos.
+>
+> Permitam-me participar da conversa. Nosso laboratório LAMAPP (Laboratório
+> de Monitoramento e Avaliação de Políticas Públicas), aqui da federal do
+> Amazonas, tem parceria com o Centro de Estudos Estratégicos do FIOCRUZ.
+>
+> Nós criamos um curso de Ciência de Dados Aplicado à Saúde. Ele será
+> hospedado em uma plataforma que ainda vamos definir. Ele será aberto e
+> gratuito. Utilizamos como base, dados do SISAB, que não são tão amigáveis
+> para baixar.
+>
+> Diante do exposto, seguem as questões:
+>
+> * Seria possível criar um código para extrair essa base diretamente do
+> site??
+>
+> * Existem outros pacotes para baixar dados de saúde, além do mencionado
+> nesta conversa?
+>
+> Att.
+>
+> Hidelbrando
+>
+>
+>
+>
+> Em ter., 9 de jul. de 2024 12:59, Elias Carvalho por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Caro Bernardo, eu agradeço antecipadamente
+>> Eu trabalho no TI de uma universidade estadual e temos nosso hospital
+>> universitário que atende muita gente, se não me engano além da cidade,
+>> atende mais de 100 municípios ao redor.
+>> Nosso problema é que o hospital usa o GSUS (prontuário do PR) e este não
+>> exporta dados, não tem API (pelo menos para nós).
+>> Gostaríamos de ter informações sobre prontuário, atendimento
+>> ambulatorial, prescrição de medicamentos, imagens e laudos de forma
+>> analítica, pois eu trabalho com BI (Qlik Sense) e gostaria de gerar
+>> gráficos e tabelas com esses dados, além de pedir para minha equipe
+>> desenvolver softwares de apoio com base nessas informações.
+>> Eu creio que todos esses dados são exportados para o SUS e daí uma
+>> tentativa seria extraí-los pelo R.
+>>
+>> Em ter., 9 de jul. de 2024 às 12:28, Bernardo Rangel Tura por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Elias o pacote do Rafael é maravilhoso vivo sugerindo para as pessoas
+>>> usarem mas para algumas coisas às vezes não funciona, quase sempre porque
+>>> as bases são muito mal feitas.
+>>> Como trabalho com elas a mais e 20 anos estou acostumando a resolver
+>>> esse tipo de encrenca.
+>>> Que tal você descrever o que precisa e crio um script para você?
+>>>
+>>> Bernardo Tura
+>>> NBB - INC/MS
+>>> On 6/18/24 15:19, Elias Carvalho por (R-br) wrote:
+>>>
+>>> Outra coisa, consigo extrair dados da BPA-I (*Boletim de Produção
+>>> Ambulatorial ? Individualizado*) ?
+>>>
+>>> Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho <ecacarva em gmail.com>
+>>> escreveu:
+>>>
+>>>> Procurei aqui mas não achei, pelo fetch_datasus, dá para extrair dados
+>>>> de um CNES específico Rafael ?
+>>>>
+>>>> Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha <
+>>>> rfsaldanha em gmail.com> escreveu:
+>>>>
+>>>>> Obrigado! Para filtrar por um hospital específico, você precisa saber
+>>>>> o código CNES da unidade de saúde. Você pode procurar o código aqui:
+>>>>> cnes.datasus.gov.br
+>>>>> On 2024-06-18 15:57, Elias Carvalho wrote:
+>>>>>
+>>>>> Excelente Rafael ! Muito bom seu pacote.
+>>>>> Vou dar uma olhada, no momento eu preciso extrair informações de um
+>>>>> hospital público específico
+>>>>>
+>>>>> Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por (R-br) <
+>>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>>
+>>>>>> Olá Elias,
+>>>>>>
+>>>>>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+>>>>>> registrados em um sistema de informações em saúde denominado Sistema de
+>>>>>> Informações Ambulatoriais.
+>>>>>>
+>>>>>> Você consegue acessar esses dados com o R usando o pacote
+>>>>>> {microdatasus}
+>>>>>>
+>>>>>> https://rfsaldanha.github.io/microdatasus/
+>>>>>>
+>>>>>> Posso te ajudar com mais detalhes se precisar.
+>>>>>>
+>>>>>>
+>>>>>> Abraços,
+>>>>>>
+>>>>>> Raphael Saldanha
+>>>>>>
+>>>>>>
+>>>>>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>>>>>
+>>>>>> Bom dia pessoal
+>>>>>> Alguém sabe se há algum pacote do R que extraia dados de atendimentos
+>>>>>> do SUS ?
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>> --
+>>>>>>
+>>>>>>
+>>>>>> *In Jesu et Maria *
+>>>>>>
+>>>>>> *Obrigado / Thank you *
+>>>>>> *Prof. Dr. Elias Carvalho*
+>>>>>>
+>>>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+>>>>>> is he who has been able to understand the cause of things" *
+>>>>>>
+>>>>>> _______________________________________________
+>>>>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>>>>
+>>>>>> _______________________________________________
+>>>>>> R-br mailing list
+>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>>> código mínimo reproduzível.
+>>>>>>
+>>>>>
+>>>>>
+>>>>> --
+>>>>>
+>>>>>
+>>>>> *In Jesu et Maria *
+>>>>>
+>>>>> *Obrigado / Thank you *
+>>>>> *Prof. Dr. Elias Carvalho*
+>>>>>
+>>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+>>>>> is he who has been able to understand the cause of things" *
+>>>>>
+>>>>>
+>>>>
+>>>> --
+>>>>
+>>>>
+>>>> *In Jesu et Maria *
+>>>>
+>>>> *Obrigado / Thank you *
+>>>> *Prof. Dr. Elias Carvalho*
+>>>>
+>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+>>>> is he who has been able to understand the cause of things" *
+>>>>
+>>>
+>>>
+>>> --
+>>>
+>>>
+>>> *In Jesu et Maria *
+>>>
+>>> *Obrigado / Thank you *
+>>> *Prof. Dr. Elias Carvalho*
+>>>
+>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>>> he who has been able to understand the cause of things" *
+>>>
+>>> _______________________________________________
+>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria*
+>>
+>> *Obrigado / Thank you*
+>> *Prof. Dr. Elias Carvalho*
+>>
+>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+>> who has been able to understand the cause of things"*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/94c49b96/attachment.htm>
+
+From listasrtura em gmail.com  Wed Jul 10 08:39:58 2024
+From: listasrtura em gmail.com (Bernardo Rangel Tura)
+Date: Wed, 10 Jul 2024 08:39:58 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <CA+49qTTTdVw9R4R+JyxMX709C2rWCsuy7D+4r3U678ueLLFaFw@mail.gmail.com>
+References: <CAH8E6UtkQmugPDjZ95RY+bYoQk_hkpDwLrBSx1P7haSNyT0rrw@mail.gmail.com>
+ <8de40bd0-74d8-4b47-9043-483e9407ed69@gmail.com>
+ <CAH8E6Ut02vj4uQZh66T+FR=Q2STttqZ2Cax2tStVPd5nzBhrJA@mail.gmail.com>
+ <fd13148f-7e82-4fb4-9f36-bb8a4d8a723b@gmail.com>
+ <CAH8E6UufcVJkD9=u=WKYvgG_qiUjm8goeUmD7jrJijdN3CDVwQ@mail.gmail.com>
+ <CAH8E6Uv5Bx1EH5zRV4m9ShnosnDujRp+Bm28GRLSY12SrhRhuA@mail.gmail.com>
+ <2027f145-16a9-4c66-b66b-4752b27be255@gmail.com>
+ <CAH8E6Uu1tRM17KG_W0JaDYBDO90oh+LOB4=kL1R1Y7pG-+wa7w@mail.gmail.com>
+ <CA+49qTTTdVw9R4R+JyxMX709C2rWCsuy7D+4r3U678ueLLFaFw@mail.gmail.com>
+Message-ID: <65425f85-4744-43e2-854e-04a8b521e96f@gmail.com>
+
+Bom dia Hidelbrando
+
+Eu nunca trabalhei com dados do SISAB mas acredito qeu seja possivel 
+fazer sim e tipo de rotina, teria que ver  o formato dos dados, um 
+pacote que pode ser interessante para você é o SIDRA
+
+Abraços
+
+Bernardo Tura
+
+NBB - INC/MS
+
+
+On 7/9/24 21:06, Hidelbrando Rodrigues por (R-br) wrote:
+> Olá a todos.
+>
+> Permitam-me participar da conversa. Nosso laboratório LAMAPP 
+> (Laboratório de Monitoramento e Avaliação de Políticas Públicas), aqui 
+> da federal do Amazonas, tem parceria com o Centro de Estudos 
+> Estratégicos do FIOCRUZ.
+>
+> Nós criamos um curso de Ciência de Dados Aplicado à Saúde. Ele será 
+> hospedado em uma plataforma que ainda vamos definir. Ele será aberto e 
+> gratuito. Utilizamos como base, dados do SISAB, que não são tão 
+> amigáveis para baixar.
+>
+> Diante do exposto, seguem as questões:
+>
+> * Seria possível criar um código para extrair essa base diretamente do 
+> site??
+>
+> * Existem outros pacotes para baixar dados de saúde, além do 
+> mencionado nesta conversa?
+>
+> Att.
+>
+> Hidelbrando
+>
+>
+>
+>
+> Em ter., 9 de jul. de 2024 12:59, Elias Carvalho por (R-br) 
+> <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>     Caro Bernardo, eu agradeço antecipadamente
+>     Eu trabalho no TI de uma universidade estadual e temos nosso
+>     hospital universitário que atende muita gente, se não me engano
+>     além da cidade, atende mais de 100 municípios ao redor.
+>     Nosso problema é que o hospital usa o GSUS (prontuário do PR) e
+>     este não exporta dados, não tem API (pelo menos para nós).
+>     Gostaríamos de ter informações sobre prontuário, atendimento
+>     ambulatorial, prescrição de medicamentos, imagens e laudos de
+>     forma analítica, pois eu trabalho com BI (Qlik Sense) e gostaria
+>     de gerar gráficos e tabelas com esses dados, além de pedir para
+>     minha equipe desenvolver softwares de apoio com base nessas
+>     informações.
+>     Eu creio que todos esses dados são exportados para o SUS e daí uma
+>     tentativa seria extraí-los pelo R.
+>
+>     Em ter., 9 de jul. de 2024 às 12:28, Bernardo Rangel Tura por
+>     (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>         Elias o pacote do Rafael é maravilhoso vivo sugerindo para as
+>         pessoas usarem mas para algumas coisas às vezes não funciona,
+>         quase sempre porque as bases são muito mal feitas.
+>         Como trabalho com elas a mais e 20 anos estou acostumando a
+>         resolver esse tipo de encrenca.
+>         Que tal você descrever o que precisa e crio um script para você?
+>
+>         Bernardo Tura
+>         NBB - INC/MS
+>
+>         On 6/18/24 15:19, Elias Carvalho por (R-br) wrote:
+>>         Outra coisa, consigo extrair dados da BPA-I (*Boletim de
+>>         Produção Ambulatorial ? Individualizado*) ?
+>>
+>>         Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho
+>>         <ecacarva em gmail.com> escreveu:
+>>
+>>             Procurei aqui mas não achei, pelo fetch_datasus, dá para
+>>             extrair dados de um CNES específico Rafael ?
+>>
+>>             Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha
+>>             <rfsaldanha em gmail.com> escreveu:
+>>
+>>                 Obrigado! Para filtrar por um hospital específico,
+>>                 você precisa saber o código CNES da unidade de saúde.
+>>                 Você pode procurar o código aqui: cnes.datasus.gov.br
+>>                 <http://cnes.datasus.gov.br>
+>>
+>>                 On 2024-06-18 15:57, Elias Carvalho wrote:
+>>>                 Excelente Rafael ! Muito bom seu pacote.
+>>>                 Vou dar uma olhada, no momento eu preciso extrair
+>>>                 informações de um hospital público específico
+>>>
+>>>                 Em ter., 18 de jun. de 2024 às 10:40, Raphael
+>>>                 Saldanha por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>>
+>>>                     Olá Elias,
+>>>
+>>>                     Os dados de atendimentos ambulatoriais da
+>>>                     dimensão pública do SUS são registrados em um
+>>>                     sistema de informações em saúde denominado
+>>>                     Sistema de Informações Ambulatoriais.
+>>>
+>>>                     Você consegue acessar esses dados com o R usando
+>>>                     o pacote {microdatasus}
+>>>
+>>>                     https://rfsaldanha.github.io/microdatasus/
+>>>
+>>>                     Posso te ajudar com mais detalhes se precisar.
+>>>
+>>>
+>>>                     Abraços,
+>>>
+>>>                     Raphael Saldanha
+>>>
+>>>
+>>>                     On 2024-06-18 15:34, Elias Carvalho por (R-br)
+>>>                     wrote:
+>>>>                     Bom dia pessoal
+>>>>                     Alguém sabe se há algum pacote do R que extraia
+>>>>                     dados de atendimentos do SUS ?
+>>>>
+>>>>
+>>>>
+>>>>                     -- 
+>>>>                     /In Jesu et Maria
+>>>>
+>>>>                     /
+>>>>                     /Obrigado / Thank you
+>>>>                     /
+>>>>                     /Prof. Dr. Elias Carvalho/
+>>>>                     /
+>>>>                     /
+>>>>                     /
+>>>>                     "Felix, qui potuit rerum cognoscere causas"
+>>>>                     (Virgil 29 BC)
+>>>>                     "Blessed is he who has been able to understand
+>>>>                     the cause of things"
+>>>>                     /
+>>>>
+>>>>                     _______________________________________________
+>>>>                     R-br mailing list
+>>>>                     R-br em listas.c3sl.ufpr.br
+>>>>                     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>                     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>                     _______________________________________________
+>>>                     R-br mailing list
+>>>                     R-br em listas.c3sl.ufpr.br
+>>>                     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>                     Leia o guia de postagem
+>>>                     (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>                     código mínimo reproduzível.
+>>>
+>>>
+>>>
+>>>                 -- 
+>>>                 /In Jesu et Maria
+>>>
+>>>                 /
+>>>                 /Obrigado / Thank you
+>>>                 /
+>>>                 /Prof. Dr. Elias Carvalho/
+>>>                 /
+>>>                 /
+>>>                 /
+>>>                 "Felix, qui potuit rerum cognoscere causas" (Virgil
+>>>                 29 BC)
+>>>                 "Blessed is he who has been able to understand the
+>>>                 cause of things"
+>>>                 /
+>>
+>>
+>>
+>>             -- 
+>>             /In Jesu et Maria
+>>
+>>             /
+>>             /Obrigado / Thank you
+>>             /
+>>             /Prof. Dr. Elias Carvalho/
+>>             /
+>>             /
+>>             /
+>>             "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>>             "Blessed is he who has been able to understand the cause
+>>             of things"
+>>             /
+>>
+>>
+>>
+>>         -- 
+>>         /In Jesu et Maria
+>>
+>>         /
+>>         /Obrigado / Thank you
+>>         /
+>>         /Prof. Dr. Elias Carvalho/
+>>         /
+>>         /
+>>         /
+>>         "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>>         "Blessed is he who has been able to understand the cause of
+>>         things"
+>>         /
+>>
+>>         _______________________________________________
+>>         R-br mailing list
+>>         R-br em listas.c3sl.ufpr.br
+>>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>         _______________________________________________
+>         R-br mailing list
+>         R-br em listas.c3sl.ufpr.br
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>         Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>         forneça código mínimo reproduzível.
+>
+>
+>
+>     -- 
+>     /In Jesu et Maria
+>
+>     /
+>     /Obrigado / Thank you
+>     /
+>     /Prof. Dr. Elias Carvalho/
+>     /
+>     /
+>     /
+>     "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>     "Blessed is he who has been able to understand the cause of things"
+>     /
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240710/5629f82b/attachment.htm>
+
+From pedropaulo.chrispim em gmail.com  Thu Jul 11 12:22:32 2024
+From: pedropaulo.chrispim em gmail.com (Pedro Paulo Chrispim)
+Date: Thu, 11 Jul 2024 11:22:32 -0400
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <mailman.1.1720623601.14799.r-br@listas.c3sl.ufpr.br>
+References: <mailman.1.1720623601.14799.r-br@listas.c3sl.ufpr.br>
+Message-ID: <9C176FCF-C8C7-4812-8E3E-C772791773EE@gmail.com>
+
+Prezados,
+
+Como Tura, uso os dados do DATASUS há muitos anos.
+Não encontrei nada melhor do que manter uma cópia dos dados em sua máquina e extrair os dados de interesse direto dos DBC.
+Isso porque as bases não são muito uniformes e as correções nos scripts são relativamente frequentes. Apesar do trabalho maravilhoso que o DATASUS faz nas bases, pois seria um verdadeiro pesadelo usar os dados verdadeiramente crus.
+
+Já os dados individualizados não são exatamente o problema, os arquivos DBC fornecem dados individualizados por ficha de registro em cada sistema. Então, se o objetivo for a identificação dos pacientes, isso já não será possível pelos dados públicos.
+
+Por fim, minha experiência pessoal (que é maior no caso das AIH) me levou a trabalhar com data.table por razão de performance. Embora não seja uma recomendação definitiva, fica a sugestão.
+
+Pedro Paulo Chrispim
+Inst. Alicerce
+
+
+> On 10 Jul 2024, at 11:00, r-br-request em listas.c3sl.ufpr.br wrote:
+> 
+> Enviar submissões para a lista de discussão R-br para 
+> 	r-br em listas.c3sl.ufpr.br
+> 
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+> 	https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para 
+> 	r-br-request em listas.c3sl.ufpr.br
+> 
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+> 	r-br-owner em listas.c3sl.ufpr.br
+> 
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+> 
+> 
+> Tópicos de Hoje:
+> 
+>   1. Re: Extração de Dados do SUS (Cesar Rabak)
+>   2. Re: Extração de Dados do SUS (Bernardo Rangel Tura)
+> 
+> 
+> ----------------------------------------------------------------------
+> 
+> Message: 1
+> Date: Tue, 9 Jul 2024 23:49:28 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+> 	<r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Extração de Dados do SUS
+> Message-ID:
+> 	<CAKrF98kbYG82aR9nF_qB4crhJMm9x2xJ6BG2cuzjNUTV4-=odA em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+> 
+> Se o formato do SISAB for documentada certamente é factível gerar um código
+> para extrair os dados e colocá-los nas estruturas de dados convenientes
+> para uso no R, provavelmente dataframes ou os mais modernos tibles.
+> 
+> On Tue, Jul 9, 2024 at 9:07?PM Hidelbrando Rodrigues por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+> 
+>> Olá a todos.
+>> 
+>> Permitam-me participar da conversa. Nosso laboratório LAMAPP (Laboratório
+>> de Monitoramento e Avaliação de Políticas Públicas), aqui da federal do
+>> Amazonas, tem parceria com o Centro de Estudos Estratégicos do FIOCRUZ.
+>> 
+>> Nós criamos um curso de Ciência de Dados Aplicado à Saúde. Ele será
+>> hospedado em uma plataforma que ainda vamos definir. Ele será aberto e
+>> gratuito. Utilizamos como base, dados do SISAB, que não são tão amigáveis
+>> para baixar.
+>> 
+>> Diante do exposto, seguem as questões:
+>> 
+>> * Seria possível criar um código para extrair essa base diretamente do
+>> site??
+>> 
+>> * Existem outros pacotes para baixar dados de saúde, além do mencionado
+>> nesta conversa?
+>> 
+>> Att.
+>> 
+>> Hidelbrando
+>> 
+>> 
+>> 
+>> 
+>> Em ter., 9 de jul. de 2024 12:59, Elias Carvalho por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>> 
+>>> Caro Bernardo, eu agradeço antecipadamente
+>>> Eu trabalho no TI de uma universidade estadual e temos nosso hospital
+>>> universitário que atende muita gente, se não me engano além da cidade,
+>>> atende mais de 100 municípios ao redor.
+>>> Nosso problema é que o hospital usa o GSUS (prontuário do PR) e este não
+>>> exporta dados, não tem API (pelo menos para nós).
+>>> Gostaríamos de ter informações sobre prontuário, atendimento
+>>> ambulatorial, prescrição de medicamentos, imagens e laudos de forma
+>>> analítica, pois eu trabalho com BI (Qlik Sense) e gostaria de gerar
+>>> gráficos e tabelas com esses dados, além de pedir para minha equipe
+>>> desenvolver softwares de apoio com base nessas informações.
+>>> Eu creio que todos esses dados são exportados para o SUS e daí uma
+>>> tentativa seria extraí-los pelo R.
+>>> 
+>>> Em ter., 9 de jul. de 2024 às 12:28, Bernardo Rangel Tura por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>> 
+>>>> Elias o pacote do Rafael é maravilhoso vivo sugerindo para as pessoas
+>>>> usarem mas para algumas coisas às vezes não funciona, quase sempre porque
+>>>> as bases são muito mal feitas.
+>>>> Como trabalho com elas a mais e 20 anos estou acostumando a resolver
+>>>> esse tipo de encrenca.
+>>>> Que tal você descrever o que precisa e crio um script para você?
+>>>> 
+>>>> Bernardo Tura
+>>>> NBB - INC/MS
+>>>> On 6/18/24 15:19, Elias Carvalho por (R-br) wrote:
+>>>> 
+>>>> Outra coisa, consigo extrair dados da BPA-I (*Boletim de Produção
+>>>> Ambulatorial ? Individualizado*) ?
+>>>> 
+>>>> Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho <ecacarva em gmail.com>
+>>>> escreveu:
+>>>> 
+>>>>> Procurei aqui mas não achei, pelo fetch_datasus, dá para extrair dados
+>>>>> de um CNES específico Rafael ?
+>>>>> 
+>>>>> Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha <
+>>>>> rfsaldanha em gmail.com> escreveu:
+>>>>> 
+>>>>>> Obrigado! Para filtrar por um hospital específico, você precisa saber
+>>>>>> o código CNES da unidade de saúde. Você pode procurar o código aqui:
+>>>>>> cnes.datasus.gov.br
+>>>>>> On 2024-06-18 15:57, Elias Carvalho wrote:
+>>>>>> 
+>>>>>> Excelente Rafael ! Muito bom seu pacote.
+>>>>>> Vou dar uma olhada, no momento eu preciso extrair informações de um
+>>>>>> hospital público específico
+>>>>>> 
+>>>>>> Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por (R-br) <
+>>>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>>> 
+>>>>>>> Olá Elias,
+>>>>>>> 
+>>>>>>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS são
+>>>>>>> registrados em um sistema de informações em saúde denominado Sistema de
+>>>>>>> Informações Ambulatoriais.
+>>>>>>> 
+>>>>>>> Você consegue acessar esses dados com o R usando o pacote
+>>>>>>> {microdatasus}
+>>>>>>> 
+>>>>>>> https://rfsaldanha.github.io/microdatasus/
+>>>>>>> 
+>>>>>>> Posso te ajudar com mais detalhes se precisar.
+>>>>>>> 
+>>>>>>> 
+>>>>>>> Abraços,
+>>>>>>> 
+>>>>>>> Raphael Saldanha
+>>>>>>> 
+>>>>>>> 
+>>>>>>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+>>>>>>> 
+>>>>>>> Bom dia pessoal
+>>>>>>> Alguém sabe se há algum pacote do R que extraia dados de atendimentos
+>>>>>>> do SUS ?
+>>>>>>> 
+>>>>>>> 
+>>>>>>> 
+>>>>>>> --
+>>>>>>> 
+>>>>>>> 
+>>>>>>> *In Jesu et Maria *
+>>>>>>> 
+>>>>>>> *Obrigado / Thank you *
+>>>>>>> *Prof. Dr. Elias Carvalho*
+>>>>>>> 
+>>>>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+>>>>>>> is he who has been able to understand the cause of things" *
+>>>>>>> 
+>>>>>>> _______________________________________________
+>>>>>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>>>>> 
+>>>>>>> _______________________________________________
+>>>>>>> R-br mailing list
+>>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>>>> código mínimo reproduzível.
+>>>>>>> 
+>>>>>> 
+>>>>>> 
+>>>>>> --
+>>>>>> 
+>>>>>> 
+>>>>>> *In Jesu et Maria *
+>>>>>> 
+>>>>>> *Obrigado / Thank you *
+>>>>>> *Prof. Dr. Elias Carvalho*
+>>>>>> 
+>>>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+>>>>>> is he who has been able to understand the cause of things" *
+>>>>>> 
+>>>>>> 
+>>>>> 
+>>>>> --
+>>>>> 
+>>>>> 
+>>>>> *In Jesu et Maria *
+>>>>> 
+>>>>> *Obrigado / Thank you *
+>>>>> *Prof. Dr. Elias Carvalho*
+>>>>> 
+>>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+>>>>> is he who has been able to understand the cause of things" *
+>>>>> 
+>>>> 
+>>>> 
+>>>> --
+>>>> 
+>>>> 
+>>>> *In Jesu et Maria *
+>>>> 
+>>>> *Obrigado / Thank you *
+>>>> *Prof. Dr. Elias Carvalho*
+>>>> 
+>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed is
+>>>> he who has been able to understand the cause of things" *
+>>>> 
+>>>> _______________________________________________
+>>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>> 
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>> 
+>>> 
+>>> 
+>>> --
+>>> 
+>>> 
+>>> *In Jesu et Maria*
+>>> 
+>>> *Obrigado / Thank you*
+>>> *Prof. Dr. Elias Carvalho*
+>>> 
+>>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+>>> who has been able to understand the cause of things"*
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>> 
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>> 
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/94c49b96/attachment-0001.htm>
+> 
+> ------------------------------
+> 
+> Message: 2
+> Date: Wed, 10 Jul 2024 08:39:58 -0300
+> From: Bernardo Rangel Tura <listasrtura em gmail.com>
+> To: "Hidelbrando Rodrigues por (R-br)" <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] Extração de Dados do SUS
+> Message-ID: <65425f85-4744-43e2-854e-04a8b521e96f em gmail.com>
+> Content-Type: text/plain; charset="utf-8"; Format="flowed"
+> 
+> Bom dia Hidelbrando
+> 
+> Eu nunca trabalhei com dados do SISAB mas acredito qeu seja possivel 
+> fazer sim e tipo de rotina, teria que ver  o formato dos dados, um 
+> pacote que pode ser interessante para você é o SIDRA
+> 
+> Abraços
+> 
+> Bernardo Tura
+> 
+> NBB - INC/MS
+> 
+> 
+> On 7/9/24 21:06, Hidelbrando Rodrigues por (R-br) wrote:
+>> Olá a todos.
+>> 
+>> Permitam-me participar da conversa. Nosso laboratório LAMAPP 
+>> (Laboratório de Monitoramento e Avaliação de Políticas Públicas), aqui 
+>> da federal do Amazonas, tem parceria com o Centro de Estudos 
+>> Estratégicos do FIOCRUZ.
+>> 
+>> Nós criamos um curso de Ciência de Dados Aplicado à Saúde. Ele será 
+>> hospedado em uma plataforma que ainda vamos definir. Ele será aberto e 
+>> gratuito. Utilizamos como base, dados do SISAB, que não são tão 
+>> amigáveis para baixar.
+>> 
+>> Diante do exposto, seguem as questões:
+>> 
+>> * Seria possível criar um código para extrair essa base diretamente do 
+>> site??
+>> 
+>> * Existem outros pacotes para baixar dados de saúde, além do 
+>> mencionado nesta conversa?
+>> 
+>> Att.
+>> 
+>> Hidelbrando
+>> 
+>> 
+>> 
+>> 
+>> Em ter., 9 de jul. de 2024 12:59, Elias Carvalho por (R-br) 
+>> <r-br em listas.c3sl.ufpr.br> escreveu:
+>> 
+>>    Caro Bernardo, eu agradeço antecipadamente
+>>    Eu trabalho no TI de uma universidade estadual e temos nosso
+>>    hospital universitário que atende muita gente, se não me engano
+>>    além da cidade, atende mais de 100 municípios ao redor.
+>>    Nosso problema é que o hospital usa o GSUS (prontuário do PR) e
+>>    este não exporta dados, não tem API (pelo menos para nós).
+>>    Gostaríamos de ter informações sobre prontuário, atendimento
+>>    ambulatorial, prescrição de medicamentos, imagens e laudos de
+>>    forma analítica, pois eu trabalho com BI (Qlik Sense) e gostaria
+>>    de gerar gráficos e tabelas com esses dados, além de pedir para
+>>    minha equipe desenvolver softwares de apoio com base nessas
+>>    informações.
+>>    Eu creio que todos esses dados são exportados para o SUS e daí uma
+>>    tentativa seria extraí-los pelo R.
+>> 
+>>    Em ter., 9 de jul. de 2024 às 12:28, Bernardo Rangel Tura por
+>>    (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>> 
+>>        Elias o pacote do Rafael é maravilhoso vivo sugerindo para as
+>>        pessoas usarem mas para algumas coisas às vezes não funciona,
+>>        quase sempre porque as bases são muito mal feitas.
+>>        Como trabalho com elas a mais e 20 anos estou acostumando a
+>>        resolver esse tipo de encrenca.
+>>        Que tal você descrever o que precisa e crio um script para você?
+>> 
+>>        Bernardo Tura
+>>        NBB - INC/MS
+>> 
+>>        On 6/18/24 15:19, Elias Carvalho por (R-br) wrote:
+>>>        Outra coisa, consigo extrair dados da BPA-I (*Boletim de
+>>>        Produção Ambulatorial ? Individualizado*) ?
+>>> 
+>>>        Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho
+>>>        <ecacarva em gmail.com> escreveu:
+>>> 
+>>>            Procurei aqui mas não achei, pelo fetch_datasus, dá para
+>>>            extrair dados de um CNES específico Rafael ?
+>>> 
+>>>            Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha
+>>>            <rfsaldanha em gmail.com> escreveu:
+>>> 
+>>>                Obrigado! Para filtrar por um hospital específico,
+>>>                você precisa saber o código CNES da unidade de saúde.
+>>>                Você pode procurar o código aqui: cnes.datasus.gov.br
+>>>                <http://cnes.datasus.gov.br>
+>>> 
+>>>                On 2024-06-18 15:57, Elias Carvalho wrote:
+>>>>                Excelente Rafael ! Muito bom seu pacote.
+>>>>                Vou dar uma olhada, no momento eu preciso extrair
+>>>>                informações de um hospital público específico
+>>>> 
+>>>>                Em ter., 18 de jun. de 2024 às 10:40, Raphael
+>>>>                Saldanha por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>>>> 
+>>>>                    Olá Elias,
+>>>> 
+>>>>                    Os dados de atendimentos ambulatoriais da
+>>>>                    dimensão pública do SUS são registrados em um
+>>>>                    sistema de informações em saúde denominado
+>>>>                    Sistema de Informações Ambulatoriais.
+>>>> 
+>>>>                    Você consegue acessar esses dados com o R usando
+>>>>                    o pacote {microdatasus}
+>>>> 
+>>>>                    https://rfsaldanha.github.io/microdatasus/
+>>>> 
+>>>>                    Posso te ajudar com mais detalhes se precisar.
+>>>> 
+>>>> 
+>>>>                    Abraços,
+>>>> 
+>>>>                    Raphael Saldanha
+>>>> 
+>>>> 
+>>>>                    On 2024-06-18 15:34, Elias Carvalho por (R-br)
+>>>>                    wrote:
+>>>>>                    Bom dia pessoal
+>>>>>                    Alguém sabe se há algum pacote do R que extraia
+>>>>>                    dados de atendimentos do SUS ?
+>>>>> 
+>>>>> 
+>>>>> 
+>>>>>                    -- 
+>>>>>                    /In Jesu et Maria
+>>>>> 
+>>>>>                    /
+>>>>>                    /Obrigado / Thank you
+>>>>>                    /
+>>>>>                    /Prof. Dr. Elias Carvalho/
+>>>>>                    /
+>>>>>                    /
+>>>>>                    /
+>>>>>                    "Felix, qui potuit rerum cognoscere causas"
+>>>>>                    (Virgil 29 BC)
+>>>>>                    "Blessed is he who has been able to understand
+>>>>>                    the cause of things"
+>>>>>                    /
+>>>>> 
+>>>>>                    _______________________________________________
+>>>>>                    R-br mailing list
+>>>>>                    R-br em listas.c3sl.ufpr.br
+>>>>>                    https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>                    Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>>>                    _______________________________________________
+>>>>                    R-br mailing list
+>>>>                    R-br em listas.c3sl.ufpr.br
+>>>>                    https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>                    Leia o guia de postagem
+>>>>                    (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>                    código mínimo reproduzível.
+>>>> 
+>>>> 
+>>>> 
+>>>>                -- 
+>>>>                /In Jesu et Maria
+>>>> 
+>>>>                /
+>>>>                /Obrigado / Thank you
+>>>>                /
+>>>>                /Prof. Dr. Elias Carvalho/
+>>>>                /
+>>>>                /
+>>>>                /
+>>>>                "Felix, qui potuit rerum cognoscere causas" (Virgil
+>>>>                29 BC)
+>>>>                "Blessed is he who has been able to understand the
+>>>>                cause of things"
+>>>>                /
+>>> 
+>>> 
+>>> 
+>>>            -- 
+>>>            /In Jesu et Maria
+>>> 
+>>>            /
+>>>            /Obrigado / Thank you
+>>>            /
+>>>            /Prof. Dr. Elias Carvalho/
+>>>            /
+>>>            /
+>>>            /
+>>>            "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>>>            "Blessed is he who has been able to understand the cause
+>>>            of things"
+>>>            /
+>>> 
+>>> 
+>>> 
+>>>        -- 
+>>>        /In Jesu et Maria
+>>> 
+>>>        /
+>>>        /Obrigado / Thank you
+>>>        /
+>>>        /Prof. Dr. Elias Carvalho/
+>>>        /
+>>>        /
+>>>        /
+>>>        "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>>>        "Blessed is he who has been able to understand the cause of
+>>>        things"
+>>>        /
+>>> 
+>>>        _______________________________________________
+>>>        R-br mailing list
+>>>        R-br em listas.c3sl.ufpr.br
+>>>        https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>        Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>>        _______________________________________________
+>>        R-br mailing list
+>>        R-br em listas.c3sl.ufpr.br
+>>        https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>        Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>        forneça código mínimo reproduzível.
+>> 
+>> 
+>> 
+>>    -- 
+>>    /In Jesu et Maria
+>> 
+>>    /
+>>    /Obrigado / Thank you
+>>    /
+>>    /Prof. Dr. Elias Carvalho/
+>>    /
+>>    /
+>>    /
+>>    "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+>>    "Blessed is he who has been able to understand the cause of things"
+>>    /
+>>    _______________________________________________
+>>    R-br mailing list
+>>    R-br em listas.c3sl.ufpr.br
+>>    https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>    Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>    forneça código mínimo reproduzível.
+>> 
+>> 
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240710/5629f82b/attachment-0001.htm>
+> 
+> ------------------------------
+> 
+> Subject: Legenda do Digest
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> 
+> 
+> ------------------------------
+> 
+> Fim da Digest R-br, volume 155, assunto 3
+> *****************************************
+
+
+From cesar.rabak em gmail.com  Thu Jul 11 14:58:31 2024
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 11 Jul 2024 14:58:31 -0300
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <9C176FCF-C8C7-4812-8E3E-C772791773EE@gmail.com>
+References: <mailman.1.1720623601.14799.r-br@listas.c3sl.ufpr.br>
+ <9C176FCF-C8C7-4812-8E3E-C772791773EE@gmail.com>
+Message-ID: <CAKrF98kZ7N5XDuitL=MjqACZKa0tkyTE4wEpWO_dUsxB-FrpZw@mail.gmail.com>
+
+Aproveito a deixa dada pela lembrança do P. P. Crispim, e coloco que
+atualmente faz-se mister ter o apoio técnico de especialistas sobre LGPD,
+pois além de os dados já serem razoavelmente anonimizados pela retirada de
+dados de identificação mais comuns, há ainda risco de certas pesquisas
+permitirem alguma violação se a gente não tomar cuidado.
+
+HTH
+
+On Thu, Jul 11, 2024 at 12:22?PM Pedro Paulo Chrispim por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados,
+>
+> Como Tura, uso os dados do DATASUS há muitos anos.
+> Não encontrei nada melhor do que manter uma cópia dos dados em sua máquina
+> e extrair os dados de interesse direto dos DBC.
+> Isso porque as bases não são muito uniformes e as correções nos scripts
+> são relativamente frequentes. Apesar do trabalho maravilhoso que o DATASUS
+> faz nas bases, pois seria um verdadeiro pesadelo usar os dados
+> verdadeiramente crus.
+>
+> Já os dados individualizados não são exatamente o problema, os arquivos
+> DBC fornecem dados individualizados por ficha de registro em cada sistema.
+> Então, se o objetivo for a identificação dos pacientes, isso já não será
+> possível pelos dados públicos.
+>
+> Por fim, minha experiência pessoal (que é maior no caso das AIH) me levou
+> a trabalhar com data.table por razão de performance. Embora não seja uma
+> recomendação definitiva, fica a sugestão.
+>
+> Pedro Paulo Chrispim
+> Inst. Alicerce
+>
+>
+> > On 10 Jul 2024, at 11:00, r-br-request em listas.c3sl.ufpr.br wrote:
+> >
+> > Enviar submissões para a lista de discussão R-br para
+> >       r-br em listas.c3sl.ufpr.br
+> >
+> > Para se cadastrar ou descadastrar via WWW, visite o endereço
+> >       https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> > corpo da mensagem para
+> >       r-br-request em listas.c3sl.ufpr.br
+> >
+> > Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> > endereço
+> >       r-br-owner em listas.c3sl.ufpr.br
+> >
+> > Quando responder, por favor edite sua linha Assunto assim ela será
+> > mais específica que "Re: Contents of R-br digest..."
+> >
+> >
+> > Tópicos de Hoje:
+> >
+> >   1. Re: Extração de Dados do SUS (Cesar Rabak)
+> >   2. Re: Extração de Dados do SUS (Bernardo Rangel Tura)
+> >
+> >
+> > ----------------------------------------------------------------------
+> >
+> > Message: 1
+> > Date: Tue, 9 Jul 2024 23:49:28 -0300
+> > From: Cesar Rabak <cesar.rabak em gmail.com>
+> > To: a lista Brasileira oficial de discussão do programa R.
+> >       <r-br em listas.c3sl.ufpr.br>
+> > Subject: Re: [R-br] Extração de Dados do SUS
+> > Message-ID:
+> >       <CAKrF98kbYG82aR9nF_qB4crhJMm9x2xJ6BG2cuzjNUTV4-=
+> odA em mail.gmail.com>
+> > Content-Type: text/plain; charset="utf-8"
+> >
+> > Se o formato do SISAB for documentada certamente é factível gerar um
+> código
+> > para extrair os dados e colocá-los nas estruturas de dados convenientes
+> > para uso no R, provavelmente dataframes ou os mais modernos tibles.
+> >
+> > On Tue, Jul 9, 2024 at 9:07?PM Hidelbrando Rodrigues por (R-br) <
+> > r-br em listas.c3sl.ufpr.br> wrote:
+> >
+> >> Olá a todos.
+> >>
+> >> Permitam-me participar da conversa. Nosso laboratório LAMAPP
+> (Laboratório
+> >> de Monitoramento e Avaliação de Políticas Públicas), aqui da federal do
+> >> Amazonas, tem parceria com o Centro de Estudos Estratégicos do FIOCRUZ.
+> >>
+> >> Nós criamos um curso de Ciência de Dados Aplicado à Saúde. Ele será
+> >> hospedado em uma plataforma que ainda vamos definir. Ele será aberto e
+> >> gratuito. Utilizamos como base, dados do SISAB, que não são tão
+> amigáveis
+> >> para baixar.
+> >>
+> >> Diante do exposto, seguem as questões:
+> >>
+> >> * Seria possível criar um código para extrair essa base diretamente do
+> >> site??
+> >>
+> >> * Existem outros pacotes para baixar dados de saúde, além do mencionado
+> >> nesta conversa?
+> >>
+> >> Att.
+> >>
+> >> Hidelbrando
+> >>
+> >>
+> >>
+> >>
+> >> Em ter., 9 de jul. de 2024 12:59, Elias Carvalho por (R-br) <
+> >> r-br em listas.c3sl.ufpr.br> escreveu:
+> >>
+> >>> Caro Bernardo, eu agradeço antecipadamente
+> >>> Eu trabalho no TI de uma universidade estadual e temos nosso hospital
+> >>> universitário que atende muita gente, se não me engano além da cidade,
+> >>> atende mais de 100 municípios ao redor.
+> >>> Nosso problema é que o hospital usa o GSUS (prontuário do PR) e este
+> não
+> >>> exporta dados, não tem API (pelo menos para nós).
+> >>> Gostaríamos de ter informações sobre prontuário, atendimento
+> >>> ambulatorial, prescrição de medicamentos, imagens e laudos de forma
+> >>> analítica, pois eu trabalho com BI (Qlik Sense) e gostaria de gerar
+> >>> gráficos e tabelas com esses dados, além de pedir para minha equipe
+> >>> desenvolver softwares de apoio com base nessas informações.
+> >>> Eu creio que todos esses dados são exportados para o SUS e daí uma
+> >>> tentativa seria extraí-los pelo R.
+> >>>
+> >>> Em ter., 9 de jul. de 2024 às 12:28, Bernardo Rangel Tura por (R-br) <
+> >>> r-br em listas.c3sl.ufpr.br> escreveu:
+> >>>
+> >>>> Elias o pacote do Rafael é maravilhoso vivo sugerindo para as pessoas
+> >>>> usarem mas para algumas coisas às vezes não funciona, quase sempre
+> porque
+> >>>> as bases são muito mal feitas.
+> >>>> Como trabalho com elas a mais e 20 anos estou acostumando a resolver
+> >>>> esse tipo de encrenca.
+> >>>> Que tal você descrever o que precisa e crio um script para você?
+> >>>>
+> >>>> Bernardo Tura
+> >>>> NBB - INC/MS
+> >>>> On 6/18/24 15:19, Elias Carvalho por (R-br) wrote:
+> >>>>
+> >>>> Outra coisa, consigo extrair dados da BPA-I (*Boletim de Produção
+> >>>> Ambulatorial ? Individualizado*) ?
+> >>>>
+> >>>> Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho <
+> ecacarva em gmail.com>
+> >>>> escreveu:
+> >>>>
+> >>>>> Procurei aqui mas não achei, pelo fetch_datasus, dá para extrair
+> dados
+> >>>>> de um CNES específico Rafael ?
+> >>>>>
+> >>>>> Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha <
+> >>>>> rfsaldanha em gmail.com> escreveu:
+> >>>>>
+> >>>>>> Obrigado! Para filtrar por um hospital específico, você precisa
+> saber
+> >>>>>> o código CNES da unidade de saúde. Você pode procurar o código aqui:
+> >>>>>> cnes.datasus.gov.br
+> >>>>>> On 2024-06-18 15:57, Elias Carvalho wrote:
+> >>>>>>
+> >>>>>> Excelente Rafael ! Muito bom seu pacote.
+> >>>>>> Vou dar uma olhada, no momento eu preciso extrair informações de um
+> >>>>>> hospital público específico
+> >>>>>>
+> >>>>>> Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por (R-br) <
+> >>>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+> >>>>>>
+> >>>>>>> Olá Elias,
+> >>>>>>>
+> >>>>>>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS
+> são
+> >>>>>>> registrados em um sistema de informações em saúde denominado
+> Sistema de
+> >>>>>>> Informações Ambulatoriais.
+> >>>>>>>
+> >>>>>>> Você consegue acessar esses dados com o R usando o pacote
+> >>>>>>> {microdatasus}
+> >>>>>>>
+> >>>>>>> https://rfsaldanha.github.io/microdatasus/
+> >>>>>>>
+> >>>>>>> Posso te ajudar com mais detalhes se precisar.
+> >>>>>>>
+> >>>>>>>
+> >>>>>>> Abraços,
+> >>>>>>>
+> >>>>>>> Raphael Saldanha
+> >>>>>>>
+> >>>>>>>
+> >>>>>>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+> >>>>>>>
+> >>>>>>> Bom dia pessoal
+> >>>>>>> Alguém sabe se há algum pacote do R que extraia dados de
+> atendimentos
+> >>>>>>> do SUS ?
+> >>>>>>>
+> >>>>>>>
+> >>>>>>>
+> >>>>>>> --
+> >>>>>>>
+> >>>>>>>
+> >>>>>>> *In Jesu et Maria *
+> >>>>>>>
+> >>>>>>> *Obrigado / Thank you *
+> >>>>>>> *Prof. Dr. Elias Carvalho*
+> >>>>>>>
+> >>>>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed
+> >>>>>>> is he who has been able to understand the cause of things" *
+> >>>>>>>
+> >>>>>>> _______________________________________________
+> >>>>>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://
+> listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+> forneça código mínimo reproduzível.
+> >>>>>>>
+> >>>>>>> _______________________________________________
+> >>>>>>> R-br mailing list
+> >>>>>>> R-br em listas.c3sl.ufpr.br
+> >>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+> forneça
+> >>>>>>> código mínimo reproduzível.
+> >>>>>>>
+> >>>>>>
+> >>>>>>
+> >>>>>> --
+> >>>>>>
+> >>>>>>
+> >>>>>> *In Jesu et Maria *
+> >>>>>>
+> >>>>>> *Obrigado / Thank you *
+> >>>>>> *Prof. Dr. Elias Carvalho*
+> >>>>>>
+> >>>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed
+> >>>>>> is he who has been able to understand the cause of things" *
+> >>>>>>
+> >>>>>>
+> >>>>>
+> >>>>> --
+> >>>>>
+> >>>>>
+> >>>>> *In Jesu et Maria *
+> >>>>>
+> >>>>> *Obrigado / Thank you *
+> >>>>> *Prof. Dr. Elias Carvalho*
+> >>>>>
+> >>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+> >>>>> is he who has been able to understand the cause of things" *
+> >>>>>
+> >>>>
+> >>>>
+> >>>> --
+> >>>>
+> >>>>
+> >>>> *In Jesu et Maria *
+> >>>>
+> >>>> *Obrigado / Thank you *
+> >>>> *Prof. Dr. Elias Carvalho*
+> >>>>
+> >>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+> is
+> >>>> he who has been able to understand the cause of things" *
+> >>>>
+> >>>> _______________________________________________
+> >>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://
+> listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+> >>>>
+> >>>> _______________________________________________
+> >>>> R-br mailing list
+> >>>> R-br em listas.c3sl.ufpr.br
+> >>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> >>>> código mínimo reproduzível.
+> >>>>
+> >>>
+> >>>
+> >>> --
+> >>>
+> >>>
+> >>> *In Jesu et Maria*
+> >>>
+> >>> *Obrigado / Thank you*
+> >>> *Prof. Dr. Elias Carvalho*
+> >>>
+> >>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is
+> he
+> >>> who has been able to understand the cause of things"*
+> >>> _______________________________________________
+> >>> R-br mailing list
+> >>> R-br em listas.c3sl.ufpr.br
+> >>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> >>> código mínimo reproduzível.
+> >>>
+> >> _______________________________________________
+> >> R-br mailing list
+> >> R-br em listas.c3sl.ufpr.br
+> >> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> >> código mínimo reproduzível.
+> >>
+> > -------------- Próxima Parte ----------
+> > Um anexo em HTML foi limpo...
+> > URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/94c49b96/attachment-0001.htm
+> >
+> >
+> > ------------------------------
+> >
+> > Message: 2
+> > Date: Wed, 10 Jul 2024 08:39:58 -0300
+> > From: Bernardo Rangel Tura <listasrtura em gmail.com>
+> > To: "Hidelbrando Rodrigues por (R-br)" <r-br em listas.c3sl.ufpr.br>
+> > Subject: Re: [R-br] Extração de Dados do SUS
+> > Message-ID: <65425f85-4744-43e2-854e-04a8b521e96f em gmail.com>
+> > Content-Type: text/plain; charset="utf-8"; Format="flowed"
+> >
+> > Bom dia Hidelbrando
+> >
+> > Eu nunca trabalhei com dados do SISAB mas acredito qeu seja possivel
+> > fazer sim e tipo de rotina, teria que ver  o formato dos dados, um
+> > pacote que pode ser interessante para você é o SIDRA
+> >
+> > Abraços
+> >
+> > Bernardo Tura
+> >
+> > NBB - INC/MS
+> >
+> >
+> > On 7/9/24 21:06, Hidelbrando Rodrigues por (R-br) wrote:
+> >> Olá a todos.
+> >>
+> >> Permitam-me participar da conversa. Nosso laboratório LAMAPP
+> >> (Laboratório de Monitoramento e Avaliação de Políticas Públicas), aqui
+> >> da federal do Amazonas, tem parceria com o Centro de Estudos
+> >> Estratégicos do FIOCRUZ.
+> >>
+> >> Nós criamos um curso de Ciência de Dados Aplicado à Saúde. Ele será
+> >> hospedado em uma plataforma que ainda vamos definir. Ele será aberto e
+> >> gratuito. Utilizamos como base, dados do SISAB, que não são tão
+> >> amigáveis para baixar.
+> >>
+> >> Diante do exposto, seguem as questões:
+> >>
+> >> * Seria possível criar um código para extrair essa base diretamente do
+> >> site??
+> >>
+> >> * Existem outros pacotes para baixar dados de saúde, além do
+> >> mencionado nesta conversa?
+> >>
+> >> Att.
+> >>
+> >> Hidelbrando
+> >>
+> >>
+> >>
+> >>
+> >> Em ter., 9 de jul. de 2024 12:59, Elias Carvalho por (R-br)
+> >> <r-br em listas.c3sl.ufpr.br> escreveu:
+> >>
+> >>    Caro Bernardo, eu agradeço antecipadamente
+> >>    Eu trabalho no TI de uma universidade estadual e temos nosso
+> >>    hospital universitário que atende muita gente, se não me engano
+> >>    além da cidade, atende mais de 100 municípios ao redor.
+> >>    Nosso problema é que o hospital usa o GSUS (prontuário do PR) e
+> >>    este não exporta dados, não tem API (pelo menos para nós).
+> >>    Gostaríamos de ter informações sobre prontuário, atendimento
+> >>    ambulatorial, prescrição de medicamentos, imagens e laudos de
+> >>    forma analítica, pois eu trabalho com BI (Qlik Sense) e gostaria
+> >>    de gerar gráficos e tabelas com esses dados, além de pedir para
+> >>    minha equipe desenvolver softwares de apoio com base nessas
+> >>    informações.
+> >>    Eu creio que todos esses dados são exportados para o SUS e daí uma
+> >>    tentativa seria extraí-los pelo R.
+> >>
+> >>    Em ter., 9 de jul. de 2024 às 12:28, Bernardo Rangel Tura por
+> >>    (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+> >>
+> >>        Elias o pacote do Rafael é maravilhoso vivo sugerindo para as
+> >>        pessoas usarem mas para algumas coisas às vezes não funciona,
+> >>        quase sempre porque as bases são muito mal feitas.
+> >>        Como trabalho com elas a mais e 20 anos estou acostumando a
+> >>        resolver esse tipo de encrenca.
+> >>        Que tal você descrever o que precisa e crio um script para você?
+> >>
+> >>        Bernardo Tura
+> >>        NBB - INC/MS
+> >>
+> >>        On 6/18/24 15:19, Elias Carvalho por (R-br) wrote:
+> >>>        Outra coisa, consigo extrair dados da BPA-I (*Boletim de
+> >>>        Produção Ambulatorial ? Individualizado*) ?
+> >>>
+> >>>        Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho
+> >>>        <ecacarva em gmail.com> escreveu:
+> >>>
+> >>>            Procurei aqui mas não achei, pelo fetch_datasus, dá para
+> >>>            extrair dados de um CNES específico Rafael ?
+> >>>
+> >>>            Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha
+> >>>            <rfsaldanha em gmail.com> escreveu:
+> >>>
+> >>>                Obrigado! Para filtrar por um hospital específico,
+> >>>                você precisa saber o código CNES da unidade de saúde.
+> >>>                Você pode procurar o código aqui: cnes.datasus.gov.br
+> >>>                <http://cnes.datasus.gov.br>
+> >>>
+> >>>                On 2024-06-18 15:57, Elias Carvalho wrote:
+> >>>>                Excelente Rafael ! Muito bom seu pacote.
+> >>>>                Vou dar uma olhada, no momento eu preciso extrair
+> >>>>                informações de um hospital público específico
+> >>>>
+> >>>>                Em ter., 18 de jun. de 2024 às 10:40, Raphael
+> >>>>                Saldanha por (R-br) <r-br em listas.c3sl.ufpr.br>
+> escreveu:
+> >>>>
+> >>>>                    Olá Elias,
+> >>>>
+> >>>>                    Os dados de atendimentos ambulatoriais da
+> >>>>                    dimensão pública do SUS são registrados em um
+> >>>>                    sistema de informações em saúde denominado
+> >>>>                    Sistema de Informações Ambulatoriais.
+> >>>>
+> >>>>                    Você consegue acessar esses dados com o R usando
+> >>>>                    o pacote {microdatasus}
+> >>>>
+> >>>>                    https://rfsaldanha.github.io/microdatasus/
+> >>>>
+> >>>>                    Posso te ajudar com mais detalhes se precisar.
+> >>>>
+> >>>>
+> >>>>                    Abraços,
+> >>>>
+> >>>>                    Raphael Saldanha
+> >>>>
+> >>>>
+> >>>>                    On 2024-06-18 15:34, Elias Carvalho por (R-br)
+> >>>>                    wrote:
+> >>>>>                    Bom dia pessoal
+> >>>>>                    Alguém sabe se há algum pacote do R que extraia
+> >>>>>                    dados de atendimentos do SUS ?
+> >>>>>
+> >>>>>
+> >>>>>
+> >>>>>                    --
+> >>>>>                    /In Jesu et Maria
+> >>>>>
+> >>>>>                    /
+> >>>>>                    /Obrigado / Thank you
+> >>>>>                    /
+> >>>>>                    /Prof. Dr. Elias Carvalho/
+> >>>>>                    /
+> >>>>>                    /
+> >>>>>                    /
+> >>>>>                    "Felix, qui potuit rerum cognoscere causas"
+> >>>>>                    (Virgil 29 BC)
+> >>>>>                    "Blessed is he who has been able to understand
+> >>>>>                    the cause of things"
+> >>>>>                    /
+> >>>>>
+> >>>>>                    _______________________________________________
+> >>>>>                    R-br mailing list
+> >>>>>                    R-br em listas.c3sl.ufpr.br
+> >>>>>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>>>                    Leia o guia de postagem (
+> http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> >>>>                    _______________________________________________
+> >>>>                    R-br mailing list
+> >>>>                    R-br em listas.c3sl.ufpr.br
+> >>>>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>>                    Leia o guia de postagem
+> >>>>                    (http://www.leg.ufpr.br/r-br-guia) e forneça
+> >>>>                    código mínimo reproduzível.
+> >>>>
+> >>>>
+> >>>>
+> >>>>                --
+> >>>>                /In Jesu et Maria
+> >>>>
+> >>>>                /
+> >>>>                /Obrigado / Thank you
+> >>>>                /
+> >>>>                /Prof. Dr. Elias Carvalho/
+> >>>>                /
+> >>>>                /
+> >>>>                /
+> >>>>                "Felix, qui potuit rerum cognoscere causas" (Virgil
+> >>>>                29 BC)
+> >>>>                "Blessed is he who has been able to understand the
+> >>>>                cause of things"
+> >>>>                /
+> >>>
+> >>>
+> >>>
+> >>>            --
+> >>>            /In Jesu et Maria
+> >>>
+> >>>            /
+> >>>            /Obrigado / Thank you
+> >>>            /
+> >>>            /Prof. Dr. Elias Carvalho/
+> >>>            /
+> >>>            /
+> >>>            /
+> >>>            "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> >>>            "Blessed is he who has been able to understand the cause
+> >>>            of things"
+> >>>            /
+> >>>
+> >>>
+> >>>
+> >>>        --
+> >>>        /In Jesu et Maria
+> >>>
+> >>>        /
+> >>>        /Obrigado / Thank you
+> >>>        /
+> >>>        /Prof. Dr. Elias Carvalho/
+> >>>        /
+> >>>        /
+> >>>        /
+> >>>        "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> >>>        "Blessed is he who has been able to understand the cause of
+> >>>        things"
+> >>>        /
+> >>>
+> >>>        _______________________________________________
+> >>>        R-br mailing list
+> >>>        R-br em listas.c3sl.ufpr.br
+> >>>        https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>        Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+> forneça código mínimo reproduzível.
+> >>        _______________________________________________
+> >>        R-br mailing list
+> >>        R-br em listas.c3sl.ufpr.br
+> >>        https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>        Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+> >>        forneça código mínimo reproduzível.
+> >>
+> >>
+> >>
+> >>    --
+> >>    /In Jesu et Maria
+> >>
+> >>    /
+> >>    /Obrigado / Thank you
+> >>    /
+> >>    /Prof. Dr. Elias Carvalho/
+> >>    /
+> >>    /
+> >>    /
+> >>    "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> >>    "Blessed is he who has been able to understand the cause of things"
+> >>    /
+> >>    _______________________________________________
+> >>    R-br mailing list
+> >>    R-br em listas.c3sl.ufpr.br
+> >>    https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>    Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+> >>    forneça código mínimo reproduzível.
+> >>
+> >>
+> >> _______________________________________________
+> >> R-br mailing list
+> >> R-br em listas.c3sl.ufpr.br
+> >> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+> > -------------- Próxima Parte ----------
+> > Um anexo em HTML foi limpo...
+> > URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240710/5629f82b/attachment-0001.htm
+> >
+> >
+> > ------------------------------
+> >
+> > Subject: Legenda do Digest
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >
+> >
+> > ------------------------------
+> >
+> > Fim da Digest R-br, volume 155, assunto 3
+> > *****************************************
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240711/e9950ec4/attachment.htm>
+
+From professorhidelbrando em gmail.com  Thu Jul 11 20:29:28 2024
+From: professorhidelbrando em gmail.com (Hidelbrando Rodrigues)
+Date: Thu, 11 Jul 2024 19:29:28 -0400
+Subject: [R-br] =?utf-8?q?Extra=C3=A7=C3=A3o_de_Dados_do_SUS?=
+In-Reply-To: <9C176FCF-C8C7-4812-8E3E-C772791773EE@gmail.com>
+References: <mailman.1.1720623601.14799.r-br@listas.c3sl.ufpr.br>
+ <9C176FCF-C8C7-4812-8E3E-C772791773EE@gmail.com>
+Message-ID: <CA+49qTQSAR93OHrrE-Azp+1n2Rh-KvetiqHxk12hOUj0_z7ENA@mail.gmail.com>
+
+Olá Pedro.
+
+Posso seduzir do seu comentário que os dados disponíveis do SISAB estariam,
+por hipótese,  também disponível no DATA.SUS?
+
+Obrigado.
+
+Att. Hidelbrando
+
+Em qui., 11 de jul. de 2024 11:22, Pedro Paulo Chrispim por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados,
+>
+> Como Tura, uso os dados do DATASUS há muitos anos.
+> Não encontrei nada melhor do que manter uma cópia dos dados em sua máquina
+> e extrair os dados de interesse direto dos DBC.
+> Isso porque as bases não são muito uniformes e as correções nos scripts
+> são relativamente frequentes. Apesar do trabalho maravilhoso que o DATASUS
+> faz nas bases, pois seria um verdadeiro pesadelo usar os dados
+> verdadeiramente crus.
+>
+> Já os dados individualizados não são exatamente o problema, os arquivos
+> DBC fornecem dados individualizados por ficha de registro em cada sistema.
+> Então, se o objetivo for a identificação dos pacientes, isso já não será
+> possível pelos dados públicos.
+>
+> Por fim, minha experiência pessoal (que é maior no caso das AIH) me levou
+> a trabalhar com data.table por razão de performance. Embora não seja uma
+> recomendação definitiva, fica a sugestão.
+>
+> Pedro Paulo Chrispim
+> Inst. Alicerce
+>
+>
+> > On 10 Jul 2024, at 11:00, r-br-request em listas.c3sl.ufpr.br wrote:
+> >
+> > Enviar submissões para a lista de discussão R-br para
+> >       r-br em listas.c3sl.ufpr.br
+> >
+> > Para se cadastrar ou descadastrar via WWW, visite o endereço
+> >       https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> > corpo da mensagem para
+> >       r-br-request em listas.c3sl.ufpr.br
+> >
+> > Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> > endereço
+> >       r-br-owner em listas.c3sl.ufpr.br
+> >
+> > Quando responder, por favor edite sua linha Assunto assim ela será
+> > mais específica que "Re: Contents of R-br digest..."
+> >
+> >
+> > Tópicos de Hoje:
+> >
+> >   1. Re: Extração de Dados do SUS (Cesar Rabak)
+> >   2. Re: Extração de Dados do SUS (Bernardo Rangel Tura)
+> >
+> >
+> > ----------------------------------------------------------------------
+> >
+> > Message: 1
+> > Date: Tue, 9 Jul 2024 23:49:28 -0300
+> > From: Cesar Rabak <cesar.rabak em gmail.com>
+> > To: a lista Brasileira oficial de discussão do programa R.
+> >       <r-br em listas.c3sl.ufpr.br>
+> > Subject: Re: [R-br] Extração de Dados do SUS
+> > Message-ID:
+> >       <CAKrF98kbYG82aR9nF_qB4crhJMm9x2xJ6BG2cuzjNUTV4-=
+> odA em mail.gmail.com>
+> > Content-Type: text/plain; charset="utf-8"
+> >
+> > Se o formato do SISAB for documentada certamente é factível gerar um
+> código
+> > para extrair os dados e colocá-los nas estruturas de dados convenientes
+> > para uso no R, provavelmente dataframes ou os mais modernos tibles.
+> >
+> > On Tue, Jul 9, 2024 at 9:07?PM Hidelbrando Rodrigues por (R-br) <
+> > r-br em listas.c3sl.ufpr.br> wrote:
+> >
+> >> Olá a todos.
+> >>
+> >> Permitam-me participar da conversa. Nosso laboratório LAMAPP
+> (Laboratório
+> >> de Monitoramento e Avaliação de Políticas Públicas), aqui da federal do
+> >> Amazonas, tem parceria com o Centro de Estudos Estratégicos do FIOCRUZ.
+> >>
+> >> Nós criamos um curso de Ciência de Dados Aplicado à Saúde. Ele será
+> >> hospedado em uma plataforma que ainda vamos definir. Ele será aberto e
+> >> gratuito. Utilizamos como base, dados do SISAB, que não são tão
+> amigáveis
+> >> para baixar.
+> >>
+> >> Diante do exposto, seguem as questões:
+> >>
+> >> * Seria possível criar um código para extrair essa base diretamente do
+> >> site??
+> >>
+> >> * Existem outros pacotes para baixar dados de saúde, além do mencionado
+> >> nesta conversa?
+> >>
+> >> Att.
+> >>
+> >> Hidelbrando
+> >>
+> >>
+> >>
+> >>
+> >> Em ter., 9 de jul. de 2024 12:59, Elias Carvalho por (R-br) <
+> >> r-br em listas.c3sl.ufpr.br> escreveu:
+> >>
+> >>> Caro Bernardo, eu agradeço antecipadamente
+> >>> Eu trabalho no TI de uma universidade estadual e temos nosso hospital
+> >>> universitário que atende muita gente, se não me engano além da cidade,
+> >>> atende mais de 100 municípios ao redor.
+> >>> Nosso problema é que o hospital usa o GSUS (prontuário do PR) e este
+> não
+> >>> exporta dados, não tem API (pelo menos para nós).
+> >>> Gostaríamos de ter informações sobre prontuário, atendimento
+> >>> ambulatorial, prescrição de medicamentos, imagens e laudos de forma
+> >>> analítica, pois eu trabalho com BI (Qlik Sense) e gostaria de gerar
+> >>> gráficos e tabelas com esses dados, além de pedir para minha equipe
+> >>> desenvolver softwares de apoio com base nessas informações.
+> >>> Eu creio que todos esses dados são exportados para o SUS e daí uma
+> >>> tentativa seria extraí-los pelo R.
+> >>>
+> >>> Em ter., 9 de jul. de 2024 às 12:28, Bernardo Rangel Tura por (R-br) <
+> >>> r-br em listas.c3sl.ufpr.br> escreveu:
+> >>>
+> >>>> Elias o pacote do Rafael é maravilhoso vivo sugerindo para as pessoas
+> >>>> usarem mas para algumas coisas às vezes não funciona, quase sempre
+> porque
+> >>>> as bases são muito mal feitas.
+> >>>> Como trabalho com elas a mais e 20 anos estou acostumando a resolver
+> >>>> esse tipo de encrenca.
+> >>>> Que tal você descrever o que precisa e crio um script para você?
+> >>>>
+> >>>> Bernardo Tura
+> >>>> NBB - INC/MS
+> >>>> On 6/18/24 15:19, Elias Carvalho por (R-br) wrote:
+> >>>>
+> >>>> Outra coisa, consigo extrair dados da BPA-I (*Boletim de Produção
+> >>>> Ambulatorial ? Individualizado*) ?
+> >>>>
+> >>>> Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho <
+> ecacarva em gmail.com>
+> >>>> escreveu:
+> >>>>
+> >>>>> Procurei aqui mas não achei, pelo fetch_datasus, dá para extrair
+> dados
+> >>>>> de um CNES específico Rafael ?
+> >>>>>
+> >>>>> Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha <
+> >>>>> rfsaldanha em gmail.com> escreveu:
+> >>>>>
+> >>>>>> Obrigado! Para filtrar por um hospital específico, você precisa
+> saber
+> >>>>>> o código CNES da unidade de saúde. Você pode procurar o código aqui:
+> >>>>>> cnes.datasus.gov.br
+> >>>>>> On 2024-06-18 15:57, Elias Carvalho wrote:
+> >>>>>>
+> >>>>>> Excelente Rafael ! Muito bom seu pacote.
+> >>>>>> Vou dar uma olhada, no momento eu preciso extrair informações de um
+> >>>>>> hospital público específico
+> >>>>>>
+> >>>>>> Em ter., 18 de jun. de 2024 às 10:40, Raphael Saldanha por (R-br) <
+> >>>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+> >>>>>>
+> >>>>>>> Olá Elias,
+> >>>>>>>
+> >>>>>>> Os dados de atendimentos ambulatoriais da dimensão pública do SUS
+> são
+> >>>>>>> registrados em um sistema de informações em saúde denominado
+> Sistema de
+> >>>>>>> Informações Ambulatoriais.
+> >>>>>>>
+> >>>>>>> Você consegue acessar esses dados com o R usando o pacote
+> >>>>>>> {microdatasus}
+> >>>>>>>
+> >>>>>>> https://rfsaldanha.github.io/microdatasus/
+> >>>>>>>
+> >>>>>>> Posso te ajudar com mais detalhes se precisar.
+> >>>>>>>
+> >>>>>>>
+> >>>>>>> Abraços,
+> >>>>>>>
+> >>>>>>> Raphael Saldanha
+> >>>>>>>
+> >>>>>>>
+> >>>>>>> On 2024-06-18 15:34, Elias Carvalho por (R-br) wrote:
+> >>>>>>>
+> >>>>>>> Bom dia pessoal
+> >>>>>>> Alguém sabe se há algum pacote do R que extraia dados de
+> atendimentos
+> >>>>>>> do SUS ?
+> >>>>>>>
+> >>>>>>>
+> >>>>>>>
+> >>>>>>> --
+> >>>>>>>
+> >>>>>>>
+> >>>>>>> *In Jesu et Maria *
+> >>>>>>>
+> >>>>>>> *Obrigado / Thank you *
+> >>>>>>> *Prof. Dr. Elias Carvalho*
+> >>>>>>>
+> >>>>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed
+> >>>>>>> is he who has been able to understand the cause of things" *
+> >>>>>>>
+> >>>>>>> _______________________________________________
+> >>>>>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://
+> listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+> forneça código mínimo reproduzível.
+> >>>>>>>
+> >>>>>>> _______________________________________________
+> >>>>>>> R-br mailing list
+> >>>>>>> R-br em listas.c3sl.ufpr.br
+> >>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+> forneça
+> >>>>>>> código mínimo reproduzível.
+> >>>>>>>
+> >>>>>>
+> >>>>>>
+> >>>>>> --
+> >>>>>>
+> >>>>>>
+> >>>>>> *In Jesu et Maria *
+> >>>>>>
+> >>>>>> *Obrigado / Thank you *
+> >>>>>> *Prof. Dr. Elias Carvalho*
+> >>>>>>
+> >>>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> "Blessed
+> >>>>>> is he who has been able to understand the cause of things" *
+> >>>>>>
+> >>>>>>
+> >>>>>
+> >>>>> --
+> >>>>>
+> >>>>>
+> >>>>> *In Jesu et Maria *
+> >>>>>
+> >>>>> *Obrigado / Thank you *
+> >>>>> *Prof. Dr. Elias Carvalho*
+> >>>>>
+> >>>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+> >>>>> is he who has been able to understand the cause of things" *
+> >>>>>
+> >>>>
+> >>>>
+> >>>> --
+> >>>>
+> >>>>
+> >>>> *In Jesu et Maria *
+> >>>>
+> >>>> *Obrigado / Thank you *
+> >>>> *Prof. Dr. Elias Carvalho*
+> >>>>
+> >>>> * "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC) "Blessed
+> is
+> >>>> he who has been able to understand the cause of things" *
+> >>>>
+> >>>> _______________________________________________
+> >>>> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://
+> listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+> >>>>
+> >>>> _______________________________________________
+> >>>> R-br mailing list
+> >>>> R-br em listas.c3sl.ufpr.br
+> >>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> >>>> código mínimo reproduzível.
+> >>>>
+> >>>
+> >>>
+> >>> --
+> >>>
+> >>>
+> >>> *In Jesu et Maria*
+> >>>
+> >>> *Obrigado / Thank you*
+> >>> *Prof. Dr. Elias Carvalho*
+> >>>
+> >>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is
+> he
+> >>> who has been able to understand the cause of things"*
+> >>> _______________________________________________
+> >>> R-br mailing list
+> >>> R-br em listas.c3sl.ufpr.br
+> >>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> >>> código mínimo reproduzível.
+> >>>
+> >> _______________________________________________
+> >> R-br mailing list
+> >> R-br em listas.c3sl.ufpr.br
+> >> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> >> código mínimo reproduzível.
+> >>
+> > -------------- Próxima Parte ----------
+> > Um anexo em HTML foi limpo...
+> > URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240709/94c49b96/attachment-0001.htm
+> >
+> >
+> > ------------------------------
+> >
+> > Message: 2
+> > Date: Wed, 10 Jul 2024 08:39:58 -0300
+> > From: Bernardo Rangel Tura <listasrtura em gmail.com>
+> > To: "Hidelbrando Rodrigues por (R-br)" <r-br em listas.c3sl.ufpr.br>
+> > Subject: Re: [R-br] Extração de Dados do SUS
+> > Message-ID: <65425f85-4744-43e2-854e-04a8b521e96f em gmail.com>
+> > Content-Type: text/plain; charset="utf-8"; Format="flowed"
+> >
+> > Bom dia Hidelbrando
+> >
+> > Eu nunca trabalhei com dados do SISAB mas acredito qeu seja possivel
+> > fazer sim e tipo de rotina, teria que ver  o formato dos dados, um
+> > pacote que pode ser interessante para você é o SIDRA
+> >
+> > Abraços
+> >
+> > Bernardo Tura
+> >
+> > NBB - INC/MS
+> >
+> >
+> > On 7/9/24 21:06, Hidelbrando Rodrigues por (R-br) wrote:
+> >> Olá a todos.
+> >>
+> >> Permitam-me participar da conversa. Nosso laboratório LAMAPP
+> >> (Laboratório de Monitoramento e Avaliação de Políticas Públicas), aqui
+> >> da federal do Amazonas, tem parceria com o Centro de Estudos
+> >> Estratégicos do FIOCRUZ.
+> >>
+> >> Nós criamos um curso de Ciência de Dados Aplicado à Saúde. Ele será
+> >> hospedado em uma plataforma que ainda vamos definir. Ele será aberto e
+> >> gratuito. Utilizamos como base, dados do SISAB, que não são tão
+> >> amigáveis para baixar.
+> >>
+> >> Diante do exposto, seguem as questões:
+> >>
+> >> * Seria possível criar um código para extrair essa base diretamente do
+> >> site??
+> >>
+> >> * Existem outros pacotes para baixar dados de saúde, além do
+> >> mencionado nesta conversa?
+> >>
+> >> Att.
+> >>
+> >> Hidelbrando
+> >>
+> >>
+> >>
+> >>
+> >> Em ter., 9 de jul. de 2024 12:59, Elias Carvalho por (R-br)
+> >> <r-br em listas.c3sl.ufpr.br> escreveu:
+> >>
+> >>    Caro Bernardo, eu agradeço antecipadamente
+> >>    Eu trabalho no TI de uma universidade estadual e temos nosso
+> >>    hospital universitário que atende muita gente, se não me engano
+> >>    além da cidade, atende mais de 100 municípios ao redor.
+> >>    Nosso problema é que o hospital usa o GSUS (prontuário do PR) e
+> >>    este não exporta dados, não tem API (pelo menos para nós).
+> >>    Gostaríamos de ter informações sobre prontuário, atendimento
+> >>    ambulatorial, prescrição de medicamentos, imagens e laudos de
+> >>    forma analítica, pois eu trabalho com BI (Qlik Sense) e gostaria
+> >>    de gerar gráficos e tabelas com esses dados, além de pedir para
+> >>    minha equipe desenvolver softwares de apoio com base nessas
+> >>    informações.
+> >>    Eu creio que todos esses dados são exportados para o SUS e daí uma
+> >>    tentativa seria extraí-los pelo R.
+> >>
+> >>    Em ter., 9 de jul. de 2024 às 12:28, Bernardo Rangel Tura por
+> >>    (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+> >>
+> >>        Elias o pacote do Rafael é maravilhoso vivo sugerindo para as
+> >>        pessoas usarem mas para algumas coisas às vezes não funciona,
+> >>        quase sempre porque as bases são muito mal feitas.
+> >>        Como trabalho com elas a mais e 20 anos estou acostumando a
+> >>        resolver esse tipo de encrenca.
+> >>        Que tal você descrever o que precisa e crio um script para você?
+> >>
+> >>        Bernardo Tura
+> >>        NBB - INC/MS
+> >>
+> >>        On 6/18/24 15:19, Elias Carvalho por (R-br) wrote:
+> >>>        Outra coisa, consigo extrair dados da BPA-I (*Boletim de
+> >>>        Produção Ambulatorial ? Individualizado*) ?
+> >>>
+> >>>        Em ter., 18 de jun. de 2024 às 15:04, Elias Carvalho
+> >>>        <ecacarva em gmail.com> escreveu:
+> >>>
+> >>>            Procurei aqui mas não achei, pelo fetch_datasus, dá para
+> >>>            extrair dados de um CNES específico Rafael ?
+> >>>
+> >>>            Em ter., 18 de jun. de 2024 às 10:59, Raphael Saldanha
+> >>>            <rfsaldanha em gmail.com> escreveu:
+> >>>
+> >>>                Obrigado! Para filtrar por um hospital específico,
+> >>>                você precisa saber o código CNES da unidade de saúde.
+> >>>                Você pode procurar o código aqui: cnes.datasus.gov.br
+> >>>                <http://cnes.datasus.gov.br>
+> >>>
+> >>>                On 2024-06-18 15:57, Elias Carvalho wrote:
+> >>>>                Excelente Rafael ! Muito bom seu pacote.
+> >>>>                Vou dar uma olhada, no momento eu preciso extrair
+> >>>>                informações de um hospital público específico
+> >>>>
+> >>>>                Em ter., 18 de jun. de 2024 às 10:40, Raphael
+> >>>>                Saldanha por (R-br) <r-br em listas.c3sl.ufpr.br>
+> escreveu:
+> >>>>
+> >>>>                    Olá Elias,
+> >>>>
+> >>>>                    Os dados de atendimentos ambulatoriais da
+> >>>>                    dimensão pública do SUS são registrados em um
+> >>>>                    sistema de informações em saúde denominado
+> >>>>                    Sistema de Informações Ambulatoriais.
+> >>>>
+> >>>>                    Você consegue acessar esses dados com o R usando
+> >>>>                    o pacote {microdatasus}
+> >>>>
+> >>>>                    https://rfsaldanha.github.io/microdatasus/
+> >>>>
+> >>>>                    Posso te ajudar com mais detalhes se precisar.
+> >>>>
+> >>>>
+> >>>>                    Abraços,
+> >>>>
+> >>>>                    Raphael Saldanha
+> >>>>
+> >>>>
+> >>>>                    On 2024-06-18 15:34, Elias Carvalho por (R-br)
+> >>>>                    wrote:
+> >>>>>                    Bom dia pessoal
+> >>>>>                    Alguém sabe se há algum pacote do R que extraia
+> >>>>>                    dados de atendimentos do SUS ?
+> >>>>>
+> >>>>>
+> >>>>>
+> >>>>>                    --
+> >>>>>                    /In Jesu et Maria
+> >>>>>
+> >>>>>                    /
+> >>>>>                    /Obrigado / Thank you
+> >>>>>                    /
+> >>>>>                    /Prof. Dr. Elias Carvalho/
+> >>>>>                    /
+> >>>>>                    /
+> >>>>>                    /
+> >>>>>                    "Felix, qui potuit rerum cognoscere causas"
+> >>>>>                    (Virgil 29 BC)
+> >>>>>                    "Blessed is he who has been able to understand
+> >>>>>                    the cause of things"
+> >>>>>                    /
+> >>>>>
+> >>>>>                    _______________________________________________
+> >>>>>                    R-br mailing list
+> >>>>>                    R-br em listas.c3sl.ufpr.br
+> >>>>>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>>>                    Leia o guia de postagem (
+> http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> >>>>                    _______________________________________________
+> >>>>                    R-br mailing list
+> >>>>                    R-br em listas.c3sl.ufpr.br
+> >>>>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>>                    Leia o guia de postagem
+> >>>>                    (http://www.leg.ufpr.br/r-br-guia) e forneça
+> >>>>                    código mínimo reproduzível.
+> >>>>
+> >>>>
+> >>>>
+> >>>>                --
+> >>>>                /In Jesu et Maria
+> >>>>
+> >>>>                /
+> >>>>                /Obrigado / Thank you
+> >>>>                /
+> >>>>                /Prof. Dr. Elias Carvalho/
+> >>>>                /
+> >>>>                /
+> >>>>                /
+> >>>>                "Felix, qui potuit rerum cognoscere causas" (Virgil
+> >>>>                29 BC)
+> >>>>                "Blessed is he who has been able to understand the
+> >>>>                cause of things"
+> >>>>                /
+> >>>
+> >>>
+> >>>
+> >>>            --
+> >>>            /In Jesu et Maria
+> >>>
+> >>>            /
+> >>>            /Obrigado / Thank you
+> >>>            /
+> >>>            /Prof. Dr. Elias Carvalho/
+> >>>            /
+> >>>            /
+> >>>            /
+> >>>            "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> >>>            "Blessed is he who has been able to understand the cause
+> >>>            of things"
+> >>>            /
+> >>>
+> >>>
+> >>>
+> >>>        --
+> >>>        /In Jesu et Maria
+> >>>
+> >>>        /
+> >>>        /Obrigado / Thank you
+> >>>        /
+> >>>        /Prof. Dr. Elias Carvalho/
+> >>>        /
+> >>>        /
+> >>>        /
+> >>>        "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> >>>        "Blessed is he who has been able to understand the cause of
+> >>>        things"
+> >>>        /
+> >>>
+> >>>        _______________________________________________
+> >>>        R-br mailing list
+> >>>        R-br em listas.c3sl.ufpr.br
+> >>>        https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>>        Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+> forneça código mínimo reproduzível.
+> >>        _______________________________________________
+> >>        R-br mailing list
+> >>        R-br em listas.c3sl.ufpr.br
+> >>        https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>        Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+> >>        forneça código mínimo reproduzível.
+> >>
+> >>
+> >>
+> >>    --
+> >>    /In Jesu et Maria
+> >>
+> >>    /
+> >>    /Obrigado / Thank you
+> >>    /
+> >>    /Prof. Dr. Elias Carvalho/
+> >>    /
+> >>    /
+> >>    /
+> >>    "Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)
+> >>    "Blessed is he who has been able to understand the cause of things"
+> >>    /
+> >>    _______________________________________________
+> >>    R-br mailing list
+> >>    R-br em listas.c3sl.ufpr.br
+> >>    https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >>    Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+> >>    forneça código mínimo reproduzível.
+> >>
+> >>
+> >> _______________________________________________
+> >> R-br mailing list
+> >> R-br em listas.c3sl.ufpr.br
+> >> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+> > -------------- Próxima Parte ----------
+> > Um anexo em HTML foi limpo...
+> > URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240710/5629f82b/attachment-0001.htm
+> >
+> >
+> > ------------------------------
+> >
+> > Subject: Legenda do Digest
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> >
+> >
+> > ------------------------------
+> >
+> > Fim da Digest R-br, volume 155, assunto 3
+> > *****************************************
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240711/59d955d2/attachment-0001.htm>
+
+From rh em posicional.com  Thu Jul 25 17:57:55 2024
+From: rh em posicional.com (=?iso-8859-1?Q?Recursos_Humanos_=5BPOSICIONAL.COM=AE=5D?=)
+Date: Thu, 25 Jul 2024 17:57:55 -0300
+Subject: [R-br] Acesso aos microdados caged e rais via filezilla
+Message-ID: <!&!AAAAAAAAAAAYAAAAAAAAABrwqeqI05NDgauKx6G0xqjCgAAAEAAAAC5qe7YeqS5FipvVtNgrNKEBAAAAAA==@posicional.com>
+
+
+
+Olá,  amigos, boa tarde.
+
+Alguém sabe como configurar o FTP de acesso aos microdados caged e rais?
+Não sei o que aconteceu, mas o “Explorer” do Windows 11 não está facilitando
+as coisas para a conexão com a base de dados no PDET/MTE. Algo mudou e não
+encontro uma solução.
+No site do MTE diz que é possível fazer esta conexão via Filezilla. Já
+tentei várias combinações de configuração e não encontro o “jeito”.
+Se alguém puder me ajudar agradeço antecipadamente.
+
+ 
+
+
+ 
+
+Abraços.
+
+ 
+
+ 
+
+Cícero da Conceição Nunes
+Consultor Master – Remuneração
++55 (16) 997-680-226 
+
++55 (11) 999-780-026  
+
+ <mailto:cicero.nunes em posicional.com> cicero.nunes em posicional.com
+
+ 
+
+POSICIONAL.COM® Cargos, Salários e Carreiras  
+ <http://www.posicional.com/> www.posicional.com
+
+ 
+
+
+
+
+ <https://comercial.posicional.com/>
+<https://www.facebook.com/posicional>  <https://twitter.com/posicional>
+<https://www.linkedin.com/company/posicional.com-consultoria-empresarial-ltd
+a> 
+
+ 
+
+			
+
+ 
+
+ 
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/fbd6b72d/attachment.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image001.gif
+Tipo: image/gif
+Tamanho: 1065 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/fbd6b72d/attachment.gif>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image002.png
+Tipo: image/png
+Tamanho: 1369 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/fbd6b72d/attachment.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image003.png
+Tipo: image/png
+Tamanho: 1487 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/fbd6b72d/attachment-0001.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image004.png
+Tipo: image/png
+Tamanho: 19413 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/fbd6b72d/attachment-0002.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image005.png
+Tipo: image/png
+Tamanho: 6024 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/fbd6b72d/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image006.png
+Tipo: image/png
+Tamanho: 1608 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/fbd6b72d/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image007.png
+Tipo: image/png
+Tamanho: 1732 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/fbd6b72d/attachment-0005.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image008.png
+Tipo: image/png
+Tamanho: 1787 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/fbd6b72d/attachment-0006.png>
+
+From dtiezzi em usp.br  Thu Jul 25 18:27:40 2024
+From: dtiezzi em usp.br (=?UTF-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Thu, 25 Jul 2024 18:27:40 -0300
+Subject: [R-br] Acesso aos microdados caged e rais via filezilla
+In-Reply-To: <!&!AAAAAAAAAAAYAAAAAAAAABrwqeqI05NDgauKx6G0xqjCgAAAEAAAAC5qe7YeqS5FipvVtNgrNKEBAAAAAA==@posicional.com>
+References: <!&!AAAAAAAAAAAYAAAAAAAAABrwqeqI05NDgauKx6G0xqjCgAAAEAAAAC5qe7YeqS5FipvVtNgrNKEBAAAAAA==@posicional.com>
+Message-ID: <CA+RL3DOgv=g-msCYOnYmmDWjsWzGbngsJ8g+gRjPmR=CFnU3Nw@mail.gmail.com>
+
+Você pode acessar via uma CLI.
+
+Com o seguinte comando você pode listar o conteúdo de cada diretório:
+
+curl --list-only ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2022/
+
+Pode usar o wget para fazer o download dos arquivos que desejar.
+
+Por exemplo:
+
+wget ftp://ftp.mtps.gov.br/pdet/microdados/RAIS/2022/RAIS_VINC_PUB_SUL.7z
+
+
+Acredito que dá certo
+
+daniel
+
+
+Em qui., 25 de jul. de 2024 às 17:58, Recursos Humanos [POSICIONAL.COM®]
+por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá,  *amigos*, boa tarde.
+>
+> Alguém sabe como configurar o FTP de acesso aos microdados caged e rais?
+> Não sei o que aconteceu, mas o ?Explorer? do Windows 11 não está
+> facilitando as coisas para a conexão com a base de dados no PDET/MTE. Algo
+> mudou e não encontro uma solução.
+> No site do MTE diz que é possível fazer esta conexão via Filezilla. Já
+> tentei várias combinações de configuração e não encontro o ?jeito?.
+> Se alguém puder me ajudar agradeço antecipadamente.
+>
+>
+>
+>
+>
+> Abraços.
+>
+>
+>
+>
+>
+> *Cícero da Conceição Nunes*
+> *Consultor Master ? Remuneração*
+> *+55 (16) 997-680-226 **[image: telefone_12x12]*
+>
+> *+55 (11) 999-780-026 **[image: telefone_12x12]* *[image: whatsapp_12x12]*
+>
+> cicero.nunes em posicional.com
+>
+>
+>
+> *POSICIONAL.COM <http://POSICIONAL.COM>® Cargos, Salários e Carreiras  *
+> www.posicional.com
+>
+>
+>
+> <https://comercial.posicional.com/>
+> <https://www.facebook.com/posicional> <https://twitter.com/posicional>
+> <https://www.linkedin.com/company/posicional.com-consultoria-empresarial-ltda>
+>
+>
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+Daniel Tiezzi, MD, PhD
+Associate Professor
+Breast Disease and Gynecologic Oncology Division
+Department of Gynecology and Obstetrics
+University of São Paulo
+https://github.com/dtiezzi
+https://lab-tds.github.io/
+
+Brazil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/d6cd43b0/attachment.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image001.gif
+Tipo: image/gif
+Tamanho: 1065 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/d6cd43b0/attachment.gif>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image002.png
+Tipo: image/png
+Tamanho: 1369 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/d6cd43b0/attachment.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image003.png
+Tipo: image/png
+Tamanho: 1487 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/d6cd43b0/attachment-0001.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image004.png
+Tipo: image/png
+Tamanho: 19413 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/d6cd43b0/attachment-0002.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image005.png
+Tipo: image/png
+Tamanho: 6024 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/d6cd43b0/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image006.png
+Tipo: image/png
+Tamanho: 1608 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/d6cd43b0/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image007.png
+Tipo: image/png
+Tamanho: 1732 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/d6cd43b0/attachment-0005.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image008.png
+Tipo: image/png
+Tamanho: 1787 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240725/d6cd43b0/attachment-0006.png>
+

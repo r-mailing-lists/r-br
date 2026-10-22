@@ -1,0 +1,1870 @@
+From lubichchiara em gmail.com  Wed Apr 14 12:00:14 2021
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Wed, 14 Apr 2021 11:00:14 -0400
+Subject: [R-br] =?utf-8?q?Regress=C3=A3o_n=C3=A3o_linear?=
+Message-ID: <CAH-ZE+DswkC8wt=1vpDxM_95YuWHtXgwase8d0574c5HCfp8Rg@mail.gmail.com>
+
+Bom dia,
+Pessoal, fiz a plotagem dos meu dados:
+ano n
+1994 1
+1996 1
+2001 1
+2002 1
+2004 1
+2005 3
+2006 3
+2007 2
+2008 4
+2009 1
+2010 3
+2011 2
+2012 5
+2013 4
+2014 5
+2015 3
+2016 8
+2017 2
+2018 4
+2019 3
+2020 12
+2021 2
+[image: image.png]
+E vi na internet alguns vídeos em que gráficos que tinham esse tipo de
+distribuição, era feito o uso de Regressão Não Linear, por meio da função
+"nls". No entanto, tentei começar a digitar os comandos, mas não entendi
+como são feitas as escolhas para valores de a=?, b=? e c=?.
+Segue o script abaixo:
+plot(n ~ ano, data = chiara, xlab = "Ano da publicação", ylab = "Quantidade
+de artigos (N)")
+a_maximovalor=max(n)
+modelo<-nls(y~x*(1-exp(-b*x))^c, data=chiara, start = list(a=
+a_maximovalor, b=?, c=?))
+
+Agradeço desde já pela colaboração
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210414/13050f49/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9748 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210414/13050f49/attachment.png>
+
+From cesar.rabak em gmail.com  Wed Apr 14 14:48:24 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 14 Apr 2021 14:48:24 -0300
+Subject: [R-br] =?utf-8?q?Regress=C3=A3o_n=C3=A3o_linear?=
+In-Reply-To: <CAH-ZE+DswkC8wt=1vpDxM_95YuWHtXgwase8d0574c5HCfp8Rg@mail.gmail.com>
+References: <CAH-ZE+DswkC8wt=1vpDxM_95YuWHtXgwase8d0574c5HCfp8Rg@mail.gmail.com>
+Message-ID: <CAKrF98=xscBmoCWH4kVnn-+NfhohtA4wQ8m5Hmy+XhRapnGj6A@mail.gmail.com>
+
+Chiara,
+
+Você menciona « ? esse tipo de distribuição ? ».
+
+Qual tipo você acha que é?
+
+Pelos nomes que deste aos eixos, parece que a variável dependente é
+inteira¹ ("Qtde. de artigos [N]"), por outro lado, a variável independente
+é um ano calendário, que por definição é uma variável ordinal arbitrária (a
+faixa 1994 -- 2021 poderia ser noutros calendários diferente, por exemplo
+no Bahá'i de 157 a 178, etc.).
+
+Para decidir por uma regressão (de qualquer tipo) antes de mais nada
+deve-se refletir sobre o fenômeno e a modelagem que o *processo* que gera
+esses  dados.
+
+As regressões são abordagens que nos permitem fazer ajustes dos dados
+experimentais à essas hipóteses modeladas e enfrenta os dois problemas dos
+dados obtidos por meio de observação: a) amostragem; b) perturbações que
+geram erros nas observações, modeladas como "ruído" ou "erros" com
+distribuição gaussiana de média zero e variância em função da dispersão dos
+dados vis-à-vis à abstração matemática (equação da regressão).
+
+Daí a sua confusão sobre « ? como são feitas as escolhas para valores de
+a=?, b=? e c=? » ser esperada.
+
+A equação da regressão ("não linear") propõe uma complexa equação
+exponencia multiplicada pela variável independente, etc.
+
+O quê você precisa responder é: essa curva descreve um processo que explica
+a geração dos dados que está em análise?
+
+OBS.: Faz sentido incluir um ano que ainda não acabou numa regressão que
+conta eventos por unidade de ano calendário?
+
+HTH
+--
+Cesar Rabak
+
+[1] Mais importante, parece ser o tipo de dados "de contagem" que tem
+outras restrições, como não poder ser menor que zero, etc.
+
+On Wed, Apr 14, 2021 at 12:01 PM Chiara Lubich por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Bom dia,
+> Pessoal, fiz a plotagem dos meu dados:
+> ano n
+> 1994 1
+> 1996 1
+> 2001 1
+> 2002 1
+> 2004 1
+> 2005 3
+> 2006 3
+> 2007 2
+> 2008 4
+> 2009 1
+> 2010 3
+> 2011 2
+> 2012 5
+> 2013 4
+> 2014 5
+> 2015 3
+> 2016 8
+> 2017 2
+> 2018 4
+> 2019 3
+> 2020 12
+> 2021 2
+> [image: image.png]
+> E vi na internet alguns vídeos em que gráficos que tinham esse tipo de
+> distribuição, era feito o uso de Regressão Não Linear, por meio da função
+> "nls". No entanto, tentei começar a digitar os comandos, mas não entendi
+> como são feitas as escolhas para valores de a=?, b=? e c=?.
+> Segue o script abaixo:
+> plot(n ~ ano, data = chiara, xlab = "Ano da publicação", ylab =
+> "Quantidade de artigos (N)")
+> a_maximovalor=max(n)
+> modelo<-nls(y~x*(1-exp(-b*x))^c, data=chiara, start = list(a=
+> a_maximovalor, b=?, c=?))
+>
+> Agradeço desde já pela colaboração
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210414/7e8accc9/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9748 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210414/7e8accc9/attachment.png>
+
+From bodevan.ec em gmail.com  Wed Apr 14 19:13:18 2021
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Wed, 14 Apr 2021 19:13:18 -0300
+Subject: [R-br] =?utf-8?q?Sugest=C3=A3o_de_material_R?=
+Message-ID: <CAP5i-swAprQOdhWxrH2CoWDnvS+a-8iJdraS3G8W4C-2f6uWOQ@mail.gmail.com>
+
+Prezados, boa noite.
+
+Estou interessado em trabalhar com o R para gerar mapas temáticos com:
+
+- Indice de Moran Local e Global e
+- Kernel Density
+
+Gostaria de alguma sugestão de material para leitura dos assuntos acima,
+bem como para uso do R para gerar os índices e mapas temáticos.
+
+Agradeço qualquer sugestão.
+
+Atenciosamente,
+
+*Emerson*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210414/e0c99258/attachment.html>
+
+From lubichchiara em gmail.com  Thu Apr 15 13:22:32 2021
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Thu, 15 Apr 2021 12:22:32 -0400
+Subject: [R-br] =?utf-8?q?Regress=C3=A3o_n=C3=A3o_linear?=
+In-Reply-To: <CAKrF98=xscBmoCWH4kVnn-+NfhohtA4wQ8m5Hmy+XhRapnGj6A@mail.gmail.com>
+References: <CAH-ZE+DswkC8wt=1vpDxM_95YuWHtXgwase8d0574c5HCfp8Rg@mail.gmail.com>
+ <CAKrF98=xscBmoCWH4kVnn-+NfhohtA4wQ8m5Hmy+XhRapnGj6A@mail.gmail.com>
+Message-ID: <CAH-ZE+CwG0L+OnctxHsePWVxX3N+Hzct-V0vJin5NBz_CER9AQ@mail.gmail.com>
+
+Oi, César, tudo bem?
+
+Obrigada pelo retorno.
+
+Minha pergunta é se com o passar dos anos aumentou o número de publicações
+sobre determinado assunto.
+Ao meu ver, usaria uma regressão linear simples.
+Mas a tentativa de usar o ajuste não linear, foi mais devido à leitura da
+metodologia de alguns artigos que trabalhavam com esse mesmo tipo de
+informação.
+No qual alguns utilizaram o ajuste não linear era mais adequado, no
+entanto, não entendi muito bem o porquê, já que não havia explicações sobre
+tal escolha... Acho que por isso ficou evidente minhas dúvidas.
+
+Em qua., 14 de abr. de 2021 às 13:48, Cesar Rabak <cesar.rabak em gmail.com>
+escreveu:
+
+> Chiara,
+>
+> Você menciona « ? esse tipo de distribuição ? ».
+>
+> Qual tipo você acha que é?
+>
+> Pelos nomes que deste aos eixos, parece que a variável dependente é
+> inteira¹ ("Qtde. de artigos [N]"), por outro lado, a variável independente
+> é um ano calendário, que por definição é uma variável ordinal arbitrária (a
+> faixa 1994 -- 2021 poderia ser noutros calendários diferente, por exemplo
+> no Bahá'i de 157 a 178, etc.).
+>
+> Para decidir por uma regressão (de qualquer tipo) antes de mais nada
+> deve-se refletir sobre o fenômeno e a modelagem que o *processo* que gera
+> esses  dados.
+>
+> As regressões são abordagens que nos permitem fazer ajustes dos dados
+> experimentais à essas hipóteses modeladas e enfrenta os dois problemas dos
+> dados obtidos por meio de observação: a) amostragem; b) perturbações que
+> geram erros nas observações, modeladas como "ruído" ou "erros" com
+> distribuição gaussiana de média zero e variância em função da dispersão dos
+> dados vis-à-vis à abstração matemática (equação da regressão).
+>
+> Daí a sua confusão sobre « ? como são feitas as escolhas para valores de
+> a=?, b=? e c=? » ser esperada.
+>
+> A equação da regressão ("não linear") propõe uma complexa equação
+> exponencia multiplicada pela variável independente, etc.
+>
+> O quê você precisa responder é: essa curva descreve um processo que
+> explica a geração dos dados que está em análise?
+>
+> OBS.: Faz sentido incluir um ano que ainda não acabou numa regressão que
+> conta eventos por unidade de ano calendário?
+>
+> HTH
+> --
+> Cesar Rabak
+>
+> [1] Mais importante, parece ser o tipo de dados "de contagem" que tem
+> outras restrições, como não poder ser menor que zero, etc.
+>
+> On Wed, Apr 14, 2021 at 12:01 PM Chiara Lubich por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Bom dia,
+>> Pessoal, fiz a plotagem dos meu dados:
+>> ano n
+>> 1994 1
+>> 1996 1
+>> 2001 1
+>> 2002 1
+>> 2004 1
+>> 2005 3
+>> 2006 3
+>> 2007 2
+>> 2008 4
+>> 2009 1
+>> 2010 3
+>> 2011 2
+>> 2012 5
+>> 2013 4
+>> 2014 5
+>> 2015 3
+>> 2016 8
+>> 2017 2
+>> 2018 4
+>> 2019 3
+>> 2020 12
+>> 2021 2
+>> [image: image.png]
+>> E vi na internet alguns vídeos em que gráficos que tinham esse tipo de
+>> distribuição, era feito o uso de Regressão Não Linear, por meio da função
+>> "nls". No entanto, tentei começar a digitar os comandos, mas não entendi
+>> como são feitas as escolhas para valores de a=?, b=? e c=?.
+>> Segue o script abaixo:
+>> plot(n ~ ano, data = chiara, xlab = "Ano da publicação", ylab =
+>> "Quantidade de artigos (N)")
+>> a_maximovalor=max(n)
+>> modelo<-nls(y~x*(1-exp(-b*x))^c, data=chiara, start = list(a=
+>> a_maximovalor, b=?, c=?))
+>>
+>> Agradeço desde já pela colaboração
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210415/0e64b1c7/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9748 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210415/0e64b1c7/attachment.png>
+
+From carol_lopes85 em hotmail.com  Thu Apr 15 13:42:51 2021
+From: carol_lopes85 em hotmail.com (Carolina Lopes)
+Date: Thu, 15 Apr 2021 16:42:51 +0000
+Subject: [R-br] Teste de Pairwise para PERMANOVA
+In-Reply-To: <CAKrF98=xscBmoCWH4kVnn-+NfhohtA4wQ8m5Hmy+XhRapnGj6A@mail.gmail.com>
+References: <CAH-ZE+DswkC8wt=1vpDxM_95YuWHtXgwase8d0574c5HCfp8Rg@mail.gmail.com>,
+ <CAKrF98=xscBmoCWH4kVnn-+NfhohtA4wQ8m5Hmy+XhRapnGj6A@mail.gmail.com>
+Message-ID: <BYAPR07MB5717E0884BFCA4DF9E3238D28B4D9@BYAPR07MB5717.namprd07.prod.outlook.com>
+
+Prezados.
+
+Estou fazendo algumas analises mas estou insegura.
+Coletei moluscos por 12 meses em 6 profundidades diferentes.
+Rodei uma PERMANOVA e a interação entre meses e profundidade foi significativa.
+Agora gostaria de verificar as diferenças entre profundidades dentro de cada mês.
+Quando rodo a pairwise da PERMANOVA  aparece a seguinte mensagem:
+Set of permutations < 'minperm'. Generating entire set.'nperm' >= set of all permutations: complete enumeration.
+
+Li algumas coisas que talvez eu deveria definir um design de permutação.
+
+Alguém poderia me ajudar?
+
+Atenciosamente
+__________________________________________________________________________
+Dra. Carolina A. Lopes
+Pesquisadora - Pós-doutorado
+Universidade Federal de Santa Catarina - UFSC
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br>
+Enviado: quarta-feira, 14 de abril de 2021 14:48
+Para: a lista Brasileira oficial de discussão do programa R. <r-br em listas.c3sl.ufpr.br>
+Cc: Cesar Rabak <cesar.rabak em gmail.com>; Chiara Lubich <lubichchiara em gmail.com>
+Assunto: Re: [R-br] Regressão não linear
+
+Chiara,
+
+Você menciona « ? esse tipo de distribuição ? ».
+
+Qual tipo você acha que é?
+
+Pelos nomes que deste aos eixos, parece que a variável dependente é inteira¹ ("Qtde. de artigos [N]"), por outro lado, a variável independente é um ano calendário, que por definição é uma variável ordinal arbitrária (a faixa 1994 -- 2021 poderia ser noutros calendários diferente, por exemplo no Bahá'i de 157 a 178, etc.).
+
+Para decidir por uma regressão (de qualquer tipo) antes de mais nada deve-se refletir sobre o fenômeno e a modelagem que o processo que gera esses  dados.
+
+As regressões são abordagens que nos permitem fazer ajustes dos dados experimentais à essas hipóteses modeladas e enfrenta os dois problemas dos dados obtidos por meio de observação: a) amostragem; b) perturbações que geram erros nas observações, modeladas como "ruído" ou "erros" com distribuição gaussiana de média zero e variância em função da dispersão dos dados vis-à-vis à abstração matemática (equação da regressão).
+
+Daí a sua confusão sobre « ? como são feitas as escolhas para valores de a=?, b=? e c=? » ser esperada.
+
+A equação da regressão ("não linear") propõe uma complexa equação exponencia multiplicada pela variável independente, etc.
+
+O quê você precisa responder é: essa curva descreve um processo que explica a geração dos dados que está em análise?
+
+OBS.: Faz sentido incluir um ano que ainda não acabou numa regressão que conta eventos por unidade de ano calendário?
+
+HTH
+--
+Cesar Rabak
+
+[1] Mais importante, parece ser o tipo de dados "de contagem" que tem outras restrições, como não poder ser menor que zero, etc.
+
+On Wed, Apr 14, 2021 at 12:01 PM Chiara Lubich por (R-br) <r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+Bom dia,
+Pessoal, fiz a plotagem dos meu dados:
+ano     n
+1994    1
+1996    1
+2001    1
+2002    1
+2004    1
+2005    3
+2006    3
+2007    2
+2008    4
+2009    1
+2010    3
+2011    2
+2012    5
+2013    4
+2014    5
+2015    3
+2016    8
+2017    2
+2018    4
+2019    3
+2020    12
+2021    2
+
+[image.png]
+E vi na internet alguns vídeos em que gráficos que tinham esse tipo de distribuição, era feito o uso de Regressão Não Linear, por meio da função "nls". No entanto, tentei começar a digitar os comandos, mas não entendi como são feitas as escolhas para valores de a=?, b=? e c=?.
+Segue o script abaixo:
+plot(n ~ ano, data = chiara, xlab = "Ano da publicação", ylab = "Quantidade de artigos (N)")
+a_maximovalor=max(n)
+modelo<-nls(y~x*(1-exp(-b*x))^c, data=chiara, start = list(a= a_maximovalor, b=?, c=?))
+
+Agradeço desde já pela colaboração
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br<mailto:R-br em listas.c3sl.ufpr.br>
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210415/8a4e0e88/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9748 bytes
+Descrição: image.png
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210415/8a4e0e88/attachment.png>
+
+From felipe.e.barletta em gmail.com  Thu Apr 15 16:31:59 2021
+From: felipe.e.barletta em gmail.com (Felipe Barletta)
+Date: Thu, 15 Apr 2021 16:31:59 -0300
+Subject: [R-br] =?utf-8?q?Sugest=C3=A3o_de_material_R?=
+In-Reply-To: <CAP5i-swAprQOdhWxrH2CoWDnvS+a-8iJdraS3G8W4C-2f6uWOQ@mail.gmail.com>
+References: <CAP5i-swAprQOdhWxrH2CoWDnvS+a-8iJdraS3G8W4C-2f6uWOQ@mail.gmail.com>
+Message-ID: <CAJz4ZjHbc1rq20hRQh1XdLnz+yk_AK-=_-9ibK8ta1NYDbnYXw@mail.gmail.com>
+
+Pode começar por aqui:
+
+https://rstudio-pubs-static.s3.amazonaws.com/268058_dd37b98f25a4496b9f0a7eb2fcf892cd.html
+
+http://www.leg.ufpr.br/lib/exe/fetch.php/disciplinas:cieg:intro-areas.pdf
+
+
+
+
+Em qua., 14 de abr. de 2021 às 19:13, Emerson Cotta Bodevan por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados, boa noite.
+>
+> Estou interessado em trabalhar com o R para gerar mapas temáticos com:
+>
+> - Indice de Moran Local e Global e
+> - Kernel Density
+>
+> Gostaria de alguma sugestão de material para leitura dos assuntos acima,
+> bem como para uso do R para gerar os índices e mapas temáticos.
+>
+> Agradeço qualquer sugestão.
+>
+> Atenciosamente,
+>
+> *Emerson*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210415/a4aec7f3/attachment.html>
+
+From bodevan.ec em gmail.com  Thu Apr 15 19:38:41 2021
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Thu, 15 Apr 2021 19:38:41 -0300
+Subject: [R-br] =?utf-8?q?Sugest=C3=A3o_de_material_R?=
+In-Reply-To: <CAJz4ZjHbc1rq20hRQh1XdLnz+yk_AK-=_-9ibK8ta1NYDbnYXw@mail.gmail.com>
+References: <CAP5i-swAprQOdhWxrH2CoWDnvS+a-8iJdraS3G8W4C-2f6uWOQ@mail.gmail.com>
+ <CAJz4ZjHbc1rq20hRQh1XdLnz+yk_AK-=_-9ibK8ta1NYDbnYXw@mail.gmail.com>
+Message-ID: <CAP5i-swSBQT2LnbM=O9MWgrWRmZa-0yB7CndX5d7vsndzEpidw@mail.gmail.com>
+
+Muito obrigado Felipe!
+
+Em qui, 15 de abr de 2021 16:32, Felipe Barletta por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Pode começar por aqui:
+>
+>
+> https://rstudio-pubs-static.s3.amazonaws.com/268058_dd37b98f25a4496b9f0a7eb2fcf892cd.html
+>
+> http://www.leg.ufpr.br/lib/exe/fetch.php/disciplinas:cieg:intro-areas.pdf
+>
+>
+>
+>
+> Em qua., 14 de abr. de 2021 às 19:13, Emerson Cotta Bodevan por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Prezados, boa noite.
+>>
+>> Estou interessado em trabalhar com o R para gerar mapas temáticos com:
+>>
+>> - Indice de Moran Local e Global e
+>> - Kernel Density
+>>
+>> Gostaria de alguma sugestão de material para leitura dos assuntos acima,
+>> bem como para uso do R para gerar os índices e mapas temáticos.
+>>
+>> Agradeço qualquer sugestão.
+>>
+>> Atenciosamente,
+>>
+>> *Emerson*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210415/4f61f66e/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Apr 15 21:15:49 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 15 Apr 2021 21:15:49 -0300
+Subject: [R-br] =?utf-8?q?Regress=C3=A3o_n=C3=A3o_linear?=
+In-Reply-To: <CAH-ZE+CwG0L+OnctxHsePWVxX3N+Hzct-V0vJin5NBz_CER9AQ@mail.gmail.com>
+References: <CAH-ZE+DswkC8wt=1vpDxM_95YuWHtXgwase8d0574c5HCfp8Rg@mail.gmail.com>
+ <CAKrF98=xscBmoCWH4kVnn-+NfhohtA4wQ8m5Hmy+XhRapnGj6A@mail.gmail.com>
+ <CAH-ZE+CwG0L+OnctxHsePWVxX3N+Hzct-V0vJin5NBz_CER9AQ@mail.gmail.com>
+Message-ID: <CAKrF98mD5aeFSdr3qk30nL7yjpmuSuPbhSSGho7m=AXZ--30Pg@mail.gmail.com>
+
+Entendida a questão no, assim denominado, domínio do problema.
+
+Aí você precisa encontrar nas referências sobre esse assunto qual seria o
+ciclo de vida para as publicações sobre um assunto qualquer.
+
+Visto doutra maneira, poder-se-ia fazer a pergunta desta forma: para um
+período suficientemente curto uma hipótese de número de publicações por ano
+linearmente dependente do ano (calendário) faz sentido?
+
+Como as publicações são "perenes" isto é, salvo casos excruciantes que são
+retratadas, elas permanecem para consulta até perderem valor intrínseco no
+assunto e passam a ter valor histórico, sua hipótese que ano após ano o
+número de publicações tem uma relação linear com o tempo indicaria uma
+dinâmica específica sobre esse assunto.
+
+Uma outra hipótese, só para não ficar no abstrato, mas usando um exemplo
+artificial, imagine que para cada certo número de publicações existentes se
+pudesse postular que uma nova seria gerada, algo como o famoso Jogo da Vida
+de Conway ou o crescimento populacional dado pela sequência de Fibonacci.
+Aí a modelagem matemática levaria a outro tipo de regressão.
+
+Espero que este texto ajude mais que aumente o grau de confusão ?!
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Thu, Apr 15, 2021 at 1:23 PM Chiara Lubich <lubichchiara em gmail.com>
+wrote:
+
+> Oi, César, tudo bem?
+>
+> Obrigada pelo retorno.
+>
+> Minha pergunta é se com o passar dos anos aumentou o número de publicações
+> sobre determinado assunto.
+> Ao meu ver, usaria uma regressão linear simples.
+> Mas a tentativa de usar o ajuste não linear, foi mais devido à leitura da
+> metodologia de alguns artigos que trabalhavam com esse mesmo tipo de
+> informação.
+> No qual alguns utilizaram o ajuste não linear era mais adequado, no
+> entanto, não entendi muito bem o porquê, já que não havia explicações sobre
+> tal escolha... Acho que por isso ficou evidente minhas dúvidas.
+>
+> Em qua., 14 de abr. de 2021 às 13:48, Cesar Rabak <cesar.rabak em gmail.com>
+> escreveu:
+>
+>> Chiara,
+>>
+>> Você menciona « ? esse tipo de distribuição ? ».
+>>
+>> Qual tipo você acha que é?
+>>
+>> Pelos nomes que deste aos eixos, parece que a variável dependente é
+>> inteira¹ ("Qtde. de artigos [N]"), por outro lado, a variável independente
+>> é um ano calendário, que por definição é uma variável ordinal arbitrária (a
+>> faixa 1994 -- 2021 poderia ser noutros calendários diferente, por exemplo
+>> no Bahá'i de 157 a 178, etc.).
+>>
+>> Para decidir por uma regressão (de qualquer tipo) antes de mais nada
+>> deve-se refletir sobre o fenômeno e a modelagem que o *processo* que
+>> gera esses  dados.
+>>
+>> As regressões são abordagens que nos permitem fazer ajustes dos dados
+>> experimentais à essas hipóteses modeladas e enfrenta os dois problemas dos
+>> dados obtidos por meio de observação: a) amostragem; b) perturbações que
+>> geram erros nas observações, modeladas como "ruído" ou "erros" com
+>> distribuição gaussiana de média zero e variância em função da dispersão dos
+>> dados vis-à-vis à abstração matemática (equação da regressão).
+>>
+>> Daí a sua confusão sobre « ? como são feitas as escolhas para valores de
+>> a=?, b=? e c=? » ser esperada.
+>>
+>> A equação da regressão ("não linear") propõe uma complexa equação
+>> exponencia multiplicada pela variável independente, etc.
+>>
+>> O quê você precisa responder é: essa curva descreve um processo que
+>> explica a geração dos dados que está em análise?
+>>
+>> OBS.: Faz sentido incluir um ano que ainda não acabou numa regressão que
+>> conta eventos por unidade de ano calendário?
+>>
+>> HTH
+>> --
+>> Cesar Rabak
+>>
+>> [1] Mais importante, parece ser o tipo de dados "de contagem" que tem
+>> outras restrições, como não poder ser menor que zero, etc.
+>>
+>> On Wed, Apr 14, 2021 at 12:01 PM Chiara Lubich por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Bom dia,
+>>> Pessoal, fiz a plotagem dos meu dados:
+>>> ano n
+>>> 1994 1
+>>> 1996 1
+>>> 2001 1
+>>> 2002 1
+>>> 2004 1
+>>> 2005 3
+>>> 2006 3
+>>> 2007 2
+>>> 2008 4
+>>> 2009 1
+>>> 2010 3
+>>> 2011 2
+>>> 2012 5
+>>> 2013 4
+>>> 2014 5
+>>> 2015 3
+>>> 2016 8
+>>> 2017 2
+>>> 2018 4
+>>> 2019 3
+>>> 2020 12
+>>> 2021 2
+>>> [image: image.png]
+>>> E vi na internet alguns vídeos em que gráficos que tinham esse tipo de
+>>> distribuição, era feito o uso de Regressão Não Linear, por meio da função
+>>> "nls". No entanto, tentei começar a digitar os comandos, mas não entendi
+>>> como são feitas as escolhas para valores de a=?, b=? e c=?.
+>>> Segue o script abaixo:
+>>> plot(n ~ ano, data = chiara, xlab = "Ano da publicação", ylab =
+>>> "Quantidade de artigos (N)")
+>>> a_maximovalor=max(n)
+>>> modelo<-nls(y~x*(1-exp(-b*x))^c, data=chiara, start = list(a=
+>>> a_maximovalor, b=?, c=?))
+>>>
+>>> Agradeço desde já pela colaboração
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210415/716cb0c8/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9748 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210415/716cb0c8/attachment-0001.png>
+
+From cesar.rabak em gmail.com  Thu Apr 15 21:19:28 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 15 Apr 2021 21:19:28 -0300
+Subject: [R-br] Teste de Pairwise para PERMANOVA
+In-Reply-To: <BYAPR07MB5717E0884BFCA4DF9E3238D28B4D9@BYAPR07MB5717.namprd07.prod.outlook.com>
+References: <CAH-ZE+DswkC8wt=1vpDxM_95YuWHtXgwase8d0574c5HCfp8Rg@mail.gmail.com>
+ <CAKrF98=xscBmoCWH4kVnn-+NfhohtA4wQ8m5Hmy+XhRapnGj6A@mail.gmail.com>
+ <BYAPR07MB5717E0884BFCA4DF9E3238D28B4D9@BYAPR07MB5717.namprd07.prod.outlook.com>
+Message-ID: <CAKrF98nfubnk_jGmTfjnSkEi-kVv9Xn2p7X+7nTnW5EnEpp36A@mail.gmail.com>
+
+Carolina,
+
+Sem saber mais detalhes sobre os dados é difícil escapar do campo dos
+"palpites", mas a mensagem parece indicar que o número de casos para as
+permutações não tem nenhum grau de liberdade, você por acaso tem apenas 72
+caso no total?
+
+
+On Thu, Apr 15, 2021 at 1:43 PM Carolina Lopes por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados.
+>
+> Estou fazendo algumas analises mas estou insegura.
+> Coletei moluscos por 12 meses em 6 profundidades diferentes.
+> Rodei uma PERMANOVA e a interação entre meses e profundidade foi
+> significativa.
+> Agora gostaria de verificar as diferenças entre profundidades dentro de
+> cada mês.
+> Quando rodo a pairwise da PERMANOVA  aparece a seguinte mensagem:
+> Set of permutations < 'minperm'. Generating entire set.'nperm' >= set of
+> all permutations: complete enumeration.
+>
+> Li algumas coisas que talvez eu deveria definir um design de permutação.
+>
+> Alguém poderia me ajudar?
+>
+> Atenciosamente
+> __________________________________________________________________________
+> Dra. Carolina A. Lopes
+> Pesquisadora - Pós-doutorado
+> Universidade Federal de Santa Catarina - UFSC
+> ------------------------------
+> *De:* R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Cesar Rabak por
+> (R-br) <r-br em listas.c3sl.ufpr.br>
+> *Enviado:* quarta-feira, 14 de abril de 2021 14:48
+> *Para:* a lista Brasileira oficial de discussão do programa R. <
+> r-br em listas.c3sl.ufpr.br>
+> *Cc:* Cesar Rabak <cesar.rabak em gmail.com>; Chiara Lubich <
+> lubichchiara em gmail.com>
+> *Assunto:* Re: [R-br] Regressão não linear
+>
+> Chiara,
+>
+> Você menciona « ? esse tipo de distribuição ? ».
+>
+> Qual tipo você acha que é?
+>
+> Pelos nomes que deste aos eixos, parece que a variável dependente é
+> inteira¹ ("Qtde. de artigos [N]"), por outro lado, a variável independente
+> é um ano calendário, que por definição é uma variável ordinal arbitrária (a
+> faixa 1994 -- 2021 poderia ser noutros calendários diferente, por exemplo
+> no Bahá'i de 157 a 178, etc.).
+>
+> Para decidir por uma regressão (de qualquer tipo) antes de mais nada
+> deve-se refletir sobre o fenômeno e a modelagem que o *processo* que gera
+> esses  dados.
+>
+> As regressões são abordagens que nos permitem fazer ajustes dos dados
+> experimentais à essas hipóteses modeladas e enfrenta os dois problemas dos
+> dados obtidos por meio de observação: a) amostragem; b) perturbações que
+> geram erros nas observações, modeladas como "ruído" ou "erros" com
+> distribuição gaussiana de média zero e variância em função da dispersão dos
+> dados vis-à-vis à abstração matemática (equação da regressão).
+>
+> Daí a sua confusão sobre « ? como são feitas as escolhas para valores de
+> a=?, b=? e c=? » ser esperada.
+>
+> A equação da regressão ("não linear") propõe uma complexa equação
+> exponencia multiplicada pela variável independente, etc.
+>
+> O quê você precisa responder é: essa curva descreve um processo que
+> explica a geração dos dados que está em análise?
+>
+> OBS.: Faz sentido incluir um ano que ainda não acabou numa regressão que
+> conta eventos por unidade de ano calendário?
+>
+> HTH
+> --
+> Cesar Rabak
+>
+> [1] Mais importante, parece ser o tipo de dados "de contagem" que tem
+> outras restrições, como não poder ser menor que zero, etc.
+>
+> On Wed, Apr 14, 2021 at 12:01 PM Chiara Lubich por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Bom dia,
+> Pessoal, fiz a plotagem dos meu dados:
+> ano n
+> 1994 1
+> 1996 1
+> 2001 1
+> 2002 1
+> 2004 1
+> 2005 3
+> 2006 3
+> 2007 2
+> 2008 4
+> 2009 1
+> 2010 3
+> 2011 2
+> 2012 5
+> 2013 4
+> 2014 5
+> 2015 3
+> 2016 8
+> 2017 2
+> 2018 4
+> 2019 3
+> 2020 12
+> 2021 2
+> [image: image.png]
+> E vi na internet alguns vídeos em que gráficos que tinham esse tipo de
+> distribuição, era feito o uso de Regressão Não Linear, por meio da função
+> "nls". No entanto, tentei começar a digitar os comandos, mas não entendi
+> como são feitas as escolhas para valores de a=?, b=? e c=?.
+> Segue o script abaixo:
+> plot(n ~ ano, data = chiara, xlab = "Ano da publicação", ylab =
+> "Quantidade de artigos (N)")
+> a_maximovalor=max(n)
+> modelo<-nls(y~x*(1-exp(-b*x))^c, data=chiara, start = list(a=
+> a_maximovalor, b=?, c=?))
+>
+> Agradeço desde já pela colaboração
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210415/1a5f89ad/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9748 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210415/1a5f89ad/attachment.png>
+
+From andrea em ufrb.edu.br  Fri Apr 16 07:05:36 2021
+From: andrea em ufrb.edu.br (Andrea Vita Reis Mendonca)
+Date: Fri, 16 Apr 2021 07:05:36 -0300
+Subject: [R-br] Digest R-br, volume 124, assunto 1
+In-Reply-To: <mailman.3.1618498801.2568.r-br@listas.c3sl.ufpr.br>
+References: <mailman.3.1618498801.2568.r-br@listas.c3sl.ufpr.br>
+Message-ID: <CAPYGFB6mJWfD8z7t72Zr+G9WCHNh6MD7deEVxrVYGuM2p3hiKQ@mail.gmail.com>
+
+regressão não linear
+
+Bom dia
+Não conheço este modelo. Mas tenho a impressão que deveria ser um
+logístico, porque coloca o A entre os parâmetros estimados e ele
+não aparece no modelo, acho que o primeiro X é o A.
+Além deste equívoco,  os parâmetros em parte depende do conhecimento do
+comportamento dos dados pelo pesquisador, A é a assíntota, equivale ao
+valor de Y referente ao ponto que ele tende a estabilizar. Procure na
+literatura trabalhos com o mesmo  tema do seu e pode lhe ajudar no chute
+inicial dos parâmetros.
+Leia teses e dissertações sobre regressão não linear para entender melhor
+este tema.
+
+Em qui., 15 de abr. de 2021 às 12:00, <r-br-request em listas.c3sl.ufpr.br>
+escreveu:
+
+> Enviar submissões para a lista de discussão R-br para
+>         r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+>         https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+>         r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+>         r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+>    1. Regressão não linear (Chiara Lubich)
+>    2. Re: Regressão não linear (Cesar Rabak)
+>    3. Sugestão de material R (Emerson Cotta Bodevan)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Wed, 14 Apr 2021 11:00:14 -0400
+> From: Chiara Lubich <lubichchiara em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: [R-br] Regressão não linear
+> Message-ID:
+>         <CAH-ZE+DswkC8wt=
+> 1vpDxM_95YuWHtXgwase8d0574c5HCfp8Rg em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Bom dia,
+> Pessoal, fiz a plotagem dos meu dados:
+> ano n
+> 1994 1
+> 1996 1
+> 2001 1
+> 2002 1
+> 2004 1
+> 2005 3
+> 2006 3
+> 2007 2
+> 2008 4
+> 2009 1
+> 2010 3
+> 2011 2
+> 2012 5
+> 2013 4
+> 2014 5
+> 2015 3
+> 2016 8
+> 2017 2
+> 2018 4
+> 2019 3
+> 2020 12
+> 2021 2
+> [image: image.png]
+> E vi na internet alguns vídeos em que gráficos que tinham esse tipo de
+> distribuição, era feito o uso de Regressão Não Linear, por meio da função
+> "nls". No entanto, tentei começar a digitar os comandos, mas não entendi
+> como são feitas as escolhas para valores de a=?, b=? e c=?.
+> Segue o script abaixo:
+> plot(n ~ ano, data = chiara, xlab = "Ano da publicação", ylab = "Quantidade
+> de artigos (N)")
+> a_maximovalor=max(n)
+> modelo<-nls(y~x*(1-exp(-b*x))^c, data=chiara, start = list(a=
+> a_maximovalor, b=?, c=?))
+>
+> Agradeço desde já pela colaboração
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210414/13050f49/attachment-0001.html
+> >
+> -------------- Próxima Parte ----------
+> Um anexo não-texto foi limpo...
+> Nome: image.png
+> Tipo: image/png
+> Tamanho: 9748 bytes
+> Descrição: não disponível
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210414/13050f49/attachment-0001.png
+> >
+>
+> ------------------------------
+>
+> Message: 2
+> Date: Wed, 14 Apr 2021 14:48:24 -0300
+> From: Cesar Rabak <cesar.rabak em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Cc: Chiara Lubich <lubichchiara em gmail.com>
+> Subject: Re: [R-br] Regressão não linear
+> Message-ID:
+>         <CAKrF98=
+> xscBmoCWH4kVnn-+NfhohtA4wQ8m5Hmy+XhRapnGj6A em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Chiara,
+>
+> Você menciona « ? esse tipo de distribuição ? ».
+>
+> Qual tipo você acha que é?
+>
+> Pelos nomes que deste aos eixos, parece que a variável dependente é
+> inteira¹ ("Qtde. de artigos [N]"), por outro lado, a variável independente
+> é um ano calendário, que por definição é uma variável ordinal arbitrária (a
+> faixa 1994 -- 2021 poderia ser noutros calendários diferente, por exemplo
+> no Bahá'i de 157 a 178, etc.).
+>
+> Para decidir por uma regressão (de qualquer tipo) antes de mais nada
+> deve-se refletir sobre o fenômeno e a modelagem que o *processo* que gera
+> esses  dados.
+>
+> As regressões são abordagens que nos permitem fazer ajustes dos dados
+> experimentais à essas hipóteses modeladas e enfrenta os dois problemas dos
+> dados obtidos por meio de observação: a) amostragem; b) perturbações que
+> geram erros nas observações, modeladas como "ruído" ou "erros" com
+> distribuição gaussiana de média zero e variância em função da dispersão dos
+> dados vis-à-vis à abstração matemática (equação da regressão).
+>
+> Daí a sua confusão sobre « ? como são feitas as escolhas para valores de
+> a=?, b=? e c=? » ser esperada.
+>
+> A equação da regressão ("não linear") propõe uma complexa equação
+> exponencia multiplicada pela variável independente, etc.
+>
+> O quê você precisa responder é: essa curva descreve um processo que explica
+> a geração dos dados que está em análise?
+>
+> OBS.: Faz sentido incluir um ano que ainda não acabou numa regressão que
+> conta eventos por unidade de ano calendário?
+>
+> HTH
+> --
+> Cesar Rabak
+>
+> [1] Mais importante, parece ser o tipo de dados "de contagem" que tem
+> outras restrições, como não poder ser menor que zero, etc.
+>
+> On Wed, Apr 14, 2021 at 12:01 PM Chiara Lubich por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> > Bom dia,
+> > Pessoal, fiz a plotagem dos meu dados:
+> > ano n
+> > 1994 1
+> > 1996 1
+> > 2001 1
+> > 2002 1
+> > 2004 1
+> > 2005 3
+> > 2006 3
+> > 2007 2
+> > 2008 4
+> > 2009 1
+> > 2010 3
+> > 2011 2
+> > 2012 5
+> > 2013 4
+> > 2014 5
+> > 2015 3
+> > 2016 8
+> > 2017 2
+> > 2018 4
+> > 2019 3
+> > 2020 12
+> > 2021 2
+> > [image: image.png]
+> > E vi na internet alguns vídeos em que gráficos que tinham esse tipo de
+> > distribuição, era feito o uso de Regressão Não Linear, por meio da função
+> > "nls". No entanto, tentei começar a digitar os comandos, mas não entendi
+> > como são feitas as escolhas para valores de a=?, b=? e c=?.
+> > Segue o script abaixo:
+> > plot(n ~ ano, data = chiara, xlab = "Ano da publicação", ylab =
+> > "Quantidade de artigos (N)")
+> > a_maximovalor=max(n)
+> > modelo<-nls(y~x*(1-exp(-b*x))^c, data=chiara, start = list(a=
+> > a_maximovalor, b=?, c=?))
+> >
+> > Agradeço desde já pela colaboração
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> > código mínimo reproduzível.
+> >
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210414/7e8accc9/attachment-0001.html
+> >
+> -------------- Próxima Parte ----------
+> Um anexo não-texto foi limpo...
+> Nome: image.png
+> Tipo: image/png
+> Tamanho: 9748 bytes
+> Descrição: não disponível
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210414/7e8accc9/attachment-0001.png
+> >
+>
+> ------------------------------
+>
+> Message: 3
+> Date: Wed, 14 Apr 2021 19:13:18 -0300
+> From: Emerson Cotta Bodevan <bodevan.ec em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+>         <r-br em listas.c3sl.ufpr.br>
+> Subject: [R-br] Sugestão de material R
+> Message-ID:
+>         <
+> CAP5i-swAprQOdhWxrH2CoWDnvS+a-8iJdraS3G8W4C-2f6uWOQ em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Prezados, boa noite.
+>
+> Estou interessado em trabalhar com o R para gerar mapas temáticos com:
+>
+> - Indice de Moran Local e Global e
+> - Kernel Density
+>
+> Gostaria de alguma sugestão de material para leitura dos assuntos acima,
+> bem como para uso do R para gerar os índices e mapas temáticos.
+>
+> Agradeço qualquer sugestão.
+>
+> Atenciosamente,
+>
+> *Emerson*
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210414/e0c99258/attachment-0001.html
+> >
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 124, assunto 1
+> *****************************************
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210416/1fd13866/attachment.html>
+
+From carol_lopes85 em hotmail.com  Sat Apr 17 18:51:50 2021
+From: carol_lopes85 em hotmail.com (Carolina Lopes)
+Date: Sat, 17 Apr 2021 21:51:50 +0000
+Subject: [R-br] Teste de Pairwise para PERMANOVA
+In-Reply-To: <CAKrF98nfubnk_jGmTfjnSkEi-kVv9Xn2p7X+7nTnW5EnEpp36A@mail.gmail.com>
+References: <CAH-ZE+DswkC8wt=1vpDxM_95YuWHtXgwase8d0574c5HCfp8Rg@mail.gmail.com>
+ <CAKrF98=xscBmoCWH4kVnn-+NfhohtA4wQ8m5Hmy+XhRapnGj6A@mail.gmail.com>
+ <BYAPR07MB5717E0884BFCA4DF9E3238D28B4D9@BYAPR07MB5717.namprd07.prod.outlook.com>,
+ <CAKrF98nfubnk_jGmTfjnSkEi-kVv9Xn2p7X+7nTnW5EnEpp36A@mail.gmail.com>
+Message-ID: <BYAPR07MB57171F373C9F3492472690A48B4B9@BYAPR07MB5717.namprd07.prod.outlook.com>
+
+Prezado Cesar.
+Tenho 216 amostras nas quais eu contabilizei o número total de moluscos.
+São 6 profundidades, 12 meses e foi em triplicata. Para cada profundidade eu tenho 3 amostras por mês.
+Para cada mês, 18 amostras.
+Eu gostaria de verificar se existe diferença entre as profundidades em cada mês.
+
+Espero que eu tenha conseguido explicar melhor o delineamento.
+
+Agradeço a atenção.
+__________________________________________________________________________
+Dra. Carolina A. Lopes
+Pesquisadora - Pós-doutorado
+Universidade Federal de Santa Catarina - UFSC
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br>
+Enviado: quinta-feira, 15 de abril de 2021 21:19
+Para: a lista Brasileira oficial de discussão do programa R. <r-br em listas.c3sl.ufpr.br>
+Cc: Cesar Rabak <cesar.rabak em gmail.com>
+Assunto: Re: [R-br] Teste de Pairwise para PERMANOVA
+
+Carolina,
+
+Sem saber mais detalhes sobre os dados é difícil escapar do campo dos "palpites", mas a mensagem parece indicar que o número de casos para as permutações não tem nenhum grau de liberdade, você por acaso tem apenas 72 caso no total?
+
+
+On Thu, Apr 15, 2021 at 1:43 PM Carolina Lopes por (R-br) <r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+Prezados.
+
+Estou fazendo algumas analises mas estou insegura.
+Coletei moluscos por 12 meses em 6 profundidades diferentes.
+Rodei uma PERMANOVA e a interação entre meses e profundidade foi significativa.
+Agora gostaria de verificar as diferenças entre profundidades dentro de cada mês.
+Quando rodo a pairwise da PERMANOVA  aparece a seguinte mensagem:
+Set of permutations < 'minperm'. Generating entire set.'nperm' >= set of all permutations: complete enumeration.
+
+Li algumas coisas que talvez eu deveria definir um design de permutação.
+
+Alguém poderia me ajudar?
+
+Atenciosamente
+__________________________________________________________________________
+Dra. Carolina A. Lopes
+Pesquisadora - Pós-doutorado
+Universidade Federal de Santa Catarina - UFSC
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br<mailto:r-br-bounces em listas.c3sl.ufpr.br>> em nome de Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br>>
+Enviado: quarta-feira, 14 de abril de 2021 14:48
+Para: a lista Brasileira oficial de discussão do programa R. <r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br>>
+Cc: Cesar Rabak <cesar.rabak em gmail.com<mailto:cesar.rabak em gmail.com>>; Chiara Lubich <lubichchiara em gmail.com<mailto:lubichchiara em gmail.com>>
+Assunto: Re: [R-br] Regressão não linear
+
+Chiara,
+
+Você menciona « ? esse tipo de distribuição ? ».
+
+Qual tipo você acha que é?
+
+Pelos nomes que deste aos eixos, parece que a variável dependente é inteira¹ ("Qtde. de artigos [N]"), por outro lado, a variável independente é um ano calendário, que por definição é uma variável ordinal arbitrária (a faixa 1994 -- 2021 poderia ser noutros calendários diferente, por exemplo no Bahá'i de 157 a 178, etc.).
+
+Para decidir por uma regressão (de qualquer tipo) antes de mais nada deve-se refletir sobre o fenômeno e a modelagem que o processo que gera esses  dados.
+
+As regressões são abordagens que nos permitem fazer ajustes dos dados experimentais à essas hipóteses modeladas e enfrenta os dois problemas dos dados obtidos por meio de observação: a) amostragem; b) perturbações que geram erros nas observações, modeladas como "ruído" ou "erros" com distribuição gaussiana de média zero e variância em função da dispersão dos dados vis-à-vis à abstração matemática (equação da regressão).
+
+Daí a sua confusão sobre « ? como são feitas as escolhas para valores de a=?, b=? e c=? » ser esperada.
+
+A equação da regressão ("não linear") propõe uma complexa equação exponencia multiplicada pela variável independente, etc.
+
+O quê você precisa responder é: essa curva descreve um processo que explica a geração dos dados que está em análise?
+
+OBS.: Faz sentido incluir um ano que ainda não acabou numa regressão que conta eventos por unidade de ano calendário?
+
+HTH
+--
+Cesar Rabak
+
+[1] Mais importante, parece ser o tipo de dados "de contagem" que tem outras restrições, como não poder ser menor que zero, etc.
+
+On Wed, Apr 14, 2021 at 12:01 PM Chiara Lubich por (R-br) <r-br em listas.c3sl.ufpr.br<mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+Bom dia,
+Pessoal, fiz a plotagem dos meu dados:
+ano     n
+1994    1
+1996    1
+2001    1
+2002    1
+2004    1
+2005    3
+2006    3
+2007    2
+2008    4
+2009    1
+2010    3
+2011    2
+2012    5
+2013    4
+2014    5
+2015    3
+2016    8
+2017    2
+2018    4
+2019    3
+2020    12
+2021    2
+
+[image.png]
+E vi na internet alguns vídeos em que gráficos que tinham esse tipo de distribuição, era feito o uso de Regressão Não Linear, por meio da função "nls". No entanto, tentei começar a digitar os comandos, mas não entendi como são feitas as escolhas para valores de a=?, b=? e c=?.
+Segue o script abaixo:
+plot(n ~ ano, data = chiara, xlab = "Ano da publicação", ylab = "Quantidade de artigos (N)")
+a_maximovalor=max(n)
+modelo<-nls(y~x*(1-exp(-b*x))^c, data=chiara, start = list(a= a_maximovalor, b=?, c=?))
+
+Agradeço desde já pela colaboração
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br<mailto:R-br em listas.c3sl.ufpr.br>
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br<mailto:R-br em listas.c3sl.ufpr.br>
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210417/d4acfca2/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9748 bytes
+Descrição: image.png
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210417/d4acfca2/attachment.png>
+
+From cesar.rabak em gmail.com  Sun Apr 18 12:23:08 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 18 Apr 2021 12:23:08 -0300
+Subject: [R-br] Teste de Pairwise para PERMANOVA
+In-Reply-To: <BYAPR07MB57171F373C9F3492472690A48B4B9@BYAPR07MB5717.namprd07.prod.outlook.com>
+References: <CAH-ZE+DswkC8wt=1vpDxM_95YuWHtXgwase8d0574c5HCfp8Rg@mail.gmail.com>
+ <CAKrF98=xscBmoCWH4kVnn-+NfhohtA4wQ8m5Hmy+XhRapnGj6A@mail.gmail.com>
+ <BYAPR07MB5717E0884BFCA4DF9E3238D28B4D9@BYAPR07MB5717.namprd07.prod.outlook.com>
+ <CAKrF98nfubnk_jGmTfjnSkEi-kVv9Xn2p7X+7nTnW5EnEpp36A@mail.gmail.com>
+ <BYAPR07MB57171F373C9F3492472690A48B4B9@BYAPR07MB5717.namprd07.prod.outlook.com>
+Message-ID: <CAKrF98mMkgn10C1OjSaVJc+VmWMzHGQmwQojt=qFEAzg3+Z62w@mail.gmail.com>
+
+Delineamento explicado, Carolina!
+
+Resta saber se a chamada à função no R indica isso ou se ele considerou
+cada uma das três amostras por mês como um "fator" ou coisa que o valha e
+por isso não enxerga a multiplicidade para o mês × profundidade.
+
+Sem mais detalhes, por óbvio, é difícil ser assertivo, *mas* considerando o
+objetivo do pacote que usa médias baseadas em componentes principais, que é
+uma técnica usada quando se tem muitas variáveis (e especialmente
+correlacionadas entre si) e os seus dados, me pergunto se uma ANOVA mais
+convencional não seria suficiente para ajudá-la a responder a questão da
+pesquisa.
+
+HTH
+--
+Cesar Rabak
+
+
+On Sat, Apr 17, 2021 at 6:52 PM Carolina Lopes por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezado Cesar.
+> Tenho 216 amostras nas quais eu contabilizei o número total de moluscos.
+> São 6 profundidades, 12 meses e foi em triplicata. Para cada profundidade
+> eu tenho 3 amostras por mês.
+> Para cada mês, 18 amostras.
+> Eu gostaria de verificar se existe diferença entre as profundidades em
+> cada mês.
+>
+> Espero que eu tenha conseguido explicar melhor o delineamento.
+>
+> Agradeço a atenção.
+> __________________________________________________________________________
+> Dra. Carolina A. Lopes
+> Pesquisadora - Pós-doutorado
+> Universidade Federal de Santa Catarina - UFSC
+>
+> ------------------------------
+> *De:* R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Cesar Rabak por
+> (R-br) <r-br em listas.c3sl.ufpr.br>
+> *Enviado:* quinta-feira, 15 de abril de 2021 21:19
+> *Para:* a lista Brasileira oficial de discussão do programa R. <
+> r-br em listas.c3sl.ufpr.br>
+> *Cc:* Cesar Rabak <cesar.rabak em gmail.com>
+> *Assunto:* Re: [R-br] Teste de Pairwise para PERMANOVA
+>
+> Carolina,
+>
+> Sem saber mais detalhes sobre os dados é difícil escapar do campo dos
+> "palpites", mas a mensagem parece indicar que o número de casos para as
+> permutações não tem nenhum grau de liberdade, você por acaso tem apenas 72
+> caso no total?
+>
+>
+> On Thu, Apr 15, 2021 at 1:43 PM Carolina Lopes por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Prezados.
+>
+> Estou fazendo algumas analises mas estou insegura.
+> Coletei moluscos por 12 meses em 6 profundidades diferentes.
+> Rodei uma PERMANOVA e a interação entre meses e profundidade foi
+> significativa.
+> Agora gostaria de verificar as diferenças entre profundidades dentro de
+> cada mês.
+> Quando rodo a pairwise da PERMANOVA  aparece a seguinte mensagem:
+> Set of permutations < 'minperm'. Generating entire set.'nperm' >= set of
+> all permutations: complete enumeration.
+>
+> Li algumas coisas que talvez eu deveria definir um design de permutação.
+>
+> Alguém poderia me ajudar?
+>
+> Atenciosamente
+> __________________________________________________________________________
+> Dra. Carolina A. Lopes
+> Pesquisadora - Pós-doutorado
+> Universidade Federal de Santa Catarina - UFSC
+> ------------------------------
+> *De:* R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Cesar Rabak por
+> (R-br) <r-br em listas.c3sl.ufpr.br>
+> *Enviado:* quarta-feira, 14 de abril de 2021 14:48
+> *Para:* a lista Brasileira oficial de discussão do programa R. <
+> r-br em listas.c3sl.ufpr.br>
+> *Cc:* Cesar Rabak <cesar.rabak em gmail.com>; Chiara Lubich <
+> lubichchiara em gmail.com>
+> *Assunto:* Re: [R-br] Regressão não linear
+>
+> Chiara,
+>
+> Você menciona « ? esse tipo de distribuição ? ».
+>
+> Qual tipo você acha que é?
+>
+> Pelos nomes que deste aos eixos, parece que a variável dependente é
+> inteira¹ ("Qtde. de artigos [N]"), por outro lado, a variável independente
+> é um ano calendário, que por definição é uma variável ordinal arbitrária (a
+> faixa 1994 -- 2021 poderia ser noutros calendários diferente, por exemplo
+> no Bahá'i de 157 a 178, etc.).
+>
+> Para decidir por uma regressão (de qualquer tipo) antes de mais nada
+> deve-se refletir sobre o fenômeno e a modelagem que o *processo* que gera
+> esses  dados.
+>
+> As regressões são abordagens que nos permitem fazer ajustes dos dados
+> experimentais à essas hipóteses modeladas e enfrenta os dois problemas dos
+> dados obtidos por meio de observação: a) amostragem; b) perturbações que
+> geram erros nas observações, modeladas como "ruído" ou "erros" com
+> distribuição gaussiana de média zero e variância em função da dispersão dos
+> dados vis-à-vis à abstração matemática (equação da regressão).
+>
+> Daí a sua confusão sobre « ? como são feitas as escolhas para valores de
+> a=?, b=? e c=? » ser esperada.
+>
+> A equação da regressão ("não linear") propõe uma complexa equação
+> exponencia multiplicada pela variável independente, etc.
+>
+> O quê você precisa responder é: essa curva descreve um processo que
+> explica a geração dos dados que está em análise?
+>
+> OBS.: Faz sentido incluir um ano que ainda não acabou numa regressão que
+> conta eventos por unidade de ano calendário?
+>
+> HTH
+> --
+> Cesar Rabak
+>
+> [1] Mais importante, parece ser o tipo de dados "de contagem" que tem
+> outras restrições, como não poder ser menor que zero, etc.
+>
+> On Wed, Apr 14, 2021 at 12:01 PM Chiara Lubich por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Bom dia,
+> Pessoal, fiz a plotagem dos meu dados:
+> ano n
+> 1994 1
+> 1996 1
+> 2001 1
+> 2002 1
+> 2004 1
+> 2005 3
+> 2006 3
+> 2007 2
+> 2008 4
+> 2009 1
+> 2010 3
+> 2011 2
+> 2012 5
+> 2013 4
+> 2014 5
+> 2015 3
+> 2016 8
+> 2017 2
+> 2018 4
+> 2019 3
+> 2020 12
+> 2021 2
+> [image: image.png]
+> E vi na internet alguns vídeos em que gráficos que tinham esse tipo de
+> distribuição, era feito o uso de Regressão Não Linear, por meio da função
+> "nls". No entanto, tentei começar a digitar os comandos, mas não entendi
+> como são feitas as escolhas para valores de a=?, b=? e c=?.
+> Segue o script abaixo:
+> plot(n ~ ano, data = chiara, xlab = "Ano da publicação", ylab =
+> "Quantidade de artigos (N)")
+> a_maximovalor=max(n)
+> modelo<-nls(y~x*(1-exp(-b*x))^c, data=chiara, start = list(a=
+> a_maximovalor, b=?, c=?))
+>
+> Agradeço desde já pela colaboração
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210418/9a91d54e/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 9748 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210418/9a91d54e/attachment.png>
+
+From marcelolaia em gmail.com  Sun Apr 18 16:11:38 2021
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Sun, 18 Apr 2021 16:11:38 -0300
+Subject: [R-br] =?iso-8859-1?q?An=E1lise_ordenamento_=28rank=29_de_dados_?=
+ =?iso-8859-1?q?respostas?=
+Message-ID: <YHyEatTsC6kRcckD@localhost>
+
+Colega,
+
+Tenho uma tabela com dados na seguinte forma:
+
+        Tesp1   Tesp2   Tesp3
+Ind1    3       1       2
+Ind2    1       3       2
+Ind3    3       2       1
+Ind4    2       1       3
+Ind5    3       1       2
+
+Pediu-se aos Ind que ordenasse de acordo com suas preferências.
+
+Preciso saber qual é o ranqueamento de Tesp1, Tesp2 e Tesp3.
+
+Por exemplo, pelas respostas dos indivíduos (1 a 5), o ranqueamento
+seria: Tesp2 > Tesp3 > Tesp1
+
+Eu busquei na internet e achei:
+
+https://rpubs.com/kyle_macdonald/433105
+
+https://www.programmingr.com/tutorial/rank-in-r/
+
+https://towardsdatascience.com/r-rank-vs-order-753cc7665951
+
+https://stackoverflow.com/questions/31617299/ranking-data-based-on-subcategories-in-r
+
+https://www.r-bloggers.com/2019/02/introducing-rank-data-analysis-with-arkham-horror-data/
+
+Você conhece alguma outra maneira de analisar esse tipo de dado? Eu
+preciso saber a ordem preferida e alguma estatística associada que me
+permita afirmar algo. Além disso, eu gostaria de saber quem se
+relaciona com quem. Por exemplo,  Tesp1 se relaciona mais com Tesp2 ou
+com Tesp3? Ou seja, quem escolhe Tesp1, teria mais chances de escolher
+Tesp2 ou Tesp3?
+
+Isso é só um exemplo. O banco de dados é maior.
+
+Obrigado
+
+-- 
+Marcelo
+
+From cesar.rabak em gmail.com  Mon Apr 19 19:51:28 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 19 Apr 2021 19:51:28 -0300
+Subject: [R-br] 
+	=?utf-8?q?An=C3=A1lise_ordenamento_=28rank=29_de_dados_re?=
+	=?utf-8?q?spostas?=
+In-Reply-To: <YHyEatTsC6kRcckD@localhost>
+References: <YHyEatTsC6kRcckD@localhost>
+Message-ID: <CAKrF98=D42ppXBjBOPX5aFmK7MaQa00isYJ0C-jbrvwhjhD0sw@mail.gmail.com>
+
+Marcelo,
+
+O uso da técnica de classificação posicional (*ranking*) é sempre meio para
+alguma decisão ou análise adicional, que você não menciona na sua pergunta.
+
+Em relação à sua questão (também muito aberta e teórica) você pode se
+interessar pela técnica da Análise de Correspondência que pode ajudá-lo a
+responder a questão que você propõe, embora ela trate de "distância" e não
+de "relacionamento", que envolveria o cruzamento com outro
+atributo/variável.
+
+Um uso desse mecanismo é o "Voto Preferencial" que é a nomenclatura em
+português para *ranked voting* ? !
+
+Um outro conhecido é o sistema de pontuação dos "grandes prêmios" cujo
+resultado é dado pela soma dos pontos obtidos em cada um no final da
+"temporada".
+
+O rankeamento global precisa levar em conta o domínio do problema, imagine
+o seguinte resultado no seu exemplo:
+
+        Tesp1   Tesp2   Tesp3
+Ind1    3       2       1
+Ind2    1       3       2
+Ind3    1       3       2
+Ind4    2       1       3
+Ind5    3       1       2
+
+Como você calcularia a ordenação nesse caso, de forma que fizesse sentido
+no seu problema?
+
+HTH
+
+
+On Sun, Apr 18, 2021 at 4:11 PM Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Colega,
+>
+> Tenho uma tabela com dados na seguinte forma:
+>
+>         Tesp1   Tesp2   Tesp3
+> Ind1    3       1       2
+> Ind2    1       3       2
+> Ind3    3       2       1
+> Ind4    2       1       3
+> Ind5    3       1       2
+>
+> Pediu-se aos Ind que ordenasse de acordo com suas preferências.
+>
+> Preciso saber qual é o ranqueamento de Tesp1, Tesp2 e Tesp3.
+>
+> Por exemplo, pelas respostas dos indivíduos (1 a 5), o ranqueamento
+> seria: Tesp2 > Tesp3 > Tesp1
+>
+> Eu busquei na internet e achei:
+>
+> https://rpubs.com/kyle_macdonald/433105
+>
+> https://www.programmingr.com/tutorial/rank-in-r/
+>
+> https://towardsdatascience.com/r-rank-vs-order-753cc7665951
+>
+>
+> https://stackoverflow.com/questions/31617299/ranking-data-based-on-subcategories-in-r
+>
+>
+> https://www.r-bloggers.com/2019/02/introducing-rank-data-analysis-with-arkham-horror-data/
+>
+> Você conhece alguma outra maneira de analisar esse tipo de dado? Eu
+> preciso saber a ordem preferida e alguma estatística associada que me
+> permita afirmar algo. Além disso, eu gostaria de saber quem se
+> relaciona com quem. Por exemplo,  Tesp1 se relaciona mais com Tesp2 ou
+> com Tesp3? Ou seja, quem escolhe Tesp1, teria mais chances de escolher
+> Tesp2 ou Tesp3?
+>
+> Isso é só um exemplo. O banco de dados é maior.
+>
+> Obrigado
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210419/8df9567c/attachment.html>
+
+From marcelolaia em gmail.com  Mon Apr 19 20:09:29 2021
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Mon, 19 Apr 2021 20:09:29 -0300
+Subject: [R-br] 
+	=?utf-8?q?An=C3=A1lise_ordenamento_=28rank=29_de_dados_re?=
+	=?utf-8?q?spostas?=
+In-Reply-To: <CAKrF98=D42ppXBjBOPX5aFmK7MaQa00isYJ0C-jbrvwhjhD0sw@mail.gmail.com>
+References: <YHyEatTsC6kRcckD@localhost>
+ <CAKrF98=D42ppXBjBOPX5aFmK7MaQa00isYJ0C-jbrvwhjhD0sw@mail.gmail.com>
+Message-ID: <CAEEYVUB17c=+3LdDucwk7g+3qorWYedLftxAQS_YhD+Nm9UHyQ@mail.gmail.com>
+
+Cesar, muito obrigado!
+
+Cesar, eu tenho Tesp1, Tesp2,..., Tesp35. Assim, é improvável acontecer a
+sua suposição de empate.
+
+Eu vi algumas análises utilizar a média e o desvio padrão para ordenar,
+classificar, os itens.
+
+No seu exemplo,
+
+        Tesp1   Tesp2   Tesp3
+Ind1    3       2       1
+Ind2    1       3       2
+Ind3    1       3       2
+Ind4    2       1       3
+Ind5    3       1       2
+
+Tesp1 teria média 2 e sd1, Tesp2 teria média 2 e sd2 e Tesp3 também teria
+média 2 com sd3. Isso por uma particularidade dos dados acima (somente 3
+Tesp).
+
+Com a média e o desvio eu consigo ordenar os meus Tesp. O problema mora no
+fato de eu não usar nenhuma probabilidade.
+
+Eu também gostaria de saber a preferência dado certa escola. Vou ler a
+respeito da sua sugestão sobre Análise de Correspondência.
+
+Muito obrigado
+
+Laia ML
+
+Enviado a partir de dispositivo móvel
+https://linktr.ee/marcelolaia
+
+Em seg, 19 de abr de 2021 19:51, Cesar Rabak <cesar.rabak em gmail.com>
+escreveu:
+
+> Marcelo,
+>
+> O uso da técnica de classificação posicional (*ranking*) é sempre meio
+> para alguma decisão ou análise adicional, que você não menciona na sua
+> pergunta.
+>
+> Em relação à sua questão (também muito aberta e teórica) você pode se
+> interessar pela técnica da Análise de Correspondência que pode ajudá-lo a
+> responder a questão que você propõe, embora ela trate de "distância" e não
+> de "relacionamento", que envolveria o cruzamento com outro
+> atributo/variável.
+>
+> Um uso desse mecanismo é o "Voto Preferencial" que é a nomenclatura em
+> português para *ranked voting* ? !
+>
+> Um outro conhecido é o sistema de pontuação dos "grandes prêmios" cujo
+> resultado é dado pela soma dos pontos obtidos em cada um no final da
+> "temporada".
+>
+> O rankeamento global precisa levar em conta o domínio do problema, imagine
+> o seguinte resultado no seu exemplo:
+>
+>         Tesp1   Tesp2   Tesp3
+> Ind1    3       2       1
+> Ind2    1       3       2
+> Ind3    1       3       2
+> Ind4    2       1       3
+> Ind5    3       1       2
+>
+> Como você calcularia a ordenação nesse caso, de forma que fizesse sentido
+> no seu problema?
+>
+> HTH
+>
+>
+> On Sun, Apr 18, 2021 at 4:11 PM Marcelo Laia por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Colega,
+>>
+>> Tenho uma tabela com dados na seguinte forma:
+>>
+>>         Tesp1   Tesp2   Tesp3
+>> Ind1    3       1       2
+>> Ind2    1       3       2
+>> Ind3    3       2       1
+>> Ind4    2       1       3
+>> Ind5    3       1       2
+>>
+>> Pediu-se aos Ind que ordenasse de acordo com suas preferências.
+>>
+>> Preciso saber qual é o ranqueamento de Tesp1, Tesp2 e Tesp3.
+>>
+>> Por exemplo, pelas respostas dos indivíduos (1 a 5), o ranqueamento
+>> seria: Tesp2 > Tesp3 > Tesp1
+>>
+>> Eu busquei na internet e achei:
+>>
+>> https://rpubs.com/kyle_macdonald/433105
+>>
+>> https://www.programmingr.com/tutorial/rank-in-r/
+>>
+>> https://towardsdatascience.com/r-rank-vs-order-753cc7665951
+>>
+>>
+>> https://stackoverflow.com/questions/31617299/ranking-data-based-on-subcategories-in-r
+>>
+>>
+>> https://www.r-bloggers.com/2019/02/introducing-rank-data-analysis-with-arkham-horror-data/
+>>
+>> Você conhece alguma outra maneira de analisar esse tipo de dado? Eu
+>> preciso saber a ordem preferida e alguma estatística associada que me
+>> permita afirmar algo. Além disso, eu gostaria de saber quem se
+>> relaciona com quem. Por exemplo,  Tesp1 se relaciona mais com Tesp2 ou
+>> com Tesp3? Ou seja, quem escolhe Tesp1, teria mais chances de escolher
+>> Tesp2 ou Tesp3?
+>>
+>> Isso é só um exemplo. O banco de dados é maior.
+>>
+>> Obrigado
+>>
+>> --
+>> Marcelo
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210419/e456462d/attachment.html>
+
+From apcmadeira em hotmail.com  Fri Apr 23 15:11:54 2021
+From: apcmadeira em hotmail.com (ana paula coelho madeira)
+Date: Fri, 23 Apr 2021 18:11:54 +0000
+Subject: [R-br] Fatorial 2^3 + ponto central
+Message-ID: <BL0PR08MB45773F84BE07AB2067BF929ACA459@BL0PR08MB4577.namprd08.prod.outlook.com>
+
+Prezados,
+
+Boa tarde! Estou analisando um experimento fatorial , 3 fatores e 2 níveis,  adicionando 3 repetições no ponto central.
+Utilizando o pacote FrF2, a função
+
+library(FrF2)
+plan.pc<-FrF2(nruns=8,
+                          nfactors=3,
+                          ncenter=3,
+                          factor.names=c("AM", "pH", "T"),
+                           randomize=F)
+summary(plan.pc)
+
+    lm1<-lm(y~A*B*C, iscube(plan.pc), data=plan.pc)   #  iscube: termo para avaliar a curvatura
+
+está apresentando na saída:
+
+Residuals:
+ALL 8 residuals are 0: no residual degrees of freedom!
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)
+(Intercept)  0.155375         NA      NA       NA
+AM           0.009875         NA      NA       NA
+pH           0.050875         NA      NA       NA
+T           -0.103625         NA      NA       NA
+AM:pH        0.048875         NA      NA       NA
+AM:T        -0.006625         NA      NA       NA
+pH:T        -0.033625         NA      NA       NA
+AM:pH:T     -0.045125         NA      NA       NA
+
+Residual standard error: NaN on 0 degrees of freedom
+Multiple R-squared:      1, Adjusted R-squared:    NaN
+F-statistic:   NaN on 7 and 0 DF,  p-value: NA
+
+Ao que parece, por mais que eu tenha acrescentado os 3 pontos centrais, eles não estão sendo considerados. Alguma sugestão?
+
+Usava anteriormente o pacote qualityTools, o pacote foi desabilitado.
+
+Desde já agradeço
+
+Ana Paula
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210423/1291055f/attachment.html>
+
+From sznelwar em uol.com.br  Fri Apr 23 19:06:54 2021
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Fri, 23 Apr 2021 19:06:54 -0300
+Subject: [R-br] Fatorial 2^3 + ponto central
+In-Reply-To: <BL0PR08MB45773F84BE07AB2067BF929ACA459@BL0PR08MB4577.namprd08.prod.outlook.com>
+References: <BL0PR08MB45773F84BE07AB2067BF929ACA459@BL0PR08MB4577.namprd08.prod.outlook.com>
+Message-ID: <608344fe6227f_53a32abd11377118550f8@ip-10-81-19-102.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20210423/6af7957c/attachment.html>
+

@@ -1,0 +1,633 @@
+From diogojose21 em yahoo.com.br  Mon Oct 25 13:29:45 2021
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Mon, 25 Oct 2021 16:29:45 +0000 (UTC)
+Subject: [R-br] Substituir/apagar strings.
+References: <788313316.567417.1635179385842.ref@mail.yahoo.com>
+Message-ID: <788313316.567417.1635179385842@mail.yahoo.com>
+
+Boa tarde prezados!!! Parece um do "ridículas", mas não consegui resolver. Segue o vetor de exemplo:
+ teste<-c(rep("EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)",3),rep("EIA/EF/EQ/Q (U/mL) IgG - Valor (U/mL)",5))data.frame(teste)
+Eu preciso apagar os trechos do meu data.frame onde aparece o termo "EIA/EF/EQ/Q (U/mL)". Tentei usar o comando abaixo:
+
+ gsub("EIA/EF/EQ/Q (U/mL)","",teste)
+
+mas não obtive sucesso. Alguém teria uma ideia de onde estou errando, ou se tem algum comando melhor no tidyverse ou dplyr para fazer isso?
+Obrigado!!! 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211025/a772b486/attachment.htm>
+
+From marcus.nunes em gmail.com  Mon Oct 25 13:55:29 2021
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Mon, 25 Oct 2021 13:55:29 -0300
+Subject: [R-br] Substituir/apagar strings.
+In-Reply-To: <788313316.567417.1635179385842@mail.yahoo.com>
+References: <788313316.567417.1635179385842.ref@mail.yahoo.com>
+ <788313316.567417.1635179385842@mail.yahoo.com>
+Message-ID: <CA+QGQvuNxomGYjt6n9wovouWmWqmOMCgnka4OySc96BQo4yfuQ@mail.gmail.com>
+
+Olá,
+
+Use o código a seguir para resolver o seu problema:
+
+### inicio do codigo
+teste<-c(rep("EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO,
+Índice)",3),rep("EIA/EF/EQ/Q (U/mL) IgG - Valor (U/mL)",5))
+teste <- data.frame(teste)
+
+library(tidyverse)
+
+teste %>%
+  mutate(teste_limpo = str_replace_all(teste, "EIA/EF/EQ/Q \\(U/mL\\)", ""))
+### fim do codigo
+
+Também seria possível resolver o problema sem apelar para o tidyverse:
+
+### inicio do codigo
+gsub("EIA/EF/EQ/Q \\(U/mL\\)","",teste$teste)
+### fim do codigo
+
+O problema de utilizar "(" ou ")" diretamente, sem usar os caracteres de
+escape (ou seja, "\\(" ou "\\)") é que os comandos str_replace_all e gsub
+entendem isso como uma expressão regular, criando assim um grupo de
+caracteres e não fazendo a limpeza da maneira esperada originalmente.
+
+Atenciosamente,
+--
+Marcus Nunes
+Professor Adjunto
+https://marcusnunes.me/
+Universidade Federal do Rio Grande do Norte
+Departamento de Estatística
+Laboratório de Estatística Aplicada - http://lea.estatistica.ccet.ufrn.br
+Curso de Big Data - https://introbigdata.org
+Aplicações em Shiny - http://shiny.estatistica.ccet.ufrn.br
+
+
+On Mon, Oct 25, 2021 at 1:32 PM Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde prezados!!! Parece um do "ridículas", mas não consegui resolver.
+> Segue o vetor de exemplo:
+>
+> teste<-c(rep("EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO,
+> Índice)",3),rep("EIA/EF/EQ/Q (U/mL) IgG - Valor (U/mL)",5))
+> data.frame(teste)
+>
+> Eu preciso *apagar* os trechos do meu data.frame onde aparece o termo "EIA/EF/EQ/Q
+> (U/mL)". Tentei usar o comando abaixo:
+>
+> gsub("EIA/EF/EQ/Q (U/mL)","",teste)
+>
+> mas não obtive sucesso. Alguém teria uma ideia de onde estou errando, ou
+> se tem algum comando melhor no tidyverse ou dplyr para fazer isso?
+>
+> Obrigado!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211025/39f6972b/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Mon Oct 25 14:19:59 2021
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Mon, 25 Oct 2021 17:19:59 +0000 (UTC)
+Subject: [R-br] Substituir/apagar strings.
+In-Reply-To: <CA+QGQvuNxomGYjt6n9wovouWmWqmOMCgnka4OySc96BQo4yfuQ@mail.gmail.com>
+References: <788313316.567417.1635179385842.ref@mail.yahoo.com>
+ <788313316.567417.1635179385842@mail.yahoo.com>
+ <CA+QGQvuNxomGYjt6n9wovouWmWqmOMCgnka4OySc96BQo4yfuQ@mail.gmail.com>
+Message-ID: <882129810.574129.1635182400002@mail.yahoo.com>
+
+Prezado professor, resolveu, já estava com cabelo branco aqui rs... Muito obrigado e ótima tarde!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE AEmail: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520 
+    Em segunda-feira, 25 de outubro de 2021 13:55:42 BRT, Marcus Nunes <marcus.nunes em gmail.com> escreveu:  
+ 
+ Olá,
+Use o código a seguir para resolver o seu problema:
+### inicio do codigo
+teste<-c(rep("EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)",3),rep("EIA/EF/EQ/Q (U/mL) IgG - Valor (U/mL)",5))
+teste <- data.frame(teste)
+
+library(tidyverse)
+
+teste %>%
+  mutate(teste_limpo = str_replace_all(teste, "EIA/EF/EQ/Q \\(U/mL\\)", ""))### fim do codigo
+Também seria possível resolver o problema sem apelar para o tidyverse:
+### inicio do codigogsub("EIA/EF/EQ/Q \\(U/mL\\)","",teste$teste)### fim do codigo
+O problema de utilizar "(" ou ")" diretamente, sem usar os caracteres de escape (ou seja, "\\(" ou "\\)") é que os comandos str_replace_all e gsub entendem isso como uma expressão regular, criando assim um grupo de caracteres e não fazendo a limpeza da maneira esperada originalmente.
+
+Atenciosamente,
+--Marcus NunesProfessor Adjuntohttps://marcusnunes.me/Universidade Federal do Rio Grande do NorteDepartamento de EstatísticaLaboratório de Estatística Aplicada - http://lea.estatistica.ccet.ufrn.brCurso de Big Data - https://introbigdata.org
+Aplicações em Shiny - http://shiny.estatistica.ccet.ufrn.br
+
+On Mon, Oct 25, 2021 at 1:32 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+Boa tarde prezados!!! Parece um do "ridículas", mas não consegui resolver. Segue o vetor de exemplo:
+ teste<-c(rep("EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)",3),rep("EIA/EF/EQ/Q (U/mL) IgG - Valor (U/mL)",5))data.frame(teste)
+Eu preciso apagar os trechos do meu data.frame onde aparece o termo "EIA/EF/EQ/Q (U/mL)". Tentei usar o comando abaixo:
+
+ gsub("EIA/EF/EQ/Q (U/mL)","",teste)
+
+mas não obtive sucesso. Alguém teria uma ideia de onde estou errando, ou se tem algum comando melhor no tidyverse ou dplyr para fazer isso?
+Obrigado!!! 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211025/86ec6a93/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue Oct 26 11:28:26 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 26 Oct 2021 11:28:26 -0300
+Subject: [R-br] Substituir/apagar strings.
+In-Reply-To: <788313316.567417.1635179385842@mail.yahoo.com>
+References: <788313316.567417.1635179385842.ref@mail.yahoo.com>
+ <788313316.567417.1635179385842@mail.yahoo.com>
+Message-ID: <CAKrF98kuBfEwHVRoRYeSA-Wv4=O6ymzvDqj2a7fYLtTsyTQ4ZQ@mail.gmail.com>
+
+Diego,
+
+Você já tem a solução, *mas* a 1ª parte da sua pergunta « Alguém teria uma
+ideia de onde estou errando,  » me parece que todavia não foi endereçada
+explicitamente.
+
+Considerando o exemplo de dados que vc passou acima, a solução é
+empregar a *expressão
+regular* adequada aos seus dados, da qual a função gsub depende para
+"entender" o que o programador deseja:
+
+> gsub("EIA/EF/EQ/Q \\(U/mL\\)","",teste)
+[1] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[2] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[3] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[4] " IgG - Valor (U/mL)"
+[5] " IgG - Valor (U/mL)"
+[6] " IgG - Valor (U/mL)"
+[7] " IgG - Valor (U/mL)"
+[8] " IgG - Valor (U/mL)"
+
+Para os detalhes excruciantemente intestinos recomendo a leitura do manual
+na entrada regex.
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Mon, Oct 25, 2021 at 1:32 PM Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde prezados!!! Parece um do "ridículas", mas não consegui resolver.
+> Segue o vetor de exemplo:
+>
+> teste<-c(rep("EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO,
+> Índice)",3),rep("EIA/EF/EQ/Q (U/mL) IgG - Valor (U/mL)",5))
+> data.frame(teste)
+>
+> Eu preciso *apagar* os trechos do meu data.frame onde aparece o termo "EIA/EF/EQ/Q
+> (U/mL)". Tentei usar o comando abaixo:
+>
+> gsub("EIA/EF/EQ/Q (U/mL)","",teste)
+>
+> mas não obtive sucesso. Alguém teria uma ideia de onde estou errando, ou
+> se tem algum comando melhor no tidyverse ou dplyr para fazer isso?
+>
+> Obrigado!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211026/fbeb3703/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue Oct 26 11:32:04 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 26 Oct 2021 11:32:04 -0300
+Subject: [R-br] Substituir/apagar strings.
+In-Reply-To: <CAKrF98kuBfEwHVRoRYeSA-Wv4=O6ymzvDqj2a7fYLtTsyTQ4ZQ@mail.gmail.com>
+References: <788313316.567417.1635179385842.ref@mail.yahoo.com>
+ <788313316.567417.1635179385842@mail.yahoo.com>
+ <CAKrF98kuBfEwHVRoRYeSA-Wv4=O6ymzvDqj2a7fYLtTsyTQ4ZQ@mail.gmail.com>
+Message-ID: <CAKrF98kBSxevDXbU5y+ymij9xJ1VkSM3iWAK31SZgLtA2eiKKg@mail.gmail.com>
+
+Por completude, devo incluir esta outra possível sintaxe:
+
+> gsub("EIA/EF/EQ/Q (U/mL)","",teste, fixed=T)
+[1] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[2] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[3] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[4] " IgG - Valor (U/mL)"
+[5] " IgG - Valor (U/mL)"
+[6] " IgG - Valor (U/mL)"
+[7] " IgG - Valor (U/mL)"
+[8] " IgG - Valor (U/mL)"
+
+Por alguma razão quando colei na 1ª vez, veio só uma parte do meu exemplo...
+
+de novo, HTH
+
+--
+Cesar Rabak
+
+
+On Tue, Oct 26, 2021 at 11:28 AM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+
+> Diego,
+>
+> Você já tem a solução, *mas* a 1ª parte da sua pergunta « Alguém teria
+> uma ideia de onde estou errando,  » me parece que todavia não foi
+> endereçada explicitamente.
+>
+> Considerando o exemplo de dados que vc passou acima, a solução é empregar
+> a *expressão regular* adequada aos seus dados, da qual a função gsub depende
+> para "entender" o que o programador deseja:
+>
+> > gsub("EIA/EF/EQ/Q \\(U/mL\\)","",teste)
+> [1] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+> [2] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+> [3] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+> [4] " IgG - Valor (U/mL)"
+> [5] " IgG - Valor (U/mL)"
+> [6] " IgG - Valor (U/mL)"
+> [7] " IgG - Valor (U/mL)"
+> [8] " IgG - Valor (U/mL)"
+>
+> Para os detalhes excruciantemente intestinos recomendo a leitura do manual
+> na entrada regex.
+>
+> HTH
+>
+> --
+> Cesar Rabak
+>
+>
+> On Mon, Oct 25, 2021 at 1:32 PM Diogo Jerônimo por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Boa tarde prezados!!! Parece um do "ridículas", mas não consegui
+>> resolver. Segue o vetor de exemplo:
+>>
+>> teste<-c(rep("EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO,
+>> Índice)",3),rep("EIA/EF/EQ/Q (U/mL) IgG - Valor (U/mL)",5))
+>> data.frame(teste)
+>>
+>> Eu preciso *apagar* os trechos do meu data.frame onde aparece o termo "EIA/EF/EQ/Q
+>> (U/mL)". Tentei usar o comando abaixo:
+>>
+>> gsub("EIA/EF/EQ/Q (U/mL)","",teste)
+>>
+>> mas não obtive sucesso. Alguém teria uma ideia de onde estou errando, ou
+>> se tem algum comando melhor no tidyverse ou dplyr para fazer isso?
+>>
+>> Obrigado!!!
+>>
+>> *Diogo Jerônimo*
+>> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+>> *Mestre em Metrologia - PUC-Rio/PósMQI*
+>> *CONRE: 8514 - SÉRIE A*
+>> *http://lattes.cnpq.br/8996149312896520
+>> <http://lattes.cnpq.br/8996149312896520>*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211026/622ffd38/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Tue Oct 26 13:07:19 2021
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Tue, 26 Oct 2021 16:07:19 +0000 (UTC)
+Subject: [R-br] Substituir/apagar strings.
+In-Reply-To: <CAKrF98kBSxevDXbU5y+ymij9xJ1VkSM3iWAK31SZgLtA2eiKKg@mail.gmail.com>
+References: <788313316.567417.1635179385842.ref@mail.yahoo.com>
+ <788313316.567417.1635179385842@mail.yahoo.com>
+ <CAKrF98kuBfEwHVRoRYeSA-Wv4=O6ymzvDqj2a7fYLtTsyTQ4ZQ@mail.gmail.com>
+ <CAKrF98kBSxevDXbU5y+ymij9xJ1VkSM3iWAK31SZgLtA2eiKKg@mail.gmail.com>
+Message-ID: <1588975803.794977.1635264439439@mail.yahoo.com>
+
+Obrigado César, acabou sendo didático para mim, ainda enviesado com minha visão de comandos rs... Vlw
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+ 
+Em terça-feira, 26 de outubro de 2021 11:32:16 BRT, Cesar Rabak <cesar.rabak em gmail.com> escreveu:
+ 
+ 
+ Por completude, devo incluir esta outra possível sintaxe:
+> gsub("EIA/EF/EQ/Q (U/mL)","",teste, fixed=T)
+[1] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[2] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[3] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[4] " IgG - Valor (U/mL)"                             
+[5] " IgG - Valor (U/mL)"                             
+[6] " IgG - Valor (U/mL)"                             
+[7] " IgG - Valor (U/mL)"                             
+[8] " IgG - Valor (U/mL)"  
+
+Por alguma razão quando colei na 1ª vez, veio só uma parte do meu exemplo...
+de novo, HTH
+--Cesar Rabak
+
+On Tue, Oct 26, 2021 at 11:28 AM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+
+Diego,
+Você já tem a solução, mas a 1ª parte da sua pergunta « Alguém teria uma ideia de onde estou errando,  » me parece que todavia não foi endereçada explicitamente.
+Considerando o exemplo de dados que vc passou acima, a solução é empregar a expressão regular adequada aos seus dados, da qual a função gsub depende para "entender" o que o programador deseja:
+> gsub("EIA/EF/EQ/Q \\(U/mL\\)","",teste)
+[1] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[2] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[3] "EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)"
+[4] " IgG - Valor (U/mL)"                             
+[5] " IgG - Valor (U/mL)"                             
+[6] " IgG - Valor (U/mL)"                             
+[7] " IgG - Valor (U/mL)"                             
+[8] " IgG - Valor (U/mL)"                             
+
+Para os detalhes excruciantemente intestinos recomendo a leitura do manual na entrada regex.
+HTH
+--Cesar Rabak
+
+On Mon, Oct 25, 2021 at 1:32 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+Boa tarde prezados!!! Parece um do "ridículas", mas não consegui resolver. Segue o vetor de exemplo:
+ teste<-c(rep("EIA/EF/EQ/Q (Índice) IgG - Valor (DO/CO, Índice)",3),rep("EIA/EF/EQ/Q (U/mL) IgG - Valor (U/mL)",5))data.frame(teste)
+Eu preciso apagar os trechos do meu data.frame onde aparece o termo "EIA/EF/EQ/Q (U/mL)". Tentei usar o comando abaixo:
+
+ gsub("EIA/EF/EQ/Q (U/mL)","",teste)
+
+mas não obtive sucesso. Alguém teria uma ideia de onde estou errando, ou se tem algum comando melhor no tidyverse ou dplyr para fazer isso?
+Obrigado!!! 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211026/0fff922c/attachment.htm>
+
+From luzia.trinca em unesp.br  Thu Oct 28 17:20:50 2021
+From: luzia.trinca em unesp.br (Luzia Aparecida Trinca)
+Date: Thu, 28 Oct 2021 17:20:50 -0300
+Subject: [R-br] =?utf-8?q?Pacote_R_antigo_=28em_arquivo_zip=29_para_vers?=
+ =?utf-8?q?=C3=A3o_nova_R?=
+Message-ID: <CA+rQDHwQuE9J_bSaC=ukgTWCde311sjdBQ=ab8G85tY4BkT2tQ@mail.gmail.com>
+
+Boa tarde pessoal
+
+Uso muito o pacote lcca (não está no CRAN e nem github, ets), seu zip está
+disponível em:
+
+https://scholarsphere.psu.edu/catalog?button=&page=3&q=methodology+center&search_field=creator
+
+Mas ele foi criado em 2013 para uma versão bem antiga do R. Ainda não
+encontrei nada similar no R (lida com covariáveis e delineamento amostral
+complexo).
+
+Alguém saberia me dizer se, tendo o zip,  é possível reconstruir/atualizar
+o pacote para uma versão mais recente do R?
+Estou com o problema de que não consigo abrir o banco de dados na versão
+antiga do R e não consigo executar o lcca na versão atual do R...
+
+Agradeço caso tenham qualquer dica.
+abs
+Luzia Trinca
+Depto de Bioestatística, IBB
+Rua Prof. Dr. Celso Wagner Zanin, 250
+Unesp, Campus de Botucatu
+18618-689 Botucatu, SP
+Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211028/3baf8de5/attachment.htm>
+
+From fernandomayer em gmail.com  Thu Oct 28 19:16:23 2021
+From: fernandomayer em gmail.com (Fernando Mayer)
+Date: Thu, 28 Oct 2021 19:16:23 -0300
+Subject: [R-br] 
+	=?utf-8?q?Pacote_R_antigo_=28em_arquivo_zip=29_para_vers?=
+	=?utf-8?q?=C3=A3o_nova_R?=
+In-Reply-To: <CA+rQDHwQuE9J_bSaC=ukgTWCde311sjdBQ=ab8G85tY4BkT2tQ@mail.gmail.com>
+References: <CA+rQDHwQuE9J_bSaC=ukgTWCde311sjdBQ=ab8G85tY4BkT2tQ@mail.gmail.com>
+Message-ID: <CAO4bAdOyTTu7QtPPEH-pxxHRP2cKiRyE3hgW-4iFcOuySG5zeQ@mail.gmail.com>
+
+Olá Luzia,
+
+eu vi que o pacote só foi disponibilizado já no formato binário do Windows.
+Se tivesse o código fonte seria  mais fácil. No entanto o que eu sugiro
+fazer é:
+
+1. Instalar o pacote em uma versão do R que ele funcione
+2. Fazer um dump() de todas as funções do pacote:
+
+library(lcca)
+dump("package:lcca", file = "lcca.R")
+
+Depois disso, vc pode voltar para a versão mais recente do R e  fazer
+
+source("lcca.R")
+
+Isso funcionaria em teoria, mas como o pacote é antigo é muito provável que
+possa dar problema (além disso acho que ele tem uma dll que precisa ser
+copiada também).
+
+Se isso não funcionar, a solução seria escrever para o autor e pedir o
+código fonte.
+
+
+---
+Fernando de Pol Mayer
+Laboratório de Estatística e Geoinformação - LEG
+Departamento de Estatística - DEST
+Universidade Federal do Paraná - UFPR
+URL: http://leg.ufpr.br/~fernandomayer
+e-mail: fernando.mayer [@] {gmail.com, ufpr.br}
+
+
+On Thu, Oct 28, 2021 at 5:21 PM Luzia Aparecida Trinca por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde pessoal
+>
+> Uso muito o pacote lcca (não está no CRAN e nem github, ets), seu zip está
+> disponível em:
+>
+>
+> https://scholarsphere.psu.edu/catalog?button=&page=3&q=methodology+center&search_field=creator
+>
+> Mas ele foi criado em 2013 para uma versão bem antiga do R. Ainda não
+> encontrei nada similar no R (lida com covariáveis e delineamento amostral
+> complexo).
+>
+> Alguém saberia me dizer se, tendo o zip,  é possível reconstruir/atualizar
+> o pacote para uma versão mais recente do R?
+> Estou com o problema de que não consigo abrir o banco de dados na versão
+> antiga do R e não consigo executar o lcca na versão atual do R...
+>
+> Agradeço caso tenham qualquer dica.
+> abs
+> Luzia Trinca
+> Depto de Bioestatística, IBB
+> Rua Prof. Dr. Celso Wagner Zanin, 250
+> Unesp, Campus de Botucatu
+> 18618-689 Botucatu, SP
+> Brasil
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211028/a48704ec/attachment.htm>
+
+From cesar.rabak em gmail.com  Fri Oct 29 11:37:49 2021
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 29 Oct 2021 11:37:49 -0300
+Subject: [R-br] 
+	=?utf-8?q?Pacote_R_antigo_=28em_arquivo_zip=29_para_vers?=
+	=?utf-8?q?=C3=A3o_nova_R?=
+In-Reply-To: <CAO4bAdOyTTu7QtPPEH-pxxHRP2cKiRyE3hgW-4iFcOuySG5zeQ@mail.gmail.com>
+References: <CA+rQDHwQuE9J_bSaC=ukgTWCde311sjdBQ=ab8G85tY4BkT2tQ@mail.gmail.com>
+ <CAO4bAdOyTTu7QtPPEH-pxxHRP2cKiRyE3hgW-4iFcOuySG5zeQ@mail.gmail.com>
+Message-ID: <CAKrF98nu2L45g3oRoFrOy+TyvKmdPzr=GgWtLgvBuoiNdVWbZg@mail.gmail.com>
+
+Esse procedimento só seria totalmente aplicável se o pacote não tiver
+nenhuma parte compilada em binário nativa do Windows, como uma DLL, por
+exemplo.
+
+O pacote parece ter sido criado em 2013 mas foi colocado no *site* do *link*
+acima em 2020.
+
+Um contato com os autores pode ser apropriado para acelerar o trabalho,
+evitando desnecessária "engª reversa".
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Thu, Oct 28, 2021 at 7:16 PM Fernando Mayer por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá Luzia,
+>
+> eu vi que o pacote só foi disponibilizado já no formato binário do
+> Windows. Se tivesse o código fonte seria  mais fácil. No entanto o que eu
+> sugiro fazer é:
+>
+> 1. Instalar o pacote em uma versão do R que ele funcione
+> 2. Fazer um dump() de todas as funções do pacote:
+>
+> library(lcca)
+> dump("package:lcca", file = "lcca.R")
+>
+> Depois disso, vc pode voltar para a versão mais recente do R e  fazer
+>
+> source("lcca.R")
+>
+> Isso funcionaria em teoria, mas como o pacote é antigo é muito provável
+> que possa dar problema (além disso acho que ele tem uma dll que precisa ser
+> copiada também).
+>
+> Se isso não funcionar, a solução seria escrever para o autor e pedir o
+> código fonte.
+>
+>
+> ---
+> Fernando de Pol Mayer
+> Laboratório de Estatística e Geoinformação - LEG
+> Departamento de Estatística - DEST
+> Universidade Federal do Paraná - UFPR
+> URL: http://leg.ufpr.br/~fernandomayer
+> e-mail: fernando.mayer [@] {gmail.com, ufpr.br}
+>
+>
+> On Thu, Oct 28, 2021 at 5:21 PM Luzia Aparecida Trinca por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Boa tarde pessoal
+>>
+>> Uso muito o pacote lcca (não está no CRAN e nem github, ets), seu zip
+>> está disponível em:
+>>
+>>
+>> https://scholarsphere.psu.edu/catalog?button=&page=3&q=methodology+center&search_field=creator
+>>
+>> Mas ele foi criado em 2013 para uma versão bem antiga do R. Ainda não
+>> encontrei nada similar no R (lida com covariáveis e delineamento amostral
+>> complexo).
+>>
+>> Alguém saberia me dizer se, tendo o zip,  é possível
+>> reconstruir/atualizar o pacote para uma versão mais recente do R?
+>> Estou com o problema de que não consigo abrir o banco de dados na versão
+>> antiga do R e não consigo executar o lcca na versão atual do R...
+>>
+>> Agradeço caso tenham qualquer dica.
+>> abs
+>> Luzia Trinca
+>> Depto de Bioestatística, IBB
+>> Rua Prof. Dr. Celso Wagner Zanin, 250
+>> Unesp, Campus de Botucatu
+>> 18618-689 Botucatu, SP
+>> Brasil
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20211029/8662ca2f/attachment.htm>
+

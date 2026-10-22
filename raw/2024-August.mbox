@@ -1,0 +1,162 @@
+From ecacarva em gmail.com  Fri Aug 23 14:40:54 2024
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Fri, 23 Aug 2024 14:40:54 -0300
+Subject: [R-br] =?utf-8?b?QXR1YWxpemHDp8OjbyBkbyBS?=
+Message-ID: <CAH8E6UuEKrT+aMpPqxWkTjBpvO9+GxhL_ZV9k9=uKZYvc-pSfA@mail.gmail.com>
+
+Boa tarde pessoal
+Alguém poderia me recomendar os procedimentos para atualizar o R 4.1 para
+última versão no Linux Mint ?
+Eu já segui vários tutoriais, porém nenhum deles funcionou.
+
+-- 
+
+
+*In Jesu et Maria*
+
+*Obrigado / Thank you*
+*Prof. Dr. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240823/2c41dc1f/attachment.htm>
+
+From marcelolaia em gmail.com  Fri Aug 23 17:44:15 2024
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Fri, 23 Aug 2024 17:44:15 -0300
+Subject: [R-br] =?utf-8?b?QXR1YWxpemHDp8OjbyBkbyBS?=
+In-Reply-To: <CAH8E6UuEKrT+aMpPqxWkTjBpvO9+GxhL_ZV9k9=uKZYvc-pSfA@mail.gmail.com>
+References: <CAH8E6UuEKrT+aMpPqxWkTjBpvO9+GxhL_ZV9k9=uKZYvc-pSfA@mail.gmail.com>
+Message-ID: <CAEEYVUAL+Pi2UHB6m_Y8m7kXN+LFE0iUthkfUemiDK-ReBYnCQ@mail.gmail.com>
+
+Qual é a versão do se LM?
+
+Se for a versão uma (20.2), vez que ela é baseada na Ubuntu 20.04 (focal),
+poderá fazer o seguinte:
+
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu
+focal-cran40/"
+sudo apt update
+sudo apt install r-base r-base-dev
+
+Se o seu LM for outra versão, terá que saber em qual Ubuntu ela é baseada.
+
+--
+Marcelo
+
+
+Enviado a partir de dispositivo móvel
+https://linktr.ee/marcelolaia
+
+Em sex., 23 de ago. de 2024, 14:41, Elias Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa tarde pessoal
+> Alguém poderia me recomendar os procedimentos para atualizar o R 4.1 para
+> última versão no Linux Mint ?
+> Eu já segui vários tutoriais, porém nenhum deles funcionou.
+>
+> --
+>
+>
+> *In Jesu et Maria*
+>
+> *Obrigado / Thank you*
+> *Prof. Dr. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240823/e18ba9fb/attachment.htm>
+
+From ecacarva em gmail.com  Sat Aug 24 10:40:09 2024
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Sat, 24 Aug 2024 10:40:09 -0300
+Subject: [R-br] =?utf-8?b?QXR1YWxpemHDp8OjbyBkbyBS?=
+In-Reply-To: <CAEEYVUAL+Pi2UHB6m_Y8m7kXN+LFE0iUthkfUemiDK-ReBYnCQ@mail.gmail.com>
+References: <CAH8E6UuEKrT+aMpPqxWkTjBpvO9+GxhL_ZV9k9=uKZYvc-pSfA@mail.gmail.com>
+ <CAEEYVUAL+Pi2UHB6m_Y8m7kXN+LFE0iUthkfUemiDK-ReBYnCQ@mail.gmail.com>
+Message-ID: <CAH8E6UvGF_H5r3HTFatr7xhe7O4b8n0tom+YWjR1+7915nf83Q@mail.gmail.com>
+
+Funcionou perfeitamente, muito obrigado Marcelo !!!
+
+Em sex., 23 de ago. de 2024 às 17:44, Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Qual é a versão do se LM?
+>
+> Se for a versão uma (20.2), vez que ela é baseada na Ubuntu 20.04 (focal),
+> poderá fazer o seguinte:
+>
+> sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu
+> focal-cran40/"
+> sudo apt update
+> sudo apt install r-base r-base-dev
+>
+> Se o seu LM for outra versão, terá que saber em qual Ubuntu ela é baseada.
+>
+> --
+> Marcelo
+>
+>
+> Enviado a partir de dispositivo móvel
+> https://linktr.ee/marcelolaia
+>
+> Em sex., 23 de ago. de 2024, 14:41, Elias Carvalho por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Boa tarde pessoal
+>> Alguém poderia me recomendar os procedimentos para atualizar o R 4.1 para
+>> última versão no Linux Mint ?
+>> Eu já segui vários tutoriais, porém nenhum deles funcionou.
+>>
+>> --
+>>
+>>
+>> *In Jesu et Maria*
+>>
+>> *Obrigado / Thank you*
+>> *Prof. Dr. Elias Carvalho*
+>>
+>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+>> who has been able to understand the cause of things"*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+
+
+*In Jesu et Maria*
+
+*Obrigado / Thank you*
+*Prof. Dr. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240824/8cb3643a/attachment.htm>
+

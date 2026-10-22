@@ -1,0 +1,48 @@
+From rafaeltieppo em yahoo.com.br  Sun Jun  1 10:10:24 2025
+From: rafaeltieppo em yahoo.com.br (Rafael Tieppo)
+Date: Sun, 1 Jun 2025 13:10:24 +0000 (UTC)
+Subject: [R-br] =?utf-8?b?QXR1YWxpemHDp8OjbyBS?=
+References: <1129948716.3137379.1748783424444.ref@mail.yahoo.com>
+Message-ID: <1129948716.3137379.1748783424444@mail.yahoo.com>
+
+Emerson, espero que vc já tenha conseguido resolver seu problema de atualização do R no Debian. Caso não tenha conseguido, fiz um passo a passo (testei e funcionou):
+
+1. importar a chave:
+
+```
+gpg --keyserver keyserver.ubuntu.com --recv-key '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7'
+```
+
+2. mover a chave para o diretório `/etc/apt/trusted.gpg.d/`:
+
+```
+gpg --armor --export '95C0FAF38DB3CCAD0C080A7BDC78B2DDEABC47B7' | sudo tee /etc/apt/trusted.gpg.d/cran_debian_key.asc
+```
+
+3. Como administrador do sistema (`su -` ou `sudo`) no caminho `/etc/apt/sources.list.d/` crie um arquivo chamado cran_debian_key.list e insira o conteúdo:
+
+deb [arch=i386,amd64 signed-by=/etc/apt/trusted.gpg.d/cran_debian_key.asc] http://cloud.r-project.org/bin/linux/debian bookworm-cran40/
+
+
+4. Caso tenha instalado alguma versão do R:, recomenda-se remover: 
+
+```
+apt remove r-base-core
+apt remove r-base
+apt remove r-base-dev
+```
+
+5. Posteriormete, atualizar os repositórios e instalar o R:
+
+```
+apt update
+apt install r-base
+``` 
+
+Rafael Tieppo
+site: https://rafatieppo.github.io    
+ 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250601/dbef04a3/attachment.htm>
+

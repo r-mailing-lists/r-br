@@ -1,0 +1,1603 @@
+From diegovieir4 em gmail.com  Sun Nov  1 22:23:48 2020
+From: diegovieir4 em gmail.com (Diego Vieira)
+Date: Sun, 1 Nov 2020 21:23:48 -0300
+Subject: [R-br] =?utf-8?b?Q3JpYW5kbyB1bWEgZnVuw6fDo28gW0hFTFBd?=
+Message-ID: <CAKnQR8304KBpyLejZ=Mk+ZBdh5AmgQGj5CPZCerPWmq7ShAKQA@mail.gmail.com>
+
+Olá pessoal,
+
+Se possível, gostaria da ajuda de alguém para fazer uma função que subtrai
+e adicione     alternadamente os valores. O conjunto de dados é: 10, 20,
+25, 35, 45, 65, 44.
+
+A função deverá fazer o seguinte:
+Cálculo 1: 10 - 20 + 25 - 35 + 45 = 25
+Cálculo 2: 20 - 25 + 35 - 45 + 65 =  50
+Cálculo 3: 25 - 35 + 45 - 65 + 44 = 14 .
+O resultado dos cálculos [25, 50 e 14] gostaria que fosse salvo em um novo
+data.frame e em uma única coluna. Gostaria, também, que a função tivesse um
+argumento que controlasse o tamanho dos subconjuntos dos valores. Nesse
+caso, o tamanho é 5, para cada subconjunto dos cálculo 1, 2 e 3.
+
+-- 
+Diego dos Santos Vieira
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201101/969706ee/attachment.html>
+
+From nandodesouza em gmail.com  Wed Nov  4 13:27:27 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 4 Nov 2020 12:27:27 -0300
+Subject: [R-br] Modelo Misto - =?utf-8?Q?An=C3=A1lise_?=Experimento
+ Switchback
+Message-ID: <6AAC746E-76FD-40C3-9BB7-28232AAC3000@getmailspring.com>
+
+Boa tarde pessoal,
+
+Estou analisando um experimento em Switchback com vacas leiteiras e estou com duvidas sobre a montagem do modelo. Gostaria da ajuda de vocês.
+O experimento comparou dois tratamentos A e B. Utilizou 30 vacas, porém as vacas não foram avaliadas simultaneamente. 10 vacas entraram no momento 1, 10 entraram no momento 2 e 10 entraram no momento 3. As vacas dentro de cada momento foram sorteadas para uma das duas sequencias possíveis A-B-A ou B-A-B, sendo a sequencia aplicadas em 3 períodos diferentes de igual duração.
+Entendo que o desenho experimental desse trabalho é semelhante ao descrito nesse trabalho: https://www.sciencedirect.com/science/article/pii/S0022030287802734 (https://link.getmailspring.com/link/6AAC746E-76FD-40C3-9BB7-28232AAC3000 em getmailspring.com/0?redirect=https%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS0022030287802734&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+sendo o block os momentos (1,2 e 3)
+Porém nesse trabalho os autores utilizam o PROC GLM dos SAS. Eu no entanto desejo analisá-lo através da abordagem dos modelos mistos, com a função lme{nlme}
+Fiz o seguinte modelo e gostaria de uma opinião para saber se o modelo está correto? Se não como posso melhorá-lo
+
+dados<-structure(list(Bloco = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L), .Label = c("1", "2", "3"), class = "factor"), Ordem = structure(c(1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L), .Label = c("1", "2"), class = "factor"),
+Periodo = c(1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+1L, 2L, 3L), Tratamento = structure(c(1L, 2L, 1L, 1L, 2L,
+1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 1L,
+2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L,
+1L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L,
+2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L,
+1L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L,
+2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L), .Label = c("A",
+"B"), class = "factor"), Sequencia = structure(c(1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L), .Label = c("1",
+"2"), class = "factor"), Vacas = structure(c(1L, 1L, 1L,
+2L, 2L, 2L, 3L, 3L, 3L, 4L, 4L, 4L, 5L, 5L, 5L, 6L, 6L, 6L,
+7L, 7L, 7L, 8L, 8L, 8L, 9L, 9L, 9L, 10L, 10L, 10L, 11L, 11L,
+11L, 12L, 12L, 12L, 13L, 13L, 13L, 14L, 14L, 14L, 15L, 15L,
+15L, 16L, 16L, 16L, 17L, 17L, 17L, 18L, 18L, 18L, 19L, 19L,
+19L, 20L, 20L, 20L, 21L, 21L, 21L, 22L, 22L, 22L, 23L, 23L,
+23L, 24L, 24L, 24L, 25L, 25L, 25L, 26L, 26L, 26L, 27L, 27L,
+27L, 28L, 28L, 28L, 29L, 29L, 29L, 30L, 30L, 30L), .Label = c("1",
+"2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
+"13", "14", "15", "16", "17", "18", "19", "20", "21", "22",
+"23", "24", "25", "26", "27", "28", "29", "30"), class = "factor"),
+Leite = c(18.28, 15.73, 14.96, 16.08, 15.64, 15.41, 16.21,
+15.52, 14.93, 17.29, 14.52, 12.98, 13.28, 12.57, 12.31, 21.82,
+19.28, 18.75, 16.69, 15.15, 14, 17.11, 15.51, 14.73, 15.38,
+14.77, 13.37, 15.21, 14.46, 13.5, 12.67, 11.91, 11.55, 15.78,
+14.68, 14.61, 13.29, 12.12, 11.77, 17.32, 14.81, 14.66, 16.13,
+14.81, 14.29, 14.94, 13.45, 13.09, 15.27, 12.36, 11.29, 14.02,
+13, 12.06, 15.25, 14.9, 14.59, 12.44, 11.8, 11.56, 12.56,
+12.22, 7.68, 15.15, 14.56, 10.08, 14.26, 13.34, 10.21, 13.56,
+12.85, 8.9, 14.09, 14.63, 11.52, 17.7, 17.24, 14.89, 16.69,
+16.28, 12.25, 12.66, 12.14, 9, 18.74, 18.23, 14.98, 17.62,
+17.4, 15.67), Per = structure(c(1L, 2L, 3L, 1L, 2L, 3L, 1L,
+2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L), .Label = c("1", "2", "3"
+), class = "factor")), class = "data.frame", row.names = c(NA,
+-90L))
+#install.packages("nlme")
+library(nlme)
+options(contrasts=c("contr.sum","contr.poly"))
+controle<-lmeControl(maxIter = 200, msMaxIter = 200,opt = 'optim')
+mlme <- lme(Leite ~Tratamento,random=~1|Bloco/Vacas/Per,control=controle, data=dados)
+anova(mlme,type='marginal')
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201104/84d2aba4/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Nov  4 15:59:05 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 4 Nov 2020 14:59:05 -0300
+Subject: [R-br] 
+	=?utf-8?q?Modelo_Misto_-_An=C3=A1lise_Experimento_Switchb?=
+	=?utf-8?q?ack?=
+In-Reply-To: <6AAC746E-76FD-40C3-9BB7-28232AAC3000@getmailspring.com>
+References: <6AAC746E-76FD-40C3-9BB7-28232AAC3000@getmailspring.com>
+Message-ID: <CAKrF98kqb_tu52n0AGzPFS-Q8WPZ50cU+T6S1aFwg=0G2KphXw@mail.gmail.com>
+
+Se a única variável manipulada ("independente") foram os tratamentos, e a
+resposta é unicamente uma única variável também, matematicamente você não
+acaba com a mesma análise, apenas por caminhos diferentes?
+
+
+On Wed, Nov 4, 2020 at 12:28 PM Fernando Souza por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde pessoal,
+>
+> Estou analisando um experimento em Switchback com vacas leiteiras e estou
+> com duvidas sobre a montagem do modelo. Gostaria da ajuda de vocês.
+> O experimento comparou dois tratamentos A e B. Utilizou 30 vacas, porém as
+> vacas não foram avaliadas simultaneamente. 10 vacas entraram no momento 1,
+> 10 entraram no momento 2 e 10 entraram no momento 3.  As vacas dentro de
+> cada momento foram sorteadas para uma das duas sequencias possíveis  A-B-A
+> ou B-A-B, sendo a sequencia aplicadas em 3 períodos diferentes de igual
+> duração.
+> Entendo que o desenho experimental desse trabalho é semelhante ao descrito
+> nesse trabalho:
+> https://www.sciencedirect.com/science/article/pii/S0022030287802734
+> <https://link.getmailspring.com/link/6AAC746E-76FD-40C3-9BB7-28232AAC3000 em getmailspring.com/0?redirect=https%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS0022030287802734&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>
+> sendo o block os momentos (1,2 e 3)
+>
+> Porém nesse trabalho os autores utilizam o PROC GLM dos SAS. Eu no entanto
+> desejo analisá-lo através da abordagem dos modelos mistos, com a função
+> lme{nlme}
+> Fiz o seguinte modelo e gostaria de uma opinião para saber se o modelo
+> está correto? Se não como posso melhorá-lo
+>
+> dados<-structure(list(Bloco = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L,
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+> 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+> 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+> 3L, 3L, 3L), .Label = c("1", "2", "3"), class = "factor"), Ordem =
+> structure(c(1L,
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L,
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L), .Label = c("1", "2"), class =
+> "factor"),
+>     Periodo = c(1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L), Tratamento = structure(c(1L, 2L, 1L, 1L, 2L,
+>     1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 1L,
+>     2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L,
+>     1L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L,
+>     2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L,
+>     1L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L,
+>     2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L), .Label = c("A",
+>     "B"), class = "factor"), Sequencia = structure(c(1L, 1L,
+>     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L,
+>     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+>     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+>     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+>     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+>     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L), .Label = c("1",
+>     "2"), class = "factor"), Vacas = structure(c(1L, 1L, 1L,
+>     2L, 2L, 2L, 3L, 3L, 3L, 4L, 4L, 4L, 5L, 5L, 5L, 6L, 6L, 6L,
+>     7L, 7L, 7L, 8L, 8L, 8L, 9L, 9L, 9L, 10L, 10L, 10L, 11L, 11L,
+>     11L, 12L, 12L, 12L, 13L, 13L, 13L, 14L, 14L, 14L, 15L, 15L,
+>     15L, 16L, 16L, 16L, 17L, 17L, 17L, 18L, 18L, 18L, 19L, 19L,
+>     19L, 20L, 20L, 20L, 21L, 21L, 21L, 22L, 22L, 22L, 23L, 23L,
+>     23L, 24L, 24L, 24L, 25L, 25L, 25L, 26L, 26L, 26L, 27L, 27L,
+>     27L, 28L, 28L, 28L, 29L, 29L, 29L, 30L, 30L, 30L), .Label = c("1",
+>     "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
+>     "13", "14", "15", "16", "17", "18", "19", "20", "21", "22",
+>     "23", "24", "25", "26", "27", "28", "29", "30"), class = "factor"),
+>     Leite = c(18.28, 15.73, 14.96, 16.08, 15.64, 15.41, 16.21,
+>     15.52, 14.93, 17.29, 14.52, 12.98, 13.28, 12.57, 12.31, 21.82,
+>     19.28, 18.75, 16.69, 15.15, 14, 17.11, 15.51, 14.73, 15.38,
+>     14.77, 13.37, 15.21, 14.46, 13.5, 12.67, 11.91, 11.55, 15.78,
+>     14.68, 14.61, 13.29, 12.12, 11.77, 17.32, 14.81, 14.66, 16.13,
+>     14.81, 14.29, 14.94, 13.45, 13.09, 15.27, 12.36, 11.29, 14.02,
+>     13, 12.06, 15.25, 14.9, 14.59, 12.44, 11.8, 11.56, 12.56,
+>     12.22, 7.68, 15.15, 14.56, 10.08, 14.26, 13.34, 10.21, 13.56,
+>     12.85, 8.9, 14.09, 14.63, 11.52, 17.7, 17.24, 14.89, 16.69,
+>     16.28, 12.25, 12.66, 12.14, 9, 18.74, 18.23, 14.98, 17.62,
+>     17.4, 15.67), Per = structure(c(1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L), .Label = c("1", "2", "3"
+>     ), class = "factor")), class = "data.frame", row.names = c(NA,
+> -90L))
+>
+> #install.packages("nlme")
+> library(nlme)
+> options(contrasts=c("contr.sum","contr.poly"))
+> controle<-lmeControl(maxIter = 200, msMaxIter = 200,opt = 'optim')
+> mlme <- lme(Leite ~Tratamento,random=~1|Bloco/Vacas/Per,control=controle,
+> data=dados)
+> anova(mlme,type='marginal')
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201104/860bc1a7/attachment.html>
+
+From nandodesouza em gmail.com  Wed Nov  4 18:06:31 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 4 Nov 2020 17:06:31 -0300
+Subject: [R-br] Modelo Misto - =?utf-8?Q?An=C3=A1lise_?=Experimento
+ Switchback
+In-Reply-To: <CAKrF98kqb_tu52n0AGzPFS-Q8WPZ50cU+T6S1aFwg=0G2KphXw@mail.gmail.com>
+References: <CAKrF98kqb_tu52n0AGzPFS-Q8WPZ50cU+T6S1aFwg=0G2KphXw@mail.gmail.com>
+Message-ID: <BAD14EC8-ED83-4DFE-8E5A-399C5BE368EB@getmailspring.com>
+
+Boa tarde Cesar,
+Obrigado por responder.
+A única variável resposta de interesse é a produção de leite (Leite) e o interesse é comparar os níveis do fator experimental tratamento.
+Vacas é um bloco, cada vaca foi sorteado para uma sequencia de tratamentos A-B-A ou B-A-B em tres diferentes periodos. Não há interesse em inferir sobre as vacas.
+
+Da mesma forma bloco , foi devido ao fato de as vacas não entrarem no experimento ao mesmo tempo. Grupos de 10 vacas foram utilizadas em anos diferentes. Assim considerei que blocos, vacas dentro de blocos e Periodo dentro de vacas , dentro de bloco como aleatórios.
+
+Minha dúvida é que ao fazer utilizando o modelo misto ou utilizando a abordagem do artigo, o qual utiliza o glm, as conclusões são as mesmas (Não houve efeito do tratamento) as médias estimadas por ambas abordagens são ligeiramente diferentes.
+No caso do modelo misto o intervalo de confiança foi maior que o intervalo de confiança utilizando o glm.
+
+Assim gostaria da opinião de alguém com mais experiência, para me falar se o modelo da forma como montei, está correto, se não o que corrigir.
+On Nov 4 2020, at 3:59 pm, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Se a única variável manipulada ("independente") foram os tratamentos, e a resposta é unicamente uma única variável também, matematicamente você não acaba com a mesma análise, apenas por caminhos diferentes?
+>
+>
+> On Wed, Nov 4, 2020 at 12:28 PM Fernando Souza por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > Boa tarde pessoal,
+> >
+> > Estou analisando um experimento em Switchback com vacas leiteiras e estou com duvidas sobre a montagem do modelo. Gostaria da ajuda de vocês.
+> > O experimento comparou dois tratamentos A e B. Utilizou 30 vacas, porém as vacas não foram avaliadas simultaneamente. 10 vacas entraram no momento 1, 10 entraram no momento 2 e 10 entraram no momento 3. As vacas dentro de cada momento foram sorteadas para uma das duas sequencias possíveis A-B-A ou B-A-B, sendo a sequencia aplicadas em 3 períodos diferentes de igual duração.
+> > Entendo que o desenho experimental desse trabalho é semelhante ao descrito nesse trabalho: https://www.sciencedirect.com/science/article/pii/S0022030287802734 (https://link.getmailspring.com/link/6AAC746E-76FD-40C3-9BB7-28232AAC3000 em getmailspring.com/0?redirect=https%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS0022030287802734&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> > sendo o block os momentos (1,2 e 3)
+> >
+> >
+> > Porém nesse trabalho os autores utilizam o PROC GLM dos SAS. Eu no entanto desejo analisá-lo através da abordagem dos modelos mistos, com a função lme{nlme}
+> > Fiz o seguinte modelo e gostaria de uma opinião para saber se o modelo está correto? Se não como posso melhorá-lo
+> >
+> > dados<-structure(list(Bloco = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L,
+> > 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+> > 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+> > 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+> > 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+> > 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+> > 3L, 3L, 3L), .Label = c("1", "2", "3"), class = "factor"), Ordem = structure(c(1L,
+> > 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+> > 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L,
+> > 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
+> > 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+> > 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,
+> > 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L), .Label = c("1", "2"), class = "factor"),
+> > Periodo = c(1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+> > 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+> > 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+> > 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+> > 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+> > 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+> > 1L, 2L, 3L), Tratamento = structure(c(1L, 2L, 1L, 1L, 2L,
+> > 1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 1L,
+> > 2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L,
+> > 1L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L,
+> > 2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L,
+> > 1L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L,
+> > 2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L), .Label = c("A",
+> > "B"), class = "factor"), Sequencia = structure(c(1L, 1L,
+> > 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L,
+> > 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+> > 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+> > 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+> > 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+> > 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L), .Label = c("1",
+> > "2"), class = "factor"), Vacas = structure(c(1L, 1L, 1L,
+> > 2L, 2L, 2L, 3L, 3L, 3L, 4L, 4L, 4L, 5L, 5L, 5L, 6L, 6L, 6L,
+> > 7L, 7L, 7L, 8L, 8L, 8L, 9L, 9L, 9L, 10L, 10L, 10L, 11L, 11L,
+> > 11L, 12L, 12L, 12L, 13L, 13L, 13L, 14L, 14L, 14L, 15L, 15L,
+> > 15L, 16L, 16L, 16L, 17L, 17L, 17L, 18L, 18L, 18L, 19L, 19L,
+> > 19L, 20L, 20L, 20L, 21L, 21L, 21L, 22L, 22L, 22L, 23L, 23L,
+> > 23L, 24L, 24L, 24L, 25L, 25L, 25L, 26L, 26L, 26L, 27L, 27L,
+> > 27L, 28L, 28L, 28L, 29L, 29L, 29L, 30L, 30L, 30L), .Label = c("1",
+> > "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
+> > "13", "14", "15", "16", "17", "18", "19", "20", "21", "22",
+> > "23", "24", "25", "26", "27", "28", "29", "30"), class = "factor"),
+> > Leite = c(18.28, 15.73, 14.96, 16.08, 15.64, 15.41, 16.21,
+> > 15.52, 14.93, 17.29, 14.52, 12.98, 13.28, 12.57, 12.31, 21.82,
+> > 19.28, 18.75, 16.69, 15.15, 14, 17.11, 15.51, 14.73, 15.38,
+> > 14.77, 13.37, 15.21, 14.46, 13.5, 12.67, 11.91, 11.55, 15.78,
+> > 14.68, 14.61, 13.29, 12.12, 11.77, 17.32, 14.81, 14.66, 16.13,
+> > 14.81, 14.29, 14.94, 13.45, 13.09, 15.27, 12.36, 11.29, 14.02,
+> > 13, 12.06, 15.25, 14.9, 14.59, 12.44, 11.8, 11.56, 12.56,
+> > 12.22, 7.68, 15.15, 14.56, 10.08, 14.26, 13.34, 10.21, 13.56,
+> > 12.85, 8.9, 14.09, 14.63, 11.52, 17.7, 17.24, 14.89, 16.69,
+> > 16.28, 12.25, 12.66, 12.14, 9, 18.74, 18.23, 14.98, 17.62,
+> > 17.4, 15.67), Per = structure(c(1L, 2L, 3L, 1L, 2L, 3L, 1L,
+> > 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+> > 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+> > 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+> > 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+> > 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+> > 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L), .Label = c("1", "2", "3"
+> > ), class = "factor")), class = "data.frame", row.names = c(NA,
+> > -90L))
+> >
+> >
+> > #install.packages("nlme")
+> > library(nlme)
+> > options(contrasts=c("contr.sum","contr.poly"))
+> > controle<-lmeControl(maxIter = 200, msMaxIter = 200,opt = 'optim')
+> > mlme <- lme(Leite ~Tratamento,random=~1|Bloco/Vacas/Per,control=controle, data=dados)
+> > anova(mlme,type='marginal')
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201104/fdcc7a0d/attachment.html>
+
+From cesar.rabak em gmail.com  Sat Nov  7 18:41:12 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 7 Nov 2020 17:41:12 -0300
+Subject: [R-br] 
+	=?utf-8?q?Modelo_Misto_-_An=C3=A1lise_Experimento_Switchb?=
+	=?utf-8?q?ack?=
+In-Reply-To: <BAD14EC8-ED83-4DFE-8E5A-399C5BE368EB@getmailspring.com>
+References: <CAKrF98kqb_tu52n0AGzPFS-Q8WPZ50cU+T6S1aFwg=0G2KphXw@mail.gmail.com>
+ <BAD14EC8-ED83-4DFE-8E5A-399C5BE368EB@getmailspring.com>
+Message-ID: <CAKrF98mB+ybWd5G=kE+nBK3+n2UjRByQ87ZH90jRNPk9NWM3sQ@mail.gmail.com>
+
+Olá Fernando,
+
+A modelagem matemática/estatística deve tentar se aproximar de uma
+descrição defensável do *processo* pelo qual os dados são gerados no
+experimento no domínio do problema.
+
+Não saberia dizer porque o autor da referência que você menciona usou GLM,
+pois a variável dependente (*resposta*) parece-me apropriada para uma
+análise ANOVA.
+
+Por outro lado, de novo por não compreender o quê você espera que o modelo
+misto capture melhor que a GLM, tampouco saberia como discutir.
+
+Entendi sua interpretação para usar as vacas individuais como bloco, mas
+devo dizer que o "entendimento" foi no português e não na lógica do
+experimento, porque, de novo, não posso me imiscuir no domínio do problema.
+
+O fato mais importante, ou seja, que tanto numa como outra abordagem para
+modelar o experimento os resultados apontam para não detecção do efeito dos
+tratamentos, me parece fazer com que a discussão sobre a modelagem seja
+menos importante do que entender se o efeito é de fato inexistente, ele é
+visível num nível mais prático mas a amostragem (tamanho da amostra não
+assegura ausência de efeito devido à variabilidade natural da resposta do
+seu experimento), ou outros fatores.
+
+O fato de IC serem mais amplos ou mais estreitos decorrem exatamente do
+conservadorismo das abordagens matemáticas, e tampouco *per se* seriam
+soberanas para uma determinação de propriedade da abordagem.
+
+Uma informação mais pertinente seria a análise dos resíduos para ver se o
+erro ficou bem distribuído (gaussianamente) , e outros vieses de modelagem.
+
+HTH
+--
+Cesar Rabak
+
+
+
+
+On Wed, Nov 4, 2020 at 5:06 PM Fernando Souza <nandodesouza em gmail.com>
+wrote:
+
+> Boa tarde Cesar,
+> Obrigado por responder.
+> A única variável resposta de interesse é a produção de leite (Leite) e o
+> interesse é comparar os níveis do fator experimental tratamento.
+> Vacas é um bloco, cada vaca foi sorteado para uma sequencia de tratamentos
+> A-B-A ou B-A-B em tres diferentes periodos. Não há interesse em inferir
+> sobre as vacas.
+>
+> Da mesma forma bloco , foi devido ao fato de as vacas não entrarem no
+> experimento ao mesmo tempo. Grupos de 10 vacas foram utilizadas em anos
+> diferentes. Assim considerei que blocos, vacas dentro de blocos e Periodo
+> dentro de vacas , dentro de bloco como aleatórios.
+>
+>
+> Minha dúvida é que ao fazer utilizando o modelo misto ou utilizando a
+> abordagem do  artigo, o qual utiliza o glm, as conclusões são as mesmas
+> (Não houve efeito do tratamento) as médias estimadas por ambas abordagens
+> são ligeiramente diferentes.
+> No caso do modelo misto o intervalo de confiança foi maior que o intervalo
+> de confiança utilizando o glm.
+>
+> Assim gostaria da opinião de alguém com mais experiência, para me falar se
+> o modelo da forma como montei, está correto, se não o que corrigir.
+>
+> On Nov 4 2020, at 3:59 pm, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Se a única variável manipulada ("independente") foram os tratamentos, e a
+> resposta é unicamente uma única variável também, matematicamente você não
+> acaba com a mesma análise, apenas por caminhos diferentes?
+>
+>
+> On Wed, Nov 4, 2020 at 12:28 PM Fernando Souza por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Boa tarde pessoal,
+>
+> Estou analisando um experimento em Switchback com vacas leiteiras e estou
+> com duvidas sobre a montagem do modelo. Gostaria da ajuda de vocês.
+> O experimento comparou dois tratamentos A e B. Utilizou 30 vacas, porém as
+> vacas não foram avaliadas simultaneamente. 10 vacas entraram no momento 1,
+> 10 entraram no momento 2 e 10 entraram no momento 3.  As vacas dentro de
+> cada momento foram sorteadas para uma das duas sequencias possíveis  A-B-A
+> ou B-A-B, sendo a sequencia aplicadas em 3 períodos diferentes de igual
+> duração.
+> Entendo que o desenho experimental desse trabalho é semelhante ao descrito
+> nesse trabalho:
+> https://www.sciencedirect.com/science/article/pii/S0022030287802734
+> <https://link.getmailspring.com/link/6AAC746E-76FD-40C3-9BB7-28232AAC3000 em getmailspring.com/0?redirect=https%3A%2F%2Fwww.sciencedirect.com%2Fscience%2Farticle%2Fpii%2FS0022030287802734&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy>
+> sendo o block os momentos (1,2 e 3)
+>
+> Porém nesse trabalho os autores utilizam o PROC GLM dos SAS. Eu no entanto
+> desejo analisá-lo através da abordagem dos modelos mistos, com a função
+> lme{nlme}
+> Fiz o seguinte modelo e gostaria de uma opinião para saber se o modelo
+> está correto? Se não como posso melhorá-lo
+>
+> dados<-structure(list(Bloco = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L,
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+> 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+> 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+> 3L, 3L, 3L), .Label = c("1", "2", "3"), class = "factor"), Ordem =
+> structure(c(1L,
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L,
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L), .Label = c("1", "2"), class =
+> "factor"),
+>     Periodo = c(1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L,
+>     1L, 2L, 3L), Tratamento = structure(c(1L, 2L, 1L, 1L, 2L,
+>     1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L, 2L, 2L, 1L,
+>     2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L,
+>     1L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L,
+>     2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L,
+>     1L, 1L, 2L, 1L, 1L, 2L, 1L, 1L, 2L, 1L, 2L, 1L, 2L, 2L, 1L,
+>     2L, 2L, 1L, 2L, 2L, 1L, 2L, 1L, 2L, 1L), .Label = c("A",
+>     "B"), class = "factor"), Sequencia = structure(c(1L, 1L,
+>     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L,
+>     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+>     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+>     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L,
+>     1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+>     2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L), .Label = c("1",
+>     "2"), class = "factor"), Vacas = structure(c(1L, 1L, 1L,
+>     2L, 2L, 2L, 3L, 3L, 3L, 4L, 4L, 4L, 5L, 5L, 5L, 6L, 6L, 6L,
+>     7L, 7L, 7L, 8L, 8L, 8L, 9L, 9L, 9L, 10L, 10L, 10L, 11L, 11L,
+>     11L, 12L, 12L, 12L, 13L, 13L, 13L, 14L, 14L, 14L, 15L, 15L,
+>     15L, 16L, 16L, 16L, 17L, 17L, 17L, 18L, 18L, 18L, 19L, 19L,
+>     19L, 20L, 20L, 20L, 21L, 21L, 21L, 22L, 22L, 22L, 23L, 23L,
+>     23L, 24L, 24L, 24L, 25L, 25L, 25L, 26L, 26L, 26L, 27L, 27L,
+>     27L, 28L, 28L, 28L, 29L, 29L, 29L, 30L, 30L, 30L), .Label = c("1",
+>     "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
+>     "13", "14", "15", "16", "17", "18", "19", "20", "21", "22",
+>     "23", "24", "25", "26", "27", "28", "29", "30"), class = "factor"),
+>     Leite = c(18.28, 15.73, 14.96, 16.08, 15.64, 15.41, 16.21,
+>     15.52, 14.93, 17.29, 14.52, 12.98, 13.28, 12.57, 12.31, 21.82,
+>     19.28, 18.75, 16.69, 15.15, 14, 17.11, 15.51, 14.73, 15.38,
+>     14.77, 13.37, 15.21, 14.46, 13.5, 12.67, 11.91, 11.55, 15.78,
+>     14.68, 14.61, 13.29, 12.12, 11.77, 17.32, 14.81, 14.66, 16.13,
+>     14.81, 14.29, 14.94, 13.45, 13.09, 15.27, 12.36, 11.29, 14.02,
+>     13, 12.06, 15.25, 14.9, 14.59, 12.44, 11.8, 11.56, 12.56,
+>     12.22, 7.68, 15.15, 14.56, 10.08, 14.26, 13.34, 10.21, 13.56,
+>     12.85, 8.9, 14.09, 14.63, 11.52, 17.7, 17.24, 14.89, 16.69,
+>     16.28, 12.25, 12.66, 12.14, 9, 18.74, 18.23, 14.98, 17.62,
+>     17.4, 15.67), Per = structure(c(1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L, 1L,
+>     2L, 3L, 1L, 2L, 3L, 1L, 2L, 3L), .Label = c("1", "2", "3"
+>     ), class = "factor")), class = "data.frame", row.names = c(NA,
+> -90L))
+>
+> #install.packages("nlme")
+> library(nlme)
+> options(contrasts=c("contr.sum","contr.poly"))
+> controle<-lmeControl(maxIter = 200, msMaxIter = 200,opt = 'optim')
+> mlme <- lme(Leite ~Tratamento,random=~1|Bloco/Vacas/Per,control=controle,
+> data=dados)
+> anova(mlme,type='marginal')
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201107/ac1d26b9/attachment.html>
+
+From marcelolaia em gmail.com  Wed Nov 11 15:46:07 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Wed, 11 Nov 2020 14:46:07 -0300
+Subject: [R-br] =?iso-8859-1?q?Tra=E7ar_linha_representando_a_m=E9dia_em_?=
+ =?iso-8859-1?q?gr=E1fico_ggplot2?=
+Message-ID: <20201111174607.GB5488@localhost>
+
+Colegas,
+
+Estou usando a rotina abaixo para produzir gráficos de Altura ~ DAP em
+um fatorial com Clones em diferentes Espaçamentos.
+
+O código ficou assim:
+
+ggplot( dat , aes(x=DAP, y=Altura, color=as.factor(Espacamento) )) + 
+    geom_point(size=1) +
+    facet_grid(Espacamento ~ Clone) +
+    theme(legend.position="none")
+
+Como eu faço para traçar a média do DAP (y) e da Altura (x) em cada
+grid?
+
+É possível simular o código acima com os pacotes e código abaixo:
+
+library(ggplot2)
+head(mtcars)
+
+ggplot( mtcars , aes(x=mpg, y=wt, color=as.factor( cyl ))) + 
+  geom_point(size=1) +
+  facet_grid( cyl ~ gear) +
+  theme(legend.position="none")
+
+Obrigado
+
+-- 
+Marcelo
+
+From cidedson em gmail.com  Wed Nov 11 16:39:29 2020
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Wed, 11 Nov 2020 15:39:29 -0300
+Subject: [R-br] 
+	=?utf-8?q?Tra=C3=A7ar_linha_representando_a_m=C3=A9dia_em?=
+	=?utf-8?q?_gr=C3=A1fico_ggplot2?=
+In-Reply-To: <20201111174607.GB5488@localhost>
+References: <20201111174607.GB5488@localhost>
+Message-ID: <CAAmR278HoLNxnsMHnSKKpUKO_3TLcy1JMU+pCjF4OaZPDMbQAQ@mail.gmail.com>
+
+agrupado por cyl
+
+mtcars %>% group_by(cyl) %>%
+  mutate(mpg.m = mean(mpg),
+  wt.m = mean(wt)) %>%
+  ggplot(aes(x=mpg, y=wt, color=as.factor( cyl ))) +
+  geom_point(size=1) +
+  geom_vline(aes(xintercept = mpg.m), col="black", linetype=2) +
+  geom_hline(aes(yintercept = wt.m), col="red", linetype=2) +
+  facet_grid( cyl ~ gear) +
+  theme(legend.position="none")
+
+ou geral
+
+mtcars %>%
+  mutate(mpg.m = mean(mpg),
+  wt.m = mean(wt)) %>%
+  ggplot(aes(x=mpg, y=wt, color=as.factor( cyl ))) +
+  geom_point(size=1) +
+  geom_vline(aes(xintercept = mpg.m), col="black", linetype=2) +
+  geom_hline(aes(yintercept = wt.m), col="red", linetype=2) +
+  facet_grid( cyl ~ gear) +
+  theme(legend.position="none")
+
+
+
+
+
+*Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+
+*Engenheiro **Agrônomo*
+
+*Analista de dados *
+
+*Técnico em Segurança do Trabalho *
+
+*LinkedIn: **http://br.linkedin.com/in/cidedson/
+<http://br.linkedin.com/in/cidedson/>*
+
+*Lattes: **http://lattes.cnpq.br/2303498368142537
+<http://lattes.cnpq.br/2303498368142537>*
+
+
+
+
+Em qua., 11 de nov. de 2020 às 14:46, Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Colegas,
+>
+> Estou usando a rotina abaixo para produzir gráficos de Altura ~ DAP em
+> um fatorial com Clones em diferentes Espaçamentos.
+>
+> O código ficou assim:
+>
+> ggplot( dat , aes(x=DAP, y=Altura, color=as.factor(Espacamento) )) +
+>     geom_point(size=1) +
+>     facet_grid(Espacamento ~ Clone) +
+>     theme(legend.position="none")
+>
+> Como eu faço para traçar a média do DAP (y) e da Altura (x) em cada
+> grid?
+>
+> É possível simular o código acima com os pacotes e código abaixo:
+>
+> library(ggplot2)
+> head(mtcars)
+>
+> ggplot( mtcars , aes(x=mpg, y=wt, color=as.factor( cyl ))) +
+>   geom_point(size=1) +
+>   facet_grid( cyl ~ gear) +
+>   theme(legend.position="none")
+>
+> Obrigado
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201111/9b2527b0/attachment.html>
+
+From sznelwar em uol.com.br  Wed Nov 11 22:11:18 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Wed, 11 Nov 2020 22:11:18 -0200
+Subject: [R-br] 
+ =?utf-8?q?Tra=C3=A7ar_linha_representando_a_m=C3=A9dia_em?=
+ =?utf-8?q?_gr=C3=A1fico_ggplot2?=
+In-Reply-To: ["CAAmR278HoLNxnsMHnSKKpUKO_3TLcy1JMU+pCjF4OaZPDMbQAQ@mail.gmail.com"]
+References: ["20201111174607.GB5488@localhost",
+ "CAAmR278HoLNxnsMHnSKKpUKO_3TLcy1JMU+pCjF4OaZPDMbQAQ@mail.gmail.com"]
+Message-ID: <5fac7da61bda4_1e492aadaa70b1109256c@ip-10-81-19-34.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201111/3183e637/attachment.html>
+
+From cidedson em gmail.com  Wed Nov 11 22:16:55 2020
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Wed, 11 Nov 2020 21:16:55 -0300
+Subject: [R-br] 
+	=?utf-8?q?Tra=C3=A7ar_linha_representando_a_m=C3=A9dia_em?=
+	=?utf-8?q?_gr=C3=A1fico_ggplot2?=
+In-Reply-To: <5fac7da61bda4_1e492aadaa70b1109256c@ip-10-81-19-34.ec2.internal.mail>
+References: <5fac7da61bda4_1e492aadaa70b1109256c@ip-10-81-19-34.ec2.internal.mail>
+Message-ID: <CAAmR279BiD8ai1Zek+f6kBfC4qSe7CzMyyN0T_f3w2iA0yWtBQ@mail.gmail.com>
+
+tidyverse
+
+
+*Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+
+*Engenheiro **Agrônomo*
+
+*Analista de dados *
+
+*Técnico em Segurança do Trabalho *
+
+*LinkedIn: **http://br.linkedin.com/in/cidedson/
+<http://br.linkedin.com/in/cidedson/>*
+
+*Lattes: **http://lattes.cnpq.br/2303498368142537
+<http://lattes.cnpq.br/2303498368142537>*
+
+
+
+
+Em qua., 11 de nov. de 2020 às 21:11, Mauro Sznelwar por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Eu tentei rodar e não consegui. Não reconhece %>%, tem um bibliotéca para
+> isto?
+>
+>
+> agrupado por cyl
+>
+> mtcars %>% group_by(cyl) %>%
+>   mutate(mpg.m = mean(mpg),
+>   wt.m = mean(wt)) %>%
+>   ggplot(aes(x=mpg, y=wt, color=as.factor( cyl ))) +
+>   geom_point(size=1) +
+>   geom_vline(aes(xintercept = mpg.m), col="black", linetype=2) +
+>   geom_hline(aes(yintercept = wt.m), col="red", linetype=2) +
+>   facet_grid( cyl ~ gear) +
+>   theme(legend.position="none")
+>
+> ou geral
+>
+> mtcars %>%
+>   mutate(mpg.m = mean(mpg),
+>   wt.m = mean(wt)) %>%
+>   ggplot(aes(x=mpg, y=wt, color=as.factor( cyl ))) +
+>   geom_point(size=1) +
+>   geom_vline(aes(xintercept = mpg.m), col="black", linetype=2) +
+>   geom_hline(aes(yintercept = wt.m), col="red", linetype=2) +
+>   facet_grid( cyl ~ gear) +
+>   theme(legend.position="none")
+>
+>
+>
+>
+>
+>
+>
+>
+> *Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+>
+> *Engenheiro **Agrônomo*
+>
+> *Analista de dados *
+>
+> *Técnico em Segurança do Trabalho *
+>
+> *LinkedIn: **http://br.linkedin.com/in/cidedson/
+> <http://br.linkedin.com/in/cidedson/>*
+>
+> *Lattes: **http://lattes.cnpq.br/2303498368142537
+> <http://lattes.cnpq.br/2303498368142537>*
+>
+>
+>
+> Em qua., 11 de nov. de 2020 às 14:46, Marcelo Laia por (R-br) <
+> r-br em listas.c3sl.ufpr.br
+> <http://../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br>>
+> escreveu:
+>
+>> Colegas,
+>>
+>> Estou usando a rotina abaixo para produzir gráficos de Altura ~ DAP em
+>> um fatorial com Clones em diferentes Espaçamentos.
+>>
+>> O código ficou assim:
+>>
+>> ggplot( dat , aes(x=DAP, y=Altura, color=as.factor(Espacamento) )) +
+>>     geom_point(size=1) +
+>>     facet_grid(Espacamento ~ Clone) +
+>>     theme(legend.position="none")
+>>
+>> Como eu faço para traçar a média do DAP (y) e da Altura (x) em cada
+>> grid?
+>>
+>> É possível simular o código acima com os pacotes e código abaixo:
+>>
+>> library(ggplot2)
+>> head(mtcars)
+>>
+>> ggplot( mtcars , aes(x=mpg, y=wt, color=as.factor( cyl ))) +
+>>   geom_point(size=1) +
+>>   facet_grid( cyl ~ gear) +
+>>   theme(legend.position="none")
+>>
+>> Obrigado
+>>
+>> --
+>> Marcelo
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> <http://../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201111/52d0e3a8/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Thu Nov 12 10:44:25 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Thu, 12 Nov 2020 08:44:25 -0400
+Subject: [R-br] =?utf-8?q?Convers=C3=A3o_de_alguns_elementos_de_texto_em_?=
+ =?utf-8?q?vari=C3=A1veis_de_um_data_frame_com_o_pacote_tidyverse?=
+Message-ID: <686df605-7099-b580-4af8-b2b323c5c192@cas.ifmt.edu.br>
+
+Bom dia Membros,
+
+Eu gostaria de realizar a manipulação de um *txt para uso de algumas 
+informações como variáveis em um data frame a ser criado. Em meu exemplo:
+
+#Pacote
+library(tidyverse)
+
+# Leitura do arquivo
+myfile<-read_lines("https://raw.githubusercontent.com/Leprechault/trash/main/result_imgall_f_test.txt")
+
+# Visualização parcial da informação contida no *txt
+# [1] "Start processing imgall/sample_59178.jpg"
+# [2] "imgall/sample_59178.jpg: Predicted in 7337.640000 milli-seconds."
+# [3] "End"
+# [4] "Start processing imgall/sample_34773.jpg"
+# [5] "imgall/sample_34773.jpg: Predicted in 7376.639000 milli-seconds."
+# [6] "End"
+# [7] "Start processing imgall/sample_24908.jpg"
+# [8] "imgall/sample_24908.jpg: Predicted in 7412.858000 milli-seconds."
+# [9] "End"
+#[10] "Start processing imgall/sample_18922.jpg"
+#[11] "imgall/sample_18922.jpg: Predicted in 7424.998000 milli-seconds."
+#[12] "End"
+#[13] "Start processing imgall/sample_31653.jpg"
+#[14] "imgall/sample_31653.jpg: Predicted in 7311.578000 milli-seconds."
+#[15] "lca: 90.681282%\tleft_x:   18\ttop_y:   33\twidth: 18\theight:   30"
+#[16] "End"
+#[17] "Start processing imgall/sample_17341.jpg"
+#[18] "imgall/sample_17341.jpg: Predicted in 7418.365000 milli-seconds."
+#[19] "End"
+#[20] "Start processing imgall/sample_11440.jpg"
+#[21] "imgall/sample_11440.jpg: Predicted in 7365.160000 milli-seconds."
+#[22] "lca: 66.567978%\tleft_x:   54\ttop_y:   34\twidth: 18\theight:   23"
+#[23] "lca: 33.219677%\tleft_x:   74\ttop_y:   15\twidth: 23\theight:   22"
+#[24] "End"
+
+
+#Como output final eu gostaria de ter o seguinte dataframe:
+
+#[1] left top width height obj_id        lca
+#[2] 54   34  18    23     sample_11440  66.567978
+#[3] 74   15  23    22     sample_11440  33.219677
+#[4]  1   38  19    28     sample_40452  66.658073
+
+#Estou tentando algo com o pacote tidyverse, mas sem sucesso e com muita 
+dificuldade em isolar o que esta após "imgall/"  e recuperar o que está 
+contido após "\t" :
+
+names_col <- c("left", "top", "width", "height", "obj_id","lca")
+
+mydf <- myfile %>%
+   str_subset("lca$") %>%
+   enframe(name = NULL) %>%
+   separate(col = value, into = names_col, sep = "[\t]")
+mydf
+# A tibble: 0 x 6
+# ... with 6 variables: left <dbl>, top <dbl>, width <dbl>, height 
+<dbl>, obj_id <dbl>, lca <dbl
+
+
+#Dicas e/ou sugestões. Obrigado!
+
+-- 
+Alexandre dos Santos
+Geotechnologies and Spatial Statistics applied to Forest Entomology
+Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+Caixa Postal 244 (PO Box)
+Avenida dos Ramires, s/n - Vila Real
+Caceres - MT - CEP 78201-380 (ZIP code)
+Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+Lattes CV: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722
+ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+--
+
+
+From cidedson em gmail.com  Thu Nov 12 13:32:27 2020
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Thu, 12 Nov 2020 12:32:27 -0300
+Subject: [R-br] 
+	=?utf-8?q?Convers=C3=A3o_de_alguns_elementos_de_texto_em_?=
+	=?utf-8?q?vari=C3=A1veis_de_um_data_frame_com_o_pacote_tidyverse?=
+In-Reply-To: <686df605-7099-b580-4af8-b2b323c5c192@cas.ifmt.edu.br>
+References: <686df605-7099-b580-4af8-b2b323c5c192@cas.ifmt.edu.br>
+Message-ID: <CAAmR278M0rSkW_PMv0XXHKQ4ebF4frvCFRtxgnFDaFY4VaFjKg@mail.gmail.com>
+
+library(tidyverse)
+library(vroom)
+
+myfile<-vroom("
+https://raw.githubusercontent.com/Leprechault/trash/main/result_imgall_f_test.txt",
+delim = "\t")
+
+myfile <- myfile %>% rename(dados = `Start processing
+imgall/sample_59178.jpg`)
+
+
+myfile$dados
+
+myfile %>%
+  filter(str_detect(dados, "top|sample")) %>%
+  filter(!str_detect(dados, "Predict")) %>%
+  separate(dados, c("Start", "obj_id"), sep = "/") %>%
+  as.data.frame() %>%
+  mutate(Start = ifelse(Start == "Start processing imgall",NA,Start)) %>%
+  separate(Start, c("lca", "left","top","width","height"), sep= ":  ") %>%
+  mutate_all(parse_number) %>%
+  fill(., .direction = "downup", obj_id) %>% na.omit() %>%
+  select(left, top,width,height,obj_id,lca) %>%
+  mutate(obj_id = paste0("sample_",obj_id))
+
+
+
+
+
+*Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+
+*Engenheiro **Agrônomo*
+
+*Analista de dados *
+
+*Técnico em Segurança do Trabalho *
+
+*LinkedIn: **http://br.linkedin.com/in/cidedson/
+<http://br.linkedin.com/in/cidedson/>*
+
+*Lattes: **http://lattes.cnpq.br/2303498368142537
+<http://lattes.cnpq.br/2303498368142537>*
+
+
+
+
+Em qui., 12 de nov. de 2020 às 09:44, ASANTOS por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia Membros,
+>
+> Eu gostaria de realizar a manipulação de um *txt para uso de algumas
+> informações como variáveis em um data frame a ser criado. Em meu exemplo:
+>
+> #Pacote
+> library(tidyverse)
+>
+> # Leitura do arquivo
+> myfile<-read_lines("
+> https://raw.githubusercontent.com/Leprechault/trash/main/result_imgall_f_test.txt
+> ")
+>
+> # Visualização parcial da informação contida no *txt
+> # [1] "Start processing imgall/sample_59178.jpg"
+> # [2] "imgall/sample_59178.jpg: Predicted in 7337.640000 milli-seconds."
+> # [3] "End"
+> # [4] "Start processing imgall/sample_34773.jpg"
+> # [5] "imgall/sample_34773.jpg: Predicted in 7376.639000 milli-seconds."
+> # [6] "End"
+> # [7] "Start processing imgall/sample_24908.jpg"
+> # [8] "imgall/sample_24908.jpg: Predicted in 7412.858000 milli-seconds."
+> # [9] "End"
+> #[10] "Start processing imgall/sample_18922.jpg"
+> #[11] "imgall/sample_18922.jpg: Predicted in 7424.998000 milli-seconds."
+> #[12] "End"
+> #[13] "Start processing imgall/sample_31653.jpg"
+> #[14] "imgall/sample_31653.jpg: Predicted in 7311.578000 milli-seconds."
+> #[15] "lca: 90.681282%\tleft_x:   18\ttop_y:   33\twidth: 18\theight:   30"
+> #[16] "End"
+> #[17] "Start processing imgall/sample_17341.jpg"
+> #[18] "imgall/sample_17341.jpg: Predicted in 7418.365000 milli-seconds."
+> #[19] "End"
+> #[20] "Start processing imgall/sample_11440.jpg"
+> #[21] "imgall/sample_11440.jpg: Predicted in 7365.160000 milli-seconds."
+> #[22] "lca: 66.567978%\tleft_x:   54\ttop_y:   34\twidth: 18\theight:   23"
+> #[23] "lca: 33.219677%\tleft_x:   74\ttop_y:   15\twidth: 23\theight:   22"
+> #[24] "End"
+>
+>
+> #Como output final eu gostaria de ter o seguinte dataframe:
+>
+> #[1] left top width height obj_id        lca
+> #[2] 54   34  18    23     sample_11440  66.567978
+> #[3] 74   15  23    22     sample_11440  33.219677
+> #[4]  1   38  19    28     sample_40452  66.658073
+>
+> #Estou tentando algo com o pacote tidyverse, mas sem sucesso e com muita
+> dificuldade em isolar o que esta após "imgall/"  e recuperar o que está
+> contido após "\t" :
+>
+> names_col <- c("left", "top", "width", "height", "obj_id","lca")
+>
+> mydf <- myfile %>%
+>    str_subset("lca$") %>%
+>    enframe(name = NULL) %>%
+>    separate(col = value, into = names_col, sep = "[\t]")
+> mydf
+> # A tibble: 0 x 6
+> # ... with 6 variables: left <dbl>, top <dbl>, width <dbl>, height
+> <dbl>, obj_id <dbl>, lca <dbl
+>
+>
+> #Dicas e/ou sugestões. Obrigado!
+>
+> --
+> Alexandre dos Santos
+> Geotechnologies and Spatial Statistics applied to Forest Entomology
+> Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+> Caixa Postal 244 (PO Box)
+> Avenida dos Ramires, s/n - Vila Real
+> Caceres - MT - CEP 78201-380 (ZIP code)
+> Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+> Lattes CV: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722
+> ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+> Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+> --
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201112/dbc62818/attachment.html>
+
+From biafr8 em gmail.com  Wed Nov 18 11:10:55 2020
+From: biafr8 em gmail.com (Bia Rebelatto)
+Date: Wed, 18 Nov 2020 10:10:55 -0300
+Subject: [R-br] =?utf-8?q?Excluir_parte_dos_caracteres_e_colocar_caracter?=
+	=?utf-8?q?es_em_min=C3=BAsculos?=
+Message-ID: <CAEh+SM6ExmCW_G930ennu1gEEmvFSSghfgh6HTJPjqWTWbfi8w@mail.gmail.com>
+
+Olá pessoal,
+
+Eu gostaria de retirar a UF que vem junto com os municípios dos dados do
+IBGE, coloca-la em uma nova coluna para os estados, e deixar todos os
+caracteres em minúsculo. Exemplo:
+
+De
+Nova_Nazare_(MT)
+para
+nova_nazare
+
+Este é o script que estou utilizando:
+
+#Calling the package group ----
+library(tidyverse)
+
+#Load data ----
+setwd('...')
+alldata = list.files()
+
+#Change especial character ----
+chg = function(x){
+  iconv(x, to = "ASCII//TRANSLIT")
+}
+
+#Put NA info ----
+##We will replace all in this loop
+##In the and, we will exporting all
+for (i in alldata) {
+  df = read.csv(i, sep = ";")
+
+  df[df == "-"] <- c(NA)
+  df[df == "..."] <- c(NA)
+
+  df$municipalities = chg(df$municipalities)
+  df$municipalities = gsub("'", "", df$municipalities)
+  df$municipalities = gsub(" ", "_", df$municipalities)
+
+Desde já agradeço!
+
+Bianca
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201118/7ea7d9a2/attachment.html>
+
+From cidedson em gmail.com  Wed Nov 18 12:34:59 2020
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Wed, 18 Nov 2020 11:34:59 -0300
+Subject: [R-br] 
+	=?utf-8?q?Excluir_parte_dos_caracteres_e_colocar_caracter?=
+	=?utf-8?q?es_em_min=C3=BAsculos?=
+In-Reply-To: <CAEh+SM6ExmCW_G930ennu1gEEmvFSSghfgh6HTJPjqWTWbfi8w@mail.gmail.com>
+References: <CAEh+SM6ExmCW_G930ennu1gEEmvFSSghfgh6HTJPjqWTWbfi8w@mail.gmail.com>
+Message-ID: <CAAmR27_1xv+2wBPQ6yHUaq2+55tuMB2GRQCpcs6LmNpNwwrnUQ@mail.gmail.com>
+
+library(tidyverse)
+library(stringi)
+
+a <- "Nova_Nazare_(MT)"
+b <- "Ilhéus_(BA)"
+c <- data.frame(cidades=c(a,b))
+
+c %>% mutate(estado = stri_sub(.$cidade,-3,-2),
+             cidades = stri_sub(.$cidade,1,-6),
+             cidades = tolower(cidades))
+
+
+
+*Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+
+*Engenheiro **Agrônomo*
+
+*Analista de dados *
+
+*Técnico em Segurança do Trabalho *
+
+*LinkedIn: **http://br.linkedin.com/in/cidedson/
+<http://br.linkedin.com/in/cidedson/>*
+
+*Lattes: **http://lattes.cnpq.br/2303498368142537
+<http://lattes.cnpq.br/2303498368142537>*
+
+
+
+
+Em qua., 18 de nov. de 2020 às 10:11, Bia Rebelatto por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá pessoal,
+>
+> Eu gostaria de retirar a UF que vem junto com os municípios dos dados do
+> IBGE, coloca-la em uma nova coluna para os estados, e deixar todos os
+> caracteres em minúsculo. Exemplo:
+>
+> De
+> Nova_Nazare_(MT)
+> para
+> nova_nazare
+>
+> Este é o script que estou utilizando:
+>
+> #Calling the package group ----
+> library(tidyverse)
+>
+> #Load data ----
+> setwd('...')
+> alldata = list.files()
+>
+> #Change especial character ----
+> chg = function(x){
+>   iconv(x, to = "ASCII//TRANSLIT")
+> }
+>
+> #Put NA info ----
+> ##We will replace all in this loop
+> ##In the and, we will exporting all
+> for (i in alldata) {
+>   df = read.csv(i, sep = ";")
+>
+>   df[df == "-"] <- c(NA)
+>   df[df == "..."] <- c(NA)
+>
+>   df$municipalities = chg(df$municipalities)
+>   df$municipalities = gsub("'", "", df$municipalities)
+>   df$municipalities = gsub(" ", "_", df$municipalities)
+>
+> Desde já agradeço!
+>
+> Bianca
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201118/e505f474/attachment.html>
+
+From biafr8 em gmail.com  Wed Nov 18 16:03:04 2020
+From: biafr8 em gmail.com (Bia Rebelatto)
+Date: Wed, 18 Nov 2020 15:03:04 -0300
+Subject: [R-br] 
+	=?utf-8?q?Excluir_parte_dos_caracteres_e_colocar_caracter?=
+	=?utf-8?q?es_em_min=C3=BAsculos?=
+In-Reply-To: <CAAmR27_1xv+2wBPQ6yHUaq2+55tuMB2GRQCpcs6LmNpNwwrnUQ@mail.gmail.com>
+References: <CAEh+SM6ExmCW_G930ennu1gEEmvFSSghfgh6HTJPjqWTWbfi8w@mail.gmail.com>
+ <CAAmR27_1xv+2wBPQ6yHUaq2+55tuMB2GRQCpcs6LmNpNwwrnUQ@mail.gmail.com>
+Message-ID: <CAEh+SM6wAzXE1VPY6qydjFyWZw0KxkTE=fEbJ6hyi0oHTkwqgQ@mail.gmail.com>
+
+Obrigada!
+
+Em qua., 18 de nov. de 2020 às 11:35, Cid Póvoas por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+>
+>
+> library(tidyverse)
+> library(stringi)
+>
+> a <- "Nova_Nazare_(MT)"
+> b <- "Ilhéus_(BA)"
+> c <- data.frame(cidades=c(a,b))
+>
+> c %>% mutate(estado = stri_sub(.$cidade,-3,-2),
+>              cidades = stri_sub(.$cidade,1,-6),
+>              cidades = tolower(cidades))
+>
+>
+>
+> *Cid Edson Mendonça Póvoas **Cel: +55 (73) 99151-9565*
+>
+> *Engenheiro **Agrônomo*
+>
+> *Analista de dados *
+>
+> *Técnico em Segurança do Trabalho *
+>
+> *LinkedIn: **http://br.linkedin.com/in/cidedson/
+> <http://br.linkedin.com/in/cidedson/>*
+>
+> *Lattes: **http://lattes.cnpq.br/2303498368142537
+> <http://lattes.cnpq.br/2303498368142537>*
+>
+>
+>
+>
+> Em qua., 18 de nov. de 2020 às 10:11, Bia Rebelatto por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Olá pessoal,
+>>
+>> Eu gostaria de retirar a UF que vem junto com os municípios dos dados do
+>> IBGE, coloca-la em uma nova coluna para os estados, e deixar todos os
+>> caracteres em minúsculo. Exemplo:
+>>
+>> De
+>> Nova_Nazare_(MT)
+>> para
+>> nova_nazare
+>>
+>> Este é o script que estou utilizando:
+>>
+>> #Calling the package group ----
+>> library(tidyverse)
+>>
+>> #Load data ----
+>> setwd('...')
+>> alldata = list.files()
+>>
+>> #Change especial character ----
+>> chg = function(x){
+>>   iconv(x, to = "ASCII//TRANSLIT")
+>> }
+>>
+>> #Put NA info ----
+>> ##We will replace all in this loop
+>> ##In the and, we will exporting all
+>> for (i in alldata) {
+>>   df = read.csv(i, sep = ";")
+>>
+>>   df[df == "-"] <- c(NA)
+>>   df[df == "..."] <- c(NA)
+>>
+>>   df$municipalities = chg(df$municipalities)
+>>   df$municipalities = gsub("'", "", df$municipalities)
+>>   df$municipalities = gsub(" ", "_", df$municipalities)
+>>
+>> Desde já agradeço!
+>>
+>> Bianca
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201118/bb95dd26/attachment.html>
+
+From nandodesouza em gmail.com  Wed Nov 18 17:24:31 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 18 Nov 2020 16:24:31 -0300
+Subject: [R-br] 
+ =?utf-8?q?Excluir_parte_dos_caracteres_e_colocar_caracter?=
+ =?utf-8?q?es_em_min=C3=BAsculos?=
+In-Reply-To: <CAEh+SM6ExmCW_G930ennu1gEEmvFSSghfgh6HTJPjqWTWbfi8w@mail.gmail.com>
+References: <CAEh+SM6ExmCW_G930ennu1gEEmvFSSghfgh6HTJPjqWTWbfi8w@mail.gmail.com>
+Message-ID: <C524304F-68C6-46AB-86A8-59E42183F461@getmailspring.com>
+
+Usando o código reproduzível do Cid, é possível fazer utilizando a função adply do pacote {plyr}
+a <- "Nova_Nazare_(MT)"
+b <- "Ilhéus_(BA)"
+c <- data.frame(cidades=c(a,b))
+
+#install.packages("plyr")
+library(plyr)
+
+adply(c,1,function(x) data.frame(cidade=tolower(substr(x,1,nchar(x)-5)),estado=substr(x,nchar(x)-2,nchar(x)-1)))
+
+att
+On Nov 18 2020, at 11:10 am, Bia Rebelatto por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Olá pessoal,
+>
+> Eu gostaria de retirar a UF que vem junto com os municípios dos dados do IBGE, coloca-la em uma nova coluna para os estados, e deixar todos os caracteres em minúsculo. Exemplo:
+>
+> De
+> Nova_Nazare_(MT)
+> para
+> nova_nazare
+>
+> Este é o script que estou utilizando:
+>
+> #Calling the package group ----
+> library(tidyverse)
+>
+> #Load data ----
+> setwd('...')
+> alldata = list.files()
+>
+> #Change especial character ----
+> chg = function(x){
+> iconv(x, to = "ASCII//TRANSLIT")
+> }
+>
+> #Put NA info ----
+> ##We will replace all in this loop
+> ##In the and, we will exporting all
+> for (i in alldata) {
+> df = read.csv(i, sep = ";")
+>
+> df[df == "-"] <- c(NA)
+> df[df == "..."] <- c(NA)
+>
+> df$municipalities = chg(df$municipalities)
+> df$municipalities = gsub("'", "", df$municipalities)
+> df$municipalities = gsub(" ", "_", df$municipalities)
+>
+> Desde já agradeço!
+>
+> Bianca
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201118/c143408c/attachment.html>
+
+From nandodesouza em gmail.com  Wed Nov 18 17:36:18 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 18 Nov 2020 16:36:18 -0300
+Subject: [R-br] 
+ =?utf-8?q?Excluir_parte_dos_caracteres_e_colocar_caracter?=
+ =?utf-8?q?es_em_min=C3=BAsculos?=
+In-Reply-To: <C524304F-68C6-46AB-86A8-59E42183F461@getmailspring.com>
+References: <C524304F-68C6-46AB-86A8-59E42183F461@getmailspring.com>
+Message-ID: <14D0449D-01C8-4D8E-BCCE-BDDBC27E1797@getmailspring.com>
+
+um pequena correção para evitar repetição da coluna cidades,
+
+a <- "Nova_Nazare_(MT)"
+b <- "Ilhéus_(BA)"
+c <- data.frame (https://link.getmailspring.com/link/14D0449D-01C8-4D8E-BCCE-BDDBC27E1797 em getmailspring.com/0?redirect=data.frame&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)(cidades=c(a,b))
+
+#install.packages("plyr")
+library(plyr)
+
+adply(c,1,function(x) data.frame(cidades=tolower(substr(x,1,nchar(x)-5)),estado=substr(x,nchar(x)-2,nchar(x)-1)))
+
+On Nov 18 2020, at 5:24 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+> Usando o código reproduzível do Cid, é possível fazer utilizando a função adply do pacote {plyr}
+> a <- "Nova_Nazare_(MT)"
+> b <- "Ilhéus_(BA)"
+> c <- data.frame(cidades=c(a,b))
+>
+> #install.packages("plyr")
+> library(plyr)
+>
+> adply(c,1,function(x) data.frame(cidade=tolower(substr(x,1,nchar(x)-5)),estado=substr(x,nchar(x)-2,nchar(x)-1)))
+>
+> att
+> On Nov 18 2020, at 11:10 am, Bia Rebelatto por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> > Olá pessoal,
+> >
+> > Eu gostaria de retirar a UF que vem junto com os municípios dos dados do IBGE, coloca-la em uma nova coluna para os estados, e deixar todos os caracteres em minúsculo. Exemplo:
+> >
+> > De
+> > Nova_Nazare_(MT)
+> > para
+> > nova_nazare
+> >
+> > Este é o script que estou utilizando:
+> >
+> > #Calling the package group ----
+> > library(tidyverse)
+> >
+> > #Load data ----
+> > setwd('...')
+> > alldata = list.files()
+> >
+> > #Change especial character ----
+> > chg = function(x){
+> > iconv(x, to = "ASCII//TRANSLIT")
+> > }
+> >
+> > #Put NA info ----
+> > ##We will replace all in this loop
+> > ##In the and, we will exporting all
+> > for (i in alldata) {
+> > df = read.csv(i, sep = ";")
+> >
+> > df[df == "-"] <- c(NA)
+> > df[df == "..."] <- c(NA)
+> >
+> > df$municipalities = chg(df$municipalities)
+> > df$municipalities = gsub("'", "", df$municipalities)
+> > df$municipalities = gsub(" ", "_", df$municipalities)
+> >
+> > Desde já agradeço!
+> >
+> > Bianca
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201118/961a1110/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Wed Nov 25 17:03:20 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Wed, 25 Nov 2020 15:03:20 -0400
+Subject: [R-br] =?utf-8?b?Rm9yw6dhciBhIGdlcmHDp8OjbyBkbyBuw7ptZXJvIGRh?=
+ =?utf-8?q?s_linhas_em_as=2Ematrix=28=29_combinado_com_fun=C3=A7=C3=B5es_d?=
+ =?utf-8?q?o_pacote_dplyr?=
+Message-ID: <9632450b-a767-4f9f-70ce-34a610fa1821@cas.ifmt.edu.br>
+
+Prezados Membros do r-br,
+
+Estou tentando criar um objeto X_train através de funções do pacote 
+dplyr e a função as.matrix(), mas eu não consigo criar o número das 
+linhas para esse objeto. Meu CMR é:
+
+|library(dplyr) 
+RES_F<-read.csv("https://raw.githubusercontent.com/Leprechault/trash/main/cnn_ds.csv",sep=",",h=T) 
+RES_train<-RES_F%>% group_by(status) %>% sample_n(1280) X_train <- 
+RES_train %>% select(-status) %>% as.matrix(nrow = 
+length(RES_train[,2]), ncol = ncol(RES_train)-1, byrow = TRUE) 
+str(X_train) # chr [1:2560, 1:5] "attack" "attack" "attack" "attack" 
+"attack" "attack" "attack" "attack" "attack" "attack" "attack" ... # - 
+attr(*, "dimnames")=List of 2 # ..$ : NULL # ..$ : chr [1:5] "status" 
+"NDVI" "SIPI" "RGI" ...|
+
+Podemos ver que aparece NULL:
+
+|# ..$ : NULL # ..$ : chr [1:5] "status" "NDVI" "SIPI" "RGI" ...|
+
+, mas eu quero que meu output seja:
+
+|# ..$ : chr [1:2560] "1" "2" "3" "4" ... # ..$ : chr [1:5] "status" 
+"NDVI" "SIPI" "RGI" ...|
+
+Por favor, alguma sugestão?
+
+Obrigado e abraços,
+
+Alexandre
+
+-- 
+Alexandre dos Santos
+Geotechnologies and Spatial Statistics applied to Forest Entomology
+Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+Caixa Postal 244 (PO Box)
+Avenida dos Ramires, s/n - Vila Real
+Caceres - MT - CEP 78201-380 (ZIP code)
+Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+Lattes CV: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722
+ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+--
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201125/e3c317a2/attachment.html>
+
+From dtiezzi em usp.br  Wed Nov 25 17:50:28 2020
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Wed, 25 Nov 2020 16:50:28 -0300
+Subject: [R-br] =?utf-8?b?Rm9yw6dhciBhIGdlcmHDp8OjbyBkbyBuw7ptZXJvIGRh?=
+ =?utf-8?q?s_linhas_em_as=2Ematrix=28=29_combinado_com_fun=C3=A7=C3=B5es_d?=
+ =?utf-8?q?o_pacote_dplyr?=
+In-Reply-To: <9632450b-a767-4f9f-70ce-34a610fa1821@cas.ifmt.edu.br>
+References: <9632450b-a767-4f9f-70ce-34a610fa1821@cas.ifmt.edu.br>
+Message-ID: <4FEDAEBE-2081-45A3-878B-AEFA40913245@usp.br>
+
+rownames(X_train) <- seq(1,nrow(X_train))
+
+----------------------------------------------------------------
+Daniel Tiezzi, MD, PhD
+Oncologia / Mastologia
+Professor Associado - Livre Docente
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em usp.br <mailto:dtiezzi em usp.br>
+https://github.com/dtiezzi <https://github.com/dtiezzi>
+
+
+
+> On 25 Nov 2020, at 16:03, ASANTOS por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> library(dplyr)
+> RES_F<-read.csv("https://raw.githubusercontent.com/Leprechault/trash/main/cnn_ds.csv" <https://raw.githubusercontent.com/Leprechault/trash/main/cnn_ds.csv>,sep=",",h=T)
+> RES_train<-RES_F%>% group_by(status) %>% sample_n(1280)
+> X_train <- RES_train %>% select(-status) %>% as.matrix(nrow = length(RES_train[,2]), ncol = ncol(RES_train)-1, byrow = TRUE)
+> str(X_train)
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20201125/6975fa70/attachment.html>
+

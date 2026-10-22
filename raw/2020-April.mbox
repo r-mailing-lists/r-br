@@ -1,0 +1,3384 @@
+From alexandre.santos em cas.ifmt.edu.br  Wed Apr  1 12:46:29 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Wed, 1 Apr 2020 11:46:29 -0400
+Subject: [R-br] 
+ =?utf-8?q?Criar_um_dataframe_pela_combina=C3=A7=C3=A3o_de?=
+ =?utf-8?q?_duas_linhas_de_informa=C3=A7=C3=A3o_em_*txt?=
+In-Reply-To: <mailman.3.1585753201.1871.r-br@listas.c3sl.ufpr.br>
+References: <mailman.3.1585753201.1871.r-br@listas.c3sl.ufpr.br>
+Message-ID: <ffe49ec2-133a-6b61-3541-0ca22c80c85c@cas.ifmt.edu.br>
+
+Muito obrigado Max, genial e muito didática a sua resposta!!!
+
+Apenas mudei o final para *csv para evitar a confusão que dá no *txt 
+entre *numeric*/*character*, sendo:
+
+filename <- myfile[1, 1] %>%
+   str_extract(".*:") %>%
+   str_remove("\\.jpg:") %>%
+   paste0("pred_", ., ".csv")
+
+filename
+
+# salva o arquivo
+write.csv(x = mydataframe, file = filename, row.names = FALSE)
+
+Achei também essa função lag() para atrasar uma linha demais!
+
+Alexandre
+
+--
+
+Em 01/04/2020 11:00, r-br-request em listas.c3sl.ufpr.br escreveu:
+> Re:  Criar um dataframe pela combinação de duas linhas de
+>        informação em *txt
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200401/575be9b2/attachment.html>
+
+From marcioboareto em gmail.com  Sat Apr  4 09:02:27 2020
+From: marcioboareto em gmail.com (Marcio Boareto)
+Date: Sat, 4 Apr 2020 09:02:27 -0300
+Subject: [R-br] Subscribe - Erro ao exportar Dados para o Excel
+Message-ID: <CAK4_d9HEc_GAO_2_Q=rGUVaxJ-=eB4qXfcpSOrs8o8RdLufBfg@mail.gmail.com>
+
+Bom dia
+
+Preciso gerar uma planilha em excel dos dados gerados no modelo, porém está
+dando erro ao tentar colocar o nome das empresas na coluna 1 da planilha,
+segue o script: está dando erro no comando rownames
+
+#modelo retirado do artigo disponível em:
+https://www.aedb.br/seget/arquivos/artigos13/44218525.pdf
+
+> require(lpSolve) # carrega pacote lpSolve previamente instalado
+
+Carregando pacotes exigidos: lpSolve
+
+> require(xlsx) # carrega pacote xlsReadWrite previamente instalado
+
+Carregando pacotes exigidos: xlsx
+
+> setwd('c:/Users/Usuário/UFG/MESTRADO 2017/MESTRADO 2019/R') # define o
+diretório de trabalho
+
+> library(readxl)
+
+> library(openxlsx)
+
+
+
+Attaching package: ?openxlsx?
+
+
+
+The following objects are masked from ?package:xlsx?:
+
+
+
+    createWorkbook, loadWorkbook, read.xlsx, saveWorkbook, write.xlsx
+
+
+
+> library(xlsx)
+
+> dados <- read_excel("C:/Users/Usuário/UFG/MESTRADO 2017/MESTRADO
+2019/R/dados.xlsx", col_names=TRUE)
+
+> View(dados)
+
+> dados
+
+# A tibble: 18 x 5
+
+   UTILITY                  OPEX NETWORK      MWH CUSTOMERS
+
+   *<chr>*                   *<dbl>*   *<dbl>*    *<dbl>*     *<dbl>*
+
+ 1 ELETROPAULO        *1*249*143*613   *45*213 39*922*710   5*987*873
+
+ 2 CEMIG              *1*682*334*644  *460*219 37*476*802   6*832*546
+
+ 3 CPFL - PAULISTA     497*290*782   *89*879 25*267*579   3*502*793
+
+ 4 COPEL              *1*018*866*491  *224*817 23*525*040   3*628*209
+
+ 5 LIGHT               557*206*112   *58*074 22*902*552   3*640*182
+
+ 6 CELESC              721*455*274  *144*896 18*105*811   2*237*127
+
+ 7 COELBA              436*436*014  *215*001 14*286*757   4*622*046
+
+ 8 ELEKTRO             414*602*018  *107*116 13*398*558   2*123*670
+
+ 9 CPFL - PIRATININGA  195*789*961   *22*236 13*013*378   1*367*488
+
+10 BANDEIRANTE         286*832*273   *27*496 12*536*237   1*482*518
+
+11 CELPE               350*651*684  *120*428 10*001*560   2*994*259
+
+12 AMPLA               436*532*756   *51*050  9*506*961   2*365*558
+
+13 CELG                691*472*253  *199*494  9*344*291   2*213*198
+
+14 RGE                 186*357*415   *84*997  7*993*103   1*226*079
+
+15 COELGE              316*166*876  *120*300  7*929*212   2*744*830
+
+16 ESCELSA             241*433*335   *56*960  7*897*969   1*185*432
+
+17 AES SUL             206*122*962   *76*133  7*616*460   1*150*518
+
+18 CEEE                385*990*997   *71*892  7*277*929   1*438*072
+
+> inputs<- data.frame(dados[,2]) # seleciona coluna 2 do objeto data
+
+> outputs <- data.frame(dados[,c(3,4,5)]) # seleciona colunas 3, 4 e 5 do
+objeto data
+
+> N<- dim(dados)[1] # número de DMUs
+
+> s <- dim(inputs)[2] # número de inputs
+
+> m <- dim(outputs)[2] # número de outputs
+
+> f.rhs <- c(rep(0,1,N),1) # RHS
+
+> f.dir <- c(rep("<=",1,N),"=") # direção das restrições
+
+> aux <- cbind(-1*inputs,outputs) # matriz com os coeficientes tecnológicos
+em (6)
+
+> for (i in 1:N) {
+
++   f.obj <- c(0*rep(1,s),as.numeric(outputs[i,])) # coeficientes da função
+objetivo
+
++   f.con <- rbind(aux ,c(as.numeric(inputs[i,]), + rep(0,1,m))) # adiciona
+a restrição bTz=1
+
++   results <-
+lp("max",as.numeric(f.obj),f.con,f.dir,f.rhs,scale=1,compute.sens=TRUE) #
+resolve PPL
+
++   multipliers <- results$solution # multiplicadores
+
++   efficiency <- results$objval # indices de eficiência
+
++   duals <- results$duals # ???
+
++   if (i==1) {
+
++     weights <- multipliers
+
++     effcrs <- efficiency
+
++     lambdas <- duals [seq(1,N)]
+
++   } else {
+
++     weights <- rbind(weights,multipliers)
+
++     effcrs <- rbind(effcrs , efficiency)
+
++     lambdas <- rbind(lambdas,duals[seq(1,N)])
+
++   }
+
++ }
+
+> ###################################################################
+
+> planilha <- cbind(effcrs,weights)
+
+> #ESSA PARTE NÃO ESTÁ FUNCIONANDO###################################
+
+> rownames(planilha) <- dados [,1] # nomeas das linhas (empresas)
+
+Error in dimnames(x) <- dn :
+
+  comprimento de 'dimnames' [1] não é igual ao tamanho do array
+
+Segue a planilha gerada, na coluna A preciso constar os nomes da coluna A
+(UTILITY)
+efficiency OPEX NETWORK MWH CUSTOMERS
+effcrs 0,58270216 8,00548E-10 0 6,07396E-09 5,6817E-08
+efficiency 0,579460003 5,94412E-10 9,73842E-07 3,50295E-09 0
+efficiency.1 0,885425355 2,0109E-09 0 1,52572E-08 1,42719E-07
+efficiency.2 0,518585846 9,81483E-10 7,95216E-07 1,11913E-08 2,10933E-08
+efficiency.3 0,775513183 1,79467E-09 0 1,36166E-08 1,27372E-07
+efficiency.4 0,523933705 1,38609E-09 1,28427E-06 1,86596E-08 0
+efficiency.5 1 2,29129E-09 1,85644E-06 2,61264E-08 4,92426E-08
+efficiency.6 0,687899797 2,41195E-09 1,95421E-06 2,75023E-08 5,18359E-08
+efficiency.7 1 5,10751E-09 0 7,6844E-08 0
+efficiency.8 0,698435209 3,48636E-09 0 2,64519E-08 2,47436E-07
+efficiency.9 0,82245379 2,85183E-09 0 2,16376E-08 2,02402E-07
+efficiency.10 0,549836367 2,29078E-09 0 1,73807E-08 1,62583E-07
+efficiency.11 0,585646 1,44619E-09 2,93566E-06 0 0
+efficiency.12 1 5,36603E-09 8,79133E-06 3,16227E-08 0
+efficiency.13 0,819757504 3,16289E-09 0 0 2,98655E-07
+efficiency.14 0,669679648 4,14193E-09 3,35587E-06 4,72283E-08 8,90153E-08
+efficiency.15 0,840551996 4,85147E-09 3,93075E-06 5,53189E-08 1,04264E-07
+efficiency.16 0,44597084 2,59073E-09 2,09906E-06 2,95408E-08 5,56781E-08
+Se puderem ajudar, fico agradecido.
+Atenciosamente
+
+Márcio Boareto
+
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200404/c4923db1/attachment.html>
+
+From dtiezzi em usp.br  Sat Apr  4 09:48:57 2020
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Sat, 4 Apr 2020 09:48:57 -0300
+Subject: [R-br] Subscribe - Erro ao exportar Dados para o Excel
+In-Reply-To: <CAK4_d9HEc_GAO_2_Q=rGUVaxJ-=eB4qXfcpSOrs8o8RdLufBfg@mail.gmail.com>
+References: <CAK4_d9HEc_GAO_2_Q=rGUVaxJ-=eB4qXfcpSOrs8o8RdLufBfg@mail.gmail.com>
+Message-ID: <48005CF4-BC2A-482F-8F22-619C039A5339@usp.br>
+
+Bom dia
+
+O erro gerado diz que a dimensão do objeto que você está tentando inserir como rownames do seu dataframe são diferentes.
+
+Verifique isso:
+
+> dim(planilha)[1]
+> length(dados [ ,1])
+
+Esses valoras devem ser iguais.
+
+Daniel
+
+ 
+
+Daniel Tiezzi, MD, PhD
+Oncologia / Mastologia
+Professor Associado - Livre Docente
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em usp.br
+
+
+
+> On 4 Apr 2020, at 09:02, Marcio Boareto por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Bom dia
+> 
+> Preciso gerar uma planilha em excel dos dados gerados no modelo, porém está dando erro ao tentar colocar o nome das empresas na coluna 1 da planilha, segue o script: está dando erro no comando rownames
+> 
+> #modelo retirado do artigo disponível em: https://www.aedb.br/seget/arquivos/artigos13/44218525.pdf <https://www.aedb.br/seget/arquivos/artigos13/44218525.pdf>
+> > require(lpSolve) # carrega pacote lpSolve previamente instalado
+> Carregando pacotes exigidos: lpSolve
+> > require(xlsx) # carrega pacote xlsReadWrite previamente instalado
+> Carregando pacotes exigidos: xlsx
+> > setwd('c:/Users/Usuário/UFG/MESTRADO 2017/MESTRADO 2019/R') # define o diretório de trabalho
+> > library(readxl)
+> > library(openxlsx)
+>  
+> Attaching package: ?openxlsx?
+>  
+> The following objects are masked from ?package:xlsx?:
+>  
+>     createWorkbook, loadWorkbook, read.xlsx, saveWorkbook, write.xlsx
+>  
+> > library(xlsx)
+> > dados <- read_excel("C:/Users/Usuário/UFG/MESTRADO 2017/MESTRADO 2019/R/dados.xlsx", col_names=TRUE)
+> > View(dados)
+> > dados
+> # A tibble: 18 x 5
+>    UTILITY                  OPEX NETWORK      MWH CUSTOMERS
+>    <chr>                   <dbl>   <dbl>    <dbl>     <dbl>
+>  1 ELETROPAULO        1249143613   45213 39922710   5987873
+>  2 CEMIG              1682334644  460219 37476802   6832546
+>  3 CPFL - PAULISTA     497290782   89879 25267579   3502793
+>  4 COPEL              1018866491  224817 23525040   3628209
+>  5 LIGHT               557206112   58074 22902552   3640182
+>  6 CELESC              721455274  144896 18105811   2237127
+>  7 COELBA              436436014  215001 14286757   4622046
+>  8 ELEKTRO             414602018  107116 13398558   2123670
+>  9 CPFL - PIRATININGA  195789961   22236 13013378   1367488
+> 10 BANDEIRANTE         286832273   27496 12536237   1482518
+> 11 CELPE               350651684  120428 10001560   2994259
+> 12 AMPLA               436532756   51050  9506961   2365558
+> 13 CELG                691472253  199494  9344291   2213198
+> 14 RGE                 186357415   84997  7993103   1226079
+> 15 COELGE              316166876  120300  7929212   2744830
+> 16 ESCELSA             241433335   56960  7897969   1185432
+> 17 AES SUL             206122962   76133  7616460   1150518
+> 18 CEEE                385990997   71892  7277929   1438072
+> > inputs<- data.frame(dados[,2]) # seleciona coluna 2 do objeto data
+> > outputs <- data.frame(dados[,c(3,4,5)]) # seleciona colunas 3, 4 e 5 do objeto data
+> > N<- dim(dados)[1] # número de DMUs
+> > s <- dim(inputs)[2] # número de inputs
+> > m <- dim(outputs)[2] # número de outputs
+> > f.rhs <- c(rep(0,1,N),1) # RHS
+> > f.dir <- c(rep("<=",1,N),"=") # direção das restrições
+> > aux <- cbind(-1*inputs,outputs) # matriz com os coeficientes tecnológicos em (6)
+> > for (i in 1:N) {
+> +   f.obj <- c(0*rep(1,s),as.numeric(outputs[i,])) # coeficientes da função objetivo
+> +   f.con <- rbind(aux ,c(as.numeric(inputs[i,]), + rep(0,1,m))) # adiciona a restrição bTz=1
+> +   results <- lp("max",as.numeric(f.obj),f.con,f.dir,f.rhs,scale=1,compute.sens=TRUE) # resolve PPL
+> +   multipliers <- results$solution # multiplicadores
+> +   efficiency <- results$objval # indices de eficiência
+> +   duals <- results$duals # ???
+> +   if (i==1) {
+> +     weights <- multipliers
+> +     effcrs <- efficiency
+> +     lambdas <- duals [seq(1,N)]
+> +   } else {
+> +     weights <- rbind(weights,multipliers)
+> +     effcrs <- rbind(effcrs , efficiency)
+> +     lambdas <- rbind(lambdas,duals[seq(1,N)])
+> +   }
+> + }
+> > ###################################################################
+> > planilha <- cbind(effcrs,weights)
+> > #ESSA PARTE NÃO ESTÁ FUNCIONANDO###################################
+> > rownames(planilha) <- dados [,1] # nomeas das linhas (empresas)
+> Error in dimnames(x) <- dn :
+>   comprimento de 'dimnames' [1] não é igual ao tamanho do array
+> 
+> Segue a planilha gerada, na coluna A preciso constar os nomes da coluna A (UTILITY)
+> efficiency	OPEX	NETWORK	MWH	CUSTOMERS
+> effcrs	0,58270216	8,00548E-10	0	6,07396E-09	5,6817E-08
+> efficiency	0,579460003	5,94412E-10	9,73842E-07	3,50295E-09	0
+> efficiency.1	0,885425355	2,0109E-09	0	1,52572E-08	1,42719E-07
+> efficiency.2	0,518585846	9,81483E-10	7,95216E-07	1,11913E-08	2,10933E-08
+> efficiency.3	0,775513183	1,79467E-09	0	1,36166E-08	1,27372E-07
+> efficiency.4	0,523933705	1,38609E-09	1,28427E-06	1,86596E-08	0
+> efficiency.5	1	2,29129E-09	1,85644E-06	2,61264E-08	4,92426E-08
+> efficiency.6	0,687899797	2,41195E-09	1,95421E-06	2,75023E-08	5,18359E-08
+> efficiency.7	1	5,10751E-09	0	7,6844E-08	0
+> efficiency.8	0,698435209	3,48636E-09	0	2,64519E-08	2,47436E-07
+> efficiency.9	0,82245379	2,85183E-09	0	2,16376E-08	2,02402E-07
+> efficiency.10	0,549836367	2,29078E-09	0	1,73807E-08	1,62583E-07
+> efficiency.11	0,585646	1,44619E-09	2,93566E-06	0	0
+> efficiency.12	1	5,36603E-09	8,79133E-06	3,16227E-08	0
+> efficiency.13	0,819757504	3,16289E-09	0	0	2,98655E-07
+> efficiency.14	0,669679648	4,14193E-09	3,35587E-06	4,72283E-08	8,90153E-08
+> efficiency.15	0,840551996	4,85147E-09	3,93075E-06	5,53189E-08	1,04264E-07
+> efficiency.16	0,44597084	2,59073E-09	2,09906E-06	2,95408E-08	5,56781E-08
+> 
+> Se puderem ajudar, fico agradecido.
+> Atenciosamente
+> 
+> Márcio Boareto
+> >
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200404/d86db7f0/attachment.html>
+
+From marcioboareto em gmail.com  Sat Apr  4 10:16:58 2020
+From: marcioboareto em gmail.com (Marcio Boareto)
+Date: Sat, 4 Apr 2020 10:16:58 -0300
+Subject: [R-br] Subscribe - Erro ao exportar Dados para o Excel
+In-Reply-To: <48005CF4-BC2A-482F-8F22-619C039A5339@usp.br>
+References: <CAK4_d9HEc_GAO_2_Q=rGUVaxJ-=eB4qXfcpSOrs8o8RdLufBfg@mail.gmail.com>
+ <48005CF4-BC2A-482F-8F22-619C039A5339@usp.br>
+Message-ID: <CAK4_d9Hg+=V61Z7cHOL9u4JA419C+uQx80OOGmmdnb0LUciviQ@mail.gmail.com>
+
+Bom dia
+
+Prezado Prof Daniel
+
+Não consegui resolver e o erro ainda persiste. Estou aprendo recentemente a
+usar o R para cálculo de eficiência em análise envoltória de dados, estou
+com dificuldades em exportar os resultados para uma planilha.
+
+Muito obrigado pela ajuda!
+
+Em sáb., 4 de abr. de 2020 às 09:49, Daniel Guimarães Tiezzi <dtiezzi em usp.br>
+escreveu:
+
+> Bom dia
+>
+> O erro gerado diz que a dimensão do objeto que você está tentando inserir
+> como rownames do seu dataframe são diferentes.
+>
+> Verifique isso:
+>
+> > dim(planilha)[1]
+> > length(dados [ ,1])
+>
+> Esses valoras devem ser iguais.
+>
+> Daniel
+>
+>
+>
+> Daniel Tiezzi, MD, PhD
+> Oncologia / Mastologia
+> Professor Associado - Livre Docente
+> Departamento de Ginecologia e Obstetrícia
+> Setor de Mastologia e Oncologia Ginecológica
+> Faculdade de Medicina de Ribeirão Preto - USP
+> Tel.: 16 3602-2488
+> e-mail: dtiezzi em usp.br <dtiezzi em usp.br>
+>
+>
+>
+> On 4 Apr 2020, at 09:02, Marcio Boareto por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Bom dia
+>
+> Preciso gerar uma planilha em excel dos dados gerados no modelo, porém
+> está dando erro ao tentar colocar o nome das empresas na coluna 1 da
+> planilha, segue o script: está dando erro no comando rownames
+>
+> #modelo retirado do artigo disponível em:
+> https://www.aedb.br/seget/arquivos/artigos13/44218525.pdf
+> > require(lpSolve) # carrega pacote lpSolve previamente instalado
+> Carregando pacotes exigidos: lpSolve
+> > require(xlsx) # carrega pacote xlsReadWrite previamente instalado
+> Carregando pacotes exigidos: xlsx
+> > setwd('c:/Users/Usuário/UFG/MESTRADO 2017/MESTRADO 2019/R') # define o
+> diretório de trabalho
+> > library(readxl)
+> > library(openxlsx)
+>
+>
+> Attaching package: ?openxlsx?
+>
+>
+> The following objects are masked from ?package:xlsx?:
+>
+>
+>     createWorkbook, loadWorkbook, read.xlsx, saveWorkbook, write.xlsx
+>
+>
+> > library(xlsx)
+> > dados <- read_excel("C:/Users/Usuário/UFG/MESTRADO 2017/MESTRADO
+> 2019/R/dados.xlsx", col_names=TRUE)
+> > View(dados)
+> > dados
+> # A tibble: 18 x 5
+>    UTILITY                  OPEX NETWORK      MWH CUSTOMERS
+>    *<chr>*                   *<dbl>*   *<dbl>*    *<dbl>*     *<dbl>*
+>  1 ELETROPAULO        *1*249*143*613   *45*213 39*922*710   5*987*873
+>  2 CEMIG              *1*682*334*644  *460*219 37*476*802   6*832*546
+>  3 CPFL - PAULISTA     497*290*782   *89*879 25*267*579   3*502*793
+>  4 COPEL              *1*018*866*491  *224*817 23*525*040   3*628*209
+>  5 LIGHT               557*206*112   *58*074 22*902*552   3*640*182
+>  6 CELESC              721*455*274  *144*896 18*105*811   2*237*127
+>  7 COELBA              436*436*014  *215*001 14*286*757   4*622*046
+>  8 ELEKTRO             414*602*018  *107*116 13*398*558   2*123*670
+>  9 CPFL - PIRATININGA  195*789*961   *22*236 13*013*378   1*367*488
+> 10 BANDEIRANTE         286*832*273   *27*496 12*536*237   1*482*518
+> 11 CELPE               350*651*684  *120*428 10*001*560   2*994*259
+> 12 AMPLA               436*532*756   *51*050  9*506*961   2*365*558
+> 13 CELG                691*472*253  *199*494  9*344*291   2*213*198
+> 14 RGE                 186*357*415   *84*997  7*993*103   1*226*079
+> 15 COELGE              316*166*876  *120*300  7*929*212   2*744*830
+> 16 ESCELSA             241*433*335   *56*960  7*897*969   1*185*432
+> 17 AES SUL             206*122*962   *76*133  7*616*460   1*150*518
+> 18 CEEE                385*990*997   *71*892  7*277*929   1*438*072
+> > inputs<- data.frame(dados[,2]) # seleciona coluna 2 do objeto data
+> > outputs <- data.frame(dados[,c(3,4,5)]) # seleciona colunas 3, 4 e 5 do
+> objeto data
+> > N<- dim(dados)[1] # número de DMUs
+> > s <- dim(inputs)[2] # número de inputs
+> > m <- dim(outputs)[2] # número de outputs
+> > f.rhs <- c(rep(0,1,N),1) # RHS
+> > f.dir <- c(rep("<=",1,N),"=") # direção das restrições
+> > aux <- cbind(-1*inputs,outputs) # matriz com os coeficientes
+> tecnológicos em (6)
+> > for (i in 1:N) {
+> +   f.obj <- c(0*rep(1,s),as.numeric(outputs[i,])) # coeficientes da
+> função objetivo
+> +   f.con <- rbind(aux ,c(as.numeric(inputs[i,]), + rep(0,1,m))) #
+> adiciona a restrição bTz=1
+> +   results <-
+> lp("max",as.numeric(f.obj),f.con,f.dir,f.rhs,scale=1,compute.sens=TRUE) #
+> resolve PPL
+> +   multipliers <- results$solution # multiplicadores
+> +   efficiency <- results$objval # indices de eficiência
+> +   duals <- results$duals # ???
+> +   if (i==1) {
+> +     weights <- multipliers
+> +     effcrs <- efficiency
+> +     lambdas <- duals [seq(1,N)]
+> +   } else {
+> +     weights <- rbind(weights,multipliers)
+> +     effcrs <- rbind(effcrs , efficiency)
+> +     lambdas <- rbind(lambdas,duals[seq(1,N)])
+> +   }
+> + }
+> > ###################################################################
+> > planilha <- cbind(effcrs,weights)
+> > #ESSA PARTE NÃO ESTÁ FUNCIONANDO###################################
+> > rownames(planilha) <- dados [,1] # nomeas das linhas (empresas)
+> Error in dimnames(x) <- dn :
+>   comprimento de 'dimnames' [1] não é igual ao tamanho do array
+>
+> Segue a planilha gerada, na coluna A preciso constar os nomes da coluna A
+> (UTILITY)
+> efficiency OPEX NETWORK MWH CUSTOMERS
+> effcrs 0,58270216 8,00548E-10 0 6,07396E-09 5,6817E-08
+> efficiency 0,579460003 5,94412E-10 9,73842E-07 3,50295E-09 0
+> efficiency.1 0,885425355 2,0109E-09 0 1,52572E-08 1,42719E-07
+> efficiency.2 0,518585846 9,81483E-10 7,95216E-07 1,11913E-08 2,10933E-08
+> efficiency.3 0,775513183 1,79467E-09 0 1,36166E-08 1,27372E-07
+> efficiency.4 0,523933705 1,38609E-09 1,28427E-06 1,86596E-08 0
+> efficiency.5 1 2,29129E-09 1,85644E-06 2,61264E-08 4,92426E-08
+> efficiency.6 0,687899797 2,41195E-09 1,95421E-06 2,75023E-08 5,18359E-08
+> efficiency.7 1 5,10751E-09 0 7,6844E-08 0
+> efficiency.8 0,698435209 3,48636E-09 0 2,64519E-08 2,47436E-07
+> efficiency.9 0,82245379 2,85183E-09 0 2,16376E-08 2,02402E-07
+> efficiency.10 0,549836367 2,29078E-09 0 1,73807E-08 1,62583E-07
+> efficiency.11 0,585646 1,44619E-09 2,93566E-06 0 0
+> efficiency.12 1 5,36603E-09 8,79133E-06 3,16227E-08 0
+> efficiency.13 0,819757504 3,16289E-09 0 0 2,98655E-07
+> efficiency.14 0,669679648 4,14193E-09 3,35587E-06 4,72283E-08 8,90153E-08
+> efficiency.15 0,840551996 4,85147E-09 3,93075E-06 5,53189E-08 1,04264E-07
+> efficiency.16 0,44597084 2,59073E-09 2,09906E-06 2,95408E-08 5,56781E-08
+> Se puderem ajudar, fico agradecido.
+> Atenciosamente
+>
+> Márcio Boareto
+>
+> >
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+>
+
+-- 
+*Márcio Boareto*
+*Administrador *
+*CRA-GO 15993*
+*Mestre em Gestão Organizacional pela UFG Catalão.*
+*Especialista em Gestão Financeira e Controladoria - UFG Catalão*
+*Graduado em Administração de Empresas - UFG Catalão*
+*64 98137-9049 whatsapp*
+*Lattes*:http://lattes.cnpq.br/8524063708922235
+*ORCID: **https://orcid.org/0000-0003-0398-8774
+<https://orcid.org/0000-0003-0398-8774>*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200404/ec91d6f8/attachment-0001.html>
+
+From dtiezzi em usp.br  Sat Apr  4 11:02:11 2020
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Sat, 4 Apr 2020 11:02:11 -0300
+Subject: [R-br] Subscribe - Erro ao exportar Dados para o Excel
+In-Reply-To: <CAK4_d9F-BpJXJSNgUaQTd6tC68x_VZ7zkgEH8pQw1ZVM3sjttQ@mail.gmail.com>
+References: <CAK4_d9HEc_GAO_2_Q=rGUVaxJ-=eB4qXfcpSOrs8o8RdLufBfg@mail.gmail.com>
+ <48005CF4-BC2A-482F-8F22-619C039A5339@usp.br>
+ <CAK4_d9Hg+=V61Z7cHOL9u4JA419C+uQx80OOGmmdnb0LUciviQ@mail.gmail.com>
+ <CA+RL3DOxZH1x_W4rA=eC46qPmrEqHVZQVT3UWF05Vr8_s5ZgdQ@mail.gmail.com>
+ <CAK4_d9F-BpJXJSNgUaQTd6tC68x_VZ7zkgEH8pQw1ZVM3sjttQ@mail.gmail.com>
+Message-ID: <807518AB-EC7C-4286-B65E-D0A4DB44D0C6@usp.br>
+
+Bom dia Marcio
+
+Segue o código e a planilha final.
+
+Eu só converti a sua table dados para o formato CSV pois não tenho instalado o pacote xlsx. Eu fiz isso no Excel mesmo.
+
+Veja se ficou OK.
+
+Daniel
+
+
+Daniel Tiezzi, MD, PhD
+Oncologia / Mastologia
+Professor Associado - Livre Docente
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail:  <mailto:dtiezzi em usp.br>dtiezzi em usp.br <mailto:dtiezzi em usp.br>
+
+
+
+
+
+> On 4 Apr 2020, at 10:31, Marcio Boareto <marcioboareto em gmail.com> wrote:
+> 
+> Prezado Prof Daniel
+> 
+> 
+> Ficaria muito agradecido se puder me ajudar. 
+> Segue a planilha "dados", os resultados, o artigo e o script do R studio, se tiver como reproduzir.
+> 
+> O artigo onde estou tentando reproduzir o modelo (está dando erro, pois o pacote de leitura da planilha foi descontinuado (xlsReadWrite) e estou tentando utilizar outro pacote para exportar o modelo para uma planilha.
+> 
+> 
+> 
+> 
+> Desde já agradeço vossa atenção.
+> 
+> 
+> 
+> 
+> Em sáb., 4 de abr. de 2020 às 10:22, Daniel Guimarães Tiezzi <dtiezzi em usp.br <mailto:dtiezzi em usp.br>> escreveu:
+> Ok, seria melhor VC enviar parte da sua planilha para podemos reproduzir o erro e resolver para VC.
+> 
+> 
+> On Sat, 4 Apr 2020, 10:17 Marcio Boareto, <marcioboareto em gmail.com <mailto:marcioboareto em gmail.com>> wrote:
+> Bom dia
+> 
+> Prezado Prof Daniel
+> 
+> Não consegui resolver e o erro ainda persiste. Estou aprendo recentemente a usar o R para cálculo de eficiência em análise envoltória de dados, estou com dificuldades em exportar os resultados para uma planilha.
+> 
+> Muito obrigado pela ajuda!
+> 
+> Em sáb., 4 de abr. de 2020 às 09:49, Daniel Guimarães Tiezzi <dtiezzi em usp.br <mailto:dtiezzi em usp.br>> escreveu:
+> Bom dia
+> 
+> O erro gerado diz que a dimensão do objeto que você está tentando inserir como rownames do seu dataframe são diferentes.
+> 
+> Verifique isso:
+> 
+> > dim(planilha)[1]
+> > length(dados [ ,1])
+> 
+> Esses valoras devem ser iguais.
+> 
+> Daniel
+> 
+>  
+> 
+> Daniel Tiezzi, MD, PhD
+> Oncologia / Mastologia
+> Professor Associado - Livre Docente
+> Departamento de Ginecologia e Obstetrícia
+> Setor de Mastologia e Oncologia Ginecológica
+> Faculdade de Medicina de Ribeirão Preto - USP
+> Tel.: 16 3602-2488
+> e-mail: dtiezzi em usp.br <mailto:dtiezzi em usp.br>
+> 
+> 
+> 
+>> On 4 Apr 2020, at 09:02, Marcio Boareto por (R-br) <r-br em listas.c3sl.ufpr.br <mailto:r-br em listas.c3sl.ufpr.br>> wrote:
+>> 
+>> Bom dia
+>> 
+>> Preciso gerar uma planilha em excel dos dados gerados no modelo, porém está dando erro ao tentar colocar o nome das empresas na coluna 1 da planilha, segue o script: está dando erro no comando rownames
+>> 
+>> #modelo retirado do artigo disponível em: https://www.aedb.br/seget/arquivos/artigos13/44218525.pdf <https://www.aedb.br/seget/arquivos/artigos13/44218525.pdf>
+>> > require(lpSolve) # carrega pacote lpSolve previamente instalado
+>> Carregando pacotes exigidos: lpSolve
+>> > require(xlsx) # carrega pacote xlsReadWrite previamente instalado
+>> Carregando pacotes exigidos: xlsx
+>> > setwd('c:/Users/Usuário/UFG/MESTRADO 2017/MESTRADO 2019/R') # define o diretório de trabalho
+>> > library(readxl)
+>> > library(openxlsx)
+>>  
+>> Attaching package: ?openxlsx?
+>>  
+>> The following objects are masked from ?package:xlsx?:
+>>  
+>>     createWorkbook, loadWorkbook, read.xlsx, saveWorkbook, write.xlsx
+>>  
+>> > library(xlsx)
+>> > dados <- read_excel("C:/Users/Usuário/UFG/MESTRADO 2017/MESTRADO 2019/R/dados.xlsx", col_names=TRUE)
+>> > View(dados)
+>> > dados
+>> # A tibble: 18 x 5
+>>    UTILITY                  OPEX NETWORK      MWH CUSTOMERS
+>>    <chr>                   <dbl>   <dbl>    <dbl>     <dbl>
+>>  1 ELETROPAULO        1249143613   45213 39922710   5987873
+>>  2 CEMIG              1682334644  460219 37476802   6832546
+>>  3 CPFL - PAULISTA     497290782   89879 25267579   3502793
+>>  4 COPEL              1018866491  224817 23525040   3628209
+>>  5 LIGHT               557206112   58074 22902552   3640182
+>>  6 CELESC              721455274  144896 18105811   2237127
+>>  7 COELBA              436436014  215001 14286757   4622046
+>>  8 ELEKTRO             414602018  107116 13398558   2123670
+>>  9 CPFL - PIRATININGA  195789961   22236 13013378   1367488
+>> 10 BANDEIRANTE         286832273   27496 12536237   1482518
+>> 11 CELPE               350651684  120428 10001560   2994259
+>> 12 AMPLA               436532756   51050  9506961   2365558
+>> 13 CELG                691472253  199494  9344291   2213198
+>> 14 RGE                 186357415   84997  7993103   1226079
+>> 15 COELGE              316166876  120300  7929212   2744830
+>> 16 ESCELSA             241433335   56960  7897969   1185432
+>> 17 AES SUL             206122962   76133  7616460   1150518
+>> 18 CEEE                385990997   71892  7277929   1438072
+>> > inputs<- data.frame(dados[,2]) # seleciona coluna 2 do objeto data
+>> > outputs <- data.frame(dados[,c(3,4,5)]) # seleciona colunas 3, 4 e 5 do objeto data
+>> > N<- dim(dados)[1] # número de DMUs
+>> > s <- dim(inputs)[2] # número de inputs
+>> > m <- dim(outputs)[2] # número de outputs
+>> > f.rhs <- c(rep(0,1,N),1) # RHS
+>> > f.dir <- c(rep("<=",1,N),"=") # direção das restrições
+>> > aux <- cbind(-1*inputs,outputs) # matriz com os coeficientes tecnológicos em (6)
+>> > for (i in 1:N) {
+>> +   f.obj <- c(0*rep(1,s),as.numeric(outputs[i,])) # coeficientes da função objetivo
+>> +   f.con <- rbind(aux ,c(as.numeric(inputs[i,]), + rep(0,1,m))) # adiciona a restrição bTz=1
+>> +   results <- lp("max",as.numeric(f.obj),f.con,f.dir,f.rhs,scale=1,compute.sens=TRUE) # resolve PPL
+>> +   multipliers <- results$solution # multiplicadores
+>> +   efficiency <- results$objval # indices de eficiência
+>> +   duals <- results$duals # ???
+>> +   if (i==1) {
+>> +     weights <- multipliers
+>> +     effcrs <- efficiency
+>> +     lambdas <- duals [seq(1,N)]
+>> +   } else {
+>> +     weights <- rbind(weights,multipliers)
+>> +     effcrs <- rbind(effcrs , efficiency)
+>> +     lambdas <- rbind(lambdas,duals[seq(1,N)])
+>> +   }
+>> + }
+>> > ###################################################################
+>> > planilha <- cbind(effcrs,weights)
+>> > #ESSA PARTE NÃO ESTÁ FUNCIONANDO###################################
+>> > rownames(planilha) <- dados [,1] # nomeas das linhas (empresas)
+>> Error in dimnames(x) <- dn :
+>>   comprimento de 'dimnames' [1] não é igual ao tamanho do array
+>> 
+>> Segue a planilha gerada, na coluna A preciso constar os nomes da coluna A (UTILITY)
+>> efficiency	OPEX	NETWORK	MWH	CUSTOMERS
+>> effcrs	0,58270216	8,00548E-10	0	6,07396E-09	5,6817E-08
+>> efficiency	0,579460003	5,94412E-10	9,73842E-07	3,50295E-09	0
+>> efficiency.1	0,885425355	2,0109E-09	0	1,52572E-08	1,42719E-07
+>> efficiency.2	0,518585846	9,81483E-10	7,95216E-07	1,11913E-08	2,10933E-08
+>> efficiency.3	0,775513183	1,79467E-09	0	1,36166E-08	1,27372E-07
+>> efficiency.4	0,523933705	1,38609E-09	1,28427E-06	1,86596E-08	0
+>> efficiency.5	1	2,29129E-09	1,85644E-06	2,61264E-08	4,92426E-08
+>> efficiency.6	0,687899797	2,41195E-09	1,95421E-06	2,75023E-08	5,18359E-08
+>> efficiency.7	1	5,10751E-09	0	7,6844E-08	0
+>> efficiency.8	0,698435209	3,48636E-09	0	2,64519E-08	2,47436E-07
+>> efficiency.9	0,82245379	2,85183E-09	0	2,16376E-08	2,02402E-07
+>> efficiency.10	0,549836367	2,29078E-09	0	1,73807E-08	1,62583E-07
+>> efficiency.11	0,585646	1,44619E-09	2,93566E-06	0	0
+>> efficiency.12	1	5,36603E-09	8,79133E-06	3,16227E-08	0
+>> efficiency.13	0,819757504	3,16289E-09	0	0	2,98655E-07
+>> efficiency.14	0,669679648	4,14193E-09	3,35587E-06	4,72283E-08	8,90153E-08
+>> efficiency.15	0,840551996	4,85147E-09	3,93075E-06	5,53189E-08	1,04264E-07
+>> efficiency.16	0,44597084	2,59073E-09	2,09906E-06	2,95408E-08	5,56781E-08
+>> 
+>> Se puderem ajudar, fico agradecido.
+>> Atenciosamente
+>> 
+>> Márcio Boareto
+>> >
+>> 
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br <https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br>
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia <http://www.leg.ufpr.br/r-br-guia>) e forneça código mínimo reproduzível.
+> 
+> 
+> 
+> -- 
+> Márcio Boareto
+> Administrador
+> CRA-GO 15993
+> Mestre em Gestão Organizacional pela UFG Catalão.
+> Especialista em Gestão Financeira e Controladoria - UFG Catalão
+> Graduado em Administração de Empresas - UFG Catalão
+> 64 98137-9049 whatsapp
+> Lattes:http://lattes.cnpq.br/8524063708922235 <http://lattes.cnpq.br/8524063708922235>
+> ORCID: https://orcid.org/0000-0003-0398-8774 <https://orcid.org/0000-0003-0398-8774>
+> 
+> 
+> 
+> 
+> -- 
+> Márcio Boareto
+> Administrador
+> CRA-GO 15993
+> Mestre em Gestão Organizacional pela UFG Catalão.
+> Especialista em Gestão Financeira e Controladoria - UFG Catalão
+> Graduado em Administração de Empresas - UFG Catalão
+> 64 98137-9049 whatsapp
+> Lattes:http://lattes.cnpq.br/8524063708922235 <http://lattes.cnpq.br/8524063708922235>
+> ORCID: https://orcid.org/0000-0003-0398-8774 <https://orcid.org/0000-0003-0398-8774>
+> 
+> 
+> <resultscrs.xlsx><script -seget.R><dados.xlsx><44218525.pdf><script.docx>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200404/64dd66df/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: dados.csv
+Tipo: text/csv
+Tamanho: 799 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200404/64dd66df/attachment.csv>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200404/64dd66df/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Planilha.csv
+Tipo: text/csv
+Tamanho: 1684 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200404/64dd66df/attachment-0001.csv>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200404/64dd66df/attachment-0002.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: planilha.R
+Tipo: application/octet-stream
+Tamanho: 1350 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200404/64dd66df/attachment.obj>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200404/64dd66df/attachment-0003.html>
+
+From verginio em unesc.net  Sat Apr  4 11:30:26 2020
+From: verginio em unesc.net (verginio em unesc.net)
+Date: Sat,  4 Apr 2020 09:30:26 -0500 (CDT)
+Subject: [R-br] Subscribe - Erro ao exportar Dados para o Excel
+Message-ID: <894825212.508478.1586010626542.JavaMail.administrator@n4.nabble.com>
+
+Bom dia Márcio Boareto,
+
+Seu código funcionará, se alterar a linha:
+
+rownames(planilha) <- dados [,1] # nomeas das linhas (empresas)
+
+#por
+
+rownames(planilha) <- dados[[1]] # nomeas das linhas (empresas)
+
+###
+O diferença está na library usada para leitura da planilha dados.xlsx.
+Foram carregadas três `xlsx`, `openxlsx`e `readxl`. Mas foi utilizada apenas esta última, que carrega como tibble.
+
+dados <- readxl::read_excel(path = "dados.xlsx", col_names = T)
+
+
+Atenciosamente,
+Max Richard Verginio
+
+
+_____________________________________
+Sent from http://r-br.2285057.n4.nabble.com
+
+
+From marcioboareto em gmail.com  Sat Apr  4 16:52:51 2020
+From: marcioboareto em gmail.com (Marcio Boareto)
+Date: Sat, 4 Apr 2020 16:52:51 -0300
+Subject: [R-br] Subscribe - Erro ao exportar Dados para o Excel
+In-Reply-To: <894825212.508478.1586010626542.JavaMail.administrator@n4.nabble.com>
+References: <894825212.508478.1586010626542.JavaMail.administrator@n4.nabble.com>
+Message-ID: <CAK4_d9F0m-SVDCZzYtREtwOmEVar5UFEOVXzJxdC-PW9G4_gSA@mail.gmail.com>
+
+Boa Tarde
+
+Prezado Max
+
+Deu certo, muito obrigado! Só não consigo gerar a planilha dos resultados
+do modelo calculado, segue a mensagem de erro:
+
+>write.xlsx(planilha, file = "resultscrs.xlsx") #grava arquivo
+Error in zip_internal(zipfile, files, recurse, compression_level, append =
+FALSE,  :
+  zip error: `Cannot add file `[Content_Types].xml` to archive
+`filed781d2c370e.xlsx`` in file `zip.c:394`
+>
+
+
+Atenciosamente
+
+Em sáb., 4 de abr. de 2020 às 11:30, Max Richard Verginio por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia Márcio Boareto,
+>
+> Seu código funcionará, se alterar a linha:
+>
+> rownames(planilha) <- dados [,1] # nomeas das linhas (empresas)
+>
+> #por
+>
+> rownames(planilha) <- dados[[1]] # nomeas das linhas (empresas)
+>
+> ###
+> O diferença está na library usada para leitura da planilha dados.xlsx.
+> Foram carregadas três `xlsx`, `openxlsx`e `readxl`. Mas foi utilizada
+> apenas esta última, que carrega como tibble.
+>
+> dados <- readxl::read_excel(path = "dados.xlsx", col_names = T)
+>
+>
+> Atenciosamente,
+> Max Richard Verginio
+>
+>
+> _____________________________________
+> Sent from http://r-br.2285057.n4.nabble.com
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+*Márcio Boareto*
+*Administrador *
+*CRA-GO 15993*
+*Mestre em Gestão Organizacional pela UFG Catalão.*
+*Especialista em Gestão Financeira e Controladoria - UFG Catalão*
+*Graduado em Administração de Empresas - UFG Catalão*
+*64 98137-9049 whatsapp*
+*Lattes*:http://lattes.cnpq.br/8524063708922235
+*ORCID: **https://orcid.org/0000-0003-0398-8774
+<https://orcid.org/0000-0003-0398-8774>*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200404/400aacdd/attachment.html>
+
+From cleiton.ibce em hotmail.com  Fri Apr 10 23:51:55 2020
+From: cleiton.ibce em hotmail.com (Cleiton Fernando Barbosa Brito)
+Date: Sat, 11 Apr 2020 02:51:55 +0000
+Subject: [R-br] =?iso-8859-1?q?Problemas_na_instala=E7=E3o_de_pacotes?=
+Message-ID: <MN2PR20MB28002B45B2B4B471784B79009ADF0@MN2PR20MB2800.namprd20.prod.outlook.com>
+
+Boa noite,
+Quando tento instalar pacotes :
+
+>chooseCRANmirror()
+Warning: failed to download mirrors file (não foi possível abrir a URL 'https://cran.r-project.org/CRAN_mirrors.csv'); using local file 'C:/PROGRA~1/R/R-36~1.3/doc/CRAN_mirrors.csv'
+Warning message:
+In download.file(url, destfile = f, quiet = TRUE) :
+  falha em InternetOpenUrl: ''
+
+> utils:::menuInstallPkgs()
+Warning: unable to access index for repository https://cran-r.c3sl.ufpr.br/src/contrib:
+  não foi possível abrir a URL 'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES'
+Error in install.packages(lib = .libPaths()[1L], dependencies = NA, type = type) :
+  argumento "pkgs" ausente, sem padrão
+
+Tentei instalar várias versões e todas estão apresentado este problema.
+
+Atenciosamente,
+
+
+Cleiton Fernando
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200411/76b13530/attachment.html>
+
+From marcelolaia em gmail.com  Sat Apr 11 08:56:34 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Sat, 11 Apr 2020 08:56:34 -0300
+Subject: [R-br] =?utf-8?q?Problemas_na_instala=C3=A7=C3=A3o_de_pacotes?=
+In-Reply-To: <MN2PR20MB28002B45B2B4B471784B79009ADF0@MN2PR20MB2800.namprd20.prod.outlook.com>
+References: <MN2PR20MB28002B45B2B4B471784B79009ADF0@MN2PR20MB2800.namprd20.prod.outlook.com>
+Message-ID: <CAEEYVUAM1nSj6-+8a8-uOMptzbZUh3bAZPW-Gw6Scm_8gcCyZw@mail.gmail.com>
+
+Quais foram os comandos utilizados?
+
+Em sex, 10 de abr de 2020 23:52, Cleiton Fernando Barbosa Brito por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa noite,
+> Quando tento instalar pacotes :
+>
+> >chooseCRANmirror()
+> Warning: failed to download mirrors file (não foi possível abrir a URL '
+> https://cran.r-project.org/CRAN_mirrors.csv'); using local file
+> 'C:/PROGRA~1/R/R-36~1.3/doc/CRAN_mirrors.csv'
+> Warning message:
+> In download.file(url, destfile = f, quiet = TRUE) :
+>   falha em InternetOpenUrl: ''
+>
+> > utils:::menuInstallPkgs()
+> Warning: unable to access index for repository
+> https://cran-r.c3sl.ufpr.br/src/contrib:
+>   não foi possível abrir a URL '
+> https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES'
+> Error in install.packages(lib = .libPaths()[1L], dependencies = NA, type =
+> type) :
+>   argumento "pkgs" ausente, sem padrão
+>
+> Tentei instalar várias versões e todas estão apresentado este problema.
+>
+> Atenciosamente,
+>
+> *Cleiton Fernando *
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200411/c41a02b8/attachment.html>
+
+From profiack em gmail.com  Sat Apr 11 14:34:02 2020
+From: profiack em gmail.com (profiack em gmail.com)
+Date: Sat, 11 Apr 2020 12:34:02 -0500 (CDT)
+Subject: [R-br] =?utf-8?q?Problemas_na_instala=C3=A7=C3=A3o_de_pacotes?=
+Message-ID: <1254317720.81669.1586626442705.JavaMail.administrator@n4.nabble.com>
+
+Veja este link  que me parece o mesmo caso.
+
+https://stackoverflow.com/questions/36346781/r-package-installation-issue
+
+
+<quote author='R-br mailing list'>
+Boa noite,
+Quando tento instalar pacotes :
+
+>chooseCRANmirror()
+Warning: failed to download mirrors file (não foi possível abrir a URL
+'https://cran.r-project.org/CRAN_mirrors.csv'); using local file
+'C:/PROGRA~1/R/R-36~1.3/doc/CRAN_mirrors.csv'
+Warning message:
+In download.file(url, destfile = f, quiet = TRUE) :
+  falha em InternetOpenUrl: ''
+
+> utils:::menuInstallPkgs()
+Warning: unable to access index for repository
+https://cran-r.c3sl.ufpr.br/src/contrib:
+  não foi possível abrir a URL
+'https://cran-r.c3sl.ufpr.br/src/contrib/PACKAGES'
+Error in install.packages(lib = .libPaths()[1L], dependencies = NA, type =
+type) :
+  argumento "pkgs" ausente, sem padrão
+
+Tentei instalar várias versões e todas estão apresentado este problema.
+
+Atenciosamente,
+
+
+Cleiton Fernando
+
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
+mínimo reproduzível.
+
+</quote>
+Quoted from: 
+http://r-br.2285057.n4.nabble.com/R-br-Problemas-na-instalacao-de-pacotes-tp4668784.html
+
+
+_____________________________________
+Sent from http://r-br.2285057.n4.nabble.com
+
+
+From alexandre.loures em ymail.com  Mon Apr 13 20:59:54 2020
+From: alexandre.loures em ymail.com (Alexandre Loures)
+Date: Mon, 13 Apr 2020 20:59:54 -0300
+Subject: [R-br] =?utf-8?q?Gr=C3=A1fico_de_network_para_o_com=C3=A9rcio_in?=
+ =?utf-8?q?ternacional_entre_pa=C3=ADses?=
+References: <b047f58e-890c-feb8-cdbb-3c9a8337fba7.ref@ymail.com>
+Message-ID: <b047f58e-890c-feb8-cdbb-3c9a8337fba7@ymail.com>
+
+Boa noite, Listeiros!
+
+Gostaria de fazer um gráfico de rede para o comércio internacional entre 
+um grupo de países. Nesse sentido, estou tentando replicar o seguinte 
+exemplo: 
+http://beyondvalence.blogspot.com/2014/05/text-mining-7-term-network-analysis.html
+
+Porém, no meu caso, possuo pares de países: ARE-JPN, AUS-JPN,...
+
+Ademais, gostaria que cada node fosse proporcional ao volume 
+comercializado pelo país (variável exports).
+
+  dput (df)
+structure(list(ido = c("ARE", "AUS", "CHN", "GBR", "GBR", "GBR",
+"HKG", "IDN", "IRN", "JPN", "JPN", "KOR", "KOR", "MYS", "NGA",
+"NLD", "NOR", "RUS", "RUS", "USA", "USA", "AUS", "AUS", "BEL",
+"BEL", "BEL", "CHN", "CHN", "CHN", "DEU", "DEU", "DEU", "DEU",
+"DEU", "DEU", "DEU", "GBR", "GBR", "GBR", "IRN", "MYS", "MYS",
+"NLD", "POL", "RUS", "RUS", "SGP", "SGP", "SGP", "SGP", "USA"
+), idd = c("JPN", "JPN", "KOR", "CHE", "DEU", "FRA", "USA", "JPN",
+"JPN", "HKG", "SGP", "CHN", "JPN", "SGP", "USA", "FRA", "GBR",
+"DEU", "ITA", "GBR", "KOR", "CHN", "JPN", "DEU", "FRA", "NLD",
+"GBR", "RUS", "SGP", "AUT", "BEL", "ESP", "FRA", "NLD", "POL",
+"USA", "ARE", "IRL", "USA", "ITA", "SGP", "USA", "BEL", "DEU",
+"CHE", "TUR", "CHN", "HKG", "IDN", "MYS", "ARE"), exports = c(13112242813,
+12600200044, 11292363934, 8415084770, 34788506146, 28475980395,
+46984336771, 14415189665, 4968556482, 27183303751, 20820248756,
+18454539579, 20466015819, 18045941449, 11499435728, 22555328417,
+12375241280, 9231828795, 7254325411, 41578521231, 27901876438,
+12302482046, 21703963590, 64547770665, 57659467585, 39244445982,
+18976473583, 13211283269, 16632262456, 53765327000, 54292454000,
+49796586000, 98354819000, 60942951000, 27729562000, 86050473000,
+10567139812, 29981708162, 56706301526, 6191623821, 22078782553,
+27815727284, 40914697144, 25222684658, 10781703404, 10841448818,
+19757037697, 21522016786, 22102891530, 30384988869, 8476570775
+)), class = "data.frame", row.names = c("1", "2", "3", "4", "5",
+"6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16",
+"17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27",
+"28", "29", "30", "31", "32", "33", "34", "35", "36", "37", "38",
+"39", "40", "41", "42", "43", "44", "45", "46", "47", "48", "49",
+"50", "51"))
+
+Desde já, muito obrigado pela atenção!
+
+-- 
+*Alexandre Loures*
+Professor Substituto
+Universidade Federal da Paraíba <https://ufpb.br>
+Pós-graduação em Economia - PPGE 
+<https://sigaa.ufpb.br/sigaa/public/programa/portal.jsf?lc=pt_BR&id=1875>
+www.rodriguesloures.com
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200413/cd2d1045/attachment.html>
+
+From flavio2f em gmail.com  Tue Apr 14 01:45:43 2020
+From: flavio2f em gmail.com (=?UTF-8?Q?Fl=C3=A1vio_Fagundes?=)
+Date: Tue, 14 Apr 2020 01:45:43 -0300
+Subject: [R-br] =?utf-8?q?Busca_de_coordenadas_de_munic=C3=ADpios_usando_?=
+	=?utf-8?q?RgoogleMaps?=
+Message-ID: <CANr1bppxsAFa0Kb3uv-F2Xa5YW67TqSr-pN2op75OfFdZh69Zg@mail.gmail.com>
+
+boa noite, colegas.
+Gostaria de uma ideia para o seguinte problema:
+
+Estou buscando as coordenadas de alguns municípios do estado de ES usando o
+seguinte código:
+
+library(RgoogleMaps)
+
+aux_city <- c("Vitória ES","Serra ES","Vila Velha ES","Cariacica
+ES","Colatina ES")
+aux_city_coord <- data.frame(Municípios=aux_city, lat=NA, long=NA)
+aux_city_coord <-
+with(aux_city_coord,data.frame(Municípios=aux_city_coord$Municípios,
+                  t(sapply(aux_city_coord$Municípios, getGeoCode))))
+aux_city_coord
+
+Que retorna essas coordenadas.
+
+> aux_city_coord
+     Municípios       lat         lon
+1    Vitória ES  42.84651  -2.6724025
+2      Serra ES  39.68388  -0.4288545
+3 Vila Velha ES -20.32973 -40.2920284
+4  Cariacica ES -20.26320 -40.4165490
+5   Colatina ES -19.53467 -40.6287836
+
+Notem que as coordenadas de Vitória e Serra estão totalmente erradas
+Porém, na tentativa e erro eu descobri que Vitória, não precisada do "ES" e
+retornou corretamente, mas Serra, sem chances de encontrar.
+
+aux_city <- c("Vitória","Serra","Serra-ES","Serra.ES")
+aux_city_coord <- data.frame(Municípios=aux_city, lat=NA, long=NA)
+aux_city_coord <-
+with(aux_city_coord,data.frame(Municípios=aux_city_coord$Municípios,
+                  t(sapply(aux_city_coord$Municípios, getGeoCode))))
+aux_city_coord
+
+> aux_city_coord
+  Municípios       lat         lon
+1    Vitória -20.32009 -40.3376682
+2      Serra  43.07201   1.1727739
+3   Serra-ES  39.68388  -0.4288545
+4   Serra.ES  39.68388  -0.4288545
+
+Provavelmente poderá acontecer isso com outros municípios.
+Eu gostaria de saber se existe alguma uma forma de
+obter/consultar/verificar
+a grafia correta de, por exemplo, um ou todos
+os municípios de um determinado estado, sem que tenha que digitar o nome do
+mesmo.
+Mas qualquer outra forma de contornar este problema será bem vinda.
+
+Obrigado
+Att
+Flávio
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200414/37f1160c/attachment.html>
+
+From verginio em unesc.net  Tue Apr 14 13:27:09 2020
+From: verginio em unesc.net (verginio em unesc.net)
+Date: Tue, 14 Apr 2020 11:27:09 -0500 (CDT)
+Subject: [R-br] 
+ =?utf-8?q?Busca_de_coordenadas_de_munic=C3=ADpios_usando_?=
+ =?utf-8?q?RgoogleMaps?=
+Message-ID: <1265625466.124768.1586881629943.JavaMail.administrator@n4.nabble.com>
+
+Boa tarde Flávio,
+
+Fiz um teste acrescentando o nome do país e separando por vírgula. O que ajuda a busca a entender que se trata de um município.
+
+
+library(RgoogleMaps)
+
+# Município, Estado, País
+aux_city <- c(
+  "Vitória, ES, BR",
+  "Serra, ES, BR",
+  "Vila Velha, ES, BR",
+  "Cariacica, ES, BR",
+  "Colatina, ES, BR"
+)
+
+aux_city_coord <- data.frame(Municípios = aux_city,
+                             lat = NA,
+                             long = NA)
+aux_city_coord <-
+  with(aux_city_coord,
+       data.frame(Municípios = aux_city_coord$Municípios,
+                  t(
+                    sapply(aux_city_coord$Municípios, getGeoCode)
+                  )))
+aux_city_coord
+
+
+Atenciosamente,
+Max Richard Verginio
+
+_____________________________________
+Sent from http://r-br.2285057.n4.nabble.com
+
+
+From sznelwar em uol.com.br  Tue Apr 14 18:17:08 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Tue, 14 Apr 2020 18:17:08 -0300
+Subject: [R-br] 
+ =?utf-8?q?Busca_de_coordenadas_de_munic=C3=ADpios_usando_?=
+ =?utf-8?q?RgoogleMaps?=
+In-Reply-To: ["1265625466.124768.1586881629943.JavaMail.administrator@n4.nabble.com"]
+References: ["1265625466.124768.1586881629943.JavaMail.administrator@n4.nabble.com"]
+Message-ID: <5e962854a094_7a622abebc27d10c7228@ip-10-81-19-78.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200414/51e00b38/attachment.html>
+
+From flavio2f em gmail.com  Tue Apr 14 22:57:24 2020
+From: flavio2f em gmail.com (=?UTF-8?Q?Fl=C3=A1vio_Fagundes?=)
+Date: Tue, 14 Apr 2020 22:57:24 -0300
+Subject: [R-br] 
+	=?utf-8?q?Busca_de_coordenadas_de_munic=C3=ADpios_usando_?=
+	=?utf-8?q?RgoogleMaps?=
+In-Reply-To: <5e962854a094_7a622abebc27d10c7228@ip-10-81-19-78.ec2.internal.mail>
+References: <5e962854a094_7a622abebc27d10c7228@ip-10-81-19-78.ec2.internal.mail>
+Message-ID: <CANr1bprU5ZAwhydvf3WtsLhc0JOuqWGBQmMxhGMyMgGhgLzucw@mail.gmail.com>
+
+Mauro, estou usando o R 64-bit  v3.5.3 e funcionou legal.
+Att
+Flávio
+
+Em ter., 14 de abr. de 2020 às 18:17, Mauro Sznelwar por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Tentei baixar esta biblioteca RgoogleMaps e diz que está disponível na
+> atual versão do R para Windows!
+>
+> Boa tarde Flávio,
+>
+> Fiz um teste acrescentando o nome do país e separando por vírgula. O que
+> ajuda a busca a entender que se trata de um município.
+>
+>
+> library(RgoogleMaps)
+>
+> # Município, Estado, País
+> aux_city <- c(
+> "Vitória, ES, BR",
+> "Serra, ES, BR",
+> "Vila Velha, ES, BR",
+> "Cariacica, ES, BR",
+> "Colatina, ES, BR"
+> )
+>
+> aux_city_coord <- data.frame(Municípios = aux_city,
+> lat = NA,
+> long = NA)
+> aux_city_coord <-
+> with(aux_city_coord,
+> data.frame(Municípios = aux_city_coord$Municípios,
+> t(
+> sapply(aux_city_coord$Municípios, getGeoCode)
+> )))
+> aux_city_coord
+>
+>
+> Atenciosamente,
+> Max Richard Verginio
+>
+> _____________________________________
+> Sent from http://r-br.2285057.n4.nabble.com
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200414/4b61a696/attachment.html>
+
+From flavio2f em gmail.com  Tue Apr 14 22:55:41 2020
+From: flavio2f em gmail.com (=?UTF-8?Q?Fl=C3=A1vio_Fagundes?=)
+Date: Tue, 14 Apr 2020 22:55:41 -0300
+Subject: [R-br] 
+	=?utf-8?q?Busca_de_coordenadas_de_munic=C3=ADpios_usando_?=
+	=?utf-8?q?RgoogleMaps?=
+In-Reply-To: <1265625466.124768.1586881629943.JavaMail.administrator@n4.nabble.com>
+References: <1265625466.124768.1586881629943.JavaMail.administrator@n4.nabble.com>
+Message-ID: <CANr1bpoCpiAZQGLzqLshkB3UHPJX8o7xaW-mbTvg35QOuteK+A@mail.gmail.com>
+
+Olá, Max, tudo bem?
+Perfeita esta solução!.
+Funcionou corretamente
+Muito obrigado.
+Att
+Flávio
+
+Em ter., 14 de abr. de 2020 às 13:27, Max Richard Verginio por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa tarde Flávio,
+>
+> Fiz um teste acrescentando o nome do país e separando por vírgula. O que
+> ajuda a busca a entender que se trata de um município.
+>
+>
+> library(RgoogleMaps)
+>
+> # Município, Estado, País
+> aux_city <- c(
+>   "Vitória, ES, BR",
+>   "Serra, ES, BR",
+>   "Vila Velha, ES, BR",
+>   "Cariacica, ES, BR",
+>   "Colatina, ES, BR"
+> )
+>
+> aux_city_coord <- data.frame(Municípios = aux_city,
+>                              lat = NA,
+>                              long = NA)
+> aux_city_coord <-
+>   with(aux_city_coord,
+>        data.frame(Municípios = aux_city_coord$Municípios,
+>                   t(
+>                     sapply(aux_city_coord$Municípios, getGeoCode)
+>                   )))
+> aux_city_coord
+>
+>
+> Atenciosamente,
+> Max Richard Verginio
+>
+> _____________________________________
+> Sent from http://r-br.2285057.n4.nabble.com
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200414/9cd918ed/attachment.html>
+
+From sznelwar em uol.com.br  Tue Apr 14 23:39:16 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Tue, 14 Apr 2020 23:39:16 -0300
+Subject: [R-br] 
+ =?utf-8?q?Busca_de_coordenadas_de_munic=C3=ADpios_usando_?=
+ =?utf-8?q?RgoogleMaps?=
+In-Reply-To: ["CANr1bprU5ZAwhydvf3WtsLhc0JOuqWGBQmMxhGMyMgGhgLzucw@mail.gmail.com"]
+References: ["5e962854a094_7a622abebc27d10c7228@ip-10-81-19-78.ec2.internal.mail", 
+ "CANr1bprU5ZAwhydvf3WtsLhc0JOuqWGBQmMxhGMyMgGhgLzucw@mail.gmail.com"]
+Message-ID: <5e9673d48f423_70172b0529d43128253e@ip-10-81-19-110.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200414/7501b13b/attachment.html>
+
+From ecacarva em gmail.com  Tue Apr 21 17:57:05 2020
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Tue, 21 Apr 2020 17:57:05 -0300
+Subject: [R-br] =?utf-8?q?Regress=C3=A3o_Log=C3=ADstica_pode_ser_influenc?=
+	=?utf-8?q?iada_pelo_balanceamento_de_resultados_de_vari=C3=A1vel_d?=
+	=?utf-8?q?ependente?=
+Message-ID: <CAH8E6Ut3igA-p6+Stw7g7fyU34c_AkQxMyEcc_VsK+kkVCC+Rw@mail.gmail.com>
+
+Tenho um banco de dados com 3074 linhas sem missing.
+
+Uma variável dependente binária e mais 42 variáveis independentes também
+binárias (todas como fator).
+
+Minha pergunta é quals VIs contribuem para a doença que está em VD.
+
+Meu summary da VD apresenta o seguinte resultado:
+
+summary(data.to.work.train$NMM)
+Sem doença  Com doença
+             2715               359
+
+removi as variáveis com alta correlação (multicolinearidade) e fiz uma RL
+com todas as variáveis e nada deu signficativo.
+
+Fiz tambem com variáveis individuais e nada de significativo.
+
+A maioria das variáveis apresenta uma prevalência pequena da doença:
+
+          Não  Sim
+  Não 2683   32
+  Sim  353     6
+
+Alguém poderia opinar sobre uma possível solução? Ou outros passos a seguir?
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200421/4cb19d02/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Apr 21 18:41:50 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 21 Apr 2020 18:41:50 -0300
+Subject: [R-br] 
+	=?utf-8?q?Regress=C3=A3o_Log=C3=ADstica_pode_ser_influenc?=
+	=?utf-8?q?iada_pelo_balanceamento_de_resultados_de_vari=C3=A1vel_d?=
+	=?utf-8?q?ependente?=
+In-Reply-To: <CAH8E6Ut3igA-p6+Stw7g7fyU34c_AkQxMyEcc_VsK+kkVCC+Rw@mail.gmail.com>
+References: <CAH8E6Ut3igA-p6+Stw7g7fyU34c_AkQxMyEcc_VsK+kkVCC+Rw@mail.gmail.com>
+Message-ID: <CAKrF98m9qmhRcFFyQKHM7fVDobN4-qtT6gc-F1NG9WyqcRo0gw@mail.gmail.com>
+
+Elias,
+
+Como cada VI « apresenta uma prevalência pequena da doença », que eu
+entendo como "cada VI tem uma contingência cruzada pequena para o caso de
+doença e exposição" você realmente está com um conjunto de variáveis que
+não vão conseguir explicar a VD como os testes que foram descritos mostram
+muito bem.
+
+Ademais, se a tab de exemplo for representativa das VI que você tem, ela
+pelo menos, mostra uma margem de presença da exposição muito pequena
+também, o que coloca a análise sob dificuldade epistemológica: como uma
+exposição presente em apenas 1% dos casos poderia explicar uma prevalência
+da doença de 12% ?
+
+Aparentemente seus dados dizem à sua pergunta : "A resposta é nenhuma
+delas".
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Tue, Apr 21, 2020 at 5:57 PM Elias Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Tenho um banco de dados com 3074 linhas sem missing.
+>
+> Uma variável dependente binária e mais 42 variáveis independentes também
+> binárias (todas como fator).
+>
+> Minha pergunta é quals VIs contribuem para a doença que está em VD.
+>
+> Meu summary da VD apresenta o seguinte resultado:
+>
+> summary(data.to.work.train$NMM)
+> Sem doença  Com doença
+>              2715               359
+>
+> removi as variáveis com alta correlação (multicolinearidade) e fiz uma RL
+> com todas as variáveis e nada deu signficativo.
+>
+> Fiz tambem com variáveis individuais e nada de significativo.
+>
+> A maioria das variáveis apresenta uma prevalência pequena da doença:
+>
+>           Não  Sim
+>   Não 2683   32
+>   Sim  353     6
+>
+> Alguém poderia opinar sobre uma possível solução? Ou outros passos a
+> seguir?
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200421/aa8ea8c4/attachment.html>
+
+From assis.leonard em gmail.com  Wed Apr 22 09:16:10 2020
+From: assis.leonard em gmail.com (Leonard Assis)
+Date: Wed, 22 Apr 2020 09:16:10 -0300
+Subject: [R-br] 
+	=?utf-8?q?Regress=C3=A3o_Log=C3=ADstica_pode_ser_influenc?=
+	=?utf-8?q?iada_pelo_balanceamento_de_resultados_de_vari=C3=A1vel_d?=
+	=?utf-8?q?ependente?=
+In-Reply-To: <CAKrF98m9qmhRcFFyQKHM7fVDobN4-qtT6gc-F1NG9WyqcRo0gw@mail.gmail.com>
+References: <CAH8E6Ut3igA-p6+Stw7g7fyU34c_AkQxMyEcc_VsK+kkVCC+Rw@mail.gmail.com>
+ <CAKrF98m9qmhRcFFyQKHM7fVDobN4-qtT6gc-F1NG9WyqcRo0gw@mail.gmail.com>
+Message-ID: <CAEG0FK_EmxnfZvdcWCwCeCVP4ssxnoUZ7oAiAPC8kv+AQK6uHw@mail.gmail.com>
+
+Completando o Cesar:
+
+Será que Regressão Logística é o método correto para o que você busca?
+
+Você responderá a esta pergunta simplesmente revisitando "o que você quer
+obter como resposta"
+
+lmassis <at> yahoo <dot> com <dot> br
+assis.leonard <at> gmail <dot> com
+
+
+On Tue, Apr 21, 2020 at 6:42 PM Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Elias,
+>
+> Como cada VI « apresenta uma prevalência pequena da doença », que eu
+> entendo como "cada VI tem uma contingência cruzada pequena para o caso de
+> doença e exposição" você realmente está com um conjunto de variáveis que
+> não vão conseguir explicar a VD como os testes que foram descritos mostram
+> muito bem.
+>
+> Ademais, se a tab de exemplo for representativa das VI que você tem, ela
+> pelo menos, mostra uma margem de presença da exposição muito pequena
+> também, o que coloca a análise sob dificuldade epistemológica: como uma
+> exposição presente em apenas 1% dos casos poderia explicar uma prevalência
+> da doença de 12% ?
+>
+> Aparentemente seus dados dizem à sua pergunta : "A resposta é nenhuma
+> delas".
+>
+> HTH
+>
+> --
+> Cesar Rabak
+>
+>
+> On Tue, Apr 21, 2020 at 5:57 PM Elias Carvalho por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Tenho um banco de dados com 3074 linhas sem missing.
+>>
+>> Uma variável dependente binária e mais 42 variáveis independentes também
+>> binárias (todas como fator).
+>>
+>> Minha pergunta é quals VIs contribuem para a doença que está em VD.
+>>
+>> Meu summary da VD apresenta o seguinte resultado:
+>>
+>> summary(data.to.work.train$NMM)
+>> Sem doença  Com doença
+>>              2715               359
+>>
+>> removi as variáveis com alta correlação (multicolinearidade) e fiz uma RL
+>> com todas as variáveis e nada deu signficativo.
+>>
+>> Fiz tambem com variáveis individuais e nada de significativo.
+>>
+>> A maioria das variáveis apresenta uma prevalência pequena da doença:
+>>
+>>           Não  Sim
+>>   Não 2683   32
+>>   Sim  353     6
+>>
+>> Alguém poderia opinar sobre uma possível solução? Ou outros passos a
+>> seguir?
+>> --
+>>
+>>
+>> *In Jesu et Maria*
+>> *Obrigado*
+>> *Prof. Elias Carvalho*
+>>
+>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+>> who has been able to understand the cause of things"*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200422/5ecef2a1/attachment.html>
+
+From cleiton.ibce em hotmail.com  Wed Apr 22 12:29:28 2020
+From: cleiton.ibce em hotmail.com (Cleiton Fernando Barbosa Brito)
+Date: Wed, 22 Apr 2020 15:29:28 +0000
+Subject: [R-br] =?iso-8859-1?q?Rotina=3A_interfer=EAncia_de_plantas_danin?=
+ =?iso-8859-1?q?has?=
+Message-ID: <MN2PR20MB2800311C0FC5A3D4735EB0929AD20@MN2PR20MB2800.namprd20.prod.outlook.com>
+
+Boa tarde,
+Alguém poderia disponibilizar uma rotina sobre a determinação dos períodos críticos de interferência de plantas daninhas.
+
+
+
+Cleiton Fernando Barbosa Brito
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200422/8bd4c4ff/attachment.html>
+
+From nandodesouza em gmail.com  Wed Apr 22 18:25:53 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 22 Apr 2020 18:25:53 -0300
+Subject: [R-br] =?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+Message-ID: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+
+Olá pessoal tudo bem
+
+Estou realizando uma análise de componentes principais, com o objetivo de
+selecionar as melhores variáveis para uma análise multivariada.
+
+Gostaria de uma orientação sobre a  interpretação. Eu interpretei de forma
+correta? Variáveis que possuem alta correlação com um CP também estão
+correlacionadas entre si. Isso significa que posso utilizar somente uma das
+principais variáveis do CP1 (por exemplo) para incluir no modelo
+multivariado? No caso a variável que apresentar significado para o trabalho.
+
+Os círculos de correlação, screem plot e corrplot geradas pelo Pca estão
+disponíveis no link
+https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+
+A interpretação que fiz foi a seguinte:
+
+Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como variável
+suplementar quantitativa.  Baseado no ScreenPlot selecionei somente 5 CP
+para avaliação que explicaram 67,80% da variancia total. Pela minha
+interpretação cheguei as seguintes conclusões
+
+Principais variáveis para cada componente:
+
+Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+
+Energia (CP2) : EB,ED,EM,EL
+
+Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+
+Composição do Leite(CP4) : Solido e DCNF
+
+Variaveis sanguíneas (CP5): PT e ALBUMINA
+
+
+
+Segue uma descrição do trabalho para compreensão. Aceito sugestões sobre a
+melhor forma trabalhar esses dados
+
+O banco de dados é oriundo  dois estudos realizados pelo mesmo grupo de
+pesquisa nas mesmas condições experimentais
+(animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+Os fatores experimentais foram:
+*Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 2
+avaliou 13 animais (6 raça 1 e 7 raça 2)
+*Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30) o estudo 2
+avaliou os níveis (0,5,10,20)
+*Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo 1, dias
+dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram
+avaliados em dias entre 150 a 250 dias.
+
+
+Eu realizei uma análise gráfica e não há indicações de haver diferenças
+entre estudos, o que era de certo modo esperado. Raça e DEL parecem ser os
+fatores que afetam as variáveis respostas.
+
+
+
+-- 
+=========================================
+Fernando Souza
+Zootecnista, DSc. Produção e Alimentação Animal
+Celular: (31)99796-8781 (Vivo)
+E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+Lattes: http://lattes.cnpq.br/6519538815038307
+Blog: https://producaoanimalcomr.wordpress.com/
+==========================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200422/6a1b221f/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Apr 22 22:02:37 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 22 Apr 2020 22:02:37 -0300
+Subject: [R-br] 
+	=?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+References: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+Message-ID: <CAKrF98mPOh_1c2_+tQJu4YHC-8DR3SuSAQmtLp0WHRaeH_RuZA@mail.gmail.com>
+
+Fernando,
+
+Há dois aspectos a ser vistos na sua ACP.
+
+O número de variáveis que você tem antes da ACP e número de casos para você
+fazer uma análise multivariada (nos dois casos).
+
+Um gráfico muito interessante para auxiliá-lo a decidir sobre seus
+resultados é o "mapa de indivíduos" que plota cada caso no plano das CP,
+sendo as primeiras componentes as mais "interessantes" posto que "espalham"
+mais os dados por terem sido resultado de uma operação matemática que
+maximiza a variâncias nesses dados.
+
+Nesses mapas de indivíduos você pode rotular com cores ou símbolos aspectos
+da sua investigação.
+
+O uso das primeiras CP usando o diagrama *scree* ajuda, *mas* a
+interpretação da multivariada que você venha a fazer precisará de mais
+trabalho, porém você escapa do problema de ter mais variáveis que casos,
+que exigiria uso de técnicas de validação cruzada, etc.
+
+HTH
+--
+Cesar Rabak
+
+
+On Wed, Apr 22, 2020 at 6:26 PM Fernando Souza por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá pessoal tudo bem
+>
+> Estou realizando uma análise de componentes principais, com o objetivo de
+> selecionar as melhores variáveis para uma análise multivariada.
+>
+> Gostaria de uma orientação sobre a  interpretação. Eu interpretei de forma
+> correta? Variáveis que possuem alta correlação com um CP também estão
+> correlacionadas entre si. Isso significa que posso utilizar somente uma das
+> principais variáveis do CP1 (por exemplo) para incluir no modelo
+> multivariado? No caso a variável que apresentar significado para o trabalho.
+>
+> Os círculos de correlação, screem plot e corrplot geradas pelo Pca estão
+> disponíveis no link
+> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>
+> A interpretação que fiz foi a seguinte:
+>
+> Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como variável
+> suplementar quantitativa.  Baseado no ScreenPlot selecionei somente 5 CP
+> para avaliação que explicaram 67,80% da variancia total. Pela minha
+> interpretação cheguei as seguintes conclusões
+>
+> Principais variáveis para cada componente:
+>
+> Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+>
+> Energia (CP2) : EB,ED,EM,EL
+>
+> Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+>
+> Composição do Leite(CP4) : Solido e DCNF
+>
+> Variaveis sanguíneas (CP5): PT e ALBUMINA
+>
+>
+>
+> Segue uma descrição do trabalho para compreensão. Aceito sugestões sobre a
+> melhor forma trabalhar esses dados
+>
+> O banco de dados é oriundo  dois estudos realizados pelo mesmo grupo de
+> pesquisa nas mesmas condições experimentais
+> (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+> Os fatores experimentais foram:
+> *Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 2
+> avaliou 13 animais (6 raça 1 e 7 raça 2)
+> *Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30) o estudo 2
+> avaliou os níveis (0,5,10,20)
+> *Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo 1, dias
+> dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram
+> avaliados em dias entre 150 a 250 dias.
+>
+>
+> Eu realizei uma análise gráfica e não há indicações de haver diferenças
+> entre estudos, o que era de certo modo esperado. Raça e DEL parecem ser os
+> fatores que afetam as variáveis respostas.
+>
+>
+>
+> --
+> =========================================
+> Fernando Souza
+> Zootecnista, DSc. Produção e Alimentação Animal
+> Celular: (31)99796-8781 (Vivo)
+> E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+> Lattes: http://lattes.cnpq.br/6519538815038307
+> Blog: https://producaoanimalcomr.wordpress.com/
+> ==========================================
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200422/a883a0ed/attachment.html>
+
+From nandodesouza em gmail.com  Thu Apr 23 16:56:19 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 23 Apr 2020 16:56:19 -0300
+Subject: [R-br] 
+	=?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <CAKrF98mPOh_1c2_+tQJu4YHC-8DR3SuSAQmtLp0WHRaeH_RuZA@mail.gmail.com>
+References: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+ <CAKrF98mPOh_1c2_+tQJu4YHC-8DR3SuSAQmtLp0WHRaeH_RuZA@mail.gmail.com>
+Message-ID: <CAFrWFs=HnP3pbJP_T8aaKr2DGrURTvwpu-juGS1+SqZfGp_7sw@mail.gmail.com>
+
+Olá Cesar
+
+Obrigado pelo retorno!
+
+Eu montei os gráficos (mapa de indivíduos) conforme sugerido e adicionei no
+link. Você poderia me orientar sobre a interpretação. Eu fiz uma aqui mas
+não estou seguro e gostaria de ouvir a opinião de alguém mais experiente
+para comparar com as que fiz. Você poderia me dizer o que pode concluir dos
+gráficos?
+
+https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+
+Aproveito para pedir dicas de boas referencias para estudo, principalmente
+como tirar as conclusões do PCA para o modelo.
+
+Atenciosamente
+
+
+
+
+
+Em qua., 22 de abr. de 2020 às 22:03, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Fernando,
+>
+> Há dois aspectos a ser vistos na sua ACP.
+>
+> O número de variáveis que você tem antes da ACP e número de casos para
+> você fazer uma análise multivariada (nos dois casos).
+>
+> Um gráfico muito interessante para auxiliá-lo a decidir sobre seus
+> resultados é o "mapa de indivíduos" que plota cada caso no plano das CP,
+> sendo as primeiras componentes as mais "interessantes" posto que "espalham"
+> mais os dados por terem sido resultado de uma operação matemática que
+> maximiza a variâncias nesses dados.
+>
+> Nesses mapas de indivíduos você pode rotular com cores ou símbolos
+> aspectos da sua investigação.
+>
+> O uso das primeiras CP usando o diagrama *scree* ajuda, *mas* a
+> interpretação da multivariada que você venha a fazer precisará de mais
+> trabalho, porém você escapa do problema de ter mais variáveis que casos,
+> que exigiria uso de técnicas de validação cruzada, etc.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Wed, Apr 22, 2020 at 6:26 PM Fernando Souza por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Olá pessoal tudo bem
+>>
+>> Estou realizando uma análise de componentes principais, com o objetivo de
+>> selecionar as melhores variáveis para uma análise multivariada.
+>>
+>> Gostaria de uma orientação sobre a  interpretação. Eu interpretei de
+>> forma correta? Variáveis que possuem alta correlação com um CP também estão
+>> correlacionadas entre si. Isso significa que posso utilizar somente uma das
+>> principais variáveis do CP1 (por exemplo) para incluir no modelo
+>> multivariado? No caso a variável que apresentar significado para o trabalho.
+>>
+>> Os círculos de correlação, screem plot e corrplot geradas pelo Pca estão
+>> disponíveis no link
+>> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>>
+>> A interpretação que fiz foi a seguinte:
+>>
+>> Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como
+>> variável suplementar quantitativa.  Baseado no ScreenPlot selecionei
+>> somente 5 CP para avaliação que explicaram 67,80% da variancia total. Pela
+>> minha interpretação cheguei as seguintes conclusões
+>>
+>> Principais variáveis para cada componente:
+>>
+>> Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+>>
+>> Energia (CP2) : EB,ED,EM,EL
+>>
+>> Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+>>
+>> Composição do Leite(CP4) : Solido e DCNF
+>>
+>> Variaveis sanguíneas (CP5): PT e ALBUMINA
+>>
+>>
+>>
+>> Segue uma descrição do trabalho para compreensão. Aceito sugestões sobre
+>> a melhor forma trabalhar esses dados
+>>
+>> O banco de dados é oriundo  dois estudos realizados pelo mesmo grupo de
+>> pesquisa nas mesmas condições experimentais
+>> (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+>> Os fatores experimentais foram:
+>> *Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 2
+>> avaliou 13 animais (6 raça 1 e 7 raça 2)
+>> *Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30) o estudo 2
+>> avaliou os níveis (0,5,10,20)
+>> *Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo 1, dias
+>> dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram
+>> avaliados em dias entre 150 a 250 dias.
+>>
+>>
+>> Eu realizei uma análise gráfica e não há indicações de haver diferenças
+>> entre estudos, o que era de certo modo esperado. Raça e DEL parecem ser os
+>> fatores que afetam as variáveis respostas.
+>>
+>>
+>>
+>> --
+>> =========================================
+>> Fernando Souza
+>> Zootecnista, DSc. Produção e Alimentação Animal
+>> Celular: (31)99796-8781 (Vivo)
+>> E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+>> Lattes: http://lattes.cnpq.br/6519538815038307
+>> Blog: https://producaoanimalcomr.wordpress.com/
+>> ==========================================
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+=========================================
+Fernando Souza
+Zootecnista, DSc. Produção e Alimentação Animal
+Celular: (31)99796-8781 (Vivo)
+E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+Lattes: http://lattes.cnpq.br/6519538815038307
+Blog: https://producaoanimalcomr.wordpress.com/
+==========================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200423/49eff0e9/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Apr 23 21:10:18 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 23 Apr 2020 21:10:18 -0300
+Subject: [R-br] 
+	=?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <CAFrWFs=HnP3pbJP_T8aaKr2DGrURTvwpu-juGS1+SqZfGp_7sw@mail.gmail.com>
+References: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+ <CAKrF98mPOh_1c2_+tQJu4YHC-8DR3SuSAQmtLp0WHRaeH_RuZA@mail.gmail.com>
+ <CAFrWFs=HnP3pbJP_T8aaKr2DGrURTvwpu-juGS1+SqZfGp_7sw@mail.gmail.com>
+Message-ID: <CAKrF98nUqXu7ecsKL1RECfLxoxm6u100u4n9c9HXSyBU0fnF+w@mail.gmail.com>
+
+Os mapas de indivíduos para as duas primeiras dimensões mostram que há uma
+melhor representatividade dos valores extremos (v. Plano.png) onde o cos² é
+maior.
+
+Para as três variáveis categóricas que você usou (raças, planos e vol.
+conc) as elipses de confiança (que presumo sejam 95%) indicam que para essa
+amostra os dados não indicam diferenças com significância estatística
+dentro dos limiares usuais.
+
+Minhas referências de estudo para esse assunto :
+
+Foucart, T. L?analyse des données, mode d?emploi : méthodes et études de cas.
+Rennes.] Presses Univ. de Rennes, 1997.
+Escofier, B.; Pagès, J. Analyses factorielles simples et multiples:
+Objectifs, méthodes et interprétation. Paris. Dunod, 2008.
+
+A última trabalha bem a questão da interpretação com casos mais recentes,
+embora a primeira seja bem equilibrada entre teoria e exemplos práticos.
+
+Há material na Internet, mas não posso opinar sobre eles, inclusive vídeos.
+
+HTH
+--
+Cesar Rabak
+
+
+On Thu, Apr 23, 2020 at 4:57 PM Fernando Souza por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá Cesar
+>
+> Obrigado pelo retorno!
+>
+> Eu montei os gráficos (mapa de indivíduos) conforme sugerido e adicionei
+> no link. Você poderia me orientar sobre a interpretação. Eu fiz uma aqui
+> mas não estou seguro e gostaria de ouvir a opinião de alguém mais
+> experiente para comparar com as que fiz. Você poderia me dizer o que pode
+> concluir dos gráficos?
+>
+> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>
+> Aproveito para pedir dicas de boas referencias para estudo, principalmente
+> como tirar as conclusões do PCA para o modelo.
+>
+> Atenciosamente
+>
+>
+>
+>
+>
+> Em qua., 22 de abr. de 2020 às 22:03, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Fernando,
+>>
+>> Há dois aspectos a ser vistos na sua ACP.
+>>
+>> O número de variáveis que você tem antes da ACP e número de casos para
+>> você fazer uma análise multivariada (nos dois casos).
+>>
+>> Um gráfico muito interessante para auxiliá-lo a decidir sobre seus
+>> resultados é o "mapa de indivíduos" que plota cada caso no plano das CP,
+>> sendo as primeiras componentes as mais "interessantes" posto que "espalham"
+>> mais os dados por terem sido resultado de uma operação matemática que
+>> maximiza a variâncias nesses dados.
+>>
+>> Nesses mapas de indivíduos você pode rotular com cores ou símbolos
+>> aspectos da sua investigação.
+>>
+>> O uso das primeiras CP usando o diagrama *scree* ajuda, *mas* a
+>> interpretação da multivariada que você venha a fazer precisará de mais
+>> trabalho, porém você escapa do problema de ter mais variáveis que casos,
+>> que exigiria uso de técnicas de validação cruzada, etc.
+>>
+>> HTH
+>> --
+>> Cesar Rabak
+>>
+>>
+>> On Wed, Apr 22, 2020 at 6:26 PM Fernando Souza por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Olá pessoal tudo bem
+>>>
+>>> Estou realizando uma análise de componentes principais, com o objetivo
+>>> de selecionar as melhores variáveis para uma análise multivariada.
+>>>
+>>> Gostaria de uma orientação sobre a  interpretação. Eu interpretei de
+>>> forma correta? Variáveis que possuem alta correlação com um CP também estão
+>>> correlacionadas entre si. Isso significa que posso utilizar somente uma das
+>>> principais variáveis do CP1 (por exemplo) para incluir no modelo
+>>> multivariado? No caso a variável que apresentar significado para o trabalho.
+>>>
+>>> Os círculos de correlação, screem plot e corrplot geradas pelo Pca estão
+>>> disponíveis no link
+>>> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>>>
+>>> A interpretação que fiz foi a seguinte:
+>>>
+>>> Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como
+>>> variável suplementar quantitativa.  Baseado no ScreenPlot selecionei
+>>> somente 5 CP para avaliação que explicaram 67,80% da variancia total. Pela
+>>> minha interpretação cheguei as seguintes conclusões
+>>>
+>>> Principais variáveis para cada componente:
+>>>
+>>> Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+>>>
+>>> Energia (CP2) : EB,ED,EM,EL
+>>>
+>>> Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+>>>
+>>> Composição do Leite(CP4) : Solido e DCNF
+>>>
+>>> Variaveis sanguíneas (CP5): PT e ALBUMINA
+>>>
+>>>
+>>>
+>>> Segue uma descrição do trabalho para compreensão. Aceito sugestões sobre
+>>> a melhor forma trabalhar esses dados
+>>>
+>>> O banco de dados é oriundo  dois estudos realizados pelo mesmo grupo de
+>>> pesquisa nas mesmas condições experimentais
+>>> (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+>>> Os fatores experimentais foram:
+>>> *Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 2
+>>> avaliou 13 animais (6 raça 1 e 7 raça 2)
+>>> *Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30) o estudo 2
+>>> avaliou os níveis (0,5,10,20)
+>>> *Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo 1, dias
+>>> dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram
+>>> avaliados em dias entre 150 a 250 dias.
+>>>
+>>>
+>>> Eu realizei uma análise gráfica e não há indicações de haver diferenças
+>>> entre estudos, o que era de certo modo esperado. Raça e DEL parecem ser os
+>>> fatores que afetam as variáveis respostas.
+>>>
+>>>
+>>>
+>>> --
+>>> =========================================
+>>> Fernando Souza
+>>> Zootecnista, DSc. Produção e Alimentação Animal
+>>> Celular: (31)99796-8781 (Vivo)
+>>> E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+>>> Lattes: http://lattes.cnpq.br/6519538815038307
+>>> Blog: https://producaoanimalcomr.wordpress.com/
+>>> ==========================================
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+> =========================================
+> Fernando Souza
+> Zootecnista, DSc. Produção e Alimentação Animal
+> Celular: (31)99796-8781 (Vivo)
+> E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+> Lattes: http://lattes.cnpq.br/6519538815038307
+> Blog: https://producaoanimalcomr.wordpress.com/
+> ==========================================
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200423/175a7dec/attachment.html>
+
+From nandodesouza em gmail.com  Thu Apr 23 21:59:06 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 23 Apr 2020 21:59:06 -0300
+Subject: [R-br] Duvidas =?utf-8?Q?An=C3=A1lise_?=de Componentes
+ Principais
+In-Reply-To: <CAKrF98nUqXu7ecsKL1RECfLxoxm6u100u4n9c9HXSyBU0fnF+w@mail.gmail.com>
+References: <CAKrF98nUqXu7ecsKL1RECfLxoxm6u100u4n9c9HXSyBU0fnF+w@mail.gmail.com>
+Message-ID: <7016380B-16ED-4BFC-9368-79379DE52E8E@getmailspring.com>
+
+Cesar,
+
+Muito obrigado pela atenção! Você me ajudou muito.
+Eu também havia concluído que os fatores que utilizei (raças, planos e vol. conc), não aparentavam diferenças significativas, mas não estava muito seguro.
+
+Quanto ao número de componentes utilizar minha dúvida é a seguinte:
+2 componentes: Eu explico somente 40% da variação
+5 componentes: Eu explico 78% da variação
+
+Existe uma variação explicada mínima a ser considerada na escolha do número de componentes?
+Obrigado!
+
+On Apr 23 2020, at 9:10 pm, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Os mapas de indivíduos para as duas primeiras dimensões mostram que há uma melhor representatividade dos valores extremos (v. Plano.png) onde o cos² é maior.
+>
+> Para as três variáveis categóricas que você usou (raças, planos e vol. conc) as elipses de confiança (que presumo sejam 95%) indicam que para essa amostra os dados não indicam diferenças com significância estatística dentro dos limiares usuais.
+>
+> Minhas referências de estudo para esse assunto :
+>
+> Foucart, T. L?analyse des données, mode d?emploi : méthodes et études de cas. Rennes.] Presses Univ. de Rennes, 1997.
+> Escofier, B.; Pagès, J. Analyses factorielles simples et multiples: Objectifs, méthodes et interprétation. Paris. Dunod, 2008.
+>
+>
+> A última trabalha bem a questão da interpretação com casos mais recentes, embora a primeira seja bem equilibrada entre teoria e exemplos práticos.
+>
+> Há material na Internet, mas não posso opinar sobre eles, inclusive vídeos.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Thu, Apr 23, 2020 at 4:57 PM Fernando Souza por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > Olá Cesar
+> >
+> > Obrigado pelo retorno!
+> >
+> > Eu montei os gráficos (mapa de indivíduos) conforme sugerido e adicionei no link. Você poderia me orientar sobre a interpretação. Eu fiz uma aqui mas não estou seguro e gostaria de ouvir a opinião de alguém mais experiente para comparar com as que fiz. Você poderia me dizer o que pode concluir dos gráficos?
+> >
+> > https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+> >
+> > Aproveito para pedir dicas de boas referencias para estudo, principalmente como tirar as conclusões do PCA para o modelo.
+> >
+> > Atenciosamente
+> >
+> >
+> >
+> >
+> >
+> > Em qua., 22 de abr. de 2020 às 22:03, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> escreveu:
+> > > Fernando,
+> > >
+> > > Há dois aspectos a ser vistos na sua ACP.
+> > >
+> > > O número de variáveis que você tem antes da ACP e número de casos para você fazer uma análise multivariada (nos dois casos).
+> > >
+> > > Um gráfico muito interessante para auxiliá-lo a decidir sobre seus resultados é o "mapa de indivíduos" que plota cada caso no plano das CP, sendo as primeiras componentes as mais "interessantes" posto que "espalham" mais os dados por terem sido resultado de uma operação matemática que maximiza a variâncias nesses dados.
+> > >
+> > > Nesses mapas de indivíduos você pode rotular com cores ou símbolos aspectos da sua investigação.
+> > >
+> > > O uso das primeiras CP usando o diagrama scree ajuda, mas a interpretação da multivariada que você venha a fazer precisará de mais trabalho, porém você escapa do problema de ter mais variáveis que casos, que exigiria uso de técnicas de validação cruzada, etc.
+> > >
+> > > HTH
+> > > --
+> > > Cesar Rabak
+> > >
+> > >
+> > > On Wed, Apr 22, 2020 at 6:26 PM Fernando Souza por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > > > Olá pessoal tudo bem
+> > > >
+> > > > Estou realizando uma análise de componentes principais, com o objetivo de selecionar as melhores variáveis para uma análise multivariada.
+> > > > Gostaria de uma orientação sobre a interpretação. Eu interpretei de forma correta? Variáveis que possuem alta correlação com um CP também estão correlacionadas entre si. Isso significa que posso utilizar somente uma das principais variáveis do CP1 (por exemplo) para incluir no modelo multivariado? No caso a variável que apresentar significado para o trabalho.
+> > > >
+> > > > Os círculos de correlação, screem plot e corrplot geradas pelo Pca estão disponíveis no link
+> > > > https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+> > > >
+> > > > A interpretação que fiz foi a seguinte:
+> > > >
+> > > > Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como variável suplementar quantitativa. Baseado no ScreenPlot selecionei somente 5 CP para avaliação que explicaram 67,80% da variancia total. Pela minha interpretação cheguei as seguintes conclusões
+> > > > Principais variáveis para cada componente:
+> > > > Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+> > > > Energia (CP2) : EB,ED,EM,EL
+> > > > Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+> > > > Composição do Leite(CP4) : Solido e DCNF
+> > > > Variaveis sanguíneas (CP5): PT e ALBUMINA
+> > > >
+> > > >
+> > > >
+> > > > Segue uma descrição do trabalho para compreensão. Aceito sugestões sobre a melhor forma trabalhar esses dados
+> > > > O banco de dados é oriundo dois estudos realizados pelo mesmo grupo de pesquisa nas mesmas condições experimentais (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+> > > > Os fatores experimentais foram:
+> > > > Raça: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 2 avaliou 13 animais (6 raça 1 e 7 raça 2)
+> > > > Plano nutricional: O estudo 1 avaliou os níveis (0,15,30) o estudo 2 avaliou os níveis (0,5,10,20)
+> > > > Dias em lactação-DEL (medidas repetidas no tempo): Estudo 1, dias dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram avaliados em dias entre 150 a 250 dias.
+> > > >
+> > > >
+> > > > Eu realizei uma análise gráfica e não há indicações de haver diferenças entre estudos, o que era de certo modo esperado. Raça e DEL parecem ser os fatores que afetam as variáveis respostas.
+> > > >
+> > > >
+> > > > --
+> > > > =========================================
+> > > > Fernando Souza
+> > > > Zootecnista, DSc. Produção e Alimentação Animal
+> > > > Celular: (31)99796-8781 (Vivo)
+> > > > E-mail:nandodesouza em gmail.com (mailto:e-mail%3Anandodesouza em gmail.com)
+> > > > Lattes: http://lattes.cnpq.br/6519538815038307
+> > > > Blog: https://producaoanimalcomr.wordpress.com/
+> > > > ==========================================
+> > > >
+> > > >
+> > > >
+> > > >
+> > > >
+> > > >
+> > > >
+> > > >
+> > > >
+> > > >
+> > > >
+> > > > _______________________________________________
+> > > > R-br mailing list
+> > > > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > > > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> > >
+> > >
+> > > _______________________________________________
+> > > R-br mailing list
+> > > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> >
+> >
+> >
+> >
+> > --
+> > =========================================
+> > Fernando Souza
+> > Zootecnista, DSc. Produção e Alimentação Animal
+> > Celular: (31)99796-8781 (Vivo)
+> > E-mail:nandodesouza em gmail.com (mailto:e-mail%3Anandodesouza em gmail.com)
+> > Lattes: http://lattes.cnpq.br/6519538815038307
+> > Blog: https://producaoanimalcomr.wordpress.com/
+> > ==========================================
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200423/ddad2bb0/attachment.html>
+
+From sznelwar em uol.com.br  Thu Apr 23 22:05:42 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Thu, 23 Apr 2020 22:05:42 -0300
+Subject: [R-br] 
+ =?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <7016380B-16ED-4BFC-9368-79379DE52E8E@getmailspring.com>
+References: <w@mail.gmail.com>
+ <7016380B-16ED-4BFC-9368-79379DE52E8E@getmailspring.com>
+Message-ID: <5ea23b6669fe_53522ae2c3ced10c282b0@ip-10-81-19-62.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200423/42913e90/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Apr 23 22:43:43 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 23 Apr 2020 22:43:43 -0300
+Subject: [R-br] 
+	=?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <7016380B-16ED-4BFC-9368-79379DE52E8E@getmailspring.com>
+References: <CAKrF98nUqXu7ecsKL1RECfLxoxm6u100u4n9c9HXSyBU0fnF+w@mail.gmail.com>
+ <7016380B-16ED-4BFC-9368-79379DE52E8E@getmailspring.com>
+Message-ID: <CAKrF98=wZKO691qKVL06CmJbUMXsH0sRNKMvvi5-EFE4Tkvc5g@mail.gmail.com>
+
+Como você já tem uma (excelente, diga-se de passagem) recomendação,
+considerando o conhecimento do domínio do problema, do Mauro, acrescento
+apenas a partir da "teoria" dessa técnica *em geral*.
+
+Essa decisão de quantas CP reter pode ser auxiliada pelo diagrama de
+*scree* que
+os defensores dessa técnica propõe examinar o diagrama e ver quando a
+"ingrimidade" do diagrama, muda, ou pegar CPs antes do "cotovelo" que o
+diagrama indica.
+
+A outra técnica é o que você já descreveu parcialmente acima, e ver quantos
+% de variação explicada você precisa reter para entender o seu problema.
+
+Analisar o diagrama de variáveis (cujos gráficos você denominou
+correlacao{,34,45}.png lhe permitem entender no *quê* os casos se
+diferenciam, e talvez possa servir de subsídio para suas análises.
+
+HTH
+--
+Cesar Rabak
+
+PS.: é necessário ter em mente o tempo todo para qual finalidade a ACP está
+sendo realizada: se uma Análise Exploratória dos Dados ou passo anterior a
+uma outra análise como parece ser seu caso na busca de uma multivariada.
+
+On Thu, Apr 23, 2020 at 9:59 PM Fernando Souza <nandodesouza em gmail.com>
+wrote:
+
+> Cesar,
+>
+> Muito obrigado pela atenção! Você me ajudou muito.
+> Eu também havia concluído que os fatores que utilizei (raças, planos e
+> vol. conc), não aparentavam diferenças significativas, mas não estava muito
+> seguro.
+>
+> Quanto ao número de componentes utilizar minha dúvida é a seguinte:
+>
+> 2 componentes: Eu explico somente 40% da variação
+> 5 componentes: Eu explico 78% da variação
+>
+> Existe uma variação explicada mínima a ser considerada na escolha do
+> número de componentes?
+>
+> Obrigado!
+>
+>
+>
+> On Apr 23 2020, at 9:10 pm, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Os mapas de indivíduos para as duas primeiras dimensões mostram que há uma
+> melhor representatividade dos valores extremos (v. Plano.png) onde o cos²
+> é maior.
+>
+> Para as três variáveis categóricas que você usou (raças, planos e vol.
+> conc) as elipses de confiança (que presumo sejam 95%) indicam que para essa
+> amostra os dados não indicam diferenças com significância estatística
+> dentro dos limiares usuais.
+>
+> Minhas referências de estudo para esse assunto :
+>
+> Foucart, T. L?analyse des données, mode d?emploi : méthodes et études de
+> cas. Rennes.] Presses Univ. de Rennes, 1997.
+> Escofier, B.; Pagès, J. Analyses factorielles simples et multiples:
+> Objectifs, méthodes et interprétation. Paris. Dunod, 2008.
+>
+> A última trabalha bem a questão da interpretação com casos mais recentes,
+> embora a primeira seja bem equilibrada entre teoria e exemplos práticos.
+>
+> Há material na Internet, mas não posso opinar sobre eles, inclusive vídeos.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Thu, Apr 23, 2020 at 4:57 PM Fernando Souza por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Olá Cesar
+>
+> Obrigado pelo retorno!
+>
+> Eu montei os gráficos (mapa de indivíduos) conforme sugerido e adicionei
+> no link. Você poderia me orientar sobre a interpretação. Eu fiz uma aqui
+> mas não estou seguro e gostaria de ouvir a opinião de alguém mais
+> experiente para comparar com as que fiz. Você poderia me dizer o que pode
+> concluir dos gráficos?
+>
+> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>
+> Aproveito para pedir dicas de boas referencias para estudo, principalmente
+> como tirar as conclusões do PCA para o modelo.
+>
+> Atenciosamente
+>
+>
+>
+>
+>
+> Em qua., 22 de abr. de 2020 às 22:03, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+> Fernando,
+>
+> Há dois aspectos a ser vistos na sua ACP.
+>
+> O número de variáveis que você tem antes da ACP e número de casos para
+> você fazer uma análise multivariada (nos dois casos).
+>
+> Um gráfico muito interessante para auxiliá-lo a decidir sobre seus
+> resultados é o "mapa de indivíduos" que plota cada caso no plano das CP,
+> sendo as primeiras componentes as mais "interessantes" posto que "espalham"
+> mais os dados por terem sido resultado de uma operação matemática que
+> maximiza a variâncias nesses dados.
+>
+> Nesses mapas de indivíduos você pode rotular com cores ou símbolos
+> aspectos da sua investigação.
+>
+> O uso das primeiras CP usando o diagrama *scree* ajuda, *mas* a
+> interpretação da multivariada que você venha a fazer precisará de mais
+> trabalho, porém você escapa do problema de ter mais variáveis que casos,
+> que exigiria uso de técnicas de validação cruzada, etc.
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> On Wed, Apr 22, 2020 at 6:26 PM Fernando Souza por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Olá pessoal tudo bem
+>
+> Estou realizando uma análise de componentes principais, com o objetivo de
+> selecionar as melhores variáveis para uma análise multivariada.
+>
+> Gostaria de uma orientação sobre a  interpretação. Eu interpretei de forma
+> correta? Variáveis que possuem alta correlação com um CP também estão
+> correlacionadas entre si. Isso significa que posso utilizar somente uma das
+> principais variáveis do CP1 (por exemplo) para incluir no modelo
+> multivariado? No caso a variável que apresentar significado para o trabalho.
+>
+> Os círculos de correlação, screem plot e corrplot geradas pelo Pca estão
+> disponíveis no link
+> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>
+> A interpretação que fiz foi a seguinte:
+>
+> Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como variável
+> suplementar quantitativa.  Baseado no ScreenPlot selecionei somente 5 CP
+> para avaliação que explicaram 67,80% da variancia total. Pela minha
+> interpretação cheguei as seguintes conclusões
+>
+> Principais variáveis para cada componente:
+>
+> Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+>
+> Energia (CP2) : EB,ED,EM,EL
+>
+> Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+>
+> Composição do Leite(CP4) : Solido e DCNF
+>
+> Variaveis sanguíneas (CP5): PT e ALBUMINA
+>
+>
+>
+> Segue uma descrição do trabalho para compreensão. Aceito sugestões sobre a
+> melhor forma trabalhar esses dados
+>
+> O banco de dados é oriundo  dois estudos realizados pelo mesmo grupo de
+> pesquisa nas mesmas condições experimentais
+> (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+> Os fatores experimentais foram:
+> *Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 2
+> avaliou 13 animais (6 raça 1 e 7 raça 2)
+> *Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30) o estudo 2
+> avaliou os níveis (0,5,10,20)
+> *Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo 1, dias
+> dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram
+> avaliados em dias entre 150 a 250 dias.
+>
+>
+> Eu realizei uma análise gráfica e não há indicações de haver diferenças
+> entre estudos, o que era de certo modo esperado. Raça e DEL parecem ser os
+> fatores que afetam as variáveis respostas.
+>
+>
+>
+> --
+> =========================================
+> Fernando Souza
+> Zootecnista, DSc. Produção e Alimentação Animal
+> Celular: (31)99796-8781 (Vivo)
+> E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+> Lattes: http://lattes.cnpq.br/6519538815038307
+> Blog: https://producaoanimalcomr.wordpress.com/
+> ==========================================
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+>
+> --
+> =========================================
+> Fernando Souza
+> Zootecnista, DSc. Produção e Alimentação Animal
+> Celular: (31)99796-8781 (Vivo)
+> E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+> Lattes: http://lattes.cnpq.br/6519538815038307
+> Blog: https://producaoanimalcomr.wordpress.com/
+> ==========================================
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200423/5d3e4697/attachment.html>
+
+From c2o.pro.br em gmail.com  Thu Apr 23 23:09:42 2020
+From: c2o.pro.br em gmail.com (Nei)
+Date: Thu, 23 Apr 2020 23:09:42 -0300
+Subject: [R-br] 
+ =?utf-8?q?Duvidas_An=C3=A1lise_de_Componentes_Principais?=
+In-Reply-To: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+References: <CAFrWFsmPV9K3CxZxxAVEuLjZ_imcc=sKgpMQ5A2TEXf1jE9HHg@mail.gmail.com>
+Message-ID: <6e4b196e-db3a-ac8f-a191-aae99ec02263@gmail.com>
+
+http://www.c2o.pro.br/hackaguas/apx.html
+
+http://www.c2o.pro.br/hackaguas/apxs02.html
+
+
+Em 22-04-2020 18:25, Fernando Souza por (R-br) escreveu:
+> Olá pessoal tudo bem
+>
+> Estou realizando uma análise de componentes principais, com o objetivo 
+> de selecionar as melhores variáveis para uma análise multivariada.
+>
+> Gostaria de uma orientação sobre a  interpretação. Eu interpretei de 
+> forma correta? Variáveis que possuem alta correlação com um CP também 
+> estão correlacionadas entre si. Isso significa que posso utilizar 
+> somente uma das principais variáveis do CP1 (por exemplo) para incluir 
+> no modelo multivariado? No caso a variável que apresentar significado 
+> para o trabalho.
+>
+> Os círculos de correlação, screem plot e corrplot geradas pelo Pca 
+> estão disponíveis no link
+> https://drive.google.com/open?id=1jS5tCX-2-qHo2Gbej00DkFQBpLztwXks
+>
+> A interpretação que fiz foi a seguinte:
+>
+> Considerei as variáveis PC,IC e Prod leite (Azul no gráfico) como 
+> variável suplementar quantitativa.  Baseado no ScreenPlot selecionei 
+> somente 5 CP para avaliação que explicaram 67,80% da variancia total. 
+> Pela minha interpretação cheguei as seguintes conclusões
+>
+> Principais variáveis para cada componente:
+>
+> Consumos (CP1): CMS,CMO,CPB,CEE,CCNF,CFDNcp,CFDA,CNDT,CEB,CED,CEM,CEL
+>
+> Energia (CP2) : EB,ED,EM,EL
+>
+> Peso (CP3): PV,PCJ,PCVZ,PCVZ075
+>
+> Composição do Leite(CP4) : Solido e DCNF
+>
+> Variaveis sanguíneas (CP5): PT e ALBUMINA
+>
+>
+>
+> Segue uma descrição do trabalho para compreensão. Aceito sugestões 
+> sobre a melhor forma trabalhar esses dados
+>
+> O banco de dados é oriundo  dois estudos realizados pelo mesmo grupo 
+> de pesquisa nas mesmas condições experimentais 
+> (animais,instalação,dieta,manejo) e avaliaram 48 variáveis.
+> Os fatores experimentais foram:
+> *Raça*: Estudo 1 avaliou 12 animais (6 raça1 e 6 da raça 2). O estudo 
+> 2 avaliou 13 animais (6 raça 1 e 7 raça 2)
+> *Plano nutricional:*  O estudo 1 avaliou os níveis (0,15,30) o estudo 
+> 2 avaliou os níveis (0,5,10,20)
+> *Dias em lactação-DEL* (medidas repetidas no tempo):  Estudo 1, dias 
+> dispersos entre os períodos de 30 a 120 dias. No estudo 2 os DEL foram 
+> avaliados em dias entre 150 a 250 dias.
+>
+>
+> Eu realizei uma análise gráfica e não há indicações de haver 
+> diferenças entre estudos, o que era de certo modo esperado. Raça e DEL 
+> parecem ser os fatores que afetam as variáveis respostas.
+>
+>
+>
+> -- 
+> =========================================
+> Fernando Souza
+> Zootecnista, DSc. Produção e Alimentação Animal
+> Celular: (31)99796-8781 (Vivo)
+> E-mail:nandodesouza em gmail.com <mailto:e-mail%3Anandodesouza em gmail.com>
+> Lattes: http://lattes.cnpq.br/6519538815038307
+> Blog: https://producaoanimalcomr.wordpress.com/
+> ==========================================
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200423/fad762ab/attachment.html>
+
+From bodevan.ec em gmail.com  Fri Apr 24 16:07:03 2020
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Fri, 24 Apr 2020 16:07:03 -0300
+Subject: [R-br] Manter o R atualizado no linux mint 9.3
+In-Reply-To: <CAEEYVUBtEzjDYp8yC7H294yHcD3fVR8312MteFTuHnZQ8bhGKw@mail.gmail.com>
+References: <20200302002105.GD391956@localhost>
+ <FA48EE3C-5A7B-42A2-AE47-D5BE6224A8AA@getmailspring.com>
+ <CAEEYVUBtEzjDYp8yC7H294yHcD3fVR8312MteFTuHnZQ8bhGKw@mail.gmail.com>
+Message-ID: <CAP5i-sxfuvBb8u=SsnFE2fyouP1vrowyNmmCVEF2SGwO+6Urjw@mail.gmail.com>
+
+Prezados, boa tarde.
+
+Primeiramente, desculpem-me pela demora em responder.
+
+Tive alguns problemas com o LINUX MINT e acabei mudando (voltando na
+verdade) para o UBUNTU.
+
+Com isso bastou fazer o seguinte:
+1) Adicionei este repositório
+
+deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/
+
+
+2) No terminal do UBUNTU
+
+gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys
+E298A3A825C0D65DFD57CBB651716619E084DAB9
+gpg -a --export E298A3A825C0D65DFD57CBB651716619E084DAB9 | sudo apt-key add -
+
+
+Pronto, tudo funcionou maravilhosamente bem.
+
+Muito obrigado a todos que contribuíram.
+
+Grande abraço.
+
+*Emerson*
+
+
+Em dom., 1 de mar. de 2020 às 21:35, Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Fernando,
+>
+> Acredito que o problema dele foi somente a chave pública do apt.
+>
+> Laia ML
+>
+> Em dom., 1 de mar. de 2020 às 21:29, Fernando Souza
+> <nandodesouza em gmail.com> escreveu:
+> >
+> > Ah é mesmo!!! Foi mal, viajei aqui.
+> >
+> > Eu também utilizo o Debian  buster e para mim o endereço da forma como
+> indicou funciona bem.
+> >
+> > Estava tentando encontrar um possível erro postado pelo Emerson. Mas não
+> estou encontrando, possivelmente é do servido que ele utilizou.
+> >
+> > Obrigado!
+> >
+> >
+> > On Mar 1 2020, at 9:21 pm, Marcelo Laia <marcelolaia em gmail.com> wrote:
+> >
+> > On 01/03/20 at 08:47, Fernando Souza wrote: > Copie e cole os dois
+> endereços no seu browser e você verá que o segundo > a página não será
+> encontrada. > > tente: > > Correto > > [1]
+> https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/ > > Incorreto
+> > > [2]https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu [3]bionic-cran35/
+> Fernando, para incluir um repositório no arquivo /etc/apt/sources.list o
+> formato é diferente do formato utilizado em um navegador (browser). Eu
+> sugeri utilizar no arquivo /etc/apt/sources.list o respositório: deb
+> https://cran.fiocruz.br/bin/linux/debian buster-cran35/ Veja que há um
+> espaço entre debian e buster-cran35 e um prefixo deb no início. Isso é um
+> padrão. Mais informações aqui: https://wiki.debian.org/SourcesList Para
+> acessar o repositório CRAN acima via navegador, tu estás correto em trocar
+> o espaço pela barra e excluir o prefixo deb no início, assim:
+> https://cran.fiocruz.br/bin/linux/debian/buster-cran35/ Se ainda houver
+> erro, vamos tentar corrigir. Laia, ML > > att > > On Mar 1 2020, at 8:38
+> pm, Marcelo Laia wrote: > > On 01/03/20 at 07:43, Fernando Souza wrote: > O
+> repositório não é: > > > deb [1]
+> https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/ > > >
+> Acredito que está faltando a barra antes do bionic. Olá Fernando, Na >
+> primeira mensagem eu coloquei corretamente o link direto do CRAN, mas > com
+> o repositório da fiocruz devido o da UFPR estar sem certificado de >
+> segurança. Por favor, dê uma olhada e veja se esqueci ou escrevi algo >
+> errado. >
+> http://listas.inf.ufpr.br/pipermail/r-br/2020-February/019958.html -- >
+> Laia, ML https://publons.com/researcher/1755871/ >
+> http://orcid.org/0000-0001-6366-4558 > > Referências > > 1.
+> https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/0?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t
+> > 2.
+> https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/1?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t
+> > 3.
+> https://link.getmailspring.com/link/E9698C40-2583-493D-8D8C-8A4AABCA599E em getmailspring.com/2?redirect=https://cran-r.c3sl.ufpr.br/bin/linux/ubuntu/bionic-cran35/&recipient=bWFyY2Vsb2xhaWFAZ21haWwuY29t
+> ^[ -- Marcelo
+>
+>
+>
+> --
+> Laia, M. L.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200424/52a32e54/attachment.html>
+
+From marcelolaia em gmail.com  Sat Apr 25 20:47:14 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Sat, 25 Apr 2020 20:47:14 -0300
+Subject: [R-br] Subset a data.frame com base no valor absoluto de uma coluna
+Message-ID: <20200425234714.GA49495@marcelo>
+
+Prezado(a),
+
+Tenho o seguinte problema:
+
+data <- replicate(5, rnorm(10))
+colnames(data) <- paste("Sample", c(1:ncol(data)))
+rownames(data) <- paste("Gene", c(1:nrow(data)))
+head(data)
+           Sample 1    Sample 2    Sample 3    Sample 4   Sample 5
+Gene 1  -1.29177540  2.61720282 -0.64705357 -2.05636255  0.5752323
+Gene 2  -1.20619719  1.13791932  1.12844157 -0.04053514  1.2973240
+Gene 3  -0.15952476 -0.56391140 -1.34226004 -1.21020574 -1.1353717
+Gene 4   1.58893451 -1.33082381  0.02267418  1.42659928  2.2377680
+Gene 5  -0.56417983 -0.14454059 -0.14543579  0.43021823 -1.1564112
+Gene 6  -0.01443123  0.08013149  0.44877039 -0.38360173  1.7286058
+Gene 7  -0.40133700 -0.84755154 -1.05251409  1.87298617  0.7788947
+Gene 8  -1.81773166 -1.50967753  0.30168885  1.06245963  0.2409281
+Gene 9  -2.27682903  0.83455263 -0.93035283 -0.49503281 -0.7293654
+Gene 10 -0.19309118 -0.84698014 -0.12649364 -1.32398348  1.3218277
+
+Eu desejo fazer um subset em um novo data.frame com os dados das
+colunas 1 e 2 (Sample 1 e Sample 2) baseados no valor absoluto da
+coluna 4 (Sample 4).
+
+Eu tentei o seguinte:
+
+mydata <- subset(data, (data[ ,4]>abs(1.3)))
+mydata
+
+        Sample 1   Sample 2    Sample 3 Sample 4  Sample 5
+Gene 4  1.588935 -1.3308238  0.02267418 1.426599 2.2377680
+Gene 7 -0.401337 -0.8475515 -1.05251409 1.872986 0.7788947
+
+No entanto, neste primeiro passo ele só pega os positivos da coluna 4
+que são maiores que 1,3. Os valores negativos maiores que módulo de 
+-1,3 são todos excluídos.
+
+No segundo passo eu excluiria as colunas 3, 4 e 5.
+
+myvars <- colnames(mydata) %in% c("Sample 3", "Sample 4", "Sample 5")
+mydata2 <- mydata[!myvars]
+
+Como não consegui obter o primeiro passo, o segundo também não rodou.
+
+Obrigado
+
+-- 
+Marcelo
+
+From nandodesouza em gmail.com  Sun Apr 26 12:22:17 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sun, 26 Apr 2020 12:22:17 -0300
+Subject: [R-br] Subset a data.frame com base no valor absoluto de uma
+ coluna
+In-Reply-To: <20200425234714.GA49495@marcelo>
+References: <20200425234714.GA49495@marcelo>
+Message-ID: <5D5CDE6D-88C1-41FF-8376-83A0B4D88DEC@getmailspring.com>
+
+
+Acredito que sua solução é essa.
+data <- replicate(5, rnorm(10))
+colnames(data) <- paste("Sample", c(1:ncol(data)))
+rownames(data) <- paste("Gene", c(1:nrow(data)))
+data
+
+dados2<-subset(data,abs(data[,4])>1.3)
+dados2
+
+Att
+On Apr 25 2020, at 8:47 pm, Marcelo Laia por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Prezado(a), Tenho o seguinte problema: data <- replicate(5, rnorm(10)) colnames(data) <- paste("Sample", c(1:ncol(data))) rownames(data) <- paste("Gene", c(1:nrow(data))) head(data) Sample 1 Sample 2 Sample 3 Sample 4 Sample 5 Gene 1 -1.29177540 2.61720282 -0.64705357 -2.05636255 0.5752323 Gene 2 -1.20619719 1.13791932 1.12844157 -0.04053514 1.2973240 Gene 3 -0.15952476 -0.56391140 -1.34226004 -1.21020574 -1.1353717 Gene 4 1.58893451 -1.33082381 0.02267418 1.42659928 2.2377680 Gene 5 -0.56417983 -0.14454059 -0.14543579 0.43021823 -1.1564112 Gene 6 -0.01443123 0.08013149 0.44877039 -0.38360173 1.7286058 Gene 7 -0.40133700 -0.84755154 -1.05251409 1.87298617 0.7788947 Gene 8 -1.81773166 -1.50967753 0.30168885 1.06245963 0.2409281 Gene 9 -2.27682903 0.83455263 -0.93035283 -0.49503281 -0.7293654 Gene 10 -0.19309118 -0.84698014 -0.12649364 -1.32398348 1.3218277 Eu desejo fazer um subset em um novo data.frame com os dados das colunas 1 e 2 (Sample 1 e Sample 2) baseados no valor absoluto da coluna 4 (Sample 4). Eu tentei o seguinte: mydata <- subset(data, (data[ ,4]>abs(1.3))) mydata Sample 1 Sample 2 Sample 3 Sample 4 Sample 5 Gene 4 1.588935 -1.3308238 0.02267418 1.426599 2.2377680 Gene 7 -0.401337 -0.8475515 -1.05251409 1.872986 0.7788947 No entanto, neste primeiro passo ele só pega os positivos da coluna 4 que são maiores que 1,3. Os valores negativos maiores que módulo de -1,3 são todos excluídos. No segundo passo eu excluiria as colunas 3, 4 e 5. myvars <- colnames(mydata) %in% c("Sample 3", "Sample 4", "Sample 5") mydata2 <- mydata[!myvars] Como não consegui obter o primeiro passo, o segundo também não rodou. Obrigado -- Marcelo _______________________________________________ R-br mailing list R-br em listas.c3sl.ufpr.br https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200426/437318d4/attachment.html>
+
+From nandodesouza em gmail.com  Sun Apr 26 12:25:39 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sun, 26 Apr 2020 12:25:39 -0300
+Subject: [R-br] Subset a data.frame com base no valor absoluto de uma
+ coluna
+In-Reply-To: <5D5CDE6D-88C1-41FF-8376-83A0B4D88DEC@getmailspring.com>
+References: <5D5CDE6D-88C1-41FF-8376-83A0B4D88DEC@getmailspring.com>
+Message-ID: <4CAF20D2-8094-4DE2-B815-BFFEC8EFAA21@getmailspring.com>
+
+data <- replicate(5, rnorm(10))
+colnames(data) <- paste("Sample", c(1:ncol(data)))
+rownames(data) <- paste("Gene", c(1:nrow(data)))
+data
+
+##passo1
+dados2<-subset(data,abs(data[,4])>1.3)
+dados2
+## passo 2
+dados3<-dados2[,-c(3,4,5)]
+dados3
+
+On Apr 26 2020, at 12:22 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+>
+> Acredito que sua solução é essa.
+> data <- replicate(5, rnorm(10))
+> colnames(data) <- paste("Sample", c(1:ncol(data)))
+> rownames(data) <- paste("Gene", c(1:nrow(data)))
+> data
+>
+> dados2<-subset(data,abs(data[,4])>1.3)
+> dados2
+>
+>
+> Att
+> On Apr 25 2020, at 8:47 pm, Marcelo Laia por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> > Prezado(a), Tenho o seguinte problema: data <- replicate(5, rnorm(10)) colnames(data) <- paste("Sample", c(1:ncol(data))) rownames(data) <- paste("Gene", c(1:nrow(data))) head(data) Sample 1 Sample 2 Sample 3 Sample 4 Sample 5 Gene 1 -1.29177540 2.61720282 -0.64705357 -2.05636255 0.5752323 Gene 2 -1.20619719 1.13791932 1.12844157 -0.04053514 1.2973240 Gene 3 -0.15952476 -0.56391140 -1.34226004 -1.21020574 -1.1353717 Gene 4 1.58893451 -1.33082381 0.02267418 1.42659928 2.2377680 Gene 5 -0.56417983 -0.14454059 -0.14543579 0.43021823 -1.1564112 Gene 6 -0.01443123 0.08013149 0.44877039 -0.38360173 1.7286058 Gene 7 -0.40133700 -0.84755154 -1.05251409 1.87298617 0.7788947 Gene 8 -1.81773166 -1.50967753 0.30168885 1.06245963 0.2409281 Gene 9 -2.27682903 0.83455263 -0.93035283 -0.49503281 -0.7293654 Gene 10 -0.19309118 -0.84698014 -0.12649364 -1.32398348 1.3218277 Eu desejo fazer um subset em um novo data.frame com os dados das colunas 1 e 2 (Sample 1 e Sample 2) baseados no valor absoluto da coluna 4 (Sample 4). Eu tentei o seguinte: mydata <- subset(data, (data[ ,4]>abs(1.3))) mydata Sample 1 Sample 2 Sample 3 Sample 4 Sample 5 Gene 4 1.588935 -1.3308238 0.02267418 1.426599 2.2377680 Gene 7 -0.401337 -0.8475515 -1.05251409 1.872986 0.7788947 No entanto, neste primeiro passo ele só pega os positivos da coluna 4 que são maiores que 1,3. Os valores negativos maiores que módulo de -1,3 são todos excluídos. No segundo passo eu excluiria as colunas 3, 4 e 5. myvars <- colnames(mydata) %in% c("Sample 3", "Sample 4", "Sample 5") mydata2 <- mydata[!myvars] Como não consegui obter o primeiro passo, o segundo também não rodou. Obrigado -- Marcelo _______________________________________________ R-br mailing list R-br em listas.c3sl.ufpr.br https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200426/f74db58d/attachment.html>
+
+From andreolsouza em yahoo.com.br  Mon Apr 27 09:10:23 2020
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Mon, 27 Apr 2020 12:10:23 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Problema_com_a__instala=C3=A7=C3=A3o_de_pacotes?=
+ =?utf-8?q?_no_R!?=
+References: <1612379416.560570.1587989423517.ref@mail.yahoo.com>
+Message-ID: <1612379416.560570.1587989423517@mail.yahoo.com>
+
+bom dia,
+mesmo depois de executar o R como administrador tenho alguns problemas para instalar alguns pacotes no R (nlme e lubridate entre outros).  Alguma dica para solução deste problema? 
+
+ > install.packages("nlme")
+Installing package into 'C:/Users/andreoliveira/Documents/R/win-library/3.6'
+(as 'lib' is unspecified)
+tentando a URL 'https://cran-r.c3sl.ufpr.br/.../contrib/3.6/nlme_3.1-147.zip'
+Content type 'application/zip' length 2374568 bytes (2.3 MB)
+downloaded 2.3 MB
+
+package 'nlme' successfully unpacked and MD5 sums checked
+Warning: cannot remove prior installation of package 'nlme'
+Warning: restored 'nlme'
+
+The downloaded binary packages are in
+ C:\Users\andreoliveira\AppData\Local\Temp\RtmpMH69CO\downloaded_packages
+Warning message:
+In file.copy(savedcopy, lib, recursive = TRUE) :
+ problem copying C:\Users\andreoliveira\Documents\R\win-library\3.6\00LOCK\nlme\libs\x64\nlme.dll to C:\Users\andreoliveira\Documents\R\win-library\3.6\nlme\libs\x64\nlme.dll: Permission denied
+
+
+att,.André 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200427/7514c17c/attachment.html>
+
+From andreolsouza em yahoo.com.br  Mon Apr 27 09:45:57 2020
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Mon, 27 Apr 2020 12:45:57 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?Problema_com_a__instala=C3=A7=C3=A3o_de_pacotes?=
+ =?utf-8?q?_no_R!?=
+In-Reply-To: <1640552843.558988.1587990469744@mail.yahoo.com>
+References: <1612379416.560570.1587989423517.ref@mail.yahoo.com>
+ <1612379416.560570.1587989423517@mail.yahoo.com>
+ <1640552843.558988.1587990469744@mail.yahoo.com>
+Message-ID: <731319767.561755.1587991557896@mail.yahoo.com>
+
+Oi Rodrigo, obrigado pelas ponderações! Faz poucos dias que coloquei a versão do R mais nova na tentativa de resolução do problema e alguns destes pacotes não estão instalados e tem o mesmo problema!  
+
+att,.André  
+
+    Em segunda-feira, 27 de abril de 2020 09:27:54 BRT, Rodrigo Araujo e Castro <webyard1 em yahoo.com.br> escreveu:  
+ 
+ Bom dia André,
+Inicialmente eu sugiro desinstalar manualmente esses pacotes com o "uninstall.packages()" e te tentar novamente a instalação. Uma atualização de todos os pacotes e do R (e do R Studio se você usa) pode ajudar também, pois algo pode ter sido corrigido nos últimos patches. Se nada disso funcionar, reinstalar o R não costuma dar tanto trabalho e não afeta seu trabalho já feito, já que você não perde nada. 
+Se alguma dessas dicas resolver, avise.
+Rodrigo 
+
+Sent from Yahoo Mail on Android 
+ 
+  On Mon, Apr 27, 2020 at 9:11, Andre Oliveira por (R-br)<r-br em listas.c3sl.ufpr.br> wrote:   bom dia,
+mesmo depois de executar o R como administrador tenho alguns problemas para instalar alguns pacotes no R (nlme e lubridate entre outros).  Alguma dica para solução deste problema? 
+
+ > install.packages("nlme")
+Installing package into 'C:/Users/andreoliveira/Documents/R/win-library/3.6'
+(as 'lib' is unspecified)
+tentando a URL 'https://cran-r.c3sl.ufpr.br/.../contrib/3.6/nlme_3.1-147.zip'
+Content type 'application/zip' length 2374568 bytes (2.3 MB)
+downloaded 2.3 MB
+
+package 'nlme' successfully unpacked and MD5 sums checked
+Warning: cannot remove prior installation of package 'nlme'
+Warning: restored 'nlme'
+
+The downloaded binary packages are in
+ C:\Users\andreoliveira\AppData\Local\Temp\RtmpMH69CO\downloaded_packages
+Warning message:
+In file.copy(savedcopy, lib, recursive = TRUE) :
+ problem copying C:\Users\andreoliveira\Documents\R\win-library\3.6\00LOCK\nlme\libs\x64\nlme.dll to C:\Users\andreoliveira\Documents\R\win-library\3.6\nlme\libs\x64\nlme.dll: Permission denied
+
+
+att,.André _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200427/613d00c9/attachment.html>
+
+From marcelolaia em gmail.com  Mon Apr 27 09:56:35 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Mon, 27 Apr 2020 09:56:35 -0300
+Subject: [R-br] 
+	=?utf-8?q?Problema_com_a_instala=C3=A7=C3=A3o_de_pacotes_?=
+	=?utf-8?q?no_R!?=
+In-Reply-To: <1612379416.560570.1587989423517@mail.yahoo.com>
+References: <1612379416.560570.1587989423517.ref@mail.yahoo.com>
+ <1612379416.560570.1587989423517@mail.yahoo.com>
+Message-ID: <CAEEYVUBmxB=Z-CQcwN9CoQaz-05bwxD8Km_KzcFO=O3t1rzojw@mail.gmail.com>
+
+Olá,
+
+Em seg, 27 de abr de 2020 09:11, Andre Oliveira por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+>
+> Warning message:
+> In file.copy(savedcopy, lib, recursive = TRUE) :
+> problem copying C:\Users\andreoliveira\Documents\R\win-library\3.6\
+> *00LOCK*\nlme\libs\x64\nlme.dll to
+> C:\Users\andreoliveira\Documents\R\win-library\3.6\nlme\libs\x64\nlme.dll:*
+> Permission denied*
+>
+
+A mensagem não é um erro, mas, um alerta (warning). Ele está reclamando que
+o usuário atual não tem permissão para sobrescrever o arquivo nlme.dll
+(C:\Users\andreoliveira\Documents\R\win-library\3.6\nlme\libs\x64\nlme.dll:
+Permission denied)
+
+Você já tentou alterar a opção de escrita desse arquivo? Pode ser que ele
+esteja protegido com "somente leitura".
+
+Uma outra possibilidade, radical, é renomear (ou excluir) o diretório nlme
+que está dentro de C:\Users\andreoliveira\Documents\R\win-library\3.6\
+
+Ficaria assim C:\Users\andreoliveira\Documents\R\win-library\3.6\nlme-old
+ou assim C:\Users\andreoliveira\Documents\R\win-library\3.6\ (nlme
+excluído).
+
+Considere que o último windows que eu utilizei foi a versão win98SE.
+
+Laia ML
+
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200427/86d4eaf2/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Apr 27 10:13:11 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 27 Apr 2020 10:13:11 -0300
+Subject: [R-br] 
+	=?utf-8?q?Problema_com_a_instala=C3=A7=C3=A3o_de_pacotes_?=
+	=?utf-8?q?no_R!?=
+In-Reply-To: <1612379416.560570.1587989423517@mail.yahoo.com>
+References: <1612379416.560570.1587989423517.ref@mail.yahoo.com>
+ <1612379416.560570.1587989423517@mail.yahoo.com>
+Message-ID: <CAKrF98nV3Z=AJEPBjOFOcPwwD81bUpbuX=7KzrGvXJ=yVcLF8A@mail.gmail.com>
+
+André,
+
+Uma forma sutil de esse problema aparecer na instalação de pacotes no
+Windows é ele estar carregado pelo R na sessão que você está usando para
+fazer a instalação.
+
+Certifique-se que você começa de uma imagem sem carga de nenhum pacote que
+deseja atualizar ou reinstalar para evitar esse tipo de erro.
+
+HTH
+--
+Cesar Rabak
+
+
+On Mon, Apr 27, 2020 at 9:11 AM Andre Oliveira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> bom dia,
+> mesmo depois de executar o R como administrador tenho alguns problemas
+> para instalar alguns pacotes no R (*nlme* *e* *lubridate* entre outros).
+> Alguma dica para solução deste problema?
+>
+>
+> *> install.packages("nlme")*
+>
+> Installing package into
+> 'C:/Users/andreoliveira/Documents/R/win-library/3.6'
+> (as 'lib' is unspecified)
+> tentando a URL '
+> https://cran-r.c3sl.ufpr.br/.../contrib/3.6/nlme_3.1-147.zip
+> <https://cran-r.c3sl.ufpr.br/bin/windows/contrib/3.6/nlme_3.1-147.zip?fbclid=IwAR0Q7UiuiyVjtFl7ioP_TH3_sib12rHZPQrdWPFoxVo--gHpcwfNT3yxiWI>
+> '
+> Content type 'application/zip' length 2374568 bytes (2.3 MB)
+> downloaded 2.3 MB
+>
+> package 'nlme' successfully unpacked and MD5 sums checked
+> Warning: cannot remove prior installation of package 'nlme'
+> Warning: *restored* 'nlme'
+>
+> The downloaded binary packages are in
+> C:\Users\andreoliveira\AppData\Local\Temp\RtmpMH69CO\downloaded_packages
+> Warning message:
+> In file.copy(savedcopy, lib, recursive = TRUE) :
+> problem copying C:\Users\andreoliveira\Documents\R\win-library\3.6\
+> *00LOCK*\nlme\libs\x64\nlme.dll to
+> C:\Users\andreoliveira\Documents\R\win-library\3.6\nlme\libs\x64\nlme.dll:*
+> Permission denied*
+>
+>
+>
+> att,.
+> André
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200427/aa1ac2bb/attachment.html>
+
+From andreolsouza em yahoo.com.br  Mon Apr 27 11:04:27 2020
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Mon, 27 Apr 2020 14:04:27 +0000 (UTC)
+Subject: [R-br] 
+ =?utf-8?q?Problema_com_a_instala=C3=A7=C3=A3o_de_pacotes_?=
+ =?utf-8?q?no_R!?=
+In-Reply-To: <CAKrF98nV3Z=AJEPBjOFOcPwwD81bUpbuX=7KzrGvXJ=yVcLF8A@mail.gmail.com>
+References: <1612379416.560570.1587989423517.ref@mail.yahoo.com>
+ <1612379416.560570.1587989423517@mail.yahoo.com>
+ <CAKrF98nV3Z=AJEPBjOFOcPwwD81bUpbuX=7KzrGvXJ=yVcLF8A@mail.gmail.com>
+Message-ID: <143489856.590906.1587996267179@mail.yahoo.com>
+
+Pessoal obrigado pela colocações, foram úteis!
+Por enquanto vou usar a sugestão C:\Users\andreoliveira\Documents\R\win-library\3.6\ (nlme excluído) que resolveu o problema. Mas em breve vou fazer novos testes com as outras dicas. 
+
+obgAndré 
+
+   Em segunda-feira, 27 de abril de 2020 10:13:45 BRT, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ André,
+Uma forma sutil de esse problema aparecer na instalação de pacotes no Windows é ele estar carregado pelo R na sessão que você está usando para fazer a instalação.
+Certifique-se que você começa de uma imagem sem carga de nenhum pacote que deseja atualizar ou reinstalar para evitar esse tipo de erro.
+HTH--Cesar Rabak
+
+On Mon, Apr 27, 2020 at 9:11 AM Andre Oliveira por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+bom dia,
+mesmo depois de executar o R como administrador tenho alguns problemas para instalar alguns pacotes no R (nlme e lubridate entre outros).  Alguma dica para solução deste problema? 
+
+ > install.packages("nlme")
+Installing package into 'C:/Users/andreoliveira/Documents/R/win-library/3.6'
+(as 'lib' is unspecified)
+tentando a URL 'https://cran-r.c3sl.ufpr.br/.../contrib/3.6/nlme_3.1-147.zip'
+Content type 'application/zip' length 2374568 bytes (2.3 MB)
+downloaded 2.3 MB
+
+package 'nlme' successfully unpacked and MD5 sums checked
+Warning: cannot remove prior installation of package 'nlme'
+Warning: restored 'nlme'
+
+The downloaded binary packages are in
+ C:\Users\andreoliveira\AppData\Local\Temp\RtmpMH69CO\downloaded_packages
+Warning message:
+In file.copy(savedcopy, lib, recursive = TRUE) :
+ problem copying C:\Users\andreoliveira\Documents\R\win-library\3.6\00LOCK\nlme\libs\x64\nlme.dll to C:\Users\andreoliveira\Documents\R\win-library\3.6\nlme\libs\x64\nlme.dll: Permission denied
+
+
+att,.André _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200427/89509aa1/attachment.html>
+
+From nobrega.manasses em gmail.com  Mon Apr 27 19:26:46 2020
+From: nobrega.manasses em gmail.com (=?UTF-8?Q?Manasses_N=C3=B3brega?=)
+Date: Mon, 27 Apr 2020 19:26:46 -0300
+Subject: [R-br] =?utf-8?q?Pesquisa_de_artigos_na_=C3=A1rea_de_Estat=C3=AD?=
+ =?utf-8?q?stica?=
+Message-ID: <CAEVGS=LSQBXcn27MHTvP-evEAdF4yp9AKyerRT1pvkJxz0He5A@mail.gmail.com>
+
+Boa noite, pessoal.
+
+Por conta de meus estudos, tenho utilizado nos últimos anos a plataforma
+PubMEd para busca de artigos científicos na área das "ciências da vida".
+
+Entretanto, surgiu a necessidade de pesquisar alguns temas da área de
+Estatística. Assim como no caso do PubMed, existe alguma plataforma
+específica para busca de artigos científicos na área de Estatística? Caso
+não haja, poderiam me indicar sites de busca específicos da área?
+
+Desde já agradeço a colaboração de vocês.
+Atenciosamente,
+Manasses
+
+
+
+-- 
+
+*I am a brain, Watson. The rest of me is a mere appendix. *
+
+*(Sherlock Holmes)*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200427/dda24489/attachment.html>
+
+From marcelolaia em gmail.com  Mon Apr 27 23:54:16 2020
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Mon, 27 Apr 2020 23:54:16 -0300
+Subject: [R-br] 
+	=?utf-8?q?Pesquisa_de_artigos_na_=C3=A1rea_de_Estat=C3=AD?=
+	=?utf-8?q?stica?=
+In-Reply-To: <CAEVGS=LSQBXcn27MHTvP-evEAdF4yp9AKyerRT1pvkJxz0He5A@mail.gmail.com>
+References: <CAEVGS=LSQBXcn27MHTvP-evEAdF4yp9AKyerRT1pvkJxz0He5A@mail.gmail.com>
+Message-ID: <CAEEYVUDzZX-ykuGhGy+xuRXXOR2a-8tqQiJPDakPLeAsFG7Gpg@mail.gmail.com>
+
+Colega,
+
+Uso muito o periódicos da CAPES. Tem acesso livre e restrito.
+
+Livre: https://www.periodicos.capes.gov.br/
+
+Restrito:
+https://www.periodicos.capes.gov.br/?option=com_plogin&ym=3&pds_handle=&calling_system=primo&institute=CAPES&targetUrl=http://www.periodicos.capes.gov.br&Itemid=155&pagina=CAFe
+
+Além desse, o google scholar tem ajudado muito.
+
+https://scholar.google.com.br/
+
+Se o artigo estiver restrito, você tem a opção do sci-hub
+
+https://pt.m.wikipedia.org/wiki/Sci-Hub
+
+Por fim, tem o https://arxiv.org/
+
+Espero ter ajudado.
+
+Laia ML
+
+
+Em seg, 27 de abr de 2020 19:27, Manasses Nóbrega por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa noite, pessoal.
+>
+> Por conta de meus estudos, tenho utilizado nos últimos anos a plataforma
+> PubMEd para busca de artigos científicos na área das "ciências da vida".
+>
+> Entretanto, surgiu a necessidade de pesquisar alguns temas da área de
+> Estatística. Assim como no caso do PubMed, existe alguma plataforma
+> específica para busca de artigos científicos na área de Estatística? Caso
+> não haja, poderiam me indicar sites de busca específicos da área?
+>
+> Desde já agradeço a colaboração de vocês.
+> Atenciosamente,
+> Manasses
+>
+>
+>
+> --
+>
+> *I am a brain, Watson. The rest of me is a mere appendix. *
+>
+> *(Sherlock Holmes)*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200427/a7c0e454/attachment.html>
+

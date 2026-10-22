@@ -1,0 +1,1651 @@
+From alexandre.loures em protonmail.com  Tue May 17 11:47:56 2022
+From: alexandre.loures em protonmail.com (Alexandre Loures)
+Date: Tue, 17 May 2022 14:47:56 +0000
+Subject: [R-br] =?utf-8?q?Ajuda_sobre_licen=C3=A7a?=
+Message-ID: <LQHJW4vU2BnS2sbOJXkK6v0edAXtSHcv9fpgFgbjSNHbRPFHh1-yc8yK1RTYEI-5Vn-F-2X9sjtjX5R7T_MIAGWo6VlUnjdyyDLN7mbqk6c=@protonmail.com>
+
+Bom dia, Listeiros!
+
+Com relação ao package covid19italy alterei apenas os endereços, no arquivo data_refresh.R, para busca da base para meu github bem como os nomes, nos arquivos data.R e data_refresh.R, de covid19italy para covid19brazil, italy_total para brazil_total, etc.
+
+Gostaria de subir este pacote para o Cran, mas minha dúvida é sobre direitos autorais. A licença do covid19italy está definida como: MIT + file LICENSE.
+
+Com essa licença do covid19italy posso subir meu pacote?
+
+Package: covid19italy
+Type: Package
+Title: The 2019 Novel Coronavirus COVID-19 (2019-nCoV) Italy Dataset
+Version: 0.3.1
+Authors em R: person("Rami", "Krispin", email = "rami.krispin em gmail.com",
+role = c("aut", "cre"))
+Maintainer: Rami Krispin <rami.krispin em gmail.com>
+Description: Provides a daily summary of the Coronavirus (COVID-19) cases in Italy by country, region and province level. Data source: Presidenza del Consiglio dei Ministri - Dipartimento della Protezione Civile <https://www.protezionecivile.it/>.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.0.2)
+Imports: devtools
+Suggests: knitr (>= 1.28), readr (>= 1.3.1), remotes (>= 2.1.1),
+rmarkdown (>= 2.1), testthat (>= 2.1.0)
+URL: https://github.com/RamiKrispin/covid19italy
+BugReports: https://github.com/RamiKrispin/covid19italy/issues
+RoxygenNote: 7.1.1
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2021-07-28 05:39:41 UTC; ramikrispin
+Author: Rami Krispin [aut, cre]
+Repository: CRANDate/Publication: 2021-07-28 06:00:02 UTC
+
+Meu pacote no github: https://github.com/AlexandreLoures/covid19Brazil
+
+--------
+Alexandre Loures
+Programa de Pós-Graduação em Organizações e Mercados
+Universidade Federal de Pelotashttp://www.wp.ufpel.edu.br/economia/
+www.rodriguesloures.com
+
+Sent with [ProtonMail](https://protonmail.com/) secure email.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220517/0f621974/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue May 17 16:27:58 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 17 May 2022 16:27:58 -0300
+Subject: [R-br] =?utf-8?q?Ajuda_sobre_licen=C3=A7a?=
+In-Reply-To: <LQHJW4vU2BnS2sbOJXkK6v0edAXtSHcv9fpgFgbjSNHbRPFHh1-yc8yK1RTYEI-5Vn-F-2X9sjtjX5R7T_MIAGWo6VlUnjdyyDLN7mbqk6c=@protonmail.com>
+References: <LQHJW4vU2BnS2sbOJXkK6v0edAXtSHcv9fpgFgbjSNHbRPFHh1-yc8yK1RTYEI-5Vn-F-2X9sjtjX5R7T_MIAGWo6VlUnjdyyDLN7mbqk6c=@protonmail.com>
+Message-ID: <CAKrF98=NbpWGvPGCOmBs3umOCVW-EiXC47J072u8ATg-O-1ZcQ@mail.gmail.com>
+
+Alexandre,
+
+Antes de discutir a licença "CRAN" vc tem expressa autorização para
+redistribuir informação sobre Covid de casos brasileiros?
+
+Ademais, dado que o próprio SUS oferece o acesso aos dados vial a API CKAN
+e os dados se supõe devem ficar sendo autualizados no site do SUS não há
+risco de seu pacote logo ficar "obsoleto"?
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Tue, May 17, 2022 at 11:48 AM Alexandre Loures por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Bom dia, Listeiros!
+>
+> Com relação ao package covid19italy alterei apenas os endereços, no
+> arquivo data_refresh.R, para busca da base para meu github bem como os
+> nomes, nos arquivos data.R e data_refresh.R, de covid19italy para
+> covid19brazil, italy_total para brazil_total, etc.
+>
+> Gostaria de subir este pacote para o Cran, mas minha dúvida é sobre
+> direitos autorais. A licença do covid19italy está definida como: MIT + file
+> LICENSE.
+>
+> Com essa licença do covid19italy posso subir meu pacote?
+>
+> Package: covid19italy
+> Type: Package
+> Title: The 2019 Novel Coronavirus COVID-19 (2019-nCoV) Italy Dataset
+> Version: 0.3.1
+> Authors em R: person("Rami", "Krispin", email = "rami.krispin em gmail.com",
+>   role = c("aut", "cre"))
+> Maintainer: Rami Krispin <rami.krispin em gmail.com>
+> Description: Provides a daily summary of the Coronavirus (COVID-19) cases
+> in Italy by country, region and province level. Data source: Presidenza del
+> Consiglio dei Ministri - Dipartimento della Protezione Civile <
+> https://www.protezionecivile.it/>.
+> License: MIT + file LICENSE
+> Encoding: UTF-8
+> LazyData: true
+> Depends: R (>= 3.0.2)
+> Imports: devtools
+> Suggests: knitr (>= 1.28), readr (>= 1.3.1), remotes (>= 2.1.1),
+>         rmarkdown (>= 2.1), testthat (>= 2.1.0)
+> URL: https://github.com/RamiKrispin/covid19italy
+> BugReports: https://github.com/RamiKrispin/covid19italy/issues
+> RoxygenNote: 7.1.1
+> VignetteBuilder: knitr
+> NeedsCompilation: no
+> Packaged: 2021-07-28 05:39:41 UTC; ramikrispin
+> Author: Rami Krispin [aut, cre]
+> Repository: CRAN
+> Date/Publication: 2021-07-28 06:00:02 UTC
+>
+> Meu pacote no github: https://github.com/AlexandreLoures/covid19Brazil
+>
+> --------
+> *Alexandre Loures*
+> Programa de Pós-Graduação em Organizações e Mercados
+> Universidade Federal de Pelotas <http://www.wp.ufpel.edu.br/economia/>
+> www.rodriguesloures.com
+>
+>
+>
+> Sent with ProtonMail <https://protonmail.com/> secure email.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220517/9db203cc/attachment.htm>
+
+From alexandre.loures em protonmail.com  Tue May 17 19:37:00 2022
+From: alexandre.loures em protonmail.com (Alexandre Loures)
+Date: Tue, 17 May 2022 22:37:00 +0000
+Subject: [R-br] =?utf-8?q?Ajuda_sobre_licen=C3=A7a?=
+In-Reply-To: <CAKrF98=NbpWGvPGCOmBs3umOCVW-EiXC47J072u8ATg-O-1ZcQ@mail.gmail.com>
+References: <LQHJW4vU2BnS2sbOJXkK6v0edAXtSHcv9fpgFgbjSNHbRPFHh1-yc8yK1RTYEI-5Vn-F-2X9sjtjX5R7T_MIAGWo6VlUnjdyyDLN7mbqk6c=@protonmail.com>
+ <CAKrF98=NbpWGvPGCOmBs3umOCVW-EiXC47J072u8ATg-O-1ZcQ@mail.gmail.com>
+Message-ID: <tCHycnx-0B_FW7ZnUzdtXVDto45qJf1t7d75edJLJDzf6xMI3_L19Bkfso3cXP_2IuqGVtbzmqpfJt1Eu8eVXowbKQ8K55A0TNkOpMjxi74=@protonmail.com>
+
+Boa noite, Cesar!
+
+Muito obrigado pelo retorno!
+
+Muito obrigado, também, por me chamar a atenção para o fato de ter autorização para redistribuir informação sobre os casos brasileiros de Covid. Mas acho que não há nenhum impedimento uma vez que são dados que estão disponível no site do SUS (dados abertos) e que apenas apliquei alguns filtros para apresentá-los individualizados (Brasil como um todo, por regiões Centro-Oeste, Nordeste, Norte, Sudeste e Sul, por estado e por município) no pacote.
+
+Isso mesmo. Os dados são atualizados diariamente pelo SUS e minha intenção é semanalmente estar disponibilizando as atualizações no pacote. Ou seja, os arquivos csv disponibilizados no github serão atualizados toda semana.
+
+Forte abraço,
+
+--------
+Alexandre Loures
+Programa de Pós-Graduação em Organizações e Mercados
+Universidade Federal de Pelotashttp://www.wp.ufpel.edu.br/economia/
+www.rodriguesloures.com
+
+Sent with [ProtonMail](https://protonmail.com/) secure email.
+
+------- Original Message -------
+On Tuesday, May 17th, 2022 at 16:27, Cesar Rabak <cesar.rabak em gmail.com> wrote:
+
+> Alexandre,
+>
+> Antes de discutir a licença "CRAN" vc tem expressa autorização para redistribuir informação sobre Covid de casos brasileiros?
+>
+> Ademais, dado que o próprio SUS oferece o acesso aos dados vial a API CKAN e os dados se supõe devem ficar sendo autualizados no site do SUS não há risco de seu pacote logo ficar "obsoleto"?
+>
+> HTH
+>
+> --
+> Cesar Rabak
+>
+> On Tue, May 17, 2022 at 11:48 AM Alexandre Loures por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Bom dia, Listeiros!
+>>
+>> Com relação ao package covid19italy alterei apenas os endereços, no arquivo data_refresh.R, para busca da base para meu github bem como os nomes, nos arquivos data.R e data_refresh.R, de covid19italy para covid19brazil, italy_total para brazil_total, etc.
+>>
+>> Gostaria de subir este pacote para o Cran, mas minha dúvida é sobre direitos autorais. A licença do covid19italy está definida como: MIT + file LICENSE.
+>>
+>> Com essa licença do covid19italy posso subir meu pacote?
+>>
+>> Package: covid19italy
+>> Type: Package
+>> Title: The 2019 Novel Coronavirus COVID-19 (2019-nCoV) Italy Dataset
+>> Version: 0.3.1
+>> Authors em R: person("Rami", "Krispin", email = "rami.krispin em gmail.com",
+>> role = c("aut", "cre"))
+>> Maintainer: Rami Krispin <rami.krispin em gmail.com>
+>> Description: Provides a daily summary of the Coronavirus (COVID-19) cases in Italy by country, region and province level. Data source: Presidenza del Consiglio dei Ministri - Dipartimento della Protezione Civile <https://www.protezionecivile.it/>.
+>> License: MIT + file LICENSE
+>> Encoding: UTF-8
+>> LazyData: true
+>> Depends: R (>= 3.0.2)
+>> Imports: devtools
+>> Suggests: knitr (>= 1.28), readr (>= 1.3.1), remotes (>= 2.1.1),
+>> rmarkdown (>= 2.1), testthat (>= 2.1.0)
+>> URL: https://github.com/RamiKrispin/covid19italy
+>> BugReports: https://github.com/RamiKrispin/covid19italy/issues
+>> RoxygenNote: 7.1.1
+>> VignetteBuilder: knitr
+>> NeedsCompilation: no
+>> Packaged: 2021-07-28 05:39:41 UTC; ramikrispin
+>> Author: Rami Krispin [aut, cre]
+>> Repository: CRANDate/Publication: 2021-07-28 06:00:02 UTC
+>>
+>> Meu pacote no github: https://github.com/AlexandreLoures/covid19Brazil
+>>
+>> --------
+>> Alexandre Loures
+>> Programa de Pós-Graduação em Organizações e Mercados
+>> Universidade Federal de Pelotashttp://www.wp.ufpel.edu.br/economia/
+>> www.rodriguesloures.com
+>>
+>> Sent with [ProtonMail](https://protonmail.com/) secure email.
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220517/d2d7adde/attachment.htm>
+
+From michele.breton20 em gmail.com  Wed May 18 07:51:05 2022
+From: michele.breton20 em gmail.com (Michele Claire Breton)
+Date: Wed, 18 May 2022 11:51:05 +0100
+Subject: [R-br] Cores do heatmap
+Message-ID: <CACTXoEbTvy-7hxEKrMHz=Py8KThnYAAnvQ1aAM4-wrhU535FbQ@mail.gmail.com>
+
+Caríssimos conterrâneos, bom dia!
+
+Espero que todos se encontrem bem.
+Eu estou trabalhando em um heatmap e resolvi mudar o esquema de cores,
+entretanto, após a mudança, aparece a mensagem de erro: Error in
+image.default(1:nc, 1:nr, x, xlim = 0.5 + c(0, nc), ylim = 0.5 +  :
+  must have one more break than colour.
+
+A princípio, eu usei:
+my_palette <- colorRampPalette(c("green","yellow","red"))(n=299)
+
+col_breaks = c(seq(-2,-1,length=100),
+ seq(-0.9,0.9, length=100),
+  seq(1,2,length=100))
+
+E quis mudar para:
+my_palette <- colorRampPalette(c("blue","white","red"))(n=20)
+
+col_breaks = c(seq(-2,-1,length=100),
+ seq(-0.9,0.9, length=100),
+  seq(1,2,length=100))
+
+... e enttão surgiu a mensagem de erro. O que fiz de errado?
+Muito obrigada por me ajudarem
+
+Michele
+
+
+-- 
+------------------------------------------------------------------------
+*Dra. Michele Claire Breton*
+Técnica Superior em Bioinformática
+CICS - Centro de Investigação em Ciências da Saúde
+Faculdade de Ciências da Saúde
+Universidade da Beira Interior
+Covilhã - Castelo Branco - Portugal
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220518/e7d968f4/attachment.htm>
+
+From paulopcdick em gmail.com  Wed May 18 08:56:31 2022
+From: paulopcdick em gmail.com (Paulo Dick)
+Date: Wed, 18 May 2022 08:56:31 -0300
+Subject: [R-br] Cores do heatmap
+In-Reply-To: <CACTXoEbTvy-7hxEKrMHz=Py8KThnYAAnvQ1aAM4-wrhU535FbQ@mail.gmail.com>
+References: <CACTXoEbTvy-7hxEKrMHz=Py8KThnYAAnvQ1aAM4-wrhU535FbQ@mail.gmail.com>
+Message-ID: <CAFZajV1c69q6fOb1WNoRqmUX8237RWXEBUERCcdpgh+NfZ67rg@mail.gmail.com>
+
+Bom dia Michele,
+
+O erro que relatou não aparece no pedaço do código que enviou, então aqui
+rodou sem problemas.
+
+Pela mensagem de erro, o problema está no fato que o novo my_palette possui
+20 elementos, enquanto a função usada precisa que a diferença entre este e
+os breaks seja de 1 (must have one more break than colour). No primeiro
+caso ocorreu, pois eram 300 elementos no my_palette e 299 breaks.
+
+Atenciosamente
+Paulo Dick
+
+Em qua., 18 de mai. de 2022 às 07:51, Michele Claire Breton por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Caríssimos conterrâneos, bom dia!
+>
+> Espero que todos se encontrem bem.
+> Eu estou trabalhando em um heatmap e resolvi mudar o esquema de cores,
+> entretanto, após a mudança, aparece a mensagem de erro: Error in
+> image.default(1:nc, 1:nr, x, xlim = 0.5 + c(0, nc), ylim = 0.5 +  :
+>   must have one more break than colour.
+>
+> A princípio, eu usei:
+> my_palette <- colorRampPalette(c("green","yellow","red"))(n=299)
+>
+> col_breaks = c(seq(-2,-1,length=100),
+>  seq(-0.9,0.9, length=100),
+>   seq(1,2,length=100))
+>
+> E quis mudar para:
+> my_palette <- colorRampPalette(c("blue","white","red"))(n=20)
+>
+> col_breaks = c(seq(-2,-1,length=100),
+>  seq(-0.9,0.9, length=100),
+>   seq(1,2,length=100))
+>
+> ... e enttão surgiu a mensagem de erro. O que fiz de errado?
+> Muito obrigada por me ajudarem
+>
+> Michele
+>
+>
+> --
+> ------------------------------------------------------------------------
+> *Dra. Michele Claire Breton*
+> Técnica Superior em Bioinformática
+> CICS - Centro de Investigação em Ciências da Saúde
+> Faculdade de Ciências da Saúde
+> Universidade da Beira Interior
+> Covilhã - Castelo Branco - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220518/433ff670/attachment.htm>
+
+From michele.breton20 em gmail.com  Wed May 18 09:53:36 2022
+From: michele.breton20 em gmail.com (Michele Claire Breton)
+Date: Wed, 18 May 2022 13:53:36 +0100
+Subject: [R-br] Cores do heatmap
+In-Reply-To: <CAFZajV1c69q6fOb1WNoRqmUX8237RWXEBUERCcdpgh+NfZ67rg@mail.gmail.com>
+References: <CACTXoEbTvy-7hxEKrMHz=Py8KThnYAAnvQ1aAM4-wrhU535FbQ@mail.gmail.com>
+ <CAFZajV1c69q6fOb1WNoRqmUX8237RWXEBUERCcdpgh+NfZ67rg@mail.gmail.com>
+Message-ID: <CACTXoEaz4QYsJ3sFYL1gEy5Z8nDj8HvH9rvDuBKr0VVP0VXXUA@mail.gmail.com>
+
+Muito obrigada Paulo!
+Funcionou!
+
+Michele
+
+Paulo Dick <paulopcdick em gmail.com> escreveu no dia quarta, 18/05/2022 à(s)
+12:57:
+
+> Bom dia Michele,
+>
+> O erro que relatou não aparece no pedaço do código que enviou, então aqui
+> rodou sem problemas.
+>
+> Pela mensagem de erro, o problema está no fato que o novo my_palette
+> possui 20 elementos, enquanto a função usada precisa que a diferença entre
+> este e os breaks seja de 1 (must have one more break than colour). No
+> primeiro caso ocorreu, pois eram 300 elementos no my_palette e 299 breaks.
+>
+> Atenciosamente
+> Paulo Dick
+>
+> Em qua., 18 de mai. de 2022 às 07:51, Michele Claire Breton por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Caríssimos conterrâneos, bom dia!
+>>
+>> Espero que todos se encontrem bem.
+>> Eu estou trabalhando em um heatmap e resolvi mudar o esquema de cores,
+>> entretanto, após a mudança, aparece a mensagem de erro: Error in
+>> image.default(1:nc, 1:nr, x, xlim = 0.5 + c(0, nc), ylim = 0.5 +  :
+>>   must have one more break than colour.
+>>
+>> A princípio, eu usei:
+>> my_palette <- colorRampPalette(c("green","yellow","red"))(n=299)
+>>
+>> col_breaks = c(seq(-2,-1,length=100),
+>>  seq(-0.9,0.9, length=100),
+>>   seq(1,2,length=100))
+>>
+>> E quis mudar para:
+>> my_palette <- colorRampPalette(c("blue","white","red"))(n=20)
+>>
+>> col_breaks = c(seq(-2,-1,length=100),
+>>  seq(-0.9,0.9, length=100),
+>>   seq(1,2,length=100))
+>>
+>> ... e enttão surgiu a mensagem de erro. O que fiz de errado?
+>> Muito obrigada por me ajudarem
+>>
+>> Michele
+>>
+>>
+>> --
+>> ------------------------------------------------------------------------
+>> *Dra. Michele Claire Breton*
+>> Técnica Superior em Bioinformática
+>> CICS - Centro de Investigação em Ciências da Saúde
+>> Faculdade de Ciências da Saúde
+>> Universidade da Beira Interior
+>> Covilhã - Castelo Branco - Portugal
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220518/d77b5e25/attachment.htm>
+
+From ecacarva em gmail.com  Wed May 18 14:23:31 2022
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Wed, 18 May 2022 14:23:31 -0300
+Subject: [R-br] Analise Geoespacial
+Message-ID: <CAH8E6UtPM7AcLdLESNa2_1mXxdUpesDSTOMpay8soMnFCYBGeQ@mail.gmail.com>
+
+Boa tarde
+Alguém poderia por favor indicar um bom livro com exemplos de análise
+geoespacial?
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220518/dee7b915/attachment.htm>
+
+From cesar.rabak em gmail.com  Wed May 18 20:19:55 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 18 May 2022 20:19:55 -0300
+Subject: [R-br] =?utf-8?q?Ajuda_sobre_licen=C3=A7a?=
+In-Reply-To: <tCHycnx-0B_FW7ZnUzdtXVDto45qJf1t7d75edJLJDzf6xMI3_L19Bkfso3cXP_2IuqGVtbzmqpfJt1Eu8eVXowbKQ8K55A0TNkOpMjxi74=@protonmail.com>
+References: <LQHJW4vU2BnS2sbOJXkK6v0edAXtSHcv9fpgFgbjSNHbRPFHh1-yc8yK1RTYEI-5Vn-F-2X9sjtjX5R7T_MIAGWo6VlUnjdyyDLN7mbqk6c=@protonmail.com>
+ <CAKrF98=NbpWGvPGCOmBs3umOCVW-EiXC47J072u8ATg-O-1ZcQ@mail.gmail.com>
+ <tCHycnx-0B_FW7ZnUzdtXVDto45qJf1t7d75edJLJDzf6xMI3_L19Bkfso3cXP_2IuqGVtbzmqpfJt1Eu8eVXowbKQ8K55A0TNkOpMjxi74=@protonmail.com>
+Message-ID: <CAKrF98k55HYbcDHh8WDbDyiDhn3cFFoSQ+txU5HE6tdrtqkWZw@mail.gmail.com>
+
+OK!
+
+Usando a americana sigla IANAL, posso apenas dizer-lhe que a licença a ser
+usada no pacote CRAN não pode extrapolar a que o SUS "*grants*" ao
+disponibilizar os dados para o público¹.
+
+Recomendo que vc busque apoio de um advogado para que não lhe cause
+problema, especialmente no Brasil.
+
+HTH
+
+
+[1] E veja se ela permite "redistribuir" como vc quer fazer...
+
+On Tue, May 17, 2022 at 7:37 PM Alexandre Loures <
+alexandre.loures em protonmail.com> wrote:
+
+> Boa noite, Cesar!
+>
+> Muito obrigado pelo retorno!
+>
+> Muito obrigado, também, por me chamar a atenção para o fato de ter
+> autorização para redistribuir informação sobre os casos brasileiros de
+> Covid. Mas acho que não há nenhum impedimento uma vez que são dados que
+> estão disponível no site do SUS (dados abertos) e que apenas apliquei
+> alguns filtros para apresentá-los individualizados (Brasil como um todo,
+> por regiões Centro-Oeste, Nordeste, Norte, Sudeste e Sul, por estado e por
+> município) no pacote.
+>
+> Isso mesmo. Os dados são atualizados diariamente pelo SUS e minha intenção
+> é semanalmente estar disponibilizando as atualizações no pacote. Ou seja,
+> os arquivos csv disponibilizados no github serão atualizados toda semana.
+>
+> Forte abraço,
+>
+>
+> --------
+> *Alexandre Loures*
+> Programa de Pós-Graduação em Organizações e Mercados
+> Universidade Federal de Pelotas <http://www.wp.ufpel.edu.br/economia/>
+> www.rodriguesloures.com
+>
+>
+>
+> Sent with ProtonMail <https://protonmail.com/> secure email.
+>
+> ------- Original Message -------
+> On Tuesday, May 17th, 2022 at 16:27, Cesar Rabak <cesar.rabak em gmail.com>
+> wrote:
+>
+> Alexandre,
+>
+> Antes de discutir a licença "CRAN" vc tem expressa autorização para
+> redistribuir informação sobre Covid de casos brasileiros?
+>
+> Ademais, dado que o próprio SUS oferece o acesso aos dados vial a API CKAN
+> e os dados se supõe devem ficar sendo autualizados no site do SUS não há
+> risco de seu pacote logo ficar "obsoleto"?
+>
+> HTH
+>
+> --
+> Cesar Rabak
+>
+>
+> On Tue, May 17, 2022 at 11:48 AM Alexandre Loures por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Bom dia, Listeiros!
+>>
+>> Com relação ao package covid19italy alterei apenas os endereços, no
+>> arquivo data_refresh.R, para busca da base para meu github bem como os
+>> nomes, nos arquivos data.R e data_refresh.R, de covid19italy para
+>> covid19brazil, italy_total para brazil_total, etc.
+>>
+>> Gostaria de subir este pacote para o Cran, mas minha dúvida é sobre
+>> direitos autorais. A licença do covid19italy está definida como: MIT + file
+>> LICENSE.
+>>
+>> Com essa licença do covid19italy posso subir meu pacote?
+>>
+>> Package: covid19italy
+>> Type: Package
+>> Title: The 2019 Novel Coronavirus COVID-19 (2019-nCoV) Italy Dataset
+>> Version: 0.3.1
+>> Authors em R: person("Rami", "Krispin", email = "rami.krispin em gmail.com",
+>> role = c("aut", "cre"))
+>> Maintainer: Rami Krispin <rami.krispin em gmail.com>
+>> Description: Provides a daily summary of the Coronavirus (COVID-19) cases
+>> in Italy by country, region and province level. Data source: Presidenza del
+>> Consiglio dei Ministri - Dipartimento della Protezione Civile <
+>> https://www.protezionecivile.it/>.
+>> License: MIT + file LICENSE
+>> Encoding: UTF-8
+>> LazyData: true
+>> Depends: R (>= 3.0.2)
+>> Imports: devtools
+>> Suggests: knitr (>= 1.28), readr (>= 1.3.1), remotes (>= 2.1.1),
+>> rmarkdown (>= 2.1), testthat (>= 2.1.0)
+>> URL: https://github.com/RamiKrispin/covid19italy
+>> BugReports: https://github.com/RamiKrispin/covid19italy/issues
+>> RoxygenNote: 7.1.1
+>> VignetteBuilder: knitr
+>> NeedsCompilation: no
+>> Packaged: 2021-07-28 05:39:41 UTC; ramikrispin
+>> Author: Rami Krispin [aut, cre]
+>> Repository: CRAN
+>> Date/Publication: 2021-07-28 06:00:02 UTC
+>>
+>> Meu pacote no github: https://github.com/AlexandreLoures/covid19Brazil
+>>
+>> --------
+>> *Alexandre Loures*
+>> Programa de Pós-Graduação em Organizações e Mercados
+>> Universidade Federal de Pelotas <http://www.wp.ufpel.edu.br/economia/>
+>> www.rodriguesloures.com
+>>
+>>
+>>
+>> Sent with ProtonMail <https://protonmail.com/> secure email.
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220518/302f994a/attachment.htm>
+
+From alexandre.loures em protonmail.com  Thu May 19 09:02:25 2022
+From: alexandre.loures em protonmail.com (Alexandre Loures)
+Date: Thu, 19 May 2022 12:02:25 +0000
+Subject: [R-br] =?utf-8?q?Ajuda_sobre_licen=C3=A7a?=
+In-Reply-To: <CAKrF98k55HYbcDHh8WDbDyiDhn3cFFoSQ+txU5HE6tdrtqkWZw@mail.gmail.com>
+References: <LQHJW4vU2BnS2sbOJXkK6v0edAXtSHcv9fpgFgbjSNHbRPFHh1-yc8yK1RTYEI-5Vn-F-2X9sjtjX5R7T_MIAGWo6VlUnjdyyDLN7mbqk6c=@protonmail.com>
+ <CAKrF98=NbpWGvPGCOmBs3umOCVW-EiXC47J072u8ATg-O-1ZcQ@mail.gmail.com>
+ <tCHycnx-0B_FW7ZnUzdtXVDto45qJf1t7d75edJLJDzf6xMI3_L19Bkfso3cXP_2IuqGVtbzmqpfJt1Eu8eVXowbKQ8K55A0TNkOpMjxi74=@protonmail.com>
+ <CAKrF98k55HYbcDHh8WDbDyiDhn3cFFoSQ+txU5HE6tdrtqkWZw@mail.gmail.com>
+Message-ID: <1t1p_Ey-PQyw6g3hHs3ynGhwWxXkSsXVljIICuvnmF2nf9uH5Rli8ltQVAJKKz4CoePKewpug737zRNRjePG49K5setrZNWlrRLkClJja0g=@protonmail.com>
+
+Bom dia, Cesar!
+
+Muito obrigado!
+
+--------
+Alexandre Loures
+Programa de Pós-Graduação em Organizações e Mercados
+Universidade Federal de Pelotashttp://www.wp.ufpel.edu.br/economia/
+www.rodriguesloures.com
+
+Sent with [ProtonMail](https://protonmail.com/) secure email.
+
+------- Original Message -------
+On Wednesday, May 18th, 2022 at 20:19, Cesar Rabak <cesar.rabak em gmail.com> wrote:
+
+> OK!
+>
+> Usando a americana sigla IANAL, posso apenas dizer-lhe que a licença a ser usada no pacote CRAN não pode extrapolar a que o SUS "grants" ao disponibilizar os dados para o público¹.
+>
+> Recomendo que vc busque apoio de um advogado para que não lhe cause problema, especialmente no Brasil.
+>
+> HTH
+>
+> [1] E veja se ela permite "redistribuir" como vc quer fazer...
+>
+> On Tue, May 17, 2022 at 7:37 PM Alexandre Loures <alexandre.loures em protonmail.com> wrote:
+>
+>> Boa noite, Cesar!
+>>
+>> Muito obrigado pelo retorno!
+>>
+>> Muito obrigado, também, por me chamar a atenção para o fato de ter autorização para redistribuir informação sobre os casos brasileiros de Covid. Mas acho que não há nenhum impedimento uma vez que são dados que estão disponível no site do SUS (dados abertos) e que apenas apliquei alguns filtros para apresentá-los individualizados (Brasil como um todo, por regiões Centro-Oeste, Nordeste, Norte, Sudeste e Sul, por estado e por município) no pacote.
+>>
+>> Isso mesmo. Os dados são atualizados diariamente pelo SUS e minha intenção é semanalmente estar disponibilizando as atualizações no pacote. Ou seja, os arquivos csv disponibilizados no github serão atualizados toda semana.
+>>
+>> Forte abraço,
+>>
+>> --------
+>> Alexandre Loures
+>> Programa de Pós-Graduação em Organizações e Mercados
+>> Universidade Federal de Pelotashttp://www.wp.ufpel.edu.br/economia/
+>> www.rodriguesloures.com
+>>
+>> Sent with [ProtonMail](https://protonmail.com/) secure email.
+>>
+>> ------- Original Message -------
+>> On Tuesday, May 17th, 2022 at 16:27, Cesar Rabak <cesar.rabak em gmail.com> wrote:
+>>
+>>> Alexandre,
+>>>
+>>> Antes de discutir a licença "CRAN" vc tem expressa autorização para redistribuir informação sobre Covid de casos brasileiros?
+>>>
+>>> Ademais, dado que o próprio SUS oferece o acesso aos dados vial a API CKAN e os dados se supõe devem ficar sendo autualizados no site do SUS não há risco de seu pacote logo ficar "obsoleto"?
+>>>
+>>> HTH
+>>>
+>>> --
+>>> Cesar Rabak
+>>>
+>>> On Tue, May 17, 2022 at 11:48 AM Alexandre Loures por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>> Bom dia, Listeiros!
+>>>>
+>>>> Com relação ao package covid19italy alterei apenas os endereços, no arquivo data_refresh.R, para busca da base para meu github bem como os nomes, nos arquivos data.R e data_refresh.R, de covid19italy para covid19brazil, italy_total para brazil_total, etc.
+>>>>
+>>>> Gostaria de subir este pacote para o Cran, mas minha dúvida é sobre direitos autorais. A licença do covid19italy está definida como: MIT + file LICENSE.
+>>>>
+>>>> Com essa licença do covid19italy posso subir meu pacote?
+>>>>
+>>>> Package: covid19italy
+>>>> Type: Package
+>>>> Title: The 2019 Novel Coronavirus COVID-19 (2019-nCoV) Italy Dataset
+>>>> Version: 0.3.1
+>>>> Authors em R: person("Rami", "Krispin", email = "rami.krispin em gmail.com",
+>>>> role = c("aut", "cre"))
+>>>> Maintainer: Rami Krispin <rami.krispin em gmail.com>
+>>>> Description: Provides a daily summary of the Coronavirus (COVID-19) cases in Italy by country, region and province level. Data source: Presidenza del Consiglio dei Ministri - Dipartimento della Protezione Civile <https://www.protezionecivile.it/>.
+>>>> License: MIT + file LICENSE
+>>>> Encoding: UTF-8
+>>>> LazyData: true
+>>>> Depends: R (>= 3.0.2)
+>>>> Imports: devtools
+>>>> Suggests: knitr (>= 1.28), readr (>= 1.3.1), remotes (>= 2.1.1),
+>>>> rmarkdown (>= 2.1), testthat (>= 2.1.0)
+>>>> URL: https://github.com/RamiKrispin/covid19italy
+>>>> BugReports: https://github.com/RamiKrispin/covid19italy/issues
+>>>> RoxygenNote: 7.1.1
+>>>> VignetteBuilder: knitr
+>>>> NeedsCompilation: no
+>>>> Packaged: 2021-07-28 05:39:41 UTC; ramikrispin
+>>>> Author: Rami Krispin [aut, cre]
+>>>> Repository: CRANDate/Publication: 2021-07-28 06:00:02 UTC
+>>>>
+>>>> Meu pacote no github: https://github.com/AlexandreLoures/covid19Brazil
+>>>>
+>>>> --------
+>>>> Alexandre Loures
+>>>> Programa de Pós-Graduação em Organizações e Mercados
+>>>> Universidade Federal de Pelotashttp://www.wp.ufpel.edu.br/economia/
+>>>> www.rodriguesloures.com
+>>>>
+>>>> Sent with [ProtonMail](https://protonmail.com/) secure email.
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220519/03a22003/attachment.htm>
+
+From michele.breton20 em gmail.com  Fri May 20 08:03:45 2022
+From: michele.breton20 em gmail.com (Michele Claire Breton)
+Date: Fri, 20 May 2022 12:03:45 +0100
+Subject: [R-br] Heatmap com dois conjuntos de dados
+Message-ID: <CACTXoEaCHBGfejfFZSd5uGqopUCVSjc6kAS+bcWorQXEgtyguQ@mail.gmail.com>
+
+Caríssimos(as) mestres(as), bom dia!
+
+Estou com uma dúvida sobre como deve ser meu ficheiro de entrada para
+plotar um gráfico como o terceiro deste link:
+https://stackoverflow.com/questions/67746044/r-heatmap-with-circles
+
+Eu criei 2 ficheiros .csv, um contento os valores de expressão gênica nos
+diferentes tipos celulares (col->genes, lin->tipos de células); e o outro,
+contendo os valores de freqüência em que a expressão do gene ocorre em cada
+célula, com a mesma estrutura do primeiro.
+
+A representação destes dados no gráfico deve ser: a área do círculo
+construído a partir dos dados de frequencia e a cor do círculo deve
+corresponder aos valores de expressão, como em um heatmap.
+
+Eu tenho que trabalhar com os ficheiros em separado ou tenho que montar um
+único ficheiro para ter este resultado?
+
+Muitíssimo obrigada pela ajuda!!
+
+Michele
+
+-- 
+------------------------------------------------------------------------
+*Dra. Michele Claire Breton*
+Técnica Superior em Bioinformática
+CICS - Centro de Investigação em Ciências da Saúde
+Faculdade de Ciências da Saúde
+Universidade da Beira Interior
+Covilhã - Castelo Branco - Portugal
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220520/faa5b37a/attachment.htm>
+
+From cesar.rabak em gmail.com  Fri May 20 13:55:11 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 20 May 2022 13:55:11 -0300
+Subject: [R-br] Heatmap com dois conjuntos de dados
+In-Reply-To: <CACTXoEaCHBGfejfFZSd5uGqopUCVSjc6kAS+bcWorQXEgtyguQ@mail.gmail.com>
+References: <CACTXoEaCHBGfejfFZSd5uGqopUCVSjc6kAS+bcWorQXEgtyguQ@mail.gmail.com>
+Message-ID: <CAKrF98m3QLdOm0uTyDZiOqhScifFTJWYPE2Cg6udhqLnX+5tSg@mail.gmail.com>
+
+Veja se o baloonplot do pacote gplots já atende suas necessidades.
+A descrição dessa função mostra como montar os dados, e verás que as duas
+abordagens seriam possíveis.
+
+HTH
+--
+Cesar Rabak
+
+
+On Fri, May 20, 2022 at 8:04 AM Michele Claire Breton por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Caríssimos(as) mestres(as), bom dia!
+>
+> Estou com uma dúvida sobre como deve ser meu ficheiro de entrada para
+> plotar um gráfico como o terceiro deste link:
+> https://stackoverflow.com/questions/67746044/r-heatmap-with-circles
+>
+> Eu criei 2 ficheiros .csv, um contento os valores de expressão gênica nos
+> diferentes tipos celulares (col->genes, lin->tipos de células); e o outro,
+> contendo os valores de freqüência em que a expressão do gene ocorre em cada
+> célula, com a mesma estrutura do primeiro.
+>
+> A representação destes dados no gráfico deve ser: a área do círculo
+> construído a partir dos dados de frequencia e a cor do círculo deve
+> corresponder aos valores de expressão, como em um heatmap.
+>
+> Eu tenho que trabalhar com os ficheiros em separado ou tenho que montar um
+> único ficheiro para ter este resultado?
+>
+> Muitíssimo obrigada pela ajuda!!
+>
+> Michele
+>
+> --
+> ------------------------------------------------------------------------
+> *Dra. Michele Claire Breton*
+> Técnica Superior em Bioinformática
+> CICS - Centro de Investigação em Ciências da Saúde
+> Faculdade de Ciências da Saúde
+> Universidade da Beira Interior
+> Covilhã - Castelo Branco - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220520/ae2ef88c/attachment.htm>
+
+From nandodesouza em gmail.com  Mon May 23 21:16:05 2022
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Mon, 23 May 2022 21:16:05 -0300
+Subject: [R-br] Anaconda/Jupyter erro :Graphics API version mismatch -
+Message-ID: <6D287FF7-238C-462C-B1AA-06ADFD54310F@getmailspring.com>
+
+Boa noite pessoal,
+
+Após atualizar para a versão 4.1.3 do R no Anaconda passei a receber esta mensagem:
+"Error in Cairo::Cairo(width, height, tf, "png", pointsize, bg, "transparent", : Graphics API version mismatch
+Em pesquisa na rede vi que tem a ver com uma mudança na api Cairo do R. Vi sugestões de desinstalar e instalar o Cairo entre outras, porém nehuma funcionou.
+No Rstudio, tudo funciona bem, então acredito ser um problema no Anaconda/Jupyter.
+Alguém passou por isso? Sabe como resolver?
+Att
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220523/171c046b/attachment.htm>
+
+From michele.breton20 em gmail.com  Wed May 25 08:01:07 2022
+From: michele.breton20 em gmail.com (Michele Claire Breton)
+Date: Wed, 25 May 2022 12:01:07 +0100
+Subject: [R-br] =?utf-8?b?ZnVuw6fDo28gZ2VvbV9vaW50?=
+Message-ID: <CACTXoEaZde2AZfco1gWjHqS+QDwC_wYLwXCfwJTn8YeMp1nEXg@mail.gmail.com>
+
+Caríssimos(as) colegas(as), muito bom dia!
+
+Espero que todos se encontrem bem.
+
+Estou com uma dificuldade. Quero fazer um bubble plot usando as funções
+ggplot2 e dplyr, onde pretendo plotar no eixo x o gene_ID (são 84 linhas),
+no y a % de ocorrência da expressão na célula e no color, o valor da
+expressão. O meu primeiro problema é que no y são 9 tipos celulares
+diferentes e cada um tem, na tabela de entrada de dados, uma coluna com os
+dados de expressão e outra com os dados de % de ocorrência (amostra
+abaixo). Como eu escrevo a função geom_point para plotar o gráfico?
+
+Amostra da tabela de entrada
+gene BE-exp BE% CE_exp CE% E_exp E% F_exp F% HE_exp HE% L-exp L% LE-exp LE%
+N-exp N% SM-exp SM%
+ACTB 4.006 99.8 3.690 99.6 2.691 95.2 2.377 80.1 2.901 97.7 3.182 94.1 2.864
+94.0 3.243 96.0 3.214 93.5
+ACTG1 3.850 5.9 3.592 7.1 2.469 1.5 2.252 1.1 3.129 6.4 2.451 0.6 2.979 1.1
+3.104 0 2.500 2.4
+AJUBA 1.185 5.9 0.972 7.1 1.042 1.5 0.912 1.1 1.043 6.4 0.865 0.6 1.024 1.1
+0 0 1.149 2.4
+
+Muitíssimo obrigada pela ajuda!
+
+Michele
+
+
+
+-- 
+------------------------------------------------------------------------
+*Dra. Michele Claire Breton*
+Técnica Superior em Bioinformática
+CICS - Centro de Investigação em Ciências da Saúde
+Faculdade de Ciências da Saúde
+Universidade da Beira Interior
+Covilhã - Castelo Branco - Portugal
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220525/69f1a55c/attachment.htm>
+
+From dtiezzi em usp.br  Wed May 25 10:28:21 2022
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Wed, 25 May 2022 10:28:21 -0300
+Subject: [R-br] =?utf-8?b?ZnVuw6fDo28gZ2VvbV9vaW50?=
+In-Reply-To: <CACTXoEaZde2AZfco1gWjHqS+QDwC_wYLwXCfwJTn8YeMp1nEXg@mail.gmail.com>
+References: <CACTXoEaZde2AZfco1gWjHqS+QDwC_wYLwXCfwJTn8YeMp1nEXg@mail.gmail.com>
+Message-ID: <0CD6E461-967A-4B8E-B856-9839EED3E086@usp.br>
+
+Vc precisa transformar a tabela do formate wide para long.
+
+Existem varias formas. Aqui tem um exemplo
+
+https://www.datasciencemadesimple.com/reshape-in-r-from-wide-to-long-from-long-to-wide/ <https://www.datasciencemadesimple.com/reshape-in-r-from-wide-to-long-from-long-to-wide/>
+
+
+
+daniel
+
+> On May 25, 2022, at 8:01 AM, Michele Claire Breton por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Caríssimos(as) colegas(as), muito bom dia!
+> 
+> Espero que todos se encontrem bem.
+> 
+> Estou com uma dificuldade. Quero fazer um bubble plot usando as funções ggplot2 e dplyr, onde pretendo plotar no eixo x o gene_ID (são 84 linhas), no y a % de ocorrência da expressão na célula e no color, o valor da expressão. O meu primeiro problema é que no y são 9 tipos celulares diferentes e cada um tem, na tabela de entrada de dados, uma coluna com os dados de expressão e outra com os dados de % de ocorrência (amostra abaixo). Como eu escrevo a função geom_point para plotar o gráfico?
+> 
+> Amostra da tabela de entrada
+> gene	BE-exp	BE%	CE_exp	CE%	E_exp	E%	F_exp	F%	HE_exp	HE%	L-exp	L%	LE-exp	LE%	N-exp	N%	SM-exp	SM%
+> ACTB	4.006	99.8	3.690	99.6	2.691	95.2	2.377	80.1	2.901	97.7	3.182	94.1	2.864	94.0	3.243	96.0	3.214	93.5
+> ACTG1	3.850	5.9	3.592	7.1	2.469	1.5	2.252	1.1	3.129	6.4	2.451	0.6	2.979	1.1	3.104	0	2.500	2.4
+> AJUBA	1.185	5.9	0.972	7.1	1.042	1.5	0.912	1.1	1.043	6.4	0.865	0.6	1.024	1.1	0	0	1.149	2.4
+> 
+> Muitíssimo obrigada pela ajuda!
+> 
+> Michele
+> 
+> 
+> 
+> -- 
+> ------------------------------------------------------------------------
+> Dra. Michele Claire Breton
+> Técnica Superior em Bioinformática
+> CICS - Centro de Investigação em Ciências da Saúde
+> Faculdade de Ciências da Saúde
+> Universidade da Beira Interior
+> Covilhã - Castelo Branco - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220525/7db13de7/attachment.htm>
+
+From nandodesouza em gmail.com  Wed May 25 11:33:35 2022
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 25 May 2022 11:33:35 -0300
+Subject: [R-br] Fwd: Anaconda/Jupyter erro :Graphics API version mismatch -
+In-Reply-To: <6D287FF7-238C-462C-B1AA-06ADFD54310F@getmailspring.com>
+References: <6D287FF7-238C-462C-B1AA-06ADFD54310F@getmailspring.com>
+Message-ID: <CAFrWFs=2FTtXE-EiLN+PPCCa8rcPxDZ0kaOWV6cV2Dkvv24kDA@mail.gmail.com>
+
+Olá pessoal,
+
+Após atualizar para a versão 4.1.3 do R no *Anaconda* passei a receber esta
+mensagem:
+
+"Error in Cairo::Cairo(width, height, tf, "png", pointsize, bg,
+"transparent", : Graphics API version mismatch
+
+Em pesquisa na rede vi que tem a ver com uma mudança na api Cairo do R.  Vi
+sugestões de desinstalar e instalar o Cairo entre outras, porém nehuma
+funcionou.
+
+No Rstudio, tudo funciona bem, então acredito ser um problema no
+Anaconda/Jupyter.
+
+Alguém passou por isso? Sabe como resolver?
+
+Att
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220525/bc45a85a/attachment.htm>
+
+From cesar.rabak em gmail.com  Wed May 25 15:14:00 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 25 May 2022 15:14:00 -0300
+Subject: [R-br] =?utf-8?b?ZnVuw6fDo28gZ2VvbV9vaW50?=
+In-Reply-To: <0CD6E461-967A-4B8E-B856-9839EED3E086@usp.br>
+References: <CACTXoEaZde2AZfco1gWjHqS+QDwC_wYLwXCfwJTn8YeMp1nEXg@mail.gmail.com>
+ <0CD6E461-967A-4B8E-B856-9839EED3E086@usp.br>
+Message-ID: <CAKrF98=bkisHbvWzYUGvBR34YjwgdJtQGWfsu6aYumPyu+Q0yQ@mail.gmail.com>
+
+Acho que reshape, *per se*, não é suficiente. . .
+
+É necessário efetuar aglutinações nos dados para que se tenha as nove
+"linhas" da tabela que gerarão as posições no eixo x do *bubble plot*, etc.
+
+Uma busca na documentação por "dplyr aggregate by group" mostrará o caminho
+a seguir.
+
+Se eu entendo corretamente, no final do processamento necessita-se um
+tibble (ou
+dataframe se forem usadas funções do ggplot2) com três variáveis para
+alimentar a função de interesse.
+
+
+On Wed, May 25, 2022 at 10:25 AM Daniel Guimarães Tiezzi por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Vc precisa transformar a tabela do formate wide para long.
+>
+> Existem varias formas. Aqui tem um exemplo
+>
+>
+> https://www.datasciencemadesimple.com/reshape-in-r-from-wide-to-long-from-long-to-wide/
+>
+>
+>
+> daniel
+>
+> On May 25, 2022, at 8:01 AM, Michele Claire Breton por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Caríssimos(as) colegas(as), muito bom dia!
+>
+> Espero que todos se encontrem bem.
+>
+> Estou com uma dificuldade. Quero fazer um bubble plot usando as funções
+> ggplot2 e dplyr, onde pretendo plotar no eixo x o gene_ID (são 84 linhas),
+> no y a % de ocorrência da expressão na célula e no color, o valor da
+> expressão. O meu primeiro problema é que no y são 9 tipos celulares
+> diferentes e cada um tem, na tabela de entrada de dados, uma coluna com os
+> dados de expressão e outra com os dados de % de ocorrência (amostra
+> abaixo). Como eu escrevo a função geom_point para plotar o gráfico?
+>
+> Amostra da tabela de entrada
+> gene BE-exp BE% CE_exp CE% E_exp E% F_exp F% HE_exp HE% L-exp L% LE-exp
+> LE% N-exp N% SM-exp SM%
+> ACTB 4.006 99.8 3.690 99.6 2.691 95.2 2.377 80.1 2.901 97.7 3.182 94.1
+> 2.864 94.0 3.243 96.0 3.214 93.5
+> ACTG1 3.850 5.9 3.592 7.1 2.469 1.5 2.252 1.1 3.129 6.4 2.451 0.6 2.979
+> 1.1 3.104 0 2.500 2.4
+> AJUBA 1.185 5.9 0.972 7.1 1.042 1.5 0.912 1.1 1.043 6.4 0.865 0.6 1.024
+> 1.1 0 0 1.149 2.4
+>
+> Muitíssimo obrigada pela ajuda!
+>
+> Michele
+>
+>
+>
+> --
+> ------------------------------------------------------------------------
+> *Dra. Michele Claire Breton*
+> Técnica Superior em Bioinformática
+> CICS - Centro de Investigação em Ciências da Saúde
+> Faculdade de Ciências da Saúde
+> Universidade da Beira Interior
+> Covilhã - Castelo Branco - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220525/12f8b54f/attachment.htm>
+
+From dtiezzi em usp.br  Wed May 25 15:51:30 2022
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Wed, 25 May 2022 15:51:30 -0300
+Subject: [R-br] =?utf-8?b?ZnVuw6fDo28gZ2VvbV9vaW50?=
+In-Reply-To: <CACTXoEaZde2AZfco1gWjHqS+QDwC_wYLwXCfwJTn8YeMp1nEXg@mail.gmail.com>
+References: <CACTXoEaZde2AZfco1gWjHqS+QDwC_wYLwXCfwJTn8YeMp1nEXg@mail.gmail.com>
+Message-ID: <5BE8D07B-DF22-4820-9FAC-442764A9AD17@usp.br>
+
+Veja se seria algo assim
+
+library(reshape2)
+library(ggplot2)
+library(dplyr)
+
+t <- read.delim('teste.txt')
+
+t1 <- t[,c(1,seq(2,ncol(t),2))] 
+t2 <- t[,c(1,seq(3,ncol(t),2))]
+
+t1l <- melt(t1, idvar = 'gene')
+colnames(t1l)[3] <- 'exprs'
+t2l <- melt(t2, idvar = 'gene')
+colnames(t2l)[3] <- 'percentage'
+tl <- left_join(t1l, t2l, by='gene')
+
+ggplot(data = tl, aes(x=gene, y=exprs)) + geom_point(aes(color=percentage)) + scale_color_gradient2(midpoint=mean(tl$percentage), low="blue", mid="white", high="red", space ="Lab" ) + theme_classic()
+
+
+
+daniel
+
+
+
+
+> On May 25, 2022, at 8:01 AM, Michele Claire Breton por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> gene	BE-exp	BE%	CE_exp	CE%	E_exp	E%	F_exp	F%	HE_exp	HE%	L-exp	L%	LE-exp	LE%	N-exp	N%	SM-exp	SM%
+> ACTB	4.006	99.8	3.690	99.6	2.691	95.2	2.377	80.1	2.901	97.7	3.182	94.1	2.864	94.0	3.243	96.0	3.214	93.5
+> ACTG1	3.850	5.9	3.592	7.1	2.469	1.5	2.252	1.1	3.129	6.4	2.451	0.6	2.979	1.1	3.104	0	2.500	2.4
+> AJUBA	1.185	5.9	0.972	7.1	1.042	1.5	0.912	1.1	1.043	6.4	0.865	0.6	1.024	1.1	0	0	1.149	2.4
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220525/15e95d33/attachment.htm>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: teste.txt
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220525/15e95d33/attachment.txt>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220525/15e95d33/attachment-0001.htm>
+
+From cidedson em gmail.com  Wed May 25 15:48:18 2022
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Wed, 25 May 2022 15:48:18 -0300
+Subject: [R-br] =?utf-8?b?ZnVuw6fDo28gZ2VvbV9vaW50?=
+In-Reply-To: <CAKrF98=bkisHbvWzYUGvBR34YjwgdJtQGWfsu6aYumPyu+Q0yQ@mail.gmail.com>
+References: <CACTXoEaZde2AZfco1gWjHqS+QDwC_wYLwXCfwJTn8YeMp1nEXg@mail.gmail.com>
+ <0CD6E461-967A-4B8E-B856-9839EED3E086@usp.br>
+ <CAKrF98=bkisHbvWzYUGvBR34YjwgdJtQGWfsu6aYumPyu+Q0yQ@mail.gmail.com>
+Message-ID: <CAAmR27_c7xNGs6anUYF-wrsXuoj2unECUGtC_AHXHXVsbL3kjw@mail.gmail.com>
+
+library(tidyverse)
+library(metan)
+db <- structure(list(gene = c("ACTB", "ACTG1", "AJUBA"),
+                     BE.exp = c(4.006,3.85, 1.185),
+                     BE. = c(99.8, 5.9, 5.9),
+                     CE_exp = c(3.69, 3.592, 0.972),
+                     CE. = c(99.6, 7.1, 7.1),
+                     E_exp = c(2.691, 2.469, 1.042),
+                     E. = c(95.2, 1.5, 1.5),
+                     F_exp = c(2.377, 2.252, 0.912),
+                     F. = c(80.1, 1.1, 1.1),
+                     HE_exp = c(2.901, 3.129, 1.043),
+                     HE. = c(97.7, 6.4,6.4),
+                     L.exp = c(3.182, 2.451, 0.865),
+                     L. = c(94.1, 0.6, 0.6),
+                     LE.exp = c(2.864, 2.979, 1.024),
+                     LE. = c(94, 1.1, 1.1),
+                     N.exp = c(3.243, 3.104, 0),
+                     N. = c(96L, 0L, 0L),
+                     SM.exp = c(3.214, 2.5, 1.149),
+                     SM. = c(93.5, 2.4, 2.4)),
+                class = "data.frame", row.names = c(NA, -3L))
+
+
+db1 <- db %>% select(gene,ends_with("exp"))
+db1 <- db1 %>% pivot_longer(cols=-1, names_to = "exp", values_to = "valor1")
+db2 <- db %>% select(gene,!ends_with("exp"))
+db2 <- db2 %>% pivot_longer(cols=-1, names_to = "per", values_to = "valor2")
+
+df <- cbind(db1,db2[-1])
+
+df %>% ggplot(aes(gene,valor2, color=exp))+geom_point(aes(size=valor1),
+position = position_dodge(0.5))
+
+
+seria isso?
+
+[image: image.png]
+
+*Cid Edson Mendonça Póvoas*
+
+*AnovAgro <http://www.anovagro.com/>*
+*Engenheiro Agrônomo - **Data Scientist*
+*CREA-BA: 051984991-4*
+*Técnico em Segurança do Trabalho *
+*Nº: **0012669/BA*
+*Tel: +55 73 99151-9565*
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em qua., 25 de mai. de 2022 às 15:14, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Acho que reshape, *per se*, não é suficiente. . .
+>
+> É necessário efetuar aglutinações nos dados para que se tenha as nove
+> "linhas" da tabela que gerarão as posições no eixo x do *bubble plot*,
+> etc.
+>
+> Uma busca na documentação por "dplyr aggregate by group" mostrará o
+> caminho a seguir.
+>
+> Se eu entendo corretamente, no final do processamento necessita-se um
+> tibble (ou dataframe se forem usadas funções do ggplot2) com três
+> variáveis para alimentar a função de interesse.
+>
+>
+> On Wed, May 25, 2022 at 10:25 AM Daniel Guimarães Tiezzi por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Vc precisa transformar a tabela do formate wide para long.
+>>
+>> Existem varias formas. Aqui tem um exemplo
+>>
+>>
+>> https://www.datasciencemadesimple.com/reshape-in-r-from-wide-to-long-from-long-to-wide/
+>>
+>>
+>>
+>> daniel
+>>
+>> On May 25, 2022, at 8:01 AM, Michele Claire Breton por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>> Caríssimos(as) colegas(as), muito bom dia!
+>>
+>> Espero que todos se encontrem bem.
+>>
+>> Estou com uma dificuldade. Quero fazer um bubble plot usando as funções
+>> ggplot2 e dplyr, onde pretendo plotar no eixo x o gene_ID (são 84 linhas),
+>> no y a % de ocorrência da expressão na célula e no color, o valor da
+>> expressão. O meu primeiro problema é que no y são 9 tipos celulares
+>> diferentes e cada um tem, na tabela de entrada de dados, uma coluna com os
+>> dados de expressão e outra com os dados de % de ocorrência (amostra
+>> abaixo). Como eu escrevo a função geom_point para plotar o gráfico?
+>>
+>> Amostra da tabela de entrada
+>> gene BE-exp BE% CE_exp CE% E_exp E% F_exp F% HE_exp HE% L-exp L% LE-exp
+>> LE% N-exp N% SM-exp SM%
+>> ACTB 4.006 99.8 3.690 99.6 2.691 95.2 2.377 80.1 2.901 97.7 3.182 94.1
+>> 2.864 94.0 3.243 96.0 3.214 93.5
+>> ACTG1 3.850 5.9 3.592 7.1 2.469 1.5 2.252 1.1 3.129 6.4 2.451 0.6 2.979
+>> 1.1 3.104 0 2.500 2.4
+>> AJUBA 1.185 5.9 0.972 7.1 1.042 1.5 0.912 1.1 1.043 6.4 0.865 0.6 1.024
+>> 1.1 0 0 1.149 2.4
+>>
+>> Muitíssimo obrigada pela ajuda!
+>>
+>> Michele
+>>
+>>
+>>
+>> --
+>> ------------------------------------------------------------------------
+>> *Dra. Michele Claire Breton*
+>> Técnica Superior em Bioinformática
+>> CICS - Centro de Investigação em Ciências da Saúde
+>> Faculdade de Ciências da Saúde
+>> Universidade da Beira Interior
+>> Covilhã - Castelo Branco - Portugal
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220525/a2c9178c/attachment.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 13133 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220525/a2c9178c/attachment.png>
+
+From ecacarva em gmail.com  Sun May 29 23:26:16 2022
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Sun, 29 May 2022 23:26:16 -0300
+Subject: [R-br] =?iso-8859-1?q?=28sem_assunto=29?=
+Message-ID: <CAH8E6UsESRwd0yhg0rTG7u_dJ8V7OGzL5HBHbWjfrP6mvanrhA@mail.gmail.com>
+
+Boa noite
+
+Digamos que extrai dados sobre mortalidade de uma população de certa
+cidade. Daí quero avaliar a taxa de mortalidade de brancos na faixa etária
+de 25-34 anos. Se a cidade tem 100.000 habitantes, porém brancos de 25-34
+anos são apenas 50.000, eu devo normalizar a taxa de mortalidade por
+100.000 ou 50.00?
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220529/0cd10bdd/attachment.htm>
+
+From cesar.rabak em gmail.com  Mon May 30 10:21:03 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 30 May 2022 10:21:03 -0300
+Subject: [R-br] (sem assunto)
+In-Reply-To: <CAH8E6UsESRwd0yhg0rTG7u_dJ8V7OGzL5HBHbWjfrP6mvanrhA@mail.gmail.com>
+References: <CAH8E6UsESRwd0yhg0rTG7u_dJ8V7OGzL5HBHbWjfrP6mvanrhA@mail.gmail.com>
+Message-ID: <CAKrF98mk09cxN9KPE3OmztgV1QPjQT+dWG6yWSXdHsndPV5wOg@mail.gmail.com>
+
+As taxas são normalizadas para permitir comparações entre populações
+diferentes, sendo de um modo geral numericamente *proporções*.
+
+O uso das expressões por cento, por milhar, e no caso em tela por cem mil,
+visam exclusivamente evitar que se tenha que trabalhar com números
+quebradinhos quando essas taxas são pequenas estruturalmente.
+
+Assim, no seu caso, a taxa de mortalidade é normalmente¹ dado por milhar
+("por mil"), que sói ser abreviado por ?. Lembrando, ainda, que essa taxa é
+implicitamente associada ao tempo de um ano, portanto quando se menciona
+uma taxa dessas, "... a taxa de mortalidade entre brancos na faixa etária
+25 ? 35 anos na cidade X ..." a comunicação entendida é tantos por mil por
+ano.
+
+Essa taxa é denominada *taxa de mortalidade específica etária*.
+
+Essas taxas são definidas por organismos que publicam as estatísticas,
+incluindo no nível mundial a OMS, e no Brasil o IBGE.
+
+HTH
+--
+Cesar Rabak
+
+[1] Há exceções, como a taxa de mortalidade *materna* que dada por cem mil
+nascimentos vivos (isto é, sem aborto), a taxa de suicídios, mortes por
+acidentes rodoviários, etc.
+
+
+
+On Sun, May 29, 2022 at 11:27 PM Elias Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa noite
+>
+> Digamos que extrai dados sobre mortalidade de uma população de certa
+> cidade. Daí quero avaliar a taxa de mortalidade de brancos na faixa etária
+> de 25-34 anos. Se a cidade tem 100.000 habitantes, porém brancos de 25-34
+> anos são apenas 50.000, eu devo normalizar a taxa de mortalidade por
+> 100.000 ou 50.00?
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220530/4e287cb8/attachment.htm>
+
+From adlucio em ufsm.br  Tue May 31 11:27:44 2022
+From: adlucio em ufsm.br (=?UTF-8?Q?Alessandro_Dal_Col_L=C3=BAcio?=)
+Date: Tue, 31 May 2022 11:27:44 -0300
+Subject: [R-br] Trifatorial com trat adicionais
+Message-ID: <CAHVsyO4fQU4z_jBpT5cx2tTqmX2o0x4mB4Wxab09tMxyoSDojg@mail.gmail.com>
+
+Bom dia.
+Alguma dica de pacote para analisar experimentos trifatoriais com mais de
+um tratamento adicional?
+Abraços.
+Alessandro
+-- 
+Enviado via Windows Phone.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220531/65ec63c9/attachment.htm>
+
+From michele.breton20 em gmail.com  Tue May 31 12:33:04 2022
+From: michele.breton20 em gmail.com (Michele Claire Breton)
+Date: Tue, 31 May 2022 16:33:04 +0100
+Subject: [R-br] Problemas com a paleta de cores
+Message-ID: <CACTXoEb7tOpKgdLM6YPU_Dfn5U9Uq+=qRXCm_uqN4bVUGgSS6w@mail.gmail.com>
+
+Caríssimos(as), boa tarde!
+
+Espero que todos se encontrem bem.
+
+Estou tentando plotar um gráfico de bolhas e estou com problemas com as
+cores. A mensagem de erro é a seguinte:
+
+
+[image: image.png]
+O comando foi:
+
+bubble_plot <- ggplot(m3,aes(replicates_list, gene_per)) +
+    geom_point(aes(size=gene_per, fill=gene_col),shape=21,color="black") +
+    theme(panel.grid.major=element_line(linetype=1,color="grey"),
+          axis.text.x=element_text(angle=90,hjust=1,vjust=0),
+          panel.background = element_blank()) +
+    ylab("Gene ID") +
+    xlab("Prostate Adenocarcinome cell types") +
+  scale_fill_discrete(name="Expression values")+
+  scale_size(name="% of cells with expression")
+
+bubble_plot
+
+Minha intenção é que haja um gradiente de cores (tipo heatmap) para valores
+que vão de 0.01 a 5.
+
+e o resultado que espero ver é algo semelhante a isto:
+
+[image: image.png]
+
+Por favor, me ajudem! Falta só isto para plotar o gráfico!
+Aproveito a oportunidade para perdir-lhes indicações de cursos online
+brasileiros de R.
+
+Muitíssimo obrigada pela atenção,
+
+Michele
+
+--------------------------------------------------------------------------
+*Dra. Michele Claire Breton*
+Técnica Superior em Bioinformática
+Doutora em Biologia Celular e Molecular
+CICS - Centro de Investigação em Ciências da Saúde
+Faculdade de Ciências da Saúde
+Universidade da Beira Interior
+Covilhã - Castelo Branco - Portugal
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220531/461606a6/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 25602 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220531/461606a6/attachment-0002.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 145070 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220531/461606a6/attachment-0003.png>
+
+From cidedson em gmail.com  Tue May 31 12:56:59 2022
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Tue, 31 May 2022 12:56:59 -0300
+Subject: [R-br] Trifatorial com trat adicionais
+In-Reply-To: <CAHVsyO4fQU4z_jBpT5cx2tTqmX2o0x4mB4Wxab09tMxyoSDojg@mail.gmail.com>
+References: <CAHVsyO4fQU4z_jBpT5cx2tTqmX2o0x4mB4Wxab09tMxyoSDojg@mail.gmail.com>
+Message-ID: <CAAmR27-7qnJY5tkvpGWGwpq++DQpOqCrEGS+p9JTeEUXQYwCug@mail.gmail.com>
+
+Pacote *ExpDes.pt*
+
+Função *fat3.ad.dic*
+
+
+Cid Edson Mendonça Póvoas
+
+Analista de Dados
+Engenheiro Agrônomo
+Técnico em Segurança do Trabalho
+
+Enviado do celular
+
+Em ter., 31 de mai. de 2022 11:28, Alessandro Dal Col Lúcio por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom dia.
+> Alguma dica de pacote para analisar experimentos trifatoriais com mais de
+> um tratamento adicional?
+> Abraços.
+> Alessandro
+> --
+> Enviado via Windows Phone.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220531/020b6f08/attachment.htm>
+
+From adlucio em ufsm.br  Tue May 31 12:58:15 2022
+From: adlucio em ufsm.br (=?UTF-8?Q?Alessandro_Dal_Col_L=C3=BAcio?=)
+Date: Tue, 31 May 2022 12:58:15 -0300
+Subject: [R-br] Trifatorial com trat adicionais
+In-Reply-To: <CAAmR27-7qnJY5tkvpGWGwpq++DQpOqCrEGS+p9JTeEUXQYwCug@mail.gmail.com>
+References: <CAHVsyO4fQU4z_jBpT5cx2tTqmX2o0x4mB4Wxab09tMxyoSDojg@mail.gmail.com>
+ <CAAmR27-7qnJY5tkvpGWGwpq++DQpOqCrEGS+p9JTeEUXQYwCug@mail.gmail.com>
+Message-ID: <CAHVsyO6fRL3TDpoPieZ6k9FoEkuYdDN2+9VYox_UiHvaaTta0g@mail.gmail.com>
+
+Obrigado Cid, entretanto esse pacote faz apenas com um adicional e o caso
+que apareceu para mim é com quatro adicionais.
+Alessandro
+
+Em ter., 31 de mai. de 2022 às 12:57, Cid Póvoas por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Pacote *ExpDes.pt*
+>
+> Função *fat3.ad.dic*
+>
+>
+> Cid Edson Mendonça Póvoas
+>
+> Analista de Dados
+> Engenheiro Agrônomo
+> Técnico em Segurança do Trabalho
+>
+> Enviado do celular
+>
+> Em ter., 31 de mai. de 2022 11:28, Alessandro Dal Col Lúcio por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Bom dia.
+>> Alguma dica de pacote para analisar experimentos trifatoriais com mais de
+>> um tratamento adicional?
+>> Abraços.
+>> Alessandro
+>> --
+>> Enviado via Windows Phone.
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+[image: photo]
+Alessandro Dal'Col Lúcio
+Prof. Titular at  Universidade Federal de Santa Maria
+A  Depto Fitotecnia/CCR, Av Roraima 1000. Camobi, Santa Maria - RS, Brasil.
+97105-900
+P  +55 55 32209499  <+55+55+32209499>
+E  adlucio em ufsm.br  <adlucio em ufsm.br>
+W  http://www.ufsm.br/fitotecnia/  <http://www.ufsm.br/fitotecnia/>
+Skype alessandrocapixaba <#SignatureSanitizer_SafeHtmlFilter_>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220531/cccc5480/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue May 31 14:35:06 2022
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 31 May 2022 14:35:06 -0300
+Subject: [R-br] Problemas com a paleta de cores
+In-Reply-To: <CACTXoEb7tOpKgdLM6YPU_Dfn5U9Uq+=qRXCm_uqN4bVUGgSS6w@mail.gmail.com>
+References: <CACTXoEb7tOpKgdLM6YPU_Dfn5U9Uq+=qRXCm_uqN4bVUGgSS6w@mail.gmail.com>
+Message-ID: <CAKrF98nOSN4tY1z_nYYweQX-LFLWndkDGykaz=zSCWBTu3mPhg@mail.gmail.com>
+
+Sem um CMR a gente tem que "interpretar" a mensagem...
+
+Parece que o argumento gene_col não tem o tamanho correto... se ñ é ele é
+algum outro ligado a cores na chamada encadeada...
+
+Experimento colocar primeiro um valor fixo, como "blue", etc., se funcionar
+investigue o descasamento entre o número de cores e indicação de genes...
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Tue, May 31, 2022 at 12:33 PM Michele Claire Breton por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Caríssimos(as), boa tarde!
+>
+> Espero que todos se encontrem bem.
+>
+> Estou tentando plotar um gráfico de bolhas e estou com problemas com as
+> cores. A mensagem de erro é a seguinte:
+>
+>
+> [image: image.png]
+> O comando foi:
+>
+> bubble_plot <- ggplot(m3,aes(replicates_list, gene_per)) +
+>     geom_point(aes(size=gene_per, fill=gene_col),shape=21,color="black") +
+>     theme(panel.grid.major=element_line(linetype=1,color="grey"),
+>           axis.text.x=element_text(angle=90,hjust=1,vjust=0),
+>           panel.background = element_blank()) +
+>     ylab("Gene ID") +
+>     xlab("Prostate Adenocarcinome cell types") +
+>   scale_fill_discrete(name="Expression values")+
+>   scale_size(name="% of cells with expression")
+>
+> bubble_plot
+>
+> Minha intenção é que haja um gradiente de cores (tipo heatmap) para
+> valores que vão de 0.01 a 5.
+>
+> e o resultado que espero ver é algo semelhante a isto:
+>
+> [image: image.png]
+>
+> Por favor, me ajudem! Falta só isto para plotar o gráfico!
+> Aproveito a oportunidade para perdir-lhes indicações de cursos online
+> brasileiros de R.
+>
+> Muitíssimo obrigada pela atenção,
+>
+> Michele
+>
+> --------------------------------------------------------------------------
+> *Dra. Michele Claire Breton*
+> Técnica Superior em Bioinformática
+> Doutora em Biologia Celular e Molecular
+> CICS - Centro de Investigação em Ciências da Saúde
+> Faculdade de Ciências da Saúde
+> Universidade da Beira Interior
+> Covilhã - Castelo Branco - Portugal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220531/58439989/attachment-0001.htm>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 25602 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220531/58439989/attachment-0002.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: image.png
+Tipo: image/png
+Tamanho: 145070 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220531/58439989/attachment-0003.png>
+

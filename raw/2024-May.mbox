@@ -1,0 +1,905 @@
+From amikobh em gmail.com  Tue May 14 17:49:24 2024
+From: amikobh em gmail.com (Amiko Bh)
+Date: Tue, 14 May 2024 17:49:24 -0300
+Subject: [R-br] =?utf-8?q?Novo_df_e_gr=C3=A1fico_barras_horizontal?=
+Message-ID: <CAMgS91y6ywwJ6JpnoeToTKn7Yzxxqn+og_M6Pwss=Z8z+Li=aQ@mail.gmail.com>
+
+Pessoal:
+Do df:
+
+*SEXO* *COR*
+MASCULINO PRETA
+MASCULINO PARDA
+MASCULINO PARDA
+MASCULINO PARDA
+MASCULINO PARDA
+MASCULINO PARDA
+MASCULINO PARDA
+MASCULINO BRANCA
+FEMININO PARDA
+FEMININO PARDA
+FEMININO PARDA
+FEMININO PARDA
+FEMININO PRETA
+FEMININO PARDA
+
+Pretendo obter df2:
+
+*SEXO* *COR* *QUANTIDADE*
+MASCULINO PRETA 1
+MASCULINO PARDA 6
+MASCULINO BRANCA 1
+FEMININO PARDA 5
+FEMININO PRETA 1
+
+E com o df2 - não sei se consigo diretamente com o df1 - obter um gráfico
+de barras horizontais.
+Estou apanhando até para conseguir...
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240514/3e291f7a/attachment.htm>
+
+From anasaraiva92 em gmail.com  Tue May 14 17:55:49 2024
+From: anasaraiva92 em gmail.com (Ana Rita Saraiva)
+Date: Tue, 14 May 2024 21:55:49 +0100
+Subject: [R-br] =?utf-8?q?Novo_df_e_gr=C3=A1fico_barras_horizontal?=
+In-Reply-To: <CAMgS91y6ywwJ6JpnoeToTKn7Yzxxqn+og_M6Pwss=Z8z+Li=aQ@mail.gmail.com>
+References: <CAMgS91y6ywwJ6JpnoeToTKn7Yzxxqn+og_M6Pwss=Z8z+Li=aQ@mail.gmail.com>
+Message-ID: <88978e7b-c8b8-42eb-b306-1e2978f13997@gmail.com>
+
+ESTÁS A FAZER ISSO COM QUE PROGRAMA O SQL.
+
+SE SIM SERÁ QUE ME PODES AJUDAR QUERO CONFIGURAR A CONTA MAS NÃO SEI
+
+OBRIGADA
+
+Às 21:49 de 14/05/2024, Amiko Bh por (R-br) escreveu:
+> Pessoal:
+> Do df:
+>
+> *SEXO* 	*COR*
+> MASCULINO 	PRETA
+> MASCULINO 	PARDA
+> MASCULINO 	PARDA
+> MASCULINO 	PARDA
+> MASCULINO 	PARDA
+> MASCULINO 	PARDA
+> MASCULINO 	PARDA
+> MASCULINO 	BRANCA
+> FEMININO 	PARDA
+> FEMININO 	PARDA
+> FEMININO 	PARDA
+> FEMININO 	PARDA
+> FEMININO 	PRETA
+> FEMININO 	PARDA
+>
+>
+> Pretendo obter df2:
+>
+> *SEXO* 	*COR* 	*QUANTIDADE*
+> MASCULINO 	PRETA 	1
+> MASCULINO 	PARDA 	6
+> MASCULINO 	BRANCA 	1
+> FEMININO 	PARDA 	5
+> FEMININO 	PRETA 	1
+>
+>
+> E com o df2 - não sei se consigo diretamente com o df1 - obter um 
+> gráfico de barras horizontais.
+> Estou apanhando até para conseguir...
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240514/55523bf8/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue May 14 18:34:00 2024
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 14 May 2024 18:34:00 -0300
+Subject: [R-br] =?utf-8?q?Novo_df_e_gr=C3=A1fico_barras_horizontal?=
+In-Reply-To: <CAMgS91y6ywwJ6JpnoeToTKn7Yzxxqn+og_M6Pwss=Z8z+Li=aQ@mail.gmail.com>
+References: <CAMgS91y6ywwJ6JpnoeToTKn7Yzxxqn+og_M6Pwss=Z8z+Li=aQ@mail.gmail.com>
+Message-ID: <CAKrF98mTXz5gGffqSv5ELjjKdvjzDUgv10QcmiW0mt98-XhOQQ@mail.gmail.com>
+
+O gráfico desejado teria quantas barras?
+
+
+On Tue, May 14, 2024 at 5:49?PM Amiko Bh por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Pessoal:
+> Do df:
+>
+> *SEXO* *COR*
+> MASCULINO PRETA
+> MASCULINO PARDA
+> MASCULINO PARDA
+> MASCULINO PARDA
+> MASCULINO PARDA
+> MASCULINO PARDA
+> MASCULINO PARDA
+> MASCULINO BRANCA
+> FEMININO PARDA
+> FEMININO PARDA
+> FEMININO PARDA
+> FEMININO PARDA
+> FEMININO PRETA
+> FEMININO PARDA
+>
+> Pretendo obter df2:
+>
+> *SEXO* *COR* *QUANTIDADE*
+> MASCULINO PRETA 1
+> MASCULINO PARDA 6
+> MASCULINO BRANCA 1
+> FEMININO PARDA 5
+> FEMININO PRETA 1
+>
+> E com o df2 - não sei se consigo diretamente com o df1 - obter um gráfico
+> de barras horizontais.
+> Estou apanhando até para conseguir...
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240514/580bc49f/attachment.htm>
+
+From amikobh em gmail.com  Tue May 14 18:51:14 2024
+From: amikobh em gmail.com (Amiko Bh)
+Date: Tue, 14 May 2024 18:51:14 -0300
+Subject: [R-br] =?utf-8?q?Novo_df_e_gr=C3=A1fico_barras_horizontal?=
+In-Reply-To: <CAKrF98mTXz5gGffqSv5ELjjKdvjzDUgv10QcmiW0mt98-XhOQQ@mail.gmail.com>
+References: <CAMgS91y6ywwJ6JpnoeToTKn7Yzxxqn+og_M6Pwss=Z8z+Li=aQ@mail.gmail.com>
+ <CAKrF98mTXz5gGffqSv5ELjjKdvjzDUgv10QcmiW0mt98-XhOQQ@mail.gmail.com>
+Message-ID: <CAMgS91xeqE2o20t_dBNJnUrQM6r-d35UiNc5edpeRcY8o_bxWQ@mail.gmail.com>
+
+Gostaria que o gráfico tivesse duas barras ( feminino e masculino) para
+cada cor (eixo X)
+
+Em ter., 14 de mai. de 2024, 18:34, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> O gráfico desejado teria quantas barras?
+>
+>
+> On Tue, May 14, 2024 at 5:49?PM Amiko Bh por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Pessoal:
+>> Do df:
+>>
+>> *SEXO* *COR*
+>> MASCULINO PRETA
+>> MASCULINO PARDA
+>> MASCULINO PARDA
+>> MASCULINO PARDA
+>> MASCULINO PARDA
+>> MASCULINO PARDA
+>> MASCULINO PARDA
+>> MASCULINO BRANCA
+>> FEMININO PARDA
+>> FEMININO PARDA
+>> FEMININO PARDA
+>> FEMININO PARDA
+>> FEMININO PRETA
+>> FEMININO PARDA
+>>
+>> Pretendo obter df2:
+>>
+>> *SEXO* *COR* *QUANTIDADE*
+>> MASCULINO PRETA 1
+>> MASCULINO PARDA 6
+>> MASCULINO BRANCA 1
+>> FEMININO PARDA 5
+>> FEMININO PRETA 1
+>>
+>> E com o df2 - não sei se consigo diretamente com o df1 - obter um gráfico
+>> de barras horizontais.
+>> Estou apanhando até para conseguir...
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240514/d9af1f08/attachment.htm>
+
+From cesar.rabak em gmail.com  Tue May 14 18:54:18 2024
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 14 May 2024 18:54:18 -0300
+Subject: [R-br] =?utf-8?q?Novo_df_e_gr=C3=A1fico_barras_horizontal?=
+In-Reply-To: <CAMgS91xeqE2o20t_dBNJnUrQM6r-d35UiNc5edpeRcY8o_bxWQ@mail.gmail.com>
+References: <CAMgS91y6ywwJ6JpnoeToTKn7Yzxxqn+og_M6Pwss=Z8z+Li=aQ@mail.gmail.com>
+ <CAKrF98mTXz5gGffqSv5ELjjKdvjzDUgv10QcmiW0mt98-XhOQQ@mail.gmail.com>
+ <CAMgS91xeqE2o20t_dBNJnUrQM6r-d35UiNc5edpeRcY8o_bxWQ@mail.gmail.com>
+Message-ID: <CAKrF98kuAB8AskpgajDvhPy5nBX6qONaK2jLgUbbFPuvx2=kfw@mail.gmail.com>
+
+Comece com este código, e ajuste-o usando as informações do Help para a
+função barplot :
+
+> barplot(QUANTIDADE ~ COR + SEXO, df2, horiz=T,legend=T, args.legend =
+list(x = "topleft", horiz=T))
+
+HTH
+
+
+On Tue, May 14, 2024 at 6:51?PM Amiko Bh por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Gostaria que o gráfico tivesse duas barras ( feminino e masculino) para
+> cada cor (eixo X)
+>
+> Em ter., 14 de mai. de 2024, 18:34, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> O gráfico desejado teria quantas barras?
+>>
+>>
+>> On Tue, May 14, 2024 at 5:49?PM Amiko Bh por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>> Pessoal:
+>>> Do df:
+>>>
+>>> *SEXO* *COR*
+>>> MASCULINO PRETA
+>>> MASCULINO PARDA
+>>> MASCULINO PARDA
+>>> MASCULINO PARDA
+>>> MASCULINO PARDA
+>>> MASCULINO PARDA
+>>> MASCULINO PARDA
+>>> MASCULINO BRANCA
+>>> FEMININO PARDA
+>>> FEMININO PARDA
+>>> FEMININO PARDA
+>>> FEMININO PARDA
+>>> FEMININO PRETA
+>>> FEMININO PARDA
+>>>
+>>> Pretendo obter df2:
+>>>
+>>> *SEXO* *COR* *QUANTIDADE*
+>>> MASCULINO PRETA 1
+>>> MASCULINO PARDA 6
+>>> MASCULINO BRANCA 1
+>>> FEMININO PARDA 5
+>>> FEMININO PRETA 1
+>>>
+>>> E com o df2 - não sei se consigo diretamente com o df1 - obter um
+>>> gráfico de barras horizontais.
+>>> Estou apanhando até para conseguir...
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240514/e1acc161/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Tue May 21 17:06:08 2024
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 21 May 2024 17:06:08 -0300
+Subject: [R-br] =?utf-8?q?ggplot2_geom=5Fbar=28=29_argumento_fill_n=C3=A3?=
+	=?utf-8?q?o_retorna_legendau?=
+Message-ID: <CAFfGvyJLot3-9U0t-n8BmZFXLjersbuoiSR+f4ggqyFfLu89Lw@mail.gmail.com>
+
+Salve salve irmãos de R,
+
+Estou batendo a cabeça pra acertar um gráfico de barras. Eu gostaria que
+houvesse um grupo de 6 barras (categorias) por visita, ou seja, em cada
+janela de visita houvesse 6 barras. Cada barra de uma cor pra poder fazer a
+legenda correspondente. E as barras precisariam corresponder com as
+frequências das categorias nas visitas. Acho que o problema é que há
+algumas categorias que são zero, mas elas deveriam aparecer no gráfico e na
+legenda mesmo assim. Mas quando eu consigo fazer as frequências, as cores
+ficam ruins e quando eu consigo aproximar as cores as frequências vão
+embora. O mais próximo que consegui foi assim:
+
+#Simulando o banco
+tab <- array(c(0,0,0,1,34,46,0,0,0,2,24,19,0,0,1,7,6,2), c(6,3))
+dimnames(tab) <- list(c("Não informado","Definitivamente
+insatisfeito","Insatisfeito","Nem satisfeito, nem
+insatisfeito","Satisfeito","Definitivamente satisfeito"), c("Visita 2",
+"Visita 3", "Visita 4"))
+names(dimnames(tab)) <- c("Classificacao", "Visitas")
+tab
+df <- epitools::expand.table(tab)
+df
+levels(df$Classificacao)
+prop.table(table(df$Classificacao, df$Visitas),2)
+
+# O grafico
+ramp <- colorRampPalette(c("red","green"))
+
+library(tidyverse)
+ggplot(df,
+       aes(x = Classificacao)) +
+  facet_grid(cols = vars(Visitas)) +
+  geom_bar(aes(y = after_stat(prop),
+               fill = Classificacao,
+               group = 1)) +
+  scale_y_continuous(labels = scales::percent) +
+  labs(y = "Percentual da satisfação", x = "", fill = "Satisfação") +  #
+  scale_x_discrete(drop = FALSE) +
+  scale_fill_discrete(drop = FALSE) +
+  scale_fill_manual(values = ramp(length(levels(df$Classificacao)))) #
+
+Abraço forte e que a força esteja sempre com voces.
+
+Pedro Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240521/dbe37977/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Tue May 21 17:36:58 2024
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Tue, 21 May 2024 17:36:58 -0300
+Subject: [R-br] 
+	=?utf-8?q?ggplot2_geom=5Fbar=28=29_argumento_fill_n=C3=A3?=
+	=?utf-8?q?o_retorna_legendau?=
+In-Reply-To: <CAFfGvyJLot3-9U0t-n8BmZFXLjersbuoiSR+f4ggqyFfLu89Lw@mail.gmail.com>
+References: <CAFfGvyJLot3-9U0t-n8BmZFXLjersbuoiSR+f4ggqyFfLu89Lw@mail.gmail.com>
+Message-ID: <CAFfGvyKC+d0qw-PBs90RMZLG638fd8gdTvqqcsFgPCQeKswuBg@mail.gmail.com>
+
+Turminha,
+
+Só pra ficar mais fácil de entender, se fosse no graphics, ficaria mais ou
+menos assim:
+barplot(prop.table(tab,2),
+        ylim = c(0,1),
+        beside = T,
+        legend.text = c("Não informado","Definitivamente
+insatisfeito","Insatisfeito","Nem satisfeito, nem
+insatisfeito","Satisfeito","Definitivamente satisfeito"),
+        col = ramp(6),
+        args.legend = list(fill = ramp(6), x = "top", bty = "n", inset =
+-.15, xpd = NA, ncol = 2))
+
+Pedro Brasil
+
+
+Em ter., 21 de mai. de 2024 às 17:06, Pedro Emmanuel Alvarenga Americano do
+Brasil <emmanuel.brasil em gmail.com> escreveu:
+
+> Salve salve irmãos de R,
+>
+> Estou batendo a cabeça pra acertar um gráfico de barras. Eu gostaria que
+> houvesse um grupo de 6 barras (categorias) por visita, ou seja, em cada
+> janela de visita houvesse 6 barras. Cada barra de uma cor pra poder fazer a
+> legenda correspondente. E as barras precisariam corresponder com as
+> frequências das categorias nas visitas. Acho que o problema é que há
+> algumas categorias que são zero, mas elas deveriam aparecer no gráfico e na
+> legenda mesmo assim. Mas quando eu consigo fazer as frequências, as cores
+> ficam ruins e quando eu consigo aproximar as cores as frequências vão
+> embora. O mais próximo que consegui foi assim:
+>
+> #Simulando o banco
+> tab <- array(c(0,0,0,1,34,46,0,0,0,2,24,19,0,0,1,7,6,2), c(6,3))
+> dimnames(tab) <- list(c("Não informado","Definitivamente
+> insatisfeito","Insatisfeito","Nem satisfeito, nem
+> insatisfeito","Satisfeito","Definitivamente satisfeito"), c("Visita 2",
+> "Visita 3", "Visita 4"))
+> names(dimnames(tab)) <- c("Classificacao", "Visitas")
+> tab
+> df <- epitools::expand.table(tab)
+> df
+> levels(df$Classificacao)
+> prop.table(table(df$Classificacao, df$Visitas),2)
+>
+> # O grafico
+> ramp <- colorRampPalette(c("red","green"))
+>
+> library(tidyverse)
+> ggplot(df,
+>        aes(x = Classificacao)) +
+>   facet_grid(cols = vars(Visitas)) +
+>   geom_bar(aes(y = after_stat(prop),
+>                fill = Classificacao,
+>                group = 1)) +
+>   scale_y_continuous(labels = scales::percent) +
+>   labs(y = "Percentual da satisfação", x = "", fill = "Satisfação") +  #
+>   scale_x_discrete(drop = FALSE) +
+>   scale_fill_discrete(drop = FALSE) +
+>   scale_fill_manual(values = ramp(length(levels(df$Classificacao)))) #
+>
+> Abraço forte e que a força esteja sempre com voces.
+>
+> Pedro Brasil
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240521/8384ba20/attachment.htm>
+
+From cidedson em gmail.com  Wed May 22 08:19:18 2024
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Wed, 22 May 2024 08:19:18 -0300
+Subject: [R-br] 
+	=?utf-8?q?ggplot2_geom=5Fbar=28=29_argumento_fill_n=C3=A3?=
+	=?utf-8?q?o_retorna_legendau?=
+In-Reply-To: <CAFfGvyKC+d0qw-PBs90RMZLG638fd8gdTvqqcsFgPCQeKswuBg@mail.gmail.com>
+References: <CAFfGvyJLot3-9U0t-n8BmZFXLjersbuoiSR+f4ggqyFfLu89Lw@mail.gmail.com>
+ <CAFfGvyKC+d0qw-PBs90RMZLG638fd8gdTvqqcsFgPCQeKswuBg@mail.gmail.com>
+Message-ID: <CAAmR27_NvqYQ8eJ2ruMirYJAesa67dLzNcbYZdym9b2cG2HHFA@mail.gmail.com>
+
+dados_prop <- df %>%
+  group_by(Visitas, Classificacao) %>%
+  summarise(count = n()) %>%
+  mutate(prop = count / sum(count)) %>% as.data.frame() %>% droplevels()
+
+ggplot(dados_prop, aes(x = Visitas, y = prop, fill = Classificacao)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = ramp(4)) +
+  labs(x = "Visitas", y = "Proporção", fill = "Classificação") +
+  scale_y_continuous(labels = scales::percent, limits = c(0,1)) +
+  theme_minimal()
+
+
+
+ggplot(dados_prop, aes(x = Visitas, y = prop, fill = Classificacao)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = ramp(4)) +
+  labs(x = "", y = "Proporção", fill = "Classificação") +
+  scale_y_continuous(labels = scales::percent, limits = c(0,1)) +
+  theme_classic()+
+  theme(legend.position = "top")
+
+*Cid Edson Mendonça Póvoas*
+
+*Engenheiro Agrônomo - **Data Scientist*
+*CREA-BA: 051984991-4*
+*Técnico em Segurança do Trabalho *
+*Nº: **0012669/BA*
+*Tel: +55 73 99151-9565*
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em ter., 21 de mai. de 2024 às 17:37, Pedro Emmanuel Alvarenga Americano do
+Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Turminha,
+>
+> Só pra ficar mais fácil de entender, se fosse no graphics, ficaria mais ou
+> menos assim:
+> barplot(prop.table(tab,2),
+>         ylim = c(0,1),
+>         beside = T,
+>         legend.text = c("Não informado","Definitivamente
+> insatisfeito","Insatisfeito","Nem satisfeito, nem
+> insatisfeito","Satisfeito","Definitivamente satisfeito"),
+>         col = ramp(6),
+>         args.legend = list(fill = ramp(6), x = "top", bty = "n", inset =
+> -.15, xpd = NA, ncol = 2))
+>
+> Pedro Brasil
+>
+>
+> Em ter., 21 de mai. de 2024 às 17:06, Pedro Emmanuel Alvarenga Americano
+> do Brasil <emmanuel.brasil em gmail.com> escreveu:
+>
+>> Salve salve irmãos de R,
+>>
+>> Estou batendo a cabeça pra acertar um gráfico de barras. Eu gostaria que
+>> houvesse um grupo de 6 barras (categorias) por visita, ou seja, em cada
+>> janela de visita houvesse 6 barras. Cada barra de uma cor pra poder fazer a
+>> legenda correspondente. E as barras precisariam corresponder com as
+>> frequências das categorias nas visitas. Acho que o problema é que há
+>> algumas categorias que são zero, mas elas deveriam aparecer no gráfico e na
+>> legenda mesmo assim. Mas quando eu consigo fazer as frequências, as cores
+>> ficam ruins e quando eu consigo aproximar as cores as frequências vão
+>> embora. O mais próximo que consegui foi assim:
+>>
+>> #Simulando o banco
+>> tab <- array(c(0,0,0,1,34,46,0,0,0,2,24,19,0,0,1,7,6,2), c(6,3))
+>> dimnames(tab) <- list(c("Não informado","Definitivamente
+>> insatisfeito","Insatisfeito","Nem satisfeito, nem
+>> insatisfeito","Satisfeito","Definitivamente satisfeito"), c("Visita 2",
+>> "Visita 3", "Visita 4"))
+>> names(dimnames(tab)) <- c("Classificacao", "Visitas")
+>> tab
+>> df <- epitools::expand.table(tab)
+>> df
+>> levels(df$Classificacao)
+>> prop.table(table(df$Classificacao, df$Visitas),2)
+>>
+>> # O grafico
+>> ramp <- colorRampPalette(c("red","green"))
+>>
+>> library(tidyverse)
+>> ggplot(df,
+>>        aes(x = Classificacao)) +
+>>   facet_grid(cols = vars(Visitas)) +
+>>   geom_bar(aes(y = after_stat(prop),
+>>                fill = Classificacao,
+>>                group = 1)) +
+>>   scale_y_continuous(labels = scales::percent) +
+>>   labs(y = "Percentual da satisfação", x = "", fill = "Satisfação") +  #
+>>   scale_x_discrete(drop = FALSE) +
+>>   scale_fill_discrete(drop = FALSE) +
+>>   scale_fill_manual(values = ramp(length(levels(df$Classificacao)))) #
+>>
+>> Abraço forte e que a força esteja sempre com voces.
+>>
+>> Pedro Brasil
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240522/4aacf576/attachment.htm>
+
+From cidedson em gmail.com  Wed May 22 08:33:34 2024
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Wed, 22 May 2024 08:33:34 -0300
+Subject: [R-br] 
+	=?utf-8?q?ggplot2_geom=5Fbar=28=29_argumento_fill_n=C3=A3?=
+	=?utf-8?q?o_retorna_legendau?=
+In-Reply-To: <CAFfGvyKC+d0qw-PBs90RMZLG638fd8gdTvqqcsFgPCQeKswuBg@mail.gmail.com>
+References: <CAFfGvyJLot3-9U0t-n8BmZFXLjersbuoiSR+f4ggqyFfLu89Lw@mail.gmail.com>
+ <CAFfGvyKC+d0qw-PBs90RMZLG638fd8gdTvqqcsFgPCQeKswuBg@mail.gmail.com>
+Message-ID: <CAAmR278_d3rjg2Hqq6m=5qCdNpCn7feTGiJ=9UsETGcqe51X4g@mail.gmail.com>
+
+Acredito que assim fica melhor
+
+
+dados_prop <- df %>%
+  count(Visitas, Classificacao) %>%
+  complete(Visitas, Classificacao, fill = list(n = 0)) %>%
+  group_by(Visitas) %>%
+  mutate(prop = n / sum(n))
+
+ggplot(dados_prop, aes(x = Visitas, y = prop, fill = Classificacao)) +
+  geom_bar(stat = "identity", position = position_dodge(), color="black") +
+  scale_y_continuous(limits = c(0, 1), labels = scales::percent_format()) +
+  labs(
+    x = "",
+    y = "Proporção",
+    fill = "Classificação"
+  ) +
+  scale_fill_manual(
+    values = ramp(6),
+    labels = c("Não informado", "Definitivamente insatisfeito",
+"Insatisfeito",
+               "Nem satisfeito, nem insatisfeito", "Satisfeito",
+"Definitivamente satisfeito")
+  ) +
+  theme_classic() +
+  theme(legend.position = "top")
+
+*Cid Edson Mendonça Póvoas*
+
+*Engenheiro Agrônomo - **Data Scientist*
+*CREA-BA: 051984991-4*
+*Técnico em Segurança do Trabalho *
+*Nº: **0012669/BA*
+*Tel: +55 73 99151-9565*
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em ter., 21 de mai. de 2024 às 17:37, Pedro Emmanuel Alvarenga Americano do
+Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Turminha,
+>
+> Só pra ficar mais fácil de entender, se fosse no graphics, ficaria mais ou
+> menos assim:
+> barplot(prop.table(tab,2),
+>         ylim = c(0,1),
+>         beside = T,
+>         legend.text = c("Não informado","Definitivamente
+> insatisfeito","Insatisfeito","Nem satisfeito, nem
+> insatisfeito","Satisfeito","Definitivamente satisfeito"),
+>         col = ramp(6),
+>         args.legend = list(fill = ramp(6), x = "top", bty = "n", inset =
+> -.15, xpd = NA, ncol = 2))
+>
+> Pedro Brasil
+>
+>
+> Em ter., 21 de mai. de 2024 às 17:06, Pedro Emmanuel Alvarenga Americano
+> do Brasil <emmanuel.brasil em gmail.com> escreveu:
+>
+>> Salve salve irmãos de R,
+>>
+>> Estou batendo a cabeça pra acertar um gráfico de barras. Eu gostaria que
+>> houvesse um grupo de 6 barras (categorias) por visita, ou seja, em cada
+>> janela de visita houvesse 6 barras. Cada barra de uma cor pra poder fazer a
+>> legenda correspondente. E as barras precisariam corresponder com as
+>> frequências das categorias nas visitas. Acho que o problema é que há
+>> algumas categorias que são zero, mas elas deveriam aparecer no gráfico e na
+>> legenda mesmo assim. Mas quando eu consigo fazer as frequências, as cores
+>> ficam ruins e quando eu consigo aproximar as cores as frequências vão
+>> embora. O mais próximo que consegui foi assim:
+>>
+>> #Simulando o banco
+>> tab <- array(c(0,0,0,1,34,46,0,0,0,2,24,19,0,0,1,7,6,2), c(6,3))
+>> dimnames(tab) <- list(c("Não informado","Definitivamente
+>> insatisfeito","Insatisfeito","Nem satisfeito, nem
+>> insatisfeito","Satisfeito","Definitivamente satisfeito"), c("Visita 2",
+>> "Visita 3", "Visita 4"))
+>> names(dimnames(tab)) <- c("Classificacao", "Visitas")
+>> tab
+>> df <- epitools::expand.table(tab)
+>> df
+>> levels(df$Classificacao)
+>> prop.table(table(df$Classificacao, df$Visitas),2)
+>>
+>> # O grafico
+>> ramp <- colorRampPalette(c("red","green"))
+>>
+>> library(tidyverse)
+>> ggplot(df,
+>>        aes(x = Classificacao)) +
+>>   facet_grid(cols = vars(Visitas)) +
+>>   geom_bar(aes(y = after_stat(prop),
+>>                fill = Classificacao,
+>>                group = 1)) +
+>>   scale_y_continuous(labels = scales::percent) +
+>>   labs(y = "Percentual da satisfação", x = "", fill = "Satisfação") +  #
+>>   scale_x_discrete(drop = FALSE) +
+>>   scale_fill_discrete(drop = FALSE) +
+>>   scale_fill_manual(values = ramp(length(levels(df$Classificacao)))) #
+>>
+>> Abraço forte e que a força esteja sempre com voces.
+>>
+>> Pedro Brasil
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240522/c5aea41d/attachment.htm>
+
+From emmanuel.brasil em gmail.com  Wed May 22 10:33:20 2024
+From: emmanuel.brasil em gmail.com (Pedro Emmanuel Alvarenga Americano do Brasil)
+Date: Wed, 22 May 2024 10:33:20 -0300
+Subject: [R-br] 
+	=?utf-8?q?ggplot2_geom=5Fbar=28=29_argumento_fill_n=C3=A3?=
+	=?utf-8?q?o_retorna_legendau?=
+In-Reply-To: <CAAmR278_d3rjg2Hqq6m=5qCdNpCn7feTGiJ=9UsETGcqe51X4g@mail.gmail.com>
+References: <CAFfGvyJLot3-9U0t-n8BmZFXLjersbuoiSR+f4ggqyFfLu89Lw@mail.gmail.com>
+ <CAFfGvyKC+d0qw-PBs90RMZLG638fd8gdTvqqcsFgPCQeKswuBg@mail.gmail.com>
+ <CAAmR278_d3rjg2Hqq6m=5qCdNpCn7feTGiJ=9UsETGcqe51X4g@mail.gmail.com>
+Message-ID: <CAFfGvy+72JW9YrQnPCv9ojR2eNNm6NAW0br0ZfQR1Xhjn89J=w@mail.gmail.com>
+
+Salve Turminha,
+
+Valeu pela ajuda. Entendi que a questão não era exatamente no grafico mas
+nos dados que estavam entrando no grafico. Depois de olhar o
+primeiro codigo do CID, eu cheguei a quase a mesma solução, sendo a
+diferença na definição dos dados, assim:
+
+# o .drop = FALSE fez a diferença porque manteve as categorias com contagem
+zero
+dados_prop <- df %>%
+  group_by(Visitas, Classificacao, .drop = FALSE) %>%
+  summarise(count = n()) %>%
+  mutate(prop = count / sum(count))
+
+ggplot(dados_prop, aes(x = Visitas, y = prop, fill = Classificacao)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  scale_fill_manual(values = ramp(6)) +
+  labs(x = "", y = "Proporção", fill = "Classificação") +
+  scale_y_continuous(labels = scales::percent, limits = c(0,1)) +
+  theme_classic()+
+  theme(legend.position = "top")
+
+Valeu valeu...
+que aforça esteja sempre com voces.
+
+Pedro Brasil
+
+
+Em qua., 22 de mai. de 2024 às 08:33, Cid Póvoas <cidedson em gmail.com>
+escreveu:
+
+>
+> Acredito que assim fica melhor
+>
+>
+> dados_prop <- df %>%
+>   count(Visitas, Classificacao) %>%
+>   complete(Visitas, Classificacao, fill = list(n = 0)) %>%
+>   group_by(Visitas) %>%
+>   mutate(prop = n / sum(n))
+>
+> ggplot(dados_prop, aes(x = Visitas, y = prop, fill = Classificacao)) +
+>   geom_bar(stat = "identity", position = position_dodge(), color="black") +
+>   scale_y_continuous(limits = c(0, 1), labels = scales::percent_format()) +
+>   labs(
+>     x = "",
+>     y = "Proporção",
+>     fill = "Classificação"
+>   ) +
+>   scale_fill_manual(
+>     values = ramp(6),
+>     labels = c("Não informado", "Definitivamente insatisfeito",
+> "Insatisfeito",
+>                "Nem satisfeito, nem insatisfeito", "Satisfeito",
+> "Definitivamente satisfeito")
+>   ) +
+>   theme_classic() +
+>   theme(legend.position = "top")
+>
+> *Cid Edson Mendonça Póvoas*
+>
+> *Engenheiro Agrônomo - **Data Scientist*
+> *CREA-BA: 051984991-4*
+> *Técnico em Segurança do Trabalho *
+> *Nº: **0012669/BA*
+> *Tel: +55 73 99151-9565*
+> *Lattes : *http://lattes.cnpq.br/2303498368142537
+> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+> *Whatsapp :* https://wa.me/5573991519565
+>
+>
+> Em ter., 21 de mai. de 2024 às 17:37, Pedro Emmanuel Alvarenga Americano
+> do Brasil por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Turminha,
+>>
+>> Só pra ficar mais fácil de entender, se fosse no graphics, ficaria mais
+>> ou menos assim:
+>> barplot(prop.table(tab,2),
+>>         ylim = c(0,1),
+>>         beside = T,
+>>         legend.text = c("Não informado","Definitivamente
+>> insatisfeito","Insatisfeito","Nem satisfeito, nem
+>> insatisfeito","Satisfeito","Definitivamente satisfeito"),
+>>         col = ramp(6),
+>>         args.legend = list(fill = ramp(6), x = "top", bty = "n", inset =
+>> -.15, xpd = NA, ncol = 2))
+>>
+>> Pedro Brasil
+>>
+>>
+>> Em ter., 21 de mai. de 2024 às 17:06, Pedro Emmanuel Alvarenga Americano
+>> do Brasil <emmanuel.brasil em gmail.com> escreveu:
+>>
+>>> Salve salve irmãos de R,
+>>>
+>>> Estou batendo a cabeça pra acertar um gráfico de barras. Eu gostaria que
+>>> houvesse um grupo de 6 barras (categorias) por visita, ou seja, em cada
+>>> janela de visita houvesse 6 barras. Cada barra de uma cor pra poder fazer a
+>>> legenda correspondente. E as barras precisariam corresponder com as
+>>> frequências das categorias nas visitas. Acho que o problema é que há
+>>> algumas categorias que são zero, mas elas deveriam aparecer no gráfico e na
+>>> legenda mesmo assim. Mas quando eu consigo fazer as frequências, as cores
+>>> ficam ruins e quando eu consigo aproximar as cores as frequências vão
+>>> embora. O mais próximo que consegui foi assim:
+>>>
+>>> #Simulando o banco
+>>> tab <- array(c(0,0,0,1,34,46,0,0,0,2,24,19,0,0,1,7,6,2), c(6,3))
+>>> dimnames(tab) <- list(c("Não informado","Definitivamente
+>>> insatisfeito","Insatisfeito","Nem satisfeito, nem
+>>> insatisfeito","Satisfeito","Definitivamente satisfeito"), c("Visita 2",
+>>> "Visita 3", "Visita 4"))
+>>> names(dimnames(tab)) <- c("Classificacao", "Visitas")
+>>> tab
+>>> df <- epitools::expand.table(tab)
+>>> df
+>>> levels(df$Classificacao)
+>>> prop.table(table(df$Classificacao, df$Visitas),2)
+>>>
+>>> # O grafico
+>>> ramp <- colorRampPalette(c("red","green"))
+>>>
+>>> library(tidyverse)
+>>> ggplot(df,
+>>>        aes(x = Classificacao)) +
+>>>   facet_grid(cols = vars(Visitas)) +
+>>>   geom_bar(aes(y = after_stat(prop),
+>>>                fill = Classificacao,
+>>>                group = 1)) +
+>>>   scale_y_continuous(labels = scales::percent) +
+>>>   labs(y = "Percentual da satisfação", x = "", fill = "Satisfação") +  #
+>>>   scale_x_discrete(drop = FALSE) +
+>>>   scale_fill_discrete(drop = FALSE) +
+>>>   scale_fill_manual(values = ramp(length(levels(df$Classificacao)))) #
+>>>
+>>> Abraço forte e que a força esteja sempre com voces.
+>>>
+>>> Pedro Brasil
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20240522/b3cedbf0/attachment.htm>
+

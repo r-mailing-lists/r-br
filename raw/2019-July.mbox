@@ -1,0 +1,464 @@
+From felipe.e.barletta em gmail.com  Mon Jul  1 10:28:50 2019
+From: felipe.e.barletta em gmail.com (Felipe Barletta)
+Date: Mon, 1 Jul 2019 10:28:50 -0300
+Subject: [R-br] 
+ =?utf-8?q?Modelos_Mistos_-_Distribui=C3=A7=C3=A3o_Poisson?=
+In-Reply-To: <1168526596.1227915.1561499637628@mail.yahoo.com>
+References: <1168526596.1227915.1561499637628.ref@mail.yahoo.com>
+ <1168526596.1227915.1561499637628@mail.yahoo.com>
+Message-ID: <CAJz4ZjFOCdDL1yphkukL9H_ZnzFbA25EFeMPgWss58iph2vTtA@mail.gmail.com>
+
+glmer(Y ~ x + (bo1|b11),
+            data = amostra,family=poisson)
+
+Em ter, 25 de jun de 2019 às 18:54, Andre Oliveira por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá,
+> alguém saberia dizer se a lme4 tem a opção do parâmetro family = poisson?
+> Caso negativo, qual pacote teria esta opção?
+>
+> Grato
+> André
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190701/dc6a2891/attachment.html>
+
+From ecacarva em gmail.com  Mon Jul  1 15:21:19 2019
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Mon, 1 Jul 2019 15:21:19 -0300
+Subject: [R-br] Processamento paralelo x pacote
+Message-ID: <CAH8E6UvLarAgutZL=7mn5fm1h5Kn5JshuTa_fnZpoBa_47mHHw@mail.gmail.com>
+
+*Estou criando um pacote e um das funções precisa  usar processamento
+paralelo:*
+
+*Então criei  a função:*
+
+*create.cluster <-function()*
+{
+  # Calculate the number of cores
+  no_cores <-parallel::detectCores() - 1
+  # Initiate cluster
+  cl <- parallel::makeCluster(no_cores)
+  return(cl)
+} # create.cluster <-function()
+
+
+*================================================ no mei código está:*
+cl <- create.cluster()
+Comando
+parallel::stopCluster(cl);
+
+*A execução vai bem, mas quando vou preparar meu pacote " R CMD check
+--as-cran bnpa" dá erro:*
+*  Error in .check_ncores(length(names)) : 3 simultaneous processes spawned*
+*Sei que o limite permitido de cores para pacotes por motivos de
+performance é 2 e meu note tem 4.*
+*Alguem pode ajudar como resolver isso?*
+
+
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190701/8355ba8e/attachment.html>
+
+From amikobh em gmail.com  Tue Jul  2 14:59:42 2019
+From: amikobh em gmail.com (Elerson)
+Date: Tue, 2 Jul 2019 14:59:42 -0300
+Subject: [R-br] Criar colunas
+Message-ID: <1949d0b2-bc09-964f-5d21-e234163c2655@gmail.com>
+
+Prezados:
+
+Trabalho um banco de dados com mais de 10000 linhas, representado pelo 
+exemplo abaixo.
+
+*PROCESSO* 	*DATA_DISTRIBUICAO* 	*NOME_PARTE* 	*DATA_CRIME* 
+*DATA_DENUNCIA* 	*ENQUADRAMENTO*
+180022121 	02/01/2018 	A_NONIMATO 	02/01/2018 	02/01/2018 	ART.33 
+PAR.CAPUT - 11.343/06
+180022121 	02/01/2018 	B_NONIMATO 	02/01/2018 	02/01/2018 	ART.33 
+PAR.CAPUT - 11.343/06
+180022105 	02/01/2018 	C_NONIMATO 	01/01/2018 	02/01/2018 	ART.35 - 
+11343/06
+180022105 	02/01/2018 	C_NONIMATO 	01/01/2018 	02/01/2018 	ART.33 - 
+11343/06
+180022097 	02/01/2018 	D_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 PAR. 
+4º INC. II E IV - CPB
+180022097 	02/01/2018 	E_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 
+PAR.4º INC.II E IV - CPB
+180022097 	02/01/2018 	F_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 PAR. 
+4º INC. II E IV - CPB
+180022501 	03/01/2018 	G_NONIMATO 	02/01/2018 	03/01/2018 	ART.157 PAR.2 
+INC.I E II - CP
+180022501 	03/01/2018 	G_NONIMATO 	02/01/2018 	03/01/2018 	ART.14 - CP
+
+Hipóteses:
+
+a) mesmo PROCESSO, NOME_PARTE diferentes, ENQUADRAMENTO igual (linhas 1 e 2)
+
+b) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 3 e 4)
+
+c) mesmo PROCESSO, mesmo NOME_PARTE, ENQUADRAMENTO diferentes (linhas 8 e 9)
+
+Minha questão se refere à hipótese c: preciso criar um coluna 
+(enquadramento2) para transferir o art. 14 transformando o caso em 
+apenas uma linha… sem que se mexa na hipótese b. Em todo o banco sempre 
+estará escrito ART.14 – CP.
+
+Para ficar assim:
+
+*PROCESSO* 	*DATA_DISTRIBUICAO* 	*NOME_PARTE* 	*DATA_CRIME* 
+*DATA_DENUNCIA* 	*ENQUADRAMENTO* 	*ENQUADRAMENTO2*
+180022121 	02/01/2018 	A_NONIMATO 	02/01/2018 	02/01/2018 	ART.33 
+PAR.CAPUT - 11.343/06 	
+180022121 	02/01/2018 	B_NONIMATO 	02/01/2018 	02/01/2018 	ART.33 
+PAR.CAPUT - 11.343/06 	
+180022105 	02/01/2018 	C_NONIMATO 	01/01/2018 	02/01/2018 	ART.35 - 
+11343/06 	
+180022105 	02/01/2018 	C_NONIMATO 	01/01/2018 	02/01/2018 	ART.33 - 
+11343/06 	
+180022097 	02/01/2018 	D_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 PAR. 
+4º INC. II E IV - CPB 	
+180022097 	02/01/2018 	E_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 
+PAR.4º INC.II E IV - CPB 	
+180022097 	02/01/2018 	F_NONIMATO 	01/01/2018 	02/01/2018 	ART.155 PAR. 
+4º INC. II E IV - CPB 	
+180022501 	03/01/2018 	G_NONIMATO 	02/01/2018 	03/01/2018 	ART.157 PAR.2 
+INC.I E II - CP 	ART.14 - CP
+
+Obrigado.
+
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190702/e40c299a/attachment.html>
+
+From caiocagronomo em gmail.com  Tue Jul  2 15:26:40 2019
+From: caiocagronomo em gmail.com (caiocagronomo em gmail.com)
+Date: Tue,  2 Jul 2019 13:26:40 -0500 (CDT)
+Subject: [R-br]  Processamento paralelo x pacote
+Message-ID: <615451480.1011771.1562092000142.JavaMail.administrator@n4.nabble.com>
+
+Muito provavelmente seu processador tem quatro processadores lógicos, mas somente dois núcleos. Acredito que deve ser por conta disso... Meu note tbm tem 4 cores, mas somete dois são usáveis...
+
+
+<quote author='R-br mailing list'>
+*Estou criando um pacote e um das funções precisa  usar processamento
+paralelo:*
+
+*Então criei  a função:*
+
+*create.cluster <-function()*
+{
+  # Calculate the number of cores
+  no_cores <-parallel::detectCores() - 1
+  # Initiate cluster
+  cl <- parallel::makeCluster(no_cores)
+  return(cl)
+} # create.cluster <-function()
+
+
+*================================================ no mei código está:*
+cl <- create.cluster()
+Comando
+parallel::stopCluster(cl);
+
+*A execução vai bem, mas quando vou preparar meu pacote " R CMD check
+--as-cran bnpa" dá erro:*
+*  Error in .check_ncores(length(names)) : 3 simultaneous processes spawned*
+*Sei que o limite permitido de cores para pacotes por motivos de
+performance é 2 e meu note tem 4.*
+*Alguem pode ajudar como resolver isso?*
+
+
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo
+m�nimo reproduz�vel.
+</quote>
+Quoted from: 
+http://r-br.2285057.n4.nabble.com/R-br-Processamento-paralelo-x-pacote-tp4668581.html
+
+
+_____________________________________
+Sent from http://r-br.2285057.n4.nabble.com
+
+
+From alexandre.santos em cas.ifmt.edu.br  Wed Jul 17 18:39:54 2019
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Wed, 17 Jul 2019 17:39:54 -0400
+Subject: [R-br] =?utf-8?q?Problema_para_criar_um_GeoTIFF_a_partir_da_divis?=
+ =?utf-8?q?=C3=A3o_um_raster_RGB?=
+Message-ID: <1dc84c54-8b21-67f2-8db7-10bbdc4d5f11@cas.ifmt.edu.br>
+
+Prezados Membros,
+
+Eu gostaria de dividir um raster RGB em várias partes e salvar cada 
+imagem no formato GeoTiff, mas no nome do arquivo eu preciso da contagem 
+de pontos (pts) dentro de cada divisão. Meu código funciona 
+perfeitamente quando eu uso uma única camada do raster, mas com o objeto 
+stack ou brick não funciona. Eu gostaria de ter como saída nove arquivos 
+GeoTiff (eu dividi o raster original em 3 partes iguais) com os nomes: 
+SplitRas1points0.tif ... SplitRas9points0.tif
+
+Segue CRM para ilustrar:
+
+*#Pacotes*
+
+library(raster)
+
+library(sp)
+
+library(rgdal)
+
+*## Simula os rasters *
+
+r <- raster(nc=30, nr=30)
+
+r <- setValues(r, round(runif(ncell(r))* 255))
+
+g <- raster(nc=30, nr=30)
+
+g <- setValues(r, round(runif(ncell(r))* 255))
+
+b <- raster(nc=30, nr=30)
+
+b <- setValues(r, round(runif(ncell(r))* 255))
+
+rgb<-stack(r,g,b)
+
+plotRGB(rgb,r = 1, g = 2, b = 3)
+
+*##Seleciono algumas coordenadas de interesse*
+
+xd<- c(-24.99270,45.12069,99.40321,73.64419)
+
+yd<- c(-45.435267,-88.369745,-7.086949,44.174530)
+
+pts <- data.frame(xd,yd)
+
+pts_s<- SpatialPoints(pts)
+
+points(pts_s, col="black", pch=16)
+
+*#Particiono o raster em três partes iguais *
+
+SplitRas <- function(raster,ppside,save,plot){
+
+h<- ceiling(ncol(raster)/ppside)
+
+v<- ceiling(nrow(raster)/ppside)
+
+agg<- aggregate(raster,fact=c(h,v))
+
+agg[]<- 1:ncell(agg)
+
+agg_poly <- rasterToPolygons(agg)
+
+names(agg_poly) <- "polis"
+
+r_list <- list()
+
+for(i in 1:ncell(agg)){
+
+e1<- extent(agg_poly[agg_poly$polis==i,])
+
+r_list[[i]] <- crop(raster,e1)
+
+}
+
+if(save==T){
+
+for(i in 1:length(r_list)){
+
+writeRaster(r_list[[i]],filename=paste("SplitRas",i,sep=""),
+
+format="GTiff",datatype="FLT4S",overwrite=TRUE)
+
+}
+
+}
+
+if(plot==T){
+
+par(mfrow=c(ppside,ppside))
+
+for(i in 1:length(r_list)){
+
+plot(r_list[[i]],axes=F,legend=F,bty="n",box=FALSE)
+
+}
+
+}
+
+return(r_list)
+
+}
+
+splitRBG<-SplitRas(raster=rgb,ppside=3,save=FALSE,plot=FALSE)
+
+*Até aqui tudo bem eu tenho 9 rasters!!!!*
+
+splitRBG
+
+**
+
+[[1]]
+
+class: RasterBrick
+
+dimensions : 10, 10, 100, 3(nrow, ncol, ncell, nlayers)
+
+resolution : 12, 6(x, y)
+
+extent: -180, -60, 30, 90(xmin, xmax, ymin, ymax)
+
+crs: +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0
+
+source: memory
+
+names: layer.1, layer.2, layer.3
+
+min values :0,0,2
+
+max values :249,253,252
+
+...
+
+[[9]]
+
+class: RasterBrick
+
+dimensions : 10, 10, 100, 3(nrow, ncol, ncell, nlayers)
+
+resolution : 12, 6(x, y)
+
+extent: 60, 180, -90, -30(xmin, xmax, ymin, ymax)
+
+crs: +proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0
+
+source: memory
+
+names: layer.1, layer.2, layer.3
+
+min values :3,3,3
+
+max values :254,251,248
+
+*## Faço uma função para contar os pontos, onde zero também entra*
+
+res<-NULL
+
+for(i in 1:3){
+
+pointcount = function(r, pts){
+
+r2 = r
+
+r2[] = 0
+
+counts = table(cellFromXY(r,pts))
+
+r2[as.numeric(names(counts))] = counts
+
+return(r2)
+
+}
+
+r2 = pointcount(splitRBG[i], pts_s)
+
+res<-rbind(res,c(r2))
+
+}
+
+#
+
+*Primeiro problema e eu tenho a seguinte saída, ou seja, não realiza a 
+contagem em rasters empilhados:*
+
+Error in (function (classes, fdef, mtable):
+
+unable to find an inherited method for function ‘cellFromXY’ for 
+signature ‘"list"’
+
+*# Coloco o número de pontos dentro de cada raster no nome do arquivo de 
+saída (res [i])*
+
+list2 <- list()
+
+for(i in 1:3){
+
+rx <- raster(paste("splitRBG",i,".tif",sep=""))
+
+writeRaster(splitRBG,filename=paste("SplitRas",i,"points",res[i],sep=""),
+
+format="GTiff",datatype="FLT4S",overwrite=TRUE)
+
+}
+
+#
+
+*Segundo problema, meu objeto splitRBG não é reconhecido como RasterLayer:*
+
+Error in .rasterObjectFromFile(x, band = band, objecttype = "RasterLayer",:
+
+Cannot create a RasterLayer object from this file. (file does not exist)
+
+*Alguém poderia dar um help?*
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190717/ace51650/attachment.html>
+

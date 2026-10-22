@@ -1,0 +1,799 @@
+From samukajm em yahoo.com.br  Tue Apr  5 15:37:11 2022
+From: samukajm em yahoo.com.br (Samuel Carvalho)
+Date: Tue, 5 Apr 2022 18:37:11 +0000 (UTC)
+Subject: [R-br] texto formatado em tabela
+References: <1064409059.950553.1649183831762.ref@mail.yahoo.com>
+Message-ID: <1064409059.950553.1649183831762@mail.yahoo.com>
+
+Olá pessoal,Gostaria de uma ajuda de vocês para criar uma variável que tem algumas regras de formatação. No caso são nomes científicos de plantas.Envio o database bryophytes como exemplo. Nesta nova variável, as colunas Genus e Species são em itálico, a coluna Var normal e a coluna Intraspecific em itálico.Aqui vai um exemplo de uma tentativa sem sucesso:
+library(tidyverse); library(kableExtra);
+data("bryophytes")bryophytes %>%  filter(!is.na(Intraspecific)) %>%  kbl() %>%  kable_styling() %>%  column_spec(c(2,3,5), italic = T) %>%  mutate(Scientific.name = paste(Genus, Species, Var, Intraspecific)) # Aqui esta o erro
+Obrigado.At.te.
+ 
+====================================Samuel P. C. Carvalho
+Engº Florestal [UFLA]Mestre em Ciências Florestais [UFLA]Doutor em Recursos Florestais [ESALQ/USP]=============================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220405/cb4290df/attachment.htm>
+
+From cidedson em gmail.com  Tue Apr  5 18:25:35 2022
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Tue, 5 Apr 2022 18:25:35 -0300
+Subject: [R-br] texto formatado em tabela
+In-Reply-To: <1064409059.950553.1649183831762@mail.yahoo.com>
+References: <1064409059.950553.1649183831762.ref@mail.yahoo.com>
+ <1064409059.950553.1649183831762@mail.yahoo.com>
+Message-ID: <CAAmR27-X6ZODnUiL8GrA0944syvZnevyyp7kqjwJLJ8Vn39fmA@mail.gmail.com>
+
+library(tidyverse); library(kableExtra);library(Taxonstand)
+data("bryophytes")
+
+
+
+bryophytes %>%
+  filter(Intraspecific!="") %>%
+  mutate(Scientific.name = paste(
+                                  paste0("$",Genus,"$$~$"),
+                                  paste0("$",Species,"$$~$"),
+                                  Var,
+                                  paste0("$",Intraspecific,"$$~$",".")))
+%>%
+  kbl(longtable = F, "html",
+      escape = F) %>%
+  kable_styling()
+
+*Cid Edson Mendonça Póvoas*
+
+*AnovAgro <http://www.anovagro.com/>*
+*Engenheiro Agrônomo - **Data Scientist*
+*CREA-BA: 051984991-4*
+*Técnico em Segurança do Trabalho *
+*Nº: **0012669/BA*
+*Tel: +55 73 99151-9565*
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em ter., 5 de abr. de 2022 às 15:37, Samuel Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá pessoal,
+> Gostaria de uma ajuda de vocês para criar uma variável que tem algumas
+> regras de formatação. No caso são nomes científicos de plantas.
+> Envio o database bryophytes como exemplo. Nesta nova variável, as colunas
+> Genus e Species são em itálico, a coluna Var normal e a coluna
+> Intraspecific em itálico.
+> Aqui vai um exemplo de uma tentativa sem sucesso:
+>
+> library(tidyverse); library(kableExtra);
+> data("bryophytes")
+> bryophytes %>%
+>   filter(!is.na(Intraspecific)) %>%
+>   kbl() %>%
+>   kable_styling() %>%
+>   column_spec(c(2,3,5), italic = T) %>%
+>   mutate(Scientific.name = paste(Genus, Species, Var, Intraspecific)) #
+> Aqui esta o erro
+>
+> Obrigado.
+> At.te.
+>
+>
+>
+> *====================================*
+>
+> *Samuel P. C. Carvalho*Engº Florestal [UFLA]
+> Mestre em Ciências Florestais [UFLA]
+> Doutor em Recursos Florestais [ESALQ/USP]
+> =============================================
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220405/f0c768de/attachment.htm>
+
+From samukajm em yahoo.com.br  Thu Apr  7 13:38:02 2022
+From: samukajm em yahoo.com.br (Samuel Carvalho)
+Date: Thu, 7 Apr 2022 16:38:02 +0000 (UTC)
+Subject: [R-br] Digest R-br, volume 135, assunto 1
+In-Reply-To: <mailman.1.1649257201.3048.r-br@listas.c3sl.ufpr.br>
+References: <mailman.1.1649257201.3048.r-br@listas.c3sl.ufpr.br>
+Message-ID: <2106577994.1599560.1649349482400@mail.yahoo.com>
+
+Obrigado Cid Edson,Estou quase lá. Desafio agora é exportar este resultado para MS Word ou Excel.Pela save_kable ele perde a formatação e não há opção de exportar para estes formatos.Outra tentativa sem sucesso foi forçar a transformação em flextable.Obrigado.
+====================================Samuel P. C. Carvalho
+Engº Florestal [UFLA]Mestre em Ciências Florestais [UFLA]Doutor em Recursos Florestais [ESALQ/USP]============================================= 
+
+    Em quarta-feira, 6 de abril de 2022 12:00:52 BRT, <r-br-request em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Enviar submissões para a lista de discussão R-br para 
+    r-br em listas.c3sl.ufpr.br
+
+Para se cadastrar ou descadastrar via WWW, visite o endereço
+    https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+corpo da mensagem para 
+    r-br-request em listas.c3sl.ufpr.br
+
+Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+endereço
+    r-br-owner em listas.c3sl.ufpr.br
+
+Quando responder, por favor edite sua linha Assunto assim ela será
+mais específica que "Re: Contents of R-br digest..."
+
+
+Tópicos de Hoje:
+
+  1. texto formatado em tabela (Samuel Carvalho)
+  2. Re: texto formatado em tabela (Cid Póvoas)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Tue, 5 Apr 2022 18:37:11 +0000 (UTC)
+From: Samuel Carvalho <samukajm em yahoo.com.br>
+To: "r-br em listas.c3sl.ufpr.br" <r-br em listas.c3sl.ufpr.br>
+Subject: [R-br] texto formatado em tabela
+Message-ID: <1064409059.950553.1649183831762 em mail.yahoo.com>
+Content-Type: text/plain; charset="utf-8"
+
+Olá pessoal,Gostaria de uma ajuda de vocês para criar uma variável que tem algumas regras de formatação. No caso são nomes científicos de plantas.Envio o database bryophytes como exemplo. Nesta nova variável, as colunas Genus e Species são em itálico, a coluna Var normal e a coluna Intraspecific em itálico.Aqui vai um exemplo de uma tentativa sem sucesso:
+library(tidyverse); library(kableExtra);
+data("bryophytes")bryophytes %>%  filter(!is.na(Intraspecific)) %>%  kbl() %>%  kable_styling() %>%  column_spec(c(2,3,5), italic = T) %>%  mutate(Scientific.name = paste(Genus, Species, Var, Intraspecific)) # Aqui esta o erro
+Obrigado.At.te.
+ 
+====================================Samuel P. C. Carvalho
+Engº Florestal [UFLA]Mestre em Ciências Florestais [UFLA]Doutor em Recursos Florestais [ESALQ/USP]=============================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220405/cb4290df/attachment-0001.htm>
+
+------------------------------
+
+Message: 2
+Date: Tue, 5 Apr 2022 18:25:35 -0300
+From: Cid Póvoas <cidedson em gmail.com>
+To: a lista Brasileira oficial de discussão do programa R.
+    <r-br em listas.c3sl.ufpr.br>
+Subject: Re: [R-br] texto formatado em tabela
+Message-ID:
+    <CAAmR27-X6ZODnUiL8GrA0944syvZnevyyp7kqjwJLJ8Vn39fmA em mail.gmail.com>
+Content-Type: text/plain; charset="utf-8"
+
+library(tidyverse); library(kableExtra);library(Taxonstand)
+data("bryophytes")
+
+
+
+bryophytes %>%
+  filter(Intraspecific!="") %>%
+  mutate(Scientific.name = paste(
+                                  paste0("$",Genus,"$$~$"),
+                                  paste0("$",Species,"$$~$"),
+                                  Var,
+                                  paste0("$",Intraspecific,"$$~$",".")))
+%>%
+  kbl(longtable = F, "html",
+      escape = F) %>%
+  kable_styling()
+
+*Cid Edson Mendonça Póvoas*
+
+*AnovAgro <http://www.anovagro.com/>*
+*Engenheiro Agrônomo - **Data Scientist*
+*CREA-BA: 051984991-4*
+*Técnico em Segurança do Trabalho *
+*Nº: **0012669/BA*
+*Tel: +55 73 99151-9565*
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em ter., 5 de abr. de 2022 às 15:37, Samuel Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá pessoal,
+> Gostaria de uma ajuda de vocês para criar uma variável que tem algumas
+> regras de formatação. No caso são nomes científicos de plantas.
+> Envio o database bryophytes como exemplo. Nesta nova variável, as colunas
+> Genus e Species são em itálico, a coluna Var normal e a coluna
+> Intraspecific em itálico.
+> Aqui vai um exemplo de uma tentativa sem sucesso:
+>
+> library(tidyverse); library(kableExtra);
+> data("bryophytes")
+> bryophytes %>%
+>  filter(!is.na(Intraspecific)) %>%
+>  kbl() %>%
+>  kable_styling() %>%
+>  column_spec(c(2,3,5), italic = T) %>%
+>  mutate(Scientific.name = paste(Genus, Species, Var, Intraspecific)) #
+> Aqui esta o erro
+>
+> Obrigado.
+> At.te.
+>
+>
+>
+> *====================================*
+>
+> *Samuel P. C. Carvalho*Engº Florestal [UFLA]
+> Mestre em Ciências Florestais [UFLA]
+> Doutor em Recursos Florestais [ESALQ/USP]
+> =============================================
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220405/f0c768de/attachment-0001.htm>
+
+------------------------------
+
+Subject: Legenda do Digest
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+
+
+------------------------------
+
+Fim da Digest R-br, volume 135, assunto 1
+*****************************************
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220407/4d4753c2/attachment.htm>
+
+From cidedson em gmail.com  Thu Apr  7 15:37:31 2022
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Thu, 7 Apr 2022 15:37:31 -0300
+Subject: [R-br] Digest R-br, volume 135, assunto 1
+In-Reply-To: <2106577994.1599560.1649349482400@mail.yahoo.com>
+References: <mailman.1.1649257201.3048.r-br@listas.c3sl.ufpr.br>
+ <2106577994.1599560.1649349482400@mail.yahoo.com>
+Message-ID: <CAAmR27-BTUWFevtkKb2Va9co9HyA=C7Y+jc+rQTdDdhYWOw9zg@mail.gmail.com>
+
+Boa tarde,
+
+Você quer exportar direto do R?
+Utiliza o RStudio?
+Já utilizou o R Markdown?
+
+#### código começa aqui ####
+---
+title: "Samuel P. C. Carvalho"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse); library(kableExtra);library(Taxonstand)
+data("bryophytes")
+
+```
+
+# R Markdown
+
+Este é um documento R Markdown. Markdown é uma sintaxe de formatação
+simples para criar documentos HTML, PDF e MS Word. Para obter mais detalhes
+sobre o uso do R Markdown, consulte <http://rmarkdown.rstudio.com>.
+
+Ao clicar no botão **Knit**, será gerado um documento que inclui tanto o
+conteúdo quanto a saída de qualquer fragmento de código R incorporado no
+documento. Você pode incorporar um pedaço de código R como este:
+
+## Tabela
+
+A Tabela abaixo
+
+```{r tab1,echo=FALSE,include=T,echo=FALSE, warning=FALSE,message=FALSE,
+results = 'asis'}
+bryophytes %>%
+  filter(Intraspecific!="") %>%
+  mutate(Scientific.name = paste(
+                                  paste0("$",Genus,"$$~$"),
+                                  paste0("$",Species,"$$~$"),
+                                  Var,
+                                  paste0("$",Intraspecific,"$$~$")))%>%
+  kbl(escape=T,longtable = T, booktabs = T, "pandoc",
+      caption = "List of bryophytes",
+      col.names = c("Full name","Genus", "Species", "Var", "Intraspecific",
+"Scientific name")) %>%
+ kable_styling(bootstrap_options = c("striped", "hover",
+"condensed"),full_width = F)
+
+```
+
+## Incluindo gráficos
+
+Você também pode incorporar gráficos, por exemplo:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Observe que o parâmetro `echo = FALSE` foi adicionado ao pedaço de código
+para evitar a impressão do código R que gerou o gráfico.
+#### código termina aqui ####
+
+
+Copie todo o código dentro de um novo arquivo .Rmd (*No rstudio vai em File
+-> New File -> R Markdown*) e clique no botão Knit
+
+At.te
+*Cid Edson Mendonça Póvoas*
+
+*AnovAgro <http://www.anovagro.com/>*
+*Engenheiro Agrônomo - **Data Scientist*
+*CREA-BA: 051984991-4*
+*Técnico em Segurança do Trabalho *
+*Nº: **0012669/BA*
+*Tel: +55 73 99151-9565*
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em qui., 7 de abr. de 2022 às 13:38, Samuel Carvalho por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Obrigado Cid Edson,
+> Estou quase lá. Desafio agora é exportar este resultado para MS Word ou
+> Excel.
+> Pela save_kable ele perde a formatação e não há opção de exportar para
+> estes formatos.
+> Outra tentativa sem sucesso foi forçar a transformação em flextable.
+> Obrigado.
+>
+> *====================================*
+>
+> *Samuel P. C. Carvalho*Engº Florestal [UFLA]
+> Mestre em Ciências Florestais [UFLA]
+> Doutor em Recursos Florestais [ESALQ/USP]
+> =============================================
+>
+>
+> Em quarta-feira, 6 de abril de 2022 12:00:52 BRT, <
+> r-br-request em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Enviar submissões para a lista de discussão R-br para
+>     r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+>     r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+>     r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+>   1. texto formatado em tabela (Samuel Carvalho)
+>   2. Re: texto formatado em tabela (Cid Póvoas)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Tue, 5 Apr 2022 18:37:11 +0000 (UTC)
+> From: Samuel Carvalho <samukajm em yahoo.com.br>
+> To: "r-br em listas.c3sl.ufpr.br" <r-br em listas.c3sl.ufpr.br>
+> Subject: [R-br] texto formatado em tabela
+> Message-ID: <1064409059.950553.1649183831762 em mail.yahoo.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Olá pessoal,Gostaria de uma ajuda de vocês para criar uma variável que tem
+> algumas regras de formatação. No caso são nomes científicos de
+> plantas.Envio o database bryophytes como exemplo. Nesta nova variável, as
+> colunas Genus e Species são em itálico, a coluna Var normal e a coluna
+> Intraspecific em itálico.Aqui vai um exemplo de uma tentativa sem sucesso:
+> library(tidyverse); library(kableExtra);
+> data("bryophytes")bryophytes %>%  filter(!is.na(Intraspecific)) %>%
+> kbl() %>%  kable_styling() %>%  column_spec(c(2,3,5), italic = T) %>%
+> mutate(Scientific.name = paste(Genus, Species, Var, Intraspecific)) # Aqui
+> esta o erro
+> Obrigado.At.te.
+>
+> ====================================Samuel P. C. Carvalho
+> Engº Florestal [UFLA]Mestre em Ciências Florestais [UFLA]Doutor em
+> Recursos Florestais [ESALQ/USP]=============================================
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220405/cb4290df/attachment-0001.htm
+> >
+>
+> ------------------------------
+>
+> Message: 2
+> Date: Tue, 5 Apr 2022 18:25:35 -0300
+> From: Cid Póvoas <cidedson em gmail.com>
+> To: a lista Brasileira oficial de discussão do programa R.
+>     <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] texto formatado em tabela
+> Message-ID:
+>     <CAAmR27-X6ZODnUiL8GrA0944syvZnevyyp7kqjwJLJ8Vn39fmA em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> library(tidyverse); library(kableExtra);library(Taxonstand)
+> data("bryophytes")
+>
+>
+>
+> bryophytes %>%
+>   filter(Intraspecific!="") %>%
+>   mutate(Scientific.name = paste(
+>                                   paste0("$",Genus,"$$~$"),
+>                                   paste0("$",Species,"$$~$"),
+>                                   Var,
+>                                   paste0("$",Intraspecific,"$$~$",".")))
+> %>%
+>   kbl(longtable = F, "html",
+>       escape = F) %>%
+>   kable_styling()
+>
+> *Cid Edson Mendonça Póvoas*
+>
+> *AnovAgro <http://www.anovagro.com/>*
+> *Engenheiro Agrônomo - **Data Scientist*
+> *CREA-BA: 051984991-4*
+> *Técnico em Segurança do Trabalho *
+> *Nº: **0012669/BA*
+> *Tel: +55 73 99151-9565*
+> *Lattes : *http://lattes.cnpq.br/2303498368142537
+> *LinkedIn :* http://br.linkedin.com/in/cidedson/
+> *Whatsapp :* https://wa.me/5573991519565
+>
+>
+> Em ter., 5 de abr. de 2022 às 15:37, Samuel Carvalho por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+> > Olá pessoal,
+> > Gostaria de uma ajuda de vocês para criar uma variável que tem algumas
+> > regras de formatação. No caso são nomes científicos de plantas.
+> > Envio o database bryophytes como exemplo. Nesta nova variável, as colunas
+> > Genus e Species são em itálico, a coluna Var normal e a coluna
+> > Intraspecific em itálico.
+> > Aqui vai um exemplo de uma tentativa sem sucesso:
+> >
+> > library(tidyverse); library(kableExtra);
+> > data("bryophytes")
+> > bryophytes %>%
+> >  filter(!is.na(Intraspecific)) %>%
+> >  kbl() %>%
+> >  kable_styling() %>%
+> >  column_spec(c(2,3,5), italic = T) %>%
+> >  mutate(Scientific.name = paste(Genus, Species, Var, Intraspecific)) #
+> > Aqui esta o erro
+> >
+> > Obrigado.
+> > At.te.
+> >
+> >
+> >
+> > *====================================*
+> >
+> > *Samuel P. C. Carvalho*Engº Florestal [UFLA]
+> > Mestre em Ciências Florestais [UFLA]
+> > Doutor em Recursos Florestais [ESALQ/USP]
+> > =============================================
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> > código mínimo reproduzível.
+> >
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220405/f0c768de/attachment-0001.htm
+> >
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 135, assunto 1
+> *****************************************
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220407/42c2a488/attachment.htm>
+
+From marcelolaia em gmail.com  Sat Apr 23 20:19:24 2022
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Sat, 23 Apr 2022 20:19:24 -0300
+Subject: [R-br] =?iso-8859-1?q?Otimizar_c=F3digo_-_executar_em_lote?=
+Message-ID: <YmSJfLNsi9/HCduB@localhost>
+
+Olá
+
+Saberia me ajudar com uma otimização (execução em lote) do código
+abaixo?
+
+A análise é a seguinte (exemplo):
+
+1 - pego os dados da coluna 25 e obtenho o lambda (boxcox);
+2 - crio uma nova coluna com os dados corrigidos
+3 - aplico um lm
+4 - checo as pressuposições
+5 - calculo e jogo em um objeto o boxplot (função ggboxplot)
+6 - ploto o boxplot
+7 - armazeno no hd o boxplot com o nome da coluna lida no passo 1 acima
+8 - vou para a coluna seguinte, 26
+
+Estou fazendo isso com o código abaixo. Só que eu tenho 120 colunas.
+
+Por ser muito igual, já fiz confusão umas quatro ou cinco vezes com os
+valores, com os nomes dos arquivos ou com os nomes das colunas.
+
+Há como otimizar isso ou é melhor ir na "unha" mesmo?
+
+Obrigado!
+
+#### LINALOL ####
+
+colnames(dados01)[25] # retorna o nome da coluna
+boxcox(LINALOL ~ Genotipo * Tratamento, data=dados01, plotit = TRUE)
+boxcox(LINALOL ~ Genotipo * Tratamento, data=dados01, plotit = TRUE,
+       lam = seq(-1, 1, 1/10))
+boxcox(LINALOL ~ Genotipo * Tratamento, data=dados01, plotit = TRUE,
+       lam = seq(-0.7, -0.65, 1/1000))
+## vou ajustando até achar o lambda mais próximo
+## o valor aproximado de lambda é -0.655
+
+dados01$LINALOL.boxcox <- (dados01$LINALOL^(-0.655) - 1)/(-0.655)
+
+fit25 <- lm(LINALOL.boxcox ~ Genotipo * Tratamento, data=dados01)
+summary(fit25)
+anova(fit25)
+
+ggqqplot(residuals(fit25)) # Os pontos devem estar ao longo da linha
+                           # de referência. Senão, não é normal
+
+shapiro_test(residuals(fit25)) # se p-value for significativo, 
+                               # não é normal
+
+### teste de homocedacidade das variâncias
+### se p < 0.05 (significativo), as variâncias não são homogêneas
+
+dados01 %>%
+    levene_test(LINALOL.boxcox ~ Genotipo * Tratamento)
+
+bxp <- ggboxplot(
+  dados01, x = "Genotipo", y = "LINALOL.boxcox",
+  color = "Tratamento", palette = "Set1", ylab = "LINALOL - boxcox",
+  )
+bxp
+
+pdf(file="LINALOL_boxcox.pdf")
+bxp
+dev.off()
+
+Obrigado
+
+-- 
+Marcelo
+
+From deisygysi em gmail.com  Sun Apr 24 16:15:55 2022
+From: deisygysi em gmail.com (Deisy Gysi)
+Date: Sun, 24 Apr 2022 15:15:55 -0400
+Subject: [R-br] =?utf-8?q?Otimizar_c=C3=B3digo_-_executar_em_lote?=
+In-Reply-To: <YmSJfLNsi9/HCduB@localhost>
+References: <YmSJfLNsi9/HCduB@localhost>
+Message-ID: <CAAf2ifapnTbkUOHucHeUqm9ZY6vSWNd7Yx1Ek4u61_Zk6PqpMA@mail.gmail.com>
+
+Olá Marcelo,
+
+O genotipo seria o que varia entre os modelos?
+
+Você tem um código minimamente reproduzivel para que a gente possa ajudar?
+
+Sem os dados o que eu entendo...
+Inicialmente, você pode rodar isso dentro de um for (com alguns ifs você
+define se os resíduos são normais, faz o plot, e etc).
+
+E obviamente, pode guardar os resultados dentro uma lista ou um df, como
+preferir.
+
+Abraços,
+Deisy
+
+
+On Sat, Apr 23, 2022, 7:19 PM Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá
+>
+> Saberia me ajudar com uma otimização (execução em lote) do código
+> abaixo?
+>
+> A análise é a seguinte (exemplo):
+>
+> 1 - pego os dados da coluna 25 e obtenho o lambda (boxcox);
+> 2 - crio uma nova coluna com os dados corrigidos
+> 3 - aplico um lm
+> 4 - checo as pressuposições
+> 5 - calculo e jogo em um objeto o boxplot (função ggboxplot)
+> 6 - ploto o boxplot
+> 7 - armazeno no hd o boxplot com o nome da coluna lida no passo 1 acima
+> 8 - vou para a coluna seguinte, 26
+>
+> Estou fazendo isso com o código abaixo. Só que eu tenho 120 colunas.
+>
+> Por ser muito igual, já fiz confusão umas quatro ou cinco vezes com os
+> valores, com os nomes dos arquivos ou com os nomes das colunas.
+>
+> Há como otimizar isso ou é melhor ir na "unha" mesmo?
+>
+> Obrigado!
+>
+> #### LINALOL ####
+>
+> colnames(dados01)[25] # retorna o nome da coluna
+> boxcox(LINALOL ~ Genotipo * Tratamento, data=dados01, plotit = TRUE)
+> boxcox(LINALOL ~ Genotipo * Tratamento, data=dados01, plotit = TRUE,
+>        lam = seq(-1, 1, 1/10))
+> boxcox(LINALOL ~ Genotipo * Tratamento, data=dados01, plotit = TRUE,
+>        lam = seq(-0.7, -0.65, 1/1000))
+> ## vou ajustando até achar o lambda mais próximo
+> ## o valor aproximado de lambda é -0.655
+>
+> dados01$LINALOL.boxcox <- (dados01$LINALOL^(-0.655) - 1)/(-0.655)
+>
+> fit25 <- lm(LINALOL.boxcox ~ Genotipo * Tratamento, data=dados01)
+> summary(fit25)
+> anova(fit25)
+>
+> ggqqplot(residuals(fit25)) # Os pontos devem estar ao longo da linha
+>                            # de referência. Senão, não é normal
+>
+> shapiro_test(residuals(fit25)) # se p-value for significativo,
+>                                # não é normal
+>
+> ### teste de homocedacidade das variâncias
+> ### se p < 0.05 (significativo), as variâncias não são homogêneas
+>
+> dados01 %>%
+>     levene_test(LINALOL.boxcox ~ Genotipo * Tratamento)
+>
+> bxp <- ggboxplot(
+>   dados01, x = "Genotipo", y = "LINALOL.boxcox",
+>   color = "Tratamento", palette = "Set1", ylab = "LINALOL - boxcox",
+>   )
+> bxp
+>
+> pdf(file="LINALOL_boxcox.pdf")
+> bxp
+> dev.off()
+>
+> Obrigado
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220424/0007b374/attachment.htm>
+
+From diogojose21 em yahoo.com.br  Thu Apr 28 14:39:15 2022
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Thu, 28 Apr 2022 17:39:15 +0000 (UTC)
+Subject: [R-br] Mudar script encoding
+References: <1167616802.1353206.1651167555645.ref@mail.yahoo.com>
+Message-ID: <1167616802.1353206.1651167555645@mail.yahoo.com>
+
+Procurei nas ridículas e não achei...
+Tem como mudar, no RStudio, a opção de default text encoding de "UTF-8" para "ISO8859-1"?
+Nas opções em que eu entrei, ora desconfigura meu código, ora apaga o mesmo...
+Obrigado!!! 
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQIhttp://lattes.cnpq.br/8996149312896520
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220428/077278ab/attachment.htm>
+
+From cidedson em gmail.com  Thu Apr 28 14:45:37 2022
+From: cidedson em gmail.com (=?UTF-8?Q?Cid_P=C3=B3voas?=)
+Date: Thu, 28 Apr 2022 14:45:37 -0300
+Subject: [R-br] Mudar script encoding
+In-Reply-To: <1167616802.1353206.1651167555645@mail.yahoo.com>
+References: <1167616802.1353206.1651167555645.ref@mail.yahoo.com>
+ <1167616802.1353206.1651167555645@mail.yahoo.com>
+Message-ID: <CAAmR27-AE=5viTYUqjyfZ2VQVckOj3iVTCEE2xwCRGj2SHGBRw@mail.gmail.com>
+
+Talvez isso resolva
+
+https://stackoverflow.com/questions/23324872/rstudio-not-picking-the-encoding-im-telling-it-to-use-when-reading-a-file
+
+
+
+*Cid Edson Mendonça Póvoas*
+
+*AnovAgro <http://www.anovagro.com/>*
+*Engenheiro Agrônomo - **Data Scientist*
+*CREA-BA: 051984991-4*
+*Técnico em Segurança do Trabalho *
+*Nº: **0012669/BA*
+*Tel: +55 73 99151-9565*
+*Lattes : *http://lattes.cnpq.br/2303498368142537
+*LinkedIn :* http://br.linkedin.com/in/cidedson/
+*Whatsapp :* https://wa.me/5573991519565
+
+
+Em qui., 28 de abr. de 2022 às 14:39, Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Procurei nas ridículas e não achei...
+>
+> Tem como mudar, no RStudio, a opção de default text encoding de "UTF-8"
+> para "ISO8859-1"?
+>
+> Nas opções em que eu entrei, ora desconfigura meu código, ora apaga o
+> mesmo...
+>
+> Obrigado!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20220428/5901fc1c/attachment.htm>
+

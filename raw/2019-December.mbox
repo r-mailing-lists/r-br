@@ -1,0 +1,1267 @@
+From otnetobr em gmail.com  Mon Dec  2 08:21:05 2019
+From: otnetobr em gmail.com (Olympio Neto)
+Date: Mon, 2 Dec 2019 07:21:05 -0300
+Subject: [R-br] Ajuda com download de csv pela internet
+Message-ID: <CA+8s2wS1hePGZM6wWKr5--2FpZUe3+CrDEqpY7MRhTxjMU=-JA@mail.gmail.com>
+
+Pessoal, bom dia.
+
+Estou com o seguinte problema. Preciso fazer automaticamente um download
+pela internet de um arquivo em CSV no site do TSE:
+http://www.tse.jus.br/eleitor/biometria/biometria-atual-do-dia, mas o link
+é gerado a partir de um comando em javascrit, algo parecido com
+*javascript:window.location.href=apex.server.url({p_request:
+'FLOW_EXCEL_OUTPUT_R69876138832319545_pt-br'},2); null;*
+
+Alguém já teve esse problema? Anteriormente o site não limitava o número de
+registros e conseguia fazer o web scraping via html , mas a partir desta
+semana o site foi atualizado e está limitando a 30 por página.
+
+Alguma dica?
+
+Muito Obrigado
+
+Olympio Neto
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191202/ea8a794f/attachment.html>
+
+From andreolsouza em yahoo.com.br  Mon Dec  2 09:43:46 2019
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Mon, 2 Dec 2019 11:43:46 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Valida=C3=A7=C3=A3o_cruzada?=
+References: <1083719861.4955627.1575287026330.ref@mail.yahoo.com>
+Message-ID: <1083719861.4955627.1575287026330@mail.yahoo.com>
+
+boa noite, 
+estou com dificuldades fazer a validação cruzada de modelos gerados com as bibliotecas sommer e MCMCglmm. Alguém do grupo que tenha experiência poderia ma dar uma ajuda? 
+
+Segue o CMR
+# Dados require(MCMCglmm)data(PlodiaPO) str(PlodiaPO)
+# Divisão dos dados library(caTools)divisao = sample.split(PlodiaPO$PO, SplitRatio = 0.75)conj_treinamento = subset(PlodiaPO,divisao==TRUE)conj_validacao = subset(PlodiaPO$PO,divisao==FALSE)
+
+# Modelo require(sommer)fit=mmer(PO ~ 1, random = ~ FSfamily, data=conj_treinamento)summary(fit)
+# Validação ???pred=predict(fit, new_data = conj_validacao, classify = "FSfamily")pred
+ 
+att,.André 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191202/25f0d1ef/attachment.html>
+
+From walmeszeviani em gmail.com  Mon Dec  2 11:52:12 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Mon, 2 Dec 2019 10:52:12 -0300
+Subject: [R-br] Ajuda com download de csv pela internet
+In-Reply-To: <CA+8s2wS1hePGZM6wWKr5--2FpZUe3+CrDEqpY7MRhTxjMU=-JA@mail.gmail.com>
+References: <CA+8s2wS1hePGZM6wWKr5--2FpZUe3+CrDEqpY7MRhTxjMU=-JA@mail.gmail.com>
+Message-ID: <CAFU=Ekb6AFhZOemV2zkNT8Pi7pgPaeW12oA42=SVxYEC+myRDg@mail.gmail.com>
+
+Olympio,
+
+Um primeiro passo na direção de uma solução definitiva.
+
+#-----------------------------------------------------------------------
+
+# Abrir página.
+browseURL("http://www.tse.jus.br/eleitor/biometria/biometria-atual-do-dia")
+
+# 1. Use F12 para abrir as ferramentas de desenvolvimento do navegador.
+# 2. Visite aba "Network".
+# 3. Limpe todos os eventos (clique na lixeira).
+# 4. Na página, clique no botão de Download do arquivo.
+# 5. Inspecione na aba "Network" a requisição.
+# 6. No "Headers" da requisição, copie o "Request URL".
+# 7. Use o "Request URL" para baixar o arquivo e escrever em disco.
+# 8. Note que o existem partes comuns no "href" dentro da página e no
+#    endereço da "Request URL". Com isso você pode tentar prever a
+#    "Request URL" pelo código fonte da página HTML.
+
+# href do HTML:
+"javascript:window.location.href=apex.server.url({p_request:
+'FLOW_EXCEL_OUTPUT_R69876138832319545_pt-br'},2); null;"
+# Request URL: "
+http://inter04.tse.jus.br/ords/dwtse/wwv_flow.show?p_flow_id=164&p_flow_step_id=2&p_instance=10013814358375&p_debug=&p_request=FLOW_EXCEL_OUTPUT_R69876138832319545_pt-br
+"
+
+library(httr)
+
+url <- "
+http://inter04.tse.jus.br/ords/dwtse/wwv_flow.show?p_flow_id=164&p_flow_step_id=2&p_instance=10013814358375&p_debug=&p_request=FLOW_EXCEL_OUTPUT_R69876138832319545_pt-br
+"
+
+u <- GET(url)                          # Faz requisição.
+content(u)                             # Conteúdo binário.
+writeBin(content(u), con = "file.xls") # Escreve em disco.
+
+# Escrevendo em disco direto.
+GET(url, write_disk("file2.xls"))
+
+#-----------------------------------------------------------------------
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191202/b8fc4f6e/attachment.html>
+
+From walmeszeviani em gmail.com  Mon Dec  2 12:18:40 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Mon, 2 Dec 2019 11:18:40 -0300
+Subject: [R-br] =?utf-8?q?Valida=C3=A7=C3=A3o_cruzada?=
+In-Reply-To: <1083719861.4955627.1575287026330@mail.yahoo.com>
+References: <1083719861.4955627.1575287026330.ref@mail.yahoo.com>
+ <1083719861.4955627.1575287026330@mail.yahoo.com>
+Message-ID: <CAFU=Ekb3xtAHt3chLdjS0wzYUSR5ZSaTEMf2zEsnpLAOUHkz1g@mail.gmail.com>
+
+André,
+
+Você pode obter as predições manualmente.
+
+# Dados.
+library(MCMCglmm)
+data(PlodiaPO)
+str(PlodiaPO)
+
+# Divisão dos dados.
+library(caTools)
+divisao <- sample.split(PlodiaPO$PO, SplitRatio = 0.75)
+
+# ATTENTION: `divisao` já é um vetor lógico, portanto ...
+# conj_treinamento <- subset(PlodiaPO, divisao == TRUE)
+conj_treinamento <- subset(PlodiaPO, divisao)
+# ATTENTION: o conjunto de valiação também tem que ser data.frame.
+# conj_validacao <- subset(PlodiaPO$PO, divisao == FALSE)
+conj_validacao <- subset(PlodiaPO, !divisao)
+
+# Modelo.
+library(sommer)
+fit <- mmer(PO ~ 1, random = ~FSfamily, data = conj_treinamento)
+summary(fit)
+
+# Conteúdo.
+names(fit)
+
+# Quantidades necessárias para a predição (efeitos fixos e aleatórios).
+fit$Beta
+fit$U
+
+# Classe, métodos, implementação e documentação.
+class(fit)
+methods(class = "mmer")
+getS3method("predict", "mmer")
+help(predict.mmer, help_type = "html")
+
+# ATTENTION: o nome do parâmetro é `newdata` e não `new_data`.
+pred <- predict(fit, newdata = conj_validacao, classify = "FSfamily")
+pred
+
+# Pelo visto precisa usar o parâmetro `classify` pois já saiu com o
+# efeito de "FSfamily".
+pred <- predict(fit, newdata = conj_validacao)
+str(pred)
+
+# Predições.
+unique(pred$predictions[, c("FSfamily", "predicted.value.PO")])
+
+# Fazendo as predições na mão.
+X <- model.matrix(~1, data = conj_validacao)
+Z <- model.matrix(~0 + FSfamily, data = conj_validacao)
+conj_validacao$fit <-
+    X %*% fit$Beta[["Estimate"]] + Z %*% fit$U$FSfamily$PO
+
+# Predições (coincidem até a 4 casa decimal).
+merge(unique(pred$predictions[, c("FSfamily", "predicted.value.PO")]),
+      unique(conj_validacao[, c("FSfamily", "fit")]))
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191202/36c3f397/attachment.html>
+
+From walmeszeviani em gmail.com  Mon Dec  2 12:40:06 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Mon, 2 Dec 2019 11:40:06 -0300
+Subject: [R-br] 
+	=?utf-8?q?componente_da_vari=C3=A2ncia_no_modelo_de_efeit?=
+	=?utf-8?q?os_aleat=C3=B3rios?=
+In-Reply-To: <454570619.4281883.1574963351411@mail.yahoo.com>
+References: <1862425820.4003365.1574880914987.ref@mail.yahoo.com>
+ <1862425820.4003365.1574880914987@mail.yahoo.com>
+ <CAFU=EkYGD1o-impZwaLdYdQT0natwm9o7xLbwCHt0CZnQTzZ7g@mail.gmail.com>
+ <454570619.4281883.1574963351411@mail.yahoo.com>
+Message-ID: <CAFU=EkbVrW-Qzq5PrVBrfaOE-T9kZfy0cJX=8Mp7tjeO7PfZmw@mail.gmail.com>
+
+Respostas dentro da mensagem.
+
+À disposição.
+Walmes.
+
+On Thu, Nov 28, 2019 at 2:49 PM Luiz Leal <richfield1974 em yahoo.com> wrote:
+
+> Prezado Walmes, muito obrigado.
+>
+>
+> Pelo que entendi não é possível "sigma^2_b" e "sigma^2_e" utilizando a
+> função gls().
+>
+Não. Tem-se que usar um modelo de efeitos aleatórios.
+
+>
+> A função VarCorr(modelo2) fornece "sigma^2_b" e "sigma^2_e", correto?
+>
+Sim. Mas a interpretação é mais específica. "sigma^2_e" é a variância do
+erro ao redor do ponto médio da curva em um ponto específico do suporte da
+covariável que eu imagino ser o 0. A variância em outros pontos da curva
+será outra, obviamente, porque você declarou um modelo heterocedástico.
+
+# Média ajustada.
+m <- unique(fitted(modelo2))
+
+# Modelo ajustado.
+plot(y ~ as.integer(x))
+lines(m ~ seq_along(m))
+
+# Variância estimada é função da média.
+#   s2(v) = exp(2* t * v)
+var_estim <- 6041.676 * exp(2 * 0.0009743905 * m)
+var_amost <- tapply(y, x, var)
+cbind(var_amost, var_estim)
+
+# Resíduos crus e padronizados.
+plot(residuals(modelo2) ~ fitted(modelo2))
+plot(residuals(modelo2, type = "pearson") ~ fitted(modelo2))
+
+# Calculando o resíduo padronizado.
+r_my <- residuals(modelo2)/
+    sqrt(6041.676 * exp(2 * 0.0009743905 * fitted(modelo2)))
+
+# Comparação.
+cbind(r_my, residuals(modelo2, type = "pearson"))
+
+
+>                         Variance          StdDev
+> (Intercept)   667641.149     817.09311
+> Residual        6041.696       77.72834
+>
+> Tenho uma dúvida: a variância do intercepto é "sigma^2_b"?
+>
+Sim.
+
+
+>
+> Muito obrigado. Sua contribuição está sendo muito válida no meu trabalho.
+> Luiz
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191202/dd6d9154/attachment.html>
+
+From otnetobr em gmail.com  Mon Dec  2 15:20:37 2019
+From: otnetobr em gmail.com (Olympio Neto)
+Date: Mon, 2 Dec 2019 14:20:37 -0300
+Subject: [R-br] Ajuda com download de csv pela internet
+In-Reply-To: <CAFU=Ekb6AFhZOemV2zkNT8Pi7pgPaeW12oA42=SVxYEC+myRDg@mail.gmail.com>
+References: <CA+8s2wS1hePGZM6wWKr5--2FpZUe3+CrDEqpY7MRhTxjMU=-JA@mail.gmail.com>
+ <CAFU=Ekb6AFhZOemV2zkNT8Pi7pgPaeW12oA42=SVxYEC+myRDg@mail.gmail.com>
+Message-ID: <CA+8s2wR=nOFMhvoj-wH7pD5Zj70q=75Lx_GYqJ7XVEm3TXGQPQ@mail.gmail.com>
+
+Walmes, muito obrigado.
+Já consegui acessar o arquivo com sua dica, mas estranho que ao mudar p
+estado, não muda o link e continua fazendo o download dos dados do Acre,
+que acredito ser o padrão da página.
+
+O link gerado é exatamente igual. Será que o Apex não altera esse link
+conforme a requisição?
+
+Mais uma vez, muito obrigado!
+
+Olympio
+
+Em seg, 2 de dez de 2019 10:52, Walmes Zeviani <walmeszeviani em gmail.com>
+escreveu:
+
+> Olympio,
+>
+> Um primeiro passo na direção de uma solução definitiva.
+>
+> #-----------------------------------------------------------------------
+>
+> # Abrir página.
+> browseURL("http://www.tse.jus.br/eleitor/biometria/biometria-atual-do-dia
+> ")
+>
+> # 1. Use F12 para abrir as ferramentas de desenvolvimento do navegador.
+> # 2. Visite aba "Network".
+> # 3. Limpe todos os eventos (clique na lixeira).
+> # 4. Na página, clique no botão de Download do arquivo.
+> # 5. Inspecione na aba "Network" a requisição.
+> # 6. No "Headers" da requisição, copie o "Request URL".
+> # 7. Use o "Request URL" para baixar o arquivo e escrever em disco.
+> # 8. Note que o existem partes comuns no "href" dentro da página e no
+> #    endereço da "Request URL". Com isso você pode tentar prever a
+> #    "Request URL" pelo código fonte da página HTML.
+>
+> # href do HTML:
+> "javascript:window.location.href=apex.server.url({p_request:
+> 'FLOW_EXCEL_OUTPUT_R69876138832319545_pt-br'},2); null;"
+> # Request URL: "
+> http://inter04.tse.jus.br/ords/dwtse/wwv_flow.show?p_flow_id=164&p_flow_step_id=2&p_instance=10013814358375&p_debug=&p_request=FLOW_EXCEL_OUTPUT_R69876138832319545_pt-br
+> "
+>
+> library(httr)
+>
+> url <- "
+> http://inter04.tse.jus.br/ords/dwtse/wwv_flow.show?p_flow_id=164&p_flow_step_id=2&p_instance=10013814358375&p_debug=&p_request=FLOW_EXCEL_OUTPUT_R69876138832319545_pt-br
+> "
+>
+> u <- GET(url)                          # Faz requisição.
+> content(u)                             # Conteúdo binário.
+> writeBin(content(u), con = "file.xls") # Escreve em disco.
+>
+> # Escrevendo em disco direto.
+> GET(url, write_disk("file2.xls"))
+>
+> #-----------------------------------------------------------------------
+>
+> À disposição.
+> Walmes.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191202/e51263e6/attachment.html>
+
+From sznelwar em uol.com.br  Mon Dec  2 20:01:25 2019
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Mon, 02 Dec 2019 20:01:25 -0200
+Subject: [R-br] =?utf-8?q?Valida=C3=A7=C3=A3o_cruzada?=
+In-Reply-To: ["1083719861.4955627.1575287026330@mail.yahoo.com"]
+References: ["1083719861.4955627.1575287026330.ref@mail.yahoo.com",
+ "1083719861.4955627.1575287026330@mail.yahoo.com"]
+Message-ID: <5de589b5d7799_742f2b25c47eb11049399@ip-10-81-19-94.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191202/34254238/attachment.html>
+
+From andreolsouza em yahoo.com.br  Tue Dec  3 11:57:53 2019
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Tue, 3 Dec 2019 13:57:53 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Valida=C3=A7=C3=A3o_cruzada?=
+In-Reply-To: <5de589b5d7799_742f2b25c47eb11049399@ip-10-81-19-94.ec2.internal.mail>
+References: <5de589b5d7799_742f2b25c47eb11049399@ip-10-81-19-94.ec2.internal.mail>
+Message-ID: <853748286.5369524.1575381473677@mail.yahoo.com>
+
+Obrigado pela Walmes! 
+
+Mauro, os dados PlodiaPO estão ai sim! att,.André 
+
+att,.André  
+
+    Em segunda-feira, 2 de dezembro de 2019 19:02:00 BRT, Mauro Sznelwar por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Nâo colocou o data set PlodiaPO!  boa noite, 
+estou com dificuldades fazer a validação cruzada de modelos gerados com as bibliotecas sommer e MCMCglmm. Alguém do grupo que tenha experiência poderia ma dar uma ajuda? 
+
+Segue o CMR
+# Dados require(MCMCglmm)data(PlodiaPO) str(PlodiaPO) # Divisão dos dados library(caTools)divisao = sample.split(PlodiaPO$PO, SplitRatio = 0.75)conj_treinamento = subset(PlodiaPO,divisao==TRUE)conj_validacao = subset(PlodiaPO$PO,divisao==FALSE)  # Modelo require(sommer)fit=mmer(PO ~ 1, random = ~ FSfamily, data=conj_treinamento)summary(fit) # Validação ???pred=predict(fit, new_data = conj_validacao, classify = "FSfamily")pred   att,.André _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191203/b22e8bcb/attachment.html>
+
+From pedro.rafael.marinho em gmail.com  Tue Dec  3 15:07:33 2019
+From: pedro.rafael.marinho em gmail.com (Pedro Rafael)
+Date: Tue, 3 Dec 2019 14:07:33 -0300
+Subject: [R-br] Vinculando R com OpenBLAS em sistemas GNU/Linux
+Message-ID: <CAKwavr=CLfQdzWkK+w=4VTfw-ee1Z=yBXf9tSdp8=OnFCcQ3fA@mail.gmail.com>
+
+O *ropenblas* (<https://prdm0.github.io/ropenblas/>) é um pacote projetado
+para facilitar a vinculação da biblioteca OpenBLAS (<
+https://www.openblas.net/>) com a linguagem R. O pacote, que funciona
+apenas para sistemas Linux, baixará automaticamente o código-fonte mais
+recente da biblioteca OpenBLAS e o compilará. O pacote ligará
+automaticamente o idioma R para usar a biblioteca OpenBLAS. Tudo será feito
+automaticamente, independentemente da distribuição do Linux que você
+estiver usando.
+
+Você também pode especificar versões mais antigas da biblioteca OpenBLAS.
+Automaticamente, se nenhuma versão for especificada, o pacote ropenblas
+considerará a versão mais recente da biblioteca OpenBLAS.
+
+A consideração de usar a biblioteca OpenBLAS em vez do BLAS (<
+http://www.netlib.org/blas/>) pode trazer otimizações extras para seu
+código e melhor desempenho computacional para suas simulações, pois o
+OpenBLAS é uma implementação otimizada da biblioteca BLAS.
+
+Algumas das razões pelas quais é conveniente vincular a linguagem R ao uso
+de alternativas otimizadas para BLAS podem ser encontradas aqui (<
+https://csantill.github.io/RPerformanceWBLAS/>). Vários outros benchmarks
+que apontam para um melhor desempenho computacional considerando a
+biblioteca OpenBLAS podem ser encontrados na internet.
+
+Algumas vantagens de usar a biblioteca *ropenblas*:
+
+[1] Tudo é feito dentro da linguagem R;
+
+[2] O procedimento será o mesmo para qualquer distribuição Linux;
+
+[3] A biblioteca OpenBLAS será compilada e você escolherá qual versão de
+compilação vincular ao R, independentemente da sua distribuição Linux;
+
+[4] Se a sua distribuição GNU / Linux não possui versões atualizadas do
+OpenBLAS, pouco importa. O pacote ropenblas busca a versão estável mais
+recente da conta de desenvolvimento da biblioteca OpenBLAS no GitHub;
+
+[5] Você não precisa conhecer bem o Linux. Em algumas distribuições, pode
+não ser tão simples para um usuário menos experiente compilar e vincular a
+biblioteca à biblioteca OpenBLAS com a linguagem R;
+
+[6] É muito mais fácil direcionar uma pessoa para vincular o OpenBLAS ao R
+dizendo "execute *ropenblas* () no R" do que pedir a essa pessoa que
+verifique se uma versão não otimizada do BLAS está instalada no sistema.
+Então você deve orientar a remoção da versão não otimizada do BLAS e
+guiá-lo para a instalação da biblioteca OpenBLAS através dos mais diversos
+procedimentos, dependendo da distribuição GNU / Linux usada;
+
+[7] Como afirmado anteriormente, o procedimento funciona para qualquer
+Linux e isso inclui o Android. Se o seu Android for capaz de executar
+comandos privilegiados (ROOT) e se você tiver o R instalado via Termux com
+as dependências necessárias, poderá compilar e vincular o OpenBLAS ao R
+usando *ropenblas*.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191203/1c0453b2/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Dec  3 16:24:47 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 3 Dec 2019 15:24:47 -0300
+Subject: [R-br] =?utf-8?q?Valida=C3=A7=C3=A3o_cruzada?=
+In-Reply-To: <853748286.5369524.1575381473677@mail.yahoo.com>
+References: <5de589b5d7799_742f2b25c47eb11049399@ip-10-81-19-94.ec2.internal.mail>
+ <853748286.5369524.1575381473677@mail.yahoo.com>
+Message-ID: <CAKrF98n4vOvwmW8AR5hQ7TQ67NQX5_6tWRsjZXq_ax7c8nU8OA@mail.gmail.com>
+
+Gente ?. . .
+
+Os competentes *scripts* apresentados *não* me parecem validação cruzada. .
+. apenas uma validação de um modelo com um conjunto seperado de dados dos
+de treino.
+
+Na validação cruzada deve-se fazer a quebra em dados de treino e teste em n
+"dobras" (*folds*) e os resultados das n validações, *aí sim*, cruzadas
+devem gerar um modelo "médio" ou mais adaptado a partir de alguma métrica
+para o tipo de modelagem.
+
+Maiores detalhes de natureza *prática* podem ser obtidas da página github
+do pacote R caret e de natureza teórica em obras sobre o assunto, que para
+uma abordagem sintética, recomendo a de Friedman, Hastie & Tibshirani "The
+Elements of Statistical Learning", subcapítulo 7.10 "Cross-Validation"
+
+HTH
+--
+Cesar Rabak
+
+
+On Tue, Dec 3, 2019 at 11:18 AM Andre Oliveira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Obrigado pela Walmes!
+>
+> Mauro, os dados *PlodiaPO* estão ai sim!
+> att,.
+> André
+>
+>
+> att,.
+> André
+>
+>
+> Em segunda-feira, 2 de dezembro de 2019 19:02:00 BRT, Mauro Sznelwar por
+> (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Nâo colocou o data set PlodiaPO!
+>
+>
+> boa noite,
+> estou com dificuldades fazer a validação cruzada de modelos gerados com as
+> bibliotecas sommer e MCMCglmm. Alguém do grupo que tenha experiência
+> poderia ma dar uma ajuda?
+>
+> *Segue o CMR*
+>
+> # Dados
+> require(MCMCglmm)
+> data(PlodiaPO)
+> str(PlodiaPO)
+>
+> # Divisão dos dados
+> library(caTools)
+> divisao = sample.split(PlodiaPO$PO, SplitRatio = 0.75)
+> conj_treinamento = subset(PlodiaPO,divisao==TRUE)
+> conj_validacao = subset(PlodiaPO$PO,divisao==FALSE)
+>
+>
+> # Modelo
+> require(sommer)
+> fit=mmer(PO ~ 1, random = ~ FSfamily, data=conj_treinamento)
+> summary(fit)
+>
+> # Validação ???
+> pred=predict(fit, new_data = conj_validacao, classify = "FSfamily")
+> pred
+>
+>
+>
+> att,.
+> André
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191203/170bb92d/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Dec  4 12:23:02 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 4 Dec 2019 11:23:02 -0300
+Subject: [R-br] Ajuda com download de csv pela internet
+In-Reply-To: <CA+8s2wR=nOFMhvoj-wH7pD5Zj70q=75Lx_GYqJ7XVEm3TXGQPQ@mail.gmail.com>
+References: <CA+8s2wS1hePGZM6wWKr5--2FpZUe3+CrDEqpY7MRhTxjMU=-JA@mail.gmail.com>
+ <CAFU=Ekb6AFhZOemV2zkNT8Pi7pgPaeW12oA42=SVxYEC+myRDg@mail.gmail.com>
+ <CA+8s2wR=nOFMhvoj-wH7pD5Zj70q=75Lx_GYqJ7XVEm3TXGQPQ@mail.gmail.com>
+Message-ID: <CAFU=EkaWAt0qWMPjoy6wocaXa+jQwdedvMzpayywtAXMXdzhkg@mail.gmail.com>
+
+Respostas na mensagem.
+
+À disposição.
+Walmes.
+
+
+On Mon, Dec 2, 2019 at 2:51 PM Olympio Neto por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Walmes, muito obrigado.
+> Já consegui acessar o arquivo com sua dica, mas estranho que ao mudar p
+> estado, não muda o link e continua fazendo o download dos dados do Acre,
+> que acredito ser o padrão da página.
+>
+> O link gerado é exatamente igual. Será que o Apex não altera esse link
+> conforme a requisição?
+>
+
+É bem provável que sim.
+Talvez usar o RSelenium seja uma solução viável.
+
+
+> Mais uma vez, muito obrigado!
+>
+> Olympio
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191204/61d4218f/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Dec  4 12:27:18 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 4 Dec 2019 11:27:18 -0300
+Subject: [R-br] =?utf-8?q?Valida=C3=A7=C3=A3o_cruzada?=
+In-Reply-To: <CAKrF98n4vOvwmW8AR5hQ7TQ67NQX5_6tWRsjZXq_ax7c8nU8OA@mail.gmail.com>
+References: <5de589b5d7799_742f2b25c47eb11049399@ip-10-81-19-94.ec2.internal.mail>
+ <853748286.5369524.1575381473677@mail.yahoo.com>
+ <CAKrF98n4vOvwmW8AR5hQ7TQ67NQX5_6tWRsjZXq_ax7c8nU8OA@mail.gmail.com>
+Message-ID: <CAFU=EkbCgMUxRfjMpwvV8zxD6+mRh_S_+DPQRf09hK8XzToDNw@mail.gmail.com>
+
+Cesar,
+
+De fato não é uma validação cruzada, mas um *hold out*.
+Mas entendi que aquilo é apenas um ciclo do loop como CMR.
+Já que apontou, dado o pouco que sei, o mesmo modelo poderia ser ajustado
+com a lme4::lmer() ou a nlme::lme().
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191204/0eaa49ca/attachment.html>
+
+From spedrosa em aeiou.pt  Wed Dec  4 16:33:51 2019
+From: spedrosa em aeiou.pt (=?utf-8?b?c8Opcmdpbw==?= marques)
+Date: Wed, 04 Dec 2019 18:33:51 +0000
+Subject: [R-br] Comparar elementos em 2 dataframes
+Message-ID: <20191204183351.Horde.3SHvWfYRo99d5-wPJdEhixA@webmail.aeiou.pt>
+
+Boa tarde,
+
+Alguma dica para iniciante no R, para se obter o seguinte.
+
+Tenho 2 tabelas (dataframes) com várias linhas e várias colunas, em cada
+célula dessas tabelas está um valor (cada valor é único, mas pode estar
+repetido ou não na tabela 2), quero obter uma 3.ª tabela (dataframe) onde
+conste cada valor da tabela 1 que não esteja presente na Tabela 2.
+
+Obrigado!
+   Sérgio
+
+________________________________________________________________________________
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191204/dfd88509/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Dec  4 18:51:41 2019
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 4 Dec 2019 17:51:41 -0300
+Subject: [R-br] Comparar elementos em 2 dataframes
+In-Reply-To: <20191204183351.Horde.3SHvWfYRo99d5-wPJdEhixA@webmail.aeiou.pt>
+References: <20191204183351.Horde.3SHvWfYRo99d5-wPJdEhixA@webmail.aeiou.pt>
+Message-ID: <CAFU=Eka71Mf65Y-hLO_x97JzpB94F21_3oXZPegWmfmP0WMVgQ@mail.gmail.com>
+
+Sérgio,
+
+Submeta um exemplo mínimo reproduzível para abrir caminho e estimular a
+submissão de soluções.
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191204/79ee54b0/attachment.html>
+
+From fla.campos.martins em gmail.com  Thu Dec  5 10:41:00 2019
+From: fla.campos.martins em gmail.com (=?UTF-8?Q?Fl=C3=A1via_de_Campos_Martins?=)
+Date: Thu, 5 Dec 2019 09:41:00 -0300
+Subject: [R-br] Tamanho do efeito para Wilcoxon
+In-Reply-To: <CAKrF98=+_hxCWb9XkK9+mO_6810N5fEgf6v1B9vJSkEkHxHb4g@mail.gmail.com>
+References: <CAH8E6Ut6Q1+3njwrWt9vAGno20DFm9GN_knEev4UG=8akVwDpw@mail.gmail.com>
+ <CAKrF98=+_hxCWb9XkK9+mO_6810N5fEgf6v1B9vJSkEkHxHb4g@mail.gmail.com>
+Message-ID: <CALbn=S7_V7_LsjcDVNz9aFCO_PojepXMwUhUVtHqnQiCLqbgUg@mail.gmail.com>
+
+Cesar,
+
+Obrigada por compartilhar seu conhecimento conosco!
+
+Em qui, 14 de nov de 2019 5:01 PM, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Elias,
+>
+> Tua pergunta enseja a oportunidade de discutir duas coisas:
+>
+>
+>    1. O quê é efeito, e como pode ser medido; e
+>    2. a confusão das pessoas sobre esse assunto devido à, desastrosa
+>    IMNSHO, introdução do conceito de [*tamanho de] efeito padronizado*,
+>    que um dos próprios autores da ideia (Cohen) se arrepende (*por
+>    escrito*!) justamente porque a ideia dele era evitar o "o tamanho
+>    único serve para todos" e findou que as tais padronizações ficaram mais
+>    "populares" que o raciocínio subjacente.
+>
+> Como você não dá mais informações sobre seus dados e o quê eles medem, a
+> discussão sobre '1' é impossível.
+>
+> Sobre uma forma de obter um tamanho de efeito padronizado para duas
+> distribuições não normais e que o teste de postos de Wilcoxon foi
+> apropriado a resposta é depende da fonte que você consulta!
+>
+> Pode-se usar a fórmula de Rosenthal¹ ; o *delta *de Cliff, a diferença de
+> proporção de casos de cada amostra para os postos, talvez as medianas
+> normalizadas em relação a uma delas[?], etc.
+>
+> Você precisa verificar na área de conhecimento do seu estudo qual[is]
+> é[são] o[s] costume[s] e daí seguir.
+>
+> MAS  *eu* me atrevo a oferecer um conselho: *se você puder fugir de usar
+> um efeito padronizado **não use*! É melhor discutir o efeito na forma do
+> domínio do problema (a plantinha cresceu mais, o peso dos pintinhos
+> aumentou x gramas, o consumo por km diminui para y litros, etc.)!!
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> [1] Rosenthal, R. (1994). "Parametric measures of effect size", *in* H.
+> Cooper & L. V. Hedges (Eds.), *The Handbook of Research Synthesis*.  New
+> York: Russell Sage Foundation.
+>
+> On Thu, Nov 14, 2019 at 7:56 AM Elias Carvalho por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Boa tarde
+>>
+>> Tenho duas amostras independentes com distribuição nao-normal e usei  o
+>> método abaixo para ver a diferença entre elas:
+>>
+>> coin::wilcoxsign_test(data.amostra1 ~ data.amostra2, distribution="exact")
+>>
+>> Alguem pode me ajudar a calcular o tamanho do efeito?
+>> --
+>>
+>>
+>> *In Jesu et Maria*
+>> *Obrigado*
+>> *Prof. Elias Carvalho*
+>>
+>> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+>> who has been able to understand the cause of things"*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191205/29cf23e8/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Dec  5 19:20:23 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 5 Dec 2019 18:20:23 -0300
+Subject: [R-br] =?utf-8?q?Valida=C3=A7=C3=A3o_cruzada?=
+In-Reply-To: <CAFU=EkbCgMUxRfjMpwvV8zxD6+mRh_S_+DPQRf09hK8XzToDNw@mail.gmail.com>
+References: <5de589b5d7799_742f2b25c47eb11049399@ip-10-81-19-94.ec2.internal.mail>
+ <853748286.5369524.1575381473677@mail.yahoo.com>
+ <CAKrF98n4vOvwmW8AR5hQ7TQ67NQX5_6tWRsjZXq_ax7c8nU8OA@mail.gmail.com>
+ <CAFU=EkbCgMUxRfjMpwvV8zxD6+mRh_S_+DPQRf09hK8XzToDNw@mail.gmail.com>
+Message-ID: <CAKrF98nxyE7kYryh6GU_OHrit3JhE7yyzyvSs80a5Q_CZykVCQ@mail.gmail.com>
+
+Ok !
+
+On Wed, Dec 4, 2019 at 11:27 AM Walmes Zeviani <walmeszeviani em gmail.com>
+wrote:
+
+> Cesar,
+>
+> De fato não é uma validação cruzada, mas um *hold out*.
+> Mas entendi que aquilo é apenas um ciclo do loop como CMR.
+> Já que apontou, dado o pouco que sei, o mesmo modelo poderia ser ajustado
+> com a lme4::lmer() ou a nlme::lme().
+>
+> À disposição.
+> Walmes.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191205/ad056b72/attachment.html>
+
+From spedrosa em aeiou.pt  Thu Dec  5 21:25:46 2019
+From: spedrosa em aeiou.pt (=?utf-8?b?c8Opcmdpbw==?= marques)
+Date: Thu, 05 Dec 2019 23:25:46 +0000
+Subject: [R-br] Comparar elementos em 2 dataframes
+In-Reply-To: <CAFU=Eka71Mf65Y-hLO_x97JzpB94F21_3oXZPegWmfmP0WMVgQ@mail.gmail.com>
+References: <20191204183351.Horde.3SHvWfYRo99d5-wPJdEhixA@webmail.aeiou.pt>
+ <CAFU=Eka71Mf65Y-hLO_x97JzpB94F21_3oXZPegWmfmP0WMVgQ@mail.gmail.com>
+Message-ID: <20191205232546.Horde.3yAoMvYRo99d6ZH6aXqFiaA@webmail.aeiou.pt>
+
+Olá,
+
+    Vou tentar descrever melhor a situação.
+
+    1- Tenho uma "dataframe A", com 11 linhas (observações:individuos) e
+7000 colunas (variáveis: genes); dentro de cada célula dessa dataframe
+está o código numérico dos genes, ex:(1234).
+
+    -------------------------  1      |    2     |    3   | 4......
+    1 Nome                    A     |    B     |   C   | D
+    2 ind1                    1234  |  3492 |
+    3 indi2
+    4 ind3
+    Função a
+    Função b
+    Função c                 Linhas a adicionar com as respostas
+    Função d
+
+    2 - e depois tenho vários vetores de tamanhos diferentes, cada vetor
+representa o conjunto de genes que desempenham uma dada função.
+
+    função a: V1<- c(1234, 3492, ...)
+    função b: V2<- c(3251, 792315, ....)
+    ...
+    ...
+
+    De forma automática:
+    3 - Gostaria de saber se todos os genes da dataframe A estão presentes
+ou não nas funções a e b, c, d.
+    4 - e de adicionar linhas (de cada função), com as respostas obtidas, à
+"dataframe A", colocando-se um "1" na coluna de cada gene que esteja
+presente nos vetores, e um "0" se os genes não estiverem presentes.
+
+    Obrigado!
+    Sérgio
+
+    Citando Walmes Zeviani <walmeszeviani em gmail.com>:
+> Sérgio,
+>  
+> Submeta um exemplo mínimo reproduzível para abrir caminho e  
+> estimular a submissão de soluções.
+>  
+> À disposição.
+> Walmes.
+>
+>
+
+________________________________________________________________________________
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191205/3549c92c/attachment.html>
+
+From nandodesouza em gmail.com  Thu Dec  5 22:44:35 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 5 Dec 2019 21:44:35 -0300
+Subject: [R-br] Comparar elementos em 2 dataframes
+In-Reply-To: <20191205232546.Horde.3yAoMvYRo99d6ZH6aXqFiaA@webmail.aeiou.pt>
+References: <20191205232546.Horde.3yAoMvYRo99d6ZH6aXqFiaA@webmail.aeiou.pt>
+Message-ID: <127346DA-3C9F-487F-B85F-1E6192AC7569@getmailspring.com>
+
+Sergio,
+
+A forma como descreve seu problema não é reproduzível. Para que possamos lhe ajudar você deve enviar um CMR (Código Mínimo Reproduzível) para que possamos recriar a sua situação em nosso computador. Lembre que você poderá obter ajuda de pessoas que não sabem nada sob a sua área de pesquisa assim é importante que você seja claro no que deseja e nas definições de seus dados.
+Tente criar um banco de dados pequeno que represente a sua dúvida. Pode ser com poucas colunas(5,6,10) e linhas (11,20). Depois no R faça um dput (Seusdados), copie a saída e cole no email que irá enviar na lista.
+Crie também exemplos dos vetores que possui.
+Descreva bem o que são as sua variáveis. Para mim por exemplo não está muito claro o que são essas funções.
+Teremos prazer em lhe ajudar.
+att
+On Dec 5 2019, at 9:25 pm, sérgio marques por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Olá,
+>
+> Vou tentar descrever melhor a situação.
+> 1- Tenho uma "dataframe A", com 11 linhas (observações:individuos) e 7000 colunas (variáveis: genes); dentro de cada célula dessa dataframe está o código numérico dos genes, ex:(1234).
+> ------------------------- 1 | 2 | 3 | 4......
+> 1 Nome A | B | C | D
+> 2 ind1 1234 | 3492 |
+> 3 indi2
+> 4 ind3
+> Função a
+> Função b
+> Função c Linhas a adicionar com as respostas
+> Função d
+>
+> 2 - e depois tenho vários vetores de tamanhos diferentes, cada vetor representa o conjunto de genes que desempenham uma dada função.
+> função a: V1<- c(1234, 3492, ...)
+> função b: V2<- c(3251, 792315, ....)
+> ...
+> ...
+>
+> De forma automática:
+> 3 - Gostaria de saber se todos os genes da dataframe A estão presentes ou não nas funções a e b, c, d.
+> 4 - e de adicionar linhas (de cada função), com as respostas obtidas, à "dataframe A", colocando-se um "1" na coluna de cada gene que esteja presente nos vetores, e um "0" se os genes não estiverem presentes.
+>
+> Obrigado!
+> Sérgio
+>
+>
+>
+>
+>
+>
+>
+>
+> Citando Walmes Zeviani <walmeszeviani em gmail.com (mailto:walmeszeviani em gmail.com)>:
+> > Sérgio,
+> >
+> > Submeta um exemplo mínimo reproduzível para abrir caminho e estimular a submissão de soluções.
+> >
+> > À disposição.
+> > Walmes.
+> >
+>
+>
+>
+>
+>
+> ________________________________________________________________________________
+> Mensagem enviada através do email grátis do AEIOU (http:/www.aeiou.pt/)
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191205/34280a5c/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Dec  6 11:19:15 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 6 Dec 2019 10:19:15 -0300
+Subject: [R-br] Comparar elementos em 2 dataframes
+In-Reply-To: <20191205232546.Horde.3yAoMvYRo99d6ZH6aXqFiaA@webmail.aeiou.pt>
+References: <20191204183351.Horde.3SHvWfYRo99d5-wPJdEhixA@webmail.aeiou.pt>
+ <CAFU=Eka71Mf65Y-hLO_x97JzpB94F21_3oXZPegWmfmP0WMVgQ@mail.gmail.com>
+ <20191205232546.Horde.3yAoMvYRo99d6ZH6aXqFiaA@webmail.aeiou.pt>
+Message-ID: <CAKrF98nhSaiuSV8gHApHXcMeeNL0fP=_8MY86oqjOQpkdgfi=A@mail.gmail.com>
+
+Sérgio,
+
+Como você já recebeu a informação mais relevante (vc falhou em enviar um
+CMR [veja o rodapé automaticamente inserido nas msg deste grupo com
+instruções de como fazê-lo]), gostaria de tentar ajudar de forma paralela:
+
+A descrição do seu problema parece-me centrada num domínio de problema para
+o qual o R tem dezenas de pacotes que tratam ou especificamente ou de
+maneira ancilar, e podem ser pesquisados nas, assim denominadas *Tasks
+Views* no repositório do R CRAN, não me debrucei sobre o assunto, mas penso
+que um primeiro grupo de pacotes a examinar poderiam ser: CRAN Task View
+Phylogenetics <https://cran.r-project.org/web/views/Phylogenetics.html> e CRAN
+Task View Genetics <https://cran.r-project.org/web/views/Genetics.html>.
+
+Voltando à raiz do repostiório CRAN você pode ver outras "vistas" que podem
+lhe interessar.
+
+Em relação à sua consulta específica, a descrição do problema parece-me ser
+resolvível pelo uso de teste de intersecção de conjuntos, por isso
+recomendo-lhe que você veja o manual para essas operações também.
+
+HTH
+
+--
+Cesar Rabak
+
+
+On Thu, Dec 5, 2019 at 8:26 PM sérgio marques por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá,
+>
+> Vou tentar descrever melhor a situação.
+>
+> 1- Tenho uma "dataframe A", com 11 linhas (observações:individuos) e 7000
+> colunas (variáveis: genes); dentro de cada célula dessa dataframe está o
+> código numérico dos genes, ex:(1234).
+>
+> -------------------------  1      |    2     |    3   | 4......
+> 1 Nome                    A     |    B     |   C   | D
+> 2 ind1                    1234  |  3492 |
+> 3 indi2
+> 4 ind3
+> Função a
+> Função b
+> Função c                 Linhas a adicionar com as respostas
+> Função d
+>
+> 2 - e depois tenho vários vetores de tamanhos diferentes, cada vetor
+> representa o conjunto de genes que desempenham uma dada função.
+>
+> função a: V1<- c(1234, 3492, ...)
+> função b: V2<- c(3251, 792315, ....)
+> ...
+> ...
+>
+> De forma automática:
+> 3 - Gostaria de saber se todos os genes da dataframe A estão presentes ou
+> não nas funções a e b, c, d.
+> 4 - e de adicionar linhas (de cada função), com as respostas obtidas, à
+> "dataframe A", colocando-se um "1" na coluna de cada gene que esteja
+> presente nos vetores, e um "0" se os genes não estiverem presentes.
+>
+> Obrigado!
+> Sérgio
+>
+>
+>
+>
+>
+>
+>
+>
+> Citando Walmes Zeviani <walmeszeviani em gmail.com>:
+>
+> Sérgio,
+>
+> Submeta um exemplo mínimo reproduzível para abrir caminho e estimular a
+> submissão de soluções.
+>
+> À disposição.
+> Walmes.
+>
+>
+>
+>
+>
+>
+> ________________________________________________________________________________
+> Mensagem enviada através do email grátis do AEIOU <http:/www.aeiou.pt/>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191206/2325623e/attachment.html>
+
+From enoches em gmail.com  Fri Dec  6 12:50:09 2019
+From: enoches em gmail.com (Enoch)
+Date: Fri, 6 Dec 2019 11:50:09 -0300
+Subject: [R-br] Comparar elementos em 2 dataframes
+In-Reply-To: <20191204183351.Horde.3SHvWfYRo99d5-wPJdEhixA@webmail.aeiou.pt>
+References: <20191204183351.Horde.3SHvWfYRo99d5-wPJdEhixA@webmail.aeiou.pt>
+Message-ID: <CAOtNP_90BSdoA5WwQkfhPc_fNYvWYzGgaC3WOso3cgi=Lgov7g@mail.gmail.com>
+
+Olá, Sérgio,
+
+Além dos conselhos/ sugestões que foram dadas, eu só  acrescentaria:
+
+Sobre a questão do exemplo reproduzível, recomendo o pacote reprex:
+https://reprex.tidyverse.org/
+
+Sobre a comparação de dois dataframes, duas colunas, dois objetos, dê uma
+olhada na função all_equal() da do pacote dplyr.
+
+
+*Enoch Sousa Filho*
+
+
+
+Em qua., 4 de dez. de 2019 às 15:34, sérgio marques por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa tarde,
+>
+> Alguma dica para iniciante no R, para se obter o seguinte.
+>
+> Tenho 2 tabelas (dataframes) com várias linhas e várias colunas, em cada
+> célula dessas tabelas está um valor (cada valor é único, mas pode estar
+> repetido ou não na tabela 2), quero obter uma 3.ª tabela (dataframe) onde
+> conste cada valor da tabela 1 que não esteja presente na Tabela 2.
+>
+> Obrigado!
+> Sérgio
+>
+>
+>
+>
+> ________________________________________________________________________________
+> Mensagem enviada através do email grátis do AEIOU <http:/www.aeiou.pt/>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191206/bfd152f4/attachment.html>
+
+From nguiotoku2017 em gmail.com  Tue Dec 10 20:23:44 2019
+From: nguiotoku2017 em gmail.com (Nilson Guiotoku)
+Date: Tue, 10 Dec 2019 19:23:44 -0300
+Subject: [R-br] Manter a estrutura do objeto da funcao randomForest
+Message-ID: <CAKZWzEE-QNVD-KwE5vzh-LhiQXVJXC31-jyhzW929PO_dHyRUw@mail.gmail.com>
+
+Pessoal estou com uma dúvida quanto o pacote randomForest do R. Usei a
+função randomForest para modelar o meu conjunto de dados.
+Como irei aplicar o modelo já treinado para meu conjunto teste, salvei como
+.rda. Na próxima etapa iria subir o treino (.rda) para rodar o banco de
+dados independente. Porém,
+a forma como salvei está dando erro quando aplico a função predict. É como
+se o load ou a extensão .rda não conservasse o formato do banco de dados. E
+o erro é que o objeto "model" deveria ser
+um randomForest e ele fica como "character". Eu sei que eu poderia usar o
+que foi salvo na memoria do R, o modelCT, esse se usar no predict não daria
+erro. Mas para cada novo conjunto de dados independente, não gostaria de
+ficar treinando a todo o momento,
+gostaria de passar somente os parâmetros já treinados.
+
+
+Como um código executável para exemplificar o problema usei o da Iris.
+
+library(randomForest)
+modelCT <- randomForest::randomForest(Sepal.Length  ~ ., data = iris,
+importance = TRUE) # modelagem com randomForest
+str(modelCT)
+save(modelCT, file = "model.rda") # salvei como rda
+model = load("model.rda")  # Faço a chamada do arquivo treinado .rda
+str(model)
+predValid <- randomForest::predict(model, iris, type = "class")  # o banco
+de dados deveria ser independente, mas aqui é somente para mostrar o erro
+do formato como está o model
+predValid <- predict(model, iris, type = "class")
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191210/a999fdb2/attachment.html>
+
+From marcus.nunes em gmail.com  Tue Dec 10 21:35:10 2019
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Tue, 10 Dec 2019 20:35:10 -0300
+Subject: [R-br] Manter a estrutura do objeto da funcao randomForest
+In-Reply-To: <CAKZWzEE-QNVD-KwE5vzh-LhiQXVJXC31-jyhzW929PO_dHyRUw@mail.gmail.com>
+References: <CAKZWzEE-QNVD-KwE5vzh-LhiQXVJXC31-jyhzW929PO_dHyRUw@mail.gmail.com>
+Message-ID: <CA+QGQvvpBxR8B2M0aEnA7kCCHOfoEyggptLfdUSEOKhRsTaSKw@mail.gmail.com>
+
+O resultado da função `load` não deve ser designado a um objeto. Faça as
+seguintes alterações no teu código e tudo deve rodar como esperado:
+
+library(randomForest)
+modelCT <- randomForest(Sepal.Length  ~ ., data = iris, importance = TRUE)
+# modelagem com randomForest
+str(modelCT)
+save("modelCT", file = "model.rda") # salvei como rda
+
+rm(list = ls()) # apenas para apagar o workspace e mostrar que, de fato, o
+modelo ajustado foi carregado a partir do arquivo .rda
+
+load("model.rda")
+str(modelCT) # o modelo ajustado precisa ser chamado pelo nome seu original
+
+predValid <- predict(modelCT, iris, type = "class")
+--
+Marcus Nunes
+Professor Adjunto
+Universidade Federal do Rio Grande do Norte
+Centro de Ciências Exatas e da Terra
+Departamento de Estatística
+Laboratório de Estatística Aplicada
+marcus em marcusnunes.me
+https://marcusnunes.me/
+http://shiny.estatistica.ccet.ufrn.br
+http://lea.estatistica.ccet.ufrn.br/
+
+
+On Tue, Dec 10, 2019 at 7:23 PM Nilson Guiotoku por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Pessoal estou com uma dúvida quanto o pacote randomForest do R. Usei a
+> função randomForest para modelar o meu conjunto de dados.
+> Como irei aplicar o modelo já treinado para meu conjunto teste, salvei
+> como .rda. Na próxima etapa iria subir o treino (.rda) para rodar o banco
+> de dados independente. Porém,
+> a forma como salvei está dando erro quando aplico a função predict. É como
+> se o load ou a extensão .rda não conservasse o formato do banco de dados. E
+> o erro é que o objeto "model" deveria ser
+> um randomForest e ele fica como "character". Eu sei que eu poderia usar o
+> que foi salvo na memoria do R, o modelCT, esse se usar no predict não daria
+> erro. Mas para cada novo conjunto de dados independente, não gostaria de
+> ficar treinando a todo o momento,
+> gostaria de passar somente os parâmetros já treinados.
+>
+>
+> Como um código executável para exemplificar o problema usei o da Iris.
+>
+> library(randomForest)
+> modelCT <- randomForest::randomForest(Sepal.Length  ~ ., data = iris,
+> importance = TRUE) # modelagem com randomForest
+> str(modelCT)
+> save(modelCT, file = "model.rda") # salvei como rda
+> model = load("model.rda")  # Faço a chamada do arquivo treinado .rda
+> str(model)
+> predValid <- randomForest::predict(model, iris, type = "class")  # o banco
+> de dados deveria ser independente, mas aqui é somente para mostrar o erro
+> do formato como está o model
+> predValid <- predict(model, iris, type = "class")
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191210/9b0597b0/attachment.html>
+
+From andreolsouza em yahoo.com.br  Tue Dec 17 00:09:03 2019
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Tue, 17 Dec 2019 02:09:03 +0000 (UTC)
+Subject: [R-br] =?utf-8?b?RXJybyBwcmVkacOnw6NvICAtIEZ1bsOnw6NvIHByZWRp?=
+ =?utf-8?q?ct?=
+References: <1728572004.22093.1576548543143.ref@mail.yahoo.com>
+Message-ID: <1728572004.22093.1576548543143@mail.yahoo.com>
+
+Boa noite a todos! 
+Estou procurando obter a métrica RMSE e R2 entre os objetos pred e diameter no modelo abaixo, mas está ocorrendo um erro. Parece que reclama de missing, mas ainda não consegui resolver, mesmo depois de muitas pesquisas. O interesse é pegar o predito levando em consideração os dois efeitos do modelo. Alguém teria alguma dica e sugestão?  
+
+
+# CMDR
+
+rm(list=ls(all=TRUE))require(lme4)data(Penicillin, package="lme4")attach(Penicillin)
+library(MCMCglmm)model <- MCMCglmm(diameter ~ 1, random = ~ plate + sample, verbose= T, nitt=200000,burn=10000,thin=10, rcov = ~ units, data=Penicillin)
+Penicillin$pred=predict(model, data=Penicillin, marginal = NULL)
+Error in object$Sol[, missing.random, FALSE] <- rnorm(nrow(object$Sol) *  :                                         incorrect number of subscripts
+Pedir os valores preditos como abaixo resolve, mas,  demora muito tempo em caso de bases de dados grandes.
+Penicillin$pred=predict(model, data=Penicillin, marginal = NULL, interval="prediction")
+
+att,.André 
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191217/2024001b/attachment.html>
+
+From joseclaudio.faria em gmail.com  Mon Dec 23 12:47:46 2019
+From: joseclaudio.faria em gmail.com (Jose Claudio Faria)
+Date: Mon, 23 Dec 2019 11:47:46 -0300
+Subject: [R-br] Tinn-R project: new version (6.01.01.03) released
+Message-ID: <CAN+Emd8kv-CT1t9JiR9hRZNi5xUr4kVujdPbTb3H9tjx5uK+_g@mail.gmail.com>
+
+Hi,
+
+A new version of Tinn-R project (6.01.01.03) was released today.
+
+Download:
+- https://nbcgib.uesc.br/tinnr/en/download
+- https://sourceforge.net/projects/tinn-r/files/Tinn-R setup/
+
+What is new:
+- https://nbcgib.uesc.br/tinnr/en/download#patch
+- https://sourceforge.net/projects/tinn-r/files/Tinn-R setup/6.1.1.3/
+
+Best,
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+Jose Claudio Faria
+UESC/DCET/Brasil
+joseclaudio.faria at gmail.com
+Telefones:
+55(73)3680.5545 - UESC
+55(73)99966.9100 - VIVO
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+
+If you have software to deal with statistics, you have arms;
+if you have good software, you have arms and legs;
+if you have software like R, you have arms, legs and wings...
+the height of your flight depends only on you!
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20191223/45cbd013/attachment.html>
+

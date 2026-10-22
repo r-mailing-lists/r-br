@@ -1,0 +1,1066 @@
+From izabellam29 em gmail.com  Wed Apr  2 10:53:41 2025
+From: izabellam29 em gmail.com (Izabella Maria Viana)
+Date: Wed, 2 Apr 2025 10:53:41 -0300
+Subject: [R-br] Pnad e trabalho infantil
+Message-ID: <CAPA0GW0f3E_YSjgK2ShUJN_dhY7R+CTwLMQtd-h=_athHuN4aw@mail.gmail.com>
+
+Prezados,
+
+Estamos escrevendo um artigo sobre os determinantes do trabalho infantil no
+Brasil, que utilizará os microdados da PNAD Contínua de 2021, relacionados
+à quinta visita. Estamos estruturando um script que consolida a base de
+dados que irá subsidiar o nosso artigo, porém estamos enfrentando algumas
+dificuldades.
+
+O banco de dados em questão deve conter informações relativas à pessoa de
+referência (por exemplo: sexo, raça, escolaridade, estado civil e etc.),
+assim como informações referentes a criança entre 5 e 17 anos que esteja em
+situação de trabalho infantil (variável* dummy* que indique essa situação,
+número de crianças no domicílio que se enquadram neste quesito, sexo da
+criança, idade e etc.).
+
+Contudo, não estamos conseguindo pensar em uma forma na qual consigamos
+executar essa ação no R. O grande problema é que, dado um domicílio que é
+identificado pela variável `chave_domicilio`, existirá diversas observações
+que abrangem as pessoas que pertencem a ele (pessoa responsável pelo
+domicílio, cônjuge, crianças e etc.). Além disso, não temos certeza se
+devemos incluir os pesos antes ou após a realização dessas manipulações.
+Estamos utilizando, basicamente, os pacotes *survey, srvyr, PNADcIBGE e
+tidyverse* para realizar a importação e manipulação das informações.
+
+Vocês têm alguma sugestão de manipulação ou que caminho devemos seguir?
+
+Gratos desde já!
+
+-- 
+Izabella M S Viana
+Doutoranda em Estatística (UFPE)
+Economista e Mestre em Economia (UFV)
+Professora Orientadora USP/ESALq
+Email secundário: izabella.maria em ufpe.br
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250402/a44fcd22/attachment.htm>
+
+From vinynegrelli em gmail.com  Wed Apr  2 11:05:24 2025
+From: vinynegrelli em gmail.com (=?UTF-8?Q?Vin=C3=ADcius_Lionel=2DMateus?=)
+Date: Wed, 2 Apr 2025 11:05:24 -0300
+Subject: [R-br] Pnad e trabalho infantil
+In-Reply-To: <CAPA0GW0f3E_YSjgK2ShUJN_dhY7R+CTwLMQtd-h=_athHuN4aw@mail.gmail.com>
+References: <CAPA0GW0f3E_YSjgK2ShUJN_dhY7R+CTwLMQtd-h=_athHuN4aw@mail.gmail.com>
+Message-ID: <CAMJ4BpAPQua5k_Yzos9emmPHNHQqthZeCS2Hn1d26WGg0ca8pg@mail.gmail.com>
+
+Olá, Izabella!
+
+Seu trabalho é muito interessante.
+Mas, vai auxiliar ter algum código para reproduzir. (*Observação 1*)
+
+Penso que seria interessante você criar um lista das características de
+cada variável: um *codebook*. Mesmo que para você esteja claro, assim você
+conseguirá com mais colegas, mesmo que não estejam familiarizados com sua
+pesquisa. (*Observação 2*)
+
+Você fala sobre uma variável dummy, e depois salta para a questão dos
+pesos. Não entendi a transição. Você teve algum erro no código de algum dos
+pacotes que você usou? (*Observação 3*)
+
+Cordialmente,
+Vinícius
+
+On Wed, Apr 2, 2025, 10:54 Izabella Maria Viana por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados,
+>
+> Estamos escrevendo um artigo sobre os determinantes do trabalho infantil
+> no Brasil, que utilizará os microdados da PNAD Contínua de 2021,
+> relacionados à quinta visita. Estamos estruturando um script que consolida
+> a base de dados que irá subsidiar o nosso artigo, porém estamos enfrentando
+> algumas dificuldades.
+>
+> O banco de dados em questão deve conter informações relativas à pessoa de
+> referência (por exemplo: sexo, raça, escolaridade, estado civil e etc.),
+> assim como informações referentes a criança entre 5 e 17 anos que esteja em
+> situação de trabalho infantil (variável* dummy* que indique essa
+> situação, número de crianças no domicílio que se enquadram neste quesito,
+> sexo da criança, idade e etc.).
+>
+> Contudo, não estamos conseguindo pensar em uma forma na qual consigamos
+> executar essa ação no R. O grande problema é que, dado um domicílio que é
+> identificado pela variável `chave_domicilio`, existirá diversas observações
+> que abrangem as pessoas que pertencem a ele (pessoa responsável pelo
+> domicílio, cônjuge, crianças e etc.). Além disso, não temos certeza se
+> devemos incluir os pesos antes ou após a realização dessas manipulações.
+> Estamos utilizando, basicamente, os pacotes *survey, srvyr, PNADcIBGE e
+> tidyverse* para realizar a importação e manipulação das informações.
+>
+> Vocês têm alguma sugestão de manipulação ou que caminho devemos seguir?
+>
+> Gratos desde já!
+>
+> --
+> Izabella M S Viana
+> Doutoranda em Estatística (UFPE)
+> Economista e Mestre em Economia (UFV)
+> Professora Orientadora USP/ESALq
+> Email secundário: izabella.maria em ufpe.br
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250402/43139eba/attachment.htm>
+
+From bodevan.ec em gmail.com  Wed Apr  2 12:38:07 2025
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Wed, 2 Apr 2025 12:38:07 -0300
+Subject: [R-br] TukeyHSD
+In-Reply-To: <CAKrF98=5mSpVF215PPJeey+QRF820r+VBtE4WYVHAZwkdmsJ3w@mail.gmail.com>
+References: <CAP5i-sz5LFs-N3EeJtrsshNWenjQeJngPmBn3C5vLCkOVkOXog@mail.gmail.com>
+ <CAEEYVUAYQPnVLkow3=89KcRJwx6kfY6azMw7gxw_ekrk03OTZQ@mail.gmail.com>
+ <CAE4+P9L9Zk2X6en-ySz59hfK1ewCkOoAikunTnrMcGCS5bfeCA@mail.gmail.com>
+ <CAKrF98ks_+-7+3m_Yo99G7HyqPFaLyHuk8XzDFHw0m_uot8x5w@mail.gmail.com>
+ <CAP5i-swpE7yrG7ChAhTMUOv0bG3b7yx77OUWKquZkXU4MGNv2w@mail.gmail.com>
+ <CAKrF98=K6E0MCv_mYZiMLagQHvUXDxH3_gOdNXD3AX=N2F2=2w@mail.gmail.com>
+ <CAKrF98=5mSpVF215PPJeey+QRF820r+VBtE4WYVHAZwkdmsJ3w@mail.gmail.com>
+Message-ID: <CAP5i-swvnbL8swABhkjnBD1MMZ3y3M3cOQrthO68SEdDpy_FBA@mail.gmail.com>
+
+@Cesar
+
+Obrigado pelas considerações. Muito pertinentes.
+
+Desculpe a demora em retornar.
+
+Abraço.
+
+
+*Emerson*
+
+Em sex., 28 de mar. de 2025 13:37, Cesar Rabak <cesar.rabak em gmail.com>
+escreveu:
+
+> Como apoio à minha última observação cito dois autores, que eu coloco nos
+> meus relatórios quando é feita uma análise estatística: HTH
+>
+>  ?*Always present effect sizes for primary outcomes ? If the units of
+> measurement are meaningful on a practical level ?, then we usually prefer
+> an unstardardized measurement to a standardized measure*.?
+>
+> ? *(Wilkison, L., 1999)**.*
+>
+>  ?*In the post p <0.05 era, scientific argumentation is not based on
+> whether a p-value is small enough or not. Attention is paid to effect sizes
+> and confidence intervals. Evidence is thought of as being continuous rather
+> than some sort of dichotomy*.?
+>
+> ? *Ron Wasserstein, executive director of the American Statistical
+> Association**, 2016.*
+>
+>
+> HTH
+>
+> --
+>
+> Cesar Rabak
+>
+> On Fri, Mar 28, 2025 at 1:13?PM Cesar Rabak <cesar.rabak em gmail.com> wrote:
+>
+>> @Emerson:
+>>
+>> Considere adicionar às suas análises uma medida e discussão sobre os
+>> tamanhos dos efeitos observados.
+>>
+>> Ademais, além da diferença mínima detectável dada pelo teste *post hoc* utilizado,
+>> aconselho a verificar qual a acurácia (ou pensando estatisticamente, o
+>> intervalo de confiança) das medidas da variável resposta, que tendo sido
+>> feito a ANOVA, pressuponho  seja contínua, pelo menos intervalar.
+>>
+>> HTH
+>>
+>> --
+>> Cesar Rabak
+>>
+>>
+>>
+>> On Fri, Mar 28, 2025 at 8:49?AM Emerson Cotta Bodevan <
+>> bodevan.ec em gmail.com> wrote:
+>>
+>>> Prezados, bom dia.
+>>>
+>>> Primeiramente, obrigado a todos pelo rápido retorno.
+>>>
+>>> Marcelo e Fernando... todas as soluções apresentadas funcionaram
+>>> direitinho. Obrigado.
+>>>
+>>> Luiz e Cesar... obrigado pelas considerações. São 24 tratamentos, o que
+>>> nos leva a 276 comparações dois a dois. Mas consigo separar em blocos de 8
+>>> tratamentos. Acredito que as discussões serão mais ricas e o teste mais
+>>> adequado. Obrigado mais uma vez.
+>>>
+>>> Abraços.
+>>>
+>>> *Emerson*
+>>>
+>>>
+>>> Em qui., 27 de mar. de 2025 às 23:50, Cesar Rabak por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>
+>>>> Pegando carona na resposta do Luiz Alexandre sobre a inadequação do
+>>>> número de tratamentos, que eu concordo, gostaria de acrescentar que
+>>>> parece-me que há poucos casos para o número de tratamentos (a divisão do nº
+>>>> de casos pelo dos tratamentos não dá nem inteiro, o que me leva a pensar
+>>>> que ANOVA pode estar desbalanceada, também...).
+>>>>
+>>>> Uma outra questão mais prática é por que a ANOVA precisa de tantas
+>>>> linhas, a menos que sua formulação inclua interações entre os tratamentos.
+>>>>
+>>>> HTH
+>>>>
+>>>> On Thu, Mar 27, 2025 at 6:01?PM Luiz Peternelli por (R-br) <
+>>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>>
+>>>>> Olá.
+>>>>> Você precisa fazer isso no R? Fará essa análise comparativa de maneira
+>>>>> recorrente, ou somente uma vez e apresentará os resultados num paper?
+>>>>> Se fará somente uma vez e se todos os tratamentos tiverem o mesmo
+>>>>> número de repetições, fazer à mão é extremamente simples, já q o delta da
+>>>>> diferença mínima significativa será único.
+>>>>>
+>>>>> Outro ponto importante: na prática usar esse teste quando se tem muito
+>>>>> tratamentos é inadequado. Só vai trazer mais confusão interpretativa do que
+>>>>> auxílio em tomada de decisão.
+>>>>>
+>>>>> Abraços
+>>>>>
+>>>>> ?Luiz Alexandre Peternelli
+>>>>>
+>>>>>
+>>>>>
+>>>>>
+>>>>>
+>>>>> On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+>>>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>>>
+>>>>>> Oi Emerson, você já testou uma das três opções abaixo?
+>>>>>>
+>>>>>> Opção 1: Aumentar o limite de impressão
+>>>>>>
+>>>>>> options(max.print = 10000)  # ou qualquer valor maior que o número de
+>>>>>> linhas
+>>>>>> print(resultado)
+>>>>>>
+>>>>>> Opção 2: Acessar diretamente os resultados
+>>>>>>
+>>>>>> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+>>>>>>
+>>>>>> Exemplo:
+>>>>>>
+>>>>>> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+>>>>>> View(resultado$tratamento)  # abrir em visualização tabular
+>>>>>>
+>>>>>> Opção 3: Exportar para Excel ou CSV
+>>>>>>
+>>>>>> write.csv(resultado$tratamento, "tukey_resultados.csv")
+>>>>>>
+>>>>>> Teoricamente, essas abordagens permitirão acessar todas as
+>>>>>> comparações, inclusive as omitidas.
+>>>>>>
+>>>>>> Marcelo
+>>>>>>
+>>>>>> Enviado a partir de dispositivo móvel
+>>>>>> https://linktr.ee/marcelolaia
+>>>>>>
+>>>>>> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br) <
+>>>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>>>
+>>>>>>> Prezados, boa tarde.
+>>>>>>>
+>>>>>>> Fiz um teste de Tukey, usando o comando
+>>>>>>>
+>>>>>>> resultado<-TukeyHSD(resultado de uma anova)
+>>>>>>>
+>>>>>>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+>>>>>>>
+>>>>>>> Como faço para ver todas as comparações?
+>>>>>>>
+>>>>>>> Pergunto porque o R da a mensagem
+>>>>>>>
+>>>>>>> [ reached getOption("max.print") -- omitted 26 rows ]
+>>>>>>>
+>>>>>>>
+>>>>>>> Entendo que ele omitiu 26 linhas.
+>>>>>>>
+>>>>>>> OBS.: Preciso dos resultados para preencher as letras que
+>>>>>>> diferenciam as linhas na tabela de resultados.
+>>>>>>>
+>>>>>>>
+>>>>>>>
+>>>>>>> Agradeço qualquer ajuda.
+>>>>>>>
+>>>>>>> *Emerson*
+>>>>>>> _______________________________________________
+>>>>>>> R-br mailing list
+>>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>>>>>> forneça código mínimo reproduzível.
+>>>>>>>
+>>>>>> _______________________________________________
+>>>>>> R-br mailing list
+>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>>> código mínimo reproduzível.
+>>>>>>
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250402/0b323250/attachment.htm>
+
+From abreums em gmail.com  Wed Apr  2 13:22:49 2025
+From: abreums em gmail.com (Marcos Abreu)
+Date: Wed, 2 Apr 2025 13:22:49 -0300
+Subject: [R-br] Pnad e trabalho infantil
+In-Reply-To: <CAPA0GW0f3E_YSjgK2ShUJN_dhY7R+CTwLMQtd-h=_athHuN4aw@mail.gmail.com>
+References: <CAPA0GW0f3E_YSjgK2ShUJN_dhY7R+CTwLMQtd-h=_athHuN4aw@mail.gmail.com>
+Message-ID: <CAMiJQWig0n7h1XQ=-bxNf4b6qvFtc85vK4WjogM7_5LpVij36Q@mail.gmail.com>
+
+Olá.
+
+Se você utilizar o pacote survey (ou srvyr) para fazer a leitura das
+variáveis, o resultado da pesquisa estará com os pesos ajustados. O que
+responde "não temos certeza se devemos incluir os pesos antes ou após a
+realização dessas manipulações". Se você estiver lendo a partir das
+tabelas baixadas, você precisará especificar a coluna dos pesos, mas talvez
+seja mais fácil utilizar o pacote PNADcIBGE para acessar os dados. Este
+link do pacote tem exemplos de como fazer:
+https://rpubs.com/gabriel-assuncao-ibge/pnadc
+
+Isto ajuda? Ou entendi errado seu problema? Por favor, fique a vontade de
+me corrigir se entendi errado.
+
+Atte
+
+
+
+
+
+
+
+
+Em qua., 2 de abr. de 2025 às 10:54, Izabella Maria Viana por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados,
+>
+> Estamos escrevendo um artigo sobre os determinantes do trabalho infantil
+> no Brasil, que utilizará os microdados da PNAD Contínua de 2021,
+> relacionados à quinta visita. Estamos estruturando um script que consolida
+> a base de dados que irá subsidiar o nosso artigo, porém estamos enfrentando
+> algumas dificuldades.
+>
+> O banco de dados em questão deve conter informações relativas à pessoa de
+> referência (por exemplo: sexo, raça, escolaridade, estado civil e etc.),
+> assim como informações referentes a criança entre 5 e 17 anos que esteja em
+> situação de trabalho infantil (variável* dummy* que indique essa
+> situação, número de crianças no domicílio que se enquadram neste quesito,
+> sexo da criança, idade e etc.).
+>
+> Contudo, não estamos conseguindo pensar em uma forma na qual consigamos
+> executar essa ação no R. O grande problema é que, dado um domicílio que é
+> identificado pela variável `chave_domicilio`, existirá diversas observações
+> que abrangem as pessoas que pertencem a ele (pessoa responsável pelo
+> domicílio, cônjuge, crianças e etc.). Além disso, não temos certeza se
+> devemos incluir os pesos antes ou após a realização dessas manipulações.
+> Estamos utilizando, basicamente, os pacotes *survey, srvyr, PNADcIBGE e
+> tidyverse* para realizar a importação e manipulação das informações.
+>
+> Vocês têm alguma sugestão de manipulação ou que caminho devemos seguir?
+>
+> Gratos desde já!
+>
+> --
+> Izabella M S Viana
+> Doutoranda em Estatística (UFPE)
+> Economista e Mestre em Economia (UFV)
+> Professora Orientadora USP/ESALq
+> Email secundário: izabella.maria em ufpe.br
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+
+Marcos Abreu
+------------------------
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250402/8cdedae8/attachment.htm>
+
+From cesar.rabak em gmail.com  Wed Apr  2 14:16:36 2025
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 2 Apr 2025 14:16:36 -0300
+Subject: [R-br] TukeyHSD
+In-Reply-To: <CAP5i-swvnbL8swABhkjnBD1MMZ3y3M3cOQrthO68SEdDpy_FBA@mail.gmail.com>
+References: <CAP5i-sz5LFs-N3EeJtrsshNWenjQeJngPmBn3C5vLCkOVkOXog@mail.gmail.com>
+ <CAEEYVUAYQPnVLkow3=89KcRJwx6kfY6azMw7gxw_ekrk03OTZQ@mail.gmail.com>
+ <CAE4+P9L9Zk2X6en-ySz59hfK1ewCkOoAikunTnrMcGCS5bfeCA@mail.gmail.com>
+ <CAKrF98ks_+-7+3m_Yo99G7HyqPFaLyHuk8XzDFHw0m_uot8x5w@mail.gmail.com>
+ <CAP5i-swpE7yrG7ChAhTMUOv0bG3b7yx77OUWKquZkXU4MGNv2w@mail.gmail.com>
+ <CAKrF98=K6E0MCv_mYZiMLagQHvUXDxH3_gOdNXD3AX=N2F2=2w@mail.gmail.com>
+ <CAKrF98=5mSpVF215PPJeey+QRF820r+VBtE4WYVHAZwkdmsJ3w@mail.gmail.com>
+ <CAP5i-swvnbL8swABhkjnBD1MMZ3y3M3cOQrthO68SEdDpy_FBA@mail.gmail.com>
+Message-ID: <CAKrF98kohmA8tfWAcBC5bZx3AXN4v=eP0oZO819HV3yJow=ong@mail.gmail.com>
+
+Sem problemas! A vida de pesquisador é dura... eu bem o sei!
+
+Meus augúrios de bom trabalho a você.
+
+sds
+
+On Wed, Apr 2, 2025 at 12:38?PM Emerson Cotta Bodevan <bodevan.ec em gmail.com>
+wrote:
+
+> @Cesar
+>
+> Obrigado pelas considerações. Muito pertinentes.
+>
+> Desculpe a demora em retornar.
+>
+> Abraço.
+>
+>
+> *Emerson*
+>
+> Em sex., 28 de mar. de 2025 13:37, Cesar Rabak <cesar.rabak em gmail.com>
+> escreveu:
+>
+>> Como apoio à minha última observação cito dois autores, que eu coloco nos
+>> meus relatórios quando é feita uma análise estatística: HTH
+>>
+>>  ?*Always present effect sizes for primary outcomes ? If the units of
+>> measurement are meaningful on a practical level ?, then we usually prefer
+>> an unstardardized measurement to a standardized measure*.?
+>>
+>> ? *(Wilkison, L., 1999)**.*
+>>
+>>  ?*In the post p <0.05 era, scientific argumentation is not based on
+>> whether a p-value is small enough or not. Attention is paid to effect sizes
+>> and confidence intervals. Evidence is thought of as being continuous rather
+>> than some sort of dichotomy*.?
+>>
+>> ? *Ron Wasserstein, executive director of the American Statistical
+>> Association**, 2016.*
+>>
+>>
+>> HTH
+>>
+>> --
+>>
+>> Cesar Rabak
+>>
+>> On Fri, Mar 28, 2025 at 1:13?PM Cesar Rabak <cesar.rabak em gmail.com>
+>> wrote:
+>>
+>>> @Emerson:
+>>>
+>>> Considere adicionar às suas análises uma medida e discussão sobre os
+>>> tamanhos dos efeitos observados.
+>>>
+>>> Ademais, além da diferença mínima detectável dada pelo teste *post hoc* utilizado,
+>>> aconselho a verificar qual a acurácia (ou pensando estatisticamente, o
+>>> intervalo de confiança) das medidas da variável resposta, que tendo sido
+>>> feito a ANOVA, pressuponho  seja contínua, pelo menos intervalar.
+>>>
+>>> HTH
+>>>
+>>> --
+>>> Cesar Rabak
+>>>
+>>>
+>>>
+>>> On Fri, Mar 28, 2025 at 8:49?AM Emerson Cotta Bodevan <
+>>> bodevan.ec em gmail.com> wrote:
+>>>
+>>>> Prezados, bom dia.
+>>>>
+>>>> Primeiramente, obrigado a todos pelo rápido retorno.
+>>>>
+>>>> Marcelo e Fernando... todas as soluções apresentadas funcionaram
+>>>> direitinho. Obrigado.
+>>>>
+>>>> Luiz e Cesar... obrigado pelas considerações. São 24 tratamentos, o que
+>>>> nos leva a 276 comparações dois a dois. Mas consigo separar em blocos de 8
+>>>> tratamentos. Acredito que as discussões serão mais ricas e o teste mais
+>>>> adequado. Obrigado mais uma vez.
+>>>>
+>>>> Abraços.
+>>>>
+>>>> *Emerson*
+>>>>
+>>>>
+>>>> Em qui., 27 de mar. de 2025 às 23:50, Cesar Rabak por (R-br) <
+>>>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>
+>>>>> Pegando carona na resposta do Luiz Alexandre sobre a inadequação do
+>>>>> número de tratamentos, que eu concordo, gostaria de acrescentar que
+>>>>> parece-me que há poucos casos para o número de tratamentos (a divisão do nº
+>>>>> de casos pelo dos tratamentos não dá nem inteiro, o que me leva a pensar
+>>>>> que ANOVA pode estar desbalanceada, também...).
+>>>>>
+>>>>> Uma outra questão mais prática é por que a ANOVA precisa de tantas
+>>>>> linhas, a menos que sua formulação inclua interações entre os tratamentos.
+>>>>>
+>>>>> HTH
+>>>>>
+>>>>> On Thu, Mar 27, 2025 at 6:01?PM Luiz Peternelli por (R-br) <
+>>>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>>>
+>>>>>> Olá.
+>>>>>> Você precisa fazer isso no R? Fará essa análise comparativa de
+>>>>>> maneira recorrente, ou somente uma vez e apresentará os resultados num
+>>>>>> paper?
+>>>>>> Se fará somente uma vez e se todos os tratamentos tiverem o mesmo
+>>>>>> número de repetições, fazer à mão é extremamente simples, já q o delta da
+>>>>>> diferença mínima significativa será único.
+>>>>>>
+>>>>>> Outro ponto importante: na prática usar esse teste quando se tem
+>>>>>> muito tratamentos é inadequado. Só vai trazer mais confusão interpretativa
+>>>>>> do que auxílio em tomada de decisão.
+>>>>>>
+>>>>>> Abraços
+>>>>>>
+>>>>>> ?Luiz Alexandre Peternelli
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>>
+>>>>>> On Thu, Mar 27, 2025 at 16:06 Marcelo Laia por (R-br) <
+>>>>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>>>>
+>>>>>>> Oi Emerson, você já testou uma das três opções abaixo?
+>>>>>>>
+>>>>>>> Opção 1: Aumentar o limite de impressão
+>>>>>>>
+>>>>>>> options(max.print = 10000)  # ou qualquer valor maior que o número
+>>>>>>> de linhas
+>>>>>>> print(resultado)
+>>>>>>>
+>>>>>>> Opção 2: Acessar diretamente os resultados
+>>>>>>>
+>>>>>>> resultado$`nome_do_fator`  # substitua pelo nome real do fator
+>>>>>>>
+>>>>>>> Exemplo:
+>>>>>>>
+>>>>>>> resultado <- TukeyHSD(aov(valor ~ tratamento, data = dados))
+>>>>>>> View(resultado$tratamento)  # abrir em visualização tabular
+>>>>>>>
+>>>>>>> Opção 3: Exportar para Excel ou CSV
+>>>>>>>
+>>>>>>> write.csv(resultado$tratamento, "tukey_resultados.csv")
+>>>>>>>
+>>>>>>> Teoricamente, essas abordagens permitirão acessar todas as
+>>>>>>> comparações, inclusive as omitidas.
+>>>>>>>
+>>>>>>> Marcelo
+>>>>>>>
+>>>>>>> Enviado a partir de dispositivo móvel
+>>>>>>> https://linktr.ee/marcelolaia
+>>>>>>>
+>>>>>>> Em qui., 27 de mar. de 2025, 15:08, Emerson Cotta Bodevan por (R-br)
+>>>>>>> <r-br em listas.c3sl.ufpr.br> escreveu:
+>>>>>>>
+>>>>>>>> Prezados, boa tarde.
+>>>>>>>>
+>>>>>>>> Fiz um teste de Tukey, usando o comando
+>>>>>>>>
+>>>>>>>> resultado<-TukeyHSD(resultado de uma anova)
+>>>>>>>>
+>>>>>>>> O arquivo tem 276 linhas (24 tratamentos diferentes).
+>>>>>>>>
+>>>>>>>> Como faço para ver todas as comparações?
+>>>>>>>>
+>>>>>>>> Pergunto porque o R da a mensagem
+>>>>>>>>
+>>>>>>>> [ reached getOption("max.print") -- omitted 26 rows ]
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> Entendo que ele omitiu 26 linhas.
+>>>>>>>>
+>>>>>>>> OBS.: Preciso dos resultados para preencher as letras que
+>>>>>>>> diferenciam as linhas na tabela de resultados.
+>>>>>>>>
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> Agradeço qualquer ajuda.
+>>>>>>>>
+>>>>>>>> *Emerson*
+>>>>>>>> _______________________________________________
+>>>>>>>> R-br mailing list
+>>>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>>>>>>> forneça código mínimo reproduzível.
+>>>>>>>>
+>>>>>>> _______________________________________________
+>>>>>>> R-br mailing list
+>>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>>>>>>> forneça código mínimo reproduzível.
+>>>>>>>
+>>>>>> _______________________________________________
+>>>>>> R-br mailing list
+>>>>>> R-br em listas.c3sl.ufpr.br
+>>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>>> código mínimo reproduzível.
+>>>>>>
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250402/59f9a7c3/attachment.htm>
+
+From cesar.rabak em gmail.com  Wed Apr  2 14:26:07 2025
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 2 Apr 2025 14:26:07 -0300
+Subject: [R-br] Pnad e trabalho infantil
+In-Reply-To: <CAPA0GW0f3E_YSjgK2ShUJN_dhY7R+CTwLMQtd-h=_athHuN4aw@mail.gmail.com>
+References: <CAPA0GW0f3E_YSjgK2ShUJN_dhY7R+CTwLMQtd-h=_athHuN4aw@mail.gmail.com>
+Message-ID: <CAKrF98nWxYGOb9oQH_niHt=hwz_w=Aq_miB75ss4y-21h6SXSw@mail.gmail.com>
+
+Izabella,
+
+Pela descrição feita no seu texto, parece que vc enfrenta um aspecto de
+"arquitetura de banco de dados", onde uma chave é usada para conectar
+logicamente várias "tabelas" no sentido de BD, enquanto o R espera um
+*dataframe* que é uma tabela mais consolidada ou como diria um analista de
+BD « na 1ª forma normal ».
+
+Seu script deverá usar os subpacotes de *tidyverse* e colocar as variáveis
+de interesse todas como colunas duma única linha identificável com com
+'chave_domicilio'¹.
+
+Daí pós processar esse dataframe colocando pesos, agregando, calculando as
+var dummy, etc. ficará mais fácil.
+
+HTH
+--
+Cesar Rabak
+
+[1] Em particular veja as funções cast e eventualmente para reverter ou
+conferir a melt desse pacote.
+
+On Wed, Apr 2, 2025 at 10:54?AM Izabella Maria Viana por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados,
+>
+> Estamos escrevendo um artigo sobre os determinantes do trabalho infantil
+> no Brasil, que utilizará os microdados da PNAD Contínua de 2021,
+> relacionados à quinta visita. Estamos estruturando um script que consolida
+> a base de dados que irá subsidiar o nosso artigo, porém estamos enfrentando
+> algumas dificuldades.
+>
+> O banco de dados em questão deve conter informações relativas à pessoa de
+> referência (por exemplo: sexo, raça, escolaridade, estado civil e etc.),
+> assim como informações referentes a criança entre 5 e 17 anos que esteja em
+> situação de trabalho infantil (variável* dummy* que indique essa
+> situação, número de crianças no domicílio que se enquadram neste quesito,
+> sexo da criança, idade e etc.).
+>
+> Contudo, não estamos conseguindo pensar em uma forma na qual consigamos
+> executar essa ação no R. O grande problema é que, dado um domicílio que é
+> identificado pela variável `chave_domicilio`, existirá diversas observações
+> que abrangem as pessoas que pertencem a ele (pessoa responsável pelo
+> domicílio, cônjuge, crianças e etc.). Além disso, não temos certeza se
+> devemos incluir os pesos antes ou após a realização dessas manipulações.
+> Estamos utilizando, basicamente, os pacotes *survey, srvyr, PNADcIBGE e
+> tidyverse* para realizar a importação e manipulação das informações.
+>
+> Vocês têm alguma sugestão de manipulação ou que caminho devemos seguir?
+>
+> Gratos desde já!
+>
+> --
+> Izabella M S Viana
+> Doutoranda em Estatística (UFPE)
+> Economista e Mestre em Economia (UFV)
+> Professora Orientadora USP/ESALq
+> Email secundário: izabella.maria em ufpe.br
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250402/3e7c062c/attachment.htm>
+
+From eduardaguarnieri19 em gmail.com  Tue Apr  8 17:45:20 2025
+From: eduardaguarnieri19 em gmail.com (Eduarda Guarnieri)
+Date: Tue, 8 Apr 2025 17:45:20 -0300
+Subject: [R-br] =?utf-8?q?D=C3=BAvida_sobre_vari=C3=A1veis_categ=C3=B3ric?=
+ =?utf-8?q?as?=
+Message-ID: <CAKCa57C_XxHd3Ud0qz7NvuXNxtfLuFY4DE3z_hWX7UWDr-SM8g@mail.gmail.com>
+
+Boa tarde!
+
+Estou desenvolvendo um Modelo Linear Generalizado no R, e uma das minhas
+variáveis é categórica: Evento. Nela, são encontrados 8 níveis de eventos
+climáticos e, ao executar o glm com distribuição Gama, apenas algumas
+categorias de dentro dessa variável são significativas ao modelo. Porém,
+uma das categorias não é significativa e mesmo aplicando o método backward,
+ela não foi retirada da análise. Como posso proceder para retirá-la da
+análise?
+
+Desde já agradeço
+
+Eduarda Guarnieri
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250408/760ba328/attachment.htm>
+
+From woprates em gmail.com  Tue Apr  8 18:12:25 2025
+From: woprates em gmail.com (Wecsley Prates)
+Date: Tue, 8 Apr 2025 17:12:25 -0400
+Subject: [R-br] 
+ =?utf-8?q?D=C3=BAvida_sobre_vari=C3=A1veis_categ=C3=B3ric?=
+ =?utf-8?q?as?=
+In-Reply-To: <CAKCa57C_XxHd3Ud0qz7NvuXNxtfLuFY4DE3z_hWX7UWDr-SM8g@mail.gmail.com>
+References: <CAKCa57C_XxHd3Ud0qz7NvuXNxtfLuFY4DE3z_hWX7UWDr-SM8g@mail.gmail.com>
+Message-ID: <CAPCa3opiwYCbRtgjaq7f7giR1eVLA6LWMrZc9x=1idrPR4B0ag@mail.gmail.com>
+
+Ola Eduarda
+
+Quando usamos uma variável categórica em um modelo no R, o glm ()
+automaticamente
+cria *dummies* (variáveis indicadoras) para cada nível da categoria, usando
+um nível como referência.
+
+Se você percebe que *uma das categorias de Evento não é significativa* e o
+processo *backward* não a remove, isso provavelmente ocorre porque a
+variável inteira (Evento) é tratada como *um bloco único de variáveis dummy*,
+e o step  () (método backward) trabalha removendo variáveis *inteiras*, e
+não níveis individuais de fatores.
+Soluções possíveis*1. Remover manualmente o nível indesejado da variável
+categórica*
+
+
+
+*Se você tem certeza de que um dos níveis (por exemplo, ?Seca?) não tem
+efeito relevante e deseja excluí-lo da modelagem, você pode: - Filtrar os
+dados para remover os casos com esse evento;- Ou, melhor ainda, redefinir
+os níveis da variável para que esse nível seja absorvido por outro (como
+referência).**2. Utilizar dummies manuais e incluir apenas os níveis
+desejados*
+
+Se quiser controlar exatamente quais níveis entram no modelo.
+
+*3. Utilizar contrastes personalizados*
+
+Você também pode redefinir os contrastes para tratar certos níveis como
+equivalentes ou excluí-los da comparação
+Resumo: O método step() não remove níveis individuais de fatores. Para
+excluir um nível específico de uma variável categórica, você deve manipular
+a variável diretamente. Avalie se a exclusão do nível é estatisticamente
+justificada (com base em p-valor, VIF, ou impacto prático). Caso o nível
+represente uma pequena fração dos dados, ele pode gerar ruído ou
+instabilidade ? remover pode melhorar o modelo.
+
+*                       Wecsley O. Prates*
+
+*Phd in Statistics and **Senior Data Scientist*
+
+
+
+
+On Tue, Apr 8, 2025 at 16:45 Eduarda Guarnieri por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde!
+>
+> Estou desenvolvendo um Modelo Linear Generalizado no R, e uma das minhas
+> variáveis é categórica: Evento. Nela, são encontrados 8 níveis de eventos
+> climáticos e, ao executar o glm com distribuição Gama, apenas algumas
+> categorias de dentro dessa variável são significativas ao modelo. Porém,
+> uma das categorias não é significativa e mesmo aplicando o método backward,
+> ela não foi retirada da análise. Como posso proceder para retirá-la da
+> análise?
+>
+> Desde já agradeço
+>
+> Eduarda Guarnieri
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250408/e984739b/attachment.htm>
+
+From cesar.rabak em gmail.com  Wed Apr  9 08:31:28 2025
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 9 Apr 2025 08:31:28 -0300
+Subject: [R-br] 
+ =?utf-8?q?D=C3=BAvida_sobre_vari=C3=A1veis_categ=C3=B3ric?=
+ =?utf-8?q?as?=
+In-Reply-To: <CAKCa57C_XxHd3Ud0qz7NvuXNxtfLuFY4DE3z_hWX7UWDr-SM8g@mail.gmail.com>
+References: <CAKCa57C_XxHd3Ud0qz7NvuXNxtfLuFY4DE3z_hWX7UWDr-SM8g@mail.gmail.com>
+Message-ID: <CAKrF98kpWoucbatjRbkgCazsg3qhVrjhQ9+NWAp2t_StFW5zUQ@mail.gmail.com>
+
+Eduarda,
+
+O fato de um *nível* da variável que foi considerada na GLM ser tachada
+como "não significante" é apenas o jeito que a matemática da regressão tem
+de dizer que nessa categoria a média dela não se distingue da média geral,
+e portanto dever-se-ia examinar a cousa como um todo antes de querer
+descartá-la.
+
+O uso de técnicas automatizadas, incluindo a *backward* tem sido mais e
+mais criticada por diversos autores que nos avisam que elas podem não levar
+em conta aspectos do domínio do problema.
+
+A sugestão indicada por Wecsley, tecnicamente correta, fará com se perca os
+casos desse nível, diminuindo os graus de liberdade da regressão. Portanto
+é um compromisso a ser feito.
+
+Outrossim, do ponto de vista do processo físico (não matemático) a ser
+modelado a sua retirada fará com que a análise não leve em conta
+("desconheça") essa realidade fática dos fenômenos que se está estudando.
+
+HTH
+--
+Cesar Rabak
+
+
+On Tue, Apr 8, 2025 at 5:45?PM Eduarda Guarnieri por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde!
+>
+> Estou desenvolvendo um Modelo Linear Generalizado no R, e uma das minhas
+> variáveis é categórica: Evento. Nela, são encontrados 8 níveis de eventos
+> climáticos e, ao executar o glm com distribuição Gama, apenas algumas
+> categorias de dentro dessa variável são significativas ao modelo. Porém,
+> uma das categorias não é significativa e mesmo aplicando o método backward,
+> ela não foi retirada da análise. Como posso proceder para retirá-la da
+> análise?
+>
+> Desde já agradeço
+>
+> Eduarda Guarnieri
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250409/52ab254c/attachment.htm>
+
+From bodevan.ec em gmail.com  Mon Apr 28 19:03:41 2025
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Mon, 28 Apr 2025 19:03:41 -0300
+Subject: [R-br] =?utf-8?b?QXR1YWxpemHDp8OjbyBS?=
+Message-ID: <CAP5i-syMmsz7fEfyD6UtrSG8CjBpGJM07jhXBpJ4=OTxfqx-tA@mail.gmail.com>
+
+Prezados, boa noite.
+
+Estou precisando instalar o pacote MASS. Mas ele não está disponível pra
+mim.
+
+Procurando no google vi que preciso atualizar o meu R para que o pacote
+volte a ficar disponível.
+
+Uso o Debian 12 (bookworm).
+
+Alguém tem o passo a passo para manter meu R sempre atualizado no Debian 12?
+
+Eu tenho usado o mirror da UFPR.
+
+Mas desde que mudei para o Debian nunca precisei atualizar o R (só o
+RStudio). E o RStudio eu sempre tenho desinstalado a versão antiga e
+instalado a versão nova.
+
+Agradeço qualquer ajuda.
+
+*Emerson*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250428/0d3994b6/attachment.htm>
+
+From tcamata em gmail.com  Mon Apr 28 19:29:52 2025
+From: tcamata em gmail.com (Thiago Viana Camata)
+Date: Mon, 28 Apr 2025 19:29:52 -0300
+Subject: [R-br] =?utf-8?b?QXR1YWxpemHDp8OjbyBS?=
+In-Reply-To: <CAP5i-syMmsz7fEfyD6UtrSG8CjBpGJM07jhXBpJ4=OTxfqx-tA@mail.gmail.com>
+References: <CAP5i-syMmsz7fEfyD6UtrSG8CjBpGJM07jhXBpJ4=OTxfqx-tA@mail.gmail.com>
+Message-ID: <CAJD16J=sa6f7mtc=Sk9fNaA14wG59qTREN60k2a_TjtxiATFcA@mail.gmail.com>
+
+Boa noite Emerson,
+
+Não uso Debian, mas você já tentou seguir as instruções em
+https://cran.r-project.org/bin/linux/debian/#debian-bookworm-stable ?
+Parece que precisa apenas acrescentar um repositório para atualizar o R
+para versão 4.5.0.
+
+Att.,
+
+*Thiago Viana Camata*
+
+
+On Mon, Apr 28, 2025 at 7:04?PM Emerson Cotta Bodevan por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados, boa noite.
+>
+> Estou precisando instalar o pacote MASS. Mas ele não está disponível pra
+> mim.
+>
+> Procurando no google vi que preciso atualizar o meu R para que o pacote
+> volte a ficar disponível.
+>
+> Uso o Debian 12 (bookworm).
+>
+> Alguém tem o passo a passo para manter meu R sempre atualizado no Debian
+> 12?
+>
+> Eu tenho usado o mirror da UFPR.
+>
+> Mas desde que mudei para o Debian nunca precisei atualizar o R (só o
+> RStudio). E o RStudio eu sempre tenho desinstalado a versão antiga e
+> instalado a versão nova.
+>
+> Agradeço qualquer ajuda.
+>
+> *Emerson*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250428/43c71900/attachment.htm>
+
+From bodevan.ec em gmail.com  Mon Apr 28 21:17:18 2025
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Mon, 28 Apr 2025 21:17:18 -0300
+Subject: [R-br] =?utf-8?b?QXR1YWxpemHDp8OjbyBS?=
+In-Reply-To: <CAJD16J=sa6f7mtc=Sk9fNaA14wG59qTREN60k2a_TjtxiATFcA@mail.gmail.com>
+References: <CAP5i-syMmsz7fEfyD6UtrSG8CjBpGJM07jhXBpJ4=OTxfqx-tA@mail.gmail.com>
+ <CAJD16J=sa6f7mtc=Sk9fNaA14wG59qTREN60k2a_TjtxiATFcA@mail.gmail.com>
+Message-ID: <CAP5i-sw9Wnf2=r1aUpJ3afSsV1fTGLBO+Q3Z71q+LnF3pGeciw@mail.gmail.com>
+
+Oi Thiago, tudo bem?
+
+Fiz exatamente isso, mas não consegui acrescentar a chave.
+
+Aí deu erro.
+
+O repositório deu certo.
+
+Obrigado pela atenção.
+
+
+*Emerson*
+
+Em seg., 28 de abr. de 2025 19:30, Thiago Viana Camata por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa noite Emerson,
+>
+> Não uso Debian, mas você já tentou seguir as instruções em
+> https://cran.r-project.org/bin/linux/debian/#debian-bookworm-stable ?
+> Parece que precisa apenas acrescentar um repositório para atualizar o R
+> para versão 4.5.0.
+>
+> Att.,
+>
+> *Thiago Viana Camata*
+>
+>
+> On Mon, Apr 28, 2025 at 7:04?PM Emerson Cotta Bodevan por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Prezados, boa noite.
+>>
+>> Estou precisando instalar o pacote MASS. Mas ele não está disponível pra
+>> mim.
+>>
+>> Procurando no google vi que preciso atualizar o meu R para que o pacote
+>> volte a ficar disponível.
+>>
+>> Uso o Debian 12 (bookworm).
+>>
+>> Alguém tem o passo a passo para manter meu R sempre atualizado no Debian
+>> 12?
+>>
+>> Eu tenho usado o mirror da UFPR.
+>>
+>> Mas desde que mudei para o Debian nunca precisei atualizar o R (só o
+>> RStudio). E o RStudio eu sempre tenho desinstalado a versão antiga e
+>> instalado a versão nova.
+>>
+>> Agradeço qualquer ajuda.
+>>
+>> *Emerson*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20250428/48cd511f/attachment.htm>
+

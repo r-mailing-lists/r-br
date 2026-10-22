@@ -1,0 +1,3957 @@
+From alexandre.santos em cas.ifmt.edu.br  Wed May  2 18:02:19 2018
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Wed, 2 May 2018 17:02:19 -0400
+Subject: [R-br] =?utf-8?q?Emprego_da_PCA_para_sele=C3=A7=C3=A3o_de_vari?=
+ =?utf-8?q?=C3=A1veis_mais_correlacionadas_no_primeiro_componente_principa?=
+ =?utf-8?q?l?=
+Message-ID: <47c95d69-8da9-0258-2fea-0b0cd56d6b9d@cas.ifmt.edu.br>
+
+Prezados Membros,
+
+     Gostaria de selecionar as 5 variáveis resposta  no primeiro 
+componente principal mais correlacionadas usando a PCA, através da 
+função prcomp(), conforme o post 
+https://stats.stackexchange.com/questions/115032/how-to-find-which-variables-are-most-correlated-with-the-first-principal-compone, 
+sendo o meu CRM:
+
+##Banco de dados
+
+set.seed(12345)
+mat <- matrix(rnorm(120,0,0.5),nrow=6,byrow=TRUE)
+rownames(mat) <- paste("s",1:6,sep="")
+colnames(mat) <- paste("g",1:20,sep="")
+head(mat)
+
+## Espectros com maior correlação
+pca.object <- prcomp(mat,center=TRUE,scale.=FALSE)
+plot(pca.object)
+
+#Quero os cinco mais correlacionados
+topN <- 5
+load.rot <- scale(pca.object$rotation)
+names(load.rot[,1][order(abs(load.rot[,1]),decreasing=TRUE)][1:topN])
+
+     Então cheguei as variáveis resposta, mas gostaria que alguém me 
+explicasse o por que disso fazendo um favor, pois quando utilizo os meus 
+dados originais, são sempre as variáveis resposta com maior valor 
+numérico que são selecionadas, mesmo utilizando a função scale().
+
+Obrigado,
+
+Alexandre
+
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+
+From cesar.rabak em gmail.com  Thu May  3 00:47:04 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 3 May 2018 00:47:04 -0300
+Subject: [R-br] =?utf-8?q?Emprego_da_PCA_para_sele=C3=A7=C3=A3o_de_vari?=
+	=?utf-8?q?=C3=A1veis_mais_correlacionadas_no_primeiro_componente_p?=
+	=?utf-8?q?rincipal?=
+In-Reply-To: <47c95d69-8da9-0258-2fea-0b0cd56d6b9d@cas.ifmt.edu.br>
+References: <47c95d69-8da9-0258-2fea-0b0cd56d6b9d@cas.ifmt.edu.br>
+Message-ID: <CAKrF98khhssoUQ28v1mzaven=1vs8NfK90GdzYHH89=HzEX40w@mail.gmail.com>
+
+Você viu o resumo na primeira resposta no link do SO que você postou?
+
+
+
+On Wed, May 2, 2018 at 6:02 PM, ASANTOS via R-br <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Prezados Membros,
+>
+>     Gostaria de selecionar as 5 variáveis resposta  no primeiro componente
+> principal mais correlacionadas usando a PCA, através da função prcomp(),
+> conforme o post https://stats.stackexchange.co
+> m/questions/115032/how-to-find-which-variables-are-most-corr
+> elated-with-the-first-principal-compone, sendo o meu CRM:
+>
+> ##Banco de dados
+>
+> set.seed(12345)
+> mat <- matrix(rnorm(120,0,0.5),nrow=6,byrow=TRUE)
+> rownames(mat) <- paste("s",1:6,sep="")
+> colnames(mat) <- paste("g",1:20,sep="")
+> head(mat)
+>
+> ## Espectros com maior correlação
+> pca.object <- prcomp(mat,center=TRUE,scale.=FALSE)
+> plot(pca.object)
+>
+> #Quero os cinco mais correlacionados
+> topN <- 5
+> load.rot <- scale(pca.object$rotation)
+> names(load.rot[,1][order(abs(load.rot[,1]),decreasing=TRUE)][1:topN])
+>
+>     Então cheguei as variáveis resposta, mas gostaria que alguém me
+> explicasse o por que disso fazendo um favor, pois quando utilizo os meus
+> dados originais, são sempre as variáveis resposta com maior valor numérico
+> que são selecionadas, mesmo utilizando a função scale().
+>
+> Obrigado,
+>
+> Alexandre
+>
+>
+> --
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+> e-mails:alexandresantosbr em yahoo.com.br
+>         alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+> ======================================================================
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180503/70b6a5bc/attachment.html>
+
+From cesar.rabak em gmail.com  Thu May  3 00:57:12 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 3 May 2018 00:57:12 -0300
+Subject: [R-br] =?utf-8?q?Emprego_da_PCA_para_sele=C3=A7=C3=A3o_de_vari?=
+	=?utf-8?q?=C3=A1veis_mais_correlacionadas_no_primeiro_componente_p?=
+	=?utf-8?q?rincipal?=
+In-Reply-To: <CAKrF98khhssoUQ28v1mzaven=1vs8NfK90GdzYHH89=HzEX40w@mail.gmail.com>
+References: <47c95d69-8da9-0258-2fea-0b0cd56d6b9d@cas.ifmt.edu.br>
+ <CAKrF98khhssoUQ28v1mzaven=1vs8NfK90GdzYHH89=HzEX40w@mail.gmail.com>
+Message-ID: <CAKrF98=vg2gNwbT3-NQXNhvf-F5boyNFkDAN6kBr4Tj7ORPAhA@mail.gmail.com>
+
+E uma observação que pode ajudá-lo a entender melhor o problema (ou a
+solução):
+
+Você escreveu: «  Gostaria de selecionar as 5 variáveis resposta  no
+primeiro componente principal mais correlacionadas  . . . », mas o que o
+procedimento descrito no link faz é "Selecionar as cinco variáveis mais
+correlacionadas *com* a primeira [coordenada] componente principal."
+
+Ou seja: dado que a PCA foi realizada, por convenção a 1ª componente da PCA
+é combinação linear das suas variáveis que mais apresenta a variabilidade
+dos seus dados.  Você então via o procedimento descrito no link do SO
+escolhe cinco variáveis (a PCA não faz distinção se são resposta ou não)
+que têm maior projeção nessa componente da PCA.
+
+HTH
+--
+Cesar Rabak
+
+
+2018-05-03 0:47 GMT-03:00 Cesar Rabak <cesar.rabak em gmail.com>:
+
+> Você viu o resumo na primeira resposta no link do SO que você postou?
+>
+>
+>
+> On Wed, May 2, 2018 at 6:02 PM, ASANTOS via R-br <r-br em listas.c3sl.ufpr.br
+> > wrote:
+>
+>> Prezados Membros,
+>>
+>>     Gostaria de selecionar as 5 variáveis resposta  no primeiro
+>> componente principal mais correlacionadas usando a PCA, através da função
+>> prcomp(), conforme o post https://stats.stackexchange.co
+>> m/questions/115032/how-to-find-which-variables-are-most-corr
+>> elated-with-the-first-principal-compone, sendo o meu CRM:
+>>
+>> ##Banco de dados
+>>
+>> set.seed(12345)
+>> mat <- matrix(rnorm(120,0,0.5),nrow=6,byrow=TRUE)
+>> rownames(mat) <- paste("s",1:6,sep="")
+>> colnames(mat) <- paste("g",1:20,sep="")
+>> head(mat)
+>>
+>> ## Espectros com maior correlação
+>> pca.object <- prcomp(mat,center=TRUE,scale.=FALSE)
+>> plot(pca.object)
+>>
+>> #Quero os cinco mais correlacionados
+>> topN <- 5
+>> load.rot <- scale(pca.object$rotation)
+>> names(load.rot[,1][order(abs(load.rot[,1]),decreasing=TRUE)][1:topN])
+>>
+>>     Então cheguei as variáveis resposta, mas gostaria que alguém me
+>> explicasse o por que disso fazendo um favor, pois quando utilizo os meus
+>> dados originais, são sempre as variáveis resposta com maior valor numérico
+>> que são selecionadas, mesmo utilizando a função scale().
+>>
+>> Obrigado,
+>>
+>> Alexandre
+>>
+>>
+>> --
+>> ======================================================================
+>> Alexandre dos Santos
+>> Proteção Florestal
+>> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+>> Campus Cáceres
+>> Caixa Postal 244
+>> Avenida dos Ramires, s/n
+>> Bairro: Distrito Industrial
+>> Cáceres - MT                      CEP: 78.200-000
+>> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+>> e-mails:alexandresantosbr em yahoo.com.br
+>>         alexandre.santos em cas.ifmt.edu.br
+>> Lattes: http://lattes.cnpq.br/1360403201088680
+>> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+>> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+>> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+>> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+>> ======================================================================
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+>> cdigo mnimo reproduzvel.
+>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180503/976719f9/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Thu May  3 16:30:22 2018
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Thu, 3 May 2018 15:30:22 -0400
+Subject: [R-br] =?utf-8?q?Emprego_da_PCA_para_sele=C3=A7=C3=A3o_de_vari?=
+ =?utf-8?q?=C3=A1veis_mais_correlacionadas_no_primeiro_componente_principa?=
+ =?utf-8?q?l?=
+In-Reply-To: <CAKrF98=vg2gNwbT3-NQXNhvf-F5boyNFkDAN6kBr4Tj7ORPAhA@mail.gmail.com>
+References: <47c95d69-8da9-0258-2fea-0b0cd56d6b9d@cas.ifmt.edu.br>
+ <CAKrF98khhssoUQ28v1mzaven=1vs8NfK90GdzYHH89=HzEX40w@mail.gmail.com>
+ <CAKrF98=vg2gNwbT3-NQXNhvf-F5boyNFkDAN6kBr4Tj7ORPAhA@mail.gmail.com>
+Message-ID: <3c5b36ce-6a2f-73c6-d7ad-9ac18706349a@cas.ifmt.edu.br>
+
+Obrigado Cezar,
+
+      Então mudando 
+names(load.rot[,2][order(abs(load.rot[,2]),decreasing=TRUE)][1:topN]) e 
+names(load.rot[,3][order(abs(load.rot[,3]),decreasing=TRUE)][1:topN]), 
+vou ter as cinco variáveis mais correlacionadas com a segunda e terceira 
+componentes principais respectivamente?
+
+Novamente obrigado,
+
+Alexandre
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+Em 02/05/2018 23:57, Cesar Rabak escreveu:
+> ##Banco de dados
+>
+> set.seed(12345)
+> mat <- matrix(rnorm(120,0,0.5),nrow=6,byrow=TRUE)
+> rownames(mat) <- paste("s",1:6,sep="")
+> colnames(mat) <- paste("g",1:20,sep="")
+> head(mat)
+>
+> ## Espectros com maior correlação
+> pca.object <- prcomp(mat,center=TRUE,scale.=FALSE)
+> plot(pca.object)
+>
+> #Quero os cinco mais correlacionados
+> topN <- 5
+> load.rot <- scale(pca.object$rotation)
+> names(load.rot[,1][order(abs(load.rot[,1]),decreasing=TRUE)][1:topN])
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180503/244cdb61/attachment.html>
+
+From nandodesouza em gmail.com  Thu May  3 16:42:04 2018
+From: nandodesouza em gmail.com (Fernando Antonio de souza)
+Date: Thu, 03 May 2018 19:42:04 +0000
+Subject: [R-br] =?utf-8?q?Emprego_da_PCA_para_sele=C3=A7=C3=A3o_de_vari?=
+ =?utf-8?q?=C3=A1veis_mais_correlacionadas_no_primeiro_componente_principa?=
+ =?utf-8?q?l?=
+In-Reply-To: <3c5b36ce-6a2f-73c6-d7ad-9ac18706349a@cas.ifmt.edu.br>
+References: <47c95d69-8da9-0258-2fea-0b0cd56d6b9d@cas.ifmt.edu.br>
+ <CAKrF98khhssoUQ28v1mzaven=1vs8NfK90GdzYHH89=HzEX40w@mail.gmail.com>
+ <CAKrF98=vg2gNwbT3-NQXNhvf-F5boyNFkDAN6kBr4Tj7ORPAhA@mail.gmail.com>
+ <3c5b36ce-6a2f-73c6-d7ad-9ac18706349a@cas.ifmt.edu.br>
+Message-ID: <local-c40a0efb-4513@nylas-mail.nylas.com>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180503/f2703537/attachment.html>
+
+From cesar.rabak em gmail.com  Fri May  4 18:36:34 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 4 May 2018 18:36:34 -0300
+Subject: [R-br] =?utf-8?q?Emprego_da_PCA_para_sele=C3=A7=C3=A3o_de_vari?=
+	=?utf-8?q?=C3=A1veis_mais_correlacionadas_no_primeiro_componente_p?=
+	=?utf-8?q?rincipal?=
+In-Reply-To: <3c5b36ce-6a2f-73c6-d7ad-9ac18706349a@cas.ifmt.edu.br>
+References: <47c95d69-8da9-0258-2fea-0b0cd56d6b9d@cas.ifmt.edu.br>
+ <CAKrF98khhssoUQ28v1mzaven=1vs8NfK90GdzYHH89=HzEX40w@mail.gmail.com>
+ <CAKrF98=vg2gNwbT3-NQXNhvf-F5boyNFkDAN6kBr4Tj7ORPAhA@mail.gmail.com>
+ <3c5b36ce-6a2f-73c6-d7ad-9ac18706349a@cas.ifmt.edu.br>
+Message-ID: <CAKrF98nrZV6b5JuP5G0PJS1eExoiMz+xLxCT9tryR08RSf3Jbw@mail.gmail.com>
+
+Sim Alexandre.
+
+Aliás, eu recomendo que você teste os resultados da pesquisa com os
+comandos (para os dados e resultados da PCA do seu CMR):
+
+> biplot(pca.object)
+
+e
+
+> biplot(pca.object, choice=2:3)
+
+Nessa representação você pode ver como as variáveis estão correlacionadas
+em relação às componentes da PCA *lembrando que a representação por ser
+espacial pode ter uma distorção devido às outras dimensões*.
+
+Por isso outros pacotes, como o FactoMiner (um dos meus favoritos junto com
+o ade4) permitem que se faça um corte nas variáveis que aparecem nesses
+gráficos levando em conta a assim chamada "qualidade da representação" em
+cada plano.
+
+Vou eludir discussão sobre um número muito reduzido de casos versus o
+número de variáveis neste caso porque entendo que o CMR é só para discutir
+a técnica.
+
+HTH
+
+2018-05-03 16:30 GMT-03:00 ASANTOS <alexandre.santos em cas.ifmt.edu.br>:
+
+> Obrigado Cezar,
+>
+>      Então mudando names(load.rot[,2][order(abs(
+> load.rot[,2]),decreasing=TRUE)][1:topN]) e names(load.rot[,3][order(abs(
+> load.rot[,3]),decreasing=TRUE)][1:topN]), vou ter as cinco variáveis mais
+> correlacionadas com a segunda e terceira componentes principais
+> respectivamente?
+>
+> Novamente obrigado,
+>
+> Alexandre
+>
+> --
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)e-mails:alexandresantosbr em yahoo.com.br
+>         alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+> ======================================================================
+>
+> Em 02/05/2018 23:57, Cesar Rabak escreveu:
+>
+> ##Banco de dados
+>
+> set.seed(12345)
+> mat <- matrix(rnorm(120,0,0.5),nrow=6,byrow=TRUE)
+> rownames(mat) <- paste("s",1:6,sep="")
+> colnames(mat) <- paste("g",1:20,sep="")
+> head(mat)
+>
+> ## Espectros com maior correlação
+> pca.object <- prcomp(mat,center=TRUE,scale.=FALSE)
+> plot(pca.object)
+>
+> #Quero os cinco mais correlacionados
+> topN <- 5
+> load.rot <- scale(pca.object$rotation)
+> names(load.rot[,1][order(abs(load.rot[,1]),decreasing=TRUE)][1:topN])
+>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180504/d48bb059/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Sat May  5 09:47:52 2018
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Sat, 5 May 2018 08:47:52 -0400
+Subject: [R-br] =?utf-8?q?Emprego_da_PCA_para_sele=C3=A7=C3=A3o_de_vari?=
+ =?utf-8?q?=C3=A1veis_mais_correlacionadas_no_primeiro_componente_principa?=
+ =?utf-8?q?l?=
+In-Reply-To: <CAKrF98nrZV6b5JuP5G0PJS1eExoiMz+xLxCT9tryR08RSf3Jbw@mail.gmail.com>
+References: <47c95d69-8da9-0258-2fea-0b0cd56d6b9d@cas.ifmt.edu.br>
+ <CAKrF98khhssoUQ28v1mzaven=1vs8NfK90GdzYHH89=HzEX40w@mail.gmail.com>
+ <CAKrF98=vg2gNwbT3-NQXNhvf-F5boyNFkDAN6kBr4Tj7ORPAhA@mail.gmail.com>
+ <3c5b36ce-6a2f-73c6-d7ad-9ac18706349a@cas.ifmt.edu.br>
+ <CAKrF98nrZV6b5JuP5G0PJS1eExoiMz+xLxCT9tryR08RSf3Jbw@mail.gmail.com>
+Message-ID: <af73ca4c-0e4c-bd7b-1964-36aec5bd076a@cas.ifmt.edu.br>
+
+Obrigado Cesar e Fernando pelas dicas estão ajudando muito a solidificar 
+os estudos que venho conduzindo,
+
+     Fernando obrigado pelo vídeo, tirando o inglês carregado no francês 
+que dificulta na compreensão ajudou muito e estou explorando muito a 
+ferramenta dimdesc().
+
+     Cesar, as figuras que me mandou representa bem o que eu quero, qual 
+a função que utilizou para gerar aquelas figuras de % de contribuição de 
+cada variável.
+
+Obrigado a ajuda de todos,
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+Em 04/05/2018 17:36, Cesar Rabak escreveu:
+> Sim Alexandre.
+>
+> Aliás, eu recomendo que você teste os resultados da pesquisa com os 
+> comandos (para os dados e resultados da PCA do seu CMR):
+>
+> > biplot(pca.object)
+>
+> e
+>
+> > biplot(pca.object, choice=2:3)
+>
+> Nessa representação você pode ver como as variáveis estão 
+> correlacionadas em relação às componentes da PCA *lembrando que a 
+> representação por ser espacial pode ter uma distorção devido às outras 
+> dimensões*.
+>
+> Por isso outros pacotes, como o FactoMiner (um dos meus favoritos 
+> junto com o ade4) permitem que se faça um corte nas variáveis que 
+> aparecem nesses gráficos levando em conta a assim chamada "qualidade 
+> da representação" em cada plano.
+>
+> Vou eludir discussão sobre um número muito reduzido de casos versus o 
+> número de variáveis neste caso porque entendo que o CMR é só para 
+> discutir a técnica.
+>
+> HTH
+>
+> 2018-05-03 16:30 GMT-03:00 ASANTOS <alexandre.santos em cas.ifmt.edu.br 
+> <mailto:alexandre.santos em cas.ifmt.edu.br>>:
+>
+>     Obrigado Cezar,
+>
+>          Então mudando
+>     names(load.rot[,2][order(abs(load.rot[,2]),decreasing=TRUE)][1:topN])
+>     e
+>     names(load.rot[,3][order(abs(load.rot[,3]),decreasing=TRUE)][1:topN]),
+>     vou ter as cinco variáveis mais correlacionadas com a segunda e
+>     terceira componentes principais respectivamente?
+>
+>     Novamente obrigado,
+>
+>     Alexandre
+>
+>     -- 
+>     ======================================================================
+>     Alexandre dos Santos
+>     Proteção Florestal
+>     IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+>     Campus Cáceres
+>     Caixa Postal 244
+>     Avenida dos Ramires, s/n
+>     Bairro: Distrito Industrial
+>     Cáceres - MT                      CEP: 78.200-000
+>     Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+>     e-mails:alexandresantosbr em yahoo.com.br
+>     <mailto:e-mails:alexandresantosbr em yahoo.com.br>  
+>              alexandre.santos em cas.ifmt.edu.br
+>     <mailto:alexandre.santos em cas.ifmt.edu.br>  
+>     Lattes:http://lattes.cnpq.br/1360403201088680
+>     <http://lattes.cnpq.br/1360403201088680>  
+>     OrcID:orcid.org/0000-0001-8232-6722 <http://orcid.org/0000-0001-8232-6722>    -   ResearcherID: A-5790-2016
+>     Researchgate:www.researchgate.net/profile/Alexandre_Santos10
+>     <http://www.researchgate.net/profile/Alexandre_Santos10>                        
+>     LinkedIn:br.linkedin.com/in/alexandre-dos-santos-87961635
+>     <http://br.linkedin.com/in/alexandre-dos-santos-87961635>
+>     Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+>     ======================================================================
+>
+>     Em 02/05/2018 23:57, Cesar Rabak escreveu:
+>>     ##Banco de dados
+>>
+>>     set.seed(12345)
+>>     mat <- matrix(rnorm(120,0,0.5),nrow=6,byrow=TRUE)
+>>     rownames(mat) <- paste("s",1:6,sep="")
+>>     colnames(mat) <- paste("g",1:20,sep="")
+>>     head(mat)
+>>
+>>     ## Espectros com maior correlação
+>>     pca.object <- prcomp(mat,center=TRUE,scale.=FALSE)
+>>     plot(pca.object)
+>>
+>>     #Quero os cinco mais correlacionados
+>>     topN <- 5
+>>     load.rot <- scale(pca.object$rotation)
+>>     names(load.rot[,1][order(abs(load.rot[,1]),decreasing=TRUE)][1:topN])
+>
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180505/fee03fc0/attachment.html>
+
+From lucas_stempkowski em hotmail.com  Sat May  5 11:21:14 2018
+From: lucas_stempkowski em hotmail.com (Lucas Stempkowski)
+Date: Sat, 5 May 2018 14:21:14 +0000
+Subject: [R-br] =?iso-8859-1?q?Escala_em_gr=E1ficos?=
+Message-ID: <RO1P215MB03944EFEE16EE07ED7130E8B85850@RO1P215MB0394.LAMP215.PROD.OUTLOOK.COM>
+
+Bom dia,
+
+
+Plotei um gráfico boxplot  com o seguinte comando:
+
+
+boxplot(prodt~sistema, xlab="Anos sem trigo", ylab="Produtividade kg ha-¹")
+
+
+Como a produtividade foi variável na cultivares testadas, gostaria de padronizar a escala no eixo y para que ficasse dessa forma 1500, 2000, 2500, 3000, 3500, 4000, como faço essa alteração?
+
+
+Muito obrigado.
+
+
+--
+
+-----------------------------------------------------
+
+Lucas Antonio Stempkowski
+
+Eng. Agronômo - UFFS
+
+Mestrando em Produção Vegetal CAV/UDESC
+
++55 54 99153-0124/ 98448-4633
+
+--------------------------------------------------
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180505/5a0c249b/attachment.html>
+
+From marcus.nunes em gmail.com  Sat May  5 12:17:13 2018
+From: marcus.nunes em gmail.com (Marcus Nunes)
+Date: Sat, 5 May 2018 12:17:13 -0300
+Subject: [R-br] =?utf-8?q?Escala_em_gr=C3=A1ficos?=
+In-Reply-To: <RO1P215MB03944EFEE16EE07ED7130E8B85850@RO1P215MB0394.LAMP215.PROD.OUTLOOK.COM>
+References: <RO1P215MB03944EFEE16EE07ED7130E8B85850@RO1P215MB0394.LAMP215.PROD.OUTLOOK.COM>
+Message-ID: <CA+QGQvvTA68fx+WekDkHm5ZjOKxr2xuYxEss=0gnC4LMjiROwQ@mail.gmail.com>
+
+Oi, Lucas
+
+Tente os seguintes comandos:
+
+# axes=F faz aparecer apenas a caixa do bolplot, sem escala
+boxplot(prodt~sistema, xlab="Anos sem trigo", ylab="Produtividade kg ha-¹",
+axes=F)
+
+# axis 2, siginifica eixo vertical da esquerda. se colocar axis 4, serah o
+eixo vertical da direita
+# at=seq(...) diz que o eixo a ser criado deve comecar em 1500 e terminar
+em 4000, com incrementos de 500
+axis(2, at=seq(from=1500, to=4000, by=5))
+
+# cria a caixa em volta do boxplot, limitando o espaco grafico
+box()
+
+--
+Marcus Nunes
+Professor Adjunto
+Universidade Federal do Rio Grande do Norte
+Centro de Ciências Exatas e da Terra
+Departamento de Estatística
+Laboratório de Estatística Aplicada
+marcus.nunes em ccet.ufrn.br
+http://marcusnunes.me/
+
+
+2018-05-05 11:21 GMT-03:00 Lucas Stempkowski via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Bom dia,
+>
+>
+> Plotei um gráfico boxplot  com o seguinte comando:
+>
+>
+> boxplot(prodt~sistema, xlab="Anos sem trigo", ylab="Produtividade kg ha-¹")
+>
+>
+> Como a produtividade foi variável na cultivares testadas, gostaria de
+> padronizar a escala no eixo y para que ficasse dessa forma 1500, 2000,
+> 2500, 3000, 3500, 4000, como faço essa alteração?
+>
+>
+> Muito obrigado.
+>
+>
+> *--*
+>
+> *-----------------------------------------------------*
+>
+> Lucas Antonio Stempkowski
+>
+> Eng. Agronômo - UFFS
+>
+> Mestrando em Produção Vegetal CAV/UDESC
+>
+> +55 54 99153-0124/ 98448-4633
+>
+> --------------------------------------------------
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180505/d7b7f382/attachment.html>
+
+From cesar.rabak em gmail.com  Sat May  5 15:43:48 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 5 May 2018 15:43:48 -0300
+Subject: [R-br] =?utf-8?q?Emprego_da_PCA_para_sele=C3=A7=C3=A3o_de_vari?=
+	=?utf-8?q?=C3=A1veis_mais_correlacionadas_no_primeiro_componente_p?=
+	=?utf-8?q?rincipal?=
+In-Reply-To: <af73ca4c-0e4c-bd7b-1964-36aec5bd076a@cas.ifmt.edu.br>
+References: <47c95d69-8da9-0258-2fea-0b0cd56d6b9d@cas.ifmt.edu.br>
+ <CAKrF98khhssoUQ28v1mzaven=1vs8NfK90GdzYHH89=HzEX40w@mail.gmail.com>
+ <CAKrF98=vg2gNwbT3-NQXNhvf-F5boyNFkDAN6kBr4Tj7ORPAhA@mail.gmail.com>
+ <3c5b36ce-6a2f-73c6-d7ad-9ac18706349a@cas.ifmt.edu.br>
+ <CAKrF98nrZV6b5JuP5G0PJS1eExoiMz+xLxCT9tryR08RSf3Jbw@mail.gmail.com>
+ <af73ca4c-0e4c-bd7b-1964-36aec5bd076a@cas.ifmt.edu.br>
+Message-ID: <CAKrF98mLDg1_wC37gVUxf4iQ5grKQ7_EM_NQRpbE3r8fUT+gOA@mail.gmail.com>
+
+Alexandre,
+
+Eu usei as funções do pacote "factoextra"
+<http://www.sthda.com/english/wiki/factoextra-r-package-easy-multivariate-data-analyses-and-elegant-visualization>
+.
+
+A partir do seu CMR você pode seguir com:
+> install.packages("factoextra")  ## só vai ser necessário uma única vez
+
+> library("factoextra")
+
+> fviz_contrib(pca.object, choice = "var", axes = 1, top = 5)
+> fviz_contrib(pca.object, choice = "var", axes = 2, top = 5)
+> fviz_contrib(pca.object, choice = "var", axes = 3, top = 5)
+
+O parâmetro "top = 5" foi colocado porque você explicitou seu desejo de
+obter as cinco primeiras variáveis. Se você usar o default do sistema, ele
+coloca uma linha vermelha tracejada indicando o número "recomendado"
+(baseado numa lógica decorrente da teoria da PCA [p/detalhes, v. a doc. do
+pacote]).
+
+HTH
+--
+Cesar Rabak
+
+
+
+2018-05-05 9:47 GMT-03:00 ASANTOS <alexandre.santos em cas.ifmt.edu.br>:
+
+> Obrigado Cesar e Fernando pelas dicas estão ajudando muito a solidificar
+> os estudos que venho conduzindo,
+>
+>     Fernando obrigado pelo vídeo, tirando o inglês carregado no francês
+> que dificulta na compreensão ajudou muito e estou explorando muito a
+> ferramenta dimdesc().
+>
+>     Cesar, as figuras que me mandou representa bem o que eu quero, qual a
+> função que utilizou para gerar aquelas figuras de % de contribuição de cada
+> variável.
+>
+> Obrigado a ajuda de todos,
+>
+> --
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)e-mails:alexandresantosbr em yahoo.com.br
+>         alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+> ======================================================================
+>
+> Em 04/05/2018 17:36, Cesar Rabak escreveu:
+>
+> Sim Alexandre.
+>
+> Aliás, eu recomendo que você teste os resultados da pesquisa com os
+> comandos (para os dados e resultados da PCA do seu CMR):
+>
+> > biplot(pca.object)
+>
+> e
+>
+> > biplot(pca.object, choice=2:3)
+>
+> Nessa representação você pode ver como as variáveis estão correlacionadas
+> em relação às componentes da PCA *lembrando que a representação por ser
+> espacial pode ter uma distorção devido às outras dimensões*.
+>
+> Por isso outros pacotes, como o FactoMiner (um dos meus favoritos junto
+> com o ade4) permitem que se faça um corte nas variáveis que aparecem nesses
+> gráficos levando em conta a assim chamada "qualidade da representação" em
+> cada plano.
+>
+> Vou eludir discussão sobre um número muito reduzido de casos versus o
+> número de variáveis neste caso porque entendo que o CMR é só para discutir
+> a técnica.
+>
+> HTH
+>
+> 2018-05-03 16:30 GMT-03:00 ASANTOS <alexandre.santos em cas.ifmt.edu.br>:
+>
+>> Obrigado Cezar,
+>>
+>>      Então mudando names(load.rot[,2][order(abs(l
+>> oad.rot[,2]),decreasing=TRUE)][1:topN]) e names(load.rot[,3][order(abs(l
+>> oad.rot[,3]),decreasing=TRUE)][1:topN]), vou ter as cinco variáveis mais
+>> correlacionadas com a segunda e terceira componentes principais
+>> respectivamente?
+>>
+>> Novamente obrigado,
+>>
+>> Alexandre
+>>
+>> --
+>> ======================================================================
+>> Alexandre dos Santos
+>> Proteção Florestal
+>> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+>> Campus Cáceres
+>> Caixa Postal 244
+>> Avenida dos Ramires, s/n
+>> Bairro: Distrito Industrial
+>> Cáceres - MT                      CEP: 78.200-000
+>> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)e-mails:alexandresantosbr em yahoo.com.br
+>>         alexandre.santos em cas.ifmt.edu.br
+>> Lattes: http://lattes.cnpq.br/1360403201088680
+>> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+>> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+>> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+>> ======================================================================
+>>
+>> Em 02/05/2018 23:57, Cesar Rabak escreveu:
+>>
+>> ##Banco de dados
+>>
+>> set.seed(12345)
+>> mat <- matrix(rnorm(120,0,0.5),nrow=6,byrow=TRUE)
+>> rownames(mat) <- paste("s",1:6,sep="")
+>> colnames(mat) <- paste("g",1:20,sep="")
+>> head(mat)
+>>
+>> ## Espectros com maior correlação
+>> pca.object <- prcomp(mat,center=TRUE,scale.=FALSE)
+>> plot(pca.object)
+>>
+>> #Quero os cinco mais correlacionados
+>> topN <- 5
+>> load.rot <- scale(pca.object$rotation)
+>> names(load.rot[,1][order(abs(load.rot[,1]),decreasing=TRUE)][1:topN])
+>>
+>>
+>>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180505/354629bc/attachment.html>
+
+From andreolsouza em yahoo.com.br  Sun May  6 09:00:13 2018
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Sun, 6 May 2018 12:00:13 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_de_pacote_do_github?=
+References: <2065468966.358279.1525608013493.ref@mail.yahoo.com>
+Message-ID: <2065468966.358279.1525608013493@mail.yahoo.com>
+
+
+ 
+Bom dia! 
+ faz algum tempo que este problema vem ocorrendo e dificultando as coisas para mim. Veja bem:
+
+ require(devtools)
+ Carregando pacotes exigidos: devtools
+ install_github("tagteam/Publish")
+ Installation failed: Problem with the SSL CA cert (path? access rights?)
+
+ Pesquisando passei usar o comando!
+
+ httr::set_config(httr::config(ssl_verifypeer = FALSE ))
+ install_github("tagteam/Publish")
+ Downloading GitHub repo tagteam/Publish em master
+ from URL https://api.github.com/repos/tagteam/Publish/zipball/master
+ Installation failed: Peer reports incompatible or unsupported protocol version.
+
+ Não sei mais o que fazer, pois, preciso atualizar alguns pacotes e não consigo. Alguém teria uma sugestão?
+ obg
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180506/027310a7/attachment.html>
+
+From andreolsouza em yahoo.com.br  Sun May  6 15:15:17 2018
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Sun, 6 May 2018 18:15:17 +0000 (UTC)
+Subject: [R-br] Escalonar matrizes
+References: <1928755379.433890.1525630517280.ref@mail.yahoo.com>
+Message-ID: <1928755379.433890.1525630517280@mail.yahoo.com>
+
+boa tarde,
+alguém conhece uma função que escalona uma matriz?
+obg 
+
+André Oliveira Souza
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180506/93141c25/attachment.html>
+
+From roacastro87 em yahoo.com.br  Sun May  6 15:32:36 2018
+From: roacastro87 em yahoo.com.br (Rodrigo Araujo e Castro)
+Date: Sun, 6 May 2018 18:32:36 +0000 (UTC)
+Subject: [R-br] Escalonar matrizes
+In-Reply-To: <1928755379.433890.1525630517280@mail.yahoo.com>
+References: <1928755379.433890.1525630517280.ref@mail.yahoo.com>
+ <1928755379.433890.1525630517280@mail.yahoo.com>
+Message-ID: <968881064.409889.1525631556865@mail.yahoo.com>
+
+ Boa tarde,
+
+Buscando sobre o tema, encontrei outra discussão nessa mesma lista sobre o tema e nela é proposta uma função para tal. Segue o link: [R-br] Fun��o-escalonar. Sugiro testar essa função e ver se ela atende a suas necessidades.
+
+Att,
+Rodrigo
+
+ 
+
+| 
+| 
+|  | 
+[R-br] Fun��o-escalonar
+
+
+ |
+
+ |
+
+ |
+
+
+
+
+    Em domingo, 6 de maio de 2018 15:15:36 BRT, Andre Oliveira via R-br <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ boa tarde,
+alguém conhece uma função que escalona uma matriz?
+obg 
+
+André Oliveira Souza_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180506/6c30deb7/attachment.html>
+
+From roacastro87 em yahoo.com.br  Sun May  6 15:43:46 2018
+From: roacastro87 em yahoo.com.br (Rodrigo Araujo e Castro)
+Date: Sun, 6 May 2018 18:43:46 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Instala=C3=A7=C3=A3o_de_pacote_do_github?=
+In-Reply-To: <2065468966.358279.1525608013493@mail.yahoo.com>
+References: <2065468966.358279.1525608013493.ref@mail.yahoo.com>
+ <2065468966.358279.1525608013493@mail.yahoo.com>
+Message-ID: <1339539706.436922.1525632226497@mail.yahoo.com>
+
+ Boa tarde,
+
+Testei os primeiros comandos que você mostrou no seu email (usando o pacote devtools no R, versão 3.5) e não tive problemas em instalar no Windows, nem mesmo uma mensagem de erro. Se eles realmente não funcionam no seu computador, pode ser que você use Linux, nesse caso esse link pode te ajudar: Problem with the SSL CA cert (path? access rights?) · Issue #56 · redox-os/cookbook.
+
+Espero ter ajudado de alguma forma,
+Rodrigo
+ 
+
+| 
+| 
+| 
+|  |  |
+
+ |
+
+ |
+| 
+|  | 
+Problem with the SSL CA cert (path? access rights?) · Issue #56 · redox-...
+
+Trying redox on my ubuntu 16.04 machine: When I try to compile Redox, $ make all cd kernel && xargo clean rm -rf...
+ |
+
+ |
+
+ |
+
+
+
+
+    Em domingo, 6 de maio de 2018 09:00:49 BRT, Andre Oliveira via R-br <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ 
+ 
+Bom dia! 
+ faz algum tempo que este problema vem ocorrendo e dificultando as coisas para mim. Veja bem:
+
+ require(devtools)
+ Carregando pacotes exigidos: devtools
+ install_github("tagteam/Publish")
+ Installation failed: Problem with the SSL CA cert (path? access rights?)
+
+ Pesquisando passei usar o comando!
+
+ httr::set_config(httr::config(ssl_verifypeer = FALSE ))
+ install_github("tagteam/Publish")
+ Downloading GitHub repo tagteam/Publish em master
+ from URL https://api.github.com/repos/tagteam/Publish/zipball/master
+ Installation failed: Peer reports incompatible or unsupported protocol version.
+
+ Não sei mais o que fazer, pois, preciso atualizar alguns pacotes e não consigo. Alguém teria uma sugestão?
+ obg
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180506/13f19099/attachment.html>
+
+From marcelejc.marinho em gmail.com  Mon May  7 16:12:06 2018
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Mon, 7 May 2018 16:12:06 -0300
+Subject: [R-br] Boxplot em grupo
+Message-ID: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+
+Olá, boa tarde!
+
+Sou iniciante no R e preciso de muita ajuda. Tenho recorrido aos tutoriais,
+livros, algumas dúvidas que são postadas aqui e vídeos no youtube, que tem
+me ajudado bastante, porém, estou com dificuldade para fazer um gráfico
+boxplot envolvendo três variáveis juntas. Assim:
+Estou trabalhando com série temporal de três estações meteorológicas, num
+total de 27 variáveis, entre estas, estou analisando no momento 3
+(precipitação, temperatura mínima e máxima) de cada estação. Para cada uma
+dessas variáveis e suas respectivas estações, elaborei um gráfico boxplot,
+conforme comando abaixo:
+
+boxplot(TempMin_Jagua ~ Mes, las=1, data = data_estacoes, col = "gray",
+notch = FALSE, ylab="Temperatura", xlab= "Mês", main= "Média Mensal da
+Temperatura Mínima da Estação de Jaguaruana").
+
+Entretanto, gostaria de inserir num único gráfico a variável temperatura
+mínima das três estações, a fim de comparar numa mesma escala o
+"comportamento" dessa variável por estação, e não estou conseguindo. Li
+algo parecido aqui no grupo, em que foi utilizado o pacote ggplot2, tentei
+usar sem sucesso. Fiz-me entender? Espero que sim, porque esse negócio é
+bem complicado... mas estou gostando.
+
+Desde já agradeço.
+
+Cordialmente,
+
+​​
+Marcele Correa.
+Geographer
+Master Student in Climate Sciences
+​
+Research Line - Bioclimatology and
+​C​
+limatic
+​C​
+hanges
+Advisor - Kellen Carla Lima
+Federal University of Rio Grande do Norte - UFRN / Brazil.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180507/29a7753b/attachment.html>
+
+From pjobenil em gmail.com  Mon May  7 16:24:58 2018
+From: pjobenil em gmail.com (=?utf-8?Q?Jobenil_Luiz_Magalh=C3=A3es_J=C3=BAnior?=)
+Date: Mon, 7 May 2018 16:24:58 -0300
+Subject: [R-br] RES:  Boxplot em grupo
+In-Reply-To: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+References: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+Message-ID: <5af0a817.831a370a.77fbe.962c@mx.google.com>
+
+Marcele
+
+Talvez você obtenha algum insight aqui: https://stackoverflow.com/questions/14604439/plot-multiple-boxplot-in-one-graph
+
+Mas eu acho que você deverá reformatar seu dataset e criar uma variável do tipo factor que discrimine se uma determinada temperatura é mínima, máxima,... No exemplo ele chama de Label
+Bom trabalho
+
+Atenciosamente
+Jobenil Júnior
+ 
+
+Enviado do Email para Windows 10
+
+De: Marcele de Jesus Correa via R-br
+Enviado:segunda-feira, 7 de maio de 2018 16:12
+Para: a lista Brasileira oficial de discussão do programa R.
+Assunto: [R-br] Boxplot em grupo
+
+Olá, boa tarde!
+
+Sou iniciante no R e preciso de muita ajuda. Tenho recorrido aos tutoriais, livros, algumas dúvidas que são postadas aqui e vídeos no youtube, que tem me ajudado bastante, porém, estou com dificuldade para fazer um gráfico boxplot envolvendo três variáveis juntas. Assim:
+Estou trabalhando com série temporal de três estações meteorológicas, num total de 27 variáveis, entre estas, estou analisando no momento 3 (precipitação, temperatura mínima e máxima) de cada estação. Para cada uma dessas variáveis e suas respectivas estações, elaborei um gráfico boxplot,  conforme comando abaixo: 
+
+boxplot(TempMin_Jagua ~ Mes, las=1, data = data_estacoes, col = "gray", notch = FALSE, ylab="Temperatura", xlab= "Mês", main= "Média Mensal da Temperatura Mínima da Estação de Jaguaruana"). 
+
+Entretanto, gostaria de inserir num único gráfico a variável temperatura mínima das três estações, a fim de comparar numa mesma escala o "comportamento" dessa variável por estação, e não estou conseguindo. Li algo parecido aqui no grupo, em que foi utilizado o pacote ggplot2, tentei usar sem sucesso. Fiz-me entender? Espero que sim, porque esse negócio é bem complicado... mas estou gostando. 
+
+Desde já agradeço.
+
+Cordialmente,
+
+​​
+Marcele Correa.
+Geographer
+Master Student in Climate Sciences
+​
+Research Line - Bioclimatology and 
+​C​
+limatic 
+​C​
+hanges
+Advisor - Kellen Carla Lima
+Federal University of Rio Grande do Norte - UFRN / Brazil.
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180507/ca600998/attachment.html>
+
+From nandodesouza em gmail.com  Mon May  7 17:35:39 2018
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Mon, 7 May 2018 17:35:39 -0300
+Subject: [R-br] Boxplot em grupo
+In-Reply-To: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+References: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+Message-ID: <CAFrWFskNDfMa150LbdpdvsJi=mgi4mf59EYT0spdrjo_0XsFYw@mail.gmail.com>
+
+Faça um dput(data_estacoes) copie e cole a saída aqui para que possamos lhe
+ajudar.
+
+att
+
+Em 7 de maio de 2018 16:12, Marcele de Jesus Correa via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá, boa tarde!
+>
+> Sou iniciante no R e preciso de muita ajuda. Tenho recorrido aos
+> tutoriais, livros, algumas dúvidas que são postadas aqui e vídeos no
+> youtube, que tem me ajudado bastante, porém, estou com dificuldade para
+> fazer um gráfico boxplot envolvendo três variáveis juntas. Assim:
+> Estou trabalhando com série temporal de três estações meteorológicas, num
+> total de 27 variáveis, entre estas, estou analisando no momento 3
+> (precipitação, temperatura mínima e máxima) de cada estação. Para cada uma
+> dessas variáveis e suas respectivas estações, elaborei um gráfico boxplot,
+> conforme comando abaixo:
+>
+> boxplot(TempMin_Jagua ~ Mes, las=1, data = data_estacoes, col = "gray",
+> notch = FALSE, ylab="Temperatura", xlab= "Mês", main= "Média Mensal da
+> Temperatura Mínima da Estação de Jaguaruana").
+>
+> Entretanto, gostaria de inserir num único gráfico a variável temperatura
+> mínima das três estações, a fim de comparar numa mesma escala o
+> "comportamento" dessa variável por estação, e não estou conseguindo. Li
+> algo parecido aqui no grupo, em que foi utilizado o pacote ggplot2, tentei
+> usar sem sucesso. Fiz-me entender? Espero que sim, porque esse negócio é
+> bem complicado... mas estou gostando.
+>
+> Desde já agradeço.
+>
+> Cordialmente,
+>
+> ​​
+> Marcele Correa.
+> Geographer
+> Master Student in Climate Sciences
+> ​
+> Research Line - Bioclimatology and
+> ​C​
+> limatic
+> ​C​
+> hanges
+> Advisor - Kellen Carla Lima
+> Federal University of Rio Grande do Norte - UFRN / Brazil.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+=========================================
+Fernando Souza
+Zootecnista, DSc. Produção e Alimentação Animal
+Celular: (31)99796-8781 (Vivo)
+E-mail:nandodesouza em gmail.com <e-mail%3Anandodesouza em gmail.com>
+Lattes: http://lattes.cnpq.br/6519538815038307
+Blog: https://producaoanimalcomr.wordpress.com/
+==========================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180507/5aff07d5/attachment.html>
+
+From roacastro87 em yahoo.com.br  Mon May  7 19:57:05 2018
+From: roacastro87 em yahoo.com.br (=?UTF-8?Q?Rodrigo_Ara=C3=BAjo_e_Castro?=)
+Date: Mon, 7 May 2018 22:57:05 +0000 (UTC)
+Subject: [R-br] Boxplot em grupo
+In-Reply-To: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+References: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+Message-ID: <767821582.908739.1525733825943@mail.yahoo.com>
+
+ Boa noite,
+
+Para tentar te entender e poder te ajudar, criei um exemplo fictício (ver a seguir) que pode ou não se aproximar do que você precisa.
+
+min_estacao1=c(20,25,40)
+min_estacao2=c(40,50,44)
+min_estacao3=c(30,35,40)
+
+data_estacoes = data.frame(min_estacao1,min_estacao2,min_estacao3)
+
+ boxplot(dados,ylab="Temperatura", data= data_estacoes,xlab= "Mês",las=1, 
+    col = "gray", notch = FALSE, names=c("estacao1","estacao2","estacao3"),
+    main= "Média Mensal da Temperatura Mínima da Estação de Jaguaruana")
+
+Seria mais ou menos isso que você está tentando fazer? Se não, por favor nos mostre o formato aproximado dos dados de entrada e o que você espera obter como resposta.
+
+Cordialmente,
+Rodrigo
+    Em segunda-feira, 7 de maio de 2018 16:12:26 BRT, Marcele de Jesus Correa via R-br <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Olá, boa tarde!
+Sou iniciante no R e preciso de muita ajuda. Tenho recorrido aos tutoriais, livros, algumas dúvidas que são postadas aqui e vídeos no youtube, que tem me ajudado bastante, porém, estou com dificuldade para fazer um gráfico boxplot envolvendo três variáveis juntas. Assim:Estou trabalhando com série temporal de três estações meteorológicas, num total de 27 variáveis, entre estas, estou analisando no momento 3 (precipitação, temperatura mínima e máxima) de cada estação. Para cada uma dessas variáveis e suas respectivas estações, elaborei um gráfico boxplot,  conforme comando abaixo: 
+boxplot(TempMin_Jagua ~ Mes, las=1, data = data_estacoes, col = "gray", notch = FALSE, ylab="Temperatura", xlab= "Mês", main= "Média Mensal da Temperatura Mínima da Estação de Jaguaruana"). 
+Entretanto, gostaria de inserir num único gráfico a variável temperatura mínima das três estações, a fim de comparar numa mesma escala o "comportamento" dessa variável por estação, e não estou conseguindo. Li algo parecido aqui no grupo, em que foi utilizado o pacote ggplot2, tentei usar sem sucesso. Fiz-me entender? Espero que sim, porque esse negócio é bem complicado... mas estou gostando. 
+Desde já agradeço.
+Cordialmente,
+​​Marcele Correa.GeographerMaster Student in Climate Sciences​Research Line - Bioclimatology and ​C​limatic ​C​hangesAdvisor - Kellen Carla LimaFederal University of Rio Grande do Norte - UFRN / Brazil.
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180507/0b9a6f92/attachment.html>
+
+From eucilene.alvessantana em gmail.com  Tue May  8 21:30:39 2018
+From: eucilene.alvessantana em gmail.com (Eucilene Alves Santana)
+Date: Wed, 09 May 2018 00:30:39 +0000
+Subject: [R-br] Boxplot em grupo
+In-Reply-To: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+References: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+Message-ID: <CANuApLu6Prpn5q5LZnLnzU6omCvJ9-ici+H04xvSFRXxWuv23g@mail.gmail.com>
+
+Marcele não pode ser três gráficos um ao lado do outro com a mesma escala?
+
+Em Seg, 7 de mai de 2018 16:12, Marcele de Jesus Correa via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá, boa tarde!
+>
+> Sou iniciante no R e preciso de muita ajuda. Tenho recorrido aos
+> tutoriais, livros, algumas dúvidas que são postadas aqui e vídeos no
+> youtube, que tem me ajudado bastante, porém, estou com dificuldade para
+> fazer um gráfico boxplot envolvendo três variáveis juntas. Assim:
+> Estou trabalhando com série temporal de três estações meteorológicas, num
+> total de 27 variáveis, entre estas, estou analisando no momento 3
+> (precipitação, temperatura mínima e máxima) de cada estação. Para cada uma
+> dessas variáveis e suas respectivas estações, elaborei um gráfico boxplot,
+> conforme comando abaixo:
+>
+> boxplot(TempMin_Jagua ~ Mes, las=1, data = data_estacoes, col = "gray",
+> notch = FALSE, ylab="Temperatura", xlab= "Mês", main= "Média Mensal da
+> Temperatura Mínima da Estação de Jaguaruana").
+>
+> Entretanto, gostaria de inserir num único gráfico a variável temperatura
+> mínima das três estações, a fim de comparar numa mesma escala o
+> "comportamento" dessa variável por estação, e não estou conseguindo. Li
+> algo parecido aqui no grupo, em que foi utilizado o pacote ggplot2, tentei
+> usar sem sucesso. Fiz-me entender? Espero que sim, porque esse negócio é
+> bem complicado... mas estou gostando.
+>
+> Desde já agradeço.
+>
+> Cordialmente,
+>
+> ​​
+> Marcele Correa.
+> Geographer
+> Master Student in Climate Sciences
+> ​
+> Research Line - Bioclimatology and
+> ​C​
+> limatic
+> ​C​
+> hanges
+> Advisor - Kellen Carla Lima
+> Federal University of Rio Grande do Norte - UFRN / Brazil.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180509/f5e65dfe/attachment.html>
+
+From delcio.bortolanza em outlook.com  Tue May  8 23:15:36 2018
+From: delcio.bortolanza em outlook.com (Delcio Rudinei Bortolanza)
+Date: Wed, 9 May 2018 02:15:36 +0000
+Subject: [R-br] Boxplot em grupo
+In-Reply-To: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+References: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+Message-ID: <BN6PR18MB1524152A49E5D98EE271B03FE6990@BN6PR18MB1524.namprd18.prod.outlook.com>
+
+Olá!
+
+
+Criei alguns dados para rodar o script. Veja se é algo semelhante a isso que busca:
+
+
+
+data<-read.table(header = T,dec=",",text = "
+col1 col2 col3
+1,284877804 1,277701121 0,59309434
+-0,558038947 -0,539990734 -0,302552794
+-0,159938135 0,491608754 -0,019733664
+0,106479765 0,148207508 0,054369581
+0,248687129 0,346315284 -0,047031333
+-0,05638467 -0,268519532 -0,371220113
+-0,229098196 -0,193594589 -0,296836288
+-0,208658993 -0,266912666 0,064926963
+0,023574933 -0,22821229 0,020265667
+0,737898029 0,253372529 -0,259536985
+-0,671700227 -0,460472824 -0,268813022
+-0,260393316 -0,143230038 -0,172896378
+-0,186290072 -0,029481653 -0,117901747
+-0,416178766 1,559150545 1,131519325
+0,321608037 0,006378804 0,209730652
+0,296866402 0,17356696 0,293557136
+-0,016712745 -0,244262684 -0,500196637
+-0,783872099 -0,829620256 -0,509472674
+-0,629540748 -0,512377471 -0,799019371
+-0,555437504 -0,398629085 -0,61553696
+-1,170789539 0,940204234 0,54756421
+-0,210100515 -0,388761396 -0,370713182
+-0,392692251 -0,376123924 0,275422965
+-0,287904562 -0,109706024 -0,324953842
+-0,461053637 -0,352962002 -0,383821627
+0,030070393 0,112892882 0,15773358
+0,277769917 0,197154917 0,489634085
+0,245198781 0,474569681 0,544803788
+0,171705631 0,578315826 0,326528603
+0,007761118 0,16567452 -0,090259433
+-0,245447114 0,35124363 0,671391213
+0,551323138 0,796974196 0,510332296
+0,625426382 0,782234801 0,565326927
+0,395537688 0,836190317 0,186574732
+-0,442602213 -0,235799752 -0,346239319
+0,659683855 0,547764402 0,81384795
+")
+data
+
+boxplot(data[,1],data[,2],data[,3],ylab="y",las=1,names = c("ex.data1","ex.data2","ex.data3"))
+
+
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Marcele de Jesus Correa via R-br <r-br em listas.c3sl.ufpr.br>
+Enviado: segunda-feira, 7 de maio de 2018 16:12
+Para: a lista Brasileira oficial de discussão do programa R.
+Assunto: [R-br] Boxplot em grupo
+
+Olá, boa tarde!
+
+Sou iniciante no R e preciso de muita ajuda. Tenho recorrido aos tutoriais, livros, algumas dúvidas que são postadas aqui e vídeos no youtube, que tem me ajudado bastante, porém, estou com dificuldade para fazer um gráfico boxplot envolvendo três variáveis juntas. Assim:
+Estou trabalhando com série temporal de três estações meteorológicas, num total de 27 variáveis, entre estas, estou analisando no momento 3 (precipitação, temperatura mínima e máxima) de cada estação. Para cada uma dessas variáveis e suas respectivas estações, elaborei um gráfico boxplot,  conforme comando abaixo:
+
+boxplot(TempMin_Jagua ~ Mes, las=1, data = data_estacoes, col = "gray", notch = FALSE, ylab="Temperatura", xlab= "Mês", main= "Média Mensal da Temperatura Mínima da Estação de Jaguaruana").
+
+Entretanto, gostaria de inserir num único gráfico a variável temperatura mínima das três estações, a fim de comparar numa mesma escala o "comportamento" dessa variável por estação, e não estou conseguindo. Li algo parecido aqui no grupo, em que foi utilizado o pacote ggplot2, tentei usar sem sucesso. Fiz-me entender? Espero que sim, porque esse negócio é bem complicado... mas estou gostando.
+
+Desde já agradeço.
+
+Cordialmente,
+
+Marcele Correa.
+Geographer
+Master Student in Climate Sciences
+Research Line - Bioclimatology and
+C
+limatic
+C
+hanges
+Advisor - Kellen Carla Lima
+Federal University of Rio Grande do Norte - UFRN / Brazil.
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180509/3757d4b1/attachment.html>
+
+From marcelejc.marinho em gmail.com  Tue May  8 23:46:15 2018
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Tue, 8 May 2018 23:46:15 -0300
+Subject: [R-br] Boxplot em grupo
+In-Reply-To: <CANuApLu6Prpn5q5LZnLnzU6omCvJ9-ici+H04xvSFRXxWuv23g@mail.gmail.com>
+References: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+ <CANuApLu6Prpn5q5LZnLnzU6omCvJ9-ici+H04xvSFRXxWuv23g@mail.gmail.com>
+Message-ID: <CABAKcsDd-sUWsKknyqT8kX0A_VE3yf8U1hZqd6CAM6kjAPU-cg@mail.gmail.com>
+
+Boa noite, Eucilene.
+
+Farei isso, tendo em vista que o que tenho em mente precisarei pesquisar um
+pouco mais e fazer alguns testes.
+
+Grata!
+
+Cordialmente,
+
+
+​​
+Marcele Correa.
+Geographer
+Master Student in Climate Sciences
+​
+Research Line - Bioclimatology and
+​C​
+limatic
+​C​
+hanges
+Advisor - Kellen Carla Lima
+Federal University of Rio Grande do Norte - UFRN / Brazil.
+
+
+
+Em 8 de maio de 2018 21:30, Eucilene Alves Santana <
+eucilene.alvessantana em gmail.com> escreveu:
+
+> Marcele não pode ser três gráficos um ao lado do outro com a mesma escala?
+>
+> Em Seg, 7 de mai de 2018 16:12, Marcele de Jesus Correa via R-br <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Olá, boa tarde!
+>>
+>> Sou iniciante no R e preciso de muita ajuda. Tenho recorrido aos
+>> tutoriais, livros, algumas dúvidas que são postadas aqui e vídeos no
+>> youtube, que tem me ajudado bastante, porém, estou com dificuldade para
+>> fazer um gráfico boxplot envolvendo três variáveis juntas. Assim:
+>> Estou trabalhando com série temporal de três estações meteorológicas, num
+>> total de 27 variáveis, entre estas, estou analisando no momento 3
+>> (precipitação, temperatura mínima e máxima) de cada estação. Para cada uma
+>> dessas variáveis e suas respectivas estações, elaborei um gráfico boxplot,
+>> conforme comando abaixo:
+>>
+>> boxplot(TempMin_Jagua ~ Mes, las=1, data = data_estacoes, col = "gray",
+>> notch = FALSE, ylab="Temperatura", xlab= "Mês", main= "Média Mensal da
+>> Temperatura Mínima da Estação de Jaguaruana").
+>>
+>> Entretanto, gostaria de inserir num único gráfico a variável temperatura
+>> mínima das três estações, a fim de comparar numa mesma escala o
+>> "comportamento" dessa variável por estação, e não estou conseguindo. Li
+>> algo parecido aqui no grupo, em que foi utilizado o pacote ggplot2, tentei
+>> usar sem sucesso. Fiz-me entender? Espero que sim, porque esse negócio é
+>> bem complicado... mas estou gostando.
+>>
+>> Desde já agradeço.
+>>
+>> Cordialmente,
+>>
+>> ​​
+>> Marcele Correa.
+>> Geographer
+>> Master Student in Climate Sciences
+>> ​
+>> Research Line - Bioclimatology and
+>> ​C​
+>> limatic
+>> ​C​
+>> hanges
+>> Advisor - Kellen Carla Lima
+>> Federal University of Rio Grande do Norte - UFRN / Brazil.
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180508/957f0a7c/attachment.html>
+
+From marcelejc.marinho em gmail.com  Tue May  8 23:51:16 2018
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Tue, 8 May 2018 23:51:16 -0300
+Subject: [R-br] Boxplot em grupo
+In-Reply-To: <BN6PR18MB1524152A49E5D98EE271B03FE6990@BN6PR18MB1524.namprd18.prod.outlook.com>
+References: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+ <BN6PR18MB1524152A49E5D98EE271B03FE6990@BN6PR18MB1524.namprd18.prod.outlook.com>
+Message-ID: <CABAKcsCPs82QCU7ChnO2MBfvW=9iqfeV1pf_cb1Hf8SyONEZsQ@mail.gmail.com>
+
+Boa noite, Délcio.
+
+Testei o seu exemplo e não é bem o que estou buscando (no momento), pois
+quero contemplar toda a série temporal. Mas, inspirou uma outra ideia para
+a análise.
+
+Muito obrigada.
+
+​Att,​
+
+
+​​
+Marcele Correa.
+Geographer
+Master Student in Climate Sciences
+​
+Research Line - Bioclimatology and
+​C​
+limatic
+​C​
+hanges
+Advisor - Kellen Carla Lima
+Federal University of Rio Grande do Norte - UFRN / Brazil.
+
+
+
+Em 8 de maio de 2018 23:15, Delcio Rudinei Bortolanza <
+delcio.bortolanza em outlook.com> escreveu:
+
+> Olá!
+>
+>
+> Criei alguns dados para rodar o script. Veja se é algo semelhante a isso
+> que busca:
+>
+>
+>
+>
+> data<-read.table(header = T,dec=",",text = "
+> col1 col2 col3
+> 1,284877804 1,277701121 0,59309434
+> -0,558038947 -0,539990734 -0,302552794
+> -0,159938135 0,491608754 -0,019733664
+> 0,106479765 0,148207508 0,054369581
+> 0,248687129 0,346315284 -0,047031333
+> -0,05638467 -0,268519532 -0,371220113
+> -0,229098196 -0,193594589 -0,296836288
+> -0,208658993 -0,266912666 0,064926963
+> 0,023574933 -0,22821229 0,020265667
+> 0,737898029 0,253372529 -0,259536985
+> -0,671700227 -0,460472824 -0,268813022
+> -0,260393316 -0,143230038 -0,172896378
+> -0,186290072 -0,029481653 -0,117901747
+> -0,416178766 1,559150545 1,131519325
+> 0,321608037 0,006378804 0,209730652
+> 0,296866402 0,17356696 0,293557136
+> -0,016712745 -0,244262684 -0,500196637
+> -0,783872099 -0,829620256 -0,509472674
+> -0,629540748 -0,512377471 -0,799019371
+> -0,555437504 -0,398629085 -0,61553696
+> -1,170789539 0,940204234 0,54756421
+> -0,210100515 -0,388761396 -0,370713182
+> -0,392692251 -0,376123924 0,275422965
+> -0,287904562 -0,109706024 -0,324953842
+> -0,461053637 -0,352962002 -0,383821627
+> 0,030070393 0,112892882 0,15773358
+> 0,277769917 0,197154917 0,489634085
+> 0,245198781 0,474569681 0,544803788
+> 0,171705631 0,578315826 0,326528603
+> 0,007761118 0,16567452 -0,090259433
+> -0,245447114 0,35124363 0,671391213
+> 0,551323138 0,796974196 0,510332296
+> 0,625426382 0,782234801 0,565326927
+> 0,395537688 0,836190317 0,186574732
+> -0,442602213 -0,235799752 -0,346239319
+> 0,659683855 0,547764402 0,81384795
+> ")
+> data
+>
+> boxplot(data[,1],data[,2],data[,3],ylab="y",las=1,names =
+> c("ex.data1","ex.data2","ex.data3"))
+>
+>
+>
+> ------------------------------
+> *De:* R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Marcele de Jesus
+> Correa via R-br <r-br em listas.c3sl.ufpr.br>
+> *Enviado:* segunda-feira, 7 de maio de 2018 16:12
+> *Para:* a lista Brasileira oficial de discussão do programa R.
+> *Assunto:* [R-br] Boxplot em grupo
+>
+> Olá, boa tarde!
+>
+> Sou iniciante no R e preciso de muita ajuda. Tenho recorrido aos
+> tutoriais, livros, algumas dúvidas que são postadas aqui e vídeos no
+> youtube, que tem me ajudado bastante, porém, estou com dificuldade para
+> fazer um gráfico boxplot envolvendo três variáveis juntas. Assim:
+> Estou trabalhando com série temporal de três estações meteorológicas, num
+> total de 27 variáveis, entre estas, estou analisando no momento 3
+> (precipitação, temperatura mínima e máxima) de cada estação. Para cada uma
+> dessas variáveis e suas respectivas estações, elaborei um gráfico boxplot,
+> conforme comando abaixo:
+>
+> boxplot(TempMin_Jagua ~ Mes, las=1, data = data_estacoes, col = "gray",
+> notch = FALSE, ylab="Temperatura", xlab= "Mês", main= "Média Mensal da
+> Temperatura Mínima da Estação de Jaguaruana").
+>
+> Entretanto, gostaria de inserir num único gráfico a variável temperatura
+> mínima das três estações, a fim de comparar numa mesma escala o
+> "comportamento" dessa variável por estação, e não estou conseguindo. Li
+> algo parecido aqui no grupo, em que foi utilizado o pacote ggplot2, tentei
+> usar sem sucesso. Fiz-me entender? Espero que sim, porque esse negócio é
+> bem complicado... mas estou gostando.
+>
+> Desde já agradeço.
+>
+> Cordialmente,
+>
+> Marcele Correa.
+> Geographer
+> Master Student in Climate Sciences
+> Research Line - Bioclimatology and
+> C
+> limatic
+> C
+> hanges
+> Advisor - Kellen Carla Lima
+> Federal University of Rio Grande do Norte - UFRN / Brazil.
+>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180508/435cc1a6/attachment.html>
+
+From marcelejc.marinho em gmail.com  Tue May  8 23:55:07 2018
+From: marcelejc.marinho em gmail.com (Marcele de Jesus Correa)
+Date: Tue, 8 May 2018 23:55:07 -0300
+Subject: [R-br] Boxplot em grupo
+In-Reply-To: <767821582.908739.1525733825943@mail.yahoo.com>
+References: <CABAKcsDRoUOLj=TZRhT3=DoFE8EAkkwQ1yqMhgkZEgv1bNQYfQ@mail.gmail.com>
+ <767821582.908739.1525733825943@mail.yahoo.com>
+Message-ID: <CABAKcsDSycmT7LaD918JAKXh09y6QRe5NFkV9_azxz_oh=VQZQ@mail.gmail.com>
+
+Rodrigo, boa noite!
+
+Muito obrigada pela sugestão. Farei alguns testes, sim.
+
+Cordialmente,
+
+
+​​
+Marcele Correa.
+Geographer
+Master Student in Climate Sciences
+​
+Research Line - Bioclimatology and
+​C​
+limatic
+​C​
+hanges
+Advisor - Kellen Carla Lima
+Federal University of Rio Grande do Norte - UFRN / Brazil.
+
+
+
+Em 7 de maio de 2018 19:57, Rodrigo Araújo e Castro <
+roacastro87 em yahoo.com.br> escreveu:
+
+> Boa noite,
+>
+> Para tentar te entender e poder te ajudar, criei um exemplo fictício (ver
+> a seguir) que pode ou não se aproximar do que você precisa.
+>
+>
+>
+>
+>
+> *min_estacao1=c(20,25,40)min_estacao2=c(40,50,44)min_estacao3=c(30,35,40)*
+> *data_estacoes = data.frame(min_estacao1,min_estacao2,min_estacao3)*
+>
+>
+>
+>
+> * boxplot(dados,ylab="Temperatura", data= data_estacoes,xlab= "Mês",las=1,
+>     col = "gray", notch = FALSE,
+> names=c("estacao1","estacao2","estacao3"),    main= "Média Mensal da
+> Temperatura Mínima da Estação de Jaguaruana")*
+>
+> Seria mais ou menos isso que você está tentando fazer? Se não, por favor
+> nos mostre o formato aproximado dos dados de entrada e o que você espera
+> obter como resposta.
+>
+> Cordialmente,
+> Rodrigo
+> Em segunda-feira, 7 de maio de 2018 16:12:26 BRT, Marcele de Jesus Correa
+> via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Olá, boa tarde!
+>
+> Sou iniciante no R e preciso de muita ajuda. Tenho recorrido aos
+> tutoriais, livros, algumas dúvidas que são postadas aqui e vídeos no
+> youtube, que tem me ajudado bastante, porém, estou com dificuldade para
+> fazer um gráfico boxplot envolvendo três variáveis juntas. Assim:
+> Estou trabalhando com série temporal de três estações meteorológicas, num
+> total de 27 variáveis, entre estas, estou analisando no momento 3
+> (precipitação, temperatura mínima e máxima) de cada estação. Para cada uma
+> dessas variáveis e suas respectivas estações, elaborei um gráfico boxplot,
+> conforme comando abaixo:
+>
+> boxplot(TempMin_Jagua ~ Mes, las=1, data = data_estacoes, col = "gray",
+> notch = FALSE, ylab="Temperatura", xlab= "Mês", main= "Média Mensal da
+> Temperatura Mínima da Estação de Jaguaruana").
+>
+> Entretanto, gostaria de inserir num único gráfico a variável temperatura
+> mínima das três estações, a fim de comparar numa mesma escala o
+> "comportamento" dessa variável por estação, e não estou conseguindo. Li
+> algo parecido aqui no grupo, em que foi utilizado o pacote ggplot2, tentei
+> usar sem sucesso. Fiz-me entender? Espero que sim, porque esse negócio é
+> bem complicado... mas estou gostando.
+>
+> Desde já agradeço.
+>
+> Cordialmente,
+>
+> ​​
+> Marcele Correa.
+> Geographer
+> Master Student in Climate Sciences
+> ​
+> Research Line - Bioclimatology and
+> ​C​
+> limatic
+> ​C​
+> hanges
+> Advisor - Kellen Carla Lima
+> Federal University of Rio Grande do Norte - UFRN / Brazil.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180508/54844e51/attachment.html>
+
+From edinhoestat em yahoo.com.br  Fri May 18 12:48:31 2018
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Fri, 18 May 2018 15:48:31 +0000 (UTC)
+Subject: [R-br] TRABALHAR COM O CEP PARA CRIAR LATITUTDE E LONGITUDE EM UM
+	BANCO
+References: <950229605.2766662.1526658511428.ref@mail.yahoo.com>
+Message-ID: <950229605.2766662.1526658511428@mail.yahoo.com>
+
+Boa tarde Listeiros, estou estudando a elaboração de mapas e me deparei com uma situação que ainda não consegui resolver. 
+Se eu tenho um banco de dados com CEPs, como faço para a partir do CEP criar as variáveis lat lomg.
+No google mapas tem esse serviço, quando eu tenho um banco pequeno é fácil de resolver, mas quando o banco é grande, só para assinantes. Suponha um banco com 16000 linhas, ai é dificultoso.
+Eu pesquisei e encontrei um pacote chamado cepR, mas não consegui com o material que está disponível resolver o problema.
+Alguém poderia sugerir algo?
+
+[  ]'s.
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180518/33866c04/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Fri May 18 13:19:41 2018
+From: eliaskrainski em yahoo.com.br (Elias T Krainski)
+Date: Fri, 18 May 2018 13:19:41 -0300
+Subject: [R-br] TRABALHAR COM O CEP PARA CRIAR LATITUTDE E LONGITUDE EM
+ UM BANCO
+In-Reply-To: <950229605.2766662.1526658511428@mail.yahoo.com>
+References: <950229605.2766662.1526658511428.ref@mail.yahoo.com>
+ <950229605.2766662.1526658511428@mail.yahoo.com>
+Message-ID: <5fc7a276-9540-2a2e-b3d0-50b26a469ee3@yahoo.com.br>
+
+Há duplicação nessas 16mil linhas ou cada uma é única?
+
+Não sei como você pensa em georeferenciar, mas geralmente CEP não é um 
+ponto no espaço. Cidades pequenas tem CEP único e em cidades grandes 
+geralmente é uma rua ou parte dela.
+
+Tenho o centroide de 9184 CEPs de Curitiba em 
+http://leg.ufpr.br/~elias/tmp/cep_curitiba_cwb_georef_longlat.txt
+
+Elias
+
+
+On 18/05/2018 12:48, Edson Lira via R-br wrote:
+> Boa tarde Listeiros, estou estudando a elaboração de mapas e me 
+> deparei com uma situação que ainda não consegui resolver.
+>
+> Se eu tenho um banco de dados com CEPs, como faço para a partir do CEP 
+> criar as variáveis lat lomg.
+>
+> No google mapas tem esse serviço, quando eu tenho um banco pequeno é 
+> fácil de resolver, mas quando o banco é grande, só para assinantes. 
+> Suponha um banco com 16000 linhas, ai é dificultoso.
+>
+> Eu pesquisei e encontrei um pacote chamado cepR, mas não consegui com 
+> o material que está disponível resolver o problema.
+>
+> Alguém poderia sugerir algo?
+>
+>
+> [  ]'s.
+>
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180518/2cb2dbb0/attachment.html>
+
+From andreolsouza em yahoo.com.br  Sat May 19 08:05:34 2018
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Sat, 19 May 2018 11:05:34 +0000 (UTC)
+Subject: [R-br] Gerar pdf de um arquivo .rnw - Sweave
+References: <1926763559.3072487.1526727934759.ref@mail.yahoo.com>
+Message-ID: <1926763559.3072487.1526727934759@mail.yahoo.com>
+
+
+bom dia! 
+ ao processar meu arquivo .Rnw ocorre este erro. Pesquisei e me parece ser um erro comum, mas não achei a solução. 
+ Error in driver$finish(drobj) : 
+ the output file 'arquivo.tex' has disappeared
+ Calls: <Anonymous> -> <Anonymous>
+
+ Alguém tem alguma dica?
+
+ Obrigado
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180519/fc6aeefb/attachment.html>
+
+From nani.design em bol.com.br  Sat May 19 09:02:13 2018
+From: nani.design em bol.com.br (nani)
+Date: Sat, 19 May 2018 09:02:13 -0300
+Subject: [R-br] TRABALHAR COM O CEP PARA CRIAR LATITUTDE E LONGITUDE EM
+ UM BANCO
+In-Reply-To: <5fc7a276-9540-2a2e-b3d0-50b26a469ee3@yahoo.com.br>
+References: <950229605.2766662.1526658511428.ref@mail.yahoo.com>
+ <950229605.2766662.1526658511428@mail.yahoo.com>
+ <5fc7a276-9540-2a2e-b3d0-50b26a469ee3@yahoo.com.br>
+Message-ID: <5b0012452859e_78903f9f4a27913c65477@a4-winter8.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180519/a1cc0e49/attachment.html>
+
+From wwolff em usp.br  Mon May 21 06:52:28 2018
+From: wwolff em usp.br (Wagner Wolff)
+Date: Mon, 21 May 2018 11:52:28 +0200
+Subject: [R-br] =?utf-8?q?Transforma=C3=A7=C3=A3o_normal_score_para_krigag?=
+	=?utf-8?q?em?=
+Message-ID: <CAOyzcynidmFCXgfCNAiKn6Efg7Ozd3Ewu70NDvFAyx=b8+jcYg@mail.gmail.com>
+
+Olá pessoal!
+
+Estou trabalhando com dados de chuva numa escala de 15min. Meu banco de
+dados tem muitos zeros o que deixa a distribuição dos dados assimétrica.
+Gostaria de interpolar espacialmente esses dados utilizando o geoR, ou
+seja,  modelo geostatistico gaussiano. Assim, a normalização dos dados é
+necessaria, já tentei a boxcox e não funcionou. Pesquisando sobre o assunto
+encontrei uma solução na transformação normal score. O problema é como faço
+a retransformação pra escala original após a krigagem? Alguém tem alguma
+dica ou outra sugestão para esse problema?
+Outra característica é que os dados são zero inflacionados.
+
+Att.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180521/7d4761d6/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Mon May 21 10:52:50 2018
+From: eliaskrainski em yahoo.com.br (Elias T Krainski)
+Date: Mon, 21 May 2018 10:52:50 -0300
+Subject: [R-br]
+ =?utf-8?q?Transforma=C3=A7=C3=A3o_normal_score_para_krigag?=
+ =?utf-8?q?em?=
+In-Reply-To: <CAOyzcynidmFCXgfCNAiKn6Efg7Ozd3Ewu70NDvFAyx=b8+jcYg@mail.gmail.com>
+References: <CAOyzcynidmFCXgfCNAiKn6Efg7Ozd3Ewu70NDvFAyx=b8+jcYg@mail.gmail.com>
+Message-ID: <91a46cd4-4e40-7254-ef9f-402ea75506ab@yahoo.com.br>
+
+Esse problema é bastante comum. Uma possível abordagem é via 
+Hurdle-Gamma. Tenho um exemplo no último capítulo do livro do INLA e tem 
+alguns papers que usaram isso. A Zaida trabalhou com isso para estimação 
+de anchovas durante o mestrado e o doutorado dela. Segue o link para a 
+dissertação dela e o paper publicado
+
+http://www.est.ufmg.br/~posgrad/mestrado/dissertacao_mestrado_zaida%20_quiroz.pdf
+
+https://onlinelibrary.wiley.com/doi/abs/10.1111/biom.12227
+
+Elias
+
+
+On 21/05/2018 06:52, Wagner Wolff via R-br wrote:
+> Olá pessoal!
+>
+> Estou trabalhando com dados de chuva numa escala de 15min. Meu banco 
+> de dados tem muitos zeros o que deixa a distribuição dos dados 
+> assimétrica. Gostaria de interpolar espacialmente esses dados 
+> utilizando o geoR, ou seja,  modelo geostatistico gaussiano. Assim, a 
+> normalização dos dados é necessaria, já tentei a boxcox e não 
+> funcionou. Pesquisando sobre o assunto encontrei uma solução na 
+> transformação normal score. O problema é como faço a retransformação 
+> pra escala original após a krigagem? Alguém tem alguma dica ou outra 
+> sugestão para esse problema?
+> Outra característica é que os dados são zero inflacionados.
+>
+> Att.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180521/cbde225a/attachment.html>
+
+From andreolsouza em yahoo.com.br  Mon May 21 14:45:07 2018
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Mon, 21 May 2018 17:45:07 +0000 (UTC)
+Subject: [R-br] Modelo linear de segundo grau
+References: <601019692.3684158.1526924707848.ref@mail.yahoo.com>
+Message-ID: <601019692.3684158.1526924707848@mail.yahoo.com>
+
+Sei que posso rodar dois modelos e fazer o LRT,  entre outras análises, mas por algum motivo preciso da rsm! 
+
+Alguém saberia o motivo deste modelo não "rodar"? 
+
+
+ x=c(1,1,1,2,2,2,3,3,3,4,4,4,5,5,5)
+ y=c(4,8,5,9,12,9,10,13,12,12,14,13,11,11,12)
+ plot(y~x)
+ require(rsm)
+ m3=rsm(y~ FO(x)+FO(x^2))
+Error in dimnames(LM$B) <- list(fonm, fonm) : 
+  comprimento de 'dimnames' [1] não é igual ao tamanho do array
+
+ Obg
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180521/955fdfac/attachment.html>
+
+From edinhoestat em yahoo.com.br  Mon May 21 23:33:58 2018
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 22 May 2018 02:33:58 +0000 (UTC)
+Subject: [R-br] Assunto: Re: TRABALHAR COM O CEP PARA CRIAR LATITUTDE E
+ LONGITUDE EM UM BANCO
+In-Reply-To: <5b0012452859e_78903f9f4a27913c65477@a4-winter8.mail>
+References: <950229605.2766662.1526658511428.ref@mail.yahoo.com>
+ <950229605.2766662.1526658511428@mail.yahoo.com>
+ <5fc7a276-9540-2a2e-b3d0-50b26a469ee3@yahoo.com.br>
+ <5b0012452859e_78903f9f4a27913c65477@a4-winter8.mail>
+Message-ID: <1802612095.3790676.1526956438851@mail.yahoo.com>
+
+Obrigado Nani e Elias. Elias, as linhas são duplicadas em relação aos bairros, pois cada linha é um prontuário. 
+
+Enviado do Yahoo Mail no Android 
+ 
+  <div>Em sáb, 19 19e mai 19e 2018 às 8:02, nani via R-br</div><div><r-br em listas.c3sl.ufpr.br> escreveu:</div>   _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180522/818afcd8/attachment.html>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: Untitled
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180522/818afcd8/attachment.ksh>
+
+From edinhoestat em yahoo.com.br  Mon May 21 23:33:58 2018
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 22 May 2018 02:33:58 +0000 (UTC)
+Subject: [R-br] Assunto: Re: TRABALHAR COM O CEP PARA CRIAR LATITUTDE E
+ LONGITUDE EM UM BANCO
+In-Reply-To: <5b0012452859e_78903f9f4a27913c65477@a4-winter8.mail>
+References: <950229605.2766662.1526658511428.ref@mail.yahoo.com>
+ <950229605.2766662.1526658511428@mail.yahoo.com>
+ <5fc7a276-9540-2a2e-b3d0-50b26a469ee3@yahoo.com.br>
+ <5b0012452859e_78903f9f4a27913c65477@a4-winter8.mail>
+Message-ID: <1802612095.3790676.1526956438851@mail.yahoo.com>
+
+Obrigado Nani e Elias. Elias, as linhas são duplicadas em relação aos bairros, pois cada linha é um prontuário. 
+
+Enviado do Yahoo Mail no Android 
+ 
+  <div>Em sáb, 19 19e mai 19e 2018 às 8:02, nani via R-br</div><div><r-br em listas.c3sl.ufpr.br> escreveu:</div>   _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180522/818afcd8/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: Untitled
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180522/818afcd8/attachment-0001.ksh>
+
+From edinhoestat em yahoo.com.br  Mon May 21 23:33:58 2018
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Tue, 22 May 2018 02:33:58 +0000 (UTC)
+Subject: [R-br] Assunto: Re: TRABALHAR COM O CEP PARA CRIAR LATITUTDE E
+ LONGITUDE EM UM BANCO
+In-Reply-To: <5b0012452859e_78903f9f4a27913c65477@a4-winter8.mail>
+References: <950229605.2766662.1526658511428.ref@mail.yahoo.com>
+ <950229605.2766662.1526658511428@mail.yahoo.com>
+ <5fc7a276-9540-2a2e-b3d0-50b26a469ee3@yahoo.com.br>
+ <5b0012452859e_78903f9f4a27913c65477@a4-winter8.mail>
+Message-ID: <1802612095.3790676.1526956438851@mail.yahoo.com>
+
+Obrigado Nani e Elias. Elias, as linhas são duplicadas em relação aos bairros, pois cada linha é um prontuário. 
+
+Enviado do Yahoo Mail no Android 
+ 
+  <div>Em sáb, 19 19e mai 19e 2018 às 8:02, nani via R-br</div><div><r-br em listas.c3sl.ufpr.br> escreveu:</div>   _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180522/818afcd8/attachment-0002.html>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: Untitled
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180522/818afcd8/attachment-0002.ksh>
+
+From wwolff em usp.br  Tue May 22 08:18:05 2018
+From: wwolff em usp.br (Wagner Wolff)
+Date: Tue, 22 May 2018 13:18:05 +0200
+Subject: [R-br]
+	=?utf-8?q?Transforma=C3=A7=C3=A3o_normal_score_para_krigag?=
+	=?utf-8?q?em?=
+In-Reply-To: <91a46cd4-4e40-7254-ef9f-402ea75506ab@yahoo.com.br>
+References: <CAOyzcynidmFCXgfCNAiKn6Efg7Ozd3Ewu70NDvFAyx=b8+jcYg@mail.gmail.com>
+ <91a46cd4-4e40-7254-ef9f-402ea75506ab@yahoo.com.br>
+Message-ID: <CAOyzcykGkJ7-nS_TRwwpmPvVGV-YHKkXRJxj+PZTuguPTKMaow@mail.gmail.com>
+
+Obrigado Elias, por mais essa ajuda!
+
+Aproveitando, os dados tem outra característica a ser observada. Minhas
+amostras são obtidas de médias, assim por exemplo, tem locais que os
+valores são obtidos pela média de 10 observações, outros pela média de 5 e
+também outros que é o próprio valor, uma vez que só tem uma observação.
+Isso tem algum problema? Seria o caso de considerar o número de repetições
+no efeito fixo, remoção de possível tendência?
+
+Att.
+
+
+
+Em 21 de maio de 2018 15:52, Elias T Krainski via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Esse problema é bastante comum. Uma possível abordagem é via Hurdle-Gamma.
+> Tenho um exemplo no último capítulo do livro do INLA e tem alguns papers
+> que usaram isso. A Zaida trabalhou com isso para estimação de anchovas
+> durante o mestrado e o doutorado dela. Segue o link para a dissertação dela
+> e o paper publicado
+>
+> http://www.est.ufmg.br/~posgrad/mestrado/dissertacao_
+> mestrado_zaida%20_quiroz.pdf
+>
+> https://onlinelibrary.wiley.com/doi/abs/10.1111/biom.12227
+>
+> Elias
+>
+> On 21/05/2018 06:52, Wagner Wolff via R-br wrote:
+>
+> Olá pessoal!
+>
+> Estou trabalhando com dados de chuva numa escala de 15min. Meu banco de
+> dados tem muitos zeros o que deixa a distribuição dos dados assimétrica.
+> Gostaria de interpolar espacialmente esses dados utilizando o geoR, ou
+> seja,  modelo geostatistico gaussiano. Assim, a normalização dos dados é
+> necessaria, já tentei a boxcox e não funcionou. Pesquisando sobre o assunto
+> encontrei uma solução na transformação normal score. O problema é como faço
+> a retransformação pra escala original após a krigagem? Alguém tem alguma
+> dica ou outra sugestão para esse problema?
+> Outra característica é que os dados são zero inflacionados.
+>
+> Att.
+>
+>
+> _______________________________________________
+> R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+*Wagner Wolff, **PhD*
+"*Luiz de Queiroz**" College of Agriculture,*
+University of São Paulo
+Pádua Dias avenue11 | 13418-900| Piracicaba-SP| Brazil
+Phone:  +55 19 982385582 <+55%2019%2098238-5582>
+http://orcid.org/0000-0003-3426-308X
+https://github.com/wwolff7
+http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4463141A1
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180522/5dc7676f/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Tue May 22 09:31:52 2018
+From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
+Date: Tue, 22 May 2018 12:31:52 +0000 (UTC)
+Subject: [R-br]
+	=?utf-8?q?Transforma=C3=A7=C3=A3o_normal_score_para_krigag?=
+	=?utf-8?q?em?=
+In-Reply-To: <CAOyzcykGkJ7-nS_TRwwpmPvVGV-YHKkXRJxj+PZTuguPTKMaow@mail.gmail.com>
+References: <CAOyzcynidmFCXgfCNAiKn6Efg7Ozd3Ewu70NDvFAyx=b8+jcYg@mail.gmail.com>
+ <91a46cd4-4e40-7254-ef9f-402ea75506ab@yahoo.com.br>
+ <CAOyzcykGkJ7-nS_TRwwpmPvVGV-YHKkXRJxj+PZTuguPTKMaow@mail.gmail.com>
+Message-ID: <1381503679.4048830.1526992312805@mail.yahoo.com>
+
+Como uma soma de variáveis aleatórias gammas também é uma gamma, você pode incluir no parâmetro de dispersão. Veja inla.doc("gamma") 
+ 
+  On Tue, May 22, 2018 at 8:18, Wagner Wolff<wwolff em usp.br> wrote:   Obrigado Elias, por mais essa ajuda!
+Aproveitando, os dados tem outra característica a ser observada. Minhas amostras são obtidas de médias, assim por exemplo, tem locais que os valores são obtidos pela média de 10 observações, outros pela média de 5 e também outros que é o próprio valor, uma vez que só tem uma observação. Isso tem algum problema? Seria o caso de considerar o número de repetições no efeito fixo, remoção de possível tendência?
+Att.
+
+
+ 
+Em 21 de maio de 2018 15:52, Elias T Krainski via R-br <r-br em listas.c3sl.ufpr.br> escreveu:
+
+  
+Esse problema é bastante comum. Uma possível abordagem é via Hurdle-Gamma. Tenho um exemplo no último capítulo do livro do INLA e tem alguns papers que usaram isso. A Zaida trabalhou com isso para estimação de anchovas durante o mestrado e o doutorado dela. Segue o link para a dissertação dela e o paper publicado  
+ 
+ 
+http://www.est.ufmg.br/~ posgrad/mestrado/dissertacao_ mestrado_zaida%20_quiroz.pdf
+ 
+https://onlinelibrary.wiley. com/doi/abs/10.1111/biom.12227
+ 
+Elias
+ 
+ 
+ On 21/05/2018 06:52, Wagner Wolff via R-br wrote:
+  
+ Olá pessoal! 
+  Estou trabalhando com dados de chuva numa escala de 15min. Meu banco de dados tem muitos zeros o que deixa a distribuição dos dados assimétrica. Gostaria de interpolar espacialmente esses dados utilizando o geoR, ou seja,  modelo geostatistico gaussiano. Assim, a normalização dos dados é necessaria, já tentei a boxcox e não funcionou. Pesquisando sobre o assunto encontrei uma solução na transformação normal score. O problema é como faço a retransformação pra escala original após a krigagem? Alguém tem alguma dica ou outra  sugestão para esse problema? Outra característica é que os dados são zero inflacionados. 
+  Att.   
+  
+ ______________________________ _________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forne�a c�digo m�nimo reproduz�vel. 
+ 
+ 
+______________________________ _________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forneça código mínimo reproduzível.
+
+
+
+
+-- 
+Wagner Wolff, PhD
+"Luiz de Queiroz" College of Agriculture,
+University of São Paulo
+Pádua Dias avenue11 | 13418-900| Piracicaba-SP| Brazil
+Phone:  +55 19 982385582  
+http://orcid.org/0000-0003-3426-308X
+https://github.com/wwolff7
+http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4463141A1  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180522/d6e33757/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Wed May 23 11:14:36 2018
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Wed, 23 May 2018 10:14:36 -0400
+Subject: [R-br] =?utf-8?q?Extraindo_os_raios_e_=C3=A1rea_de_uma_elipse_ell?=
+ =?utf-8?q?ipsoidhull=28=29_do_pacote_cluster?=
+Message-ID: <e37eee3d-ab43-f0f5-ce19-6a25c43da366@cas.ifmt.edu.br>
+
+Caros Membros,
+
+     Com fins ilustrativos e exploratório, tenho pontos correspondentes 
+a dois tratamentos A e B espacialmente distribuídos no campo, estou 
+delimitando o limite (zona de influência) de cada um como uma elipse, 
+através da função ellipsoidhull() do pacote cluster conforme CRM abaixo. 
+Gostaria de saber se alguém familiarizado com a função poderia me dizer 
+como faço para extrair os raios e as áreas das elipses EpointsA e EpointsB?
+
+
+#Criação do data frame
+dados<-NULL
+
+#Coordenadas x
+
+dados$x<-c(0.350,0.487,0.637,0.775,0.825,0.087,0.237,0.400,0.575,0.737,0.062,0.212)
+
+#Coordenadas y
+dados$y<-c(0.025,0.087,0.050,0.025,0.125,0.187,0.150,0.162,0.212,0.237,0.362,0.337)
+
+#Classificação
+dados$Class<-c("A","A","A","A","A","A","B","B","B","B","B","B")
+
+#Visualização
+plot(dados$x,dados$y)
+text(dados$x,dados$y+0.01,labels=dados$Class,col="red")
+#
+
+#Usando ellipsoidhull
+require(cluster)
+PointsA<-unname(cbind(dados$x[1:6],dados$y[1:6]))
+EpointsA<-ellipsoidhull(PointsA)
+lines(predict(EpointsA), col="blue")
+PointsB<-unname(cbind(dados$x[7:12],dados$y[7:12]))
+EpointsB<-ellipsoidhull(PointsB)
+lines(predict(EpointsB), col="orange")
+#
+
+Abraços,
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+
+From cesar.rabak em gmail.com  Thu May 24 08:58:02 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 24 May 2018 08:58:02 -0300
+Subject: [R-br] Modelo linear de segundo grau
+In-Reply-To: <601019692.3684158.1526924707848@mail.yahoo.com>
+References: <601019692.3684158.1526924707848.ref@mail.yahoo.com>
+ <601019692.3684158.1526924707848@mail.yahoo.com>
+Message-ID: <CAKrF98nKL-ooXZOEqB17E9Jg=RJ5bzX459ZpjbGyNe4nJryhCA@mail.gmail.com>
+
+André,
+
+O seu modelo não deveria ser especificado como:
+
+*> m3=rsm(y~ FO(x)+PQ(x))*
+> m3
+
+Call:
+rsm(formula = y ~ FO(x) + PQ(x))
+
+Coefficients:
+(Intercept)        FO(x)        PQ(x)
+    -0.1333       6.7190      -0.8810
+
+HTH
+--
+Cesar Rabak
+
+
+2018-05-21 14:45 GMT-03:00 Andre Oliveira via R-br <r-br em listas.c3sl.ufpr.br
+>:
+
+> Sei que posso rodar dois modelos e fazer o LRT,  entre outras análises, mas
+> por algum motivo preciso da rsm!
+>
+> Alguém saberia o motivo deste modelo não "rodar"?
+>
+>
+> x=c(1,1,1,2,2,2,3,3,3,4,4,4,5,5,5)
+> y=c(4,8,5,9,12,9,10,13,12,12,14,13,11,11,12)
+> plot(y~x)
+> require(rsm)
+> m3=rsm(y~ FO(x)+FO(x^2))
+>
+> *Error in dimnames(LM$B) <- list(fonm, fonm) :   comprimento de 'dimnames'
+> [1] não é igual ao tamanho do array*
+>
+> Obg
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180524/e2ed778a/attachment.html>
+
+From cesar.rabak em gmail.com  Thu May 24 09:03:13 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 24 May 2018 09:03:13 -0300
+Subject: [R-br]
+	=?utf-8?q?Extraindo_os_raios_e_=C3=A1rea_de_uma_elipse_ell?=
+	=?utf-8?q?ipsoidhull=28=29_do_pacote_cluster?=
+In-Reply-To: <e37eee3d-ab43-f0f5-ce19-6a25c43da366@cas.ifmt.edu.br>
+References: <e37eee3d-ab43-f0f5-ce19-6a25c43da366@cas.ifmt.edu.br>
+Message-ID: <CAKrF98n+GnNUHn=Vq6DF9duxjTqGZVCj+9v7NCHxtVBiitWyAA@mail.gmail.com>
+
+Os valores retornados por  EpointsA$d2 e  EpointsB$d2 " average squared
+radius. " cfme. a documentação não lhe são suficientes?
+
+
+
+2018-05-23 11:14 GMT-03:00 ASANTOS via R-br <r-br em listas.c3sl.ufpr.br>:
+
+> Caros Membros,
+>
+>     Com fins ilustrativos e exploratório, tenho pontos correspondentes a
+> dois tratamentos A e B espacialmente distribuídos no campo, estou
+> delimitando o limite (zona de influência) de cada um como uma elipse,
+> através da função ellipsoidhull() do pacote cluster conforme CRM abaixo.
+> Gostaria de saber se alguém familiarizado com a função poderia me dizer
+> como faço para extrair os raios e as áreas das elipses EpointsA e EpointsB?
+>
+>
+> #Criação do data frame
+> dados<-NULL
+>
+> #Coordenadas x
+>
+> dados$x<-c(0.350,0.487,0.637,0.775,0.825,0.087,0.237,0.400,0
+> .575,0.737,0.062,0.212)
+>
+> #Coordenadas y
+> dados$y<-c(0.025,0.087,0.050,0.025,0.125,0.187,0.150,0.162,0
+> .212,0.237,0.362,0.337)
+>
+> #Classificação
+> dados$Class<-c("A","A","A","A","A","A","B","B","B","B","B","B")
+>
+> #Visualização
+> plot(dados$x,dados$y)
+> text(dados$x,dados$y+0.01,labels=dados$Class,col="red")
+> #
+>
+> #Usando ellipsoidhull
+> require(cluster)
+> PointsA<-unname(cbind(dados$x[1:6],dados$y[1:6]))
+> EpointsA<-ellipsoidhull(PointsA)
+> lines(predict(EpointsA), col="blue")
+> PointsB<-unname(cbind(dados$x[7:12],dados$y[7:12]))
+> EpointsB<-ellipsoidhull(PointsB)
+> lines(predict(EpointsB), col="orange")
+> #
+>
+> Abraços,
+>
+> --
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+> e-mails:alexandresantosbr em yahoo.com.br
+>         alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+> ======================================================================
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180524/9ec44cc1/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Thu May 24 12:06:20 2018
+From: alexandre.santos em cas.ifmt.edu.br (Alexandre Dos Santos)
+Date: Thu, 24 May 2018 11:06:20 -0400
+Subject: [R-br]
+	=?utf-8?q?Extraindo_os_raios_e_=C3=A1rea_de_uma_elipse_ell?=
+	=?utf-8?q?ipsoidhull=28=29_do_pacote_cluster?=
+In-Reply-To: <CAKrF98n+GnNUHn=Vq6DF9duxjTqGZVCj+9v7NCHxtVBiitWyAA@mail.gmail.com>
+References: <e37eee3d-ab43-f0f5-ce19-6a25c43da366@cas.ifmt.edu.br>
+ <CAKrF98n+GnNUHn=Vq6DF9duxjTqGZVCj+9v7NCHxtVBiitWyAA@mail.gmail.com>
+Message-ID: <CAFP39_Ztc5e32wRPczRAiy8W3_A5pHUUfU+invuzuYM+Deak5w@mail.gmail.com>
+
+Muito obrigado César, vi a documentação, mas mesmo assim submeti para ver
+com quem trabalha com a ferramenta, se essa abordagem baseada na área e
+raios, está correta, uma vez que  a ferramenta não é empregada para essa
+finalidade que propus.
+
+Em qui, 24 de mai de 2018 08:03, Cesar Rabak <cesar.rabak em gmail.com>
+escreveu:
+
+> Os valores retornados por  EpointsA$d2 e  EpointsB$d2 " average squared
+> radius. " cfme. a documentação não lhe são suficientes?
+>
+>
+>
+> 2018-05-23 11:14 GMT-03:00 ASANTOS via R-br <r-br em listas.c3sl.ufpr.br>:
+>
+>> Caros Membros,
+>>
+>>     Com fins ilustrativos e exploratório, tenho pontos correspondentes a
+>> dois tratamentos A e B espacialmente distribuídos no campo, estou
+>> delimitando o limite (zona de influência) de cada um como uma elipse,
+>> através da função ellipsoidhull() do pacote cluster conforme CRM abaixo.
+>> Gostaria de saber se alguém familiarizado com a função poderia me dizer
+>> como faço para extrair os raios e as áreas das elipses EpointsA e EpointsB?
+>>
+>>
+>> #Criação do data frame
+>> dados<-NULL
+>>
+>> #Coordenadas x
+>>
+>>
+>> dados$x<-c(0.350,0.487,0.637,0.775,0.825,0.087,0.237,0.400,0.575,0.737,0.062,0.212)
+>>
+>> #Coordenadas y
+>>
+>> dados$y<-c(0.025,0.087,0.050,0.025,0.125,0.187,0.150,0.162,0.212,0.237,0.362,0.337)
+>>
+>> #Classificação
+>> dados$Class<-c("A","A","A","A","A","A","B","B","B","B","B","B")
+>>
+>> #Visualização
+>> plot(dados$x,dados$y)
+>> text(dados$x,dados$y+0.01,labels=dados$Class,col="red")
+>> #
+>>
+>> #Usando ellipsoidhull
+>> require(cluster)
+>> PointsA<-unname(cbind(dados$x[1:6],dados$y[1:6]))
+>> EpointsA<-ellipsoidhull(PointsA)
+>> lines(predict(EpointsA), col="blue")
+>> PointsB<-unname(cbind(dados$x[7:12],dados$y[7:12]))
+>> EpointsB<-ellipsoidhull(PointsB)
+>> lines(predict(EpointsB), col="orange")
+>> #
+>>
+>> Abraços,
+>>
+>> --
+>> ======================================================================
+>> Alexandre dos Santos
+>> Proteção Florestal
+>> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+>> Campus Cáceres
+>> Caixa Postal 244
+>> Avenida dos Ramires, s/n
+>> Bairro: Distrito Industrial
+>> Cáceres - MT                      CEP: 78.200-000
+>> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+>> e-mails:alexandresantosbr em yahoo.com.br
+>>         alexandre.santos em cas.ifmt.edu.br
+>> Lattes: http://lattes.cnpq.br/1360403201088680
+>> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+>> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+>> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+>> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+>> ======================================================================
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+>> cdigo mnimo reproduzvel.
+>
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180524/aa03e347/attachment.html>
+
+From cesar.rabak em gmail.com  Thu May 24 16:59:35 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 24 May 2018 16:59:35 -0300
+Subject: [R-br]
+	=?utf-8?q?Extraindo_os_raios_e_=C3=A1rea_de_uma_elipse_ell?=
+	=?utf-8?q?ipsoidhull=28=29_do_pacote_cluster?=
+In-Reply-To: <CAFP39_Ztc5e32wRPczRAiy8W3_A5pHUUfU+invuzuYM+Deak5w@mail.gmail.com>
+References: <e37eee3d-ab43-f0f5-ce19-6a25c43da366@cas.ifmt.edu.br>
+ <CAKrF98n+GnNUHn=Vq6DF9duxjTqGZVCj+9v7NCHxtVBiitWyAA@mail.gmail.com>
+ <CAFP39_Ztc5e32wRPczRAiy8W3_A5pHUUfU+invuzuYM+Deak5w@mail.gmail.com>
+Message-ID: <CAKrF98k6=Vw1GW7PeAfzbJXFhLb07XXjMwH3Nv8b=2VNkrCTPw@mail.gmail.com>
+
+OK Alexandre!
+
+De fato, como eu não tenho conhecimento do domínio do problema que você
+estuda, me soa "não intuitivo" que se use uma ferramenta para medir uma
+área de influência sem levar em conta alguma 'resposta' dos tipos de
+tratamento...
+
+Boa sorte na busca de um pacote ou funções no R para resolver seu problema!
+
+[]s
+
+
+2018-05-24 12:06 GMT-03:00 Alexandre Dos Santos <
+alexandre.santos em cas.ifmt.edu.br>:
+
+> Muito obrigado César, vi a documentação, mas mesmo assim submeti para ver
+> com quem trabalha com a ferramenta, se essa abordagem baseada na área e
+> raios, está correta, uma vez que  a ferramenta não é empregada para essa
+> finalidade que propus.
+>
+> Em qui, 24 de mai de 2018 08:03, Cesar Rabak <cesar.rabak em gmail.com>
+> escreveu:
+>
+>> Os valores retornados por  EpointsA$d2 e  EpointsB$d2 " average squared
+>> radius. " cfme. a documentação não lhe são suficientes?
+>>
+>>
+>>
+>> 2018-05-23 11:14 GMT-03:00 ASANTOS via R-br <r-br em listas.c3sl.ufpr.br>:
+>>
+>>> Caros Membros,
+>>>
+>>>     Com fins ilustrativos e exploratório, tenho pontos correspondentes a
+>>> dois tratamentos A e B espacialmente distribuídos no campo, estou
+>>> delimitando o limite (zona de influência) de cada um como uma elipse,
+>>> através da função ellipsoidhull() do pacote cluster conforme CRM abaixo.
+>>> Gostaria de saber se alguém familiarizado com a função poderia me dizer
+>>> como faço para extrair os raios e as áreas das elipses EpointsA e EpointsB?
+>>>
+>>>
+>>> #Criação do data frame
+>>> dados<-NULL
+>>>
+>>> #Coordenadas x
+>>>
+>>> dados$x<-c(0.350,0.487,0.637,0.775,0.825,0.087,0.237,0.400,
+>>> 0.575,0.737,0.062,0.212)
+>>>
+>>> #Coordenadas y
+>>> dados$y<-c(0.025,0.087,0.050,0.025,0.125,0.187,0.150,0.162,
+>>> 0.212,0.237,0.362,0.337)
+>>>
+>>> #Classificação
+>>> dados$Class<-c("A","A","A","A","A","A","B","B","B","B","B","B")
+>>>
+>>> #Visualização
+>>> plot(dados$x,dados$y)
+>>> text(dados$x,dados$y+0.01,labels=dados$Class,col="red")
+>>> #
+>>>
+>>> #Usando ellipsoidhull
+>>> require(cluster)
+>>> PointsA<-unname(cbind(dados$x[1:6],dados$y[1:6]))
+>>> EpointsA<-ellipsoidhull(PointsA)
+>>> lines(predict(EpointsA), col="blue")
+>>> PointsB<-unname(cbind(dados$x[7:12],dados$y[7:12]))
+>>> EpointsB<-ellipsoidhull(PointsB)
+>>> lines(predict(EpointsB), col="orange")
+>>> #
+>>>
+>>> Abraços,
+>>>
+>>> --
+>>> ======================================================================
+>>> Alexandre dos Santos
+>>> Proteção Florestal
+>>> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+>>> Campus Cáceres
+>>> Caixa Postal 244
+>>> Avenida dos Ramires, s/n
+>>> Bairro: Distrito Industrial
+>>> Cáceres - MT                      CEP: 78.200-000
+>>> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+>>> e-mails:alexandresantosbr em yahoo.com.br
+>>>         alexandre.santos em cas.ifmt.edu.br
+>>> Lattes: http://lattes.cnpq.br/1360403201088680
+>>> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+>>> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+>>> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+>>> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+>>> ======================================================================
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+>>> cdigo mnimo reproduzvel.
+>>
+>>
+>>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180524/1d561fcc/attachment.html>
+
+From paulomesquita7 em gmail.com  Thu May 24 18:40:27 2018
+From: paulomesquita7 em gmail.com (Paulo Eduardo de Mesquita)
+Date: Thu, 24 May 2018 18:40:27 -0300
+Subject: [R-br] =?utf-8?q?quebra_de_linha_do_t=C3=ADtulo_de_tabelas_gerada?=
+	=?utf-8?q?s_pela_fun=C3=A7=C3=A3o_xtable?=
+Message-ID: <CABODYa5s1F2pdKi1BA_JPomiyxE4hxP=9kpek1m1mvfZXGxc0g@mail.gmail.com>
+
+Bom noite (dia) a todo(a)s,
+
+Paz e bem
+
+Sou um neófito em R e Latex.
+
+Estou tentando redigir um artigo relativamente longo no formato Rnw no
+Rstudio e esbarrei num problema que não estou sendo capaz de superar, mesmo
+depois de pesquisar bastante.
+
+O problema é ajustar a largura do título das tabelas geradas com a função
+xtable à largura da tabela propriamente dita através da inserção de quebras
+de linha no título, fazendo com que algo assim (que o código que escrevi á
+capaz de gerar):
+
+
+​se transforme em algo assim (que eu editei como figura no MS - Paint):
+
+
+Um exemplo de trabalho simplificado segue anexo.
+
+Muito obrigado.
+​
+-- 
+Paulo Eduardo de Mesquita
+Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+Paulista Presidente Prudente - São Paulo - Brasil
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180524/6ebca065/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: chisq.test2.png
+Tipo: image/png
+Tamanho: 51468 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180524/6ebca065/attachment-0002.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: chisq.test.png
+Tipo: image/png
+Tamanho: 50669 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180524/6ebca065/attachment-0003.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: exemplo.Rnw
+Tipo: application/octet-stream
+Tamanho: 2908 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180524/6ebca065/attachment-0001.obj>
+
+From pjobenil em gmail.com  Thu May 24 19:12:27 2018
+From: pjobenil em gmail.com (=?UTF-8?Q?Jobenil_Luiz_Magalh=C3=A3es_J=C3=BAnior?=)
+Date: Thu, 24 May 2018 19:12:27 -0300
+Subject: [R-br]
+	=?utf-8?q?quebra_de_linha_do_t=C3=ADtulo_de_tabelas_gerada?=
+	=?utf-8?q?s_pela_fun=C3=A7=C3=A3o_xtable?=
+In-Reply-To: <CABODYa5s1F2pdKi1BA_JPomiyxE4hxP=9kpek1m1mvfZXGxc0g@mail.gmail.com>
+References: <CABODYa5s1F2pdKi1BA_JPomiyxE4hxP=9kpek1m1mvfZXGxc0g@mail.gmail.com>
+Message-ID: <CALiz7qoUy0XnSw2Ciik+2mV=rrZvMTrEEy5DE8JoPwqd4ub8Pg@mail.gmail.com>
+
+Acho que uma maneira que você pode usar (não testada) é fazer quebras no
+texto usando \n.
+Gostaria de ver outras soluções, pois também uso bastante este recurso
+
+Em qui, 24 de mai de 2018 18:40, Paulo Eduardo de Mesquita via R-br <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Bom noite (dia) a todo(a)s,
+>
+> Paz e bem
+>
+> Sou um neófito em R e Latex.
+>
+> Estou tentando redigir um artigo relativamente longo no formato Rnw no
+> Rstudio e esbarrei num problema que não estou sendo capaz de superar, mesmo
+> depois de pesquisar bastante.
+>
+> O problema é ajustar a largura do título das tabelas geradas com a função
+> xtable à largura da tabela propriamente dita através da inserção de quebras
+> de linha no título, fazendo com que algo assim (que o código que escrevi á
+> capaz de gerar):
+>
+>
+> ​se transforme em algo assim (que eu editei como figura no MS - Paint):
+>
+>
+> Um exemplo de trabalho simplificado segue anexo.
+>
+> Muito obrigado.
+> ​
+> --
+> Paulo Eduardo de Mesquita
+> Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+> Paulista Presidente Prudente - São Paulo - Brasil
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180524/1d93ecea/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: chisq.test.png
+Tipo: image/png
+Tamanho: 50669 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180524/1d93ecea/attachment.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: chisq.test2.png
+Tipo: image/png
+Tamanho: 51468 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180524/1d93ecea/attachment-0001.png>
+
+From neves.peres135 em gmail.com  Sat May 26 10:07:24 2018
+From: neves.peres135 em gmail.com (Alice Peres)
+Date: Sat, 26 May 2018 09:07:24 -0400
+Subject: [R-br] =?utf-8?q?GLM_para_vari=C3=A1vel_resposta_contagem_e_regre?=
+	=?utf-8?q?ssoras_fatores=2E?=
+Message-ID: <CAJ+iSzDnTkWq3NJ3cPdCWhOCsyKb8Hqv8NjtErQ-fv6O8wOARA@mail.gmail.com>
+
+Caros membros, bom dia! Tenho uma base de dados com 4 variáveis. Onde, a
+resposta é discreta, com dist. Poisson, e as demais regressoras, são
+fatores, onde cada um tem um número diferente de níveis.
+Resposta, Peso(g);
+Regressoras, Tratamento: C, O, S, E1, E2;
+                      Tempo: 0, 1, 2;
+                      Sexo: M, F.
+Para saber como as variáveis se comportam com o Peso, inicialmente,
+apliquei o seguinte modelo:
+mod<-glm(Peso~Tratamento+Tempo+Sexo+Tratamento:Sexo,family = poisson)
+
+Quando eu gero o summary(modelo) ele não tem o tratamento C e nem o sexo M.
+
+O modelo que eu fiz está errado ?
+
+
+
+Abs
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180526/918805c0/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: dados.csv
+Tipo: application/vnd.ms-excel
+Tamanho: 2363 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180526/918805c0/attachment.xlb>
+
+From jdtatsch em gmail.com  Sat May 26 18:31:18 2018
+From: jdtatsch em gmail.com (=?UTF-8?B?SsO0bmF0YW4=?=)
+Date: Sat, 26 May 2018 18:31:18 -0300
+Subject: [R-br]
+	=?utf-8?q?quebra_de_linha_do_t=C3=ADtulo_de_tabelas_gerada?=
+	=?utf-8?q?s_pela_fun=C3=A7=C3=A3o_xtable?=
+In-Reply-To: <CABODYa5s1F2pdKi1BA_JPomiyxE4hxP=9kpek1m1mvfZXGxc0g@mail.gmail.com>
+References: <CABODYa5s1F2pdKi1BA_JPomiyxE4hxP=9kpek1m1mvfZXGxc0g@mail.gmail.com>
+Message-ID: <CAEiHnvNrcFSZochk8TuL+gfq94GwcjbNxqe9PH-6w=NkQDwh9g@mail.gmail.com>
+
+Tente:
+
+\usepackage{caption}
+\captionsetup{width=.55\textwidth}
+
+Mais opções aqui:
+https://stackoverflow.com/questions/3322563/make-latex-table-caption-same-width-as-table
+
+Att.
+
+
+
+2018-05-24 18:40 GMT-03:00 Paulo Eduardo de Mesquita via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Bom noite (dia) a todo(a)s,
+>
+> Paz e bem
+>
+> Sou um neófito em R e Latex.
+>
+> Estou tentando redigir um artigo relativamente longo no formato Rnw no
+> Rstudio e esbarrei num problema que não estou sendo capaz de superar, mesmo
+> depois de pesquisar bastante.
+>
+> O problema é ajustar a largura do título das tabelas geradas com a função
+> xtable à largura da tabela propriamente dita através da inserção de quebras
+> de linha no título, fazendo com que algo assim (que o código que escrevi á
+> capaz de gerar):
+>
+>
+> ​se transforme em algo assim (que eu editei como figura no MS - Paint):
+>
+>
+> Um exemplo de trabalho simplificado segue anexo.
+>
+> Muito obrigado.
+> ​
+> --
+> Paulo Eduardo de Mesquita
+> Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+> Paulista Presidente Prudente - São Paulo - Brasil
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+###############################################################
+##  Jônatan Dupont Tatsch
+##  Professor do Departamento de Física
+##  Centro de Ciências Exatas e Naturais (CCNE)
+##  Universidade Federal de Santa Maria - UFSM
+##  Faixa de Camobi, Prédio 13 - Campus UFSM - Santa Maria, RS, Brasil -
+97105-900
+##  Telefone: +55(55)33012083
+##  www.ufsm.br/meteorologia
+###############################################################
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180526/c56c51ae/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: chisq.test2.png
+Tipo: image/png
+Tamanho: 51468 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180526/c56c51ae/attachment.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: chisq.test.png
+Tipo: image/png
+Tamanho: 50669 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180526/c56c51ae/attachment-0001.png>
+
+From andreolsouza em yahoo.com.br  Sun May 27 13:08:32 2018
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Sun, 27 May 2018 16:08:32 +0000 (UTC)
+Subject: [R-br] Modelo linear de segundo grau
+In-Reply-To: <CAKrF98nKL-ooXZOEqB17E9Jg=RJ5bzX459ZpjbGyNe4nJryhCA@mail.gmail.com>
+References: <601019692.3684158.1526924707848.ref@mail.yahoo.com>
+ <601019692.3684158.1526924707848@mail.yahoo.com>
+ <CAKrF98nKL-ooXZOEqB17E9Jg=RJ5bzX459ZpjbGyNe4nJryhCA@mail.gmail.com>
+Message-ID: <171292446.5875865.1527437312341@mail.yahoo.com>
+
+Verdade César, obrigado! 
+
+André Oliveira Souza. 
+
+    Em quinta-feira, 24 de maio de 2018 08:58:04 BRT, Cesar Rabak <cesar.rabak em gmail.com> escreveu:  
+ 
+ André,
+O seu modelo não deveria ser especificado como:
+> m3=rsm(y~ FO(x)+PQ(x))> m3
+Call:rsm(formula = y ~ FO(x) + PQ(x))
+Coefficients:(Intercept)        FO(x)        PQ(x)      -0.1333       6.7190      -0.8810  
+HTH--Cesar Rabak
+
+2018-05-21 14:45 GMT-03:00 Andre Oliveira via R-br <r-br em listas.c3sl.ufpr.br>:
+
+Sei que posso rodar dois modelos e fazer o LRT,  entre outras análises, mas por algum motivo preciso da rsm! 
+
+Alguém saberia o motivo deste modelo não "rodar"? 
+
+
+ x=c(1,1,1,2,2,2,3,3,3,4,4,4,5, 5,5)
+ y=c(4,8,5,9,12,9,10,13,12,12, 14,13,11,11,12)
+ plot(y~x)
+ require(rsm)
+ m3=rsm(y~ FO(x)+FO(x^2))
+Error in dimnames(LM$B) <- list(fonm, fonm) : 
+  comprimento de 'dimnames' [1] não é igual ao tamanho do array
+
+ Obg
+
+
+
+______________________________ _________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/ cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br- guia) e forneça código mínimo reproduzível.
+
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180527/3b5b0b11/attachment.html>
+
+From cesar.rabak em gmail.com  Sun May 27 16:42:46 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 27 May 2018 16:42:46 -0300
+Subject: [R-br]
+	=?utf-8?q?quebra_de_linha_do_t=C3=ADtulo_de_tabelas_gerada?=
+	=?utf-8?q?s_pela_fun=C3=A7=C3=A3o_xtable?=
+In-Reply-To: <CABODYa5s1F2pdKi1BA_JPomiyxE4hxP=9kpek1m1mvfZXGxc0g@mail.gmail.com>
+References: <CABODYa5s1F2pdKi1BA_JPomiyxE4hxP=9kpek1m1mvfZXGxc0g@mail.gmail.com>
+Message-ID: <CAKrF98kq66fsAoWBAqFmcyVBzsCXn7huEEY4pWFsDHpRRm+s2g@mail.gmail.com>
+
+Paulo,
+
+Você já recebeu sugestões, que pela natureza tendem a ser "quebra galhos"
+no grande esquema das coisas do LaTeX.
+
+As definições em relação à largura das *caption* tanto para tabelas como
+figuras, ou no idioma do LaTeX *floats* *deveria* ser dado pelo modelo de
+documento que você ou escolheu ou é obrigado a usar (devido a Instituição,
+publicação, etc.).
+
+Não fica claro para mim se seu exemplo é o "piloto" para o documento final,
+neste você colocou o tipo de documento "article" mas usa vários pacotes
+para mudar o comportamento, inclusive o *lscape* e *float* (que tem
+parâmetros para os *caption* também. . .).
+
+Essa definição de largura de título em função da largura das tabelas é para
+um único caso ou você gostaria que todo o documento fosse assim?
+
+A propósito, se a tabela for estreitinha e o título mais longo essa
+estratégia não pode dar um tiro pela culatra e tornar menos legível o
+documento?
+
+No seu exemplo posto sob forma de imagens aqui, as tabelas não estão
+centradas, é isso mesmo que você deseja no seu documento final?
+
+HTH
+--
+Cesar Rabak
+
+
+2018-05-24 18:40 GMT-03:00 Paulo Eduardo de Mesquita via R-br <
+r-br em listas.c3sl.ufpr.br>:
+
+> Bom noite (dia) a todo(a)s,
+>
+> Paz e bem
+>
+> Sou um neófito em R e Latex.
+>
+> Estou tentando redigir um artigo relativamente longo no formato Rnw no
+> Rstudio e esbarrei num problema que não estou sendo capaz de superar, mesmo
+> depois de pesquisar bastante.
+>
+> O problema é ajustar a largura do título das tabelas geradas com a função
+> xtable à largura da tabela propriamente dita através da inserção de quebras
+> de linha no título, fazendo com que algo assim (que o código que escrevi á
+> capaz de gerar):
+>
+>
+> ​se transforme em algo assim (que eu editei como figura no MS - Paint):
+>
+>
+> Um exemplo de trabalho simplificado segue anexo.
+>
+> Muito obrigado.
+> ​
+> --
+> Paulo Eduardo de Mesquita
+> Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+> Paulista Presidente Prudente - São Paulo - Brasil
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180527/1e4714a7/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: chisq.test2.png
+Tipo: image/png
+Tamanho: 51468 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180527/1e4714a7/attachment-0002.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: chisq.test.png
+Tipo: image/png
+Tamanho: 50669 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180527/1e4714a7/attachment-0003.png>
+
+From eliaskrainski em yahoo.com.br  Mon May 28 09:57:09 2018
+From: eliaskrainski em yahoo.com.br (Elias T Krainski)
+Date: Mon, 28 May 2018 09:57:09 -0300
+Subject: [R-br]
+ =?utf-8?q?GLM_para_vari=C3=A1vel_resposta_contagem_e_regre?=
+ =?utf-8?q?ssoras_fatores=2E?=
+In-Reply-To: <CAJ+iSzDnTkWq3NJ3cPdCWhOCsyKb8Hqv8NjtErQ-fv6O8wOARA@mail.gmail.com>
+References: <CAJ+iSzDnTkWq3NJ3cPdCWhOCsyKb8Hqv8NjtErQ-fv6O8wOARA@mail.gmail.com>
+Message-ID: <0730c090-1b12-88cb-c9cd-deb1d43739da@yahoo.com.br>
+
+Por default é considerado contrastes utilizando o primeiro nível de cada 
+fator como referência.
+
+Elias
+
+From adrielegbiase em gmail.com  Mon May 28 10:06:01 2018
+From: adrielegbiase em gmail.com (Adriele Giaretta Biase)
+Date: Mon, 28 May 2018 10:06:01 -0300
+Subject: [R-br] =?utf-8?b?RXJybyBuYSBpbnNlcsOnw6NvIGRlIHJlc3RyacOnw7VlcyAt?=
+	=?utf-8?q?_fun=C3=A7=C3=A3o_add=5Fconstraint_-_pacote_ompr?=
+Message-ID: <CANjWqYzc_KoxeLKdbGLsC7vnTYna+mhbTF2iXwe3yMorYLqfog@mail.gmail.com>
+
+Bom dia a todos,
+
+pessoal estou com um erro na construção de uma restrição no modelo de
+pesquisa operacional.
+
+A soma da combinação de um índices de fatores deve ser igual um número. O
+erro é referente algum "=" ou ")" errado. Mas não consigo encontrar.
+
+i é um vetor que contem 40 índices (1:40);
+j é um vetor que contem 4 índices (1:4);
+k é um vetor que contem  150 dias (1:150);
+m é um numero que contem apenas um índice (1 apenas);
+
+Vejam o código:
+
+### Script:
+
+    add_constraint(
+    sum_expr(
+      x[i,j,k,m],
+      i = as.numeric(as.vector(levels(as.factor(conj_dados[, "bois"])))),
+      j = as.numeric(as.vector(levels(as.factor(conj_dados[, "frig"])))),
+      k = as.numeric(as.vector(levels(as.factor(conj_dados[, "dias"])))),
+      m = as.numeric(as.vector(levels(as.factor(conj_dados[, "merc"])))) )
+    = 40
+  )%>%
+
+
+
+### Execução no Console
+>     add_constraint(
++     sum_expr(
++       x[i,j,k,m],
++       i = as.numeric(as.vector(levels(as.factor(conj_dados[, "bois"])))),
++       j = as.numeric(as.vector(levels(as.factor(conj_dados[, "frig"])))),
++       k = as.numeric(as.vector(levels(as.factor(conj_dados[, "dias"])))),
++       m = as.numeric(as.vector(levels(as.factor(conj_dados[, "merc"])))) )
++     = 40
+Error: unexpected '=' in:
+"      m = as.numeric(as.vector(levels(as.factor(conj_dados[, "merc"])))) )
+    ="
+>   )%>%
+Error: unexpected ')' in "  )"
+
+-- 
+Adriele Giaretta Biase.
+Mestre em  Estatística e Experimentação Agropecuária - UFLA.
+Doutora em Estatística e Experimentação Agronômica - ESALQ/ USP
+Contato: (19) 98861-0619.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180528/121b180a/attachment.html>
+
+From adrielegbiase em gmail.com  Mon May 28 15:01:26 2018
+From: adrielegbiase em gmail.com (Adriele Giaretta Biase)
+Date: Mon, 28 May 2018 15:01:26 -0300
+Subject: [R-br] Error: argument "ast" is missing,
+	with no default (solve_model)
+Message-ID: <CANjWqYwN+tYpPAW2hscg20=DekQLF-oG3Ge9auGe-Oa8hTRknw@mail.gmail.com>
+
+Boa tarde pessoal,
+
+estou trabalhando com modelos matemáticos de otimização usando o pacote
+ompr. A ultima linha do código (azul) retorna um erro que não estou
+conseguindo tratar.
+
+Copiei o erro em baixo (vermelho). Alguém já teve a experiência de encontra
+esse mesmo erro?
+
+
+rm(list=ls(all=TRUE))
+
+#install package from github
+#devtools::install_github("dirkschumacher/ompr")
+#devtools::install_github("dirkschumacher/ompr.roi")
+#install.packages("ROI.plugin.glpk")
+
+library(dplyr, warn.conflicts = FALSE)
+library(ROI)
+library(ROI.plugin.glpk)
+library(ompr)
+library(ompr.roi)
+
+frig = rep(seq(1, 4,1), rep((150*40),4) )
+carro = rep(rep(seq(1, 40, 1), rep(150, 40)), 4)
+dias = rep( seq(1:150), 4*40)
+lucro = (rnorm(4*40*150, 30,1))
+merc = rep(1, length(150*40*4))
+praca = rep(1, length(150*40*4))
+conj_dados= cbind(frig, carro, dias, lucro, merc, praca)
+DIF = 150
+Trava_param <- function(DIF){
+  dia <- seq(1, DIF, 1)
+  trav <- rep(0, DIF)
+  praca <- rep(1, DIF)
+  Trava <- data.frame(dias = dia, praca = praca,  Trava = trav)
+  return(Trava)
+}
+Trava = Trava_param(DIF)
+Max_descasque <- 3
+capac_cam <- 60
+Carga_mercado_futuro <- 330
+permissao_venda <- 1
+bigM <- 5000
+
+model <- MIPModel() %>%
+
+  # venda do animal i para o frigorifico j no mercado m,
+  # dado o peso no dia k
+  add_variable(
+    x[i,j,k,m],
+    i = as.numeric(as.vector(levels( as.factor(conj_dados[,"carro"])))),
+#1:carro,
+    j = as.numeric(as.vector(levels( as.factor(conj_dados[,"frig"])))),
+#1:frig,
+    k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"])))),
+    m = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"merc"])))),#1:merc,
+    type = "binary"
+  )%>%
+
+  # indica a venda de animais no dia k
+  add_variable(
+    y[k],
+    k = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"dias"])))),#1:dias,
+    type = "binary"
+  )%>%
+
+  # numero de caminhoes do tipo t indo para o frigorifico j no dia k
+  add_variable(
+    total[j,k],
+    j = as.numeric(as.vector(levels( as.factor(conj_dados[,"frig"])))),
+#1:frig,
+    k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"])))),
+#1:dias,
+    type = "integer",
+    lb = 0
+  )%>%
+
+  # indica qual mercado esta sendo usado
+  add_variable(
+    w[k,m],
+    k = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"dias"])))),#1:dias,
+    m = as.numeric(as.vector(levels( as.factor(conj_dados[,"merc"])))),
+#1:merc,
+    type = "binary"
+  )%>%
+
+  # indica se o boi i foi vendido na praca u no dia k
+  add_variable(
+    t[i,u,k],
+    i = as.numeric(as.vector(levels( as.factor(conj_dados[,"carro"])))), #
+1:carro,
+    u = as.numeric(as.vector(levels( as.factor(conj_dados[,"praca"])))),
+#1:praca,
+    k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"])))),
+#1:dias,
+    type = "binary"
+  )%>%
+
+  # maximizar
+  set_objective(
+    sum_expr(
+      x[i,j,k,m]*lucro[i,j,k,m],
+             i = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"carro"])))),# 1:carro,
+             j = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"frig"])))),# 1: frig,
+             k = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"dias"])))),#1:dias,
+             m = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"merc"])))) ) #1:merc)
+    - sum_expr(
+      y[k],
+             k = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"dias"])))) )#1:dias)
+    + sum_expr(130*t[i,u,k]*15,
+             i = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"carro"])))), #1:carro,
+             u = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"praca"])))), #1:praca,
+             k = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"dias"])))) )#1:dias)
+  ) %>%
+
+  #Um animal eh vendido uma unica vez
+  add_constraint(
+    sum_expr(
+      x[i,j,k,m],
+             i = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"carro"])))),#1:carro,
+             j = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"frig"])))),#1: frig,
+             k = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"dias"])))), # 1:dias,
+             m = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"merc"])))))#1:merc)
+    + sum_expr(
+      t[i,u,k],
+      i = as.numeric(as.vector(levels( as.factor(conj_dados[,"carro"])))),#
+1:carro,
+      u = as.numeric(as.vector(levels( as.factor(conj_dados[,"praca"])))),#
+1: praca,
+      k = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"dias"])))))#1:dias,
+    <= 1
+  )%>%
+
+  # A capacidade do caminhao eh respeitada
+  add_constraint(
+    sum_expr(
+      x[i,j,k,m],
+             i  = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"carro"])))),#1:carro,
+             m = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"merc"])))))#1:merc)
+    <= total[j,k] * capac_cam,
+    j = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"frig"])))),#1:frig,
+    k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"]))))
+#1:dias
+  )%>%
+
+  # Caso exista uma venda no dia k eh calculado um
+  # descasque para mercado a vista e a prazo
+  add_constraint(
+    sum_expr(
+      x[i,j,k,m],
+             i = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"carro"])))),#1:carro,
+             j = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"frig"])))),#1:frig,
+             m = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"merc"])))) )#1:merc)
+    + sum_expr(
+      t[i,u,k],
+               i = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"carro"])))), #1:carro,
+               u = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"praca"])))) )#,1:praca)
+    <= bigM * y[k],
+    k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"]))))#
+1:dias
+  )%>%
+
+  # Respeito ao numero maximo de descasques
+  add_constraint(
+    sum_expr(
+      y[k],
+             k = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"dias"])))) ) #1:dias)
+    <= Max_descasque
+  )%>%
+
+  # Desigualdade valida para ajudar na convergencia -
+  # todos os animais devem ser vendidos
+    add_constraint(
+    sum_expr(
+      x[i,j,k,m],
+      i = as.numeric(as.vector(levels(as.factor(conj_dados[, "carro"])))),
+      j = as.numeric(as.vector(levels(as.factor(conj_dados[, "frig"])))),
+      k = as.numeric(as.vector(levels(as.factor(conj_dados[, "dias"])))),
+      m = as.numeric(as.vector(levels(as.factor(conj_dados[, "merc"])))) )
+    == 40
+  )%>%
+
+
+    # A carga vendida para mercado futuro eh de pelo menos 330 arobas
+  add_constraint(
+    15*130*sum_expr(
+      t[i,u,k],   i = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"carro"])))) ) #1:carro)
+    <= Carga_mercado_futuro*Trava[k,u],
+   u = as.numeric(as.vector(levels( as.factor(conj_dados[,"praca"])))),
+#1:praca,
+   k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"]))))
+#1:dias
+  )%>%
+
+  # Permissao para venda no mercado futuro
+  add_constraint(
+    sum_expr(
+      t[i,u,k],
+        i = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"carro"])))), #1:carro,
+        u = as.numeric(as.vector(levels(
+as.factor(conj_dados[,"praca"])))), #1:praca,
+        k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"]))))
+)#1:dias)
+    <= bigM * permissao_venda
+  )%>%
+  saveRDS(model, file = "model.rds") %>%
+  solve_model(with_ROI(solver = "glpk"))
+
+Error in on_element(push, inplace_update_ast, get_ast_value, element) :
+  argument "ast" is missing, with no default
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180528/768621c2/attachment.html>
+
+From edinhoestat em yahoo.com.br  Mon May 28 17:12:11 2018
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Mon, 28 May 2018 20:12:11 +0000 (UTC)
+Subject: [R-br] INDICADORES SOCIAIS OF TOPICS
+References: <2063557858.2045376.1527538331422.ref@mail.yahoo.com>
+Message-ID: <2063557858.2045376.1527538331422@mail.yahoo.com>
+
+Caros amigos, boa tarde,  um amigo meu Economista me fez uma pergunta que resolvi compartilhar com vocês.
+"Existe alguma técnica em Estatística, específica para tratamento de Indicadores Sociais?"
+Eu diria que não, mas gostaria de saber se vocês conhecem algo do tipo.
+
+[  ['s.Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180528/160858ef/attachment.html>
+
+From prf.cantonio em gmail.com  Mon May 28 19:13:35 2018
+From: prf.cantonio em gmail.com (Carlos Andrade)
+Date: Mon, 28 May 2018 19:13:35 -0300
+Subject: [R-br] INDICADORES SOCIAIS OF TOPICS
+In-Reply-To: <2063557858.2045376.1527538331422@mail.yahoo.com>
+References: <2063557858.2045376.1527538331422.ref@mail.yahoo.com>
+ <2063557858.2045376.1527538331422@mail.yahoo.com>
+Message-ID: <CA+_U+LxLBdhkx34jkjghu=bj9Gm0+qiLq8DOzJBsUX=uFj=3gw@mail.gmail.com>
+
+Edson Lira,
+
+Esta referência talvez ajude: Jannuzzi, Paulo Martino. "Indicadores
+sociais no Brasil", Ed. Alínea. Este autor tem uma vasta produção
+sobre o tema.
+
+Em 28 de maio de 2018 17:12, Edson Lira via R-br
+<r-br em listas.c3sl.ufpr.br> escreveu:
+> Caros amigos, boa tarde,  um amigo meu Economista me fez uma pergunta que
+> resolvi compartilhar com vocês.
+>
+> "Existe alguma técnica em Estatística, específica para tratamento de
+> Indicadores Sociais?"
+>
+> Eu diria que não, mas gostaria de saber se vocês conhecem algo do tipo.
+>
+>
+> [  ['s.
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
+> mínimo reproduzível.
+
+
+
+-- 
+Atenciosamente,
+
+Prof. Carlos A. S. de Andrade
+LAPEA - Laboratório de Pesquisa em Economia Aplicada e Engenharia de Produção
+Universidade Federal de Campina Grande.
+Centro de Humanidades
+Unidade Acadêmica de Economia
+
+From cesar.rabak em gmail.com  Tue May 29 00:13:34 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 29 May 2018 00:13:34 -0300
+Subject: [R-br] Error: argument "ast" is missing,
+	with no default (solve_model)
+In-Reply-To: <CANjWqYwN+tYpPAW2hscg20=DekQLF-oG3Ge9auGe-Oa8hTRknw@mail.gmail.com>
+References: <CANjWqYwN+tYpPAW2hscg20=DekQLF-oG3Ge9auGe-Oa8hTRknw@mail.gmail.com>
+Message-ID: <CAKrF98k4OmPLgRZi5tPN0Ka__XzHDKtsbyS=mMnPXNw5rVbRLw@mail.gmail.com>
+
+Em vez de usar o pipe você não devia chamar solve_model com a especificação
+do seu modelo, no seu caso *model*?
+
+On Mon, May 28, 2018 at 3:01 PM, Adriele Giaretta Biase via R-br <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde pessoal,
+>
+> estou trabalhando com modelos matemáticos de otimização usando o pacote
+> ompr. A ultima linha do código (azul) retorna um erro que não estou
+> conseguindo tratar.
+>
+> Copiei o erro em baixo (vermelho). Alguém já teve a experiência de
+> encontra esse mesmo erro?
+>
+>
+> rm(list=ls(all=TRUE))
+>
+> #install package from github
+> #devtools::install_github("dirkschumacher/ompr")
+> #devtools::install_github("dirkschumacher/ompr.roi")
+> #install.packages("ROI.plugin.glpk")
+>
+> library(dplyr, warn.conflicts = FALSE)
+> library(ROI)
+> library(ROI.plugin.glpk)
+> library(ompr)
+> library(ompr.roi)
+>
+> frig = rep(seq(1, 4,1), rep((150*40),4) )
+> carro = rep(rep(seq(1, 40, 1), rep(150, 40)), 4)
+> dias = rep( seq(1:150), 4*40)
+> lucro = (rnorm(4*40*150, 30,1))
+> merc = rep(1, length(150*40*4))
+> praca = rep(1, length(150*40*4))
+> conj_dados= cbind(frig, carro, dias, lucro, merc, praca)
+> DIF = 150
+> Trava_param <- function(DIF){
+>   dia <- seq(1, DIF, 1)
+>   trav <- rep(0, DIF)
+>   praca <- rep(1, DIF)
+>   Trava <- data.frame(dias = dia, praca = praca,  Trava = trav)
+>   return(Trava)
+> }
+> Trava = Trava_param(DIF)
+> Max_descasque <- 3
+> capac_cam <- 60
+> Carga_mercado_futuro <- 330
+> permissao_venda <- 1
+> bigM <- 5000
+>
+> model <- MIPModel() %>%
+>
+>   # venda do animal i para o frigorifico j no mercado m,
+>   # dado o peso no dia k
+>   add_variable(
+>     x[i,j,k,m],
+>     i = as.numeric(as.vector(levels( as.factor(conj_dados[,"carro"])))),
+> #1:carro,
+>     j = as.numeric(as.vector(levels( as.factor(conj_dados[,"frig"])))),
+> #1:frig,
+>     k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"])))),
+>     m = as.numeric(as.vector(levels( as.factor(conj_dados[,"merc"])
+> ))),#1:merc,
+>     type = "binary"
+>   )%>%
+>
+>   # indica a venda de animais no dia k
+>   add_variable(
+>     y[k],
+>     k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"])
+> ))),#1:dias,
+>     type = "binary"
+>   )%>%
+>
+>   # numero de caminhoes do tipo t indo para o frigorifico j no dia k
+>   add_variable(
+>     total[j,k],
+>     j = as.numeric(as.vector(levels( as.factor(conj_dados[,"frig"])))),
+> #1:frig,
+>     k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"])))),
+> #1:dias,
+>     type = "integer",
+>     lb = 0
+>   )%>%
+>
+>   # indica qual mercado esta sendo usado
+>   add_variable(
+>     w[k,m],
+>     k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"])
+> ))),#1:dias,
+>     m = as.numeric(as.vector(levels( as.factor(conj_dados[,"merc"])))),
+> #1:merc,
+>     type = "binary"
+>   )%>%
+>
+>   # indica se o boi i foi vendido na praca u no dia k
+>   add_variable(
+>     t[i,u,k],
+>     i = as.numeric(as.vector(levels( as.factor(conj_dados[,"carro"])))),
+> # 1:carro,
+>     u = as.numeric(as.vector(levels( as.factor(conj_dados[,"praca"])))),
+> #1:praca,
+>     k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"])))),
+> #1:dias,
+>     type = "binary"
+>   )%>%
+>
+>   # maximizar
+>   set_objective(
+>     sum_expr(
+>       x[i,j,k,m]*lucro[i,j,k,m],
+>              i = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"carro"])))),# 1:carro,
+>              j = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"frig"])))),# 1: frig,
+>              k = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"dias"])))),#1:dias,
+>              m = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"merc"])))) ) #1:merc)
+>     - sum_expr(
+>       y[k],
+>              k = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"dias"])))) )#1:dias)
+>     + sum_expr(130*t[i,u,k]*15,
+>              i = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"carro"])))), #1:carro,
+>              u = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"praca"])))), #1:praca,
+>              k = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"dias"])))) )#1:dias)
+>   ) %>%
+>
+>   #Um animal eh vendido uma unica vez
+>   add_constraint(
+>     sum_expr(
+>       x[i,j,k,m],
+>              i = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"carro"])))),#1:carro,
+>              j = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"frig"])))),#1: frig,
+>              k = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"dias"])))), # 1:dias,
+>              m = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"merc"])))))#1:merc)
+>     + sum_expr(
+>       t[i,u,k],
+>       i = as.numeric(as.vector(levels( as.factor(conj_dados[,"carro"])))),#
+> 1:carro,
+>       u = as.numeric(as.vector(levels( as.factor(conj_dados[,"praca"])))),#
+> 1: praca,
+>       k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"])
+> ))))#1:dias,
+>     <= 1
+>   )%>%
+>
+>   # A capacidade do caminhao eh respeitada
+>   add_constraint(
+>     sum_expr(
+>       x[i,j,k,m],
+>              i  = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"carro"])))),#1:carro,
+>              m = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"merc"])))))#1:merc)
+>     <= total[j,k] * capac_cam,
+>     j = as.numeric(as.vector(levels( as.factor(conj_dados[,"frig"])
+> ))),#1:frig,
+>     k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"]))))
+> #1:dias
+>   )%>%
+>
+>   # Caso exista uma venda no dia k eh calculado um
+>   # descasque para mercado a vista e a prazo
+>   add_constraint(
+>     sum_expr(
+>       x[i,j,k,m],
+>              i = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"carro"])))),#1:carro,
+>              j = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"frig"])))),#1:frig,
+>              m = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"merc"])))) )#1:merc)
+>     + sum_expr(
+>       t[i,u,k],
+>                i = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"carro"])))), #1:carro,
+>                u = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"praca"])))) )#,1:praca)
+>     <= bigM * y[k],
+>     k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"]))))#
+> 1:dias
+>   )%>%
+>
+>   # Respeito ao numero maximo de descasques
+>   add_constraint(
+>     sum_expr(
+>       y[k],
+>              k = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"dias"])))) ) #1:dias)
+>     <= Max_descasque
+>   )%>%
+>
+>   # Desigualdade valida para ajudar na convergencia -
+>   # todos os animais devem ser vendidos
+>     add_constraint(
+>     sum_expr(
+>       x[i,j,k,m],
+>       i = as.numeric(as.vector(levels(as.factor(conj_dados[, "carro"])))),
+>       j = as.numeric(as.vector(levels(as.factor(conj_dados[, "frig"])))),
+>       k = as.numeric(as.vector(levels(as.factor(conj_dados[, "dias"])))),
+>       m = as.numeric(as.vector(levels(as.factor(conj_dados[, "merc"])))) )
+>     == 40
+>   )%>%
+>
+>
+>     # A carga vendida para mercado futuro eh de pelo menos 330 arobas
+>   add_constraint(
+>     15*130*sum_expr(
+>       t[i,u,k],   i = as.numeric(as.vector(levels(
+> as.factor(conj_dados[,"carro"])))) ) #1:carro)
+>     <= Carga_mercado_futuro*Trava[k,u],
+>    u = as.numeric(as.vector(levels( as.factor(conj_dados[,"praca"])))),
+> #1:praca,
+>    k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"]))))
+> #1:dias
+>   )%>%
+>
+>   # Permissao para venda no mercado futuro
+>   add_constraint(
+>     sum_expr(
+>       t[i,u,k],
+>         i = as.numeric(as.vector(levels( as.factor(conj_dados[,"carro"])))),
+> #1:carro,
+>         u = as.numeric(as.vector(levels( as.factor(conj_dados[,"praca"])))),
+> #1:praca,
+>         k = as.numeric(as.vector(levels( as.factor(conj_dados[,"dias"]))))
+> )#1:dias)
+>     <= bigM * permissao_venda
+>   )%>%
+>   saveRDS(model, file = "model.rds") %>%
+>   solve_model(with_ROI(solver = "glpk"))
+>
+> Error in on_element(push, inplace_update_ast, get_ast_value, element) :
+>   argument "ast" is missing, with no default
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180529/3e508804/attachment.html>
+
+From cesar.rabak em gmail.com  Tue May 29 00:18:01 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 29 May 2018 00:18:01 -0300
+Subject: [R-br] INDICADORES SOCIAIS OF TOPICS
+In-Reply-To: <2063557858.2045376.1527538331422@mail.yahoo.com>
+References: <2063557858.2045376.1527538331422.ref@mail.yahoo.com>
+ <2063557858.2045376.1527538331422@mail.yahoo.com>
+Message-ID: <CAKrF98=2LZ95YrMkw7o5yjX-8ozWqmGMKQudX-Yf=DGwU5kq_Q@mail.gmail.com>
+
+Edson,
+
+Malgrado a definição do quê seria uma técnica específica versus as mais
+comumente empregadas¹, vale a pena ver a *task view* Social Sciences no
+CRAN!
+
+HTH
+
+--
+Cesar Rabak
+
+
+[1] Citando diretamente do link sugerido: «  *Social scientists use a wide
+range of statistical methods, most of which are not unique to the social
+sciences. Indeed, most statistical data analysis in the social sciences is
+covered by the facilities in the base and recommended packages, which are
+part of the standard R distribution. In the package descriptions below, I
+identify base and recommended packages on first mention; packages that are
+not specifically identified as "R-base" or "recommended" are contributed
+packages. * »
+
+2018-05-28 17:12 GMT-03:00 Edson Lira via R-br <r-br em listas.c3sl.ufpr.br>:
+
+> Caros amigos, boa tarde,  um amigo meu Economista me fez uma pergunta que
+> resolvi compartilhar com vocês.
+>
+> "Existe alguma técnica em Estatística, específica para tratamento de
+> Indicadores Sociais?"
+>
+> Eu diria que não, mas gostaria de saber se vocês conhecem algo do tipo.
+>
+>
+> [  ['s.
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180529/aced048b/attachment.html>
+
+From marcosvital em gmail.com  Tue May 29 15:38:19 2018
+From: marcosvital em gmail.com (Marcos Vital)
+Date: Tue, 29 May 2018 15:38:19 -0300
+Subject: [R-br] Tutorial de RMarkdown
+Message-ID: <CAKLUGQ8te0K-nSdi27Dxc+LosRTHpz2GL414iP=f9GQaJRp-0A@mail.gmail.com>
+
+Oi, pessoal da lista!
+
+Publiquei no meu blog um pequeno tutorial de RMarkdown, e acredito que
+possa ser útil para os que estão começando a aprender a usar esta
+ferramenta:
+
+https://cantinhodor.wordpress.com/2018/05/26/tutorial-de-rmarkdown/
+
+Caso alguém tiver alguma sugestão, estou à disposição para corrigir,
+expandir ou atualizar o tutorial, ok?
+
+Abraços!
+
+-- 
+Marcos Vinícius Carneiro Vital
+Universidade Federal de Alagoas
+Instituto de Ciências Biológicas e da Saúde
+Setor de Biodiversidade e Ecologia
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180529/f474ab5e/attachment.html>
+
+From paulomesquita7 em gmail.com  Tue May 29 21:23:45 2018
+From: paulomesquita7 em gmail.com (Paulo Eduardo de Mesquita)
+Date: Tue, 29 May 2018 21:23:45 -0300
+Subject: [R-br]
+	=?utf-8?q?quebra_de_linha_do_t=C3=ADtulo_de_tabelas_gerada?=
+	=?utf-8?q?s_pela_fun=C3=A7=C3=A3o_xtable?=
+In-Reply-To: <CAKrF98kq66fsAoWBAqFmcyVBzsCXn7huEEY4pWFsDHpRRm+s2g@mail.gmail.com>
+References: <CABODYa5s1F2pdKi1BA_JPomiyxE4hxP=9kpek1m1mvfZXGxc0g@mail.gmail.com>
+ <CAKrF98kq66fsAoWBAqFmcyVBzsCXn7huEEY4pWFsDHpRRm+s2g@mail.gmail.com>
+Message-ID: <CABODYa41oYnEcY7WVvSQ5nv7-r7jMpyPjoKEgqmJwBGy_7heiw@mail.gmail.com>
+
+Prezados Jobenil e César,
+
+Paz e bem
+
+Fico muito grato pela vossa atenção a minha pergunta.
+
+A sugestão do Jobenil de criar o título como um objeto a parte, que
+posteriormente poderia ser manipulado com mais facilidade, funcionou bem
+nesse caso.
+
+Procedendo assim e usando \\newline ao invés de simplesmente \n ou \\ ou
+ainda \\\\ eu consegui a quebra de linha do título e, por aproximação
+ajustar, a largura do título com várias linhas à largura da tabela.
+
+César, cada tabela, uma largura.
+
+Você deve ter notado, que eu vou mais por intuição do que por conhecimento
+formal de LaTex.
+
+Normalmente eu pesquiso a solução como fiz aqui, acrescento o pacote ao
+preambulo, verifico o resultado e sigo em frente.
+
+Não sei se esta é a melhor forma, suspeito que não. Suspeito também que o
+meu preambulo contém elementos demais que provavelmente não acrescentam
+muita coisa ao documento.
+
+Se você conhecer alguma literatura que sirva para melhorar a base de
+conhecimento eu agradeço a indicação.
+
+TFYH
+
+P.
+
+Em 27 de maio de 2018 16:42, Cesar Rabak <cesar.rabak em gmail.com> escreveu:
+
+> Paulo,
+>
+> Você já recebeu sugestões, que pela natureza tendem a ser "quebra galhos"
+> no grande esquema das coisas do LaTeX.
+>
+> As definições em relação à largura das *caption* tanto para tabelas como
+> figuras, ou no idioma do LaTeX *floats* *deveria* ser dado pelo modelo de
+> documento que você ou escolheu ou é obrigado a usar (devido a Instituição,
+> publicação, etc.).
+>
+> Não fica claro para mim se seu exemplo é o "piloto" para o documento
+> final, neste você colocou o tipo de documento "article" mas usa vários
+> pacotes para mudar o comportamento, inclusive o *lscape* e *float* (que
+> tem parâmetros para os *caption* também. . .).
+>
+> Essa definição de largura de título em função da largura das tabelas é
+> para um único caso ou você gostaria que todo o documento fosse assim?
+>
+> A propósito, se a tabela for estreitinha e o título mais longo essa
+> estratégia não pode dar um tiro pela culatra e tornar menos legível o
+> documento?
+>
+> No seu exemplo posto sob forma de imagens aqui, as tabelas não estão
+> centradas, é isso mesmo que você deseja no seu documento final?
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+> 2018-05-24 18:40 GMT-03:00 Paulo Eduardo de Mesquita via R-br <
+> r-br em listas.c3sl.ufpr.br>:
+>
+>> Bom noite (dia) a todo(a)s,
+>>
+>> Paz e bem
+>>
+>> Sou um neófito em R e Latex.
+>>
+>> Estou tentando redigir um artigo relativamente longo no formato Rnw no
+>> Rstudio e esbarrei num problema que não estou sendo capaz de superar, mesmo
+>> depois de pesquisar bastante.
+>>
+>> O problema é ajustar a largura do título das tabelas geradas com a função
+>> xtable à largura da tabela propriamente dita através da inserção de quebras
+>> de linha no título, fazendo com que algo assim (que o código que escrevi á
+>> capaz de gerar):
+>>
+>>
+>> ​se transforme em algo assim (que eu editei como figura no MS - Paint):
+>>
+>>
+>> Um exemplo de trabalho simplificado segue anexo.
+>>
+>> Muito obrigado.
+>> ​
+>> --
+>> Paulo Eduardo de Mesquita
+>> Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+>> Paulista Presidente Prudente - São Paulo - Brasil
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+
+
+-- 
+Paulo Eduardo de Mesquita
+Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+Paulista Presidente Prudente - São Paulo - Brasil
+telefone: 5518 97718261
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180529/302e7723/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: chisq.test.png
+Tipo: image/png
+Tamanho: 50669 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180529/302e7723/attachment-0002.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: chisq.test2.png
+Tipo: image/png
+Tamanho: 51468 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20180529/302e7723/attachment-0003.png>
+

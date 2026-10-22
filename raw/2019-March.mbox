@@ -1,0 +1,3729 @@
+From alexandre.santos em cas.ifmt.edu.br  Fri Mar  1 12:03:55 2019
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Fri, 1 Mar 2019 11:03:55 -0400
+Subject: [R-br] =?utf-8?q?Problema_com_optim=28=29_em_modelos_n=C3=A3o_lin?=
+ =?utf-8?q?eares?=
+Message-ID: <809875bd-a1c5-061d-3bb6-5bd11aba1400@cas.ifmt.edu.br>
+
+Prezados Membros,
+
+     Estou tentando realizar a estimação dos coeficientes de um modelo 
+não linear com a função optim(), mas só recebo a mensagem de erro:
+
+Error in optim(c(0.97, 0.32), function(a) f(a, x, yexp)) : função alvo 
+em optim retorna um objeto de comprimento 11 ao invés de 1
+
+    Segundo o meu CRM:
+
+#Crio as variáveis
+
+x <- c(1 ,10,  20,  30,  40,  50,  60,  70,  80,  90, 100)
+y <- c(0.033823,  0.014779,  0.004698,  0.001584, -0.002017, -0.003436,
+-0.000006, -0.004626, -0.004626, -0.004626, -0.004626)
+
+#Especifico a função, que no meu caso é y ~ a4*exp(-x/a5)
+
+f = function(a,x,yexp) {yexp= a[1]*exp(-x/a[2]) }
+
+# Utilizando a otimização
+
+mod = optim(c(0.97, 0.32), function(a) f(a, x, yexp))
+
+
+Alguém poderia me ajudar.
+
+Obrigado
+
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190301/7a0d1c14/attachment.html>
+
+From ca.chiarelli.97 em gmail.com  Fri Mar  1 12:27:37 2019
+From: ca.chiarelli.97 em gmail.com (Carlos Augusto Jardim Chiarelli)
+Date: Fri, 1 Mar 2019 12:27:37 -0300
+Subject: [R-br] Adicionar barras em um mapa (ggplot2)
+Message-ID: <CAJDb6HBg14cAVpe_4U1H4VKn86hCg6V6VajbXVd_53h6_41Tkw@mail.gmail.com>
+
+Como adicionar barras (bars) em um mapa ggplot2 (geom_polygon) no R 3.5?
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190301/795b7526/attachment.html>
+
+From nandodesouza em gmail.com  Fri Mar  1 14:22:14 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Fri, 1 Mar 2019 14:22:14 -0300
+Subject: [R-br] Modelos Mistos - Duvida sobre
+ =?utf-8?Q?transforma=C3=A7=C3=A3o/distribui=C3=A7=C3=A3o_?=logistica
+Message-ID: <63252B2D-3E01-4493-B0F5-F5A62E044984@getmailspring.com>
+
+Prezados
+
+Estou analisando um dado experimental utilizando a abordagem dos modelos mistos, através da função lme do pacote nlme. O dado no entanto não apresentou distribuição normal e tentativas como remoção de outliers, transformação foram infrutíferas.
+Tentei olhar se outra distribuição se ajusta melhor aos dados e encontrei que a distribuição logistica, se ajusta bem (Veja imagens abaixo), porém não sei como ajustar esse modelo utilizando a abordagem de modelos mistos.
+Visto que meus dados não são dados de proporção, como posso fazer para analisar tal dado?
+Desculpe a quantidade de informação fornecida abaixo, mas este é o mínimo que consegui organizar para ilustrar minha questão
+BiometriaAleit<-structure(list(Animal = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 5L, 5L, 5L, 5L, 5L,
+5L, 5L, 5L, 5L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 7L, 7L, 7L,
+7L, 7L, 7L, 7L, 7L, 7L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 9L, 9L, 9L,
+9L, 9L, 9L, 9L, 9L, 9L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L,
+11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 12L, 12L, 12L, 12L,
+12L, 12L, 12L, 12L, 12L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L,
+14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 15L, 15L, 15L, 15L,
+15L, 15L, 15L, 15L, 15L, 16L, 16L, 16L, 16L, 16L, 16L, 16L, 16L,
+17L, 17L, 17L, 17L, 17L, 17L, 17L, 17L, 17L, 18L, 18L, 18L, 18L,
+18L, 18L, 18L, 18L, 18L, 19L, 19L, 19L, 19L, 19L, 19L, 19L, 19L,
+19L, 20L, 20L, 20L, 20L, 20L, 20L, 20L, 20L, 21L, 21L, 21L, 21L,
+21L, 21L, 21L, 21L, 21L, 22L, 22L, 22L, 22L, 22L, 22L, 22L, 22L,
+22L, 23L, 23L, 23L, 23L, 23L, 23L, 23L, 23L, 23L, 24L, 24L, 24L,
+24L, 24L, 24L, 24L, 24L, 24L, 25L, 25L, 25L, 25L, 25L, 25L, 25L,
+25L, 25L, 26L, 26L, 26L, 26L, 26L, 26L, 26L, 26L, 26L, 27L, 27L,
+27L, 27L, 27L, 27L, 27L, 27L, 27L, 28L, 28L, 28L, 28L, 28L, 28L,
+28L, 28L, 28L, 29L, 29L, 29L, 29L, 29L, 29L, 29L, 29L, 29L, 30L,
+30L, 30L, 30L, 30L, 30L, 30L, 30L, 30L, 31L, 31L, 31L, 31L, 31L,
+31L, 31L, 31L, 32L, 32L, 32L, 32L, 32L, 32L, 32L, 32L, 32L, 33L,
+33L, 33L, 33L, 33L, 33L, 33L, 33L, 33L, 34L, 34L, 34L, 34L, 34L,
+34L, 34L, 34L, 34L, 35L, 35L, 35L, 35L, 35L, 35L, 35L, 35L, 35L,
+36L, 36L, 36L, 36L, 36L, 36L, 36L, 36L, 36L, 37L, 37L, 37L, 37L,
+37L, 37L, 37L, 37L, 37L, 38L, 38L, 38L, 38L, 38L, 38L, 38L, 38L,
+38L, 39L, 39L, 39L, 39L, 39L, 39L, 39L, 39L, 39L, 40L, 40L, 40L,
+40L, 40L, 40L, 40L, 40L, 40L, 41L, 41L, 41L, 41L, 41L, 41L, 41L,
+41L, 41L, 42L, 42L, 42L, 42L, 42L, 42L, 42L, 42L, 42L, 43L, 43L,
+43L, 43L, 43L, 43L, 43L, 43L, 43L, 44L, 44L, 44L, 44L, 44L, 44L,
+44L, 44L, 44L, 45L, 45L, 45L, 45L, 45L, 45L, 45L, 45L, 45L), .Label = c("1",
+"9", "24", "25", "41", "49", "8016", "8019", "8020", "8024",
+"8025", "8027", "8028", "8029", "8030", "8031", "8032", "8034",
+"8035", "8037", "8040", "8042", "8058", "8067", "8068", "8109",
+"8111", "8112", "8114", "8116", "8124", "8128", "8130", "8137",
+"8405", "8407", "8415", "8420", "8422", "8424", "8425", "8426",
+"8429", "8434", "8436"), class = "factor"), Sexo = structure(c(2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("Femea",
+"Macho"), class = "factor"), GS = structure(c(1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("3/4hz", "5/8hz",
+"HOL"), class = "factor"), Tratamento = structure(c(2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("apex", "controle"
+), class = "factor"), Pbserica = c(11, 11, 11, 11, 11, 11, 11,
+11, 11, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 11, 11, 11, 11,
+11, 11, 11, 11, 11, 11.9, 11.9, 11.9, 11.9, 11.9, 11.9, 11.9,
+11.9, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10,
+10, 10, 10, 10, 10, 10, 10, 10, 12, 12, 12, 12, 12, 12, 12, 12,
+12, 10, 10, 10, 10, 10, 10, 10, 8.9, 8.9, 8.9, 8.9, 8.9, 8.9,
+8.9, 8.9, 8.9, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8,
+8.6, 8.6, 8.6, 8.6, 8.6, 8.6, 8.6, 8.6, 8.6, 9.2, 9.2, 9.2, 9.2,
+9.2, 9.2, 9.2, 9.2, 9.2, 9.9, 9.9, 9.9, 9.9, 9.9, 9.9, 9.9, 9.9,
+11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11,
+11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 10.1, 10.1, 10.1, 10.1,
+10.1, 10.1, 10.1, 10.1, 10.1, 12.4, 12.4, 12.4, 12.4, 12.4, 12.4,
+12.4, 12.4, 12.4, 11.2, 11.2, 11.2, 11.2, 11.2, 11.2, 11.2, 11.2,
+11.2, 9.2, 9.2, 9.2, 9.2, 9.2, 9.2, 9.2, 9.2, 10.9, 10.9, 10.9,
+10.9, 10.9, 10.9, 10.9, 10.9, 10.9, 10.4, 10.4, 10.4, 10.4, 10.4,
+10.4, 10.4, 10.4, 10.4, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11.1,
+11.1, 11.1, 11.1, 11.1, 11.1, 11.1, 11.1, 11.1, 10.3, 10.3, 10.3,
+10.3, 10.3, 10.3, 10.3, 10.3, 10.3, 9.7, 9.7, 9.7, 9.7, 9.7,
+9.7, 9.7, 9.7, 9.7, 10.2, 10.2, 10.2, 10.2, 10.2, 10.2, 10.2,
+10.2, 10.2, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4,
+9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9, 9, 9, 9, 9, 9,
+9, 9, 9, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8, 9.8,
+9.8, 9.8, 9.8, 9.8, 9.8, 9.8, 9.8, 9.8, 10, 10, 10, 10, 10, 10,
+10, 10, 10, 9.4, 9.4, 9.4, 9.4, 9.4, 9.4, 9.4, 9.4, 9.4, 10,
+10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 11,
+11, 8.9, 8.9, 8.9, 8.9, 8.9, 8.9, 8.9, 8.9, 8.9, 11.4, 11.4,
+11.4, 11.4, 11.4, 11.4, 11.4, 11.4, 11.4, 11.2, 11.2, 11.2, 11.2,
+11.2, 11.2, 11.2, 11.2, 11.2, 12, 12, 12, 12, 12, 12, 12, 12,
+12, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11.8, 11.8, 11.8, 11.8,
+11.8, 11.8, 11.8, 11.8, 11.8, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5,
+10.5, 10.5, 10.5, 10.8, 10.8, 10.8, 10.8, 10.8, 10.8, 10.8, 10.8,
+10.8, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4),
+Pnasc = c(27.06, 27.06, 27.06, 27.06, 27.06, 27.06, 27.06,
+27.06, 27.06, 38.34, 38.34, 38.34, 38.34, 38.34, 38.34, 38.34,
+38.34, 39.4, 39.4, 39.4, 39.4, 39.4, 39.4, 39.4, 39.4, 39.4,
+32.65, 32.65, 32.65, 32.65, 32.65, 32.65, 32.65, 32.65, 39.7,
+39.7, 39.7, 39.7, 39.7, 39.7, 39.7, 39.7, 39.7, 35.9, 35.9,
+35.9, 35.9, 35.9, 35.9, 35.9, 35.9, 35.9, 34, 34, 34, 34,
+34, 34, 34, 34, 34, 28.58, 28.58, 28.58, 28.58, 28.58, 28.58,
+28.58, 31.3, 31.3, 31.3, 31.3, 31.3, 31.3, 31.3, 31.3, 31.3,
+33.57, 33.57, 33.57, 33.57, 33.57, 33.57, 33.57, 33.57, 32.314,
+32.314, 32.314, 32.314, 32.314, 32.314, 32.314, 32.314, 32.314,
+27.3, 27.3, 27.3, 27.3, 27.3, 27.3, 27.3, 27.3, 27.3, 35,
+35, 35, 35, 35, 35, 35, 35, 26.8, 26.8, 26.8, 26.8, 26.8,
+26.8, 26.8, 26.8, 26.8, 36.6, 36.6, 36.6, 36.6, 36.6, 36.6,
+36.6, 36.6, 36.6, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2,
+27.2, 29.45, 29.45, 29.45, 29.45, 29.45, 29.45, 29.45, 29.45,
+29.45, 34.48, 34.48, 34.48, 34.48, 34.48, 34.48, 34.48, 34.48,
+34.48, 31.76, 31.76, 31.76, 31.76, 31.76, 31.76, 31.76, 31.76,
+31.76, 29.5, 29.5, 29.5, 29.5, 29.5, 29.5, 29.5, 29.5, 25.9,
+25.9, 25.9, 25.9, 25.9, 25.9, 25.9, 25.9, 25.9, 33.57, 33.57,
+33.57, 33.57, 33.57, 33.57, 33.57, 33.57, 33.57, 35.2, 35.2,
+35.2, 35.2, 35.2, 35.2, 35.2, 35.2, 35.2, 31, 31, 31, 31,
+31, 31, 31, 31, 31, 29.5, 29.5, 29.5, 29.5, 29.5, 29.5, 29.5,
+29.5, 29.5, 26.5, 26.5, 26.5, 26.5, 26.5, 26.5, 26.5, 26.5,
+26.5, 29.49, 29.49, 29.49, 29.49, 29.49, 29.49, 29.49, 29.49,
+29.49, 30, 30, 30, 30, 30, 30, 30, 30, 30, 33.12, 33.12,
+33.12, 33.12, 33.12, 33.12, 33.12, 33.12, 33.12, 35, 35,
+35, 35, 35, 35, 35, 35, 35, 35.7, 35.7, 35.7, 35.7, 35.7,
+35.7, 35.7, 35.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7,
+30.7, 30.7, 39.3, 39.3, 39.3, 39.3, 39.3, 39.3, 39.3, 39.3,
+39.3, 29.3, 29.3, 29.3, 29.3, 29.3, 29.3, 29.3, 29.3, 29.3,
+25.72, 25.72, 25.72, 25.72, 25.72, 25.72, 25.72, 25.72, 25.72,
+46.3, 46.3, 46.3, 46.3, 46.3, 46.3, 46.3, 46.3, 46.3, 38.9,
+38.9, 38.9, 38.9, 38.9, 38.9, 38.9, 38.9, 38.9, 38.2, 38.2,
+38.2, 38.2, 38.2, 38.2, 38.2, 38.2, 38.2, 31.1, 31.1, 31.1,
+31.1, 31.1, 31.1, 31.1, 31.1, 31.1, 22.3, 22.3, 22.3, 22.3,
+22.3, 22.3, 22.3, 22.3, 22.3, 27.6, 27.6, 27.6, 27.6, 27.6,
+27.6, 27.6, 27.6, 27.6, 31.7, 31.7, 31.7, 31.7, 31.7, 31.7,
+31.7, 31.7, 31.7, 34.7, 34.7, 34.7, 34.7, 34.7, 34.7, 34.7,
+34.7, 34.7, 38, 38, 38, 38, 38, 38, 38, 38, 38, 40.7, 40.7,
+40.7, 40.7, 40.7, 40.7, 40.7, 40.7, 40.7), Semana = structure(c(1L,
+2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 4L, 5L, 6L, 7L, 8L,
+9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 5L, 6L,
+7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L,
+4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L,
+1L, 2L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L,
+9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 9L, 1L, 2L, 3L, 4L, 5L, 6L,
+7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L,
+4L, 5L, 6L, 7L, 8L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L,
+2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 8L,
+9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L,
+6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L,
+3L, 4L, 5L, 6L, 7L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L,
+1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L,
+7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L,
+4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L,
+1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L,
+7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L,
+4L, 5L, 6L, 7L, 8L, 9L, 1L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L,
+2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L,
+5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L,
+2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L,
+5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L,
+2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L,
+5L, 6L, 7L, 8L, 9L), .Label = c("1", "2", "3", "4", "5",
+"6", "7", "8", "9"), class = "factor"), CT = c(70, 72, 73,
+77, 77, 80, 82, 86, 91, 77, 78, 82, 84, 85, 89, 94, 95, 78,
+81, 82, 81, 84, 88, 89, 92, 96, 74, 75, 77, 84, 85, 86, 88,
+92, 76, 78, 79, 79, 82, 82, 84, 86, 88, 75, 79, 80, 80, 81,
+83, 86, 89, 92, 76, 73, 75, 79, 81, 82, 87, 87, 94, 71, 73,
+77, 82, 86, 88, 94, 75, 76, 80, 80, 83, 85, 88, 91, 98, 78,
+78, 81, 81, 85, 85, 89, 94, 73, 74, 78, 78, 78, 81, 84, 86,
+90, 72, 74, 75, 76, 78, 81, 86, 86, 90, 75, 80, 82, 84, 80,
+88, 91, 94, 75, 78, 79, 79, 83, 81, 83, 86, 90, 75, 75, 76,
+77, 79, 81, 86, 87, 92, 71, 72, 73, 75, 78, 85, 86, 91, 75,
+77, 77, 80, 81, 86, 89, 91, 97, 77, 78, 78, 79, 84, 86, 90,
+96, 99, 78, 80, 80, 80, 84, 84, 87, 92, 97, 74, 77, 78, 79,
+81, 83, 84, 92, 72, 74, 75, 79, 79, 80, 86, 85, 91, 75, 76,
+76, 78, 78, 80, 84, 86, 90, 75, 77, 77, 80, 81, 83, 88, 90,
+94, 71, 72, 70, 74, 78, 91, 85, 86, 97, 71, 72, 75, 76, 77,
+80, 84, 86, 91, 70.5, 75, 73, 77, 80, 84, 86, 87, 92, 75,
+71, 77, 76, 80, 80, 83, 84, 90, 71, 77, 75, 76, 77, 78, 82,
+84, 89, 74, 77, 78, 79, 80, 82, 90, 89, 94, 77, 79, 79, 81,
+83, 83, 86, 90, 95, 76, 78, 78, 80, 82, 82, 85, 86, 70, 73,
+72, 71, 77, 74, 75, 77, 80, 77, 81, 81, 82, 85, 86, 89, 93,
+98, 73, 73, 70, 73, 75, 77, 81, 85, 89, 71, 74, 74, 78, 77,
+82, 84, 88, 90, 82, 80, 82, 85, 89, 89, 93, 95, 98, 76, 80,
+79, 80, 81, 84, 88, 89, 93, 77, 77, 77, 80, 82, 82, 85, 86,
+91, 68, 74, 75, 75, 76, 78, 80, 81, 86, 68, 69, 69, 74, 77,
+79, 80, 82, 85, 68, 72, 73, 75, 77, 78, 80, 84, 88, 71, 72,
+72, 76, 78, 80, 81, 85, 90, 77, 78, 80, 80, 83, 85, 88, 90,
+94, 76, 77, 77, 79, 82, 83, 84, 89, 93, 88, 76, 78, 79, 81,
+83, 85, 89, 94)), class = "data.frame", row.names = c(1L,
+2L, 4L, 6L, 8L, 10L, 12L, 14L, 17L, 18L, 20L, 23L, 25L, 27L,
+29L, 31L, 34L, 35L, 37L, 39L, 41L, 43L, 45L, 47L, 49L, 52L, 53L,
+55L, 57L, 61L, 63L, 65L, 67L, 70L, 71L, 73L, 75L, 77L, 79L, 81L,
+83L, 85L, 88L, 89L, 91L, 93L, 95L, 97L, 99L, 101L, 103L, 106L,
+107L, 109L, 111L, 113L, 115L, 117L, 119L, 121L, 124L, 125L, 127L,
+133L, 135L, 137L, 139L, 142L, 143L, 145L, 147L, 149L, 151L, 153L,
+155L, 157L, 160L, 161L, 163L, 165L, 167L, 169L, 171L, 173L, 178L,
+179L, 181L, 183L, 185L, 187L, 189L, 191L, 193L, 196L, 197L, 199L,
+201L, 203L, 205L, 207L, 209L, 211L, 214L, 215L, 217L, 219L, 221L,
+223L, 225L, 227L, 229L, 233L, 235L, 237L, 239L, 241L, 243L, 245L,
+247L, 250L, 251L, 253L, 255L, 257L, 259L, 261L, 263L, 265L, 268L,
+269L, 271L, 273L, 275L, 277L, 279L, 283L, 286L, 287L, 289L, 291L,
+293L, 295L, 297L, 299L, 301L, 304L, 305L, 307L, 309L, 311L, 313L,
+315L, 317L, 319L, 322L, 323L, 325L, 327L, 329L, 331L, 333L, 335L,
+337L, 340L, 341L, 343L, 345L, 347L, 349L, 351L, 353L, 358L, 359L,
+361L, 363L, 365L, 367L, 369L, 371L, 373L, 376L, 377L, 379L, 381L,
+383L, 385L, 387L, 389L, 391L, 394L, 395L, 397L, 399L, 401L, 403L,
+405L, 407L, 409L, 412L, 413L, 415L, 417L, 419L, 421L, 423L, 425L,
+427L, 430L, 431L, 433L, 435L, 437L, 439L, 441L, 443L, 445L, 448L,
+449L, 451L, 453L, 455L, 457L, 459L, 461L, 463L, 466L, 467L, 469L,
+471L, 473L, 475L, 477L, 479L, 481L, 484L, 485L, 487L, 489L, 491L,
+493L, 495L, 497L, 499L, 502L, 503L, 505L, 507L, 509L, 511L, 513L,
+515L, 517L, 520L, 521L, 523L, 525L, 527L, 529L, 531L, 533L, 535L,
+538L, 539L, 543L, 545L, 547L, 549L, 551L, 553L, 556L, 557L, 559L,
+561L, 563L, 565L, 567L, 569L, 571L, 574L, 575L, 577L, 579L, 581L,
+583L, 585L, 587L, 589L, 591L, 592L, 594L, 596L, 598L, 600L, 602L,
+604L, 606L, 608L, 609L, 611L, 613L, 615L, 617L, 619L, 621L, 623L,
+626L, 627L, 629L, 631L, 633L, 635L, 637L, 639L, 641L, 644L, 645L,
+647L, 649L, 651L, 653L, 655L, 657L, 659L, 661L, 662L, 664L, 666L,
+668L, 670L, 672L, 674L, 676L, 679L, 680L, 682L, 684L, 686L, 688L,
+690L, 692L, 694L, 697L, 698L, 700L, 702L, 704L, 706L, 708L, 710L,
+712L, 715L, 716L, 718L, 720L, 722L, 724L, 726L, 728L, 730L, 733L,
+734L, 736L, 738L, 740L, 742L, 744L, 746L, 748L, 751L, 752L, 754L,
+756L, 758L, 760L, 762L, 764L, 766L, 769L, 770L, 772L, 774L, 776L,
+778L, 780L, 782L, 784L, 787L, 788L, 790L, 792L, 794L, 796L, 798L,
+800L, 802L, 805L))
+
+modeloCT_F<- lme(CT~GS+Tratamento*Semana+Pbserica+Pnasc,random=~1|Animal,data=subset(BiometriaAleit,Sexo=="Femea"))
+shapiro.test(resid(modeloCT_F,type="normalized"))
+bartlett.test(resid(modeloCT_F,type="normalized")~interaction(Tratamento,Semana),data=subset(BiometriaAleit,Sexo=="Femea"))
+# Modelando a variância e a covariancia dos erros
+modeloCT_F1.4 <- update(modeloCT_F,weights=varIdent(form=~1|Semana*Tratamento))
+modeloCT_F1.5 <- update(modeloCT_F1.4,control=controle,correlation=corARMA(q=3,form=~1|Animal))
+anova(modeloCT_F1.4,modeloCT_F1.5)
+
+shapiro.test(resid(modeloCT_F1.5,type="normalized"))
+bartlett.test(resid(modeloCT_F1.5,type="normalized")~interaction(Tratamento,Semana),data=subset(BiometriaAleit,Sexo=="Femea"))
+# Remoção de outliers
+modeloCT_F1.6 <- update(modeloCT_F1.5,data=subset(BiometriaAleit[-c(574,571,556,427,425,319,279,788,430,423),],Sexo=="Femea"))
+shapiro.test(resid(modeloCT_F1.6,type="normalized"))
+
+bartlett.test(resid(modeloCT_F1.6,type="normalized")~interaction(Tratamento,Semana),data=subset(BiometriaAleit[-c(574,571,556,427,425,319,279,788,430,423),],Sexo=="Femea"))
+# Selecionando a melhor distribuição
+install.packages("fitdistrplus")
+library(fitdistrplus)
+x1<-as.vector(resid(modeloCT_F1.6,type="normalized"))
+descdist(x1, discrete = FALSE)
+
+Graficos sobre a distribuição dos dados.
+library(car)
+qqp(resid(modeloCT_F1.6,type="normalized"),"logis")
+
+#install.packages("fitdistrplus")
+library(fitdistrplus)
+x1<-as.vector(resid(modeloCT_F1.6,type="normalized"))
+descdist(x1, discrete = FALSE)
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190301/0002f402/attachment-0001.html>
+
+From lopezhsf em hotmail.com  Fri Mar  1 18:00:42 2019
+From: lopezhsf em hotmail.com (Rodrigo Lopez)
+Date: Fri, 1 Mar 2019 21:00:42 +0000
+Subject: [R-br] Correlograma
+Message-ID: <BN6PR10MB1299724926D505589DC807AEDE760@BN6PR10MB1299.namprd10.prod.outlook.com>
+
+Prezados,
+Estou tentando representar uma matriz de correlação e não consigo inserir o valor do coeficiente R e o valor P, ou a significância no mesmo plot.
+Gostaria que a metade superior (upper) mostrasse o R e a de baixo (lower) a significância.
+Não sei mexer muito com o corrplot.mixed.
+O máximo que consegui fazer foi inserir o coeficiente R e a significância juntos (ficaram sobrepostos).
+Alguma sugestão que como posso fazer?
+Ou mesmo deslocar a significância para não ficar sobreposta no valor do coeficiente ***
+
+library(readxl)
+seed <- read_excel("seed.xlsx")
+seed
+cor(seed, method = "pearson")
+M <- cor(seed, method = "pearson")
+library(corrplot)
+library(RColorBrewer)
+library(Hmisc)
+m <- rcorr(as.matrix(seed))
+m
+P <- cor.mtest(seed, conf.level = .95)
+corrplot(M, p.mat = P$p, insig = "label_sig", sig.level = c(.001, .01, .05),
+         pch.cex = 2, pch.col = "white", type = "upper", method = "color",
+         order = "original", outline = "white", tl.col="black", tl.srt=45,diag = FALSE,
+         addCoef.col = "black", col = colorRampPalette(c("blue", "yellow", "red"))(20))
+
+
+Rodrigo R. Lopes
+Engenheiro Agrônomo, Dr.
+CREA RS122642
+http://lattes.cnpq.br/7651127569091762
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190301/1b33b0a8/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Rplot02.tiff
+Tipo: image/tiff
+Tamanho: 42202 bytes
+Descrição: Rplot02.tiff
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190301/1b33b0a8/attachment.tiff>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: seed.xlsx
+Tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Tamanho: 8857 bytes
+Descrição: seed.xlsx
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190301/1b33b0a8/attachment.xlsx>
+
+From marcelolaia em gmail.com  Sat Mar  2 13:17:09 2019
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Sat, 2 Mar 2019 13:17:09 -0300
+Subject: [R-br] =?iso-8859-1?q?two-way_anova_-_viola=E7=E3o_das_pressuposi?=
+ =?iso-8859-1?q?=E7=F5es?=
+Message-ID: <20190302161709.GA30880@localhost>
+
+Colegas,
+
+Estamos com um conjunto de dados que viola pressuposições da ANOVA,
+principalmente a normalidade. Eu já li, por diversas vezes, que essa violação
+pode não ser tão danosa assim, devido a robustez do teste.
+
+Por favor, tire um tempo para ver os resultados e depois peço uma ajuda.
+
+Genotipo e Isolado são fatores
+Area está em centímetros quadrados
+
+> leveneTest(Area ~ Genotipo*Isolado, data = cerato.desc)
+Levene's Test for Homogeneity of Variance (center = median)
+       Df F value    Pr(>F)    
+group  41  3.4755 4.718e-08 ***
+      126                      
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> 
+
+cat("Normality p-values by Factor Genotipo: ")
+for (i in unique(factor(cerato.desc$Genotipo))){
+  cat(shapiro.test(cerato.desc[cerato.desc$Genotipo==i, ]$Area)$p.value," ")
+}
+7.074459e-10  3.200422e-06
+
+#Shapiro-Wilk normality tests by Isolado
+for (i in unique(factor(cerato.desc$Isolado))){
+  cat(shapiro.test(cerato.desc[cerato.desc$Isolado==i, ]$Area)$p.value," ")
+}
+0.09534117  0.4006495  0.6065291  0.2093362  0.6138097  0.5604402  0.1302976  0.3135567  0.905537  0.7294285  0.0966383  0.1512716  0.8469947  0.1226855  0.2713435  0.9695489  0.2747097  0.5476302  0.0008750702  0.03693436  0.4197769 
+
+> bartlett.test(Area~Genotipo,data = cerato.desc )
+
+	Bartlett test of homogeneity of variances
+
+data:  Area by Genotipo
+Bartlett's K-squared = 19.769, df = 1, p-value = 8.738e-06
+
+> bartlett.test(Area~Isolado,data = cerato.desc )
+
+	Bartlett test of homogeneity of variances
+
+data:  Area by Isolado
+Bartlett's K-squared = 171.26, df = 20, p-value < 2.2e-16
+
+A pergunta é: mesmo com esses resultados eu poderia afirmar que o teste, neste
+caso, será robusto o suficiente para essas violações?
+
+Obrigado!
+
+-- 
+Marcelo
+
+From gilsonsoaresjunior em gmail.com  Sat Mar  2 13:54:42 2019
+From: gilsonsoaresjunior em gmail.com (=?UTF-8?Q?Gilson_Geraldo_Soares_de_Oliveira_J=C3=BAnior?=)
+Date: Sat, 2 Mar 2019 13:54:42 -0300
+Subject: [R-br] 
+	=?utf-8?q?two-way_anova_-_viola=C3=A7=C3=A3o_das_pressupo?=
+	=?utf-8?b?c2nDp8O1ZXM=?=
+In-Reply-To: <20190302161709.GA30880@localhost>
+References: <20190302161709.GA30880@localhost>
+Message-ID: <CAMHdwqNUYA_+4FUP3wDzvX8e35jOMzhhznFqDjrnUwQ724zf6w@mail.gmail.com>
+
+Prezado, Marcelo
+
+Faça uma análise gráfica da dispersão dos resíduos, via função lm.
+
+Alguns testes de normalidade podem sugerir não normalidade. Porém, em
+alguns casos, somente alguns dados desviaram da "reta da normal".
+
+Exemplo:
+
+Analise <- lm (area ~ genotipo, data = cerato.dsc)
+Plot (Analise)
+
+Após o plot clique em algum botao, dentro da interfase do R, para  surgirem
+4 gráficos. Os dois primeiros são homocedasticidade e normalidade. Faça a
+análise gráfica e verifique a dispersao dos pontos entorno da "reta" de
+normalidade.
+
+Inclusive, o teste de Bartlett é bastante sensível a pressuposição de
+normalidade.
+
+Espero ter podido ajudar.
+
+
+Em sáb, 2 de mar de 2019 13:17, Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br escreveu:
+
+> Colegas,
+>
+> Estamos com um conjunto de dados que viola pressuposições da ANOVA,
+> principalmente a normalidade. Eu já li, por diversas vezes, que essa
+> violação
+> pode não ser tão danosa assim, devido a robustez do teste.
+>
+> Por favor, tire um tempo para ver os resultados e depois peço uma ajuda.
+>
+> Genotipo e Isolado são fatores
+> Area está em centímetros quadrados
+>
+> > leveneTest(Area ~ Genotipo*Isolado, data = cerato.desc)
+> Levene's Test for Homogeneity of Variance (center = median)
+>        Df F value    Pr(>F)
+> group  41  3.4755 4.718e-08 ***
+>       126
+> ---
+> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> >
+>
+> cat("Normality p-values by Factor Genotipo: ")
+> for (i in unique(factor(cerato.desc$Genotipo))){
+>   cat(shapiro.test(cerato.desc[cerato.desc$Genotipo==i, ]$Area)$p.value,"
+> ")
+> }
+> 7.074459e-10  3.200422e-06
+>
+> #Shapiro-Wilk normality tests by Isolado
+> for (i in unique(factor(cerato.desc$Isolado))){
+>   cat(shapiro.test(cerato.desc[cerato.desc$Isolado==i, ]$Area)$p.value," ")
+> }
+> 0.09534117  0.4006495  0.6065291  0.2093362  0.6138097  0.5604402
+> 0.1302976  0.3135567  0.905537  0.7294285  0.0966383  0.1512716  0.8469947
+> 0.1226855  0.2713435  0.9695489  0.2747097  0.5476302  0.0008750702
+> 0.03693436  0.4197769
+>
+> > bartlett.test(Area~Genotipo,data = cerato.desc )
+>
+>         Bartlett test of homogeneity of variances
+>
+> data:  Area by Genotipo
+> Bartlett's K-squared = 19.769, df = 1, p-value = 8.738e-06
+>
+> > bartlett.test(Area~Isolado,data = cerato.desc )
+>
+>         Bartlett test of homogeneity of variances
+>
+> data:  Area by Isolado
+> Bartlett's K-squared = 171.26, df = 20, p-value < 2.2e-16
+>
+> A pergunta é: mesmo com esses resultados eu poderia afirmar que o teste,
+> neste
+> caso, será robusto o suficiente para essas violações?
+>
+> Obrigado!
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/aebf758d/attachment.html>
+
+From gilsonsoaresjunior em gmail.com  Sat Mar  2 13:57:52 2019
+From: gilsonsoaresjunior em gmail.com (=?UTF-8?Q?Gilson_Geraldo_Soares_de_Oliveira_J=C3=BAnior?=)
+Date: Sat, 2 Mar 2019 13:57:52 -0300
+Subject: [R-br] 
+	=?utf-8?q?two-way_anova_-_viola=C3=A7=C3=A3o_das_pressupo?=
+	=?utf-8?b?c2nDp8O1ZXM=?=
+In-Reply-To: <20190302161709.GA30880@localhost>
+References: <20190302161709.GA30880@localhost>
+Message-ID: <CAMHdwqNedYKXcCnZY0xMr900Z84Gndk6v=Q0Dt-c0rAUJgRx_A@mail.gmail.com>
+
+Prezado, Marcelo
+
+Faça uma análise gráfica da dispersão dos resíduos, via função lm.
+
+Alguns testes de normalidade podem sugerir não normalidade. Porém, em
+alguns casos, somente alguns dados desviaram da "reta da normal".
+
+Exemplo:
+
+Analise <- lm (area ~ genotipo, data = cerato.dsc)
+Plot (Analise)
+
+Após o plot clique em algum botao, dentro da interface do R, para surgirem
+4 gráficos. Os dois primeiros são homocedasticidade e normalidade. Faça a
+análise gráfica e verifique a dispersao dos pontos entorno da "reta" de
+normalidade.
+
+Inclusive, o teste de Bartlett é bastante sensível a pressuposição de
+normalidade.
+
+Espero ter podido ajudar.
+
+Em sáb, 2 de mar de 2019 13:17, Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br escreveu:
+
+> Colegas,
+>
+> Estamos com um conjunto de dados que viola pressuposições da ANOVA,
+> principalmente a normalidade. Eu já li, por diversas vezes, que essa
+> violação
+> pode não ser tão danosa assim, devido a robustez do teste.
+>
+> Por favor, tire um tempo para ver os resultados e depois peço uma ajuda.
+>
+> Genotipo e Isolado são fatores
+> Area está em centímetros quadrados
+>
+> > leveneTest(Area ~ Genotipo*Isolado, data = cerato.desc)
+> Levene's Test for Homogeneity of Variance (center = median)
+>        Df F value    Pr(>F)
+> group  41  3.4755 4.718e-08 ***
+>       126
+> ---
+> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> >
+>
+> cat("Normality p-values by Factor Genotipo: ")
+> for (i in unique(factor(cerato.desc$Genotipo))){
+>   cat(shapiro.test(cerato.desc[cerato.desc$Genotipo==i, ]$Area)$p.value,"
+> ")
+> }
+> 7.074459e-10  3.200422e-06
+>
+> #Shapiro-Wilk normality tests by Isolado
+> for (i in unique(factor(cerato.desc$Isolado))){
+>   cat(shapiro.test(cerato.desc[cerato.desc$Isolado==i, ]$Area)$p.value," ")
+> }
+> 0.09534117  0.4006495  0.6065291  0.2093362  0.6138097  0.5604402
+> 0.1302976  0.3135567  0.905537  0.7294285  0.0966383  0.1512716  0.8469947
+> 0.1226855  0.2713435  0.9695489  0.2747097  0.5476302  0.0008750702
+> 0.03693436  0.4197769
+>
+> > bartlett.test(Area~Genotipo,data = cerato.desc )
+>
+>         Bartlett test of homogeneity of variances
+>
+> data:  Area by Genotipo
+> Bartlett's K-squared = 19.769, df = 1, p-value = 8.738e-06
+>
+> > bartlett.test(Area~Isolado,data = cerato.desc )
+>
+>         Bartlett test of homogeneity of variances
+>
+> data:  Area by Isolado
+> Bartlett's K-squared = 171.26, df = 20, p-value < 2.2e-16
+>
+> A pergunta é: mesmo com esses resultados eu poderia afirmar que o teste,
+> neste
+> caso, será robusto o suficiente para essas violações?
+>
+> Obrigado!
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/eaf3705d/attachment.html>
+
+From gilsonsoaresjunior em gmail.com  Sat Mar  2 14:39:43 2019
+From: gilsonsoaresjunior em gmail.com (=?UTF-8?Q?Gilson_Geraldo_Soares_de_Oliveira_J=C3=BAnior?=)
+Date: Sat, 2 Mar 2019 14:39:43 -0300
+Subject: [R-br] 
+	=?utf-8?q?two-way_anova_-_viola=C3=A7=C3=A3o_das_pressupo?=
+	=?utf-8?b?c2nDp8O1ZXM=?=
+In-Reply-To: <20190302172625.GB30880@localhost>
+References: <20190302161709.GA30880@localhost>
+ <CAMHdwqNedYKXcCnZY0xMr900Z84Gndk6v=Q0Dt-c0rAUJgRx_A@mail.gmail.com>
+ <20190302172625.GB30880@localhost>
+Message-ID: <CAMHdwqOmE-=07HNOeBM_uMFXmvqR1KKyAJ3RCAnseHZt6Jmryw@mail.gmail.com>
+
+Marcelo,
+
+Neste caso, verificando a análise gráfica, não acho que a normalidade foi
+um problema. Consideraria o gráfico robusto o suficiente para assumir que a
+maioria dos dados tiveram tendência de normalidade. Portanto, justificaria
+a não transformação.
+
+No entanto, a homocedasticidade foi um problema. Talvez este seja o
+pressuposto mais importante nesta análise. Analisando os testes de Bartlett
+e Levene, além da análise gráfica, diria que seus dados não foram
+homocedasticos. Sendo assim, a estatística paramétrica não seria a melhor
+forma de avaliação.
+
+
+Em sáb, 2 de mar de 2019 14:26, Marcelo Laia <marcelolaia em gmail.com
+escreveu:
+
+> On 02/03/19 at 01:57, Gilson Geraldo Soares de Oliveira Júnior wrote:
+>
+> > Após o plot clique em algum botao, dentro da interface do R, para
+> surgirem
+> > 4 gráficos. Os dois primeiros são homocedasticidade e normalidade. Faça a
+> > análise gráfica e verifique a dispersao dos pontos entorno da "reta" de
+> > normalidade.
+> >
+>
+> Gilson,
+>
+> Eu fiz essa verificação (gráficos em anexo).
+>
+> Há três observações que estão "fora".
+>
+> Eu utilizei o pacote bestNormalize e ele informa que a melhora
+> transformação
+> seria Log_b(x+a)[1]. Mas, eu não queria transformar os dados só por esses
+> três
+> outliers.
+>
+> 1. https://rdrr.io/cran/bestNormalize/man/log_x.html
+>
+> Uma vez que se trata de uma tese, preciso de argumentos para justificar a
+> não
+> transformação.
+>
+> Por outro lado, se, de fato, os dados necessitarem de transformação, terei
+> que
+> fazer. E neste caso, o output do bestNormalize informa que o melhor é
+> lob_b(x+a) e o segundo melhor é Yeo-Johnson[2].
+>
+> 2. https://rdrr.io/cran/bestNormalize/man/yeojohnson.html
+>
+> Qualquer sugestão será muito bem vinda!
+>
+> Obrigado!
+>
+> --
+> Marcelo
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/a47cee47/attachment.html>
+
+From nandodesouza em gmail.com  Sat Mar  2 15:51:26 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sat, 2 Mar 2019 15:51:26 -0300
+Subject: [R-br] 
+ =?utf-8?q?two-way_anova_-_=3D=3Futf-8=3FQ=3Fviola=3DC3=3D?=
+ =?utf-8?b?QTc9QzM9QTNvXz89ZGFzIHByZXNzdXBvc2nDp8O1ZXM=?=
+In-Reply-To: <CAMHdwqOmE-=07HNOeBM_uMFXmvqR1KKyAJ3RCAnseHZt6Jmryw@mail.gmail.com>
+References: <CAMHdwqOmE-=07HNOeBM_uMFXmvqR1KKyAJ3RCAnseHZt6Jmryw@mail.gmail.com>
+Message-ID: <F79D3A3A-E0CD-45AA-A3B8-7146ED4517B9@getmailspring.com>
+
+Seguindo a proposta do gilson, apos rodar o modelo utilizando aov ou lm veja a distribuição dos residuos graficamente através da função qqp do pacote CAR
+qqp(rstandard(modelo.lm),"norm")
+
+A função mostra um gráfico quantile-quantile da distribuição normal com uma banda de confiança 95% o que dá mais segurança na hora de tomar a decisão.
+
+On Mar 2 2019, at 2:39 pm, Gilson Geraldo Soares de Oliveira Júnior por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Marcelo,
+>
+> Neste caso, verificando a análise gráfica, não acho que a normalidade foi um problema. Consideraria o gráfico robusto o suficiente para assumir que a maioria dos dados tiveram tendência de normalidade. Portanto, justificaria a não transformação.
+>
+> No entanto, a homocedasticidade foi um problema. Talvez este seja o pressuposto mais importante nesta análise. Analisando os testes de Bartlett e Levene, além da análise gráfica, diria que seus dados não foram homocedasticos. Sendo assim, a estatística paramétrica não seria a melhor forma de avaliação.
+>
+>
+> Em sáb, 2 de mar de 2019 14:26, Marcelo Laia <marcelolaia em gmail.com (mailto:marcelolaia em gmail.com) escreveu:
+> > On 02/03/19 at 01:57, Gilson Geraldo Soares de Oliveira Júnior wrote:
+> >
+> > > Após o plot clique em algum botao, dentro da interface do R, para surgirem
+> > > 4 gráficos. Os dois primeiros são homocedasticidade e normalidade. Faça a
+> > > análise gráfica e verifique a dispersao dos pontos entorno da "reta" de
+> > > normalidade.
+> > >
+> >
+> > Gilson,
+> > Eu fiz essa verificação (gráficos em anexo).
+> > Há três observações que estão "fora".
+> > Eu utilizei o pacote bestNormalize e ele informa que a melhora transformação
+> > seria Log_b(x+a)[1]. Mas, eu não queria transformar os dados só por esses três
+> > outliers.
+> >
+> > 1. https://rdrr.io/cran/bestNormalize/man/log_x.html
+> > Uma vez que se trata de uma tese, preciso de argumentos para justificar a não
+> > transformação.
+> >
+> > Por outro lado, se, de fato, os dados necessitarem de transformação, terei que
+> > fazer. E neste caso, o output do bestNormalize informa que o melhor é
+> > lob_b(x+a) e o segundo melhor é Yeo-Johnson[2].
+> >
+> > 2. https://rdrr.io/cran/bestNormalize/man/yeojohnson.html
+> > Qualquer sugestão será muito bem vinda!
+> > Obrigado!
+> > --
+> > Marcelo
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/819af32c/attachment.html>
+
+From marcelolaia em gmail.com  Sat Mar  2 17:56:33 2019
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Sat, 2 Mar 2019 17:56:33 -0300
+Subject: [R-br] 
+ =?iso-8859-1?q?two-way_anova_-_viola=E7=E3o_das_pressupos?=
+ =?iso-8859-1?q?i=E7=F5es?=
+In-Reply-To: <F79D3A3A-E0CD-45AA-A3B8-7146ED4517B9@getmailspring.com>
+References: <CAMHdwqOmE-=07HNOeBM_uMFXmvqR1KKyAJ3RCAnseHZt6Jmryw@mail.gmail.com>
+ <F79D3A3A-E0CD-45AA-A3B8-7146ED4517B9@getmailspring.com>
+Message-ID: <20190302205633.GC30880@localhost>
+
+On 02/03/19 at 03:51, Fernando Souza wrote:
+> Seguindo a proposta do gilson, apos rodar o modelo utilizando aov ou lm veja a distribuição dos residuos graficamente através da função qqp do pacote CAR
+> qqp(rstandard(modelo.lm),"norm")
+> 
+
+Olá Fernando,
+
+Eu não conhecia essa função do pacote car. Bem massa, pois ela mostra as linhas
+de confiança.
+
+Com base no pacote bestNormalize, eu transformei os dados e observei os
+gráficos. Inclusive, com a função qqp todos ficam dentro dos 95%. Ou seja, a
+questão da normalidade foi resolvida. Mas, a homogeneidade ainda ficou
+esquisita quando incluo a interação:
+
+Com a interação:
+Levene's Test for Homogeneity of Variance (center = median)
+       Df F value    Pr(>F)    
+group  41  2.2615 0.0002938 ***
+      126                      
+
+Sem interação: só Genotipo
+Levene's Test for Homogeneity of Variance (center = median)
+       Df F value  Pr(>F)  
+group   1  3.1509 0.07772 .
+      166                  
+
+Sem interação: só Isolado
+Levene's Test for Homogeneity of Variance (center = median)
+       Df F value  Pr(>F)  
+group  20  1.5658 0.06859 .
+      147                  
+
+Em anexo os gráficos após transformação.
+
+Agradeço, imensamente, pela inestimável ajuda de ambos!
+
+-- 
+Marcelo
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Pressuposicoes_log_x.png
+Tipo: image/png
+Tamanho: 180357 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/f60370da/attachment-0001.png>
+
+From nandodesouza em gmail.com  Sat Mar  2 18:19:22 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Sat, 2 Mar 2019 18:19:22 -0300
+Subject: [R-br] 
+	=?utf-8?q?two-way_anova_-_viola=C3=A7=C3=A3o_das_pressupo?=
+	=?utf-8?b?c2nDp8O1ZXM=?=
+In-Reply-To: <20190302205633.GC30880@localhost>
+References: <CAMHdwqOmE-=07HNOeBM_uMFXmvqR1KKyAJ3RCAnseHZt6Jmryw@mail.gmail.com>
+ <F79D3A3A-E0CD-45AA-A3B8-7146ED4517B9@getmailspring.com>
+ <20190302205633.GC30880@localhost>
+Message-ID: <CAFrWFsk55oWewdiLeeuXPdNxjMAfZBhwFM2hurMrfPGzzw7ngw@mail.gmail.com>
+
+tente rodar usando a abordagem generalisada implementada na função gls do
+pacote nlme.
+nela é possivel afrouxar o pressuposto de homocedasticidade exigido pela
+função lm,aov, através do argumento weights
+der uma olhada no manual
+
+Em sáb, 2 de mar de 2019 5:56 PM, Marcelo Laia <marcelolaia em gmail.com
+escreveu:
+
+> On 02/03/19 at 03:51, Fernando Souza wrote:
+> > Seguindo a proposta do gilson, apos rodar o modelo utilizando aov ou lm
+> veja a distribuição dos residuos graficamente através da função qqp do
+> pacote CAR
+> > qqp(rstandard(modelo.lm),"norm")
+> >
+>
+> Olá Fernando,
+>
+> Eu não conhecia essa função do pacote car. Bem massa, pois ela mostra as
+> linhas
+> de confiança.
+>
+> Com base no pacote bestNormalize, eu transformei os dados e observei os
+> gráficos. Inclusive, com a função qqp todos ficam dentro dos 95%. Ou seja,
+> a
+> questão da normalidade foi resolvida. Mas, a homogeneidade ainda ficou
+> esquisita quando incluo a interação:
+>
+> Com a interação:
+> Levene's Test for Homogeneity of Variance (center = median)
+>        Df F value    Pr(>F)
+> group  41  2.2615 0.0002938 ***
+>       126
+>
+> Sem interação: só Genotipo
+> Levene's Test for Homogeneity of Variance (center = median)
+>        Df F value  Pr(>F)
+> group   1  3.1509 0.07772 .
+>       166
+>
+> Sem interação: só Isolado
+> Levene's Test for Homogeneity of Variance (center = median)
+>        Df F value  Pr(>F)
+> group  20  1.5658 0.06859 .
+>       147
+>
+> Em anexo os gráficos após transformação.
+>
+> Agradeço, imensamente, pela inestimável ajuda de ambos!
+>
+> --
+> Marcelo
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/d9ccbad0/attachment.html>
+
+From diegovieir4 em gmail.com  Sat Mar  2 18:29:31 2019
+From: diegovieir4 em gmail.com (Diego Vieira)
+Date: Sat, 2 Mar 2019 18:29:31 -0300
+Subject: [R-br] 
+	=?utf-8?q?two-way_anova_-_viola=C3=A7=C3=A3o_das_pressupo?=
+	=?utf-8?b?c2nDp8O1ZXM=?=
+In-Reply-To: <CAFrWFsk55oWewdiLeeuXPdNxjMAfZBhwFM2hurMrfPGzzw7ngw@mail.gmail.com>
+References: <CAMHdwqOmE-=07HNOeBM_uMFXmvqR1KKyAJ3RCAnseHZt6Jmryw@mail.gmail.com>
+ <F79D3A3A-E0CD-45AA-A3B8-7146ED4517B9@getmailspring.com>
+ <20190302205633.GC30880@localhost>
+ <CAFrWFsk55oWewdiLeeuXPdNxjMAfZBhwFM2hurMrfPGzzw7ngw@mail.gmail.com>
+Message-ID: <CAKnQR80Zr7PUTbF0PX2cyHhY0Dsz4RWsqfCQFJu54nBVskUUmg@mail.gmail.com>
+
+Concordo com o Fernando Sousa, é a melhor opção. Normalidade pode até
+deixar de ser atendida, desde que não seja exagerada, mas homocedasticidade
+não. Alguns autores usam a gls para “fugir” desse problema.
+
+Em sáb, 2 de mar de 2019 às 18:19, Fernando Souza por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> tente rodar usando a abordagem generalisada implementada na função gls do
+> pacote nlme.
+> nela é possivel afrouxar o pressuposto de homocedasticidade exigido pela
+> função lm,aov, através do argumento weights
+> der uma olhada no manual
+>
+> Em sáb, 2 de mar de 2019 5:56 PM, Marcelo Laia <marcelolaia em gmail.com
+> escreveu:
+>
+>> On 02/03/19 at 03:51, Fernando Souza wrote:
+>> > Seguindo a proposta do gilson, apos rodar o modelo utilizando aov ou lm
+>> veja a distribuição dos residuos graficamente através da função qqp do
+>> pacote CAR
+>> > qqp(rstandard(modelo.lm),"norm")
+>> >
+>>
+>> Olá Fernando,
+>>
+>> Eu não conhecia essa função do pacote car. Bem massa, pois ela mostra as
+>> linhas
+>> de confiança.
+>>
+>> Com base no pacote bestNormalize, eu transformei os dados e observei os
+>> gráficos. Inclusive, com a função qqp todos ficam dentro dos 95%. Ou
+>> seja, a
+>> questão da normalidade foi resolvida. Mas, a homogeneidade ainda ficou
+>> esquisita quando incluo a interação:
+>>
+>> Com a interação:
+>> Levene's Test for Homogeneity of Variance (center = median)
+>>        Df F value    Pr(>F)
+>> group  41  2.2615 0.0002938 ***
+>>       126
+>>
+>> Sem interação: só Genotipo
+>> Levene's Test for Homogeneity of Variance (center = median)
+>>        Df F value  Pr(>F)
+>> group   1  3.1509 0.07772 .
+>>       166
+>>
+>> Sem interação: só Isolado
+>> Levene's Test for Homogeneity of Variance (center = median)
+>>        Df F value  Pr(>F)
+>> group  20  1.5658 0.06859 .
+>>       147
+>>
+>> Em anexo os gráficos após transformação.
+>>
+>> Agradeço, imensamente, pela inestimável ajuda de ambos!
+>>
+>> --
+>> Marcelo
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+
+-- 
+Diego dos Santos Vieira Engenheiro Florestal
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/d332beb6/attachment.html>
+
+From lopezhsf em hotmail.com  Sat Mar  2 19:08:55 2019
+From: lopezhsf em hotmail.com (Rodrigo Lopez)
+Date: Sat, 2 Mar 2019 22:08:55 +0000
+Subject: [R-br] Correlograma
+Message-ID: <MWHPR10MB13126320C868A0FA526EEF97DE770@MWHPR10MB1312.namprd10.prod.outlook.com>
+
+Prezados,
+
+Estou tentando representar uma matriz de correlação e não consigo inserir o valor do coeficiente R e o valor P, ou a significância no mesmo plot.
+
+Gostaria que a metade superior (upper) mostrasse o R e a de baixo (lower) a significância.
+
+Não sei mexer muito com o corrplot.mixed.
+
+O máximo que consegui fazer foi inserir o coeficiente R e a significância juntos (ficaram sobrepostos).
+
+Alguma sugestão que como posso fazer?
+
+Ou mesmo deslocar a significância para não ficar sobreposta no valor do coeficiente ***
+
+
+
+library(readxl)
+
+seed <- read_excel("seed.xlsx")
+
+seed
+
+cor(seed, method = "pearson")
+
+M <- cor(seed, method = "pearson")
+
+library(corrplot)
+
+library(RColorBrewer)
+
+library(Hmisc)
+
+m <- rcorr(as.matrix(seed))
+
+m
+
+P <- cor.mtest(seed, conf.level = .95)
+
+corrplot(M, p.mat = P$p, insig = "label_sig", sig.level = c(.001, .01, .05),
+
+         pch.cex = 2, pch.col = "white", type = "upper", method = "color",
+
+         order = "original", outline = "white", tl.col="black", tl.srt=45,diag = FALSE,
+
+         addCoef.col = "black", col = colorRampPalette(c("blue", "yellow", "red"))(20))
+
+
+
+
+
+Rodrigo R. Lopes
+Engenheiro Agrônomo, Dr.
+CREA RS122642
+http://lattes.cnpq.br/7651127569091762
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/0715af07/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Rplot02.tiff
+Tipo: image/tiff
+Tamanho: 42202 bytes
+Descrição: Rplot02.tiff
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/0715af07/attachment.tiff>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: seed.xlsx
+Tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Tamanho: 8857 bytes
+Descrição: seed.xlsx
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/0715af07/attachment.xlsx>
+
+From gilsonsoaresjunior em gmail.com  Sat Mar  2 20:09:30 2019
+From: gilsonsoaresjunior em gmail.com (=?UTF-8?Q?Gilson_Geraldo_Soares_de_Oliveira_J=C3=BAnior?=)
+Date: Sat, 2 Mar 2019 20:09:30 -0300
+Subject: [R-br] 
+	=?utf-8?q?two-way_anova_-_viola=C3=A7=C3=A3o_das_pressupo?=
+	=?utf-8?b?c2nDp8O1ZXM=?=
+In-Reply-To: <CAKnQR80Zr7PUTbF0PX2cyHhY0Dsz4RWsqfCQFJu54nBVskUUmg@mail.gmail.com>
+References: <CAMHdwqOmE-=07HNOeBM_uMFXmvqR1KKyAJ3RCAnseHZt6Jmryw@mail.gmail.com>
+ <F79D3A3A-E0CD-45AA-A3B8-7146ED4517B9@getmailspring.com>
+ <20190302205633.GC30880@localhost>
+ <CAFrWFsk55oWewdiLeeuXPdNxjMAfZBhwFM2hurMrfPGzzw7ngw@mail.gmail.com>
+ <CAKnQR80Zr7PUTbF0PX2cyHhY0Dsz4RWsqfCQFJu54nBVskUUmg@mail.gmail.com>
+Message-ID: <CAMHdwqPpyZOrFGtuhm4iPaKg=FsvmjruotkFmwjC0y6jhStFjw@mail.gmail.com>
+
+Concordo com as opções apresentadas. Alem disso, é natural que sem
+interação a homocedasticidade possa apresentar resultados diferentes
+daquelas expostas quando rodou os dados com a interação.
+
+A estatística não parametrica, nestes casos, é a melhor opção, dado os
+problemas de homocedasticidade. Como dito pelo Diego, a normalidade é o
+mais "tranquilo" dentro os pressupostos.
+
+
+Em sáb, 2 de mar de 2019 18:29, Diego Vieira por (R-br) <
+r-br em listas.c3sl.ufpr.br escreveu:
+
+> Concordo com o Fernando Sousa, é a melhor opção. Normalidade pode até
+> deixar de ser atendida, desde que não seja exagerada, mas homocedasticidade
+> não. Alguns autores usam a gls para “fugir” desse problema.
+>
+> Em sáb, 2 de mar de 2019 às 18:19, Fernando Souza por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> tente rodar usando a abordagem generalisada implementada na função gls do
+>> pacote nlme.
+>> nela é possivel afrouxar o pressuposto de homocedasticidade exigido pela
+>> função lm,aov, através do argumento weights
+>> der uma olhada no manual
+>>
+>> Em sáb, 2 de mar de 2019 5:56 PM, Marcelo Laia <marcelolaia em gmail.com
+>> escreveu:
+>>
+>>> On 02/03/19 at 03:51, Fernando Souza wrote:
+>>> > Seguindo a proposta do gilson, apos rodar o modelo utilizando aov ou
+>>> lm veja a distribuição dos residuos graficamente através da função qqp do
+>>> pacote CAR
+>>> > qqp(rstandard(modelo.lm),"norm")
+>>> >
+>>>
+>>> Olá Fernando,
+>>>
+>>> Eu não conhecia essa função do pacote car. Bem massa, pois ela mostra as
+>>> linhas
+>>> de confiança.
+>>>
+>>> Com base no pacote bestNormalize, eu transformei os dados e observei os
+>>> gráficos. Inclusive, com a função qqp todos ficam dentro dos 95%. Ou
+>>> seja, a
+>>> questão da normalidade foi resolvida. Mas, a homogeneidade ainda ficou
+>>> esquisita quando incluo a interação:
+>>>
+>>> Com a interação:
+>>> Levene's Test for Homogeneity of Variance (center = median)
+>>>        Df F value    Pr(>F)
+>>> group  41  2.2615 0.0002938 ***
+>>>       126
+>>>
+>>> Sem interação: só Genotipo
+>>> Levene's Test for Homogeneity of Variance (center = median)
+>>>        Df F value  Pr(>F)
+>>> group   1  3.1509 0.07772 .
+>>>       166
+>>>
+>>> Sem interação: só Isolado
+>>> Levene's Test for Homogeneity of Variance (center = median)
+>>>        Df F value  Pr(>F)
+>>> group  20  1.5658 0.06859 .
+>>>       147
+>>>
+>>> Em anexo os gráficos após transformação.
+>>>
+>>> Agradeço, imensamente, pela inestimável ajuda de ambos!
+>>>
+>>> --
+>>> Marcelo
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> --
+> Diego dos Santos Vieira Engenheiro Florestal
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/0129fee7/attachment.html>
+
+From lopezhsf em hotmail.com  Sat Mar  2 22:10:13 2019
+From: lopezhsf em hotmail.com (Rodrigo Lopez)
+Date: Sun, 3 Mar 2019 01:10:13 +0000
+Subject: [R-br] =?utf-8?b?Q29ycmVsYcOnw6Nv?=
+Message-ID: <MWHPR10MB131266415012DC648D2025CCDE700@MWHPR10MB1312.namprd10.prod.outlook.com>
+
+Prezados,
+
+Estou tentando representar uma matriz de correlação e não consigo inserir o valor do coeficiente R e o valor P, ou a significância no mesmo plot.
+
+Gostaria que a metade superior (upper) mostrasse o R e a de baixo (lower) a significância.
+
+Não sei mexer muito com o corrplot.mixed.
+
+O máximo que consegui fazer foi inserir o coeficiente R e a significância juntos (ficaram sobrepostos).
+
+Alguma sugestão que como posso fazer?
+
+Ou mesmo deslocar a significância para não ficar sobreposta no valor do coeficiente ***
+
+
+
+library(readxl)
+
+seed <- read_excel("seed.xlsx")
+
+seed
+
+cor(seed, method = "pearson")
+
+M <- cor(seed, method = "pearson")
+
+library(corrplot)
+
+library(RColorBrewer)
+
+library(Hmisc)
+
+m <- rcorr(as.matrix(seed))
+
+m
+
+P <- cor.mtest(seed, conf.level = .95)
+
+corrplot(M, p.mat = P$p, insig = "label_sig", sig.level = c(.001, .01, .05),
+
+         pch.cex = 2, pch.col = "white", type = "upper", method = "color",
+
+         order = "original", outline = "white", tl.col="black", tl.srt=45,diag = FALSE,
+
+         addCoef.col = "black", col = colorRampPalette(c("blue", "yellow", "red"))(20))
+
+
+
+
+
+Rodrigo R. Lopes
+Engenheiro Agrônomo, Dr.
+CREA RS122642
+http://lattes.cnpq.br/7651127569091762
+
+
+
+
+Enviado do meu iPhone
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190303/55304bde/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Rplot02.tiff
+Tipo: image/tiff
+Tamanho: 42202 bytes
+Descrição: Rplot02.tiff
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190303/55304bde/attachment-0001.tiff>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: seed.xlsx
+Tipo: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Tamanho: 8857 bytes
+Descrição: seed.xlsx
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190303/55304bde/attachment-0001.xlsx>
+
+From sznelwar em uol.com.br  Mon Mar  4 22:51:53 2019
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Mon, 04 Mar 2019 22:51:53 -0300
+Subject: [R-br] 
+ =?utf-8?q?Modelos_Mistos_-_Duvida_sobre_transforma=C3=A7?=
+ =?utf-8?q?=C3=A3o/distribui=C3=A7=C3=A3o_logistica?=
+In-Reply-To: ["63252B2D-3E01-4493-B0F5-F5A62E044984@getmailspring.com"]
+References: ["63252B2D-3E01-4493-B0F5-F5A62E044984@getmailspring.com"]
+Message-ID: <5c7dd63982244_133b2ace251971342484@a4-weasel13.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190304/69edfaec/attachment-0001.html>
+
+From nandodesouza em gmail.com  Mon Mar  4 22:59:32 2019
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Mon, 4 Mar 2019 22:59:32 -0300
+Subject: [R-br] Modelos Mistos - Duvida sobre
+ =?utf-8?Q?transforma=C3=A7=C3=A3o/distribui=C3=A7=C3=A3o_?=logistica
+In-Reply-To: <5c7dd63982244_133b2ace251971342484@a4-weasel13.mail>
+References: <5c7dd63982244_133b2ace251971342484@a4-weasel13.mail>
+Message-ID: <E18142D3-39E0-410F-977B-A9A1B7F293E6@getmailspring.com>
+
+Olá Mauro,
+É porque esqueci de colocar o comando que gera a variável controle. Agora deve funcionar
+
+controle=lmeControl(maxIter=200,msMaxIter=200,opt="optim")
+modeloCT_F<- lme(CT~GS+Tratamento*Semana+Pbserica+Pnasc,random=~1|Animal,data=subset(BiometriaAleit,Sexo=="Femea"))
+shapiro.test(resid(modeloCT_F,type="normalized"))
+bartlett.test(resid(modeloCT_F,type="normalized")~interaction(Tratamento,Semana),data=subset(BiometriaAleit,Sexo=="Femea"))
+# Modelando a variância e a covariancia dos erros
+modeloCT_F1.4 <- update(modeloCT_F,weights=varIdent(form=~1|Semana*Tratamento))
+modeloCT_F1.5 <- update(modeloCT_F1.4,control=controle,correlation=corARMA(q=3,form=~1|Animal))
+anova(modeloCT_F1.4,modeloCT_F1.5)
+
+shapiro.test(resid(modeloCT_F1.5,type="normalized"))
+bartlett.test(resid(modeloCT_F1.5,type="normalized")~interaction(Tratamento,Semana),data=subset(BiometriaAleit,Sexo=="Femea"))
+# Remoção de outliers
+modeloCT_F1.6 <- update(modeloCT_F1.5,data=subset(BiometriaAleit[-c(574,571,556,427,425,319,279,788,430,423),],Sexo=="Femea"))
+shapiro.test(resid(modeloCT_F1.6,type="normalized"))
+
+bartlett.test(resid(modeloCT_F1.6,type="normalized")~interaction(Tratamento,Semana),data=subset(BiometriaAleit[-c(574,571,556,427,425,319,279,788,430,423),],Sexo=="Femea"))
+On Mar 4 2019, at 10:51 pm, Mauro Sznelwar por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Por que não estou conseguindo rodar?
+>
+> # Modelando a variância e a covariancia dos erros
+> > modeloCT_F1.4 <- update(modeloCT_F,weights=varIdent(form=~1|Semana*Tratamento))
+> > modeloCT_F1.5 <- update(modeloCT_F1.4,control=controle,correlation=corARMA(q=3,form=~1|Animal))
+> Error in lme.formula(fixed = CT ~ GS + Tratamento * Semana + Pbserica + :
+> objeto 'controle' não encontrado
+> > anova(modeloCT_F1.4,modeloCT_F1.5)
+> Error in anova.lme(modeloCT_F1.4, modeloCT_F1.5) :
+> objeto 'modeloCT_F1.5' não encontrado
+> >
+>
+>
+> Prezados
+>
+> Estou analisando um dado experimental utilizando a abordagem dos modelos mistos, através da função lme do pacote nlme. O dado no entanto não apresentou distribuição normal e tentativas como remoção de outliers, transformação foram infrutíferas.
+>
+> Tentei olhar se outra distribuição se ajusta melhor aos dados e encontrei que a distribuição logistica, se ajusta bem (Veja imagens abaixo), porém não sei como ajustar esse modelo utilizando a abordagem de modelos mistos.
+>
+> Visto que meus dados não são dados de proporção, como posso fazer para analisar tal dado?
+>
+> Desculpe a quantidade de informação fornecida abaixo, mas este é o mínimo que consegui organizar para ilustrar minha questão
+>
+>
+> BiometriaAleit<-structure(list(Animal = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L,
+>
+> 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 5L, 5L, 5L, 5L, 5L,
+>
+> 5L, 5L, 5L, 5L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 7L, 7L, 7L,
+>
+> 7L, 7L, 7L, 7L, 7L, 7L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 9L, 9L, 9L,
+>
+> 9L, 9L, 9L, 9L, 9L, 9L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L,
+>
+> 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 12L, 12L, 12L, 12L,
+>
+> 12L, 12L, 12L, 12L, 12L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L,
+>
+> 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 15L, 15L, 15L, 15L,
+>
+> 15L, 15L, 15L, 15L, 15L, 16L, 16L, 16L, 16L, 16L, 16L, 16L, 16L,
+>
+> 17L, 17L, 17L, 17L, 17L, 17L, 17L, 17L, 17L, 18L, 18L, 18L, 18L,
+>
+> 18L, 18L, 18L, 18L, 18L, 19L, 19L, 19L, 19L, 19L, 19L, 19L, 19L,
+>
+> 19L, 20L, 20L, 20L, 20L, 20L, 20L, 20L, 20L, 21L, 21L, 21L, 21L,
+>
+> 21L, 21L, 21L, 21L, 21L, 22L, 22L, 22L, 22L, 22L, 22L, 22L, 22L,
+>
+> 22L, 23L, 23L, 23L, 23L, 23L, 23L, 23L, 23L, 23L, 24L, 24L, 24L,
+>
+> 24L, 24L, 24L, 24L, 24L, 24L, 25L, 25L, 25L, 25L, 25L, 25L, 25L,
+>
+> 25L, 25L, 26L, 26L, 26L, 26L, 26L, 26L, 26L, 26L, 26L, 27L, 27L,
+>
+> 27L, 27L, 27L, 27L, 27L, 27L, 27L, 28L, 28L, 28L, 28L, 28L, 28L,
+>
+> 28L, 28L, 28L, 29L, 29L, 29L, 29L, 29L, 29L, 29L, 29L, 29L, 30L,
+>
+> 30L, 30L, 30L, 30L, 30L, 30L, 30L, 30L, 31L, 31L, 31L, 31L, 31L,
+>
+> 31L, 31L, 31L, 32L, 32L, 32L, 32L, 32L, 32L, 32L, 32L, 32L, 33L,
+>
+> 33L, 33L, 33L, 33L, 33L, 33L, 33L, 33L, 34L, 34L, 34L, 34L, 34L,
+>
+> 34L, 34L, 34L, 34L, 35L, 35L, 35L, 35L, 35L, 35L, 35L, 35L, 35L,
+>
+> 36L, 36L, 36L, 36L, 36L, 36L, 36L, 36L, 36L, 37L, 37L, 37L, 37L,
+>
+> 37L, 37L, 37L, 37L, 37L, 38L, 38L, 38L, 38L, 38L, 38L, 38L, 38L,
+>
+> 38L, 39L, 39L, 39L, 39L, 39L, 39L, 39L, 39L, 39L, 40L, 40L, 40L,
+>
+> 40L, 40L, 40L, 40L, 40L, 40L, 41L, 41L, 41L, 41L, 41L, 41L, 41L,
+>
+> 41L, 41L, 42L, 42L, 42L, 42L, 42L, 42L, 42L, 42L, 42L, 43L, 43L,
+>
+> 43L, 43L, 43L, 43L, 43L, 43L, 43L, 44L, 44L, 44L, 44L, 44L, 44L,
+>
+> 44L, 44L, 44L, 45L, 45L, 45L, 45L, 45L, 45L, 45L, 45L, 45L), .Label = c("1",
+>
+> "9", "24", "25", "41", "49", "8016", "8019", "8020", "8024",
+>
+> "8025", "8027", "8028", "8029", "8030", "8031", "8032", "8034",
+>
+> "8035", "8037", "8040", "8042", "8058", "8067", "8068", "8109",
+>
+> "8111", "8112", "8114", "8116", "8124", "8128", "8130", "8137",
+>
+> "8405", "8407", "8415", "8420", "8422", "8424", "8425", "8426",
+>
+> "8429", "8434", "8436"), class = "factor"), Sexo = structure(c(2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("Femea",
+>
+> "Macho"), class = "factor"), GS = structure(c(1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+>
+> 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+>
+> 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+>
+> 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+>
+> 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+>
+> 3L, 3L, 3L, 3L, 3L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("3/4hz", "5/8hz",
+>
+> "HOL"), class = "factor"), Tratamento = structure(c(2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 1L, 1L, 1L, 1L,
+>
+> 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+>
+> 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = c("apex", "controle"
+> ), class = "factor"), Pbserica = c(11, 11, 11, 11, 11, 11, 11,
+>
+> 11, 11, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 11, 11, 11, 11,
+>
+> 11, 11, 11, 11, 11, 11.9, 11.9, 11.9, 11.9, 11.9, 11.9, 11.9,
+>
+> 11.9, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10.1, 10,
+>
+> 10, 10, 10, 10, 10, 10, 10, 10, 12, 12, 12, 12, 12, 12, 12, 12,
+>
+> 12, 10, 10, 10, 10, 10, 10, 10, 8.9, 8.9, 8.9, 8.9, 8.9, 8.9,
+>
+> 8.9, 8.9, 8.9, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8,
+>
+> 8.6, 8.6, 8.6, 8.6, 8.6, 8.6, 8.6, 8.6, 8.6, 9.2, 9.2, 9.2, 9.2,
+>
+> 9.2, 9.2, 9.2, 9.2, 9.2, 9.9, 9.9, 9.9, 9.9, 9.9, 9.9, 9.9, 9.9,
+>
+> 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11,
+>
+> 11, 11, 11, 11, 11, 11, 11, 11, 11, 11, 10.1, 10.1, 10.1, 10.1,
+>
+> 10.1, 10.1, 10.1, 10.1, 10.1, 12.4, 12.4, 12.4, 12.4, 12.4, 12.4,
+>
+> 12.4, 12.4, 12.4, 11.2, 11.2, 11.2, 11.2, 11.2, 11.2, 11.2, 11.2,
+>
+> 11.2, 9.2, 9.2, 9.2, 9.2, 9.2, 9.2, 9.2, 9.2, 10.9, 10.9, 10.9,
+>
+> 10.9, 10.9, 10.9, 10.9, 10.9, 10.9, 10.4, 10.4, 10.4, 10.4, 10.4,
+>
+> 10.4, 10.4, 10.4, 10.4, 11, 11, 11, 11, 11, 11, 11, 11, 11, 11.1,
+>
+> 11.1, 11.1, 11.1, 11.1, 11.1, 11.1, 11.1, 11.1, 10.3, 10.3, 10.3,
+>
+> 10.3, 10.3, 10.3, 10.3, 10.3, 10.3, 9.7, 9.7, 9.7, 9.7, 9.7,
+>
+> 9.7, 9.7, 9.7, 9.7, 10.2, 10.2, 10.2, 10.2, 10.2, 10.2, 10.2,
+>
+> 10.2, 10.2, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4,
+>
+> 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9.6, 9, 9, 9, 9, 9, 9,
+>
+> 9, 9, 9, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8, 11.8, 9.8,
+>
+> 9.8, 9.8, 9.8, 9.8, 9.8, 9.8, 9.8, 9.8, 10, 10, 10, 10, 10, 10,
+>
+> 10, 10, 10, 9.4, 9.4, 9.4, 9.4, 9.4, 9.4, 9.4, 9.4, 9.4, 10,
+>
+> 10, 10, 10, 10, 10, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 11,
+>
+> 11, 8.9, 8.9, 8.9, 8.9, 8.9, 8.9, 8.9, 8.9, 8.9, 11.4, 11.4,
+>
+> 11.4, 11.4, 11.4, 11.4, 11.4, 11.4, 11.4, 11.2, 11.2, 11.2, 11.2,
+>
+> 11.2, 11.2, 11.2, 11.2, 11.2, 12, 12, 12, 12, 12, 12, 12, 12,
+>
+> 12, 10, 10, 10, 10, 10, 10, 10, 10, 10, 11.8, 11.8, 11.8, 11.8,
+>
+> 11.8, 11.8, 11.8, 11.8, 11.8, 10.5, 10.5, 10.5, 10.5, 10.5, 10.5,
+>
+> 10.5, 10.5, 10.5, 10.8, 10.8, 10.8, 10.8, 10.8, 10.8, 10.8, 10.8,
+>
+> 10.8, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4, 10.4),
+>
+> Pnasc = c(27.06, 27.06, 27.06, 27.06, 27.06, 27.06, 27.06,
+>
+> 27.06, 27.06, 38.34, 38.34, 38.34, 38.34, 38.34, 38.34, 38.34,
+>
+> 38.34, 39.4, 39.4, 39.4, 39.4, 39.4, 39.4, 39.4, 39.4, 39.4,
+>
+> 32.65, 32.65, 32.65, 32.65, 32.65, 32.65, 32.65, 32.65, 39.7,
+>
+> 39.7, 39.7, 39.7, 39.7, 39.7, 39.7, 39.7, 39.7, 35.9, 35.9,
+>
+> 35.9, 35.9, 35.9, 35.9, 35.9, 35.9, 35.9, 34, 34, 34, 34,
+>
+> 34, 34, 34, 34, 34, 28.58, 28.58, 28.58, 28.58, 28.58, 28.58,
+>
+> 28.58, 31.3, 31.3, 31.3, 31.3, 31.3, 31.3, 31.3, 31.3, 31.3,
+>
+> 33.57, 33.57, 33.57, 33.57, 33.57, 33.57, 33.57, 33.57, 32.314,
+>
+> 32.314, 32.314, 32.314, 32.314, 32.314, 32.314, 32.314, 32.314,
+>
+> 27.3, 27.3, 27.3, 27.3, 27.3, 27.3, 27.3, 27.3, 27.3, 35,
+>
+> 35, 35, 35, 35, 35, 35, 35, 26.8, 26.8, 26.8, 26.8, 26.8,
+>
+> 26.8, 26.8, 26.8, 26.8, 36.6, 36.6, 36.6, 36.6, 36.6, 36.6,
+>
+> 36.6, 36.6, 36.6, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2, 27.2,
+>
+> 27.2, 29.45, 29.45, 29.45, 29.45, 29.45, 29.45, 29.45, 29.45,
+>
+> 29.45, 34.48, 34.48, 34.48, 34.48, 34.48, 34.48, 34.48, 34.48,
+>
+> 34.48, 31.76, 31.76, 31.76, 31.76, 31.76, 31.76, 31.76, 31.76,
+>
+> 31.76, 29.5, 29.5, 29.5, 29.5, 29.5, 29.5, 29.5, 29.5, 25.9,
+>
+> 25.9, 25.9, 25.9, 25.9, 25.9, 25.9, 25.9, 25.9, 33.57, 33.57,
+>
+> 33.57, 33.57, 33.57, 33.57, 33.57, 33.57, 33.57, 35.2, 35.2,
+>
+> 35.2, 35.2, 35.2, 35.2, 35.2, 35.2, 35.2, 31, 31, 31, 31,
+>
+> 31, 31, 31, 31, 31, 29.5, 29.5, 29.5, 29.5, 29.5, 29.5, 29.5,
+>
+> 29.5, 29.5, 26.5, 26.5, 26.5, 26.5, 26.5, 26.5, 26.5, 26.5,
+>
+> 26.5, 29.49, 29.49, 29.49, 29.49, 29.49, 29.49, 29.49, 29.49,
+>
+> 29.49, 30, 30, 30, 30, 30, 30, 30, 30, 30, 33.12, 33.12,
+>
+> 33.12, 33.12, 33.12, 33.12, 33.12, 33.12, 33.12, 35, 35,
+>
+> 35, 35, 35, 35, 35, 35, 35, 35.7, 35.7, 35.7, 35.7, 35.7,
+>
+> 35.7, 35.7, 35.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7, 30.7,
+>
+> 30.7, 30.7, 39.3, 39.3, 39.3, 39.3, 39.3, 39.3, 39.3, 39.3,
+>
+> 39.3, 29.3, 29.3, 29.3, 29.3, 29.3, 29.3, 29.3, 29.3, 29.3,
+>
+> 25.72, 25.72, 25.72, 25.72, 25.72, 25.72, 25.72, 25.72, 25.72,
+>
+> 46.3, 46.3, 46.3, 46.3, 46.3, 46.3, 46.3, 46.3, 46.3, 38.9,
+>
+> 38.9, 38.9, 38.9, 38.9, 38.9, 38.9, 38.9, 38.9, 38.2, 38.2,
+>
+> 38.2, 38.2, 38.2, 38.2, 38.2, 38.2, 38.2, 31.1, 31.1, 31.1,
+>
+> 31.1, 31.1, 31.1, 31.1, 31.1, 31.1, 22.3, 22.3, 22.3, 22.3,
+>
+> 22.3, 22.3, 22.3, 22.3, 22.3, 27.6, 27.6, 27.6, 27.6, 27.6,
+>
+> 27.6, 27.6, 27.6, 27.6, 31.7, 31.7, 31.7, 31.7, 31.7, 31.7,
+>
+> 31.7, 31.7, 31.7, 34.7, 34.7, 34.7, 34.7, 34.7, 34.7, 34.7,
+>
+> 34.7, 34.7, 38, 38, 38, 38, 38, 38, 38, 38, 38, 40.7, 40.7,
+>
+> 40.7, 40.7, 40.7, 40.7, 40.7, 40.7, 40.7), Semana = structure(c(1L,
+>
+> 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 4L, 5L, 6L, 7L, 8L,
+>
+> 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 5L, 6L,
+>
+> 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L,
+>
+> 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L,
+>
+> 1L, 2L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L,
+>
+> 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 9L, 1L, 2L, 3L, 4L, 5L, 6L,
+>
+> 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L,
+>
+> 4L, 5L, 6L, 7L, 8L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L,
+>
+> 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 8L,
+>
+> 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L,
+>
+> 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L,
+>
+> 3L, 4L, 5L, 6L, 7L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L,
+>
+> 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L,
+>
+> 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L,
+>
+> 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L,
+>
+> 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L,
+>
+> 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L,
+>
+> 4L, 5L, 6L, 7L, 8L, 9L, 1L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L,
+>
+> 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+>
+> 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L,
+>
+> 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L,
+>
+> 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+>
+> 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L,
+>
+> 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L,
+>
+> 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+>
+> 8L, 9L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 1L, 2L, 3L, 4L,
+>
+> 5L, 6L, 7L, 8L, 9L), .Label = c("1", "2", "3", "4", "5",
+>
+> "6", "7", "8", "9"), class = "factor"), CT = c(70, 72, 73,
+>
+> 77, 77, 80, 82, 86, 91, 77, 78, 82, 84, 85, 89, 94, 95, 78,
+>
+> 81, 82, 81, 84, 88, 89, 92, 96, 74, 75, 77, 84, 85, 86, 88,
+>
+> 92, 76, 78, 79, 79, 82, 82, 84, 86, 88, 75, 79, 80, 80, 81,
+>
+> 83, 86, 89, 92, 76, 73, 75, 79, 81, 82, 87, 87, 94, 71, 73,
+>
+> 77, 82, 86, 88, 94, 75, 76, 80, 80, 83, 85, 88, 91, 98, 78,
+>
+> 78, 81, 81, 85, 85, 89, 94, 73, 74, 78, 78, 78, 81, 84, 86,
+>
+> 90, 72, 74, 75, 76, 78, 81, 86, 86, 90, 75, 80, 82, 84, 80,
+>
+> 88, 91, 94, 75, 78, 79, 79, 83, 81, 83, 86, 90, 75, 75, 76,
+>
+> 77, 79, 81, 86, 87, 92, 71, 72, 73, 75, 78, 85, 86, 91, 75,
+>
+> 77, 77, 80, 81, 86, 89, 91, 97, 77, 78, 78, 79, 84, 86, 90,
+>
+> 96, 99, 78, 80, 80, 80, 84, 84, 87, 92, 97, 74, 77, 78, 79,
+>
+> 81, 83, 84, 92, 72, 74, 75, 79, 79, 80, 86, 85, 91, 75, 76,
+>
+> 76, 78, 78, 80, 84, 86, 90, 75, 77, 77, 80, 81, 83, 88, 90,
+>
+> 94, 71, 72, 70, 74, 78, 91, 85, 86, 97, 71, 72, 75, 76, 77,
+>
+> 80, 84, 86, 91, 70.5, 75, 73, 77, 80, 84, 86, 87, 92, 75,
+>
+> 71, 77, 76, 80, 80, 83, 84, 90, 71, 77, 75, 76, 77, 78, 82,
+>
+> 84, 89, 74, 77, 78, 79, 80, 82, 90, 89, 94, 77, 79, 79, 81,
+>
+> 83, 83, 86, 90, 95, 76, 78, 78, 80, 82, 82, 85, 86, 70, 73,
+>
+> 72, 71, 77, 74, 75, 77, 80, 77, 81, 81, 82, 85, 86, 89, 93,
+>
+> 98, 73, 73, 70, 73, 75, 77, 81, 85, 89, 71, 74, 74, 78, 77,
+>
+> 82, 84, 88, 90, 82, 80, 82, 85, 89, 89, 93, 95, 98, 76, 80,
+>
+> 79, 80, 81, 84, 88, 89, 93, 77, 77, 77, 80, 82, 82, 85, 86,
+>
+> 91, 68, 74, 75, 75, 76, 78, 80, 81, 86, 68, 69, 69, 74, 77,
+>
+> 79, 80, 82, 85, 68, 72, 73, 75, 77, 78, 80, 84, 88, 71, 72,
+>
+> 72, 76, 78, 80, 81, 85, 90, 77, 78, 80, 80, 83, 85, 88, 90,
+>
+> 94, 76, 77, 77, 79, 82, 83, 84, 89, 93, 88, 76, 78, 79, 81,
+>
+> 83, 85, 89, 94)), class = "data.frame", row.names = c(1L,
+>
+> 2L, 4L, 6L, 8L, 10L, 12L, 14L, 17L, 18L, 20L, 23L, 25L, 27L,
+>
+> 29L, 31L, 34L, 35L, 37L, 39L, 41L, 43L, 45L, 47L, 49L, 52L, 53L,
+>
+> 55L, 57L, 61L, 63L, 65L, 67L, 70L, 71L, 73L, 75L, 77L, 79L, 81L,
+>
+> 83L, 85L, 88L, 89L, 91L, 93L, 95L, 97L, 99L, 101L, 103L, 106L,
+>
+> 107L, 109L, 111L, 113L, 115L, 117L, 119L, 121L, 124L, 125L, 127L,
+>
+> 133L, 135L, 137L, 139L, 142L, 143L, 145L, 147L, 149L, 151L, 153L,
+>
+> 155L, 157L, 160L, 161L, 163L, 165L, 167L, 169L, 171L, 173L, 178L,
+>
+> 179L, 181L, 183L, 185L, 187L, 189L, 191L, 193L, 196L, 197L, 199L,
+>
+> 201L, 203L, 205L, 207L, 209L, 211L, 214L, 215L, 217L, 219L, 221L,
+>
+> 223L, 225L, 227L, 229L, 233L, 235L, 237L, 239L, 241L, 243L, 245L,
+>
+> 247L, 250L, 251L, 253L, 255L, 257L, 259L, 261L, 263L, 265L, 268L,
+>
+> 269L, 271L, 273L, 275L, 277L, 279L, 283L, 286L, 287L, 289L, 291L,
+>
+> 293L, 295L, 297L, 299L, 301L, 304L, 305L, 307L, 309L, 311L, 313L,
+>
+> 315L, 317L, 319L, 322L, 323L, 325L, 327L, 329L, 331L, 333L, 335L,
+>
+> 337L, 340L, 341L, 343L, 345L, 347L, 349L, 351L, 353L, 358L, 359L,
+>
+> 361L, 363L, 365L, 367L, 369L, 371L, 373L, 376L, 377L, 379L, 381L,
+>
+> 383L, 385L, 387L, 389L, 391L, 394L, 395L, 397L, 399L, 401L, 403L,
+>
+> 405L, 407L, 409L, 412L, 413L, 415L, 417L, 419L, 421L, 423L, 425L,
+>
+> 427L, 430L, 431L, 433L, 435L, 437L, 439L, 441L, 443L, 445L, 448L,
+>
+> 449L, 451L, 453L, 455L, 457L, 459L, 461L, 463L, 466L, 467L, 469L,
+>
+> 471L, 473L, 475L, 477L, 479L, 481L, 484L, 485L, 487L, 489L, 491L,
+>
+> 493L, 495L, 497L, 499L, 502L, 503L, 505L, 507L, 509L, 511L, 513L,
+>
+> 515L, 517L, 520L, 521L, 523L, 525L, 527L, 529L, 531L, 533L, 535L,
+>
+> 538L, 539L, 543L, 545L, 547L, 549L, 551L, 553L, 556L, 557L, 559L,
+>
+> 561L, 563L, 565L, 567L, 569L, 571L, 574L, 575L, 577L, 579L, 581L,
+>
+> 583L, 585L, 587L, 589L, 591L, 592L, 594L, 596L, 598L, 600L, 602L,
+>
+> 604L, 606L, 608L, 609L, 611L, 613L, 615L, 617L, 619L, 621L, 623L,
+>
+> 626L, 627L, 629L, 631L, 633L, 635L, 637L, 639L, 641L, 644L, 645L,
+>
+> 647L, 649L, 651L, 653L, 655L, 657L, 659L, 661L, 662L, 664L, 666L,
+>
+> 668L, 670L, 672L, 674L, 676L, 679L, 680L, 682L, 684L, 686L, 688L,
+>
+> 690L, 692L, 694L, 697L, 698L, 700L, 702L, 704L, 706L, 708L, 710L,
+>
+> 712L, 715L, 716L, 718L, 720L, 722L, 724L, 726L, 728L, 730L, 733L,
+>
+> 734L, 736L, 738L, 740L, 742L, 744L, 746L, 748L, 751L, 752L, 754L,
+>
+> 756L, 758L, 760L, 762L, 764L, 766L, 769L, 770L, 772L, 774L, 776L,
+>
+> 778L, 780L, 782L, 784L, 787L, 788L, 790L, 792L, 794L, 796L, 798L,
+>
+> 800L, 802L, 805L))
+>
+>
+>
+> modeloCT_F<- lme(CT~GS+Tratamento*Semana+Pbserica+Pnasc,random=~1|Animal,data=subset(BiometriaAleit,Sexo=="Femea"))
+>
+> shapiro.test(resid(modeloCT_F,type="normalized"))
+> bartlett.test(resid(modeloCT_F,type="normalized")~interaction(Tratamento,Semana),data=subset(BiometriaAleit,Sexo=="Femea"))
+> # Modelando a variância e a covariancia dos erros
+> modeloCT_F1.4 <- update(modeloCT_F,weights=varIdent(form=~1|Semana*Tratamento))
+> modeloCT_F1.5 <- update(modeloCT_F1.4,control=controle,correlation=corARMA(q=3,form=~1|Animal))
+> anova(modeloCT_F1.4,modeloCT_F1.5)
+>
+> shapiro.test(resid(modeloCT_F1.5,type="normalized"))
+> bartlett.test(resid(modeloCT_F1.5,type="normalized")~interaction(Tratamento,Semana),data=subset(BiometriaAleit,Sexo=="Femea"))
+> # Remoção de outliers
+> modeloCT_F1.6 <- update(modeloCT_F1.5,data=subset(BiometriaAleit[-c(574,571,556,427,425,319,279,788,430,423),],Sexo=="Femea"))
+> shapiro.test(resid(modeloCT_F1.6,type="normalized"))
+>
+> bartlett.test(resid(modeloCT_F1.6,type="normalized")~interaction(Tratamento,Semana),data=subset(BiometriaAleit[-c(574,571,556,427,425,319,279,788,430,423),],Sexo=="Femea"))
+>
+> # Selecionando a melhor distribuição
+> install.packages("fitdistrplus")
+> library(fitdistrplus)
+> x1<-as.vector(resid(modeloCT_F1.6,type="normalized"))
+> descdist(x1, discrete = FALSE)
+>
+> Graficos sobre a distribuição dos dados.
+>
+> library(car)
+> qqp(resid(modeloCT_F1.6,type="normalized"),"logis")
+>
+>
+>
+>
+> #install.packages("fitdistrplus")
+> library(fitdistrplus)
+> x1<-as.vector(resid(modeloCT_F1.6,type="normalized"))
+> descdist(x1, discrete = FALSE)
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br (https://link.getmailspring.com/link/E18142D3-39E0-410F-977B-A9A1B7F293E6 em getmailspring.com/0?redirect=https%3A%2F%2Flistas.inf.ufpr.br%2Fcgi-bin%2Fmailman%2Flistinfo%2Fr-br&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia (https://link.getmailspring.com/link/E18142D3-39E0-410F-977B-A9A1B7F293E6 em getmailspring.com/1?redirect=http%3A%2F%2Fwww.leg.ufpr.br%2Fr-br-guia&recipient=ci1ickBsaXN0YXMuYzNzbC51ZnByLmJy)) e forne�a c�digo m�nimo reproduz�vel.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190304/b82f8f99/attachment-0001.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Tue Mar  5 17:06:59 2019
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Tue, 5 Mar 2019 16:06:59 -0400
+Subject: [R-br] =?utf-8?q?Teste_de_Qui-quadrado_aplicado_para_a_distribui?=
+ =?utf-8?b?w6fDo28gYmlub21pYWw=?=
+Message-ID: <d3395925-3eee-a652-622b-d29c5ccdf822@cas.ifmt.edu.br>
+
+Prezados Membros,
+
+     Estou tentando realizar um teste de aderência (Qui-quadrado) 
+aplicado a dados com distribuição binomial negativa sem sucesso. Em meu CRM:
+
+#Pacote MASS
+library(MASS)
+
+#Crio um banco de dados simulado
+Features<-sort(rep(1:3,100))
+Resp1<-rnbinom(200,0.75,0.10) ##60 dados com distribuição binomial negativa
+Resp2<-rpois(100,10) ##30 dados com distribuição de Poisson
+Resp<-c(Resp1,Resp2)
+d<-as.data.frame(cbind(Features,Resp))
+
+#Criando um loop para realizar o teste de Chi quadrado para os três 
+conjuntos de dados - Feature 1, 2 e 3
+uniq <- unique(unlist(d$Features))
+res<-NULL
+for (i in 1:length(uniq)){
+     data_1 <- subset(d, Features == uniq[i])
+     k <- fitdistr(data_1$Resp,"negative binomial") #Extração dos 
+parâmetros média e mu da binomial negativa
+     par <- k$estimate
+     size <- par[1]#Parâmetro k
+     mu <- par[2]#Média
+     N <- length(data_1$Resp)
+     est <-N*dnbinom(data_1$Resp,size=size,mu=mu)  ## Criando valores 
+estimados
+     fecdf <- ecdf(data_1$Resp) ###ecdf- Cria a distribuição cumulativa 
+empírica
+     knotsX <- knots(fecdf)
+     emp <- fecdf(c(knotsX,Inf))  # Distribuição empírica
+     testChi<-chisq.test(table(emp),table(est),correct=TRUE) #Teste de 
+Qui-quadrado sobre a contagem dos dados empíricos versus estimados
+     result<-ifelse(testChi$p.value>0.05,"Binomial Negative","Other 
+distribution") ## Classifica os testes em binomial negativa ou outra 
+distribuição
+     res<-rbind(res,c(uniq[i],result))
+     colnames(res)<-c("Features","Distribution")
+}
+res
+
+Meu output é: Features Distribution [1,] "1" "Other distribution" [2,] 
+"2" "Other distribution" [3,] "3" "Binomial Negative" Ou seja, dá o 
+resultado errado, na verdade as Features 1 e 2 é que são binomial 
+negativa e a Feature 3 que são dados com distribuição de Poisson que tem 
+que dar "Other distribution". Alguém teria alguma sugestão para dar? 
+Obrigado
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190305/f8adb555/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Mar  6 20:41:09 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 6 Mar 2019 20:41:09 -0300
+Subject: [R-br] 
+	=?utf-8?q?Teste_de_Qui-quadrado_aplicado_para_a_distribui?=
+	=?utf-8?b?w6fDo28gYmlub21pYWw=?=
+In-Reply-To: <d3395925-3eee-a652-622b-d29c5ccdf822@cas.ifmt.edu.br>
+References: <d3395925-3eee-a652-622b-d29c5ccdf822@cas.ifmt.edu.br>
+Message-ID: <CAKrF98k=16MmZiVRBXdPbgRD38=8s3qTZgtZdVruhuc8+0boiQ@mail.gmail.com>
+
+Na minha tentativa de rodar s/exemplo antes da linha
+> res
+
+As seguintes msgs de alerta são impressas:
+Warning messages:
+1: In densfun(x, parm[1], parm[2], ...) : NaNs produzidos
+2: In chisq.test(table(emp), table(est), correct = TRUE) :
+  Aproximação do qui-quadrado pode estar incorreta
+3: In densfun(x, parm[1], parm[2], ...) : NaNs produzidos
+4: In densfun(x, parm[1], parm[2], ...) : NaNs produzidos
+5: In chisq.test(table(emp), table(est), correct = TRUE) :
+  Aproximação do qui-quadrado pode estar incorreta
+6: In chisq.test(table(emp), table(est), correct = TRUE) :
+  Aproximação do qui-quadrado pode estar incorreta
+
+CONFERE?
+
+
+
+On Tue, Mar 5, 2019 at 5:07 PM ASANTOS por (R-br) <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Prezados Membros,
+>
+>     Estou tentando realizar um teste de aderência (Qui-quadrado) aplicado
+> a dados com distribuição binomial negativa sem sucesso. Em meu CRM:
+>
+> #Pacote MASS
+> library(MASS)
+>
+> #Crio um banco de dados simulado
+> Features<-sort(rep(1:3,100))
+> Resp1<-rnbinom(200,0.75,0.10) ##60 dados com distribuição binomial negativa
+> Resp2<-rpois(100,10) ##30 dados com distribuição de Poisson
+> Resp<-c(Resp1,Resp2)
+> d<-as.data.frame(cbind(Features,Resp))
+>
+> #Criando um loop para realizar o teste de Chi quadrado para os três
+> conjuntos de dados - Feature 1, 2 e 3
+> uniq <- unique(unlist(d$Features))
+> res<-NULL
+> for (i in 1:length(uniq)){
+>     data_1 <- subset(d, Features == uniq[i])
+>     k <- fitdistr(data_1$Resp,"negative binomial") #Extração dos
+> parâmetros média e mu da binomial negativa
+>     par <- k$estimate
+>     size <- par[1]#Parâmetro k
+>     mu <- par[2]#Média
+>     N <- length(data_1$Resp)
+>     est <-N*dnbinom(data_1$Resp,size=size,mu=mu)  ## Criando  valores
+> estimados
+>     fecdf <- ecdf(data_1$Resp) ###ecdf- Cria a distribuição cumulativa
+> empírica
+>     knotsX <- knots(fecdf)
+>     emp <- fecdf(c(knotsX,Inf))  # Distribuição empírica
+>     testChi<-chisq.test(table(emp),table(est),correct=TRUE) #Teste de
+> Qui-quadrado sobre a contagem dos dados empíricos versus estimados
+>     result<-ifelse(testChi$p.value>0.05,"Binomial Negative","Other
+> distribution") ## Classifica os testes em binomial negativa ou outra
+> distribuição
+>     res<-rbind(res,c(uniq[i],result))
+>     colnames(res)<-c("Features","Distribution")
+> }
+> res
+>
+> Meu output é:
+>     Features Distribution
+> [1,] "1"      "Other distribution"
+> [2,] "2"      "Other distribution"
+> [3,] "3"      "Binomial Negative"
+> Ou seja, dá o resultado errado, na verdade as Features 1 e 2 é que são binomial negativa e a Feature 3 que são dados com distribuição de Poisson que tem que dar "Other distribution".
+> Alguém teria alguma sugestão para dar?
+> Obrigado
+>
+> --
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)e-mails:alexandresantosbr em yahoo.com.br
+>         alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+> ======================================================================
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190306/a49abf5d/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Mar  6 20:47:53 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 6 Mar 2019 20:47:53 -0300
+Subject: [R-br] 
+	=?utf-8?q?Teste_de_Qui-quadrado_aplicado_para_a_distribui?=
+	=?utf-8?b?w6fDo28gYmlub21pYWw=?=
+In-Reply-To: <d3395925-3eee-a652-622b-d29c5ccdf822@cas.ifmt.edu.br>
+References: <d3395925-3eee-a652-622b-d29c5ccdf822@cas.ifmt.edu.br>
+Message-ID: <CAKrF98mOhRRird3PO1woU-tX5wmn4hMnYq3Fp-6oZtwWrPzOxw@mail.gmail.com>
+
+Alexandre:
+
+Por favor explique-no o seu raciocínio para fazer este teste aqui:
+
+*> result<-ifelse(testChi$p.**value>0.05,"Binomial Negative","Other
+distribution")* ## Classifica os testes em binomial negativa ou outra
+distribuição
+
+HTH
+--
+Cesar Rabak
+
+
+On Tue, Mar 5, 2019 at 5:07 PM ASANTOS por (R-br) <r-br em listas.c3sl.ufpr.br>
+wrote:
+
+> Prezados Membros,
+>
+>     Estou tentando realizar um teste de aderência (Qui-quadrado) aplicado
+> a dados com distribuição binomial negativa sem sucesso. Em meu CRM:
+>
+> #Pacote MASS
+> library(MASS)
+>
+> #Crio um banco de dados simulado
+> Features<-sort(rep(1:3,100))
+> Resp1<-rnbinom(200,0.75,0.10) ##60 dados com distribuição binomial negativa
+> Resp2<-rpois(100,10) ##30 dados com distribuição de Poisson
+> Resp<-c(Resp1,Resp2)
+> d<-as.data.frame(cbind(Features,Resp))
+>
+> #Criando um loop para realizar o teste de Chi quadrado para os três
+> conjuntos de dados - Feature 1, 2 e 3
+> uniq <- unique(unlist(d$Features))
+> res<-NULL
+> for (i in 1:length(uniq)){
+>     data_1 <- subset(d, Features == uniq[i])
+>     k <- fitdistr(data_1$Resp,"negative binomial") #Extração dos
+> parâmetros média e mu da binomial negativa
+>     par <- k$estimate
+>     size <- par[1]#Parâmetro k
+>     mu <- par[2]#Média
+>     N <- length(data_1$Resp)
+>     est <-N*dnbinom(data_1$Resp,size=size,mu=mu)  ## Criando  valores
+> estimados
+>     fecdf <- ecdf(data_1$Resp) ###ecdf- Cria a distribuição cumulativa
+> empírica
+>     knotsX <- knots(fecdf)
+>     emp <- fecdf(c(knotsX,Inf))  # Distribuição empírica
+>     testChi<-chisq.test(table(emp),table(est),correct=TRUE) #Teste de
+> Qui-quadrado sobre a contagem dos dados empíricos versus estimados
+>     result<-ifelse(testChi$p.value>0.05,"Binomial Negative","Other
+> distribution") ## Classifica os testes em binomial negativa ou outra
+> distribuição
+>     res<-rbind(res,c(uniq[i],result))
+>     colnames(res)<-c("Features","Distribution")
+> }
+> res
+>
+> Meu output é:
+>     Features Distribution
+> [1,] "1"      "Other distribution"
+> [2,] "2"      "Other distribution"
+> [3,] "3"      "Binomial Negative"
+> Ou seja, dá o resultado errado, na verdade as Features 1 e 2 é que são binomial negativa e a Feature 3 que são dados com distribuição de Poisson que tem que dar "Other distribution".
+> Alguém teria alguma sugestão para dar?
+> Obrigado
+>
+> --
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)e-mails:alexandresantosbr em yahoo.com.br
+>         alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+> ======================================================================
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190306/307a6802/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Wed Mar  6 22:24:11 2019
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Wed, 6 Mar 2019 21:24:11 -0400
+Subject: [R-br] 
+ =?utf-8?q?Teste_de_Qui-quadrado_aplicado_para_a_distribui?=
+ =?utf-8?b?w6fDo28gYmlub21pYWw=?=
+In-Reply-To: <CAKrF98k=16MmZiVRBXdPbgRD38=8s3qTZgtZdVruhuc8+0boiQ@mail.gmail.com>
+References: <d3395925-3eee-a652-622b-d29c5ccdf822@cas.ifmt.edu.br>
+ <CAKrF98k=16MmZiVRBXdPbgRD38=8s3qTZgtZdVruhuc8+0boiQ@mail.gmail.com>
+Message-ID: <31c3f9dd-9aa6-c6ef-9838-8275819456f1@cas.ifmt.edu.br>
+
+Boa noite Cesar,
+
+     Obrigado pela ajuda. Para mim, quando eu rodo aparece também alguns 
+alertas:
+
+Warning messages: 1: In chisq.test(table(emp), table(est), correct = 
+TRUE) : Aproximação do qui-quadrado pode estar incorreta 2: In 
+densfun(x, parm[1], parm[2], ...) :NaNs produzidos 3: In 
+chisq.test(table(emp), table(est), correct = TRUE) : Aproximação do 
+qui-quadrado pode estar incorreta 4: In chisq.test(table(emp), 
+table(est), correct = TRUE) : Aproximação do qui-quadrado pode estar 
+incorreta
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+Em 06/03/2019 19:41, Cesar Rabak escreveu:
+>
+> #Pacote MASS
+> library(MASS)
+>
+> #Crio um banco de dados simulado
+> Features<-sort(rep(1:3,100))
+> Resp1<-rnbinom(200,0.75,0.10) ##60 dados com distribuição binomial 
+> negativa
+> Resp2<-rpois(100,10) ##30 dados com distribuição de Poisson
+> Resp<-c(Resp1,Resp2)
+> d<-as.data.frame(cbind(Features,Resp))
+>
+> #Criando um loop para realizar o teste de Chi quadrado para os três 
+> conjuntos de dados - Feature 1, 2 e 3
+> uniq <- unique(unlist(d$Features))
+> res<-NULL
+> for (i in 1:length(uniq)){
+>     data_1 <- subset(d, Features == uniq[i])
+>     k <- fitdistr(data_1$Resp,"negative binomial") #Extração dos 
+> parâmetros média e mu da binomial negativa
+>     par <- k$estimate
+>     size <- par[1]#Parâmetro k
+>     mu <- par[2]#Média
+>     N <- length(data_1$Resp)
+>     est <-N*dnbinom(data_1$Resp,size=size,mu=mu)  ## Criando  valores 
+> estimados
+>     fecdf <- ecdf(data_1$Resp) ###ecdf- Cria a distribuição cumulativa 
+> empírica
+>     knotsX <- knots(fecdf)
+>     emp <- fecdf(c(knotsX,Inf))  # Distribuição empírica
+>     testChi<-chisq.test(table(emp),table(est),correct=TRUE) #Teste de 
+> Qui-quadrado sobre a contagem dos dados empíricos versus estimados
+>     result<-ifelse(testChi$p.value>0.05,"Binomial Negative","Other 
+> distribution") ## Classifica os testes em binomial negativa ou outra 
+> distribuição
+>     res<-rbind(res,c(uniq[i],result))
+>     colnames(res)<-c("Features","Distribution")
+> }
+> res
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190306/0967b535/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Wed Mar  6 23:45:28 2019
+From: alexandre.santos em cas.ifmt.edu.br (Alexandre Dos Santos)
+Date: Wed, 6 Mar 2019 23:45:28 -0300
+Subject: [R-br] 
+	=?utf-8?q?Teste_de_Qui-quadrado_aplicado_para_a_distribui?=
+	=?utf-8?b?w6fDo28gYmlub21pYWw=?=
+In-Reply-To: <31c3f9dd-9aa6-c6ef-9838-8275819456f1@cas.ifmt.edu.br>
+References: <d3395925-3eee-a652-622b-d29c5ccdf822@cas.ifmt.edu.br>
+ <CAKrF98k=16MmZiVRBXdPbgRD38=8s3qTZgtZdVruhuc8+0boiQ@mail.gmail.com>
+ <31c3f9dd-9aa6-c6ef-9838-8275819456f1@cas.ifmt.edu.br>
+Message-ID: <CAFP39_ZsA-cmigme9=artPCzwCac-58hP=Yz6JnyO-afS0FbRA@mail.gmail.com>
+
+*> result<-ifelse(testChi$p.**value>0.05,"Binomial Negative","Other
+distribution")* ## Classifica os testes em binomial negativa ou outra
+distribuição
+
+Se a distribuição estimada table(est) for igual a empírica table (emp) pelo
+teste de independência de Qui-quadrado, ou seja, *testChi$p.**value>0.05,
+então os dados tem distribuição binomial negativa, caso contrário, *
+*testChi$p.**value<0.05, então os dados tem outra distribuição de
+probabilidade.*
+
+Em qua, 6 de mar de 2019 22:24, ASANTOS <alexandre.santos em cas.ifmt.edu.br>
+escreveu:
+
+> Boa noite Cesar,
+>
+>     Obrigado pela ajuda. Para mim, quando eu rodo aparece também alguns
+> alertas:
+>
+> Warning messages:1: In chisq.test(table(emp), table(est), correct = TRUE) :  Aproximação do qui-quadrado pode estar incorreta2: In densfun(x, parm[1], parm[2], ...) : NaNs produzidos3: In chisq.test(table(emp), table(est), correct = TRUE) :  Aproximação do qui-quadrado pode estar incorreta4: In chisq.test(table(emp), table(est), correct = TRUE) :  Aproximação do qui-quadrado pode estar incorreta
+>
+>
+> --
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)e-mails:alexandresantosbr em yahoo.com.br
+>         alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+> ======================================================================
+>
+> Em 06/03/2019 19:41, Cesar Rabak escreveu:
+>
+> #Pacote MASS
+> library(MASS)
+>
+> #Crio um banco de dados simulado
+> Features<-sort(rep(1:3,100))
+> Resp1<-rnbinom(200,0.75,0.10) ##60 dados com distribuição binomial negativa
+> Resp2<-rpois(100,10) ##30 dados com distribuição de Poisson
+> Resp<-c(Resp1,Resp2)
+> d<-as.data.frame(cbind(Features,Resp))
+>
+> #Criando um loop para realizar o teste de Chi quadrado para os três
+> conjuntos de dados - Feature 1, 2 e 3
+> uniq <- unique(unlist(d$Features))
+> res<-NULL
+> for (i in 1:length(uniq)){
+>     data_1 <- subset(d, Features == uniq[i])
+>     k <- fitdistr(data_1$Resp,"negative binomial") #Extração dos
+> parâmetros média e mu da binomial negativa
+>     par <- k$estimate
+>     size <- par[1]#Parâmetro k
+>     mu <- par[2]#Média
+>     N <- length(data_1$Resp)
+>     est <-N*dnbinom(data_1$Resp,size=size,mu=mu)  ## Criando  valores
+> estimados
+>     fecdf <- ecdf(data_1$Resp) ###ecdf- Cria a distribuição cumulativa
+> empírica
+>     knotsX <- knots(fecdf)
+>     emp <- fecdf(c(knotsX,Inf))  # Distribuição empírica
+>     testChi<-chisq.test(table(emp),table(est),correct=TRUE) #Teste de
+> Qui-quadrado sobre a contagem dos dados empíricos versus estimados
+>     result<-ifelse(testChi$p.value>0.05,"Binomial Negative","Other
+> distribution") ## Classifica os testes em binomial negativa ou outra
+> distribuição
+>     res<-rbind(res,c(uniq[i],result))
+>     colnames(res)<-c("Features","Distribution")
+> }
+> res
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190306/e03ed246/attachment.html>
+
+From ecacarva em gmail.com  Sun Mar 10 08:43:10 2019
+From: ecacarva em gmail.com (Elias Carvalho)
+Date: Sun, 10 Mar 2019 08:43:10 -0300
+Subject: [R-br] =?utf-8?b?Q29uZmxpdG8gZGUgZnVuw6fDtWVz?=
+Message-ID: <CAH8E6UvKp0X2P6NiMBs-PjsSOU858mCYi7_22nZFx7A_gx9LDQ@mail.gmail.com>
+
+Esto enfrentando o seguinte problema:
+Estou fazendo uma análise onde uso o pacote bnlearn e depois o pacote
+lavaan.
+Porém ambos tem a função "print.bn" e no bnlearn está função está embutida
+em outras funções.
+Em certos momentos eu crio uma rede Bayesiana e em seguida um modelo SEM
+com lavaan e depois volto a criar aa rede Bayesiana em em seguida o modelo
+SEM novamente, e assim sucessivamente, dai o erro ocorre porque o bnlearn
+acaba usando a função do lavaan.
+
+[image: Screenshot from 2017-10-05 10-57-11.png]
+Alguem poderia me ajudar a solucionar esse problema?
+
+-- 
+
+
+*In Jesu et Maria*
+*Obrigado*
+*Prof. Elias Carvalho*
+
+*"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+who has been able to understand the cause of things"*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190310/c9417f41/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Screenshot from 2017-10-05 10-57-11.png
+Tipo: image/png
+Tamanho: 12878 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190310/c9417f41/attachment.png>
+
+From alisson.lucrecio em ifgoiano.edu.br  Sun Mar 10 09:11:28 2019
+From: alisson.lucrecio em ifgoiano.edu.br (=?UTF-8?Q?Alisson_Lucr=C3=A9cio?=)
+Date: Sun, 10 Mar 2019 09:11:28 -0300
+Subject: [R-br] =?utf-8?b?Q29uZmxpdG8gZGUgZnVuw6fDtWVz?=
+In-Reply-To: <CAH8E6UvKp0X2P6NiMBs-PjsSOU858mCYi7_22nZFx7A_gx9LDQ@mail.gmail.com>
+References: <CAH8E6UvKp0X2P6NiMBs-PjsSOU858mCYi7_22nZFx7A_gx9LDQ@mail.gmail.com>
+Message-ID: <CA+U6G8qkQ1Zp-BVQL38QWwksTcbTLLWf5j85-R7GUa6Z-Q14rg@mail.gmail.com>
+
+Olá,
+Você pode usar os códigos abaixo para carregar as funções de cada pacote
+especifico.
+bnlearn::print.bn
+lavan::print.bn
+Att.,
+Alisson
+
+On Sun, 10 Mar 2019 at 08:44, R-br mailing list [via R-br] <
+ml+s2285057n4668463h89 em n4.nabble.com> wrote:
+
+> Esto enfrentando o seguinte problema:
+> Estou fazendo uma análise onde uso o pacote bnlearn e depois o pacote
+> lavaan.
+> Porém ambos tem a função "print.bn" e no bnlearn está função está
+> embutida em outras funções.
+> Em certos momentos eu crio uma rede Bayesiana e em seguida um modelo SEM
+> com lavaan e depois volto a criar aa rede Bayesiana em em seguida o modelo
+> SEM novamente, e assim sucessivamente, dai o erro ocorre porque o bnlearn
+> acaba usando a função do lavaan.
+>
+> [image: Screenshot from 2017-10-05 10-57-11.png]
+> Alguem poderia me ajudar a solucionar esse problema?
+>
+> --
+>
+>
+> *In Jesu et Maria*
+> *Obrigado*
+> *Prof. Elias Carvalho*
+>
+> *"Felix, qui potuit rerum cognoscere causas" (Virgil 29 BC)"Blessed is he
+> who has been able to understand the cause of things"*
+>
+> _______________________________________________
+> R-br mailing list
+> [hidden email] <http:///user/SendEmail.jtp?type=node&node=4668463&i=0>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+> ------------------------------
+> If you reply to this email, your message will be added to the discussion
+> below:
+> http://r-br.2285057.n4.nabble.com/R-br-Conflito-de-funcoes-tp4668463.html
+> To unsubscribe from R-br, click here
+> <http://r-br.2285057.n4.nabble.com/template/NamlServlet.jtp?macro=unsubscribe_by_code&node=3357982&code=YWxpc3Nvbi5sdWNyZWNpb0BnbWFpbC5jb218MzM1Nzk4MnwxMDk0NDY4OTU4>
+> .
+> NAML
+> <http://r-br.2285057.n4.nabble.com/template/NamlServlet.jtp?macro=macro_viewer&id=instant_html%21nabble%3Aemail.naml&base=nabble.naml.namespaces.BasicNamespace-nabble.view.web.template.NabbleNamespace-nabble.view.web.template.NodeNamespace&breadcrumbs=notify_subscribers%21nabble%3Aemail.naml-instant_emails%21nabble%3Aemail.naml-send_instant_email%21nabble%3Aemail.naml>
+>
+
+
+-- 
+Alisson Lucrecio da Costa
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190310/fb00822e/attachment.html>
+
+From angelica.ricarte em hotmail.com  Tue Mar 12 10:33:14 2019
+From: angelica.ricarte em hotmail.com (=?iso-8859-1?Q?Ang=E9lica_Ricarte?=)
+Date: Tue, 12 Mar 2019 13:33:14 +0000
+Subject: [R-br] =?iso-8859-1?q?Simular_n=FAmeros?=
+Message-ID: <FR1P15201MB203850AE2077AD45EAF0A6C491490@FR1P15201MB2038.LAMP152.PROD.OUTLOOK.COM>
+
+Prezados, bom dia.
+
+Por gentileza, peço ajuda para simular 4 números de forma que a soma dê 100, como na tabela abaixo, por exemplo. Qual o comando e/ou pacote posso utilizar?
+
+             Comun.         Execul.        Planej.      Analis.       TOTAL
+A1          21,26             20,45          28,74         29,55          100
+A2
+A3
+A4
+A5
+A6
+A7
+A8
+A9
+A10
+
+Grata, aguardo retorno.
+
+Att.
+
+Angélica Ricarte da Silva Batista
+
+Autarquia Educacional do Belo Jardim/Faculdade do Belo Jardim - AEB/FBJ
+Rodovia PE-166, Km 05 - BR, Belo Jardim - PE
+Telefone/Phone: +55 (81) 3726-1800
+
+CV<http://lattes.cnpq.br/0601801978475226>
+
+<http://lattes.cnpq.br/0601801978475226>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190312/2894a558/attachment.html>
+
+From drigo.angelo em gmail.com  Tue Mar 12 10:54:05 2019
+From: drigo.angelo em gmail.com (=?UTF-8?Q?Rodrigo_=C3=82ngelo?=)
+Date: Tue, 12 Mar 2019 10:54:05 -0300
+Subject: [R-br] =?utf-8?q?Simular_n=C3=BAmeros?=
+In-Reply-To: <FR1P15201MB203850AE2077AD45EAF0A6C491490@FR1P15201MB2038.LAMP152.PROD.OUTLOOK.COM>
+References: <FR1P15201MB203850AE2077AD45EAF0A6C491490@FR1P15201MB2038.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <CANsnirXuWAhNW+Y68p9tTa1gDfaDbxaM6BcmJ3=AfoPWrY0=eA@mail.gmail.com>
+
+Olá, Angélica
+
+Você tem mais alguma restrição sobre esses números? O código abaixo gera 4
+números que somam 100 segundo uma distribuição uniforme.
+
+qtd_observacoes <- 10
+
+qtd_numeros <- 4
+
+df <- data.frame(col1=double(qtd_observacoes),
+                 col2=double(qtd_observacoes),
+                 col3=double(qtd_observacoes),
+                 col4=double(qtd_observacoes))
+
+for (i in 1:qtd_observacoes) {
+  soma = 0;
+
+  for(j in 1:(qtd_numeros-1)) {
+    valor = runif(1, 0, (100-soma))
+    df[i,j] <- valor
+    soma = soma + valor
+  }
+  df[i,qtd_numeros] <- 100 - soma
+}
+
+
+Atenciosamente,
+Rodrigo de Castro Ângelo
+
+
+Em ter, 12 de mar de 2019 às 10:33, Angélica Ricarte por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados, bom dia.
+>
+> Por gentileza, peço ajuda para simular 4 números de forma que a soma dê
+> 100, como na tabela abaixo, por exemplo. Qual o comando e/ou pacote posso
+> utilizar?
+>
+>              Comun.         Execul.        Planej.      Analis.       TOTAL
+> A1          21,26             20,45          28,74         29,55
+> 100
+> A2
+> A3
+> A4
+> A5
+> A6
+> A7
+> A8
+> A9
+> A10
+>
+> Grata, aguardo retorno.
+>
+> Att.
+>
+> *Angélica Ricarte da Silva Batista*
+>
+> Autarquia Educacional do Belo Jardim/Faculdade do Belo Jardim - AEB/FBJ
+> Rodovia PE-166, Km 05 - BR, Belo Jardim - PE
+> Telefone/Phone: +55 (81) 3726-1800
+>
+> CV <http://lattes.cnpq.br/0601801978475226>
+>
+> <http://lattes.cnpq.br/0601801978475226>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190312/32b945ba/attachment.html>
+
+From fernandohtoledo em gmail.com  Tue Mar 12 13:19:01 2019
+From: fernandohtoledo em gmail.com (Fernando H Toledo)
+Date: Tue, 12 Mar 2019 10:19:01 -0600
+Subject: [R-br] =?utf-8?q?Simular_n=C3=BAmeros?=
+In-Reply-To: <CANsnirXuWAhNW+Y68p9tTa1gDfaDbxaM6BcmJ3=AfoPWrY0=eA@mail.gmail.com>
+References: <FR1P15201MB203850AE2077AD45EAF0A6C491490@FR1P15201MB2038.LAMP152.PROD.OUTLOOK.COM>
+ <CANsnirXuWAhNW+Y68p9tTa1gDfaDbxaM6BcmJ3=AfoPWrY0=eA@mail.gmail.com>
+Message-ID: <d07d12f0-2a03-607e-13e4-da602544eb63@gmail.com>
+
+Veja sobre a distribuição multinomial!
+
+ > rmultinom(n = 2, size = 100, prob = rep(1/4, 4))
+
+Esse exemplo simula duas amostras que somam 100... varie as probabilidades!
+
+att,
+FH
+
+On 3/12/19 7:54 AM, Rodrigo Ângelo por (R-br) wrote:
+> Olá, Angélica
+> 
+> Você tem mais alguma restrição sobre esses números? O código abaixo gera 4
+> números que somam 100 segundo uma distribuição uniforme.
+> 
+> qtd_observacoes <- 10
+> 
+> qtd_numeros <- 4
+> 
+> df <- data.frame(col1=double(qtd_observacoes),
+>                   col2=double(qtd_observacoes),
+>                   col3=double(qtd_observacoes),
+>                   col4=double(qtd_observacoes))
+> 
+> for (i in 1:qtd_observacoes) {
+>    soma = 0;
+> 
+>    for(j in 1:(qtd_numeros-1)) {
+>      valor = runif(1, 0, (100-soma))
+>      df[i,j] <- valor
+>      soma = soma + valor
+>    }
+>    df[i,qtd_numeros] <- 100 - soma
+> }
+> 
+> 
+> Atenciosamente,
+> Rodrigo de Castro Ângelo
+> 
+> 
+> Em ter, 12 de mar de 2019 às 10:33, Angélica Ricarte por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+> 
+>> Prezados, bom dia.
+>>
+>> Por gentileza, peço ajuda para simular 4 números de forma que a soma dê
+>> 100, como na tabela abaixo, por exemplo. Qual o comando e/ou pacote posso
+>> utilizar?
+>>
+>>               Comun.         Execul.        Planej.      Analis.       TOTAL
+>> A1          21,26             20,45          28,74         29,55
+>> 100
+>> A2
+>> A3
+>> A4
+>> A5
+>> A6
+>> A7
+>> A8
+>> A9
+>> A10
+>>
+>> Grata, aguardo retorno.
+>>
+>> Att.
+>>
+>> *Angélica Ricarte da Silva Batista*
+>>
+>> Autarquia Educacional do Belo Jardim/Faculdade do Belo Jardim - AEB/FBJ
+>> Rodovia PE-166, Km 05 - BR, Belo Jardim - PE
+>> Telefone/Phone: +55 (81) 3726-1800
+>>
+>> CV <http://lattes.cnpq.br/0601801978475226>
+>>
+>> <http://lattes.cnpq.br/0601801978475226>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+> 
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+> 
+
+From angelica.ricarte em hotmail.com  Tue Mar 12 13:48:58 2019
+From: angelica.ricarte em hotmail.com (=?utf-8?B?QW5nw6lsaWNhIFJpY2FydGU=?=)
+Date: Tue, 12 Mar 2019 16:48:58 +0000
+Subject: [R-br] =?utf-8?q?Simular_n=C3=BAmeros?=
+In-Reply-To: <d07d12f0-2a03-607e-13e4-da602544eb63@gmail.com>
+References: <FR1P15201MB203850AE2077AD45EAF0A6C491490@FR1P15201MB2038.LAMP152.PROD.OUTLOOK.COM>
+ <CANsnirXuWAhNW+Y68p9tTa1gDfaDbxaM6BcmJ3=AfoPWrY0=eA@mail.gmail.com>,
+ <d07d12f0-2a03-607e-13e4-da602544eb63@gmail.com>
+Message-ID: <FR1P15201MB2038E3EF22183EC9AD8900C291490@FR1P15201MB2038.LAMP152.PROD.OUTLOOK.COM>
+
+Obrigada, Fernando!
+
+
+Angélica Ricarte da Silva Batista
+
+Autarquia Educacional do Belo Jardim/Faculdade do Belo Jardim - AEB/FBJ
+Rodovia PE-166, Km 05 - BR, Belo Jardim - PE
+Telefone/Phone: +55 (81) 3726-1800
+
+CV<http://lattes.cnpq.br/0601801978475226>
+
+<http://lattes.cnpq.br/0601801978475226>
+
+________________________________
+De: R-br <r-br-bounces em listas.c3sl.ufpr.br> em nome de Fernando H Toledo por (R-br) <r-br em listas.c3sl.ufpr.br>
+Enviado: terça-feira, 12 de março de 2019 14:19
+Para: r-br em listas.c3sl.ufpr.br
+Cc: Fernando H Toledo
+Assunto: Re: [R-br] Simular números
+
+Veja sobre a distribuição multinomial!
+
+ > rmultinom(n = 2, size = 100, prob = rep(1/4, 4))
+
+Esse exemplo simula duas amostras que somam 100... varie as probabilidades!
+
+att,
+FH
+
+On 3/12/19 7:54 AM, Rodrigo Ângelo por (R-br) wrote:
+> Olá, Angélica
+>
+> Você tem mais alguma restrição sobre esses números? O código abaixo gera 4
+> números que somam 100 segundo uma distribuição uniforme.
+>
+> qtd_observacoes <- 10
+>
+> qtd_numeros <- 4
+>
+> df <- data.frame(col1=double(qtd_observacoes),
+>                   col2=double(qtd_observacoes),
+>                   col3=double(qtd_observacoes),
+>                   col4=double(qtd_observacoes))
+>
+> for (i in 1:qtd_observacoes) {
+>    soma = 0;
+>
+>    for(j in 1:(qtd_numeros-1)) {
+>      valor = runif(1, 0, (100-soma))
+>      df[i,j] <- valor
+>      soma = soma + valor
+>    }
+>    df[i,qtd_numeros] <- 100 - soma
+> }
+>
+>
+> Atenciosamente,
+> Rodrigo de Castro Ângelo
+>
+>
+> Em ter, 12 de mar de 2019 às 10:33, Angélica Ricarte por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Prezados, bom dia.
+>>
+>> Por gentileza, peço ajuda para simular 4 números de forma que a soma dê
+>> 100, como na tabela abaixo, por exemplo. Qual o comando e/ou pacote posso
+>> utilizar?
+>>
+>>               Comun.         Execul.        Planej.      Analis.       TOTAL
+>> A1          21,26             20,45          28,74         29,55
+>> 100
+>> A2
+>> A3
+>> A4
+>> A5
+>> A6
+>> A7
+>> A8
+>> A9
+>> A10
+>>
+>> Grata, aguardo retorno.
+>>
+>> Att.
+>>
+>> *Angélica Ricarte da Silva Batista*
+>>
+>> Autarquia Educacional do Belo Jardim/Faculdade do Belo Jardim - AEB/FBJ
+>> Rodovia PE-166, Km 05 - BR, Belo Jardim - PE
+>> Telefone/Phone: +55 (81) 3726-1800
+>>
+>> CV <http://lattes.cnpq.br/0601801978475226>
+>>
+>> <http://lattes.cnpq.br/0601801978475226>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+>
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190312/704567f8/attachment.html>
+
+From dmsilva.br em gmail.com  Tue Mar 12 21:06:53 2019
+From: dmsilva.br em gmail.com (dmsilva.br em gmail.com)
+Date: Tue, 12 Mar 2019 21:06:53 -0300
+Subject: [R-br] Adicionar barras em um mapa (ggplot2)
+In-Reply-To: <CAJDb6HBg14cAVpe_4U1H4VKn86hCg6V6VajbXVd_53h6_41Tkw@mail.gmail.com>
+References: <CAJDb6HBg14cAVpe_4U1H4VKn86hCg6V6VajbXVd_53h6_41Tkw@mail.gmail.com>
+Message-ID: <B21E88DC-B1AC-4972-BD46-6AEB148A409F@gmail.com>
+
+Você tem algum exemplo do que você está querendo plotar? Manda o exemplo que eu tento ajudar, mas a biblioteca ggplot2 tem limitações em plotar em 3D, então pode ser que as barras não fiquem esteticamente interessantes. 
+Att
+
+Daniel
+
+Sent from my iPhone
+
+> On Mar 1, 2019, at 12:27 PM, Carlos Augusto Jardim Chiarelli por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Como adicionar barras (bars) em um mapa ggplot2 (geom_polygon) no R 3.5?
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+From chimarraonoguaiba em yahoo.com.br  Thu Mar 14 17:12:22 2019
+From: chimarraonoguaiba em yahoo.com.br (lucas milanesi)
+Date: Thu, 14 Mar 2019 20:12:22 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?An=C3=A1lise_circular_-_fenologia?=
+References: <2094523908.4628104.1552594342037.ref@mail.yahoo.com>
+Message-ID: <2094523908.4628104.1552594342037@mail.yahoo.com>
+
+Necessito encontrar o ângulo médios em graus de uma análise circular, onde os meses são representados em graus e as frequências da fenofase o outro vetor....
+Alguém poderia me auxiliar numa função para executar isso?
+Att.Lucas
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190314/41bc4486/attachment.html>
+
+From sznelwar em uol.com.br  Thu Mar 14 17:59:28 2019
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Thu, 14 Mar 2019 17:59:28 -0300
+Subject: [R-br] =?utf-8?q?An=C3=A1lise_circular_-_fenologia?=
+In-Reply-To: <2094523908.4628104.1552594342037@mail.yahoo.com>
+References: <2094523908.4628104.1552594342037.ref@mail.yahoo.com>
+ <2094523908.4628104.1552594342037@mail.yahoo.com>
+Message-ID: <5c8ac0b086e15_5bec2ace4b575140147b2@a4-weasel15.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190314/a0079286/attachment.html>
+
+From marcelolaia em gmail.com  Sat Mar  2 14:26:34 2019
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Sat, 02 Mar 2019 17:26:34 -0000
+Subject: [R-br] 
+ =?iso-8859-1?q?two-way_anova_-_viola=E7=E3o_das_pressupos?=
+ =?iso-8859-1?q?i=E7=F5es?=
+In-Reply-To: <CAMHdwqNedYKXcCnZY0xMr900Z84Gndk6v=Q0Dt-c0rAUJgRx_A@mail.gmail.com>
+References: <20190302161709.GA30880@localhost>
+ <CAMHdwqNedYKXcCnZY0xMr900Z84Gndk6v=Q0Dt-c0rAUJgRx_A@mail.gmail.com>
+Message-ID: <20190302172625.GB30880@localhost>
+
+On 02/03/19 at 01:57, Gilson Geraldo Soares de Oliveira Júnior wrote:
+ 
+> Após o plot clique em algum botao, dentro da interface do R, para surgirem
+> 4 gráficos. Os dois primeiros são homocedasticidade e normalidade. Faça a
+> análise gráfica e verifique a dispersao dos pontos entorno da "reta" de
+> normalidade.
+> 
+
+Gilson,
+
+Eu fiz essa verificação (gráficos em anexo).
+
+Há três observações que estão "fora".
+
+Eu utilizei o pacote bestNormalize e ele informa que a melhora transformação
+seria Log_b(x+a)[1]. Mas, eu não queria transformar os dados só por esses três
+outliers.
+
+1. https://rdrr.io/cran/bestNormalize/man/log_x.html
+
+Uma vez que se trata de uma tese, preciso de argumentos para justificar a não
+transformação.
+
+Por outro lado, se, de fato, os dados necessitarem de transformação, terei que
+fazer. E neste caso, o output do bestNormalize informa que o melhor é
+lob_b(x+a) e o segundo melhor é Yeo-Johnson[2].
+
+2. https://rdrr.io/cran/bestNormalize/man/yeojohnson.html
+
+Qualquer sugestão será muito bem vinda!
+
+Obrigado!
+
+-- 
+Marcelo
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Captura de tela de 2019-03-02 14-06-34.png
+Tipo: image/png
+Tamanho: 48730 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/0c0b247f/attachment-0004.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Captura de tela de 2019-03-02 14-07-08.png
+Tipo: image/png
+Tamanho: 39164 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/0c0b247f/attachment-0005.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Captura de tela de 2019-03-02 14-07-30.png
+Tipo: image/png
+Tamanho: 60409 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/0c0b247f/attachment-0006.png>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Captura de tela de 2019-03-02 14-07-51.png
+Tipo: image/png
+Tamanho: 58959 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190302/0c0b247f/attachment-0007.png>
+
+From diegovieir4 em gmail.com  Fri Mar 22 22:37:18 2019
+From: diegovieir4 em gmail.com (Diego Vieira)
+Date: Fri, 22 Mar 2019 22:37:18 -0300
+Subject: [R-br] 
+	=?utf-8?q?two-way_anova_-_viola=C3=A7=C3=A3o_das_pressupo?=
+	=?utf-8?b?c2nDp8O1ZXM=?=
+In-Reply-To: <20190302172625.GB30880@localhost>
+References: <20190302161709.GA30880@localhost>
+ <CAMHdwqNedYKXcCnZY0xMr900Z84Gndk6v=Q0Dt-c0rAUJgRx_A@mail.gmail.com>
+ <20190302172625.GB30880@localhost>
+Message-ID: <CAKnQR80hJpm99GJfEEZpiZsNfoQ8yCYX0rJKXP74VRBMshWKAQ@mail.gmail.com>
+
+Observe que o gráfico de homocedasticidade possui uma tendência nítida de
+cone, característico de heterocedasticidade (os livros de estatística
+mostram essa tendência). O de normalidade me parece não apresentar
+normalidade, apenas os resíduos do meio estão concentrados, as pontas estão
+bastante descoladas. Eu optaria pela estatística não paramétrica ou glm.
+Abraço.
+
+Em sex, 22 de mar de 2019 às 18:44, Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> On 02/03/19 at 01:57, Gilson Geraldo Soares de Oliveira Júnior wrote:
+>
+> > Após o plot clique em algum botao, dentro da interface do R, para
+> surgirem
+> > 4 gráficos. Os dois primeiros são homocedasticidade e normalidade. Faça a
+> > análise gráfica e verifique a dispersao dos pontos entorno da "reta" de
+> > normalidade.
+> >
+>
+> Gilson,
+>
+> Eu fiz essa verificação (gráficos em anexo).
+>
+> Há três observações que estão "fora".
+>
+> Eu utilizei o pacote bestNormalize e ele informa que a melhora
+> transformação
+> seria Log_b(x+a)[1]. Mas, eu não queria transformar os dados só por esses
+> três
+> outliers.
+>
+> 1. https://rdrr.io/cran/bestNormalize/man/log_x.html
+>
+> Uma vez que se trata de uma tese, preciso de argumentos para justificar a
+> não
+> transformação.
+>
+> Por outro lado, se, de fato, os dados necessitarem de transformação, terei
+> que
+> fazer. E neste caso, o output do bestNormalize informa que o melhor é
+> lob_b(x+a) e o segundo melhor é Yeo-Johnson[2].
+>
+> 2. https://rdrr.io/cran/bestNormalize/man/yeojohnson.html
+>
+> Qualquer sugestão será muito bem vinda!
+>
+> Obrigado!
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+
+-- 
+Diego dos Santos Vieira Engenheiro Florestal
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190322/266628a9/attachment.html>
+
+From diegovieir4 em gmail.com  Fri Mar 22 22:41:14 2019
+From: diegovieir4 em gmail.com (Diego Vieira)
+Date: Fri, 22 Mar 2019 22:41:14 -0300
+Subject: [R-br] 
+	=?utf-8?q?two-way_anova_-_viola=C3=A7=C3=A3o_das_pressupo?=
+	=?utf-8?b?c2nDp8O1ZXM=?=
+In-Reply-To: <CAKnQR80hJpm99GJfEEZpiZsNfoQ8yCYX0rJKXP74VRBMshWKAQ@mail.gmail.com>
+References: <20190302161709.GA30880@localhost>
+ <CAMHdwqNedYKXcCnZY0xMr900Z84Gndk6v=Q0Dt-c0rAUJgRx_A@mail.gmail.com>
+ <20190302172625.GB30880@localhost>
+ <CAKnQR80hJpm99GJfEEZpiZsNfoQ8yCYX0rJKXP74VRBMshWKAQ@mail.gmail.com>
+Message-ID: <CAKnQR82ZkNiCCWqtWZam77HtS1T+r8HDg4EJAnB1VyBoCJvMWw@mail.gmail.com>
+
+Eu transformaria. Usaria a transformação Box Cox que resolve a maioria dos
+casos em que tive trabalhando.
+
+Em sex, 22 de mar de 2019 às 22:37, Diego Vieira <diegovieir4 em gmail.com>
+escreveu:
+
+> Observe que o gráfico de homocedasticidade possui uma tendência nítida de
+> cone, característico de heterocedasticidade (os livros de estatística
+> mostram essa tendência). O de normalidade me parece não apresentar
+> normalidade, apenas os resíduos do meio estão concentrados, as pontas estão
+> bastante descoladas. Eu optaria pela estatística não paramétrica ou glm.
+> Abraço.
+>
+> Em sex, 22 de mar de 2019 às 18:44, Marcelo Laia por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> On 02/03/19 at 01:57, Gilson Geraldo Soares de Oliveira Júnior wrote:
+>>
+>> > Após o plot clique em algum botao, dentro da interface do R, para
+>> surgirem
+>> > 4 gráficos. Os dois primeiros são homocedasticidade e normalidade. Faça
+>> a
+>> > análise gráfica e verifique a dispersao dos pontos entorno da "reta" de
+>> > normalidade.
+>> >
+>>
+>> Gilson,
+>>
+>> Eu fiz essa verificação (gráficos em anexo).
+>>
+>> Há três observações que estão "fora".
+>>
+>> Eu utilizei o pacote bestNormalize e ele informa que a melhora
+>> transformação
+>> seria Log_b(x+a)[1]. Mas, eu não queria transformar os dados só por esses
+>> três
+>> outliers.
+>>
+>> 1. https://rdrr.io/cran/bestNormalize/man/log_x.html
+>>
+>> Uma vez que se trata de uma tese, preciso de argumentos para justificar a
+>> não
+>> transformação.
+>>
+>> Por outro lado, se, de fato, os dados necessitarem de transformação,
+>> terei que
+>> fazer. E neste caso, o output do bestNormalize informa que o melhor é
+>> lob_b(x+a) e o segundo melhor é Yeo-Johnson[2].
+>>
+>> 2. https://rdrr.io/cran/bestNormalize/man/yeojohnson.html
+>>
+>> Qualquer sugestão será muito bem vinda!
+>>
+>> Obrigado!
+>>
+>> --
+>> Marcelo
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+> --
+> Diego dos Santos Vieira Engenheiro Florestal
+>
+-- 
+Diego dos Santos Vieira Engenheiro Florestal
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190322/d0bb7426/attachment.html>
+
+From marcelolaia em gmail.com  Thu Mar 28 12:18:23 2019
+From: marcelolaia em gmail.com (Marcelo Laia)
+Date: Thu, 28 Mar 2019 12:18:23 -0300
+Subject: [R-br] 
+ =?iso-8859-1?q?two-way_anova_-_viola=E7=E3o_das_pressupos?=
+ =?iso-8859-1?q?i=E7=F5es?=
+In-Reply-To: <CA+3Y+9oK2s1Lcqgxbasw80pFcDAy_ou=j_QdxBJHfvXid--jbQ@mail.gmail.com>
+References: <20190302161709.GA30880@localhost>
+ <CA+3Y+9oK2s1Lcqgxbasw80pFcDAy_ou=j_QdxBJHfvXid--jbQ@mail.gmail.com>
+Message-ID: <20190328151823.GE2964@localhost>
+
+Na minha busca por informação (para o meu conhecimento, mesmo) a respeito do
+tema, recebi a inestimável ajuda de vocês e também encontrei algumas coisas na
+internet.
+
+Daquilo que encontrei na net, eis um artigo que achei interessante:
+
+https://www.r-bloggers.com/normality-tests-don%E2%80%99t-do-what-you-think-they-do/
+
+ou
+
+https://wp.me/pMm6L-fpD
+
+Abraços a todos.
+
+Laia ML
+
+
+
+> > Colegas,
+> >
+> > Estamos com um conjunto de dados que viola pressuposições da ANOVA,
+> > principalmente a normalidade. Eu já li, por diversas vezes, que essa
+> > violação
+> > pode não ser tão danosa assim, devido a robustez do teste.
+> >
+> > Por favor, tire um tempo para ver os resultados e depois peço uma ajuda.
+> >
+> > Genotipo e Isolado são fatores
+> > Area está em centímetros quadrados
+> >
+> > > leveneTest(Area ~ Genotipo*Isolado, data = cerato.desc)
+> > Levene's Test for Homogeneity of Variance (center = median)
+> >        Df F value    Pr(>F)
+> > group  41  3.4755 4.718e-08 ***
+> >       126
+> > ---
+> > Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> > >
+> >
+> > cat("Normality p-values by Factor Genotipo: ")
+> > for (i in unique(factor(cerato.desc$Genotipo))){
+> >   cat(shapiro.test(cerato.desc[cerato.desc$Genotipo==i, ]$Area)$p.value,"
+> > ")
+> > }
+> > 7.074459e-10  3.200422e-06
+> >
+> > #Shapiro-Wilk normality tests by Isolado
+> > for (i in unique(factor(cerato.desc$Isolado))){
+> >   cat(shapiro.test(cerato.desc[cerato.desc$Isolado==i, ]$Area)$p.value," ")
+> > }
+> > 0.09534117  0.4006495  0.6065291  0.2093362  0.6138097  0.5604402
+> > 0.1302976  0.3135567  0.905537  0.7294285  0.0966383  0.1512716  0.8469947
+> > 0.1226855  0.2713435  0.9695489  0.2747097  0.5476302  0.0008750702
+> > 0.03693436  0.4197769
+> >
+> > > bartlett.test(Area~Genotipo,data = cerato.desc )
+> >
+> >         Bartlett test of homogeneity of variances
+> >
+> > data:  Area by Genotipo
+> > Bartlett's K-squared = 19.769, df = 1, p-value = 8.738e-06
+> >
+> > > bartlett.test(Area~Isolado,data = cerato.desc )
+> >
+> >         Bartlett test of homogeneity of variances
+> >
+> > data:  Area by Isolado
+> > Bartlett's K-squared = 171.26, df = 20, p-value < 2.2e-16
+> >
+> > A pergunta é: mesmo com esses resultados eu poderia afirmar que o teste,
+> > neste
+> > caso, será robusto o suficiente para essas violações?
+> >
+> > Obrigado!
+> >
+> > --
+> > Marcelo
+
+-- 
+Marcelo
+
+From cesar.rabak em gmail.com  Thu Mar 28 16:26:13 2019
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 28 Mar 2019 16:26:13 -0300
+Subject: [R-br] 
+	=?utf-8?q?two-way_anova_-_viola=C3=A7=C3=A3o_das_pressupo?=
+	=?utf-8?b?c2nDp8O1ZXM=?=
+In-Reply-To: <20190328151823.GE2964@localhost>
+References: <20190302161709.GA30880@localhost>
+ <CA+3Y+9oK2s1Lcqgxbasw80pFcDAy_ou=j_QdxBJHfvXid--jbQ@mail.gmail.com>
+ <20190328151823.GE2964@localhost>
+Message-ID: <CAKrF98nQUb+N+JRWy1_RfYBscZCijdV72vujiZnf5O9kG2g-PQ@mail.gmail.com>
+
+Embora chegando atrasado a esta discussão, gostaria de contribuir com
+algumas informações.
+
+Primeiramente, uma questão de conceito: há uma certa confusão na
+literatura, especialmente quando ela é ligada a algum manual de SW recente
+a respeito da "premissa de normalidade" numa ANOVA.
+
+Não é distribuição dos *dados* que precisa ser Gaussiana, mas sim a
+distribuição dos resíduos após a ANOVA (que na verdade é um elegante teste
+numa regressão linear onde a hipótese é que certos "fatores" mudam a média
+da regressão.
+
+Esse *equívoco* ele é perpetrado e perpetuado por "helps' e manuais de SW
+que seus fabricantes para ganhar na guerra das *features* findam por
+transformá-los em "boas práticas" ou exame obrigatório (quando os indicam
+para os *dados*).
+
+Um "contra exemplo" poderia ser ilustrativo.  Um experimentador resolve
+testar uma resposta a um certo estímulo com três tratamentos, e por
+conveniência, custo ou mesmo necessidade, a variável independente precisa
+ser uma medida cuja distribuição é o conjunto de {1,2,3,...,10} unidades de
+medida, e a resposta o conjunto de dez respostas, para três fatores A, B, C.
+
+Ora, como a ANOVA não passa de um uma regressão linear já com resultados
+formatados para responder a questão a respeito dos tratamentos, *por
+premissa*, os vetores de respostas serão números proporcionais ao vetor da
+VI e tampouco nenhum dos três teria distribuição gaussiana (a soma pode até
+se aproximar, embora para trinta casos ainda esteja na "beirada", [CLT,
+G-K, etc.]).
+
+Mas como a matemática é exata e os instrumentos de medida não, nosso
+antepassado notou que tanto as medidas da VI como a resposta "flutuam" em
+volta de um valor real, que se for somado subtraído (se fosse
+conhecido 😎)  geraria uns desvios cuja probalidade de serem grandes
+diminui quanto maior o são e a relação funcional dessa probabilidade tem o
+formato do sino (a curva que hoje o homenageamos dando-lhe o nome de Curva
+de Gauss).
+
+Portanto no nosso costume de análise a gente "faz de conta" que as medidas
+da VI estão "certas" e que o desvio é uma distribuição de Gauss com média
+zero e desvio padrão que é consequência do desvio padrão da medida vezes o
+coeficiente angular da relação funcional (premissa de ser linear na ANOVA)
+somado ao desvio padrão das medidas das respostas.
+
+ESSA distribuição de valores os *resíduos* que precisam ser normais
+(gaussianos).
+
+Para isto não virar um tratado, estou eludindo discussões sobre a
+distribuição mais conveniente dos dados das variáveis e outros aspectos que
+entram em 'desenho' (projeto pois é trad. da palavra inglesa *design*)  de
+experimentos, etc.
+
+Além disso, para não colocar ene referências bibliográficas, coloco aqui o
+saber de mestres como Thomas Lumley (consultor da OMS) e seus coautores THE
+IMPORTANCE OF THE NORMALITY ASSUMPTION IN LARGE PUBLIC HEALTH DATA SETS
+<https://www.annualreviews.org/doi/pdf/10.1146/annurev.publhealth.23.100901.140546>
+.
+
+Para os que não tenham tempo de ver o documento, submeto a vocês um resumo
+dos pontos importantes:
+
+   1. É bastante disseminada a crença que o teste *t* e a regressão linear
+   são válidos apenas para resultados (desfechos) de distribuição normal.
+   2. Essa ideia está errada.
+   3. Esses testes (e acrescento eu por tabela ANOVA) são adequados para
+   determinar se as diferenças têm significação estatística.
+   4. O xis da questão não está nas distribuições, mas sim a detecção e
+   estimação das diferenças nas médias dos desfechos responde à questão
+   científica subjacente.
+
+HTH
+--
+Cesar Rabak
+
+
+On Thu, Mar 28, 2019 at 12:18 PM Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Na minha busca por informação (para o meu conhecimento, mesmo) a respeito
+> do
+> tema, recebi a inestimável ajuda de vocês e também encontrei algumas
+> coisas na
+> internet.
+>
+> Daquilo que encontrei na net, eis um artigo que achei interessante:
+>
+>
+> https://www.r-bloggers.com/normality-tests-don%E2%80%99t-do-what-you-think-they-do/
+>
+> ou
+>
+> https://wp.me/pMm6L-fpD
+>
+> Abraços a todos.
+>
+> Laia ML
+>
+>
+>
+> > > Colegas,
+> > >
+> > > Estamos com um conjunto de dados que viola pressuposições da ANOVA,
+> > > principalmente a normalidade. Eu já li, por diversas vezes, que essa
+> > > violação
+> > > pode não ser tão danosa assim, devido a robustez do teste.
+> > >
+> > > Por favor, tire um tempo para ver os resultados e depois peço uma
+> ajuda.
+> > >
+> > > Genotipo e Isolado são fatores
+> > > Area está em centímetros quadrados
+> > >
+> > > > leveneTest(Area ~ Genotipo*Isolado, data = cerato.desc)
+> > > Levene's Test for Homogeneity of Variance (center = median)
+> > >        Df F value    Pr(>F)
+> > > group  41  3.4755 4.718e-08 ***
+> > >       126
+> > > ---
+> > > Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> > > >
+> > >
+> > > cat("Normality p-values by Factor Genotipo: ")
+> > > for (i in unique(factor(cerato.desc$Genotipo))){
+> > >   cat(shapiro.test(cerato.desc[cerato.desc$Genotipo==i,
+> ]$Area)$p.value,"
+> > > ")
+> > > }
+> > > 7.074459e-10  3.200422e-06
+> > >
+> > > #Shapiro-Wilk normality tests by Isolado
+> > > for (i in unique(factor(cerato.desc$Isolado))){
+> > >   cat(shapiro.test(cerato.desc[cerato.desc$Isolado==i,
+> ]$Area)$p.value," ")
+> > > }
+> > > 0.09534117  0.4006495  0.6065291  0.2093362  0.6138097  0.5604402
+> > > 0.1302976  0.3135567  0.905537  0.7294285  0.0966383  0.1512716
+> 0.8469947
+> > > 0.1226855  0.2713435  0.9695489  0.2747097  0.5476302  0.0008750702
+> > > 0.03693436  0.4197769
+> > >
+> > > > bartlett.test(Area~Genotipo,data = cerato.desc )
+> > >
+> > >         Bartlett test of homogeneity of variances
+> > >
+> > > data:  Area by Genotipo
+> > > Bartlett's K-squared = 19.769, df = 1, p-value = 8.738e-06
+> > >
+> > > > bartlett.test(Area~Isolado,data = cerato.desc )
+> > >
+> > >         Bartlett test of homogeneity of variances
+> > >
+> > > data:  Area by Isolado
+> > > Bartlett's K-squared = 171.26, df = 20, p-value < 2.2e-16
+> > >
+> > > A pergunta é: mesmo com esses resultados eu poderia afirmar que o
+> teste,
+> > > neste
+> > > caso, será robusto o suficiente para essas violações?
+> > >
+> > > Obrigado!
+> > >
+> > > --
+> > > Marcelo
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190328/5ea22081/attachment.html>
+
+From paulomesquita7 em gmail.com  Sun Mar 31 15:20:45 2019
+From: paulomesquita7 em gmail.com (Paulo Eduardo de Mesquita)
+Date: Sun, 31 Mar 2019 15:20:45 -0300
+Subject: [R-br] =?utf-8?q?Redistribui=C3=A7=C3=A3o_das_contagens_de_uma_es?=
+	=?utf-8?q?trutura_de_dados?=
+Message-ID: <CABODYa729SrqoJHUOv9oTC7dS8W++fdRPCt=YzZXr9NtZx+b_w@mail.gmail.com>
+
+Prezado(a)s Colegas,
+
+Peço a vossa ajuda para encontrar solução para o seguinte problema:
+
+Eu tenho uma estrutura de dados do tipo tabela dinâmica cujos nomes de
+colunas podem ser "simples" ou "combinações separadas por vírgulas" (ver
+código anexo).
+
+As colunas com nomes combinados são construídas através da "concatenação"
+dos nomes de colunas simples.
+
+As colunas com nomes combinados assumem formas imprevisíveis e ocorrem
+aleatoriamente conforme a base de dados que lhe dá origem vai crescendo.
+
+Eu preciso redistribuir as contagens contidas nas colunas com nomes
+combinados para colunas de nomes simples, de modo que se, em uma linha
+qualquer da minha tabela de origem, houver uma coluna AB com valor 3, na
+minha tabela ajustada, o valor 3 será somado uma vez ao que já havia na
+mesma linha correspondente das colunas A e B. O exemplo que segue anexo,
+imagino eu, facilita a compreensão do problema.
+
+Muito obrigado pela atenção,
+-- 
+Paulo Eduardo de Mesquita
+Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+Paulista Presidente Prudente - São Paulo - Brasil
+telefone: 5518 97718261
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190331/8984a7ae/attachment.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: exemplo.R
+Tipo: application/octet-stream
+Tamanho: 630 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190331/8984a7ae/attachment.obj>
+
+From viniciusbritor em gmail.com  Sun Mar 31 15:29:51 2019
+From: viniciusbritor em gmail.com (Vinicius Brito Rocha)
+Date: Sun, 31 Mar 2019 15:29:51 -0300
+Subject: [R-br] 
+	=?utf-8?q?Redistribui=C3=A7=C3=A3o_das_contagens_de_uma_e?=
+	=?utf-8?q?strutura_de_dados?=
+In-Reply-To: <CABODYa729SrqoJHUOv9oTC7dS8W++fdRPCt=YzZXr9NtZx+b_w@mail.gmail.com>
+References: <CABODYa729SrqoJHUOv9oTC7dS8W++fdRPCt=YzZXr9NtZx+b_w@mail.gmail.com>
+Message-ID: <CAJSzTeeASw8Qjk10ny5T43YQ6s8dOgSBULg2kFgmn66rpiSmUQ@mail.gmail.com>
+
+Paulo,
+
+Confesso que fiquei confuso.
+Vou tomar a liberdade de perguntar exatamente o q vc pretende resolver?
+Pois vc trouxe a dúvida sobre a execução. De repente existem outras saídas
+para o seu problema original.
+Apenas seguindo o princípio da parcimônia.
+Grande abraço.
+
+
+Em dom, 31 de mar de 2019 15:21, Paulo Eduardo de Mesquita por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezado(a)s Colegas,
+>
+> Peço a vossa ajuda para encontrar solução para o seguinte problema:
+>
+> Eu tenho uma estrutura de dados do tipo tabela dinâmica cujos nomes de
+> colunas podem ser "simples" ou "combinações separadas por vírgulas" (ver
+> código anexo).
+>
+> As colunas com nomes combinados são construídas através da "concatenação"
+> dos nomes de colunas simples.
+>
+> As colunas com nomes combinados assumem formas imprevisíveis e ocorrem
+> aleatoriamente conforme a base de dados que lhe dá origem vai crescendo.
+>
+> Eu preciso redistribuir as contagens contidas nas colunas com nomes
+> combinados para colunas de nomes simples, de modo que se, em uma linha
+> qualquer da minha tabela de origem, houver uma coluna AB com valor 3, na
+> minha tabela ajustada, o valor 3 será somado uma vez ao que já havia na
+> mesma linha correspondente das colunas A e B. O exemplo que segue anexo,
+> imagino eu, facilita a compreensão do problema.
+>
+> Muito obrigado pela atenção,
+> --
+> Paulo Eduardo de Mesquita
+> Disciplina de Infectologia - Faculdade de Medicina  Universidade do Oeste
+> Paulista Presidente Prudente - São Paulo - Brasil
+> telefone: 5518 97718261
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190331/63f6d736/attachment.html>
+
+From rodock em gmail.com  Mon Mar 25 10:04:40 2019
+From: rodock em gmail.com (Rodrigo Campos)
+Date: Mon, 25 Mar 2019 13:04:40 -0000
+Subject: [R-br] 
+	=?utf-8?q?two-way_anova_-_viola=C3=A7=C3=A3o_das_pressupo?=
+	=?utf-8?b?c2nDp8O1ZXM=?=
+In-Reply-To: <20190302161709.GA30880@localhost>
+References: <20190302161709.GA30880@localhost>
+Message-ID: <CA+3Y+9oK2s1Lcqgxbasw80pFcDAy_ou=j_QdxBJHfvXid--jbQ@mail.gmail.com>
+
+Prezado Marcelo,
+Segue artigo que pode lhe ser útil quanto à suposição de normalidade.
+Abraço,
+Rodrigo
+
+
+On Sat, Mar 2, 2019 at 1:17 PM Marcelo Laia por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Colegas,
+>
+> Estamos com um conjunto de dados que viola pressuposições da ANOVA,
+> principalmente a normalidade. Eu já li, por diversas vezes, que essa
+> violação
+> pode não ser tão danosa assim, devido a robustez do teste.
+>
+> Por favor, tire um tempo para ver os resultados e depois peço uma ajuda.
+>
+> Genotipo e Isolado são fatores
+> Area está em centímetros quadrados
+>
+> > leveneTest(Area ~ Genotipo*Isolado, data = cerato.desc)
+> Levene's Test for Homogeneity of Variance (center = median)
+>        Df F value    Pr(>F)
+> group  41  3.4755 4.718e-08 ***
+>       126
+> ---
+> Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> >
+>
+> cat("Normality p-values by Factor Genotipo: ")
+> for (i in unique(factor(cerato.desc$Genotipo))){
+>   cat(shapiro.test(cerato.desc[cerato.desc$Genotipo==i, ]$Area)$p.value,"
+> ")
+> }
+> 7.074459e-10  3.200422e-06
+>
+> #Shapiro-Wilk normality tests by Isolado
+> for (i in unique(factor(cerato.desc$Isolado))){
+>   cat(shapiro.test(cerato.desc[cerato.desc$Isolado==i, ]$Area)$p.value," ")
+> }
+> 0.09534117  0.4006495  0.6065291  0.2093362  0.6138097  0.5604402
+> 0.1302976  0.3135567  0.905537  0.7294285  0.0966383  0.1512716  0.8469947
+> 0.1226855  0.2713435  0.9695489  0.2747097  0.5476302  0.0008750702
+> 0.03693436  0.4197769
+>
+> > bartlett.test(Area~Genotipo,data = cerato.desc )
+>
+>         Bartlett test of homogeneity of variances
+>
+> data:  Area by Genotipo
+> Bartlett's K-squared = 19.769, df = 1, p-value = 8.738e-06
+>
+> > bartlett.test(Area~Isolado,data = cerato.desc )
+>
+>         Bartlett test of homogeneity of variances
+>
+> data:  Area by Isolado
+> Bartlett's K-squared = 171.26, df = 20, p-value < 2.2e-16
+>
+> A pergunta é: mesmo com esses resultados eu poderia afirmar que o teste,
+> neste
+> caso, será robusto o suficiente para essas violações?
+>
+> Obrigado!
+>
+> --
+> Marcelo
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+
+
+
+-- 
+Rodrigo Campos
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190325/6555c776/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um anexo não-texto foi limpo...
+Nome: Normality of raw dara. the most widespread myth in statistics.pdf
+Tipo: application/pdf
+Tamanho: 538504 bytes
+Descrição: não disponível
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20190325/6555c776/attachment-0001.pdf>
+

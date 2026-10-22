@@ -1,0 +1,2765 @@
+From diogojose21 em yahoo.com.br  Wed Aug  5 14:22:34 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Wed, 5 Aug 2020 17:22:34 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Diferen=C3=A7a_de_todos_os_valores?=
+References: <604655508.407518.1596648154941.ref@mail.yahoo.com>
+Message-ID: <604655508.407518.1596648154941@mail.yahoo.com>
+
+Boa tarde a todos. Seja por exemplo o seguinte vetor:
+x=(19,23,27,29)
+É possível se obter no R um vetor com TODAS as diferenças absolutas entre TODOS os pares de valores combinados de um vetor? Ou seja:
+vetor=(|19-23|,|19-27|,|19-29|,|23-27|,|23-29|,|27-29|)
+Obrigado por qualquer ajuda!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200805/78c52c9d/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Aug  5 14:53:33 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 5 Aug 2020 14:53:33 -0300
+Subject: [R-br] =?utf-8?q?Diferen=C3=A7a_de_todos_os_valores?=
+In-Reply-To: <604655508.407518.1596648154941@mail.yahoo.com>
+References: <604655508.407518.1596648154941.ref@mail.yahoo.com>
+ <604655508.407518.1596648154941@mail.yahoo.com>
+Message-ID: <CAKrF98kDORSyb+OG67EksWyw4u1NW4U3msbh_ac2s63GdCub6A@mail.gmail.com>
+
+Diogo,
+
+Na comunidade *R* temos um ditado que diz mais ou menos o seguinte
+(tradução livre deste escrivinhador) : « No *R* a pergunta nunca é *se* mas
+sim como *como* algo pode ser feito.»
+
+Pelo teor da sua pergunta você não domina os rudimentos da linguagem R (a
+minha evidência é o jeito como escreves a definição do vetor exemplo e o
+resultado desejado).
+
+Você já consultou um tutorial sobre R? Qual{is} abordagem{ns} você já
+considerou?
+
+--
+Cesar Rabak
+
+
+On Wed, Aug 5, 2020 at 2:25 PM Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde a todos. Seja por exemplo o seguinte vetor:
+>
+> x=(19,23,27,29)
+>
+> É possível se obter no R um vetor com TODAS as diferenças absolutas entre
+> TODOS os pares de valores combinados de um vetor? Ou seja:
+>
+> vetor=(|19-23|,|19-27|,|19-29|,|23-27|,|23-29|,|27-29|)
+>
+> Obrigado por qualquer ajuda!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200805/82f14905/attachment.html>
+
+From nandodesouza em gmail.com  Wed Aug  5 15:00:54 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 5 Aug 2020 15:00:54 -0300
+Subject: [R-br] =?utf-8?Q?Diferen=C3=A7a_?=de todos os valores
+In-Reply-To: <CAKrF98kDORSyb+OG67EksWyw4u1NW4U3msbh_ac2s63GdCub6A@mail.gmail.com>
+References: <CAKrF98kDORSyb+OG67EksWyw4u1NW4U3msbh_ac2s63GdCub6A@mail.gmail.com>
+Message-ID: <49830A88-7CDA-4916-AE8F-838083BE3E0D@getmailspring.com>
+
+Uma possível solução
+
+vetor<-c(19,23,27,29)
+myf<-function(x){
+
+aux<-c()
+result<-vector(mode="list")
+
+for(i in 1:length(x)-1){
+
+for(j in (i+1):length(x)){
+
+aux[j]<-x[i]-x[j]
+result[[j]]<-aux
+}
+
+}
+return(na.omit(unlist(result)))
+}
+
+myf(vetor)
+On Aug 5 2020, at 2:53 pm, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> Diogo,
+>
+> Na comunidade R temos um ditado que diz mais ou menos o seguinte (tradução livre deste escrivinhador) : « No R a pergunta nunca é se mas sim como como algo pode ser feito.»
+>
+> Pelo teor da sua pergunta você não domina os rudimentos da linguagem R (a minha evidência é o jeito como escreves a definição do vetor exemplo e o resultado desejado).
+>
+> Você já consultou um tutorial sobre R? Qual{is} abordagem{ns} você já considerou?
+>
+> --
+> Cesar Rabak
+>
+>
+> On Wed, Aug 5, 2020 at 2:25 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > Boa tarde a todos. Seja por exemplo o seguinte vetor:
+> >
+> > x=(19,23,27,29)
+> >
+> > É possível se obter no R um vetor com TODAS as diferenças absolutas entre TODOS os pares de valores combinados de um vetor? Ou seja:
+> >
+> > vetor=(|19-23|,|19-27|,|19-29|,|23-27|,|23-29|,|27-29|)
+> >
+> > Obrigado por qualquer ajuda!!!
+> >
+> > Diogo Jerônimo
+> > Bacharel em Ciências Estatísticas - ENCE/IBGE
+> > Mestre em Metrologia - PUC-Rio/PósMQI
+> > CONRE: 8514 - SÉRIE A
+> > http://lattes.cnpq.br/8996149312896520
+> >
+> >
+> >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200805/198bc445/attachment.html>
+
+From nandodesouza em gmail.com  Wed Aug  5 15:05:35 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Wed, 5 Aug 2020 15:05:35 -0300
+Subject: [R-br] =?utf-8?Q?Diferen=C3=A7a_?=de todos os valores
+In-Reply-To: <49830A88-7CDA-4916-AE8F-838083BE3E0D@getmailspring.com>
+References: <49830A88-7CDA-4916-AE8F-838083BE3E0D@getmailspring.com>
+Message-ID: <91621221-F8EE-4B39-B431-0DEBCCCA2DD8@getmailspring.com>
+
+Uma pequena correção para que retorne valores absolutos
+
+vetor<-c(19,23,27,29)
+myf<-function(x){
+
+aux<-c()
+result<-vector(mode="list")
+
+for(i in 1:length(x)-1){
+
+for(j in (i+1):length(x)){
+
+aux[j]<-x[i]-x[j]
+result[[j]]<-aux
+}
+
+}
+
+return(abs(na.omit(unlist(result))))
+}
+myf(vetor)
+
+On Aug 5 2020, at 3:00 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+> Uma possível solução
+>
+> vetor<-c(19,23,27,29)
+> myf<-function(x){
+>
+> aux<-c()
+> result<-vector(mode="list")
+>
+> for(i in 1:length(x)-1){
+>
+> for(j in (i+1):length(x)){
+>
+> aux[j]<-x[i]-x[j]
+> result[[j]]<-aux
+> }
+>
+>
+>
+> }
+> return(na.omit(unlist(result)))
+> }
+>
+> myf(vetor)
+> On Aug 5 2020, at 2:53 pm, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> > Diogo,
+> >
+> > Na comunidade R temos um ditado que diz mais ou menos o seguinte (tradução livre deste escrivinhador) : « No R a pergunta nunca é se mas sim como como algo pode ser feito.»
+> >
+> > Pelo teor da sua pergunta você não domina os rudimentos da linguagem R (a minha evidência é o jeito como escreves a definição do vetor exemplo e o resultado desejado).
+> >
+> > Você já consultou um tutorial sobre R? Qual{is} abordagem{ns} você já considerou?
+> >
+> > --
+> > Cesar Rabak
+> >
+> >
+> > On Wed, Aug 5, 2020 at 2:25 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br (mailto:r-br em listas.c3sl.ufpr.br)> wrote:
+> > > Boa tarde a todos. Seja por exemplo o seguinte vetor:
+> > >
+> > > x=(19,23,27,29)
+> > >
+> > > É possível se obter no R um vetor com TODAS as diferenças absolutas entre TODOS os pares de valores combinados de um vetor? Ou seja:
+> > >
+> > > vetor=(|19-23|,|19-27|,|19-29|,|23-27|,|23-29|,|27-29|)
+> > >
+> > > Obrigado por qualquer ajuda!!!
+> > >
+> > > Diogo Jerônimo
+> > > Bacharel em Ciências Estatísticas - ENCE/IBGE
+> > > Mestre em Metrologia - PUC-Rio/PósMQI
+> > > CONRE: 8514 - SÉRIE A
+> > > http://lattes.cnpq.br/8996149312896520
+> > >
+> > >
+> > >
+> > >
+> > >
+> > > _______________________________________________
+> > > R-br mailing list
+> > > R-br em listas.c3sl.ufpr.br (mailto:R-br em listas.c3sl.ufpr.br)
+> > > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+> >
+> >
+> >
+> > _______________________________________________
+> > R-br mailing list
+> > R-br em listas.c3sl.ufpr.br
+> > https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> > Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+>
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200805/fb4cf0a0/attachment.html>
+
+From diogojose21 em yahoo.com.br  Wed Aug  5 15:23:17 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Wed, 5 Aug 2020 18:23:17 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Diferen=C3=A7a_de_todos_os_valores?=
+In-Reply-To: <CAKrF98kDORSyb+OG67EksWyw4u1NW4U3msbh_ac2s63GdCub6A@mail.gmail.com>
+References: <604655508.407518.1596648154941.ref@mail.yahoo.com>
+ <604655508.407518.1596648154941@mail.yahoo.com>
+ <CAKrF98kDORSyb+OG67EksWyw4u1NW4U3msbh_ac2s63GdCub6A@mail.gmail.com>
+Message-ID: <1362458002.430541.1596651797700@mail.yahoo.com>
+
+Obrigado pela info Cesar, melhor terminologia na próxima.
+Só trouxe para cá depois de quebrar cabeça um dia inteiro. 
+Obrigado  
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+ 
+
+    Em quarta-feira, 5 de agosto de 2020 14:53:45 BRT, Cesar Rabak <cesar.rabak em gmail.com> escreveu:  
+ 
+ Diogo,
+Na comunidade R temos um ditado que diz mais ou menos o seguinte (tradução livre deste escrivinhador) : « No R a pergunta nunca é se mas sim como como algo pode ser feito.»
+Pelo teor da sua pergunta você não domina os rudimentos da linguagem R (a minha evidência é o jeito como escreves a definição do vetor exemplo e o resultado desejado).
+Você já consultou um tutorial sobre R? Qual{is} abordagem{ns} você já considerou?
+--Cesar Rabak
+
+On Wed, Aug 5, 2020 at 2:25 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+Boa tarde a todos. Seja por exemplo o seguinte vetor:
+x=(19,23,27,29)
+É possível se obter no R um vetor com TODAS as diferenças absolutas entre TODOS os pares de valores combinados de um vetor? Ou seja:
+vetor=(|19-23|,|19-27|,|19-29|,|23-27|,|23-29|,|27-29|)
+Obrigado por qualquer ajuda!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200805/72084409/attachment.html>
+
+From diogojose21 em yahoo.com.br  Wed Aug  5 15:25:59 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Wed, 5 Aug 2020 18:25:59 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Diferen=C3=A7a_de_todos_os_valores?=
+In-Reply-To: <91621221-F8EE-4B39-B431-0DEBCCCA2DD8@getmailspring.com>
+References: <49830A88-7CDA-4916-AE8F-838083BE3E0D@getmailspring.com>
+ <91621221-F8EE-4B39-B431-0DEBCCCA2DD8@getmailspring.com>
+Message-ID: <525626460.446686.1596651959485@mail.yahoo.com>
+
+Obrigado pela ideia Fernando, vou testar aqui. Muitíssimo grato!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+ 
+
+    Em quarta-feira, 5 de agosto de 2020 15:05:41 BRT, Fernando Souza <nandodesouza em gmail.com> escreveu:  
+ 
+ Uma pequena correção para que retorne valores absolutos
+vetor<-c(19,23,27,29)
+myf<-function(x){        aux<-c()    result<-vector(mode="list")        for(i in 1:length(x)-1){                for(j in (i+1):length(x)){                        aux[j]<-x[i]-x[j]            result[[j]]<-aux        }                            }        return(abs(na.omit(unlist(result))))}myf(vetor)
+
+On Aug 5 2020, at 3:00 pm, Fernando Souza <nandodesouza em gmail.com> wrote:
+Uma possível solução
+vetor<-c(19,23,27,29)
+myf<-function(x){       aux<-c()    result<-vector(mode="list")       for(i in 1:length(x)-1){               for(j in (i+1):length(x)){                       aux[j]<-x[i]-x[j]            result[[j]]<-aux        }                         }    return(na.omit(unlist(result)))}
+myf(vetor)
+On Aug 5 2020, at 2:53 pm, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+Diogo,
+Na comunidade R temos um ditado que diz mais ou menos o seguinte (tradução livre deste escrivinhador) : « No R a pergunta nunca é se mas sim como como algo pode ser feito.»
+Pelo teor da sua pergunta você não domina os rudimentos da linguagem R (a minha evidência é o jeito como escreves a definição do vetor exemplo e o resultado desejado).
+Você já consultou um tutorial sobre R? Qual{is} abordagem{ns} você já considerou?
+--Cesar Rabak
+
+On Wed, Aug 5, 2020 at 2:25 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+Boa tarde a todos. Seja por exemplo o seguinte vetor:
+x=(19,23,27,29)
+É possível se obter no R um vetor com TODAS as diferenças absolutas entre TODOS os pares de valores combinados de um vetor? Ou seja:
+vetor=(|19-23|,|19-27|,|19-29|,|23-27|,|23-29|,|27-29|)
+Obrigado por qualquer ajuda!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520_______________________________________________R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-brLeia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+_______________________________________________R-br mailing listR-br em listas.c3sl.ufpr.brhttps://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-brLeia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200805/5804a8ac/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Aug  5 15:42:45 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 5 Aug 2020 15:42:45 -0300
+Subject: [R-br] =?utf-8?q?Diferen=C3=A7a_de_todos_os_valores?=
+In-Reply-To: <1362458002.430541.1596651797700@mail.yahoo.com>
+References: <604655508.407518.1596648154941.ref@mail.yahoo.com>
+ <604655508.407518.1596648154941@mail.yahoo.com>
+ <CAKrF98kDORSyb+OG67EksWyw4u1NW4U3msbh_ac2s63GdCub6A@mail.gmail.com>
+ <1362458002.430541.1596651797700@mail.yahoo.com>
+Message-ID: <CAKrF98kyyb8zW_pt8_Ea89UVbwufgZNKmOsTLHvTLbcGgiT5mA@mail.gmail.com>
+
+OK Jerônimo...
+
+Para mostrar como o ditado dos erristas é apropriado veja esta solução¹:
+
+> res<-NULL
+>  vetor<-c(19,23,27,29)
+>  l <- length(vetor)
+> for (i in 1:l)
+{ifelse(length(vetor)>1,res<-c(res,abs(car(vetor)-cdr(vetor))),print(res));
+vetor <- cdr(vetor)}
+[1]  4  8 10  4  6  2
+
+Numa implementação minha, só para ter o resultado, as três primeiras linhas
+seriam uma única c/comandos separados por ';' e eu não usaria o ifelse
+aceitando
+uma mensagem de erro quando o vetor tivesse esvaziado até um único elemento.
+Ademais, eu *aceito* que o vetor seja destruído na operação, caso vc
+precise dele, teria que usar uma cópia (também nada de outro mundo).
+
+HTH
+--
+Cesar Rabak
+[1] precisa da biblioteca lisp
+
+On Wed, Aug 5, 2020 at 3:23 PM Diogo Jerônimo <diogojose21 em yahoo.com.br>
+wrote:
+
+> Obrigado pela info Cesar, melhor terminologia na próxima.
+>
+> Só trouxe para cá depois de quebrar cabeça um dia inteiro.
+>
+> Obrigado
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+>
+>
+> Em quarta-feira, 5 de agosto de 2020 14:53:45 BRT, Cesar Rabak <
+> cesar.rabak em gmail.com> escreveu:
+>
+>
+> Diogo,
+>
+> Na comunidade *R* temos um ditado que diz mais ou menos o seguinte
+> (tradução livre deste escrivinhador) : « No *R* a pergunta nunca é *se* mas
+> sim como *como* algo pode ser feito.»
+>
+> Pelo teor da sua pergunta você não domina os rudimentos da linguagem R (a
+> minha evidência é o jeito como escreves a definição do vetor exemplo e o
+> resultado desejado).
+>
+> Você já consultou um tutorial sobre R? Qual{is} abordagem{ns} você já
+> considerou?
+>
+> --
+> Cesar Rabak
+>
+>
+> On Wed, Aug 5, 2020 at 2:25 PM Diogo Jerônimo por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+> Boa tarde a todos. Seja por exemplo o seguinte vetor:
+>
+> x=(19,23,27,29)
+>
+> É possível se obter no R um vetor com TODAS as diferenças absolutas entre
+> TODOS os pares de valores combinados de um vetor? Ou seja:
+>
+> vetor=(|19-23|,|19-27|,|19-29|,|23-27|,|23-29|,|27-29|)
+>
+> Obrigado por qualquer ajuda!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200805/09b04241/attachment.html>
+
+From lubichchiara em gmail.com  Wed Aug  5 15:48:09 2020
+From: lubichchiara em gmail.com (Chiara Lubich)
+Date: Wed, 5 Aug 2020 14:48:09 -0400
+Subject: [R-br] 
+ =?utf-8?q?Explica=C3=A7=C3=A3o_gr=C3=A1fico_e_resultados_?=
+ =?utf-8?q?da_PCA?=
+In-Reply-To: <CALbn=S7s_ecHt=PANHHdA5f9B9qdpx507MRqGL0pFmyXb9g8uQ@mail.gmail.com>
+References: <CAH-ZE+Bx5eGSy36Sn9XwRtk5C02ujjxv+BsZqK7oaP+UTYnpjg@mail.gmail.com>
+ <CALbn=S7s_ecHt=PANHHdA5f9B9qdpx507MRqGL0pFmyXb9g8uQ@mail.gmail.com>
+Message-ID: <CAH-ZE+DuLz8vMQo3VHZt-Kk0d6Uv2rvgDhvfb+tmKhdt7BLQBA@mail.gmail.com>
+
+Muito obrigada!
+
+Em sex., 31 de jul. de 2020 às 15:16, Flávia de Campos Martins <
+fla.campos.martins em gmail.com> escreveu:
+
+> Boa tarde!
+>
+> Seguem algumas referências que usei recentemente:
+>
+> https://media.readthedocs.org/pdf/little-book-of-r-for-multivariate-analysis/latest/little-book-of-r-for-multivariate-analysis.pdf
+>
+>
+> http://periodicoscientificos.ufmt.br/ojs/index.php/eng/article/download/3398/2623
+>
+> Att.,
+>
+> *Flávia de Campos Martins*
+> Professora Adjunta
+> Universidade de Pernambuco (UPE), *Campus* Petrolina
+> BR 203, km 2, S/N
+> Vila Eduardo
+> 56328903 - Petrolina, PE- Brasil.
+>
+>
+> Em qui., 23 de jul. de 2020 às 12:40, Chiara Lubich por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Gerei os resultados da PCA, porém estou com dificuldades para explicação
+>> dos resultados e do gráfico.
+>>
+>> Alguém poderia me dar um norte ou sugerir algum livro/artigo que me ajude
+>> na interpretação?
+>>
+>> Desde já agradeço pela atenção
+>>
+>> Abraços
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200805/9df99f3e/attachment.html>
+
+From sznelwar em uol.com.br  Wed Aug  5 20:59:33 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Wed, 05 Aug 2020 20:59:33 -0300
+Subject: [R-br] =?utf-8?q?Diferen=C3=A7a_de_todos_os_valores?=
+In-Reply-To: ["CAKrF98kyyb8zW_pt8_Ea89UVbwufgZNKmOsTLHvTLbcGgiT5mA@mail.gmail.com"]
+References: ["604655508.407518.1596648154941.ref@mail.yahoo.com",
+ "604655508.407518.1596648154941@mail.yahoo.com",
+ "CAKrF98kDORSyb+OG67EksWyw4u1NW4U3msbh_ac2s63GdCub6A@mail.gmail.com",
+ "1362458002.430541.1596651797700@mail.yahoo.com",
+ "CAKrF98kyyb8zW_pt8_Ea89UVbwufgZNKmOsTLHvTLbcGgiT5mA@mail.gmail.com"]
+Message-ID: <5f2b47e5f1ec4_6562b08bc7b111032027@ip-10-81-19-9.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200805/9240594a/attachment.html>
+
+From dtiezzi em usp.br  Wed Aug  5 23:04:24 2020
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Wed, 5 Aug 2020 23:04:24 -0300
+Subject: [R-br] =?utf-8?q?Diferen=C3=A7a_de_todos_os_valores?=
+In-Reply-To: <604655508.407518.1596648154941@mail.yahoo.com>
+References: <604655508.407518.1596648154941.ref@mail.yahoo.com>
+ <604655508.407518.1596648154941@mail.yahoo.com>
+Message-ID: <0F71EAF3-78C0-40BF-ACF2-522DF411055A@usp.br>
+
+Boa noite Jeronimo
+
+Acredito que você pode criar uma matrix e subtrair a matrix transversa do vetor.
+
+a <- c(19,23,27,29)
+m <- matrix(rep(a, length(a)), length(a))
+rm <- t(a - t(m))
+
+ A parte triangular da matrix resultante tem os seus valores. Pode usar a função lower.tri() pra extrair seus valores 
+
+abs(rm[lower.tri(rm, diag = FALSE)])
+
+
+Veja se funciona
+
+Daniel
+
+----------------------------------------------------------------
+Daniel Tiezzi, MD, PhD
+Oncologia / Mastologia
+Professor Associado - Livre Docente
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em usp.br
+
+
+> On 5 Aug 2020, at 14:22, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> Boa tarde a todos. Seja por exemplo o seguinte vetor:
+> 
+> x=(19,23,27,29)
+> 
+> É possível se obter no R um vetor com TODAS as diferenças absolutas entre TODOS os pares de valores combinados de um vetor? Ou seja:
+> 
+> vetor=(|19-23|,|19-27|,|19-29|,|23-27|,|23-29|,|27-29|)
+> 
+> Obrigado por qualquer ajuda!!!
+> 
+> Diogo Jerônimo
+> Bacharel em Ciências Estatísticas - ENCE/IBGE
+> Mestre em Metrologia - PUC-Rio/PósMQI
+> CONRE: 8514 - SÉRIE A
+> http://lattes.cnpq.br/8996149312896520
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200805/2adf0818/attachment.html>
+
+From diogojose21 em yahoo.com.br  Thu Aug  6 00:02:49 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Thu, 6 Aug 2020 03:02:49 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Assunto=3A_Re=3A__Diferen=C3=A7a_de_todos_os_va?=
+ =?utf-8?q?lores?=
+In-Reply-To: <5f2b47e5f1ec4_6562b08bc7b111032027@ip-10-81-19-9.ec2.internal.mail>
+References: <5f2b47e5f1ec4_6562b08bc7b111032027@ip-10-81-19-9.ec2.internal.mail>
+Message-ID: <1366688394.691222.1596682969987@mail.yahoo.com>
+
+Mauro, acho que tem de baixar a package lisp, como indicou o César
+Enviado do Yahoo Mail no Android 
+ 
+  <div>Em qua, 5 5e ago 5e 2020 às 20:59, Mauro Sznelwar por (R-br)</div><div><r-br em listas.c3sl.ufpr.br> escreveu:</div>   _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200806/a5f06b93/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: Untitled
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200806/a5f06b93/attachment-0001.ksh>
+
+From sznelwar em uol.com.br  Thu Aug  6 00:27:53 2020
+From: sznelwar em uol.com.br (sznelwar em uol.com.br)
+Date: Thu, 06 Aug 2020 00:27:53 -0300
+Subject: [R-br] 
+ =?utf-8?q?Assunto=3A_Re=3A__Diferen=C3=A7a_de_todos_os_va?=
+ =?utf-8?q?lores?=
+In-Reply-To: ["1366688394.691222.1596682969987@mail.yahoo.com"]
+References: ["5f2b47e5f1ec4_6562b08bc7b111032027@ip-10-81-19-9.ec2.internal.mail", 
+ "1366688394.691222.1596682969987@mail.yahoo.com"]
+Message-ID: <5f2b78b9d5ec3_72492afb92b7510c364a6@ip-10-81-19-101.ec2.internal.mail>
+
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200806/a641e3c4/attachment.html>
+
+From cesar.rabak em gmail.com  Wed Aug  5 22:55:25 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Wed, 5 Aug 2020 22:55:25 -0300
+Subject: [R-br] =?utf-8?q?Diferen=C3=A7a_de_todos_os_valores?=
+In-Reply-To: <5f2b47e5f1ec4_6562b08bc7b111032027@ip-10-81-19-9.ec2.internal.mail>
+References: <5f2b47e5f1ec4_6562b08bc7b111032027@ip-10-81-19-9.ec2.internal.mail>
+Message-ID: <CAKrF98==_mGDmmiPTzeW1DyFmyv7U9nVrD4YLLtzj4ptLV6+Sg@mail.gmail.com>
+
+Você leu a nota de rodapé?
+
+
+On Wed, Aug 5, 2020 at 8:59 PM Mauro Sznelwar por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Não consegui rodar esta rotina:
+> > res<-NULL
+> >  vetor<-c(19,23,27,29)
+> >  l <- length(vetor)
+> > for (i in 1:l)
+> {ifelse(length(vetor)>1,res<-c(res,abs(car(vetor)-cdr(vetor))),print(res));
+> vetor <- cdr(vetor)}
+> Error in car(vetor) : não foi possível encontrar a função "car"
+>
+>
+>
+> OK Jerônimo...
+>
+> Para mostrar como o ditado dos erristas é apropriado veja esta solução¹:
+>
+> > res<-NULL
+> >  vetor<-c(19,23,27,29)
+> >  l <- length(vetor)
+> > for (i in 1:l)
+> {ifelse(length(vetor)>1,res<-c(res,abs(car(vetor)-cdr(vetor))),print(res));
+> vetor <- cdr(vetor)}
+> [1]  4  8 10  4  6  2
+>
+> Numa implementação minha, só para ter o resultado, as três primeiras
+> linhas seriam uma única c/comandos separados por ';' e eu não usaria o
+> ifelse aceitando uma mensagem de erro quando o vetor tivesse esvaziado
+> até um único elemento.
+> Ademais, eu *aceito* que o vetor seja destruído na operação, caso vc
+> precise dele, teria que usar uma cópia (também nada de outro mundo).
+>
+> HTH
+> --
+> Cesar Rabak
+> [1] precisa da biblioteca lisp
+>
+> On Wed, Aug 5, 2020 at 3:23 PM Diogo Jerônimo <diogojose21 em yahoo.com.br
+> <http://../../../undefined//compose?to=diogojose21 em yahoo.com.br>> wrote:
+>
+>> Obrigado pela info Cesar, melhor terminologia na próxima.
+>>
+>> Só trouxe para cá depois de quebrar cabeça um dia inteiro.
+>>
+>> Obrigado
+>>
+>> *Diogo Jerônimo*
+>> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+>> *Mestre em Metrologia - PUC-Rio/PósMQI*
+>> *CONRE: 8514 - SÉRIE A*
+>> *http://lattes.cnpq.br/8996149312896520
+>> <http://lattes.cnpq.br/8996149312896520>*
+>>
+>>
+>> Em quarta-feira, 5 de agosto de 2020 14:53:45 BRT, Cesar Rabak <
+>> cesar.rabak em gmail.com
+>> <http://../../../undefined//compose?to=cesar.rabak em gmail.com>> escreveu:
+>>
+>>
+>> Diogo,
+>>
+>> Na comunidade *R* temos um ditado que diz mais ou menos o seguinte
+>> (tradução livre deste escrivinhador) : « No *R* a pergunta nunca é *se* mas
+>> sim como *como* algo pode ser feito.»
+>>
+>> Pelo teor da sua pergunta você não domina os rudimentos da linguagem R (a
+>> minha evidência é o jeito como escreves a definição do vetor exemplo e o
+>> resultado desejado).
+>>
+>> Você já consultou um tutorial sobre R? Qual{is} abordagem{ns} você já
+>> considerou?
+>>
+>> --
+>> Cesar Rabak
+>>
+>>
+>> On Wed, Aug 5, 2020 at 2:25 PM Diogo Jerônimo por (R-br) <
+>> r-br em listas.c3sl.ufpr.br
+>> <http://../../../undefined//compose?to=r-br em listas.c3sl.ufpr.br>> wrote:
+>>
+>> Boa tarde a todos. Seja por exemplo o seguinte vetor:
+>>
+>> x=(19,23,27,29)
+>>
+>> É possível se obter no R um vetor com TODAS as diferenças absolutas entre
+>> TODOS os pares de valores combinados de um vetor? Ou seja:
+>>
+>> vetor=(|19-23|,|19-27|,|19-29|,|23-27|,|23-29|,|27-29|)
+>>
+>> Obrigado por qualquer ajuda!!!
+>>
+>> *Diogo Jerônimo*
+>> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+>> *Mestre em Metrologia - PUC-Rio/PósMQI*
+>> *CONRE: 8514 - SÉRIE A*
+>> *http://lattes.cnpq.br/8996149312896520
+>> <http://lattes.cnpq.br/8996149312896520>*
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> <http://../../../undefined//compose?to=R-br em listas.c3sl.ufpr.br>
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200805/7ff1976b/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Aug  6 00:36:31 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 6 Aug 2020 00:36:31 -0300
+Subject: [R-br] 
+	=?utf-8?q?Assunto=3A_Re=3A_Diferen=C3=A7a_de_todos_os_val?=
+	=?utf-8?q?ores?=
+In-Reply-To: <1366688394.691222.1596682969987@mail.yahoo.com>
+References: <5f2b47e5f1ec4_6562b08bc7b111032027@ip-10-81-19-9.ec2.internal.mail>
+ <1366688394.691222.1596682969987@mail.yahoo.com>
+Message-ID: <CAKrF98kdWORai35R7+a6mN2rVAjQF4CbTZdiQ_C0z5hkqRYVuw@mail.gmail.com>
+
+?
+
+?
+
+On Thu, Aug 6, 2020 at 12:03 AM Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Mauro, acho que tem de baixar a package lisp, como indicou o César
+>
+> Enviado do Yahoo Mail no Android
+> <https://go.onelink.me/107872968?pid=InProduct&c=Global_Internal_YGrowth_AndroidEmailSig__AndroidUsers&af_wl=ym&af_sub1=Internal&af_sub2=Global_YGrowth&af_sub3=EmailSignature>
+>
+> <div>Em qua, 5 5e ago 5e 2020 às 20:59, Mauro Sznelwar por
+> (R-br)</div><div><r-br em listas.c3sl.ufpr.br> escreveu:</div>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200806/aeb450c4/attachment.html>
+
+From nandodesouza em gmail.com  Thu Aug  6 11:14:37 2020
+From: nandodesouza em gmail.com (Fernando Souza)
+Date: Thu, 6 Aug 2020 11:14:37 -0300
+Subject: [R-br] Ponto de corte Cook's Distance
+Message-ID: <C97EC0C7-DFC4-47DA-89B7-03DCF05AEAA1@getmailspring.com>
+
+Prezados colegas,
+
+Gostaria de saber como vocês definem o ponto de corte para a distância de Cook? Na literatura e listas de discussão tenho vistos várias sugestões, como valores de cook > 1 , valores maiores que 4/n , valor de cook maior que 3x a média, entre outros.
+Como eu devo proceder para definir o melhor ponto de corte. Eu estou analisando uma variável onde do total de 35 observações , 6 observações etão acima de 0.10 e dessas duas, as mais distantes estão entre 0.25 e 0.30.
+Eu deveria considerar as 6 observações como pontos de influencia?
+Se eu utilizar a regra de 4/35 = 0.11 então às 6 observações seriam removidas;
+Se eu considerar D>1, então nenhuma observação será removida
+
+Gostaria de saber sobre a experiencia de vocês e como procedem
+ATt
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200806/5ae44555/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Aug  7 08:15:14 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 7 Aug 2020 08:15:14 -0300
+Subject: [R-br] Ponto de corte Cook's Distance
+In-Reply-To: <C97EC0C7-DFC4-47DA-89B7-03DCF05AEAA1@getmailspring.com>
+References: <C97EC0C7-DFC4-47DA-89B7-03DCF05AEAA1@getmailspring.com>
+Message-ID: <CAKrF98mCT=Z02+Zqj+NzzZLUTEJUNPFD6XCMhFOKPdRAwQBYWg@mail.gmail.com>
+
+Esses diagnósticos "sintéticos" sobre um objeto matemático são *avisos* para
+o pesquisador, mas não substituem a compreensão do assunto no domínio do
+problema.
+
+Usando o MIto da Caverna como ideia, sua regressão seria a *sombra* e o
+problema real não totalmente visível para você.
+
+A distância de Cook, e outras medidas das assim denominadas "de influência"
+avisam que o procedimento matemático tem aspectos que justificam uma
+revisão que pode ser desde um descarte do ponto (se ao reanalisar a forma
+como foi obtido pode ser um ponto contaminado e tachável de "aberrante" (
+*outlier*) a rever a estratégia toda da análise (matemática) e buscar outra
+regressão que ajuste melhor aos dados (com uma possível, e talvez
+necessária, reinterpretação do fenômeno subjacente à modelagem).
+
+A primeira abordagem pode advir de crítica direta da medida versus a
+razoabilidade dela (sardinha de dez quilos[?]), enquanto a segunda, mais
+sutil pode indicar uma necessidade de aprimorar uma teoria, como J. Kepler
+fez ao reconhecer com os dados que possuía que a  órbita de Marte devia ser
+elíptica e não circular, como ele acreditava.
+
+Voltando ao âmago da sua questão: um dos diagnósticos que se obtém no R é
+um cálculo dos pontos de influência, onde a regressão é refeita sem cada um
+dos pontos marcados. Veja esses resultados e decida se em adição ao
+raciocínio acima se os resultados, que obviamente mudam numericamente,
+significam interpretar diferente o experimento (afinal a ração dada a estes
+peixes engordam-os ou  os emagrecem?).
+
+HTH
+--
+Cesar Rabak
+
+
+On Fri, Aug 7, 2020 at 1:32 AM Fernando Souza por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados colegas,
+>
+> Gostaria de saber como vocês definem o ponto de corte para a distância de
+> Cook? Na literatura e listas de discussão tenho vistos várias sugestões,
+> como valores de cook > 1 ,  valores maiores que 4/n , valor de cook maior
+> que 3x a média, entre outros.
+>
+> Como eu devo proceder para definir o melhor ponto de corte.  Eu estou
+> analisando uma variável onde do total de 35 observações ,  6 observações
+> etão acima de 0.10 e dessas duas, as mais distantes estão entre  0.25 e
+> 0.30.
+>
+> Eu deveria considerar as 6 observações como pontos de influencia?
+>
+> Se eu utilizar a regra de 4/35 = 0.11 então às 6 observações seriam
+> removidas;
+> Se eu considerar D>1, então nenhuma observação será removida
+>
+> Gostaria de saber sobre a experiencia de vocês e como procedem
+>
+> ATt
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/15650e0f/attachment.html>
+
+From luizroberto.uesc em gmail.com  Fri Aug  7 09:38:17 2020
+From: luizroberto.uesc em gmail.com (Luiz Roberto Martins Pinto)
+Date: Fri, 7 Aug 2020 09:38:17 -0300
+Subject: [R-br] Artigo sobre p.value
+Message-ID: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+
+Bom dia.
+
+Há algum tempo alguém encaminhou para a lista um artigo sobre p.value. O
+autor se referiu ao artigo como "o artigo que ele sempre quiz escrever", ou
+algo parecido.
+
+Eu tive problema no computador e perdi.
+
+Peço ajuda para acessar este artigo.
+
+Outros artigos temáticos sobre p.value também serão bem-vindos.
+
+Grato.
+
+Luiz Roberto.
+
+
+Luiz Roberto Martins Pinto
+Prof. Pleno/DCET/UESC
+Laboratório de Estatística Computacional
+Universidade Estadual de Santa Cruz
+Ilhéus-Bahia-Brasil
+
+luizroberto.uesc em gmail.com
+skype: lrmpinto
+http://lattes.cnpq.br/2732314327604831
+
+"*The s**cience exists because there are patterns. *
+* The patterns exist because God created them*.
+* The statistic exists to research the patterns that God created.*"
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/b31c09d4/attachment.html>
+
+From tctomazetti em gmail.com  Fri Aug  7 09:42:46 2020
+From: tctomazetti em gmail.com (Tiago Camponogara Tomazetti)
+Date: Fri, 7 Aug 2020 09:42:46 -0300
+Subject: [R-br] =?utf-8?q?Erro_ao_rodar_an=C3=A1lise_bifatorial_-_ExpDes?=
+ =?utf-8?b?LnB0?=
+Message-ID: <CAA4HZio+5S2yrdeWcxVpi4id0Tax5Qf6bfrMWayhjfw9=1f+ug@mail.gmail.com>
+
+Prezados, gostaria de saber se alguém pode me tirar uma dúvida quanto a um
+"possível" bug que tenho tido quando uso a função fat2.dic() do pacote
+ExpDes.pt.
+
+Sempre que vou rodar a análise bifatorial, onde há interação, a função da o
+seguinte erro:
+
+########################################################################
+...
+Interacao significativa: desdobrando a interacao
+------------------------------------------------------------------------
+
+Desdobrando  F1  dentro de cada nivel de  F2
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+Quadro da analise de variancia
+------------------------------------------------------------------------
+          GL        SQ       QM    Fc  Pr.Fc
+F2         4  194102.2 48525.55 4.768 0.0016
+F1:F2      5        NA       NA  <NA>   <NA>
+F1:F2 D0   5        NA       NA  <NA>   <NA>
+F1:F2 D3   5        NA       NA  <NA>   <NA>
+F1:F2 D5   5        NA       NA  <NA>   <NA>
+F1:F2 D7   5        NA       NA  <NA>   <NA>
+Residuo   87  885431.5 10177.37
+Total    107 3341005.8 31224.35
+------------------------------------------------------------------------
+
+Error in if (des1.tab[(i + 2), 5] <= sigF) { :
+  valor ausente onde TRUE/FALSE necessário
+########################################################################
+
+Aparentemente é um erro dentro do pacote, contudo, se alguém conseguiu
+contornar este bug de alguma forma, ou conhecer outro modo de rodar uma
+análise bifatorial no R, seria grato por receber suas opiniões.
+
+A título de informação, estou chamando a função deste modo:
+"fat2.dic(data$TratA, data$TratB, data$Resp, quali=c(TRUE, TRUE),
+mcomp='tukey')"
+
+Desde já, agradeço pela atenção,
+Tiago
+
+Dr. Tiago Camponogara Tomazetti
+Plant Breeding professor - Federal University of Santa Catarina
++55 (48) 9-9681-3848
+Lattes:
+http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4408476D6
+ResearchGate https://www.researchgate.net/profile/Tiago_Tomazetti
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/389cb6dd/attachment.html>
+
+From henriquepertille em gmail.com  Fri Aug  7 11:13:15 2020
+From: henriquepertille em gmail.com (Rafael Pertille)
+Date: Fri, 7 Aug 2020 11:13:15 -0300
+Subject: [R-br] 
+	=?utf-8?q?Erro_ao_rodar_an=C3=A1lise_bifatorial_-_ExpDes?=
+	=?utf-8?b?LnB0?=
+In-Reply-To: <CAA4HZio+5S2yrdeWcxVpi4id0Tax5Qf6bfrMWayhjfw9=1f+ug@mail.gmail.com>
+References: <CAA4HZio+5S2yrdeWcxVpi4id0Tax5Qf6bfrMWayhjfw9=1f+ug@mail.gmail.com>
+Message-ID: <CAKtUNjcexDaWJBWAwGR=dnA6pkiZCamZ1VH1w+j6_-Z4LnonxQ@mail.gmail.com>
+
+Bom dia,
+Veja se tu não tem algum dado faltante, ou se há qualquer tipo de
+desbalanço nos dados. As vezes pode ser isso. Nunca tive problema com o
+Expdes.pt, apenas no CV, que em uma das funções dele calcula errado.
+
+abraço
+
+Em sex., 7 de ago. de 2020 às 09:43, Tiago Camponogara Tomazetti por (R-br)
+<r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados, gostaria de saber se alguém pode me tirar uma dúvida quanto a um
+> "possível" bug que tenho tido quando uso a função fat2.dic() do pacote
+> ExpDes.pt.
+>
+> Sempre que vou rodar a análise bifatorial, onde há interação, a função da
+> o seguinte erro:
+>
+> ########################################################################
+> ...
+> Interacao significativa: desdobrando a interacao
+> ------------------------------------------------------------------------
+>
+> Desdobrando  F1  dentro de cada nivel de  F2
+> ------------------------------------------------------------------------
+> ------------------------------------------------------------------------
+> Quadro da analise de variancia
+> ------------------------------------------------------------------------
+>           GL        SQ       QM    Fc  Pr.Fc
+> F2         4  194102.2 48525.55 4.768 0.0016
+> F1:F2      5        NA       NA  <NA>   <NA>
+> F1:F2 D0   5        NA       NA  <NA>   <NA>
+> F1:F2 D3   5        NA       NA  <NA>   <NA>
+> F1:F2 D5   5        NA       NA  <NA>   <NA>
+> F1:F2 D7   5        NA       NA  <NA>   <NA>
+> Residuo   87  885431.5 10177.37
+> Total    107 3341005.8 31224.35
+> ------------------------------------------------------------------------
+>
+> Error in if (des1.tab[(i + 2), 5] <= sigF) { :
+>   valor ausente onde TRUE/FALSE necessário
+> ########################################################################
+>
+> Aparentemente é um erro dentro do pacote, contudo, se alguém conseguiu
+> contornar este bug de alguma forma, ou conhecer outro modo de rodar uma
+> análise bifatorial no R, seria grato por receber suas opiniões.
+>
+> A título de informação, estou chamando a função deste modo:
+> "fat2.dic(data$TratA, data$TratB, data$Resp, quali=c(TRUE, TRUE),
+> mcomp='tukey')"
+>
+> Desde já, agradeço pela atenção,
+> Tiago
+>
+> Dr. Tiago Camponogara Tomazetti
+> Plant Breeding professor - Federal University of Santa Catarina
+> +55 (48) 9-9681-3848
+> Lattes:
+> http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4408476D6
+> ResearchGate https://www.researchgate.net/profile/Tiago_Tomazetti
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+-- 
+*Rafael Henrique Pertille*
+Engenheiro Agrônomo
+Mestrando em Agronomia / Produção vegetal
+Universidade Tecnológica Federal do Paraná - Pato Branco
+(46) 999770049
+ORCID: orcid.org/0000-0002-4888-2001
+Personal website: https://rpertille.github.io
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/d0274357/attachment.html>
+
+From tctomazetti em gmail.com  Fri Aug  7 11:17:49 2020
+From: tctomazetti em gmail.com (Tiago Camponogara Tomazetti)
+Date: Fri, 7 Aug 2020 11:17:49 -0300
+Subject: [R-br] 
+	=?utf-8?q?Erro_ao_rodar_an=C3=A1lise_bifatorial_-_ExpDes?=
+	=?utf-8?b?LnB0?=
+In-Reply-To: <CAKtUNjcexDaWJBWAwGR=dnA6pkiZCamZ1VH1w+j6_-Z4LnonxQ@mail.gmail.com>
+References: <CAA4HZio+5S2yrdeWcxVpi4id0Tax5Qf6bfrMWayhjfw9=1f+ug@mail.gmail.com>
+ <CAKtUNjcexDaWJBWAwGR=dnA6pkiZCamZ1VH1w+j6_-Z4LnonxQ@mail.gmail.com>
+Message-ID: <CAA4HZioQmPh2cg7qokunCbPXKOnRodvqyfM6XK3tHKeEFsc0ew@mail.gmail.com>
+
+Obrigado Rafael,
+
+Na realidade o meu dataset estava com uma linha faltante mesmo, ou seja,
+estava desbalanceado, devido a um equívoco meu durante a manipulação do
+mesmo...
+
+Enfim, mais uma vez que a gente quebra a cabeça uma hora com o script e
+descobre que o erro era bem simples, espero que fique o exemplo, para se
+futuramente alguém tiver o mesmo problema, conferir se seu dataset esta
+completo...
+
+Obrigado pela ajuda.
+Atenciosamente,
+Tiago
+
+Dr. Tiago Camponogara Tomazetti
+Plant Breeding professor - Federal University of Santa Catarina
++55 (48) 9-9681-3848
+Lattes:
+http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4408476D6
+ResearchGate https://www.researchgate.net/profile/Tiago_Tomazetti
+
+
+Il giorno ven 7 ago 2020 alle ore 11:13 Rafael Pertille <
+henriquepertille em gmail.com> ha scritto:
+
+> Bom dia,
+> Veja se tu não tem algum dado faltante, ou se há qualquer tipo de
+> desbalanço nos dados. As vezes pode ser isso. Nunca tive problema com o
+> Expdes.pt, apenas no CV, que em uma das funções dele calcula errado.
+>
+> abraço
+>
+> Em sex., 7 de ago. de 2020 às 09:43, Tiago Camponogara Tomazetti por
+> (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Prezados, gostaria de saber se alguém pode me tirar uma dúvida quanto a
+>> um "possível" bug que tenho tido quando uso a função fat2.dic() do pacote
+>> ExpDes.pt.
+>>
+>> Sempre que vou rodar a análise bifatorial, onde há interação, a função da
+>> o seguinte erro:
+>>
+>> ########################################################################
+>> ...
+>> Interacao significativa: desdobrando a interacao
+>> ------------------------------------------------------------------------
+>>
+>> Desdobrando  F1  dentro de cada nivel de  F2
+>> ------------------------------------------------------------------------
+>> ------------------------------------------------------------------------
+>> Quadro da analise de variancia
+>> ------------------------------------------------------------------------
+>>           GL        SQ       QM    Fc  Pr.Fc
+>> F2         4  194102.2 48525.55 4.768 0.0016
+>> F1:F2      5        NA       NA  <NA>   <NA>
+>> F1:F2 D0   5        NA       NA  <NA>   <NA>
+>> F1:F2 D3   5        NA       NA  <NA>   <NA>
+>> F1:F2 D5   5        NA       NA  <NA>   <NA>
+>> F1:F2 D7   5        NA       NA  <NA>   <NA>
+>> Residuo   87  885431.5 10177.37
+>> Total    107 3341005.8 31224.35
+>> ------------------------------------------------------------------------
+>>
+>> Error in if (des1.tab[(i + 2), 5] <= sigF) { :
+>>   valor ausente onde TRUE/FALSE necessário
+>> ########################################################################
+>>
+>> Aparentemente é um erro dentro do pacote, contudo, se alguém conseguiu
+>> contornar este bug de alguma forma, ou conhecer outro modo de rodar uma
+>> análise bifatorial no R, seria grato por receber suas opiniões.
+>>
+>> A título de informação, estou chamando a função deste modo:
+>> "fat2.dic(data$TratA, data$TratB, data$Resp, quali=c(TRUE, TRUE),
+>> mcomp='tukey')"
+>>
+>> Desde já, agradeço pela atenção,
+>> Tiago
+>>
+>> Dr. Tiago Camponogara Tomazetti
+>> Plant Breeding professor - Federal University of Santa Catarina
+>> +55 (48) 9-9681-3848
+>> Lattes:
+>> http://buscatextual.cnpq.br/buscatextual/visualizacv.do?id=K4408476D6
+>> ResearchGate https://www.researchgate.net/profile/Tiago_Tomazetti
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+> --
+> *Rafael Henrique Pertille*
+> Engenheiro Agrônomo
+> Mestrando em Agronomia / Produção vegetal
+> Universidade Tecnológica Federal do Paraná - Pato Branco
+> (46) 999770049
+> ORCID: orcid.org/0000-0002-4888-2001
+> Personal website: https://rpertille.github.io
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/e753c280/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Aug  7 11:54:17 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 7 Aug 2020 11:54:17 -0300
+Subject: [R-br] Artigo sobre p.value
+In-Reply-To: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+References: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+Message-ID: <CAKrF98=eTovnvOpwBDgyE7yGh7xkieRVUOxQ4M9oW7R3z88DTg@mail.gmail.com>
+
+Já procurou no servidor da lista?
+
+On Fri, Aug 7, 2020 at 9:38 AM Luiz Roberto Martins Pinto por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+>
+> Bom dia.
+>
+> Há algum tempo alguém encaminhou para a lista um artigo sobre p.value. O
+> autor se referiu ao artigo como "o artigo que ele sempre quiz escrever", ou
+> algo parecido.
+>
+> Eu tive problema no computador e perdi.
+>
+> Peço ajuda para acessar este artigo.
+>
+> Outros artigos temáticos sobre p.value também serão bem-vindos.
+>
+> Grato.
+>
+> Luiz Roberto.
+>
+>
+> Luiz Roberto Martins Pinto
+> Prof. Pleno/DCET/UESC
+> Laboratório de Estatística Computacional
+> Universidade Estadual de Santa Cruz
+> Ilhéus-Bahia-Brasil
+>
+> luizroberto.uesc em gmail.com
+> skype: lrmpinto
+> http://lattes.cnpq.br/2732314327604831
+>
+> "*The s**cience exists because there are patterns. *
+> * The patterns exist because God created them*.
+> * The statistic exists to research the patterns that God created.*"
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/cbb6dc55/attachment.html>
+
+From edbearzoti em yahoo.com.br  Fri Aug  7 11:54:46 2020
+From: edbearzoti em yahoo.com.br (Eduardo Bearzoti)
+Date: Fri, 7 Aug 2020 14:54:46 +0000 (UTC)
+Subject: [R-br] Artigo sobre p.value
+In-Reply-To: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+References: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+Message-ID: <55156917.1170424.1596812086825@mail.yahoo.com>
+
+Prezado Luiz Roberto:
+Eu não saberia precisar este artigo específico que você citou, mas a revista The American Statistician publicou, no início de 2019, um volume suplementar (Vol. 73:sup1) referenciado como:
+"Statistical Inference in the 21st Century: A World Beyond p < 0.05"
+inteiramente dedicado à questão do valor-p e temas correlatos. Talvez lhe interesse.
+Grande abraço,Eduardo.
+
+********************************************
+ Prof. Eduardo Bearzoti
+Universidade Federal de Ouro Preto
+Departamento de Estatística - ICEB 
+Campus Morro do Cruzeiro, s/n 
+35400-000 - Ouro Preto, MG, Brasil 
+
+
+ 
+
+    Em sexta-feira, 7 de agosto de 2020 09:38:52 BRT, Luiz Roberto Martins Pinto por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ 
+Bom dia.
+Há algum tempo alguém encaminhou para a lista um artigo sobre p.value. O autor se referiu ao artigo como "o artigo que ele sempre quiz escrever", ou algo parecido.
+Eu tive problema no computador e perdi.
+Peço ajuda para acessar este artigo.
+Outros artigos temáticos sobre p.value também serão bem-vindos.
+Grato.
+Luiz Roberto.
+
+Luiz Roberto Martins Pinto
+Prof. Pleno/DCET/UESCLaboratório de Estatística ComputacionalUniversidade Estadual de Santa CruzIlhéus-Bahia-Brasil
+
+luizroberto.uesc em gmail.com
+skype: lrmpintohttp://lattes.cnpq.br/2732314327604831 
+"The scienceexists because there are patterns.  The patterns exist because God created them. The statistic exists to research the patterns that God created."
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/5130bf45/attachment.html>
+
+From luizroberto.uesc em gmail.com  Fri Aug  7 12:02:31 2020
+From: luizroberto.uesc em gmail.com (Luiz Roberto Martins Pinto)
+Date: Fri, 7 Aug 2020 12:02:31 -0300
+Subject: [R-br] Artigo sobre p.value
+In-Reply-To: <55156917.1170424.1596812086825@mail.yahoo.com>
+References: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+ <55156917.1170424.1596812086825@mail.yahoo.com>
+Message-ID: <CAK4=-FDyynS=iLLxithjGS0tg8KP1JkNg_3P6FJKr2Xe=nEuKQ@mail.gmail.com>
+
+Caro Eduardo,
+
+Agradeço a orientação. Vou averiguar. Minha internet está muito ruim, e não
+consegui acessar.
+
+Eu me lembro que o autor é brasileiro.
+
+Abraços,
+
+Luiz Roberto.
+Luiz Roberto Martins Pinto
+Prof. Pleno/DCET/UESC
+Laboratório de Estatística Computacional
+Universidade Estadual de Santa Cruz
+Ilhéus-Bahia-Brasil
+
+luizroberto.uesc em gmail.com
+skype: lrmpinto
+http://lattes.cnpq.br/2732314327604831
+
+"*The s**cience exists because there are patterns. *
+* The patterns exist because God created them*.
+* The statistic exists to research the patterns that God created.*"
+
+
+
+
+Em sex., 7 de ago. de 2020 às 11:55, Eduardo Bearzoti por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezado Luiz Roberto:
+>
+> Eu não saberia precisar este artigo específico que você citou, mas a
+> revista The American Statistician publicou, no início de 2019, um volume
+> suplementar (Vol. 73:sup1) referenciado como:
+>
+> "Statistical Inference in the 21st Century: A World Beyond p < 0.05"
+>
+> inteiramente dedicado à questão do valor-p e temas correlatos. Talvez lhe
+> interesse.
+>
+> Grande abraço,
+> Eduardo.
+>
+> ********************************************
+> Prof. Eduardo Bearzoti
+> Universidade Federal de Ouro Preto
+> Departamento de Estatística - ICEB
+> Campus Morro do Cruzeiro, s/n
+> 35400-000 - Ouro Preto, MG, Brasil
+>
+>
+>
+>
+> Em sexta-feira, 7 de agosto de 2020 09:38:52 BRT, Luiz Roberto Martins
+> Pinto por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>
+>
+> Bom dia.
+>
+> Há algum tempo alguém encaminhou para a lista um artigo sobre p.value. O
+> autor se referiu ao artigo como "o artigo que ele sempre quiz escrever", ou
+> algo parecido.
+>
+> Eu tive problema no computador e perdi.
+>
+> Peço ajuda para acessar este artigo.
+>
+> Outros artigos temáticos sobre p.value também serão bem-vindos.
+>
+> Grato.
+>
+> Luiz Roberto.
+>
+>
+> Luiz Roberto Martins Pinto
+> Prof. Pleno/DCET/UESC
+> Laboratório de Estatística Computacional
+> Universidade Estadual de Santa Cruz
+> Ilhéus-Bahia-Brasil
+>
+> luizroberto.uesc em gmail.com
+> skype: lrmpinto
+> http://lattes.cnpq.br/2732314327604831
+>
+> "*The s**cience exists because there are patterns. *
+> * The patterns exist because God created them*.
+> * The statistic exists to research the patterns that God created.*"
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/c0c1ec02/attachment.html>
+
+From luizroberto.uesc em gmail.com  Fri Aug  7 12:04:10 2020
+From: luizroberto.uesc em gmail.com (Luiz Roberto Martins Pinto)
+Date: Fri, 7 Aug 2020 12:04:10 -0300
+Subject: [R-br] Artigo sobre p.value
+In-Reply-To: <CAKrF98=eTovnvOpwBDgyE7yGh7xkieRVUOxQ4M9oW7R3z88DTg@mail.gmail.com>
+References: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+ <CAKrF98=eTovnvOpwBDgyE7yGh7xkieRVUOxQ4M9oW7R3z88DTg@mail.gmail.com>
+Message-ID: <CAK4=-FBramJWFGMS5cOfF76KUEZXRgqA8NsQafcHYuAoYxbNTQ@mail.gmail.com>
+
+Caro César,
+
+Já procurei, mas não consegui encontrar.
+
+Me lembro que o autor é brasileiro.
+
+Abraços,
+
+Luiz Roberto.
+Luiz Roberto Martins Pinto
+Prof. Pleno/DCET/UESC
+Laboratório de Estatística Computacional
+Universidade Estadual de Santa Cruz
+Ilhéus-Bahia-Brasil
+
+luizroberto.uesc em gmail.com
+skype: lrmpinto
+http://lattes.cnpq.br/2732314327604831
+
+"*The s**cience exists because there are patterns. *
+* The patterns exist because God created them*.
+* The statistic exists to research the patterns that God created.*"
+
+
+
+
+Em sex., 7 de ago. de 2020 às 11:54, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Já procurou no servidor da lista?
+>
+> On Fri, Aug 7, 2020 at 9:38 AM Luiz Roberto Martins Pinto por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>>
+>> Bom dia.
+>>
+>> Há algum tempo alguém encaminhou para a lista um artigo sobre p.value. O
+>> autor se referiu ao artigo como "o artigo que ele sempre quiz escrever", ou
+>> algo parecido.
+>>
+>> Eu tive problema no computador e perdi.
+>>
+>> Peço ajuda para acessar este artigo.
+>>
+>> Outros artigos temáticos sobre p.value também serão bem-vindos.
+>>
+>> Grato.
+>>
+>> Luiz Roberto.
+>>
+>>
+>> Luiz Roberto Martins Pinto
+>> Prof. Pleno/DCET/UESC
+>> Laboratório de Estatística Computacional
+>> Universidade Estadual de Santa Cruz
+>> Ilhéus-Bahia-Brasil
+>>
+>> luizroberto.uesc em gmail.com
+>> skype: lrmpinto
+>> http://lattes.cnpq.br/2732314327604831
+>>
+>> "*The s**cience exists because there are patterns. *
+>> * The patterns exist because God created them*.
+>> * The statistic exists to research the patterns that God created.*"
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/89ad239c/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Aug  7 16:38:17 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 7 Aug 2020 16:38:17 -0300
+Subject: [R-br] Artigo sobre p.value
+In-Reply-To: <CAK4=-FBramJWFGMS5cOfF76KUEZXRgqA8NsQafcHYuAoYxbNTQ@mail.gmail.com>
+References: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+ <CAKrF98=eTovnvOpwBDgyE7yGh7xkieRVUOxQ4M9oW7R3z88DTg@mail.gmail.com>
+ <CAK4=-FBramJWFGMS5cOfF76KUEZXRgqA8NsQafcHYuAoYxbNTQ@mail.gmail.com>
+Message-ID: <CAKrF98n=H8-qBmwYrhnw_4eo3B__0q1aNgXNuKVb5K=H2z_kog@mail.gmail.com>
+
+O fato de o autor ser brasileiro reduz *bem* o "espaço de busca"
+?
+
+On Fri, Aug 7, 2020 at 12:14 PM Luiz Roberto Martins Pinto por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Caro César,
+>
+> Já procurei, mas não consegui encontrar.
+>
+> Me lembro que o autor é brasileiro.
+>
+> Abraços,
+>
+> Luiz Roberto.
+> Luiz Roberto Martins Pinto
+> Prof. Pleno/DCET/UESC
+> Laboratório de Estatística Computacional
+> Universidade Estadual de Santa Cruz
+> Ilhéus-Bahia-Brasil
+>
+> luizroberto.uesc em gmail.com
+> skype: lrmpinto
+> http://lattes.cnpq.br/2732314327604831
+>
+> "*The s**cience exists because there are patterns. *
+> * The patterns exist because God created them*.
+> * The statistic exists to research the patterns that God created.*"
+>
+>
+>
+>
+> Em sex., 7 de ago. de 2020 às 11:54, Cesar Rabak por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Já procurou no servidor da lista?
+>>
+>> On Fri, Aug 7, 2020 at 9:38 AM Luiz Roberto Martins Pinto por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> wrote:
+>>
+>>>
+>>> Bom dia.
+>>>
+>>> Há algum tempo alguém encaminhou para a lista um artigo sobre p.value. O
+>>> autor se referiu ao artigo como "o artigo que ele sempre quiz escrever", ou
+>>> algo parecido.
+>>>
+>>> Eu tive problema no computador e perdi.
+>>>
+>>> Peço ajuda para acessar este artigo.
+>>>
+>>> Outros artigos temáticos sobre p.value também serão bem-vindos.
+>>>
+>>> Grato.
+>>>
+>>> Luiz Roberto.
+>>>
+>>>
+>>> Luiz Roberto Martins Pinto
+>>> Prof. Pleno/DCET/UESC
+>>> Laboratório de Estatística Computacional
+>>> Universidade Estadual de Santa Cruz
+>>> Ilhéus-Bahia-Brasil
+>>>
+>>> luizroberto.uesc em gmail.com
+>>> skype: lrmpinto
+>>> http://lattes.cnpq.br/2732314327604831
+>>>
+>>> "*The s**cience exists because there are patterns. *
+>>> * The patterns exist because God created them*.
+>>> * The statistic exists to research the patterns that God created.*"
+>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/1e317929/attachment.html>
+
+From luizroberto.uesc em gmail.com  Fri Aug  7 18:42:13 2020
+From: luizroberto.uesc em gmail.com (Luiz Roberto Martins Pinto)
+Date: Fri, 7 Aug 2020 18:42:13 -0300
+Subject: [R-br] Artigo sobre p.value
+In-Reply-To: <CAKrF98n=H8-qBmwYrhnw_4eo3B__0q1aNgXNuKVb5K=H2z_kog@mail.gmail.com>
+References: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+ <CAKrF98=eTovnvOpwBDgyE7yGh7xkieRVUOxQ4M9oW7R3z88DTg@mail.gmail.com>
+ <CAK4=-FBramJWFGMS5cOfF76KUEZXRgqA8NsQafcHYuAoYxbNTQ@mail.gmail.com>
+ <CAKrF98n=H8-qBmwYrhnw_4eo3B__0q1aNgXNuKVb5K=H2z_kog@mail.gmail.com>
+Message-ID: <CAK4=-FAYRPMiLFmk+m3OHsTY-dVzwS77XwgcDj=+AWn6E2NNHQ@mail.gmail.com>
+
+Pois bem, apenas destaquei, pois estou interessado neste artigo específico,
+que faz tempo.
+
+
+Luiz Roberto Martins Pinto
+Prof. Pleno/DCET/UESC
+Laboratório de Estatística Computacional
+Universidade Estadual de Santa Cruz
+Ilhéus-Bahia-Brasil
+
+luizroberto.uesc em gmail.com
+skype: lrmpinto
+http://lattes.cnpq.br/2732314327604831
+
+"*The s**cience exists because there are patterns. *
+* The patterns exist because God created them*.
+* The statistic exists to research the patterns that God created.*"
+
+
+
+
+Em sex., 7 de ago. de 2020 às 16:38, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> O fato de o autor ser brasileiro reduz *bem* o "espaço de busca"
+> ?
+>
+> On Fri, Aug 7, 2020 at 12:14 PM Luiz Roberto Martins Pinto por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Caro César,
+>>
+>> Já procurei, mas não consegui encontrar.
+>>
+>> Me lembro que o autor é brasileiro.
+>>
+>> Abraços,
+>>
+>> Luiz Roberto.
+>> Luiz Roberto Martins Pinto
+>> Prof. Pleno/DCET/UESC
+>> Laboratório de Estatística Computacional
+>> Universidade Estadual de Santa Cruz
+>> Ilhéus-Bahia-Brasil
+>>
+>> luizroberto.uesc em gmail.com
+>> skype: lrmpinto
+>> http://lattes.cnpq.br/2732314327604831
+>>
+>> "*The s**cience exists because there are patterns. *
+>> * The patterns exist because God created them*.
+>> * The statistic exists to research the patterns that God created.*"
+>>
+>>
+>>
+>>
+>> Em sex., 7 de ago. de 2020 às 11:54, Cesar Rabak por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Já procurou no servidor da lista?
+>>>
+>>> On Fri, Aug 7, 2020 at 9:38 AM Luiz Roberto Martins Pinto por (R-br) <
+>>> r-br em listas.c3sl.ufpr.br> wrote:
+>>>
+>>>>
+>>>> Bom dia.
+>>>>
+>>>> Há algum tempo alguém encaminhou para a lista um artigo sobre p.value.
+>>>> O autor se referiu ao artigo como "o artigo que ele sempre quiz escrever",
+>>>> ou algo parecido.
+>>>>
+>>>> Eu tive problema no computador e perdi.
+>>>>
+>>>> Peço ajuda para acessar este artigo.
+>>>>
+>>>> Outros artigos temáticos sobre p.value também serão bem-vindos.
+>>>>
+>>>> Grato.
+>>>>
+>>>> Luiz Roberto.
+>>>>
+>>>>
+>>>> Luiz Roberto Martins Pinto
+>>>> Prof. Pleno/DCET/UESC
+>>>> Laboratório de Estatística Computacional
+>>>> Universidade Estadual de Santa Cruz
+>>>> Ilhéus-Bahia-Brasil
+>>>>
+>>>> luizroberto.uesc em gmail.com
+>>>> skype: lrmpinto
+>>>> http://lattes.cnpq.br/2732314327604831
+>>>>
+>>>> "*The s**cience exists because there are patterns. *
+>>>> * The patterns exist because God created them*.
+>>>> * The statistic exists to research the patterns that God created.*"
+>>>>
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/4232899d/attachment.html>
+
+From diogojose21 em yahoo.com.br  Fri Aug  7 18:51:58 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Fri, 7 Aug 2020 21:51:58 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Diferen=C3=A7a_de_todos_os_valores?=
+In-Reply-To: <0F71EAF3-78C0-40BF-ACF2-522DF411055A@usp.br>
+References: <604655508.407518.1596648154941.ref@mail.yahoo.com>
+ <604655508.407518.1596648154941@mail.yahoo.com>
+ <0F71EAF3-78C0-40BF-ACF2-522DF411055A@usp.br>
+Message-ID: <2126797068.1645520.1596837118509@mail.yahoo.com>
+
+
+Prezados Daniel, César e Fernando, agradeço pela atenção!!! Baseado nas dicas de vocês, já resolvi meu problema!!! 
+Muito obrigado!!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520 
+
+    Em quarta-feira, 5 de agosto de 2020 23:04:30 BRT, Daniel Guimarães Tiezzi <dtiezzi em usp.br> escreveu:  
+ 
+ Boa noite Jeronimo
+Acredito que você pode criar uma matrix e subtrair a matrix transversa do vetor.
+a <- c(19,23,27,29)m <- matrix(rep(a, length(a)), length(a))rm <- t(a - t(m))
+ A parte triangular da matrix resultante tem os seus valores. Pode usar a função lower.tri() pra extrair seus valores 
+abs(rm[lower.tri(rm, diag = FALSE)])
+
+Veja se funciona
+Daniel
+----------------------------------------------------------------
+Daniel Tiezzi, MD, PhDOncologia / Mastologia
+Professor Associado - Livre Docente
+Departamento de Ginecologia e Obstetrícia
+Setor de Mastologia e Oncologia Ginecológica
+Faculdade de Medicina de Ribeirão Preto - USP
+Tel.: 16 3602-2488
+e-mail: dtiezzi em usp.br
+
+
+On 5 Aug 2020, at 14:22, Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+Boa tarde a todos. Seja por exemplo o seguinte vetor:
+x=(19,23,27,29)
+É possível se obter no R um vetor com TODAS as diferenças absolutas entre TODOS os pares de valores combinados de um vetor? Ou seja:
+vetor=(|19-23|,|19-27|,|19-29|,|23-27|,|23-29|,|27-29|)
+Obrigado por qualquer ajuda!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/9b706276/attachment.html>
+
+From diogojose21 em yahoo.com.br  Fri Aug  7 19:13:31 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Fri, 7 Aug 2020 22:13:31 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Mudar_eixo_num=C3=A9rico_para_labels?=
+References: <1392350255.1667963.1596838411718.ref@mail.yahoo.com>
+Message-ID: <1392350255.1667963.1596838411718@mail.yahoo.com>
+
+Gente, mais uma dúvida, para isso o exemplo abaixo (em vermelho):
+Item=c("Lote1","Lote2","Lote3","Lote4","Lote5")
+R1=c(8.30,5.69,3.55,1.29,0.01)R2=c(7.70,5.62,3.36,1.28,0.01)Título="Análise de Linearidade"CR=seq(1:mean(length(R1),length(R2)))
+dados=data.frame(Item,R1,R2,CR)i=1
+for (i in (1:nrow(dados))){dados$MRES[i]=mean(c(dados$R1[i],dados$R2[i]))i=i+1}dados$CR2=(dados$CR)^2
+dados$CR3=(dados$CR)^3 dados$reglin=as.numeric(matrix(predict(lm(MRES~CR,data=dados))))
+valmax=trunc(max(max(dados$MRES),max(dados$reglin)),2)+1
+minesc=0maxesc=valmaxplot(c(min(dados$CR),max(dados$CR)),c(minesc,maxesc),type="n",main=Título,xlab="",ylab="")
+points(dados$CR,dados$MRES,col="blue",pch=16,cex=1.8)lines(dados$CR,dados$MRES,col="blue",lwd=2)points(dados$CR,dados$reglin,col="green",pch=16,cex=1.8)lines(dados$CR,dados$reglin,col="green",lwd=2)
+No exemplo, com esses dados, fiz um gráfico de pontos e linhas. sendo que como era de esperar, ele vai apresentar valores numéricos nas duas colunas.
+O que queria saber é se é possível substituir no eixo "x" os números 1,...5, pelos labels de texto que aparecem na variável "Item" ("Lote 1",..., Lote5). Tentei mudar transformando o "class" de CR de "numeric" para "factor", mas não deu certo...  
+Obrigado novamente pela atenção!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/f29cafb0/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Aug  7 23:35:46 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 7 Aug 2020 23:35:46 -0300
+Subject: [R-br] =?utf-8?q?Mudar_eixo_num=C3=A9rico_para_labels?=
+In-Reply-To: <1392350255.1667963.1596838411718@mail.yahoo.com>
+References: <1392350255.1667963.1596838411718.ref@mail.yahoo.com>
+ <1392350255.1667963.1596838411718@mail.yahoo.com>
+Message-ID: <CAKrF98=NMQ_Vpgmjx6Hywf6=-RcKe9h4gfkqj2aLmuyTEp=gDQ@mail.gmail.com>
+
+Diogo,
+
+Mude a chamada a plot para :
+>
+plot(c(min(dados$CR),max(dados$CR)),c(minesc,maxesc),type="n",main=Título,xlab="",ylab=""*,
+xaxt='n'*)
+Veja o acréscimo em
+negrito:___________________________________________________________________
+*?*
+e acrescente a seguinte chamada:
+> axis(1,at=1:5,labels=Item)
+Para um caso geral você pode usar um cálculo com o comprimento do item
+"Item" ou dos seus dados, etc.
+
+E não esqueça de de RTFM¹ !!
+
+HTH
+
+--
+Cesar Rabak
+
+[1] Read The *Fantastic* Manual ?
+
+
+On Fri, Aug 7, 2020 at 7:13 PM Diogo Jerônimo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Gente, mais uma dúvida, para isso o exemplo abaixo (em vermelho):
+>
+> Item=c("Lote1","Lote2","Lote3","Lote4","Lote5")
+> R1=c(8.30,5.69,3.55,1.29,0.01)
+> R2=c(7.70,5.62,3.36,1.28,0.01)
+> Título="Análise de Linearidade"
+> CR=seq(1:mean(length(R1),length(R2)))
+> dados=data.frame(Item,R1,R2,CR)
+> i=1
+> for (i in (1:nrow(dados))){
+> dados$MRES[i]=mean(c(dados$R1[i],dados$R2[i]))
+> i=i+1
+> }
+> dados$CR2=(dados$CR)^2
+> dados$CR3=(dados$CR)^3
+> dados$reglin=as.numeric(matrix(predict(lm(MRES~CR,data=dados))))
+> valmax=trunc(max(max(dados$MRES),max(dados$reglin)),2)+1
+> minesc=0
+> maxesc=valmax
+>
+> plot(c(min(dados$CR),max(dados$CR)),c(minesc,maxesc),type="n",main=Título,xlab="",ylab="")
+> points(dados$CR,dados$MRES,col="blue",pch=16,cex=1.8)
+> lines(dados$CR,dados$MRES,col="blue",lwd=2)
+> points(dados$CR,dados$reglin,col="green",pch=16,cex=1.8)
+> lines(dados$CR,dados$reglin,col="green",lwd=2)
+>
+> No exemplo, com esses dados, fiz um gráfico de pontos e linhas. sendo que
+> como era de esperar, ele vai apresentar valores numéricos nas duas colunas.
+>
+> O que queria saber é se é possível substituir *no eixo "x"* os *números
+> 1,...5*, pelos *labels de texto* que aparecem na *variável "Item" ("Lote
+> 1",..., Lote5)*. Tentei mudar transformando o "class" de CR de "numeric"
+> para "factor", mas não deu certo...
+>
+> Obrigado novamente pela atenção!!!
+>
+> *Diogo Jerônimo*
+> *Bacharel em Ciências Estatísticas - ENCE/IBGE*
+> *Mestre em Metrologia - PUC-Rio/PósMQI*
+> *CONRE: 8514 - SÉRIE A*
+> *http://lattes.cnpq.br/8996149312896520
+> <http://lattes.cnpq.br/8996149312896520>*
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200807/fb16205d/attachment.html>
+
+From joseclaudio.faria em gmail.com  Sat Aug  8 11:52:45 2020
+From: joseclaudio.faria em gmail.com (=?utf-8?q?Jos=c3=a9=20Cl=c3=a1udio=20Faria?=)
+Date: Sat, 08 Aug 2020 14:52:45 +0000
+Subject: [R-br] Artigo sobre p.value
+In-Reply-To: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+References: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+Message-ID: <emc4de16ab-6574-49e1-93c3-d01ddc6da063@jcfaria-lenovo>
+
+Caro Luiz,
+
+Creio que você se refere a um artigo do prof. Klaus Richards da ESALQ. 
+Ele foi professor de Estatística e passou para a área de Física do Solo.
+O artigo foi publicado na Revista Brasileira de Ciência do Solo. Creio 
+que você consegue localizar na web page da revista.
+
+É um artigo sempre atual pelos seus questionamentos a respeito de 
+decisões de pesquisa e experimentação baseadas em p-valor quando usado 
+como ferramenta decisória de forma inflexível, como não deve realmente 
+ser.
+
+Ab,
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+Jose Claudio Faria
+UESC/DCET/Brasil
+joseclaudio.faria at gmail.com
+55(73)99966.9100 - VIVO
+55(73)3680.5545 - UESC
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+
+If you have software to deal with statistics, you have arms;
+if you have good software, you have arms and legs;
+if you have software like R, you have arms, legs and wings...
+the height of your flight depends only on you!
+
+------ Mensagem original ------
+De: "Luiz Roberto Martins Pinto por (R-br)" <r-br em listas.c3sl.ufpr.br>
+Para: "a lista Brasileira oficial de discussão do programa R." 
+<r-br em listas.c3sl.ufpr.br>
+Cc: "Luiz Roberto Martins Pinto" <luizroberto.uesc em gmail.com>
+Enviado(s): 07/08/2020 09:38:17
+Assunto: [R-br] Artigo sobre p.value
+
+>
+>Bom dia.
+>
+>Há algum tempo alguém encaminhou para a lista um artigo sobre p.value. 
+>O autor se referiu ao artigo como "o artigo que ele sempre quiz 
+>escrever", ou algo parecido.
+>
+>Eu tive problema no computador e perdi.
+>
+>Peço ajuda para acessar este artigo.
+>
+>Outros artigos temáticos sobre p.value também serão bem-vindos.
+>
+>Grato.
+>
+>Luiz Roberto.
+>
+>
+>Luiz Roberto Martins Pinto
+>Prof. Pleno/DCET/UESC
+>Laboratório de Estatística Computacional
+>Universidade Estadual de Santa Cruz
+>Ilhéus-Bahia-Brasil
+>
+>luizroberto.uesc em gmail.com
+>skype: lrmpinto
+>http://lattes.cnpq.br/2732314327604831
+>
+>"The science exists because there are patterns.
+>  The patterns exist because God created them.
+>  The statistic exists to research the patterns that God created."
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200808/9335bc04/attachment.html>
+
+From joseclaudio.faria em gmail.com  Sat Aug  8 11:59:51 2020
+From: joseclaudio.faria em gmail.com (=?utf-8?q?Jos=c3=a9=20Cl=c3=a1udio=20Faria?=)
+Date: Sat, 08 Aug 2020 14:59:51 +0000
+Subject: [R-br] Artigo sobre p.value
+In-Reply-To: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+References: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+Message-ID: <em4ca8e1fe-fe9f-47e2-9cc2-bb64ce7add2d@jcfaria-lenovo>
+
+Caro Luiz,
+
+Uma palavra importante no contexto "discretização" havia fugido de minha 
+mente na primeira resposta, então complemento:
+Ele deixa claro que toda decisão baseada na discretização rigorosa das 
+distribuições contínuas de probabilidade, é arbitrária.
+
+Ab,
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+Jose Claudio Faria
+UESC/DCET/Brasil
+joseclaudio.faria at gmail.com
+55(73)99966.9100 - VIVO
+55(73)3680.5545 - UESC
+///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+
+If you have software to deal with statistics, you have arms;
+if you have good software, you have arms and legs;
+if you have software like R, you have arms, legs and wings...
+the height of your flight depends only on you!
+
+------ Mensagem original ------
+De: "Luiz Roberto Martins Pinto por (R-br)" <r-br em listas.c3sl.ufpr.br>
+Para: "a lista Brasileira oficial de discussão do programa R." 
+<r-br em listas.c3sl.ufpr.br>
+Cc: "Luiz Roberto Martins Pinto" <luizroberto.uesc em gmail.com>
+Enviado(s): 07/08/2020 09:38:17
+Assunto: [R-br] Artigo sobre p.value
+
+>
+>Bom dia.
+>
+>Há algum tempo alguém encaminhou para a lista um artigo sobre p.value. 
+>O autor se referiu ao artigo como "o artigo que ele sempre quiz 
+>escrever", ou algo parecido.
+>
+>Eu tive problema no computador e perdi.
+>
+>Peço ajuda para acessar este artigo.
+>
+>Outros artigos temáticos sobre p.value também serão bem-vindos.
+>
+>Grato.
+>
+>Luiz Roberto.
+>
+>
+>Luiz Roberto Martins Pinto
+>Prof. Pleno/DCET/UESC
+>Laboratório de Estatística Computacional
+>Universidade Estadual de Santa Cruz
+>Ilhéus-Bahia-Brasil
+>
+>luizroberto.uesc em gmail.com
+>skype: lrmpinto
+>http://lattes.cnpq.br/2732314327604831
+>
+>"The science exists because there are patterns.
+>  The patterns exist because God created them.
+>  The statistic exists to research the patterns that God created."
+>
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200808/2fc61612/attachment.html>
+
+From cesar.rabak em gmail.com  Sun Aug  9 18:37:25 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 9 Aug 2020 18:37:25 -0300
+Subject: [R-br] Artigo sobre p.value
+In-Reply-To: <em4ca8e1fe-fe9f-47e2-9cc2-bb64ce7add2d@jcfaria-lenovo>
+References: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+ <em4ca8e1fe-fe9f-47e2-9cc2-bb64ce7add2d@jcfaria-lenovo>
+Message-ID: <CAKrF98=Js7irbdtNri635QXQHuv4Kzc06mrx2Ov7n7Dyzp-AQg@mail.gmail.com>
+
+Seguramente, e *mais* o uso do limiar de 0,05 é arbitrário, desde o tempo
+que o Fisher explicou porque, para os testes dele, que não usavam o
+conceito do Teste de Hipótese Nula "moderna" baseado no conceito de Erros
+Tipo I e Tipo II (que Fisher discordava).
+
+MAS, para usar a teoria com os dois tipos de erro o limiar deveria ser
+escolhido *a priori* e a tal "dicotimização" empregue.
+
+Nos últimos anos, pessoas que não entendem que tratam-se de duas teorias
+(competindo) tentaram fazer uma salada e atualmente há revisores, etc., que
+pedem que se faça uso da teoria de hipótese nula "....mas que se informe o
+valor-p obtido... e não se o resultado foi significante ou  não..." o que
+em teoria não faz sentido em nenhuma das duas teorias...
+
+meus 0,01999....
+--
+Cesar Rabak
+
+
+On Sat, Aug 8, 2020 at 12:00 PM José Cláudio Faria por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Caro Luiz,
+>
+> Uma palavra importante no contexto "discretização" havia fugido de minha
+> mente na primeira resposta, então complemento:
+> Ele deixa claro que toda decisão baseada na discretização rigorosa das
+> distribuições contínuas de probabilidade, é arbitrária.
+>
+> Ab,
+> ///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+> Jose Claudio Faria
+> UESC/DCET/Brasil
+> joseclaudio.faria at gmail.com
+> 55(73)99966.9100 - VIVO
+> 55(73)3680.5545 - UESC
+> ///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+>
+> If you have software to deal with statistics, you have arms;
+> if you have good software, you have arms and legs;
+> if you have software like R, you have arms, legs and wings...
+> the height of your flight depends only on you!
+>
+> ------ Mensagem original ------
+> De: "Luiz Roberto Martins Pinto por (R-br)" <r-br em listas.c3sl.ufpr.br>
+> Para: "a lista Brasileira oficial de discussão do programa R." <
+> r-br em listas.c3sl.ufpr.br>
+> Cc: "Luiz Roberto Martins Pinto" <luizroberto.uesc em gmail.com>
+> Enviado(s): 07/08/2020 09:38:17
+> Assunto: [R-br] Artigo sobre p.value
+>
+>
+> Bom dia.
+>
+> Há algum tempo alguém encaminhou para a lista um artigo sobre p.value. O
+> autor se referiu ao artigo como "o artigo que ele sempre quiz escrever", ou
+> algo parecido.
+>
+> Eu tive problema no computador e perdi.
+>
+> Peço ajuda para acessar este artigo.
+>
+> Outros artigos temáticos sobre p.value também serão bem-vindos.
+>
+> Grato.
+>
+> Luiz Roberto.
+>
+>
+> Luiz Roberto Martins Pinto
+> Prof. Pleno/DCET/UESC
+> Laboratório de Estatística Computacional
+> Universidade Estadual de Santa Cruz
+> Ilhéus-Bahia-Brasil
+>
+> luizroberto.uesc em gmail.com
+> skype: lrmpinto
+> http://lattes.cnpq.br/2732314327604831
+>
+> "*The s**cience exists because there are patterns. *
+> * The patterns exist because God created them*.
+> * The statistic exists to research the patterns that God created.*"
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200809/7696fea9/attachment.html>
+
+From luizroberto.uesc em gmail.com  Sun Aug  9 22:32:32 2020
+From: luizroberto.uesc em gmail.com (Luiz Roberto Martins Pinto)
+Date: Sun, 9 Aug 2020 22:32:32 -0300
+Subject: [R-br] Artigo sobre p.value
+In-Reply-To: <CAKrF98=Js7irbdtNri635QXQHuv4Kzc06mrx2Ov7n7Dyzp-AQg@mail.gmail.com>
+References: <CAK4=-FAja+HUAza-V+JBR=oxtDP3V-n+Yw+Az-gdK4j038vYrw@mail.gmail.com>
+ <em4ca8e1fe-fe9f-47e2-9cc2-bb64ce7add2d@jcfaria-lenovo>
+ <CAKrF98=Js7irbdtNri635QXQHuv4Kzc06mrx2Ov7n7Dyzp-AQg@mail.gmail.com>
+Message-ID: <CAK4=-FD1As9moyKMyvGMfq+z-+95Uqyf1dYSkrMFDyg+m0eNKQ@mail.gmail.com>
+
+César,
+
+Agradeço a sua observação sempre muito bem fundamentada!
+
+Estou muito interessado nesta controvérsia, e, particularmente na
+matemática do cálculo do p.value, que me parece inquestionável (?).
+
+Abraços.
+
+Luiz Roberto.
+
+Em dom, 9 de ago de 2020 18:38, Cesar Rabak por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Seguramente, e *mais* o uso do limiar de 0,05 é arbitrário, desde o tempo
+> que o Fisher explicou porque, para os testes dele, que não usavam o
+> conceito do Teste de Hipótese Nula "moderna" baseado no conceito de Erros
+> Tipo I e Tipo II (que Fisher discordava).
+>
+> MAS, para usar a teoria com os dois tipos de erro o limiar deveria ser
+> escolhido *a priori* e a tal "dicotimização" empregue.
+>
+> Nos últimos anos, pessoas que não entendem que tratam-se de duas teorias
+> (competindo) tentaram fazer uma salada e atualmente há revisores, etc., que
+> pedem que se faça uso da teoria de hipótese nula "....mas que se informe o
+> valor-p obtido... e não se o resultado foi significante ou  não..." o que
+> em teoria não faz sentido em nenhuma das duas teorias...
+>
+> meus 0,01999....
+> --
+> Cesar Rabak
+>
+>
+> On Sat, Aug 8, 2020 at 12:00 PM José Cláudio Faria por (R-br) <
+> r-br em listas.c3sl.ufpr.br> wrote:
+>
+>> Caro Luiz,
+>>
+>> Uma palavra importante no contexto "discretização" havia fugido de minha
+>> mente na primeira resposta, então complemento:
+>> Ele deixa claro que toda decisão baseada na discretização rigorosa das
+>> distribuições contínuas de probabilidade, é arbitrária.
+>>
+>> Ab,
+>> ///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+>> Jose Claudio Faria
+>> UESC/DCET/Brasil
+>> joseclaudio.faria at gmail.com
+>> 55(73)99966.9100 - VIVO
+>> 55(73)3680.5545 - UESC
+>> ///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\///\\\
+>>
+>> If you have software to deal with statistics, you have arms;
+>> if you have good software, you have arms and legs;
+>> if you have software like R, you have arms, legs and wings...
+>> the height of your flight depends only on you!
+>>
+>> ------ Mensagem original ------
+>> De: "Luiz Roberto Martins Pinto por (R-br)" <r-br em listas.c3sl.ufpr.br>
+>> Para: "a lista Brasileira oficial de discussão do programa R." <
+>> r-br em listas.c3sl.ufpr.br>
+>> Cc: "Luiz Roberto Martins Pinto" <luizroberto.uesc em gmail.com>
+>> Enviado(s): 07/08/2020 09:38:17
+>> Assunto: [R-br] Artigo sobre p.value
+>>
+>>
+>> Bom dia.
+>>
+>> Há algum tempo alguém encaminhou para a lista um artigo sobre p.value. O
+>> autor se referiu ao artigo como "o artigo que ele sempre quiz escrever", ou
+>> algo parecido.
+>>
+>> Eu tive problema no computador e perdi.
+>>
+>> Peço ajuda para acessar este artigo.
+>>
+>> Outros artigos temáticos sobre p.value também serão bem-vindos.
+>>
+>> Grato.
+>>
+>> Luiz Roberto.
+>>
+>>
+>> Luiz Roberto Martins Pinto
+>> Prof. Pleno/DCET/UESC
+>> Laboratório de Estatística Computacional
+>> Universidade Estadual de Santa Cruz
+>> Ilhéus-Bahia-Brasil
+>>
+>> luizroberto.uesc em gmail.com
+>> skype: lrmpinto
+>> http://lattes.cnpq.br/2732314327604831
+>>
+>> "*The s**cience exists because there are patterns. *
+>> * The patterns exist because God created them*.
+>> * The statistic exists to research the patterns that God created.*"
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200809/2a735eb4/attachment.html>
+
+From diogojose21 em yahoo.com.br  Mon Aug 10 09:00:26 2020
+From: diogojose21 em yahoo.com.br (=?UTF-8?Q?Diogo_Jer=C3=B4nimo?=)
+Date: Mon, 10 Aug 2020 12:00:26 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?Mudar_eixo_num=C3=A9rico_para_labels?=
+In-Reply-To: <CAKrF98=NMQ_Vpgmjx6Hywf6=-RcKe9h4gfkqj2aLmuyTEp=gDQ@mail.gmail.com>
+References: <1392350255.1667963.1596838411718.ref@mail.yahoo.com>
+ <1392350255.1667963.1596838411718@mail.yahoo.com>
+ <CAKrF98=NMQ_Vpgmjx6Hywf6=-RcKe9h4gfkqj2aLmuyTEp=gDQ@mail.gmail.com>
+Message-ID: <1217366803.2463574.1597060826321@mail.yahoo.com>
+
+Obrigado Cesar!!!
+Sobre a sua solução, eu tinha trabalhado em algo extremamente parecido, mas tentei transformar a variável em fator antes de aplicar o comando "axis(...)", aí não dava a informação que eu queria.
+Um ótimo dia e ótima semana!!!  
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE AEmail: diogojose21 em yahoo.com.brhttp://lattes.cnpq.br/8996149312896520 
+
+    Em sexta-feira, 7 de agosto de 2020 23:36:25 BRT, Cesar Rabak por (R-br) <r-br em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Diogo, 
+Mude a chamada a plot para :> plot(c(min(dados$CR),max(dados$CR)),c(minesc,maxesc),type="n",main=Título,xlab="",ylab="", xaxt='n')Veja o acréscimo em negrito:___________________________________________________________________?
+e acrescente a seguinte chamada:> axis(1,at=1:5,labels=Item)Para um caso geral você pode usar um cálculo com o comprimento do item "Item" ou dos seus dados, etc.
+E não esqueça de de RTFM¹ !!
+HTH
+--Cesar Rabak
+[1] Read The Fantastic Manual ?
+
+On Fri, Aug 7, 2020 at 7:13 PM Diogo Jerônimo por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+
+Gente, mais uma dúvida, para isso o exemplo abaixo (em vermelho):
+Item=c("Lote1","Lote2","Lote3","Lote4","Lote5")
+R1=c(8.30,5.69,3.55,1.29,0.01)R2=c(7.70,5.62,3.36,1.28,0.01)Título="Análise de Linearidade"CR=seq(1:mean(length(R1),length(R2)))
+dados=data.frame(Item,R1,R2,CR)i=1
+for (i in (1:nrow(dados))){dados$MRES[i]=mean(c(dados$R1[i],dados$R2[i]))i=i+1}dados$CR2=(dados$CR)^2
+dados$CR3=(dados$CR)^3 dados$reglin=as.numeric(matrix(predict(lm(MRES~CR,data=dados))))
+valmax=trunc(max(max(dados$MRES),max(dados$reglin)),2)+1
+minesc=0maxesc=valmaxplot(c(min(dados$CR),max(dados$CR)),c(minesc,maxesc),type="n",main=Título,xlab="",ylab="")
+points(dados$CR,dados$MRES,col="blue",pch=16,cex=1.8)lines(dados$CR,dados$MRES,col="blue",lwd=2)points(dados$CR,dados$reglin,col="green",pch=16,cex=1.8)lines(dados$CR,dados$reglin,col="green",lwd=2)
+No exemplo, com esses dados, fiz um gráfico de pontos e linhas. sendo que como era de esperar, ele vai apresentar valores numéricos nas duas colunas.
+O que queria saber é se é possível substituir no eixo "x" os números 1,...5, pelos labels de texto que aparecem na variável "Item" ("Lote 1",..., Lote5). Tentei mudar transformando o "class" de CR de "numeric" para "factor", mas não deu certo...  
+Obrigado novamente pela atenção!!!
+Diogo JerônimoBacharel em Ciências Estatísticas - ENCE/IBGEMestre em Metrologia - PUC-Rio/PósMQICONRE: 8514 - SÉRIE Ahttp://lattes.cnpq.br/8996149312896520
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200810/2b50059c/attachment.html>
+
+From alexandre.santos em cas.ifmt.edu.br  Fri Aug 21 17:02:54 2020
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Fri, 21 Aug 2020 16:02:54 -0400
+Subject: [R-br] =?utf-8?q?Diferen=C3=A7a_entre_o_teste_de_normalidade_nor?=
+ =?utf-8?q?malidade_sobre_a_vari=C3=A1vel_resposta_e_sobre_a_aov=28=29_dos?=
+ =?utf-8?q?_dados_em_fun=C3=A7=C3=A3o_da_vari=C3=A1vel_explicativa?=
+Message-ID: <e188f9df-36ec-6ac1-3087-aa8a5ab1a079@cas.ifmt.edu.br>
+
+Prezados Membro do R-br,
+
+Gostaria de saber a diferença entre realizar:
+
+1) Análise de normalidade sobre a variável resposta
+
+x <- rep(seq(from=10, to=50, by=0.5),6)
+y1 <- rnorm(length(x), mean=10, sd=1.5)
+y1.res<-y1-mean(y1)
+shapiro.test(y1.res)
+
+# Shapiro-Wilk normality test # #data: y1.res #W = 0.99688, p-value = 0.4787
+
+2) Sobre a análise de variância do modelo em função da variável explicativa
+
+y1.av<-aov(y1 ~ x)
+shapiro.test(y1.av$res)
+
+# Shapiro-Wilk normality test # #data: y1.av$res #W = 0.99736, p-value = 
+0.6338
+
+Obrigado,
+
+Alexandre
+
+-- 
+Alexandre dos Santos
+Geotechnologies and Spatial Statistics applied to Forest Entomology
+Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+Caixa Postal 244 (PO Box)
+Avenida dos Ramires, s/n - Vila Real
+Caceres - MT - CEP 78201-380 (ZIP code)
+Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+Lattes CV: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722
+ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+--
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200821/84a8fbf4/attachment.html>
+
+From moreirafernandesanamaria em gmail.com  Fri Aug 21 18:19:39 2020
+From: moreirafernandesanamaria em gmail.com (Ana Maria)
+Date: Fri, 21 Aug 2020 18:19:39 -0300
+Subject: [R-br] 
+	=?utf-8?q?Diferen=C3=A7a_entre_o_teste_de_normalidade_nor?=
+	=?utf-8?q?malidade_sobre_a_vari=C3=A1vel_resposta_e_sobre_a_aov=28?=
+	=?utf-8?q?=29_dos_dados_em_fun=C3=A7=C3=A3o_da_vari=C3=A1vel_expli?=
+	=?utf-8?q?cativa?=
+In-Reply-To: <e188f9df-36ec-6ac1-3087-aa8a5ab1a079@cas.ifmt.edu.br>
+References: <e188f9df-36ec-6ac1-3087-aa8a5ab1a079@cas.ifmt.edu.br>
+Message-ID: <CA+hn+M4WN_tSoo06ePKO7vcOcVYjDuLj6ufbe8eW7GhfCk0DPA@mail.gmail.com>
+
+Boa tarde. Se eu entendi sua pergunta, não há diferença de normalidade. Os
+seus comandos do R mostram o teste de normalidade para a variável
+dependente (que é a variável resposta) e o teste de normalidade para outra
+variável, a independente (que é a variável explicativa).
+Não vejo diferença, é o mesmo teste para as suas variáveis.
+
+Espero ter lhe ajudado em algo.
+
+Att.,
+Profa. Ana
+
+Em sex, 21 de ago de 2020 17:03, ASANTOS por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Prezados Membro do R-br,
+>
+> Gostaria de saber a diferença entre realizar:
+>
+> 1) Análise de normalidade sobre a variável resposta
+>
+> x <- rep(seq(from=10, to=50, by=0.5),6)
+> y1 <- rnorm(length(x), mean=10, sd=1.5)
+> y1.res<-y1-mean(y1)
+> shapiro.test(y1.res)
+>
+> #	Shapiro-Wilk normality test
+> #
+> #data:  y1.res
+> #W = 0.99688, p-value = 0.4787
+>
+> 2) Sobre a análise de variância do modelo em função da variável explicativa
+>
+> y1.av<-aov(y1 ~ x)
+> shapiro.test(y1.av$res)
+>
+> #	Shapiro-Wilk normality test
+> #
+> #data:  y1.av$res
+> #W = 0.99736, p-value = 0.6338
+>
+> Obrigado,
+>
+> Alexandre
+>
+> --
+> Alexandre dos Santos
+> Geotechnologies and Spatial Statistics applied to Forest Entomology
+> Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+> Caixa Postal 244 (PO Box)
+> Avenida dos Ramires, s/n - Vila Real
+> Caceres - MT - CEP 78201-380 (ZIP code)
+> Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+> Lattes CV: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722
+> ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+> Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+> --
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200821/37caf918/attachment.html>
+
+From drigo.angelo em gmail.com  Fri Aug 21 19:01:44 2020
+From: drigo.angelo em gmail.com (=?UTF-8?Q?Rodrigo_=C3=82ngelo?=)
+Date: Fri, 21 Aug 2020 19:01:44 -0300
+Subject: [R-br] 
+	=?utf-8?q?Diferen=C3=A7a_entre_o_teste_de_normalidade_nor?=
+	=?utf-8?q?malidade_sobre_a_vari=C3=A1vel_resposta_e_sobre_a_aov=28?=
+	=?utf-8?q?=29_dos_dados_em_fun=C3=A7=C3=A3o_da_vari=C3=A1vel_expli?=
+	=?utf-8?q?cativa?=
+In-Reply-To: <CA+hn+M4WN_tSoo06ePKO7vcOcVYjDuLj6ufbe8eW7GhfCk0DPA@mail.gmail.com>
+References: <e188f9df-36ec-6ac1-3087-aa8a5ab1a079@cas.ifmt.edu.br>
+ <CA+hn+M4WN_tSoo06ePKO7vcOcVYjDuLj6ufbe8eW7GhfCk0DPA@mail.gmail.com>
+Message-ID: <CANsnirUae+2+et+C-2AF6txyPAPn52ZLhHbu9kE4nNW07y8OQQ@mail.gmail.com>
+
+Olá, Alexandre
+
+Além do que já foi falado pela Profa. Ana, eu gostaria de salientar aqui
+que em análise de regressão, não é necessário analisar a normalidade da
+variável dependente, apenas dos resíduos.
+
+Atenciosamente,
+Rodrigo de Castro Ângelo
+
+
+Em sex., 21 de ago. de 2020 às 18:19, Ana Maria por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Boa tarde. Se eu entendi sua pergunta, não há diferença de normalidade. Os
+> seus comandos do R mostram o teste de normalidade para a variável
+> dependente (que é a variável resposta) e o teste de normalidade para outra
+> variável, a independente (que é a variável explicativa).
+> Não vejo diferença, é o mesmo teste para as suas variáveis.
+>
+> Espero ter lhe ajudado em algo.
+>
+> Att.,
+> Profa. Ana
+>
+> Em sex, 21 de ago de 2020 17:03, ASANTOS por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Prezados Membro do R-br,
+>>
+>> Gostaria de saber a diferença entre realizar:
+>>
+>> 1) Análise de normalidade sobre a variável resposta
+>>
+>> x <- rep(seq(from=10, to=50, by=0.5),6)
+>> y1 <- rnorm(length(x), mean=10, sd=1.5)
+>> y1.res<-y1-mean(y1)
+>> shapiro.test(y1.res)
+>>
+>> #	Shapiro-Wilk normality test
+>> #
+>> #data:  y1.res
+>> #W = 0.99688, p-value = 0.4787
+>>
+>> 2) Sobre a análise de variância do modelo em função da variável
+>> explicativa
+>>
+>> y1.av<-aov(y1 ~ x)
+>> shapiro.test(y1.av$res)
+>>
+>> #	Shapiro-Wilk normality test
+>> #
+>> #data:  y1.av$res
+>> #W = 0.99736, p-value = 0.6338
+>>
+>> Obrigado,
+>>
+>> Alexandre
+>>
+>> --
+>> Alexandre dos Santos
+>> Geotechnologies and Spatial Statistics applied to Forest Entomology
+>> Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+>> Caixa Postal 244 (PO Box)
+>> Avenida dos Ramires, s/n - Vila Real
+>> Caceres - MT - CEP 78201-380 (ZIP code)
+>> Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+>> Lattes CV: http://lattes.cnpq.br/1360403201088680
+>> OrcID: orcid.org/0000-0001-8232-6722
+>> ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+>> Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+>> --
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200821/42a737c3/attachment.html>
+
+From cesar.rabak em gmail.com  Sat Aug 22 16:30:42 2020
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 22 Aug 2020 16:30:42 -0300
+Subject: [R-br] 
+	=?utf-8?q?Diferen=C3=A7a_entre_o_teste_de_normalidade_nor?=
+	=?utf-8?q?malidade_sobre_a_vari=C3=A1vel_resposta_e_sobre_a_aov=28?=
+	=?utf-8?q?=29_dos_dados_em_fun=C3=A7=C3=A3o_da_vari=C3=A1vel_expli?=
+	=?utf-8?q?cativa?=
+In-Reply-To: <CANsnirUae+2+et+C-2AF6txyPAPn52ZLhHbu9kE4nNW07y8OQQ@mail.gmail.com>
+References: <e188f9df-36ec-6ac1-3087-aa8a5ab1a079@cas.ifmt.edu.br>
+ <CA+hn+M4WN_tSoo06ePKO7vcOcVYjDuLj6ufbe8eW7GhfCk0DPA@mail.gmail.com>
+ <CANsnirUae+2+et+C-2AF6txyPAPn52ZLhHbu9kE4nNW07y8OQQ@mail.gmail.com>
+Message-ID: <CAKrF98kvAHVb44ByqSsKoTFwePNGmXTOFqTQoAuQAyrdROmGRg@mail.gmail.com>
+
+Pesso em ll,
+Aproveitando o excelente "gancho" do Rodrigo, e abusando da nossa língua
+pátria que permite aproveitar a ambiguidade dela para a gente usar numa
+discussão, gostaria de contribuir nesta *trédi* com os seguintes argumentos:
+
+1) A pergunta foi « ? Gostaria de saber a diferença entre realizar:? »
+2) A resposta dada por Ana Maria « Se eu entendi sua pergunta, não há
+diferença de normalidade. ? »
+3) Há diferenças entre realizar uma e outra operação
+4) O Rodrigo apontou uma delas « ? salientar aqui que em análise de
+regressão, não é necessário analisar a normalidade da variável dependente,
+apenas dos resíduos. ? »
+
+Portanto, a diferença para p/OP Alexandre, é a seguinte:
+
+Além de ser desnecessário é conceitualmente *incorreto* realizar testes de
+normalidade em variáveis de regressões (e ANOVAs que são regressões
+lineares especializadas).
+
+Para uma apresentação mais aprofundada, vejam meu *post* nesta lista dia 27
+de maio do corrente¹.
+
+HTH
+--
+Cesar Rabak
+
+[1] infelizmente, o google ñ me deixa colocar um link para a mensagem
+aqui...
+
+On Fri, Aug 21, 2020 at 7:02 PM Rodrigo Ângelo por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Olá, Alexandre
+>
+> Além do que já foi falado pela Profa. Ana, eu gostaria de salientar aqui
+> que em análise de regressão, não é necessário analisar a normalidade da
+> variável dependente, apenas dos resíduos.
+>
+> Atenciosamente,
+> Rodrigo de Castro Ângelo
+>
+>
+> Em sex., 21 de ago. de 2020 às 18:19, Ana Maria por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Boa tarde. Se eu entendi sua pergunta, não há diferença de normalidade.
+>> Os seus comandos do R mostram o teste de normalidade para a variável
+>> dependente (que é a variável resposta) e o teste de normalidade para outra
+>> variável, a independente (que é a variável explicativa).
+>> Não vejo diferença, é o mesmo teste para as suas variáveis.
+>>
+>> Espero ter lhe ajudado em algo.
+>>
+>> Att.,
+>> Profa. Ana
+>>
+>> Em sex, 21 de ago de 2020 17:03, ASANTOS por (R-br) <
+>> r-br em listas.c3sl.ufpr.br> escreveu:
+>>
+>>> Prezados Membro do R-br,
+>>>
+>>> Gostaria de saber a diferença entre realizar:
+>>>
+>>> 1) Análise de normalidade sobre a variável resposta
+>>>
+>>> x <- rep(seq(from=10, to=50, by=0.5),6)
+>>> y1 <- rnorm(length(x), mean=10, sd=1.5)
+>>> y1.res<-y1-mean(y1)
+>>> shapiro.test(y1.res)
+>>>
+>>> #	Shapiro-Wilk normality test
+>>> #
+>>> #data:  y1.res
+>>> #W = 0.99688, p-value = 0.4787
+>>>
+>>> 2) Sobre a análise de variância do modelo em função da variável
+>>> explicativa
+>>>
+>>> y1.av<-aov(y1 ~ x)
+>>> shapiro.test(y1.av$res)
+>>>
+>>> #	Shapiro-Wilk normality test
+>>> #
+>>> #data:  y1.av$res
+>>> #W = 0.99736, p-value = 0.6338
+>>>
+>>> Obrigado,
+>>>
+>>> Alexandre
+>>>
+>>> --
+>>> Alexandre dos Santos
+>>> Geotechnologies and Spatial Statistics applied to Forest Entomology
+>>> Instituto Federal de Mato Grosso (IFMT) - Campus Caceres
+>>> Caixa Postal 244 (PO Box)
+>>> Avenida dos Ramires, s/n - Vila Real
+>>> Caceres - MT - CEP 78201-380 (ZIP code)
+>>> Phone: (+55) 65 99686-6970 / (+55) 65 3221-2674
+>>> Lattes CV: http://lattes.cnpq.br/1360403201088680
+>>> OrcID: orcid.org/0000-0001-8232-6722
+>>> ResearchGate: www.researchgate.net/profile/Alexandre_Santos10
+>>> Publons: https://publons.com/researcher/3085587/alexandre-dos-santos/
+>>> --
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20200822/a498ecab/attachment.html>
+

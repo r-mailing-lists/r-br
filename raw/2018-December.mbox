@@ -1,0 +1,2208 @@
+From edinhoestat em yahoo.com.br  Sat Dec  1 21:41:14 2018
+From: edinhoestat em yahoo.com.br (Edson Lira)
+Date: Sat, 1 Dec 2018 23:41:14 +0000 (UTC)
+Subject: [R-br] RES:  COMPARAR TRATAMENTOS
+In-Reply-To: <DM5PR10MB183644EA96E423596B97EE81AED20@DM5PR10MB1836.namprd10.prod.outlook.com>
+References: <646815586.661492.1543459561772.ref@mail.yahoo.com>
+ <646815586.661492.1543459561772@mail.yahoo.com>
+ <DM5PR10MB183644EA96E423596B97EE81AED20@DM5PR10MB1836.namprd10.prod.outlook.com>
+Message-ID: <806125158.271373.1543707674291@mail.yahoo.com>
+
+Obrigado Antonio
+Prof. Edson Lira, Me 
+Estatístico
+Manaus-Amazonas 
+
+    Em quinta-feira, 29 de novembro de 2018 08:56:06 AMT, Antonio Silva <absilva47 em hotmail.com> escreveu:  
+ 
+ #yiv8513670777 #yiv8513670777 -- _filtered #yiv8513670777 {panose-1:2 4 5 3 5 4 6 3 2 4;} _filtered #yiv8513670777 {font-family:Calibri;panose-1:2 15 5 2 2 2 4 3 2 4;} _filtered #yiv8513670777 {font-family:Garamond;panose-1:2 2 4 4 3 3 1 1 8 3;}#yiv8513670777 #yiv8513670777 p.yiv8513670777MsoNormal, #yiv8513670777 li.yiv8513670777MsoNormal, #yiv8513670777 div.yiv8513670777MsoNormal {margin:0cm;margin-bottom:.0001pt;font-size:11.0pt;font-family:sans-serif;}#yiv8513670777 a:link, #yiv8513670777 span.yiv8513670777MsoHyperlink {color:blue;text-decoration:underline;}#yiv8513670777 a:visited, #yiv8513670777 span.yiv8513670777MsoHyperlinkFollowed {color:#954F72;text-decoration:underline;}#yiv8513670777 .yiv8513670777MsoChpDefault {} _filtered #yiv8513670777 {margin:70.85pt 3.0cm 70.85pt 3.0cm;}#yiv8513670777 div.yiv8513670777WordSection1 {}#yiv8513670777 
+  
+ 
+  
+ 
+Enviado do Email para Windows 10
+
+  
+ 
+De: Edson Lira por (R-br)
+Enviado:quarta-feira, 28 de novembro de 2018 23:46
+Para: a lista Brasileira oficial de discussão do programa R.
+Cc:Edson Lira
+Assunto: [R-br] COMPARAR TRATAMENTOS
+
+  
+ 
+Boa noite, os dados abaixo referem-se a  10 tratamentos e ao estagio de uma doença. O grau 2 é o estágio maior.
+ 
+  
+ 
+            doenca
+ 
+Trat     0 1 2 Total              
+ 
+GM1   3 2 1     6
+ 
+GM2   0 2 4     6
+ 
+GM3   1 3 2     6
+ 
+GM4   0 3 2     5
+ 
+GM5   0 4 2     6
+ 
+GM6   0 1 5     6
+ 
+GM7   1 1 4     6
+ 
+GM8   0 0 6     6
+ 
+GM9   0 4 1     5
+ 
+GM10  0 0 6     6
+ 
+  
+ 
+  
+ 
+Fiz um teste de associação (Exato de Fisher) e verifiquei que ha uma associação entre o tratamento e o estagio da doença. Agora gostaria de verificar qual dos tratamentos é o mais eficiente.
+ 
+  
+ 
+Posso testar também:
+ 
+  
+ 
+G1xG2
+ 
+G3xG4
+ 
+G5xG6
+ 
+G7xG8
+ 
+G9XG10
+ 
+  
+ 
+Alguém tem alguma sugestão?
+ 
+  
+ 
+  
+ 
+[  ]'s.
+ 
+Prof. Edson Lira, Me
+Estatístico
+Manaus-Amazonas
+ 
+  
+ 
+  
+ 
+Caro Edson
+ 
+Eu montaria a matriz desta forma, a seguir, faria uma análise não paramétrica e faria a escala de notas começando do 1, eliminando o dígito 0.
+ 
+Trat        rep         nota
+ 
+GM0      d1           0
+ 
+GM1      d1           3
+ 
+GM2      d1           0
+ 
+GM3      d1           1
+ 
+GM4      d1           0
+ 
+GM5      d1           0
+ 
+GM6      d1           0
+ 
+GM7      d1           1
+ 
+GM8      d1           0
+ 
+GM9      d1           0
+ 
+GM10   d1           0
+ 
+GM0      d2           1
+ 
+GM1      d2           2
+ 
+GM2      d2           2
+ 
+GM3      d2           3
+ 
+GM4      d2           3
+ 
+GM5      d2           4
+ 
+GM6      d2           1
+ 
+GM7      d2           1
+ 
+GM8      d2           0
+ 
+GM9      d2           4
+ 
+GM10   d2           0
+ 
+GM0      d3           2
+ 
+GM1      d3           1
+ 
+GM2      d3           4
+ 
+GM3      d3           2
+ 
+GM4      d3           2
+ 
+GM5      d3           2
+ 
+GM6      d3           5
+ 
+GM7      d3           4
+ 
+GM8      d3           6
+ 
+GM9      d3           1
+ 
+GM10   d3           6
+ 
+Espero ter ajudado.
+ 
+Brito.
+ 
+  
+   
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181201/24cf52fd/attachment.html>
+
+From cesar.rabak em gmail.com  Sun Dec  2 14:59:31 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sun, 2 Dec 2018 14:59:31 -0200
+Subject: [R-br] COMPARAR TRATAMENTOS
+In-Reply-To: <646815586.661492.1543459561772@mail.yahoo.com>
+References: <646815586.661492.1543459561772.ref@mail.yahoo.com>
+ <646815586.661492.1543459561772@mail.yahoo.com>
+Message-ID: <CAKrF98=ocijZfSnop1yui5sXo=NrTsx80EqstSXCGp+MFbKH+Q@mail.gmail.com>
+
+Edson,
+
+Com seis casos por tipo de tratamento, não vejo como você conseguirá
+somente com um teste estatístico separar dos tratamentos o "mais eficiente".
+
+Com dez tratamentos você teria que fazer 45 testes o que exigiria que o
+limiar de rejeição da hipótese nula (que todos os tratamentos são
+equivalentes no seu caso) fosse diminuído, usando-se alguma correção, como
+a de Bonferroni ou Holm, para eludir o problema da inflação do Erro Tipo I
+ou a FWER *-- Family Wise Error Rate*.
+
+O teste exato de Fisher não tem um teste *post hoc* idealizado para
+permitir fazer comparações entre grupos após o teste *omnibus* ter
+detectado *alguma* diferença entre os tratamentos, permitindo uma análise a
+partir desse resultado.
+
+Note-se que olhando os dados que você postou, e se eu entendi corretamente
+a descrição, a linha do tratamento GM1 seria a "mais promissora" pois tem
+mais casos no estágio 0.
+
+Ora: um teste qui-quadrado dessa tabela contra a hipótese nula de que eles
+viriam de uma amostragem aleatória onde em regime (em "média") o número de
+casos por estágio seria igual nos dá um valor-p de 0,6, ou seja a hipótese
+nula dificilmente seria rejeitada neste caso...
+
+Na contrapartida, na linha do tratamento G10 (que, de novo, se entendi bem
+seria o *pior* dos tratamentos com todos os casos chegando ao estágio 2),
+obtém-se para o mesmo teste o valor-p de 0,0025, que para muitos
+pesquisadores seria um resultado significante estatisticamente.
+
+Será que seu teste de Fisher só está mostrando essa diferença toda?
+
+HTH
+--
+Cesar Rabak
+
+
+On Thu, Nov 29, 2018 at 12:46 AM Edson Lira por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa noite, os dados abaixo referem-se a  10 tratamentos e ao estagio de
+> uma doença. O grau 2 é o estágio maior.
+>
+>             doenca
+> Trat     0 1 2 Total
+> GM1   3 2 1     6
+> GM2   0 2 4     6
+> GM3   1 3 2     6
+> GM4   0 3 2     5
+> GM5   0 4 2     6
+> GM6   0 1 5     6
+> GM7   1 1 4     6
+> GM8   0 0 6     6
+> GM9   0 4 1     5
+> GM10  0 0 6     6
+>
+>
+> Fiz um teste de associação (Exato de Fisher) e verifiquei que ha uma
+> associação entre o tratamento e o estagio da doença. Agora gostaria de
+> verificar qual dos tratamentos é o mais eficiente.
+>
+> Posso testar também:
+>
+> G1xG2
+> G3xG4
+> G5xG6
+> G7xG8
+> G9XG10
+>
+> Alguém tem alguma sugestão?
+>
+>
+> [  ]'s.
+> Prof. Edson Lira, Me
+> Estatístico
+> Manaus-Amazonas
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181202/1b003be7/attachment.html>
+
+From fla.campos.martins em gmail.com  Wed Dec  5 21:17:25 2018
+From: fla.campos.martins em gmail.com (=?UTF-8?Q?Fl=C3=A1via_de_Campos_Martins?=)
+Date: Wed, 5 Dec 2018 20:17:25 -0300
+Subject: [R-br] =?utf-8?q?an=C3=A1lise_de_correla=C3=A7=C3=A3o_entre_vari?=
+	=?utf-8?q?=C3=A1veis_qualitativas_e_quantitativas?=
+Message-ID: <CALbn=S6+dHidC6hJC1AdVvTu6ba8YvKmNXmNNPVO3YVNE8+FeA@mail.gmail.com>
+
+Prezad em s,
+
+O objetivo do meu trabalho é analisar a correlação entre o conhecimento que
+as pessoas tem sobre a fauna local (variável dependente) e dados
+sócio-econômicos (sexo, idade, renda, escolaridade, tempo de residência no
+local). Eu tenho uma amostra de 105 informantes e as variáveis
+independentes foram organizadas em frequências e para montar a matriz de
+dados usamos números que representam as frequências das variáveis. Ex.:
+Idade: 0 a 10 anos - 1; 10 a 20 anos - 2...
+
+Como estamos trabalhando com a variável dependente qualitativa ordinal, e
+as amostras não apresentaram distribuição normal, fizemos um teste de
+correlação de Spearman.
+
+Entretanto, minha dúvida é se os informantes não se distribuem igualmente
+nas classes (categorias) de idade, de renda, de escolaridade isso não vai
+afetar o resultado?
+Para esclarecer: em relação à renda mensal eu tenho quatro classes: não
+possui renda fixa (0); até um salário mínimo (1); até dois salários (2) e
+até 3 salários. Só que 58% dos informantes estão na classe 1. Ou seja eu
+tenho distribuição desigual entre as classes, isso pode afetar meu
+resultado? Se sim, como resolver?
+
+Obrigada!
+
+Professora Adjunta
+Universidade de Pernambuco (UPE), *Campus* Petrolina
+BR 203, km 2, S/N
+Vila Eduardo
+56328903 - Petrolina, PE- Brasil.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181205/38f5350c/attachment.html>
+
+From cinara.ufjf em gmail.com  Fri Dec  7 10:38:59 2018
+From: cinara.ufjf em gmail.com (Cinara Santos)
+Date: Fri, 7 Dec 2018 10:38:59 -0200
+Subject: [R-br] como carregar somente algumas colunas de um arquivo csv?
+Message-ID: <CAB4g1ykOoLcNA9xuJcCMKB-pRGscfZ8Jpwe9a7knBZ5xBrgEOw@mail.gmail.com>
+
+Olá!
+
+Continuo as voltas com arquivos realmente grandes...
+
+Desta vez, está em csv.
+Ocorre que não preciso trabalhar com todas as colunas.
+
+Tendo conhecimento das colunas que me interessam (sei seus nomes -
+"header"), gostaria de saber da possibilidade de carregar somente tais
+colunas ao invés de carregar o arquivo inteiro, pra depois manter somente
+as colunas que me interessam....
+
+É possível?
+
+
+Ainda gostaria de saber se alguém tem alguma sugestão pra eu conseguir
+abrir aos pouquinhos o arqeuivo do stata que deu estouro de memória [Digest
+R-br, volume 95, assunto 21]....
+
+
+Desde já, grande abraço!
+------------------------
+Cinara Santos
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181207/4ec23fa0/attachment.html>
+
+From zhushazang em gmail.com  Fri Dec  7 10:48:20 2018
+From: zhushazang em gmail.com (Zhu Sha Zang)
+Date: Fri, 07 Dec 2018 09:48:20 -0300
+Subject: [R-br] como carregar somente algumas colunas de um arquivo csv?
+In-Reply-To: <CAB4g1ykOoLcNA9xuJcCMKB-pRGscfZ8Jpwe9a7knBZ5xBrgEOw@mail.gmail.com>
+References: <CAB4g1ykOoLcNA9xuJcCMKB-pRGscfZ8Jpwe9a7knBZ5xBrgEOw@mail.gmail.com>
+Message-ID: <1544186900.2031.2.camel@gmail.com>
+
+Dê uma olhada aqui: https://stackoverflow.com/questions/5788117/only-re
+ad-limited-number-of-columns
+
+
+Atenciosamente
+
+Em sex, 2018-12-07 às 10:38 -0200, Cinara Santos por (R-br) escreveu:
+> Olá!
+> 
+> Continuo as voltas com arquivos realmente grandes... 
+> 
+> Desta vez, está em csv.
+> Ocorre que não preciso trabalhar com todas as colunas.
+> 
+> Tendo conhecimento das colunas que me interessam (sei seus nomes -
+> "header"), gostaria de saber da possibilidade de carregar somente
+> tais colunas ao invés de carregar o arquivo inteiro, pra depois
+> manter somente as colunas que me interessam....
+> 
+> É possível?
+> 
+> 
+> Ainda gostaria de saber se alguém tem alguma sugestão pra eu
+> conseguir abrir aos pouquinhos o arqeuivo do stata que deu estouro de
+> memória [Digest R-br, volume 95, assunto 21]....
+> 
+> 
+> Desde já, grande abraço!
+> ------------------------
+> Cinara Santos
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea
+> cdigo mnimo reproduzvel.
+
+From rddsouzaoliveira em gmail.com  Fri Dec  7 11:01:43 2018
+From: rddsouzaoliveira em gmail.com (Rodrigo de Souza Oliveira)
+Date: Fri, 7 Dec 2018 10:01:43 -0300
+Subject: [R-br] como carregar somente algumas colunas de um arquivo csv?
+In-Reply-To: <CAB4g1ykOoLcNA9xuJcCMKB-pRGscfZ8Jpwe9a7knBZ5xBrgEOw@mail.gmail.com>
+References: <CAB4g1ykOoLcNA9xuJcCMKB-pRGscfZ8Jpwe9a7knBZ5xBrgEOw@mail.gmail.com>
+Message-ID: <CABbTeZNdqD04aom264SNfq4RX6G9G1igqeoszw9AfPqsckfguA@mail.gmail.com>
+
+Dá pra usar o pacote "readr".
+
+library(readr)
+read_csv(file = 'teste.csv', col_types = 'i-i')
+
+No argumento "col_types", você especifica o tipo de dado da coluna, e pode
+usar "-" para ignorar a coluna. No exemplo acima, importa a 1ª e a 3ª
+coluna como integer e a 2ª é ignorada.
+
+Em sex, 7 de dez de 2018 às 09:41, Cinara Santos por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Olá!
+>
+> Continuo as voltas com arquivos realmente grandes...
+>
+> Desta vez, está em csv.
+> Ocorre que não preciso trabalhar com todas as colunas.
+>
+> Tendo conhecimento das colunas que me interessam (sei seus nomes -
+> "header"), gostaria de saber da possibilidade de carregar somente tais
+> colunas ao invés de carregar o arquivo inteiro, pra depois manter somente
+> as colunas que me interessam....
+>
+> É possível?
+>
+>
+> Ainda gostaria de saber se alguém tem alguma sugestão pra eu conseguir
+> abrir aos pouquinhos o arqeuivo do stata que deu estouro de memória [Digest
+> R-br, volume 95, assunto 21]....
+>
+>
+> Desde já, grande abraço!
+> ------------------------
+> Cinara Santos
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+
+
+
+-- 
+
+
+Rodrigo Oliveira
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181207/f1769dc8/attachment.html>
+
+From cesar.rabak em gmail.com  Fri Dec  7 21:34:52 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Fri, 7 Dec 2018 21:34:52 -0200
+Subject: [R-br] 
+	=?utf-8?q?an=C3=A1lise_de_correla=C3=A7=C3=A3o_entre_vari?=
+	=?utf-8?q?=C3=A1veis_qualitativas_e_quantitativas?=
+In-Reply-To: <CALbn=S6+dHidC6hJC1AdVvTu6ba8YvKmNXmNNPVO3YVNE8+FeA@mail.gmail.com>
+References: <CALbn=S6+dHidC6hJC1AdVvTu6ba8YvKmNXmNNPVO3YVNE8+FeA@mail.gmail.com>
+Message-ID: <CAKrF98=NbGi=-ANoDOMsJ13Koe3+UjVTLQ3Q8JayfoWjsThMkQ@mail.gmail.com>
+
+Prezada Flávia,
+
+A distribuição de quaisquer forma de renda ou seus *proxies* como chamam os
+americanos, em quase a totalidade das populações humanas onde esse conceito
+é aplicável não é gaussiana ("Normal") mas sim tende a seguir a curva
+descoberta por Pareto, portanto nada de inesperado aqui.
+
+Quanto à validade da sua regressão, como já mais de uma vez (para outros
+tipos, mas este conceito é basilar para análise de regressão) o importante
+não é a distribuição das variáveis (dependente e explicativas) mas sim a
+distribuição dos *resíduos* pós regressão.
+
+SE eles não forem aproximadamente normais pode estar havendo algum vício na
+regressão (em geral o modelo é incorreto) e os resultados podem não servir
+para a nobre função de se fazer inferências a respeito da população de onde
+a amostra foi retirada.
+
+Quanto à questão de haver na sua amostra mais casos de um que outro nível
+de determinada variável, pode-se em extremos ter algumas condições onde a
+variável fica "muda" isto é por não ter variação entre os casos ela não
+pode ser usada para explicar a variabilidade daquela escolhida para ser a
+resposta.
+
+A forma de resolver muda de acordo com a ciência de domínio do estudo, onde
+em alguns casos pode-se sortear igual número de casos por classe para ter
+uma melhor distribuição dos níveis de interesse (no seu caso renda), e os
+resultados devem ser analisados levando isso em conta (uma boa obra de
+referência sobre quais margens são fixas ou "livres" em tabelas de
+contingência esclarece bem esse assunto).
+
+HTH
+--
+Cesar Rabak
+
+
+On Wed, Dec 5, 2018 at 9:17 PM Flávia de Campos Martins por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezad em s,
+>
+> O objetivo do meu trabalho é analisar a correlação entre o conhecimento
+> que as pessoas tem sobre a fauna local (variável dependente) e dados
+> sócio-econômicos (sexo, idade, renda, escolaridade, tempo de residência no
+> local). Eu tenho uma amostra de 105 informantes e as variáveis
+> independentes foram organizadas em frequências e para montar a matriz de
+> dados usamos números que representam as frequências das variáveis. Ex.:
+> Idade: 0 a 10 anos - 1; 10 a 20 anos - 2...
+>
+> Como estamos trabalhando com a variável dependente qualitativa ordinal, e
+> as amostras não apresentaram distribuição normal, fizemos um teste de
+> correlação de Spearman.
+>
+> Entretanto, minha dúvida é se os informantes não se distribuem igualmente
+> nas classes (categorias) de idade, de renda, de escolaridade isso não vai
+> afetar o resultado?
+> Para esclarecer: em relação à renda mensal eu tenho quatro classes: não
+> possui renda fixa (0); até um salário mínimo (1); até dois salários (2) e
+> até 3 salários. Só que 58% dos informantes estão na classe 1. Ou seja eu
+> tenho distribuição desigual entre as classes, isso pode afetar meu
+> resultado? Se sim, como resolver?
+>
+> Obrigada!
+>
+> Professora Adjunta
+> Universidade de Pernambuco (UPE), *Campus* Petrolina
+> BR 203, km 2, S/N
+> Vila Eduardo
+> 56328903 - Petrolina, PE- Brasil.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181207/167d26a1/attachment.html>
+
+From edmar_caldas em yahoo.com.br  Fri Dec  7 22:37:34 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Sat, 8 Dec 2018 00:37:34 +0000 (UTC)
+Subject: [R-br] IC para previsao
+References: <1685602496.708442.1544229454911.ref@mail.yahoo.com>
+Message-ID: <1685602496.708442.1544229454911@mail.yahoo.com>
+
+Preciso de uma ajuda para criar o IC para ajuste do modelo de regressão linear simples.
+não dá nenhuma mensagem de erro, cria somente a previsao do modelo em novos dados.
+
+lixo$previsao <-predict(simples, newdata=lixo,interval="confidence",level=0.95)lixo
+
+
+Edmar
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181208/524ab02f/attachment.html>
+
+From ronaldofsalves em gmail.com  Sat Dec  8 12:25:17 2018
+From: ronaldofsalves em gmail.com (Ronaldo Alves)
+Date: Sat, 8 Dec 2018 12:25:17 -0200
+Subject: [R-br] como carregar somente algumas colunas de um arquivo csv?
+In-Reply-To: <CABbTeZNdqD04aom264SNfq4RX6G9G1igqeoszw9AfPqsckfguA@mail.gmail.com>
+References: <CAB4g1ykOoLcNA9xuJcCMKB-pRGscfZ8Jpwe9a7knBZ5xBrgEOw@mail.gmail.com>
+ <CABbTeZNdqD04aom264SNfq4RX6G9G1igqeoszw9AfPqsckfguA@mail.gmail.com>
+Message-ID: <CAAreKV_GZTjgaB8gKTvyyMt8YsOqkSm=c6KYFjqcwt+jVTaD0A@mail.gmail.com>
+
+Olás,
+
+Minha sugestão é usar o conjunto de pacotes "tidyverse" (
+https://www.tidyverse.org/) e o pacote "data.table" (
+https://cran.r-project.org/web/packages/data.table/vignettes/datatable-intro.html)
+para importação e manejo de large datasets.
+
+Após instalar e carregar os pacotes, tente usar "fread" para importar os
+dados e "select" para selecionar as variáveis/colunas do seu interesse.
+
+Segue um exemplo:
+
+dataset = fread(
+  file.choose(), h=T, sep=";",
+ select=c("var1", "var2", "var3", "var4", "var5")
+)
+
+Um abraço,
+Ronaldo Alves.
+
+
+Em sex, 7 de dez de 2018 às 11:02, Rodrigo de Souza Oliveira por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+> Dá pra usar o pacote "readr".
+>
+> library(readr)
+> read_csv(file = 'teste.csv', col_types = 'i-i')
+>
+> No argumento "col_types", você especifica o tipo de dado da coluna, e pode
+> usar "-" para ignorar a coluna. No exemplo acima, importa a 1ª e a 3ª
+> coluna como integer e a 2ª é ignorada.
+>
+> Em sex, 7 de dez de 2018 às 09:41, Cinara Santos por (R-br) <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+>> Olá!
+>>
+>> Continuo as voltas com arquivos realmente grandes...
+>>
+>> Desta vez, está em csv.
+>> Ocorre que não preciso trabalhar com todas as colunas.
+>>
+>> Tendo conhecimento das colunas que me interessam (sei seus nomes -
+>> "header"), gostaria de saber da possibilidade de carregar somente tais
+>> colunas ao invés de carregar o arquivo inteiro, pra depois manter somente
+>> as colunas que me interessam....
+>>
+>> É possível?
+>>
+>>
+>> Ainda gostaria de saber se alguém tem alguma sugestão pra eu conseguir
+>> abrir aos pouquinhos o arqeuivo do stata que deu estouro de memória [Digest
+>> R-br, volume 95, assunto 21]....
+>>
+>>
+>> Desde já, grande abraço!
+>> ------------------------
+>> Cinara Santos
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>
+>
+>
+> --
+>
+>
+> Rodrigo Oliveira
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181208/dda9d7d8/attachment.html>
+
+From cesar.rabak em gmail.com  Sat Dec  8 13:26:16 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Sat, 8 Dec 2018 13:26:16 -0200
+Subject: [R-br] IC para previsao
+In-Reply-To: <1685602496.708442.1544229454911@mail.yahoo.com>
+References: <1685602496.708442.1544229454911.ref@mail.yahoo.com>
+ <1685602496.708442.1544229454911@mail.yahoo.com>
+Message-ID: <CAKrF98kMp_tP1Ara5JxsQFNaNUGMR0vBU6WfBO3SyLxcas0AmQ@mail.gmail.com>
+
+Edmar,
+
+Por gentileza: Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+forneça código mínimo reproduzível. Também conhecido por "CMR".
+
+On Fri, Dec 7, 2018 at 10:37 PM Edmar Caldas por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Preciso de uma ajuda para criar o IC para ajuste do modelo de regressão
+> linear simples.
+>
+> não dá nenhuma mensagem de erro, cria somente a previsao do modelo em
+> novos dados.
+>
+>
+> lixo$previsao <-predict(simples,
+> newdata=lixo,interval="confidence",level=0.95)
+> lixo
+>
+>
+>
+> Edmar
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181208/e4e7a2ca/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Sun Dec  9 14:54:45 2018
+From: eliaskrainski em yahoo.com.br (Elias T. Krainski)
+Date: Sun, 9 Dec 2018 16:54:45 +0000 (UTC)
+Subject: [R-br] IC para previsao
+In-Reply-To: <1685602496.708442.1544229454911@mail.yahoo.com>
+References: <1685602496.708442.1544229454911.ref@mail.yahoo.com>
+ <1685602496.708442.1544229454911@mail.yahoo.com>
+Message-ID: <815218723.1276327.1544374485235@mail.yahoo.com>
+
+
+Coloca "prediction" 
+ 
+  On Fri, Dec 7, 2018 at 22:39, Edmar Caldas por (R-br)<r-br em listas.c3sl.ufpr.br> wrote:   Preciso de uma ajuda para criar o IC para ajuste do modelo de regressão linear simples.
+não dá nenhuma mensagem de erro, cria somente a previsao do modelo em novos dados.
+
+lixo$previsao <-predict(simples, newdata=lixo,interval="confidence",level=0.95)lixo
+
+
+Edmar_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181209/9931f2c9/attachment.html>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: Untitled
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181209/9931f2c9/attachment.ksh>
+
+From alexandre.santos em cas.ifmt.edu.br  Mon Dec 10 02:47:12 2018
+From: alexandre.santos em cas.ifmt.edu.br (ASANTOS)
+Date: Mon, 10 Dec 2018 01:47:12 -0300
+Subject: [R-br] Problema para plotar IC para modelo glm Gamma usando
+ stat_smooth() no ggplot2
+Message-ID: <8d326872-10b9-06f7-cc1b-564caf54f3e7@cas.ifmt.edu.br>
+
+Prezados Membros do R-br,
+
+     Estou tentando plotar um modelo glm Gamma com stat_smooth() no 
+ggplot2 sem sucesso. Minha ideia é representar o intervalo de confiança 
+para um modelo onde realizei a junção de dois níveis para o fator 
+Feature. Segundo exemplo fictício do meu problema:
+
+#Simulação de um banco de dados, onde a variável resposta Production tem 
+distribuição Gamma
+set.seed(123)
+d<-NULL
+N<-50
+d$Production <- rgamma(N,10)
+d$Feature <- ifelse(d$Production >7 & d$Production<10, 
+c("green"),ifelse(d$Production>11,
+c("red"), c("blue")))
+d$Temp<-rnorm(N,20,5)
+d<-as.data.frame(d)
+#
+
+# Ajusto um modelo de Gamma completo
+mG<- glm(Production~ Feature + Temp, family= Gamma, data = d)
+summary(mG)
+anova(mG,test="Chi")
+
+# Comparo os níveis do fator Feature
+library(multcomp)
+PW<-summary(glht(mG, linfct = mcp(Feature= "Tukey")))
+PW
+cld(PW)
+
+# Faço de conta que os níveis green = blue e realizo um novo ajuste
+Feature2<-d$Feature
+levels(Feature2)
+levels(Feature2)[1]<-"blue&green"
+levels(Feature2)[2]<-"blue&green"
+levels(Feature2)
+d$Feature2<-Feature2
+mG2<- glm(Production~ Feature2 + Temp, family= Gamma, data = d)
+
+# Crio os valores de predição
+pred.data = data.frame(
+Feature2<-d$Feature2,
+Temp<-d$Temp
+)
+pred.data$Production = predict(mG2, newdata=pred.data, type="response")
+
+#Realizo o plot
+library("ggplot2")
+ggplot(d, aes(Temp, Production, colour = Feature2)) +
+   geom_point() +
+   geom_line(data=pred.data) +
+   stat_smooth(method = "glm", formula = y ~ x, family = Gamma)
+#
+
+      E tenho uma representação errada do intervalo de confiança do meu 
+modelo mG2 porque não consigo fazer a função stat_smooth() considerar o 
+ajuste mG2. Como posso resolver isso?
+
+Obrigado
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722   -   ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+
+From edmar_caldas em yahoo.com.br  Mon Dec 10 12:08:39 2018
+From: edmar_caldas em yahoo.com.br (Edmar Caldas)
+Date: Mon, 10 Dec 2018 14:08:39 +0000 (UTC)
+Subject: [R-br] Digest R-br, volume 96, assunto 8
+In-Reply-To: <mailman.1.1544450401.2307.r-br@listas.c3sl.ufpr.br>
+References: <mailman.1.1544450401.2307.r-br@listas.c3sl.ufpr.br>
+Message-ID: <928831761.1520206.1544450919283@mail.yahoo.com>
+
+
+Não funcionou a função prediction. O engraçado é quem nem mensagem de erro mostra.
+
+lixo$previsao <-predict(simples, newdata=lixo,interval = "prediction")lixo$previsao <-predict(simples, newdata=lixo,interval = "prediction", level=0.95)
+
+
+segue meu codigo,
+
+attach(waste)names(waste)simples <-lm(waste$wastee ~ restrnts)simplesajuste<-fitted(simples)waste$ajuste <-ajusteerro <- (waste$ajuste - waste$wastee)waste$erro<-erroprova <- waste$ajuste-waste$errowaste$prova <-provahead(waste)
+y<- (0.14685 + 0.01014 * waste$restrnts)waste$y<-y
+plot(wastee ~ ajuste)
+head(waste)
+
+#Prevendo em novos dados.
+library(readxl)lixo <- read_excel("Dieretorio/lixo.xlsx")View(lixo)
+attach(lixo)
+lixo$previsao <-predict(simples, newdata=lixo,interval="prediction",level=0.95)lixo
+
+eu consigo fazer a previsão, mas preciso do intervalo de confiança para previsão.
+Edmar nsegue 
+    Em segunda-feira, 10 de dezembro de 2018 12:00:18 BRST, <r-br-request em listas.c3sl.ufpr.br> escreveu:  
+ 
+ Enviar submissões para a lista de discussão R-br para 
+    r-br em listas.c3sl.ufpr.br
+
+Para se cadastrar ou descadastrar via WWW, visite o endereço
+    https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+corpo da mensagem para 
+    r-br-request em listas.c3sl.ufpr.br
+
+Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+endereço
+    r-br-owner em listas.c3sl.ufpr.br
+
+Quando responder, por favor edite sua linha Assunto assim ela será
+mais específica que "Re: Contents of R-br digest..."
+
+
+Tópicos de Hoje:
+
+  1. Re: IC para previsao (Elias T. Krainski)
+  2. Problema para plotar IC para modelo glm Gamma usando
+      stat_smooth() no ggplot2 (ASANTOS)
+
+
+----------------------------------------------------------------------
+
+Message: 1
+Date: Sun, 9 Dec 2018 16:54:45 +0000 (UTC)
+From: "Elias T. Krainski" <eliaskrainski em yahoo.com.br>
+To: a lista Brasileira oficial de discussão do programa R.
+    <r-br em listas.c3sl.ufpr.br>
+Subject: Re: [R-br] IC para previsao
+Message-ID: <815218723.1276327.1544374485235 em mail.yahoo.com>
+Content-Type: text/plain; charset="utf-8"
+
+
+Coloca "prediction" 
+ 
+  On Fri, Dec 7, 2018 at 22:39, Edmar Caldas por (R-br)<r-br em listas.c3sl.ufpr.br> wrote:  Preciso de uma ajuda para criar o IC para ajuste do modelo de regressão linear simples.
+não dá nenhuma mensagem de erro, cria somente a previsao do modelo em novos dados.
+
+lixo$previsao <-predict(simples, newdata=lixo,interval="confidence",level=0.95)lixo
+
+
+Edmar_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181209/9931f2c9/attachment-0001.html>
+-------------- Próxima Parte ----------
+Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+Nome: Untitled
+Url: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181209/9931f2c9/attachment-0001.ksh>
+
+------------------------------
+
+Message: 2
+Date: Mon, 10 Dec 2018 01:47:12 -0300
+From: ASANTOS <alexandre.santos em cas.ifmt.edu.br>
+To: "r-br em listas.c3sl.ufpr.br" <r-br em listas.c3sl.ufpr.br>
+Subject: [R-br] Problema para plotar IC para modelo glm Gamma usando
+    stat_smooth() no ggplot2
+Message-ID: <8d326872-10b9-06f7-cc1b-564caf54f3e7 em cas.ifmt.edu.br>
+Content-Type: text/plain; charset=utf-8; format=flowed
+
+Prezados Membros do R-br,
+
+     Estou tentando plotar um modelo glm Gamma com stat_smooth() no 
+ggplot2 sem sucesso. Minha ideia é representar o intervalo de confiança 
+para um modelo onde realizei a junção de dois níveis para o fator 
+Feature. Segundo exemplo fictício do meu problema:
+
+#Simulação de um banco de dados, onde a variável resposta Production tem 
+distribuição Gamma
+set.seed(123)
+d<-NULL
+N<-50
+d$Production <- rgamma(N,10)
+d$Feature <- ifelse(d$Production >7 & d$Production<10, 
+c("green"),ifelse(d$Production>11,
+c("red"), c("blue")))
+d$Temp<-rnorm(N,20,5)
+d<-as.data.frame(d)
+#
+
+# Ajusto um modelo de Gamma completo
+mG<- glm(Production~ Feature + Temp, family= Gamma, data = d)
+summary(mG)
+anova(mG,test="Chi")
+
+# Comparo os níveis do fator Feature
+library(multcomp)
+PW<-summary(glht(mG, linfct = mcp(Feature= "Tukey")))
+PW
+cld(PW)
+
+# Faço de conta que os níveis green = blue e realizo um novo ajuste
+Feature2<-d$Feature
+levels(Feature2)
+levels(Feature2)[1]<-"blue&green"
+levels(Feature2)[2]<-"blue&green"
+levels(Feature2)
+d$Feature2<-Feature2
+mG2<- glm(Production~ Feature2 + Temp, family= Gamma, data = d)
+
+# Crio os valores de predição
+pred.data = data.frame(
+Feature2<-d$Feature2,
+Temp<-d$Temp
+)
+pred.data$Production = predict(mG2, newdata=pred.data, type="response")
+
+#Realizo o plot
+library("ggplot2")
+ggplot(d, aes(Temp, Production, colour = Feature2)) +
+   geom_point() +
+   geom_line(data=pred.data) +
+   stat_smooth(method = "glm", formula = y ~ x, family = Gamma)
+#
+
+      E tenho uma representação errada do intervalo de confiança do meu 
+modelo mG2 porque não consigo fazer a função stat_smooth() considerar o 
+ajuste mG2. Como posso resolver isso?
+
+Obrigado
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+e-mails:alexandresantosbr em yahoo.com.br
+        alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722  -  ResearcherID: A-5790-2016
+Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+======================================================================
+
+
+
+------------------------------
+
+Subject: Legenda do Digest
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+
+
+------------------------------
+
+Fim da Digest R-br, volume 96, assunto 8
+****************************************
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181210/75d03137/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Dec 10 18:25:43 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 10 Dec 2018 18:25:43 -0200
+Subject: [R-br] Digest R-br, volume 96, assunto 8
+In-Reply-To: <928831761.1520206.1544450919283@mail.yahoo.com>
+References: <mailman.1.1544450401.2307.r-br@listas.c3sl.ufpr.br>
+ <928831761.1520206.1544450919283@mail.yahoo.com>
+Message-ID: <CAKrF98k9p6tUZLjrDy0_8J3f0iqEKiNKppWoSJdpM7mK5WYE8g@mail.gmail.com>
+
+Edmar,
+
+O CMR precisa atender a cláusula *reproduzível *se você espera que a gente
+possa entender seu problema:
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: i386-w64-mingw32/i386 (32-bit)
+
+R é um software livre e vem sem GARANTIA ALGUMA.
+Você pode redistribuí-lo sob certas circunstâncias.
+Digite 'license()' ou 'licence()' para detalhes de distribuição.
+
+R é um projeto colaborativo com muitos contribuidores.
+Digite 'contributors()' para obter mais informações e
+'citation()' para saber como citar o R ou pacotes do R em publicações.
+
+Digite 'demo()' para demonstrações, 'help()' para o sistema on-line de
+ajuda,
+ou 'help.start()' para abrir o sistema de ajuda em HTML no seu navegador.
+Digite 'q()' para sair do R.
+
+> attach(waste)
+Error in attach(waste) : objeto 'waste' não encontrado
+>
+
+Concorda que não dá para seguir daqui?
+
+
+
+On Mon, Dec 10, 2018 at 12:08 PM Edmar Caldas por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+>
+> Não funcionou a função prediction. O engraçado é quem nem mensagem de erro
+> mostra.
+>
+>
+> lixo$previsao <-predict(simples, newdata=lixo,interval = "prediction")
+> lixo$previsao <-predict(simples, newdata=lixo,interval = "prediction",
+> level=0.95)
+>
+>
+> segue meu codigo,
+>
+>
+> attach(waste)
+> names(waste)
+> simples <-lm(waste$wastee ~ restrnts)
+> simples
+> ajuste<-fitted(simples)
+> waste$ajuste <-ajuste
+> erro <- (waste$ajuste - waste$wastee)
+> waste$erro<-erro
+> prova <- waste$ajuste-waste$erro
+> waste$prova <-prova
+> head(waste)
+>
+> y<- (0.14685 + 0.01014 * waste$restrnts)
+> waste$y<-y
+>
+> plot(wastee ~ ajuste)
+>
+> head(waste)
+>
+>
+> #Prevendo em novos dados.
+>
+> library(readxl)
+> lixo <- read_excel("Dieretorio/lixo.xlsx")
+> View(lixo)
+>
+> attach(lixo)
+>
+> lixo$previsao <-predict(simples,
+> newdata=lixo,interval="prediction",level=0.95)
+> lixo
+>
+>
+> eu consigo fazer a previsão, mas preciso do intervalo de confiança para
+> previsão.
+>
+> Edmar
+> nsegue
+>
+> Em segunda-feira, 10 de dezembro de 2018 12:00:18 BRST, <
+> r-br-request em listas.c3sl.ufpr.br> escreveu:
+>
+>
+> Enviar submissões para a lista de discussão R-br para
+>     r-br em listas.c3sl.ufpr.br
+>
+> Para se cadastrar ou descadastrar via WWW, visite o endereço
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> ou, via email, envie uma mensagem com a palavra 'help' no assunto ou
+> corpo da mensagem para
+>     r-br-request em listas.c3sl.ufpr.br
+>
+> Você poderá entrar em contato com a pessoa que gerencia a lista pelo
+> endereço
+>     r-br-owner em listas.c3sl.ufpr.br
+>
+> Quando responder, por favor edite sua linha Assunto assim ela será
+> mais específica que "Re: Contents of R-br digest..."
+>
+>
+> Tópicos de Hoje:
+>
+>   1. Re: IC para previsao (Elias T. Krainski)
+>   2. Problema para plotar IC para modelo glm Gamma usando
+>       stat_smooth() no ggplot2 (ASANTOS)
+>
+>
+> ----------------------------------------------------------------------
+>
+> Message: 1
+> Date: Sun, 9 Dec 2018 16:54:45 +0000 (UTC)
+> From: "Elias T. Krainski" <eliaskrainski em yahoo.com.br>
+> To: a lista Brasileira oficial de discussão do programa R.
+>     <r-br em listas.c3sl.ufpr.br>
+> Subject: Re: [R-br] IC para previsao
+> Message-ID: <815218723.1276327.1544374485235 em mail.yahoo.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+>
+> Coloca "prediction"
+>
+>   On Fri, Dec 7, 2018 at 22:39, Edmar Caldas por (R-br)<
+> r-br em listas.c3sl.ufpr.br> wrote:  Preciso de uma ajuda para criar o IC
+> para ajuste do modelo de regressão linear simples.
+> não dá nenhuma mensagem de erro, cria somente a previsao do modelo em
+> novos dados.
+>
+> lixo$previsao <-predict(simples,
+> newdata=lixo,interval="confidence",level=0.95)lixo
+>
+>
+> Edmar_______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181209/9931f2c9/attachment-0001.html
+> >
+> -------------- Próxima Parte ----------
+> Um texto embutido e sem conjunto de caracteres especificado foi limpo...
+> Nome: Untitled
+> Url: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181209/9931f2c9/attachment-0001.ksh
+> >
+>
+> ------------------------------
+>
+> Message: 2
+> Date: Mon, 10 Dec 2018 01:47:12 -0300
+> From: ASANTOS <alexandre.santos em cas.ifmt.edu.br>
+> To: "r-br em listas.c3sl.ufpr.br" <r-br em listas.c3sl.ufpr.br>
+> Subject: [R-br] Problema para plotar IC para modelo glm Gamma usando
+>     stat_smooth() no ggplot2
+> Message-ID: <8d326872-10b9-06f7-cc1b-564caf54f3e7 em cas.ifmt.edu.br>
+> Content-Type: text/plain; charset=utf-8; format=flowed
+>
+> Prezados Membros do R-br,
+>
+>     Estou tentando plotar um modelo glm Gamma com stat_smooth() no
+> ggplot2 sem sucesso. Minha ideia é representar o intervalo de confiança
+> para um modelo onde realizei a junção de dois níveis para o fator
+> Feature. Segundo exemplo fictício do meu problema:
+>
+> #Simulação de um banco de dados, onde a variável resposta Production tem
+> distribuição Gamma
+> set.seed(123)
+> d<-NULL
+> N<-50
+> d$Production <- rgamma(N,10)
+> d$Feature <- ifelse(d$Production >7 & d$Production<10,
+> c("green"),ifelse(d$Production>11,
+> c("red"), c("blue")))
+> d$Temp<-rnorm(N,20,5)
+> d<-as.data.frame(d)
+> #
+>
+> # Ajusto um modelo de Gamma completo
+> mG<- glm(Production~ Feature + Temp, family= Gamma, data = d)
+> summary(mG)
+> anova(mG,test="Chi")
+>
+> # Comparo os níveis do fator Feature
+> library(multcomp)
+> PW<-summary(glht(mG, linfct = mcp(Feature= "Tukey")))
+> PW
+> cld(PW)
+>
+> # Faço de conta que os níveis green = blue e realizo um novo ajuste
+> Feature2<-d$Feature
+> levels(Feature2)
+> levels(Feature2)[1]<-"blue&green"
+> levels(Feature2)[2]<-"blue&green"
+> levels(Feature2)
+> d$Feature2<-Feature2
+> mG2<- glm(Production~ Feature2 + Temp, family= Gamma, data = d)
+>
+> # Crio os valores de predição
+> pred.data = data.frame(
+> Feature2<-d$Feature2,
+> Temp<-d$Temp
+> )
+> pred.data$Production = predict(mG2, newdata=pred.data, type="response")
+>
+> #Realizo o plot
+> library("ggplot2")
+> ggplot(d, aes(Temp, Production, colour = Feature2)) +
+>   geom_point() +
+>   geom_line(data=pred.data) +
+>   stat_smooth(method = "glm", formula = y ~ x, family = Gamma)
+> #
+>
+>      E tenho uma representação errada do intervalo de confiança do meu
+> modelo mG2 porque não consigo fazer a função stat_smooth() considerar o
+> ajuste mG2. Como posso resolver isso?
+>
+> Obrigado
+>
+> --
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 99686-6970 (VIVO) (+55) 65 3221-2674 (FIXO)
+> e-mails:alexandresantosbr em yahoo.com.br
+>         alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> OrcID: orcid.org/0000-0001-8232-6722  -  ResearcherID: A-5790-2016
+> Researchgate: www.researchgate.net/profile/Alexandre_Santos10
+> LinkedIn: br.linkedin.com/in/alexandre-dos-santos-87961635
+> Mendeley:www.mendeley.com/profiles/alexandre-dos-santos6/
+> ======================================================================
+>
+>
+>
+> ------------------------------
+>
+> Subject: Legenda do Digest
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>
+>
+> ------------------------------
+>
+> Fim da Digest R-br, volume 96, assunto 8
+> ****************************************
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181210/0a4c2b09/attachment.html>
+
+From tamily-lfv em hotmail.com  Mon Dec 10 18:30:17 2018
+From: tamily-lfv em hotmail.com (Tamily Santos)
+Date: Mon, 10 Dec 2018 20:30:17 +0000
+Subject: [R-br] =?iso-8859-1?q?Como_fazer_sp=2E_n=E3o_ficar_it=E1lico_em_n?=
+ =?iso-8859-1?q?omes_de_esp=E9cies?=
+In-Reply-To: <CAKrF98k9p6tUZLjrDy0_8J3f0iqEKiNKppWoSJdpM7mK5WYE8g@mail.gmail.com>
+References: <mailman.1.1544450401.2307.r-br@listas.c3sl.ufpr.br>
+ <928831761.1520206.1544450919283@mail.yahoo.com>,
+ <CAKrF98k9p6tUZLjrDy0_8J3f0iqEKiNKppWoSJdpM7mK5WYE8g@mail.gmail.com>
+Message-ID: <CP2P152MB2868382F30AC8A9F872361FA9AA50@CP2P152MB2868.LAMP152.PROD.OUTLOOK.COM>
+
+Olá pessoal,
+
+
+Estou fazendo curvas de abundância, no entanto tenho algumas espécies com sp., sp. 1 e sp. 2.
+
+
+Mas quando rodo o script todas as espécies ficam em itálico.
+
+Não consigo deixar os sp. em letra normal.
+
+
+Se alguém puder dar uma dica de como fazer essa manipulação, seria de muita ajuda!
+
+E agradeço desde já por qualquer dica.
+
+Obrigada!
+
+ Tamily Santos
+
+
+par(las=2, mar=c(12, 5, 3, 3), family = "serif")
+
+plot(rad.auati, type="n", xaxt="n", xlab="", bty="l",
+     ylab="Abundance")
+points(rad.auati, pch=21, cex=1.5)
+lines(rad.auati$models$Mandelbrot, lwd=2, lty=1)
+lines(rad.auati$models$Null, lwd=2, lty=2)
+axis(1, at=seq(1,length(abu.rel.auati.s),1), labels=nomes.auati, font=3, cex=0.2)
+legend("topright", legend=c("Mandelbrot", "Null"), lwd=2, lty=c(1,2), bty="n")
+rect(0.002,1,5.5,150, col=rgb(0,0,0,0.2),lwd=0)
+arrows(7.5,70,5.5,70, length=0.07)
+text(12, 65, "Hyperdominant species \n> 50% of individuals", cex=0.7)
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181210/35d9983c/attachment.html>
+
+From ronaldofsalves em gmail.com  Mon Dec 10 19:24:48 2018
+From: ronaldofsalves em gmail.com (Ronaldo Alves)
+Date: Mon, 10 Dec 2018 19:24:48 -0200
+Subject: [R-br] IC para previsao
+In-Reply-To: <815218723.1276327.1544374485235@mail.yahoo.com>
+References: <1685602496.708442.1544229454911.ref@mail.yahoo.com>
+ <1685602496.708442.1544229454911@mail.yahoo.com>
+ <815218723.1276327.1544374485235@mail.yahoo.com>
+Message-ID: <CAAreKV8bMTv5+M-0b0Y1U2GTGrwJ2rSoc8ets81V6V6axVXxbQ@mail.gmail.com>
+
+Oi Edmar,
+
+Se seu modelo é algo do tipo:
+
+modelo_lixo = lm(y ~ x)
+
+1) Primeiro, examine seu resultados:
+
+summary(modelo_lixo)
+
+2) Depois, calcule o IC, assim:
+
+confint(modelo_lixo)
+
+abr,
+Ronaldo Alves
+
+
+Em dom, 9 de dez de 2018 às 14:55, Elias T. Krainski por (R-br) <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+>
+> Coloca "prediction"
+>
+> On Fri, Dec 7, 2018 at 22:39, Edmar Caldas por (R-br)
+> <r-br em listas.c3sl.ufpr.br> wrote:
+> Preciso de uma ajuda para criar o IC para ajuste do modelo de regressão
+> linear simples.
+>
+> não dá nenhuma mensagem de erro, cria somente a previsao do modelo em
+> novos dados.
+>
+>
+> lixo$previsao <-predict(simples,
+> newdata=lixo,interval="confidence",level=0.95)
+> lixo
+>
+>
+>
+> Edmar
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a
+> c�digo m�nimo reproduz�vel.
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181210/379b04a0/attachment.html>
+
+From silpat em ufrb.edu.br  Thu Dec 13 14:40:03 2018
+From: silpat em ufrb.edu.br (SILVIA PATRICIA BARRETO SANTANA)
+Date: Thu, 13 Dec 2018 13:40:03 -0300 (BRT)
+Subject: [R-br] =?utf-8?q?Fwd=3A_Cria=C3=A7=C3=A3o_de_um_dataframe_a_parti?=
+ =?utf-8?q?r_das_diferen=C3=A7as?=
+In-Reply-To: <1173227071.5901034.1544558724132.JavaMail.root@ufrb.edu.br>
+Message-ID: <1607257377.101800.1544719203127.JavaMail.root@ufrb.edu.br>
+
+
+
+----- Mensagem encaminhada -----
+
+De: "SILVIA PATRICIA BARRETO SANTANA" <silpat em ufrb.edu.br> 
+Para: "r-br" <r-br em listas.c3sl.ufpr.br> 
+Enviadas: Terça-feira, 11 de dezembro de 2018 18:05:24 
+Assunto: Criação de um dataframe a partir das diferenças 
+
+
+Bom dia pessoal. 
+
+Estou com dificuldade em obter os dados que necessito e qualque r ajuda se r á bem vinda, po r isso já começo ag r adecendo. 
+Com este banco de dados (abaixo) gosta r ia de obte r a seguinte info r mação (mais abaixo): 
+
+Ho r a r io Nivel Status 
+01/01/2011 00:00 29 0 
+01/01/2011 00:01 29 0 
+01/01/2011 00:02 30 1 
+01/01/2011 00:03 31 1 
+01/01/2011 00:04 29 0 
+01/01/2011 00:05 29 0 
+01/01/2011 00:06 29 0 
+01/01/2011 00:07 29 0 
+01/01/2011 00:08 30 1 
+01/01/2011 00:09 32 1 
+01/01/2011 00:10 34 1 
+01/01/2011 00:11 35 1 
+01/01/2011 00:12 35 1 
+
+01/01/2011 00:13 25 0 
+
+
+
+
+O banco abaixo consiste em guardar a informação do horário em que o status muda de 0 para 1 com as diferenças dos níveis. 
+
+
+
+
+Ho r a r io Nivel Status 
+
+01/01/2011 00:02 01 1 
+01/01/2011 00:03 01 1 
+01/01/2011 00:08 01 1 
+01/01/2011 00:09 02 1 
+01/01/2011 00:10 02 1 
+01/01/2011 00:11 01 1 
+01/01/2011 00:12 00 1 
+
+
+
+
+Muito grata! 
+
+
+Silvia 
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181213/ce15bf47/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Dec 13 23:03:50 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 13 Dec 2018 23:03:50 -0200
+Subject: [R-br] 
+	=?utf-8?q?Fwd=3A_Cria=C3=A7=C3=A3o_de_um_dataframe_a_part?=
+	=?utf-8?q?ir_das_diferen=C3=A7as?=
+In-Reply-To: <1607257377.101800.1544719203127.JavaMail.root@ufrb.edu.br>
+References: <1173227071.5901034.1544558724132.JavaMail.root@ufrb.edu.br>
+ <1607257377.101800.1544719203127.JavaMail.root@ufrb.edu.br>
+Message-ID: <CAKrF98=df74xAmERfeqSoxm4SnZKGABGFNa7x=HrFE4RCwxPTQ@mail.gmail.com>
+
+Silvia,
+
+O suposto resultado não apresenta *um* sequer dos dados apresentados como
+exemplo 🤔. . .
+
+Daria para você mostrar como ficaria o resultado se os dados do exemplo
+fosse processado como você gostaria?
+
+
+On Thu, Dec 13, 2018 at 2:53 PM SILVIA PATRICIA BARRETO SANTANA por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+>
+>
+> ------------------------------
+> *De: *"SILVIA PATRICIA BARRETO SANTANA" <silpat em ufrb.edu.br>
+> *Para: *"r-br" <r-br em listas.c3sl.ufpr.br>
+> *Enviadas: *Terça-feira, 11 de dezembro de 2018 18:05:24
+> *Assunto: *Criação de um dataframe a partir das diferenças
+>
+> Bom dia pessoal.
+>
+> Estou com dificuldade em obter os dados que necessito e qualquer ajuda será
+> bem vinda, por isso já começo agradecendo.
+> Com este banco de dados (abaixo) gostaria de obter a seguinte informação
+> (mais abaixo):
+>
+> Horario                 Nivel     Status
+> 01/01/2011 00:00     29     0
+> 01/01/2011 00:01     29     0
+> 01/01/2011 00:02     30     1
+> 01/01/2011 00:03     31     1
+> 01/01/2011 00:04     29     0
+> 01/01/2011 00:05     29     0
+> 01/01/2011 00:06     29     0
+> 01/01/2011 00:07     29     0
+> 01/01/2011 00:08     30     1
+> 01/01/2011 00:09     32     1
+> 01/01/2011 00:10     34     1
+> 01/01/2011 00:11     35     1
+> 01/01/2011 00:12     35     1
+> 01/01/2011 00:13     25     0
+>
+>
+> O banco abaixo consiste em guardar a informação do horário em que o status
+> muda de 0 para 1 com as diferenças dos níveis.
+>
+>
+> Horario                  Nivel     Status
+>
+> 01/01/2011 00:02     01     1
+> 01/01/2011 00:03     01     1
+> 01/01/2011 00:08     01     1
+> 01/01/2011 00:09     02     1
+> 01/01/2011 00:10     02     1
+> 01/01/2011 00:11     01     1
+> 01/01/2011 00:12     00     1
+>
+>
+> Muito grata!
+>
+> Silvia
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181213/2b67cc96/attachment.html>
+
+From rhuanjayme em gmail.com  Mon Dec 17 14:23:47 2018
+From: rhuanjayme em gmail.com (Bruno Rhuan)
+Date: Mon, 17 Dec 2018 14:23:47 -0200
+Subject: [R-br] Calculo Distancia entre Coordenadas [loop]
+Message-ID: <CAP9NbA1528fEw+HoEaN4q=ctXyVpM64grW_3p55BASmW7VbYBA@mail.gmail.com>
+
+Boa Tarde,
+
+Estou  escrevendo um algorítimo que calcule a distância entre uma serie de
+coordenadas e retorne qual o ponto mais próximo.
+
+Para isso, o código utiliza dois datasets de coordenadas geográficas
+(lat/long) e o calculo da distancia é feito utilizando a biblioteca
+"geosphere".
+
+Porém, basicamente todos os resultados do algorítimo sempre apontam para a
+ultimo ponto do segundo dataset como sendo o mais próximo, assim creio ter
+algum erro no loop.
+
+Alguma sugestão?
+
+Abaixo o código
+
+______
+
+#biblioteca necessária
+#install.packages("geosphere")
+library("geosphere")
+
+#carregar arquivos
+x <- read.csv(file.choose(),sep=";",dec=",") # carregar lista de pontos
+nominais TIM
+y <- read.csv(file.choose(),sep=";",dec=",") # carregar base de sites
+
+#converter site id em characther
+x$SiteID <- as.character(x$SiteID)
+y$SITE.ID <- as.character(y$SITE.ID)
+
+#Mostrar tabelas
+View(y)
+View(x)
+
+dista1 <- c() #distancia do ponto nominal ao site
+
+# Calculo Distancia
+for (i in 1:216) {
+  coord1 <- c(x$LONG[i],x$LAT[i])
+  for (j in 1:11195 ) {
+    coord2 <- c(y$Longitude[j],y$Latitude[j])
+    dista1[j] <- as.numeric(distm(coord1,coord2, fun = distGeo))
+  #Calculo da menor distancia
+    if (j>1) {
+    k <- j-1
+      if (dista1[j]<dista1[k]) {
+      menor_dist <- dista1[j]
+      x$Distancia[i] <- menor_dist
+      x$SiteID[i] <- y$SITE.ID[j]
+      }
+      else {
+        menor_dist <- dista1[k]
+        x$Distancia[i] <- menor_dist
+        x$SiteID[i] <- y$SITE.ID[k]
+      }
+     }
+  }
+}
+
+write.csv(x, "Resultado.csv", row.names = FALSE)
+
+_______________
+
+Resultado retornado:
+
+ï*..END_ID* *LAT* *LONG* *Distancia (m)* *SiteID*
+BASDR_1 -1.296.434 -3.847.421 144.669.250.579.953 YBARWL
+BALFS_2 -1.289.767 -3.832.365 146.401.362.045.206 YBARWL
+CEFLA_3 -377.709 -3.855.802 222.607.630.292.628 YBARWL
+Distancia (m) = distancia ao ponto mais próximo
+SiteID = nome do ponto mais próximo.
+
+At.te
+
+Bruno
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181217/008788d7/attachment.html>
+
+From dtiezzi em usp.br  Mon Dec 17 14:33:52 2018
+From: dtiezzi em usp.br (=?utf-8?Q?Daniel_Guimar=C3=A3es_Tiezzi?=)
+Date: Mon, 17 Dec 2018 14:33:52 -0200
+Subject: [R-br] Calculo Distancia entre Coordenadas [loop]
+In-Reply-To: <CAP9NbA1528fEw+HoEaN4q=ctXyVpM64grW_3p55BASmW7VbYBA@mail.gmail.com>
+References: <CAP9NbA1528fEw+HoEaN4q=ctXyVpM64grW_3p55BASmW7VbYBA@mail.gmail.com>
+Message-ID: <050216C2-28A0-4608-A52D-94E44B591A2D@usp.br>
+
+Boa tarde Bruno, Seria ideal colocar um exemplo dos dois data frames para que possamos reproduzir. Mas da uma olhada na condicional. Eh isso mesmo que você quer?
+
+
+
+# Calculo Distancia
+for (i in 1:216) {
+  coord1 <- c(x$LONG[i],x$LAT[i])
+  for (j in 1:11195 ) {
+    coord2 <- c(y$Longitude[j],y$Latitude[j])
+    dista1[j] <- as.numeric(distm(coord1,coord2, fun = distGeo))
+  #Calculo da menor distancia
+    
+### AQUI, a condição executa se j > 1. Na verdade, o j varia de 1 a 11195. Eh isso mesmo?
+if (j>1) {
+    k <- j-1
+      if (dista1[j]<dista1[k]) {
+      menor_dist <- dista1[j]
+      x$Distancia[i] <- menor_dist
+      x$SiteID[i] <- y$SITE.ID[j]
+      }
+
+      else {
+        menor_dist <- dista1[k]
+        x$Distancia[i] <- menor_dist
+        x$SiteID[i] <- y$SITE.ID[k]
+      }
+     }
+  }
+}
+
+
+daniel
+
+
+> On Dec 17, 2018, at 2:23 PM, Bruno Rhuan por (R-br) <r-br em listas.c3sl.ufpr.br> wrote:
+> 
+> 
+> Boa Tarde,
+> 
+> Estou  escrevendo um algorítimo que calcule a distância entre uma serie de coordenadas e retorne qual o ponto mais próximo.
+> 
+> Para isso, o código utiliza dois datasets de coordenadas geográficas (lat/long) e o calculo da distancia é feito utilizando a biblioteca "geosphere".
+> 
+> Porém, basicamente todos os resultados do algorítimo sempre apontam para a ultimo ponto do segundo dataset como sendo o mais próximo, assim creio ter algum erro no loop.
+> 
+> Alguma sugestão?
+> 
+> Abaixo o código
+> 
+> ______
+> 
+> #biblioteca necessária
+> #install.packages("geosphere")
+> library("geosphere")
+> 
+> #carregar arquivos
+> x <- read.csv(file.choose(),sep=";",dec=",") # carregar lista de pontos nominais TIM
+> y <- read.csv(file.choose(),sep=";",dec=",") # carregar base de sites
+> 
+> #converter site id em characther
+> x$SiteID <- as.character(x$SiteID)
+> y$SITE.ID <http://site.id/> <- as.character(y$SITE.ID <http://site.id/>)
+> 
+> #Mostrar tabelas
+> View(y)
+> View(x)
+> 
+> dista1 <- c() #distancia do ponto nominal ao site
+> 
+> # Calculo Distancia
+> for (i in 1:216) {
+>   coord1 <- c(x$LONG[i],x$LAT[i])
+>   for (j in 1:11195 ) {
+>     coord2 <- c(y$Longitude[j],y$Latitude[j])
+>     dista1[j] <- as.numeric(distm(coord1,coord2, fun = distGeo))
+>   #Calculo da menor distancia
+>     if (j>1) {
+>     k <- j-1
+>       if (dista1[j]<dista1[k]) {
+>       menor_dist <- dista1[j]
+>       x$Distancia[i] <- menor_dist
+>       x$SiteID[i] <- y$SITE.ID <http://site.id/>[j]
+>       }
+>       else {
+>         menor_dist <- dista1[k]
+>         x$Distancia[i] <- menor_dist
+>         x$SiteID[i] <- y$SITE.ID <http://site.id/>[k]
+>       }
+>      }
+>   }
+> }
+> 
+> write.csv(x, "Resultado.csv", row.names = FALSE)
+> 
+> _______________
+> 
+> Resultado retornado:
+> 
+> ï..END_ID	LAT	LONG	Distancia (m)	SiteID
+> BASDR_1	-1.296.434	-3.847.421	144.669.250.579.953	YBARWL
+> BALFS_2	-1.289.767	-3.832.365	146.401.362.045.206	YBARWL
+> CEFLA_3	-377.709	-3.855.802	222.607.630.292.628	YBARWL
+> 
+> Distancia (m) = distancia ao ponto mais próximo
+> SiteID = nome do ponto mais próximo.
+> 
+> At.te
+> 
+> Bruno
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181217/d3b2e61a/attachment.html>
+
+From felipe.e.barletta em gmail.com  Mon Dec 17 18:19:52 2018
+From: felipe.e.barletta em gmail.com (Felipe Barletta)
+Date: Mon, 17 Dec 2018 18:19:52 -0200
+Subject: [R-br] Identificar cpf's
+Message-ID: <CAJz4ZjG67oXqZ7G8OzPwGhYTx5k-SKaC=QWS9AVjwpEAi7UXAA@mail.gmail.com>
+
+Prezados,
+
+Boa tarde,
+
+Tenho uma conjunto de dados que são mensagens de textos e preciso
+identificar os cpf's digitados nestas mensagens.
+
+Quando os cpf's são digitados sem pontos ou traços, consigo extrair esta
+informação. mas preciso selecionar também os casos como por exemplo:
+000.000.000-00
+Uma amostra de 69 mensagens dos dados estão nest link
+https://www.dropbox.com/s/cphsc02rz242z57/amostra.csv?dl=0
+
+## CMR
+d<-unlist(regmatches(dados[1:69,], gregexpr("[0-9,]+", dados[1:69,])))
+d<- gsub(",", "", d)
+d <- d[d != ""]
+d[str_length(d)==11]
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181217/31658a3a/attachment.html>
+
+From drigo.angelo em gmail.com  Tue Dec 18 10:14:37 2018
+From: drigo.angelo em gmail.com (=?UTF-8?Q?Rodrigo_=C3=82ngelo?=)
+Date: Tue, 18 Dec 2018 10:14:37 -0200
+Subject: [R-br] Identificar cpf's
+In-Reply-To: <CAJz4ZjG67oXqZ7G8OzPwGhYTx5k-SKaC=QWS9AVjwpEAi7UXAA@mail.gmail.com>
+References: <CAJz4ZjG67oXqZ7G8OzPwGhYTx5k-SKaC=QWS9AVjwpEAi7UXAA@mail.gmail.com>
+Message-ID: <CANsnirVanD8c5x=zudVCOdWQv98Z6Y4V4vdK9s+-4mLsmZoxjg@mail.gmail.com>
+
+Olá, Felipe,
+
+Tente esse código para pegar apenas os CPFs que estiverem com a máscara:
+
+t = paste(dados[1:69,2])
+
+d<-unlist(regmatches(t, gregexpr("[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}",
+t)))
+
+Espero ter ajudado.
+
+Atenciosamente,
+Rodrigo de Castro Ângelo
+
+On Mon, Dec 17, 2018 at 6:20 PM Felipe Barletta por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Prezados,
+>
+> Boa tarde,
+>
+> Tenho uma conjunto de dados que são mensagens de textos e preciso
+> identificar os cpf's digitados nestas mensagens.
+>
+> Quando os cpf's são digitados sem pontos ou traços, consigo extrair esta
+> informação. mas preciso selecionar também os casos como por exemplo:
+> 000.000.000-00
+> Uma amostra de 69 mensagens dos dados estão nest link
+> https://www.dropbox.com/s/cphsc02rz242z57/amostra.csv?dl=0
+>
+> ## CMR
+> d<-unlist(regmatches(dados[1:69,], gregexpr("[0-9,]+", dados[1:69,])))
+> d<- gsub(",", "", d)
+> d <- d[d != ""]
+> d[str_length(d)==11]
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181218/6266acd9/attachment.html>
+
+From cinara.ufjf em gmail.com  Wed Dec 19 11:10:15 2018
+From: cinara.ufjf em gmail.com (Cinara Santos)
+Date: Wed, 19 Dec 2018 11:10:15 -0200
+Subject: [R-br] =?utf-8?q?capturar_a_sa=C3=ADda_do_r?=
+Message-ID: <CAB4g1y=C8vKNkS5zgN++SqvNYhhpjgH-YNJLvBvE3vJqm9NPYw@mail.gmail.com>
+
+Olá!
+
+Gostaria de saber da possibilidade de capturar o [console] do R de forma
+dinâmica, como no software STATA - tudo o que sai na tela é copiado para um
+arquivo de log. Se houver interrupção, o log registra até o momento da
+interrupção.
+
+E se fosse possível habilitar isso no R, me ajudaria muito!!!
+
+Digo isso porque estou usando o comando [sink()]
+
+sink(file = log_file, append = TRUE, type = "output")
+
+Ocorre que o código lida com dados muito volumosos, dentro de um loop (com
+sub-loops também). Assim, na minha inocência tentei o seguinte - são 3
+loops, um dentro do outro.
+Ao final do loop mais interno pus:
+
+- desliga o [sink()],
+- fecha o arquivo de saida (log_file - no intuito de salvar o que já tem)
+- abre o arquivo de saida (log_file)
+- "liga" o [sink]
+
+
+--------------------------
+saida <- paste(....)  #monta o nome do arquivo de saida
+
+log_file <- file(saida, open = "wt")
+sink(file = log_file, append = TRUE, type = "output")  # começa a "captura"
+
+LOOP1- inicio
+    pegar referencia no [arquivo_a]
+    LOOP2- inicio
+         montar nome [arquivo_b]
+         LOOP3(varrer [arquivo_b] - particionando) - inicio
+              tarefa1
+              tarefa2
+                 :
+              tarefa_n
+
+              sink()
+              close(log_file)
+              log_file <- file(saida, open = "at")
+              sink(file = log_file, append = TRUE, type = "output")
+
+         LOOP3( varrer [arquivo_b] - particionando  ) - fim
+    LOOP2 - fim
+LOOP1- fim
+--------------------------
+
+
+Mas parece que o arquivo continua fechando só  ao final do código, e com
+isso, se acaba a luz no meio do caminho, ou ocorre algum outro evento....
+fico na saudade...
+
+Tem remédio?????
+
+------------------------
+Cinara Santos
+whatsApp (32) 9.8416-0441
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181219/739b7b68/attachment.html>
+
+From marcosfs2006 em gmail.com  Wed Dec 19 11:20:22 2018
+From: marcosfs2006 em gmail.com (Marcos Silva)
+Date: Wed, 19 Dec 2018 11:20:22 -0200
+Subject: [R-br] =?utf-8?q?capturar_a_sa=C3=ADda_do_r?=
+In-Reply-To: <CAB4g1y=C8vKNkS5zgN++SqvNYhhpjgH-YNJLvBvE3vJqm9NPYw@mail.gmail.com>
+References: <CAB4g1y=C8vKNkS5zgN++SqvNYhhpjgH-YNJLvBvE3vJqm9NPYw@mail.gmail.com>
+Message-ID: <CAHKdobxiVRiErsdSnQ=vkwR5rhe5v2yY_OV9dQLM_bp0szrDsQ@mail.gmail.com>
+
+sink(). Dá uma olhada nessa função.
+
+Em 19 de dez de 2018 11:13 AM, "Cinara Santos por (R-br)" <
+r-br em listas.c3sl.ufpr.br> escreveu:
+
+Olá!
+
+Gostaria de saber da possibilidade de capturar o [console] do R de forma
+dinâmica, como no software STATA - tudo o que sai na tela é copiado para um
+arquivo de log. Se houver interrupção, o log registra até o momento da
+interrupção.
+
+E se fosse possível habilitar isso no R, me ajudaria muito!!!
+
+Digo isso porque estou usando o comando [sink()]
+
+sink(file = log_file, append = TRUE, type = "output")
+
+Ocorre que o código lida com dados muito volumosos, dentro de um loop (com
+sub-loops também). Assim, na minha inocência tentei o seguinte - são 3
+loops, um dentro do outro.
+Ao final do loop mais interno pus:
+
+- desliga o [sink()],
+- fecha o arquivo de saida (log_file - no intuito de salvar o que já tem)
+- abre o arquivo de saida (log_file)
+- "liga" o [sink]
+
+
+--------------------------
+saida <- paste(....)  #monta o nome do arquivo de saida
+
+log_file <- file(saida, open = "wt")
+sink(file = log_file, append = TRUE, type = "output")  # começa a "captura"
+
+LOOP1- inicio
+    pegar referencia no [arquivo_a]
+    LOOP2- inicio
+         montar nome [arquivo_b]
+         LOOP3(varrer [arquivo_b] - particionando) - inicio
+              tarefa1
+              tarefa2
+                 :
+              tarefa_n
+
+              sink()
+              close(log_file)
+              log_file <- file(saida, open = "at")
+              sink(file = log_file, append = TRUE, type = "output")
+
+         LOOP3( varrer [arquivo_b] - particionando  ) - fim
+    LOOP2 - fim
+LOOP1- fim
+--------------------------
+
+
+Mas parece que o arquivo continua fechando só  ao final do código, e com
+isso, se acaba a luz no meio do caminho, ou ocorre algum outro evento....
+fico na saudade...
+
+Tem remédio?????
+
+------------------------
+Cinara Santos
+whatsApp (32) 9.8416-0441
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código
+mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181219/2c89eb22/attachment.html>
+
+From drigo.angelo em gmail.com  Wed Dec 19 12:18:49 2018
+From: drigo.angelo em gmail.com (=?UTF-8?Q?Rodrigo_=C3=82ngelo?=)
+Date: Wed, 19 Dec 2018 12:18:49 -0200
+Subject: [R-br] =?utf-8?q?capturar_a_sa=C3=ADda_do_r?=
+In-Reply-To: <CAHKdobxiVRiErsdSnQ=vkwR5rhe5v2yY_OV9dQLM_bp0szrDsQ@mail.gmail.com>
+References: <CAB4g1y=C8vKNkS5zgN++SqvNYhhpjgH-YNJLvBvE3vJqm9NPYw@mail.gmail.com>
+ <CAHKdobxiVRiErsdSnQ=vkwR5rhe5v2yY_OV9dQLM_bp0szrDsQ@mail.gmail.com>
+Message-ID: <CANsnirWbP7gDYMm1k2Et__w7KKf94yYRfqLDL4U-FH-diFnuEQ@mail.gmail.com>
+
+Oi, Cinara
+
+Eu não cheguei a montar uma forma de reproduzir seu problema aqui, mas uma
+sugestão é, em vez de desligar o sink e fechar a conexão do seu arquivo de
+log, usar o comando:
+
+flush(log_file)
+
+Se não me engano, esse comando vai garantir que os dados no buffer
+(memória) são salvos no arquivo (disco).
+
+Espero ter ajudado,
+Rodrigo Ângelo
+
+On Wed, Dec 19, 2018 at 11:20 AM Marcos Silva por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> sink(). Dá uma olhada nessa função.
+>
+> Em 19 de dez de 2018 11:13 AM, "Cinara Santos por (R-br)" <
+> r-br em listas.c3sl.ufpr.br> escreveu:
+>
+> Olá!
+>
+> Gostaria de saber da possibilidade de capturar o [console] do R de forma
+> dinâmica, como no software STATA - tudo o que sai na tela é copiado para um
+> arquivo de log. Se houver interrupção, o log registra até o momento da
+> interrupção.
+>
+> E se fosse possível habilitar isso no R, me ajudaria muito!!!
+>
+> Digo isso porque estou usando o comando [sink()]
+>
+> sink(file = log_file, append = TRUE, type = "output")
+>
+> Ocorre que o código lida com dados muito volumosos, dentro de um loop (com
+> sub-loops também). Assim, na minha inocência tentei o seguinte - são 3
+> loops, um dentro do outro.
+> Ao final do loop mais interno pus:
+>
+> - desliga o [sink()],
+> - fecha o arquivo de saida (log_file - no intuito de salvar o que já tem)
+> - abre o arquivo de saida (log_file)
+> - "liga" o [sink]
+>
+>
+> --------------------------
+> saida <- paste(....)  #monta o nome do arquivo de saida
+>
+> log_file <- file(saida, open = "wt")
+> sink(file = log_file, append = TRUE, type = "output")  # começa a "captura"
+>
+> LOOP1- inicio
+>     pegar referencia no [arquivo_a]
+>     LOOP2- inicio
+>          montar nome [arquivo_b]
+>          LOOP3(varrer [arquivo_b] - particionando) - inicio
+>               tarefa1
+>               tarefa2
+>                  :
+>               tarefa_n
+>
+>               sink()
+>               close(log_file)
+>               log_file <- file(saida, open = "at")
+>               sink(file = log_file, append = TRUE, type = "output")
+>
+>          LOOP3( varrer [arquivo_b] - particionando  ) - fim
+>     LOOP2 - fim
+> LOOP1- fim
+> --------------------------
+>
+>
+> Mas parece que o arquivo continua fechando só  ao final do código, e com
+> isso, se acaba a luz no meio do caminho, ou ocorre algum outro evento....
+> fico na saudade...
+>
+> Tem remédio?????
+>
+> ------------------------
+> Cinara Santos
+> whatsApp (32) 9.8416-0441
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181219/d4a03e5e/attachment.html>
+
+From jhguilhen em gmail.com  Thu Dec 20 14:27:46 2018
+From: jhguilhen em gmail.com (Ze Henrique)
+Date: Thu, 20 Dec 2018 14:27:46 -0200
+Subject: [R-br] Mojema (1977) - ponto de corte
+Message-ID: <CAHi1An9XFKBvi9ZRNpgN9pxr3i=zuh2SVJjCkcLpUHhqPnrbkg@mail.gmail.com>
+
+Boa tarde Srs.
+
+gostaria de saber se alguém sabe onde posso conseguir como fazer a análise
+de Mojema (1977) no r.
+Teste este que consegue dar a significância de ponto de corte nos nós dos
+agrupamentos.
+
+Desde já agradece a pela ajuda.
+
+-- 
+*José Henrique Soler Guilhen*
+Doutorando em Genética e Melhoramento
+Universidade Federal do Espírito Santo - CCAUFES
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181220/a06ca080/attachment.html>
+
+From ab_souza em outlook.com  Thu Dec 20 16:19:52 2018
+From: ab_souza em outlook.com (Ana Beatriz Souza Souza)
+Date: Thu, 20 Dec 2018 18:19:52 +0000
+Subject: [R-br] =?iso-8859-1?q?Distribui=E7=E3o_gama_bivariada_no_R?=
+Message-ID: <RO1P152MB0859AF7AA54A96093FE689E5F2BF0@RO1P152MB0859.LAMP152.PROD.OUTLOOK.COM>
+
+Boa tarde pessoal!
+
+Estou trabalhando com distribuições gama bivariada e outras distribuições relacionadas. Alguma indicação de pacotes no R que abordam esses modelos?
+
+Desde já agradeço
+
+Att.,
+
+Ana
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181220/20ed3a45/attachment.html>
+
+From cesar.rabak em gmail.com  Thu Dec 20 16:25:30 2018
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Thu, 20 Dec 2018 16:25:30 -0200
+Subject: [R-br] =?utf-8?q?Distribui=C3=A7=C3=A3o_gama_bivariada_no_R?=
+In-Reply-To: <RO1P152MB0859AF7AA54A96093FE689E5F2BF0@RO1P152MB0859.LAMP152.PROD.OUTLOOK.COM>
+References: <RO1P152MB0859AF7AA54A96093FE689E5F2BF0@RO1P152MB0859.LAMP152.PROD.OUTLOOK.COM>
+Message-ID: <CAKrF98nqyHuf0okoddrZ_ke1EebfQDztxD7Ph1Wm06t8+yKdHQ@mail.gmail.com>
+
+Faça uma pesquisa no site CRAN por *Task View* "gamma bivariate"
+
+On Thu, Dec 20, 2018 at 4:20 PM Ana Beatriz Souza Souza por (R-br) <
+r-br em listas.c3sl.ufpr.br> wrote:
+
+> Boa tarde pessoal!
+>
+> Estou trabalhando com distribuições gama bivariada e outras distribuições
+> relacionadas. Alguma indicação de pacotes no R que abordam esses modelos?
+>
+> Desde já agradeço
+>
+> Att.,
+>
+> Ana
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20181220/08167905/attachment.html>
+

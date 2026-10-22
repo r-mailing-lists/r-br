@@ -1,0 +1,5016 @@
+From eliaskrainski em yahoo.com.br  Tue Dec  1 06:04:59 2015
+From: eliaskrainski em yahoo.com.br (Elias Teixeira Krainski)
+Date: Tue, 1 Dec 2015 09:04:59 +0100
+Subject: [R-br] R jobs
+Message-ID: <565D54AB.3000208@yahoo.com.br>
+
+Bom dia caros(as),
+
+É fato que "data science" virou uma profissão. E R é uma das ferramentas 
+dessa profissão. Chamou minha atenção à diversidade de oportunidades de 
+trabalho para quem é dessa área. Quando restringimos para R, surgem 
+oportunidades, por exemplo, para desenvolver uma Shiny App. Segue uma 
+lista de 16 destas oportunidades publicadas no r-bloggers:
+http://www.r-bloggers.com/14-new-r-jobs-from-around-the-world-for-2015-11-30/
+
+Elias
+
+From klebyn em yahoo.com.br  Thu Dec  3 14:50:39 2015
+From: klebyn em yahoo.com.br (Cleber Borges)
+Date: Thu, 3 Dec 2015 14:50:39 -0200
+Subject: [R-br] set environment
+Message-ID: <566072DF.4030304@yahoo.com.br>
+
+olá a todos,
+
+Gostaria de saber se há um modo mais direto de ajustar um determinado
+environment e definir variáveis dentro dele e sub ambientes.
+
+agradeço por qualquer ajuda por antecedência
+cleber
+
+##############################
+
+#Algo do tipo:
+
+Xenv <- new.env()
+
+*    setCurrentEnv(  Xenv )  *
+
+#  Definir procedimentos e muitas variáveis
+
+*  setCurrentEnv(  baseenv() )  *
+
+
+
+
+---
+Este email foi escaneado pelo Avast antivírus.
+https://www.avast.com/antivirus
+
+
+From lbenitesanchez em gmail.com  Fri Dec  4 10:47:18 2015
+From: lbenitesanchez em gmail.com (=?UTF-8?Q?Luis_Benites_S=C3=A1nchez?=)
+Date: Fri, 4 Dec 2015 10:47:18 -0200
+Subject: [R-br] =?utf-8?q?=5BLEMBRETE=5D_Meetup_R_S=C3=A3o_Paulo_Users_Gro?=
+	=?utf-8?q?up_=28IME-USP=29_-_4_de_dezembro_do_2015?=
+Message-ID: <CAG4re2sdJx-yfdDcoQ0qNaFnyfnRLOoxiVv+xuA0tWgiBbn6mQ@mail.gmail.com>
+
+Caros,
+
+Hoje 4 de dezembro teremos nossa última reunião (numero 8) deste ano, do
+Meetup de usuários de R de São Paulo, no auditório Jacy Monteiro no Bloco
+B. Segue a programação:
+
+Programação de hoje, 4 de dezembro (14:00h-15:00h)
+
+- [14:00 - 14:55] Distribuições Assimétricas e Aplicações com R - Prof.
+Clécio da Silva Ferreira (UFJF) - [Online]
+- [14:55 - 15:00] Encerramento
+
+As palestras serão transmitidas ao vivo pela conexão IPTV (
+http://iptv.usp.br/portal/transmission.action?idItem=31314) da USP e
+YouTube (https://plus.google.com/u/0/events/cgdvprrjafd27vba5pskbu0qghs).
+Para poder participar, pode confirmar sua participação gratuitamente no
+site do Meetup :)
+
+
+Para mais informações:
+Site: www.meetup.com/pt/useR-SP
+Canal de YouTube: www.youtube.com/channel/UCb9PdJYYaElE6Uqb1KxhE8w
+e-mail: meetuprsp em gmail.com
+
+Um abraço,
+
+Luis Benites Sánchez
+Rocío Paola Maehara
+Organizadores do São Paulo R Users Group
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151204/ffa3527f/attachment.html>
+
+From rodrigoodelima em gmail.com  Sat Dec  5 08:18:02 2015
+From: rodrigoodelima em gmail.com (Rodrigo Lima)
+Date: Sat, 5 Dec 2015 08:18:02 -0200
+Subject: [R-br] =?utf-8?q?Covari=C3=A2ncia?=
+Message-ID: <CAOQG0LYrh1Lp5TqraiLUFibcOqATo=03MgtvN3jf2BQiASAKOw@mail.gmail.com>
+
+Prezados listeiros
+
+Bom dia.
+Eu tenho dados de produtividade de grãos em milho como variável resposta e
+dados de estande (número de plantas por parcela) como outra variável. Como
+nós tivemos problemas com irregularidade de estande, eu quero usar o número
+de plantas como covariável no no meu modelo. Abaixo o modelo:
+
+exp01.anova.2<-lm(gy ~ prog+rep+bloc%in%rep, data = exp01[exp01$local==2,])
+
+Como eu coloco essa variável como covariável? O número de plantas ideal é
+25 plantas por parcela, mas tenho parcelas com 16, 18 etc. Como coloco isso
+no aquivo? Eu devo subtrair o número de plantas ideal do real e, aquelas
+parcelas que tem o número ideal ficariam com zero, aquelas com mais de 25
+plantas com número positivo e aquelas com menos de 25 plantas com número
+negativo? Isso mesmo? Ele vai para o modelo como fator ou numero?
+
+Muito obrigado.
+
+Att,
+
+Rodrigo.
+
+-- 
+Prof. Rodrigo Oliveira de Lima
+Federal University of Viçosa
+Department of Plant Sciences
+Viçosa, MG, Brazil, 36570-900,
+Phone: +55(31)3899-2781
+Fax: +55(31)3899-2614
+Email: rodrigoodelima em ufv.br
+CV: http://lattes.cnpq.br/2761299616351806
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151205/770d24c5/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Sat Dec  5 09:54:09 2015
+From: eliaskrainski em yahoo.com.br (Elias Teixeira Krainski)
+Date: Sat, 5 Dec 2015 12:54:09 +0100
+Subject: [R-br] =?utf-8?q?Covari=C3=A2ncia?=
+In-Reply-To: <CAOQG0LYrh1Lp5TqraiLUFibcOqATo=03MgtvN3jf2BQiASAKOw@mail.gmail.com>
+References: <CAOQG0LYrh1Lp5TqraiLUFibcOqATo=03MgtvN3jf2BQiASAKOw@mail.gmail.com>
+Message-ID: <5662D061.70305@yahoo.com.br>
+
+Olá Rodrigo,
+
+O número de plantas não deve ser covariável, mas algo como offset, 
+Ntrials ou exposure. Uma opção ingênua seria trabalhar com produtividade 
+por planta. Porém, produtividade por planta igual em parcelas com número 
+diferente de plantas provavelmente têm variância diferente.
+
+Elias
+
+
+From walmeszeviani em gmail.com  Sat Dec  5 11:34:08 2015
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Sat, 5 Dec 2015 11:34:08 -0200
+Subject: [R-br] =?utf-8?q?Covari=C3=A2ncia?=
+In-Reply-To: <5662D061.70305@yahoo.com.br>
+References: <CAOQG0LYrh1Lp5TqraiLUFibcOqATo=03MgtvN3jf2BQiASAKOw@mail.gmail.com>
+ <5662D061.70305@yahoo.com.br>
+Message-ID: <CAFU=EkabUV86WU+9dqwpVctvAzbGdZ06A3SfRzcqwMqQGPqozQ@mail.gmail.com>
+
+Complementando a sugestão do Elias,
+
+Você pode centrar o stand em 25 o no valor médio do experimento. Usar ela
+como covariável na lm(). Seria então uma análise de covariância. Talvez
+sirva de inspiração esse documento que analisa peso de leitões tendo como
+covariáveis peso inicial e idade inicial. Lembre-se de um detalhe, para uma
+análise de covariância supõe-se que as covariáveis não dependam dos fatores
+estudados. Eu suponho que no seu modelo "prog" seja progênie e pode ser que
+o stand dependa de progênie porque umas germinam com maior taxa ou têm
+menor caimento por vento, etc. Se o stand é função da cultivar e você usa o
+stand para corrigir a produtividade, o que você está fazendo em outras
+palavras e comparando elas numa situação de stand padronizado. A pergunta
+é, será que isso deve ser feito? No exemplo dos leitões, peso e idade foram
+medidos antes do experimento começar, antes mesmo de casualizar os animais,
+e por isso antecipamos que não haverá dependência dos tratamentos
+aplicações.
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151205/8c8d56aa/attachment.html>
+
+From walmeszeviani em gmail.com  Sat Dec  5 11:35:00 2015
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Sat, 5 Dec 2015 11:35:00 -0200
+Subject: [R-br] =?utf-8?q?Covari=C3=A2ncia?=
+In-Reply-To: <CAFU=EkabUV86WU+9dqwpVctvAzbGdZ06A3SfRzcqwMqQGPqozQ@mail.gmail.com>
+References: <CAOQG0LYrh1Lp5TqraiLUFibcOqATo=03MgtvN3jf2BQiASAKOw@mail.gmail.com>
+ <5662D061.70305@yahoo.com.br>
+ <CAFU=EkabUV86WU+9dqwpVctvAzbGdZ06A3SfRzcqwMqQGPqozQ@mail.gmail.com>
+Message-ID: <CAFU=Ekaf5ZV0CsgTfJm3Rc-Xdq-8zCxkf+To2OONgm1gQFC9QA@mail.gmail.com>
+
+O link acabei esquecendo:
+http://www.leg.ufpr.br/~walmes/cursoR/cpaa/cpaa11anc.html.
+
+W.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151205/28538c07/attachment.html>
+
+From klebyn em yahoo.com.br  Sun Dec  6 11:19:45 2015
+From: klebyn em yahoo.com.br (Cleber N.Borges)
+Date: Sun, 6 Dec 2015 11:19:45 -0200
+Subject: [R-br] adicionar e configurar celula em uma tabela de Tktable
+Message-ID: <566435F1.8080101@yahoo.com.br>
+
+olá a todos,
+ainda que seja muito especifico, pergunto
+caso alguém saiba dar uma dica
+
+estou tentando usar uma tabela do tk e tentando aplicar uma tag a uma 
+determinada célula
+(que é o modo de configurar cada célula individualmente, até onde entendi )
+mas não entendi como esse processo funciona...
+caso alguém saiba, agradeço por antecipação a ajuda.
+
+att.,
+cleber
+#############################
+
+library( tcltk )
+tclRequire('Tktable')
+tt <- tktoplevel()
+tt.f <- ttkframe( tt, relief='sunken', borderwidth=10  )
+tkpack( tt.f, expand=T, fill='both' )
+tt.f.l <- ttklabel( tt.f, text='test' )
+tkpack( tt.f.l, expand=T, fill='both' )
+vartab <- tclArray()
+tt.f.table <- tkwidget( tt.f, 'table', titlecol=1, titlerow=1,
+background='white', multiline=0, variable=vartab )
+tkpack( tt.f.table, expand=T, fill='both' )
+
+tktag.add( tt.f.table, "celltag", "ZeroZero", "0,0" ) ###  erro!!!!!
+
+
+
+---
+Este email foi escaneado pelo Avast antivírus.
+https://www.avast.com/antivirus
+
+
+From pcampelo.felix em gmail.com  Mon Dec  7 21:18:13 2015
+From: pcampelo.felix em gmail.com (Pedro Campelo)
+Date: Mon, 7 Dec 2015 21:18:13 -0200
+Subject: [R-br] =?utf-8?q?D=C3=BAvidas_gr=C3=A1ficos_Histograma?=
+Message-ID: <CADN0ST22fPjoKgWZOdLJH8u2RwkGaNadC+Kf8v0L5YU7RVZ3sg@mail.gmail.com>
+
+Pessoal,
+
+Existe algum comando no qual posso criar um histograma que o eixo do Y dê o
+volume (porcentagem) dos dados?
+
+Obrigado
+*----*
+
+*Pedro Henrique Campelo Felix*
+*Bacharel em Engenharia de Alimentos*
+*Mestre em Engenharia Química*
+*Doutorando em Ciências de Alimentos*
+
+*(31) 87427656 (OI)*
+*(31) 75601545 (TIM)*
+*"**Nós somos aquilo que fazemos repetidamente. Excelência, então, não é um
+modo de agir, mas um hábito." Aristóteles*
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151207/58ab12d3/attachment.html>
+
+From felipe.e.barletta em gmail.com  Mon Dec  7 21:30:07 2015
+From: felipe.e.barletta em gmail.com (Felipe)
+Date: Mon, 7 Dec 2015 21:30:07 -0200
+Subject: [R-br] =?utf-8?q?D=C3=BAvidas_gr=C3=A1ficos_Histograma?=
+In-Reply-To: <CADN0ST22fPjoKgWZOdLJH8u2RwkGaNadC+Kf8v0L5YU7RVZ3sg@mail.gmail.com>
+References: <CADN0ST22fPjoKgWZOdLJH8u2RwkGaNadC+Kf8v0L5YU7RVZ3sg@mail.gmail.com>
+Message-ID: <5666167F.4040504@gmail.com>
+
+Pedro, o que deseja é utlizar a frequência relativa?
+
+x <- rnorm(100)
+
+## Guardar o histograma em um objeto
+graph <- hist(x)
+
+## Criando objeto counts com a frequência relativa
+graph$counts <- graph$counts/length(x)
+plot(graph)
+
+-- 
+Atenciosamente
+Felipe E. Barletta Mendes
+Estatístico - Conre3 9766-A
++55 (41)-92077191
++55 (41)-33287216
+
+
+From andreolsouza em yahoo.com.br  Mon Dec  7 21:34:47 2015
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Mon, 7 Dec 2015 23:34:47 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?D=C3=BAvidas_gr=C3=A1ficos_Histograma?=
+In-Reply-To: <5666167F.4040504@gmail.com>
+References: <5666167F.4040504@gmail.com>
+Message-ID: <1666225133.46477.1449531287238.JavaMail.yahoo@mail.yahoo.com>
+
+Eu faço  assim ...
+ x <- rnorm(100)hist(x,prob=T) André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito Santo.  IFES 
+
+
+    Em Segunda-feira, 7 de Dezembro de 2015 21:30, Felipe <felipe.e.barletta em gmail.com> escreveu:
+ 
+
+ Pedro, o que deseja é utlizar a frequência relativa?
+
+x <- rnorm(100)
+
+## Guardar o histograma em um objeto
+graph <- hist(x)
+
+## Criando objeto counts com a frequência relativa
+graph$counts <- graph$counts/length(x)
+plot(graph)
+
+-- 
+Atenciosamente
+Felipe E. Barletta Mendes
+Estatístico - Conre3 9766-A
++55 (41)-92077191
++55 (41)-33287216
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151207/6690a6e4/attachment.html>
+
+From luizroberto.uesc em gmail.com  Mon Dec  7 21:49:09 2015
+From: luizroberto.uesc em gmail.com (Luiz Roberto Martins Pinto)
+Date: Mon, 7 Dec 2015 20:49:09 -0300
+Subject: [R-br] =?utf-8?q?D=C3=BAvidas_gr=C3=A1ficos_Histograma?=
+In-Reply-To: <1666225133.46477.1449531287238.JavaMail.yahoo@mail.yahoo.com>
+References: <5666167F.4040504@gmail.com>
+ <1666225133.46477.1449531287238.JavaMail.yahoo@mail.yahoo.com>
+Message-ID: <CAK4=-FAs=G6Ty6_uU2a3vcKURaS5_JVMF5g2C05GDNk7BnDPBA@mail.gmail.com>
+
+A função fdt da biblioteca fdth  é outra interessante opção.
+
+
+
+Luiz Roberto Martins Pinto
+Prof. Pleno/DCET/UESC
+Laboratório de Estatística Computacional
+Universidade Estadual de Santa Cruz
+Ilhéus-Bahia-Brasil
+
+luizroberto.uesc em gmail.com
+skype: lrmpinto
+http://lattes.cnpq.br/2732314327604831
+
+
+
+Em 7 de dezembro de 2015 20:34, Andre Oliveira <andreolsouza em yahoo.com.br>
+escreveu:
+
+> Eu faço  assim ...
+>
+> x <- rnorm(100)
+> hist(x,prob=T)
+>
+> André Oliveira Souza. Graduação em Matemática, mestrado em estatística
+> aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito
+> Santo.  IFES
+>
+>
+>
+> Em Segunda-feira, 7 de Dezembro de 2015 21:30, Felipe <
+> felipe.e.barletta em gmail.com> escreveu:
+>
+>
+> Pedro, o que deseja é utlizar a frequência relativa?
+>
+> x <- rnorm(100)
+>
+> ## Guardar o histograma em um objeto
+> graph <- hist(x)
+>
+> ## Criando objeto counts com a frequência relativa
+> graph$counts <- graph$counts/length(x)
+> plot(graph)
+>
+> --
+> Atenciosamente
+> Felipe E. Barletta Mendes
+> Estatístico - Conre3 9766-A
+> +55 (41)-92077191
+> +55 (41)-33287216
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia
+> ) e fornea cdigo mnimo reproduzvel.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151207/e634126a/attachment.html>
+
+From felipe.e.barletta em gmail.com  Mon Dec  7 21:50:59 2015
+From: felipe.e.barletta em gmail.com (Felipe)
+Date: Mon, 7 Dec 2015 21:50:59 -0200
+Subject: [R-br] =?utf-8?q?D=C3=BAvidas_gr=C3=A1ficos_Histograma?=
+In-Reply-To: <1666225133.46477.1449531287238.JavaMail.yahoo@mail.yahoo.com>
+References: <5666167F.4040504@gmail.com>
+ <1666225133.46477.1449531287238.JavaMail.yahoo@mail.yahoo.com>
+Message-ID: <56661B63.9080306@gmail.com>
+
+O argumento prob=T, coloca a densidade e não a frequência relativa.
+
+-- 
+Atenciosamente
+Felipe E. Barletta Mendes
+Estatístico - Conre3 9766-A
++55 (41)-92077191
++55 (41)-33287216
+
+
+From bodevan.ec em gmail.com  Mon Dec  7 21:51:42 2015
+From: bodevan.ec em gmail.com (Emerson Cotta Bodevan)
+Date: Mon, 7 Dec 2015 21:51:42 -0200
+Subject: [R-br] =?utf-8?q?D=C3=BAvidas_gr=C3=A1ficos_Histograma?=
+In-Reply-To: <1666225133.46477.1449531287238.JavaMail.yahoo@mail.yahoo.com>
+References: <5666167F.4040504@gmail.com>
+ <1666225133.46477.1449531287238.JavaMail.yahoo@mail.yahoo.com>
+Message-ID: <CAP5i-syYWKdpzCO97uRRFSm_7As2P1vCNmGU2Fv0zpU3qpu6_w@mail.gmail.com>
+
+Prezado André...
+
+neste caso o histograma é construído utilizando densidade e não frequência
+relativa.
+
+Att.,
+
+
+*Emerson*
+
+Em 7 de dezembro de 2015 21:34, Andre Oliveira <andreolsouza em yahoo.com.br>
+escreveu:
+
+> Eu faço  assim ...
+>
+> x <- rnorm(100)
+> hist(x,prob=T)
+>
+> André Oliveira Souza. Graduação em Matemática, mestrado em estatística
+> aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito
+> Santo.  IFES
+>
+>
+>
+> Em Segunda-feira, 7 de Dezembro de 2015 21:30, Felipe <
+> felipe.e.barletta em gmail.com> escreveu:
+>
+>
+> Pedro, o que deseja é utlizar a frequência relativa?
+>
+> x <- rnorm(100)
+>
+> ## Guardar o histograma em um objeto
+> graph <- hist(x)
+>
+> ## Criando objeto counts com a frequência relativa
+> graph$counts <- graph$counts/length(x)
+> plot(graph)
+>
+> --
+> Atenciosamente
+> Felipe E. Barletta Mendes
+> Estatístico - Conre3 9766-A
+> +55 (41)-92077191
+> +55 (41)-33287216
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia
+> ) e fornea cdigo mnimo reproduzvel.
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151207/bacfeeda/attachment.html>
+
+From felipe.e.barletta em gmail.com  Mon Dec  7 21:53:24 2015
+From: felipe.e.barletta em gmail.com (Felipe)
+Date: Mon, 7 Dec 2015 21:53:24 -0200
+Subject: [R-br] =?utf-8?q?D=C3=BAvidas_gr=C3=A1ficos_Histograma?=
+In-Reply-To: <1666225133.46477.1449531287238.JavaMail.yahoo@mail.yahoo.com>
+References: <5666167F.4040504@gmail.com>
+ <1666225133.46477.1449531287238.JavaMail.yahoo@mail.yahoo.com>
+Message-ID: <56661BF4.1010200@gmail.com>
+
+O argumento prob=T, coloca a densidade e não frequência relativa.
+
+veja o help da função hist
+
+-- 
+Atenciosamente
+Felipe E. Barletta Mendes
+Estatístico - Conre3 9766-A
++55 (41)-92077191
++55 (41)-33287216
+
+
+From incorpld em onda.com.br  Fri Dec 11 13:25:15 2015
+From: incorpld em onda.com.br (Felinto COSTA)
+Date: Fri, 11 Dec 2015 13:25:15 -0200
+Subject: [R-br] Deviance e Scaled Deviance
+Message-ID: <566AEADB.2090705@onda.com.br>
+
+Prezados.
+
+Tenho uma dúvida a respeito da estatística /de//v//iance (D) /que a 
+função /glm{stats} /retorna
+ao estimar os parâmetros para um modelo Gama com ligação log.
+
+Devido à estimação do parâmetro (φˆ ) desconhecido da dispersão (φ) , 
+essa /deviance/ é
+a /scaled deviance (D*=D///φˆ ).
+/
+A dúvida é se essa /scaled deviance /pode ser comparada a um valor da 
+distribuição Chi-quadrado
+(χ2 (n−p,1−α)
+como uma (das primeiras) análises sobre a bondade do ajuste desse modelo.
+
+Há pesquisadores que afirmam ser isso válido apenas quando o parâmetro 
+(φ) é conhecido (=1), como nas
+distribuições Binomial e de Poissone por essa razão apenas poderia se 
+ter uma comparação
+grosseira de D* com os graus de liberdade (n-p) do modelo .
+
+Antecipadamente agradeço a ajuda e me desculpo se conceitualmente estou 
+a cometer algum erro crasso .
+(estatística não é minha formação inicial).
+
+FCosta
+
+
+
+
+
+
+
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151211/821dc0f9/attachment.html>
+
+From gabriela.geouerj em yahoo.com.br  Sat Dec 12 21:34:10 2015
+From: gabriela.geouerj em yahoo.com.br (Gabriela Alves)
+Date: Sat, 12 Dec 2015 23:34:10 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?An=C3=A1lise_de_s=C3=A9ries_temporais?=
+References: <322063195.318556.1449963250680.JavaMail.yahoo.ref@mail.yahoo.com>
+Message-ID: <322063195.318556.1449963250680.JavaMail.yahoo@mail.yahoo.com>
+
+Boa Noite, gostaria te esclarecer uma dúvida que muito impede o avanço do meu projeto, para uns parecerá trivial, mas confesso que para mim está bem complicado.Estou fazendo um estudo do comportamento climático do Estado de São Paulo para os anos considerados normais em comparação aos anos considerados anômalos. Isso me permite gerar uma séria temporal com dados diários de precipitação, umidade e temperatura para os verões de 1961 à 2015. Ao iniciar o processo pelo software R me deparei com a dificuldade falhas serem incorporadas (já que alguns dias, ou meses e até verões completos podem não ter sido aferidos), tendo em vista essa dificuldade fui orientada a utilizar a metodologia de Fourier - ARIMA pois assim seria possível ter uma série completa com dados e falhas para todos os verões previsto. Todavia estou com muita dificuldade em avançar no desenvolvimento dessa série temporal modelagem ARIMA, é algo novo para mim e sendo bem sincera não sei por onde começar. Fazendo buscas descobri que usando o filtro de Kalmam da função auto.arima, é possível a imputação dos dados. Peço gentilmente uma orientação para esclarecer essa minha dúvida. Desde já agradeço.
+Att.
+Gabriela Alves
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151212/cde09731/attachment.html>
+
+From fernandadebastiani em yahoo.com.br  Sun Dec 13 23:16:22 2015
+From: fernandadebastiani em yahoo.com.br (Fernanda De Bastiani)
+Date: Mon, 14 Dec 2015 01:16:22 +0000 (UTC)
+Subject: [R-br] geoR
+References: <1625321791.618520.1450055782051.JavaMail.yahoo.ref@mail.yahoo.com>
+Message-ID: <1625321791.618520.1450055782051.JavaMail.yahoo@mail.yahoo.com>
+
+Caros,
+por favor, alguém poderia me ajudar com a melhor forma de ajusta um modelo sem intercepto no geoR, usando a função likfit? Ou alguma outra função que desempenhe o mesmo papel. 
+
+Muito obrigada,Fernanda
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151214/27bf889b/attachment.html>
+
+From andreolsouza em yahoo.com.br  Sun Dec 13 23:46:23 2015
+From: andreolsouza em yahoo.com.br (Andre Oliveira)
+Date: Mon, 14 Dec 2015 01:46:23 +0000 (UTC)
+Subject: [R-br] Recorte de mapa de MG
+References: <1992389344.518020.1450057583395.JavaMail.yahoo.ref@mail.yahoo.com>
+Message-ID: <1992389344.518020.1450057583395.JavaMail.yahoo@mail.yahoo.com>
+
+Pessoal plotei o mapa de MG, gostaria de  selecionar  e colocar em cima só as cidades da zona da mata de MG! São em torno de 75 cidades das 853. Estou usando o comando subset. Tem algo mais simples de selecionar estas 75 cidades? 
+
+require(rgdal) 
+mg=readOGR("31MUE250GC_SIR.shp",layer="31MUE250GC_SIR",encoding = "latin1")
+plot(mg,axes=T)
+zmata=subset(mg, NM_MUNICIP%in%c("ABRE CAMPO","ACAIACA","ALVINOPOLIS","AMPARO DO SERRA"))
+plot(zmata,col="blue",add=TRUE)
+
+
+André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito Santo.  IFES
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151214/33247bd8/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Mon Dec 14 06:09:58 2015
+From: eliaskrainski em yahoo.com.br (Elias Teixeira Krainski)
+Date: Mon, 14 Dec 2015 09:09:58 +0100
+Subject: [R-br] =?utf-8?q?An=C3=A1lise_de_s=C3=A9ries_temporais?=
+In-Reply-To: <322063195.318556.1449963250680.JavaMail.yahoo@mail.yahoo.com>
+References: <322063195.318556.1449963250680.JavaMail.yahoo.ref@mail.yahoo.com>
+ <322063195.318556.1449963250680.JavaMail.yahoo@mail.yahoo.com>
+Message-ID: <566E7956.2020300@yahoo.com.br>
+
+Dá uma olhada em
+https://cran.r-project.org/web/packages/mtsdi/
+Elias
+
+On 13/12/15 00:34, Gabriela Alves wrote:
+> Boa Noite, gostaria te esclarecer uma dúvida que muito impede o avanço 
+> do meu projeto, para uns parecerá trivial, mas confesso que para mim 
+> está bem complicado.
+> Estou fazendo um estudo do comportamento climático do Estado de São 
+> Paulo para os anos considerados normais em comparação aos anos 
+> considerados anômalos. Isso me permite gerar uma séria temporal com 
+> dados diários de precipitação, umidade e temperatura para os verões de 
+> 1961 à 2015. Ao iniciar o processo pelo software R me deparei com a 
+> dificuldade falhas serem incorporadas (já que alguns dias, ou meses e 
+> até verões completos podem não ter sido aferidos), tendo em vista essa 
+> dificuldade fui orientada a utilizar a metodologia de Fourier - ARIMA 
+> pois assim seria possível ter uma série completa com dados e falhas 
+> para todos os verões previsto. Todavia estou com muita dificuldade em 
+> avançar no desenvolvimento dessa série temporal modelagem ARIMA, é 
+> algo novo para mim e sendo bem sincera não sei por onde começar. 
+> Fazendo buscas descobri que usando o filtro de Kalmam da função 
+> auto.arima, é possível a imputação dos dados. Peço gentilmente uma 
+> orientação para esclarecer essa minha dúvida. Desde já agradeço.
+>
+> Att.
+>
+> Gabriela Alves
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151214/ae6cbff3/attachment.html>
+
+From eliaskrainski em yahoo.com.br  Mon Dec 14 06:19:17 2015
+From: eliaskrainski em yahoo.com.br (Elias Teixeira Krainski)
+Date: Mon, 14 Dec 2015 09:19:17 +0100
+Subject: [R-br] Recorte de mapa de MG
+In-Reply-To: <1992389344.518020.1450057583395.JavaMail.yahoo@mail.yahoo.com>
+References: <1992389344.518020.1450057583395.JavaMail.yahoo.ref@mail.yahoo.com>
+ <1992389344.518020.1450057583395.JavaMail.yahoo@mail.yahoo.com>
+Message-ID: <566E7B85.20308@yahoo.com.br>
+
+Pelo que entendi, essa região é formada por 7 Microregiões, então 
+poderia usar microregião para selecionar.
+
+From karen.castillioni em gmail.com  Mon Dec 14 10:14:21 2015
+From: karen.castillioni em gmail.com (Karen Castillioni)
+Date: Mon, 14 Dec 2015 10:14:21 -0200
+Subject: [R-br] =?utf-8?b?RMO6dmlkYSBubyBvdXRwdXQgZGEgZnVuw6fDo28gbG1l?=
+Message-ID: <CAMDoLaii_W6n2TCfhYvvG3_VOfGFHDQ-26YUA6rCFi+FUAN2AA@mail.gmail.com>
+
+Pessoal, rodei a função lme para testar o efeito de 4 tratamentos
+(Controle, Corte, H e H+Ct) sobre a cobertura de uma vegetação. Porém ao
+olhar o output, fiquei em dúvida sobre qual seria o valor de p que devo
+usar para indicar se houve ou não diferença significativa entre os
+tratamentos. Alguém sabe qual seria o valor que devo usar? O do "Intercept"?
+
+Segue o output:
+
+Fixed effects: Cobertura ~ Tratamento
+                            Value        Std.Error  DF   t-value     p-value
+(Intercept)             44.79167   3.306008 84 13.548567   0.0000
+TratamentoCorte     6.04167    4.675401  8  1.292224    0.2324
+TratamentoH         -41.91667   4.675401  8 -8.965363    0.0000
+TratamentoH+Ct     -35.75000  4.675401  8 -7.646403    0.0001
+ Correlation:
+                   (Intr) TrtmnC TrtmnH
+TratamentoCorte -0.707
+TratamentoH           -0.707  0.500
+TratamentoH+Ct     -0.707   0.500  0.500
+
+Obrigada!
+Karen
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151214/0084519f/attachment.html>
+
+From paulojus em leg.ufpr.br  Mon Dec 14 10:31:44 2015
+From: paulojus em leg.ufpr.br (Paulo Justiniano)
+Date: Mon, 14 Dec 2015 10:31:44 -0200 (BRST)
+Subject: [R-br] geoR
+In-Reply-To: <1625321791.618520.1450055782051.JavaMail.yahoo@mail.yahoo.com>
+References: <1625321791.618520.1450055782051.JavaMail.yahoo.ref@mail.yahoo.com>
+ <1625321791.618520.1450055782051.JavaMail.yahoo@mail.yahoo.com>
+Message-ID: <alpine.DEB.2.00.1512141030590.27152@pataxo.est.ufpr.br>
+
+Olá Fernanda
+
+voce quer dizer de média 0 ?
+ou sem intercepto na função de covariância?
+
+
+
+Paulo Justiniano Ribeiro Jr
+LEG (Laboratorio de Estatistica e Geoinformacao)
+Universidade Federal do Parana
+Caixa Postal 19.081
+CEP 81.531-990
+Curitiba, PR  -  Brasil
+Tel: (+55) 41 3361 3573
+VOIP: (+55) (41) (3361 3600) 1053 1066
+Fax: (+55) 41 3361 3141
+e-mail: paulojus AT  ufpr  br
+http://www.leg.ufpr.br/~paulojus
+
+
+On Mon, 14 Dec 2015, Fernanda De Bastiani wrote:
+
+> Caros,
+> 
+> por favor, alguém poderia me ajudar com a melhor forma de ajusta um modelo sem intercepto no geoR, usando a função likfit? Ou alguma outra função
+> que desempenhe o mesmo papel.
+> 
+> Muito obrigada,
+> Fernanda
+> 
+>
+
+From paulojus em leg.ufpr.br  Mon Dec 14 10:37:04 2015
+From: paulojus em leg.ufpr.br (Paulo Justiniano)
+Date: Mon, 14 Dec 2015 10:37:04 -0200 (BRST)
+Subject: [R-br] Recorte de mapa de MG
+In-Reply-To: <1992389344.518020.1450057583395.JavaMail.yahoo@mail.yahoo.com>
+References: <1992389344.518020.1450057583395.JavaMail.yahoo.ref@mail.yahoo.com>
+ <1992389344.518020.1450057583395.JavaMail.yahoo@mail.yahoo.com>
+Message-ID: <alpine.DEB.2.00.1512141032470.27152@pataxo.est.ufpr.br>
+
+Só vejo duas alternativas
+
+1. na linha do que voce está tentando
+entratanto se tiver como importar de algum lugar uma coluna
+adicional que já tenha a subregião do estado isto ficaria mais facil
+
+2. A outra   seria verificar se consegue
+definir a zona da mata a partir de coordenadas de um poligono
+(pode ser aproximado)
+
+Com isto veria quais os centroides de menuicipios que estariam dentro
+deste poligono
+coordinates(OBJETO)
+te dá as goordenadas e basta um poligono aproximado
+qua contenha os centroides dos municipios
+e com iuso seleciona subset com over()
+
+
+
+
+Paulo Justiniano Ribeiro Jr
+LEG (Laboratorio de Estatistica e Geoinformacao)
+Universidade Federal do Parana
+Caixa Postal 19.081
+CEP 81.531-990
+Curitiba, PR  -  Brasil
+Tel: (+55) 41 3361 3573
+VOIP: (+55) (41) (3361 3600) 1053 1066
+Fax: (+55) 41 3361 3141
+e-mail: paulojus AT  ufpr  br
+http://www.leg.ufpr.br/~paulojus
+
+
+On Mon, 14 Dec 2015, Andre Oliveira wrote:
+
+> Pessoal plotei o mapa de MG, gostaria de  selecionar  e colocar em cima só as cidades da zona da mata de MG! São em torno de 75 cidades das 853.
+> Estou usando o comando subset. Tem algo mais simples de selecionar estas 75 cidades?
+> 
+> require(rgdal)
+> mg=readOGR("31MUE250GC_SIR.shp",layer="31MUE250GC_SIR",encoding = "latin1")
+> plot(mg,axes=T)
+> zmata=subset(mg, NM_MUNICIP%in%c("ABRE CAMPO","ACAIACA","ALVINOPOLIS","AMPARO DO SERRA"))
+> plot(zmata,col="blue",add=TRUE)
+> 
+> 
+> André Oliveira Souza. Graduação em Matemática, mestrado em estatística aplicada.Instituto Federal de Educação, Ciência e Tecnologia do Espirito
+> Santo.  IFES
+> 
+>
+
+From fernandadebastiani em yahoo.com.br  Mon Dec 14 11:15:44 2015
+From: fernandadebastiani em yahoo.com.br (Fernanda De Bastiani)
+Date: Mon, 14 Dec 2015 13:15:44 +0000 (UTC)
+Subject: [R-br] geoR
+In-Reply-To: <alpine.DEB.2.00.1512141030590.27152@pataxo.est.ufpr.br>
+References: <alpine.DEB.2.00.1512141030590.27152@pataxo.est.ufpr.br>
+Message-ID: <1576643861.844103.1450098944843.JavaMail.yahoo@mail.yahoo.com>
+
+Ola Paulo, me refiro a media. Mas no caso nao gostaria necessariamente media zero, mas sim sem o intercepto, ou seja a matriz com as variaveis explanatorias sem a coluna se uns. Obrigada 
+ 
+  On Mon, 14 Dec, 2015 at 10:31, Paulo Justiniano<paulojus em leg.ufpr.br> wrote:   Olá Fernanda
+
+voce quer dizer de média 0 ?
+ou sem intercepto na função de covariância?
+
+
+
+Paulo Justiniano Ribeiro Jr
+LEG (Laboratorio de Estatistica e Geoinformacao)
+Universidade Federal do Parana
+Caixa Postal 19.081
+CEP 81.531-990
+Curitiba, PR  -  Brasil
+Tel: (+55) 41 3361 3573
+VOIP: (+55) (41) (3361 3600) 1053 1066
+Fax: (+55) 41 3361 3141
+e-mail: paulojus AT  ufpr  br
+http://www.leg.ufpr.br/~paulojus
+
+
+On Mon, 14 Dec 2015, Fernanda De Bastiani wrote:
+
+> Caros,
+> 
+> por favor, alguém poderia me ajudar com a melhor forma de ajusta um modelo sem intercepto no geoR, usando a função likfit? Ou alguma outra função
+> que desempenhe o mesmo papel.
+> 
+> Muito obrigada,
+> Fernanda
+> 
+>  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151214/ebab2130/attachment.html>
+
+From cesar.rabak em gmail.com  Mon Dec 14 12:44:48 2015
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Mon, 14 Dec 2015 12:44:48 -0200
+Subject: [R-br] =?utf-8?b?RMO6dmlkYSBubyBvdXRwdXQgZGEgZnVuw6fDo28gbG1l?=
+In-Reply-To: <CAMDoLaii_W6n2TCfhYvvG3_VOfGFHDQ-26YUA6rCFi+FUAN2AA@mail.gmail.com>
+References: <CAMDoLaii_W6n2TCfhYvvG3_VOfGFHDQ-26YUA6rCFi+FUAN2AA@mail.gmail.com>
+Message-ID: <CAKrF98=uP13zjo8r=QGnrQ8DTFzKpved_1PDw=93=YeieugGNA@mail.gmail.com>
+
+Karen,
+
+A dúvida que você coloca é um pouco mais básica que somente as funções do
+pacote lme, você deve ou consultar um estatístico ou tomar uma referência
+sobre a modelagem e ajuste dos modelos de regressão que está usando.
+
+De plano, é possível sugerir que o Intercept dá-lhe o valor-p com a
+informação mais trivial possível, pois é o valor-p contra a hipótese nula
+que o intercepto fosse nulo (igual a zero no modelo).
+
+Olhando com atenção você verá que o pacote usou o intercepto para calcular
+os efeitos do seu Controle. Os outros valores-p são calculados contra a
+hipótese nula do efeito ser zero (ou seja as diferenças indicadas na coluna
+"Value").
+
+Formalmente, então a resposta seria a seguinte: você usará os quatro
+valores-p para explicar os seus resultados, o do intercepto, por ser
+trivial, poderia ser não mencionado, e os outros três discutidos sobre os
+tratamentos.
+
+Fecho este post reiterando que você deve fazer o investimento de consultar
+uma pessoa que lhe possa orientar no uso da modelagem que está fazendo ou
+pesquisar em uma obra de referência.
+
+HTH
+--
+Cesar Rabak
+
+2015-12-14 10:14 GMT-02:00 Karen Castillioni <karen.castillioni em gmail.com>:
+
+> Pessoal, rodei a função lme para testar o efeito de 4 tratamentos
+> (Controle, Corte, H e H+Ct) sobre a cobertura de uma vegetação. Porém ao
+> olhar o output, fiquei em dúvida sobre qual seria o valor de p que devo
+> usar para indicar se houve ou não diferença significativa entre os
+> tratamentos. Alguém sabe qual seria o valor que devo usar? O do "Intercept"?
+>
+> Segue o output:
+>
+> Fixed effects: Cobertura ~ Tratamento
+>                             Value        Std.Error  DF   t-value
+> p-value
+> (Intercept)             44.79167   3.306008 84 13.548567   0.0000
+> TratamentoCorte     6.04167    4.675401  8  1.292224    0.2324
+> TratamentoH         -41.91667   4.675401  8 -8.965363    0.0000
+> TratamentoH+Ct     -35.75000  4.675401  8 -7.646403    0.0001
+>  Correlation:
+>                    (Intr) TrtmnC TrtmnH
+> TratamentoCorte -0.707
+> TratamentoH           -0.707  0.500
+> TratamentoH+Ct     -0.707   0.500  0.500
+>
+> Obrigada!
+> Karen
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151214/6c421b4c/attachment.html>
+
+From ivanalaman em yahoo.com.br  Tue Dec 15 13:41:32 2015
+From: ivanalaman em yahoo.com.br (Ivan Bezerra Allaman)
+Date: Tue, 15 Dec 2015 12:41:32 -0300
+Subject: [R-br] =?utf-8?q?Matrix_de_contrastes_em_fatorial_DBC_com_a_fun?=
+	=?utf-8?b?w6fDo28gZ2xodCE=?=
+Message-ID: <CAKZQXCyTL8QPVjv1d2egJmWaKMJcvrBYJNSTshC__X51E4rELg@mail.gmail.com>
+
+Prezados, bom dia!
+
+Tenho os seguintes dados:
+
+gnexpo <- structure(list(celula = structure(c(7L, 7L, 7L, 7L, 7L, 7L, 7L,
+7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L,
+7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L,
+7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L,
+7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 8L, 8L, 8L, 8L, 8L, 8L, 8L,
+8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L,
+8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L,
+8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L,
+8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 5L, 5L, 5L, 5L, 5L, 5L, 5L,
+5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L,
+5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L,
+5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L,
+5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 6L, 6L, 6L, 6L, 6L, 6L, 6L,
+6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L,
+6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L,
+6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L,
+6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 9L, 9L, 9L, 9L, 9L, 9L, 9L,
+9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L,
+9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L,
+9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L,
+9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 12L, 12L, 12L, 12L, 12L,
+12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L,
+12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L,
+12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L,
+12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L,
+12L, 12L, 12L, 12L, 12L, 12L, 12L, 13L, 13L, 13L, 13L, 13L, 13L,
+13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L,
+13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L,
+13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L,
+13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L,
+13L, 13L, 13L, 13L, 13L, 13L, 10L, 10L, 10L, 10L, 10L, 10L, 10L,
+10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L,
+10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L,
+10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L,
+10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L,
+10L, 10L, 10L, 10L, 10L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L,
+11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L,
+11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L,
+11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L,
+11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L,
+11L, 11L, 11L, 11L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L,
+14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L,
+14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L,
+14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L,
+14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L,
+14L, 14L, 14L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+4L, 4L, 4L, 4L), .Label = c("cd14il10", "cd14il12", "cd14TGFb",
+"cd14TNFa", "cd4il10", "cd4il17", "cd4il4", "cd4il6", "cd4infg",
+"cd8il10", "cd8il17", "cd8il4", "cd8il6", "cd8infg"), class = "factor"),
+    tratamento = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L,
+    3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L,
+    4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 1L, 1L, 1L, 1L,
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L,
+    3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L,
+    4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+    1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+    2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+    3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+    4L, 4L, 4L, 4L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+    1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+    2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+    3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+    4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L,
+    3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L,
+    4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 1L, 1L, 1L,
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L,
+    3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+    4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+    4L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+    1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+    2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+    3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+    4L, 4L, 4L, 4L, 4L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+    1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+    3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+    4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 1L, 1L, 1L, 1L, 1L, 1L,
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L,
+    3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L,
+    4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 1L, 1L,
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+    3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+    3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+    4L, 4L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+    1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+    2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+    3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+    4L, 4L, 4L, 4L, 4L, 4L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+    3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L,
+    4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 1L, 1L, 1L, 1L, 1L,
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 2L, 2L, 2L, 2L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 3L, 3L, 3L,
+    3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 4L, 4L,
+    4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 1L,
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+    2L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+    3L, 3L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+    4L, 4L, 4L), .Label = c("sangue", "sangueesp", "sangueesplei",
+    "sanguelei"), class = "factor"), sujeito = structure(c(1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L,
+    13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L,
+    11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+    8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L,
+    5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L,
+    13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L,
+    11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+    8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L,
+    5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L,
+    13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L,
+    11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+    8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L,
+    5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L,
+    13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L,
+    11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+    8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L,
+    5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L,
+    13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L,
+    11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+    8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L,
+    5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L,
+    13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L,
+    11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+    8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L,
+    5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L,
+    13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L,
+    11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+    8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L,
+    5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L,
+    13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L,
+    11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+    8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L,
+    5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L,
+    13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L,
+    11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+    8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L,
+    5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L,
+    13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L,
+    11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+    8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L,
+    5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L,
+    13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L,
+    11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L, 5L, 6L, 7L,
+    8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L, 2L, 3L, 4L,
+    5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L, 1L,
+    2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L,
+    15L, 16L), .Label = c("1", "2", "3", "4", "5", "6", "7",
+    "8", "9", "10", "11", "12", "13", "14", "15", "16"), class = "factor"),
+    ybox = c(NA, -2.69292076130798, -1.7308938232588, -2.71897413664256,
+    -2.52195729242333, -2.07143460646478, -2.28616618805722,
+    -2.23934403380362, -1.5816386015359, -1.45531244494296, NA,
+    -1.78763628106266, -1.78763628106266, NA, -1.67799460050211,
+    -2.05420193782142, NA, -2.69292076130798, -2.00495057061834,
+    NA, -2.52195729242333, -2.39220210880234, -2.02098207859771,
+    -2.21718134741238, -2.20638335201612, NA, -1.90186608973923,
+    -1.96640375569663, NA, NA, -2.17503854559032, -2.13546702289896,
+    NA, -2.4374515925038, -2.37786948402795, NA, -4.34782608695652,
+    -2.66817235203095, NA, -1.93700472646838, -2.39220210880234,
+    NA, NA, NA, NA, NA, -2.19576462068308, -2.13546702289896,
+    NA, NA, -2.17503854559032, -2.42197056348201, -2.22816571976642,
+    -2.37786948402795, -1.95893989862709, -2.71897413664256,
+    -1.67799460050211, -1.7308938232588, NA, NA, NA, -1.84893147202209,
+    -1.84893147202209, -2.20638335201612, NA, 2.29386873816499,
+    1.01505310461186, 1.59806601020187, 1.70359042610938,
+0.629371021625038,
+    1.89488135689716, 1.34173827270132, 1.97933615752285, 1.32950237522194,
+    1.80954049266222, 0.544292233915625, 2.58628244712855,
+2.60920818919467,
+    1.96791029953215, 1.37792682396749, NA, 2.42730191595763,
+    0.918037037053, 1.43659188396698, 1.52650689488233, 0.780499053243246,
+    1.95064066159234, 1.35791699022796, 2.0629046336914, 1.93612722331712,
+    1.57334871090689, 0.402847055658559, 2.14819950257032,
+2.60090083364325,
+    1.65670196502143, 1.43659188396698, NA, 2.10868691208822,
+    1.21518877022432, 1.1617541378147, 1.3376694301362, 0.610168122899425,
+    1.96504299434836, 1.3376694301362, 2.02991623442824, 1.15267768767035,
+    0.91276233665236, 0.177480055692309, 2.21231887578234,
+1.79072828872115,
+    1.62934834431764, 1.40555319415085, NA, 2.0629046336914,
+    1.17527566321877, 1.36995100720572, 1.6702237928893, 0.262246858924378,
+    1.59455599161021, 1.44043274603715, -1.4953647932855, 1.05902858248096,
+    0.875334134463397, 0.114818592199316, 2.3745242548625,
+2.31314212920843,
+    1.88592320743286, 1.42114242322365, -1.4953647932855,
+-2.71897413664256,
+    -1.99707061963371, -4.34782608695652, -4.34782608695652,
+    -2.06276388770908, -1.83626720563971, -1.80550931322309,
+    -2.40689528336595, -2.31097837032429, -2.1853184563932,
+-1.7308938232588,
+    -2.06276388770908, NA, -2.66817235203095, -2.13546702289896,
+    NA, -2.69292076130798, -2.64458778082735, -2.40689528336595,
+    -4.34782608695652, -2.08021732374643, -2.66817235203095,
+    -2.71897413664256, -1.67799460050211, NA, -1.78763628106266,
+    -1.99707061963371, NA, NA, -2.19576462068308, -2.28616618805722,
+    NA, -2.71897413664256, -2.64458778082735, -2.69292076130798,
+    -4.34782608695652, -4.34782608695652, -1.41703514811409,
+    -2.06276388770908, -1.38036185998819, NA, -1.34514600593702,
+    NA, -2.08021732374643, -1.24705599641255, -2.1853184563932,
+    -2.46973767079137, NA, -2.45336438654387, -4.34782608695652,
+    -4.34782608695652, -2.80686212698278, -2.40689528336595,
+    -2.6220484374455, -2.71897413664256, -1.7308938232588,
+-2.07143460646478,
+    -1.7308938232588, NA, NA, -2.08911542185436, -1.84893147202209,
+    -2.15495397463673, NA, -2.22816571976642, -1.7308938232588,
+    -2.66817235203095, -2.52195729242333, -1.53739362224875,
+    -4.34782608695652, -2.01292026207036, -1.78763628106266,
+    -2.52195729242333, -1.67799460050211, -1.7308938232588,
+-1.9739467612432,
+    NA, -2.37786948402795, -1.34514600593702, NA, -1.95155330658925,
+    -2.64458778082735, -1.78763628106266, -2.10727211374119,
+    -1.94424216534924, -4.34782608695652, -2.69292076130798,
+    -1.7308938232588, NA, -1.95155330658925, NA, NA, NA, NA,
+    -1.7308938232588, NA, -2.08911542185436, -2.35020867465772,
+    -2.06276388770908, -2.80686212698278, -2.21718134741238,
+    -1.87492464519061, -2.08021732374643, -1.8618143278143, NA,
+    NA, -2.22816571976642, NA, NA, -2.03739213457179, -1.83001441700635,
+    NA, -0.675361229952281, -2.15495397463673, -1.86834047734623,
+    -2.54052969919257, -2.21718134741238, -2.35020867465772,
+    -2.08911542185436, -2.08021732374643, -2.10727211374119,
+    -1.27859646831934, -1.38036185998819, -1.00235979040798,
+    -1.00235979040798, -1.15837435544212, -2.15495397463673,
+    NA, -4.34782608695652, -2.64458778082735, -4.34782608695652,
+    -4.34782608695652, -4.34782608695652, -4.34782608695652,
+    -2.4374515925038, -2.19576462068308, -2.50399662742379, NA,
+    -2.2623152494604, -1.93700472646838, NA, -4.34782608695652,
+    -2.25072434606231, NA, -4.34782608695652, -4.34782608695652,
+    -2.69292076130798, -2.52195729242333, -2.39220210880234,
+    -4.34782608695652, NA, -2.1853184563932, NA, NA, -2.37786948402795,
+    NA, NA, -2.39220210880234, -2.71897413664256, NA, -4.34782608695652,
+    -4.34782608695652, -2.69292076130798, -2.80686212698278,
+    -2.66817235203095, -4.34782608695652, -4.34782608695652,
+    -1.95893989862709, NA, NA, NA, -1.78763628106266, -1.83626720563971,
+    -2.66817235203095, -2.27412592309772, NA, -2.40689528336595,
+    -2.64458778082735, -2.71897413664256, -2.54052969919257,
+    -2.19576462068308, -4.34782608695652, -4.34782608695652,
+    -1.95893989862709, -1.95155330658925, NA, NA, NA, -4.34782608695652,
+    -2.71897413664256, NA, NA, -0.846625250115866, -0.424146292887046,
+    -1.05165266989135, -0.278371048130955, -1.24705599641255,
+    -0.978598328138476, -0.978598328138476, -0.382587090747639,
+    -0.623794941549055, NA, -0.410129619681842, -0.955384996473032,
+    -1.5816386015359, -1.45531244494296, -0.711134555233659,
+    NA, -1.4953647932855, -1.10354472792737, -0.558555816099048,
+    -0.481958704693426, -0.846625250115866, -0.657903436683406,
+    -0.542819523945636, -0.623794941549055, NA, -0.542819523945636,
+    NA, -0.265954948927854, -0.910492044990005, -1.31126094846664,
+    -0.846625250115866, NA, -2.32377374500676, -1.0267000794542,
+    -0.888762381154637, -0.511985037199133, -0.290915281172533,
+    -1.24705599641255, -1.38036185998819, -0.329348187317446,
+    -0.182393356563792, -1.05165266989135, -0.193990047506904,
+    -0.0932951673799442, -1.05165266989135, -1.18701626669498,
+    -0.826177946574437, NA, -1.18701626669498, -0.867480330972702,
+    -0.955384996473032, -0.558555816099048, -0.693101362150131,
+    -0.806120545038559, -0.846625250115866, -0.481958704693426,
+    -1.13056852939884, -1.07725416865755, -0.438332632355958,
+    NA, -1.31126094846664, -1.05165266989135, -0.826177946574437,
+    NA, -0.382587090747639, 0.0776462231901975, -0.316400590353713,
+    NA, -0.729472182374671, -0.0825871589763347, NA, -0.125972397047986,
+    -0.253664014288352, 0.0776462231901975, -0.424146292887046,
+    NA, -0.316400590353713, NA, -0.0719684003695356, NA,
+-0.278371048130955,
+    -0.159518997859581, 0.0198477924053798, 0.417635857120927,
+    -0.607125627348296, 0.105622563120547, NA, 0.278588642396027,
+    -0.675361229952281, 0.482353675529317, -0.496873898568359,
+    NA, -0.438332632355958, -1.27859646831934, -0.410129619681842,
+    NA, 0.150982355897241, -0.205696150863317, 0.212021636625242,
+    0.660835179222585, -0.826177946574437, -0.574513982772485,
+    NA, -0.205696150863317, 0.410260691983402, -0.278371048130955,
+    -0.303590729063761, NA, -0.369052612827179, -1.13056852939884,
+    0.114818592199316, NA, -0.452693434554865, -0.265954948927854,
+    -0.217514069018959, 0.395394483699403, -0.193990047506904,
+    0.0198477924053798, NA, 0.0393981466797574, 0.15987295146349,
+    0.979995806626161, 0.721848977768072, 0.949319687828156,
+    -0.496873898568359, -0.846625250115866, 0.310704279174891,
+    -0.205696150863317, -1.67799460050211, -0.511985037199133,
+    -1.41703514811409, -1.00235979040798, -0.452693434554865,
+    -1.45531244494296, -0.806120545038559, -0.342436972562116,
+    -0.382587090747639, NA, -1.24705599641255, -1.07725416865755,
+    -1.21655441108309, -1.13056852939884, -1.00235979040798,
+    -0.329348187317446, -1.21655441108309, -1.10354472792737,
+    -1.7308938232588, -0.0825871589763347, -0.329348187317446,
+    -0.955384996473032, -0.978598328138476, -0.748126323001209,
+    -1.00235979040798, -0.303590729063761, -0.290915281172533,
+    0.245708807412923, -1.38036185998819, -1.24705599641255,
+    -0.846625250115866, -0.786436366916452, -0.826177946574437,
+    -0.786436366916452, -0.675361229952281, -0.978598328138476,
+    -0.452693434554865, -1.0267000794542, -0.846625250115866,
+    -0.496873898568359, -0.438332632355958, -0.527298140744417,
+    -0.396278019492523, -0.0201558427538927, -1.13056852939884,
+    -1.34514600593702, -1.27859646831934, -0.396278019492523,
+    -0.657903436683406, -0.867480330972702, -1.13056852939884,
+    -0.786436366916452, -0.693101362150131, -0.910492044990005,
+    -1.5816386015359, -0.806120545038559, -0.978598328138476,
+    NA, -0.452693434554865, -0.729472182374671, -1.07725416865755,
+    -1.4953647932855, -1.07725416865755, -0.0614371998817261,
+    -1.34514600593702, -1.07725416865755, -1.27859646831934,
+    -1.10354472792737, -0.527298140744417, -1.27859646831934,
+    -0.438332632355958, -0.867480330972702, -0.355670536085818,
+    0.114818592199316, -0.424146292887046, -0.452693434554865,
+    -1.5816386015359, -1.67799460050211, -1.41703514811409, NA,
+    -1.13056852939884, -1.13056852939884, -1.07725416865755,
+    -1.45531244494296, -0.748126323001209, -1.07725416865755,
+    -1.45531244494296, -0.711134555233659, -0.767109823860092,
+    -0.657903436683406, -1.07725416865755, -0.826177946574437,
+    -0.978598328138476, -1.24705599641255, -0.888762381154637,
+    -0.0825871589763347, -1.15837435544212, -1.18701626669498,
+    -0.607125627348296, -0.711134555233659, -0.290915281172533,
+    -0.558555816099048, -0.867480330972702, -0.452693434554865,
+    -0.452693434554865, -0.806120545038559, -1.21655441108309,
+    -0.316400590353713, -0.888762381154637, -1.88156803086095,
+    NA, NA, -0.826177946574437, -1.13056852939884, -0.496873898568359,
+    -0.542819523945636, -0.623794941549055, -0.826177946574437,
+    -1.53739362224875, -0.888762381154637, -0.438332632355958,
+    -0.623794941549055, -0.558555816099048, -0.159518997859581,
+    -0.978598328138476, -0.888762381154637, -0.303590729063761,
+    -0.675361229952281, -0.693101362150131, -1.0267000794542,
+    -1.07725416865755, -1.15837435544212, -1.45531244494296,
+    -0.767109823860092, -0.303590729063761, -0.607125627348296,
+    -0.693101362150131, NA, -0.438332632355958, -0.382587090747639,
+    -1.31126094846664, -1.7308938232588, -1.45531244494296,
+-0.438332632355958,
+    -1.34514600593702, -1.78763628106266, -0.846625250115866,
+    -0.786436366916452, -1.05165266989135, -1.05165266989135,
+    -1.24705599641255, -0.481958704693426, -0.511985037199133,
+    0.0490649462655013, -0.675361229952281, NA, -0.955384996473032,
+    -1.4953647932855, -0.342436972562116, -0.382587090747639,
+    -0.767109823860092, -1.34514600593702, -0.253664014288352,
+    -0.806120545038559, -1.24705599641255, -1.41703514811409,
+    -1.07725416865755, -0.511985037199133, NA, -0.590701349454554,
+    -0.0201558427538927, -0.104094168973296, -1.05165266989135,
+    -1.45531244494296, -1.62838825505761, -0.0406309528360936,
+    -0.329348187317446, -1.45531244494296, -1.07725416865755,
+    -1.00235979040798, -1.10354472792737, -0.748126323001209,
+    -1.27859646831934, -0.511985037199133, 0.150982355897241,
+    -0.382587090747639, -0.396278019492523, -1.31126094846664,
+    -1.34514600593702, -1.15837435544212, -0.729472182374671,
+    NA, 1.7167663207627, 2.43634147030751, 0.245708807412923,
+    1.15267768767035, 0.365185236456101, 0.517089544114438,
+0.73376127136365,
+    1.59806601020187, 0.679400605803935, 0.791963538514193,
+1.72004536647892,
+    1.79702046385978, 0.424973006905875, 0.721848977768072,
+1.92150068931436,
+    -0.640717861878449, -0.104094168973296, NA, NA, NA, -0.170903755458391,
+    -1.24705599641255, NA, NA, 0.30274478985439, 0.00996172558875369,
+    -0.137055389065604, 0.349834251678161, -0.253664014288352,
+    0.544292233915625, 0.286687590134947, NA, -0.767109823860092,
+    0.133022612878126, -0.424146292887046, -0.170903755458391,
+    -0.0406309528360936, 1.34173827270132, 0.342095353591695,
+    0.523937993488919, 1.34173827270132, 0.133022612878126,
+-0.0509919154844358,
+    -0.278371048130955, NA, 1.97648616730155, 1.88592320743286,
+    1.25844070072036, 0.902159500232335, 0.0963625187904701,
+    1.35388670327868, 0.564366845252007, -1.24705599641255,
+0.757309220404252,
+    1.24558240333043, 0.853536835529698, -1.18701626669498,
+0.286687590134947,
+    0.150982355897241, 0.446760797795615, -0.253664014288352,
+    -0.826177946574437, 1.70689340655833, 0.387902502823721,
+    2.58628244712855, 2.49194504353092, 1.57690093891415, 2.901014602786,
+    0.0776462231901975, 0.310704279174891, 2.72805294137269,
+    -0.481958704693426, -0.104094168973296, -0.0201558427538927,
+    0.32648803558755, 0.0296595084509125, -0.867480330972702,
+    1.32540405417028, -0.217514069018959, NA, -0.496873898568359,
+    2.00479472433388, 1.84659785469478, 1.94194605742328,
+-0.205696150863317,
+    -0.748126323001209, 0.310704279174891, 0.660835179222585,
+    0.475305203762996, -0.329348187317446, 0.654595194602954,
+    -0.170903755458391, -0.410129619681842, 1.81576868042314,
+    0.836985867234145, 0.0296595084509125, -0.511985037199133,
+    -0.396278019492523, NA, 0.168705227406102, -0.342436972562116,
+    -0.438332632355958, -0.452693434554865, NA, -1.10354472792737,
+    -0.910492044990005, 0.446760797795615, 0.0198477924053798,
+    NA, NA, NA, 0.622997622202259, -0.137055389065604, 0.294739430916844,
+    0.262246858924378, -0.114985961040159, 0.105622563120547,
+    0.203468274579351, 0.0963625187904701, -0.590701349454554,
+    -1.7308938232588, -0.481958704693426, NA, -0.290915281172533,
+    0.212021636625242, NA, NA, 2.23489664779158, 2.75336054283323,
+    2.93328701678478, 1.82507164076158, NA, 1.75251413217418,
+    2.12986067381282, 2.13511807776368, 2.58837711038031, 1.70359042610938,
+    1.2369549109739, 0.446760797795615, 0.791963538514193,
+0.954473759568006,
+    1.33359081568175, 1.21956483123272, 2.49851667302163, 2.48535220761645,
+    2.48974979559189, 3.16770417289536, 2.89377723669538, 1.83740303366685,
+    0.831429364687842, 2.07918795894332, -0.0719684003695356,
+    2.21484038563627, 1.35388670327868, 0.745580804308699,
+2.26705821548107,
+    1.43274246477897, 0.803343047103057, 1.20640191321435,
+2.33697431241692,
+    1.34984685630819, 2.68051900094631, 2.00479472433388, 1.94774692527104,
+    1.19756827033542, 0.597226509378741, 2.47873800731025,
+2.29386873816499,
+    0.809001384770533, 1.28806529107744, 0.73376127136365,
+1.49704766870529,
+    NA, 1.07819479726929, 1.4250177788916, 1.84353799187812,
+    NA, 1.68364466583674, 1.32540405417028, 1.93321102883982,
+    -0.396278019492523, 0.557705833690471, 1.83432789943533,
+    0.212021636625242, 0.709842232833092, 1.43274246477897, NA,
+    1.19756827033542, 1.39770525114091, 1.65670196502143, 1.76534118794863,
+    NA, 0.453950279688335, 2.17667216064136, 1.78757408686753,
+    NA, 1.63965502207382, 1.56264900151517, 1.17975830926739,
+    1.60156910558301, 1.22828256682037, 0.32648803558755,
+0.703802899501406,
+    1.55906797859696, 1.47085674653963, 1.30891085553319,
+0.721848977768072,
+    2.52243371930239, 2.23240078706643, 2.04097581379485, 2.56944838544469,
+    1.86182177231003, 0.123951614253518, -0.125972397047986,
+    1.31304925442411, 1.02984564759017, 1.1572221751824, 1.46708280045183,
+    0.721848977768072, 1.01009176362354, 1.96504299434836,
+1.26695835965958,
+    0.523937993488919, NA, 0.853536835529698, 2.22238551779573,
+    2.06834779093892, 2.78791091530525, 0.349834251678161,
+-0.329348187317446,
+    1.84659785469478, 1.27120101787992, 0.503295005047169,
+1.36193776900057,
+    0.482353675529317, 0.584170503622459, NA, 1.44426509458991,
+    NA, NA, 1.70028139904404, 1.67694674039951, 1.5301547136733,
+    2.24980568722757, 0.380370630683735, 0.372798375628128,
+2.19202902290734,
+    0.439535041984402, -0.0509919154844358, 0.622997622202259,
+    NA, -0.657903436683406, 1.82507164076158, -0.0932951673799442,
+    1.07819479726929), celtrat = structure(c(7L, 7L, 7L, 7L,
+    7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 7L, 21L, 21L,
+    21L, 21L, 21L, 21L, 21L, 21L, 21L, 21L, 21L, 21L, 21L, 21L,
+    21L, 21L, 35L, 35L, 35L, 35L, 35L, 35L, 35L, 35L, 35L, 35L,
+    35L, 35L, 35L, 35L, 35L, 35L, 49L, 49L, 49L, 49L, 49L, 49L,
+    49L, 49L, 49L, 49L, 49L, 49L, 49L, 49L, 49L, 49L, 8L, 8L,
+    8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 8L, 22L,
+    22L, 22L, 22L, 22L, 22L, 22L, 22L, 22L, 22L, 22L, 22L, 22L,
+    22L, 22L, 22L, 36L, 36L, 36L, 36L, 36L, 36L, 36L, 36L, 36L,
+    36L, 36L, 36L, 36L, 36L, 36L, 36L, 50L, 50L, 50L, 50L, 50L,
+    50L, 50L, 50L, 50L, 50L, 50L, 50L, 50L, 50L, 50L, 50L, 5L,
+    5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L, 5L,
+    19L, 19L, 19L, 19L, 19L, 19L, 19L, 19L, 19L, 19L, 19L, 19L,
+    19L, 19L, 19L, 19L, 33L, 33L, 33L, 33L, 33L, 33L, 33L, 33L,
+    33L, 33L, 33L, 33L, 33L, 33L, 33L, 33L, 47L, 47L, 47L, 47L,
+    47L, 47L, 47L, 47L, 47L, 47L, 47L, 47L, 47L, 47L, 47L, 47L,
+    6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L, 6L,
+    6L, 20L, 20L, 20L, 20L, 20L, 20L, 20L, 20L, 20L, 20L, 20L,
+    20L, 20L, 20L, 20L, 20L, 34L, 34L, 34L, 34L, 34L, 34L, 34L,
+    34L, 34L, 34L, 34L, 34L, 34L, 34L, 34L, 34L, 48L, 48L, 48L,
+    48L, 48L, 48L, 48L, 48L, 48L, 48L, 48L, 48L, 48L, 48L, 48L,
+    48L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L, 9L,
+    9L, 9L, 9L, 23L, 23L, 23L, 23L, 23L, 23L, 23L, 23L, 23L,
+    23L, 23L, 23L, 23L, 23L, 23L, 23L, 37L, 37L, 37L, 37L, 37L,
+    37L, 37L, 37L, 37L, 37L, 37L, 37L, 37L, 37L, 37L, 37L, 51L,
+    51L, 51L, 51L, 51L, 51L, 51L, 51L, 51L, 51L, 51L, 51L, 51L,
+    51L, 51L, 51L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L, 12L,
+    12L, 12L, 12L, 12L, 12L, 12L, 12L, 26L, 26L, 26L, 26L, 26L,
+    26L, 26L, 26L, 26L, 26L, 26L, 26L, 26L, 26L, 26L, 26L, 40L,
+    40L, 40L, 40L, 40L, 40L, 40L, 40L, 40L, 40L, 40L, 40L, 40L,
+    40L, 40L, 40L, 54L, 54L, 54L, 54L, 54L, 54L, 54L, 54L, 54L,
+    54L, 54L, 54L, 54L, 54L, 54L, 54L, 13L, 13L, 13L, 13L, 13L,
+    13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 13L, 27L,
+    27L, 27L, 27L, 27L, 27L, 27L, 27L, 27L, 27L, 27L, 27L, 27L,
+    27L, 27L, 27L, 41L, 41L, 41L, 41L, 41L, 41L, 41L, 41L, 41L,
+    41L, 41L, 41L, 41L, 41L, 41L, 41L, 55L, 55L, 55L, 55L, 55L,
+    55L, 55L, 55L, 55L, 55L, 55L, 55L, 55L, 55L, 55L, 55L, 10L,
+    10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L, 10L,
+    10L, 10L, 10L, 24L, 24L, 24L, 24L, 24L, 24L, 24L, 24L, 24L,
+    24L, 24L, 24L, 24L, 24L, 24L, 24L, 38L, 38L, 38L, 38L, 38L,
+    38L, 38L, 38L, 38L, 38L, 38L, 38L, 38L, 38L, 38L, 38L, 52L,
+    52L, 52L, 52L, 52L, 52L, 52L, 52L, 52L, 52L, 52L, 52L, 52L,
+    52L, 52L, 52L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L, 11L,
+    11L, 11L, 11L, 11L, 11L, 11L, 11L, 25L, 25L, 25L, 25L, 25L,
+    25L, 25L, 25L, 25L, 25L, 25L, 25L, 25L, 25L, 25L, 25L, 39L,
+    39L, 39L, 39L, 39L, 39L, 39L, 39L, 39L, 39L, 39L, 39L, 39L,
+    39L, 39L, 39L, 53L, 53L, 53L, 53L, 53L, 53L, 53L, 53L, 53L,
+    53L, 53L, 53L, 53L, 53L, 53L, 53L, 14L, 14L, 14L, 14L, 14L,
+    14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 14L, 28L,
+    28L, 28L, 28L, 28L, 28L, 28L, 28L, 28L, 28L, 28L, 28L, 28L,
+    28L, 28L, 28L, 42L, 42L, 42L, 42L, 42L, 42L, 42L, 42L, 42L,
+    42L, 42L, 42L, 42L, 42L, 42L, 42L, 56L, 56L, 56L, 56L, 56L,
+    56L, 56L, 56L, 56L, 56L, 56L, 56L, 56L, 56L, 56L, 56L, 1L,
+    1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L,
+    15L, 15L, 15L, 15L, 15L, 15L, 15L, 15L, 15L, 15L, 15L, 15L,
+    15L, 15L, 15L, 15L, 29L, 29L, 29L, 29L, 29L, 29L, 29L, 29L,
+    29L, 29L, 29L, 29L, 29L, 29L, 29L, 29L, 43L, 43L, 43L, 43L,
+    43L, 43L, 43L, 43L, 43L, 43L, 43L, 43L, 43L, 43L, 43L, 43L,
+    2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L, 2L,
+    2L, 16L, 16L, 16L, 16L, 16L, 16L, 16L, 16L, 16L, 16L, 16L,
+    16L, 16L, 16L, 16L, 16L, 30L, 30L, 30L, 30L, 30L, 30L, 30L,
+    30L, 30L, 30L, 30L, 30L, 30L, 30L, 30L, 30L, 44L, 44L, 44L,
+    44L, 44L, 44L, 44L, 44L, 44L, 44L, 44L, 44L, 44L, 44L, 44L,
+    44L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L, 3L,
+    3L, 3L, 3L, 17L, 17L, 17L, 17L, 17L, 17L, 17L, 17L, 17L,
+    17L, 17L, 17L, 17L, 17L, 17L, 17L, 31L, 31L, 31L, 31L, 31L,
+    31L, 31L, 31L, 31L, 31L, 31L, 31L, 31L, 31L, 31L, 31L, 45L,
+    45L, 45L, 45L, 45L, 45L, 45L, 45L, 45L, 45L, 45L, 45L, 45L,
+    45L, 45L, 45L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L, 4L,
+    4L, 4L, 4L, 4L, 4L, 18L, 18L, 18L, 18L, 18L, 18L, 18L, 18L,
+    18L, 18L, 18L, 18L, 18L, 18L, 18L, 18L, 32L, 32L, 32L, 32L,
+    32L, 32L, 32L, 32L, 32L, 32L, 32L, 32L, 32L, 32L, 32L, 32L,
+    46L, 46L, 46L, 46L, 46L, 46L, 46L, 46L, 46L, 46L, 46L, 46L,
+    46L, 46L, 46L, 46L), .Label = c("cd14il10sangue", "cd14il12sangue",
+    "cd14TGFbsangue", "cd14TNFasangue", "cd4il10sangue", "cd4il17sangue",
+    "cd4il4sangue", "cd4il6sangue", "cd4infgsangue", "cd8il10sangue",
+    "cd8il17sangue", "cd8il4sangue", "cd8il6sangue", "cd8infgsangue",
+    "cd14il10sangueesp", "cd14il12sangueesp", "cd14TGFbsangueesp",
+    "cd14TNFasangueesp", "cd4il10sangueesp", "cd4il17sangueesp",
+    "cd4il4sangueesp", "cd4il6sangueesp", "cd4infgsangueesp",
+    "cd8il10sangueesp", "cd8il17sangueesp", "cd8il4sangueesp",
+    "cd8il6sangueesp", "cd8infgsangueesp", "cd14il10sangueesplei",
+    "cd14il12sangueesplei", "cd14TGFbsangueesplei", "cd14TNFasangueesplei",
+    "cd4il10sangueesplei", "cd4il17sangueesplei", "cd4il4sangueesplei",
+    "cd4il6sangueesplei", "cd4infgsangueesplei", "cd8il10sangueesplei",
+    "cd8il17sangueesplei", "cd8il4sangueesplei", "cd8il6sangueesplei",
+    "cd8infgsangueesplei", "cd14il10sanguelei", "cd14il12sanguelei",
+    "cd14TGFbsanguelei", "cd14TNFasanguelei", "cd4il10sanguelei",
+    "cd4il17sanguelei", "cd4il4sanguelei", "cd4il6sanguelei",
+    "cd4infgsanguelei", "cd8il10sanguelei", "cd8il17sanguelei",
+    "cd8il4sanguelei", "cd8il6sanguelei", "cd8infgsanguelei"), class =
+"factor")), .Names = c("celula",
+"tratamento", "sujeito", "ybox", "celtrat"), class = "data.frame",
+row.names = 225:1120)
+
+modnexp1 <- lm(ybox ~ sujeito + celula*tratamento,
+              gnexpo)
+
+tabanovn <- Anova(modnexp1,type='III')
+
+library(phia)
+inter <- testInteractions(modnexp1, fixed='celula',across='tratamento')
+
+library(multcomp)
+Tukey <-
+contrMat(with(gnexpo,tapply(ybox,tratamento,function(x)length(na.omit(x)))),
+"Tukey")#Acredito que a glht esteja equivocada ao montar os contrastes com
+dados desbalanceados de acordo com que tem na literatura. Mais ok!!!
+
+K1 <- cbind(Tukey, matrix(0, nrow = nrow(Tukey), ncol = ncol(Tukey)))
+rownames(K1) <- paste(levels(gnexpo$celula)[1], rownames(K1), sep = ":")
+K2 <- cbind(matrix(0, nrow = nrow(Tukey), ncol = ncol(Tukey)), Tukey)
+rownames(K2) <- paste(levels(gnexpo$celula)[2], rownames(K2), sep = ":")
+
+k1 <- rbind(K1,K2)
+K <- cbind(matrix(0,nrow(k1),ncol=16),
+           k1,
+           matrix(0,nrow(k1),ncol=47))
+colnames(K) <- c(rep('nada',16),
+                 rep(colnames(Tukey),2),
+                 rep('nada',47))
+
+# Minha dúvida é se de fato a matrix K está montada adequadamente!
+
+comp <- lm(ybox ~ sujeito + celtrat-1,
+           gnexpo)
+
+rescompe <- glht(comp,
+                 linfct=K)
+rescomp1e <- summary(rescompe)
+
+Desde já grato!
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151215/192363d0/attachment.html>
+
+From gabriela.geouerj em yahoo.com.br  Tue Dec 15 18:37:14 2015
+From: gabriela.geouerj em yahoo.com.br (Gabriela Alves)
+Date: Tue, 15 Dec 2015 20:37:14 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?An=C3=A1lise_de_s=C3=A9ries_temporais?=
+In-Reply-To: <566E7956.2020300@yahoo.com.br>
+References: <566E7956.2020300@yahoo.com.br>
+Message-ID: <95981952.1628846.1450211834228.JavaMail.yahoo@mail.yahoo.com>
+
+Boa Noite analisando sua sugestão, de fato é um pacote direcionado para os dados climáticos mas pelo que entendi ele aborda séries multivariadas, no caso do meu banco as séries são univariadas e talvez por isso ainda não tenha conseguido uma solução para imputar os dados NA. Se alguém tiver mais alguma sugestão ou dica serei muito grata. Gostaria também de saber se alguém do grupo faz ou conhece alguém que faça consultoria para o software R, que resolva pequenos projetos. Desde já agradeço à todos pela atenção! 
+
+
+    Em Segunda-feira, 14 de Dezembro de 2015 6:10, Elias Teixeira Krainski <eliaskrainski em yahoo.com.br> escreveu:
+ 
+
+  Dá uma olhada em
+ https://cran.r-project.org/web/packages/mtsdi/
+ Elias
+ 
+ On 13/12/15 00:34, Gabriela Alves wrote:
+  
+  Boa Noite, gostaria te esclarecer uma dúvida que muito impede o avanço do meu projeto, para uns parecerá trivial, mas confesso que para mim está bem complicado. Estou fazendo um estudo do comportamento climático do Estado de São Paulo para os anos considerados normais em comparação aos anos considerados anômalos. Isso me permite gerar uma séria temporal com dados diários de precipitação, umidade e temperatura para os verões de 1961 à 2015. Ao iniciar o processo pelo software R me deparei com a dificuldade falhas serem incorporadas (já que alguns dias, ou meses e até verões completos podem não ter sido aferidos), tendo em vista essa dificuldade fui orientada a utilizar a metodologia de Fourier - ARIMA pois assim seria possível ter uma série completa com dados e falhas para todos os verões previsto. Todavia estou com muita dificuldade em avançar no desenvolvimento dessa série temporal modelagem ARIMA, é algo novo para mim e sendo bem sincera não sei por onde começar. Fazendo buscas descobri que usando o filtro de Kalmam da função auto.arima, é possível a imputação dos dados. Peço gentilmente uma orientação para esclarecer essa minha dúvida. Desde já agradeço. 
+  Att. 
+  Gabriela Alves  
+  
+ _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel. 
+ 
+ 
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne� c�igo m�imo reproduz�el.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151215/7fc766de/attachment.html>
+
+From alexandresantosbr em yahoo.com.br  Tue Dec 15 18:47:08 2015
+From: alexandresantosbr em yahoo.com.br (ASANTOS)
+Date: Tue, 15 Dec 2015 17:47:08 -0300
+Subject: [R-br] =?utf-8?q?Fun=C3=A7=C3=A3o_com_v=C3=A1rios_if_e_else_if_qu?=
+ =?utf-8?q?e_n=C3=A3o_funciona?=
+Message-ID: <56707C4C.5020601@yahoo.com.br>
+
+Caros Listeiros,
+
+
+          Estou tentando criar uma função abaixo para converter um 
+SpatialGridDataFrame originado de uma imagem de satélite para 
+reflectância, mas a função que eu criei (radconvL()) pelo excesso de 
+else if não esta funcionando. Meu problema é que não dá erro, o que 
+normalmente ajuda a detectar o problema, mas no meu caso a função nem 
+funciona, segue meu CRM abaixo, alguém poderia me ajudar?
+
+require(raster)
+require(sp)
+
+# RasterLayer inventado
+r <- raster(nrows=10, ncols=10)
+r <- setValues(r, 1:ncell(r))
+plot(r)
+
+band2<- as(r, 'SpatialGridDataFrame')  ### transforma em 
+SpatialGridDataFrame
+
+
+
+##Função para conversão DN para reflectância
+radconvL<-function(x, band = 2)
+{
+     BAND <- c("2", "3", "4", "5")
+     band <- pmatch(band, BAND)
+     Lmin = 0
+     Qmax = 127
+
+     if (is.na(band))
+         stop("invalid band")
+
+     if (band == 2) {
+     Lmax = 120.64
+     results <- x
+     x <- as.vector(as.matrix(x))
+     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+     if (class(results) == "SpatialGridDataFrame")
+         results em data[, 1] <- x
+     else if (is.data.frame(x))
+         results <- data.frame(matrix(x, nrow = nrow(results),
+             ncol = ncol(results)))
+     else results <- x
+     results
+     }
+     else if (band == 3) {
+     Lmax = 151.31
+     results <- x
+     x <- as.vector(as.matrix(x))
+     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+     if (class(results) == "SpatialGridDataFrame")
+         results em data[, 1] <- x
+     else if (is.data.frame(x))
+         results <- data.frame(matrix(x, nrow = nrow(results),
+             ncol = ncol(results)))
+     else results <- x
+     results
+     }
+     else if (band == 4) {
+     Lmax = 157.57
+     results <- x
+     x <- as.vector(as.matrix(x))
+     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+     if (class(results) == "SpatialGridDataFrame")
+         results em data[, 1] <- x
+     else if (is.data.frame(x))
+         results <- data.frame(matrix(x, nrow = nrow(results),
+             ncol = ncol(results)))
+     else results <- x
+     results
+     }
+     else if(band == 5) {
+     Lmax = 69.03
+     results <- x
+     x <- as.vector(as.matrix(x))
+     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+     if (class(results) == "SpatialGridDataFrame")
+         results em data[, 1] <- x
+     else if (is.data.frame(x))
+         results <- data.frame(matrix(x, nrow = nrow(results),
+             ncol = ncol(results)))
+     else results <- x
+     results
+     }
+}
+######
+teste<-radconvL(band2, band=2) ## Aqui não funciona e não sei porque
+teste
+
+
+Muito obrigado,
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+======================================================================
+
+
+From walmeszeviani em gmail.com  Tue Dec 15 18:59:22 2015
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Tue, 15 Dec 2015 18:59:22 -0200
+Subject: [R-br]
+	=?utf-8?q?Matrix_de_contrastes_em_fatorial_DBC_com_a_fun?=
+	=?utf-8?b?w6fDo28gZ2xodCE=?=
+In-Reply-To: <CAKZQXCyTL8QPVjv1d2egJmWaKMJcvrBYJNSTshC__X51E4rELg@mail.gmail.com>
+References: <CAKZQXCyTL8QPVjv1d2egJmWaKMJcvrBYJNSTshC__X51E4rELg@mail.gmail.com>
+Message-ID: <CAFU=EkYGZPKryi0Ph-x4VeNbSKN68sU_iUzwyP2RAKkG5pLYPA@mail.gmail.com>
+
+Ivan,
+
+Você forneceu todo o código necessário para reprodução da sua dúvida mas
+não deu as informações suficientes com relação ao experimento, etc. Na
+possibilidade de fracassar com tantas suposições à respeito do que não foi
+dito, eu adaptei código de scripts que eu já tinha sobre desdobramento de
+interação com a glht()
+
+Bem, um ponto é que desbalanceado ou não, os coeficientes considerados para
+as médias ajustadas (e os contrates) são os mesmos. O desbalanceamento já é
+considerado no tamanho dos erros padrões dos efeitos, onde àqueles de erro
+padrão menor são efeitos com mais repetições, nesse caso. Existe outros
+tipos de "ponderação" para obter essas médias, mas só use se realmente você
+se sentir convencido da necessidade ou motivado por algum artigo (e não
+documentação de $oftware$).
+
+##-------------------------------------------
+
+## As coisas ficam mais fáceis quando se compreende a estrutura
+## experimental.
+
+xtabs(~sujeito, data=gnexpo)
+xtabs(~celula+tratamento, data=gnexpo)
+ftable(xtabs(~celula+tratamento+sujeito, data=gnexpo))
+
+sum(!complete.cases(gnexpo))
+
+## Distribuição dos casos perdidos.
+addmargins(
+    with(gnexpo,
+         tapply(ybox, list(celula, tratamento),
+                FUN=function(x){
+                    sum(is.na(x))
+                })))
+
+m0 <- lm(ybox~sujeito+celula*tratamento, data=gnexpo)
+par(mfrow=c(2,2)); plot(m0); layout(1)
+
+drop1(m0, scope=.~., test="F")
+
+## Exista desbalanceamento. Será que todos os efeitos foram estimados?
+sum(is.na(coef(m0)))==0
+
+##-------------------------------------------
+## Estudo da interação. Contrastes entre níveis de tratamento separado
+## por níveis de célula.
+
+library(doBy)
+
+## Médias ajustadas para o efeito de sujeito.
+lsm <- LSmeans(m0, effect=c("tratamento", "celula"))
+lsm
+
+L <- by(data=lsm$K, INDICES=lsm$grid$celula, FUN=as.matrix)
+str(L)
+
+## Contrastes de Tukey significa todos contra todos (all pairwise). Com
+## 4 níveis são 6 constrastes 2 a 2.
+
+x <- L[[1]]
+str(x)
+
+## Veja outra versão em:
+## http://git.leg.ufpr.br/leg/legTools/blob/master/R/apcMatrix.R
+apcMatrix <- function(x){
+    ## --- All Pairwise Contrasts Matrix ---
+    ## x: é uma matriz onde cada linha assumesse ter os coeficientes
+    ## para estimar uma média (ou qualquer outra função linear dos
+    ## parâmetros). Ela returna a matriz com as funções lineares, em
+    ## cada linha, representando cada contraste.
+    cbn <- combn(x=nrow(x), m=2)
+    K <- apply(cbn, MARGIN=2, FUN=function(l){
+        x[l[1], ]-x[l[2], ]
+    })
+    return(t(K))
+}
+
+K <- lapply(L, FUN=apcMatrix)
+
+## Abordagem A: Testes separados por celula. Cada um deles tem cobertura
+## nominal das 6 hipóteses que é de 95% (default).
+lapply(K,
+       FUN=function(l){
+           summary(glht(m0, linfct=l), test=adjusted(type="fdr"))
+       })
+
+KK <- do.call(rbind, K)
+nrow(KK)
+
+## Abordagem B: testes todos juntos. Nivel global geral de 95%.
+summary(glht(m0, linfct=KK), test=adjusted(type="fdr"))
+
+## Para ficar mais fácil de identificar os contrastes, é necessário
+## atribuir rownames.
+
+O seu CMR foi fundamental para aplicar uma solução para os seus dados.
+Porém, conhecendo os seus recursos, você poderia ter hospedado os dados na
+sua página pessoal (diretório na nuvem), pasta pública do dropbox ou
+repositório no GithHub. Com isso incluiria apenas o link para leitura dos
+dados dentro do read.table() poupando espaço na mensagem. Mensagens com
+corpo grande são descartadas pelo serviço de lista. Me espantou que a sua
+passou, então procure sempre evitar.
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151215/86656663/attachment.html>
+
+From cesar.rabak em gmail.com  Tue Dec 15 19:46:17 2015
+From: cesar.rabak em gmail.com (Cesar Rabak)
+Date: Tue, 15 Dec 2015 19:46:17 -0200
+Subject: [R-br]
+	=?utf-8?q?Fun=C3=A7=C3=A3o_com_v=C3=A1rios_if_e_else_if_qu?=
+	=?utf-8?q?e_n=C3=A3o_funciona?=
+In-Reply-To: <56707C4C.5020601@yahoo.com.br>
+References: <56707C4C.5020601@yahoo.com.br>
+Message-ID: <CAKrF98=4a0iZt=ARj+pkhVh4y17EDf5FkZwaNi4BvO_PktasZQ@mail.gmail.com>
+
+Alexandre,
+
+A melhor forma de você atacar esse problema é usar as facilidades de
+depuração do R:
+
+> ?debug
+
+para ver a documentação do depurador padrão.
+
+Um tutorialzinho sobre seu uso pode ser encontrado aqui:
+http://www.biostat.jhsph.edu/~rpeng/docs/R-debug-tools.pdf
+
+HTH
+--
+Cesar Rabak
+
+
+
+2015-12-15 18:47 GMT-02:00 ASANTOS <alexandresantosbr em yahoo.com.br>:
+
+> Caros Listeiros,
+>
+>
+>          Estou tentando criar uma função abaixo para converter um
+> SpatialGridDataFrame originado de uma imagem de satélite para reflectância,
+> mas a função que eu criei (radconvL()) pelo excesso de else if não esta
+> funcionando. Meu problema é que não dá erro, o que normalmente ajuda a
+> detectar o problema, mas no meu caso a função nem funciona, segue meu CRM
+> abaixo, alguém poderia me ajudar?
+>
+> require(raster)
+> require(sp)
+>
+> # RasterLayer inventado
+> r <- raster(nrows=10, ncols=10)
+> r <- setValues(r, 1:ncell(r))
+> plot(r)
+>
+> band2<- as(r, 'SpatialGridDataFrame')  ### transforma em
+> SpatialGridDataFrame
+>
+>
+>
+> ##Função para conversão DN para reflectância
+> radconvL<-function(x, band = 2)
+> {
+>     BAND <- c("2", "3", "4", "5")
+>     band <- pmatch(band, BAND)
+>     Lmin = 0
+>     Qmax = 127
+>
+>     if (is.na(band))
+>         stop("invalid band")
+>
+>     if (band == 2) {
+>     Lmax = 120.64
+>     results <- x
+>     x <- as.vector(as.matrix(x))
+>     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+>     if (class(results) == "SpatialGridDataFrame")
+>         results em data[, 1] <- x
+>     else if (is.data.frame(x))
+>         results <- data.frame(matrix(x, nrow = nrow(results),
+>             ncol = ncol(results)))
+>     else results <- x
+>     results
+>     }
+>     else if (band == 3) {
+>     Lmax = 151.31
+>     results <- x
+>     x <- as.vector(as.matrix(x))
+>     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+>     if (class(results) == "SpatialGridDataFrame")
+>         results em data[, 1] <- x
+>     else if (is.data.frame(x))
+>         results <- data.frame(matrix(x, nrow = nrow(results),
+>             ncol = ncol(results)))
+>     else results <- x
+>     results
+>     }
+>     else if (band == 4) {
+>     Lmax = 157.57
+>     results <- x
+>     x <- as.vector(as.matrix(x))
+>     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+>     if (class(results) == "SpatialGridDataFrame")
+>         results em data[, 1] <- x
+>     else if (is.data.frame(x))
+>         results <- data.frame(matrix(x, nrow = nrow(results),
+>             ncol = ncol(results)))
+>     else results <- x
+>     results
+>     }
+>     else if(band == 5) {
+>     Lmax = 69.03
+>     results <- x
+>     x <- as.vector(as.matrix(x))
+>     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+>     if (class(results) == "SpatialGridDataFrame")
+>         results em data[, 1] <- x
+>     else if (is.data.frame(x))
+>         results <- data.frame(matrix(x, nrow = nrow(results),
+>             ncol = ncol(results)))
+>     else results <- x
+>     results
+>     }
+> }
+> ######
+> teste<-radconvL(band2, band=2) ## Aqui não funciona e não sei porque
+> teste
+>
+>
+> Muito obrigado,
+>
+> --
+> ======================================================================
+> Alexandre dos Santos
+> Proteção Florestal
+> IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+> Campus Cáceres
+> Caixa Postal 244
+> Avenida dos Ramires, s/n
+> Bairro: Distrito Industrial
+> Cáceres - MT                      CEP: 78.200-000
+> Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+> e-mails:alexandresantosbr em yahoo.com.br
+>         alexandre.santos em cas.ifmt.edu.br
+> Lattes: http://lattes.cnpq.br/1360403201088680
+> ======================================================================
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151215/cf051ca8/attachment.html>
+
+From ivanalaman em yahoo.com.br  Wed Dec 16 09:27:41 2015
+From: ivanalaman em yahoo.com.br (Ivan Bezerra Allaman)
+Date: Wed, 16 Dec 2015 08:27:41 -0300
+Subject: [R-br]
+	=?utf-8?q?Matrix_de_contrastes_em_fatorial_DBC_com_a_fun?=
+	=?utf-8?b?w6fDo28gZ2xodCE=?=
+Message-ID: <CAKZQXCxU6A0YSMgy67KeUFBqnhcDEet28eaqdkSx7NM+FBX7_Q@mail.gmail.com>
+
+Prezado Walmes!
+
+Como sempre, muito obrigado! A função apcMatrix é muitíssimo útil. Uma
+sugestão! Embora eu saiba que tu não gostes de letrinhas, talvez seria
+interessante criar alguma função semelhante a função "cld",  já que a mesma
+só trabalha caso seja indicado no argumento "linfct" a função "mcp" com o
+nome do tratamento de interesse. Em casos mais gerais como foi neste
+exemplo, a função "cld" não trabalha.
+
+Abraços!
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151216/94eb4d86/attachment.html>
+
+From walmeszeviani em gmail.com  Wed Dec 16 10:54:36 2015
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Wed, 16 Dec 2015 10:54:36 -0200
+Subject: [R-br]
+	=?utf-8?q?Matrix_de_contrastes_em_fatorial_DBC_com_a_fun?=
+	=?utf-8?b?w6fDo28gZ2xodCE=?=
+In-Reply-To: <CAKZQXCxU6A0YSMgy67KeUFBqnhcDEet28eaqdkSx7NM+FBX7_Q@mail.gmail.com>
+References: <CAKZQXCxU6A0YSMgy67KeUFBqnhcDEet28eaqdkSx7NM+FBX7_Q@mail.gmail.com>
+Message-ID: <CAFU=EkbxgWD+5+dCphHGw9AEWpSXtE=4ByOqC1rw9y+thoPhDQ@mail.gmail.com>
+
+Na realidade tem como você enganar a glht() para usar a cld() mesmo sem
+passar para o argumento linfct= algo produzido pela mcp(). Foi preciso
+abrir a função para encontrar como fazer. Essa é a maravilha do software
+livre código aberto! Você pode visitar essa análise e ver como fiz,
+basicamente criei elementos não nulos na lista retornada pela glht().
+
+http://www.leg.ufpr.br/~walmes/analises/GBTognon/ivg_tridentata.html
+
+A parte que destaco da análise é essa
+
+Xc <- apc(Xm, lev=lev)g0 <- summary(glht(m2, linfct=Xc),
+test=adjusted(type="fdr"))
+source("/home/walmes/Dropbox/Public/mycld.R")
+## g0
+g0$focus <- "Tratamentos"g0$Type <- "Tukey"grid$cld <-
+my.cld(g0)$mcletters$Letters
+
+
+Se não me falhe a memória, essa função my.cld eu refiz e renomeei para
+cld2. Está disponível em
+https://github.com/walmes/wzRfun/blob/master/R/cld2.R. Alguma adaptação
+será necessária.
+Esse outro script
+http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/script20.html usa a
+cld2().
+
+À disposição.
+Walmes.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151216/c3abaed5/attachment.html>
+
+From rafaeltieppo em yahoo.com.br  Wed Dec 16 16:14:19 2015
+From: rafaeltieppo em yahoo.com.br (Rafael Tieppo)
+Date: Wed, 16 Dec 2015 18:14:19 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?manipula=C3=A7=C3=A3o_arquivos?=
+References: <197996742.1778705.1450289659530.JavaMail.yahoo.ref@mail.yahoo.com>
+Message-ID: <197996742.1778705.1450289659530.JavaMail.yahoo@mail.yahoo.com>
+
+Prezados,
+Por favor, Alguém poderia me indicar algum pacote ou algum método para ler várias Tabelas em um único arquivo ".txt", quando há texto no meio do arquivo. Creio que o símbolo "@" permita iniciar a captura dos dados, mas não tenho ideia de como criar uma lógica. Obrigado
+EXEMPLO do ARQUIVO: 
+*RUN   1        : POT_S1                    
+  
+@YEAR DOY   DAS   PRED  DAYLD 1983 001     1    0.0   13.8 1983 002     2    0.0   13.8 1983 003     3    0.0   13.7                                                                               
+*RUN   2        : POT_S1                     
+@YEAR DOY   DAS   PRED  DAYLD 1984 001     1    2.2   13.8 1984 002     2   54.8   13.8 1984 003     3    4.8   13.7
+
+
+
+
+
+
+
+
+
+ Rafael Tieppo
+State University of Mato Grosso - Department of Agricultural Engineering 
+site: http://www2.unemat.br/rafaeltieppo blog: https://fuidebicicleta.wordpress.com"Evite o desperdício: antes de imprimir pense na sua responsabilidade com o ambiente".  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151216/a290ddb5/attachment.html>
+
+From rafaeltieppo em yahoo.com.br  Wed Dec 16 17:09:20 2015
+From: rafaeltieppo em yahoo.com.br (Rafael Tieppo)
+Date: Wed, 16 Dec 2015 19:09:20 +0000 (UTC)
+Subject: [R-br] =?utf-8?q?manipula=C3=A7=C3=A3o_arquivos?=
+In-Reply-To: <A643D7E5-6255-4034-9F88-36CCE6A8A6B9@me.com>
+References: <A643D7E5-6255-4034-9F88-36CCE6A8A6B9@me.com>
+Message-ID: <2015586008.1799346.1450292960608.JavaMail.yahoo@mail.yahoo.com>
+
+ Paulo, MUITO obrigado! Tenho que estudar e aprender a usar as funções de manipulações!
+Salvou o dia!
+Abrax 
+
+
+    On Wednesday, December 16, 2015 4:03 PM, Paulo Abreu <abreups em gmail.com> wrote:
+ 
+
+ Rafael,
+Porque você não tenta primeiro fazer um “pré-processamento” desse arquivo para só depois ler com o R?Por exemplo, se você usar o 'grep' com uma expressão regular para isolar somente as linhas com dados, você salva isso num outro arquivo e depois lê esse outro arquivo com o R.Salvei esse exemplo de dados que você passou num arquivo chamado teste.txt e executei o seguinte comando:
+grep "^ 198" < teste.txt
+O resultado são todas as linhas que começam com um espaço em branco e depois têm os caracteres 198
+Assim:
+ 1983 001     1    0.0   13.8 1983 002     2    0.0   13.8 1983 003     3    0.0   13.7 1984 001     1    2.2   13.8 1984 002     2   54.8   13.8 1984 003     3    4.8   13.7
+Se você fizer 
+grep "^ 198" < teste.txt > resultado.txt
+O arquivo resultado.txt vai ter só as linhas de dados.Coloca um cabeçalho à mão e aí fica mais fácil de ler com o R.Ajuste a expressão regular para ficar mais adequada aos dados que você tem (sei que você passou só um pedaço dos dados).
+Espero que ajude.
+Paulo Abreu
+
+
+Em 16 de dez de 2015, à(s) 16:14, Rafael Tieppo <rafaeltieppo em yahoo.com.br> escreveu:
+Prezados,
+Por favor, Alguém poderia me indicar algum pacote ou algum método para ler várias Tabelas em um único arquivo ".txt", quando há texto no meio do arquivo. Creio que o símbolo "@" permita iniciar a captura dos dados, mas não tenho ideia de como criar uma lógica. Obrigado
+EXEMPLO do ARQUIVO: 
+*RUN   1        : POT_S1                    
+  
+@YEAR DOY   DAS   PRED  DAYLD 1983 001     1    0.0   13.8 1983 002     2    0.0   13.8 1983 003     3    0.0   13.7                                                                               
+*RUN   2        : POT_S1                     
+@YEAR DOY   DAS   PRED  DAYLD 1984 001     1    2.2   13.8 1984 002     2   54.8   13.8 1984 003     3    4.8   13.7
+
+
+
+
+
+
+
+
+
+ Rafael Tieppo
+State University of Mato Grosso - Department of Agricultural Engineering 
+site: http://www2.unemat.br/rafaeltieppo blog: https://fuidebicicleta.wordpress.com"Evite o desperdício: antes de imprimir pense na sua responsabilidade com o ambiente".  _______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça código mínimo reproduzível.
+
+
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151216/d711a6de/attachment.html>
+
+From thi_veloso em yahoo.com.br  Wed Dec 16 22:11:53 2015
+From: thi_veloso em yahoo.com.br (Thiago V. dos Santos)
+Date: Thu, 17 Dec 2015 00:11:53 +0000 (UTC)
+Subject: [R-br]
+ =?utf-8?q?Fun=C3=A7=C3=A3o_com_v=C3=A1rios_if_e_else_if_qu?=
+ =?utf-8?q?e_n=C3=A3o_funciona?=
+In-Reply-To: <CAKrF98=4a0iZt=ARj+pkhVh4y17EDf5FkZwaNi4BvO_PktasZQ@mail.gmail.com>
+References: <56707C4C.5020601@yahoo.com.br>
+ <CAKrF98=4a0iZt=ARj+pkhVh4y17EDf5FkZwaNi4BvO_PktasZQ@mail.gmail.com>
+Message-ID: <1851087109.3696.1450311113347.JavaMail.yahoo@mail.yahoo.com>
+
+Uma opção mais eficiente (e provavelmente mais legível) é aproveitar os recursos de vetorização do R.
+O que eu tenho feito é criar um raster stack com todas as bandas do landsat. Depois, eu crio uma lista com os parametros de calibração de cada banda (que você vai ler nos arquivos de calibração). Funciona melhor se você deixar todos os arquivos - imagens e arquivos de calibração - em uma pasta só.
+Assumindo que o raster stack tem o mesmo tamanho da lista, você pode aplicar uma multiplicação direta para fazer a calibração. Greetings, -- Thiago V. dos Santos
+PhD studentLand and Atmospheric ScienceUniversity of Minnesota 
+
+
+    On Tuesday, December 15, 2015 1:46 PM, Cesar Rabak <cesar.rabak em gmail.com> wrote:
+ 
+
+ Alexandre,
+A melhor forma de você atacar esse problema é usar as facilidades de depuração do R:
+> ?debug
+para ver a documentação do depurador padrão.
+Um tutorialzinho sobre seu uso pode ser encontrado aqui: http://www.biostat.jhsph.edu/~rpeng/docs/R-debug-tools.pdf
+
+HTH--Cesar Rabak
+
+
+2015-12-15 18:47 GMT-02:00 ASANTOS <alexandresantosbr em yahoo.com.br>:
+
+Caros Listeiros,
+
+
+         Estou tentando criar uma função abaixo para converter um SpatialGridDataFrame originado de uma imagem de satélite para reflectância, mas a função que eu criei (radconvL()) pelo excesso de else if não esta funcionando. Meu problema é que não dá erro, o que normalmente ajuda a detectar o problema, mas no meu caso a função nem funciona, segue meu CRM abaixo, alguém poderia me ajudar?
+
+require(raster)
+require(sp)
+
+# RasterLayer inventado
+r <- raster(nrows=10, ncols=10)
+r <- setValues(r, 1:ncell(r))
+plot(r)
+
+band2<- as(r, 'SpatialGridDataFrame')  ### transforma em SpatialGridDataFrame
+
+
+
+##Função para conversão DN para reflectância
+radconvL<-function(x, band = 2)
+{
+    BAND <- c("2", "3", "4", "5")
+    band <- pmatch(band, BAND)
+    Lmin = 0
+    Qmax = 127
+
+    if (is.na(band))
+        stop("invalid band")
+
+    if (band == 2) {
+    Lmax = 120.64
+    results <- x
+    x <- as.vector(as.matrix(x))
+    x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+    if (class(results) == "SpatialGridDataFrame")
+        results em data[, 1] <- x
+    else if (is.data.frame(x))
+        results <- data.frame(matrix(x, nrow = nrow(results),
+            ncol = ncol(results)))
+    else results <- x
+    results
+    }
+    else if (band == 3) {
+    Lmax = 151.31
+    results <- x
+    x <- as.vector(as.matrix(x))
+    x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+    if (class(results) == "SpatialGridDataFrame")
+        results em data[, 1] <- x
+    else if (is.data.frame(x))
+        results <- data.frame(matrix(x, nrow = nrow(results),
+            ncol = ncol(results)))
+    else results <- x
+    results
+    }
+    else if (band == 4) {
+    Lmax = 157.57
+    results <- x
+    x <- as.vector(as.matrix(x))
+    x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+    if (class(results) == "SpatialGridDataFrame")
+        results em data[, 1] <- x
+    else if (is.data.frame(x))
+        results <- data.frame(matrix(x, nrow = nrow(results),
+            ncol = ncol(results)))
+    else results <- x
+    results
+    }
+    else if(band == 5) {
+    Lmax = 69.03
+    results <- x
+    x <- as.vector(as.matrix(x))
+    x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+    if (class(results) == "SpatialGridDataFrame")
+        results em data[, 1] <- x
+    else if (is.data.frame(x))
+        results <- data.frame(matrix(x, nrow = nrow(results),
+            ncol = ncol(results)))
+    else results <- x
+    results
+    }
+}
+######
+teste<-radconvL(band2, band=2) ## Aqui não funciona e não sei porque
+teste
+
+
+Muito obrigado,
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+e-mails:alexandresantosbr em yahoo.com.br
+        alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+======================================================================
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
+
+
+_______________________________________________
+R-br mailing list
+R-br em listas.c3sl.ufpr.br
+https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne� c�igo m�imo reproduz�el.
+
+  
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151217/e5dac2fd/attachment.html>
+
+From sznelwar em uol.com.br  Wed Dec 16 23:32:13 2015
+From: sznelwar em uol.com.br (Mauro Sznelwar)
+Date: Wed, 16 Dec 2015 23:32:13 -0200
+Subject: [R-br] =?utf-8?q?RES=3A_=09Matrix_de_contrastes_em_fatorial_DBC_c?=
+	=?utf-8?q?om_a_fun=C3=A7=C3=A3o_glht!?=
+In-Reply-To: <CAFU=EkbxgWD+5+dCphHGw9AEWpSXtE=4ByOqC1rw9y+thoPhDQ@mail.gmail.com>
+References: <CAKZQXCxU6A0YSMgy67KeUFBqnhcDEet28eaqdkSx7NM+FBX7_Q@mail.gmail.com>
+ <CAFU=EkbxgWD+5+dCphHGw9AEWpSXtE=4ByOqC1rw9y+thoPhDQ@mail.gmail.com>
+Message-ID: <015f01d1386a$c19ee580$44dcb080$@com.br>
+
+Poderia fornecer o arquivo mycld.R para rodar?
+
+ 
+
+Na realidade tem como você enganar a glht() para usar a cld() mesmo sem passar para o argumento linfct= algo produzido pela mcp(). Foi preciso abrir a função para encontrar como fazer. Essa é a maravilha do software livre código aberto! Você pode visitar essa análise e ver como fiz, basicamente criei elementos não nulos na lista retornada pela glht().
+
+http://www.leg.ufpr.br/~walmes/analises/GBTognon/ivg_tridentata.html
+
+A parte que destaco da análise é essa
+
+Xc <- apc(Xm, lev=lev)
+g0 <- summary(glht(m2, linfct=Xc), test=adjusted(type="fdr"))
+ 
+source("/home/walmes/Dropbox/Public/mycld.R")
+ 
+## g0
+ 
+g0$focus <- "Tratamentos"
+g0$Type <- "Tukey"
+grid$cld <- my.cld(g0)$mcletters$Letters
+
+ 
+
+Se não me falhe a memória, essa função my.cld eu refiz e renomeei para cld2. Está disponível em https://github.com/walmes/wzRfun/blob/master/R/cld2.R. Alguma adaptação será necessária.
+
+Esse outro script http://www.leg.ufpr.br/~walmes/cursoR/geneticaEsalq/script20.html usa a cld2().
+
+
+À disposição.
+
+Walmes.
+
+ 
+
+
+
+---
+Este email foi escaneado pelo Avast antivírus.
+https://www.avast.com/antivirus
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151216/e5a96204/attachment.html>
+
+From walmeszeviani em gmail.com  Thu Dec 17 09:23:04 2015
+From: walmeszeviani em gmail.com (Walmes Zeviani)
+Date: Thu, 17 Dec 2015 09:23:04 -0200
+Subject: [R-br]
+	=?utf-8?q?RES=3A_Matrix_de_contrastes_em_fatorial_DBC_com_?=
+	=?utf-8?q?a_fun=C3=A7=C3=A3o_glht!?=
+In-Reply-To: <015f01d1386a$c19ee580$44dcb080$@com.br>
+References: <CAKZQXCxU6A0YSMgy67KeUFBqnhcDEet28eaqdkSx7NM+FBX7_Q@mail.gmail.com>
+ <CAFU=EkbxgWD+5+dCphHGw9AEWpSXtE=4ByOqC1rw9y+thoPhDQ@mail.gmail.com>
+ <015f01d1386a$c19ee580$44dcb080$@com.br>
+Message-ID: <CAFU=EkZHr6D8g=dfHtjowW8yzh7UvVAmKe_d0nsJ7pc5ApT-0w@mail.gmail.com>
+
+source("https://dl.dropboxusercontent.com/u/48140237/mycld.R")
+
+À disposição.
+Walmes.
+​
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151217/6e495dfe/attachment.html>
+
+From lbenitesanchez em gmail.com  Thu Dec 17 10:13:32 2015
+From: lbenitesanchez em gmail.com (=?UTF-8?Q?Luis_Benites_S=C3=A1nchez?=)
+Date: Thu, 17 Dec 2015 10:13:32 -0200
+Subject: [R-br] =?utf-8?q?Meetup_R_S=C3=A3o_Paulo_Users_Group_-_2016?=
+Message-ID: <CAG4re2t8q3+pHFiM8O=V_NG+MHQ1xgUM=8qyZvPv4BLi-PDa0w@mail.gmail.com>
+
+Caros,
+
+Para o 2016 temos previstos os seguintes Meetup futuros de R para o 2016.
+
+#########################################################
+*Sexta-feira, 4 de Março de 2016 14:00*
+- R e Julia uma comparação Parte I
+- Criação de pacotes - Parte I
+
+*Sexta-feira, 18 de Março de 2016 14:00*
+- Birnbaum-Saunders SN com aplicações em R
+- R e Julia uma comparação Parte II
+
+*Sexta-feira, 8 de Abril de 2016 14:00*
+- Técnicas de amostragem com R
+- Uma introdução ao dados de contagem com R
+
+*Sexta-feira, 6 de Maio de 2016 14:00*
+- ggplot
+- Ajustando modelos semi-paramétricos log-simétricos com R
+
+*Sexta-feira, 3 de Junho de 2016 14:00*
+- Visualizações em R
+
+*Sexta-feira, 22 de Julho de 2016 14:00*
+- Modelos de regressão com dados censurados SMSN
+- Introdução a amostragem com R
+
+*Sexta-feira, 29 de Julho de 2016 14:00*
+- Uma introdução a programação em paralelo em R
+- R Markdown - Parte 2
+#########################################################
+
+As datas e horários podem variar. As atualizações estarão disponíveis no
+site do Meetup.
+
+As palestras serão transmitidas ao vivo pelo YouTube. Para poder
+participar, pode confirmar sua participação gratuitamente no site do Meetup
+:)
+
+
+Para mais informações:
+Site: www.meetup.com/pt/useR-SP
+Canal de YouTube: www.youtube.com/channel/UCb9PdJYYaElE6Uqb1KxhE8w
+e-mail: meetuprsp em gmail.com
+
+Um abraço,
+
+Luis Benites Sánchez
+Rocío Paola Maehara
+Organizadores do São Paulo R Users Group
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151217/3edc210b/attachment.html>
+
+From alexandresantosbr em yahoo.com.br  Thu Dec 17 11:07:15 2015
+From: alexandresantosbr em yahoo.com.br (ASANTOS)
+Date: Thu, 17 Dec 2015 10:07:15 -0300
+Subject: [R-br]
+ =?utf-8?q?Fun=C3=A7=C3=A3o_com_v=C3=A1rios_if_e_else_if_qu?=
+ =?utf-8?q?e_n=C3=A3o_funciona_=5BRESOLVIDO=5D?=
+In-Reply-To: <1851087109.3696.1450311113347.JavaMail.yahoo@mail.yahoo.com>
+References: <56707C4C.5020601@yahoo.com.br>
+ <CAKrF98=4a0iZt=ARj+pkhVh4y17EDf5FkZwaNi4BvO_PktasZQ@mail.gmail.com>
+ <1851087109.3696.1450311113347.JavaMail.yahoo@mail.yahoo.com>
+Message-ID: <5672B383.6090807@yahoo.com.br>
+
+Muito bem pesado Thiago, vou atentar a isso.
+
+         E agradeço também ao Cesar, nunca havia usado a ferramenta de 
+depuração e resolveu o meu problema.
+
+Segue minha função final, se alguém for trabalhar com imagens do 
+Resourcesat e sensor LISS IIII:
+
+##Função para conversão DN para radiância - LISS III 
+---------------------------
+radconvL<-function(x, band = 2)
+{
+     BAND <- c("2", "3", "4", "5")
+     band <- pmatch(band, BAND)
+     if (is.na(band))
+         stop("invalid band")
+
+     Lmin = 0
+     Qmax = 127
+     x <- as.vector(as.matrix(x))
+     results <- x
+
+     if (band == 2) {
+     Lmax = 120.64
+     }
+     else if (band == 3) {
+     Lmax = 151.31
+     }
+     else if (band == 4) {
+     Lmax = 157.57
+     }
+     else if(band == 5) {
+     Lmax = 69.03
+     }
+
+     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+     if (class(results) == "SpatialGridDataFrame")
+         results em data[, 1] <- x
+     else if (is.data.frame(x))
+         results <- data.frame(matrix(x, nrow = nrow(results),
+             ncol = ncol(results)))
+     else results <- x
+     results
+}
+######--------------------------------------------------------------------------
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+======================================================================
+
+Em 16/12/2015 21:11, Thiago V. dos Santos escreveu:
+> Uma opção mais eficiente (e provavelmente mais legível) é aproveitar 
+> os recursos de vetorização do R.
+>
+> O que eu tenho feito é criar um raster stack com todas as bandas do 
+> landsat. Depois, eu crio uma lista com os parametros de calibração de 
+> cada banda (que você vai ler nos arquivos de calibração). Funciona 
+> melhor se você deixar todos os arquivos - imagens e arquivos de 
+> calibração - em uma pasta só.
+>
+> Assumindo que o raster stack tem o mesmo tamanho da lista, você pode 
+> aplicar uma multiplicação direta para fazer a calibração.
+> Greetings,
+>  -- Thiago V. dos Santos
+>
+> PhD student
+> Land and Atmospheric Science
+> University of Minnesota
+>
+>
+>
+> On Tuesday, December 15, 2015 1:46 PM, Cesar Rabak 
+> <cesar.rabak em gmail.com> wrote:
+>
+>
+> Alexandre,
+>
+> A melhor forma de você atacar esse problema é usar as facilidades de 
+> depuração do R:
+>
+> > ?debug
+>
+> para ver a documentação do depurador padrão.
+>
+> Um tutorialzinho sobre seu uso pode ser encontrado aqui: 
+> http://www.biostat.jhsph.edu/~rpeng/docs/R-debug-tools.pdf 
+> <http://www.biostat.jhsph.edu/%7Erpeng/docs/R-debug-tools.pdf>
+>
+> HTH
+> --
+> Cesar Rabak
+>
+>
+>
+> 2015-12-15 18:47 GMT-02:00 ASANTOS <alexandresantosbr em yahoo.com.br 
+> <mailto:alexandresantosbr em yahoo.com.br>>:
+>
+>     Caros Listeiros,
+>
+>
+>              Estou tentando criar uma função abaixo para converter um
+>     SpatialGridDataFrame originado de uma imagem de satélite para
+>     reflectância, mas a função que eu criei (radconvL()) pelo excesso
+>     de else if não esta funcionando. Meu problema é que não dá erro, o
+>     que normalmente ajuda a detectar o problema, mas no meu caso a
+>     função nem funciona, segue meu CRM abaixo, alguém poderia me ajudar?
+>
+>     require(raster)
+>     require(sp)
+>
+>     # RasterLayer inventado
+>     r <- raster(nrows=10, ncols=10)
+>     r <- setValues(r, 1:ncell(r))
+>     plot(r)
+>
+>     band2<- as(r, 'SpatialGridDataFrame') ### transforma em
+>     SpatialGridDataFrame
+>
+>
+>
+>     ##Função para conversão DN para reflectância
+>     radconvL<-function(x, band = 2)
+>     {
+>         BAND <- c("2", "3", "4", "5")
+>         band <- pmatch(band, BAND)
+>         Lmin = 0
+>         Qmax = 127
+>
+>         if (is.na <http://is.na/>(band))
+>             stop("invalid band")
+>
+>         if (band == 2) {
+>         Lmax = 120.64
+>         results <- x
+>         x <- as.vector(as.matrix(x))
+>         x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+>         if (class(results) == "SpatialGridDataFrame")
+>             results em data[, 1] <- x
+>         else if (is.data.frame(x))
+>             results <- data.frame(matrix(x, nrow = nrow(results),
+>                 ncol = ncol(results)))
+>         else results <- x
+>         results
+>         }
+>         else if (band == 3) {
+>         Lmax = 151.31
+>         results <- x
+>         x <- as.vector(as.matrix(x))
+>         x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+>         if (class(results) == "SpatialGridDataFrame")
+>             results em data[, 1] <- x
+>         else if (is.data.frame(x))
+>             results <- data.frame(matrix(x, nrow = nrow(results),
+>                 ncol = ncol(results)))
+>         else results <- x
+>         results
+>         }
+>         else if (band == 4) {
+>         Lmax = 157.57
+>         results <- x
+>         x <- as.vector(as.matrix(x))
+>         x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+>         if (class(results) == "SpatialGridDataFrame")
+>             results em data[, 1] <- x
+>         else if (is.data.frame(x))
+>             results <- data.frame(matrix(x, nrow = nrow(results),
+>                 ncol = ncol(results)))
+>         else results <- x
+>         results
+>         }
+>         else if(band == 5) {
+>         Lmax = 69.03
+>         results <- x
+>         x <- as.vector(as.matrix(x))
+>         x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+>         if (class(results) == "SpatialGridDataFrame")
+>             results em data[, 1] <- x
+>         else if (is.data.frame(x))
+>             results <- data.frame(matrix(x, nrow = nrow(results),
+>                 ncol = ncol(results)))
+>         else results <- x
+>         results
+>         }
+>     }
+>     ######
+>     teste<-radconvL(band2, band=2) ## Aqui não funciona e não sei porque
+>     teste
+>
+>
+>     Muito obrigado,
+>
+>     -- 
+>     ======================================================================
+>     Alexandre dos Santos
+>     Proteção Florestal
+>     IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato
+>     Grosso
+>     Campus Cáceres
+>     Caixa Postal 244
+>     Avenida dos Ramires, s/n
+>     Bairro: Distrito Industrial
+>     Cáceres - MT                      CEP: 78.200-000
+>     Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+>     e-mails:alexandresantosbr em yahoo.com.br
+>     <mailto:e-mails%3Aalexandresantosbr em yahoo.com.br>
+>     alexandre.santos em cas.ifmt.edu.br
+>     <mailto:alexandre.santos em cas.ifmt.edu.br>
+>     Lattes: http://lattes.cnpq.br/1360403201088680
+>     ======================================================================
+>
+>     _______________________________________________
+>     R-br mailing list
+>     R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+>     https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>     Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e
+>     fornea cdigo mnimo reproduzvel.
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br <mailto:R-br em listas.c3sl.ufpr.br>
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne� 
+> c�igo m�imo reproduz�el.
+>
+>
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forne�a c�digo m�nimo reproduz�vel.
+
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151217/ea01a408/attachment.html>
+
+From leonardof em leonardof.med.br  Thu Dec 17 13:59:16 2015
+From: leonardof em leonardof.med.br (Leonardo Ferreira Fontenelle)
+Date: Thu, 17 Dec 2015 13:59:16 -0200
+Subject: [R-br] =?utf-8?q?=5Bfora=5D_Exemplo_bem-humorado_de_regress=C3=A3?=
+ =?utf-8?b?byDDoCBtw6lkaWE=?=
+Message-ID: <1450367956.2736441.470189977.5FBDD21B@webmail.messagingengine.com>
+
+Assim como nos anos anteriores, esta edição natalina do periódico médico britânico *The BMJ* trouxe alguns artigos originais inusitados e divertidos. Acredito que boa parte dos companheiros da lista de discussão estarão interessados neste artigo como uma ilustração do conceito de regressão à média: http://dx.doi.org/10.1136/bmj.h6304
+
+Att,
+
+Leonardo Ferreira Fontenelle[1]
+
+
+
+Links:
+
+  1. http://lattes.cnpq.br/9234772336296638
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151217/1393384d/attachment.html>
+
+From alexandresantosbr em yahoo.com.br  Thu Dec 17 20:01:17 2015
+From: alexandresantosbr em yahoo.com.br (ASANTOS)
+Date: Thu, 17 Dec 2015 19:01:17 -0300
+Subject: [R-br] Criar um spatial points e shapefile com coordenadas e seus
+	atributos
+Message-ID: <567330AD.1080401@yahoo.com.br>
+
+Caros Listeiros,
+
+          Estou tentando criar um spatial points e posteriormente um 
+shapefile com quatro variáveis, longitude (long), latitude (lat), 
+espécie(esp) e cobertura (cob). Quando faço um cbind() apenas das 
+informações geográficas, tudo OK, mas quando tento inserir os atributos 
+esp e cob, a função SpatialPoints() não funciona. Alguém com experiência 
+poderia me dar uma luz? Segue CRM:
+
+#Pacotes
+require(shapefiles); require(sp)
+
+#Pontos  e variáveis esp e cob
+long<-c(-54.8956314,-54.8986246,-54.8985713,
+-54.8987823,-54.898895,-54.8988127)
+lat<-c(-30.4011373,-30.4121832,-30.4121513,
+-30.4120925,-30.4122421,-30.4123977)
+esp<-c("a","a","b","a","b","b")
+cob<-c(74.3,56.2,96.3,66.3,21.6,55.2)
+final.pts<-cbind(long,lat,esp,cob)
+
+#Transforma em spatial points
+pts.sampling = SpatialPoints(final.pts, proj4string=CRS("+proj=longlat 
++datum=WGS84"))
+ANTcoor.df <- SpatialPointsDataFrame(pts.sampling, 
+data.frame(id=1:length(pts.sampling)))
+
+#Salva em shapefile
+writeOGR(ANTcoor.df, getwd(), 'ANTcoorF', 'ESRI Shapefile')
+
+
+Obrigado,
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+======================================================================
+
+
+From eliaskrainski em yahoo.com.br  Fri Dec 18 07:53:15 2015
+From: eliaskrainski em yahoo.com.br (Elias Teixeira Krainski)
+Date: Fri, 18 Dec 2015 10:53:15 +0100
+Subject: [R-br] Criar um spatial points e shapefile com coordenadas e
+ seus atributos
+In-Reply-To: <567330AD.1080401@yahoo.com.br>
+References: <567330AD.1080401@yahoo.com.br>
+Message-ID: <5673D78B.8090001@yahoo.com.br>
+
+SpatialPoints é apenas para pontos, sem atributos.
+'esp' e 'cob' devem ser considerados em SpatialPointsDataFrame
+
+
+From nandodesouza em gmail.com  Fri Dec 18 19:16:36 2015
+From: nandodesouza em gmail.com (Fernando Antonio de souza)
+Date: Fri, 18 Dec 2015 19:16:36 -0200
+Subject: [R-br] Erro installar r DEBIAN
+Message-ID: <CAFrWFskGdT_ZCvryo83en4tLpgHPQTDg+zrPwR50OH87QU+Arg@mail.gmail.com>
+
+Caros colegas
+
+ Uso um pc Debian jessie 64 bits. Meu sistema estava funcionando
+plenamente. após fazer a atualização do r para a recente versão 3.2.3
+passei a receber a seguinte mensagem em meu sistema ao rodar o camando dpkg
+--configure -a no shell :
+
+Erros foram encontrados durante o processamento de:
+ r-base-core
+ r-cran-boot
+ r-cran-cluster
+ r-cran-foreign
+ r-cran-mass
+ r-cran-kernsmooth
+ r-cran-lattice
+ r-cran-nlme
+ r-cran-matrix
+ r-cran-mgcv
+ r-cran-survival
+ r-cran-rpart
+ r-cran-class
+ r-cran-nnet
+ r-cran-spatial
+ r-cran-codetools
+ r-recommended
+ r-base
+ r-base-dev
+ r-base-html
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+Isto é apenas o final, pois a saída é muito grande. Mas basicamente parece
+ser uma questão de dependências. Pelo que entendi está ocorrendo um
+problema ao instalar o pacote r-base-core que impede a instalação do r-base
+e assim dos demais:
+
+f:~$ sudo dpkg --configure r-base-core
+Configurando r-base-core (3.2.3-1~jessiecran.0) ...
+dpkg: erro ao processar o pacote r-base-core (--configure):
+ sub-processo script post-installation instalado retornou estado de saída
+de erro 10
+A processar 'triggers' para menu (2.1.47) ...
+Erros foram encontrados durante o processamento de:
+ r-base-core
+
+:~$ sudo dpkg --configure r-base
+dpkg: problemas com dependências impedem a configuração de r-base:
+ r-base depende de r-base-core (>= 3.2.3-1~jessiecran.0); porém:
+  Pacote r-base-core não está configurado ainda.
+ r-base depende de r-recommended (= 3.2.3-1~jessiecran.0); porém:
+  Pacote r-recommended não está configurado ainda.
+
+dpkg: erro ao processar o pacote r-base (--configure):
+ problemas de dependência - deixando desconfigurado
+Erros foram encontrados durante o processamento de:
+ r-base
+
+Eu ja fiz a remoção completa do R utilizando o synaptic e tentei
+reinstalar  e sempre volta a mesma coisa. Após reinstalar e digitar R no
+shell o sofware abriu com as seguintes messagens
+
+Warning message:
+package "methods" in options("defaultPackages") was not found
+Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+  chamada: options(op.utils[toset])
+  erro: valor inválido para 'editor'
+Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+  chamada: options(op.utils[toset])
+  erro: valor inválido para 'editor'
+Além disso: Warning message:
+package ‘utils’ in options("defaultPackages") was not found
+Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+  chamada: options(op.utils[toset])
+  erro: valor inválido para 'editor'
+Além disso: Warning message:
+package ‘stats’ in options("defaultPackages") was not found
+Durante a inicialização - Warning message:
+package ‘methods’ in options("defaultPackages") was not found
+
+Alguém sabe como corrigir este problema. Eu ja procurei em vários foruns
+debian/ubuntu e ja tentei comandos como
+
+apt-get install -f
+apt-get clean
+apt-get autoremove
+
+etc
+
+O que eu faço?
+
+
+-- 
+=======================================================================
+Fernando Souza
+Zootecnista, DSc. Produção Animal
+e-mail:nandodesouza em gmail.com
+https://producaoanimalcomr.wordpress.com/
+========================================================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151218/eed3d644/attachment.html>
+
+From rudiney.s.pereira em gmail.com  Fri Dec 18 19:49:12 2015
+From: rudiney.s.pereira em gmail.com (Rudiney S Pereira)
+Date: Fri, 18 Dec 2015 19:49:12 -0200
+Subject: [R-br] Erro installar r DEBIAN
+In-Reply-To: <CAFrWFskGdT_ZCvryo83en4tLpgHPQTDg+zrPwR50OH87QU+Arg@mail.gmail.com>
+References: <CAFrWFskGdT_ZCvryo83en4tLpgHPQTDg+zrPwR50OH87QU+Arg@mail.gmail.com>
+Message-ID: <CANB+tFQeAd2=9J38frV_=ifsJV_tAXCN-NsYJKbn-gd-sdh9zA@mail.gmail.com>
+
+Boa noite!
+
+Já tentou rodar o comando: apt-get -f install  ?
+Em 18/12/2015 7:16 PM, "Fernando Antonio de souza" <nandodesouza em gmail.com>
+escreveu:
+
+> Caros colegas
+>
+>  Uso um pc Debian jessie 64 bits. Meu sistema estava funcionando
+> plenamente. após fazer a atualização do r para a recente versão 3.2.3
+> passei a receber a seguinte mensagem em meu sistema ao rodar o camando dpkg
+> --configure -a no shell :
+>
+> Erros foram encontrados durante o processamento de:
+>  r-base-core
+>  r-cran-boot
+>  r-cran-cluster
+>  r-cran-foreign
+>  r-cran-mass
+>  r-cran-kernsmooth
+>  r-cran-lattice
+>  r-cran-nlme
+>  r-cran-matrix
+>  r-cran-mgcv
+>  r-cran-survival
+>  r-cran-rpart
+>  r-cran-class
+>  r-cran-nnet
+>  r-cran-spatial
+>  r-cran-codetools
+>  r-recommended
+>  r-base
+>  r-base-dev
+>  r-base-html
+> E: Sub-process /usr/bin/dpkg returned an error code (1)
+>
+> Isto é apenas o final, pois a saída é muito grande. Mas basicamente parece
+> ser uma questão de dependências. Pelo que entendi está ocorrendo um
+> problema ao instalar o pacote r-base-core que impede a instalação do r-base
+> e assim dos demais:
+>
+> f:~$ sudo dpkg --configure r-base-core
+> Configurando r-base-core (3.2.3-1~jessiecran.0) ...
+> dpkg: erro ao processar o pacote r-base-core (--configure):
+>  sub-processo script post-installation instalado retornou estado de saída
+> de erro 10
+> A processar 'triggers' para menu (2.1.47) ...
+> Erros foram encontrados durante o processamento de:
+>  r-base-core
+>
+> :~$ sudo dpkg --configure r-base
+> dpkg: problemas com dependências impedem a configuração de r-base:
+>  r-base depende de r-base-core (>= 3.2.3-1~jessiecran.0); porém:
+>   Pacote r-base-core não está configurado ainda.
+>  r-base depende de r-recommended (= 3.2.3-1~jessiecran.0); porém:
+>   Pacote r-recommended não está configurado ainda.
+>
+> dpkg: erro ao processar o pacote r-base (--configure):
+>  problemas de dependência - deixando desconfigurado
+> Erros foram encontrados durante o processamento de:
+>  r-base
+>
+> Eu ja fiz a remoção completa do R utilizando o synaptic e tentei
+> reinstalar  e sempre volta a mesma coisa. Após reinstalar e digitar R no
+> shell o sofware abriu com as seguintes messagens
+>
+> Warning message:
+> package "methods" in options("defaultPackages") was not found
+> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>   chamada: options(op.utils[toset])
+>   erro: valor inválido para 'editor'
+> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>   chamada: options(op.utils[toset])
+>   erro: valor inválido para 'editor'
+> Além disso: Warning message:
+> package ‘utils’ in options("defaultPackages") was not found
+> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>   chamada: options(op.utils[toset])
+>   erro: valor inválido para 'editor'
+> Além disso: Warning message:
+> package ‘stats’ in options("defaultPackages") was not found
+> Durante a inicialização - Warning message:
+> package ‘methods’ in options("defaultPackages") was not found
+>
+> Alguém sabe como corrigir este problema. Eu ja procurei em vários foruns
+> debian/ubuntu e ja tentei comandos como
+>
+> apt-get install -f
+> apt-get clean
+> apt-get autoremove
+>
+> etc
+>
+> O que eu faço?
+>
+>
+> --
+> =======================================================================
+> Fernando Souza
+> Zootecnista, DSc. Produção Animal
+> e-mail:nandodesouza em gmail.com
+> https://producaoanimalcomr.wordpress.com/
+> ========================================================================
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151218/760e18ea/attachment.html>
+
+From nandodesouza em gmail.com  Fri Dec 18 19:58:19 2015
+From: nandodesouza em gmail.com (Fernando Antonio de souza)
+Date: Fri, 18 Dec 2015 19:58:19 -0200
+Subject: [R-br] Erro installar r DEBIAN
+In-Reply-To: <CANB+tFQeAd2=9J38frV_=ifsJV_tAXCN-NsYJKbn-gd-sdh9zA@mail.gmail.com>
+References: <CAFrWFskGdT_ZCvryo83en4tLpgHPQTDg+zrPwR50OH87QU+Arg@mail.gmail.com>
+ <CANB+tFQeAd2=9J38frV_=ifsJV_tAXCN-NsYJKbn-gd-sdh9zA@mail.gmail.com>
+Message-ID: <CAFrWFs=+xATDz85r_6HYSzXqz=4w2qmWsfYiCO-Xk6+30s+OZA@mail.gmail.com>
+
+Oi Rudiney,
+
+Sim, ja tentei e não funcionou.
+
+Em 18 de dezembro de 2015 19:49, Rudiney S Pereira <
+rudiney.s.pereira em gmail.com> escreveu:
+
+> Boa noite!
+>
+> Já tentou rodar o comando: apt-get -f install  ?
+> Em 18/12/2015 7:16 PM, "Fernando Antonio de souza" <nandodesouza em gmail.com>
+> escreveu:
+>
+>> Caros colegas
+>>
+>>  Uso um pc Debian jessie 64 bits. Meu sistema estava funcionando
+>> plenamente. após fazer a atualização do r para a recente versão 3.2.3
+>> passei a receber a seguinte mensagem em meu sistema ao rodar o camando dpkg
+>> --configure -a no shell :
+>>
+>> Erros foram encontrados durante o processamento de:
+>>  r-base-core
+>>  r-cran-boot
+>>  r-cran-cluster
+>>  r-cran-foreign
+>>  r-cran-mass
+>>  r-cran-kernsmooth
+>>  r-cran-lattice
+>>  r-cran-nlme
+>>  r-cran-matrix
+>>  r-cran-mgcv
+>>  r-cran-survival
+>>  r-cran-rpart
+>>  r-cran-class
+>>  r-cran-nnet
+>>  r-cran-spatial
+>>  r-cran-codetools
+>>  r-recommended
+>>  r-base
+>>  r-base-dev
+>>  r-base-html
+>> E: Sub-process /usr/bin/dpkg returned an error code (1)
+>>
+>> Isto é apenas o final, pois a saída é muito grande. Mas basicamente
+>> parece ser uma questão de dependências. Pelo que entendi está ocorrendo um
+>> problema ao instalar o pacote r-base-core que impede a instalação do r-base
+>> e assim dos demais:
+>>
+>> f:~$ sudo dpkg --configure r-base-core
+>> Configurando r-base-core (3.2.3-1~jessiecran.0) ...
+>> dpkg: erro ao processar o pacote r-base-core (--configure):
+>>  sub-processo script post-installation instalado retornou estado de saída
+>> de erro 10
+>> A processar 'triggers' para menu (2.1.47) ...
+>> Erros foram encontrados durante o processamento de:
+>>  r-base-core
+>>
+>> :~$ sudo dpkg --configure r-base
+>> dpkg: problemas com dependências impedem a configuração de r-base:
+>>  r-base depende de r-base-core (>= 3.2.3-1~jessiecran.0); porém:
+>>   Pacote r-base-core não está configurado ainda.
+>>  r-base depende de r-recommended (= 3.2.3-1~jessiecran.0); porém:
+>>   Pacote r-recommended não está configurado ainda.
+>>
+>> dpkg: erro ao processar o pacote r-base (--configure):
+>>  problemas de dependência - deixando desconfigurado
+>> Erros foram encontrados durante o processamento de:
+>>  r-base
+>>
+>> Eu ja fiz a remoção completa do R utilizando o synaptic e tentei
+>> reinstalar  e sempre volta a mesma coisa. Após reinstalar e digitar R no
+>> shell o sofware abriu com as seguintes messagens
+>>
+>> Warning message:
+>> package "methods" in options("defaultPackages") was not found
+>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>   chamada: options(op.utils[toset])
+>>   erro: valor inválido para 'editor'
+>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>   chamada: options(op.utils[toset])
+>>   erro: valor inválido para 'editor'
+>> Além disso: Warning message:
+>> package ‘utils’ in options("defaultPackages") was not found
+>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>   chamada: options(op.utils[toset])
+>>   erro: valor inválido para 'editor'
+>> Além disso: Warning message:
+>> package ‘stats’ in options("defaultPackages") was not found
+>> Durante a inicialização - Warning message:
+>> package ‘methods’ in options("defaultPackages") was not found
+>>
+>> Alguém sabe como corrigir este problema. Eu ja procurei em vários foruns
+>> debian/ubuntu e ja tentei comandos como
+>>
+>> apt-get install -f
+>> apt-get clean
+>> apt-get autoremove
+>>
+>> etc
+>>
+>> O que eu faço?
+>>
+>>
+>> --
+>> =======================================================================
+>> Fernando Souza
+>> Zootecnista, DSc. Produção Animal
+>> e-mail:nandodesouza em gmail.com
+>> https://producaoanimalcomr.wordpress.com/
+>> ========================================================================
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+=======================================================================
+Fernando Souza
+Zootecnista, DSc. Produção Animal
+e-mail:nandodesouza em gmail.com
+https://producaoanimalcomr.wordpress.com/
+========================================================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151218/c8cd36de/attachment.html>
+
+From rudiney.s.pereira em gmail.com  Fri Dec 18 20:19:19 2015
+From: rudiney.s.pereira em gmail.com (Rudiney S Pereira)
+Date: Fri, 18 Dec 2015 20:19:19 -0200
+Subject: [R-br] Erro installar r DEBIAN
+In-Reply-To: <CAFrWFs=+xATDz85r_6HYSzXqz=4w2qmWsfYiCO-Xk6+30s+OZA@mail.gmail.com>
+References: <CAFrWFskGdT_ZCvryo83en4tLpgHPQTDg+zrPwR50OH87QU+Arg@mail.gmail.com>
+ <CANB+tFQeAd2=9J38frV_=ifsJV_tAXCN-NsYJKbn-gd-sdh9zA@mail.gmail.com>
+ <CAFrWFs=+xATDz85r_6HYSzXqz=4w2qmWsfYiCO-Xk6+30s+OZA@mail.gmail.com>
+Message-ID: <CANB+tFRbUS6TgR86NstwkfGuPK-ZKEFtwd7G6ZbMSAj95B-LUA@mail.gmail.com>
+
+Olá,
+
+Como é seu arquivo sources.list?
+
+Abç
+
+Em sexta-feira, 18 de dezembro de 2015, Fernando Antonio de souza <
+nandodesouza em gmail.com> escreveu:
+
+> Oi Rudiney,
+>
+> Sim, ja tentei e não funcionou.
+>
+> Em 18 de dezembro de 2015 19:49, Rudiney S Pereira <
+> rudiney.s.pereira em gmail.com
+> <javascript:_e(%7B%7D,'cvml','rudiney.s.pereira em gmail.com');>> escreveu:
+>
+>> Boa noite!
+>>
+>> Já tentou rodar o comando: apt-get -f install  ?
+>> Em 18/12/2015 7:16 PM, "Fernando Antonio de souza" <
+>> nandodesouza em gmail.com
+>> <javascript:_e(%7B%7D,'cvml','nandodesouza em gmail.com');>> escreveu:
+>>
+>>> Caros colegas
+>>>
+>>>  Uso um pc Debian jessie 64 bits. Meu sistema estava funcionando
+>>> plenamente. após fazer a atualização do r para a recente versão 3.2.3
+>>> passei a receber a seguinte mensagem em meu sistema ao rodar o camando dpkg
+>>> --configure -a no shell :
+>>>
+>>> Erros foram encontrados durante o processamento de:
+>>>  r-base-core
+>>>  r-cran-boot
+>>>  r-cran-cluster
+>>>  r-cran-foreign
+>>>  r-cran-mass
+>>>  r-cran-kernsmooth
+>>>  r-cran-lattice
+>>>  r-cran-nlme
+>>>  r-cran-matrix
+>>>  r-cran-mgcv
+>>>  r-cran-survival
+>>>  r-cran-rpart
+>>>  r-cran-class
+>>>  r-cran-nnet
+>>>  r-cran-spatial
+>>>  r-cran-codetools
+>>>  r-recommended
+>>>  r-base
+>>>  r-base-dev
+>>>  r-base-html
+>>> E: Sub-process /usr/bin/dpkg returned an error code (1)
+>>>
+>>> Isto é apenas o final, pois a saída é muito grande. Mas basicamente
+>>> parece ser uma questão de dependências. Pelo que entendi está ocorrendo um
+>>> problema ao instalar o pacote r-base-core que impede a instalação do r-base
+>>> e assim dos demais:
+>>>
+>>> f:~$ sudo dpkg --configure r-base-core
+>>> Configurando r-base-core (3.2.3-1~jessiecran.0) ...
+>>> dpkg: erro ao processar o pacote r-base-core (--configure):
+>>>  sub-processo script post-installation instalado retornou estado de
+>>> saída de erro 10
+>>> A processar 'triggers' para menu (2.1.47) ...
+>>> Erros foram encontrados durante o processamento de:
+>>>  r-base-core
+>>>
+>>> :~$ sudo dpkg --configure r-base
+>>> dpkg: problemas com dependências impedem a configuração de r-base:
+>>>  r-base depende de r-base-core (>= 3.2.3-1~jessiecran.0); porém:
+>>>   Pacote r-base-core não está configurado ainda.
+>>>  r-base depende de r-recommended (= 3.2.3-1~jessiecran.0); porém:
+>>>   Pacote r-recommended não está configurado ainda.
+>>>
+>>> dpkg: erro ao processar o pacote r-base (--configure):
+>>>  problemas de dependência - deixando desconfigurado
+>>> Erros foram encontrados durante o processamento de:
+>>>  r-base
+>>>
+>>> Eu ja fiz a remoção completa do R utilizando o synaptic e tentei
+>>> reinstalar  e sempre volta a mesma coisa. Após reinstalar e digitar R no
+>>> shell o sofware abriu com as seguintes messagens
+>>>
+>>> Warning message:
+>>> package "methods" in options("defaultPackages") was not found
+>>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>>   chamada: options(op.utils[toset])
+>>>   erro: valor inválido para 'editor'
+>>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>>   chamada: options(op.utils[toset])
+>>>   erro: valor inválido para 'editor'
+>>> Além disso: Warning message:
+>>> package ‘utils’ in options("defaultPackages") was not found
+>>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>>   chamada: options(op.utils[toset])
+>>>   erro: valor inválido para 'editor'
+>>> Além disso: Warning message:
+>>> package ‘stats’ in options("defaultPackages") was not found
+>>> Durante a inicialização - Warning message:
+>>> package ‘methods’ in options("defaultPackages") was not found
+>>>
+>>> Alguém sabe como corrigir este problema. Eu ja procurei em vários foruns
+>>> debian/ubuntu e ja tentei comandos como
+>>>
+>>> apt-get install -f
+>>> apt-get clean
+>>> apt-get autoremove
+>>>
+>>> etc
+>>>
+>>> O que eu faço?
+>>>
+>>>
+>>> --
+>>> =======================================================================
+>>> Fernando Souza
+>>> Zootecnista, DSc. Produção Animal
+>>> e-mail:nandodesouza em gmail.com
+>>> <javascript:_e(%7B%7D,'cvml','e-mail:nandodesouza em gmail.com');>
+>>> https://producaoanimalcomr.wordpress.com/
+>>> ========================================================================
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> <javascript:_e(%7B%7D,'cvml','R-br em listas.c3sl.ufpr.br');>
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> <javascript:_e(%7B%7D,'cvml','R-br em listas.c3sl.ufpr.br');>
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+>
+> --
+> =======================================================================
+> Fernando Souza
+> Zootecnista, DSc. Produção Animal
+> e-mail:nandodesouza em gmail.com
+> <javascript:_e(%7B%7D,'cvml','e-mail:nandodesouza em gmail.com');>
+> https://producaoanimalcomr.wordpress.com/
+> ========================================================================
+>
+
+
+-- 
+Prof. Dr. Rudiney Soares Pereira
+UFSM - CCR - DER - Núcleo de Geotecnologias
+Prédio 44 J, Sala 214
+RS 509 KM 9 - Campus Universitário
+97.105-900 Santa Maria RS
+Brasil
+site: http://www.ufsm.br/geosere
+skype: rudiney.s.pereira
+fone: 55 3220-9468
+        55 9118-4142
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151218/aa6f69e6/attachment.html>
+
+From nandodesouza em gmail.com  Fri Dec 18 20:24:49 2015
+From: nandodesouza em gmail.com (Fernando Antonio de souza)
+Date: Fri, 18 Dec 2015 20:24:49 -0200
+Subject: [R-br] Erro installar r DEBIAN
+In-Reply-To: <CANB+tFRbUS6TgR86NstwkfGuPK-ZKEFtwd7G6ZbMSAj95B-LUA@mail.gmail.com>
+References: <CAFrWFskGdT_ZCvryo83en4tLpgHPQTDg+zrPwR50OH87QU+Arg@mail.gmail.com>
+ <CANB+tFQeAd2=9J38frV_=ifsJV_tAXCN-NsYJKbn-gd-sdh9zA@mail.gmail.com>
+ <CAFrWFs=+xATDz85r_6HYSzXqz=4w2qmWsfYiCO-Xk6+30s+OZA@mail.gmail.com>
+ <CANB+tFRbUS6TgR86NstwkfGuPK-ZKEFtwd7G6ZbMSAj95B-LUA@mail.gmail.com>
+Message-ID: <CAFrWFskdgemE54JEgFj2DUMVB42H6Sbu-p_QDBp3mswjg5x7kg@mail.gmail.com>
+
+# deb cdrom:[Debian GNU/Linux 8.1.0 _Jessie_ - Official Multi-architecture
+amd64/i386 NETINST #1 20150606-18:40]/ jessie main
+
+# deb cdrom:[Debian GNU/Linux 8.1.0 _Jessie_ - Official Multi-architecture
+amd64/i386 NETINST #1 20150606-18:40]/ jessie main
+
+#------------------------Debian Mirror--------------------------------------
+deb http://ftp.br.debian.org/debian/ jessie main contrib non-free
+deb-src http://ftp.br.debian.org/debian/ jessie main contrib non-free
+#---------------------atualizações de
+sugurança------------------------------
+deb http://security.debian.org/ jessie/updates main
+deb-src http://security.debian.org/ jessie/updates main
+#-------------jessie-updates, previously known as 'volatile'--------------
+deb http://ftp.br.debian.org/debian/ jessie-updates main
+deb-src http://ftp.br.debian.org/debian/ jessie-updates main
+#--------------------jessie-backports--------------------------
+deb http://ftp.br.debian.org/debian/ jessie-backports main
+deb-src http://ftp.br.debian.org/debian/ jessie-backports main
+#--------------------R MIRROR---------------------------------------
+deb http://nbcgib.uesc.br/mirrors/cran/bin/linux/debian jessie-cran3/
+
+
+Em 18 de dezembro de 2015 20:19, Rudiney S Pereira <
+rudiney.s.pereira em gmail.com> escreveu:
+
+> Olá,
+>
+> Como é seu arquivo sources.list?
+>
+> Abç
+>
+>
+> Em sexta-feira, 18 de dezembro de 2015, Fernando Antonio de souza <
+> nandodesouza em gmail.com> escreveu:
+>
+>> Oi Rudiney,
+>>
+>> Sim, ja tentei e não funcionou.
+>>
+>> Em 18 de dezembro de 2015 19:49, Rudiney S Pereira <
+>> rudiney.s.pereira em gmail.com> escreveu:
+>>
+>>> Boa noite!
+>>>
+>>> Já tentou rodar o comando: apt-get -f install  ?
+>>> Em 18/12/2015 7:16 PM, "Fernando Antonio de souza" <
+>>> nandodesouza em gmail.com> escreveu:
+>>>
+>>>> Caros colegas
+>>>>
+>>>>  Uso um pc Debian jessie 64 bits. Meu sistema estava funcionando
+>>>> plenamente. após fazer a atualização do r para a recente versão 3.2.3
+>>>> passei a receber a seguinte mensagem em meu sistema ao rodar o camando dpkg
+>>>> --configure -a no shell :
+>>>>
+>>>> Erros foram encontrados durante o processamento de:
+>>>>  r-base-core
+>>>>  r-cran-boot
+>>>>  r-cran-cluster
+>>>>  r-cran-foreign
+>>>>  r-cran-mass
+>>>>  r-cran-kernsmooth
+>>>>  r-cran-lattice
+>>>>  r-cran-nlme
+>>>>  r-cran-matrix
+>>>>  r-cran-mgcv
+>>>>  r-cran-survival
+>>>>  r-cran-rpart
+>>>>  r-cran-class
+>>>>  r-cran-nnet
+>>>>  r-cran-spatial
+>>>>  r-cran-codetools
+>>>>  r-recommended
+>>>>  r-base
+>>>>  r-base-dev
+>>>>  r-base-html
+>>>> E: Sub-process /usr/bin/dpkg returned an error code (1)
+>>>>
+>>>> Isto é apenas o final, pois a saída é muito grande. Mas basicamente
+>>>> parece ser uma questão de dependências. Pelo que entendi está ocorrendo um
+>>>> problema ao instalar o pacote r-base-core que impede a instalação do r-base
+>>>> e assim dos demais:
+>>>>
+>>>> f:~$ sudo dpkg --configure r-base-core
+>>>> Configurando r-base-core (3.2.3-1~jessiecran.0) ...
+>>>> dpkg: erro ao processar o pacote r-base-core (--configure):
+>>>>  sub-processo script post-installation instalado retornou estado de
+>>>> saída de erro 10
+>>>> A processar 'triggers' para menu (2.1.47) ...
+>>>> Erros foram encontrados durante o processamento de:
+>>>>  r-base-core
+>>>>
+>>>> :~$ sudo dpkg --configure r-base
+>>>> dpkg: problemas com dependências impedem a configuração de r-base:
+>>>>  r-base depende de r-base-core (>= 3.2.3-1~jessiecran.0); porém:
+>>>>   Pacote r-base-core não está configurado ainda.
+>>>>  r-base depende de r-recommended (= 3.2.3-1~jessiecran.0); porém:
+>>>>   Pacote r-recommended não está configurado ainda.
+>>>>
+>>>> dpkg: erro ao processar o pacote r-base (--configure):
+>>>>  problemas de dependência - deixando desconfigurado
+>>>> Erros foram encontrados durante o processamento de:
+>>>>  r-base
+>>>>
+>>>> Eu ja fiz a remoção completa do R utilizando o synaptic e tentei
+>>>> reinstalar  e sempre volta a mesma coisa. Após reinstalar e digitar R no
+>>>> shell o sofware abriu com as seguintes messagens
+>>>>
+>>>> Warning message:
+>>>> package "methods" in options("defaultPackages") was not found
+>>>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>>>   chamada: options(op.utils[toset])
+>>>>   erro: valor inválido para 'editor'
+>>>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>>>   chamada: options(op.utils[toset])
+>>>>   erro: valor inválido para 'editor'
+>>>> Além disso: Warning message:
+>>>> package ‘utils’ in options("defaultPackages") was not found
+>>>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>>>   chamada: options(op.utils[toset])
+>>>>   erro: valor inválido para 'editor'
+>>>> Além disso: Warning message:
+>>>> package ‘stats’ in options("defaultPackages") was not found
+>>>> Durante a inicialização - Warning message:
+>>>> package ‘methods’ in options("defaultPackages") was not found
+>>>>
+>>>> Alguém sabe como corrigir este problema. Eu ja procurei em vários
+>>>> foruns debian/ubuntu e ja tentei comandos como
+>>>>
+>>>> apt-get install -f
+>>>> apt-get clean
+>>>> apt-get autoremove
+>>>>
+>>>> etc
+>>>>
+>>>> O que eu faço?
+>>>>
+>>>>
+>>>> --
+>>>> =======================================================================
+>>>> Fernando Souza
+>>>> Zootecnista, DSc. Produção Animal
+>>>> e-mail:nandodesouza em gmail.com
+>>>> https://producaoanimalcomr.wordpress.com/
+>>>> ========================================================================
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>>
+>>> _______________________________________________
+>>> R-br mailing list
+>>> R-br em listas.c3sl.ufpr.br
+>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>> código mínimo reproduzível.
+>>>
+>>
+>>
+>>
+>> --
+>> =======================================================================
+>> Fernando Souza
+>> Zootecnista, DSc. Produção Animal
+>> e-mail:nandodesouza em gmail.com
+>> https://producaoanimalcomr.wordpress.com/
+>> ========================================================================
+>>
+>
+>
+> --
+> Prof. Dr. Rudiney Soares Pereira
+> UFSM - CCR - DER - Núcleo de Geotecnologias
+> Prédio 44 J, Sala 214
+> RS 509 KM 9 - Campus Universitário
+> 97.105-900 Santa Maria RS
+> Brasil
+> site: http://www.ufsm.br/geosere
+> skype: rudiney.s.pereira
+> fone: 55 3220-9468
+>         55 9118-4142
+>
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+=======================================================================
+Fernando Souza
+Zootecnista, DSc. Produção Animal
+e-mail:nandodesouza em gmail.com
+https://producaoanimalcomr.wordpress.com/
+========================================================================
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151218/35d6cfd7/attachment.html>
+
+From rudiney.s.pereira em gmail.com  Fri Dec 18 20:33:58 2015
+From: rudiney.s.pereira em gmail.com (Rudiney S Pereira)
+Date: Fri, 18 Dec 2015 20:33:58 -0200
+Subject: [R-br] Erro installar r DEBIAN
+In-Reply-To: <CAFrWFskdgemE54JEgFj2DUMVB42H6Sbu-p_QDBp3mswjg5x7kg@mail.gmail.com>
+References: <CAFrWFskGdT_ZCvryo83en4tLpgHPQTDg+zrPwR50OH87QU+Arg@mail.gmail.com>
+ <CANB+tFQeAd2=9J38frV_=ifsJV_tAXCN-NsYJKbn-gd-sdh9zA@mail.gmail.com>
+ <CAFrWFs=+xATDz85r_6HYSzXqz=4w2qmWsfYiCO-Xk6+30s+OZA@mail.gmail.com>
+ <CANB+tFRbUS6TgR86NstwkfGuPK-ZKEFtwd7G6ZbMSAj95B-LUA@mail.gmail.com>
+ <CAFrWFskdgemE54JEgFj2DUMVB42H6Sbu-p_QDBp3mswjg5x7kg@mail.gmail.com>
+Message-ID: <CANB+tFR_gBYjkDjpKBTG_jXumRBWvD6uo4cXJyRpafyorrHwyg@mail.gmail.com>
+
+Prezado Fernando,
+
+Eu uso a versão SID e meu arquivo está assim:
+
+# deb cdrom:[Debian GNU/Linux testing _Jessie_ - Official Snapshot amd64
+DVD Binary-1 20141027-06:39]/ jessie contrib main
+
+# deb cdrom:[Debian GNU/Linux testing _Jessie_ - Official Snapshot amd64
+DVD Binary-1 20141027-06:39]/ jessie contrib main
+
+deb http://debian.c3sl.ufpr.br/debian/ sid main contrib non-free
+deb-src http://debian.c3sl.ufpr.br/debian/ sid main contrib non-free
+
+deb http://security.debian.org/ stretch/updates main contrib
+deb-src http://security.debian.org/ stretch/updates main contrib
+
+# jessie-updates, previously known as 'volatile'
+deb http://debian.c3sl.ufpr.br/debian/ stretch-updates main contrib
+deb-src http://debian.c3sl.ufpr.br/debian/ stretch-updates main contrib
+
+# jessie-backports, previously on backports.debian.org
+# deb http://debian.c3sl.ufpr.br/debian/ testing-backports main contrib
+# deb-src http://debian.c3sl.ufpr.br/debian/ testing-backports main contrib
+
+Como podes ver, as linhas jessie-backports, estão comentadas. Não sei se é
+o caso, mas não tenho problemas em rodar o R, conforme relato abaixo,
+versão 3.2.3
+
+rudiney em pampa:~$ R --version
+R version 3.2.3 (2015-12-10) -- "Wooden Christmas-Tree"
+Copyright (C) 2015 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under the terms of the
+GNU General Public License versions 2 or 3.
+For more information about these matters see
+http://www.gnu.org/licenses/.
+
+Vamos tentando resolver, abraço!
+
+Em 18 de dezembro de 2015 20:24, Fernando Antonio de souza <
+nandodesouza em gmail.com> escreveu:
+
+> # deb cdrom:[Debian GNU/Linux 8.1.0 _Jessie_ - Official Multi-architecture
+> amd64/i386 NETINST #1 20150606-18:40]/ jessie main
+>
+> # deb cdrom:[Debian GNU/Linux 8.1.0 _Jessie_ - Official Multi-architecture
+> amd64/i386 NETINST #1 20150606-18:40]/ jessie main
+>
+> #------------------------Debian
+> Mirror--------------------------------------
+> deb http://ftp.br.debian.org/debian/ jessie main contrib non-free
+> deb-src http://ftp.br.debian.org/debian/ jessie main contrib non-free
+> #---------------------atualizações de
+> sugurança------------------------------
+> deb http://security.debian.org/ jessie/updates main
+> deb-src http://security.debian.org/ jessie/updates main
+> #-------------jessie-updates, previously known as 'volatile'--------------
+> deb http://ftp.br.debian.org/debian/ jessie-updates main
+> deb-src http://ftp.br.debian.org/debian/ jessie-updates main
+> #--------------------jessie-backports--------------------------
+> deb http://ftp.br.debian.org/debian/ jessie-backports main
+> deb-src http://ftp.br.debian.org/debian/ jessie-backports main
+> #--------------------R MIRROR---------------------------------------
+> deb http://nbcgib.uesc.br/mirrors/cran/bin/linux/debian jessie-cran3/
+>
+>
+> Em 18 de dezembro de 2015 20:19, Rudiney S Pereira <
+> rudiney.s.pereira em gmail.com> escreveu:
+>
+>> Olá,
+>>
+>> Como é seu arquivo sources.list?
+>>
+>> Abç
+>>
+>>
+>> Em sexta-feira, 18 de dezembro de 2015, Fernando Antonio de souza <
+>> nandodesouza em gmail.com> escreveu:
+>>
+>>> Oi Rudiney,
+>>>
+>>> Sim, ja tentei e não funcionou.
+>>>
+>>> Em 18 de dezembro de 2015 19:49, Rudiney S Pereira <
+>>> rudiney.s.pereira em gmail.com> escreveu:
+>>>
+>>>> Boa noite!
+>>>>
+>>>> Já tentou rodar o comando: apt-get -f install  ?
+>>>> Em 18/12/2015 7:16 PM, "Fernando Antonio de souza" <
+>>>> nandodesouza em gmail.com> escreveu:
+>>>>
+>>>>> Caros colegas
+>>>>>
+>>>>>  Uso um pc Debian jessie 64 bits. Meu sistema estava funcionando
+>>>>> plenamente. após fazer a atualização do r para a recente versão 3.2.3
+>>>>> passei a receber a seguinte mensagem em meu sistema ao rodar o camando dpkg
+>>>>> --configure -a no shell :
+>>>>>
+>>>>> Erros foram encontrados durante o processamento de:
+>>>>>  r-base-core
+>>>>>  r-cran-boot
+>>>>>  r-cran-cluster
+>>>>>  r-cran-foreign
+>>>>>  r-cran-mass
+>>>>>  r-cran-kernsmooth
+>>>>>  r-cran-lattice
+>>>>>  r-cran-nlme
+>>>>>  r-cran-matrix
+>>>>>  r-cran-mgcv
+>>>>>  r-cran-survival
+>>>>>  r-cran-rpart
+>>>>>  r-cran-class
+>>>>>  r-cran-nnet
+>>>>>  r-cran-spatial
+>>>>>  r-cran-codetools
+>>>>>  r-recommended
+>>>>>  r-base
+>>>>>  r-base-dev
+>>>>>  r-base-html
+>>>>> E: Sub-process /usr/bin/dpkg returned an error code (1)
+>>>>>
+>>>>> Isto é apenas o final, pois a saída é muito grande. Mas basicamente
+>>>>> parece ser uma questão de dependências. Pelo que entendi está ocorrendo um
+>>>>> problema ao instalar o pacote r-base-core que impede a instalação do r-base
+>>>>> e assim dos demais:
+>>>>>
+>>>>> f:~$ sudo dpkg --configure r-base-core
+>>>>> Configurando r-base-core (3.2.3-1~jessiecran.0) ...
+>>>>> dpkg: erro ao processar o pacote r-base-core (--configure):
+>>>>>  sub-processo script post-installation instalado retornou estado de
+>>>>> saída de erro 10
+>>>>> A processar 'triggers' para menu (2.1.47) ...
+>>>>> Erros foram encontrados durante o processamento de:
+>>>>>  r-base-core
+>>>>>
+>>>>> :~$ sudo dpkg --configure r-base
+>>>>> dpkg: problemas com dependências impedem a configuração de r-base:
+>>>>>  r-base depende de r-base-core (>= 3.2.3-1~jessiecran.0); porém:
+>>>>>   Pacote r-base-core não está configurado ainda.
+>>>>>  r-base depende de r-recommended (= 3.2.3-1~jessiecran.0); porém:
+>>>>>   Pacote r-recommended não está configurado ainda.
+>>>>>
+>>>>> dpkg: erro ao processar o pacote r-base (--configure):
+>>>>>  problemas de dependência - deixando desconfigurado
+>>>>> Erros foram encontrados durante o processamento de:
+>>>>>  r-base
+>>>>>
+>>>>> Eu ja fiz a remoção completa do R utilizando o synaptic e tentei
+>>>>> reinstalar  e sempre volta a mesma coisa. Após reinstalar e digitar R no
+>>>>> shell o sofware abriu com as seguintes messagens
+>>>>>
+>>>>> Warning message:
+>>>>> package "methods" in options("defaultPackages") was not found
+>>>>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>>>>   chamada: options(op.utils[toset])
+>>>>>   erro: valor inválido para 'editor'
+>>>>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>>>>   chamada: options(op.utils[toset])
+>>>>>   erro: valor inválido para 'editor'
+>>>>> Além disso: Warning message:
+>>>>> package ‘utils’ in options("defaultPackages") was not found
+>>>>> Error : .onLoad falhou em loadNamespace() para 'utils', detalhes:
+>>>>>   chamada: options(op.utils[toset])
+>>>>>   erro: valor inválido para 'editor'
+>>>>> Além disso: Warning message:
+>>>>> package ‘stats’ in options("defaultPackages") was not found
+>>>>> Durante a inicialização - Warning message:
+>>>>> package ‘methods’ in options("defaultPackages") was not found
+>>>>>
+>>>>> Alguém sabe como corrigir este problema. Eu ja procurei em vários
+>>>>> foruns debian/ubuntu e ja tentei comandos como
+>>>>>
+>>>>> apt-get install -f
+>>>>> apt-get clean
+>>>>> apt-get autoremove
+>>>>>
+>>>>> etc
+>>>>>
+>>>>> O que eu faço?
+>>>>>
+>>>>>
+>>>>> --
+>>>>> =======================================================================
+>>>>> Fernando Souza
+>>>>> Zootecnista, DSc. Produção Animal
+>>>>> e-mail:nandodesouza em gmail.com
+>>>>> https://producaoanimalcomr.wordpress.com/
+>>>>>
+>>>>> ========================================================================
+>>>>>
+>>>>> _______________________________________________
+>>>>> R-br mailing list
+>>>>> R-br em listas.c3sl.ufpr.br
+>>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>>> código mínimo reproduzível.
+>>>>>
+>>>>
+>>>> _______________________________________________
+>>>> R-br mailing list
+>>>> R-br em listas.c3sl.ufpr.br
+>>>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>>>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>>>> código mínimo reproduzível.
+>>>>
+>>>
+>>>
+>>>
+>>> --
+>>> =======================================================================
+>>> Fernando Souza
+>>> Zootecnista, DSc. Produção Animal
+>>> e-mail:nandodesouza em gmail.com
+>>> https://producaoanimalcomr.wordpress.com/
+>>> ========================================================================
+>>>
+>>
+>>
+>> --
+>> Prof. Dr. Rudiney Soares Pereira
+>> UFSM - CCR - DER - Núcleo de Geotecnologias
+>> Prédio 44 J, Sala 214
+>> RS 509 KM 9 - Campus Universitário
+>> 97.105-900 Santa Maria RS
+>> Brasil
+>> site: http://www.ufsm.br/geosere
+>> skype: rudiney.s.pereira
+>> fone: 55 3220-9468
+>>         55 9118-4142
+>>
+>>
+>> _______________________________________________
+>> R-br mailing list
+>> R-br em listas.c3sl.ufpr.br
+>> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+>> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+>> código mínimo reproduzível.
+>>
+>
+>
+>
+> --
+> =======================================================================
+> Fernando Souza
+> Zootecnista, DSc. Produção Animal
+> e-mail:nandodesouza em gmail.com
+> https://producaoanimalcomr.wordpress.com/
+> ========================================================================
+>
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e forneça
+> código mínimo reproduzível.
+>
+
+
+
+-- 
+Prof. Dr. Rudiney Soares Pereira
+UFSM - CCR - DER - Núcleo de Geotecnologias
+Prédio 44 J, Sala 214
+RS 509 KM 9 - Campus Universitário
+97.105-900 Santa Maria RS
+Brasil
+site: http://www.ufsm.br/geosere
+skype: rudiney.s.pereira
+fone: 55 3220-9468
+        55 9118-4142
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151218/f63121e9/attachment.html>
+
+From zecojls em gmail.com  Sat Dec 19 19:04:52 2015
+From: zecojls em gmail.com (=?UTF-8?Q?Jos=C3=A9_Lucas_Safanelli?=)
+Date: Sat, 19 Dec 2015 19:04:52 -0200
+Subject: [R-br] Loop para leitura de picos
+Message-ID: <CADni8G5B-N9M4LqpZTVkAOgoSkTO56aK0icdg-PjVf0Us8PcFQ@mail.gmail.com>
+
+Boa tarde, estou com o seguinte caso:
+
+DADO:
+amostra = c(49.936157, 48.133488, 45.775238, 43.229397, 40.021607,
+35.927558, 31.365912, 26.849848, 23.233177, 20.770278, 18.572067,
+15.590341, 11.936978, 8.478520, 5.572115, 3.272254, 1.642041, 0.999997,
+1.473886, 2.616919, 4.169691, 6.464019, 9.790810, 13.820101, 17.978423,
+21.674281, 24.065947, 24.875069, 24.590811, 23.620608, 22.240339,
+20.676521, 19.088229, 17.689105, 16.720912, 16.358739, 16.792281,
+18.321545, 21.053896, 24.777756, 29.121638, 33.551339, 37.628649,
+41.272700, 44.405581, 46.899820, 48.602420, 49.253714, 48.816692,
+47.380737, 44.920718)
+wavelength = seq(400, 450, by=1)
+plot(wavelenght, amostra, xlab  = "Comp. Onda (nm)", ylab = 'Valor', type =
+"l")
+axis(side=1, at=seq(400, 450, by=5))
+
+PROBLEMA:
+Estou tentando ler os valores mínimos e máximos de cada pico para ter o
+valor da amplitude.
+Consigo fazer isso delimitando o intervalo de comp. de ondas da posição do
+pico, mas é muito laborioso
+EX: max(amostra[,1:20]) e min(amostraamostra[,1:20]). Amplitude seria a
+diferença deles.
+
+Para várias amostras tenho utilizado a função apply para dentro da linha,
+PORÉM decorrente da heterogeneidade das amostras, as posições variam
+causando erro de leitura e modelagem.
+
+Outro fato é que existem inúmeros picos dentro de uma faixa de interesse, e
+delimitando visualmente torna-se inviável. Para isso, estou tentando criar
+uma rotina que leia todos os picos dentro da faixa de interesse, para que
+possa utiliza-los diferentemente nas modelagens.
+
+Tentei o código abaixo, mas me retorna o erro que o argumento é de
+comprimento zero!
+
+for(i in 1:length(amostra)){
+      if((amostra[i+1] > amostra[i])&(amostra[i-1]>amostra[i]))
+       print(amostra[i])
+      }
+
+(Error in if ((amostra[i + 1] > amostra[i]) & (amostra[i - 1] >
+amostra[i])) print(amostra[i]) : argument is of length zero)
+
+Um resultado que observei foi de do seguinte código, somente com uma
+condição colocada nele:
+
+for(i in 1:length(amostra)){
+      if(amostra[i+1] > amostra[i])
+       print(amostra[i])
+  }
+
+Nesse código, consegue-se ler os valores crescentes dos picos,
+desconsiderando os valores do objeto quando os valores são decrescentes. A
+partir dele que tentei colocar duas condições depois do IF para que ele
+lê-se somente os valores mínimos, mas sem sucesso.
+
+Portanto, peço ajuda para confecção de um código que faça a leitura dos min
+e max, ou amplitude, de todos os picos da amostra, retornando em um
+objeto/dataframe para modelagem.
+
+Grato pela atenção! José Lucas.
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151219/add2cc3b/attachment.html>
+
+From klebyn em yahoo.com.br  Sun Dec 20 13:26:42 2015
+From: klebyn em yahoo.com.br (Cleber N.Borges)
+Date: Sun, 20 Dec 2015 13:26:42 -0200
+Subject: [R-br] =?utf-8?q?Como_evitar_recurs=C3=A3o_infinita=3F?=
+Message-ID: <5676C8B2.5000300@yahoo.com.br>
+
+olá a todos,
+Gostaria de saber se há alguma maneira de se evitar recursão quando 
+houver um aninhamento de funções?
+Exemplo:
+
+f1 <- function()  { "faz alguma coisa" e;  chama f2() }
+f2 <- function()  { "faz alguma coisa" e;  chama f1() }
+
+Gostaria de, alguma forma, quando f1 (ou 2) fosse chamada dentro
+de f2 (ou 1), a função não entrasse mais na recursão!
+
+Agradeço pela atenção.
+
+cleber
+
+
+---
+Este email foi escaneado pelo Avast antivírus.
+https://www.avast.com/antivirus
+
+
+From zecojls em gmail.com  Sun Dec 20 18:59:37 2015
+From: zecojls em gmail.com (=?UTF-8?Q?Jos=C3=A9_Lucas_Safanelli?=)
+Date: Sun, 20 Dec 2015 18:59:37 -0200
+Subject: [R-br] Digest R-br, volume 60, assunto 14
+In-Reply-To: <mailman.5.1450620002.12288.r-br@listas.c3sl.ufpr.br>
+References: <mailman.5.1450620002.12288.r-br@listas.c3sl.ufpr.br>
+Message-ID: <CADni8G6pSaEOg5x7WPC6Bj-PuDPnT-ibY20S=vZrhyv_zsSXcA@mail.gmail.com>
+
+Pessoal, consegui resolver aqui com uma pesquisa mais aprofundada. Segue o
+código de leitura dos picos e vales para a amostra utilizada:
+
+maximo = data.frame()
+for(i in 1:length(amostra)){
+      if( max(amostra[i+1], amostra[i-1]) < amostra[i])
+      maximo = rbind(maximo, data.frame(print(amostra[i])))
+  }
+
+#LEITURA DOS MINIMOS
+minimo = data.frame()
+for(i in 1:length(amostra)){
+      if( min(amostra[i+1], amostra[i-1]) > amostra[i])
+      minimo = rbind(minimo, data.frame(print(amostra[i])))
+  }
+
+Atenciosamente, José Lucas.
+
+Message: 1
+> Date: Sat, 19 Dec 2015 19:04:52 -0200
+> From: José Lucas Safanelli <zecojls em gmail.com>
+> To: r-br em listas.c3sl.ufpr.br
+> Subject: [R-br] Loop para leitura de picos
+> Message-ID:
+>         <
+> CADni8G5B-N9M4LqpZTVkAOgoSkTO56aK0icdg-PjVf0Us8PcFQ em mail.gmail.com>
+> Content-Type: text/plain; charset="utf-8"
+>
+> Boa tarde, estou com o seguinte caso:
+>
+> DADO:
+> amostra = c(49.936157, 48.133488, 45.775238, 43.229397, 40.021607,
+> 35.927558, 31.365912, 26.849848, 23.233177, 20.770278, 18.572067,
+> 15.590341, 11.936978, 8.478520, 5.572115, 3.272254, 1.642041, 0.999997,
+> 1.473886, 2.616919, 4.169691, 6.464019, 9.790810, 13.820101, 17.978423,
+> 21.674281, 24.065947, 24.875069, 24.590811, 23.620608, 22.240339,
+> 20.676521, 19.088229, 17.689105, 16.720912, 16.358739, 16.792281,
+> 18.321545, 21.053896, 24.777756, 29.121638, 33.551339, 37.628649,
+> 41.272700, 44.405581, 46.899820, 48.602420, 49.253714, 48.816692,
+> 47.380737, 44.920718)
+> wavelength = seq(400, 450, by=1)
+> plot(wavelenght, amostra, xlab  = "Comp. Onda (nm)", ylab = 'Valor', type =
+> "l")
+> axis(side=1, at=seq(400, 450, by=5))
+>
+> PROBLEMA:
+> Estou tentando ler os valores mínimos e máximos de cada pico para ter o
+> valor da amplitude.
+> Consigo fazer isso delimitando o intervalo de comp. de ondas da posição do
+> pico, mas é muito laborioso
+> EX: max(amostra[,1:20]) e min(amostraamostra[,1:20]). Amplitude seria a
+> diferença deles.
+>
+> Para várias amostras tenho utilizado a função apply para dentro da linha,
+> PORÉM decorrente da heterogeneidade das amostras, as posições variam
+> causando erro de leitura e modelagem.
+>
+> Outro fato é que existem inúmeros picos dentro de uma faixa de interesse, e
+> delimitando visualmente torna-se inviável. Para isso, estou tentando criar
+> uma rotina que leia todos os picos dentro da faixa de interesse, para que
+> possa utiliza-los diferentemente nas modelagens.
+>
+> Tentei o código abaixo, mas me retorna o erro que o argumento é de
+> comprimento zero!
+>
+> for(i in 1:length(amostra)){
+>       if((amostra[i+1] > amostra[i])&(amostra[i-1]>amostra[i]))
+>        print(amostra[i])
+>       }
+>
+> (Error in if ((amostra[i + 1] > amostra[i]) & (amostra[i - 1] >
+> amostra[i])) print(amostra[i]) : argument is of length zero)
+>
+> Um resultado que observei foi de do seguinte código, somente com uma
+> condição colocada nele:
+>
+> for(i in 1:length(amostra)){
+>       if(amostra[i+1] > amostra[i])
+>        print(amostra[i])
+>   }
+>
+> Nesse código, consegue-se ler os valores crescentes dos picos,
+> desconsiderando os valores do objeto quando os valores são decrescentes. A
+> partir dele que tentei colocar duas condições depois do IF para que ele
+> lê-se somente os valores mínimos, mas sem sucesso.
+>
+> Portanto, peço ajuda para confecção de um código que faça a leitura dos min
+> e max, ou amplitude, de todos os picos da amostra, retornando em um
+> objeto/dataframe para modelagem.
+>
+> Grato pela atenção! José Lucas.
+> -------------- Próxima Parte ----------
+> Um anexo em HTML foi limpo...
+> URL: <
+> http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151219/add2cc3b/attachment-0001.html
+> >
+>
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151220/4b8b8abf/attachment.html>
+
+From salah3.1416 em gmail.com  Sun Dec 20 19:26:15 2015
+From: salah3.1416 em gmail.com (salah)
+Date: Sun, 20 Dec 2015 19:26:15 -0200
+Subject: [R-br] Loop para leitura de picos
+In-Reply-To: <CADni8G5B-N9M4LqpZTVkAOgoSkTO56aK0icdg-PjVf0Us8PcFQ@mail.gmail.com>
+References: <CADni8G5B-N9M4LqpZTVkAOgoSkTO56aK0icdg-PjVf0Us8PcFQ@mail.gmail.com>
+Message-ID: <1450646775.30713.3.camel@gmail.com>
+
+Olá
+
+segue uma sugestão:
+
+vp = function(onda){
+	
+	pico = NULL
+	vale = NULL
+	
+	for(i in 2:(length(onda)-1))
+	{
+		
+		## seleciona valores maximos
+		if(onda[i+1] < onda[i] & onda[i-1] < onda[i])
+		{
+			p = onda[i]
+			pico = rbind(pico, p)
+		}## end if pico
+		
+		## seleciona valores minimos
+		if(onda[i+1] > onda[i] & onda[i-1] > onda[i])
+		{
+			v = onda[i]
+			vale = rbind(vale, v)
+		}## end if vale
+	}##end for
+	
+	return(rbind(pico, vale))
+}## end function
+
+## seus dados
+amostra = c(49.936157, 48.133488, 45.775238, 43.229397, 40.021607,
+35.927558, 31.365912, 26.849848, 23.233177, 20.770278, 18.572067,
+15.590341, 11.936978, 8.478520, 5.572115, 3.272254, 1.642041, 0.999997,
+1.473886, 2.616919, 4.169691, 6.464019, 9.790810, 13.820101, 17.978423,
+21.674281, 24.065947, 24.875069, 24.590811, 23.620608, 22.240339,
+20.676521, 19.088229, 17.689105, 16.720912, 16.358739, 16.792281,
+18.321545, 21.053896, 24.777756, 29.121638, 33.551339, 37.628649,
+41.272700, 44.405581, 46.899820, 48.602420, 49.253714, 48.816692,
+47.380737, 44.920718)
+wavelenght = seq(400, 450, by=1)
+
+## monta um data.frame
+dados = data.frame(wavelenght, amostra)
+
+## seleciona vales e picos
+a = vp(amostra)
+
+## separa a posição dos vales e picos nos dados
+pp = dados[c(match(a, dados$amostra)),]
+
+## grafico
+plot(dados, type='l')
+points(pp, pch = 19, col = 'red')
+
+
+
+Em Sáb, 2015-12-19 às 19:04 -0200, José Lucas Safanelli escreveu:
+> Boa tarde, estou com o seguinte caso:
+> 
+> 
+> DADO:
+> amostra = c(49.936157, 48.133488, 45.775238, 43.229397, 40.021607,
+> 35.927558, 31.365912, 26.849848, 23.233177, 20.770278, 18.572067,
+> 15.590341, 11.936978, 8.478520, 5.572115, 3.272254, 1.642041,
+> 0.999997, 1.473886, 2.616919, 4.169691, 6.464019, 9.790810, 13.820101,
+> 17.978423, 21.674281, 24.065947, 24.875069, 24.590811, 23.620608,
+> 22.240339, 20.676521, 19.088229, 17.689105, 16.720912, 16.358739,
+> 16.792281, 18.321545, 21.053896, 24.777756, 29.121638, 33.551339,
+> 37.628649, 41.272700, 44.405581, 46.899820, 48.602420, 49.253714,
+> 48.816692, 47.380737, 44.920718)
+> wavelength = seq(400, 450, by=1)
+> 
+> plot(wavelenght, amostra, xlab  = "Comp. Onda (nm)", ylab = 'Valor',
+> type = "l")
+> axis(side=1, at=seq(400, 450, by=5))
+> 
+> 
+> PROBLEMA:
+> Estou tentando ler os valores mínimos e máximos de cada pico para ter
+> o valor da amplitude.
+> Consigo fazer isso delimitando o intervalo de comp. de ondas da
+> posição do pico, mas é muito laborioso
+> EX: max(amostra[,1:20]) e min(amostraamostra[,1:20]). Amplitude seria
+> a diferença deles.
+> 
+> 
+> Para várias amostras tenho utilizado a função apply para dentro da
+> linha, PORÉM decorrente da heterogeneidade das amostras, as posições
+> variam causando erro de leitura e modelagem.
+> 
+> 
+> Outro fato é que existem inúmeros picos dentro de uma faixa de
+> interesse, e delimitando visualmente torna-se inviável. Para isso,
+> estou tentando criar uma rotina que leia todos os picos dentro da
+> faixa de interesse, para que possa utiliza-los diferentemente nas
+> modelagens.
+> 
+> 
+> Tentei o código abaixo, mas me retorna o erro que o argumento é de
+> comprimento zero! 
+> 
+> 
+> for(i in 1:length(amostra)){
+>       if((amostra[i+1] > amostra[i])&(amostra[i-1]>amostra[i]))
+>        print(amostra[i])
+>       }
+> 
+> 
+> (Error in if ((amostra[i + 1] > amostra[i]) & (amostra[i - 1] >
+> amostra[i])) print(amostra[i]) : argument is of length zero)
+> 
+> 
+> Um resultado que observei foi de do seguinte código, somente com uma
+> condição colocada nele:
+> 
+> 
+> for(i in 1:length(amostra)){
+>       if(amostra[i+1] > amostra[i])
+>        print(amostra[i])
+>   }
+> 
+> 
+> Nesse código, consegue-se ler os valores crescentes dos picos,
+> desconsiderando os valores do objeto quando os valores são
+> decrescentes. A partir dele que tentei colocar duas condições depois
+> do IF para que ele lê-se somente os valores mínimos, mas sem sucesso. 
+> 
+> 
+> Portanto, peço ajuda para confecção de um código que faça a leitura
+> dos min e max, ou amplitude, de todos os picos da amostra, retornando
+> em um objeto/dataframe para modelagem.
+> 
+> 
+> Grato pela atenção! José Lucas.
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo mnimo reproduzvel.
+
+
+
+From sznelwar em uol.com.br  Sun Dec 20 23:04:25 2015
+From: sznelwar em uol.com.br (Mauro Sznelwar)
+Date: Sun, 20 Dec 2015 23:04:25 -0200
+Subject: [R-br] =?utf-8?b?UkVTOiAgRnVuw6fDo28gY29tIHbDoXJpb3MgaWYgZSBlbHNl?=
+	=?utf-8?q?_if_que_n=C3=A3o_funciona_=5BRESOLVIDO=5D?=
+In-Reply-To: <5672B383.6090807@yahoo.com.br>
+References: <56707C4C.5020601@yahoo.com.br>
+ <CAKrF98=4a0iZt=ARj+pkhVh4y17EDf5FkZwaNi4BvO_PktasZQ@mail.gmail.com>
+ <1851087109.3696.1450311113347.JavaMail.yahoo@mail.yahoo.com>
+ <5672B383.6090807@yahoo.com.br>
+Message-ID: <001201d13b8b$894fb410$9bef1c30$@com.br>
+
+Como é que eu faço para rodar esta função?
+
+ 
+
+ 
+
+Muito bem pesado Thiago, vou atentar a isso.
+
+        E agradeço também ao Cesar, nunca havia usado a ferramenta de depuração e resolveu o meu problema.
+
+Segue minha função final, se alguém for trabalhar com imagens do Resourcesat e sensor LISS IIII:
+
+##Função para conversão DN para radiância - LISS III ---------------------------
+radconvL<-function(x, band = 2)
+{
+    BAND <- c("2", "3", "4", "5")
+    band <- pmatch(band, BAND)
+    if (is.na(band))
+        stop("invalid band")
+            
+    Lmin = 0
+    Qmax = 127
+    x <- as.vector(as.matrix(x))
+    results <- x
+            
+    if (band == 2) {
+    Lmax = 120.64
+    }
+    else if (band == 3) {
+    Lmax = 151.31
+    }
+    else if (band == 4) {
+    Lmax = 157.57
+    }
+    else if(band == 5) {
+    Lmax = 69.03
+    }
+
+    x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+    if (class(results) == "SpatialGridDataFrame")
+        results em data[, 1] <- x
+    else if (is.data.frame(x))
+        results <- data.frame(matrix(x, nrow = nrow(results),
+            ncol = ncol(results)))
+    else results <- x
+    results    
+}
+######--------------------------------------------------------------------------
+
+
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal 
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial 
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+e-mails:alexandresantosbr em yahoo.com.br 
+        alexandre.santos em cas.ifmt.edu.br 
+Lattes: http://lattes.cnpq.br/1360403201088680                   
+======================================================================
+
+Em 16/12/2015 21:11, Thiago V. dos Santos escreveu:
+
+Uma opção mais eficiente (e provavelmente mais legível) é aproveitar os recursos de vetorização do R.
+
+ 
+
+O que eu tenho feito é criar um raster stack com todas as bandas do landsat. Depois, eu crio uma lista com os parametros de calibração de cada banda (que você vai ler nos arquivos de calibração). Funciona melhor se você deixar todos os arquivos - imagens e arquivos de calibração - em uma pasta só.
+
+ 
+
+Assumindo que o raster stack tem o mesmo tamanho da lista, você pode aplicar uma multiplicação direta para fazer a calibração.
+
+ 
+
+Greetings, 
+
+ -- Thiago V. dos Santos
+
+ 
+
+PhD student
+
+Land and Atmospheric Science
+
+University of Minnesota
+
+ 
+
+ 
+
+On Tuesday, December 15, 2015 1:46 PM, Cesar Rabak  <mailto:cesar.rabak em gmail.com> <cesar.rabak em gmail.com> wrote:
+
+ 
+
+Alexandre, 
+
+ 
+
+A melhor forma de você atacar esse problema é usar as facilidades de depuração do R:
+
+ 
+
+> ?debug
+
+ 
+
+para ver a documentação do depurador padrão.
+
+ 
+
+Um tutorialzinho sobre seu uso pode ser encontrado aqui: http://www.biostat.jhsph.edu/~rpeng/docs/R-debug-tools.pdf <http://www.biostat.jhsph.edu/%7Erpeng/docs/R-debug-tools.pdf> 
+
+HTH
+
+--
+
+Cesar Rabak
+
+ 
+
+ 
+
+ 
+
+2015-12-15 18:47 GMT-02:00 ASANTOS <alexandresantosbr em yahoo.com.br>:
+
+Caros Listeiros,
+
+
+         Estou tentando criar uma função abaixo para converter um SpatialGridDataFrame originado de uma imagem de satélite para reflectância, mas a função que eu criei (radconvL()) pelo excesso de else if não esta funcionando. Meu problema é que não dá erro, o que normalmente ajuda a detectar o problema, mas no meu caso a função nem funciona, segue meu CRM abaixo, alguém poderia me ajudar?
+
+require(raster)
+require(sp)
+
+# RasterLayer inventado
+r <- raster(nrows=10, ncols=10)
+r <- setValues(r, 1:ncell(r))
+plot(r)
+
+band2<- as(r, 'SpatialGridDataFrame')  ### transforma em SpatialGridDataFrame
+
+
+
+##Função para conversão DN para reflectância
+radconvL<-function(x, band = 2)
+{
+    BAND <- c("2", "3", "4", "5")
+    band <- pmatch(band, BAND)
+    Lmin = 0
+    Qmax = 127
+
+    if (is.na <http://is.na/> (band))
+        stop("invalid band")
+
+    if (band == 2) {
+    Lmax = 120.64
+    results <- x
+    x <- as.vector(as.matrix(x))
+    x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+    if (class(results) == "SpatialGridDataFrame")
+        results em data[, 1] <- x
+    else if (is.data.frame(x))
+        results <- data.frame(matrix(x, nrow = nrow(results),
+            ncol = ncol(results)))
+    else results <- x
+    results
+    }
+    else if (band == 3) {
+    Lmax = 151.31
+    results <- x
+    x <- as.vector(as.matrix(x))
+    x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+    if (class(results) == "SpatialGridDataFrame")
+        results em data[, 1] <- x
+    else if (is.data.frame(x))
+        results <- data.frame(matrix(x, nrow = nrow(results),
+            ncol = ncol(results)))
+    else results <- x
+    results
+    }
+    else if (band == 4) {
+    Lmax = 157.57
+    results <- x
+    x <- as.vector(as.matrix(x))
+    x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+    if (class(results) == "SpatialGridDataFrame")
+        results em data[, 1] <- x
+    else if (is.data.frame(x))
+        results <- data.frame(matrix(x, nrow = nrow(results),
+            ncol = ncol(results)))
+    else results <- x
+    results
+    }
+    else if(band == 5) {
+    Lmax = 69.03
+    results <- x
+    x <- as.vector(as.matrix(x))
+    x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+    if (class(results) == "SpatialGridDataFrame")
+        results em data[, 1] <- x
+    else if (is.data.frame(x))
+        results <- data.frame(matrix(x, nrow = nrow(results),
+            ncol = ncol(results)))
+    else results <- x
+    results
+    }
+}
+######
+teste<-radconvL(band2, band=2) ## Aqui não funciona e não sei porque
+teste
+
+
+Muito obrigado,
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+e-mails:alexandresantosbr em yahoo.com.br <mailto:e-mails%3Aalexandresantosbr em yahoo.com.br> 
+        alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+======================================================================
+
+
+
+ 
+
+
+
+---
+Este email foi escaneado pelo Avast antivírus.
+https://www.avast.com/antivirus
+-------------- Próxima Parte ----------
+Um anexo em HTML foi limpo...
+URL: <http://listas.inf.ufpr.br/pipermail/r-br/attachments/20151220/18cbc914/attachment.html>
+
+From leonardof em leonardof.med.br  Mon Dec 21 11:18:00 2015
+From: leonardof em leonardof.med.br (Leonardo Ferreira Fontenelle)
+Date: Mon, 21 Dec 2015 11:18:00 -0200
+Subject: [R-br] =?utf-8?q?Como_evitar_recurs=C3=A3o_infinita=3F?=
+In-Reply-To: <5676C8B2.5000300@yahoo.com.br>
+References: <5676C8B2.5000300@yahoo.com.br>
+Message-ID: <1450703880.4025414.473010921.0DCF9363@webmail.messagingengine.com>
+
+f <- funcion(qualprimeiro) {
+  stopifnot(qualprimeiro %in% 1:2)
+  if (qualprimeiro == 1) {
+    f1()
+    f2()
+  } else {
+    f2()
+    f1()
+  }
+}
+
+-- 
+Leonardo Ferreira Fontenelle
+http://lattes.cnpq.br/9234772336296638
+
+Em Dom 20 dez. 2015, às 13:26, Cleber N.Borges escreveu:
+> olá a todos,
+> Gostaria de saber se há alguma maneira de se evitar recursão quando 
+> houver um aninhamento de funções?
+> Exemplo:
+> 
+> f1 <- function()  { "faz alguma coisa" e;  chama f2() }
+> f2 <- function()  { "faz alguma coisa" e;  chama f1() }
+> 
+> Gostaria de, alguma forma, quando f1 (ou 2) fosse chamada dentro
+> de f2 (ou 1), a função não entrasse mais na recursão!
+> 
+> Agradeço pela atenção.
+> 
+> cleber
+> 
+> 
+> ---
+> Este email foi escaneado pelo Avast antivírus.
+> https://www.avast.com/antivirus
+> 
+> _______________________________________________
+> R-br mailing list
+> R-br em listas.c3sl.ufpr.br
+> https://listas.inf.ufpr.br/cgi-bin/mailman/listinfo/r-br
+> Leia o guia de postagem (http://www.leg.ufpr.br/r-br-guia) e fornea cdigo
+> mnimo reproduzvel.
+
+From alexandresantosbr em yahoo.com.br  Mon Dec 21 18:29:54 2015
+From: alexandresantosbr em yahoo.com.br (ASANTOS)
+Date: Mon, 21 Dec 2015 17:29:54 -0300
+Subject: [R-br]
+ =?utf-8?b?UkVTOiBGdW7Dp8OjbyBjb20gdsOhcmlvcyBpZiBlIGVsc2Ug?=
+ =?utf-8?q?if_que_n=C3=A3o_funciona_=5BRESOLVIDO=5D?=
+In-Reply-To: <001201d13b8b$894fb410$9bef1c30$@com.br>
+References: <56707C4C.5020601@yahoo.com.br>
+ <CAKrF98=4a0iZt=ARj+pkhVh4y17EDf5FkZwaNi4BvO_PktasZQ@mail.gmail.com>
+ <1851087109.3696.1450311113347.JavaMail.yahoo@mail.yahoo.com>
+ <5672B383.6090807@yahoo.com.br> <001201d13b8b$894fb410$9bef1c30$@com.br>
+Message-ID: <56786142.9070107@yahoo.com.br>
+
+Boa tarde Mauro,
+
+       Segue a função abaixo a uma simulação de um raster, como se fosse 
+uma imagem de satélite e o emprego da função radconvL():
+
+require(raster)
+require(sp)
+
+# RasterLayer inventado
+r <- raster(nrows=10, ncols=10)
+r <- setValues(r, 1:ncell(r))
+plot(r)
+
+band2<- as(r, 'SpatialGridDataFrame')  ### transforma em 
+SpatialGridDataFrame
+
+
+##Função para conversão DN para radiância - LISS III 
+---------------------------
+radconvL<-function(x, band = 2)
+{
+     BAND <- c("2", "3", "4", "5")
+     band <- pmatch(band, BAND)
+
+     if (is.na(band))
+         stop("invalid band")
+
+     Lmin = 0
+     Qmax = 127
+     x <- as.vector(as.matrix(x))
+     results <- x
+
+     if (band == 2) {
+     Lmax = 120.64
+     }
+     else if (band == 3) {
+     Lmax = 151.31
+     }
+     else if (band == 4) {
+     Lmax = 157.57
+     }
+     else if (band == 5) {
+     Lmax = 69.03
+     }
+
+     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+     if (class(results) == "SpatialGridDataFrame")
+         results em data[, 1] <- x
+     else if (is.data.frame(x))
+         results <- data.frame(matrix(x, nrow = nrow(results),
+             ncol = ncol(results)))
+     else results <- x
+     results
+}
+######--
+
+teste<-radconvL(band2, band = 2)
+teste
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+======================================================================
+
+Em 20/12/2015 22:04, Mauro Sznelwar escreveu:
+>
+> ##Função para conversão DN para radiância - LISS III 
+> ---------------------------
+> radconvL<-function(x, band = 2)
+> {
+>     BAND <- c("2", "3", "4", "5")
+>     band <- pmatch(band, BAND)
+>     if (is.na(band))
+>         stop("invalid band")
+>
+>     Lmin = 0
+>     Qmax = 127
+>     x <- as.vector(as.matrix(x))
+>     results <- x
+>
+>     if (band == 2) {
+>     Lmax = 120.64
+>     }
+>     else if (band == 3) {
+>     Lmax = 151.31
+>     }
+>     else if (band == 4) {
+>     Lmax = 157.57
+>     }
+>     else if(band == 5) {
+>     Lmax = 69.03
+>     }
+>
+>     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+>     if (class(results) == "SpatialGridDataFrame")
+>         results em data[, 1] <- x
+>     else if (is.data.frame(x))
+>         results <- data.frame(matrix(x, nrow = nrow(results),
+>             ncol = ncol(results)))
+>     else results <- x
+>     results
+> }
+> ######
+
+
+From sznelwar em uol.com.br  Tue Dec 22 07:58:04 2015
+From: sznelwar em uol.com.br (Mauro Sznelwar)
+Date: Tue, 22 Dec 2015 07:58:04 -0200
+Subject: [R-br] =?utf-8?b?UkVTOiAgUkVTOiBGdW7Dp8OjbyBjb20gdsOhcmlvcyBpZiBl?=
+	=?utf-8?q?_else_if_que_n=C3=A3o_funciona_=5BRESOLVIDO=5D?=
+In-Reply-To: <56786142.9070107@yahoo.com.br>
+References: <56707C4C.5020601@yahoo.com.br>
+ <CAKrF98=4a0iZt=ARj+pkhVh4y17EDf5FkZwaNi4BvO_PktasZQ@mail.gmail.com>
+ <1851087109.3696.1450311113347.JavaMail.yahoo@mail.yahoo.com>
+ <5672B383.6090807@yahoo.com.br> <001201d13b8b$894fb410$9bef1c30$@com.br>
+ <56786142.9070107@yahoo.com.br>
+Message-ID: <013801d13c9f$40d284a0$c2778de0$@com.br>
+
+Ainda não deu certo, veja:
+
+require(raster)
+Loading required package: raster
+Loading required package: sp
+> require(sp)
+> 
+> # RasterLayer inventado
+> r <- raster(nrows=10, ncols=10)
+> r <- setValues(r, 1:ncell(r))
+> plot(r)
+> 
+> band2<- as(r, 'SpatialGridDataFrame')  ### transforma em SpatialGridDataFrame
+> 
+> 
+> ##Função para conversão DN para radiância - LISS III 
+> ---------------------------
++ radconvL<-function(x, band = 2)
++ {
++      BAND <- c("2", "3", "4", "5")
++      band <- pmatch(band, BAND)
++ 
++      if (is.na(band))
++          stop("invalid band")
++ 
++      Lmin = 0
++      Qmax = 127
++      x <- as.vector(as.matrix(x))
++      results <- x
++ 
++      if (band == 2) {
++      Lmax = 120.64
++      }
++      else if (band == 3) {
++      Lmax = 151.31
++      }
++      else if (band == 4) {
++      Lmax = 157.57
++      }
++      else if (band == 5) {
++      Lmax = 69.03
++      }
++ 
++      x <- Lmin + ((Lmax-Lmin)*x)/Qmax
++      if (class(results) == "SpatialGridDataFrame")
++          results em data[, 1] <- x
++      else if (is.data.frame(x))
++          results <- data.frame(matrix(x, nrow = nrow(results),
++              ncol = ncol(results)))
++      else results <- x
++      results
++ }
+Error in ---------------------------radconvL <- function(x, band = 2) { : 
+  object 'radconvL' not found
+> ######--
+> 
+> teste<-radconvL(band2, band = 2)
+Error: could not find function "radconvL"
+> teste
+Error: object 'teste' not found
+
+Boa tarde Mauro,
+
+       Segue a função abaixo a uma simulação de um raster, como se fosse 
+uma imagem de satélite e o emprego da função radconvL():
+
+require(raster)
+require(sp)
+
+# RasterLayer inventado
+r <- raster(nrows=10, ncols=10)
+r <- setValues(r, 1:ncell(r))
+plot(r)
+
+band2<- as(r, 'SpatialGridDataFrame')  ### transforma em 
+SpatialGridDataFrame
+
+
+##Função para conversão DN para radiância - LISS III 
+---------------------------
+radconvL<-function(x, band = 2)
+{
+     BAND <- c("2", "3", "4", "5")
+     band <- pmatch(band, BAND)
+
+     if (is.na(band))
+         stop("invalid band")
+
+     Lmin = 0
+     Qmax = 127
+     x <- as.vector(as.matrix(x))
+     results <- x
+
+     if (band == 2) {
+     Lmax = 120.64
+     }
+     else if (band == 3) {
+     Lmax = 151.31
+     }
+     else if (band == 4) {
+     Lmax = 157.57
+     }
+     else if (band == 5) {
+     Lmax = 69.03
+     }
+
+     x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+     if (class(results) == "SpatialGridDataFrame")
+         results em data[, 1] <- x
+     else if (is.data.frame(x))
+         results <- data.frame(matrix(x, nrow = nrow(results),
+             ncol = ncol(results)))
+     else results <- x
+     results
+}
+######--
+
+teste<-radconvL(band2, band = 2)
+teste
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+======================================================================
+
+
+
+---
+Este email foi escaneado pelo Avast antivírus.
+https://www.avast.com/antivirus
+
+
+From alexandresantosbr em yahoo.com.br  Mon Dec 28 17:22:38 2015
+From: alexandresantosbr em yahoo.com.br (ASANTOS)
+Date: Mon, 28 Dec 2015 16:22:38 -0300
+Subject: [R-br]
+ =?utf-8?b?UkVTOiBSRVM6IEZ1bsOnw6NvIGNvbSB2w6FyaW9zIGlmIGUg?=
+ =?utf-8?q?else_if_que_n=C3=A3o_funciona_=5BRESOLVIDO=5D?=
+In-Reply-To: <013801d13c9f$40d284a0$c2778de0$@com.br>
+References: <56707C4C.5020601@yahoo.com.br>
+ <CAKrF98=4a0iZt=ARj+pkhVh4y17EDf5FkZwaNi4BvO_PktasZQ@mail.gmail.com>
+ <1851087109.3696.1450311113347.JavaMail.yahoo@mail.yahoo.com>
+ <5672B383.6090807@yahoo.com.br> <001201d13b8b$894fb410$9bef1c30$@com.br>
+ <56786142.9070107@yahoo.com.br> <013801d13c9f$40d284a0$c2778de0$@com.br>
+Message-ID: <56818BFE.2060500@yahoo.com.br>
+
+Mauro,
+
+      Desculpe a demora, achei o erro, segue a função corrigida:
+
+require(raster)
+require(sp)
+
+# RasterLayer inventado
+r <- raster(nrows=10, ncols=10)
+r <- setValues(r, 1:ncell(r))
+plot(r)
+
+band2<- as(r, 'SpatialGridDataFrame')  ### transforma em
+SpatialGridDataFrame
+
+
+##Função para conversão DN para radiância - LISS III 
+---------------------------
+radconvL<-function(x, band = 2)
+{
+      BAND <- c("2", "3", "4", "5")
+      band <- pmatch(band, BAND)
+
+      if (is.na(band))
+          stop("invalid band")
+
+      Lmin = 0
+      Qmax = 127
+      x <- as.vector(as.matrix(x))
+      results <- x
+
+      if(band == 2) {
+      Lmax <- 120.64
+      } else if(band == 3) {
+      Lmax <- 151.31
+      } else if(band == 4) {
+      Lmax <- 157.57
+      } else if(band == 5) {
+      Lmax <- 69.03
+      }
+
+
+      x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+      if (class(results) == "SpatialGridDataFrame")
+          results em data[, 1] <- x
+      else if (is.data.frame(x))
+          results <- data.frame(matrix(x, nrow = nrow(results),
+              ncol = ncol(results)))
+      else results <- x
+      results
+}
+######--
+
+teste<-radconvL(band2, band = 4)
+teste
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722
+Researchgate: https://www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: https://br.linkedin.com/in/alexandre-dos-santos-87961635
+======================================================================
+
+Em 22/12/2015 06:58, Mauro Sznelwar escreveu:
+> require(raster)
+> require(sp)
+>
+> # RasterLayer inventado
+> r <- raster(nrows=10, ncols=10)
+> r <- setValues(r, 1:ncell(r))
+> plot(r)
+>
+> band2<- as(r, 'SpatialGridDataFrame')  ### transforma em
+> SpatialGridDataFrame
+>
+>
+> ##Função para conversão DN para radiância - LISS III
+> ---------------------------
+> radconvL<-function(x, band = 2)
+> {
+>       BAND <- c("2", "3", "4", "5")
+>       band <- pmatch(band, BAND)
+>
+>       if (is.na(band))
+>           stop("invalid band")
+>
+>       Lmin = 0
+>       Qmax = 127
+>       x <- as.vector(as.matrix(x))
+>       results <- x
+>
+>       if (band == 2) {
+>       Lmax = 120.64
+>       }
+>       else if (band == 3) {
+>       Lmax = 151.31
+>       }
+>       else if (band == 4) {
+>       Lmax = 157.57
+>       }
+>       else if (band == 5) {
+>       Lmax = 69.03
+>       }
+>
+>       x <- Lmin + ((Lmax-Lmin)*x)/Qmax
+>       if (class(results) == "SpatialGridDataFrame")
+>           results em data[, 1] <- x
+>       else if (is.data.frame(x))
+>           results <- data.frame(matrix(x, nrow = nrow(results),
+>               ncol = ncol(results)))
+>       else results <- x
+>       results
+> }
+> ######--
+>
+> teste<-radconvL(band2, band = 2)
+> teste
+
+
+From alexandresantosbr em yahoo.com.br  Tue Dec 29 21:35:09 2015
+From: alexandresantosbr em yahoo.com.br (ASANTOS)
+Date: Tue, 29 Dec 2015 20:35:09 -0300
+Subject: [R-br] Leitura de tabela em formato HTML no dropbox
+Message-ID: <568318AD.10306@yahoo.com.br>
+
+Prezados Listeiros,
+
+        Estou tentando ler uma tabela em HTML que hospedei no dropbox, 
+porém a função readHTMLTable() parece não funcionar se o arquivo esta no 
+dropbox, alguém poderia me ajudar? Segue CRM:
+
+##Leitura de uma tabela em HTML usando httr e XML
+
+##Pacotes
+require(httr)
+require(XML)
+
+
+## Abrindo o arquivo HTML com a tabela hospedado no dropbox
+FILE <- 
+GET(url="https://www.dropbox.com/s/mb316ghr4irxipr/TALHOES_AGENTES.htm?dl=0")
+
+## Lendo a tabela
+tables <- getNodeSet(htmlParse(FILE), "//table")
+FE_tab <- readHTMLTable(tables[2],
+                     header = c("empresa","desc_projeto","desc_regiao",
+"cadastrador_por","cod_talhao","descricao",
+"formiga_area","qtd_destruido","latitude",
+                                "longitude","data_cadastro"),
+                     colClasses = c("character","character","character",
+"character","character","character",
+"character","character","character",
+                                    "character","character"),
+                     trim = TRUE, stringsAsFactors = FALSE
+                    )
+head(FE_tab)
+#
+
+Obrigado
+
+-- 
+======================================================================
+Alexandre dos Santos
+Proteção Florestal
+IFMT - Instituto Federal de Educação, Ciência e Tecnologia de Mato Grosso
+Campus Cáceres
+Caixa Postal 244
+Avenida dos Ramires, s/n
+Bairro: Distrito Industrial
+Cáceres - MT                      CEP: 78.200-000
+Fone: (+55) 65 8132-8112 (TIM)   (+55) 65 9686-6970 (VIVO)
+e-mails:alexandresantosbr em yahoo.com.br
+         alexandre.santos em cas.ifmt.edu.br
+Lattes: http://lattes.cnpq.br/1360403201088680
+OrcID: orcid.org/0000-0001-8232-6722
+Researchgate: https://www.researchgate.net/profile/Alexandre_Santos10
+LinkedIn: https://br.linkedin.com/in/alexandre-dos-santos-87961635
+======================================================================
+
+
